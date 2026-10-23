@@ -9,7 +9,7 @@ export const selectTriggerVariants = cva(
     "rounded-(--space-select-trigger-radius)",
     "placeholder:text-(--color-input-placeholder)",
     focusRingInputClasses,
-    "disabled:cursor-not-allowed disabled:opacity-(--select-trigger-disabled-opacity)",
+    "disabled:cursor-not-allowed disabled:bg-(--color-select-trigger-background-disabled) disabled:text-(--color-select-trigger-text-disabled) disabled:border-(--color-select-trigger-border-disabled)",
     "[&>span]:line-clamp-1",
     "text-(--color-input-default-text)"
   ),
@@ -172,7 +172,7 @@ export const SelectItem = React.forwardRef<
         "pr-(--space-select-item-padding-right)",
         selectItemFontSizes[size],
         "focus:bg-(--color-select-item-background-focus) focus:text-(--color-select-item-text-focus) hover:bg-(--color-select-item-background-focus) hover:text-(--color-select-item-text-focus)",
-        "data-disabled:pointer-events-none data-disabled:opacity-(--select-item-disabled-opacity)",
+        "data-disabled:pointer-events-none data-disabled:text-(--color-select-item-text-disabled)",
         className
       )}
       {...props}

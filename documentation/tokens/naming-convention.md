@@ -189,7 +189,7 @@ Hover, active, focus and disabled are not semantic tokens. In a component they c
 
 ### Component Tokens (the only tokens a component uses)
 
-A component binds only to component tokens. Each one encapsulates a design decision (a colour, a spacing, a state) for one part of one component and references a semantic tone.
+A component binds only to component tokens. Each one encapsulates a design decision (a colour, a spacing, a state) for one part of one component and references a semantic tone. The two exceptions (the focus ring colour and font family), the component naming grammar and the disabled-state model are in [component-token-grammar.md](component-token-grammar.md); `pnpm check:tokens` enforces the rule.
 
 **Dialog:**
 

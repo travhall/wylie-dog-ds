@@ -109,7 +109,7 @@
       "kind": "text"
     },
     {
-      "foreground": "button.link.text",
+      "foreground": "button.link-text",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
@@ -190,17 +190,17 @@
     },
     {
       "foreground": "toast.text",
-      "backgrounds": ["toast.default.background"],
+      "backgrounds": ["toast.default-background"],
       "kind": "text"
     },
     {
       "foreground": "toast.close",
-      "backgrounds": ["toast.default.background"],
+      "backgrounds": ["toast.default-background"],
       "kind": "text"
     },
     {
       "foreground": "toast.close-hover",
-      "backgrounds": ["toast.default.background"],
+      "backgrounds": ["toast.default-background"],
       "kind": "text"
     },
     {
@@ -379,16 +379,6 @@
       "kind": "text"
     },
     {
-      "foreground": "calendar.day-text-focus",
-      "backgrounds": ["calendar.day-focus"],
-      "kind": "text"
-    },
-    {
-      "foreground": "calendar.nav-text-focus",
-      "backgrounds": ["calendar.nav-focus"],
-      "kind": "text"
-    },
-    {
       "foreground": "accordion.trigger-text-hover",
       "backgrounds": ["accordion.trigger-hover"],
       "kind": "text"
@@ -499,17 +489,17 @@
       "kind": "text"
     },
     {
-      "foreground": "label.default.color",
+      "foreground": "label.default-color",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
-      "foreground": "label.error.text",
+      "foreground": "label.error-text",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
-      "foreground": "label.required.text",
+      "foreground": "label.required-text",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
@@ -519,7 +509,7 @@
       "kind": "text"
     },
     {
-      "foreground": "feature-grid.description.text",
+      "foreground": "feature-grid.description-text",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
@@ -538,7 +528,6 @@
       "backgrounds": [
         "table.row-hover",
         "table.row-selected",
-        "table.row-focus",
         "color.background.emphasis",
         "color.background.raised"
       ],
@@ -550,12 +539,12 @@
       "kind": "non-text"
     },
     {
-      "foreground": "checkbox.checked.text",
-      "backgrounds": ["checkbox.checked.background"],
+      "foreground": "checkbox.text-checked",
+      "backgrounds": ["checkbox.background-checked"],
       "kind": "non-text"
     },
     {
-      "foreground": "tabs.trigger.indicator.color",
+      "foreground": "tabs.trigger.indicator-color",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
@@ -576,7 +565,7 @@
       "kind": "non-text"
     },
     {
-      "foreground": "checkbox.error.border",
+      "foreground": "checkbox.error-border",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
@@ -606,20 +595,20 @@
       "kind": "non-text"
     },
     {
-      "foreground": "switch.track.background.unchecked",
+      "foreground": "switch.track.background-unchecked",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
-      "foreground": "switch.track.background.checked",
+      "foreground": "switch.track.background-checked",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "switch.thumb.background",
       "backgrounds": [
-        "switch.track.background.unchecked",
-        "switch.track.background.checked"
+        "switch.track.background-unchecked",
+        "switch.track.background-checked"
       ],
       "kind": "non-text"
     },
@@ -636,11 +625,6 @@
     {
       "foreground": "color.border.focus",
       "backgrounds": ["color.background.default", "color.background.muted"],
-      "kind": "non-text"
-    },
-    {
-      "foreground": "popover.border-focus",
-      "backgrounds": ["popover.background"],
       "kind": "non-text"
     },
     {
@@ -752,7 +736,7 @@
       "kind": "text"
     },
     {
-      "foreground": "form.required.color",
+      "foreground": "form.required-color",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
@@ -796,23 +780,67 @@
       "kind": "non-text"
     },
     {
-      "foreground": "form.label.text",
+      "foreground": "form.label-error-text",
       "backgrounds": ["color.background.default", "color.background.raised"],
       "kind": "text"
     },
     {
-      "foreground": "form.hint.text",
-      "backgrounds": ["color.background.default", "color.background.raised"],
+      "foreground": "site-header.nav-link.text-hover",
+      "backgrounds": ["site-header.nav-link.background-hover"],
       "kind": "text"
     },
     {
-      "foreground": "form.error.text",
-      "backgrounds": ["color.background.default", "color.background.raised"],
+      "foreground": "site-header.nav-link.text-focus",
+      "backgrounds": ["site-header.nav-link.background-focus"],
       "kind": "text"
     },
     {
-      "foreground": "form.label.error.text",
-      "backgrounds": ["color.background.default", "color.background.raised"],
+      "foreground": "site-footer.text",
+      "backgrounds": ["site-footer.background", "site-footer.background-muted"],
+      "kind": "text"
+    },
+    {
+      "foreground": "site-footer.link.text",
+      "backgrounds": ["site-footer.background", "site-footer.background-muted"],
+      "kind": "text"
+    },
+    {
+      "foreground": "site-footer.link.text-hover",
+      "backgrounds": ["site-footer.background", "site-footer.background-muted"],
+      "kind": "text"
+    },
+    {
+      "foreground": "section-hero.description-text",
+      "backgrounds": ["section-hero.background", "section-hero.gradient.via"],
+      "kind": "text"
+    },
+    {
+      "foreground": "section-features.description-text",
+      "backgrounds": [
+        "section-features.background",
+        "section-features.background-muted"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "section-features.item-text",
+      "backgrounds": [
+        "section-features.background",
+        "section-features.background-muted"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "section-features.icon-text",
+      "backgrounds": [
+        "section-features.background",
+        "section-features.background-muted"
+      ],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "page-layout.skip-link-text",
+      "backgrounds": ["page-layout.skip-link-background"],
       "kind": "text"
     }
   ],
@@ -825,7 +853,7 @@
   },
   "exempt": [
     {
-      "token": "input.disabled.text",
+      "token": "input.text-disabled",
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     },
     {
@@ -837,7 +865,7 @@
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     },
     {
-      "token": "label.disabled.color",
+      "token": "label.disabled-color",
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     },
     {
@@ -845,12 +873,124 @@
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     },
     {
-      "token": "breadcrumb.link-focus",
-      "reason": "A focus fill (a background), not a foreground; the link text is breadcrumb.link."
-    },
-    {
       "token": "separator.color",
       "reason": "A decorative separator line, not text or a control boundary."
+    },
+    {
+      "token": "pagination.ellipsis-text",
+      "reason": "A decorative ellipsis (aria-hidden); the page links around it carry the meaning."
+    },
+    {
+      "token": "button.primary.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "button.secondary.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "button.destructive.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "button.ghost.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "button.link-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.default.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.secondary.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.success.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.warning.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.destructive.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "textarea.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "select.trigger.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "select.item.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "checkbox.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "toggle.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "tabs.trigger.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "pagination.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "navigation.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "dropdown-menu.item.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "contextmenu.item-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "menubar.item-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "command.item-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "command.input-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "carousel.nav-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "calendar.nav-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "toast.action-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "site-header.nav-link.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "form.label-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     }
   ]
 }

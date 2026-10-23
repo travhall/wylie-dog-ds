@@ -6,7 +6,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const badgeVariants = cva(
   cn(
-    "inline-flex items-center border font-(--font-weight-badge-font-weight) leading-(--line-height-badge-line-height) transition-colors",
+    "inline-flex items-center border-(length:--space-badge-border-width) font-(--font-weight-badge-font-weight) leading-(--line-height-badge-line-height) transition-colors",
     "rounded-(--space-badge-radius)"
   ),
   {
@@ -34,7 +34,7 @@ export const badgeVariants = cva(
         true: cn(
           "cursor-pointer",
           focusRingClasses,
-          "disabled:opacity-(--badge-disabled-opacity) disabled:cursor-not-allowed"
+          "disabled:cursor-not-allowed"
         ),
         false: "",
       },
@@ -44,37 +44,37 @@ export const badgeVariants = cva(
         variant: "default",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-default-background-hover) focus:bg-(--color-badge-default-background-focus) disabled:bg-(--color-badge-default-background-disabled)",
+          "hover:bg-(--color-badge-default-background-hover) focus:bg-(--color-badge-default-background-focus) disabled:bg-(--color-badge-default-background-disabled) disabled:text-(--color-badge-default-text-disabled) disabled:border-(--color-badge-default-border-disabled)",
       },
       {
         variant: "secondary",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-secondary-background-hover) focus:bg-(--color-badge-secondary-background-focus) disabled:bg-(--color-badge-secondary-background-disabled)",
+          "hover:bg-(--color-badge-secondary-background-hover) focus:bg-(--color-badge-secondary-background-focus) disabled:bg-(--color-badge-secondary-background-disabled) disabled:text-(--color-badge-secondary-text-disabled) disabled:border-(--color-badge-secondary-border-disabled)",
       },
       {
         variant: "success",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-success-background-hover) focus:bg-(--color-badge-success-background-focus) disabled:bg-(--color-badge-success-background-disabled)",
+          "hover:bg-(--color-badge-success-background-hover) focus:bg-(--color-badge-success-background-focus) disabled:bg-(--color-badge-success-background-disabled) disabled:text-(--color-badge-success-text-disabled) disabled:border-(--color-badge-success-border-disabled)",
       },
       {
         variant: "warning",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-warning-background-hover) focus:bg-(--color-badge-warning-background-focus) disabled:bg-(--color-badge-warning-background-disabled)",
+          "hover:bg-(--color-badge-warning-background-hover) focus:bg-(--color-badge-warning-background-focus) disabled:bg-(--color-badge-warning-background-disabled) disabled:text-(--color-badge-warning-text-disabled) disabled:border-(--color-badge-warning-border-disabled)",
       },
       {
         variant: "destructive",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-destructive-background-hover) focus:bg-(--color-badge-destructive-background-focus) disabled:bg-(--color-badge-destructive-background-disabled)",
+          "hover:bg-(--color-badge-destructive-background-hover) focus:bg-(--color-badge-destructive-background-focus) disabled:bg-(--color-badge-destructive-background-disabled) disabled:text-(--color-badge-destructive-text-disabled) disabled:border-(--color-badge-destructive-border-disabled)",
       },
       {
         variant: "outline",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-outline-background-hover) focus:bg-(--color-badge-outline-background-focus) disabled:bg-(--color-badge-outline-background-disabled)",
+          "hover:bg-(--color-badge-outline-background-hover) focus:bg-(--color-badge-outline-background-focus) disabled:bg-(--color-badge-outline-background-disabled) disabled:text-(--color-badge-outline-text-disabled) disabled:border-(--color-badge-outline-border-disabled)",
       },
     ],
     defaultVariants: {

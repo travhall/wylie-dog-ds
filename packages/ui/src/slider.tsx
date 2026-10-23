@@ -40,7 +40,7 @@ const Slider = React.forwardRef<
         <SliderPrimitive.Thumb
           key={i}
           aria-label={getThumbLabel(i)}
-          className="block ring-offset-(--color-slider-thumb-ring-offset) transition-colors h-(--space-slider-thumb-size) w-(--space-slider-thumb-size) rounded-(--space-slider-thumb-radius) border-(length:--space-slider-thumb-border-width) border-(--color-slider-thumb-border) bg-(--color-slider-thumb) focus-visible:outline-none focus-visible:ring-(length:--space-slider-focus-ring-width) focus-visible:ring-offset-(--space-slider-focus-ring-offset) disabled:pointer-events-none disabled:opacity-(--slider-thumb-disabled-opacity)"
+          className="block ring-offset-(--color-slider-thumb-ring-offset) transition-colors h-(--space-slider-thumb-size) w-(--space-slider-thumb-size) rounded-(--space-slider-thumb-radius) border-(length:--space-slider-thumb-border-width) border-(--color-slider-thumb-border) bg-(--color-slider-thumb) focus-visible:outline-none focus-visible:ring-(length:--space-slider-focus-ring-width) focus-visible:ring-offset-(--space-slider-focus-ring-offset) data-[disabled]:pointer-events-none data-[disabled]:bg-(--color-slider-thumb-background-disabled) data-[disabled]:border-(--color-slider-thumb-border-disabled)"
         />
       ))}
     </SliderPrimitive.Root>

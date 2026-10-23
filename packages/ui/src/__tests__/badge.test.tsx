@@ -264,7 +264,9 @@ describe("Badge", () => {
     it("should apply disabled state classes when interactive", () => {
       render(<Badge interactive>Badge</Badge>);
       const badge = screen.getByText("Badge");
-      expect(badge).toHaveClass("disabled:opacity-(--badge-disabled-opacity)");
+      expect(badge).toHaveClass(
+        "disabled:text-(--color-badge-default-text-disabled)"
+      );
       expect(badge).toHaveClass("disabled:cursor-not-allowed");
     });
 
@@ -412,7 +414,7 @@ describe("Badge", () => {
       const el = container.firstChild as HTMLElement;
       expect(el).toHaveClass("bg-(--color-badge-success-background)");
       expect(el).toHaveClass("rounded-(--space-badge-radius)");
-      expect(el).toHaveClass("border");
+      expect(el).toHaveClass("border-(length:--space-badge-border-width)");
     });
 
     it("should apply interactive compound classes when both interactive and asChild", () => {
@@ -467,7 +469,7 @@ describe("Badge", () => {
       const classes = badgeVariants({});
       expect(classes).toContain("inline-flex");
       expect(classes).toContain("items-center");
-      expect(classes).toContain("border");
+      expect(classes).toContain("border-(length:--space-badge-border-width)");
       expect(classes).toContain("rounded-(--space-badge-radius)");
       expect(classes).toContain("transition-colors");
     });
@@ -544,7 +546,7 @@ describe("Badge", () => {
       expect(badge).toHaveClass("inline-flex");
       expect(badge).toHaveClass("items-center");
       expect(badge).toHaveClass("rounded-(--space-badge-radius)");
-      expect(badge).toHaveClass("border");
+      expect(badge).toHaveClass("border-(length:--space-badge-border-width)");
       expect(badge).toHaveClass("px-(--space-badge-padding-x-md)");
       expect(badge).toHaveClass("py-(--space-badge-padding-y-md)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
@@ -857,7 +859,7 @@ describe("Badge", () => {
 
       const badges = container.querySelectorAll('[class*="border"]');
       badges.forEach((badge) => {
-        expect(badge).toHaveClass("border");
+        expect(badge).toHaveClass("border-(length:--space-badge-border-width)");
       });
     });
   });

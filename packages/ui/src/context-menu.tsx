@@ -73,7 +73,7 @@ const ContextMenuItem = React.forwardRef<
   <ContextMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) px-(--space-context-menu-item-padding-x) py-(--space-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--context-menu-item-disabled-opacity)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) px-(--space-context-menu-item-padding-x) py-(--space-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:text-(--color-contextmenu-item-text-disabled)",
       inset && "pl-(--space-context-menu-item-inset)",
       className
     )}
@@ -89,7 +89,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
   <ContextMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--context-menu-item-disabled-opacity)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:text-(--color-contextmenu-item-text-disabled)",
       className
     )}
     checked={checked}
@@ -113,7 +113,7 @@ const ContextMenuRadioItem = React.forwardRef<
   <ContextMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--context-menu-item-disabled-opacity)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:text-(--color-contextmenu-item-text-disabled)",
       className
     )}
     {...props}

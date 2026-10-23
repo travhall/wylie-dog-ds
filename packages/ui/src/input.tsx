@@ -8,7 +8,7 @@ export const inputVariants = cva(
     "rounded-(--space-input-radius)",
     "placeholder:text-(--color-input-placeholder)",
     focusRingInputClasses,
-    "disabled:cursor-not-allowed disabled:bg-(--color-input-disabled-background) disabled:text-(--color-input-disabled-text)",
+    "disabled:cursor-not-allowed disabled:bg-(--color-input-background-disabled) disabled:text-(--color-input-text-disabled)",
     "text-(--color-input-default-text)"
   ),
   {
@@ -24,7 +24,7 @@ export const inputVariants = cva(
         error:
           "border-(--color-input-border-error) bg-(--color-input-default-background)",
         success:
-          "border-(--color-border-success) bg-(--color-input-default-background)",
+          "border-(--color-input-border-success) bg-(--color-input-default-background)",
       },
     },
     defaultVariants: {

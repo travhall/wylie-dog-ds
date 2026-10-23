@@ -5,24 +5,24 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const buttonVariants = cva(
   cn(
-    "inline-flex items-center justify-center font-(--font-weight-button-font-weight) leading-(--line-height-button-line-height) border transition-colors",
+    "inline-flex items-center justify-center font-(--font-weight-button-font-weight) leading-(--line-height-button-line-height) border-(length:--button-border-width) transition-colors",
     focusRingClasses,
-    "disabled:opacity-(--button-disabled-opacity) disabled:pointer-events-none"
+    "disabled:pointer-events-none"
   ),
   {
     variants: {
       variant: {
         default:
-          "bg-(--color-button-primary-background) hover:bg-(--color-button-primary-background-hover) active:bg-(--color-button-primary-background-active) text-(--color-button-primary-text) border-(--color-button-primary-border)",
+          "bg-(--color-button-primary-background) hover:bg-(--color-button-primary-background-hover) active:bg-(--color-button-primary-background-active) text-(--color-button-primary-text) border-(--color-button-primary-border) disabled:bg-(--color-button-primary-background-disabled) disabled:text-(--color-button-primary-text-disabled) disabled:border-(--color-button-primary-border-disabled)",
         secondary:
-          "bg-(--color-button-secondary-background) hover:bg-(--color-button-secondary-background-hover) active:bg-(--color-button-secondary-background-active) text-(--color-button-secondary-text) border-(--color-button-secondary-border)",
+          "bg-(--color-button-secondary-background) hover:bg-(--color-button-secondary-background-hover) active:bg-(--color-button-secondary-background-active) text-(--color-button-secondary-text) border-(--color-button-secondary-border) disabled:bg-(--color-button-secondary-background-disabled) disabled:text-(--color-button-secondary-text-disabled) disabled:border-(--color-button-secondary-border-disabled)",
         outline:
-          "border border-(--color-button-outline-border) bg-(--color-button-outline-background) hover:bg-(--color-button-outline-background-hover) text-(--color-button-outline-text)",
+          "border-(--color-button-outline-border) bg-(--color-button-outline-background) hover:bg-(--color-button-outline-background-hover) text-(--color-button-outline-text) disabled:text-(--color-button-outline-text-disabled) disabled:border-(--color-button-outline-border-disabled)",
         ghost:
-          "bg-(--color-button-ghost-background) hover:bg-(--color-button-ghost-background-hover) active:bg-(--color-button-ghost-background-active) text-(--color-button-ghost-text) border-transparent",
-        link: "text-(--color-button-link-text) underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto",
+          "bg-(--color-button-ghost-background) hover:bg-(--color-button-ghost-background-hover) active:bg-(--color-button-ghost-background-active) text-(--color-button-ghost-text) border-transparent disabled:text-(--color-button-ghost-text-disabled)",
+        link: "text-(--color-button-link-text) underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto disabled:text-(--color-button-link-text-disabled)",
         destructive:
-          "bg-(--color-button-destructive-background) hover:bg-(--color-button-destructive-background-hover) text-(--color-button-destructive-text) border-(--color-button-destructive-border)",
+          "bg-(--color-button-destructive-background) hover:bg-(--color-button-destructive-background-hover) text-(--color-button-destructive-text) border-(--color-button-destructive-border) disabled:bg-(--color-button-destructive-background-disabled) disabled:text-(--color-button-destructive-text-disabled) disabled:border-(--color-button-destructive-border-disabled)",
       },
       size: {
         default:

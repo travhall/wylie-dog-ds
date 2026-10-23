@@ -6,7 +6,7 @@
     "check:contrast": "node scripts/check-contrast.mjs",
     "check:docs": "node scripts/check-docs.mjs",
     "check:docs:coverage": "pnpm --filter @wyliedog/ui exec vitest run --coverage && node scripts/check-docs.mjs --require-coverage",
-    "check:tokens": "node scripts/check-token-refs.mjs && node scripts/check-token-structure.mjs",
+    "check:tokens": "node scripts/check-token-refs.mjs && node scripts/check-token-structure.mjs && node scripts/check-component-binding.mjs",
     "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo run dev",
     "dev:figma": "turbo run dev --filter=figma-plugin",

@@ -13,7 +13,7 @@ const RadioGroup = React.forwardRef<
 >(({ className, orientation, ...props }, ref) => (
   <RadioGroupPrimitive.Root
     className={cn(
-      "gap-(--space-radio-group-item-gap)",
+      "gap-(--space-radio-group-gap)",
       orientation === "horizontal" ? "flex flex-wrap" : "grid",
       className
     )}
@@ -33,7 +33,7 @@ export const radioGroupItemVariants = cva(
     "focus:ring-(length:--space-radio-focus-ring-width)",
     "focus:ring-(--color-border-focus)",
     "focus:ring-offset-(length:--space-radio-focus-ring-offset)",
-    "disabled:cursor-not-allowed disabled:opacity-(--radio-group-item-disabled-opacity)",
+    "disabled:cursor-not-allowed disabled:bg-(--color-radio-background-disabled) disabled:border-(--color-radio-border-disabled) disabled:text-(--color-radio-indicator-disabled) data-[state=checked]:disabled:bg-(--color-radio-background-disabled) data-[state=checked]:disabled:border-(--color-radio-border-disabled)",
     "data-[state=checked]:border-(--color-radio-border-checked)",
     "data-[state=checked]:bg-(--color-radio-background-checked)"
   ),

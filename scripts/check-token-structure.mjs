@@ -86,6 +86,41 @@ for (const name of names) {
   }
 }
 
+// Components collection (Plan 193): the same Figma-shape rules, plus no state word
+// as a path level. See documentation/tokens/component-token-grammar.md.
+const componentNames = Object.keys(
+  Object.assign(
+    {},
+    ...JSON.parse(
+      fs.readFileSync("packages/tokens/io/sync/components.json", "utf8")
+    )
+  ).components.variables
+);
+const componentState =
+  /^(hover|active|disabled|focus|checked|unchecked|pressed|selected|open)$/;
+const componentGroups = new Map();
+const everyGroup = new Set();
+for (const name of componentNames) {
+  const parts = name.split(".");
+  if (parts.slice(1, -1).some((part) => componentState.test(part))) {
+    problems.push(
+      `${name}: a state word as a path level; write it as a trailing suffix (background-checked)`
+    );
+  }
+  for (let i = 1; i < parts.length; i++)
+    everyGroup.add(parts.slice(0, i).join("."));
+  const group = parts.slice(0, -1).join(".");
+  componentGroups.set(group, (componentGroups.get(group) ?? 0) + 1);
+}
+for (const group of everyGroup) {
+  if (componentGroups.get(group) === 1)
+    problems.push(`${group}: a component group that holds a single variable`);
+  if (componentNames.includes(group))
+    problems.push(
+      `${group}: a component variable that is also the prefix of another variable`
+    );
+}
+
 if (problems.length) {
   console.error(`Token structure: ${problems.length} problem(s)\n`);
   for (const p of problems) console.error(`  ${p}`);

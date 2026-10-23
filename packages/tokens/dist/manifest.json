@@ -3825,16 +3825,148 @@
         "variable": "var(--color-badge-outline-background-disabled)",
         "description": ""
       },
-      "badge-disabled-opacity": {
-        "name": "badgeDisabledOpacity",
+      "badge-default-text-disabled": {
+        "name": "badgeDefaultTextDisabled",
         "path": [
           "badge",
-          "disabled",
-          "opacity"
+          "default",
+          "text-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--badge-disabled-opacity)",
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-default-text-disabled)",
+        "description": ""
+      },
+      "badge-default-border-disabled": {
+        "name": "badgeDefaultBorderDisabled",
+        "path": [
+          "badge",
+          "default",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-default-border-disabled)",
+        "description": ""
+      },
+      "badge-secondary-text-disabled": {
+        "name": "badgeSecondaryTextDisabled",
+        "path": [
+          "badge",
+          "secondary",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-text-disabled)",
+        "description": ""
+      },
+      "badge-secondary-border-disabled": {
+        "name": "badgeSecondaryBorderDisabled",
+        "path": [
+          "badge",
+          "secondary",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-border-disabled)",
+        "description": ""
+      },
+      "badge-success-text-disabled": {
+        "name": "badgeSuccessTextDisabled",
+        "path": [
+          "badge",
+          "success",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-success-text-disabled)",
+        "description": ""
+      },
+      "badge-success-border-disabled": {
+        "name": "badgeSuccessBorderDisabled",
+        "path": [
+          "badge",
+          "success",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-success-border-disabled)",
+        "description": ""
+      },
+      "badge-warning-text-disabled": {
+        "name": "badgeWarningTextDisabled",
+        "path": [
+          "badge",
+          "warning",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-text-disabled)",
+        "description": ""
+      },
+      "badge-warning-border-disabled": {
+        "name": "badgeWarningBorderDisabled",
+        "path": [
+          "badge",
+          "warning",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-border-disabled)",
+        "description": ""
+      },
+      "badge-destructive-text-disabled": {
+        "name": "badgeDestructiveTextDisabled",
+        "path": [
+          "badge",
+          "destructive",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-text-disabled)",
+        "description": ""
+      },
+      "badge-destructive-border-disabled": {
+        "name": "badgeDestructiveBorderDisabled",
+        "path": [
+          "badge",
+          "destructive",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-border-disabled)",
+        "description": ""
+      },
+      "badge-outline-text-disabled": {
+        "name": "badgeOutlineTextDisabled",
+        "path": [
+          "badge",
+          "outline",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-text-disabled)",
+        "description": ""
+      },
+      "badge-outline-border-disabled": {
+        "name": "badgeOutlineBorderDisabled",
+        "path": [
+          "badge",
+          "outline",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-border-disabled)",
         "description": ""
       }
     },
@@ -4143,8 +4275,7 @@
         "name": "buttonIconSize",
         "path": [
           "button",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "40px",
         "type": "spacing",
@@ -4271,24 +4402,166 @@
         "name": "buttonLinkText",
         "path": [
           "button",
-          "link",
-          "text"
+          "link-text"
         ],
         "value": "oklch(0.488 0.217 264.4)",
         "type": "color",
         "variable": "var(--color-button-link-text)",
         "description": ""
       },
-      "button-disabled-opacity": {
-        "name": "buttonDisabledOpacity",
+      "button-primary-background-disabled": {
+        "name": "buttonPrimaryBackgroundDisabled",
         "path": [
           "button",
-          "disabled",
-          "opacity"
+          "primary",
+          "background-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--button-disabled-opacity)",
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-primary-background-disabled)",
+        "description": ""
+      },
+      "button-primary-text-disabled": {
+        "name": "buttonPrimaryTextDisabled",
+        "path": [
+          "button",
+          "primary",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-primary-text-disabled)",
+        "description": ""
+      },
+      "button-primary-border-disabled": {
+        "name": "buttonPrimaryBorderDisabled",
+        "path": [
+          "button",
+          "primary",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-primary-border-disabled)",
+        "description": ""
+      },
+      "button-secondary-background-disabled": {
+        "name": "buttonSecondaryBackgroundDisabled",
+        "path": [
+          "button",
+          "secondary",
+          "background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-background-disabled)",
+        "description": ""
+      },
+      "button-secondary-text-disabled": {
+        "name": "buttonSecondaryTextDisabled",
+        "path": [
+          "button",
+          "secondary",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-text-disabled)",
+        "description": ""
+      },
+      "button-secondary-border-disabled": {
+        "name": "buttonSecondaryBorderDisabled",
+        "path": [
+          "button",
+          "secondary",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-border-disabled)",
+        "description": ""
+      },
+      "button-destructive-background-disabled": {
+        "name": "buttonDestructiveBackgroundDisabled",
+        "path": [
+          "button",
+          "destructive",
+          "background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-background-disabled)",
+        "description": ""
+      },
+      "button-destructive-text-disabled": {
+        "name": "buttonDestructiveTextDisabled",
+        "path": [
+          "button",
+          "destructive",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-text-disabled)",
+        "description": ""
+      },
+      "button-destructive-border-disabled": {
+        "name": "buttonDestructiveBorderDisabled",
+        "path": [
+          "button",
+          "destructive",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-border-disabled)",
+        "description": ""
+      },
+      "button-outline-text-disabled": {
+        "name": "buttonOutlineTextDisabled",
+        "path": [
+          "button",
+          "outline",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-outline-text-disabled)",
+        "description": ""
+      },
+      "button-outline-border-disabled": {
+        "name": "buttonOutlineBorderDisabled",
+        "path": [
+          "button",
+          "outline",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-outline-border-disabled)",
+        "description": ""
+      },
+      "button-ghost-text-disabled": {
+        "name": "buttonGhostTextDisabled",
+        "path": [
+          "button",
+          "ghost",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-text-disabled)",
+        "description": ""
+      },
+      "button-link-text-disabled": {
+        "name": "buttonLinkTextDisabled",
+        "path": [
+          "button",
+          "link-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-link-text-disabled)",
         "description": ""
       }
     },
@@ -4352,8 +4625,7 @@
         "name": "cardHeaderGap",
         "path": [
           "card",
-          "header",
-          "gap"
+          "header-gap"
         ],
         "value": "8px",
         "type": "spacing",
@@ -4587,16 +4859,15 @@
         "variable": "var(--color-card-background-disabled)",
         "description": ""
       },
-      "card-disabled-opacity": {
-        "name": "cardDisabledOpacity",
+      "card-border-disabled": {
+        "name": "cardBorderDisabled",
         "path": [
           "card",
-          "disabled",
-          "opacity"
+          "border-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--card-disabled-opacity)",
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-card-border-disabled)",
         "description": ""
       }
     },
@@ -4656,28 +4927,26 @@
         "variable": "var(--color-input-placeholder)",
         "description": ""
       },
-      "input-disabled-background": {
-        "name": "inputDisabledBackground",
+      "input-background-disabled": {
+        "name": "inputBackgroundDisabled",
         "path": [
           "input",
-          "disabled",
-          "background"
+          "background-disabled"
         ],
         "value": "oklch(0.87 0.003 264.48)",
         "type": "color",
-        "variable": "var(--color-input-disabled-background)",
+        "variable": "var(--color-input-background-disabled)",
         "description": ""
       },
-      "input-disabled-text": {
-        "name": "inputDisabledText",
+      "input-text-disabled": {
+        "name": "inputTextDisabled",
         "path": [
           "input",
-          "disabled",
-          "text"
+          "text-disabled"
         ],
         "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
-        "variable": "var(--color-input-disabled-text)",
+        "variable": "var(--color-input-text-disabled)",
         "description": ""
       },
       "input-padding-x": {
@@ -4797,6 +5066,17 @@
         "type": "spacing",
         "variable": "var(--input-padding-y-lg)",
         "description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
+      },
+      "input-border-success": {
+        "name": "inputBorderSuccess",
+        "path": [
+          "input",
+          "border-success"
+        ],
+        "value": "oklch(0.543 0.152 149.29)",
+        "type": "color",
+        "variable": "var(--color-input-border-success)",
+        "description": ""
       }
     },
     "alert": {
@@ -5290,8 +5570,7 @@
         "name": "menubarContentMinWidth",
         "path": [
           "menubar",
-          "content",
-          "min-width"
+          "content-min-width"
         ],
         "value": "256px",
         "type": "spacing",
@@ -5302,8 +5581,7 @@
         "name": "menubarSubContentMinWidth",
         "path": [
           "menubar",
-          "sub-content",
-          "min-width"
+          "sub-content-min-width"
         ],
         "value": "160px",
         "type": "spacing",
@@ -5362,8 +5640,7 @@
         "name": "menubarShortcutFontSize",
         "path": [
           "menubar",
-          "shortcut",
-          "font-size"
+          "shortcut-font-size"
         ],
         "value": 12,
         "type": "number",
@@ -5374,8 +5651,7 @@
         "name": "menubarSeparatorHeight",
         "path": [
           "menubar",
-          "separator",
-          "height"
+          "separator-height"
         ],
         "value": "1px",
         "type": "spacing",
@@ -5386,8 +5662,7 @@
         "name": "menubarSeparatorMarginY",
         "path": [
           "menubar",
-          "separator",
-          "margin-y"
+          "separator-margin-y"
         ],
         "value": "4px",
         "type": "spacing",
@@ -5398,8 +5673,7 @@
         "name": "menubarSeparatorMarginX",
         "path": [
           "menubar",
-          "separator",
-          "margin-x"
+          "separator-margin-x"
         ],
         "value": "4px",
         "type": "spacing",
@@ -5498,8 +5772,7 @@
         "name": "menubarRadioIndicatorSize",
         "path": [
           "menubar",
-          "radio",
-          "indicator-size"
+          "radio-indicator-size"
         ],
         "value": "8px",
         "type": "spacing",
@@ -5522,25 +5795,11 @@
         "name": "menubarLabelFontWeight",
         "path": [
           "menubar",
-          "label",
-          "font-weight"
+          "label-font-weight"
         ],
         "value": 600,
         "type": "number",
         "variable": "var(--menubar-label-font-weight)",
-        "description": ""
-      },
-      "menubar-item-disabled-opacity": {
-        "name": "menubarItemDisabledOpacity",
-        "path": [
-          "menubar",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--menubar-item-disabled-opacity)",
         "description": ""
       },
       "menubar-item-indicator-left": {
@@ -5548,8 +5807,7 @@
         "path": [
           "menubar",
           "item",
-          "indicator",
-          "left"
+          "indicator-left"
         ],
         "value": "8px",
         "type": "spacing",
@@ -5560,12 +5818,22 @@
         "name": "menubarShortcutLetterSpacing",
         "path": [
           "menubar",
-          "shortcut",
-          "letter-spacing"
+          "shortcut-letter-spacing"
         ],
         "value": "0.1em",
         "type": "dimension",
         "variable": "var(--menubar-shortcut-letter-spacing)",
+        "description": ""
+      },
+      "menubar-item-text-disabled": {
+        "name": "menubarItemTextDisabled",
+        "path": [
+          "menubar",
+          "item-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-menubar-item-text-disabled)",
         "description": ""
       }
     },
@@ -5689,6 +5957,17 @@
         "value": "oklch(0.952 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-navigation-background-hover)",
+        "description": ""
+      },
+      "navigation-text-disabled": {
+        "name": "navigationTextDisabled",
+        "path": [
+          "navigation",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-navigation-text-disabled)",
         "description": ""
       }
     },
@@ -5844,8 +6123,7 @@
         "name": "commandListMaxHeight",
         "path": [
           "command",
-          "list",
-          "max-height"
+          "list-max-height"
         ],
         "value": "448px",
         "type": "spacing",
@@ -5998,39 +6276,12 @@
         "variable": "var(--command-input-icon-opacity)",
         "description": ""
       },
-      "command-input-disabled-opacity": {
-        "name": "commandInputDisabledOpacity",
-        "path": [
-          "command",
-          "input",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--command-input-disabled-opacity)",
-        "description": ""
-      },
-      "command-item-disabled-opacity": {
-        "name": "commandItemDisabledOpacity",
-        "path": [
-          "command",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--command-item-disabled-opacity)",
-        "description": ""
-      },
       "command-group-heading-font-weight": {
         "name": "commandGroupHeadingFontWeight",
         "path": [
           "command",
           "group",
-          "heading",
-          "font-weight"
+          "heading-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -6041,12 +6292,33 @@
         "name": "commandShortcutLetterSpacing",
         "path": [
           "command",
-          "shortcut",
-          "letter-spacing"
+          "shortcut-letter-spacing"
         ],
         "value": "0.1em",
         "type": "dimension",
         "variable": "var(--command-shortcut-letter-spacing)",
+        "description": ""
+      },
+      "command-item-text-disabled": {
+        "name": "commandItemTextDisabled",
+        "path": [
+          "command",
+          "item-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-command-item-text-disabled)",
+        "description": ""
+      },
+      "command-input-text-disabled": {
+        "name": "commandInputTextDisabled",
+        "path": [
+          "command",
+          "input-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-command-input-text-disabled)",
         "description": ""
       }
     },
@@ -6141,8 +6413,7 @@
         "path": [
           "tabs",
           "trigger",
-          "indicator",
-          "color"
+          "indicator-color"
         ],
         "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
@@ -6381,19 +6652,6 @@
         "variable": "var(--tabs-trigger-indicator-width)",
         "description": ""
       },
-      "tabs-trigger-border-width": {
-        "name": "tabsTriggerBorderWidth",
-        "path": [
-          "tabs",
-          "trigger",
-          "border",
-          "width"
-        ],
-        "value": "2px",
-        "type": "dimension",
-        "variable": "var(--tabs-trigger-border-width)",
-        "description": ""
-      },
       "tabs-content-padding": {
         "name": "tabsContentPadding",
         "path": [
@@ -6430,19 +6688,6 @@
         "variable": "var(--tabs-trigger-font-weight)",
         "description": ""
       },
-      "tabs-trigger-disabled-opacity": {
-        "name": "tabsTriggerDisabledOpacity",
-        "path": [
-          "tabs",
-          "trigger",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--tabs-trigger-disabled-opacity)",
-        "description": ""
-      },
       "tabs-trigger-ring-offset": {
         "name": "tabsTriggerRingOffset",
         "path": [
@@ -6465,6 +6710,18 @@
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-tabs-content-ring-offset)",
+        "description": ""
+      },
+      "tabs-trigger-text-disabled": {
+        "name": "tabsTriggerTextDisabled",
+        "path": [
+          "tabs",
+          "trigger",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-text-disabled)",
         "description": ""
       }
     },
@@ -6489,17 +6746,6 @@
         "value": "4px",
         "type": "dimension",
         "variable": "var(--collapsible-radius)",
-        "description": ""
-      },
-      "collapsible-animation-duration": {
-        "name": "collapsibleAnimationDuration",
-        "path": [
-          "collapsible",
-          "animation-duration"
-        ],
-        "value": "250ms",
-        "type": "duration",
-        "variable": "var(--collapsible-animation-duration)",
         "description": ""
       }
     },
@@ -6596,8 +6842,7 @@
         "name": "calendarContainerPadding",
         "path": [
           "calendar",
-          "container",
-          "padding"
+          "container-padding"
         ],
         "value": "12px",
         "type": "spacing",
@@ -6609,8 +6854,7 @@
         "path": [
           "calendar",
           "nav",
-          "button",
-          "size"
+          "button-size"
         ],
         "value": "24px",
         "type": "spacing",
@@ -6622,8 +6866,7 @@
         "path": [
           "calendar",
           "nav",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -6634,8 +6877,7 @@
         "name": "calendarCellSize",
         "path": [
           "calendar",
-          "cell",
-          "size"
+          "cell-size"
         ],
         "value": "32px",
         "type": "spacing",
@@ -6720,50 +6962,6 @@
         "variable": "var(--calendar-day-font-size)",
         "description": ""
       },
-      "calendar-day-focus": {
-        "name": "calendarDayFocus",
-        "path": [
-          "calendar",
-          "day-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-calendar-day-focus)",
-        "description": ""
-      },
-      "calendar-day-text-focus": {
-        "name": "calendarDayTextFocus",
-        "path": [
-          "calendar",
-          "day-text-focus"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-calendar-day-text-focus)",
-        "description": ""
-      },
-      "calendar-nav-focus": {
-        "name": "calendarNavFocus",
-        "path": [
-          "calendar",
-          "nav-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-focus)",
-        "description": ""
-      },
-      "calendar-nav-text-focus": {
-        "name": "calendarNavTextFocus",
-        "path": [
-          "calendar",
-          "nav-text-focus"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-text-focus)",
-        "description": ""
-      },
       "calendar-nav-button-opacity": {
         "name": "calendarNavButtonOpacity",
         "path": [
@@ -6792,8 +6990,7 @@
         "name": "calendarHeaderFontWeight",
         "path": [
           "calendar",
-          "header",
-          "font-weight"
+          "header-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -6816,8 +7013,7 @@
         "name": "calendarDayHeaderFontWeight",
         "path": [
           "calendar",
-          "day-header",
-          "font-weight"
+          "day-header-font-weight"
         ],
         "value": 400,
         "type": "number",
@@ -6836,19 +7032,6 @@
         "variable": "var(--calendar-day-font-weight)",
         "description": ""
       },
-      "calendar-nav-button-disabled-opacity": {
-        "name": "calendarNavButtonDisabledOpacity",
-        "path": [
-          "calendar",
-          "nav-button",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--calendar-nav-button-disabled-opacity)",
-        "description": ""
-      },
       "calendar-nav-button-ring-offset": {
         "name": "calendarNavButtonRingOffset",
         "path": [
@@ -6859,6 +7042,28 @@
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-calendar-nav-button-ring-offset)",
+        "description": ""
+      },
+      "calendar-nav-text-disabled": {
+        "name": "calendarNavTextDisabled",
+        "path": [
+          "calendar",
+          "nav-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-text-disabled)",
+        "description": ""
+      },
+      "calendar-nav-border-disabled": {
+        "name": "calendarNavBorderDisabled",
+        "path": [
+          "calendar",
+          "nav-border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-border-disabled)",
         "description": ""
       }
     },
@@ -7021,9 +7226,7 @@
         "name": "accordionItemBorderWidth",
         "path": [
           "accordion",
-          "item",
-          "border",
-          "width"
+          "item-border-width"
         ],
         "value": "1px",
         "type": "dimension",
@@ -7059,8 +7262,7 @@
         "path": [
           "accordion",
           "trigger",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -7236,8 +7438,7 @@
         "name": "avatarFallbackFontWeight",
         "path": [
           "avatar",
-          "fallback",
-          "font-weight"
+          "fallback-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -7346,8 +7547,7 @@
         "name": "breadcrumbListGap",
         "path": [
           "breadcrumb",
-          "list",
-          "gap"
+          "list-gap"
         ],
         "value": "4px",
         "type": "spacing",
@@ -7358,23 +7558,11 @@
         "name": "breadcrumbItemGap",
         "path": [
           "breadcrumb",
-          "item",
-          "gap"
+          "item-gap"
         ],
         "value": "4px",
         "type": "spacing",
         "variable": "var(--breadcrumb-item-gap)",
-        "description": ""
-      },
-      "breadcrumb-gap": {
-        "name": "breadcrumbGap",
-        "path": [
-          "breadcrumb",
-          "gap"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--breadcrumb-gap)",
         "description": ""
       },
       "breadcrumb-font-size": {
@@ -7392,8 +7580,7 @@
         "name": "breadcrumbSeparatorSize",
         "path": [
           "breadcrumb",
-          "separator",
-          "size"
+          "separator-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -7404,8 +7591,7 @@
         "name": "breadcrumbEllipsisSize",
         "path": [
           "breadcrumb",
-          "ellipsis",
-          "size"
+          "ellipsis-size"
         ],
         "value": "32px",
         "type": "spacing",
@@ -7427,23 +7613,11 @@
         "name": "breadcrumbPageFontWeight",
         "path": [
           "breadcrumb",
-          "page",
-          "font-weight"
+          "page-font-weight"
         ],
         "value": 400,
         "type": "number",
         "variable": "var(--breadcrumb-page-font-weight)",
-        "description": ""
-      },
-      "breadcrumb-link-focus": {
-        "name": "breadcrumbLinkFocus",
-        "path": [
-          "breadcrumb",
-          "link-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-breadcrumb-link-focus)",
         "description": ""
       },
       "breadcrumb-link-disabled": {
@@ -7503,25 +7677,11 @@
         "variable": "var(--color-carousel-nav-text-hover)",
         "description": ""
       },
-      "carousel-nav-button-disabled-opacity": {
-        "name": "carouselNavButtonDisabledOpacity",
-        "path": [
-          "carousel",
-          "nav-button",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--carousel-nav-button-disabled-opacity)",
-        "description": ""
-      },
       "carousel-item-spacing": {
         "name": "carouselItemSpacing",
         "path": [
           "carousel",
-          "item",
-          "spacing"
+          "item-spacing"
         ],
         "value": "16px",
         "type": "spacing",
@@ -7584,6 +7744,39 @@
         "value": "9999px",
         "type": "spacing",
         "variable": "var(--carousel-button-rounded-full)",
+        "description": ""
+      },
+      "carousel-nav-text-disabled": {
+        "name": "carouselNavTextDisabled",
+        "path": [
+          "carousel",
+          "nav-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-text-disabled)",
+        "description": ""
+      },
+      "carousel-nav-border-disabled": {
+        "name": "carouselNavBorderDisabled",
+        "path": [
+          "carousel",
+          "nav-border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-border-disabled)",
+        "description": ""
+      },
+      "carousel-nav-background-disabled": {
+        "name": "carouselNavBackgroundDisabled",
+        "path": [
+          "carousel",
+          "nav-background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-background-disabled)",
         "description": ""
       }
     },
@@ -7663,6 +7856,17 @@
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
         "variable": "var(--color-contextmenu-text)",
+        "description": ""
+      },
+      "contextmenu-item-text-disabled": {
+        "name": "contextmenuItemTextDisabled",
+        "path": [
+          "contextmenu",
+          "item-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-item-text-disabled)",
         "description": ""
       }
     },
@@ -7825,8 +8029,7 @@
         "name": "dialogTitleFontSize",
         "path": [
           "dialog",
-          "title",
-          "font-size"
+          "title-font-size"
         ],
         "value": 20,
         "type": "number",
@@ -7837,8 +8040,7 @@
         "name": "dialogDescriptionFontSize",
         "path": [
           "dialog",
-          "description",
-          "font-size"
+          "description-font-size"
         ],
         "value": 14,
         "type": "number",
@@ -7891,17 +8093,6 @@
         "variable": "var(--dialog-close-button-offset)",
         "description": ""
       },
-      "dialog-close-button-icon-size": {
-        "name": "dialogCloseButtonIconSize",
-        "path": [
-          "dialog",
-          "close-button-icon-size"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--dialog-close-button-icon-size)",
-        "description": ""
-      },
       "dialog-close-button-opacity": {
         "name": "dialogCloseButtonOpacity",
         "path": [
@@ -7930,8 +8121,7 @@
         "name": "dialogTitleFontWeight",
         "path": [
           "dialog",
-          "title",
-          "font-weight"
+          "title-font-weight"
         ],
         "value": 600,
         "type": "number",
@@ -7942,8 +8132,7 @@
         "name": "dialogTitleLetterSpacing",
         "path": [
           "dialog",
-          "title",
-          "letter-spacing"
+          "title-letter-spacing"
         ],
         "value": "-0.025em",
         "type": "dimension",
@@ -8029,109 +8218,33 @@
         "variable": "var(--form-description-font-size)",
         "description": ""
       },
-      "form-label-text": {
-        "name": "formLabelText",
-        "path": [
-          "form",
-          "label",
-          "text"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-form-label-text)",
-        "description": ""
-      },
-      "form-label-font-size": {
-        "name": "formLabelFontSize",
-        "path": [
-          "form",
-          "label",
-          "font-size"
-        ],
-        "value": 14,
-        "type": "number",
-        "variable": "var(--form-label-font-size)",
-        "description": ""
-      },
       "form-label-font-weight": {
         "name": "formLabelFontWeight",
         "path": [
           "form",
-          "label",
-          "font-weight"
+          "label-font-weight"
         ],
         "value": 500,
         "type": "number",
         "variable": "var(--form-label-font-weight)",
         "description": ""
       },
-      "form-label-disabled-opacity": {
-        "name": "formLabelDisabledOpacity",
-        "path": [
-          "form",
-          "label",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.7,
-        "type": "number",
-        "variable": "var(--form-label-disabled-opacity)",
-        "description": ""
-      },
       "form-message-font-weight": {
         "name": "formMessageFontWeight",
         "path": [
           "form",
-          "message",
-          "font-weight"
+          "message-font-weight"
         ],
         "value": 500,
         "type": "number",
         "variable": "var(--form-message-font-weight)",
         "description": ""
       },
-      "form-hint-text": {
-        "name": "formHintText",
-        "path": [
-          "form",
-          "hint",
-          "text"
-        ],
-        "value": "oklch(0.423 0.007 264.49)",
-        "type": "color",
-        "variable": "var(--color-form-hint-text)",
-        "description": ""
-      },
-      "form-hint-font-size": {
-        "name": "formHintFontSize",
-        "path": [
-          "form",
-          "hint",
-          "font-size"
-        ],
-        "value": 12,
-        "type": "number",
-        "variable": "var(--form-hint-font-size)",
-        "description": ""
-      },
-      "form-error-text": {
-        "name": "formErrorText",
-        "path": [
-          "form",
-          "error",
-          "text"
-        ],
-        "value": "oklch(0.488 0.19 27.49)",
-        "type": "color",
-        "variable": "var(--color-form-error-text)",
-        "description": ""
-      },
       "form-error-font-size": {
         "name": "formErrorFontSize",
         "path": [
           "form",
-          "error",
-          "font-size"
+          "error-font-size"
         ],
         "value": 12,
         "type": "number",
@@ -8142,74 +8255,33 @@
         "name": "formRequiredColor",
         "path": [
           "form",
-          "required",
-          "color"
+          "required-color"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
         "variable": "var(--color-form-required-color)",
         "description": ""
       },
-      "form-gap": {
-        "name": "formGap",
-        "path": [
-          "form",
-          "gap"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--form-gap)",
-        "description": ""
-      },
-      "form-fieldset-gap": {
-        "name": "formFieldsetGap",
-        "path": [
-          "form",
-          "fieldset",
-          "gap"
-        ],
-        "value": "24px",
-        "type": "spacing",
-        "variable": "var(--form-fieldset-gap)",
-        "description": ""
-      },
-      "form-fieldset-legend-font-size": {
-        "name": "formFieldsetLegendFontSize",
-        "path": [
-          "form",
-          "fieldset",
-          "legend",
-          "font-size"
-        ],
-        "value": 16,
-        "type": "number",
-        "variable": "var(--form-fieldset-legend-font-size)",
-        "description": ""
-      },
-      "form-fieldset-legend-font-weight": {
-        "name": "formFieldsetLegendFontWeight",
-        "path": [
-          "form",
-          "fieldset",
-          "legend",
-          "font-weight"
-        ],
-        "value": 600,
-        "type": "number",
-        "variable": "var(--form-fieldset-legend-font-weight)",
-        "description": ""
-      },
       "form-label-error-text": {
         "name": "formLabelErrorText",
         "path": [
           "form",
-          "label",
-          "error",
-          "text"
+          "label-error-text"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
         "variable": "var(--color-form-label-error-text)",
+        "description": ""
+      },
+      "form-label-text-disabled": {
+        "name": "formLabelTextDisabled",
+        "path": [
+          "form",
+          "label-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-form-label-text-disabled)",
         "description": ""
       }
     },
@@ -8290,8 +8362,7 @@
         "name": "hoverCardContentPadding",
         "path": [
           "hover-card",
-          "content",
-          "padding"
+          "content-padding"
         ],
         "value": "24px",
         "type": "spacing",
@@ -8419,8 +8490,7 @@
         "name": "paginationIconSize",
         "path": [
           "pagination",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -8483,17 +8553,26 @@
         "variable": "var(--pagination-item-font-weight)",
         "description": ""
       },
-      "pagination-link-disabled-opacity": {
-        "name": "paginationLinkDisabledOpacity",
+      "pagination-ellipsis-text": {
+        "name": "paginationEllipsisText",
         "path": [
           "pagination",
-          "link",
-          "disabled",
-          "opacity"
+          "ellipsis-text"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--pagination-link-disabled-opacity)",
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-pagination-ellipsis-text)",
+        "description": ""
+      },
+      "pagination-text-disabled": {
+        "name": "paginationTextDisabled",
+        "path": [
+          "pagination",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-pagination-text-disabled)",
         "description": ""
       }
     },
@@ -8574,8 +8653,7 @@
         "name": "popoverContentPadding",
         "path": [
           "popover",
-          "content",
-          "padding"
+          "content-padding"
         ],
         "value": "24px",
         "type": "spacing",
@@ -8591,17 +8669,6 @@
         "value": "4px",
         "type": "dimension",
         "variable": "var(--popover-content-radius)",
-        "description": ""
-      },
-      "popover-border-focus": {
-        "name": "popoverBorderFocus",
-        "path": [
-          "popover",
-          "border-focus"
-        ],
-        "value": "oklch(0.623 0.188 259.83)",
-        "type": "color",
-        "variable": "var(--color-popover-border-focus)",
         "description": ""
       }
     },
@@ -8769,8 +8836,7 @@
         "name": "radioBorderRadius",
         "path": [
           "radio",
-          "border",
-          "radius"
+          "border-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -8781,9 +8847,7 @@
         "name": "radioIndicatorSizeSm",
         "path": [
           "radio",
-          "indicator",
-          "size",
-          "sm"
+          "indicator-size-sm"
         ],
         "value": "8px",
         "type": "spacing",
@@ -8794,9 +8858,7 @@
         "name": "radioIndicatorSizeMd",
         "path": [
           "radio",
-          "indicator",
-          "size",
-          "md"
+          "indicator-size-md"
         ],
         "value": "12px",
         "type": "spacing",
@@ -8807,9 +8869,7 @@
         "name": "radioIndicatorSizeLg",
         "path": [
           "radio",
-          "indicator",
-          "size",
-          "lg"
+          "indicator-size-lg"
         ],
         "value": "16px",
         "type": "spacing",
@@ -8820,8 +8880,7 @@
         "name": "radioFocusRingWidth",
         "path": [
           "radio",
-          "focus",
-          "ring",
+          "focus-ring",
           "width"
         ],
         "value": "2px",
@@ -8833,13 +8892,56 @@
         "name": "radioFocusRingOffset",
         "path": [
           "radio",
-          "focus",
-          "ring",
+          "focus-ring",
           "offset"
         ],
         "value": "2px",
         "type": "spacing",
         "variable": "var(--radio-focus-ring-offset)",
+        "description": ""
+      },
+      "radio-group-gap": {
+        "name": "radioGroupGap",
+        "path": [
+          "radio",
+          "group-gap"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--radio-group-gap)",
+        "description": ""
+      },
+      "radio-background-disabled": {
+        "name": "radioBackgroundDisabled",
+        "path": [
+          "radio",
+          "background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-radio-background-disabled)",
+        "description": ""
+      },
+      "radio-border-disabled": {
+        "name": "radioBorderDisabled",
+        "path": [
+          "radio",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-radio-border-disabled)",
+        "description": ""
+      },
+      "radio-indicator-disabled": {
+        "name": "radioIndicatorDisabled",
+        "path": [
+          "radio",
+          "indicator-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-radio-indicator-disabled)",
         "description": ""
       }
     },
@@ -8892,8 +8994,7 @@
         "name": "resizableHandleHeight",
         "path": [
           "resizable",
-          "handle",
-          "height"
+          "handle-height"
         ],
         "value": "16px",
         "type": "spacing",
@@ -8904,8 +9005,7 @@
         "name": "resizableHandleWidth",
         "path": [
           "resizable",
-          "handle",
-          "width"
+          "handle-width"
         ],
         "value": "12px",
         "type": "spacing",
@@ -8927,8 +9027,7 @@
         "name": "resizableHandleFocusRingWidth",
         "path": [
           "resizable",
-          "handle",
-          "focus-ring-width"
+          "handle-focus-ring-width"
         ],
         "value": "2px",
         "type": "spacing",
@@ -8939,8 +9038,7 @@
         "name": "resizableHandleFocusRingOffset",
         "path": [
           "resizable",
-          "handle",
-          "focus-ring-offset"
+          "handle-focus-ring-offset"
         ],
         "value": "2px",
         "type": "spacing",
@@ -8986,8 +9084,7 @@
         "name": "scrollbarThumbRadius",
         "path": [
           "scrollbar",
-          "thumb",
-          "radius"
+          "thumb-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -8998,12 +9095,22 @@
         "name": "scrollbarThumbMinHeight",
         "path": [
           "scrollbar",
-          "thumb",
-          "min-height"
+          "thumb-min-height"
         ],
         "value": "40px",
         "type": "spacing",
         "variable": "var(--scrollbar-thumb-min-height)",
+        "description": ""
+      },
+      "scrollbar-padding": {
+        "name": "scrollbarPadding",
+        "path": [
+          "scrollbar",
+          "padding"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--scrollbar-padding)",
         "description": ""
       }
     },
@@ -9150,8 +9257,7 @@
         "name": "sliderTrackHeight",
         "path": [
           "slider",
-          "track",
-          "height"
+          "track-height"
         ],
         "value": "8px",
         "type": "spacing",
@@ -9162,8 +9268,7 @@
         "name": "sliderTrackRadius",
         "path": [
           "slider",
-          "track",
-          "radius"
+          "track-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -9174,8 +9279,7 @@
         "name": "sliderThumbSize",
         "path": [
           "slider",
-          "thumb",
-          "size"
+          "thumb-size"
         ],
         "value": "24px",
         "type": "spacing",
@@ -9186,9 +9290,7 @@
         "name": "sliderThumbBorderWidth",
         "path": [
           "slider",
-          "thumb",
-          "border",
-          "width"
+          "thumb-border-width"
         ],
         "value": "2px",
         "type": "dimension",
@@ -9199,8 +9301,7 @@
         "name": "sliderThumbRadius",
         "path": [
           "slider",
-          "thumb",
-          "radius"
+          "thumb-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -9211,8 +9312,7 @@
         "name": "sliderFocusRingWidth",
         "path": [
           "slider",
-          "focus",
-          "ring",
+          "focus-ring",
           "width"
         ],
         "value": "2px",
@@ -9224,8 +9324,7 @@
         "name": "sliderFocusRingOffset",
         "path": [
           "slider",
-          "focus",
-          "ring",
+          "focus-ring",
           "offset"
         ],
         "value": "2px",
@@ -9233,29 +9332,37 @@
         "variable": "var(--slider-focus-ring-offset)",
         "description": ""
       },
-      "slider-thumb-disabled-opacity": {
-        "name": "sliderThumbDisabledOpacity",
-        "path": [
-          "slider",
-          "thumb",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--slider-thumb-disabled-opacity)",
-        "description": ""
-      },
       "slider-thumb-ring-offset": {
         "name": "sliderThumbRingOffset",
         "path": [
           "slider",
-          "thumb",
-          "ring-offset"
+          "thumb-ring-offset"
         ],
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-slider-thumb-ring-offset)",
+        "description": ""
+      },
+      "slider-thumb-background-disabled": {
+        "name": "sliderThumbBackgroundDisabled",
+        "path": [
+          "slider",
+          "thumb-background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-slider-thumb-background-disabled)",
+        "description": ""
+      },
+      "slider-thumb-border-disabled": {
+        "name": "sliderThumbBorderDisabled",
+        "path": [
+          "slider",
+          "thumb-border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-slider-thumb-border-disabled)",
         "description": ""
       }
     },
@@ -9378,8 +9485,7 @@
         "name": "tableCaptionFontSize",
         "path": [
           "table",
-          "caption",
-          "font-size"
+          "caption-font-size"
         ],
         "value": 14,
         "type": "number",
@@ -9390,8 +9496,7 @@
         "name": "tableCaptionMarginTop",
         "path": [
           "table",
-          "caption",
-          "margin-top"
+          "caption-margin-top"
         ],
         "value": "16px",
         "type": "spacing",
@@ -9402,8 +9507,7 @@
         "name": "tableBorderWidth",
         "path": [
           "table",
-          "border",
-          "width"
+          "border-width"
         ],
         "value": "1px",
         "type": "dimension",
@@ -9449,23 +9553,11 @@
         "name": "tableFooterFontWeight",
         "path": [
           "table",
-          "footer",
-          "font-weight"
+          "footer-font-weight"
         ],
         "value": 500,
         "type": "number",
         "variable": "var(--table-footer-font-weight)",
-        "description": ""
-      },
-      "table-row-focus": {
-        "name": "tableRowFocus",
-        "path": [
-          "table",
-          "row-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-table-row-focus)",
         "description": ""
       }
     },
@@ -9646,24 +9738,11 @@
         "name": "toastCloseSize",
         "path": [
           "toast",
-          "close",
-          "size"
+          "close-size"
         ],
         "value": "24px",
         "type": "spacing",
         "variable": "var(--toast-close-size)",
-        "description": ""
-      },
-      "toast-close-radius": {
-        "name": "toastCloseRadius",
-        "path": [
-          "toast",
-          "close",
-          "radius"
-        ],
-        "value": "2px",
-        "type": "dimension",
-        "variable": "var(--toast-close-radius)",
         "description": ""
       },
       "toast-destructive-border": {
@@ -9774,28 +9853,6 @@
         "variable": "var(--color-toast-warning-text)",
         "description": "Text color on warning toast (saturated orange background)"
       },
-      "toast-border-radius": {
-        "name": "toastBorderRadius",
-        "path": [
-          "toast",
-          "border-radius"
-        ],
-        "value": "8px",
-        "type": "dimension",
-        "variable": "var(--toast-border-radius)",
-        "description": ""
-      },
-      "toast-close-padding": {
-        "name": "toastClosePadding",
-        "path": [
-          "toast",
-          "close-padding"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--toast-close-padding)",
-        "description": ""
-      },
       "toast-close-button-padding": {
         "name": "toastCloseButtonPadding",
         "path": [
@@ -9834,8 +9891,7 @@
         "name": "toastDefaultBackground",
         "path": [
           "toast",
-          "default",
-          "background"
+          "default-background"
         ],
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
@@ -9870,8 +9926,7 @@
         "name": "toastContentGap",
         "path": [
           "toast",
-          "content",
-          "gap"
+          "content-gap"
         ],
         "value": "4px",
         "type": "spacing",
@@ -9914,19 +9969,6 @@
         "variable": "var(--color-toast-action-ring-offset)",
         "description": ""
       },
-      "toast-action-disabled-opacity": {
-        "name": "toastActionDisabledOpacity",
-        "path": [
-          "toast",
-          "action",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--toast-action-disabled-opacity)",
-        "description": ""
-      },
       "toast-close-button-position": {
         "name": "toastCloseButtonPosition",
         "path": [
@@ -9949,6 +9991,28 @@
         "value": 1,
         "type": "number",
         "variable": "var(--toast-description-opacity)",
+        "description": ""
+      },
+      "toast-action-text-disabled": {
+        "name": "toastActionTextDisabled",
+        "path": [
+          "toast",
+          "action-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-toast-action-text-disabled)",
+        "description": ""
+      },
+      "toast-action-border-disabled": {
+        "name": "toastActionBorderDisabled",
+        "path": [
+          "toast",
+          "action-border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-toast-action-border-disabled)",
         "description": ""
       }
     },
@@ -10130,16 +10194,37 @@
         "variable": "var(--color-toggle-background-hover)",
         "description": ""
       },
-      "toggle-disabled-opacity": {
-        "name": "toggleDisabledOpacity",
+      "toggle-text-disabled": {
+        "name": "toggleTextDisabled",
         "path": [
           "toggle",
-          "disabled",
-          "opacity"
+          "text-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--toggle-disabled-opacity)",
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-toggle-text-disabled)",
+        "description": ""
+      },
+      "toggle-border-disabled": {
+        "name": "toggleBorderDisabled",
+        "path": [
+          "toggle",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-toggle-border-disabled)",
+        "description": ""
+      },
+      "toggle-pressed-disabled": {
+        "name": "togglePressedDisabled",
+        "path": [
+          "toggle",
+          "pressed-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-toggle-pressed-disabled)",
         "description": ""
       }
     },
@@ -10459,18 +10544,6 @@
         "variable": "var(--select-item-radius)",
         "description": ""
       },
-      "select-item-font-size": {
-        "name": "selectItemFontSize",
-        "path": [
-          "select",
-          "item",
-          "font-size"
-        ],
-        "value": 14,
-        "type": "number",
-        "variable": "var(--select-item-font-size)",
-        "description": ""
-      },
       "select-separator-height": {
         "name": "selectSeparatorHeight",
         "path": [
@@ -10553,26 +10626,12 @@
         "variable": "var(--select-item-indicator-left)",
         "description": ""
       },
-      "select-trigger-disabled-opacity": {
-        "name": "selectTriggerDisabledOpacity",
-        "path": [
-          "select",
-          "trigger",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--select-trigger-disabled-opacity)",
-        "description": ""
-      },
       "select-trigger-icon-opacity": {
         "name": "selectTriggerIconOpacity",
         "path": [
           "select",
           "trigger",
-          "icon",
-          "opacity"
+          "icon-opacity"
         ],
         "value": 0.5,
         "type": "number",
@@ -10603,19 +10662,6 @@
         "variable": "var(--color-select-content-text)",
         "description": ""
       },
-      "select-item-disabled-opacity": {
-        "name": "selectItemDisabledOpacity",
-        "path": [
-          "select",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--select-item-disabled-opacity)",
-        "description": ""
-      },
       "select-separator-background": {
         "name": "selectSeparatorBackground",
         "path": [
@@ -10626,6 +10672,54 @@
         "value": "oklch(0.786 0.004 271.11)",
         "type": "color",
         "variable": "var(--color-select-separator-background)",
+        "description": ""
+      },
+      "select-trigger-background-disabled": {
+        "name": "selectTriggerBackgroundDisabled",
+        "path": [
+          "select",
+          "trigger",
+          "background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-select-trigger-background-disabled)",
+        "description": ""
+      },
+      "select-trigger-text-disabled": {
+        "name": "selectTriggerTextDisabled",
+        "path": [
+          "select",
+          "trigger",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-select-trigger-text-disabled)",
+        "description": ""
+      },
+      "select-trigger-border-disabled": {
+        "name": "selectTriggerBorderDisabled",
+        "path": [
+          "select",
+          "trigger",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-select-trigger-border-disabled)",
+        "description": ""
+      },
+      "select-item-text-disabled": {
+        "name": "selectItemTextDisabled",
+        "path": [
+          "select",
+          "item",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-select-item-text-disabled)",
         "description": ""
       }
     },
@@ -10733,8 +10827,7 @@
         "name": "checkboxFocusRingWidth",
         "path": [
           "checkbox",
-          "focus",
-          "ring",
+          "focus-ring",
           "width"
         ],
         "value": "2px",
@@ -10746,8 +10839,7 @@
         "name": "checkboxFocusRingOffset",
         "path": [
           "checkbox",
-          "focus",
-          "ring",
+          "focus-ring",
           "offset"
         ],
         "value": "2px",
@@ -10767,64 +10859,81 @@
         "variable": "var(--color-checkbox-border-color)",
         "description": ""
       },
-      "checkbox-checked-background": {
-        "name": "checkboxCheckedBackground",
+      "checkbox-background-checked": {
+        "name": "checkboxBackgroundChecked",
         "path": [
           "checkbox",
-          "checked",
-          "background"
+          "background-checked"
         ],
         "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
-        "variable": "var(--color-checkbox-checked-background)",
+        "variable": "var(--color-checkbox-background-checked)",
         "description": ""
       },
-      "checkbox-checked-text": {
-        "name": "checkboxCheckedText",
+      "checkbox-text-checked": {
+        "name": "checkboxTextChecked",
         "path": [
           "checkbox",
-          "checked",
-          "text"
+          "text-checked"
         ],
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
-        "variable": "var(--color-checkbox-checked-text)",
+        "variable": "var(--color-checkbox-text-checked)",
         "description": ""
       },
-      "checkbox-checked-border": {
-        "name": "checkboxCheckedBorder",
+      "checkbox-border-checked": {
+        "name": "checkboxBorderChecked",
         "path": [
           "checkbox",
-          "checked",
-          "border"
+          "border-checked"
         ],
         "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
-        "variable": "var(--color-checkbox-checked-border)",
+        "variable": "var(--color-checkbox-border-checked)",
         "description": ""
       },
       "checkbox-error-border": {
         "name": "checkboxErrorBorder",
         "path": [
           "checkbox",
-          "error",
-          "border"
+          "error-border"
         ],
         "value": "oklch(0.546 0.215 27.31)",
         "type": "color",
         "variable": "var(--color-checkbox-error-border)",
         "description": ""
       },
-      "checkbox-disabled-opacity": {
-        "name": "checkboxDisabledOpacity",
+      "checkbox-background-disabled": {
+        "name": "checkboxBackgroundDisabled",
         "path": [
           "checkbox",
-          "disabled",
-          "opacity"
+          "background-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--checkbox-disabled-opacity)",
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-checkbox-background-disabled)",
+        "description": ""
+      },
+      "checkbox-text-disabled": {
+        "name": "checkboxTextDisabled",
+        "path": [
+          "checkbox",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-checkbox-text-disabled)",
+        "description": ""
+      },
+      "checkbox-border-disabled": {
+        "name": "checkboxBorderDisabled",
+        "path": [
+          "checkbox",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-checkbox-border-disabled)",
         "description": ""
       }
     },
@@ -10924,8 +11033,7 @@
         "path": [
           "switch",
           "track",
-          "border",
-          "width"
+          "border-width"
         ],
         "value": "2px",
         "type": "dimension",
@@ -11026,8 +11134,7 @@
         "name": "switchFocusRingWidth",
         "path": [
           "switch",
-          "focus",
-          "ring",
+          "focus-ring",
           "width"
         ],
         "value": "2px",
@@ -11039,8 +11146,7 @@
         "name": "switchFocusRingOffset",
         "path": [
           "switch",
-          "focus",
-          "ring",
+          "focus-ring",
           "offset"
         ],
         "value": "2px",
@@ -11053,8 +11159,7 @@
         "path": [
           "switch",
           "track",
-          "background",
-          "checked"
+          "background-checked"
         ],
         "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
@@ -11066,8 +11171,7 @@
         "path": [
           "switch",
           "track",
-          "background",
-          "unchecked"
+          "background-unchecked"
         ],
         "value": "oklch(0.613 0.005 258.45)",
         "type": "color",
@@ -11086,16 +11190,16 @@
         "variable": "var(--color-switch-thumb-background)",
         "description": ""
       },
-      "switch-disabled-opacity": {
-        "name": "switchDisabledOpacity",
+      "switch-track-background-disabled": {
+        "name": "switchTrackBackgroundDisabled",
         "path": [
           "switch",
-          "disabled",
-          "opacity"
+          "track",
+          "background-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--switch-disabled-opacity)",
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-switch-track-background-disabled)",
         "description": ""
       }
     },
@@ -11180,16 +11284,26 @@
         "variable": "var(--textarea-font-weight)",
         "description": ""
       },
-      "textarea-disabled-opacity": {
-        "name": "textareaDisabledOpacity",
+      "textarea-background-disabled": {
+        "name": "textareaBackgroundDisabled",
         "path": [
           "textarea",
-          "disabled",
-          "opacity"
+          "background-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--textarea-disabled-opacity)",
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-textarea-background-disabled)",
+        "description": ""
+      },
+      "textarea-text-disabled": {
+        "name": "textareaTextDisabled",
+        "path": [
+          "textarea",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-textarea-text-disabled)",
         "description": ""
       }
     },
@@ -11230,23 +11344,11 @@
         "variable": "var(--label-font-size-lg)",
         "description": ""
       },
-      "label-margin-bottom": {
-        "name": "labelMarginBottom",
-        "path": [
-          "label",
-          "margin-bottom"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--label-margin-bottom)",
-        "description": ""
-      },
       "label-disabled-color": {
         "name": "labelDisabledColor",
         "path": [
           "label",
-          "disabled",
-          "color"
+          "disabled-color"
         ],
         "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
@@ -11268,8 +11370,7 @@
         "name": "labelDefaultColor",
         "path": [
           "label",
-          "default",
-          "color"
+          "default-color"
         ],
         "value": "oklch(0.423 0.007 264.49)",
         "type": "color",
@@ -11291,8 +11392,7 @@
         "name": "labelErrorText",
         "path": [
           "label",
-          "error",
-          "text"
+          "error-text"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
@@ -11303,8 +11403,7 @@
         "name": "labelRequiredText",
         "path": [
           "label",
-          "required",
-          "text"
+          "required-text"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
@@ -11317,8 +11416,7 @@
         "name": "sheetOverlayBackground",
         "path": [
           "sheet",
-          "overlay",
-          "background"
+          "overlay-background"
         ],
         "value": "oklch(0.149 0.012 259.72)",
         "type": "color",
@@ -11561,8 +11659,7 @@
         "name": "separatorHeightHorizontal",
         "path": [
           "separator",
-          "height",
-          "horizontal"
+          "height-horizontal"
         ],
         "value": "1px",
         "type": "spacing",
@@ -11573,8 +11670,7 @@
         "name": "separatorWidthVertical",
         "path": [
           "separator",
-          "width",
-          "vertical"
+          "width-vertical"
         ],
         "value": "1px",
         "type": "spacing",
@@ -11696,8 +11792,7 @@
         "path": [
           "context-menu",
           "item",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -11781,25 +11876,11 @@
         "variable": "var(--context-menu-shortcut-font-size)",
         "description": ""
       },
-      "context-menu-item-disabled-opacity": {
-        "name": "contextMenuItemDisabledOpacity",
-        "path": [
-          "context-menu",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--context-menu-item-disabled-opacity)",
-        "description": ""
-      },
       "context-menu-label-font-weight": {
         "name": "contextMenuLabelFontWeight",
         "path": [
           "context-menu",
-          "label",
-          "font-weight"
+          "label-font-weight"
         ],
         "value": 600,
         "type": "number",
@@ -11810,8 +11891,7 @@
         "name": "contextMenuShortcutLetterSpacing",
         "path": [
           "context-menu",
-          "shortcut",
-          "letter-spacing"
+          "shortcut-letter-spacing"
         ],
         "value": "0.1em",
         "type": "dimension",
@@ -11835,8 +11915,7 @@
         "name": "contextMenuSubContentMinWidth",
         "path": [
           "context-menu",
-          "sub-content",
-          "min-width"
+          "sub-content-min-width"
         ],
         "value": "112px",
         "type": "spacing",
@@ -11910,8 +11989,7 @@
         "path": [
           "dropdown-menu",
           "item",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -12085,19 +12163,6 @@
         "variable": "var(--color-dropdown-menu-separator-background)",
         "description": ""
       },
-      "dropdown-menu-item-disabled-opacity": {
-        "name": "dropdownMenuItemDisabledOpacity",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--dropdown-menu-item-disabled-opacity)",
-        "description": ""
-      },
       "dropdown-menu-shortcut-opacity": {
         "name": "dropdownMenuShortcutOpacity",
         "path": [
@@ -12114,8 +12179,7 @@
         "name": "dropdownMenuLabelFontWeight",
         "path": [
           "dropdown-menu",
-          "label",
-          "font-weight"
+          "label-font-weight"
         ],
         "value": 600,
         "type": "number",
@@ -12152,12 +12216,23 @@
         "path": [
           "dropdown-menu",
           "item",
-          "radio-indicator",
-          "radius"
+          "radio-indicator-radius"
         ],
         "value": "9999px",
         "type": "dimension",
         "variable": "var(--dropdown-menu-item-radio-indicator-radius)",
+        "description": ""
+      },
+      "dropdown-menu-item-text-disabled": {
+        "name": "dropdownMenuItemTextDisabled",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-item-text-disabled)",
         "description": ""
       }
     },
@@ -12313,8 +12388,7 @@
         "name": "featureGridDescriptionText",
         "path": [
           "feature-grid",
-          "description",
-          "text"
+          "description-text"
         ],
         "value": "oklch(0.423 0.007 264.49)",
         "type": "color",
@@ -12428,38 +12502,11 @@
         "name": "alertDialogTitleFontWeight",
         "path": [
           "alert-dialog",
-          "title",
-          "font-weight"
+          "title-font-weight"
         ],
         "value": 600,
         "type": "number",
         "variable": "var(--alert-dialog-title-font-weight)",
-        "description": ""
-      }
-    },
-    "radio-group": {
-      "radio-group-item-gap": {
-        "name": "radioGroupItemGap",
-        "path": [
-          "radio-group",
-          "item-gap"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--radio-group-item-gap)",
-        "description": ""
-      },
-      "radio-group-item-disabled-opacity": {
-        "name": "radioGroupItemDisabledOpacity",
-        "path": [
-          "radio-group",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--radio-group-item-disabled-opacity)",
         "description": ""
       }
     },
@@ -12545,8 +12592,7 @@
         "name": "navigationMenuIndicatorHeight",
         "path": [
           "navigation-menu",
-          "indicator",
-          "height"
+          "indicator-height"
         ],
         "value": "0px",
         "type": "dimension",
@@ -12575,19 +12621,6 @@
         "value": 500,
         "type": "number",
         "variable": "var(--navigation-menu-trigger-font-weight)",
-        "description": ""
-      },
-      "navigation-menu-trigger-disabled-opacity": {
-        "name": "navigationMenuTriggerDisabledOpacity",
-        "path": [
-          "navigation-menu",
-          "trigger",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--navigation-menu-trigger-disabled-opacity)",
         "description": ""
       }
     },
@@ -12640,8 +12673,7 @@
         "name": "toggleGroupItemFontWeight",
         "path": [
           "toggle-group",
-          "item",
-          "font-weight"
+          "item-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -12658,31 +12690,334 @@
         "type": "spacing",
         "variable": "var(--toggle-group-item-height)",
         "description": "Height of toggle group items (40px, matches default toggle height)"
-      },
-      "toggle-group-item-disabled-opacity": {
-        "name": "toggleGroupItemDisabledOpacity",
+      }
+    },
+    "site-header": {
+      "site-header-background": {
+        "name": "siteHeaderBackground",
         "path": [
-          "toggle-group",
-          "item",
-          "disabled",
-          "opacity"
+          "site-header",
+          "background"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--toggle-group-item-disabled-opacity)",
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-site-header-background)",
+        "description": ""
+      },
+      "site-header-border": {
+        "name": "siteHeaderBorder",
+        "path": [
+          "site-header",
+          "border"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-site-header-border)",
+        "description": ""
+      },
+      "site-header-nav-link-background": {
+        "name": "siteHeaderNavLinkBackground",
+        "path": [
+          "site-header",
+          "nav-link",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-background)",
+        "description": ""
+      },
+      "site-header-nav-link-background-hover": {
+        "name": "siteHeaderNavLinkBackgroundHover",
+        "path": [
+          "site-header",
+          "nav-link",
+          "background-hover"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-background-hover)",
+        "description": ""
+      },
+      "site-header-nav-link-background-focus": {
+        "name": "siteHeaderNavLinkBackgroundFocus",
+        "path": [
+          "site-header",
+          "nav-link",
+          "background-focus"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-background-focus)",
+        "description": ""
+      },
+      "site-header-nav-link-text-hover": {
+        "name": "siteHeaderNavLinkTextHover",
+        "path": [
+          "site-header",
+          "nav-link",
+          "text-hover"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-text-hover)",
+        "description": ""
+      },
+      "site-header-nav-link-text-focus": {
+        "name": "siteHeaderNavLinkTextFocus",
+        "path": [
+          "site-header",
+          "nav-link",
+          "text-focus"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-text-focus)",
+        "description": ""
+      },
+      "site-header-nav-link-text-disabled": {
+        "name": "siteHeaderNavLinkTextDisabled",
+        "path": [
+          "site-header",
+          "nav-link",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-text-disabled)",
         "description": ""
       }
     },
-    "scroll-area": {
-      "scroll-area-scrollbar-padding": {
-        "name": "scrollAreaScrollbarPadding",
+    "site-footer": {
+      "site-footer-background": {
+        "name": "siteFooterBackground",
         "path": [
-          "scroll-area",
-          "scrollbar-padding"
+          "site-footer",
+          "background"
         ],
-        "value": "1px",
-        "type": "spacing",
-        "variable": "var(--scroll-area-scrollbar-padding)",
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-site-footer-background)",
+        "description": ""
+      },
+      "site-footer-background-muted": {
+        "name": "siteFooterBackgroundMuted",
+        "path": [
+          "site-footer",
+          "background-muted"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-site-footer-background-muted)",
+        "description": ""
+      },
+      "site-footer-border": {
+        "name": "siteFooterBorder",
+        "path": [
+          "site-footer",
+          "border"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-site-footer-border)",
+        "description": ""
+      },
+      "site-footer-text": {
+        "name": "siteFooterText",
+        "path": [
+          "site-footer",
+          "text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-site-footer-text)",
+        "description": ""
+      },
+      "site-footer-link-text": {
+        "name": "siteFooterLinkText",
+        "path": [
+          "site-footer",
+          "link",
+          "text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-site-footer-link-text)",
+        "description": ""
+      },
+      "site-footer-link-text-hover": {
+        "name": "siteFooterLinkTextHover",
+        "path": [
+          "site-footer",
+          "link",
+          "text-hover"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-site-footer-link-text-hover)",
+        "description": ""
+      }
+    },
+    "section-hero": {
+      "section-hero-background": {
+        "name": "sectionHeroBackground",
+        "path": [
+          "section-hero",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-section-hero-background)",
+        "description": ""
+      },
+      "section-hero-gradient-from": {
+        "name": "sectionHeroGradientFrom",
+        "path": [
+          "section-hero",
+          "gradient",
+          "from"
+        ],
+        "value": "oklch(0.546 0.215 262.9)",
+        "type": "color",
+        "variable": "var(--color-section-hero-gradient-from)",
+        "description": ""
+      },
+      "section-hero-gradient-via": {
+        "name": "sectionHeroGradientVia",
+        "path": [
+          "section-hero",
+          "gradient",
+          "via"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-section-hero-gradient-via)",
+        "description": ""
+      },
+      "section-hero-gradient-to": {
+        "name": "sectionHeroGradientTo",
+        "path": [
+          "section-hero",
+          "gradient",
+          "to"
+        ],
+        "value": "oklch(0.97 0.014 254.77)",
+        "type": "color",
+        "variable": "var(--color-section-hero-gradient-to)",
+        "description": ""
+      },
+      "section-hero-description-text": {
+        "name": "sectionHeroDescriptionText",
+        "path": [
+          "section-hero",
+          "description-text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-section-hero-description-text)",
+        "description": ""
+      }
+    },
+    "section-features": {
+      "section-features-background": {
+        "name": "sectionFeaturesBackground",
+        "path": [
+          "section-features",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-section-features-background)",
+        "description": ""
+      },
+      "section-features-background-muted": {
+        "name": "sectionFeaturesBackgroundMuted",
+        "path": [
+          "section-features",
+          "background-muted"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-section-features-background-muted)",
+        "description": ""
+      },
+      "section-features-description-text": {
+        "name": "sectionFeaturesDescriptionText",
+        "path": [
+          "section-features",
+          "description-text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-section-features-description-text)",
+        "description": ""
+      },
+      "section-features-item-text": {
+        "name": "sectionFeaturesItemText",
+        "path": [
+          "section-features",
+          "item-text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-section-features-item-text)",
+        "description": ""
+      },
+      "section-features-icon-background": {
+        "name": "sectionFeaturesIconBackground",
+        "path": [
+          "section-features",
+          "icon-background"
+        ],
+        "value": "oklch(0.546 0.215 262.9)",
+        "type": "color",
+        "variable": "var(--color-section-features-icon-background)",
+        "description": ""
+      },
+      "section-features-icon-text": {
+        "name": "sectionFeaturesIconText",
+        "path": [
+          "section-features",
+          "icon-text"
+        ],
+        "value": "oklch(0.488 0.217 264.4)",
+        "type": "color",
+        "variable": "var(--color-section-features-icon-text)",
+        "description": ""
+      }
+    },
+    "page-layout": {
+      "page-layout-skip-link-background": {
+        "name": "pageLayoutSkipLinkBackground",
+        "path": [
+          "page-layout",
+          "skip-link-background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-page-layout-skip-link-background)",
+        "description": ""
+      },
+      "page-layout-skip-link-text": {
+        "name": "pageLayoutSkipLinkText",
+        "path": [
+          "page-layout",
+          "skip-link-text"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-page-layout-skip-link-text)",
+        "description": ""
+      },
+      "page-layout-sidebar-border": {
+        "name": "pageLayoutSidebarBorder",
+        "path": [
+          "page-layout",
+          "sidebar-border"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-page-layout-sidebar-border)",
         "description": ""
       }
     }

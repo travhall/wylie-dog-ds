@@ -15,7 +15,7 @@ export const siteHeaderVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-(--color-background-default) border-b border-(--color-border-default) sticky top-0 z-(--z-index-sticky) backdrop-blur supports-[backdrop-filter]:bg-(--color-background-default)/95",
+          "bg-(--color-site-header-background) border-b border-(--color-site-header-border) sticky top-0 z-(--z-index-sticky) backdrop-blur supports-[backdrop-filter]:bg-(--color-site-header-background)/95",
         transparent: "bg-transparent border-b border-transparent",
       },
     },
@@ -108,7 +108,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                       <NavigationMenuItem key={index}>
                         <NavigationMenuLink
                           href={item.href}
-                          className="group inline-flex h-9 w-max items-center justify-center rounded-(--border-radius-md) bg-(--color-background-default) px-4 py-2 text-(length:--font-size-sm) font-(--font-weight-medium) transition-colors hover:bg-(--color-background-muted) hover:text-(--color-foreground-default) focus:bg-(--color-background-muted) focus:text-(--color-foreground-default) focus:outline-none disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
+                          className="group inline-flex h-9 w-max items-center justify-center rounded-(--border-radius-md) bg-(--color-site-header-nav-link-background) px-4 py-2 text-(length:--font-size-sm) font-(--font-weight-medium) transition-colors hover:bg-(--color-site-header-nav-link-background-hover) hover:text-(--color-site-header-nav-link-text-hover) focus:bg-(--color-site-header-nav-link-background-focus) focus:text-(--color-site-header-nav-link-text-focus) focus:outline-none disabled:pointer-events-none disabled:text-(--color-site-header-nav-link-text-disabled)"
                         >
                           {item.label}
                         </NavigationMenuLink>
