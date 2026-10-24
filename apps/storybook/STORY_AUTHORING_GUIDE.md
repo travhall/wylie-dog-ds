@@ -325,37 +325,13 @@ export const UsageExample: Story = {
 
 ## Styling Guidelines
 
-### Use Semantic Color Tokens
+### Stories never bind to tokens
 
-Always use semantic color tokens, never hardcoded colors:
+The goal is always to tokenise the Wylie Dog UI package (`packages/ui`). It is the contract between UI and design, and the tokens it binds to are what adopters rely on to customise the design for themselves. Stories are not part of that contract. **A story must not reference token variables** (`--color-*`, `--space-*`, `--font-*`, `--shadow-*` and so on). Build the demo from the UI components themselves and plain layout classes.
 
-```typescript
-// ✅ Correct - Semantic tokens
-<p className="text-(--color-foreground-muted)">Description</p>
-<div className="border-(--color-border-default)">Content</div>
-<span className="text-(--color-foreground-success-muted)">Success</span>
+The one exception is the Foundations pages whose subject is the tokens (`Foundations/Design Tokens/*`), which display token values by design.
 
-// ❌ Wrong - Hardcoded colors
-<p className="text-gray-600">Description</p>
-<div className="border-gray-300">Content</div>
-```
-
-### Common Token Mappings
-
-| Purpose           | Token                                     |
-| ----------------- | ----------------------------------------- |
-| Default text      | `text-(--color-foreground-default)`       |
-| Muted text        | `text-(--color-foreground-muted)`         |
-| Faint text        | `text-(--color-foreground-faint)`         |
-| Default border    | `border-(--color-border-default)`         |
-| Subtle border     | `border-(--color-border-muted)`           |
-| Page background   | `bg-(--color-background-default)`         |
-| Subtle background | `bg-(--color-background-muted)`           |
-| Success text      | `text-(--color-foreground-success-muted)` |
-| Warning text      | `text-(--color-foreground-warning-muted)` |
-| Error text        | `text-(--color-foreground-danger-muted)`  |
-
-There are no shadcn-style utility classes (`text-muted-foreground`, `bg-muted`, `text-destructive`) in this project; always use the `-(--token-name)` form.
+Existing stories predate this rule and still style demo text and borders with `-(--token-name)` classes. Do not copy that pattern into new stories. How demo chrome that must follow Light and Dark is styled without tokens is an open decision (Plan 196); until it is made, keep demo chrome minimal and let the UI components carry the design.
 
 ---
 
@@ -490,7 +466,7 @@ Use this checklist when writing or reviewing stories:
 
 ### Styling
 
-- [ ] Uses semantic color tokens (not hardcoded colors)
+- [ ] Does not reference token variables (see "Stories never bind to tokens")
 - [ ] Uses design system spacing utilities
 - [ ] Dark mode compatible
 

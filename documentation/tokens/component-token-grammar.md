@@ -15,9 +15,32 @@ The three tiers stay intact: primitives hold raw values, semantic tokens hold me
 Each exception is an entry with a reason in the allowlist of `scripts/check-component-binding.mjs`.
 
 1. **The focus ring colour.** Components use the one centralized semantic token `color.border.focus` directly (`focus:ring-(--color-border-focus)`). The ring is a single accessibility indicator that must look the same everywhere, so there is no per-component focus colour token. The ring width and offset are still component tokens where a component defines them (`checkbox.focus-ring.width`).
-2. **Font family.** Text may bind the primitive `typography/font-family/sans` (and serif and mono) directly. It is the only non-colour exception.
+2. **Font family.** Text may bind the primitive `typography/font-family/sans` (and serif and mono) directly. In code no component sets a font family: text inherits it from the page (`font-sans` on the body, which aliases the primitive). The exception matters in Figma, where the generated text layers bind the primitive.
 
-Everything else, including a composition, needs a component token.
+Everything else that is a colour, including a composition, needs a component token.
+
+## Stories never bind to tokens
+
+The goal is always to tokenise the Wylie Dog UI package. It is the contract between UI and design: the tokens it binds to are what adopters rely on to customise the design for themselves. Stories are not part of that contract. A story must not reference token variables; its demo is built from the UI components and plain layout classes. The exception is the Foundations pages whose subject is the tokens (`apps/storybook/stories/Foundations/Design Tokens/*`), which display token values by design. Existing stories predate this rule; see Plan 196 for the measurement and the open decision on how demo chrome is styled.
+
+## What the check enforces, and what it does not
+
+`check-component-binding.mjs` reads `--color-*` references only. Non-colour references are not checked, and some components bind them directly (measured 2026-10-24 in `packages/ui/src`, tests excluded):
+
+- 90 references to semantic tokens: `--space-icon-size-*` (24), `--space-focus-ring-offset` (10), `--shadow-*` (19), `--z-index-*` (19), `--opacity-scrim` (3).
+- 43 references to primitives: `--duration-*`, `--font-weight-*`, `--border-radius-*`, `--line-height-*`.
+- Hardcoded Tailwind spacing (`px-4`, `gap-8`, `py-32`) in the compositions (`page-layout`, `site-header`, `site-footer`, `section-hero`, `section-features`). The base components have only one (`pr-0` in `table.tsx`).
+
+Whether the binding rule should extend to these is an open owner decision.
+
+## Unbound in the generated Figma components (by design)
+
+The component generator leaves these unbound because no component token exists and the real component does not set the value:
+
+- Placeholder content: Carousel slide fill and text, Collapsible header and body text, Feature Grid icon frames.
+- Glyph corner radii (1 to 2px) on the checkmark, dash and chevron frames, and the Skeleton avatar.
+- Font size of body text the real components inherit (Popover, Hover Card, Dialog body, footer buttons).
+- Literal auto-layout gaps and wrapper-frame padding the builder chooses itself (for example Button and Alert gaps).
 
 ## Naming grammar
 
