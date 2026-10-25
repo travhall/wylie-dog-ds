@@ -129,6 +129,24 @@ import { colorGray50 } from "@wyliedog/tokens";
 
 Apps normally do not import the JS; they import the stylesheet through `@wyliedog/ui/styles` and use the variables as `bg-(--color-background-default)`. See [STYLING_ARCHITECTURE.md](../STYLING_ARCHITECTURE.md).
 
+## Units
+
+The source of truth stays **px**: `io/sync/*.json` and Figma hold plain pixel values, and the Token Bridge plugin never sees rem. The Style Dictionary build (`wd/size/rem` in `style-dictionary.config.js`) converts to **rem** in `tokens.css`, `index.js`, `hierarchical.js` and `manifest.json`, dividing by 16 (**1rem = 16px**, the browser default root size, which this project never overrides: no `62.5%` root hack, anywhere). rem follows the user's browser text-size setting (WCAG 1.4.4 Resize Text); px does not.
+
+| Converts to rem                                                     | Stays as the source value                        |
+| ------------------------------------------------------------------- | ------------------------------------------------ |
+| Spacing scale (`space.*`), including sizes and widths that alias it | Border widths (`border-width.*`), 1px hairlines  |
+| Font sizes (`typography.font-size.*`)                               | Shadow geometry (offset, blur, spread)           |
+| Border radius `sm` to `2xl` (`border-radius.*`)                     | Focus width, offset and halo (`focus.*`)         |
+|                                                                     | `border-radius.full` (9999px is a pill sentinel) |
+|                                                                     | Letter-spacing (em), durations, opacity, z-index |
+
+The conversion happens on the primitive only. Semantic and component tokens alias a primitive and take its unit, so a component `separator.height` that aliases `border-width.1` stays `1px` while one that aliases `space.200` becomes `1rem`. Every converted value satisfies `rem * 16 == px` exactly (the build throws otherwise; `scripts/__tests__/rem-units.test.mjs` checks the output against the sync source). Token pages show both, for example `0.75rem (12px)`, because Figma shows px.
+
+Front-end code follows the same rule: `pnpm check:units` fails on px literals for text size, spacing, sizing and radius in `packages/ui/src` and `apps/showcase/src` (1px hairlines, border widths, shadows, blur, gradients, media queries and the documented allowlist are exempt) and only warns for `apps/storybook/stories`.
+
+Decisions (owner, 2026-10-25): radius converts to rem with `full` left in px; focus dimensions stay px; the units check fails for UI and showcase and warns for stories; the showcase's sub-12px text converts to its exact rem equivalent now (11px is `0.6875rem`), with sub-12px text recorded as an accessibility follow-up; token pages show rem and px together.
+
 ## Resolution chain
 
 Component tokens alias semantic tokens, which alias primitives, which hold the value:

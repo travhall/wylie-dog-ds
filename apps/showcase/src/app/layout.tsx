@@ -205,7 +205,7 @@ export default function RootLayout({
           copyright="© 2026 Wylie Dog"
           extra={
             <div className="inline-flex items-center gap-2">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                 MIT licensed
               </span>
             </div>

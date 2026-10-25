@@ -830,7 +830,7 @@ function TypographyPlaygroundComponent() {
   }
 
   const cssLines = [
-    `font-size: ${currentFontSize.value}px;`,
+    `font-size: ${currentFontSize.value};`,
     `font-weight: ${currentFontWeight.value};`,
     `line-height: ${(currentLineHeight.value as number) / 100};`,
     `font-family: ${currentFontFamily.value};`,
@@ -887,7 +887,7 @@ function TypographyPlaygroundComponent() {
           <div
             className="p-6 rounded-lg border border-(--color-border-default) bg-(--color-background-default) min-h-[80px]"
             style={{
-              fontSize: `${currentFontSize.value}px`,
+              fontSize: String(currentFontSize.value),
               fontWeight: currentFontWeight.value,
               lineHeight: (currentLineHeight.value as number) / 100,
               fontFamily: String(currentFontFamily.value),

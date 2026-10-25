@@ -1751,7 +1751,7 @@
           "space",
           "0"
         ],
-        "value": "0px",
+        "value": "0rem",
         "type": "spacing",
         "variable": "var(--space-0)",
         "description": ""
@@ -1762,7 +1762,7 @@
           "space",
           "010"
         ],
-        "value": "1px",
+        "value": "0.0625rem",
         "type": "spacing",
         "variable": "var(--space-010)",
         "description": ""
@@ -1773,7 +1773,7 @@
           "space",
           "025"
         ],
-        "value": "2px",
+        "value": "0.125rem",
         "type": "spacing",
         "variable": "var(--space-025)",
         "description": ""
@@ -1784,7 +1784,7 @@
           "space",
           "050"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--space-050)",
         "description": ""
@@ -1795,7 +1795,7 @@
           "space",
           "100"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--space-100)",
         "description": ""
@@ -1806,7 +1806,7 @@
           "space",
           "150"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--space-150)",
         "description": ""
@@ -1817,7 +1817,7 @@
           "space",
           "200"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--space-200)",
         "description": ""
@@ -1828,7 +1828,7 @@
           "space",
           "300"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--space-300)",
         "description": ""
@@ -1839,7 +1839,7 @@
           "space",
           "400"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--space-400)",
         "description": ""
@@ -1850,7 +1850,7 @@
           "space",
           "450"
         ],
-        "value": "36px",
+        "value": "2.25rem",
         "type": "spacing",
         "variable": "var(--space-450)",
         "description": ""
@@ -1861,7 +1861,7 @@
           "space",
           "500"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--space-500)",
         "description": ""
@@ -1872,7 +1872,7 @@
           "space",
           "600"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--space-600)",
         "description": ""
@@ -1883,7 +1883,7 @@
           "space",
           "650"
         ],
-        "value": "56px",
+        "value": "3.5rem",
         "type": "spacing",
         "variable": "var(--space-650)",
         "description": ""
@@ -1894,7 +1894,7 @@
           "space",
           "700"
         ],
-        "value": "64px",
+        "value": "4rem",
         "type": "spacing",
         "variable": "var(--space-700)",
         "description": ""
@@ -1905,7 +1905,7 @@
           "space",
           "800"
         ],
-        "value": "80px",
+        "value": "5rem",
         "type": "spacing",
         "variable": "var(--space-800)",
         "description": ""
@@ -1916,7 +1916,7 @@
           "space",
           "900"
         ],
-        "value": "96px",
+        "value": "6rem",
         "type": "spacing",
         "variable": "var(--space-900)",
         "description": ""
@@ -1927,7 +1927,7 @@
           "space",
           "1000"
         ],
-        "value": "112px",
+        "value": "7rem",
         "type": "spacing",
         "variable": "var(--space-1000)",
         "description": ""
@@ -1938,7 +1938,7 @@
           "space",
           "1100"
         ],
-        "value": "128px",
+        "value": "8rem",
         "type": "spacing",
         "variable": "var(--space-1100)",
         "description": ""
@@ -1949,7 +1949,7 @@
           "space",
           "1200"
         ],
-        "value": "160px",
+        "value": "10rem",
         "type": "spacing",
         "variable": "var(--space-1200)",
         "description": ""
@@ -1960,7 +1960,7 @@
           "space",
           "1300"
         ],
-        "value": "192px",
+        "value": "12rem",
         "type": "spacing",
         "variable": "var(--space-1300)",
         "description": ""
@@ -1971,7 +1971,7 @@
           "space",
           "1400"
         ],
-        "value": "256px",
+        "value": "16rem",
         "type": "spacing",
         "variable": "var(--space-1400)",
         "description": ""
@@ -1982,7 +1982,7 @@
           "space",
           "1500"
         ],
-        "value": "320px",
+        "value": "20rem",
         "type": "spacing",
         "variable": "var(--space-1500)",
         "description": ""
@@ -1993,7 +1993,7 @@
           "space",
           "1550"
         ],
-        "value": "384px",
+        "value": "24rem",
         "type": "spacing",
         "variable": "var(--space-1550)",
         "description": ""
@@ -2004,7 +2004,7 @@
           "space",
           "1600"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "spacing",
         "variable": "var(--space-1600)",
         "description": ""
@@ -2015,7 +2015,7 @@
           "space",
           "1650"
         ],
-        "value": "512px",
+        "value": "32rem",
         "type": "spacing",
         "variable": "var(--space-1650)",
         "description": ""
@@ -2026,7 +2026,7 @@
           "space",
           "1700"
         ],
-        "value": "576px",
+        "value": "36rem",
         "type": "spacing",
         "variable": "var(--space-1700)",
         "description": ""
@@ -2037,7 +2037,7 @@
           "space",
           "1800"
         ],
-        "value": "672px",
+        "value": "42rem",
         "type": "spacing",
         "variable": "var(--space-1800)",
         "description": ""
@@ -2048,7 +2048,7 @@
           "space",
           "1900"
         ],
-        "value": "768px",
+        "value": "48rem",
         "type": "spacing",
         "variable": "var(--space-1900)",
         "description": ""
@@ -2059,7 +2059,7 @@
           "space",
           "2000"
         ],
-        "value": "896px",
+        "value": "56rem",
         "type": "spacing",
         "variable": "var(--space-2000)",
         "description": ""
@@ -2072,7 +2072,7 @@
           "border-radius",
           "none"
         ],
-        "value": "0px",
+        "value": "0rem",
         "type": "dimension",
         "variable": "var(--border-radius-none)",
         "description": ""
@@ -2083,7 +2083,7 @@
           "border-radius",
           "sm"
         ],
-        "value": "2px",
+        "value": "0.125rem",
         "type": "dimension",
         "variable": "var(--border-radius-sm)",
         "description": ""
@@ -2094,7 +2094,7 @@
           "border-radius",
           "md"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--border-radius-md)",
         "description": ""
@@ -2105,7 +2105,7 @@
           "border-radius",
           "lg"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "dimension",
         "variable": "var(--border-radius-lg)",
         "description": ""
@@ -2116,7 +2116,7 @@
           "border-radius",
           "xl"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "dimension",
         "variable": "var(--border-radius-xl)",
         "description": ""
@@ -2127,7 +2127,7 @@
           "border-radius",
           "2xl"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "dimension",
         "variable": "var(--border-radius-2xl)",
         "description": ""
@@ -2248,7 +2248,7 @@
             "font-size",
             "xs"
           ],
-          "value": 12,
+          "value": "0.75rem",
           "type": "number",
           "variable": "var(--typography-font-size-xs)",
           "description": ""
@@ -2260,7 +2260,7 @@
             "font-size",
             "sm"
           ],
-          "value": 14,
+          "value": "0.875rem",
           "type": "number",
           "variable": "var(--typography-font-size-sm)",
           "description": ""
@@ -2272,7 +2272,7 @@
             "font-size",
             "base"
           ],
-          "value": 16,
+          "value": "1rem",
           "type": "number",
           "variable": "var(--typography-font-size-base)",
           "description": ""
@@ -2284,7 +2284,7 @@
             "font-size",
             "lg"
           ],
-          "value": 18,
+          "value": "1.125rem",
           "type": "number",
           "variable": "var(--typography-font-size-lg)",
           "description": ""
@@ -2296,7 +2296,7 @@
             "font-size",
             "xl"
           ],
-          "value": 20,
+          "value": "1.25rem",
           "type": "number",
           "variable": "var(--typography-font-size-xl)",
           "description": ""
@@ -2308,7 +2308,7 @@
             "font-size",
             "2xl"
           ],
-          "value": 24,
+          "value": "1.5rem",
           "type": "number",
           "variable": "var(--typography-font-size-2xl)",
           "description": ""
@@ -2320,7 +2320,7 @@
             "font-size",
             "3xl"
           ],
-          "value": 30,
+          "value": "1.875rem",
           "type": "number",
           "variable": "var(--typography-font-size-3xl)",
           "description": ""
@@ -2332,7 +2332,7 @@
             "font-size",
             "4xl"
           ],
-          "value": 36,
+          "value": "2.25rem",
           "type": "number",
           "variable": "var(--typography-font-size-4xl)",
           "description": ""
@@ -2344,7 +2344,7 @@
             "font-size",
             "5xl"
           ],
-          "value": 48,
+          "value": "3rem",
           "type": "number",
           "variable": "var(--typography-font-size-5xl)",
           "description": ""
@@ -2356,7 +2356,7 @@
             "font-size",
             "6xl"
           ],
-          "value": 60,
+          "value": "3.75rem",
           "type": "number",
           "variable": "var(--typography-font-size-6xl)",
           "description": ""
@@ -3543,7 +3543,7 @@
           "padding-x",
           "sm"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--badge-padding-x-sm)",
         "description": "Horizontal padding of the small badge."
@@ -3555,7 +3555,7 @@
           "padding-x",
           "md"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--badge-padding-x-md)",
         "description": "Horizontal padding of the medium badge."
@@ -3567,7 +3567,7 @@
           "padding-x",
           "lg"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--badge-padding-x-lg)",
         "description": "Horizontal padding of the large badge."
@@ -3579,7 +3579,7 @@
           "padding-y",
           "sm"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--badge-padding-y-sm)",
         "description": "Vertical padding of the small badge."
@@ -3591,7 +3591,7 @@
           "padding-y",
           "md"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--badge-padding-y-md)",
         "description": "Vertical padding of the medium badge."
@@ -3603,7 +3603,7 @@
           "padding-y",
           "lg"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--badge-padding-y-lg)",
         "description": "Vertical padding of the large badge."
@@ -3659,7 +3659,7 @@
           "font-size",
           "sm"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--badge-font-size-sm)",
         "description": "Font size of the small badge."
@@ -3671,7 +3671,7 @@
           "font-size",
           "md"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--badge-font-size-md)",
         "description": "Font size of the medium badge."
@@ -3683,7 +3683,7 @@
           "font-size",
           "lg"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--badge-font-size-lg)",
         "description": "Font size of the large badge."
@@ -4249,7 +4249,7 @@
           "padding-y",
           "sm"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--button-padding-y-sm)",
         "description": "Vertical padding of the small button."
@@ -4261,7 +4261,7 @@
           "padding-y",
           "md"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--button-padding-y-md)",
         "description": "Vertical padding of the medium (default) button."
@@ -4273,7 +4273,7 @@
           "padding-y",
           "lg"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--button-padding-y-lg)",
         "description": "Vertical padding of the large button."
@@ -4285,7 +4285,7 @@
           "padding-x",
           "sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--button-padding-x-sm)",
         "description": "Horizontal padding of the small button."
@@ -4297,7 +4297,7 @@
           "padding-x",
           "md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--button-padding-x-md)",
         "description": "Horizontal padding of the medium button."
@@ -4309,7 +4309,7 @@
           "padding-x",
           "lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--button-padding-x-lg)",
         "description": "Horizontal padding of the large button."
@@ -4320,7 +4320,7 @@
           "button",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--button-radius)",
         "description": "Corner radius of the button."
@@ -4332,7 +4332,7 @@
           "font-size",
           "sm"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--button-font-size-sm)",
         "description": "Font size of the small button."
@@ -4344,7 +4344,7 @@
           "font-size",
           "md"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--button-font-size-md)",
         "description": "Font size of the medium button."
@@ -4356,7 +4356,7 @@
           "font-size",
           "lg"
         ],
-        "value": 18,
+        "value": "1.125rem",
         "type": "number",
         "variable": "var(--button-font-size-lg)",
         "description": "Font size of the large button."
@@ -4400,7 +4400,7 @@
           "button",
           "icon-size"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--button-icon-size)",
         "description": "Width and height of the icon-only button."
@@ -4578,7 +4578,7 @@
           "spinner",
           "size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--button-spinner-size)",
         "description": "Size of the loading spinner in a button."
@@ -4637,7 +4637,7 @@
           "card",
           "padding"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--card-padding)",
         "description": "Padding inside the card."
@@ -4648,7 +4648,7 @@
           "card",
           "gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--card-gap)",
         "description": "Gap between the card header, content and footer."
@@ -4659,7 +4659,7 @@
           "card",
           "radius"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "dimension",
         "variable": "var(--card-radius)",
         "description": "Corner radius of the card."
@@ -4672,7 +4672,7 @@
           "title",
           "font-size"
         ],
-        "value": 20,
+        "value": "1.25rem",
         "type": "number",
         "variable": "var(--card-header-title-font-size)",
         "description": "Font size of the card header title."
@@ -4698,7 +4698,7 @@
           "description",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--card-header-description-font-size)",
         "description": "Font size of the card header description."
@@ -4736,7 +4736,7 @@
           "footer",
           "gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--card-footer-gap)",
         "description": "Gap between the items inside the card footer."
@@ -4748,7 +4748,7 @@
           "footer",
           "padding-top"
         ],
-        "value": "0px",
+        "value": "0rem",
         "type": "spacing",
         "variable": "var(--card-footer-padding-top)",
         "description": "Top padding of the card footer."
@@ -4807,7 +4807,7 @@
           "content",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--card-content-font-size)",
         "description": "Font size of the card content."
@@ -4886,7 +4886,7 @@
           "card",
           "header-gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--card-header-gap)",
         "description": "Gap between the title and description in the card header."
@@ -4954,7 +4954,7 @@
           "input",
           "padding-x"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--input-padding-x)",
         "description": "Horizontal padding of the input."
@@ -4966,7 +4966,7 @@
           "font-size",
           "sm"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--input-font-size-sm)",
         "description": "Font size of the small input."
@@ -4977,7 +4977,7 @@
           "input",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--input-radius)",
         "description": "Corner radius of the input."
@@ -4989,7 +4989,7 @@
           "font-size",
           "md"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--input-font-size-md)",
         "description": "Font size of the medium input."
@@ -5001,7 +5001,7 @@
           "font-size",
           "lg"
         ],
-        "value": 18,
+        "value": "1.125rem",
         "type": "number",
         "variable": "var(--input-font-size-lg)",
         "description": "Font size of the large input."
@@ -5037,7 +5037,7 @@
           "padding-y",
           "sm"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--input-padding-y-sm)",
         "description": "Vertical padding of the small input. `space.100` (8px) plus `font-size.sm` (14px) gives a 30px height."
@@ -5049,7 +5049,7 @@
           "padding-y",
           "md"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--input-padding-y-md)",
         "description": "Vertical padding of the medium input. `space.150` (12px) plus `font-size.base` (16px) gives a 40px height."
@@ -5061,7 +5061,7 @@
           "padding-y",
           "lg"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--input-padding-y-lg)",
         "description": "Vertical padding of the large input. `space.200` (16px) plus `font-size.lg` (18px) gives a 50px height."
@@ -5262,7 +5262,7 @@
           "alert",
           "padding-x"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--alert-padding-x)",
         "description": "Horizontal padding of the alert."
@@ -5273,7 +5273,7 @@
           "alert",
           "padding-y"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--alert-padding-y)",
         "description": "Vertical padding of the alert."
@@ -5284,7 +5284,7 @@
           "alert",
           "title-margin-bottom"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--alert-title-margin-bottom)",
         "description": "Bottom margin of the alert title."
@@ -5295,7 +5295,7 @@
           "alert",
           "radius"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "dimension",
         "variable": "var(--alert-radius)",
         "description": "Corner radius of the alert."
@@ -5307,7 +5307,7 @@
           "title",
           "font-size"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--alert-title-font-size)",
         "description": "Font size of the alert title."
@@ -5318,7 +5318,7 @@
           "alert",
           "description-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--alert-description-font-size)",
         "description": "Font size of the alert description."
@@ -5513,7 +5513,7 @@
           "root",
           "height"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--menubar-root-height)",
         "description": "Height of the menubar bar."
@@ -5525,7 +5525,7 @@
           "root",
           "padding"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--menubar-root-padding)",
         "description": "Padding inside the menubar bar."
@@ -5537,7 +5537,7 @@
           "trigger",
           "padding-x"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--menubar-trigger-padding-x)",
         "description": "Horizontal padding of the menubar trigger."
@@ -5549,7 +5549,7 @@
           "trigger",
           "padding-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--menubar-trigger-padding-y)",
         "description": "Vertical padding of the menubar trigger."
@@ -5561,7 +5561,7 @@
           "item",
           "padding-x"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--menubar-item-padding-x)",
         "description": "Horizontal padding of the menubar item."
@@ -5573,7 +5573,7 @@
           "item",
           "inset"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--menubar-item-inset)",
         "description": "Extra left padding for menubar items without an indicator, so their labels line up with indicator items."
@@ -5585,7 +5585,7 @@
           "item",
           "indicator-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--menubar-item-indicator-size)",
         "description": "Size of the menubar item indicator."
@@ -5597,7 +5597,7 @@
           "item",
           "icon-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--menubar-item-icon-size)",
         "description": "Size of the menubar item icon."
@@ -5608,7 +5608,7 @@
           "menubar",
           "list-gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--menubar-list-gap)",
         "description": "Gap between the items inside the menubar list."
@@ -5619,7 +5619,7 @@
           "menubar",
           "checkbox-padding"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--menubar-checkbox-padding)",
         "description": "Padding of menubar checkbox items."
@@ -5630,7 +5630,7 @@
           "menubar",
           "item-padding-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--menubar-item-padding-y)",
         "description": "Vertical padding of the menubar item."
@@ -5641,7 +5641,7 @@
           "menubar",
           "subitem-padding-left"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--menubar-subitem-padding-left)",
         "description": "Left padding of the menubar subitem."
@@ -5652,7 +5652,7 @@
           "menubar",
           "subitem-padding-right"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--menubar-subitem-padding-right)",
         "description": "Right padding of the menubar subitem."
@@ -5663,7 +5663,7 @@
           "menubar",
           "trigger-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--menubar-trigger-radius)",
         "description": "Corner radius of the menubar trigger."
@@ -5674,7 +5674,7 @@
           "menubar",
           "item-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--menubar-item-radius)",
         "description": "Corner radius of the menubar item."
@@ -5685,7 +5685,7 @@
           "menubar",
           "item-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--menubar-item-font-size)",
         "description": "Font size of the menubar item."
@@ -5708,7 +5708,7 @@
           "menubar",
           "content-min-width"
         ],
-        "value": "256px",
+        "value": "16rem",
         "type": "spacing",
         "variable": "var(--menubar-content-min-width)",
         "description": "Minimum width of the menubar content."
@@ -5719,7 +5719,7 @@
           "menubar",
           "sub-content-min-width"
         ],
-        "value": "160px",
+        "value": "10rem",
         "type": "spacing",
         "variable": "var(--menubar-sub-content-min-width)",
         "description": "Minimum width of the menubar sub content."
@@ -5730,7 +5730,7 @@
           "menubar",
           "shortcut-font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--menubar-shortcut-font-size)",
         "description": "Font size of the menubar shortcut."
@@ -5752,7 +5752,7 @@
           "menubar",
           "separator-margin-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--menubar-separator-margin-y)",
         "description": "Vertical margin of the menubar separator."
@@ -5763,7 +5763,7 @@
           "menubar",
           "separator-margin-x"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--menubar-separator-margin-x)",
         "description": "Horizontal margin of the menubar separator."
@@ -5774,7 +5774,7 @@
           "menubar",
           "radio-indicator-size"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--menubar-radio-indicator-size)",
         "description": "Size of the menubar radio indicator."
@@ -5797,7 +5797,7 @@
           "item",
           "indicator-left"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--menubar-item-indicator-left)",
         "description": "Left offset of the menubar item check indicator."
@@ -6165,7 +6165,7 @@
           "input",
           "height"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--command-input-height)",
         "description": "Height of the command menu input."
@@ -6177,7 +6177,7 @@
           "input",
           "padding-y"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--command-input-padding-y)",
         "description": "Vertical padding of the command menu input."
@@ -6190,7 +6190,7 @@
           "icon",
           "size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--command-input-icon-size)",
         "description": "Size of the search icon in the command menu input."
@@ -6202,7 +6202,7 @@
           "group",
           "padding"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--command-group-padding)",
         "description": "Padding inside the command menu group."
@@ -6213,7 +6213,7 @@
           "command",
           "item-padding-x"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--command-item-padding-x)",
         "description": "Horizontal padding of the command menu item."
@@ -6224,7 +6224,7 @@
           "command",
           "item-indicator-margin-right"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--command-item-indicator-margin-right)",
         "description": "Margin of the command menu item indicator right."
@@ -6235,7 +6235,7 @@
           "command",
           "empty-padding-y"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--command-empty-padding-y)",
         "description": "Vertical padding of the command menu empty."
@@ -6246,7 +6246,7 @@
           "command",
           "group-heading-padding-x"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--command-group-heading-padding-x)",
         "description": "Horizontal padding of the command menu group heading."
@@ -6257,7 +6257,7 @@
           "command",
           "group-heading-padding-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--command-group-heading-padding-y)",
         "description": "Vertical padding of the command menu group heading."
@@ -6268,7 +6268,7 @@
           "command",
           "separator-margin-x"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--command-separator-margin-x)",
         "description": "Horizontal margin of the command menu separator."
@@ -6279,7 +6279,7 @@
           "command",
           "content-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--command-content-radius)",
         "description": "Corner radius of the command menu content."
@@ -6290,7 +6290,7 @@
           "command",
           "item-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--command-item-radius)",
         "description": "Corner radius of the command menu item."
@@ -6301,7 +6301,7 @@
           "command",
           "item-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--command-item-font-size)",
         "description": "Font size of the command menu item."
@@ -6312,7 +6312,7 @@
           "command",
           "group-heading-font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--command-group-heading-font-size)",
         "description": "Font size of the command menu group heading."
@@ -6323,7 +6323,7 @@
           "command",
           "item-padding-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--command-item-padding-y)",
         "description": "Vertical padding of the command menu item."
@@ -6347,7 +6347,7 @@
           "command",
           "list-max-height"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "spacing",
         "variable": "var(--command-list-max-height)",
         "description": "Maximum height of the command menu list."
@@ -6492,7 +6492,7 @@
           "height",
           "sm"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--tabs-list-height-sm)",
         "description": "Height of the small tabs list."
@@ -6505,7 +6505,7 @@
           "height",
           "md"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--tabs-list-height-md)",
         "description": "Height of the medium tabs list."
@@ -6518,7 +6518,7 @@
           "height",
           "lg"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--tabs-list-height-lg)",
         "description": "Height of the large tabs list."
@@ -6531,7 +6531,7 @@
           "padding",
           "sm"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--tabs-list-padding-sm)",
         "description": "Padding inside the small tabs list."
@@ -6544,7 +6544,7 @@
           "padding",
           "md"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--tabs-list-padding-md)",
         "description": "Padding inside the medium tabs list."
@@ -6557,7 +6557,7 @@
           "padding",
           "lg"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--tabs-list-padding-lg)",
         "description": "Padding inside the large tabs list."
@@ -6569,7 +6569,7 @@
           "list",
           "gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--tabs-list-gap)",
         "description": "Gap between the items inside the tabs list."
@@ -6595,7 +6595,7 @@
           "padding-x",
           "sm"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--tabs-trigger-padding-x-sm)",
         "description": "Horizontal padding of the small tabs trigger."
@@ -6608,7 +6608,7 @@
           "padding-x",
           "md"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--tabs-trigger-padding-x-md)",
         "description": "Horizontal padding of the medium tabs trigger."
@@ -6621,7 +6621,7 @@
           "padding-x",
           "lg"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--tabs-trigger-padding-x-lg)",
         "description": "Horizontal padding of the large tabs trigger."
@@ -6634,7 +6634,7 @@
           "padding-y",
           "sm"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--tabs-trigger-padding-y-sm)",
         "description": "Vertical padding of the small tabs trigger."
@@ -6647,7 +6647,7 @@
           "padding-y",
           "md"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--tabs-trigger-padding-y-md)",
         "description": "Vertical padding of the medium tabs trigger."
@@ -6660,7 +6660,7 @@
           "padding-y",
           "lg"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--tabs-trigger-padding-y-lg)",
         "description": "Vertical padding of the large tabs trigger."
@@ -6673,7 +6673,7 @@
           "font-size",
           "sm"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--tabs-trigger-font-size-sm)",
         "description": "Font size of the small tabs trigger."
@@ -6686,7 +6686,7 @@
           "font-size",
           "md"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--tabs-trigger-font-size-md)",
         "description": "Font size of the medium tabs trigger."
@@ -6699,7 +6699,7 @@
           "font-size",
           "lg"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--tabs-trigger-font-size-lg)",
         "description": "Font size of the large tabs trigger."
@@ -6723,7 +6723,7 @@
           "content",
           "padding"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--tabs-content-padding)",
         "description": "Padding inside the tabs content."
@@ -6735,7 +6735,7 @@
           "content",
           "margin-top"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--tabs-content-margin-top)",
         "description": "Top margin of the tabs content."
@@ -6807,7 +6807,7 @@
           "collapsible",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--collapsible-radius)",
         "description": "Corner radius of the collapsible."
@@ -6909,7 +6909,7 @@
           "day",
           "size"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--calendar-day-size)",
         "description": "Size of the calendar day."
@@ -6920,7 +6920,7 @@
           "calendar",
           "container-gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--calendar-container-gap)",
         "description": "Gap between the items inside the calendar container."
@@ -6931,7 +6931,7 @@
           "calendar",
           "months-gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--calendar-months-gap)",
         "description": "Gap between the items inside the calendar months."
@@ -6942,7 +6942,7 @@
           "calendar",
           "nav-button-padding"
         ],
-        "value": "0px",
+        "value": "0rem",
         "type": "spacing",
         "variable": "var(--calendar-nav-button-padding)",
         "description": "Padding inside the calendar nav button."
@@ -6953,7 +6953,7 @@
           "calendar",
           "nav-button-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--calendar-nav-button-radius)",
         "description": "Corner radius of the calendar nav button."
@@ -6964,7 +6964,7 @@
           "calendar",
           "header-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--calendar-header-font-size)",
         "description": "Font size of the calendar header."
@@ -6975,7 +6975,7 @@
           "calendar",
           "day-font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--calendar-day-font-size)",
         "description": "Font size of the calendar day."
@@ -7034,7 +7034,7 @@
           "calendar",
           "container-padding"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--calendar-container-padding)",
         "description": "Padding inside the calendar container."
@@ -7046,7 +7046,7 @@
           "nav",
           "button-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--calendar-nav-button-size)",
         "description": "Size of the calendar nav button."
@@ -7058,7 +7058,7 @@
           "nav",
           "icon-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--calendar-nav-icon-size)",
         "description": "Size of the calendar nav icon."
@@ -7069,7 +7069,7 @@
           "calendar",
           "cell-size"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--calendar-cell-size)",
         "description": "Size of the calendar cell."
@@ -7270,7 +7270,7 @@
           "trigger",
           "padding"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--accordion-trigger-padding)",
         "description": "Padding inside the accordion trigger."
@@ -7282,7 +7282,7 @@
           "trigger",
           "font-size"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--accordion-trigger-font-size)",
         "description": "Font size of the accordion trigger."
@@ -7294,7 +7294,7 @@
           "content",
           "padding"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--accordion-content-padding)",
         "description": "Padding inside the accordion content."
@@ -7306,7 +7306,7 @@
           "content",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--accordion-content-font-size)",
         "description": "Font size of the accordion content."
@@ -7365,7 +7365,7 @@
           "trigger",
           "icon-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--accordion-trigger-icon-size)",
         "description": "Size of the accordion trigger icon."
@@ -7435,7 +7435,7 @@
           "size",
           "sm"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--avatar-size-sm)",
         "description": "Size of the small avatar."
@@ -7447,7 +7447,7 @@
           "size",
           "md"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--avatar-size-md)",
         "description": "Size of the medium avatar."
@@ -7459,7 +7459,7 @@
           "size",
           "lg"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--avatar-size-lg)",
         "description": "Size of the large avatar."
@@ -7471,7 +7471,7 @@
           "size",
           "xl"
         ],
-        "value": "80px",
+        "value": "5rem",
         "type": "spacing",
         "variable": "var(--avatar-size-xl)",
         "description": "Size of the extra-large avatar."
@@ -7495,7 +7495,7 @@
           "font-size",
           "sm"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--avatar-fallback-font-size-sm)",
         "description": "Font size of the small avatar fallback."
@@ -7508,7 +7508,7 @@
           "font-size",
           "md"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--avatar-fallback-font-size-md)",
         "description": "Font size of the medium avatar fallback."
@@ -7521,7 +7521,7 @@
           "font-size",
           "lg"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--avatar-fallback-font-size-lg)",
         "description": "Font size of the large avatar fallback."
@@ -7534,7 +7534,7 @@
           "font-size",
           "xl"
         ],
-        "value": 20,
+        "value": "1.25rem",
         "type": "number",
         "variable": "var(--avatar-fallback-font-size-xl)",
         "description": "Font size of the extra-large avatar fallback."
@@ -7602,7 +7602,7 @@
           "breadcrumb",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--breadcrumb-font-size)",
         "description": "Font size of the breadcrumb."
@@ -7613,7 +7613,7 @@
           "breadcrumb",
           "link-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--breadcrumb-link-radius)",
         "description": "Corner radius of the breadcrumb link."
@@ -7635,7 +7635,7 @@
           "breadcrumb",
           "list-gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--breadcrumb-list-gap)",
         "description": "Gap between the items inside the breadcrumb list."
@@ -7646,7 +7646,7 @@
           "breadcrumb",
           "item-gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--breadcrumb-item-gap)",
         "description": "Gap between the items inside the breadcrumb item."
@@ -7657,7 +7657,7 @@
           "breadcrumb",
           "separator-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--breadcrumb-separator-size)",
         "description": "Size of the breadcrumb separator."
@@ -7668,7 +7668,7 @@
           "breadcrumb",
           "ellipsis-size"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--breadcrumb-ellipsis-size)",
         "description": "Size of the breadcrumb ellipsis."
@@ -7737,7 +7737,7 @@
           "button",
           "size"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--carousel-button-size)",
         "description": "Size of the carousel button."
@@ -7749,7 +7749,7 @@
           "button",
           "offset"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--carousel-button-offset)",
         "description": "Distance the previous and next buttons sit outside the carousel edges."
@@ -7761,7 +7761,7 @@
           "button",
           "icon-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--carousel-button-icon-size)",
         "description": "Size of the carousel button icon."
@@ -7772,7 +7772,7 @@
           "carousel",
           "gap"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--carousel-gap)",
         "description": "Gap between the items inside the carousel."
@@ -7794,7 +7794,7 @@
           "carousel",
           "item-spacing"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--carousel-item-spacing)",
         "description": "Spacing between carousel slides."
@@ -7987,7 +7987,7 @@
           "width",
           "sm"
         ],
-        "value": "384px",
+        "value": "24rem",
         "type": "spacing",
         "variable": "var(--dialog-content-width-sm)",
         "description": "Width of the small dialog content."
@@ -8000,7 +8000,7 @@
           "width",
           "md"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "spacing",
         "variable": "var(--dialog-content-width-md)",
         "description": "Width of the medium dialog content."
@@ -8013,7 +8013,7 @@
           "width",
           "lg"
         ],
-        "value": "576px",
+        "value": "36rem",
         "type": "spacing",
         "variable": "var(--dialog-content-width-lg)",
         "description": "Width of the large dialog content."
@@ -8025,7 +8025,7 @@
           "content",
           "max-width"
         ],
-        "value": "672px",
+        "value": "42rem",
         "type": "spacing",
         "variable": "var(--dialog-content-max-width)",
         "description": "Maximum width of the dialog content."
@@ -8037,7 +8037,7 @@
           "content",
           "padding"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--dialog-content-padding)",
         "description": "Padding inside the dialog content."
@@ -8049,7 +8049,7 @@
           "content",
           "radius"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "dimension",
         "variable": "var(--dialog-content-radius)",
         "description": "Corner radius of the dialog content."
@@ -8061,7 +8061,7 @@
           "header",
           "gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--dialog-header-gap)",
         "description": "Gap between the items inside the dialog header."
@@ -8073,7 +8073,7 @@
           "header",
           "margin-bottom"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--dialog-header-margin-bottom)",
         "description": "Bottom margin of the dialog header."
@@ -8085,7 +8085,7 @@
           "footer",
           "margin-top"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--dialog-footer-margin-top)",
         "description": "Top margin of the dialog footer."
@@ -8097,7 +8097,7 @@
           "footer",
           "gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--dialog-footer-gap)",
         "description": "Gap between the items inside the dialog footer."
@@ -8108,7 +8108,7 @@
           "dialog",
           "close-button-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--dialog-close-button-radius)",
         "description": "Corner radius of the dialog close button."
@@ -8119,7 +8119,7 @@
           "dialog",
           "close-button-offset"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--dialog-close-button-offset)",
         "description": "Distance of the dialog close button from the top and right edges."
@@ -8154,7 +8154,7 @@
           "dialog",
           "title-font-size"
         ],
-        "value": 20,
+        "value": "1.25rem",
         "type": "number",
         "variable": "var(--dialog-title-font-size)",
         "description": "Font size of the dialog title."
@@ -8165,7 +8165,7 @@
           "dialog",
           "description-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--dialog-description-font-size)",
         "description": "Font size of the dialog description."
@@ -8199,7 +8199,7 @@
           "close-button",
           "icon-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--dialog-close-button-icon-size)",
         "description": "Size of the close icon in a dialog."
@@ -8313,7 +8313,7 @@
           "form",
           "item-gap"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--form-item-gap)",
         "description": "Gap between the label, control and messages of one form field."
@@ -8324,7 +8324,7 @@
           "form",
           "label-gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--form-label-gap)",
         "description": "Gap between a form label and its control."
@@ -8335,7 +8335,7 @@
           "form",
           "error-margin"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--form-error-margin)",
         "description": "Left margin of the form error message."
@@ -8346,7 +8346,7 @@
           "form",
           "description-font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--form-description-font-size)",
         "description": "Font size of the form description."
@@ -8379,7 +8379,7 @@
           "form",
           "error-font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--form-error-font-size)",
         "description": "Font size of form error messages."
@@ -8471,7 +8471,7 @@
           "width",
           "sm"
         ],
-        "value": "320px",
+        "value": "20rem",
         "type": "spacing",
         "variable": "var(--hover-card-content-width-sm)",
         "description": "Width of the small hover card content."
@@ -8484,7 +8484,7 @@
           "width",
           "md"
         ],
-        "value": "384px",
+        "value": "24rem",
         "type": "spacing",
         "variable": "var(--hover-card-content-width-md)",
         "description": "Width of the medium hover card content."
@@ -8497,7 +8497,7 @@
           "width",
           "lg"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "spacing",
         "variable": "var(--hover-card-content-width-lg)",
         "description": "Width of the large hover card content."
@@ -8508,7 +8508,7 @@
           "hover-card",
           "content-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--hover-card-content-radius)",
         "description": "Corner radius of the hover card content."
@@ -8519,7 +8519,7 @@
           "hover-card",
           "content-padding"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--hover-card-content-padding)",
         "description": "Padding inside the hover card content."
@@ -8599,7 +8599,7 @@
           "item",
           "size"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--pagination-item-size)",
         "description": "Size of the pagination item."
@@ -8611,7 +8611,7 @@
           "item",
           "padding-x"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--pagination-item-padding-x)",
         "description": "Horizontal padding of the pagination item."
@@ -8623,7 +8623,7 @@
           "item",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--pagination-item-radius)",
         "description": "Corner radius of the pagination item."
@@ -8635,7 +8635,7 @@
           "item",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--pagination-item-font-size)",
         "description": "Font size of the pagination item."
@@ -8647,7 +8647,7 @@
           "item",
           "gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--pagination-item-gap)",
         "description": "Gap between the items inside the pagination item."
@@ -8658,7 +8658,7 @@
           "pagination",
           "list-gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--pagination-list-gap)",
         "description": "Gap between the items inside the pagination list."
@@ -8669,7 +8669,7 @@
           "pagination",
           "ellipsis-padding-left"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--pagination-ellipsis-padding-left)",
         "description": "Left padding of the pagination ellipsis."
@@ -8680,7 +8680,7 @@
           "pagination",
           "ellipsis-padding-right"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--pagination-ellipsis-padding-right)",
         "description": "Right padding of the pagination ellipsis."
@@ -8714,7 +8714,7 @@
           "pagination",
           "icon-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--pagination-icon-size)",
         "description": "Size of the pagination icon."
@@ -8784,7 +8784,7 @@
           "width",
           "sm"
         ],
-        "value": "320px",
+        "value": "20rem",
         "type": "spacing",
         "variable": "var(--popover-content-width-sm)",
         "description": "Width of the small popover content."
@@ -8797,7 +8797,7 @@
           "width",
           "md"
         ],
-        "value": "384px",
+        "value": "24rem",
         "type": "spacing",
         "variable": "var(--popover-content-width-md)",
         "description": "Width of the medium popover content."
@@ -8810,7 +8810,7 @@
           "width",
           "lg"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "spacing",
         "variable": "var(--popover-content-width-lg)",
         "description": "Width of the large popover content."
@@ -8821,7 +8821,7 @@
           "popover",
           "content-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--popover-content-radius)",
         "description": "Corner radius of the popover content."
@@ -8832,7 +8832,7 @@
           "popover",
           "content-padding"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--popover-content-padding)",
         "description": "Padding inside the popover content."
@@ -8922,7 +8922,7 @@
           "progress",
           "height"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--progress-height)",
         "description": "Height of the progress."
@@ -9002,7 +9002,7 @@
           "size",
           "sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--radio-size-sm)",
         "description": "Size of the small radio."
@@ -9014,7 +9014,7 @@
           "size",
           "md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--radio-size-md)",
         "description": "Size of the medium radio."
@@ -9026,7 +9026,7 @@
           "size",
           "lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--radio-size-lg)",
         "description": "Size of the large radio."
@@ -9048,7 +9048,7 @@
           "radio",
           "indicator-size-sm"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--radio-indicator-size-sm)",
         "description": "Size of the small radio indicator."
@@ -9059,7 +9059,7 @@
           "radio",
           "indicator-size-md"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--radio-indicator-size-md)",
         "description": "Size of the medium radio indicator."
@@ -9070,7 +9070,7 @@
           "radio",
           "indicator-size-lg"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--radio-indicator-size-lg)",
         "description": "Size of the large radio indicator."
@@ -9105,7 +9105,7 @@
           "radio",
           "group-gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--radio-group-gap)",
         "description": "Gap between radios in a radio group."
@@ -9184,7 +9184,7 @@
           "resizable",
           "handle-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--resizable-handle-radius)",
         "description": "Corner radius of the resizable handle."
@@ -9195,7 +9195,7 @@
           "resizable",
           "grip-icon-size"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--resizable-grip-icon-size)",
         "description": "Size of the grip icon inside the resizable handle (xs icon, 12px)."
@@ -9206,7 +9206,7 @@
           "resizable",
           "handle-height"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--resizable-handle-height)",
         "description": "Height of the resizable handle."
@@ -9217,7 +9217,7 @@
           "resizable",
           "handle-width"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--resizable-handle-width)",
         "description": "Width of the resizable handle."
@@ -9274,7 +9274,7 @@
           "scrollbar",
           "width"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--scrollbar-width)",
         "description": "Width of the scroll area scrollbar."
@@ -9307,7 +9307,7 @@
           "scrollbar",
           "thumb-min-height"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--scrollbar-thumb-min-height)",
         "description": "Minimum height of the scroll area scrollbar thumb."
@@ -9318,7 +9318,7 @@
           "scrollbar",
           "padding"
         ],
-        "value": "1px",
+        "value": "0.0625rem",
         "type": "spacing",
         "variable": "var(--scrollbar-padding)",
         "description": "Padding inside the scroll area scrollbar."
@@ -9342,7 +9342,7 @@
           "skeleton",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--skeleton-radius)",
         "description": "Corner radius of the skeleton."
@@ -9354,7 +9354,7 @@
           "height",
           "text"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--skeleton-height-text)",
         "description": "Height of a text-line skeleton."
@@ -9366,7 +9366,7 @@
           "height",
           "title"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--skeleton-height-title)",
         "description": "Height of a title skeleton."
@@ -9378,7 +9378,7 @@
           "height",
           "button"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--skeleton-height-button)",
         "description": "Height of a button skeleton."
@@ -9390,7 +9390,7 @@
           "height",
           "avatar"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--skeleton-height-avatar)",
         "description": "Height and width of an avatar skeleton."
@@ -9412,7 +9412,7 @@
           "skeleton",
           "rounded-sm"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--skeleton-rounded-sm)",
         "description": "Corner radius for skeletons with slightly rounded corners."
@@ -9469,7 +9469,7 @@
           "slider",
           "track-height"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--slider-track-height)",
         "description": "Height of the slider track."
@@ -9491,7 +9491,7 @@
           "slider",
           "thumb-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--slider-thumb-size)",
         "description": "Size of the slider thumb."
@@ -9639,7 +9639,7 @@
           "cell",
           "padding-x"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--table-cell-padding-x)",
         "description": "Horizontal padding of the table cell."
@@ -9651,7 +9651,7 @@
           "cell",
           "padding-y"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--table-cell-padding-y)",
         "description": "Vertical padding of the table cell."
@@ -9663,7 +9663,7 @@
           "header",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--table-header-font-size)",
         "description": "Font size of the table header."
@@ -9675,7 +9675,7 @@
           "cell",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--table-cell-font-size)",
         "description": "Font size of the table cell."
@@ -9687,7 +9687,7 @@
           "header",
           "height"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--table-header-height)",
         "description": "Height of the table header."
@@ -9698,7 +9698,7 @@
           "table",
           "header-padding-right"
         ],
-        "value": "0px",
+        "value": "0rem",
         "type": "spacing",
         "variable": "var(--table-header-padding-right)",
         "description": "Right padding of the table header."
@@ -9721,7 +9721,7 @@
           "table",
           "caption-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--table-caption-font-size)",
         "description": "Font size of the table caption."
@@ -9732,7 +9732,7 @@
           "table",
           "caption-margin-top"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--table-caption-margin-top)",
         "description": "Top margin of the table caption."
@@ -9811,7 +9811,7 @@
           "toast",
           "width"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "spacing",
         "variable": "var(--toast-width)",
         "description": "Width of the toast."
@@ -9822,7 +9822,7 @@
           "toast",
           "padding"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--toast-padding)",
         "description": "Padding inside the toast."
@@ -9833,7 +9833,7 @@
           "toast",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--toast-radius)",
         "description": "Corner radius of the toast."
@@ -9844,7 +9844,7 @@
           "toast",
           "gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--toast-gap)",
         "description": "Gap between the toast content and its action button."
@@ -9856,7 +9856,7 @@
           "title",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--toast-title-font-size)",
         "description": "Font size of the toast title."
@@ -9880,7 +9880,7 @@
           "description",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--toast-description-font-size)",
         "description": "Font size of the toast description."
@@ -9904,7 +9904,7 @@
           "action",
           "height"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--toast-action-height)",
         "description": "Height of the toast action."
@@ -9916,7 +9916,7 @@
           "action",
           "padding-x"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--toast-action-padding-x)",
         "description": "Horizontal padding of the toast action."
@@ -9928,7 +9928,7 @@
           "action",
           "font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--toast-action-font-size)",
         "description": "Font size of the toast action."
@@ -10047,7 +10047,7 @@
           "toast",
           "close-button-padding"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--toast-close-button-padding)",
         "description": "Padding inside the toast close button."
@@ -10058,7 +10058,7 @@
           "toast",
           "close-button-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--toast-close-button-radius)",
         "description": "Corner radius of the toast close button."
@@ -10070,7 +10070,7 @@
           "action",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--toast-action-radius)",
         "description": "Corner radius of the toast action."
@@ -10082,7 +10082,7 @@
           "viewport",
           "padding"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--toast-viewport-padding)",
         "description": "Padding inside the toast viewport."
@@ -10094,7 +10094,7 @@
           "viewport",
           "gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--toast-viewport-gap)",
         "description": "Gap between the items inside the toast viewport."
@@ -10130,7 +10130,7 @@
           "close-button",
           "position"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--toast-close-button-position)",
         "description": "Offset from the corner of the toast close button."
@@ -10153,7 +10153,7 @@
           "toast",
           "close-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--toast-close-size)",
         "description": "Width and height of the toast close button."
@@ -10175,7 +10175,7 @@
           "toast",
           "content-gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--toast-content-gap)",
         "description": "Gap between the items inside the toast content."
@@ -10209,7 +10209,7 @@
           "close-button",
           "icon-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--toast-close-button-icon-size)",
         "description": "Size of the close icon in a toast."
@@ -10302,7 +10302,7 @@
           "default",
           "height"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--toggle-size-default-height)",
         "description": "Height of the default-size toggle."
@@ -10315,7 +10315,7 @@
           "default",
           "padding-x"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--toggle-size-default-padding-x)",
         "description": "Horizontal padding of the default-size toggle."
@@ -10328,7 +10328,7 @@
           "sm",
           "height"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--toggle-size-sm-height)",
         "description": "Height of the small toggle size."
@@ -10341,7 +10341,7 @@
           "sm",
           "padding-x"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--toggle-size-sm-padding-x)",
         "description": "Horizontal padding of the small toggle size."
@@ -10354,7 +10354,7 @@
           "lg",
           "height"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--toggle-size-lg-height)",
         "description": "Height of the large toggle size."
@@ -10367,7 +10367,7 @@
           "lg",
           "padding-x"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--toggle-size-lg-padding-x)",
         "description": "Horizontal padding of the large toggle size."
@@ -10378,7 +10378,7 @@
           "toggle",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--toggle-radius)",
         "description": "Corner radius of the toggle."
@@ -10389,7 +10389,7 @@
           "toggle",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--toggle-font-size)",
         "description": "Font size of the toggle."
@@ -10490,7 +10490,7 @@
           "tooltip",
           "padding-x"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--tooltip-padding-x)",
         "description": "Horizontal padding of the tooltip."
@@ -10501,7 +10501,7 @@
           "tooltip",
           "padding-y"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--tooltip-padding-y)",
         "description": "Vertical padding of the tooltip."
@@ -10512,7 +10512,7 @@
           "tooltip",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--tooltip-radius)",
         "description": "Corner radius of the tooltip."
@@ -10523,7 +10523,7 @@
           "tooltip",
           "font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--tooltip-font-size)",
         "description": "Font size of the tooltip."
@@ -10534,7 +10534,7 @@
           "tooltip",
           "max-width"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "spacing",
         "variable": "var(--tooltip-max-width)",
         "description": "Maximum width of the tooltip."
@@ -10571,7 +10571,7 @@
           "height",
           "sm"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--select-trigger-height-sm)",
         "description": "Height of the small select trigger."
@@ -10584,7 +10584,7 @@
           "height",
           "md"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--select-trigger-height-md)",
         "description": "Height of the medium select trigger."
@@ -10597,7 +10597,7 @@
           "height",
           "lg"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--select-trigger-height-lg)",
         "description": "Height of the large select trigger."
@@ -10610,7 +10610,7 @@
           "padding-x",
           "sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--select-trigger-padding-x-sm)",
         "description": "Horizontal padding of the small select trigger."
@@ -10623,7 +10623,7 @@
           "padding-x",
           "md"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--select-trigger-padding-x-md)",
         "description": "Horizontal padding of the medium select trigger."
@@ -10636,7 +10636,7 @@
           "padding-x",
           "lg"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--select-trigger-padding-x-lg)",
         "description": "Horizontal padding of the large select trigger."
@@ -10648,7 +10648,7 @@
           "trigger",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--select-trigger-radius)",
         "description": "Corner radius of the select trigger."
@@ -10661,7 +10661,7 @@
           "font-size",
           "sm"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--select-trigger-font-size-sm)",
         "description": "Font size of the small select trigger."
@@ -10674,7 +10674,7 @@
           "font-size",
           "md"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--select-trigger-font-size-md)",
         "description": "Font size of the medium select trigger."
@@ -10687,7 +10687,7 @@
           "font-size",
           "lg"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--select-trigger-font-size-lg)",
         "description": "Font size of the large select trigger."
@@ -10699,7 +10699,7 @@
           "content",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--select-content-radius)",
         "description": "Corner radius of the select content."
@@ -10711,7 +10711,7 @@
           "content",
           "padding"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--select-content-padding)",
         "description": "Padding inside the select content."
@@ -10723,7 +10723,7 @@
           "content",
           "max-height"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "spacing",
         "variable": "var(--select-content-max-height)",
         "description": "Maximum height of the select content."
@@ -10735,7 +10735,7 @@
           "content",
           "min-width"
         ],
-        "value": "160px",
+        "value": "10rem",
         "type": "spacing",
         "variable": "var(--select-content-min-width)",
         "description": "Minimum width of the select content."
@@ -10747,7 +10747,7 @@
           "item",
           "padding-y"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--select-item-padding-y)",
         "description": "Vertical padding of the select item."
@@ -10759,7 +10759,7 @@
           "item",
           "padding-left"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--select-item-padding-left)",
         "description": "Left padding of the select item."
@@ -10771,7 +10771,7 @@
           "item",
           "padding-right"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--select-item-padding-right)",
         "description": "Right padding of the select item."
@@ -10783,7 +10783,7 @@
           "item",
           "radius"
         ],
-        "value": "2px",
+        "value": "0.125rem",
         "type": "dimension",
         "variable": "var(--select-item-radius)",
         "description": "Corner radius of the select item."
@@ -10806,7 +10806,7 @@
           "select",
           "separator-margin-x"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--select-separator-margin-x)",
         "description": "Horizontal margin of the select separator."
@@ -10817,7 +10817,7 @@
           "select",
           "separator-margin-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--select-separator-margin-y)",
         "description": "Vertical margin of the select separator."
@@ -10841,7 +10841,7 @@
           "item",
           "indicator-left"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--select-item-indicator-left)",
         "description": "Left offset of the select item check indicator."
@@ -10973,7 +10973,7 @@
           "trigger",
           "icon-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--select-trigger-icon-size)",
         "description": "Size of the chevron in the select trigger."
@@ -10985,7 +10985,7 @@
           "item",
           "icon-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--select-item-icon-size)",
         "description": "Size of the check icon in a selected select item."
@@ -10997,7 +10997,7 @@
           "item",
           "indicator-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--select-item-indicator-size)",
         "description": "Size of the box that holds the check icon in a select item."
@@ -11023,7 +11023,7 @@
           "size",
           "sm"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--checkbox-size-sm)",
         "description": "Size of the small checkbox."
@@ -11035,7 +11035,7 @@
           "size",
           "md"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--checkbox-size-md)",
         "description": "Width and height of the medium checkbox."
@@ -11047,7 +11047,7 @@
           "size",
           "lg"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--checkbox-size-lg)",
         "description": "Size of the large checkbox."
@@ -11071,7 +11071,7 @@
           "border",
           "radius"
         ],
-        "value": "2px",
+        "value": "0.125rem",
         "type": "dimension",
         "variable": "var(--checkbox-border-radius)",
         "description": "Corner radius of the checkbox."
@@ -11084,7 +11084,7 @@
           "size",
           "sm"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--checkbox-icon-size-sm)",
         "description": "Size of the small checkbox icon."
@@ -11097,7 +11097,7 @@
           "size",
           "md"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--checkbox-icon-size-md)",
         "description": "Size of the medium checkbox icon."
@@ -11110,7 +11110,7 @@
           "size",
           "lg"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--checkbox-icon-size-lg)",
         "description": "Size of the large checkbox icon."
@@ -11238,7 +11238,7 @@
           "height",
           "sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--switch-track-height-sm)",
         "description": "Height of the small switch track."
@@ -11251,7 +11251,7 @@
           "height",
           "md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--switch-track-height-md)",
         "description": "Height of the medium switch track."
@@ -11264,7 +11264,7 @@
           "height",
           "lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--switch-track-height-lg)",
         "description": "Height of the large switch track."
@@ -11277,7 +11277,7 @@
           "width",
           "sm"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--switch-track-width-sm)",
         "description": "Width of the small switch track."
@@ -11290,7 +11290,7 @@
           "width",
           "md"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--switch-track-width-md)",
         "description": "Width of the medium switch track."
@@ -11303,7 +11303,7 @@
           "width",
           "lg"
         ],
-        "value": "64px",
+        "value": "4rem",
         "type": "spacing",
         "variable": "var(--switch-track-width-lg)",
         "description": "Width of the large switch track."
@@ -11328,7 +11328,7 @@
           "size",
           "sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--switch-thumb-size-sm)",
         "description": "Size of the small switch thumb."
@@ -11341,7 +11341,7 @@
           "size",
           "md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--switch-thumb-size-md)",
         "description": "Size of the medium switch thumb."
@@ -11354,7 +11354,7 @@
           "size",
           "lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--switch-thumb-size-lg)",
         "description": "Size of the large switch thumb."
@@ -11379,7 +11379,7 @@
           "translate",
           "sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--switch-thumb-translate-sm)",
         "description": "Travel distance of the small switch thumb."
@@ -11392,7 +11392,7 @@
           "translate",
           "md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--switch-thumb-translate-md)",
         "description": "Distance the medium thumb travels when the switch turns on."
@@ -11405,7 +11405,7 @@
           "translate",
           "lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--switch-thumb-translate-lg)",
         "description": "Travel distance of the large switch thumb."
@@ -11515,7 +11515,7 @@
           "min-height",
           "sm"
         ],
-        "value": "96px",
+        "value": "6rem",
         "type": "spacing",
         "variable": "var(--textarea-min-height-sm)",
         "description": "Minimum height of the small textarea."
@@ -11527,7 +11527,7 @@
           "min-height",
           "md"
         ],
-        "value": "112px",
+        "value": "7rem",
         "type": "spacing",
         "variable": "var(--textarea-min-height-md)",
         "description": "Minimum height of the medium textarea."
@@ -11539,7 +11539,7 @@
           "min-height",
           "lg"
         ],
-        "value": "160px",
+        "value": "10rem",
         "type": "spacing",
         "variable": "var(--textarea-min-height-lg)",
         "description": "Minimum height of the large textarea."
@@ -11550,7 +11550,7 @@
           "textarea",
           "padding"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--textarea-padding)",
         "description": "Padding inside the textarea."
@@ -11561,7 +11561,7 @@
           "textarea",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--textarea-radius)",
         "description": "Corner radius of the textarea."
@@ -11572,7 +11572,7 @@
           "textarea",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--textarea-font-size)",
         "description": "Font size of the textarea."
@@ -11619,7 +11619,7 @@
           "font-size",
           "sm"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--label-font-size-sm)",
         "description": "Font size of the small label."
@@ -11631,7 +11631,7 @@
           "font-size",
           "md"
         ],
-        "value": 16,
+        "value": "1rem",
         "type": "number",
         "variable": "var(--label-font-size-md)",
         "description": "Font size of the medium label."
@@ -11643,7 +11643,7 @@
           "font-size",
           "lg"
         ],
-        "value": 18,
+        "value": "1.125rem",
         "type": "number",
         "variable": "var(--label-font-size-lg)",
         "description": "Font size of the large label."
@@ -11654,7 +11654,7 @@
           "label",
           "required-margin-left"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--label-required-margin-left)",
         "description": "Space between a label and its required marker."
@@ -11735,7 +11735,7 @@
           "width",
           "sm"
         ],
-        "value": "384px",
+        "value": "24rem",
         "type": "spacing",
         "variable": "var(--sheet-content-width-sm)",
         "description": "Width of the small sheet content."
@@ -11748,7 +11748,7 @@
           "width",
           "md"
         ],
-        "value": "512px",
+        "value": "32rem",
         "type": "spacing",
         "variable": "var(--sheet-content-width-md)",
         "description": "Width of the medium sheet content."
@@ -11761,7 +11761,7 @@
           "width",
           "lg"
         ],
-        "value": "672px",
+        "value": "42rem",
         "type": "spacing",
         "variable": "var(--sheet-content-width-lg)",
         "description": "Width of the large sheet content."
@@ -11774,7 +11774,7 @@
           "width",
           "default"
         ],
-        "value": "448px",
+        "value": "28rem",
         "type": "dimension",
         "variable": "var(--sheet-content-width-default)",
         "description": "Default width for left and right sheet panels before a size modifier is applied."
@@ -11786,7 +11786,7 @@
           "content",
           "padding"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--sheet-content-padding)",
         "description": "Padding inside the sheet content."
@@ -11798,7 +11798,7 @@
           "header",
           "gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--sheet-header-gap)",
         "description": "Gap between the items inside the sheet header."
@@ -11810,7 +11810,7 @@
           "header",
           "padding-bottom"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--sheet-header-padding-bottom)",
         "description": "Bottom padding of the sheet header."
@@ -11822,7 +11822,7 @@
           "title",
           "font-size"
         ],
-        "value": 20,
+        "value": "1.25rem",
         "type": "number",
         "variable": "var(--sheet-title-font-size)",
         "description": "Font size of the sheet title."
@@ -11846,7 +11846,7 @@
           "description",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--sheet-description-font-size)",
         "description": "Font size of the sheet description."
@@ -11858,7 +11858,7 @@
           "footer",
           "padding-top"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--sheet-footer-padding-top)",
         "description": "Top padding of the sheet footer."
@@ -11870,7 +11870,7 @@
           "footer",
           "gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--sheet-footer-gap)",
         "description": "Gap between the items inside the sheet footer."
@@ -11881,7 +11881,7 @@
           "sheet",
           "close-button-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--sheet-close-button-radius)",
         "description": "Corner radius of the sheet close button."
@@ -11892,7 +11892,7 @@
           "sheet",
           "close-button-offset"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "dimension",
         "variable": "var(--sheet-close-button-offset)",
         "description": "Distance of the sheet close button from the top and right edges."
@@ -11975,7 +11975,7 @@
           "close-button",
           "icon-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--sheet-close-button-icon-size)",
         "description": "Size of the close icon in a sheet."
@@ -12059,7 +12059,7 @@
           "margin",
           "horizontal"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--separator-margin-horizontal)",
         "description": "Vertical margin above and below a horizontal separator."
@@ -12071,7 +12071,7 @@
           "margin",
           "vertical"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--separator-margin-vertical)",
         "description": "Horizontal margin beside a vertical separator."
@@ -12118,7 +12118,7 @@
           "content",
           "min-width"
         ],
-        "value": "160px",
+        "value": "10rem",
         "type": "spacing",
         "variable": "var(--context-menu-content-min-width)",
         "description": "Minimum width of the context menu content."
@@ -12130,7 +12130,7 @@
           "content",
           "padding"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--context-menu-content-padding)",
         "description": "Padding inside the context menu content."
@@ -12142,7 +12142,7 @@
           "item",
           "padding-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--context-menu-item-padding-y)",
         "description": "Vertical padding of the context menu item."
@@ -12154,7 +12154,7 @@
           "item",
           "padding-x"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--context-menu-item-padding-x)",
         "description": "Horizontal padding of the context menu item."
@@ -12166,7 +12166,7 @@
           "item",
           "inset"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--context-menu-item-inset)",
         "description": "Extra left padding for context menu items without an indicator, so their labels line up with indicator items."
@@ -12179,7 +12179,7 @@
           "indicator",
           "size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--context-menu-item-indicator-size)",
         "description": "Size of the context menu item indicator."
@@ -12190,7 +12190,7 @@
           "context-menu",
           "checkbox-padding"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--context-menu-checkbox-padding)",
         "description": "Padding of context menu checkbox items."
@@ -12201,7 +12201,7 @@
           "context-menu",
           "separator-margin-x"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--context-menu-separator-margin-x)",
         "description": "Horizontal margin of the context menu separator."
@@ -12212,7 +12212,7 @@
           "context-menu",
           "separator-margin-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--context-menu-separator-margin-y)",
         "description": "Vertical margin of the context menu separator."
@@ -12223,7 +12223,7 @@
           "context-menu",
           "content-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--context-menu-content-radius)",
         "description": "Corner radius of the context menu content."
@@ -12234,7 +12234,7 @@
           "context-menu",
           "item-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--context-menu-item-radius)",
         "description": "Corner radius of the context menu item."
@@ -12245,7 +12245,7 @@
           "context-menu",
           "item-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--context-menu-item-font-size)",
         "description": "Font size of the context menu item."
@@ -12256,7 +12256,7 @@
           "context-menu",
           "shortcut-font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--context-menu-shortcut-font-size)",
         "description": "Font size of the context menu shortcut."
@@ -12269,7 +12269,7 @@
           "indicator",
           "left"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--context-menu-item-indicator-left)",
         "description": "Left offset of the context menu item check indicator."
@@ -12281,7 +12281,7 @@
           "item",
           "icon-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--context-menu-item-icon-size)",
         "description": "Size of the context menu item icon."
@@ -12314,7 +12314,7 @@
           "context-menu",
           "sub-content-min-width"
         ],
-        "value": "112px",
+        "value": "7rem",
         "type": "spacing",
         "variable": "var(--context-menu-sub-content-min-width)",
         "description": "Minimum width of the context menu sub content."
@@ -12326,7 +12326,7 @@
           "item",
           "sub-trigger-icon-size"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--context-menu-item-sub-trigger-icon-size)",
         "description": "Size of the chevron on a context menu sub-menu trigger."
@@ -12384,7 +12384,7 @@
           "content",
           "min-width"
         ],
-        "value": "160px",
+        "value": "10rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-content-min-width)",
         "description": "Minimum width of the dropdown menu content."
@@ -12396,7 +12396,7 @@
           "content",
           "padding"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-content-padding)",
         "description": "Padding inside the dropdown menu content."
@@ -12408,7 +12408,7 @@
           "item",
           "padding-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-padding-y)",
         "description": "Vertical padding of the dropdown menu item."
@@ -12420,7 +12420,7 @@
           "item",
           "padding-x"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-padding-x)",
         "description": "Horizontal padding of the dropdown menu item."
@@ -12432,7 +12432,7 @@
           "item",
           "inset"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-inset)",
         "description": "Extra left padding for dropdown menu items without an indicator, so their labels line up with indicator items."
@@ -12444,7 +12444,7 @@
           "item",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--dropdown-menu-item-font-size)",
         "description": "Font size of the dropdown menu item."
@@ -12456,7 +12456,7 @@
           "shortcut",
           "font-size"
         ],
-        "value": 12,
+        "value": "0.75rem",
         "type": "number",
         "variable": "var(--dropdown-menu-shortcut-font-size)",
         "description": "Font size of the dropdown menu shortcut."
@@ -12480,7 +12480,7 @@
           "separator",
           "margin-y"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-separator-margin-y)",
         "description": "Vertical margin of the dropdown menu separator."
@@ -12492,7 +12492,7 @@
           "separator",
           "margin-x"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-separator-margin-x)",
         "description": "Horizontal margin of the dropdown menu separator."
@@ -12505,7 +12505,7 @@
           "indicator",
           "size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-indicator-size)",
         "description": "Size of the dropdown menu item indicator."
@@ -12516,7 +12516,7 @@
           "dropdown-menu",
           "content-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--dropdown-menu-content-radius)",
         "description": "Corner radius of the dropdown menu content."
@@ -12527,7 +12527,7 @@
           "dropdown-menu",
           "item-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--dropdown-menu-item-radius)",
         "description": "Corner radius of the dropdown menu item."
@@ -12636,7 +12636,7 @@
           "indicator",
           "left"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-indicator-left)",
         "description": "Left offset of the dropdown menu item check indicator."
@@ -12648,7 +12648,7 @@
           "item",
           "icon-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-icon-size)",
         "description": "Size of the dropdown menu item icon."
@@ -12695,7 +12695,7 @@
           "item",
           "radio-indicator-size"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-radio-indicator-size)",
         "description": "Size of the dot in a selected dropdown menu radio item."
@@ -12730,7 +12730,7 @@
           "card-grid",
           "gap-horizontal"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--card-grid-gap-horizontal)",
         "description": "Horizontal gap between items in the card grid."
@@ -12741,7 +12741,7 @@
           "card-grid",
           "gap-vertical"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--card-grid-gap-vertical)",
         "description": "Vertical gap between items in the card grid."
@@ -12752,7 +12752,7 @@
           "card-grid",
           "item-padding"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--card-grid-item-padding)",
         "description": "Padding inside each card grid item."
@@ -12776,7 +12776,7 @@
           "feature-grid",
           "container-gap"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--feature-grid-container-gap)",
         "description": "Gap between feature items in the grid."
@@ -12787,7 +12787,7 @@
           "feature-grid",
           "item-gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--feature-grid-item-gap)",
         "description": "Gap between the icon, title and description inside a feature item."
@@ -12798,7 +12798,7 @@
           "feature-grid",
           "item-padding"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--feature-grid-item-padding)",
         "description": "Padding inside the feature grid item."
@@ -12809,7 +12809,7 @@
           "feature-grid",
           "item-radius"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "dimension",
         "variable": "var(--feature-grid-item-radius)",
         "description": "Corner radius of the feature grid item."
@@ -12820,7 +12820,7 @@
           "feature-grid",
           "icon-radius"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "dimension",
         "variable": "var(--feature-grid-icon-radius)",
         "description": "Corner radius of the feature grid icon."
@@ -12831,7 +12831,7 @@
           "feature-grid",
           "title-font-size"
         ],
-        "value": 20,
+        "value": "1.25rem",
         "type": "number",
         "variable": "var(--feature-grid-title-font-size)",
         "description": "Font size of the feature grid title."
@@ -12842,7 +12842,7 @@
           "feature-grid",
           "description-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--feature-grid-description-font-size)",
         "description": "Font size of the feature grid description."
@@ -12853,7 +12853,7 @@
           "feature-grid",
           "icon-container-size"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--feature-grid-icon-container-size)",
         "description": "Size of the feature grid icon container."
@@ -12981,7 +12981,7 @@
           "alert-dialog",
           "content-gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--alert-dialog-content-gap)",
         "description": "Gap between the items inside the alert dialog content."
@@ -12992,7 +12992,7 @@
           "alert-dialog",
           "content-padding"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--alert-dialog-content-padding)",
         "description": "Padding inside the alert dialog content."
@@ -13003,7 +13003,7 @@
           "alert-dialog",
           "header-gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--alert-dialog-header-gap)",
         "description": "Gap between the items inside the alert dialog header."
@@ -13014,7 +13014,7 @@
           "alert-dialog",
           "footer-gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--alert-dialog-footer-gap)",
         "description": "Gap between the items inside the alert dialog footer."
@@ -13025,7 +13025,7 @@
           "alert-dialog",
           "content-radius"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "dimension",
         "variable": "var(--alert-dialog-content-radius)",
         "description": "Corner radius of the alert dialog content."
@@ -13036,7 +13036,7 @@
           "alert-dialog",
           "title-font-size"
         ],
-        "value": 18,
+        "value": "1.125rem",
         "type": "number",
         "variable": "var(--alert-dialog-title-font-size)",
         "description": "Font size of the alert dialog title."
@@ -13047,7 +13047,7 @@
           "alert-dialog",
           "description-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--alert-dialog-description-font-size)",
         "description": "Font size of the alert dialog description."
@@ -13126,7 +13126,7 @@
           "navigation-menu",
           "list-gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--navigation-menu-list-gap)",
         "description": "Gap between the items inside the navigation menu list."
@@ -13137,7 +13137,7 @@
           "navigation-menu",
           "trigger-padding-x"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--navigation-menu-trigger-padding-x)",
         "description": "Horizontal padding of the navigation menu trigger."
@@ -13148,7 +13148,7 @@
           "navigation-menu",
           "trigger-padding-y"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--navigation-menu-trigger-padding-y)",
         "description": "Vertical padding of the navigation menu trigger."
@@ -13159,7 +13159,7 @@
           "navigation-menu",
           "indicator-margin-left"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--navigation-menu-indicator-margin-left)",
         "description": "Left margin of the navigation menu indicator."
@@ -13170,7 +13170,7 @@
           "navigation-menu",
           "indicator-margin-top"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--navigation-menu-indicator-margin-top)",
         "description": "Top margin of the navigation menu indicator."
@@ -13181,7 +13181,7 @@
           "navigation-menu",
           "trigger-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--navigation-menu-trigger-radius)",
         "description": "Corner radius of the navigation menu trigger."
@@ -13192,7 +13192,7 @@
           "navigation-menu",
           "trigger-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--navigation-menu-trigger-font-size)",
         "description": "Font size of the navigation menu trigger."
@@ -13204,7 +13204,7 @@
           "trigger",
           "height"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--navigation-menu-trigger-height)",
         "description": "Height of the navigation menu trigger."
@@ -13239,7 +13239,7 @@
           "trigger",
           "icon-size"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--navigation-menu-trigger-icon-size)",
         "description": "Size of the chevron in a navigation menu trigger."
@@ -13250,7 +13250,7 @@
           "navigation-menu",
           "arrow-size"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--navigation-menu-arrow-size)",
         "description": "Size of the arrow on the navigation menu indicator."
@@ -13261,7 +13261,7 @@
           "navigation-menu",
           "arrow-radius"
         ],
-        "value": "2px",
+        "value": "0.125rem",
         "type": "dimension",
         "variable": "var(--navigation-menu-arrow-radius)",
         "description": "Corner radius of the arrow on the navigation menu indicator."
@@ -13329,7 +13329,7 @@
           "toggle-group",
           "gap"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--toggle-group-gap)",
         "description": "Gap between the items inside the toggle group."
@@ -13340,7 +13340,7 @@
           "toggle-group",
           "item-padding-x"
         ],
-        "value": "12px",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--toggle-group-item-padding-x)",
         "description": "Horizontal padding of the toggle group item."
@@ -13351,7 +13351,7 @@
           "toggle-group",
           "item-radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--toggle-group-item-radius)",
         "description": "Corner radius of the toggle group item."
@@ -13362,7 +13362,7 @@
           "toggle-group",
           "item-font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--toggle-group-item-font-size)",
         "description": "Font size of the toggle group item."
@@ -13373,7 +13373,7 @@
           "toggle-group",
           "item-height"
         ],
-        "value": "40px",
+        "value": "2.5rem",
         "type": "spacing",
         "variable": "var(--toggle-group-item-height)",
         "description": "Height of toggle group items (40px, matches default toggle height)."
@@ -13492,7 +13492,7 @@
           "container",
           "padding-x-sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--site-header-container-padding-x-sm)",
         "description": "Horizontal padding of the header container on small screens."
@@ -13504,7 +13504,7 @@
           "container",
           "padding-x-md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--site-header-container-padding-x-md)",
         "description": "Horizontal padding of the header container from the sm breakpoint."
@@ -13516,7 +13516,7 @@
           "container",
           "padding-x-lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--site-header-container-padding-x-lg)",
         "description": "Horizontal padding of the header container from the lg breakpoint."
@@ -13527,7 +13527,7 @@
           "site-header",
           "height"
         ],
-        "value": "64px",
+        "value": "4rem",
         "type": "spacing",
         "variable": "var(--site-header-height)",
         "description": "Height of the default header bar."
@@ -13538,7 +13538,7 @@
           "site-header",
           "height-sm"
         ],
-        "value": "56px",
+        "value": "3.5rem",
         "type": "spacing",
         "variable": "var(--site-header-height-sm)",
         "description": "Height of the small header bar."
@@ -13550,7 +13550,7 @@
           "logo",
           "gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--site-header-logo-gap)",
         "description": "Gap between the parts of the fallback logo link."
@@ -13562,7 +13562,7 @@
           "logo",
           "font-size"
         ],
-        "value": "20px",
+        "value": "1.25rem",
         "type": "number",
         "variable": "var(--site-header-logo-font-size)",
         "description": "Font size of the fallback logo."
@@ -13585,7 +13585,7 @@
           "site-header",
           "actions-gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--site-header-actions-gap)",
         "description": "Gap between the header actions."
@@ -13597,7 +13597,7 @@
           "nav-link",
           "height"
         ],
-        "value": "36px",
+        "value": "2.25rem",
         "type": "spacing",
         "variable": "var(--site-header-nav-link-height)",
         "description": "Height of a navigation link."
@@ -13609,7 +13609,7 @@
           "nav-link",
           "padding-x"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--site-header-nav-link-padding-x)",
         "description": "Horizontal padding of a navigation link."
@@ -13621,7 +13621,7 @@
           "nav-link",
           "padding-y"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--site-header-nav-link-padding-y)",
         "description": "Vertical padding of a navigation link."
@@ -13633,7 +13633,7 @@
           "nav-link",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--site-header-nav-link-radius)",
         "description": "Corner radius of a navigation link."
@@ -13645,7 +13645,7 @@
           "nav-link",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--site-header-nav-link-font-size)",
         "description": "Font size of a navigation link."
@@ -13761,7 +13761,7 @@
           "container",
           "padding-x-sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--site-footer-container-padding-x-sm)",
         "description": "Horizontal padding of the footer container on small screens."
@@ -13773,7 +13773,7 @@
           "container",
           "padding-x-md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--site-footer-container-padding-x-md)",
         "description": "Horizontal padding of the footer container from the sm breakpoint."
@@ -13785,7 +13785,7 @@
           "container",
           "padding-x-lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--site-footer-container-padding-x-lg)",
         "description": "Horizontal padding of the footer container from the lg breakpoint."
@@ -13797,7 +13797,7 @@
           "container",
           "padding-y"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--site-footer-container-padding-y)",
         "description": "Vertical padding of the footer container."
@@ -13809,7 +13809,7 @@
           "columns",
           "gap"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--site-footer-columns-gap)",
         "description": "Gap between the footer columns."
@@ -13821,7 +13821,7 @@
           "columns",
           "margin-bottom"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--site-footer-columns-margin-bottom)",
         "description": "Space below the footer columns."
@@ -13833,7 +13833,7 @@
           "logo",
           "margin-bottom"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--site-footer-logo-margin-bottom)",
         "description": "Space below the fallback logo block."
@@ -13845,7 +13845,7 @@
           "logo",
           "font-size"
         ],
-        "value": 18,
+        "value": "1.125rem",
         "type": "number",
         "variable": "var(--site-footer-logo-font-size)",
         "description": "Font size of the fallback logo."
@@ -13868,7 +13868,7 @@
           "site-footer",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--site-footer-font-size)",
         "description": "Font size of footer body text and the copyright line."
@@ -13881,7 +13881,7 @@
           "title",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--site-footer-column-title-font-size)",
         "description": "Font size of a footer column title."
@@ -13907,7 +13907,7 @@
           "title",
           "margin-bottom"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--site-footer-column-title-margin-bottom)",
         "description": "Space below a footer column title."
@@ -13918,7 +13918,7 @@
           "site-footer",
           "column-links-gap"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--site-footer-column-links-gap)",
         "description": "Gap between the links in a footer column."
@@ -13930,7 +13930,7 @@
           "link",
           "font-size"
         ],
-        "value": 14,
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--site-footer-link-font-size)",
         "description": "Font size of a footer link."
@@ -13941,7 +13941,7 @@
           "site-footer",
           "separator-margin-bottom"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--site-footer-separator-margin-bottom)",
         "description": "Space below the separator above the bottom bar."
@@ -13952,7 +13952,7 @@
           "site-footer",
           "bottom-gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--site-footer-bottom-gap)",
         "description": "Gap between the items in the bottom bar."
@@ -13963,7 +13963,7 @@
           "site-footer",
           "social-gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--site-footer-social-gap)",
         "description": "Gap between the social links."
@@ -14034,7 +14034,7 @@
           "section-hero",
           "padding-y-sm"
         ],
-        "value": "80px",
+        "value": "5rem",
         "type": "spacing",
         "variable": "var(--section-hero-padding-y-sm)",
         "description": "Vertical padding of the hero on small screens."
@@ -14045,7 +14045,7 @@
           "section-hero",
           "padding-y-md"
         ],
-        "value": "128px",
+        "value": "8rem",
         "type": "spacing",
         "variable": "var(--section-hero-padding-y-md)",
         "description": "Vertical padding of the hero from the md breakpoint."
@@ -14057,7 +14057,7 @@
           "container",
           "padding-x-sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--section-hero-container-padding-x-sm)",
         "description": "Horizontal padding of the hero container on small screens."
@@ -14069,7 +14069,7 @@
           "container",
           "padding-x-md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--section-hero-container-padding-x-md)",
         "description": "Horizontal padding of the hero container from the sm breakpoint."
@@ -14081,7 +14081,7 @@
           "container",
           "padding-x-lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--section-hero-container-padding-x-lg)",
         "description": "Horizontal padding of the hero container from the lg breakpoint."
@@ -14093,7 +14093,7 @@
           "layout",
           "gap-sm"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--section-hero-layout-gap-sm)",
         "description": "Gap between the content and image columns on small screens."
@@ -14105,7 +14105,7 @@
           "layout",
           "gap-md"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--section-hero-layout-gap-md)",
         "description": "Gap between the content and image columns from the md breakpoint."
@@ -14117,7 +14117,7 @@
           "layout",
           "max-width-centered"
         ],
-        "value": "896px",
+        "value": "56rem",
         "type": "spacing",
         "variable": "var(--section-hero-layout-max-width-centered)",
         "description": "Maximum width of the centered hero layout."
@@ -14128,7 +14128,7 @@
           "section-hero",
           "content-gap"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--section-hero-content-gap)",
         "description": "Gap between the badge, title, description and actions."
@@ -14140,7 +14140,7 @@
           "title",
           "font-size-sm"
         ],
-        "value": "36px",
+        "value": "2.25rem",
         "type": "number",
         "variable": "var(--section-hero-title-font-size-sm)",
         "description": "Font size of the hero title on small screens."
@@ -14152,7 +14152,7 @@
           "title",
           "font-size-md"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "number",
         "variable": "var(--section-hero-title-font-size-md)",
         "description": "Font size of the hero title from the md breakpoint."
@@ -14164,7 +14164,7 @@
           "title",
           "font-size-lg"
         ],
-        "value": "60px",
+        "value": "3.75rem",
         "type": "number",
         "variable": "var(--section-hero-title-font-size-lg)",
         "description": "Font size of the hero title from the lg breakpoint."
@@ -14200,7 +14200,7 @@
           "description",
           "font-size-sm"
         ],
-        "value": 18,
+        "value": "1.125rem",
         "type": "number",
         "variable": "var(--section-hero-description-font-size-sm)",
         "description": "Font size of the hero description on small screens."
@@ -14212,7 +14212,7 @@
           "description",
           "font-size-md"
         ],
-        "value": 20,
+        "value": "1.25rem",
         "type": "number",
         "variable": "var(--section-hero-description-font-size-md)",
         "description": "Font size of the hero description from the md breakpoint."
@@ -14224,7 +14224,7 @@
           "description",
           "max-width"
         ],
-        "value": "672px",
+        "value": "42rem",
         "type": "spacing",
         "variable": "var(--section-hero-description-max-width)",
         "description": "Maximum width of the hero description."
@@ -14235,7 +14235,7 @@
           "section-hero",
           "actions-gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--section-hero-actions-gap)",
         "description": "Gap between the hero actions."
@@ -14247,7 +14247,7 @@
           "image",
           "max-width"
         ],
-        "value": "768px",
+        "value": "48rem",
         "type": "spacing",
         "variable": "var(--section-hero-image-max-width)",
         "description": "Maximum width of the image in the centered hero."
@@ -14259,7 +14259,7 @@
           "image",
           "margin-top"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--section-hero-image-margin-top)",
         "description": "Space above the image in the centered hero."
@@ -14338,7 +14338,7 @@
           "section-features",
           "padding-y-sm"
         ],
-        "value": "80px",
+        "value": "5rem",
         "type": "spacing",
         "variable": "var(--section-features-padding-y-sm)",
         "description": "Vertical padding of the section on small screens."
@@ -14349,7 +14349,7 @@
           "section-features",
           "padding-y-md"
         ],
-        "value": "128px",
+        "value": "8rem",
         "type": "spacing",
         "variable": "var(--section-features-padding-y-md)",
         "description": "Vertical padding of the section from the md breakpoint."
@@ -14361,7 +14361,7 @@
           "container",
           "padding-x-sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--section-features-container-padding-x-sm)",
         "description": "Horizontal padding of the section container on small screens."
@@ -14373,7 +14373,7 @@
           "container",
           "padding-x-md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--section-features-container-padding-x-md)",
         "description": "Horizontal padding of the section container from the sm breakpoint."
@@ -14385,7 +14385,7 @@
           "container",
           "padding-x-lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--section-features-container-padding-x-lg)",
         "description": "Horizontal padding of the section container from the lg breakpoint."
@@ -14397,7 +14397,7 @@
           "header",
           "max-width"
         ],
-        "value": "768px",
+        "value": "48rem",
         "type": "spacing",
         "variable": "var(--section-features-header-max-width)",
         "description": "Maximum width of the section header."
@@ -14409,7 +14409,7 @@
           "header",
           "margin-bottom"
         ],
-        "value": "64px",
+        "value": "4rem",
         "type": "spacing",
         "variable": "var(--section-features-header-margin-bottom)",
         "description": "Space below the section header."
@@ -14421,7 +14421,7 @@
           "title",
           "margin-bottom"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--section-features-title-margin-bottom)",
         "description": "Space below the section title."
@@ -14433,7 +14433,7 @@
           "title",
           "font-size-sm"
         ],
-        "value": "30px",
+        "value": "1.875rem",
         "type": "number",
         "variable": "var(--section-features-title-font-size-sm)",
         "description": "Font size of the section title on small screens."
@@ -14445,7 +14445,7 @@
           "title",
           "font-size-md"
         ],
-        "value": "36px",
+        "value": "2.25rem",
         "type": "number",
         "variable": "var(--section-features-title-font-size-md)",
         "description": "Font size of the section title from the md breakpoint."
@@ -14457,7 +14457,7 @@
           "title",
           "font-size-lg"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "number",
         "variable": "var(--section-features-title-font-size-lg)",
         "description": "Font size of the section title from the lg breakpoint."
@@ -14492,7 +14492,7 @@
           "section-features",
           "description-font-size"
         ],
-        "value": 18,
+        "value": "1.125rem",
         "type": "number",
         "variable": "var(--section-features-description-font-size)",
         "description": "Font size of the section description."
@@ -14503,7 +14503,7 @@
           "section-features",
           "grid-gap"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--section-features-grid-gap)",
         "description": "Gap between feature items."
@@ -14514,7 +14514,7 @@
           "section-features",
           "item-gap"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--section-features-item-gap)",
         "description": "Gap between the parts of a feature item."
@@ -14527,7 +14527,7 @@
           "title",
           "font-size"
         ],
-        "value": "20px",
+        "value": "1.25rem",
         "type": "number",
         "variable": "var(--section-features-item-title-font-size)",
         "description": "Font size of a feature title."
@@ -14552,7 +14552,7 @@
           "card",
           "row-margin-bottom"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--section-features-card-row-margin-bottom)",
         "description": "Space below the icon and badge row of a feature card."
@@ -14564,7 +14564,7 @@
           "card",
           "icon-margin-bottom"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--section-features-card-icon-margin-bottom)",
         "description": "Space below the icon of a feature card."
@@ -14576,7 +14576,7 @@
           "icon",
           "size"
         ],
-        "value": "48px",
+        "value": "3rem",
         "type": "spacing",
         "variable": "var(--section-features-icon-size)",
         "description": "Width and height of the feature icon container."
@@ -14588,7 +14588,7 @@
           "icon",
           "radius"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "dimension",
         "variable": "var(--section-features-icon-radius)",
         "description": "Corner radius of the feature icon container."
@@ -14635,7 +14635,7 @@
           "main",
           "padding-y"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--page-layout-main-padding-y)",
         "description": "Vertical padding of the main content area."
@@ -14647,7 +14647,7 @@
           "main",
           "padding-x-sm"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--page-layout-main-padding-x-sm)",
         "description": "Horizontal padding of the default and centered main area on small screens."
@@ -14659,7 +14659,7 @@
           "main",
           "padding-x-md"
         ],
-        "value": "24px",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--page-layout-main-padding-x-md)",
         "description": "Horizontal padding of the default and centered main area from the sm breakpoint."
@@ -14671,7 +14671,7 @@
           "main",
           "padding-x-lg"
         ],
-        "value": "32px",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--page-layout-main-padding-x-lg)",
         "description": "Horizontal padding of the default and centered main area from the lg breakpoint."
@@ -14683,7 +14683,7 @@
           "main",
           "max-width-centered"
         ],
-        "value": "896px",
+        "value": "56rem",
         "type": "spacing",
         "variable": "var(--page-layout-main-max-width-centered)",
         "description": "Maximum width of the centered main area."
@@ -14694,7 +14694,7 @@
           "page-layout",
           "sidebar-width"
         ],
-        "value": "256px",
+        "value": "16rem",
         "type": "spacing",
         "variable": "var(--page-layout-sidebar-width)",
         "description": "Width of the sidebar."
@@ -14706,7 +14706,7 @@
           "skip-link",
           "offset"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--page-layout-skip-link-offset)",
         "description": "Distance of the focused skip link from the top and left edges."
@@ -14718,7 +14718,7 @@
           "skip-link",
           "padding-x"
         ],
-        "value": "16px",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--page-layout-skip-link-padding-x)",
         "description": "Horizontal padding of the skip link."
@@ -14730,7 +14730,7 @@
           "skip-link",
           "padding-y"
         ],
-        "value": "8px",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--page-layout-skip-link-padding-y)",
         "description": "Vertical padding of the skip link."
@@ -14742,7 +14742,7 @@
           "skip-link",
           "radius"
         ],
-        "value": "4px",
+        "value": "0.25rem",
         "type": "dimension",
         "variable": "var(--page-layout-skip-link-radius)",
         "description": "Corner radius of the skip link."

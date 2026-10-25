@@ -2,6 +2,7 @@ import manifest from "@wyliedog/tokens/manifest.json";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import { SpacingDemo } from "../spacing-demo";
 import type { ManifestToken } from "@/lib/token-values";
+import { formatSize } from "@/lib/token-units";
 
 export default function SpacingPage() {
   const { primitives } = manifest;
@@ -39,10 +40,10 @@ export default function SpacingPage() {
       <SpacingDemo />
 
       <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 max-w-sm">
-        <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint) mb-2">
+        <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint) mb-2">
           Composed tokens
         </p>
-        <div className="space-y-1 font-mono text-[10px] text-(--color-foreground-faint)">
+        <div className="space-y-1 font-mono text-[0.625rem] text-(--color-foreground-faint)">
           {composedSpacingTokens.map((t) => (
             <p key={t}>{t}</p>
           ))}
@@ -56,8 +57,8 @@ export default function SpacingPage() {
               <div className="text-sm font-bold text-(--color-foreground-default)">
                 {s.name}
               </div>
-              <div className="text-[10px] font-mono text-(--color-foreground-faint)">
-                {s.value}
+              <div className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
+                {formatSize(s.value)}
               </div>
             </div>
             <div className="flex-1 h-3 rounded-sm overflow-hidden bg-(--color-background-muted)">

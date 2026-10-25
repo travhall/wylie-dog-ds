@@ -1,6 +1,7 @@
 import manifest from "@wyliedog/tokens/manifest.json";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import type { ManifestToken } from "@/lib/token-values";
+import { formatSize, toPx } from "@/lib/token-units";
 
 export default function TypographyPage() {
   const { primitives } = manifest;
@@ -20,7 +21,7 @@ export default function TypographyPage() {
         name: name.split("-").slice(-1)[0],
         value: token.value,
         var: token.variable,
-        px: parseInt(token.value) || 0,
+        px: toPx(token.value),
       }))
       .sort((a, b) => a.px - b.px),
     weights: Object.entries(
@@ -57,7 +58,7 @@ export default function TypographyPage() {
       <div className="space-y-4">
         <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6 space-y-4">
           <div>
-            <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+            <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
               Families and sizes
             </h2>
           </div>
@@ -68,7 +69,7 @@ export default function TypographyPage() {
                   <tr className="border-b border-(--color-border-default)">
                     <th
                       scope="col"
-                      className="pb-3 pr-4 text-[10px] font-mono uppercase tracking-wider text-(--color-foreground-faint)"
+                      className="pb-3 pr-4 text-[0.625rem] font-mono uppercase tracking-wider text-(--color-foreground-faint)"
                     >
                       Size
                     </th>
@@ -76,7 +77,7 @@ export default function TypographyPage() {
                       <th
                         key={f.name}
                         scope="col"
-                        className="pb-3 px-4 text-[10px] font-mono uppercase tracking-wider text-(--color-foreground-faint)"
+                        className="pb-3 px-4 text-[0.625rem] font-mono uppercase tracking-wider text-(--color-foreground-faint)"
                       >
                         {f.name} · {f.value}
                       </th>
@@ -96,10 +97,10 @@ export default function TypographyPage() {
                         <div className="text-sm text-(--color-foreground-default)">
                           {s.name}
                         </div>
-                        <div className="text-[10px] font-mono text-(--color-foreground-faint)">
-                          {s.value}
+                        <div className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
+                          {formatSize(s.value)}
                         </div>
-                        <div className="text-[10px] font-mono text-(--color-foreground-faint)">
+                        <div className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
                           fontSize: {s.var}
                         </div>
                       </th>
@@ -113,7 +114,7 @@ export default function TypographyPage() {
                           <td key={f.name} className="py-3 px-4 align-top">
                             <span
                               className={`${fontFamilyClass} text-(--color-foreground-default)`}
-                              style={{ fontSize: `${s.value}px` }}
+                              style={{ fontSize: s.value }}
                             >
                               Sample
                             </span>
@@ -130,7 +131,7 @@ export default function TypographyPage() {
 
         <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6 space-y-8">
           <div>
-            <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+            <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
               Attributes
             </h2>
           </div>
@@ -147,7 +148,7 @@ export default function TypographyPage() {
                   >
                     {w.name}
                   </span>
-                  <span className="text-[10px] font-mono text-(--color-foreground-faint)">
+                  <span className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
                     {w.value}
                   </span>
                 </div>
@@ -165,7 +166,7 @@ export default function TypographyPage() {
                   <span className="text-sm text-(--color-foreground-default)">
                     {lh.name}
                   </span>
-                  <span className="text-[10px] font-mono text-(--color-foreground-faint)">
+                  <span className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
                     {lh.value}
                   </span>
                 </div>

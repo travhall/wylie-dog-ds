@@ -59,14 +59,14 @@ export default function ElevationPage() {
               {s.name}
             </p>
             {s.description ? (
-              <p className="mt-1 text-[11px] text-(--color-foreground-faint) leading-relaxed">
+              <p className="mt-1 text-[0.6875rem] text-(--color-foreground-faint) leading-relaxed">
                 {s.description}
               </p>
             ) : null}
-            <p className="mt-3 font-mono text-[10px] text-(--color-foreground-muted) break-all">
+            <p className="mt-3 font-mono text-[0.625rem] text-(--color-foreground-muted) break-all">
               {s.value}
             </p>
-            <p className="mt-1 font-mono text-[10px] text-(--color-foreground-faint)">
+            <p className="mt-1 font-mono text-[0.625rem] text-(--color-foreground-faint)">
               {s.variable}
             </p>
           </div>
@@ -74,7 +74,7 @@ export default function ElevationPage() {
       </div>
 
       <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-muted) p-5">
-        <p className="text-[11px] text-(--color-foreground-faint) leading-relaxed">
+        <p className="text-[0.6875rem] text-(--color-foreground-faint) leading-relaxed">
           Dark mode redefines the same shadow tokens with higher opacity (0.3 to
           0.4 instead of 0.05 to 0.1).
         </p>

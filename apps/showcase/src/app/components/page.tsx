@@ -50,7 +50,7 @@ function CompCard({
         </p>
         <a
           href={getStoryDocsUrl(href)}
-          className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
+          className="mt-2 inline-flex items-center gap-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
         >
           Storybook
           <svg
@@ -83,7 +83,7 @@ function SectionHeader({
   return (
     <header className="grid lg:grid-cols-12 gap-6 mb-10">
       <div className="lg:col-span-5">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+        <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
           {num} · Category
         </span>
         <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -160,11 +160,11 @@ export default function ComponentsPage() {
             {/* left */}
             <div className="lg:col-span-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-muted)">
+                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
                   03 · Components
                 </span>
                 <span className="text-(--color-foreground-faint)">·</span>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                   @wyliedog/ui v{meta.versions.ui}
                 </span>
               </div>
@@ -201,7 +201,7 @@ export default function ComponentsPage() {
                   { label: "Tested for", value: "WCAG 2.2" },
                 ].map(({ label, value }) => (
                   <div key={label} className="self-stretch">
-                    <dt className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <dt className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       {label}
                     </dt>
                     <dd className="mt-1 font-serif text-2xl font-semibold text-(--color-foreground-default)">
@@ -216,7 +216,7 @@ export default function ComponentsPage() {
             <div className="lg:col-span-6">
               <div className="relative">
                 <div
-                  className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-muted)"
+                  className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-muted)"
                   style={{
                     background:
                       "color-mix(in oklch, var(--color-background-emphasis) 80%, transparent)",
@@ -257,8 +257,8 @@ export default function ComponentsPage() {
                           style={{
                             background: "var(--color-blue-300)",
                             color: "var(--color-blue-950)",
-                            height: 38,
-                            width: 38,
+                            height: "2.375rem",
+                            width: "2.375rem",
                           }}
                         >
                           EM
@@ -268,13 +268,13 @@ export default function ComponentsPage() {
                             Elena Mori
                           </p>
                           {/* cSpell:ignore Mori */}
-                          <p className="text-[11px] text-(--color-foreground-faint)">
+                          <p className="text-[0.6875rem] text-(--color-foreground-faint)">
                             Lead, Design Systems
                           </p>
                         </div>
                       </div>
                       <span
-                        className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
+                        className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
                         style={{
                           background:
                             "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
@@ -324,11 +324,11 @@ export default function ComponentsPage() {
                     </div>
 
                     {/* Input */}
-                    <label className="mt-5 block text-[11px] font-medium text-(--color-foreground-muted)">
+                    <label className="mt-5 block text-[0.6875rem] font-medium text-(--color-foreground-muted)">
                       Search components
                     </label>
                     <div
-                      className="mt-1 flex items-center gap-2 h-8.5 rounded-[10px] border px-2.5 text-sm"
+                      className="mt-1 flex items-center gap-2 h-8.5 rounded-[0.625rem] border px-2.5 text-sm"
                       style={{
                         borderColor: "var(--color-border-primary)",
                         boxShadow:
@@ -360,7 +360,7 @@ export default function ComponentsPage() {
                         <p className="text-xs font-semibold text-(--color-foreground-default)">
                           Dark mode preview
                         </p>
-                        <p className="text-[11px] text-(--color-foreground-faint)">
+                        <p className="text-[0.6875rem] text-(--color-foreground-faint)">
                           render every story in both themes
                         </p>
                       </div>
@@ -408,7 +408,7 @@ export default function ComponentsPage() {
 
                   {/* component tag strip */}
                   <div className="mt-3 flex flex-wrap items-center gap-1.5">
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) mr-1">
+                    <span className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) mr-1">
                       uses
                     </span>
                     {[
@@ -423,7 +423,7 @@ export default function ComponentsPage() {
                     ].map((c) => (
                       <span
                         key={c}
-                        className="inline-flex items-center rounded-full border border-(--color-border-default) bg-(--color-background-default) px-2 py-0.5 font-mono text-[10px] text-(--color-foreground-muted)"
+                        className="inline-flex items-center rounded-full border border-(--color-border-default) bg-(--color-background-default) px-2 py-0.5 font-mono text-[0.625rem] text-(--color-foreground-muted)"
                       >
                         {c}
                       </span>
@@ -517,7 +517,7 @@ export default function ComponentsPage() {
                       <path d="m6 9 6 6 6-6" />
                     </svg>
                   </div>
-                  <div className="px-3 py-2 text-[11px] text-(--color-foreground-muted)">
+                  <div className="px-3 py-2 text-[0.6875rem] text-(--color-foreground-muted)">
                     Free over $50, 2-day delivery on stock items.
                   </div>
                   <div className="flex items-center justify-between px-3 py-2 text-xs border-t border-(--color-border-default)">
@@ -574,18 +574,23 @@ export default function ComponentsPage() {
                     <span
                       key={init}
                       className="inline-grid place-items-center rounded-full text-xs font-semibold"
-                      style={{ background: bg, color, height: 40, width: 40 }}
+                      style={{
+                        background: bg,
+                        color,
+                        height: "2.5rem",
+                        width: "2.5rem",
+                      }}
                     >
                       {init}
                     </span>
                   ))}
                   <span
-                    className="inline-grid place-items-center rounded-full text-[11px] font-medium"
+                    className="inline-grid place-items-center rounded-full text-[0.6875rem] font-medium"
                     style={{
                       background: "var(--color-background-emphasis)",
                       color: "var(--color-foreground-muted)",
-                      height: 40,
-                      width: 40,
+                      height: "2.5rem",
+                      width: "2.5rem",
                     }}
                   >
                     +8
@@ -602,7 +607,7 @@ export default function ComponentsPage() {
                 <div className="flex flex-col gap-2 items-center">
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     <span
-                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold"
+                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-semibold"
                       style={{
                         background: "var(--color-background-primary)",
                         color: "var(--color-foreground-inverse)",
@@ -610,11 +615,11 @@ export default function ComponentsPage() {
                     >
                       Default
                     </span>
-                    <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium border border-(--color-border-default) text-(--color-foreground-default)">
+                    <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium border border-(--color-border-default) text-(--color-foreground-default)">
                       Outline
                     </span>
                     <span
-                      className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
+                      className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
@@ -632,7 +637,7 @@ export default function ComponentsPage() {
                   </div>
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     <span
-                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium"
+                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-foreground-warning-muted) 18%, transparent)",
@@ -642,7 +647,7 @@ export default function ComponentsPage() {
                       Beta
                     </span>
                     <span
-                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium"
+                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-foreground-danger-muted) 18%, transparent)",
@@ -662,7 +667,7 @@ export default function ComponentsPage() {
               href="calendar"
               preview={
                 <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 w-full max-w-55">
-                  <div className="flex items-center justify-between text-[11px] font-semibold pb-1.5 text-(--color-foreground-default)">
+                  <div className="flex items-center justify-between text-[0.6875rem] font-semibold pb-1.5 text-(--color-foreground-default)">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3 text-(--color-foreground-faint)"
@@ -683,12 +688,12 @@ export default function ComponentsPage() {
                       <path d="m9 18 6-6-6-6" />
                     </svg>
                   </div>
-                  <div className="grid grid-cols-7 gap-0.5 font-mono text-[8px] text-(--color-foreground-faint) text-center">
+                  <div className="grid grid-cols-7 gap-0.5 font-mono text-[0.5rem] text-(--color-foreground-faint) text-center">
                     {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
                       <span key={i}>{d}</span>
                     ))}
                   </div>
-                  <div className="grid grid-cols-7 gap-0.5 mt-1 text-[10px] text-center text-(--color-foreground-default)">
+                  <div className="grid grid-cols-7 gap-0.5 mt-1 text-[0.625rem] text-center text-(--color-foreground-default)">
                     {["26", "27", "28", "29", "30", "1", "2"].map((d, i) => (
                       <span
                         key={i}
@@ -734,13 +739,13 @@ export default function ComponentsPage() {
                   className="w-full max-w-55 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-(--color-foreground-faint)">
+                  <p className="text-[0.625rem] font-mono uppercase tracking-wider text-(--color-foreground-faint)">
                     Project
                   </p>
                   <p className="mt-0.5 text-xs font-semibold text-(--color-foreground-default)">
                     Migration to v1.4
                   </p>
-                  <p className="mt-1 text-[10px] text-(--color-foreground-faint) leading-snug">
+                  <p className="mt-1 text-[0.625rem] text-(--color-foreground-faint) leading-snug">
                     68 components migrated · 6 outstanding tickets
                   </p>
                   <div className="mt-2 flex items-center gap-2">
@@ -759,12 +764,12 @@ export default function ComponentsPage() {
                       ].map(([bg, c, i]) => (
                         <span
                           key={i}
-                          className="inline-grid place-items-center rounded-full font-semibold border-[1.5px] border-(--color-background-default) text-[8px]"
+                          className="inline-grid place-items-center rounded-full font-semibold border-[1.5px] border-(--color-background-default) text-[0.5rem]"
                           style={{
                             background: bg,
                             color: c,
-                            height: 18,
-                            width: 18,
+                            height: "1.125rem",
+                            width: "1.125rem",
                           }}
                         >
                           {i}
@@ -772,7 +777,7 @@ export default function ComponentsPage() {
                       ))}
                     </div>
                     <span
-                      className="ml-auto inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium"
+                      className="ml-auto inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[0.5625rem] font-medium"
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
@@ -852,12 +857,12 @@ export default function ComponentsPage() {
               desc="Semantic table parts — header, body, footer, row, head, cell, caption — in a horizontally scrollable wrapper."
               href="table"
               preview={
-                <div className="w-full max-w-57.5 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden text-[10px]">
+                <div className="w-full max-w-57.5 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden text-[0.625rem]">
                   <div
-                    className="grid px-2.5 py-1.5 font-mono uppercase tracking-wider text-(--color-foreground-faint) text-[8px] bg-(--color-background-muted)"
+                    className="grid px-2.5 py-1.5 font-mono uppercase tracking-wider text-(--color-foreground-faint) text-[0.5rem] bg-(--color-background-muted)"
                     style={{
                       gridTemplateColumns: "1.4fr 1fr 0.8fr",
-                      gap: "8px",
+                      gap: "0.5rem",
                     }}
                   >
                     <span>Name</span>
@@ -889,7 +894,7 @@ export default function ComponentsPage() {
                       className="grid px-2.5 py-1.5 border-t border-(--color-border-default) items-center"
                       style={{
                         gridTemplateColumns: "1.4fr 1fr 0.8fr",
-                        gap: "8px",
+                        gap: "0.5rem",
                       }}
                     >
                       <span className="text-(--color-foreground-default)">
@@ -901,7 +906,7 @@ export default function ComponentsPage() {
                       <span className="text-right">
                         {color ? (
                           <span
-                            className="inline-flex items-center gap-1 rounded-full px-1 py-0 text-[8px] font-medium"
+                            className="inline-flex items-center gap-1 rounded-full px-1 py-0 text-[0.5rem] font-medium"
                             style={{
                               background: `color-mix(in oklch, ${color} 18%, transparent)`,
                               color,
@@ -987,7 +992,7 @@ export default function ComponentsPage() {
                           <path d={icon} />
                         </svg>
                       </span>
-                      <p className="text-[10px] font-semibold leading-tight text-(--color-foreground-default)">
+                      <p className="text-[0.625rem] font-semibold leading-tight text-(--color-foreground-default)">
                         {msg}
                       </p>
                     </div>
@@ -1003,7 +1008,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-55 flex flex-col gap-3">
                   <div>
-                    <div className="flex items-center justify-between text-[10px] mb-1">
+                    <div className="flex items-center justify-between text-[0.625rem] mb-1">
                       <span className="text-(--color-foreground-muted)">
                         Uploading
                       </span>
@@ -1025,7 +1030,7 @@ export default function ComponentsPage() {
                     </div>
                   </div>
                   <div>
-                    <div className="flex items-center justify-between text-[10px] mb-1">
+                    <div className="flex items-center justify-between text-[0.625rem] mb-1">
                       <span className="text-(--color-foreground-muted)">
                         Indexing
                       </span>
@@ -1067,7 +1072,7 @@ export default function ComponentsPage() {
                         strokeDashoffset="26"
                       />
                     </svg>
-                    <span className="font-mono text-[10px] text-(--color-foreground-faint)">
+                    <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
                       circular · 70%
                     </span>
                   </div>
@@ -1131,10 +1136,10 @@ export default function ComponentsPage() {
                       </svg>
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[10px] font-semibold text-(--color-foreground-default)">
+                      <p className="text-[0.625rem] font-semibold text-(--color-foreground-default)">
                         Theme published
                       </p>
-                      <p className="text-[9px] text-(--color-foreground-faint)">
+                      <p className="text-[0.5625rem] text-(--color-foreground-faint)">
                         v1.4.0 is live in production
                       </p>
                     </div>
@@ -1196,7 +1201,7 @@ export default function ComponentsPage() {
                 <div className="flex flex-col gap-2 items-center">
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     <span
-                      className="inline-flex h-7 items-center rounded-md px-2.5 text-[11px] font-semibold"
+                      className="inline-flex h-7 items-center rounded-md px-2.5 text-[0.6875rem] font-semibold"
                       style={{
                         background: "var(--color-background-primary)",
                         color: "var(--color-foreground-inverse)",
@@ -1204,16 +1209,16 @@ export default function ComponentsPage() {
                     >
                       Primary
                     </span>
-                    <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-default) px-2.5 text-[11px] font-semibold text-(--color-foreground-default)">
+                    <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-default) px-2.5 text-[0.6875rem] font-semibold text-(--color-foreground-default)">
                       Outline
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-1.5 justify-center">
-                    <span className="inline-flex h-7 items-center rounded-md px-2.5 text-[11px] font-semibold text-(--color-foreground-muted)">
+                    <span className="inline-flex h-7 items-center rounded-md px-2.5 text-[0.6875rem] font-semibold text-(--color-foreground-muted)">
                       Ghost
                     </span>
                     <span
-                      className="inline-flex h-7 items-center rounded-md px-2.5 text-[11px] font-semibold"
+                      className="inline-flex h-7 items-center rounded-md px-2.5 text-[0.6875rem] font-semibold"
                       style={{
                         background:
                           "var(--color-button-destructive-background)",
@@ -1224,7 +1229,7 @@ export default function ComponentsPage() {
                     </span>
                   </div>
                   <span
-                    className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
+                    className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[0.6875rem] font-semibold"
                     style={{
                       background: "var(--color-background-primary-emphasis)",
                       color: "var(--color-foreground-inverse)",
@@ -1250,7 +1255,7 @@ export default function ComponentsPage() {
               desc="Checked, unchecked and indeterminate states in three sizes."
               href="checkbox"
               preview={
-                <div className="flex flex-col gap-2.5 text-[11px] text-(--color-foreground-default)">
+                <div className="flex flex-col gap-2.5 text-[0.6875rem] text-(--color-foreground-default)">
                   <label className="flex items-center gap-2">
                     <span
                       className="grid h-4 w-4 place-items-center rounded-sm"
@@ -1311,25 +1316,25 @@ export default function ComponentsPage() {
               href="form"
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
-                  <label className="text-[10px] font-medium text-(--color-foreground-default)">
+                  <label className="text-[0.625rem] font-medium text-(--color-foreground-default)">
                     Email
                   </label>
-                  <div className="flex items-center h-7.5 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default)">
+                  <div className="flex items-center h-7.5 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)">
                     <span className="text-(--color-foreground-default)">
                       elena@wyliedog.dev
                     </span>
                   </div>
                   <p
-                    className="text-[9px]"
+                    className="text-[0.5625rem]"
                     style={{ color: "var(--color-foreground-danger-muted)" }}
                   >
                     Must be a work email address.
                   </p>
-                  <label className="text-[10px] font-medium text-(--color-foreground-default) mt-1">
+                  <label className="text-[0.625rem] font-medium text-(--color-foreground-default) mt-1">
                     Password
                   </label>
                   <div
-                    className="flex items-center h-7.5 border rounded-md px-2 text-[11px] bg-(--color-background-default)"
+                    className="flex items-center h-7.5 border rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)"
                     style={{
                       borderColor: "var(--color-border-danger)",
                     }}
@@ -1348,7 +1353,7 @@ export default function ComponentsPage() {
               href="input"
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
-                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-background-default)">
+                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[0.625rem] px-2.5 gap-2 text-[0.75rem] bg-(--color-background-default)">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3 text-(--color-foreground-faint)"
@@ -1364,7 +1369,7 @@ export default function ComponentsPage() {
                     </span>
                   </div>
                   <div
-                    className="flex items-center h-8.5 border rounded-[10px] px-2.5 text-[12px] bg-(--color-background-default)"
+                    className="flex items-center h-8.5 border rounded-[0.625rem] px-2.5 text-[0.75rem] bg-(--color-background-default)"
                     style={{
                       borderColor: "var(--color-border-primary)",
                       boxShadow:
@@ -1375,7 +1380,7 @@ export default function ComponentsPage() {
                       elena@wyliedog.dev
                     </span>
                   </div>
-                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[10px] px-2.5 text-[12px] bg-(--color-background-default) opacity-55">
+                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[0.625rem] px-2.5 text-[0.75rem] bg-(--color-background-default) opacity-55">
                     <span className="text-(--color-foreground-faint)">
                       Disabled
                     </span>
@@ -1410,18 +1415,18 @@ export default function ComponentsPage() {
                       *
                     </span>
                   </div>
-                  <div className="flex items-center h-7.5 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default) text-(--color-foreground-faint)">
+                  <div className="flex items-center h-7.5 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-faint)">
                     e.g. Elena Mori
                   </div>
                   <div className="flex items-center gap-1 mt-1">
                     <label className="text-xs font-semibold text-(--color-foreground-default)">
                       Bio
                     </label>
-                    <span className="font-mono text-[9px] text-(--color-foreground-faint)">
+                    <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                       optional
                     </span>
                   </div>
-                  <div className="flex items-start min-h-9.5 border border-(--color-border-default) rounded-md px-2 pt-1.5 text-[11px] bg-(--color-background-default) text-(--color-foreground-faint)">
+                  <div className="flex items-start min-h-9.5 border border-(--color-border-default) rounded-md px-2 pt-1.5 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-faint)">
                     Tell people who you are.
                   </div>
                 </div>
@@ -1433,7 +1438,7 @@ export default function ComponentsPage() {
               desc="Single-select cluster with horizontal or vertical orientation."
               href="radio-group"
               preview={
-                <div className="flex flex-col gap-2 text-[11px] text-(--color-foreground-default)">
+                <div className="flex flex-col gap-2 text-[0.6875rem] text-(--color-foreground-default)">
                   <label className="flex items-center gap-2">
                     <span
                       className="grid h-4 w-4 place-items-center rounded-full border-2"
@@ -1474,7 +1479,7 @@ export default function ComponentsPage() {
               href="select"
               preview={
                 <div className="w-full max-w-55 relative">
-                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-background-default) text-(--color-foreground-default)">
+                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[0.625rem] px-2.5 gap-2 text-[0.75rem] bg-(--color-background-default) text-(--color-foreground-default)">
                     <span className="flex-1">Engineering</span>
                     <svg
                       viewBox="0 0 24 24"
@@ -1491,7 +1496,7 @@ export default function ComponentsPage() {
                     style={{ boxShadow: "var(--shadow-md)" }}
                   >
                     <div
-                      className="flex items-center gap-2 rounded px-2 py-1 text-[11px]"
+                      className="flex items-center gap-2 rounded px-2 py-1 text-[0.6875rem]"
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
@@ -1509,10 +1514,10 @@ export default function ComponentsPage() {
                       </svg>
                       Engineering
                     </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-foreground-muted)">
+                    <div className="px-2 py-1 text-[0.6875rem] text-(--color-foreground-muted)">
                       Design
                     </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-foreground-muted)">
+                    <div className="px-2 py-1 text-[0.6875rem] text-(--color-foreground-muted)">
                       Operations
                     </div>
                   </div>
@@ -1527,7 +1532,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-3">
                   <div>
-                    <div className="flex justify-between text-[10px] mb-1.5">
+                    <div className="flex justify-between text-[0.625rem] mb-1.5">
                       <span className="text-(--color-foreground-muted)">
                         Volume
                       </span>
@@ -1559,7 +1564,7 @@ export default function ComponentsPage() {
                     </div>
                   </div>
                   <div>
-                    <div className="flex justify-between text-[10px] mb-1.5">
+                    <div className="flex justify-between text-[0.625rem] mb-1.5">
                       <span className="text-(--color-foreground-muted)">
                         Range
                       </span>
@@ -1608,7 +1613,7 @@ export default function ComponentsPage() {
               desc="Boolean toggle in three sizes with accessible labeling."
               href="switch"
               preview={
-                <div className="flex flex-col gap-2.5 text-[11px] text-(--color-foreground-default)">
+                <div className="flex flex-col gap-2.5 text-[0.6875rem] text-(--color-foreground-default)">
                   <div className="flex items-center justify-between gap-3">
                     <span>Auto-deploy</span>
                     <span
@@ -1644,7 +1649,7 @@ export default function ComponentsPage() {
                   <div className="flex items-center justify-between gap-3 opacity-55">
                     <span>
                       Telemetry{" "}
-                      <span className="font-mono text-[9px] text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                         disabled
                       </span>
                     </span>
@@ -1670,19 +1675,19 @@ export default function ComponentsPage() {
               href="textarea"
               preview={
                 <div
-                  className="w-full max-w-57.5 rounded-md border bg-(--color-background-default) px-2.5 py-2 text-[11px] text-(--color-foreground-default)"
+                  className="w-full max-w-57.5 rounded-md border bg-(--color-background-default) px-2.5 py-2 text-[0.6875rem] text-(--color-foreground-default)"
                   style={{
                     borderColor: "var(--color-border-primary)",
                     boxShadow:
                       "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 22%, transparent)",
-                    height: 100,
+                    height: "6.25rem",
                   }}
                 >
                   <p>
                     Designers can edit tokens directly in Figma; the bridge
                     opens a pull request with the diff.
                   </p>
-                  <p className="text-(--color-foreground-faint) mt-1 font-mono text-[9px]">
+                  <p className="text-(--color-foreground-faint) mt-1 font-mono text-[0.5625rem]">
                     142 / 280
                   </p>
                 </div>
@@ -1755,7 +1760,7 @@ export default function ComponentsPage() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="px-3 py-1.5 text-[11px] font-medium"
+                      className="px-3 py-1.5 text-[0.6875rem] font-medium"
                       style={{
                         background: "var(--color-background-default)",
                         boxShadow: "var(--shadow-sm)",
@@ -1766,14 +1771,14 @@ export default function ComponentsPage() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-foreground-muted)"
+                      className="px-3 py-1.5 text-[0.6875rem] font-medium text-(--color-foreground-muted)"
                     >
                       Week
                     </Button>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-foreground-muted)"
+                      className="px-3 py-1.5 text-[0.6875rem] font-medium text-(--color-foreground-muted)"
                     >
                       Month
                     </Button>
@@ -1859,7 +1864,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-50 flex gap-1.5">
                   <div
-                    className="aspect-video flex-1 rounded border border-(--color-border-default) flex items-center justify-center font-mono text-[9px] text-(--color-foreground-faint)"
+                    className="aspect-video flex-1 rounded border border-(--color-border-default) flex items-center justify-center font-mono text-[0.5625rem] text-(--color-foreground-faint)"
                     style={{ background: "var(--color-background-emphasis)" }}
                   >
                     16 : 9
@@ -1896,13 +1901,13 @@ export default function ComponentsPage() {
                       borderColor: "var(--color-border-primary)",
                     }}
                   >
-                    <div className="text-[10px] text-(--color-foreground-muted)">
+                    <div className="text-[0.625rem] text-(--color-foreground-muted)">
                       → Network timeout
                     </div>
-                    <div className="text-[10px] text-(--color-foreground-muted)">
+                    <div className="text-[0.625rem] text-(--color-foreground-muted)">
                       → Retry strategy
                     </div>
-                    <div className="text-[10px] text-(--color-foreground-muted)">
+                    <div className="text-[0.625rem] text-(--color-foreground-muted)">
                       → Cache invalidation
                     </div>
                   </div>
@@ -1916,7 +1921,7 @@ export default function ComponentsPage() {
               href="resizable"
               preview={
                 <div className="w-full max-w-55 flex h-25 rounded-md border border-(--color-border-default) overflow-hidden bg-(--color-background-default)">
-                  <div className="flex-[0_0_38%] grid place-items-center font-mono text-[10px] text-(--color-foreground-faint)">
+                  <div className="flex-[0_0_38%] grid place-items-center font-mono text-[0.625rem] text-(--color-foreground-faint)">
                     Sidebar
                   </div>
                   <div
@@ -1931,7 +1936,7 @@ export default function ComponentsPage() {
                     />
                   </div>
                   <div
-                    className="flex-1 grid place-items-center font-mono text-[10px] text-(--color-foreground-faint)"
+                    className="flex-1 grid place-items-center font-mono text-[0.625rem] text-(--color-foreground-faint)"
                     style={{ background: "var(--color-background-muted)" }}
                   >
                     Main
@@ -1946,7 +1951,7 @@ export default function ComponentsPage() {
               href="scroll-area"
               preview={
                 <div className="w-full max-w-50 h-27.5 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex">
-                  <div className="flex-1 p-2 text-[10px] leading-relaxed text-(--color-foreground-muted) overflow-hidden">
+                  <div className="flex-1 p-2 text-[0.625rem] leading-relaxed text-(--color-foreground-muted) overflow-hidden">
                     <p className="font-semibold text-(--color-foreground-default)">
                       Changelog
                     </p>
@@ -1978,14 +1983,14 @@ export default function ComponentsPage() {
               href="separator"
               preview={
                 <div className="w-full max-w-55 flex flex-col gap-2 items-center">
-                  <p className="text-[11px] font-semibold text-(--color-foreground-default)">
+                  <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
                     Workspace
                   </p>
                   <div
                     className="h-px w-full"
                     style={{ background: "var(--color-border-default)" }}
                   />
-                  <p className="text-[10px] text-(--color-foreground-muted)">
+                  <p className="text-[0.625rem] text-(--color-foreground-muted)">
                     Settings · Members · Billing
                   </p>
                   <div className="flex items-center gap-2 w-full">
@@ -1993,7 +1998,7 @@ export default function ComponentsPage() {
                       className="flex-1 h-px"
                       style={{ background: "var(--color-border-default)" }}
                     />
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       or
                     </span>
                     <span
@@ -2066,16 +2071,16 @@ export default function ComponentsPage() {
                       <circle cx="11" cy="11" r="7" />
                       <path d="m21 21-4.3-4.3" />
                     </svg>
-                    <span className="text-[11px] text-(--color-foreground-faint)">
+                    <span className="text-[0.6875rem] text-(--color-foreground-faint)">
                       Type a command…
                     </span>
-                    <span className="ml-auto font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
+                    <span className="ml-auto font-mono text-[0.625rem] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
                       esc
                     </span>
                   </div>
                   <div className="p-1">
                     <div
-                      className="rounded px-2 py-1 text-[11px] flex items-center gap-2"
+                      className="rounded px-2 py-1 text-[0.6875rem] flex items-center gap-2"
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
@@ -2084,10 +2089,10 @@ export default function ComponentsPage() {
                     >
                       Open documentation
                     </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-foreground-muted)">
+                    <div className="px-2 py-1 text-[0.6875rem] text-(--color-foreground-muted)">
                       New token…
                     </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-foreground-muted)">
+                    <div className="px-2 py-1 text-[0.6875rem] text-(--color-foreground-muted)">
                       Toggle theme
                     </div>
                   </div>
@@ -2101,7 +2106,7 @@ export default function ComponentsPage() {
               href="menubar"
               preview={
                 <div className="w-full max-w-65 flex flex-col gap-1">
-                  <div className="flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-default) px-1 py-1 text-[11px]">
+                  <div className="flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-default) px-1 py-1 text-[0.6875rem]">
                     <span
                       className="px-2 py-0.5 rounded font-medium text-(--color-foreground-default)"
                       style={{
@@ -2124,15 +2129,15 @@ export default function ComponentsPage() {
                     className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 self-start"
                     style={{ boxShadow: "var(--shadow-md)" }}
                   >
-                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[11px] text-(--color-foreground-default)">
+                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[0.6875rem] text-(--color-foreground-default)">
                       <span>New project</span>
-                      <span className="font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
+                      <span className="font-mono text-[0.625rem] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
                         ⌘N
                       </span>
                     </div>
-                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[11px] text-(--color-foreground-default)">
+                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[0.6875rem] text-(--color-foreground-default)">
                       <span>Open</span>
-                      <span className="font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
+                      <span className="font-mono text-[0.625rem] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
                         ⌘O
                       </span>
                     </div>
@@ -2147,7 +2152,7 @@ export default function ComponentsPage() {
               href="navigation-menu"
               preview={
                 <div className="w-full max-w-65">
-                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) flex items-center px-2 py-1 text-[11px] gap-1">
+                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) flex items-center px-2 py-1 text-[0.6875rem] gap-1">
                     <span
                       className="px-2 py-0.5 rounded font-medium text-(--color-foreground-default)"
                       style={{
@@ -2167,7 +2172,7 @@ export default function ComponentsPage() {
                     </span>
                   </div>
                   <div
-                    className="mt-1 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 grid grid-cols-2 gap-1.5 text-[10px]"
+                    className="mt-1 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 grid grid-cols-2 gap-1.5 text-[0.625rem]"
                     style={{ boxShadow: "var(--shadow-md)", width: "86%" }}
                   >
                     <div
@@ -2207,7 +2212,7 @@ export default function ComponentsPage() {
               desc="Page links with previous and next controls, an ellipsis and an active state."
               href="pagination"
               preview={
-                <div className="flex items-center gap-1 text-[11px]">
+                <div className="flex items-center gap-1 text-[0.6875rem]">
                   <Button
                     variant="outline"
                     size="icon"
@@ -2276,7 +2281,7 @@ export default function ComponentsPage() {
                     </span>
                   </div>
                   <div
-                    className="mt-2 rounded-md p-2 text-[10px] text-(--color-foreground-muted)"
+                    className="mt-2 rounded-md p-2 text-[0.625rem] text-(--color-foreground-muted)"
                     style={{ background: "var(--color-background-muted)" }}
                   >
                     Migration plan, owners, and current status for v1.4.
@@ -2339,18 +2344,18 @@ export default function ComponentsPage() {
                       <p className="text-xs font-semibold text-(--color-foreground-default)">
                         Delete project?
                       </p>
-                      <p className="text-[10px] text-(--color-foreground-faint) mt-0.5 leading-snug">
+                      <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5 leading-snug">
                         All migrations, tickets, and tokens will be permanently
                         removed.
                       </p>
                     </div>
                   </div>
                   <div className="mt-3 flex justify-end gap-1.5">
-                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-default) px-2 text-[10px] font-medium text-(--color-foreground-default)">
+                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-default) px-2 text-[0.625rem] font-medium text-(--color-foreground-default)">
                       Cancel
                     </span>
                     <span
-                      className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
+                      className="inline-flex h-6 items-center rounded px-2 text-[0.625rem] font-semibold"
                       style={{
                         background:
                           "var(--color-button-destructive-background)",
@@ -2371,12 +2376,12 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-57.5 relative h-30 rounded-md border border-(--color-border-default) bg-(--color-background-default)">
                   <div
-                    className="absolute rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[11px]"
+                    className="absolute rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[0.6875rem]"
                     style={{
-                      top: 20,
-                      left: 20,
+                      top: "1.25rem",
+                      left: "1.25rem",
                       boxShadow: "var(--shadow-md)",
-                      width: 130,
+                      width: "8.125rem",
                     }}
                   >
                     <div
@@ -2388,11 +2393,11 @@ export default function ComponentsPage() {
                       }}
                     >
                       <span>Copy</span>
-                      <span className="font-mono text-[9px]">⌘C</span>
+                      <span className="font-mono text-[0.5625rem]">⌘C</span>
                     </div>
                     <div className="flex items-center justify-between px-2 py-1 text-(--color-foreground-muted)">
                       <span>Paste</span>
-                      <span className="font-mono text-[9px]">⌘V</span>
+                      <span className="font-mono text-[0.5625rem]">⌘V</span>
                     </div>
                     <div
                       className="h-px my-1"
@@ -2443,12 +2448,12 @@ export default function ComponentsPage() {
                         <path d="M18 6 6 18M6 6l12 12" />
                       </svg>
                     </div>
-                    <div className="mt-2 flex items-center h-6.5 border border-(--color-border-default) rounded-md px-2 text-[10px] bg-(--color-background-default) text-(--color-foreground-faint)">
+                    <div className="mt-2 flex items-center h-6.5 border border-(--color-border-default) rounded-md px-2 text-[0.625rem] bg-(--color-background-default) text-(--color-foreground-faint)">
                       name@example.com
                     </div>
                     <div className="mt-2 flex justify-end">
                       <span
-                        className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
+                        className="inline-flex h-6 items-center rounded px-2 text-[0.625rem] font-semibold"
                         style={{
                           background: "var(--color-background-primary)",
                           color: "var(--color-foreground-inverse)",
@@ -2471,7 +2476,7 @@ export default function ComponentsPage() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-7 gap-1 text-[11px] font-semibold"
+                    className="h-7 gap-1 text-[0.6875rem] font-semibold"
                   >
                     Options
                     <svg
@@ -2485,8 +2490,8 @@ export default function ComponentsPage() {
                     </svg>
                   </Button>
                   <div
-                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[11px]"
-                    style={{ boxShadow: "var(--shadow-md)", width: 150 }}
+                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[0.6875rem]"
+                    style={{ boxShadow: "var(--shadow-md)", width: "9.375rem" }}
                   >
                     <div className="flex items-center gap-2 px-2 py-1 text-(--color-foreground-default)">
                       <svg
@@ -2544,7 +2549,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="flex flex-col gap-1.5 items-start">
                   <span
-                    className="text-[11px] font-medium underline"
+                    className="text-[0.6875rem] font-medium underline"
                     style={{
                       color: "var(--color-foreground-primary-muted)",
                       textDecorationColor:
@@ -2555,7 +2560,10 @@ export default function ComponentsPage() {
                   </span>
                   <div
                     className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3"
-                    style={{ boxShadow: "var(--shadow-md)", width: 190 }}
+                    style={{
+                      boxShadow: "var(--shadow-md)",
+                      width: "11.875rem",
+                    }}
                   >
                     <div className="flex items-center gap-2">
                       <span
@@ -2563,25 +2571,25 @@ export default function ComponentsPage() {
                         style={{
                           background: "var(--color-blue-300)",
                           color: "var(--color-blue-950)",
-                          height: 32,
-                          width: 32,
+                          height: "2rem",
+                          width: "2rem",
                         }}
                       >
                         EM
                       </span>
                       <div>
-                        <p className="text-[11px] font-semibold text-(--color-foreground-default)">
+                        <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
                           Elena Mori
                         </p>
-                        <p className="text-[10px] text-(--color-foreground-faint)">
+                        <p className="text-[0.625rem] text-(--color-foreground-faint)">
                           Lead, Design Systems
                         </p>
                       </div>
                     </div>
-                    <p className="mt-2 text-[10px] text-(--color-foreground-muted)">
+                    <p className="mt-2 text-[0.625rem] text-(--color-foreground-muted)">
                       Building design systems that scale.
                     </p>
-                    <div className="mt-2 flex items-center gap-3 font-mono text-[9px] text-(--color-foreground-faint)">
+                    <div className="mt-2 flex items-center gap-3 font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                       <span>42 following</span>
                       <span>1.2k followers</span>
                     </div>
@@ -2599,7 +2607,7 @@ export default function ComponentsPage() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-7 gap-1 text-[11px] font-semibold"
+                    className="h-7 gap-1 text-[0.6875rem] font-semibold"
                   >
                     Filters
                     <svg
@@ -2614,15 +2622,15 @@ export default function ComponentsPage() {
                   </Button>
                   <div
                     className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 space-y-2"
-                    style={{ boxShadow: "var(--shadow-md)", width: 180 }}
+                    style={{ boxShadow: "var(--shadow-md)", width: "11.25rem" }}
                   >
-                    <p className="text-[10px] font-semibold text-(--color-foreground-default)">
+                    <p className="text-[0.625rem] font-semibold text-(--color-foreground-default)">
                       Filter by status
                     </p>
                     {["Active", "Beta", "Deprecated"].map((s) => (
                       <label
                         key={s}
-                        className="flex items-center gap-2 text-[11px] text-(--color-foreground-muted)"
+                        className="flex items-center gap-2 text-[0.6875rem] text-(--color-foreground-muted)"
                       >
                         <span
                           className="grid h-3.5 w-3.5 place-items-center rounded-sm"
@@ -2682,7 +2690,7 @@ export default function ComponentsPage() {
                     }}
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <p className="text-[11px] font-semibold text-(--color-foreground-default)">
+                      <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
                         Settings
                       </p>
                       <svg
@@ -2722,7 +2730,7 @@ export default function ComponentsPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-8 gap-1 text-[11px] font-semibold"
+                      className="h-8 gap-1 text-[0.6875rem] font-semibold"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -2737,7 +2745,7 @@ export default function ComponentsPage() {
                       Info
                     </Button>
                     <div
-                      className="absolute -top-8 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-[10px] font-medium whitespace-nowrap"
+                      className="absolute -top-8 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-[0.625rem] font-medium whitespace-nowrap"
                       style={{
                         background: "var(--color-foreground-default)",
                         color: "var(--color-foreground-inverse)",
@@ -2752,7 +2760,7 @@ export default function ComponentsPage() {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-[10px] text-(--color-foreground-faint)">
+                  <div className="flex items-center gap-2 text-[0.625rem] text-(--color-foreground-faint)">
                     <span className="font-mono">hover</span>·
                     <span className="font-mono">focus</span>·
                     <span className="font-mono">touch</span>
@@ -2791,7 +2799,7 @@ export default function ComponentsPage() {
               },
             ].map(({ label, value, desc }) => (
               <div key={label}>
-                <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
+                <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                   {label}
                 </p>
                 <p className="mt-1 font-serif text-xl font-semibold text-(--color-foreground-default)">
