@@ -4,6 +4,9 @@
 
 export type CssVarName =
   | "--alert-description-opacity"
+  | "--alert-dialog-content-z-index"
+  | "--alert-dialog-overlay-opacity"
+  | "--alert-dialog-overlay-z-index"
   | "--border-radius-2xl"
   | "--border-radius-full"
   | "--border-radius-lg"
@@ -561,8 +564,14 @@ export type CssVarName =
   | "--color-yellow-900"
   | "--color-yellow-950"
   | "--command-input-icon-opacity"
+  | "--context-menu-content-z-index"
+  | "--context-menu-sub-content-z-index"
   | "--dialog-close-button-opacity"
   | "--dialog-close-button-opacity-hover"
+  | "--dialog-content-z-index"
+  | "--dialog-overlay-opacity"
+  | "--dialog-overlay-z-index"
+  | "--dropdown-menu-content-z-index"
   | "--dropdown-menu-shortcut-opacity"
   | "--duration-0"
   | "--duration-100"
@@ -573,9 +582,19 @@ export type CssVarName =
   | "--duration-500"
   | "--duration-700"
   | "--duration-75"
+  | "--duration-accordion-trigger-icon-duration"
+  | "--duration-alert-dialog-content-duration"
+  | "--duration-card-grid-item-duration"
+  | "--duration-dialog-content-duration"
   | "--duration-fast"
+  | "--duration-feature-grid-icon-duration"
+  | "--duration-feature-grid-item-duration"
   | "--duration-instant"
+  | "--duration-navigation-menu-indicator-duration"
   | "--duration-normal"
+  | "--duration-progress-indicator-duration"
+  | "--duration-sheet-content-duration-closed"
+  | "--duration-sheet-content-duration-open"
   | "--duration-site-header-transition-duration"
   | "--duration-slow"
   | "--font-size-2xl"
@@ -720,6 +739,8 @@ export type CssVarName =
   | "--font-weight-toast-title-font-weight"
   | "--font-weight-toggle-font-weight"
   | "--font-weight-toggle-group-item-font-weight"
+  | "--hover-card-z-index"
+  | "--input-spin-button-opacity"
   | "--line-height-accordion-content-line-height"
   | "--line-height-accordion-trigger-line-height"
   | "--line-height-alert-description-line-height"
@@ -729,12 +750,21 @@ export type CssVarName =
   | "--line-height-card-content-line-height"
   | "--line-height-card-header-description-line-height"
   | "--line-height-card-title-line-height"
+  | "--line-height-dialog-title-line-height"
+  | "--line-height-feature-grid-description-line-height"
+  | "--line-height-feature-grid-title-line-height"
+  | "--line-height-form-label-line-height"
+  | "--line-height-label-line-height"
   | "--line-height-loose"
   | "--line-height-none"
   | "--line-height-normal"
   | "--line-height-relaxed"
   | "--line-height-snug"
   | "--line-height-tight"
+  | "--menubar-content-z-index"
+  | "--menubar-sub-content-z-index"
+  | "--navigation-menu-indicator-z-index"
+  | "--navigation-menu-z-index"
   | "--opacity-0"
   | "--opacity-10"
   | "--opacity-100"
@@ -758,18 +788,41 @@ export type CssVarName =
   | "--opacity-scrim"
   | "--opacity-subtle"
   | "--page-layout-skip-link-z-index"
+  | "--popover-z-index"
+  | "--resizable-handle-z-index"
   | "--select-content-z-index"
   | "--select-trigger-icon-opacity"
+  | "--shadow-alert-dialog-content-shadow"
   | "--shadow-base"
   | "--shadow-card-shadow"
+  | "--shadow-context-menu-content-shadow"
+  | "--shadow-context-menu-sub-content-shadow"
+  | "--shadow-dialog-shadow"
+  | "--shadow-dropdown-menu-content-shadow"
+  | "--shadow-feature-grid-icon-shadow"
+  | "--shadow-hover-card-content-shadow"
   | "--shadow-inner"
   | "--shadow-lg"
   | "--shadow-md"
+  | "--shadow-menubar-content-shadow"
+  | "--shadow-menubar-sub-content-shadow"
+  | "--shadow-navigation-menu-arrow-shadow"
+  | "--shadow-navigation-menu-viewport-shadow"
   | "--shadow-none"
+  | "--shadow-popover-content-shadow"
+  | "--shadow-select-content-shadow"
+  | "--shadow-sheet-content-shadow"
   | "--shadow-sm"
+  | "--shadow-switch-thumb-shadow"
+  | "--shadow-tabs-trigger-shadow"
+  | "--shadow-toast-shadow"
+  | "--shadow-tooltip-shadow"
   | "--shadow-xl"
   | "--sheet-close-button-opacity"
   | "--sheet-close-button-opacity-hover"
+  | "--sheet-content-z-index"
+  | "--sheet-overlay-opacity"
+  | "--sheet-overlay-z-index"
   | "--site-header-z-index"
   | "--space-0"
   | "--space-010"
@@ -841,6 +894,9 @@ export type CssVarName =
   | "--space-button-padding-y-md"
   | "--space-button-padding-y-sm"
   | "--space-button-radius"
+  | "--space-button-spinner-border-width"
+  | "--space-button-spinner-radius"
+  | "--space-button-spinner-size"
   | "--space-calendar-cell-size"
   | "--space-calendar-container-gap"
   | "--space-calendar-container-padding"
@@ -903,10 +959,12 @@ export type CssVarName =
   | "--space-context-menu-item-padding-x"
   | "--space-context-menu-item-padding-y"
   | "--space-context-menu-item-radius"
+  | "--space-context-menu-item-sub-trigger-icon-size"
   | "--space-context-menu-separator-margin-x"
   | "--space-context-menu-separator-margin-y"
   | "--space-context-menu-shortcut-letter-spacing"
   | "--space-context-menu-sub-content-min-width"
+  | "--space-dialog-close-button-icon-size"
   | "--space-dialog-close-button-offset"
   | "--space-dialog-close-button-radius"
   | "--space-dialog-content-max-width"
@@ -930,6 +988,7 @@ export type CssVarName =
   | "--space-dropdown-menu-item-padding-x"
   | "--space-dropdown-menu-item-padding-y"
   | "--space-dropdown-menu-item-radio-indicator-radius"
+  | "--space-dropdown-menu-item-radio-indicator-size"
   | "--space-dropdown-menu-item-radius"
   | "--space-dropdown-menu-separator-height"
   | "--space-dropdown-menu-separator-margin-x"
@@ -986,11 +1045,14 @@ export type CssVarName =
   | "--space-menubar-trigger-padding-x"
   | "--space-menubar-trigger-padding-y"
   | "--space-menubar-trigger-radius"
+  | "--space-navigation-menu-arrow-radius"
+  | "--space-navigation-menu-arrow-size"
   | "--space-navigation-menu-indicator-height"
   | "--space-navigation-menu-indicator-margin-left"
   | "--space-navigation-menu-indicator-margin-top"
   | "--space-navigation-menu-list-gap"
   | "--space-navigation-menu-trigger-height"
+  | "--space-navigation-menu-trigger-icon-size"
   | "--space-navigation-menu-trigger-padding-x"
   | "--space-navigation-menu-trigger-padding-y"
   | "--space-navigation-menu-trigger-radius"
@@ -1073,7 +1135,9 @@ export type CssVarName =
   | "--space-select-content-min-width"
   | "--space-select-content-padding"
   | "--space-select-content-radius"
+  | "--space-select-item-icon-size"
   | "--space-select-item-indicator-left"
+  | "--space-select-item-indicator-size"
   | "--space-select-item-padding-left"
   | "--space-select-item-padding-right"
   | "--space-select-item-padding-y"
@@ -1084,6 +1148,7 @@ export type CssVarName =
   | "--space-select-trigger-height-lg"
   | "--space-select-trigger-height-md"
   | "--space-select-trigger-height-sm"
+  | "--space-select-trigger-icon-size"
   | "--space-select-trigger-padding-x-lg"
   | "--space-select-trigger-padding-x-md"
   | "--space-select-trigger-padding-x-sm"
@@ -1115,6 +1180,7 @@ export type CssVarName =
   | "--space-shadow-spread-none"
   | "--space-shadow-spread-sm"
   | "--space-shadow-spread-xl"
+  | "--space-sheet-close-button-icon-size"
   | "--space-sheet-close-button-offset"
   | "--space-sheet-close-button-radius"
   | "--space-sheet-content-padding"
@@ -1211,6 +1277,7 @@ export type CssVarName =
   | "--space-toast-action-height"
   | "--space-toast-action-padding-x"
   | "--space-toast-action-radius"
+  | "--space-toast-close-button-icon-size"
   | "--space-toast-close-button-padding"
   | "--space-toast-close-button-position"
   | "--space-toast-close-button-radius"
@@ -1251,6 +1318,8 @@ export type CssVarName =
   | "--toast-close-button-opacity"
   | "--toast-close-button-opacity-hover"
   | "--toast-description-opacity"
+  | "--toast-viewport-z-index"
+  | "--tooltip-z-index"
   | "--transition-easing-default"
   | "--transition-easing-in"
   | "--transition-easing-in-out"
@@ -1259,6 +1328,7 @@ export type CssVarName =
   | "--typography-font-family-sans"
   | "--typography-font-family-serif"
   | "--z-index-0"
+  | "--z-index-1"
   | "--z-index-10"
   | "--z-index-100"
   | "--z-index-20"
@@ -1283,6 +1353,9 @@ export type CssVarKey = keyof typeof cssVars;
 
 export declare const cssVars: Readonly<{
   "alertDescriptionOpacity": "--alert-description-opacity";
+  "alertDialogContentZIndex": "--alert-dialog-content-z-index";
+  "alertDialogOverlayOpacity": "--alert-dialog-overlay-opacity";
+  "alertDialogOverlayZIndex": "--alert-dialog-overlay-z-index";
   "borderRadius2xl": "--border-radius-2xl";
   "borderRadiusFull": "--border-radius-full";
   "borderRadiusLg": "--border-radius-lg";
@@ -1840,8 +1913,14 @@ export declare const cssVars: Readonly<{
   "colorYellow900": "--color-yellow-900";
   "colorYellow950": "--color-yellow-950";
   "commandInputIconOpacity": "--command-input-icon-opacity";
+  "contextMenuContentZIndex": "--context-menu-content-z-index";
+  "contextMenuSubContentZIndex": "--context-menu-sub-content-z-index";
   "dialogCloseButtonOpacity": "--dialog-close-button-opacity";
   "dialogCloseButtonOpacityHover": "--dialog-close-button-opacity-hover";
+  "dialogContentZIndex": "--dialog-content-z-index";
+  "dialogOverlayOpacity": "--dialog-overlay-opacity";
+  "dialogOverlayZIndex": "--dialog-overlay-z-index";
+  "dropdownMenuContentZIndex": "--dropdown-menu-content-z-index";
   "dropdownMenuShortcutOpacity": "--dropdown-menu-shortcut-opacity";
   "duration0": "--duration-0";
   "duration100": "--duration-100";
@@ -1852,9 +1931,19 @@ export declare const cssVars: Readonly<{
   "duration500": "--duration-500";
   "duration700": "--duration-700";
   "duration75": "--duration-75";
+  "durationAccordionTriggerIconDuration": "--duration-accordion-trigger-icon-duration";
+  "durationAlertDialogContentDuration": "--duration-alert-dialog-content-duration";
+  "durationCardGridItemDuration": "--duration-card-grid-item-duration";
+  "durationDialogContentDuration": "--duration-dialog-content-duration";
   "durationFast": "--duration-fast";
+  "durationFeatureGridIconDuration": "--duration-feature-grid-icon-duration";
+  "durationFeatureGridItemDuration": "--duration-feature-grid-item-duration";
   "durationInstant": "--duration-instant";
+  "durationNavigationMenuIndicatorDuration": "--duration-navigation-menu-indicator-duration";
   "durationNormal": "--duration-normal";
+  "durationProgressIndicatorDuration": "--duration-progress-indicator-duration";
+  "durationSheetContentDurationClosed": "--duration-sheet-content-duration-closed";
+  "durationSheetContentDurationOpen": "--duration-sheet-content-duration-open";
   "durationSiteHeaderTransitionDuration": "--duration-site-header-transition-duration";
   "durationSlow": "--duration-slow";
   "fontSize2xl": "--font-size-2xl";
@@ -1999,6 +2088,8 @@ export declare const cssVars: Readonly<{
   "fontWeightToastTitleFontWeight": "--font-weight-toast-title-font-weight";
   "fontWeightToggleFontWeight": "--font-weight-toggle-font-weight";
   "fontWeightToggleGroupItemFontWeight": "--font-weight-toggle-group-item-font-weight";
+  "hoverCardZIndex": "--hover-card-z-index";
+  "inputSpinButtonOpacity": "--input-spin-button-opacity";
   "lineHeightAccordionContentLineHeight": "--line-height-accordion-content-line-height";
   "lineHeightAccordionTriggerLineHeight": "--line-height-accordion-trigger-line-height";
   "lineHeightAlertDescriptionLineHeight": "--line-height-alert-description-line-height";
@@ -2008,12 +2099,21 @@ export declare const cssVars: Readonly<{
   "lineHeightCardContentLineHeight": "--line-height-card-content-line-height";
   "lineHeightCardHeaderDescriptionLineHeight": "--line-height-card-header-description-line-height";
   "lineHeightCardTitleLineHeight": "--line-height-card-title-line-height";
+  "lineHeightDialogTitleLineHeight": "--line-height-dialog-title-line-height";
+  "lineHeightFeatureGridDescriptionLineHeight": "--line-height-feature-grid-description-line-height";
+  "lineHeightFeatureGridTitleLineHeight": "--line-height-feature-grid-title-line-height";
+  "lineHeightFormLabelLineHeight": "--line-height-form-label-line-height";
+  "lineHeightLabelLineHeight": "--line-height-label-line-height";
   "lineHeightLoose": "--line-height-loose";
   "lineHeightNone": "--line-height-none";
   "lineHeightNormal": "--line-height-normal";
   "lineHeightRelaxed": "--line-height-relaxed";
   "lineHeightSnug": "--line-height-snug";
   "lineHeightTight": "--line-height-tight";
+  "menubarContentZIndex": "--menubar-content-z-index";
+  "menubarSubContentZIndex": "--menubar-sub-content-z-index";
+  "navigationMenuIndicatorZIndex": "--navigation-menu-indicator-z-index";
+  "navigationMenuZIndex": "--navigation-menu-z-index";
   "opacity0": "--opacity-0";
   "opacity10": "--opacity-10";
   "opacity100": "--opacity-100";
@@ -2037,18 +2137,41 @@ export declare const cssVars: Readonly<{
   "opacityScrim": "--opacity-scrim";
   "opacitySubtle": "--opacity-subtle";
   "pageLayoutSkipLinkZIndex": "--page-layout-skip-link-z-index";
+  "popoverZIndex": "--popover-z-index";
+  "resizableHandleZIndex": "--resizable-handle-z-index";
   "selectContentZIndex": "--select-content-z-index";
   "selectTriggerIconOpacity": "--select-trigger-icon-opacity";
+  "shadowAlertDialogContentShadow": "--shadow-alert-dialog-content-shadow";
   "shadowBase": "--shadow-base";
   "shadowCardShadow": "--shadow-card-shadow";
+  "shadowContextMenuContentShadow": "--shadow-context-menu-content-shadow";
+  "shadowContextMenuSubContentShadow": "--shadow-context-menu-sub-content-shadow";
+  "shadowDialogShadow": "--shadow-dialog-shadow";
+  "shadowDropdownMenuContentShadow": "--shadow-dropdown-menu-content-shadow";
+  "shadowFeatureGridIconShadow": "--shadow-feature-grid-icon-shadow";
+  "shadowHoverCardContentShadow": "--shadow-hover-card-content-shadow";
   "shadowInner": "--shadow-inner";
   "shadowLg": "--shadow-lg";
   "shadowMd": "--shadow-md";
+  "shadowMenubarContentShadow": "--shadow-menubar-content-shadow";
+  "shadowMenubarSubContentShadow": "--shadow-menubar-sub-content-shadow";
+  "shadowNavigationMenuArrowShadow": "--shadow-navigation-menu-arrow-shadow";
+  "shadowNavigationMenuViewportShadow": "--shadow-navigation-menu-viewport-shadow";
   "shadowNone": "--shadow-none";
+  "shadowPopoverContentShadow": "--shadow-popover-content-shadow";
+  "shadowSelectContentShadow": "--shadow-select-content-shadow";
+  "shadowSheetContentShadow": "--shadow-sheet-content-shadow";
   "shadowSm": "--shadow-sm";
+  "shadowSwitchThumbShadow": "--shadow-switch-thumb-shadow";
+  "shadowTabsTriggerShadow": "--shadow-tabs-trigger-shadow";
+  "shadowToastShadow": "--shadow-toast-shadow";
+  "shadowTooltipShadow": "--shadow-tooltip-shadow";
   "shadowXl": "--shadow-xl";
   "sheetCloseButtonOpacity": "--sheet-close-button-opacity";
   "sheetCloseButtonOpacityHover": "--sheet-close-button-opacity-hover";
+  "sheetContentZIndex": "--sheet-content-z-index";
+  "sheetOverlayOpacity": "--sheet-overlay-opacity";
+  "sheetOverlayZIndex": "--sheet-overlay-z-index";
   "siteHeaderZIndex": "--site-header-z-index";
   "space0": "--space-0";
   "space010": "--space-010";
@@ -2120,6 +2243,9 @@ export declare const cssVars: Readonly<{
   "spaceButtonPaddingYMd": "--space-button-padding-y-md";
   "spaceButtonPaddingYSm": "--space-button-padding-y-sm";
   "spaceButtonRadius": "--space-button-radius";
+  "spaceButtonSpinnerBorderWidth": "--space-button-spinner-border-width";
+  "spaceButtonSpinnerRadius": "--space-button-spinner-radius";
+  "spaceButtonSpinnerSize": "--space-button-spinner-size";
   "spaceCalendarCellSize": "--space-calendar-cell-size";
   "spaceCalendarContainerGap": "--space-calendar-container-gap";
   "spaceCalendarContainerPadding": "--space-calendar-container-padding";
@@ -2182,10 +2308,12 @@ export declare const cssVars: Readonly<{
   "spaceContextMenuItemPaddingX": "--space-context-menu-item-padding-x";
   "spaceContextMenuItemPaddingY": "--space-context-menu-item-padding-y";
   "spaceContextMenuItemRadius": "--space-context-menu-item-radius";
+  "spaceContextMenuItemSubTriggerIconSize": "--space-context-menu-item-sub-trigger-icon-size";
   "spaceContextMenuSeparatorMarginX": "--space-context-menu-separator-margin-x";
   "spaceContextMenuSeparatorMarginY": "--space-context-menu-separator-margin-y";
   "spaceContextMenuShortcutLetterSpacing": "--space-context-menu-shortcut-letter-spacing";
   "spaceContextMenuSubContentMinWidth": "--space-context-menu-sub-content-min-width";
+  "spaceDialogCloseButtonIconSize": "--space-dialog-close-button-icon-size";
   "spaceDialogCloseButtonOffset": "--space-dialog-close-button-offset";
   "spaceDialogCloseButtonRadius": "--space-dialog-close-button-radius";
   "spaceDialogContentMaxWidth": "--space-dialog-content-max-width";
@@ -2209,6 +2337,7 @@ export declare const cssVars: Readonly<{
   "spaceDropdownMenuItemPaddingX": "--space-dropdown-menu-item-padding-x";
   "spaceDropdownMenuItemPaddingY": "--space-dropdown-menu-item-padding-y";
   "spaceDropdownMenuItemRadioIndicatorRadius": "--space-dropdown-menu-item-radio-indicator-radius";
+  "spaceDropdownMenuItemRadioIndicatorSize": "--space-dropdown-menu-item-radio-indicator-size";
   "spaceDropdownMenuItemRadius": "--space-dropdown-menu-item-radius";
   "spaceDropdownMenuSeparatorHeight": "--space-dropdown-menu-separator-height";
   "spaceDropdownMenuSeparatorMarginX": "--space-dropdown-menu-separator-margin-x";
@@ -2265,11 +2394,14 @@ export declare const cssVars: Readonly<{
   "spaceMenubarTriggerPaddingX": "--space-menubar-trigger-padding-x";
   "spaceMenubarTriggerPaddingY": "--space-menubar-trigger-padding-y";
   "spaceMenubarTriggerRadius": "--space-menubar-trigger-radius";
+  "spaceNavigationMenuArrowRadius": "--space-navigation-menu-arrow-radius";
+  "spaceNavigationMenuArrowSize": "--space-navigation-menu-arrow-size";
   "spaceNavigationMenuIndicatorHeight": "--space-navigation-menu-indicator-height";
   "spaceNavigationMenuIndicatorMarginLeft": "--space-navigation-menu-indicator-margin-left";
   "spaceNavigationMenuIndicatorMarginTop": "--space-navigation-menu-indicator-margin-top";
   "spaceNavigationMenuListGap": "--space-navigation-menu-list-gap";
   "spaceNavigationMenuTriggerHeight": "--space-navigation-menu-trigger-height";
+  "spaceNavigationMenuTriggerIconSize": "--space-navigation-menu-trigger-icon-size";
   "spaceNavigationMenuTriggerPaddingX": "--space-navigation-menu-trigger-padding-x";
   "spaceNavigationMenuTriggerPaddingY": "--space-navigation-menu-trigger-padding-y";
   "spaceNavigationMenuTriggerRadius": "--space-navigation-menu-trigger-radius";
@@ -2352,7 +2484,9 @@ export declare const cssVars: Readonly<{
   "spaceSelectContentMinWidth": "--space-select-content-min-width";
   "spaceSelectContentPadding": "--space-select-content-padding";
   "spaceSelectContentRadius": "--space-select-content-radius";
+  "spaceSelectItemIconSize": "--space-select-item-icon-size";
   "spaceSelectItemIndicatorLeft": "--space-select-item-indicator-left";
+  "spaceSelectItemIndicatorSize": "--space-select-item-indicator-size";
   "spaceSelectItemPaddingLeft": "--space-select-item-padding-left";
   "spaceSelectItemPaddingRight": "--space-select-item-padding-right";
   "spaceSelectItemPaddingY": "--space-select-item-padding-y";
@@ -2363,6 +2497,7 @@ export declare const cssVars: Readonly<{
   "spaceSelectTriggerHeightLg": "--space-select-trigger-height-lg";
   "spaceSelectTriggerHeightMd": "--space-select-trigger-height-md";
   "spaceSelectTriggerHeightSm": "--space-select-trigger-height-sm";
+  "spaceSelectTriggerIconSize": "--space-select-trigger-icon-size";
   "spaceSelectTriggerPaddingXLg": "--space-select-trigger-padding-x-lg";
   "spaceSelectTriggerPaddingXMd": "--space-select-trigger-padding-x-md";
   "spaceSelectTriggerPaddingXSm": "--space-select-trigger-padding-x-sm";
@@ -2394,6 +2529,7 @@ export declare const cssVars: Readonly<{
   "spaceShadowSpreadNone": "--space-shadow-spread-none";
   "spaceShadowSpreadSm": "--space-shadow-spread-sm";
   "spaceShadowSpreadXl": "--space-shadow-spread-xl";
+  "spaceSheetCloseButtonIconSize": "--space-sheet-close-button-icon-size";
   "spaceSheetCloseButtonOffset": "--space-sheet-close-button-offset";
   "spaceSheetCloseButtonRadius": "--space-sheet-close-button-radius";
   "spaceSheetContentPadding": "--space-sheet-content-padding";
@@ -2490,6 +2626,7 @@ export declare const cssVars: Readonly<{
   "spaceToastActionHeight": "--space-toast-action-height";
   "spaceToastActionPaddingX": "--space-toast-action-padding-x";
   "spaceToastActionRadius": "--space-toast-action-radius";
+  "spaceToastCloseButtonIconSize": "--space-toast-close-button-icon-size";
   "spaceToastCloseButtonPadding": "--space-toast-close-button-padding";
   "spaceToastCloseButtonPosition": "--space-toast-close-button-position";
   "spaceToastCloseButtonRadius": "--space-toast-close-button-radius";
@@ -2530,6 +2667,8 @@ export declare const cssVars: Readonly<{
   "toastCloseButtonOpacity": "--toast-close-button-opacity";
   "toastCloseButtonOpacityHover": "--toast-close-button-opacity-hover";
   "toastDescriptionOpacity": "--toast-description-opacity";
+  "toastViewportZIndex": "--toast-viewport-z-index";
+  "tooltipZIndex": "--tooltip-z-index";
   "transitionEasingDefault": "--transition-easing-default";
   "transitionEasingIn": "--transition-easing-in";
   "transitionEasingInOut": "--transition-easing-in-out";
@@ -2538,6 +2677,7 @@ export declare const cssVars: Readonly<{
   "typographyFontFamilySans": "--typography-font-family-sans";
   "typographyFontFamilySerif": "--typography-font-family-serif";
   "zIndex0": "--z-index-0";
+  "zIndex1": "--z-index-1";
   "zIndex10": "--z-index-10";
   "zIndex100": "--z-index-100";
   "zIndex20": "--z-index-20";

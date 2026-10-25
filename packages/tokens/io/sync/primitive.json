@@ -1071,6 +1071,10 @@
           "$type": "number",
           "$value": 0
         },
+        "z-index.1": {
+          "$type": "number",
+          "$value": 1
+        },
         "z-index.10": {
           "$type": "number",
           "$value": 10
