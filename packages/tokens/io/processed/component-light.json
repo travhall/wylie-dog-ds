@@ -4173,5 +4173,445 @@
     "$type": "color",
     "$value": "{color.background.muted}",
     "$description": "Fill of a pressed (on) toggle when disabled, a quiet neutral so it reads as unavailable."
+  },
+  "page-layout.main.padding-y": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Vertical padding of the main content area."
+  },
+  "page-layout.main.padding-x-sm": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the default and centered main area on small screens."
+  },
+  "page-layout.main.padding-x-md": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the default and centered main area from the sm breakpoint."
+  },
+  "page-layout.main.padding-x-lg": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Horizontal padding of the default and centered main area from the lg breakpoint."
+  },
+  "page-layout.main.max-width-centered": {
+    "$type": "spacing",
+    "$value": "{space.2000}",
+    "$description": "Maximum width of the centered main area."
+  },
+  "page-layout.sidebar-width": {
+    "$type": "spacing",
+    "$value": "{space.1400}",
+    "$description": "Width of the sidebar."
+  },
+  "page-layout.skip-link.offset": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Distance of the focused skip link from the top and left edges."
+  },
+  "page-layout.skip-link.padding-x": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the skip link."
+  },
+  "page-layout.skip-link.padding-y": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the skip link."
+  },
+  "page-layout.skip-link.radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the skip link."
+  },
+  "page-layout.skip-link.z-index": {
+    "$type": "number",
+    "$value": "{z-index.modal}",
+    "$description": "Stacking order of the focused skip link."
+  },
+  "section-features.padding-y-sm": {
+    "$type": "spacing",
+    "$value": "{space.800}",
+    "$description": "Vertical padding of the section on small screens."
+  },
+  "section-features.padding-y-md": {
+    "$type": "spacing",
+    "$value": "{space.1100}",
+    "$description": "Vertical padding of the section from the md breakpoint."
+  },
+  "section-features.container.padding-x-sm": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the section container on small screens."
+  },
+  "section-features.container.padding-x-md": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the section container from the sm breakpoint."
+  },
+  "section-features.container.padding-x-lg": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Horizontal padding of the section container from the lg breakpoint."
+  },
+  "section-features.header.max-width": {
+    "$type": "spacing",
+    "$value": "{space.1900}",
+    "$description": "Maximum width of the section header."
+  },
+  "section-features.header.margin-bottom": {
+    "$type": "spacing",
+    "$value": "{space.700}",
+    "$description": "Space below the section header."
+  },
+  "section-features.title.margin-bottom": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Space below the section title."
+  },
+  "section-features.title.font-size-sm": {
+    "$type": "number",
+    "$value": "{typography.font-size.heading.lg}",
+    "$description": "Font size of the section title on small screens."
+  },
+  "section-features.title.font-size-md": {
+    "$type": "number",
+    "$value": "{typography.font-size.display.sm}",
+    "$description": "Font size of the section title from the md breakpoint."
+  },
+  "section-features.title.font-size-lg": {
+    "$type": "number",
+    "$value": "{typography.font-size.display.md}",
+    "$description": "Font size of the section title from the lg breakpoint."
+  },
+  "section-features.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.bold}",
+    "$description": "Font weight of the section title."
+  },
+  "section-features.title.tracking": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.tight}",
+    "$description": "Letter spacing of the section title."
+  },
+  "section-features.description-font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the section description."
+  },
+  "section-features.grid-gap": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Gap between feature items."
+  },
+  "section-features.item-gap": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Gap between the parts of a feature item."
+  },
+  "section-features.item.title.font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.heading.sm}",
+    "$description": "Font size of a feature title."
+  },
+  "section-features.item.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of a feature title."
+  },
+  "section-features.card.row-margin-bottom": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Space below the icon and badge row of a feature card."
+  },
+  "section-features.card.icon-margin-bottom": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Space below the icon of a feature card."
+  },
+  "section-features.icon.size": {
+    "$type": "spacing",
+    "$value": "{space.600}",
+    "$description": "Width and height of the feature icon container."
+  },
+  "section-features.icon.radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.lg}",
+    "$description": "Corner radius of the feature icon container."
+  },
+  "section-hero.padding-y-sm": {
+    "$type": "spacing",
+    "$value": "{space.800}",
+    "$description": "Vertical padding of the hero on small screens."
+  },
+  "section-hero.padding-y-md": {
+    "$type": "spacing",
+    "$value": "{space.1100}",
+    "$description": "Vertical padding of the hero from the md breakpoint."
+  },
+  "section-hero.container.padding-x-sm": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the hero container on small screens."
+  },
+  "section-hero.container.padding-x-md": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the hero container from the sm breakpoint."
+  },
+  "section-hero.container.padding-x-lg": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Horizontal padding of the hero container from the lg breakpoint."
+  },
+  "section-hero.layout.gap-sm": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Gap between the content and image columns on small screens."
+  },
+  "section-hero.layout.gap-md": {
+    "$type": "spacing",
+    "$value": "{space.600}",
+    "$description": "Gap between the content and image columns from the md breakpoint."
+  },
+  "section-hero.layout.max-width-centered": {
+    "$type": "spacing",
+    "$value": "{space.2000}",
+    "$description": "Maximum width of the centered hero layout."
+  },
+  "section-hero.content-gap": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Gap between the badge, title, description and actions."
+  },
+  "section-hero.title.font-size-sm": {
+    "$type": "number",
+    "$value": "{typography.font-size.display.sm}",
+    "$description": "Font size of the hero title on small screens."
+  },
+  "section-hero.title.font-size-md": {
+    "$type": "number",
+    "$value": "{typography.font-size.display.md}",
+    "$description": "Font size of the hero title from the md breakpoint."
+  },
+  "section-hero.title.font-size-lg": {
+    "$type": "number",
+    "$value": "{typography.font-size.display.lg}",
+    "$description": "Font size of the hero title from the lg breakpoint."
+  },
+  "section-hero.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.bold}",
+    "$description": "Font weight of the hero title."
+  },
+  "section-hero.title.tracking": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.tight}",
+    "$description": "Letter spacing of the hero title."
+  },
+  "section-hero.description.font-size-sm": {
+    "$type": "number",
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the hero description on small screens."
+  },
+  "section-hero.description.font-size-md": {
+    "$type": "number",
+    "$value": "{typography.font-size.xl}",
+    "$description": "Font size of the hero description from the md breakpoint."
+  },
+  "section-hero.description.max-width": {
+    "$type": "spacing",
+    "$value": "{space.1800}",
+    "$description": "Maximum width of the hero description."
+  },
+  "section-hero.actions-gap": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Gap between the hero actions."
+  },
+  "section-hero.image.max-width": {
+    "$type": "spacing",
+    "$value": "{space.1900}",
+    "$description": "Maximum width of the image in the centered hero."
+  },
+  "section-hero.image.margin-top": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Space above the image in the centered hero."
+  },
+  "site-footer.container.padding-x-sm": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the footer container on small screens."
+  },
+  "site-footer.container.padding-x-md": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the footer container from the sm breakpoint."
+  },
+  "site-footer.container.padding-x-lg": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Horizontal padding of the footer container from the lg breakpoint."
+  },
+  "site-footer.container.padding-y": {
+    "$type": "spacing",
+    "$value": "{space.600}",
+    "$description": "Vertical padding of the footer container."
+  },
+  "site-footer.columns.gap": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Gap between the footer columns."
+  },
+  "site-footer.columns.margin-bottom": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Space below the footer columns."
+  },
+  "site-footer.logo.margin-bottom": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Space below the fallback logo block."
+  },
+  "site-footer.logo.font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the fallback logo."
+  },
+  "site-footer.logo.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.bold}",
+    "$description": "Font weight of the fallback logo."
+  },
+  "site-footer.font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of footer body text and the copyright line."
+  },
+  "site-footer.column.title.font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of a footer column title."
+  },
+  "site-footer.column.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of a footer column title."
+  },
+  "site-footer.column.title.margin-bottom": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Space below a footer column title."
+  },
+  "site-footer.column-links-gap": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Gap between the links in a footer column."
+  },
+  "site-footer.link.font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of a footer link."
+  },
+  "site-footer.separator-margin-bottom": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Space below the separator above the bottom bar."
+  },
+  "site-footer.bottom-gap": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Gap between the items in the bottom bar."
+  },
+  "site-footer.social-gap": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Gap between the social links."
+  },
+  "site-header.container.padding-x-sm": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the header container on small screens."
+  },
+  "site-header.container.padding-x-md": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the header container from the sm breakpoint."
+  },
+  "site-header.container.padding-x-lg": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Horizontal padding of the header container from the lg breakpoint."
+  },
+  "site-header.height": {
+    "$type": "spacing",
+    "$value": "{space.700}",
+    "$description": "Height of the default header bar."
+  },
+  "site-header.height-sm": {
+    "$type": "spacing",
+    "$value": "{space.650}",
+    "$description": "Height of the small header bar."
+  },
+  "site-header.logo.gap": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Gap between the parts of the fallback logo link."
+  },
+  "site-header.logo.font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.heading.sm}",
+    "$description": "Font size of the fallback logo."
+  },
+  "site-header.logo.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.bold}",
+    "$description": "Font weight of the fallback logo."
+  },
+  "site-header.actions-gap": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Gap between the header actions."
+  },
+  "site-header.nav-link.height": {
+    "$type": "spacing",
+    "$value": "{space.450}",
+    "$description": "Height of a navigation link."
+  },
+  "site-header.nav-link.padding-x": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of a navigation link."
+  },
+  "site-header.nav-link.padding-y": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Vertical padding of a navigation link."
+  },
+  "site-header.nav-link.radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of a navigation link."
+  },
+  "site-header.nav-link.font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of a navigation link."
+  },
+  "site-header.nav-link.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of a navigation link."
+  },
+  "site-header.transition-duration": {
+    "$type": "duration",
+    "$value": "{duration.200}",
+    "$description": "Duration of the header colour transition."
+  },
+  "site-header.z-index": {
+    "$type": "number",
+    "$value": "{z-index.sticky}",
+    "$description": "Stacking order of the sticky header."
   }
 }
