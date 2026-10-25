@@ -4,11 +4,11 @@
 
 ## The rule
 
-A component binds only to component tokens. In `packages/ui/src`, including the compositions (`site-header`, `site-footer`, `section-hero`, `section-features`, `page-layout`), every `--color-*` reference must be a colour token from the components collection. The same holds for components in Figma: their fills, strokes and text bind to variables in the components collection.
+A component binds only to component tokens. In `packages/ui/src`, including the compositions (`site-header`, `site-footer`, `section-hero`, `section-features`, `page-layout`), every `--color-*` reference must be a colour token from the components collection, and in the compositions every non-colour value too (see "What the check enforces"). The same holds for components in Figma: their fills, strokes and text bind to variables in the components collection.
 
 The three tiers stay intact: primitives hold raw values, semantic tokens hold meaning (`color.background.success-muted`), component tokens hold decisions for one part of one component and alias a semantic tone. A component token for colour never aliases a primitive directly.
 
-`pnpm check:tokens` runs `scripts/check-component-binding.mjs`, which fails on any other `--color-*` reference and names the file and line. The Lint workflow runs it.
+`pnpm check:tokens` runs `scripts/check-component-binding.mjs`, which fails on any other `--color-*` reference, and on the composition rules below, and names the file and line. The Lint workflow runs it.
 
 ## The two documented exceptions
 
@@ -21,17 +21,28 @@ Everything else that is a colour, including a composition, needs a component tok
 
 ## Stories never bind to tokens
 
-The goal is always to tokenise the Wylie Dog UI package. It is the contract between UI and design: the tokens it binds to are what adopters rely on to customise the design for themselves. Stories are not part of that contract. A story must not reference token variables; its demo is built from the UI components and plain layout classes. The exception is the Foundations pages whose subject is the tokens (`apps/storybook/stories/Foundations/Design Tokens/*`), which display token values by design. Existing stories predate this rule; see Plan 196 for the measurement and the open decision on how demo chrome is styled.
+The goal is always to tokenise the Wylie Dog UI package. It is the contract between UI and design: the tokens it binds to are what adopters rely on to customise the design for themselves. Stories are not part of that contract. A story must not reference token variables; its demo is built from the UI components and plain layout classes. The exception is the Foundations pages whose subject is the tokens (`apps/storybook/stories/Foundations/Design Tokens/*`), which display token values by design. Demo chrome that must follow Light and Dark comes from the UI components only (`Card`, `Badge`), with no custom colours; the generator's story template does this. Existing stories predate the rule: 60 of 76 story files outside the token pages reference token variables (measured 2026-10-24), and retrofitting them is separate work.
 
 ## What the check enforces, and what it does not
 
-`check-component-binding.mjs` reads `--color-*` references only. Non-colour references are not checked, and some components bind them directly (measured 2026-10-24 in `packages/ui/src`, tests excluded):
+`check-component-binding.mjs` has two scopes.
+
+**All of `packages/ui/src` (tests excluded): colour only.** Every `--color-*` reference must be a component token, apart from the two exceptions above.
+
+**The compositions (`packages/ui/src/compositions/*`): everything else too.** A composition is a component, so in these files the check also fails, naming the file and line, on:
+
+- a non-colour variable reference that is not a token in the components collection (`--space-200`, `--font-size-lg`, `--border-radius-md`, `--font-weight-bold`, `--duration-200`, `--z-index-sticky`);
+- a hardcoded Tailwind scale utility for spacing, sizing, gap, inset, typography, radius, shadow, z-index, duration, opacity or ring (`px-4`, `gap-8`, `h-16`, `max-w-4xl`, `text-lg`, `font-bold`, `rounded-md`, `z-50`). Layout keywords are not literals: `w-full`, `min-h-screen`, `top-0`, `grid-cols-*`, `order-*`, `col-span-*` carry no design decision. The only documented literal is `ring-2`, the focus ring width, until the focus system is decided (Plan 197).
+
+Non-colour component tokens alias the shared scale, as colour tokens alias a semantic tone: spacing and sizes alias `space.*`, radius aliases `border-radius.*`, text aliases `typography.*`, z-index aliases the semantic `z-index.*`, duration aliases `duration.*`. The resolved value is the value the composition used before, with no rounding; a size with no step on the scale gets a new primitive step first. Responsive values take one token per breakpoint with a size suffix (`site-header.container.padding-x-sm`, `-md`, `-lg`, applied at the base, `sm:` and `lg:` breakpoints).
+
+**Not yet covered: the base components' non-colour references.** Measured 2026-10-24 in `packages/ui/src`, tests excluded:
 
 - 90 references to semantic tokens: `--space-icon-size-*` (24), `--space-focus-offset`, `--space-focus-width` and `--space-focus-halo-width`, `--shadow-*` (19), `--z-index-*` (19), `--opacity-scrim` (3).
 - 43 references to primitives: `--duration-*`, `--font-weight-*`, `--border-radius-*`, `--line-height-*`.
-- Hardcoded Tailwind spacing (`px-4`, `gap-8`, `py-32`) in the compositions (`page-layout`, `site-header`, `site-footer`, `section-hero`, `section-features`). The base components have only one (`pr-0` in `table.tsx`).
+- One hardcoded Tailwind spacing class (`pr-0` in `table.tsx`).
 
-Whether the binding rule should extend to these is an open owner decision.
+Extending the rule to them is a separate piece of work, decided after the compositions.
 
 ## Unbound in the generated Figma components (by design)
 

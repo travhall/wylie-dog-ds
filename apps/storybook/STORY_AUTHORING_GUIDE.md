@@ -331,7 +331,7 @@ The goal is always to tokenise the Wylie Dog UI package (`packages/ui`). It is t
 
 The one exception is the Foundations pages whose subject is the tokens (`Foundations/Design Tokens/*`), which display token values by design.
 
-Existing stories predate this rule and still style demo text and borders with `-(--token-name)` classes. Do not copy that pattern into new stories. How demo chrome that must follow Light and Dark is styled without tokens is an open decision (Plan 196); until it is made, keep demo chrome minimal and let the UI components carry the design.
+Existing stories predate this rule and still style demo text and borders with `-(--token-name)` classes. Do not copy that pattern into new stories. Decided 2026-10-24 (Plan 196): demo chrome that must follow Light and Dark comes from the UI components only. Frame a demo in `Card` (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`), label states with `Badge`, and add no custom colours or borders. The component generator's story template does this.
 
 ---
 

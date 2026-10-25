@@ -76,7 +76,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
       >
         <div
           className={cn(
-            "container mx-auto px-4 sm:px-6 lg:px-8 py-12",
+            "container mx-auto px-(--space-site-footer-container-padding-x-sm) sm:px-(--space-site-footer-container-padding-x-md) lg:px-(--space-site-footer-container-padding-x-lg) py-(--space-site-footer-container-padding-y)",
             containerClassName
           )}
         >
@@ -84,24 +84,24 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
             <>
               <div
                 className={cn(
-                  "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8",
+                  "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-(--space-site-footer-columns-gap) mb-(--space-site-footer-columns-margin-bottom)",
                   columnsClassName
                 )}
               >
                 {/* Logo/Brand Column */}
                 <div className="max-md:col-span-2">
                   {logo || (
-                    <div className="mb-4">
-                      <span className="text-(length:--font-size-lg) font-(--font-weight-bold)">
+                    <div className="mb-(--space-site-footer-logo-margin-bottom)">
+                      <span className="text-(length:--font-size-site-footer-logo-font-size) font-(--font-weight-site-footer-logo-font-weight)">
                         Logo
                       </span>
-                      <p className="text-(length:--font-size-sm) text-(--color-site-footer-text)">
+                      <p className="text-(length:--font-size-site-footer-font-size) text-(--color-site-footer-text)">
                         Building amazing experiences with modern design systems.
                       </p>
                     </div>
                   )}
                   {description && (
-                    <p className="text-(length:--font-size-sm) text-(--color-site-footer-text)">
+                    <p className="text-(length:--font-size-site-footer-font-size) text-(--color-site-footer-text)">
                       {description}
                     </p>
                   )}
@@ -110,10 +110,10 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                 {/* Footer Columns — each is a named nav landmark for screen reader navigation */}
                 {columns.map((column, index) => (
                   <nav key={index} aria-label={column.title}>
-                    <h3 className="font-(--font-weight-semibold) text-(length:--font-size-sm) mb-4">
+                    <h3 className="font-(--font-weight-site-footer-column-title-font-weight) text-(length:--font-size-site-footer-column-title-font-size) mb-(--space-site-footer-column-title-margin-bottom)">
                       {column.title}
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-(--space-site-footer-column-links-gap)">
                       {column.links.map((link, linkIndex) => (
                         <li key={linkIndex}>
                           {renderLink ? (
@@ -121,7 +121,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                           ) : (
                             <a
                               href={link.href}
-                              className="text-sm text-(--color-site-footer-link-text) hover:text-(--color-site-footer-link-text-hover) transition-colors"
+                              className="text-(length:--font-size-site-footer-link-font-size) text-(--color-site-footer-link-text) hover:text-(--color-site-footer-link-text-hover) transition-colors"
                             >
                               {link.label}
                             </a>
@@ -133,19 +133,19 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                 ))}
               </div>
 
-              <Separator className="mb-8" />
+              <Separator className="mb-(--space-site-footer-separator-margin-bottom)" />
             </>
           )}
 
           {/* Bottom Bar */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-(length:--font-size-sm) text-(--color-site-footer-text)">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-(--space-site-footer-bottom-gap)">
+            <p className="text-(length:--font-size-site-footer-font-size) text-(--color-site-footer-text)">
               {copyrightText}
             </p>
 
             {/* Social Links */}
             {socialLinks.length > 0 && (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-(--space-site-footer-social-gap)">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}

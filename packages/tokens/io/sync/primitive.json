@@ -616,6 +616,10 @@
           "$type": "spacing",
           "$value": "32px"
         },
+        "space.450": {
+          "$type": "spacing",
+          "$value": "36px"
+        },
         "space.500": {
           "$type": "spacing",
           "$value": "40px"
@@ -623,6 +627,10 @@
         "space.600": {
           "$type": "spacing",
           "$value": "48px"
+        },
+        "space.650": {
+          "$type": "spacing",
+          "$value": "56px"
         },
         "space.700": {
           "$type": "spacing",
@@ -660,9 +668,17 @@
           "$type": "spacing",
           "$value": "320px"
         },
+        "space.1550": {
+          "$type": "spacing",
+          "$value": "384px"
+        },
         "space.1600": {
           "$type": "spacing",
           "$value": "448px"
+        },
+        "space.1650": {
+          "$type": "spacing",
+          "$value": "512px"
         },
         "space.1700": {
           "$type": "spacing",
@@ -670,7 +686,15 @@
         },
         "space.1800": {
           "$type": "spacing",
-          "$value": "576px"
+          "$value": "672px"
+        },
+        "space.1900": {
+          "$type": "spacing",
+          "$value": "768px"
+        },
+        "space.2000": {
+          "$type": "spacing",
+          "$value": "896px"
         },
         "typography.font-family.sans": {
           "$type": "fontFamily",
