@@ -1,13 +1,13 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn, focusRingInputClasses } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 export const textareaVariants = cva(
   cn(
     "flex w-full border font-(--font-weight-textarea-font-weight) transition-colors",
     "rounded-(--space-textarea-radius)",
     "placeholder:text-(--color-input-placeholder)",
-    focusRingInputClasses,
+    focusRingClasses,
     "disabled:cursor-not-allowed disabled:bg-(--color-textarea-background-disabled) disabled:text-(--color-textarea-text-disabled)",
     "text-(--color-input-default-text)"
   ),

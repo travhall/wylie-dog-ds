@@ -40,7 +40,7 @@ const Slider = React.forwardRef<
         <SliderPrimitive.Thumb
           key={i}
           aria-label={getThumbLabel(i)}
-          className="block ring-offset-(--color-slider-thumb-ring-offset) transition-colors h-(--space-slider-thumb-size) w-(--space-slider-thumb-size) rounded-(--space-slider-thumb-radius) border-(length:--space-slider-thumb-border-width) border-(--color-slider-thumb-border) bg-(--color-slider-thumb) focus-visible:outline-none focus-visible:ring-(length:--space-slider-focus-ring-width) focus-visible:ring-offset-(--space-slider-focus-ring-offset) data-[disabled]:pointer-events-none data-[disabled]:bg-(--color-slider-thumb-background-disabled) data-[disabled]:border-(--color-slider-thumb-border-disabled)"
+          className="block transition-colors h-(--space-slider-thumb-size) w-(--space-slider-thumb-size) rounded-(--space-slider-thumb-radius) border-(length:--space-slider-thumb-border-width) border-(--color-slider-thumb-border) bg-(--color-slider-thumb) focus-visible:outline-solid focus-visible:outline-(length:--space-slider-focus-ring-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-slider-focus-ring-offset) focus-visible:shadow-[0_0_0_calc(var(--space-slider-focus-ring-offset)+var(--space-slider-focus-ring-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none data-[disabled]:pointer-events-none data-[disabled]:bg-(--color-slider-thumb-background-disabled) data-[disabled]:border-(--color-slider-thumb-border-disabled)"
         />
       ))}
     </SliderPrimitive.Root>

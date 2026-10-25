@@ -578,7 +578,7 @@ function SkipNavigationComponent() {
        */}
       <a
         href="#skip-nav-main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-(--color-background-default) focus:text-(--color-foreground-default) focus:rounded focus:shadow-lg focus:border focus:border-(--color-border-focus) focus:outline-none"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-(--color-background-default) focus:text-(--color-foreground-default) focus:rounded focus:shadow-lg focus:border focus:border-(--color-focus-ring) focus:outline-hidden"
         onClick={(e) => {
           e.preventDefault();
           mainRef.current?.focus();
@@ -595,21 +595,21 @@ function SkipNavigationComponent() {
       >
         <a
           href="#"
-          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-2 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Home
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-2 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           About
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-2 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Contact
@@ -628,7 +628,7 @@ function SkipNavigationComponent() {
               <li key={item}>
                 <a
                   href="#"
-                  className="text-sm text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+                  className="text-sm text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-2 rounded px-1"
                   onClick={(e) => e.preventDefault()}
                 >
                   {item}
@@ -643,7 +643,7 @@ function SkipNavigationComponent() {
           id="skip-nav-main"
           ref={mainRef}
           tabIndex={-1}
-          className="flex-1 p-6 focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-inset"
+          className="flex-1 p-6 focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:-outline-offset-2"
           aria-label="Main content"
         >
           <h1 className="text-lg font-semibold text-(--color-foreground-default) mb-2">

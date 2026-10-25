@@ -1942,7 +1942,7 @@ export default function PatternsPage() {
               story="accessibility-patterns"
               full
               title="Accessibility Patterns"
-              desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus ring is driven by --color-border-focus (form controls use --color-input-border-focus), so a token change updates it everywhere.`}
+              desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus indicator is driven by --color-focus-ring and --color-focus-halo, so a token change updates it everywhere.`}
               tags={[
                 "Alert",
                 "Badge",

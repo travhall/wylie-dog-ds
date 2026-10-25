@@ -8,7 +8,7 @@ const HoverCardTrigger = HoverCardPrimitive.Trigger;
 
 export const hoverCardContentVariants = cva(
   cn(
-    "z-(--z-index-popover) border outline-none shadow-(--shadow-md)",
+    "z-(--z-index-popover) border outline-hidden shadow-(--shadow-md)",
     "rounded-(--space-hover-card-content-radius)",
     "p-(--space-hover-card-content-padding)",
     "border-(--color-hover-card-border)",

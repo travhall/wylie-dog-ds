@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useId } from "react";
 import { SearchIcon } from "lucide-react";
-import { cn } from "./lib/utils";
+import { cn, focusRingInsetClasses } from "./lib/utils";
 
 // Coordinates the listbox id between CommandInput (aria-controls) and
 // CommandList (id) without requiring every consumer to generate and pass a
@@ -70,7 +70,8 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
         <input
           ref={ref}
           className={cn(
-            "flex h-(--space-command-input-height) w-full rounded-(--space-command-content-radius) bg-transparent py-(--space-command-input-padding-y) text-(length:--font-size-command-item-font-size) outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:text-(--color-command-input-text-disabled)",
+            "flex h-(--space-command-input-height) w-full rounded-(--space-command-content-radius) bg-transparent py-(--space-command-input-padding-y) text-(length:--font-size-command-item-font-size) outline-hidden placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:text-(--color-command-input-text-disabled)",
+            focusRingInsetClasses,
             className
           )}
           role="combobox"
@@ -211,7 +212,8 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
     <div
       ref={ref}
       className={cn(
-        "relative flex cursor-default select-none items-center rounded-(--space-command-item-radius) px-(--space-command-item-padding-x) py-(--space-command-item-padding-y) text-(length:--font-size-command-item-font-size) outline-none aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:text-(--color-command-item-text-disabled)",
+        "relative flex cursor-default select-none items-center rounded-(--space-command-item-radius) px-(--space-command-item-padding-x) py-(--space-command-item-padding-y) text-(length:--font-size-command-item-font-size) outline-hidden aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:text-(--color-command-item-text-disabled)",
+        focusRingInsetClasses,
         className
       )}
       role="option"

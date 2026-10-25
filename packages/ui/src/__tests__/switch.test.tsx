@@ -318,9 +318,10 @@ describe("Switch", () => {
       render(<Switch aria-label="Test" />);
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass(
-        "focus:ring-(length:--space-switch-focus-ring-width)"
+        "focus-visible:outline-(length:--space-switch-focus-ring-width)",
+        "focus-visible:outline-(color:--color-focus-ring)",
+        "focus-visible:outline-offset-(length:--space-switch-focus-ring-offset)"
       );
-      expect(switchElement).toHaveClass("focus:outline-none");
     });
 
     it("should have disabled styles", () => {

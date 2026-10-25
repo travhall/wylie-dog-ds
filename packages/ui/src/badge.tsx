@@ -44,37 +44,37 @@ export const badgeVariants = cva(
         variant: "default",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-default-background-hover) focus:bg-(--color-badge-default-background-focus) disabled:bg-(--color-badge-default-background-disabled) disabled:text-(--color-badge-default-text-disabled) disabled:border-(--color-badge-default-border-disabled)",
+          "hover:bg-(--color-badge-default-background-hover) disabled:bg-(--color-badge-default-background-disabled) disabled:text-(--color-badge-default-text-disabled) disabled:border-(--color-badge-default-border-disabled)",
       },
       {
         variant: "secondary",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-secondary-background-hover) focus:bg-(--color-badge-secondary-background-focus) disabled:bg-(--color-badge-secondary-background-disabled) disabled:text-(--color-badge-secondary-text-disabled) disabled:border-(--color-badge-secondary-border-disabled)",
+          "hover:bg-(--color-badge-secondary-background-hover) disabled:bg-(--color-badge-secondary-background-disabled) disabled:text-(--color-badge-secondary-text-disabled) disabled:border-(--color-badge-secondary-border-disabled)",
       },
       {
         variant: "success",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-success-background-hover) focus:bg-(--color-badge-success-background-focus) disabled:bg-(--color-badge-success-background-disabled) disabled:text-(--color-badge-success-text-disabled) disabled:border-(--color-badge-success-border-disabled)",
+          "hover:bg-(--color-badge-success-background-hover) disabled:bg-(--color-badge-success-background-disabled) disabled:text-(--color-badge-success-text-disabled) disabled:border-(--color-badge-success-border-disabled)",
       },
       {
         variant: "warning",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-warning-background-hover) focus:bg-(--color-badge-warning-background-focus) disabled:bg-(--color-badge-warning-background-disabled) disabled:text-(--color-badge-warning-text-disabled) disabled:border-(--color-badge-warning-border-disabled)",
+          "hover:bg-(--color-badge-warning-background-hover) disabled:bg-(--color-badge-warning-background-disabled) disabled:text-(--color-badge-warning-text-disabled) disabled:border-(--color-badge-warning-border-disabled)",
       },
       {
         variant: "destructive",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-destructive-background-hover) focus:bg-(--color-badge-destructive-background-focus) disabled:bg-(--color-badge-destructive-background-disabled) disabled:text-(--color-badge-destructive-text-disabled) disabled:border-(--color-badge-destructive-border-disabled)",
+          "hover:bg-(--color-badge-destructive-background-hover) disabled:bg-(--color-badge-destructive-background-disabled) disabled:text-(--color-badge-destructive-text-disabled) disabled:border-(--color-badge-destructive-border-disabled)",
       },
       {
         variant: "outline",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-outline-background-hover) focus:bg-(--color-badge-outline-background-focus) disabled:bg-(--color-badge-outline-background-disabled) disabled:text-(--color-badge-outline-text-disabled) disabled:border-(--color-badge-outline-border-disabled)",
+          "hover:bg-(--color-badge-outline-background-hover) disabled:bg-(--color-badge-outline-background-disabled) disabled:text-(--color-badge-outline-text-disabled) disabled:border-(--color-badge-outline-border-disabled)",
       },
     ],
     defaultVariants: {

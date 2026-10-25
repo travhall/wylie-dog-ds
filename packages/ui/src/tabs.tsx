@@ -1,7 +1,7 @@
 import React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 // Tabs Root
 export const Tabs = TabsPrimitive.Root;
@@ -44,10 +44,10 @@ TabsList.displayName = TabsPrimitive.List.displayName;
 
 export const tabsTriggerVariants = cva(
   cn(
-    "inline-flex items-center justify-center whitespace-nowrap font-(--font-weight-tabs-trigger-font-weight) ring-offset-(--color-tabs-trigger-ring-offset) transition-all",
+    "inline-flex items-center justify-center whitespace-nowrap font-(--font-weight-tabs-trigger-font-weight) transition-all",
     "border-b-(--space-tabs-trigger-indicator-width) border-transparent",
     "-mb-[1px]",
-    "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
+    focusRingClasses,
     "disabled:pointer-events-none disabled:text-(--color-tabs-trigger-text-disabled) data-[state=active]:disabled:text-(--color-tabs-trigger-text-disabled)",
     "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-(--shadow-sm) data-[state=active]:border-(--color-tabs-trigger-indicator-color)",
     "hover:bg-(--color-tabs-trigger-background-hover) hover:text-(--color-tabs-trigger-text-hover)"
@@ -91,10 +91,10 @@ export const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      "ring-offset-(--color-tabs-content-ring-offset)",
+      "",
       "mt-(--space-tabs-content-margin-top)",
       "p-(--space-tabs-content-padding)",
-      "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
+      focusRingClasses,
       className
     )}
     {...props}

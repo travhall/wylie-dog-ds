@@ -1,7 +1,7 @@
 import React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { ChevronDownIcon } from "lucide-react";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 const NavigationMenu = React.forwardRef<
   React.ComponentRef<typeof NavigationMenuPrimitive.Root>,
@@ -41,7 +41,8 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item;
 const navigationMenuTriggerStyle = cn(
   "group inline-flex h-(--space-navigation-menu-trigger-height) w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) font-(--font-weight-navigation-menu-trigger-font-weight) transition-colors",
   "hover:bg-(--color-navigation-background-hover) hover:text-(--color-navigation-text-hover)",
-  "focus:bg-(--color-navigation-focus) focus:text-(--color-navigation-text-focus) focus:outline-none",
+  "focus:bg-(--color-navigation-highlighted) focus:text-(--color-navigation-text-highlighted)",
+  focusRingClasses,
   "disabled:pointer-events-none disabled:text-(--color-navigation-text-disabled)",
   "data-[active]:bg-(--color-navigation-active) data-[state=open]:bg-(--color-navigation-open)"
 );
