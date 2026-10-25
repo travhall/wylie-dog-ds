@@ -170,7 +170,11 @@ describe("SyncStatus", () => {
         expect(screen.getByText("Changes detected")).toBeInTheDocument()
       );
       // The baseline that came with the Figma export is handed to the client.
-      expect(getSyncStatus).toHaveBeenCalledWith(localTokens, baseline);
+      expect(getSyncStatus).toHaveBeenCalledWith(
+        localTokens,
+        baseline,
+        undefined
+      );
       expect(screen.getByText(/2 to push/)).toBeInTheDocument();
       expect(screen.getByText(/3 to pull/)).toBeInTheDocument();
       expect(screen.getByText(/1 conflict$/)).toBeInTheDocument();
@@ -273,7 +277,9 @@ describe("SyncStatus", () => {
         localTokens: [],
         baseline: { nonsense: true },
       });
-      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledWith([], null));
+      await waitFor(() =>
+        expect(getSyncStatus).toHaveBeenCalledWith([], null, undefined)
+      );
     });
 
     it("falls back to an empty list when the plugin reports an export error", async () => {
@@ -281,7 +287,9 @@ describe("SyncStatus", () => {
       render(<SyncStatus githubClient={client} githubConfigured />);
       fireEvent.click(screen.getByLabelText("Refresh sync status"));
       pluginMessage({ type: "local-tokens-error" });
-      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledWith([], null));
+      await waitFor(() =>
+        expect(getSyncStatus).toHaveBeenCalledWith([], null, undefined)
+      );
     });
 
     it("falls back to an empty list when the export has no tokens field", async () => {
@@ -289,7 +297,9 @@ describe("SyncStatus", () => {
       render(<SyncStatus githubClient={client} githubConfigured />);
       fireEvent.click(screen.getByLabelText("Refresh sync status"));
       pluginMessage({ type: "local-tokens-exported" });
-      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledWith([], null));
+      await waitFor(() =>
+        expect(getSyncStatus).toHaveBeenCalledWith([], null, undefined)
+      );
     });
 
     it("stops waiting for the plugin after ten seconds", async () => {
@@ -301,7 +311,7 @@ describe("SyncStatus", () => {
       await act(async () => {
         await vi.advanceTimersByTimeAsync(10000);
       });
-      expect(getSyncStatus).toHaveBeenCalledWith([], null);
+      expect(getSyncStatus).toHaveBeenCalledWith([], null, undefined);
     });
 
     it("shows a checking state and disables Refresh while the diff runs", async () => {
@@ -395,5 +405,69 @@ describe("SyncStatus review", () => {
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText("Close"));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+});
+
+describe("SyncStatus scopes (plan 202)", () => {
+  const tokens = [
+    {
+      primitive: {
+        variables: { "font-size.sm": { $type: "number", $value: 14 } },
+      },
+    },
+  ];
+  const run = async (current: string[]) => {
+    vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const localScopes = { primitive: { "font-size.sm": current } };
+    const diff = buildSyncDiff({
+      direction: "overview",
+      baseline: null,
+      localTokens: tokens,
+      remoteTokens: tokens,
+      localScopes,
+    });
+    const getSyncStatus = vi.fn(async () => ({
+      upToDate: true,
+      hasBaseline: false,
+      differences: 0,
+      diff,
+    }));
+    const client = { getSyncStatus } as unknown as ConflictAwareGitHubClient;
+    render(<SyncStatus githubClient={client} githubConfigured />);
+    fireEvent.click(screen.getByLabelText("Refresh sync status"));
+    pluginMessage({
+      type: "local-tokens-exported",
+      localTokens: tokens,
+      localScopes,
+    });
+    await waitFor(() => expect(getSyncStatus).toHaveBeenCalled());
+    await screen.findByLabelText("Review changes").catch(() => null);
+    return { getSyncStatus, localScopes };
+  };
+
+  it("hands the scopes to the client, keeps tokens Up to date and adds a second line", async () => {
+    const { getSyncStatus, localScopes } = await run(["ALL_SCOPES"]);
+    expect(getSyncStatus).toHaveBeenCalledWith(tokens, null, localScopes);
+    expect(await screen.findByText("Up to date")).toBeInTheDocument();
+    expect(
+      await screen.findByText("1 variable's picker scopes will change on Pull")
+    ).toBeInTheDocument();
+  });
+
+  it("opens an overview that says the scopes differ rather than 'in sync'", async () => {
+    await run(["ALL_SCOPES"]);
+    fireEvent.click(await screen.findByLabelText("Review changes"));
+    expect(
+      screen.getByRole("dialog", {
+        name: "Tokens match, but 1 variable's picker scopes differ",
+      })
+    ).toBeInTheDocument();
+  });
+
+  it("adds no second line when the scopes already match the rules", async () => {
+    await run(["FONT_SIZE"]);
+    expect(await screen.findByText("Up to date")).toBeInTheDocument();
+    expect(screen.queryByText(/picker scopes will change/)).toBeNull();
   });
 });

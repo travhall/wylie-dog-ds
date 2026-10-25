@@ -3,6 +3,7 @@ import {
   buildPullSummaryFromDiff,
   buildSyncDiff,
   conflictsForRows,
+  describeScopes,
   viewText,
 } from "../sync-diff";
 import { buildBaseline, hashTokens } from "../sync-baseline";
@@ -351,5 +352,142 @@ describe("conflictsForRows and the pull summary", () => {
         to: undefined,
       },
     ]);
+  });
+});
+
+describe("buildSyncDiff: picker scopes (plan 202)", () => {
+  const typed = (type: string, $value: unknown = 1): ProcessedToken => ({
+    $type: type,
+    $value,
+  });
+  const tokens = [
+    col("primitive", {
+      "typography.font-size.sm": typed("number", 14),
+      "typography.font-size.md": typed("number", 16),
+      "typography.font-weight.bold": typed("number", 700),
+      "color.blue.600": typed("color", "#0000ff"),
+    }),
+  ];
+  const ALL = ["ALL_SCOPES"];
+  const stale = {
+    primitive: {
+      "typography.font-size.sm": ALL,
+      "typography.font-size.md": ALL,
+      "typography.font-weight.bold": ALL,
+      "color.blue.600": ALL,
+    },
+  };
+  const diff = (
+    localScopes: Record<string, Record<string, string[]>>,
+    direction: "pull" | "overview" | "push" = "pull"
+  ) =>
+    buildSyncDiff({
+      direction,
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+      localScopes,
+    });
+
+  it("reports scope changes although every token matches, grouped by transition", () => {
+    const d = diff(stale);
+    expect(d.rows).toEqual([]);
+    expect(d.settingsCount).toBe(4);
+    expect(d.settings.map((g) => [g.from, g.to, g.changes.length])).toEqual([
+      [ALL, ["FONT_SIZE"], 2],
+      [ALL, [], 1],
+      [ALL, ["FONT_WEIGHT"], 1],
+    ]);
+    expect(d.settings[0].changes.map((c) => c.tokenPath)).toEqual([
+      "typography.font-size.md",
+      "typography.font-size.sm",
+    ]);
+  });
+
+  it("ignores the order of scopes, and treats hidden as []", () => {
+    const d = diff({
+      primitive: {
+        "typography.font-size.sm": ["FONT_SIZE"],
+        "typography.font-size.md": ["FONT_SIZE"],
+        "typography.font-weight.bold": ["FONT_WEIGHT"],
+        "color.blue.600": [],
+      },
+    });
+    expect(d.settings).toEqual([]);
+    const colours = [
+      col("c", { "color.background.x": typed("color", "#fff") }),
+    ];
+    const reordered = buildSyncDiff({
+      direction: "pull",
+      baseline: null,
+      localTokens: colours,
+      remoteTokens: colours,
+      localScopes: {
+        c: { "color.background.x": ["SHAPE_FILL", "FRAME_FILL"] },
+      },
+    });
+    expect(reordered.settingsCount).toBe(0);
+  });
+
+  it("tells [] from ALL_SCOPES", () => {
+    const d = diff({
+      primitive: { ...stale.primitive, "color.blue.600": [] },
+    });
+    expect(
+      d.settings.flatMap((g) => g.changes.map((c) => c.tokenPath))
+    ).not.toContain("color.blue.600");
+    const hidden = diff({
+      primitive: { ...stale.primitive, "typography.font-size.sm": [] },
+    });
+    expect(hidden.settings.some((g) => g.from.length === 0)).toBe(true);
+  });
+
+  it("leaves variables Figma lacks to the token rows", () => {
+    const d = diff({ primitive: {} });
+    expect(d.settings).toEqual([]);
+  });
+
+  it("lets a token row win over a scope row for the same token", () => {
+    const changed = [
+      col("primitive", {
+        ...(tokens[0].primitive.variables as Record<string, ProcessedToken>),
+        "typography.font-size.sm": typed("number", 15),
+      }),
+    ];
+    const d = buildSyncDiff({
+      direction: "pull",
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: changed,
+      localScopes: stale,
+    });
+    expect(d.rows.map((r) => r.toName)).toEqual(["typography.font-size.sm"]);
+    expect(
+      d.settings.flatMap((g) => g.changes.map((c) => c.tokenPath))
+    ).not.toContain("typography.font-size.sm");
+  });
+
+  it("reports nothing for Push, and nothing without current scopes", () => {
+    expect(diff(stale, "push").settings).toEqual([]);
+    const none = buildSyncDiff({
+      direction: "pull",
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+    });
+    expect(none.settings).toEqual([]);
+    expect(none.settingsCount).toBe(0);
+  });
+
+  it("includes scopes in the overview", () => {
+    expect(diff(stale, "overview").settingsCount).toBe(4);
+  });
+
+  it("describes scope sets in words", () => {
+    expect(describeScopes([])).toBe("hidden from pickers");
+    expect(describeScopes(["ALL_SCOPES"])).toBe("all pickers");
+    expect(describeScopes(["TEXT_FILL", "SHAPE_FILL"])).toBe(
+      "shape fill, text fill"
+    );
   });
 });

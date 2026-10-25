@@ -320,3 +320,110 @@ describe("DiffReview: overview and Mark as synced", () => {
     expect(screen.queryByText("Mark as synced")).not.toBeInTheDocument();
   });
 });
+
+describe("DiffReview: picker scopes (plan 202)", () => {
+  const tokens = [
+    col("primitive", {
+      "font-size.sm": { $type: "number", $value: 14 },
+      "font-size.md": { $type: "number", $value: 16 },
+      "font-weight.bold": { $type: "number", $value: 700 },
+    }),
+  ];
+  const ALL = ["ALL_SCOPES"];
+  const stale = {
+    primitive: {
+      "font-size.sm": ALL,
+      "font-size.md": ALL,
+      "font-weight.bold": ALL,
+    },
+  };
+  const scoped = (direction: SyncDirection, localScopes = stale) =>
+    buildSyncDiff({
+      direction,
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+      localScopes,
+    });
+
+  it("lists the groups for a scope-only Pull, with the variables behind each, and confirms", () => {
+    const { onConfirm } = setup(scoped("pull"));
+    expect(
+      screen.getByRole("dialog", {
+        name: "Pull will update the picker scopes of 3 variables",
+      })
+    ).toBeInTheDocument();
+    const section = screen.getByRole("region", { name: "Picker scopes" });
+    expect(
+      within(section).getByText(/2 variables: all pickers/)
+    ).toBeInTheDocument();
+    expect(section).toHaveTextContent("1 variable: all pickers → font weight");
+    expect(
+      within(section).getByText("primitive / font-size.sm")
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Nothing to pull")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByText("Pull from GitHub"));
+    expect(onConfirm).toHaveBeenCalled();
+  });
+
+  it("still says nothing to pull when no scope differs", () => {
+    setup(
+      scoped("pull", {
+        primitive: {
+          "font-size.sm": ["FONT_SIZE"],
+          "font-size.md": ["FONT_SIZE"],
+          "font-weight.bold": ["FONT_WEIGHT"],
+        },
+      })
+    );
+    expect(
+      screen.getByRole("dialog", { name: "Nothing to pull" })
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Pull from GitHub")).not.toBeInTheDocument();
+  });
+
+  it("shows scopes beside token rows in one Pull", () => {
+    const changed = [
+      col("primitive", {
+        "font-size.sm": { $type: "number", $value: 15 },
+        "font-size.md": { $type: "number", $value: 16 },
+        "font-weight.bold": { $type: "number", $value: 700 },
+      }),
+    ];
+    const diff = buildSyncDiff({
+      direction: "pull",
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: changed,
+      localScopes: stale,
+    });
+    setup(diff);
+    expect(
+      screen.getByRole("dialog", {
+        name: "Pull will change 1 token and the picker scopes of 2 variables in Figma",
+      })
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/No tokens match/)).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("region", { name: "Picker scopes" })
+    ).toBeInTheDocument();
+  });
+
+  it("makes the overview say tokens match but scopes differ, not 'in sync'", () => {
+    setup(scoped("overview"), { onConfirm: undefined });
+    expect(
+      screen.getByRole("dialog", {
+        name: "Tokens match, but 3 variables' picker scopes differ",
+      })
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/in sync/)).not.toBeInTheDocument();
+  });
+
+  it("never lists scopes in a Push", () => {
+    setup(scoped("push"));
+    expect(
+      screen.getByRole("dialog", { name: "Nothing to push" })
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Picker scopes" })).toBeNull();
+  });
+});

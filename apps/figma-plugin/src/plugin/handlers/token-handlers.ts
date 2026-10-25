@@ -6,9 +6,11 @@
 
 import type { ExportData } from "../variables/processor";
 import {
+  createTokenName,
   findUnsupportedVariables,
   processCollectionsForExport,
 } from "../variables/processor";
+import type { LocalScopes } from "../sync/sync-diff";
 import {
   importMultipleCollections,
   parseTokenFile,
@@ -440,6 +442,17 @@ export async function handleExportTokens(msg: PluginMessage): Promise<void> {
 export async function exportLocalTokens(
   onProgress?: (message: string) => void
 ): Promise<ExportData[]> {
+  return (await exportLocalTokensWithScopes(onProgress)).exportData;
+}
+
+/**
+ * The sync export plus each variable's current Figma scopes (plan 202), keyed
+ * like the tokens (collection name, then token name). Scopes are derived, not
+ * part of the token JSON, so they ride beside it and never touch the hashes.
+ */
+export async function exportLocalTokensWithScopes(
+  onProgress?: (message: string) => void
+): Promise<{ exportData: ExportData[]; localScopes: LocalScopes }> {
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
   console.log(`Found ${collections.length} local collections`);
 
@@ -473,11 +486,21 @@ export async function exportLocalTokens(
   // CRITICAL: Yield to UI thread to paint progress update
   await new Promise((resolve) => setTimeout(resolve, 0));
 
+  const localScopes: LocalScopes = {};
+  for (const collection of collectionsWithVariables) {
+    const byToken: Record<string, string[]> = {};
+    for (const variable of collection.variables) {
+      byToken[createTokenName(variable.name)] = [...variable.scopes];
+    }
+    localScopes[collection.name] = byToken;
+  }
+
   // Convert to token format using processor
-  return processCollectionsForExport(
+  const exportData = await processCollectionsForExport(
     collectionsWithVariables,
     collections.map((c) => c.id)
   );
+  return { exportData, localScopes };
 }
 
 /**
@@ -492,8 +515,8 @@ export async function handleGetLocalTokens(msg: PluginMessage): Promise<void> {
     // CRITICAL: Yield to UI thread to paint loading state
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    const exportData = await exportLocalTokens((message) =>
-      setLoading(true, message)
+    const { exportData, localScopes } = await exportLocalTokensWithScopes(
+      (message) => setLoading(true, message)
     );
 
     const config = await fileConfigStorage.getGitHubConfig();
@@ -504,6 +527,8 @@ export async function handleGetLocalTokens(msg: PluginMessage): Promise<void> {
     figma.ui.postMessage({
       type: "local-tokens-exported",
       localTokens: exportData,
+      // Current Figma scopes beside the tokens, never inside them (plan 202)
+      localScopes,
       baseline,
     });
 

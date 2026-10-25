@@ -3,9 +3,11 @@ import type { ComponentChildren } from "preact";
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { Icon } from "./common/Icon";
 import { ColorSwatch, isColorValue } from "./common/ColorSwatch";
+import { describeScopes } from "../../plugin/sync/sync-diff";
 import type {
   DiffKind,
   DiffRow,
+  ScopeGroup,
   SyncDiff,
   TokenView,
 } from "../../plugin/sync/sync-diff";
@@ -223,14 +225,96 @@ function Row({ row, diff }: { row: DiffRow; diff: SyncDiff }) {
   );
 }
 
+const SETTINGS_LIMIT = 100;
+
+/**
+ * Picker scopes a Pull would change (plan 202). Grouped by transition, with
+ * the per-variable list behind each group so ~275 changes stay readable.
+ */
+function SettingsSection({ diff }: { diff: SyncDiff }) {
+  return (
+    <section
+      aria-label="Picker scopes"
+      style={{ marginBottom: "var(--space-4)" }}
+    >
+      <h4
+        style={{
+          margin: "0 0 var(--space-1)",
+          fontSize: "var(--font-size-sm)",
+          color: "var(--text-primary)",
+        }}
+      >
+        Picker scopes will change ({diff.settingsCount})
+      </h4>
+      <p
+        style={{
+          margin: "0 0 var(--space-2)",
+          fontSize: "var(--font-size-xs)",
+          color: "var(--text-tertiary)",
+        }}
+      >
+        Scopes decide which property pickers list a variable. They are not
+        stored on GitHub; Pull sets them from the current rules.
+      </p>
+      {diff.settings.map((group) => (
+        <ScopeGroupView key={group.id} group={group} />
+      ))}
+    </section>
+  );
+}
+
+function ScopeGroupView({ group }: { group: ScopeGroup }) {
+  const shown = group.changes.slice(0, SETTINGS_LIMIT);
+  return (
+    <details style={{ fontSize: "var(--font-size-xs)", marginBottom: 4 }}>
+      <summary style={{ cursor: "pointer", color: "var(--text-primary)" }}>
+        {plural(group.changes.length, "variable")}: {describeScopes(group.from)}{" "}
+        <span aria-label="to" style={{ color: "var(--text-tertiary)" }}>
+          →
+        </span>{" "}
+        {describeScopes(group.to)}
+      </summary>
+      <ul style={{ margin: "var(--space-1) 0 0", padding: 0 }}>
+        {shown.map((c) => (
+          <li
+            key={`${c.collection}/${c.tokenPath}`}
+            style={{
+              listStyle: "none",
+              fontFamily: "var(--font-mono)",
+              color: "var(--text-secondary)",
+              wordBreak: "break-all",
+              padding: "1px 0",
+            }}
+          >
+            {c.collection} / {c.tokenPath}
+          </li>
+        ))}
+        {group.changes.length > shown.length && (
+          <li style={{ listStyle: "none", color: "var(--text-tertiary)" }}>
+            and {group.changes.length - shown.length} more
+          </li>
+        )}
+      </ul>
+    </details>
+  );
+}
+
 function headline(diff: SyncDiff): string {
   const n = diff.rows.length;
+  const s = diff.settingsCount;
+  const scopes = `${s} ${s === 1 ? "variable's" : "variables'"} picker scopes`;
   if (diff.direction === "pull") {
-    return n === 0
-      ? "Nothing to pull"
-      : `Pull will change ${plural(n, "token")} in Figma`;
+    if (n === 0 && s === 0) return "Nothing to pull";
+    if (n === 0)
+      return `Pull will update the picker scopes of ${plural(s, "variable")}`;
+    return s === 0
+      ? `Pull will change ${plural(n, "token")} in Figma`
+      : `Pull will change ${plural(n, "token")} and the picker scopes of ${plural(s, "variable")} in Figma`;
   }
   if (diff.direction === "overview") {
+    if (n === 0 && s > 0) {
+      return `Tokens match, but ${scopes} differ`;
+    }
     return n === 0
       ? "Figma and GitHub are in sync"
       : `${plural(n, "difference")} between Figma and GitHub`;
@@ -313,7 +397,8 @@ export function DiffReview({
   const visible = matching.slice(0, limit);
 
   const needsAck = diff.direction === "pull" && diff.deletions.length > 0;
-  const canConfirm = !!onConfirm && diff.rows.length > 0;
+  const nothing = diff.rows.length === 0 && diff.settingsCount === 0;
+  const canConfirm = !!onConfirm && !nothing;
   const confirmDisabled = needsAck && !acknowledged;
 
   const confirmLabel =
@@ -411,7 +496,7 @@ export function DiffReview({
             </Notice>
           )}
 
-          {diff.rows.length === 0 ? (
+          {nothing ? (
             <p
               role="status"
               style={{
@@ -449,7 +534,7 @@ export function DiffReview({
                   }}
                 />
               )}
-              {matching.length === 0 && (
+              {diff.rows.length > 0 && matching.length === 0 && (
                 <p role="status" style={{ color: "var(--text-secondary)" }}>
                   No tokens match "{filter}".
                 </p>
@@ -509,6 +594,7 @@ export function DiffReview({
                   more ({matching.length - visible.length} hidden)
                 </button>
               )}
+              {diff.settingsCount > 0 && <SettingsSection diff={diff} />}
             </>
           )}
 

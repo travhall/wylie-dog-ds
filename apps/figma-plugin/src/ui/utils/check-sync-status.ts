@@ -13,6 +13,7 @@ import type {
   SyncBaseline,
 } from "../../plugin/sync/sync-baseline";
 import { isSyncBaseline } from "../../plugin/sync/sync-baseline";
+import type { LocalScopes } from "../../plugin/sync/sync-diff";
 import type { ExportData } from "../../plugin/variables/processor";
 
 const PLUGIN_TIMEOUT_MS = 10000;
@@ -20,6 +21,8 @@ const PLUGIN_TIMEOUT_MS = 10000;
 export interface LocalExport {
   localTokens: ExportData[];
   baseline: SyncBaseline | null;
+  /** Figma's current variable scopes, beside (never inside) the tokens. */
+  localScopes?: LocalScopes;
   /** The plugin reported an error or never answered. */
   failed?: boolean;
 }
@@ -37,6 +40,7 @@ export function requestLocalExport(): Promise<LocalExport> {
         finish({
           localTokens: message.localTokens || [],
           baseline: isSyncBaseline(message.baseline) ? message.baseline : null,
+          localScopes: message.localScopes ?? undefined,
         });
       } else if (message?.type === "local-tokens-error") {
         finish({ localTokens: [], baseline: null, failed: true });
@@ -56,8 +60,8 @@ export function requestLocalExport(): Promise<LocalExport> {
 export async function checkSyncStatus(
   client: ConflictAwareGitHubClient
 ): Promise<SyncStatusResult> {
-  const { localTokens, baseline } = await requestLocalExport();
-  return client.getSyncStatus(localTokens, baseline);
+  const { localTokens, baseline, localScopes } = await requestLocalExport();
+  return client.getSyncStatus(localTokens, baseline, localScopes);
 }
 
 /** "collection / token", or "collection / old → new" for a rename. */

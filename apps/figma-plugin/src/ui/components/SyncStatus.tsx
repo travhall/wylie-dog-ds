@@ -328,6 +328,16 @@ export function SyncStatus({
                 )}
               </div>
             )}
+          {(status.diff?.settingsCount ?? 0) > 0 && (
+            <div
+              title="Figma's picker scopes differ from the current rules. Pull sets them; Push never does."
+              style={{ color: "var(--info)", marginTop: "4px" }}
+            >
+              {status.diff?.settingsCount}{" "}
+              {status.diff?.settingsCount === 1 ? "variable's" : "variables'"}{" "}
+              picker scopes will change on Pull
+            </div>
+          )}
           {!status.upToDate && status.hasBaseline && status.renamed > 0 && (
             <div style={{ color: "var(--text-tertiary)", marginTop: "2px" }}>
               Includes {status.renamed} renamed

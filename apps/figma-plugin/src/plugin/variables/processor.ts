@@ -717,7 +717,7 @@ function processVariable(
 /**
  * Create a clean token name from Figma variable name
  */
-function createTokenName(variableName: string): string {
+export function createTokenName(variableName: string): string {
   // Convert from Figma naming to dot notation
   // e.g., "Color/Primary/500" -> "color.primary.500"
   return variableName

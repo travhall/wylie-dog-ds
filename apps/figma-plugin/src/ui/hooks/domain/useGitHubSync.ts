@@ -404,14 +404,17 @@ export function useGitHubSync(
         baseline: local.baseline,
         localTokens: local.localTokens,
         remoteTokens,
+        localScopes: local.localScopes,
       });
 
       actions.setLoading(false);
       actions.setLoadingMessage("");
       setReview({
         diff,
+        // Scopes are derived, so Pull can have work to do (the import
+        // re-applies them) even when no token differs (plan 202).
         onConfirm:
-          diff.rows.length > 0
+          diff.rows.length > 0 || diff.settingsCount > 0
             ? () => {
                 setReview(null);
                 performPull(remoteTokens, diff);
@@ -443,7 +446,9 @@ export function useGitHubSync(
         // Nothing differs but there is no record of a sync yet: let the user
         // record this state so future changes show which side moved.
         onMarkSynced:
-          diff.rows.length === 0 && !diff.hasBaseline
+          diff.rows.length === 0 &&
+          diff.settingsCount === 0 &&
+          !diff.hasBaseline
             ? () => {
                 setReview(null);
                 parent.postMessage(
