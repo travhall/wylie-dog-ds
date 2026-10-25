@@ -78,17 +78,19 @@ You can revoke the token at any time from GitHub settings. See [Security](#secur
 
 ## Features
 
-### Conflict Resolution
+### Reviewing a Push or Pull
 
-When you pull, the plugin compares your Figma variables with the remote token files. Each difference is a conflict with a type and a severity:
+Push and Pull never write anything until you have seen what they will change. Pressing either one opens a **review** (a modal), and nothing is sent or imported until you confirm it. The review is always shown; when nothing would change it says so and offers only **Close**.
 
-- `value-change` - the same token has a different value or description
-- `type-change` - the token's type differs
-- `addition` / `deletion` - a token exists on only one side
+- **What a row shows**: the token name grouped by collection, what happens (changed, added, removed, renamed), old to new value, a colour swatch for colours, every mode when a token has several, and notes when the type or description changed. A filter appears above 8 rows, and long lists load 100 at a time.
+- **Push** (Figma to GitHub): lists what GitHub will gain, change or lose. In pull-request sync mode a banner says it opens a pull request and nothing changes on the branch until it is merged, and the button reads "Open pull request" instead of "Push to <branch>". Only changes that would lose something on GitHub block a Push: GitHub edits Figma lacks, or tokens changed on both sides to different values. Those open the per-token conflict list; one-sided Figma edits go straight to the review. With no baseline every difference still opens the conflict list. A first push to an empty path has nothing to protect and goes to the review.
+- **Pull** (GitHub to Figma): lists what Figma will gain, change, lose or have overwritten. Variables that exist only in Figma are deleted by a Pull (it uses the "replace" strategy), so they appear under "Will be removed from Figma" and **Pull stays disabled until you tick the acknowledgement**. Edits you made in Figma since the last sync are marked "Overwrites your Figma edit", with a **Push first** shortcut.
+- **Choose per token** (Pull): opens the conflict list, where each difference can **Keep Local** (the Figma value), **Take Remote** (the GitHub value), or be set by hand, per token or in bulk. The list is virtualized. The detection logic is in `src/plugin/sync/`.
+- **Changes summary**: when a pull's import finishes, a summary lists every token changed, added or removed in Figma (old and new value, per mode when several). After a per-token pull it also has a collapsed "Kept as in Figma" list.
+- **Review changes** button: the status card shows one after Refresh. It opens a read-only overview that names Figma's and GitHub's value side by side, so you can look before choosing Push or Pull.
+- **Mark as synced**: if Figma and GitHub already match but no sync is on record, the Pull review offers this to record the current state as the baseline without changing anything.
 
-For each conflict you can **Keep Local** (the Figma value) or **Take Remote** (the GitHub value). Batch buttons apply one choice to every conflict, and the list is virtualized so large conflict sets stay responsive. The detection logic is in `src/plugin/sync/`.
-
-When the import finishes, a **changes summary** lists what the pull did: every token that was changed, added or removed in Figma (with its old and new value, per mode when there are several), plus a collapsed list of the differences you kept as your Figma version. It is built from the conflicts you resolved, so it covers pulls that had conflicts; a pull with no conflicts shows the generic import summary instead.
+The review is built from the same comparison as the status card (`src/plugin/sync/sync-diff.ts`), so the numbers agree. What Push and Pull write to GitHub and Figma is unchanged; the review is a gate in front of them.
 
 ### Sync status and the sync baseline
 
@@ -106,9 +108,9 @@ After every successful **direct Push** or **Pull**, the plugin records a **basel
 
 - **Labels**: `N to push`, `N to pull`, `N conflicts`. Hover a label for the plain meaning.
 - **Renames**: a token removed and a token added on the same side with identical content count once, as a rename ("Includes 1 renamed"). Figma re-points aliases when you rename a variable, so the aliasing tokens show up as their own changes.
-- **No baseline yet** (first run, a new file, or you switched repo, branch or token path): the tab shows `N differences, direction unknown` with "Pull or Push once to set a baseline". It never guesses push or pull.
-- **Pull warning**: pressing Pull first checks what it would overwrite. If Figma has changes since the last sync, it lists the count and the first few token names, and offers **Pull anyway** or **Push first**. With no baseline it warns that the sides differ without claiming a direction. If the check itself fails you can still pull.
-- **What does not move the baseline**: a push that opens a pull request (the branch is untouched), a manual file import, and a push after resolving conflicts (Figma may still differ from what was pushed). Figma edits then keep showing as changes to push, which is the safe direction. Re-run a Push or Pull to reset it.
+- **No baseline yet** (first run, a new file, or you switched repo, branch or token path): the tab shows `N differences, direction unknown` with "Pull once to set a baseline" (or **Mark as synced** in the Pull review if nothing differs). It never guesses push or pull.
+- **Pull safety**: the Pull review (see above) lists every Figma-side change a Pull would overwrite and every variable it would delete.
+- **What does not move the baseline**: a push that opens a pull request (the branch is untouched), a manual file import, and a push after resolving conflicts and a pull resolved token by token (Figma may still differ from GitHub). Figma edits then keep showing as changes to push, which is the safe direction. Re-run a Push or Pull to reset it.
 - **Where it lives**: in the Figma file's own plugin data, one entry per repo, branch, token path and collection (about 60 KB for a 1,000-token collection; Figma allows 100 KB per entry, and a collection that would not fit simply leaves the file without a baseline). It never goes to GitHub. A duplicated file starts with the original's baseline, which is correct at the moment of duplication.
 - **Last sync is per file**: it is stored with the baseline, so two Figma files no longer share one "Last sync" time (it used to be a single `figma.clientStorage` key). Files show "Never" until their first Push or Pull after this change; the old shared value is not copied.
 
