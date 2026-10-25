@@ -39,6 +39,54 @@ StyleDictionary.registerTransform({
   transform: () => "0px",
 });
 
+// Units: the sync JSON (and Figma) hold px; the CSS and TS outputs hold rem.
+//
+// Only lengths that should follow the user's text size convert: the spacing
+// scale, the font sizes and the border radii. Border widths, shadow geometry,
+// focus dimensions, letter-spacing (em), durations, opacity and z-index keep
+// their source value. `border-radius.full` is a pill sentinel (9999px), not a
+// size, so it stays px.
+//
+// The conversion happens on the primitive only. Semantic and component tokens
+// alias a primitive, and Style Dictionary substitutes the already-transformed
+// primitive value, so an alias follows whatever its primitive became (a
+// component `separator.height` that aliases `border-width.1` stays 1px, one
+// that aliases `space.200` becomes 1rem). Dividing by 16 is exact for every
+// value in the scale (all multiples of 1/16 after division), so rem * 16 === px
+// holds without rounding; the build throws if it ever does not.
+const REM_BASE_PX = 16;
+const remPrimitive = (token) => {
+  if (!token.filePath.includes("primitive")) return false;
+  const path = token.path.join(".");
+  return (
+    /^space\.\d+$/.test(path) ||
+    /^border-radius\.(?!full$)/.test(path) ||
+    /^typography\.font-size\./.test(path)
+  );
+};
+StyleDictionary.registerTransform({
+  name: "wd/size/rem",
+  type: "value",
+  filter: remPrimitive,
+  transform: (token) => {
+    const raw = token.$value;
+    const px = typeof raw === "number" ? raw : parseFloat(raw);
+    const isPx = typeof raw === "number" || /^-?[\d.]+px$/.test(raw);
+    if (!isPx || !Number.isFinite(px) || px < 0) {
+      throw new Error(
+        `wd/size/rem: ${token.path.join(".")} has a non-px or negative value (${raw})`
+      );
+    }
+    const rem = px / REM_BASE_PX;
+    if (rem * REM_BASE_PX !== px) {
+      throw new Error(
+        `wd/size/rem: ${token.path.join(".")} (${px}px) is not exact in rem`
+      );
+    }
+    return `${rem}rem`;
+  },
+});
+
 // Build a custom transform group that layers our fix on top of tokens-studio.
 // We read the registered group at runtime so this stays in sync if the
 // upstream package adds or removes transforms in future versions.
@@ -46,7 +94,11 @@ const tokensStudioTransforms =
   StyleDictionary.hooks.transformGroups["tokens-studio"];
 StyleDictionary.registerTransformGroup({
   name: "tokens-studio-wd",
-  transforms: [...tokensStudioTransforms, "wd/dimension/preserveZeroPx"],
+  transforms: [
+    ...tokensStudioTransforms,
+    "wd/dimension/preserveZeroPx",
+    "wd/size/rem",
+  ],
 });
 
 /**
@@ -148,14 +200,11 @@ function generateCSSVariable(token, name) {
     value = value / 100;
   }
 
-  // number-typed font-size tokens store values as raw integers (e.g. 14 = 14px).
-  // Re-add the px unit for CSS output.
-  if (
-    effectiveType === "fontSize" &&
-    token.$type === "number" &&
-    typeof value === "number"
-  ) {
-    value = `${value}px`;
+  // number-typed font-size tokens store raw integers in the source (14 = 14px).
+  // The wd/size/rem transform turns the primitive into a rem string before it
+  // gets here, so a bare number means a font size escaped the transform.
+  if (effectiveType === "fontSize" && typeof value === "number") {
+    throw new Error(`Font size ${name} reached the CSS output as a bare number`);
   }
 
   // Check for special cases first (e.g., border-radius within spacing type)
@@ -388,11 +437,12 @@ StyleDictionary.registerFormat({
               .slice(1)
               .join("-")
               .replace("typography-font-size-", "");
-            const fsValue =
-              token.$type === "number" && typeof token.$value === "number"
-                ? `${token.$value}px`
-                : token.$value;
-            hierarchical.fontSize[key] = fsValue;
+            if (typeof token.$value === "number") {
+              throw new Error(
+                `Font size ${pathStr} reached the JS output as a bare number`
+              );
+            }
+            hierarchical.fontSize[key] = token.$value;
           } else if (isWeight && cleanPath[1]) {
             const key = pathStr
               .split("-")

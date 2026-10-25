@@ -2,6 +2,7 @@ import manifest from "@wyliedog/tokens/manifest.json";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import { SpacingDemo } from "../spacing-demo";
 import type { ManifestToken } from "@/lib/token-values";
+import { formatSize } from "@/lib/token-units";
 
 export default function SpacingPage() {
   const { primitives } = manifest;
@@ -57,7 +58,7 @@ export default function SpacingPage() {
                 {s.name}
               </div>
               <div className="text-[10px] font-mono text-(--color-foreground-faint)">
-                {s.value}
+                {formatSize(s.value)}
               </div>
             </div>
             <div className="flex-1 h-3 rounded-sm overflow-hidden bg-(--color-background-muted)">

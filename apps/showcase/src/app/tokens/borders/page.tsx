@@ -1,6 +1,7 @@
 import manifest from "@wyliedog/tokens/manifest.json";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import type { ManifestToken } from "@/lib/token-values";
+import { formatSize } from "@/lib/token-units";
 
 export default function BordersPage() {
   const { primitives } = manifest;
@@ -57,7 +58,7 @@ export default function BordersPage() {
                     {r.name}
                   </div>
                   <div className="text-[10px] font-mono text-(--color-foreground-faint)">
-                    {r.value}
+                    {formatSize(r.value)}
                   </div>
                 </div>
               </div>

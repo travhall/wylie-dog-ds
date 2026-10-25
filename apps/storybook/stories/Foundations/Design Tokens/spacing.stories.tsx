@@ -47,7 +47,8 @@ const SPACING_SCALE_KEYS = [
 
 const spacingScale = SPACING_SCALE_KEYS.map((name) => {
   const value = (spacing as Record<string, string>)[name] ?? "0px";
-  const px = parseFloat(value);
+  // Token values are rem in the built output (1rem = 16px); Figma shows px.
+  const px = value.endsWith("rem") ? parseFloat(value) * 16 : parseFloat(value);
   return {
     name,
     px,

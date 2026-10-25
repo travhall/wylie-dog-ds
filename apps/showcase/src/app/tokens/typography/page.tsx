@@ -1,6 +1,7 @@
 import manifest from "@wyliedog/tokens/manifest.json";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import type { ManifestToken } from "@/lib/token-values";
+import { formatSize, toPx } from "@/lib/token-units";
 
 export default function TypographyPage() {
   const { primitives } = manifest;
@@ -20,7 +21,7 @@ export default function TypographyPage() {
         name: name.split("-").slice(-1)[0],
         value: token.value,
         var: token.variable,
-        px: parseInt(token.value) || 0,
+        px: toPx(token.value),
       }))
       .sort((a, b) => a.px - b.px),
     weights: Object.entries(
@@ -97,7 +98,7 @@ export default function TypographyPage() {
                           {s.name}
                         </div>
                         <div className="text-[10px] font-mono text-(--color-foreground-faint)">
-                          {s.value}
+                          {formatSize(s.value)}
                         </div>
                         <div className="text-[10px] font-mono text-(--color-foreground-faint)">
                           fontSize: {s.var}
@@ -113,7 +114,7 @@ export default function TypographyPage() {
                           <td key={f.name} className="py-3 px-4 align-top">
                             <span
                               className={`${fontFamilyClass} text-(--color-foreground-default)`}
-                              style={{ fontSize: `${s.value}px` }}
+                              style={{ fontSize: s.value }}
                             >
                               Sample
                             </span>
