@@ -5,7 +5,7 @@
  * Handles config testing, push, pull, and conflict resolution
  */
 
-import { useCallback, useEffect, useRef } from "preact/hooks";
+import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 import type { GitHubConfig } from "../../../shared/types";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 import type { ExportData } from "../../../plugin/variables/processor";
@@ -17,8 +17,46 @@ import type { PluginMessageActions } from "../usePluginMessages";
 import { Result } from "../../../shared/result";
 import { PUSH_STEPS, PULL_STEPS } from "../../components/ProgressFeedback";
 import { hashTokens } from "../../../plugin/sync/sync-baseline";
-import type { TokenHashes } from "../../../plugin/sync/sync-baseline";
+import type {
+  SyncBaseline,
+  TokenHashes,
+} from "../../../plugin/sync/sync-baseline";
+import {
+  buildPullSummaryFromDiff,
+  buildSyncDiff,
+  conflictsForRows,
+} from "../../../plugin/sync/sync-diff";
+import type { SyncDiff } from "../../../plugin/sync/sync-diff";
+import type { SyncChangeSummary } from "../../../plugin/sync/change-summary";
 import { setPendingRemoteHashes } from "../../utils/pending-sync-hashes";
+import { requestLocalExport } from "../../utils/check-sync-status";
+
+/**
+ * The review shown before a Push or Pull writes anything (plan 200). The
+ * component that renders it lives in App; this hook owns what each button does.
+ */
+export interface SyncReview {
+  diff: SyncDiff;
+  /** Absent when there is nothing to confirm. */
+  onConfirm?: () => void;
+  /** Pull: resolve token by token in the conflict list instead. */
+  onAdvanced?: () => void;
+  /** Pull: push Figma's own edits first. */
+  onPushFirst?: () => void;
+  /** Pull with nothing to change and no baseline yet: record the sync. */
+  onMarkSynced?: () => void;
+  onClose: () => void;
+}
+
+export interface GitHubSyncOptions {
+  /** Called with what a Pull is about to change; shown once the import lands. */
+  onPullSummary?: (summary: SyncChangeSummary) => void;
+  /** Start a Push of the selected collections (for "Push first"). */
+  onRequestPush?: () => void;
+}
+
+/** Message for a repo path that has no token files yet (first ever push). */
+const NO_FILES_YET = /No JSON files found/;
 
 /**
  * Hash what GitHub holds right now. Taken after a successful push so the
@@ -52,8 +90,14 @@ export function useGitHubSync(
   pendingExportData?:
     ExportData[] | { local: ExportData[]; remote: ExportData[] },
   conflictOperationType?: "push" | "pull" | null,
-  onSyncSuccess?: () => void // Callback for successful sync (e.g., clear selection)
+  onSyncSuccess?: () => void, // Callback for successful sync (e.g., clear selection)
+  options: GitHubSyncOptions = {}
 ) {
+  const [review, setReview] = useState<SyncReview | null>(null);
+  const closeReview = useCallback(() => setReview(null), []);
+  // Latest options without making every handler depend on them.
+  const optionsRef = useRef(options);
+  optionsRef.current = options;
   // Ref to hold the pull handler so handleGitHubConfigTest can call it
   // without creating a circular dependency
   const pullHandlerRef = useRef<() => Promise<void>>();
@@ -93,51 +137,23 @@ export function useGitHubSync(
   );
 
   /**
-   * Sync tokens to GitHub (push) - Simple spinner mode
+   * Write Figma's tokens to GitHub. This is the unchanged push: the same
+   * `syncTokens(exportData)` call as before, now reached only after the review.
    */
-  const handleGitHubSync = useCallback(
+  const performPush = useCallback(
     async (exportData: ExportData[]) => {
       try {
         actions.setLoading(true);
         actions.setProgressSteps(PUSH_STEPS);
-        actions.setProgressStep(0);
-        actions.setLoadingMessage("Preparing your tokens...");
+        actions.setProgressStep(2);
+        actions.setLoadingMessage("Saving to GitHub...");
 
         // CRITICAL: Force render before heavy work
         await new Promise((resolve) =>
           requestAnimationFrame(() => resolve(undefined))
         );
 
-        actions.setProgressStep(1);
-        actions.setLoadingMessage("Checking for changes...");
-        const syncResult =
-          await githubClient.syncTokensWithConflictDetection(exportData);
-
-        // CRITICAL: Force render before processing result
-        await new Promise((resolve) =>
-          requestAnimationFrame(() => resolve(undefined))
-        );
-
-        if (syncResult.conflicts && syncResult.conflicts.length > 0) {
-          actions.setConflicts(syncResult.conflicts);
-          actions.setConflictOperationType("push");
-          actions.setPendingTokensForConflictResolution({
-            local: exportData,
-            remote: syncResult.remoteTokens || [],
-          });
-          actions.setShowConflictResolution(true);
-          actions.setLoading(false);
-          actions.setLoadingMessage("");
-          return;
-        }
-
-        actions.setProgressStep(2);
-        actions.setLoadingMessage("Saving to GitHub...");
-
-        // CRITICAL: Force render before sending message
-        await new Promise((resolve) =>
-          requestAnimationFrame(() => resolve(undefined))
-        );
+        const syncResult = await githubClient.syncTokens(exportData);
 
         // A direct push leaves GitHub equal to Figma: remember that as the
         // baseline. A pull request leaves the branch untouched, so it doesn't.
@@ -156,7 +172,7 @@ export function useGitHubSync(
           "*"
         );
 
-        // Clear loading state in UI after successful sync
+        // Clear loading state in UI after sync
         actions.setLoading(false);
         actions.setLoadingMessage("");
 
@@ -199,12 +215,155 @@ export function useGitHubSync(
         actions.setError(message);
       }
     },
-    [githubClient, actions]
+    [githubClient, actions, onSyncSuccess]
   );
 
   /**
-   * Pull tokens from GitHub - Simple mode with spinner (no steps)
-   * Pull is an explicit user action to import from GitHub, so overwrite is expected
+   * Push: compare with GitHub, send real conflicts (GitHub changes Figma lacks)
+   * to the per-token list, otherwise show what the push will change and wait
+   * for confirmation. `confirmed` re-checks right before writing, in case
+   * GitHub moved while the review was open.
+   */
+  const handleGitHubSync = useCallback(
+    async (
+      exportData: ExportData[],
+      baseline?: SyncBaseline | null,
+      confirmed = false
+    ) => {
+      try {
+        actions.setLoading(true);
+        actions.setProgressSteps(PUSH_STEPS);
+        actions.setProgressStep(0);
+        actions.setLoadingMessage("Preparing your tokens...");
+
+        // CRITICAL: Force render before heavy work
+        await new Promise((resolve) =>
+          requestAnimationFrame(() => resolve(undefined))
+        );
+
+        actions.setProgressStep(1);
+        actions.setLoadingMessage("Checking for changes...");
+        const remote = await githubClient.pullTokens();
+        let remoteTokens: ExportData[];
+        if (remote.success && remote.tokens) {
+          remoteTokens = remote.tokens;
+        } else if (remote.error && NO_FILES_YET.test(remote.error)) {
+          // First push to an empty path: everything is new on GitHub.
+          remoteTokens = [];
+        } else {
+          actions.setLoading(false);
+          actions.setLoadingMessage("");
+          actions.setError(remote.error || "Could not read tokens from GitHub");
+          return;
+        }
+
+        // CRITICAL: Force render before processing result
+        await new Promise((resolve) =>
+          requestAnimationFrame(() => resolve(undefined))
+        );
+
+        const diff = buildSyncDiff({
+          direction: "push",
+          baseline,
+          localTokens: exportData,
+          remoteTokens,
+        });
+
+        // Nothing on GitHub yet (first push) means nothing there to overwrite.
+        const firstPush = remoteTokens.length === 0;
+        if (!firstPush && diff.blocking.length > 0) {
+          // GitHub holds changes Figma lacks (or, with no baseline, any
+          // difference): pushing would overwrite them, so resolve first.
+          actions.setConflicts(
+            conflictsForRows(diff.blocking, exportData, remoteTokens)
+          );
+          actions.setConflictOperationType("push");
+          actions.setPendingTokensForConflictResolution({
+            local: exportData,
+            remote: remoteTokens,
+          });
+          actions.setShowConflictResolution(true);
+          actions.setLoading(false);
+          actions.setLoadingMessage("");
+          return;
+        }
+
+        if (confirmed && diff.rows.length > 0) {
+          await performPush(exportData);
+          return;
+        }
+
+        actions.setLoading(false);
+        actions.setLoadingMessage("");
+        setReview({
+          diff,
+          onConfirm:
+            diff.rows.length > 0
+              ? () => {
+                  setReview(null);
+                  void handleGitHubSync(exportData, baseline, true);
+                }
+              : undefined,
+          onClose: closeReview,
+        });
+      } catch (error: unknown) {
+        console.error("GitHub sync error:", error);
+        const message =
+          error instanceof Error ? error.message : "GitHub sync failed";
+        actions.setLoading(false);
+        actions.setLoadingMessage("");
+        actions.setError(message);
+      }
+    },
+    // Confirm re-enters this handler, which reads the latest closure itself.
+    [githubClient, actions, performPush, closeReview]
+  );
+
+  /** Import GitHub's tokens into Figma. Unchanged: "replace", all of them. */
+  const performPull = useCallback(
+    (tokens: ExportData[], diff: SyncDiff) => {
+      actions.setLoading(true);
+      actions.setProgressSteps(PULL_STEPS);
+      actions.setProgressStep(2);
+      actions.setLoadingMessage("Importing tokens to Figma...");
+
+      const files = [
+        {
+          filename: "remote-tokens.json",
+          content: JSON.stringify(tokens, null, 2),
+        },
+      ];
+
+      // What this pull changes, shown once the import lands (plan 169).
+      optionsRef.current.onPullSummary?.(buildPullSummaryFromDiff(diff));
+
+      // Once the import lands, the plugin records these as GitHub's side of
+      // the sync baseline (usePluginMessages sends them with record-last-sync).
+      setPendingRemoteHashes(hashTokens(tokens));
+
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: "import-tokens",
+            files: files,
+            // Use "replace" strategy to delete orphaned variables
+            // This ensures bi-directional sync: tokens deleted in code are deleted in Figma
+            mergeStrategy: "replace",
+          },
+        },
+        "*"
+      );
+
+      // Don't clear loading/progress here - import-validated handler will do it
+      // This keeps the loading animation visible during import
+    },
+    [actions]
+  );
+
+  /**
+   * Pull: fetch GitHub's tokens, compare with Figma, and show what will change
+   * (including what will be deleted or overwritten) before importing. Advanced
+   * opens the per-token conflict list instead.
    */
   const handleGitHubPull = useCallback(async () => {
     console.log("PULL: Starting GitHub pull operation");
@@ -219,58 +378,87 @@ export function useGitHubSync(
         requestAnimationFrame(() => resolve(undefined))
       );
 
-      // Pull tokens directly from GitHub WITHOUT conflict detection
       const pullResult = await githubClient.pullTokens();
-
-      actions.setProgressStep(1);
-      actions.setLoadingMessage("Preparing import...");
-
-      // CRITICAL: Force render before processing
-      await new Promise((resolve) =>
-        requestAnimationFrame(() => resolve(undefined))
-      );
-
-      if (pullResult.success && pullResult.tokens) {
-        const files = [
-          {
-            filename: "remote-tokens.json",
-            content: JSON.stringify(pullResult.tokens, null, 2),
-          },
-        ];
-
-        actions.setProgressStep(2);
-        actions.setLoadingMessage("Importing tokens to Figma...");
-
-        // CRITICAL: Force render before sending import message
-        await new Promise((resolve) =>
-          requestAnimationFrame(() => resolve(undefined))
-        );
-
-        // Once the import lands, the plugin records these as GitHub's side of
-        // the sync baseline (usePluginMessages sends them with record-last-sync).
-        setPendingRemoteHashes(hashTokens(pullResult.tokens));
-
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: "import-tokens",
-              files: files,
-              // Use "replace" strategy to delete orphaned variables
-              // This ensures bi-directional sync: tokens deleted in code are deleted in Figma
-              mergeStrategy: "replace",
-            },
-          },
-          "*"
-        );
-
-        // Don't clear loading/progress here - import-validated handler will do it
-        // This keeps the loading animation visible during import
-      } else {
-        // Handle pull failure directly
+      if (!pullResult.success || !pullResult.tokens) {
         actions.setLoading(false);
         actions.setLoadingMessage("");
         actions.setError(pullResult.error || "GitHub pull failed");
+        return;
       }
+      const remoteTokens = pullResult.tokens;
+
+      actions.setProgressStep(1);
+      actions.setLoadingMessage("Comparing with Figma...");
+      const local = await requestLocalExport();
+      if (local.failed) {
+        actions.setLoading(false);
+        actions.setLoadingMessage("");
+        actions.setError(
+          "Could not read Figma's variables, so Pull can't show what it would change. Try again."
+        );
+        return;
+      }
+
+      const diff = buildSyncDiff({
+        direction: "pull",
+        baseline: local.baseline,
+        localTokens: local.localTokens,
+        remoteTokens,
+      });
+
+      actions.setLoading(false);
+      actions.setLoadingMessage("");
+      setReview({
+        diff,
+        onConfirm:
+          diff.rows.length > 0
+            ? () => {
+                setReview(null);
+                performPull(remoteTokens, diff);
+              }
+            : undefined,
+        onAdvanced: () => {
+          const conflicts = conflictsForRows(
+            diff.rows,
+            local.localTokens,
+            remoteTokens
+          );
+          setReview(null);
+          if (conflicts.length === 0) {
+            performPull(remoteTokens, diff);
+            return;
+          }
+          actions.setConflicts(conflicts);
+          actions.setConflictOperationType("pull");
+          actions.setPendingTokensForConflictResolution({
+            local: local.localTokens,
+            remote: remoteTokens,
+          });
+          actions.setShowConflictResolution(true);
+        },
+        onPushFirst: () => {
+          setReview(null);
+          optionsRef.current.onRequestPush?.();
+        },
+        // Nothing differs but there is no record of a sync yet: let the user
+        // record this state so future changes show which side moved.
+        onMarkSynced:
+          diff.rows.length === 0 && !diff.hasBaseline
+            ? () => {
+                setReview(null);
+                parent.postMessage(
+                  {
+                    pluginMessage: {
+                      type: "record-last-sync",
+                      remoteHashes: hashTokens(remoteTokens),
+                    },
+                  },
+                  "*"
+                );
+              }
+            : undefined,
+        onClose: closeReview,
+      });
     } catch (error: unknown) {
       console.error("GitHub pull error:", error);
       // Handle error directly
@@ -280,7 +468,7 @@ export function useGitHubSync(
         error instanceof Error ? error.message : "GitHub pull failed"
       );
     }
-  }, [githubClient, actions]);
+  }, [githubClient, actions, performPull, closeReview]);
 
   // Keep the ref current so handleGitHubConfigTest can invoke pull
   pullHandlerRef.current = handleGitHubPull;
@@ -412,5 +600,6 @@ export function useGitHubSync(
     handleGitHubSync,
     handleGitHubPull,
     handleConflictResolution,
+    review,
   };
 }

@@ -22,6 +22,8 @@ export interface DiffReviewProps {
   onAdvanced?: () => void;
   /** Pull: push Figma's own edits first. */
   onPushFirst?: () => void;
+  /** Nothing differs and no sync is on record yet: record this state. */
+  onMarkSynced?: () => void;
   onClose: () => void;
 }
 
@@ -37,6 +39,14 @@ function destinationName(diff: SyncDiff): string {
 }
 
 function groupTitle(kind: DiffKind, diff: SyncDiff): string {
+  if (diff.direction === "overview") {
+    return {
+      removed: "Only on GitHub",
+      changed: "Different values",
+      renamed: "Renamed",
+      added: "Only in Figma",
+    }[kind];
+  }
   const dest = destinationName(diff);
   switch (kind) {
     case "removed":
@@ -143,36 +153,67 @@ function Row({ row, diff }: { row: DiffRow; diff: SyncDiff }) {
           </span>
         )}
       </div>
-      <div
-        style={{
-          display: "flex",
-          gap: "var(--space-2)",
-          alignItems: "flex-start",
-          marginTop: 2,
-          flexWrap: "wrap",
-        }}
-      >
-        {row.from && row.kind !== "added" && (
-          <div
-            style={{
-              opacity: row.kind === "removed" ? 1 : 0.75,
-              textDecoration: row.kind === "removed" ? "line-through" : "none",
-            }}
-          >
-            <ValueView view={row.from} />
-          </div>
-        )}
-        {row.from && row.to && (
-          <span aria-hidden="true" style={{ color: "var(--text-tertiary)" }}>
-            →
-          </span>
-        )}
-        {row.to && (
-          <div>
-            <ValueView view={row.to} />
-          </div>
-        )}
-      </div>
+      {diff.direction === "overview" ? (
+        // A read-only look: name each side instead of implying a direction.
+        // `from` holds GitHub's token and `to` Figma's (see buildSyncDiff).
+        <div
+          style={{
+            marginTop: 2,
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+          }}
+        >
+          {row.to && (
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <span style={{ color: "var(--text-tertiary)", minWidth: 48 }}>
+                Figma
+              </span>
+              <ValueView view={row.to} />
+            </div>
+          )}
+          {row.from && (
+            <div style={{ display: "flex", gap: "var(--space-2)" }}>
+              <span style={{ color: "var(--text-tertiary)", minWidth: 48 }}>
+                GitHub
+              </span>
+              <ValueView view={row.from} />
+            </div>
+          )}
+        </div>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            gap: "var(--space-2)",
+            alignItems: "flex-start",
+            marginTop: 2,
+            flexWrap: "wrap",
+          }}
+        >
+          {row.from && row.kind !== "added" && (
+            <div
+              style={{
+                opacity: row.kind === "removed" ? 1 : 0.75,
+                textDecoration:
+                  row.kind === "removed" ? "line-through" : "none",
+              }}
+            >
+              <ValueView view={row.from} />
+            </div>
+          )}
+          {row.from && row.to && (
+            <span aria-hidden="true" style={{ color: "var(--text-tertiary)" }}>
+              →
+            </span>
+          )}
+          {row.to && (
+            <div>
+              <ValueView view={row.to} />
+            </div>
+          )}
+        </div>
+      )}
       {row.notes.length > 0 && (
         <div style={{ color: "var(--text-tertiary)", marginTop: 2 }}>
           {row.notes.join(" · ")}
@@ -220,6 +261,7 @@ export function DiffReview({
   onConfirm,
   onAdvanced,
   onPushFirst,
+  onMarkSynced,
   onClose,
 }: DiffReviewProps) {
   const [filter, setFilter] = useState("");
@@ -379,6 +421,8 @@ export function DiffReview({
               }}
             >
               {emptyMessage(diff)}
+              {onMarkSynced &&
+                " There is no record of a sync yet: marking them as synced lets future changes show which side moved."}
             </p>
           ) : (
             <>
@@ -515,6 +559,11 @@ export function DiffReview({
           <button ref={closeRef} onClick={onClose} style={secondaryButton}>
             {canConfirm ? "Cancel" : "Close"}
           </button>
+          {onMarkSynced && diff.rows.length === 0 && (
+            <button onClick={onMarkSynced} style={primaryButton}>
+              Mark as synced
+            </button>
+          )}
           {canConfirm && (
             <button
               onClick={() => {

@@ -222,7 +222,7 @@ describe("SyncStatus", () => {
         screen.getByText("3 differences, direction unknown")
       ).toBeInTheDocument();
       expect(
-        screen.getByText("Pull or Push once to set a baseline.")
+        screen.getByText("Pull once to set a baseline.")
       ).toBeInTheDocument();
       expect(
         screen.queryByText(/to push|to pull|conflict/)

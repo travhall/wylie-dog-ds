@@ -1,11 +1,8 @@
 import { h } from "preact";
-import { useRef, useState } from "preact/hooks";
+import { useState } from "preact/hooks";
 import { SetupWizard } from "../SetupWizard";
 import { ImportPreview } from "../ImportPreview";
 import { SyncStatus } from "../SyncStatus";
-import { PullConfirm } from "../PullConfirm";
-import type { PullCheck } from "../PullConfirm";
-import { checkSyncStatus } from "../../utils/check-sync-status";
 import { Icon } from "../common/Icon";
 import { useUIContext } from "../../state";
 import type { GitHubConfig } from "../../../shared/types";
@@ -55,25 +52,6 @@ export function SyncTab({
   const hasSelections = selectedCollections.size > 0;
 
   const [showEditConfig, setShowEditConfig] = useState(false);
-  const [confirmingPull, setConfirmingPull] = useState(false);
-  const [pullCheck, setPullCheck] = useState<PullCheck>({ phase: "checking" });
-
-  const pullCheckId = useRef(0);
-
-  // Before a Pull, find out what it would overwrite in Figma. Only the latest
-  // click's answer is kept, so a slow earlier check can't replace a newer one.
-  const startPull = async () => {
-    const id = ++pullCheckId.current;
-    setPullCheck({ phase: "checking" });
-    setConfirmingPull(true);
-    try {
-      const status = await checkSyncStatus(githubClient);
-      if (id === pullCheckId.current) setPullCheck({ phase: "done", status });
-    } catch (error) {
-      console.error("Could not check what Pull would overwrite:", error);
-      if (id === pullCheckId.current) setPullCheck({ phase: "failed" });
-    }
-  };
   // File has repo settings (shared) but this user has no token (per user)
   const needsToken = needsGitHubToken(githubConfig);
 
@@ -556,40 +534,25 @@ export function SyncTab({
             </div>
           </div>
 
-          {confirmingPull ? (
-            <PullConfirm
-              check={pullCheck}
-              onConfirm={() => {
-                onPullFromGitHub();
-                setConfirmingPull(false);
-              }}
-              onPushFirst={() => {
-                setConfirmingPull(false);
-                onPushToGitHub();
-              }}
-              onCancel={() => setConfirmingPull(false)}
-            />
-          ) : (
-            <button
-              onClick={startPull}
-              disabled={loading}
-              style={{
-                height: 28,
-                borderRadius: "var(--radius-sm)",
-                border: "1px solid var(--border-default)",
-                background: "var(--surface-primary)",
-                color: "var(--text-primary)",
-                fontFamily: "var(--font-family-base)",
-                fontSize: "var(--font-size-sm)",
-                fontWeight: "var(--font-weight-semibold)",
-                cursor: loading ? "not-allowed" : "pointer",
-                opacity: loading ? 0.5 : 1,
-                transition: "var(--transition-fast)",
-              }}
-            >
-              Pull
-            </button>
-          )}
+          <button
+            onClick={onPullFromGitHub}
+            disabled={loading}
+            style={{
+              height: 28,
+              borderRadius: "var(--radius-sm)",
+              border: "1px solid var(--border-default)",
+              background: "var(--surface-primary)",
+              color: "var(--text-primary)",
+              fontFamily: "var(--font-family-base)",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-semibold)",
+              cursor: loading ? "not-allowed" : "pointer",
+              opacity: loading ? 0.5 : 1,
+              transition: "var(--transition-fast)",
+            }}
+          >
+            Pull
+          </button>
         </div>
       </div>
 

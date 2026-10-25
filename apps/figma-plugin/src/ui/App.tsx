@@ -45,6 +45,7 @@ import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
 import { HelpMenu } from "./components/HelpMenu";
 import { TransformationSummary } from "./components/TransformationSummary";
 import { SyncChangesSummary } from "./components/SyncChangesSummary";
+import { DiffReview } from "./components/DiffReview";
 import { Icon } from "./components/common/Icon";
 
 console.log("App.tsx loaded");
@@ -97,13 +98,32 @@ function AppInner() {
     handleGitHubSync,
     handleGitHubPull,
     handleConflictResolution,
+    review,
   } = useGitHubSync(
     githubClient,
     pluginActions,
     pluginState.pendingTokensForConflictResolution,
     pluginState.conflictOperationType,
     // Callback to clear selection after successful sync
-    () => dispatch({ type: "DESELECT_ALL_COLLECTIONS" })
+    () => dispatch({ type: "DESELECT_ALL_COLLECTIONS" }),
+    {
+      // What a pull changed, shown once the import succeeds
+      onPullSummary: syncChanges.remember,
+      // "Push first" from the Pull review: push the selected collections
+      onRequestPush: () => {
+        if (uiState.selectedCollections.size === 0) {
+          pluginActions.setError(
+            "Select the collections to push first, then press Push"
+          );
+          dispatch({ type: "SET_TAB", tab: "sync" });
+          return;
+        }
+        pluginActions.sendMessage({
+          type: "github-sync-tokens",
+          collectionIds: Array.from(uiState.selectedCollections),
+        });
+      },
+    }
   );
 
   // Handle import-validated and network request messages
@@ -699,6 +719,19 @@ function AppInner() {
             onCancel={() => setShowExistingTokensImporter(false)}
           />
         </div>
+      )}
+
+      {review && (
+        <DiffReview
+          diff={review.diff}
+          branch={pluginState.githubConfig?.branch}
+          prMode={pluginState.githubConfig?.syncMode === "pull-request"}
+          onConfirm={review.onConfirm}
+          onAdvanced={review.onAdvanced}
+          onPushFirst={review.onPushFirst}
+          onMarkSynced={review.onMarkSynced}
+          onClose={review.onClose}
+        />
       )}
 
       {syncChanges.summary && (

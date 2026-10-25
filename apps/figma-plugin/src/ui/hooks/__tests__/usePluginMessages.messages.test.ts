@@ -356,7 +356,29 @@ describe("usePluginMessages message handling", () => {
         type: "github-sync-tokens",
         exportData: [{ filename: "a.json" }],
       });
-      expect(handler).toHaveBeenCalledWith([{ filename: "a.json" }]);
+      // No baseline in the message: the handler is told so explicitly.
+      expect(handler).toHaveBeenCalledWith([{ filename: "a.json" }], null);
+    });
+
+    it("passes the file's sync baseline along when the plugin sends one", () => {
+      const handler = vi.fn().mockResolvedValue(undefined);
+      const { actions } = setup();
+      act(() => actions().registerGitHubSyncHandler(handler));
+      const baseline = {
+        schema: 1,
+        recordedAt: "2026-10-25T08:00:00.000Z",
+        collections: { primitive: { a: ["x", "y"] } },
+      };
+      post({ type: "github-sync-tokens", exportData: [], baseline });
+      expect(handler).toHaveBeenCalledWith([], baseline);
+    });
+
+    it("ignores a baseline in the wrong shape", () => {
+      const handler = vi.fn().mockResolvedValue(undefined);
+      const { actions } = setup();
+      act(() => actions().registerGitHubSyncHandler(handler));
+      post({ type: "github-sync-tokens", exportData: [], baseline: { x: 1 } });
+      expect(handler).toHaveBeenCalledWith([], null);
     });
 
     it("warns when no sync or pull handler is registered", () => {

@@ -1,3 +1,5 @@
+import { isSyncBaseline } from "../../plugin/sync/sync-baseline";
+import type { SyncBaseline } from "../../plugin/sync/sync-baseline";
 import {
   setPendingRemoteHashes,
   takePendingRemoteHashes,
@@ -140,7 +142,10 @@ export interface PluginMessageActions {
     handler: (config: GitHubConfig) => Promise<Result<boolean>>
   ) => void;
   registerGitHubSyncHandler: (
-    handler: (exportData: ExportData[]) => Promise<void>
+    handler: (
+      exportData: ExportData[],
+      baseline?: SyncBaseline | null
+    ) => Promise<void>
   ) => void;
   registerGitHubPullHandler: (handler: () => Promise<void>) => void;
   clearShouldSwitchToTokensTab: () => void;
@@ -179,7 +184,11 @@ export function usePluginMessages(
     ((config: GitHubConfig) => Promise<Result<boolean>>) | null
   >(null);
   const githubSyncHandlerRef = useRef<
-    ((exportData: ExportData[]) => Promise<void>) | null
+    | ((
+        exportData: ExportData[],
+        baseline?: SyncBaseline | null
+      ) => Promise<void>)
+    | null
   >(null);
   const githubPullHandlerRef = useRef<(() => Promise<void>) | null>(null);
 
@@ -248,7 +257,12 @@ export function usePluginMessages(
   );
 
   const registerGitHubSyncHandler = useCallback(
-    (handler: (exportData: ExportData[]) => Promise<void>) => {
+    (
+      handler: (
+        exportData: ExportData[],
+        baseline?: SyncBaseline | null
+      ) => Promise<void>
+    ) => {
       githubSyncHandlerRef.current = handler;
     },
     []
@@ -466,7 +480,10 @@ export function usePluginMessages(
           console.log("GitHub sync initiated:", msg.exportData);
           setSkippedVariables(msg.skipped ?? []);
           if (githubSyncHandlerRef.current) {
-            githubSyncHandlerRef.current(msg.exportData);
+            githubSyncHandlerRef.current(
+              msg.exportData,
+              isSyncBaseline(msg.baseline) ? msg.baseline : null
+            );
           } else {
             console.warn("No GitHub sync handler registered");
           }
