@@ -21,8 +21,8 @@ export const DropdownMenuContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        "z-(--z-index-dropdown) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border border-(--color-dropdown-menu-content-border)",
-        "bg-(--color-dropdown-menu-content-background) p-(--space-dropdown-menu-content-padding) text-(--color-dropdown-menu-content-text) shadow-(--shadow-md)",
+        "z-(--dropdown-menu-content-z-index) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border border-(--color-dropdown-menu-content-border)",
+        "bg-(--color-dropdown-menu-content-background) p-(--space-dropdown-menu-content-padding) text-(--color-dropdown-menu-content-text) shadow-(--shadow-dropdown-menu-content-shadow)",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -111,7 +111,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
   >
     <span className="absolute left-(--space-dropdown-menu-item-indicator-left) flex h-(--space-dropdown-menu-item-indicator-size) w-(--space-dropdown-menu-item-indicator-size) items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <div className="h-(--space-icon-size-xs) w-(--space-icon-size-xs) rounded-(--space-dropdown-menu-item-radio-indicator-radius) bg-current" />
+        <div className="h-(--space-dropdown-menu-item-radio-indicator-size) w-(--space-dropdown-menu-item-radio-indicator-size) rounded-(--space-dropdown-menu-item-radio-indicator-radius) bg-current" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -175,7 +175,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="ml-auto h-(--space-icon-size-sm) w-(--space-icon-size-sm)" />
+    <ChevronRight className="ml-auto h-(--space-dropdown-menu-item-icon-size) w-(--space-dropdown-menu-item-icon-size)" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =
@@ -189,8 +189,8 @@ export const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-(--z-index-dropdown) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border border-(--color-dropdown-menu-content-border)",
-      "bg-(--color-dropdown-menu-content-background) p-(--space-dropdown-menu-content-padding) text-(--color-dropdown-menu-content-text) shadow-(--shadow-md)",
+      "z-(--dropdown-menu-content-z-index) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border border-(--color-dropdown-menu-content-border)",
+      "bg-(--color-dropdown-menu-content-background) p-(--space-dropdown-menu-content-padding) text-(--color-dropdown-menu-content-text) shadow-(--shadow-dropdown-menu-content-shadow)",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",

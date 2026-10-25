@@ -49,7 +49,7 @@ export const tabsTriggerVariants = cva(
     "-mb-[1px]",
     focusRingClasses,
     "disabled:pointer-events-none disabled:text-(--color-tabs-trigger-text-disabled) data-[state=active]:disabled:text-(--color-tabs-trigger-text-disabled)",
-    "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-(--shadow-sm) data-[state=active]:border-(--color-tabs-trigger-indicator-color)",
+    "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-(--shadow-tabs-trigger-shadow) data-[state=active]:border-(--color-tabs-trigger-indicator-color)",
     "hover:bg-(--color-tabs-trigger-background-hover) hover:text-(--color-tabs-trigger-text-hover)"
   ),
   {

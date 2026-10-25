@@ -23,7 +23,7 @@ export const progressVariants = cva(
 );
 
 export const progressIndicatorVariants = cva(
-  "h-full w-full flex-1 transition-all duration-(--duration-slow) ease-in-out",
+  "h-full w-full flex-1 transition-all duration-(--duration-progress-indicator-duration) ease-in-out",
   {
     variants: {
       variant: {
