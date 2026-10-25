@@ -399,6 +399,14 @@ function generateStoryTemplate(name, composition = false, category) {
 
   return `import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
+import { Badge } from "@wyliedog/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@wyliedog/ui/card";
 import { ${pascalName} } from "${importPath}";
 
 /**
@@ -503,9 +511,9 @@ export const AllVariants: Story = {
  */
 export const States: Story = {
   render: () => (
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4">
       <div className="flex gap-4 items-center">
-        <span className="text-sm text-(--color-foreground-muted) w-20">Normal</span>
+        <Badge variant="outline">Normal</Badge>
         <${pascalName}>Normal state</${pascalName}>
       </div>
       {/* Add more states: disabled, loading, error, etc. */}
@@ -557,17 +565,19 @@ export const WithInteractions: Story = {
  */
 export const UsageExample: Story = {
   render: () => (
-    <div className="w-96 space-y-4 p-4 border border-(--color-border-muted) rounded-lg">
-      <h3 className="text-lg font-semibold text-(--color-foreground-default)">
-        Example Context
-      </h3>
-      <${pascalName}>
-        This shows the component in a realistic context with surrounding elements.
-      </${pascalName}>
-      <p className="text-sm text-(--color-foreground-muted)">
-        Additional context or instructions would go here.
-      </p>
-    </div>
+    <Card className="w-96">
+      <CardHeader>
+        <CardTitle>Example Context</CardTitle>
+        <CardDescription>
+          Additional context or instructions would go here.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <${pascalName}>
+          This shows the component in a realistic context with surrounding elements.
+        </${pascalName}>
+      </CardContent>
+    </Card>
   ),
   parameters: {
     docs: {

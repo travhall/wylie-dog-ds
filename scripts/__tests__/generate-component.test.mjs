@@ -111,3 +111,14 @@ test("an existing component is refused", () => {
   assert.notEqual(result.status, 0);
   assert.match(result.stdout + result.stderr, /already exists/);
 });
+
+test("the generated story binds to no token and uses no scale value", () => {
+  for (const args of [
+    ["zz-sample-card", "--category=content-display"],
+    ["zz-sample-band", "--composition", "--category=Layout Patterns"],
+  ]) {
+    const story = plan(...args).files[2].content;
+    assert.doesNotMatch(story, /--(?:color|space|font|shadow|border-radius)-/);
+    assert.doesNotMatch(story, /\b(?:p[xy]?|m[xytblr]?|space-[xy])-\d|\btext-(?:xs|sm|lg|xl)\b/);
+  }
+});
