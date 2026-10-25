@@ -6,14 +6,18 @@
 // collection. A reference to a semantic or primitive colour is a violation, with
 // the documented exceptions below.
 //
-// Compositions (packages/ui/src/compositions) are components too (Plan 196), so for
-// those files the check also covers everything that is not a colour:
-//   - a variable reference to a token that is not in the components collection
-//     (a semantic or primitive such as --space-200, --font-size-lg, --border-radius-md)
-//   - a hardcoded Tailwind scale utility (px-4, gap-8, h-16, max-w-4xl, text-lg,
-//     font-bold, rounded-md, z-50 ...), unless it is a documented layout exception.
-// Base components are still checked for colour only; extending the rule to their
-// non-colour references is a separate, undecided piece of work.
+// Everything that is not a colour is covered too (Plan 198), in every file of
+// packages/ui/src (tests excluded): a variable reference to a token that is not in
+// the components collection (a semantic or primitive such as --space-icon-size-md,
+// --shadow-md, --z-index-modal, --duration-normal, --border-radius-md,
+// --line-height-none) is a violation. The exceptions are the focus indicator, the
+// font family and the variables Radix sets at runtime.
+//
+// Compositions are components too (Plan 196): the files in
+// packages/ui/src/compositions and the pattern-level compositions card-grid.tsx and
+// feature-grid.tsx also fail on a hardcoded Tailwind scale utility (px-4, gap-8,
+// h-16, max-w-4xl, text-lg, font-bold, rounded-md, z-50 ...), unless it is a
+// documented layout exception.
 //
 // Reads the tracked token source, so no build is needed.
 // Usage: node scripts/check-component-binding.mjs
@@ -48,23 +52,22 @@ const ALLOWLIST = [
       "Font family: text may bind the primitive directly; it is the only non-colour exception (Plan 193 decision). Listed so the exception is recorded.",
   },
   {
+    name: "--radix-",
+    reason:
+      "Variables Radix sets at runtime (trigger and viewport sizes, swipe offsets): measurements, not design tokens.",
+  },
+  {
     name: "--font-family-",
     reason:
       "Font family: the Tailwind theme alias of the primitive (same exception).",
   },
 ];
 
-// Layout exceptions for compositions: utilities that carry no design decision, or
-// that belong to another system. Matched against the class with its variants
+// Layout exceptions for compositions (none are needed today): utilities that carry
+// no design decision, or that belong to another system. Matched against the class with its variants
 // (sm:, focus:, ...) removed. A value in LAYOUT_VALUES is always allowed.
 const LAYOUT_VALUES = ["0", "auto", "full", "screen", "min", "max", "fit"];
-const COMPOSITION_LITERAL_ALLOWLIST = [
-  {
-    name: "ring-2",
-    reason:
-      "Focus ring width: the focus system is decided separately (Plan 197), so it stays literal until then.",
-  },
-];
+const COMPOSITION_LITERAL_ALLOWLIST = [];
 
 const variables = Object.assign(
   {},
@@ -145,7 +148,8 @@ for (const file of files) {
   });
 }
 
-// Compositions: non-colour variables and hardcoded scale utilities.
+// Non-colour variable references in every file, and hardcoded scale utilities in the
+// compositions.
 const SCALE_PROPERTY =
   /^-?(?:p[xytblrse]?|m[xytblrse]?|gap(?:-[xy])?|space-[xy]|(?:min-|max-)?[hw]|size|inset(?:-[xy])?|top|left|right|bottom|start|end|leading|tracking|rounded(?:-[a-z]{1,2})?|shadow|z|duration|delay|opacity|ring|ring-offset)-(.+)$/;
 const SCALE_TEXT = /^text-(?:xs|sm|base|lg|xl|[2-9]xl)$/;
@@ -153,22 +157,27 @@ const SCALE_FONT =
   /^font-(?:thin|extralight|light|normal|medium|semibold|bold|extrabold|black)$/;
 const SCALE_VALUE =
   /^(?:\d[\d./]*|px|xs|sm|md|lg|xl|[2-9]?xl|[2-9]xl|none|tight|snug|normal|relaxed|loose|wide|wider|widest|tighter|prose|base|inner|outer)$/;
-let compositionClasses = 0;
-let compositionVars = 0;
-for (const file of files.filter((f) =>
-  f.split(path.sep).includes("compositions")
-)) {
+// Compositions: the compositions folder and the pattern-level compositions at the
+// package root (Plan 198 decision 6).
+const PATTERN_COMPOSITIONS = ["card-grid.tsx", "feature-grid.tsx"];
+const isComposition = (file) =>
+  file.split(path.sep).includes("compositions") ||
+  PATTERN_COMPOSITIONS.includes(path.basename(file));
+let literalClasses = 0;
+let nonColourVars = 0;
+for (const file of files) {
   const lines = stripComments(fs.readFileSync(file, "utf8")).split("\n");
   lines.forEach((line, index) => {
     for (const match of line.matchAll(
-      /\((?:[a-z]+:)?(--[a-z0-9-]*[a-z0-9])\)/g
+      /\((?:[a-z]+:)?(--[a-z0-9-]*[a-z0-9])[,)]/g
     )) {
       const ref = match[1];
       if (ref.startsWith("--color-")) continue; // colours: handled above
-      compositionVars++;
+      nonColourVars++;
       if (componentVars.has(ref) || isAllowed(ref)) continue;
       problems.push(`${file}:${index + 1}  ${ref}  (not a component token)`);
     }
+    if (!isComposition(file)) return;
     for (const literal of line.matchAll(/"([^"]*)"|`([^`]*)`/g)) {
       for (const cls of (literal[1] ?? literal[2]).split(/\s+/)) {
         const bare = cls.replace(/^(?:[^\s:[]+:|\[[^\]]*\]:)+/, "");
@@ -181,7 +190,7 @@ for (const file of files.filter((f) =>
             SCALE_VALUE.test(prop[1]) &&
             !LAYOUT_VALUES.includes(prop[1]));
         if (!isLiteral) continue;
-        compositionClasses++;
+        literalClasses++;
         if (COMPOSITION_LITERAL_ALLOWLIST.some((entry) => entry.name === bare))
           continue;
         problems.push(
@@ -206,5 +215,5 @@ console.log(
   `Component binding OK: ${checked} colour references in ${files.length} files, all component tokens or allowlisted (${ALLOWLIST.length} exceptions).`
 );
 console.log(
-  `Compositions OK: ${compositionVars} non-colour variable references are component tokens, ${compositionClasses} scale literals all allowlisted (${COMPOSITION_LITERAL_ALLOWLIST.length} exception).`
+  `Non-colour OK: ${nonColourVars} variable references in ${files.length} files are component tokens or allowlisted; compositions have ${literalClasses} scale literals (${COMPOSITION_LITERAL_ALLOWLIST.length} allowlisted).`
 );
