@@ -116,4 +116,21 @@ describe("getSyncStatus: z-index rename scenario", () => {
     expect(status.upToDate).toBe(true);
     expect(status.differences).toBe(0);
   });
+
+  it("carries a read-only per-token overview for the Review changes button", async () => {
+    vi.spyOn(GitHubClient.prototype, "pullTokens").mockResolvedValue({
+      success: true,
+      tokens: remote,
+    });
+    const baseline = buildBaseline(hashTokens(remote), hashTokens(remote));
+
+    const status = await new ConflictAwareGitHubClient().getSyncStatus(
+      local,
+      baseline
+    );
+
+    expect(status.diff.direction).toBe("overview");
+    expect(status.diff.rows).toHaveLength(2);
+    expect(status.diff.rows.some((r) => r.kind === "renamed")).toBe(true);
+  });
 });

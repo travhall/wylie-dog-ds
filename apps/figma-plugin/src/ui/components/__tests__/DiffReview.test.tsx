@@ -280,3 +280,43 @@ describe("DiffReview: no baseline, keyboard and aria", () => {
     expect(dialog).toHaveAccessibleName(/Push will change/);
   });
 });
+
+describe("DiffReview: overview and Mark as synced", () => {
+  it("names each side instead of implying a direction", () => {
+    const local = [col("primitive", { a: tok(9), c: tok(3) })];
+    // The real overview (opened from the status card) passes no callbacks.
+    setup(diffOf("overview", local, synced), {
+      onConfirm: undefined,
+      onAdvanced: undefined,
+      onPushFirst: undefined,
+    });
+    expect(
+      screen.getByRole("dialog", {
+        name: "3 differences between Figma and GitHub",
+      })
+    ).toBeInTheDocument();
+    const different = screen.getByRole("region", { name: "Different values" });
+    expect(within(different).getByText("Figma")).toBeInTheDocument();
+    expect(within(different).getByText("GitHub")).toBeInTheDocument();
+    expect(screen.getByText("Only in Figma (1)")).toBeInTheDocument();
+    expect(screen.getByText("Only on GitHub (1)")).toBeInTheDocument();
+    // Read-only: nothing to confirm.
+    expect(screen.queryByText(/^Push to|^Pull from/)).not.toBeInTheDocument();
+  });
+
+  it("offers Mark as synced only for an empty review", () => {
+    const onMarkSynced = vi.fn();
+    setup(diffOf("pull", synced, synced, null), { onMarkSynced });
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "no record of a sync yet"
+    );
+    fireEvent.click(screen.getByText("Mark as synced"));
+    expect(onMarkSynced).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not offer Mark as synced when there are differences", () => {
+    const local = [col("primitive", { a: tok(9), b: tok(2) })];
+    setup(diffOf("pull", local, synced), { onMarkSynced: vi.fn() });
+    expect(screen.queryByText("Mark as synced")).not.toBeInTheDocument();
+  });
+});

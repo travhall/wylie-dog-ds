@@ -16,6 +16,7 @@ import {
   waitFor,
 } from "@testing-library/preact";
 import { SyncStatus } from "../SyncStatus";
+import { buildSyncDiff } from "../../../plugin/sync/sync-diff";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 
 type SyncResult = {
@@ -346,5 +347,53 @@ describe("SyncStatus", () => {
         ).toBeInTheDocument()
       );
     });
+  });
+});
+
+describe("SyncStatus review", () => {
+  it("opens a read-only overview of the differences from Review changes", async () => {
+    vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const diff = buildSyncDiff({
+      direction: "overview",
+      baseline: null,
+      localTokens: [
+        { primitive: { variables: { a: { $type: "number", $value: 9 } } } },
+      ],
+      remoteTokens: [
+        { primitive: { variables: { a: { $type: "number", $value: 1 } } } },
+      ],
+    });
+    const getSyncStatus = vi.fn(async () => ({
+      upToDate: false,
+      hasBaseline: false,
+      differences: 1,
+      diff,
+    }));
+    const client = { getSyncStatus } as unknown as ConflictAwareGitHubClient;
+    render(<SyncStatus githubClient={client} githubConfigured />);
+
+    // Not offered before there is something to review.
+    expect(screen.queryByLabelText("Review changes")).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByLabelText("Refresh sync status"));
+    act(() => {
+      window.dispatchEvent(
+        new MessageEvent("message", {
+          data: {
+            pluginMessage: { type: "local-tokens-exported", localTokens: [] },
+          },
+        })
+      );
+    });
+    fireEvent.click(await screen.findByLabelText("Review changes"));
+
+    expect(
+      screen.getByRole("dialog", {
+        name: /1 difference between Figma and GitHub/,
+      })
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByText("Close"));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 });
