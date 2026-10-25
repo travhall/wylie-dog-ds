@@ -34,8 +34,8 @@ const scaffoldVars = (content) =>
   new Set([...content.matchAll(/\((--[a-z0-9-]+)\)/g)].map((m) => m[1]));
 
 for (const [label, args] of [
-  ["primitive", ["demo-card", "--category=content-display"]],
-  ["composition", ["demo-band", "--composition", "--category=Layout Patterns"]],
+  ["primitive", ["zz-sample-card", "--category=content-display"]],
+  ["composition", ["zz-sample-band", "--composition", "--category=Layout Patterns"]],
 ]) {
   test(`${label}: token names follow the grammar`, () => {
     const { tokens } = plan(...args);
@@ -69,19 +69,19 @@ for (const [label, args] of [
 
 test("a composition also gets spacing tokens, a primitive does not", () => {
   const composition = Object.keys(
-    plan("demo-band", "--composition", "--category=Layout Patterns").tokens
+    plan("zz-sample-band", "--composition", "--category=Layout Patterns").tokens
   );
   const primitive = Object.keys(
-    plan("demo-card", "--category=content-display").tokens
+    plan("zz-sample-card", "--category=content-display").tokens
   );
   for (const part of ["padding-x", "padding-y", "gap"]) {
-    assert.ok(composition.includes(`demo-band.${part}`));
-    assert.ok(!primitive.includes(`demo-card.${part}`));
+    assert.ok(composition.includes(`zz-sample-band.${part}`));
+    assert.ok(!primitive.includes(`zz-sample-card.${part}`));
   }
 });
 
 test("the scaffold has no Tailwind scale literal", () => {
-  const { files } = plan("demo-band", "--composition", "--category=Layout Patterns");
+  const { files } = plan("zz-sample-band", "--composition", "--category=Layout Patterns");
   assert.doesNotMatch(
     files[0].content,
     /\b(?:p[xy]?|m[xytblr]?|gap|space-[xy]|h|w|max-w)-\d/
@@ -90,7 +90,7 @@ test("the scaffold has no Tailwind scale literal", () => {
 
 test("a dry run writes nothing", () => {
   const before = spawnSync("git", ["status", "--porcelain"], { cwd: root, encoding: "utf8" });
-  plan("demo-card", "--category=content-display");
+  plan("zz-sample-card", "--category=content-display");
   const after = spawnSync("git", ["status", "--porcelain"], { cwd: root, encoding: "utf8" });
   assert.equal(after.stdout, before.stdout);
 });
