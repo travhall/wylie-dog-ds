@@ -44,10 +44,10 @@ Components bind to component tokens, with one documented exception: they use `--
 The first indicator was a blue.500 box-shadow ring. Measured on the default Button:
 
 - ring against the blue.600 fill: 1.41:1 (needs 3:1)
-- the ring sat directly on the fill, because `ring-offset-(--space-focus-ring-offset)` had no `length:` type hint, so Tailwind v4 read the width token as a colour and the offset width stayed 0px
+- the ring sat directly on the fill, because the ring-offset utility had no `length:` type hint, so Tailwind v4 read the width token as a colour and the offset width stayed 0px
 - in forced-colors mode no indicator was drawn (box-shadow is removed and `outline-none` left nothing)
 
-A foreground-tone outline flanked by a page-tone halo reaches 17:1 against the halo in both modes, so the 3:1 requirement for non-text contrast (WCAG 2.2, 1.4.11) is met on any surface the control sits on without a per-surface token. Measured against the primary fill: 3.44:1 in Light, 4.49:1 in Dark. The outline is a real outline, so forced-colors mode draws it in the system colour.
+An outline in the foreground tone, flanked by a halo in the page tone, reaches 17:1 against the halo in both modes, so the 3:1 requirement for non-text contrast (WCAG 2.2, 1.4.11) is met on any background the control sits on without a per-background token. Measured against the primary fill: 3.44:1 in Light, 4.49:1 in Dark. The outline is a real outline, so forced-colors mode draws it in the system colour.
 
 ## The three meanings of "focus"
 
@@ -72,7 +72,7 @@ A highlighted item changes its surface by only 1.12:1 in Light and 1.4:1 in Dark
 
 ## Guarding it
 
-- `pnpm check:focus` fails on `outline-none`, a box-shadow focus ring, `ring-offset-*`, and an un-hinted `outline-(--x)` or `ring-(--space-x)` value.
+- `pnpm check:focus` fails on `outline-none`, a box-shadow focus ring, `ring-offset-*`, and an outline or ring value without a `color:` or `length:` type hint.
 - `pnpm check:focus-visible` (after a Storybook build) tabs through the first story of every component and fails on a focused element without an outline.
 - `pnpm check:contrast` fails if the ring and halo stop reaching 3:1.
 
