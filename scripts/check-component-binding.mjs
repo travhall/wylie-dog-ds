@@ -6,6 +6,15 @@
 // collection. A reference to a semantic or primitive colour is a violation, with
 // the documented exceptions below.
 //
+// Compositions (packages/ui/src/compositions) are components too (Plan 196), so for
+// those files the check also covers everything that is not a colour:
+//   - a variable reference to a token that is not in the components collection
+//     (a semantic or primitive such as --space-200, --font-size-lg, --border-radius-md)
+//   - a hardcoded Tailwind scale utility (px-4, gap-8, h-16, max-w-4xl, text-lg,
+//     font-bold, rounded-md, z-50 ...), unless it is a documented layout exception.
+// Base components are still checked for colour only; extending the rule to their
+// non-colour references is a separate, undecided piece of work.
+//
 // Reads the tracked token source, so no build is needed.
 // Usage: node scripts/check-component-binding.mjs
 
@@ -34,6 +43,18 @@ const ALLOWLIST = [
   },
 ];
 
+// Layout exceptions for compositions: utilities that carry no design decision, or
+// that belong to another system. Matched against the class with its variants
+// (sm:, focus:, ...) removed. A value in LAYOUT_VALUES is always allowed.
+const LAYOUT_VALUES = ["0", "auto", "full", "screen", "min", "max", "fit"];
+const COMPOSITION_LITERAL_ALLOWLIST = [
+  {
+    name: "ring-2",
+    reason:
+      "Focus ring width: the focus system is decided separately (Plan 197), so it stays literal until then.",
+  },
+];
+
 const variables = Object.assign(
   {},
   ...JSON.parse(fs.readFileSync(tokenFile, "utf8"))
@@ -42,6 +63,28 @@ const componentColours = new Set(
   Object.entries(variables)
     .filter(([, token]) => token.$type === "color")
     .map(([name]) => `--color-${name.replaceAll(".", "-")}`)
+);
+
+// CSS variable name of every component token, by the naming of the token build
+// (packages/tokens/style-dictionary.config.js): spacing and dimension are
+// --space-*, duration --duration-*, numbers --font-size-*, --font-weight-*,
+// --line-height-* by name, and any other number is unprefixed (z-index).
+const cssVarName = (name, type) => {
+  const key = name.replaceAll(".", "-");
+  if (type === "color") return `--color-${key}`;
+  if (type === "spacing" || type === "dimension") return `--space-${key}`;
+  if (type === "duration") return `--duration-${key}`;
+  if (type === "shadow") return `--shadow-${key}`;
+  if (type === "number") {
+    if (key.includes("font-weight")) return `--font-weight-${key}`;
+    if (key.includes("line-height")) return `--line-height-${key}`;
+    if (key.includes("font-size")) return `--font-size-${key}`;
+    return `--${key}`;
+  }
+  return `--${key}`;
+};
+const componentVars = new Set(
+  Object.entries(variables).map(([name, token]) => cssVarName(name, token.$type))
 );
 
 const isAllowed = (ref) =>
@@ -82,16 +125,57 @@ for (const file of files) {
   });
 }
 
+// Compositions: non-colour variables and hardcoded scale utilities.
+const SCALE_PROPERTY =
+  /^-?(?:p[xytblrse]?|m[xytblrse]?|gap(?:-[xy])?|space-[xy]|(?:min-|max-)?[hw]|size|inset(?:-[xy])?|top|left|right|bottom|start|end|leading|tracking|rounded(?:-[a-z]{1,2})?|shadow|z|duration|delay|opacity|ring|ring-offset)-(.+)$/;
+const SCALE_TEXT = /^text-(?:xs|sm|base|lg|xl|[2-9]xl)$/;
+const SCALE_FONT = /^font-(?:thin|extralight|light|normal|medium|semibold|bold|extrabold|black)$/;
+const SCALE_VALUE = /^(?:\d[\d./]*|px|xs|sm|md|lg|xl|[2-9]?xl|[2-9]xl|none|tight|snug|normal|relaxed|loose|wide|wider|widest|tighter|prose|base|inner|outer)$/;
+let compositionClasses = 0;
+let compositionVars = 0;
+for (const file of files.filter((f) => f.split(path.sep).includes("compositions"))) {
+  const lines = stripComments(fs.readFileSync(file, "utf8")).split("\n");
+  lines.forEach((line, index) => {
+    for (const match of line.matchAll(/\((?:[a-z]+:)?(--[a-z0-9-]*[a-z0-9])\)/g)) {
+      const ref = match[1];
+      if (ref.startsWith("--color-")) continue; // colours: handled above
+      compositionVars++;
+      if (componentVars.has(ref) || isAllowed(ref)) continue;
+      problems.push(`${file}:${index + 1}  ${ref}  (not a component token)`);
+    }
+    for (const literal of line.matchAll(/"([^"]*)"|`([^`]*)`/g)) {
+      for (const cls of (literal[1] ?? literal[2]).split(/\s+/)) {
+        const bare = cls.replace(/^(?:[^\s:[]+:|\[[^\]]*\]:)+/, "");
+        if (!bare || /^[a-z-]*[(\[]/.test(bare) || bare.includes("/")) continue;
+        const prop = SCALE_PROPERTY.exec(bare);
+        const isLiteral =
+          SCALE_TEXT.test(bare) ||
+          SCALE_FONT.test(bare) ||
+          (prop && SCALE_VALUE.test(prop[1]) && !LAYOUT_VALUES.includes(prop[1]));
+        if (!isLiteral) continue;
+        compositionClasses++;
+        if (COMPOSITION_LITERAL_ALLOWLIST.some((entry) => entry.name === bare)) continue;
+        problems.push(
+          `${file}:${index + 1}  ${cls}  (hardcoded scale value: add a component token)`
+        );
+      }
+    }
+  });
+}
+
 if (problems.length) {
   console.error(
     `Component binding: ${problems.length} reference(s) to a token that is not a component token\n`
   );
   for (const p of problems) console.error(`  ${p}`);
   console.error(
-    "\nA component binds only to component tokens. Add a token to packages/tokens/io/sync/components.json that aliases the semantic tone, then reference it."
+    "\nA component binds only to component tokens. Add a token to packages/tokens/io/sync/components.json that aliases the semantic tone (or the scale, for a non-colour value), then reference it."
   );
   process.exit(1);
 }
 console.log(
   `Component binding OK: ${checked} colour references in ${files.length} files, all component tokens or allowlisted (${ALLOWLIST.length} exceptions).`
+);
+console.log(
+  `Compositions OK: ${compositionVars} non-colour variable references are component tokens, ${compositionClasses} scale literals all allowlisted (${COMPOSITION_LITERAL_ALLOWLIST.length} exception).`
 );
