@@ -366,7 +366,7 @@ export const spacing = {
   "button-icon-size": "16px",
   "item-inset": "32px",
   "item-indicator-size": "16px",
-  "item-icon-size": "16px",
+  "item-icon-size": "24px",
   "separator-margin-y": "4px",
   "separator-margin-x": "4px",
   "item-border-width": "1px",
@@ -477,7 +477,15 @@ export const spacing = {
   "nav-link-height": "36px",
   "nav-link-padding-x": "16px",
   "nav-link-padding-y": "8px",
-  "nav-link-radius": "4px"
+  "nav-link-radius": "4px",
+  "spinner-size": "16px",
+  "close-button-icon-size": "24px",
+  "item-sub-trigger-icon-size": "24px",
+  "item-radio-indicator-size": "12px",
+  "arrow-size": "12px",
+  "spinner-radius": "9999px",
+  "spinner-border-width": "2px",
+  "arrow-radius": "2px"
 };
 
 export const shadow = {
@@ -617,7 +625,10 @@ export const lineHeight = {
   "trigger-line-height": 1,
   "content-line-height": 1.5,
   "title-line-height": 1,
-  "description-line-height": 1.5
+  "description-line-height": 1.5,
+  "label-line-height": 1,
+  "grid-title-line-height": 1.25,
+  "grid-description-line-height": 1.625
 };
 
 export const duration = {
@@ -634,5 +645,12 @@ export const duration = {
   "duration-fast": "150ms",
   "duration-normal": "250ms",
   "duration-slow": "400ms",
-  "transition-duration": "200ms"
+  "transition-duration": "200ms",
+  "content-duration": "250ms",
+  "trigger-icon-duration": "250ms",
+  "indicator-duration": "400ms",
+  "content-duration-open": "500ms",
+  "content-duration-closed": "300ms",
+  "item-duration": "500ms",
+  "icon-duration": "500ms"
 };

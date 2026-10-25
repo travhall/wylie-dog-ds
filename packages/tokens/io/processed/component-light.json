@@ -4543,5 +4543,350 @@
     "$type": "number",
     "$value": "{z-index.sticky}",
     "$description": "Stacking order of the sticky header."
+  },
+  "button.spinner.size": {
+    "$type": "spacing",
+    "$value": "{icon.size.sm}",
+    "$description": "Size of the loading spinner in a button."
+  },
+  "dialog.close-button.icon-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.md}",
+    "$description": "Size of the close icon in a dialog."
+  },
+  "sheet.close-button.icon-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.md}",
+    "$description": "Size of the close icon in a sheet."
+  },
+  "toast.close-button.icon-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.md}",
+    "$description": "Size of the close icon in a toast."
+  },
+  "select.trigger.icon-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.md}",
+    "$description": "Size of the chevron in the select trigger."
+  },
+  "select.item.icon-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.md}",
+    "$description": "Size of the check icon in a selected select item."
+  },
+  "select.item.indicator-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.sm}",
+    "$description": "Size of the box that holds the check icon in a select item."
+  },
+  "context-menu.item.sub-trigger-icon-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.md}",
+    "$description": "Size of the chevron on a context menu sub-menu trigger."
+  },
+  "dropdown-menu.item.radio-indicator-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.xs}",
+    "$description": "Size of the dot in a selected dropdown menu radio item."
+  },
+  "navigation-menu.trigger.icon-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.sm}",
+    "$description": "Size of the chevron in a navigation menu trigger."
+  },
+  "navigation-menu.arrow-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.xs}",
+    "$description": "Size of the arrow on the navigation menu indicator."
+  },
+  "button.spinner.radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the button loading spinner. Full makes it a circle."
+  },
+  "button.spinner.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.2}",
+    "$description": "Stroke width of the button loading spinner."
+  },
+  "navigation-menu.arrow-radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.sm}",
+    "$description": "Corner radius of the arrow on the navigation menu indicator."
+  },
+  "dialog.shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.lg}",
+    "$description": "Elevation shadow of the dialog."
+  },
+  "alert-dialog.content-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.lg}",
+    "$description": "Elevation shadow of the alert dialog."
+  },
+  "sheet.content.shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.lg}",
+    "$description": "Elevation shadow of the sheet."
+  },
+  "context-menu.content-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.md}",
+    "$description": "Elevation shadow of the context menu."
+  },
+  "context-menu.sub-content-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.lg}",
+    "$description": "Elevation shadow of a context menu sub-menu."
+  },
+  "dropdown-menu.content-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.md}",
+    "$description": "Elevation shadow of the dropdown menu and its sub-menus."
+  },
+  "menubar.content-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.md}",
+    "$description": "Elevation shadow of a menubar menu."
+  },
+  "menubar.sub-content-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.lg}",
+    "$description": "Elevation shadow of a menubar sub-menu."
+  },
+  "hover-card.content-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.md}",
+    "$description": "Elevation shadow of the hover card."
+  },
+  "popover.content-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.md}",
+    "$description": "Elevation shadow of the popover."
+  },
+  "tooltip.shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.md}",
+    "$description": "Elevation shadow of the tooltip."
+  },
+  "select.content.shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.md}",
+    "$description": "Elevation shadow of the select dropdown."
+  },
+  "navigation-menu.viewport-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.lg}",
+    "$description": "Elevation shadow of the navigation menu viewport."
+  },
+  "navigation-menu.arrow-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.md}",
+    "$description": "Elevation shadow of the arrow on the navigation menu indicator."
+  },
+  "switch.thumb.shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.lg}",
+    "$description": "Elevation shadow of the switch thumb."
+  },
+  "tabs.trigger.shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.sm}",
+    "$description": "Elevation shadow of the active tab trigger."
+  },
+  "toast.shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.lg}",
+    "$description": "Elevation shadow of the toast."
+  },
+  "feature-grid.icon-shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.sm}",
+    "$description": "Elevation shadow of the feature icon container."
+  },
+  "dialog.content.z-index": {
+    "$type": "number",
+    "$value": "{z-index.modal}",
+    "$description": "Stacking order of the dialog content."
+  },
+  "dialog.overlay-z-index": {
+    "$type": "number",
+    "$value": "{z-index.modal-backdrop}",
+    "$description": "Stacking order of the dialog overlay."
+  },
+  "alert-dialog.content-z-index": {
+    "$type": "number",
+    "$value": "{z-index.modal}",
+    "$description": "Stacking order of the alert dialog content."
+  },
+  "alert-dialog.overlay-z-index": {
+    "$type": "number",
+    "$value": "{z-index.modal-backdrop}",
+    "$description": "Stacking order of the alert dialog overlay."
+  },
+  "sheet.content.z-index": {
+    "$type": "number",
+    "$value": "{z-index.modal}",
+    "$description": "Stacking order of the sheet content."
+  },
+  "sheet.overlay-z-index": {
+    "$type": "number",
+    "$value": "{z-index.modal-backdrop}",
+    "$description": "Stacking order of the sheet overlay."
+  },
+  "context-menu.content-z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}",
+    "$description": "Stacking order of the context menu."
+  },
+  "context-menu.sub-content-z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}",
+    "$description": "Stacking order of a context menu sub-menu."
+  },
+  "dropdown-menu.content-z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}",
+    "$description": "Stacking order of the dropdown menu and its sub-menus."
+  },
+  "menubar.content-z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}",
+    "$description": "Stacking order of a menubar menu."
+  },
+  "menubar.sub-content-z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}",
+    "$description": "Stacking order of a menubar sub-menu."
+  },
+  "navigation-menu.z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}",
+    "$description": "Stacking order of the navigation menu."
+  },
+  "navigation-menu.indicator-z-index": {
+    "$type": "number",
+    "$value": "{z-index.1}",
+    "$description": "Stacking order of the navigation menu indicator inside the menu."
+  },
+  "resizable.handle-z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}",
+    "$description": "Stacking order of the resizable handle."
+  },
+  "popover.z-index": {
+    "$type": "number",
+    "$value": "{z-index.popover}",
+    "$description": "Stacking order of the popover."
+  },
+  "hover-card.z-index": {
+    "$type": "number",
+    "$value": "{z-index.popover}",
+    "$description": "Stacking order of the hover card."
+  },
+  "toast.viewport.z-index": {
+    "$type": "number",
+    "$value": "{z-index.toast}",
+    "$description": "Stacking order of the toast viewport."
+  },
+  "tooltip.z-index": {
+    "$type": "number",
+    "$value": "{z-index.tooltip}",
+    "$description": "Stacking order of the tooltip."
+  },
+  "dialog.overlay-opacity": {
+    "$type": "number",
+    "$value": "{opacity.scrim}",
+    "$description": "Opacity of the dialog overlay (scrim)."
+  },
+  "alert-dialog.overlay-opacity": {
+    "$type": "number",
+    "$value": "{opacity.scrim}",
+    "$description": "Opacity of the alert dialog overlay (scrim)."
+  },
+  "sheet.overlay-opacity": {
+    "$type": "number",
+    "$value": "{opacity.scrim}",
+    "$description": "Opacity of the sheet overlay (scrim)."
+  },
+  "input.spin-button-opacity": {
+    "$type": "number",
+    "$value": "{opacity.100}",
+    "$description": "Opacity of the native number-input spin buttons."
+  },
+  "dialog.title-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height of the dialog title."
+  },
+  "label.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height of the label."
+  },
+  "form.label-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height of the form label."
+  },
+  "feature-grid.title.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.tight}",
+    "$description": "Line height of the feature title."
+  },
+  "feature-grid.description-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.relaxed}",
+    "$description": "Line height of the feature description."
+  },
+  "dialog.content.duration": {
+    "$type": "duration",
+    "$value": "{transition.duration.normal}",
+    "$description": "Transition duration of the dialog content."
+  },
+  "alert-dialog.content-duration": {
+    "$type": "duration",
+    "$value": "{transition.duration.normal}",
+    "$description": "Transition duration of the alert dialog content."
+  },
+  "accordion.trigger.icon-duration": {
+    "$type": "duration",
+    "$value": "{transition.duration.normal}",
+    "$description": "Transition duration of the accordion chevron rotation."
+  },
+  "navigation-menu.indicator-duration": {
+    "$type": "duration",
+    "$value": "{transition.duration.normal}",
+    "$description": "Transition duration of the navigation menu trigger chevron."
+  },
+  "progress.indicator-duration": {
+    "$type": "duration",
+    "$value": "{transition.duration.slow}",
+    "$description": "Transition duration of the progress indicator."
+  },
+  "sheet.content.duration-open": {
+    "$type": "duration",
+    "$value": "{duration.500}",
+    "$description": "Transition duration when the sheet opens."
+  },
+  "sheet.content.duration-closed": {
+    "$type": "duration",
+    "$value": "{duration.300}",
+    "$description": "Transition duration when the sheet closes."
+  },
+  "card-grid.item-duration": {
+    "$type": "duration",
+    "$value": "{duration.300}",
+    "$description": "Hover transition duration of a card grid item."
+  },
+  "feature-grid.item-duration": {
+    "$type": "duration",
+    "$value": "{duration.500}",
+    "$description": "Hover transition duration of a feature grid item."
+  },
+  "feature-grid.icon-duration": {
+    "$type": "duration",
+    "$value": "{duration.500}",
+    "$description": "Hover transition duration of the feature icon container."
   }
 }

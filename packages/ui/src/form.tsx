@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
 export const formLabelVariants = cva(
-  "font-(--font-weight-form-label-font-weight) leading-none peer-disabled:cursor-not-allowed peer-disabled:text-(--color-form-label-text-disabled)",
+  "font-(--font-weight-form-label-font-weight) leading-(--line-height-form-label-line-height) peer-disabled:cursor-not-allowed peer-disabled:text-(--color-form-label-text-disabled)",
   {
     variants: {
       size: {

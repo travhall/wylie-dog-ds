@@ -445,7 +445,7 @@ describe("Dialog", () => {
           "bg-(--color-dialog-overlay)",
           "fixed",
           "inset-0",
-          "z-(--z-index-modal-backdrop)"
+          "z-(--dialog-overlay-z-index)"
         );
       });
     });
@@ -495,7 +495,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("z-(--z-index-modal)");
+        expect(dialog).toHaveClass("z-(--dialog-content-z-index)");
       });
     });
 
@@ -553,7 +553,9 @@ describe("Dialog", () => {
         expect(title).toHaveClass(
           "font-(--font-weight-dialog-title-font-weight)"
         );
-        expect(title).toHaveClass("leading-(--line-height-none)");
+        expect(title).toHaveClass(
+          "leading-(--line-height-dialog-title-line-height)"
+        );
       });
     });
 

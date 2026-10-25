@@ -267,6 +267,7 @@ export const shadowSpreadNegLg = "-4px";
 export const shadowSpreadNegMd = "-2px";
 export const shadowSpreadNegSm = "-1px";
 export const zIndex0 = 0;
+export const zIndex1 = 1;
 export const zIndex10 = 10;
 export const zIndex20 = 20;
 export const zIndex30 = 30;
@@ -1282,3 +1283,88 @@ export const siteHeaderNavLinkFontSize = 14; // Font size of a navigation link.
 export const siteHeaderNavLinkFontWeight = 500; // Font weight of a navigation link.
 export const siteHeaderTransitionDuration = "200ms"; // Duration of the header colour transition.
 export const siteHeaderZIndex = 20; // Stacking order of the sticky header.
+export const buttonSpinnerSize = "16px"; // Size of the loading spinner in a button.
+export const dialogCloseButtonIconSize = "24px"; // Size of the close icon in a dialog.
+export const sheetCloseButtonIconSize = "24px"; // Size of the close icon in a sheet.
+export const toastCloseButtonIconSize = "24px"; // Size of the close icon in a toast.
+export const selectTriggerIconSize = "24px"; // Size of the chevron in the select trigger.
+export const selectItemIconSize = "24px"; // Size of the check icon in a selected select item.
+export const selectItemIndicatorSize = "16px"; // Size of the box that holds the check icon in a select item.
+export const contextMenuItemSubTriggerIconSize = "24px"; // Size of the chevron on a context menu sub-menu trigger.
+export const dropdownMenuItemRadioIndicatorSize = "12px"; // Size of the dot in a selected dropdown menu radio item.
+export const navigationMenuTriggerIconSize = "16px"; // Size of the chevron in a navigation menu trigger.
+export const navigationMenuArrowSize = "12px"; // Size of the arrow on the navigation menu indicator.
+export const buttonSpinnerRadius = "9999px"; // Corner radius of the button loading spinner. Full makes it a circle.
+export const buttonSpinnerBorderWidth = "2px"; // Stroke width of the button loading spinner.
+export const navigationMenuArrowRadius = "2px"; // Corner radius of the arrow on the navigation menu indicator.
+export const dialogShadow =
+  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"; // Elevation shadow of the dialog.
+export const alertDialogContentShadow =
+  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"; // Elevation shadow of the alert dialog.
+export const sheetContentShadow =
+  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"; // Elevation shadow of the sheet.
+export const contextMenuContentShadow =
+  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"; // Elevation shadow of the context menu.
+export const contextMenuSubContentShadow =
+  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"; // Elevation shadow of a context menu sub-menu.
+export const dropdownMenuContentShadow =
+  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"; // Elevation shadow of the dropdown menu and its sub-menus.
+export const menubarContentShadow =
+  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"; // Elevation shadow of a menubar menu.
+export const menubarSubContentShadow =
+  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"; // Elevation shadow of a menubar sub-menu.
+export const hoverCardContentShadow =
+  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"; // Elevation shadow of the hover card.
+export const popoverContentShadow =
+  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"; // Elevation shadow of the popover.
+export const tooltipShadow =
+  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"; // Elevation shadow of the tooltip.
+export const selectContentShadow =
+  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"; // Elevation shadow of the select dropdown.
+export const navigationMenuViewportShadow =
+  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"; // Elevation shadow of the navigation menu viewport.
+export const navigationMenuArrowShadow =
+  "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"; // Elevation shadow of the arrow on the navigation menu indicator.
+export const switchThumbShadow =
+  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"; // Elevation shadow of the switch thumb.
+export const tabsTriggerShadow = "0 1px 2px 0 rgb(0 0 0 / 0.05)"; // Elevation shadow of the active tab trigger.
+export const toastShadow =
+  "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"; // Elevation shadow of the toast.
+export const featureGridIconShadow = "0 1px 2px 0 rgb(0 0 0 / 0.05)"; // Elevation shadow of the feature icon container.
+export const dialogContentZIndex = 50; // Stacking order of the dialog content.
+export const dialogOverlayZIndex = 40; // Stacking order of the dialog overlay.
+export const alertDialogContentZIndex = 50; // Stacking order of the alert dialog content.
+export const alertDialogOverlayZIndex = 40; // Stacking order of the alert dialog overlay.
+export const sheetContentZIndex = 50; // Stacking order of the sheet content.
+export const sheetOverlayZIndex = 40; // Stacking order of the sheet overlay.
+export const contextMenuContentZIndex = 10; // Stacking order of the context menu.
+export const contextMenuSubContentZIndex = 10; // Stacking order of a context menu sub-menu.
+export const dropdownMenuContentZIndex = 10; // Stacking order of the dropdown menu and its sub-menus.
+export const menubarContentZIndex = 10; // Stacking order of a menubar menu.
+export const menubarSubContentZIndex = 10; // Stacking order of a menubar sub-menu.
+export const navigationMenuZIndex = 10; // Stacking order of the navigation menu.
+export const navigationMenuIndicatorZIndex = 1; // Stacking order of the navigation menu indicator inside the menu.
+export const resizableHandleZIndex = 10; // Stacking order of the resizable handle.
+export const popoverZIndex = 60; // Stacking order of the popover.
+export const hoverCardZIndex = 60; // Stacking order of the hover card.
+export const toastViewportZIndex = 80; // Stacking order of the toast viewport.
+export const tooltipZIndex = 70; // Stacking order of the tooltip.
+export const dialogOverlayOpacity = 0.9; // Opacity of the dialog overlay (scrim).
+export const alertDialogOverlayOpacity = 0.9; // Opacity of the alert dialog overlay (scrim).
+export const sheetOverlayOpacity = 0.9; // Opacity of the sheet overlay (scrim).
+export const inputSpinButtonOpacity = 1; // Opacity of the native number-input spin buttons.
+export const dialogTitleLineHeight = 100; // Line height of the dialog title.
+export const labelLineHeight = 100; // Line height of the label.
+export const formLabelLineHeight = 100; // Line height of the form label.
+export const featureGridTitleLineHeight = 125; // Line height of the feature title.
+export const featureGridDescriptionLineHeight = 162.5; // Line height of the feature description.
+export const dialogContentDuration = "250ms"; // Transition duration of the dialog content.
+export const alertDialogContentDuration = "250ms"; // Transition duration of the alert dialog content.
+export const accordionTriggerIconDuration = "250ms"; // Transition duration of the accordion chevron rotation.
+export const navigationMenuIndicatorDuration = "250ms"; // Transition duration of the navigation menu trigger chevron.
+export const progressIndicatorDuration = "400ms"; // Transition duration of the progress indicator.
+export const sheetContentDurationOpen = "500ms"; // Transition duration when the sheet opens.
+export const sheetContentDurationClosed = "300ms"; // Transition duration when the sheet closes.
+export const cardGridItemDuration = "300ms"; // Hover transition duration of a card grid item.
+export const featureGridItemDuration = "500ms"; // Hover transition duration of a feature grid item.
+export const featureGridIconDuration = "500ms"; // Hover transition duration of the feature icon container.

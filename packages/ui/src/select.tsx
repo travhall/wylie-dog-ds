@@ -96,7 +96,7 @@ export const SelectTrigger = React.forwardRef<
       {children}
       <SelectPrimitive.Icon asChild>
         <svg
-          className="h-(--space-icon-size-md) w-(--space-icon-size-md) opacity-(--select-trigger-icon-opacity)"
+          className="h-(--space-select-trigger-icon-size) w-(--space-select-trigger-icon-size) opacity-(--select-trigger-icon-opacity)"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -127,7 +127,7 @@ export const SelectContent = React.forwardRef<
         "max-h-(--space-select-content-max-height)",
         "min-w-(--space-select-content-min-width)",
         "rounded-(--space-select-content-radius)",
-        "bg-(--color-select-content-background) text-(--color-select-content-text) shadow-(--shadow-md)",
+        "bg-(--color-select-content-background) text-(--color-select-content-text) shadow-(--shadow-select-content-shadow)",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -178,10 +178,10 @@ export const SelectItem = React.forwardRef<
       )}
       {...props}
     >
-      <span className="absolute left-(--space-select-item-indicator-left) flex h-(--space-icon-size-sm) w-(--space-icon-size-sm) items-center justify-center">
+      <span className="absolute left-(--space-select-item-indicator-left) flex h-(--space-select-item-indicator-size) w-(--space-select-item-indicator-size) items-center justify-center">
         <SelectPrimitive.ItemIndicator>
           <svg
-            className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
+            className="h-(--space-select-item-icon-size) w-(--space-select-item-icon-size)"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

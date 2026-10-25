@@ -5,7 +5,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const toastVariants = cva(
   cn(
-    "group pointer-events-auto relative flex items-center justify-between overflow-hidden border shadow-(--shadow-lg) transition-all",
+    "group pointer-events-auto relative flex items-center justify-between overflow-hidden border shadow-(--shadow-toast-shadow) transition-all",
     "w-(--space-toast-width)",
     "space-x-(--space-toast-gap)",
     "rounded-(--space-toast-radius)",
@@ -90,7 +90,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
       aria-label={srText}
       {...props}
     >
-      <XIcon className="h-(--space-icon-size-md) w-(--space-icon-size-md)" />
+      <XIcon className="h-(--space-toast-close-button-icon-size) w-(--space-toast-close-button-icon-size)" />
       <span className="sr-only">{srText}</span>
     </button>
   )
@@ -188,7 +188,7 @@ export function Toaster() {
   if (toasts.length === 0) return null;
   return (
     <div
-      className="fixed bottom-0 right-0 z-(--z-index-toast) flex max-h-screen w-full flex-col-reverse gap-(--space-toast-viewport-gap) p-(--space-toast-viewport-padding) sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"
+      className="fixed bottom-0 right-0 z-(--toast-viewport-z-index) flex max-h-screen w-full flex-col-reverse gap-(--space-toast-viewport-gap) p-(--space-toast-viewport-padding) sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"
       aria-live="polite"
       aria-label="Notifications"
     >

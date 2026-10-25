@@ -5,11 +5,11 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const sheetContentVariants = cva(
   cn(
-    "fixed z-(--z-index-modal) bg-(--color-sheet-content-background) shadow-(--shadow-lg) transition ease-in-out",
+    "fixed z-(--sheet-content-z-index) bg-(--color-sheet-content-background) shadow-(--shadow-sheet-content-shadow) transition ease-in-out",
     "gap-(--space-sheet-header-gap)",
     "p-(--space-sheet-content-padding)",
     "data-[state=open]:animate-in data-[state=closed]:animate-out",
-    "data-[state=closed]:duration-(--duration-300) data-[state=open]:duration-(--duration-500)"
+    "data-[state=closed]:duration-(--duration-sheet-content-duration-closed) data-[state=open]:duration-(--duration-sheet-content-duration-open)"
   ),
   {
     variants: {
@@ -79,8 +79,8 @@ export const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-(--z-index-modal-backdrop) backdrop-blur-sm",
-      "bg-(--color-sheet-overlay-background) opacity-(--opacity-scrim)",
+      "fixed inset-0 z-(--sheet-overlay-z-index) backdrop-blur-sm",
+      "bg-(--color-sheet-overlay-background) opacity-(--sheet-overlay-opacity)",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
@@ -114,7 +114,7 @@ export const SheetContent = React.forwardRef<
           className={`absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--sheet-close-button-opacity) transition-opacity hover:opacity-(--sheet-close-button-opacity-hover) ${focusRingClasses} disabled:pointer-events-none`}
         >
           <svg
-            className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
+            className="h-(--space-sheet-close-button-icon-size) w-(--space-sheet-close-button-icon-size)"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

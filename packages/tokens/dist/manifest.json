@@ -4570,6 +4570,42 @@
         "type": "color",
         "variable": "var(--color-button-link-text-disabled)",
         "description": "Text colour of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "button-spinner-size": {
+        "name": "buttonSpinnerSize",
+        "path": [
+          "button",
+          "spinner",
+          "size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--button-spinner-size)",
+        "description": "Size of the loading spinner in a button."
+      },
+      "button-spinner-radius": {
+        "name": "buttonSpinnerRadius",
+        "path": [
+          "button",
+          "spinner",
+          "radius"
+        ],
+        "value": "9999px",
+        "type": "dimension",
+        "variable": "var(--button-spinner-radius)",
+        "description": "Corner radius of the button loading spinner. Full makes it a circle."
+      },
+      "button-spinner-border-width": {
+        "name": "buttonSpinnerBorderWidth",
+        "path": [
+          "button",
+          "spinner",
+          "border-width"
+        ],
+        "value": "2px",
+        "type": "dimension",
+        "variable": "var(--button-spinner-border-width)",
+        "description": "Stroke width of the button loading spinner."
       }
     },
     "card": {
@@ -5062,6 +5098,17 @@
         "type": "color",
         "variable": "var(--color-input-border-success)",
         "description": "Border colour of the input in the success state."
+      },
+      "input-spin-button-opacity": {
+        "name": "inputSpinButtonOpacity",
+        "path": [
+          "input",
+          "spin-button-opacity"
+        ],
+        "value": 1,
+        "type": "number",
+        "variable": "var(--input-spin-button-opacity)",
+        "description": "Opacity of the native number-input spin buttons."
       }
     },
     "alert": {
@@ -5820,6 +5867,50 @@
         "type": "color",
         "variable": "var(--color-menubar-item-text-disabled)",
         "description": "Text colour of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "menubar-content-shadow": {
+        "name": "menubarContentShadow",
+        "path": [
+          "menubar",
+          "content-shadow"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--menubar-content-shadow)",
+        "description": "Elevation shadow of a menubar menu."
+      },
+      "menubar-sub-content-shadow": {
+        "name": "menubarSubContentShadow",
+        "path": [
+          "menubar",
+          "sub-content-shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--menubar-sub-content-shadow)",
+        "description": "Elevation shadow of a menubar sub-menu."
+      },
+      "menubar-content-z-index": {
+        "name": "menubarContentZIndex",
+        "path": [
+          "menubar",
+          "content-z-index"
+        ],
+        "value": 10,
+        "type": "number",
+        "variable": "var(--menubar-content-z-index)",
+        "description": "Stacking order of a menubar menu."
+      },
+      "menubar-sub-content-z-index": {
+        "name": "menubarSubContentZIndex",
+        "path": [
+          "menubar",
+          "sub-content-z-index"
+        ],
+        "value": 10,
+        "type": "number",
+        "variable": "var(--menubar-sub-content-z-index)",
+        "description": "Stacking order of a menubar sub-menu."
       }
     },
     "navigation": {
@@ -6684,6 +6775,18 @@
         "type": "color",
         "variable": "var(--color-tabs-trigger-text-disabled)",
         "description": "Text colour of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "tabs-trigger-shadow": {
+        "name": "tabsTriggerShadow",
+        "path": [
+          "tabs",
+          "trigger",
+          "shadow"
+        ],
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "type": "shadow",
+        "variable": "var(--tabs-trigger-shadow)",
+        "description": "Elevation shadow of the active tab trigger."
       }
     },
     "collapsible": {
@@ -7266,6 +7369,18 @@
         "type": "number",
         "variable": "var(--accordion-content-line-height)",
         "description": "Line height of the accordion content."
+      },
+      "accordion-trigger-icon-duration": {
+        "name": "accordionTriggerIconDuration",
+        "path": [
+          "accordion",
+          "trigger",
+          "icon-duration"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--accordion-trigger-icon-duration)",
+        "description": "Transition duration of the accordion chevron rotation."
       }
     },
     "avatar": {
@@ -8076,6 +8191,86 @@
         "type": "dimension",
         "variable": "var(--dialog-title-letter-spacing)",
         "description": "Letter spacing of the dialog title."
+      },
+      "dialog-close-button-icon-size": {
+        "name": "dialogCloseButtonIconSize",
+        "path": [
+          "dialog",
+          "close-button",
+          "icon-size"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--dialog-close-button-icon-size)",
+        "description": "Size of the close icon in a dialog."
+      },
+      "dialog-shadow": {
+        "name": "dialogShadow",
+        "path": [
+          "dialog",
+          "shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--dialog-shadow)",
+        "description": "Elevation shadow of the dialog."
+      },
+      "dialog-content-z-index": {
+        "name": "dialogContentZIndex",
+        "path": [
+          "dialog",
+          "content",
+          "z-index"
+        ],
+        "value": 50,
+        "type": "number",
+        "variable": "var(--dialog-content-z-index)",
+        "description": "Stacking order of the dialog content."
+      },
+      "dialog-overlay-z-index": {
+        "name": "dialogOverlayZIndex",
+        "path": [
+          "dialog",
+          "overlay-z-index"
+        ],
+        "value": 40,
+        "type": "number",
+        "variable": "var(--dialog-overlay-z-index)",
+        "description": "Stacking order of the dialog overlay."
+      },
+      "dialog-overlay-opacity": {
+        "name": "dialogOverlayOpacity",
+        "path": [
+          "dialog",
+          "overlay-opacity"
+        ],
+        "value": 0.9,
+        "type": "number",
+        "variable": "var(--dialog-overlay-opacity)",
+        "description": "Opacity of the dialog overlay (scrim)."
+      },
+      "dialog-title-line-height": {
+        "name": "dialogTitleLineHeight",
+        "path": [
+          "dialog",
+          "title-line-height"
+        ],
+        "value": 100,
+        "type": "number",
+        "variable": "var(--dialog-title-line-height)",
+        "description": "Line height of the dialog title."
+      },
+      "dialog-content-duration": {
+        "name": "dialogContentDuration",
+        "path": [
+          "dialog",
+          "content",
+          "duration"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--dialog-content-duration)",
+        "description": "Transition duration of the dialog content."
       }
     },
     "form": {
@@ -8221,6 +8416,17 @@
         "type": "color",
         "variable": "var(--color-form-label-text-disabled)",
         "description": "Text colour of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "form-label-line-height": {
+        "name": "formLabelLineHeight",
+        "path": [
+          "form",
+          "label-line-height"
+        ],
+        "value": 100,
+        "type": "number",
+        "variable": "var(--form-label-line-height)",
+        "description": "Line height of the form label."
       }
     },
     "hover-card": {
@@ -8317,6 +8523,28 @@
         "type": "dimension",
         "variable": "var(--hover-card-content-radius)",
         "description": "Corner radius of the hover card content."
+      },
+      "hover-card-content-shadow": {
+        "name": "hoverCardContentShadow",
+        "path": [
+          "hover-card",
+          "content-shadow"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--hover-card-content-shadow)",
+        "description": "Elevation shadow of the hover card."
+      },
+      "hover-card-z-index": {
+        "name": "hoverCardZIndex",
+        "path": [
+          "hover-card",
+          "z-index"
+        ],
+        "value": 60,
+        "type": "number",
+        "variable": "var(--hover-card-z-index)",
+        "description": "Stacking order of the hover card."
       }
     },
     "pagination": {
@@ -8608,6 +8836,28 @@
         "type": "dimension",
         "variable": "var(--popover-content-radius)",
         "description": "Corner radius of the popover content."
+      },
+      "popover-content-shadow": {
+        "name": "popoverContentShadow",
+        "path": [
+          "popover",
+          "content-shadow"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--popover-content-shadow)",
+        "description": "Elevation shadow of the popover."
+      },
+      "popover-z-index": {
+        "name": "popoverZIndex",
+        "path": [
+          "popover",
+          "z-index"
+        ],
+        "value": 60,
+        "type": "number",
+        "variable": "var(--popover-z-index)",
+        "description": "Stacking order of the popover."
       }
     },
     "progress": {
@@ -8687,6 +8937,17 @@
         "type": "dimension",
         "variable": "var(--progress-radius)",
         "description": "Corner radius of the progress."
+      },
+      "progress-indicator-duration": {
+        "name": "progressIndicatorDuration",
+        "path": [
+          "progress",
+          "indicator-duration"
+        ],
+        "value": "400ms",
+        "type": "duration",
+        "variable": "var(--progress-indicator-duration)",
+        "description": "Transition duration of the progress indicator."
       }
     },
     "radio": {
@@ -8982,6 +9243,17 @@
         "type": "spacing",
         "variable": "var(--resizable-handle-focus-ring-offset)",
         "description": "Gap between the resizable handle and its focus ring."
+      },
+      "resizable-handle-z-index": {
+        "name": "resizableHandleZIndex",
+        "path": [
+          "resizable",
+          "handle-z-index"
+        ],
+        "value": 10,
+        "type": "number",
+        "variable": "var(--resizable-handle-z-index)",
+        "description": "Stacking order of the resizable handle."
       }
     },
     "scrollbar": {
@@ -9929,6 +10201,41 @@
         "type": "color",
         "variable": "var(--color-toast-action-border-disabled)",
         "description": "Border colour of the toast action when disabled, in the muted border tone."
+      },
+      "toast-close-button-icon-size": {
+        "name": "toastCloseButtonIconSize",
+        "path": [
+          "toast",
+          "close-button",
+          "icon-size"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--toast-close-button-icon-size)",
+        "description": "Size of the close icon in a toast."
+      },
+      "toast-shadow": {
+        "name": "toastShadow",
+        "path": [
+          "toast",
+          "shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--toast-shadow)",
+        "description": "Elevation shadow of the toast."
+      },
+      "toast-viewport-z-index": {
+        "name": "toastViewportZIndex",
+        "path": [
+          "toast",
+          "viewport",
+          "z-index"
+        ],
+        "value": 80,
+        "type": "number",
+        "variable": "var(--toast-viewport-z-index)",
+        "description": "Stacking order of the toast viewport."
       }
     },
     "toggle": {
@@ -10231,6 +10538,28 @@
         "type": "spacing",
         "variable": "var(--tooltip-max-width)",
         "description": "Maximum width of the tooltip."
+      },
+      "tooltip-shadow": {
+        "name": "tooltipShadow",
+        "path": [
+          "tooltip",
+          "shadow"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--tooltip-shadow)",
+        "description": "Elevation shadow of the tooltip."
+      },
+      "tooltip-z-index": {
+        "name": "tooltipZIndex",
+        "path": [
+          "tooltip",
+          "z-index"
+        ],
+        "value": 70,
+        "type": "number",
+        "variable": "var(--tooltip-z-index)",
+        "description": "Stacking order of the tooltip."
       }
     },
     "select": {
@@ -10636,6 +10965,54 @@
         "type": "color",
         "variable": "var(--color-select-item-text-disabled)",
         "description": "Text colour of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "select-trigger-icon-size": {
+        "name": "selectTriggerIconSize",
+        "path": [
+          "select",
+          "trigger",
+          "icon-size"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--select-trigger-icon-size)",
+        "description": "Size of the chevron in the select trigger."
+      },
+      "select-item-icon-size": {
+        "name": "selectItemIconSize",
+        "path": [
+          "select",
+          "item",
+          "icon-size"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--select-item-icon-size)",
+        "description": "Size of the check icon in a selected select item."
+      },
+      "select-item-indicator-size": {
+        "name": "selectItemIndicatorSize",
+        "path": [
+          "select",
+          "item",
+          "indicator-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--select-item-indicator-size)",
+        "description": "Size of the box that holds the check icon in a select item."
+      },
+      "select-content-shadow": {
+        "name": "selectContentShadow",
+        "path": [
+          "select",
+          "content",
+          "shadow"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--select-content-shadow)",
+        "description": "Elevation shadow of the select dropdown."
       }
     },
     "checkbox": {
@@ -11116,6 +11493,18 @@
         "type": "color",
         "variable": "var(--color-switch-track-background-disabled)",
         "description": "Track fill when disabled, in either state. A quiet neutral, not a fade."
+      },
+      "switch-thumb-shadow": {
+        "name": "switchThumbShadow",
+        "path": [
+          "switch",
+          "thumb",
+          "shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--switch-thumb-shadow)",
+        "description": "Elevation shadow of the switch thumb."
       }
     },
     "textarea": {
@@ -11324,6 +11713,17 @@
         "type": "color",
         "variable": "var(--color-label-required-text)",
         "description": "Colour of the required marker on labels."
+      },
+      "label-line-height": {
+        "name": "labelLineHeight",
+        "path": [
+          "label",
+          "line-height"
+        ],
+        "value": 100,
+        "type": "number",
+        "variable": "var(--label-line-height)",
+        "description": "Line height of the label."
       }
     },
     "sheet": {
@@ -11567,6 +11967,88 @@
         "type": "color",
         "variable": "var(--color-sheet-description-text)",
         "description": "Text colour of the sheet description."
+      },
+      "sheet-close-button-icon-size": {
+        "name": "sheetCloseButtonIconSize",
+        "path": [
+          "sheet",
+          "close-button",
+          "icon-size"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--sheet-close-button-icon-size)",
+        "description": "Size of the close icon in a sheet."
+      },
+      "sheet-content-shadow": {
+        "name": "sheetContentShadow",
+        "path": [
+          "sheet",
+          "content",
+          "shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--sheet-content-shadow)",
+        "description": "Elevation shadow of the sheet."
+      },
+      "sheet-content-z-index": {
+        "name": "sheetContentZIndex",
+        "path": [
+          "sheet",
+          "content",
+          "z-index"
+        ],
+        "value": 50,
+        "type": "number",
+        "variable": "var(--sheet-content-z-index)",
+        "description": "Stacking order of the sheet content."
+      },
+      "sheet-overlay-z-index": {
+        "name": "sheetOverlayZIndex",
+        "path": [
+          "sheet",
+          "overlay-z-index"
+        ],
+        "value": 40,
+        "type": "number",
+        "variable": "var(--sheet-overlay-z-index)",
+        "description": "Stacking order of the sheet overlay."
+      },
+      "sheet-overlay-opacity": {
+        "name": "sheetOverlayOpacity",
+        "path": [
+          "sheet",
+          "overlay-opacity"
+        ],
+        "value": 0.9,
+        "type": "number",
+        "variable": "var(--sheet-overlay-opacity)",
+        "description": "Opacity of the sheet overlay (scrim)."
+      },
+      "sheet-content-duration-open": {
+        "name": "sheetContentDurationOpen",
+        "path": [
+          "sheet",
+          "content",
+          "duration-open"
+        ],
+        "value": "500ms",
+        "type": "duration",
+        "variable": "var(--sheet-content-duration-open)",
+        "description": "Transition duration when the sheet opens."
+      },
+      "sheet-content-duration-closed": {
+        "name": "sheetContentDurationClosed",
+        "path": [
+          "sheet",
+          "content",
+          "duration-closed"
+        ],
+        "value": "300ms",
+        "type": "duration",
+        "variable": "var(--sheet-content-duration-closed)",
+        "description": "Transition duration when the sheet closes."
       }
     },
     "separator": {
@@ -11836,6 +12318,62 @@
         "type": "spacing",
         "variable": "var(--context-menu-sub-content-min-width)",
         "description": "Minimum width of the context menu sub content."
+      },
+      "context-menu-item-sub-trigger-icon-size": {
+        "name": "contextMenuItemSubTriggerIconSize",
+        "path": [
+          "context-menu",
+          "item",
+          "sub-trigger-icon-size"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-sub-trigger-icon-size)",
+        "description": "Size of the chevron on a context menu sub-menu trigger."
+      },
+      "context-menu-content-shadow": {
+        "name": "contextMenuContentShadow",
+        "path": [
+          "context-menu",
+          "content-shadow"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--context-menu-content-shadow)",
+        "description": "Elevation shadow of the context menu."
+      },
+      "context-menu-sub-content-shadow": {
+        "name": "contextMenuSubContentShadow",
+        "path": [
+          "context-menu",
+          "sub-content-shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--context-menu-sub-content-shadow)",
+        "description": "Elevation shadow of a context menu sub-menu."
+      },
+      "context-menu-content-z-index": {
+        "name": "contextMenuContentZIndex",
+        "path": [
+          "context-menu",
+          "content-z-index"
+        ],
+        "value": 10,
+        "type": "number",
+        "variable": "var(--context-menu-content-z-index)",
+        "description": "Stacking order of the context menu."
+      },
+      "context-menu-sub-content-z-index": {
+        "name": "contextMenuSubContentZIndex",
+        "path": [
+          "context-menu",
+          "sub-content-z-index"
+        ],
+        "value": 10,
+        "type": "number",
+        "variable": "var(--context-menu-sub-content-z-index)",
+        "description": "Stacking order of a context menu sub-menu."
       }
     },
     "dropdown-menu": {
@@ -12149,6 +12687,40 @@
         "type": "color",
         "variable": "var(--color-dropdown-menu-item-text-disabled)",
         "description": "Text colour of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "dropdown-menu-item-radio-indicator-size": {
+        "name": "dropdownMenuItemRadioIndicatorSize",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "radio-indicator-size"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-radio-indicator-size)",
+        "description": "Size of the dot in a selected dropdown menu radio item."
+      },
+      "dropdown-menu-content-shadow": {
+        "name": "dropdownMenuContentShadow",
+        "path": [
+          "dropdown-menu",
+          "content-shadow"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--dropdown-menu-content-shadow)",
+        "description": "Elevation shadow of the dropdown menu and its sub-menus."
+      },
+      "dropdown-menu-content-z-index": {
+        "name": "dropdownMenuContentZIndex",
+        "path": [
+          "dropdown-menu",
+          "content-z-index"
+        ],
+        "value": 10,
+        "type": "number",
+        "variable": "var(--dropdown-menu-content-z-index)",
+        "description": "Stacking order of the dropdown menu and its sub-menus."
       }
     },
     "card-grid": {
@@ -12184,6 +12756,17 @@
         "type": "spacing",
         "variable": "var(--card-grid-item-padding)",
         "description": "Padding inside each card grid item."
+      },
+      "card-grid-item-duration": {
+        "name": "cardGridItemDuration",
+        "path": [
+          "card-grid",
+          "item-duration"
+        ],
+        "value": "300ms",
+        "type": "duration",
+        "variable": "var(--card-grid-item-duration)",
+        "description": "Hover transition duration of a card grid item."
       }
     },
     "feature-grid": {
@@ -12333,6 +12916,62 @@
         "type": "color",
         "variable": "var(--color-feature-grid-item-border-color-hover)",
         "description": "Border colour of the feature grid item while hovered."
+      },
+      "feature-grid-icon-shadow": {
+        "name": "featureGridIconShadow",
+        "path": [
+          "feature-grid",
+          "icon-shadow"
+        ],
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "type": "shadow",
+        "variable": "var(--feature-grid-icon-shadow)",
+        "description": "Elevation shadow of the feature icon container."
+      },
+      "feature-grid-title-line-height": {
+        "name": "featureGridTitleLineHeight",
+        "path": [
+          "feature-grid",
+          "title",
+          "line-height"
+        ],
+        "value": 125,
+        "type": "number",
+        "variable": "var(--feature-grid-title-line-height)",
+        "description": "Line height of the feature title."
+      },
+      "feature-grid-description-line-height": {
+        "name": "featureGridDescriptionLineHeight",
+        "path": [
+          "feature-grid",
+          "description-line-height"
+        ],
+        "value": 162.5,
+        "type": "number",
+        "variable": "var(--feature-grid-description-line-height)",
+        "description": "Line height of the feature description."
+      },
+      "feature-grid-item-duration": {
+        "name": "featureGridItemDuration",
+        "path": [
+          "feature-grid",
+          "item-duration"
+        ],
+        "value": "500ms",
+        "type": "duration",
+        "variable": "var(--feature-grid-item-duration)",
+        "description": "Hover transition duration of a feature grid item."
+      },
+      "feature-grid-icon-duration": {
+        "name": "featureGridIconDuration",
+        "path": [
+          "feature-grid",
+          "icon-duration"
+        ],
+        "value": "500ms",
+        "type": "duration",
+        "variable": "var(--feature-grid-icon-duration)",
+        "description": "Hover transition duration of the feature icon container."
       }
     },
     "alert-dialog": {
@@ -12423,6 +13062,61 @@
         "type": "number",
         "variable": "var(--alert-dialog-title-font-weight)",
         "description": "Font weight of the alert dialog title."
+      },
+      "alert-dialog-content-shadow": {
+        "name": "alertDialogContentShadow",
+        "path": [
+          "alert-dialog",
+          "content-shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--alert-dialog-content-shadow)",
+        "description": "Elevation shadow of the alert dialog."
+      },
+      "alert-dialog-content-z-index": {
+        "name": "alertDialogContentZIndex",
+        "path": [
+          "alert-dialog",
+          "content-z-index"
+        ],
+        "value": 50,
+        "type": "number",
+        "variable": "var(--alert-dialog-content-z-index)",
+        "description": "Stacking order of the alert dialog content."
+      },
+      "alert-dialog-overlay-z-index": {
+        "name": "alertDialogOverlayZIndex",
+        "path": [
+          "alert-dialog",
+          "overlay-z-index"
+        ],
+        "value": 40,
+        "type": "number",
+        "variable": "var(--alert-dialog-overlay-z-index)",
+        "description": "Stacking order of the alert dialog overlay."
+      },
+      "alert-dialog-overlay-opacity": {
+        "name": "alertDialogOverlayOpacity",
+        "path": [
+          "alert-dialog",
+          "overlay-opacity"
+        ],
+        "value": 0.9,
+        "type": "number",
+        "variable": "var(--alert-dialog-overlay-opacity)",
+        "description": "Opacity of the alert dialog overlay (scrim)."
+      },
+      "alert-dialog-content-duration": {
+        "name": "alertDialogContentDuration",
+        "path": [
+          "alert-dialog",
+          "content-duration"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--alert-dialog-content-duration)",
+        "description": "Transition duration of the alert dialog content."
       }
     },
     "navigation-menu": {
@@ -12537,6 +13231,95 @@
         "type": "number",
         "variable": "var(--navigation-menu-trigger-font-weight)",
         "description": "Font weight of the navigation menu trigger."
+      },
+      "navigation-menu-trigger-icon-size": {
+        "name": "navigationMenuTriggerIconSize",
+        "path": [
+          "navigation-menu",
+          "trigger",
+          "icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--navigation-menu-trigger-icon-size)",
+        "description": "Size of the chevron in a navigation menu trigger."
+      },
+      "navigation-menu-arrow-size": {
+        "name": "navigationMenuArrowSize",
+        "path": [
+          "navigation-menu",
+          "arrow-size"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--navigation-menu-arrow-size)",
+        "description": "Size of the arrow on the navigation menu indicator."
+      },
+      "navigation-menu-arrow-radius": {
+        "name": "navigationMenuArrowRadius",
+        "path": [
+          "navigation-menu",
+          "arrow-radius"
+        ],
+        "value": "2px",
+        "type": "dimension",
+        "variable": "var(--navigation-menu-arrow-radius)",
+        "description": "Corner radius of the arrow on the navigation menu indicator."
+      },
+      "navigation-menu-viewport-shadow": {
+        "name": "navigationMenuViewportShadow",
+        "path": [
+          "navigation-menu",
+          "viewport-shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--navigation-menu-viewport-shadow)",
+        "description": "Elevation shadow of the navigation menu viewport."
+      },
+      "navigation-menu-arrow-shadow": {
+        "name": "navigationMenuArrowShadow",
+        "path": [
+          "navigation-menu",
+          "arrow-shadow"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--navigation-menu-arrow-shadow)",
+        "description": "Elevation shadow of the arrow on the navigation menu indicator."
+      },
+      "navigation-menu-z-index": {
+        "name": "navigationMenuZIndex",
+        "path": [
+          "navigation-menu",
+          "z-index"
+        ],
+        "value": 10,
+        "type": "number",
+        "variable": "var(--navigation-menu-z-index)",
+        "description": "Stacking order of the navigation menu."
+      },
+      "navigation-menu-indicator-z-index": {
+        "name": "navigationMenuIndicatorZIndex",
+        "path": [
+          "navigation-menu",
+          "indicator-z-index"
+        ],
+        "value": 1,
+        "type": "number",
+        "variable": "var(--navigation-menu-indicator-z-index)",
+        "description": "Stacking order of the navigation menu indicator inside the menu."
+      },
+      "navigation-menu-indicator-duration": {
+        "name": "navigationMenuIndicatorDuration",
+        "path": [
+          "navigation-menu",
+          "indicator-duration"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--navigation-menu-indicator-duration)",
+        "description": "Transition duration of the navigation menu trigger chevron."
       }
     },
     "toggle-group": {

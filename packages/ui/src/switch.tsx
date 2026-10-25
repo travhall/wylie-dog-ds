@@ -50,7 +50,7 @@ export const Switch = React.forwardRef<
   >
     <SwitchPrimitive.Thumb
       className={cn(
-        "pointer-events-none block shadow-(--shadow-lg) ring-0 transition-transform",
+        "pointer-events-none block shadow-(--shadow-switch-thumb-shadow) ring-0 transition-transform",
         "rounded-(--space-switch-thumb-radius)",
         "bg-(--color-switch-thumb-background)",
         thumbSizes[size ?? "md"]

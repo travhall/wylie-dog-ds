@@ -7,9 +7,9 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const dialogContentVariants = cva(
   cn(
-    "fixed left-[50%] top-[50%] z-(--z-index-modal) grid w-full translate-x-[-50%] translate-y-[-50%]",
+    "fixed left-[50%] top-[50%] z-(--dialog-content-z-index) grid w-full translate-x-[-50%] translate-y-[-50%]",
     "gap-(--space-dialog-header-gap)",
-    "border bg-(--color-dialog-background) shadow-(--shadow-lg) duration-(--duration-normal)",
+    "border bg-(--color-dialog-background) shadow-(--shadow-dialog-shadow) duration-(--duration-dialog-content-duration)",
     "p-(--space-dialog-content-padding)",
     "data-[state=open]:animate-in data-[state=closed]:animate-out",
     "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -67,7 +67,7 @@ export const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-(--z-index-modal-backdrop) bg-(--color-dialog-overlay) opacity-(--opacity-scrim) backdrop-blur-sm",
+      "fixed inset-0 z-(--dialog-overlay-z-index) bg-(--color-dialog-overlay) opacity-(--dialog-overlay-opacity) backdrop-blur-sm",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
@@ -107,7 +107,7 @@ export const DialogContent = React.forwardRef<
           className={`absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--dialog-close-button-opacity) transition-opacity hover:opacity-(--dialog-close-button-opacity-hover) ${focusRingClasses} disabled:pointer-events-none`}
         >
           <svg
-            className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
+            className="h-(--space-dialog-close-button-icon-size) w-(--space-dialog-close-button-icon-size)"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -171,7 +171,7 @@ export const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "font-(--font-weight-dialog-title-font-weight) leading-(--line-height-none) tracking-(--space-dialog-title-letter-spacing) text-(--color-dialog-title)",
+      "font-(--font-weight-dialog-title-font-weight) leading-(--line-height-dialog-title-line-height) tracking-(--space-dialog-title-letter-spacing) text-(--color-dialog-title)",
       "text-(length:--font-size-dialog-title-font-size)",
       className
     )}
