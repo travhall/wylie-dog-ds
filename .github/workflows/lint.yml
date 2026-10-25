@@ -76,6 +76,9 @@ jobs:
       - name: Check token contrast pairs
         run: pnpm check:contrast
 
+      - name: Check focus classes
+        run: pnpm check:focus
+
       - name: Run Accessibility Linting
         run: pnpm lint:a11y
 
