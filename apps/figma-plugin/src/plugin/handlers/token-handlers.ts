@@ -24,6 +24,8 @@ import {
   notifyUnsupportedVariables,
 } from "./utils";
 import type { PluginMessage } from "../../shared/types";
+import { fileConfigStorage } from "../storage/file-storage";
+import { syncStateStorage } from "../storage/sync-state-storage";
 
 export type AdapterResultWithFilename = AdapterProcessResult & {
   filename: string;
@@ -427,9 +429,60 @@ export async function handleExportTokens(msg: PluginMessage): Promise<void> {
     );
   }
 }
+/**
+ * Read every local variable collection and convert it to the sync export
+ * format (the same pipeline Push uses). Shared by the conflict/status check
+ * and by the baseline recorder, so both see identical Figma-side data.
+ *
+ * `onProgress` lets a handler surface loading messages; the export itself has
+ * no UI side effects.
+ */
+export async function exportLocalTokens(
+  onProgress?: (message: string) => void
+): Promise<ExportData[]> {
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  console.log(`Found ${collections.length} local collections`);
+
+  const collectionsWithVariables = [];
+
+  for (let i = 0; i < collections.length; i++) {
+    const collection = collections[i];
+    console.log(
+      `Processing collection ${i + 1}/${collections.length}: ${collection.name}`
+    );
+
+    // Process variables in chunks
+    const variables = await processInChunks(
+      collection.variableIds,
+      (variableId: string) => mapFigmaVariable(variableId),
+      100
+    );
+
+    const validVariables = variables.filter((v) => v !== null);
+
+    collectionsWithVariables.push({
+      id: collection.id,
+      name: collection.name,
+      modes: collection.modes,
+      variables: validVariables,
+    });
+  }
+
+  onProgress?.("Converting to token format...");
+
+  // CRITICAL: Yield to UI thread to paint progress update
+  await new Promise((resolve) => setTimeout(resolve, 0));
+
+  // Convert to token format using processor
+  return processCollectionsForExport(
+    collectionsWithVariables,
+    collections.map((c) => c.id)
+  );
+}
 
 /**
- * Get local tokens for conflict detection
+ * Get local tokens for conflict detection and sync status. The sync baseline
+ * for the file's current repo rides along so the UI can tell which side changed.
  */
 export async function handleGetLocalTokens(msg: PluginMessage): Promise<void> {
   try {
@@ -439,51 +492,19 @@ export async function handleGetLocalTokens(msg: PluginMessage): Promise<void> {
     // CRITICAL: Yield to UI thread to paint loading state
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    const collections =
-      await figma.variables.getLocalVariableCollectionsAsync();
-    console.log(`Found ${collections.length} local collections`);
-
-    const collectionsWithVariables = [];
-
-    for (let i = 0; i < collections.length; i++) {
-      const collection = collections[i];
-      console.log(
-        `Processing collection ${i + 1}/${collections.length}: ${collection.name}`
-      );
-
-      // Process variables in chunks
-      const variables = await processInChunks(
-        collection.variableIds,
-        (variableId: string) => mapFigmaVariable(variableId),
-        100
-      );
-
-      const validVariables = variables.filter((v) => v !== null);
-
-      collectionsWithVariables.push({
-        id: collection.id,
-        name: collection.name,
-        modes: collection.modes,
-        variables: validVariables,
-      });
-    }
-
-    setLoading(true, "Converting to token format...");
-
-    // CRITICAL: Yield to UI thread to paint progress update
-    await new Promise((resolve) => setTimeout(resolve, 0));
-
-    // Convert to token format using processor
-    const exportData = await processCollectionsForExport(
-      collectionsWithVariables,
-      collections.map((c) => c.id)
+    const exportData = await exportLocalTokens((message) =>
+      setLoading(true, message)
     );
+
+    const config = await fileConfigStorage.getGitHubConfig();
+    const baseline = syncStateStorage.loadBaseline(config);
 
     setLoading(false);
 
     figma.ui.postMessage({
       type: "local-tokens-exported",
       localTokens: exportData,
+      baseline,
     });
 
     console.log("✅ Local tokens exported for conflict detection");

@@ -28,6 +28,11 @@ export interface PluginMessage {
   resolutions?: unknown;
   originalTokens?: unknown;
   mergeStrategy?: MergeStrategy;
+  /**
+   * With `record-last-sync`: hashes of the GitHub tokens as they are after a
+   * Push or Pull. Their presence makes the plugin record a sync baseline.
+   */
+  remoteHashes?: unknown;
   config?: GitHubConfig;
   result?: {
     success?: boolean;

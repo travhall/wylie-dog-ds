@@ -6,20 +6,26 @@
 
 import { fileConfigStorage } from "../storage/file-storage";
 import { userPreferencesStorage } from "../storage/user-storage";
+import { syncStateStorage } from "../storage/sync-state-storage";
+import {
+  buildBaseline,
+  hashTokens,
+  isTokenHashes,
+} from "../sync/sync-baseline";
+import { exportLocalTokens } from "./token-handlers";
 import type { PluginMessage } from "../../shared/types";
 
-const LAST_SYNC_KEY = "github-last-sync";
-
 /**
- * Return the last successful sync timestamp (from plugin-thread storage) to the
- * UI. The UI can't read figma.clientStorage directly, so it asks via message.
+ * Return the last successful sync timestamp for THIS file to the UI. It lives
+ * in the file's own plugin data (not figma.clientStorage, which is shared by
+ * every file the user opens). The UI can't read it directly, so it asks.
  */
 export async function handleGetLastSync(): Promise<void> {
   try {
-    const data = await figma.clientStorage.getAsync(LAST_SYNC_KEY);
+    const config = await fileConfigStorage.getGitHubConfig();
     figma.ui.postMessage({
       type: "last-sync-loaded",
-      timestamp: data?.timestamp ?? null,
+      timestamp: syncStateStorage.loadLastSync(config),
     });
   } catch (error) {
     console.error("Error loading last sync time:", error);
@@ -28,13 +34,35 @@ export async function handleGetLastSync(): Promise<void> {
 }
 
 /**
- * Record "now" as the last successful sync and echo it back so any listening
- * status view updates immediately. Sent by the UI after a successful push/pull.
+ * Record "now" as the last successful sync for this file and echo it back so
+ * any listening status view updates immediately. Sent by the UI after a
+ * successful push/pull.
+ *
+ * When the message carries `remoteHashes` (a Push or Pull that left GitHub and
+ * Figma in agreement), also record the sync baseline: those hashes are the
+ * GitHub side, and the Figma side is hashed here, right now, from the live
+ * variables. Without hashes (a pull request, a manual import) the existing
+ * baseline is left alone, so Figma-side edits keep showing as changes to push.
  */
-export async function handleRecordLastSync(): Promise<void> {
+export async function handleRecordLastSync(msg?: PluginMessage): Promise<void> {
   try {
     const timestamp = new Date().toISOString();
-    await figma.clientStorage.setAsync(LAST_SYNC_KEY, { timestamp });
+    const config = await fileConfigStorage.getGitHubConfig();
+    syncStateStorage.saveLastSync(config, timestamp);
+
+    if (msg && isTokenHashes(msg.remoteHashes)) {
+      const local = hashTokens(await exportLocalTokens());
+      const saved = syncStateStorage.saveBaseline(
+        config,
+        buildBaseline(local, msg.remoteHashes, timestamp)
+      );
+      if (!saved) {
+        console.warn(
+          "Sync baseline was not recorded; status shows differences"
+        );
+      }
+    }
+
     figma.ui.postMessage({ type: "last-sync-loaded", timestamp });
   } catch (error) {
     console.error("Error recording last sync time:", error);

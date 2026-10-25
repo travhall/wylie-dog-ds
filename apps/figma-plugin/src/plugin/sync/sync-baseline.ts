@@ -122,6 +122,17 @@ export function isSyncBaseline(value: unknown): value is SyncBaseline {
   );
 }
 
+/** Runtime guard for hashes that arrive in a plugin message. */
+export function isTokenHashes(value: unknown): value is TokenHashes {
+  if (typeof value !== "object" || value === null) return false;
+  return Object.values(value).every(
+    (tokens) =>
+      typeof tokens === "object" &&
+      tokens !== null &&
+      Object.values(tokens).every((hash) => typeof hash === "string")
+  );
+}
+
 interface Candidate {
   collection: string;
   token: string;
