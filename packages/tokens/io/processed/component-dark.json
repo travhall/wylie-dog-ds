@@ -279,11 +279,6 @@
     "$value": "{space.200}",
     "$description": "Vertical padding of the large button."
   },
-  "button.icon-size": {
-    "$type": "spacing",
-    "$value": "{space.500}",
-    "$description": "Width and height of the icon-only button."
-  },
   "button.padding-x.sm": {
     "$type": "spacing",
     "$value": "{space.200}",
@@ -334,11 +329,6 @@
     "$value": "{border-width.1}",
     "$description": "Border thickness shared by every button variant."
   },
-  "button.link-text": {
-    "$type": "color",
-    "$value": "{color.foreground.primary-muted}",
-    "$description": "Label colour of the link-style button, which has no fill or border."
-  },
   "card.background": {
     "$type": "color",
     "$value": "{color.background.raised}",
@@ -363,11 +353,6 @@
     "$type": "dimension",
     "$value": "{border-radius.lg}",
     "$description": "Corner radius of the card."
-  },
-  "card.header-gap": {
-    "$type": "spacing",
-    "$value": "{space.100}",
-    "$description": "Gap between the title and description in the card header."
   },
   "card.header.title.font-size": {
     "$type": "number",
@@ -418,16 +403,6 @@
     "$type": "color",
     "$value": "{color.foreground.muted}",
     "$description": "Colour of placeholder text, muted so it reads as a hint rather than a value."
-  },
-  "input.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.emphasis}",
-    "$description": "Fill of the input when disabled, a quiet neutral so it reads as unavailable. Pairs with `input.text-disabled`."
-  },
-  "input.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
   },
   "input.padding-x": {
     "$type": "spacing",
@@ -524,16 +499,6 @@
     "$value": "{color.background.default}",
     "$description": "Fill of the menubar."
   },
-  "menubar.trigger-highlighted": {
-    "$type": "color",
-    "$value": "{color.background.emphasis}",
-    "$description": "Fill of the menubar trigger while highlighted. Pairs with `menubar.trigger-text-highlighted`."
-  },
-  "menubar.trigger-text-highlighted": {
-    "$type": "color",
-    "$value": "{color.foreground.default}",
-    "$description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
-  },
   "menubar.trigger-open": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
@@ -559,16 +524,6 @@
     "$value": "{color.foreground.default}",
     "$description": "Text colour of the menubar content. Pairs with `menubar.content-background`."
   },
-  "menubar.item-highlighted": {
-    "$type": "color",
-    "$value": "{color.background.emphasis}",
-    "$description": "Fill of the menubar item while highlighted. Pairs with `menubar.item-text-highlighted`."
-  },
-  "menubar.item-text-highlighted": {
-    "$type": "color",
-    "$value": "{color.foreground.default}",
-    "$description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
-  },
   "menubar.label": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
@@ -593,16 +548,6 @@
     "$type": "color",
     "$value": "{color.foreground.default}",
     "$description": "Text colour of the navigation menu while hovered. Pairs with `navigation.background-hover`."
-  },
-  "navigation.highlighted": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of a navigation menu trigger while highlighted. Pairs with `navigation.text-highlighted`."
-  },
-  "navigation.text-highlighted": {
-    "$type": "color",
-    "$value": "{color.foreground.default}",
-    "$description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
   },
   "navigation.active": {
     "$type": "color",
@@ -718,11 +663,6 @@
     "$type": "color",
     "$value": "{color.border.default}",
     "$description": "Border colour of the tabs list."
-  },
-  "tabs.trigger.indicator-color": {
-    "$type": "color",
-    "$value": "{color.background.primary}",
-    "$description": "Colour of the underline that marks the selected tab."
   },
   "collapsible.background": {
     "$type": "color",
@@ -1359,16 +1299,6 @@
     "$value": "{space.300}",
     "$description": "Size of the large checkbox icon."
   },
-  "checkbox.focus-ring.width": {
-    "$type": "spacing",
-    "$value": "{focus.width}",
-    "$description": "Width of the checkbox focus ring."
-  },
-  "checkbox.focus-ring.offset": {
-    "$type": "spacing",
-    "$value": "{focus.offset}",
-    "$description": "Gap between the checkbox and its focus ring."
-  },
   "switch.track.height.sm": {
     "$type": "spacing",
     "$value": "{space.200}",
@@ -1403,11 +1333,6 @@
     "$type": "dimension",
     "$value": "{border-radius.full}",
     "$description": "Corner radius of the switch track."
-  },
-  "switch.track.border-width": {
-    "$type": "dimension",
-    "$value": "{border-width.2}",
-    "$description": "Border width of the switch track."
   },
   "switch.thumb.size.sm": {
     "$type": "spacing",
@@ -1444,26 +1369,6 @@
     "$value": "{space.400}",
     "$description": "Travel distance of the large switch thumb."
   },
-  "switch.focus-ring.width": {
-    "$type": "spacing",
-    "$value": "{focus.width}",
-    "$description": "Width of the switch focus ring."
-  },
-  "switch.focus-ring.offset": {
-    "$type": "spacing",
-    "$value": "{focus.offset}",
-    "$description": "Gap between the switch and its focus ring."
-  },
-  "switch.track.background-checked": {
-    "$type": "color",
-    "$value": "{color.background.primary}",
-    "$description": "Track fill when the switch is on."
-  },
-  "switch.track.background-unchecked": {
-    "$type": "color",
-    "$value": "{color.border.emphasis}",
-    "$description": "Track fill when the switch is off, in the emphasis border tone."
-  },
   "switch.thumb.background": {
     "$type": "color",
     "$value": "{color.background.default}",
@@ -1483,71 +1388,6 @@
     "$type": "spacing",
     "$value": "{space.400}",
     "$description": "Size of the large radio."
-  },
-  "radio.border-radius": {
-    "$type": "dimension",
-    "$value": "{border-radius.full}",
-    "$description": "Corner radius of the radio."
-  },
-  "radio.indicator-size-sm": {
-    "$type": "spacing",
-    "$value": "{space.100}",
-    "$description": "Size of the small radio indicator."
-  },
-  "radio.indicator-size-md": {
-    "$type": "spacing",
-    "$value": "{space.150}",
-    "$description": "Size of the medium radio indicator."
-  },
-  "radio.indicator-size-lg": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Size of the large radio indicator."
-  },
-  "radio.focus-ring.width": {
-    "$type": "spacing",
-    "$value": "{focus.width}",
-    "$description": "Width of the radio focus ring."
-  },
-  "radio.focus-ring.offset": {
-    "$type": "spacing",
-    "$value": "{focus.offset}",
-    "$description": "Gap between the radio and its focus ring."
-  },
-  "slider.track-height": {
-    "$type": "spacing",
-    "$value": "{space.100}",
-    "$description": "Height of the slider track."
-  },
-  "slider.track-radius": {
-    "$type": "dimension",
-    "$value": "{border-radius.full}",
-    "$description": "Corner radius of the slider track."
-  },
-  "slider.thumb-size": {
-    "$type": "spacing",
-    "$value": "{space.300}",
-    "$description": "Size of the slider thumb."
-  },
-  "slider.thumb-border-width": {
-    "$type": "dimension",
-    "$value": "{border-width.2}",
-    "$description": "Border width of the slider thumb."
-  },
-  "slider.thumb-radius": {
-    "$type": "dimension",
-    "$value": "{border-radius.full}",
-    "$description": "Corner radius of the slider thumb."
-  },
-  "slider.focus-ring.width": {
-    "$type": "spacing",
-    "$value": "{focus.width}",
-    "$description": "Width of the slider focus ring."
-  },
-  "slider.focus-ring.offset": {
-    "$type": "spacing",
-    "$value": "{focus.offset}",
-    "$description": "Gap between the slider and its focus ring."
   },
   "textarea.min-height.sm": {
     "$type": "spacing",
@@ -1593,16 +1433,6 @@
     "$type": "number",
     "$value": "{typography.font-size.lg}",
     "$description": "Font size of the large label."
-  },
-  "label.disabled-color": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text colour of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "sheet.overlay-background": {
-    "$type": "color",
-    "$value": "{color.background.overlay}",
-    "$description": "Fill of the sheet overlay."
   },
   "sheet.content.width.sm": {
     "$type": "spacing",
@@ -1774,16 +1604,6 @@
     "$value": "{border-radius.md}",
     "$description": "Corner radius of the collapsible."
   },
-  "separator.height-horizontal": {
-    "$type": "spacing",
-    "$value": "{border-width.1}",
-    "$description": "Thickness of a horizontal separator."
-  },
-  "separator.width-vertical": {
-    "$type": "spacing",
-    "$value": "{border-width.1}",
-    "$description": "Thickness of a vertical separator."
-  },
   "separator.margin.horizontal": {
     "$type": "spacing",
     "$value": "{space.200}",
@@ -1818,11 +1638,6 @@
     "$type": "spacing",
     "$value": "{space.050}",
     "$description": "Gap between the items inside the pagination item."
-  },
-  "pagination.icon-size": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Size of the pagination icon."
   },
   "dialog.content.width.sm": {
     "$type": "spacing",
@@ -1864,16 +1679,6 @@
     "$value": "{space.300}",
     "$description": "Bottom margin of the dialog header."
   },
-  "dialog.title-font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.xl}",
-    "$description": "Font size of the dialog title."
-  },
-  "dialog.description-font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.sm}",
-    "$description": "Font size of the dialog description."
-  },
   "dialog.footer.margin-top": {
     "$type": "spacing",
     "$value": "{space.300}",
@@ -1899,11 +1704,6 @@
     "$value": "{space.1600}",
     "$description": "Width of the large popover content."
   },
-  "popover.content-padding": {
-    "$type": "spacing",
-    "$value": "{space.300}",
-    "$description": "Padding inside the popover content."
-  },
   "hover-card.content.width.sm": {
     "$type": "spacing",
     "$value": "{space.1500}",
@@ -1918,11 +1718,6 @@
     "$type": "spacing",
     "$value": "{space.1600}",
     "$description": "Width of the large hover card content."
-  },
-  "hover-card.content-padding": {
-    "$type": "spacing",
-    "$value": "{space.300}",
-    "$description": "Padding inside the hover card content."
   },
   "toast.width": {
     "$type": "spacing",
@@ -1979,11 +1774,6 @@
     "$value": "{typography.font-size.xs}",
     "$description": "Font size of the toast action."
   },
-  "toast.close-size": {
-    "$type": "spacing",
-    "$value": "{space.300}",
-    "$description": "Width and height of the toast close button."
-  },
   "table.cell.padding-x": {
     "$type": "spacing",
     "$value": "{space.300}",
@@ -2003,21 +1793,6 @@
     "$type": "number",
     "$value": "{typography.font-size.sm}",
     "$description": "Font size of the table cell."
-  },
-  "table.caption-font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.sm}",
-    "$description": "Font size of the table caption."
-  },
-  "table.caption-margin-top": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Top margin of the table caption."
-  },
-  "table.border-width": {
-    "$type": "dimension",
-    "$value": "{border-width.1}",
-    "$description": "Border width of the table row dividers."
   },
   "skeleton.radius": {
     "$type": "dimension",
@@ -2064,16 +1839,6 @@
     "$value": "{border-radius.full}",
     "$description": "Corner radius of the scroll area scrollbar."
   },
-  "scrollbar.thumb-radius": {
-    "$type": "dimension",
-    "$value": "{border-radius.full}",
-    "$description": "Corner radius of the scroll area scrollbar thumb."
-  },
-  "scrollbar.thumb-min-height": {
-    "$type": "spacing",
-    "$value": "{space.500}",
-    "$description": "Minimum height of the scroll area scrollbar thumb."
-  },
   "command.input.height": {
     "$type": "spacing",
     "$value": "{space.500}",
@@ -2089,35 +1854,10 @@
     "$value": "{space.200}",
     "$description": "Size of the search icon in the command menu input."
   },
-  "command.list-max-height": {
-    "$type": "spacing",
-    "$value": "{space.1600}",
-    "$description": "Maximum height of the command menu list."
-  },
   "command.group.padding": {
     "$type": "spacing",
     "$value": "{space.050}",
     "$description": "Padding inside the command menu group."
-  },
-  "calendar.container-padding": {
-    "$type": "spacing",
-    "$value": "{space.150}",
-    "$description": "Padding inside the calendar container."
-  },
-  "calendar.nav.button-size": {
-    "$type": "spacing",
-    "$value": "{space.300}",
-    "$description": "Size of the calendar nav button."
-  },
-  "calendar.nav.icon-size": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Size of the calendar nav icon."
-  },
-  "calendar.cell-size": {
-    "$type": "spacing",
-    "$value": "{space.400}",
-    "$description": "Size of the calendar cell."
   },
   "calendar.day.size": {
     "$type": "spacing",
@@ -2144,35 +1884,10 @@
     "$value": "{space.800}",
     "$description": "Size of the extra-large avatar."
   },
-  "breadcrumb.list-gap": {
-    "$type": "spacing",
-    "$value": "{space.050}",
-    "$description": "Gap between the items inside the breadcrumb list."
-  },
-  "breadcrumb.item-gap": {
-    "$type": "spacing",
-    "$value": "{space.050}",
-    "$description": "Gap between the items inside the breadcrumb item."
-  },
   "breadcrumb.font-size": {
     "$type": "number",
     "$value": "{typography.font-size.sm}",
     "$description": "Font size of the breadcrumb."
-  },
-  "breadcrumb.separator-size": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Size of the breadcrumb separator."
-  },
-  "breadcrumb.ellipsis-size": {
-    "$type": "spacing",
-    "$value": "{space.400}",
-    "$description": "Size of the breadcrumb ellipsis."
-  },
-  "carousel.item-spacing": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Spacing between carousel slides."
   },
   "carousel.button.size": {
     "$type": "spacing",
@@ -2224,11 +1939,6 @@
     "$value": "{space.200}",
     "$description": "Size of the context menu item indicator."
   },
-  "context-menu.item.icon-size": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Size of the context menu item icon."
-  },
   "dropdown-menu.content.min-width": {
     "$type": "spacing",
     "$value": "{space.1200}",
@@ -2253,11 +1963,6 @@
     "$type": "spacing",
     "$value": "{space.400}",
     "$description": "Extra left padding for dropdown menu items without an indicator, so their labels line up with indicator items."
-  },
-  "dropdown-menu.item.icon-size": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Size of the dropdown menu item icon."
   },
   "dropdown-menu.item.font-size": {
     "$type": "number",
@@ -2289,11 +1994,6 @@
     "$value": "{space.200}",
     "$description": "Size of the dropdown menu item indicator."
   },
-  "accordion.item-border-width": {
-    "$type": "dimension",
-    "$value": "{border-width.1}",
-    "$description": "Border width of the accordion item."
-  },
   "accordion.trigger.padding": {
     "$type": "spacing",
     "$value": "{space.150}",
@@ -2303,11 +2003,6 @@
     "$type": "number",
     "$value": "{typography.font-size.base}",
     "$description": "Font size of the accordion trigger."
-  },
-  "accordion.trigger.icon-size": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Size of the accordion trigger icon."
   },
   "accordion.content.padding": {
     "$type": "spacing",
@@ -2389,16 +2084,6 @@
     "$value": "{space.050}",
     "$description": "Vertical padding of the menubar trigger."
   },
-  "menubar.content-min-width": {
-    "$type": "spacing",
-    "$value": "{space.1400}",
-    "$description": "Minimum width of the menubar content."
-  },
-  "menubar.sub-content-min-width": {
-    "$type": "spacing",
-    "$value": "{space.1200}",
-    "$description": "Minimum width of the menubar sub content."
-  },
   "menubar.item.padding-x": {
     "$type": "spacing",
     "$value": "{space.100}",
@@ -2418,26 +2103,6 @@
     "$type": "spacing",
     "$value": "{space.200}",
     "$description": "Size of the menubar item icon."
-  },
-  "menubar.shortcut-font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.xs}",
-    "$description": "Font size of the menubar shortcut."
-  },
-  "menubar.separator-height": {
-    "$type": "spacing",
-    "$value": "{border-width.1}",
-    "$description": "Height of the menubar separator."
-  },
-  "menubar.separator-margin-y": {
-    "$type": "spacing",
-    "$value": "{space.050}",
-    "$description": "Vertical margin of the menubar separator."
-  },
-  "menubar.separator-margin-x": {
-    "$type": "spacing",
-    "$value": "{space.050}",
-    "$description": "Horizontal margin of the menubar separator."
   },
   "toast.destructive.border": {
     "$type": "color",
@@ -2589,11 +2254,6 @@
     "$value": "{typography.font-size.sm}",
     "$description": "Font size of the alert dialog description."
   },
-  "alert-dialog.title-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.semibold}",
-    "$description": "Font weight of the alert dialog title."
-  },
   "alert.padding-x": {
     "$type": "spacing",
     "$value": "{space.200}",
@@ -2658,11 +2318,6 @@
     "$type": "spacing",
     "$value": "{space.050}",
     "$description": "Space between a label and its required marker."
-  },
-  "radio.group-gap": {
-    "$type": "spacing",
-    "$value": "{space.100}",
-    "$description": "Gap between radios in a radio group."
   },
   "command.item-padding-x": {
     "$type": "spacing",
@@ -2769,11 +2424,6 @@
     "$value": "{typography.font-size.sm}",
     "$description": "Font size of the toggle group item."
   },
-  "toggle-group.item-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight of the toggle group item."
-  },
   "toggle-group.item-height": {
     "$type": "spacing",
     "$value": "{space.500}",
@@ -2824,11 +2474,6 @@
     "$value": "{space.100}",
     "$description": "Right padding of the pagination ellipsis."
   },
-  "scrollbar.padding": {
-    "$type": "spacing",
-    "$value": "{space.010}",
-    "$description": "Padding inside the scroll area scrollbar."
-  },
   "context-menu.checkbox-padding": {
     "$type": "spacing",
     "$value": "{space.050}",
@@ -2863,16 +2508,6 @@
     "$type": "number",
     "$value": "{typography.font-size.xs}",
     "$description": "Font size of the context menu shortcut."
-  },
-  "context-menu.label-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.semibold}",
-    "$description": "Font weight of the context menu label."
-  },
-  "context-menu.shortcut-letter-spacing": {
-    "$type": "dimension",
-    "$value": "{typography.tracking.widest}",
-    "$description": "Letter spacing of the context menu shortcut."
   },
   "context-menu.item.indicator.left": {
     "$type": "spacing",
@@ -2964,11 +2599,6 @@
     "$value": "{opacity.70}",
     "$description": "Opacity of the dropdown menu shortcut."
   },
-  "dropdown-menu.label-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.semibold}",
-    "$description": "Font weight of the dropdown menu label."
-  },
   "dropdown-menu.shortcut.letter-spacing": {
     "$type": "dimension",
     "$value": "{typography.tracking.widest}",
@@ -2978,11 +2608,6 @@
     "$type": "spacing",
     "$value": "{space.100}",
     "$description": "Left offset of the dropdown menu item check indicator."
-  },
-  "dropdown-menu.item.radio-indicator-radius": {
-    "$type": "dimension",
-    "$value": "{border-radius.full}",
-    "$description": "Corner radius of the dropdown menu item radio indicator."
   },
   "resizable.handle-radius": {
     "$type": "dimension",
@@ -2998,11 +2623,6 @@
     "$type": "spacing",
     "$value": "{border-radius.full}",
     "$description": "Corner radius of the avatar and its fallback. Fully rounded (circle)."
-  },
-  "avatar.fallback-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight of the avatar fallback."
   },
   "avatar.fallback.font-size.sm": {
     "$type": "number",
@@ -3033,11 +2653,6 @@
     "$type": "number",
     "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of the table header."
-  },
-  "table.footer-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight of the table footer."
   },
   "toast.close-button-padding": {
     "$type": "spacing",
@@ -3159,26 +2774,6 @@
     "$value": "{color.border.emphasis}",
     "$description": "Border of an unchecked checkbox in its normal state."
   },
-  "checkbox.background-checked": {
-    "$type": "color",
-    "$value": "{color.background.primary}",
-    "$description": "Fill of a checked or indeterminate checkbox. Pairs with `checkbox.text-checked`."
-  },
-  "checkbox.text-checked": {
-    "$type": "color",
-    "$value": "{color.foreground.primary}",
-    "$description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
-  },
-  "checkbox.border-checked": {
-    "$type": "color",
-    "$value": "{color.background.primary}",
-    "$description": "Border colour of the checkbox when checked."
-  },
-  "checkbox.error-border": {
-    "$type": "color",
-    "$value": "{color.border.danger}",
-    "$description": "Border of a checkbox marked invalid."
-  },
   "sheet.close-button-offset": {
     "$type": "dimension",
     "$value": "{space.400}",
@@ -3203,16 +2798,6 @@
     "$type": "number",
     "$value": "{opacity.100}",
     "$description": "Opacity of the dialog close button while hovered."
-  },
-  "dialog.title-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.semibold}",
-    "$description": "Font weight of the dialog title."
-  },
-  "dialog.title-letter-spacing": {
-    "$type": "dimension",
-    "$value": "{typography.tracking.tight}",
-    "$description": "Letter spacing of the dialog title."
   },
   "badge.default.background-hover": {
     "$type": "color",
@@ -3253,26 +2838,6 @@
     "$type": "color",
     "$value": "{color.border.primary}",
     "$description": "Border colour of an interactive card while hovered."
-  },
-  "form.label-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight of the form label."
-  },
-  "form.message-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight of the form message."
-  },
-  "form.error-font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.xs}",
-    "$description": "Font size of form error messages."
-  },
-  "form.required-color": {
-    "$type": "color",
-    "$value": "{color.foreground.danger-muted}",
-    "$description": "Colour of the required-field marker on form labels."
   },
   "badge.default.background-disabled": {
     "$type": "color",
@@ -3329,30 +2894,15 @@
     "$value": "{opacity.100}",
     "$description": "Opacity of the calendar nav button while hovered."
   },
-  "calendar.header-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight of the calendar header."
-  },
   "calendar.nav-button.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of the calendar nav button."
   },
-  "calendar.day-header-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.regular}",
-    "$description": "Font weight of the calendar day header."
-  },
   "calendar.day.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.regular}",
     "$description": "Font weight of the calendar day."
-  },
-  "breadcrumb.page-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.regular}",
-    "$description": "Font weight of the current page item in the breadcrumb."
   },
   "breadcrumb.link-disabled": {
     "$type": "color",
@@ -3379,16 +2929,6 @@
     "$value": "{z-index.dropdown}",
     "$description": "Stacking order of the select content."
   },
-  "select.item.background-highlighted": {
-    "$type": "color",
-    "$value": "{color.background.emphasis}",
-    "$description": "Fill of the select item while highlighted. Pairs with `select.item.text-highlighted`."
-  },
-  "select.item.text-highlighted": {
-    "$type": "color",
-    "$value": "{color.foreground.default}",
-    "$description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
-  },
   "select.item.indicator-left": {
     "$type": "spacing",
     "$value": "{space.100}",
@@ -3404,21 +2944,6 @@
     "$value": "{color.foreground.default}",
     "$description": "Colour of typed text. Pairs with `input.default.background`."
   },
-  "toast.default-background": {
-    "$type": "color",
-    "$value": "{color.background.raised}",
-    "$description": "Fill of the default toast, a raised surface. Pairs with `toast.text`."
-  },
-  "label.default-color": {
-    "$type": "color",
-    "$value": "{color.foreground.muted}",
-    "$description": "Default text colour of labels."
-  },
-  "context-menu.sub-content-min-width": {
-    "$type": "spacing",
-    "$value": "{space.1000}",
-    "$description": "Minimum width of the context menu sub content."
-  },
   "command.item-padding-y": {
     "$type": "spacing",
     "$value": "{space.050}",
@@ -3428,16 +2953,6 @@
     "$type": "number",
     "$value": "{opacity.50}",
     "$description": "Opacity of the search icon in the command menu input."
-  },
-  "command.group.heading-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight of the command menu group heading."
-  },
-  "command.shortcut-letter-spacing": {
-    "$type": "dimension",
-    "$value": "{typography.tracking.widest}",
-    "$description": "Letter spacing of the command menu shortcut."
   },
   "toast.viewport.padding": {
     "$type": "spacing",
@@ -3449,11 +2964,6 @@
     "$value": "{space.100}",
     "$description": "Gap between the items inside the toast viewport."
   },
-  "toast.content-gap": {
-    "$type": "spacing",
-    "$value": "{space.050}",
-    "$description": "Gap between the items inside the toast content."
-  },
   "toast.close-button.opacity": {
     "$type": "number",
     "$value": "{opacity.0}",
@@ -3463,16 +2973,6 @@
     "$type": "number",
     "$value": "{opacity.100}",
     "$description": "Opacity of the close button once the toast is hovered or the button has focus."
-  },
-  "resizable.handle-height": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Height of the resizable handle."
-  },
-  "resizable.handle-width": {
-    "$type": "spacing",
-    "$value": "{space.150}",
-    "$description": "Width of the resizable handle."
   },
   "resizable.grip-icon-size": {
     "$type": "spacing",
@@ -3494,40 +2994,10 @@
     "$value": "{color.foreground.default}",
     "$description": "Text colour of the feature grid title."
   },
-  "feature-grid.description-text": {
-    "$type": "color",
-    "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the feature grid description."
-  },
-  "menubar.radio-indicator-size": {
-    "$type": "spacing",
-    "$value": "{space.100}",
-    "$description": "Size of the menubar radio indicator."
-  },
   "menubar.trigger.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of the menubar trigger."
-  },
-  "menubar.label-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.semibold}",
-    "$description": "Font weight of the menubar label."
-  },
-  "menubar.item.indicator-left": {
-    "$type": "spacing",
-    "$value": "{space.100}",
-    "$description": "Left offset of the menubar item check indicator."
-  },
-  "menubar.shortcut-letter-spacing": {
-    "$type": "dimension",
-    "$value": "{typography.tracking.widest}",
-    "$description": "Letter spacing of the menubar shortcut."
-  },
-  "navigation-menu.indicator-height": {
-    "$type": "dimension",
-    "$value": "0px",
-    "$description": "Height of the navigation menu indicator."
   },
   "navigation-menu.trigger.height": {
     "$type": "spacing",
@@ -3538,11 +3008,6 @@
     "$type": "number",
     "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of the navigation menu trigger."
-  },
-  "select.trigger.icon-opacity": {
-    "$type": "number",
-    "$value": "{opacity.50}",
-    "$description": "Opacity of the select trigger icon."
   },
   "select.content.background": {
     "$type": "color",
@@ -3569,30 +3034,10 @@
     "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of the label."
   },
-  "label.error-text": {
-    "$type": "color",
-    "$value": "{color.foreground.danger-muted}",
-    "$description": "Text colour of a label when its field has an error."
-  },
-  "label.required-text": {
-    "$type": "color",
-    "$value": "{color.foreground.danger-muted}",
-    "$description": "Colour of the required marker on labels."
-  },
   "separator.color": {
     "$type": "color",
     "$value": "{color.border.default}",
     "$description": "Colour of the separator line."
-  },
-  "resizable.handle-focus-ring-width": {
-    "$type": "spacing",
-    "$value": "{focus.width}",
-    "$description": "Width of the resizable handle focus ring."
-  },
-  "resizable.handle-focus-ring-offset": {
-    "$type": "spacing",
-    "$value": "{focus.offset}",
-    "$description": "Gap between the resizable handle and its focus ring."
   },
   "sheet.content.background": {
     "$type": "color",
@@ -3624,11 +3069,6 @@
     "$value": "{opacity.100}",
     "$description": "Opacity of the toast description."
   },
-  "form.label-error-text": {
-    "$type": "color",
-    "$value": "{color.foreground.danger-muted}",
-    "$description": "Text colour of a form label when its field has an error."
-  },
   "feature-grid.item.border-color": {
     "$type": "color",
     "$value": "{color.border.default}",
@@ -3654,6 +3094,526 @@
     "$value": "{space.200}",
     "$description": "Vertical padding of the large input. `space.200` (16px) plus `font-size.lg` (18px) gives a 50px height."
   },
+  "button.icon-size": {
+    "$type": "spacing",
+    "$value": "{space.500}",
+    "$description": "Width and height of the icon-only button."
+  },
+  "button.link-text": {
+    "$type": "color",
+    "$value": "{color.foreground.primary-muted}",
+    "$description": "Label colour of the link-style button, which has no fill or border."
+  },
+  "card.header-gap": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Gap between the title and description in the card header."
+  },
+  "input.background-disabled": {
+    "$type": "color",
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the input when disabled, a quiet neutral so it reads as unavailable. Pairs with `input.text-disabled`."
+  },
+  "input.text-disabled": {
+    "$type": "color",
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
+  },
+  "tabs.trigger.indicator-color": {
+    "$type": "color",
+    "$value": "{color.background.primary}",
+    "$description": "Colour of the underline that marks the selected tab."
+  },
+  "checkbox.focus-ring.width": {
+    "$type": "spacing",
+    "$value": "{focus.width}",
+    "$description": "Width of the checkbox focus ring."
+  },
+  "checkbox.focus-ring.offset": {
+    "$type": "spacing",
+    "$value": "{focus.offset}",
+    "$description": "Gap between the checkbox and its focus ring."
+  },
+  "switch.track.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.2}",
+    "$description": "Border width of the switch track."
+  },
+  "switch.focus-ring.width": {
+    "$type": "spacing",
+    "$value": "{focus.width}",
+    "$description": "Width of the switch focus ring."
+  },
+  "switch.focus-ring.offset": {
+    "$type": "spacing",
+    "$value": "{focus.offset}",
+    "$description": "Gap between the switch and its focus ring."
+  },
+  "switch.track.background-checked": {
+    "$type": "color",
+    "$value": "{color.background.primary}",
+    "$description": "Track fill when the switch is on."
+  },
+  "switch.track.background-unchecked": {
+    "$type": "color",
+    "$value": "{color.border.emphasis}",
+    "$description": "Track fill when the switch is off, in the emphasis border tone."
+  },
+  "radio.border-radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the radio."
+  },
+  "radio.indicator-size-sm": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Size of the small radio indicator."
+  },
+  "radio.indicator-size-md": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Size of the medium radio indicator."
+  },
+  "radio.indicator-size-lg": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Size of the large radio indicator."
+  },
+  "radio.focus-ring.width": {
+    "$type": "spacing",
+    "$value": "{focus.width}",
+    "$description": "Width of the radio focus ring."
+  },
+  "radio.focus-ring.offset": {
+    "$type": "spacing",
+    "$value": "{focus.offset}",
+    "$description": "Gap between the radio and its focus ring."
+  },
+  "slider.track-height": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Height of the slider track."
+  },
+  "slider.track-radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the slider track."
+  },
+  "slider.thumb-size": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Size of the slider thumb."
+  },
+  "slider.thumb-border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.2}",
+    "$description": "Border width of the slider thumb."
+  },
+  "slider.thumb-radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the slider thumb."
+  },
+  "slider.focus-ring.width": {
+    "$type": "spacing",
+    "$value": "{focus.width}",
+    "$description": "Width of the slider focus ring."
+  },
+  "slider.focus-ring.offset": {
+    "$type": "spacing",
+    "$value": "{focus.offset}",
+    "$description": "Gap between the slider and its focus ring."
+  },
+  "label.disabled-color": {
+    "$type": "color",
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  },
+  "sheet.overlay-background": {
+    "$type": "color",
+    "$value": "{color.background.overlay}",
+    "$description": "Fill of the sheet overlay."
+  },
+  "separator.height-horizontal": {
+    "$type": "spacing",
+    "$value": "{border-width.1}",
+    "$description": "Thickness of a horizontal separator."
+  },
+  "separator.width-vertical": {
+    "$type": "spacing",
+    "$value": "{border-width.1}",
+    "$description": "Thickness of a vertical separator."
+  },
+  "pagination.icon-size": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Size of the pagination icon."
+  },
+  "dialog.title-font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.xl}",
+    "$description": "Font size of the dialog title."
+  },
+  "dialog.description-font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the dialog description."
+  },
+  "popover.content-padding": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Padding inside the popover content."
+  },
+  "hover-card.content-padding": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Padding inside the hover card content."
+  },
+  "toast.close-size": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Width and height of the toast close button."
+  },
+  "table.caption-font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the table caption."
+  },
+  "table.caption-margin-top": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Top margin of the table caption."
+  },
+  "table.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the table row dividers."
+  },
+  "scrollbar.thumb-radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the scroll area scrollbar thumb."
+  },
+  "scrollbar.thumb-min-height": {
+    "$type": "spacing",
+    "$value": "{space.500}",
+    "$description": "Minimum height of the scroll area scrollbar thumb."
+  },
+  "command.list-max-height": {
+    "$type": "spacing",
+    "$value": "{space.1600}",
+    "$description": "Maximum height of the command menu list."
+  },
+  "calendar.container-padding": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Padding inside the calendar container."
+  },
+  "calendar.nav.button-size": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Size of the calendar nav button."
+  },
+  "calendar.nav.icon-size": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Size of the calendar nav icon."
+  },
+  "calendar.cell-size": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Size of the calendar cell."
+  },
+  "breadcrumb.list-gap": {
+    "$type": "spacing",
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the breadcrumb list."
+  },
+  "breadcrumb.item-gap": {
+    "$type": "spacing",
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the breadcrumb item."
+  },
+  "breadcrumb.separator-size": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Size of the breadcrumb separator."
+  },
+  "breadcrumb.ellipsis-size": {
+    "$type": "spacing",
+    "$value": "{space.400}",
+    "$description": "Size of the breadcrumb ellipsis."
+  },
+  "carousel.item-spacing": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Spacing between carousel slides."
+  },
+  "context-menu.item.icon-size": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Size of the context menu item icon."
+  },
+  "dropdown-menu.item.icon-size": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Size of the dropdown menu item icon."
+  },
+  "accordion.item-border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the accordion item."
+  },
+  "accordion.trigger.icon-size": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Size of the accordion trigger icon."
+  },
+  "menubar.content-min-width": {
+    "$type": "spacing",
+    "$value": "{space.1400}",
+    "$description": "Minimum width of the menubar content."
+  },
+  "menubar.sub-content-min-width": {
+    "$type": "spacing",
+    "$value": "{space.1200}",
+    "$description": "Minimum width of the menubar sub content."
+  },
+  "menubar.shortcut-font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the menubar shortcut."
+  },
+  "menubar.separator-height": {
+    "$type": "spacing",
+    "$value": "{border-width.1}",
+    "$description": "Height of the menubar separator."
+  },
+  "menubar.separator-margin-y": {
+    "$type": "spacing",
+    "$value": "{space.050}",
+    "$description": "Vertical margin of the menubar separator."
+  },
+  "menubar.separator-margin-x": {
+    "$type": "spacing",
+    "$value": "{space.050}",
+    "$description": "Horizontal margin of the menubar separator."
+  },
+  "alert-dialog.title-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the alert dialog title."
+  },
+  "radio.group-gap": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Gap between radios in a radio group."
+  },
+  "toggle-group.item-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the toggle group item."
+  },
+  "scrollbar.padding": {
+    "$type": "spacing",
+    "$value": "{space.010}",
+    "$description": "Padding inside the scroll area scrollbar."
+  },
+  "context-menu.label-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the context menu label."
+  },
+  "context-menu.shortcut-letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.widest}",
+    "$description": "Letter spacing of the context menu shortcut."
+  },
+  "dropdown-menu.label-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the dropdown menu label."
+  },
+  "dropdown-menu.item.radio-indicator-radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the dropdown menu item radio indicator."
+  },
+  "avatar.fallback-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the avatar fallback."
+  },
+  "table.footer-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the table footer."
+  },
+  "checkbox.background-checked": {
+    "$type": "color",
+    "$value": "{color.background.primary}",
+    "$description": "Fill of a checked or indeterminate checkbox. Pairs with `checkbox.text-checked`."
+  },
+  "checkbox.text-checked": {
+    "$type": "color",
+    "$value": "{color.foreground.primary}",
+    "$description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
+  },
+  "checkbox.border-checked": {
+    "$type": "color",
+    "$value": "{color.background.primary}",
+    "$description": "Border colour of the checkbox when checked."
+  },
+  "checkbox.error-border": {
+    "$type": "color",
+    "$value": "{color.border.danger}",
+    "$description": "Border of a checkbox marked invalid."
+  },
+  "dialog.title-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the dialog title."
+  },
+  "dialog.title-letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.tight}",
+    "$description": "Letter spacing of the dialog title."
+  },
+  "form.label-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the form label."
+  },
+  "form.message-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the form message."
+  },
+  "form.error-font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of form error messages."
+  },
+  "form.required-color": {
+    "$type": "color",
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Colour of the required-field marker on form labels."
+  },
+  "calendar.header-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the calendar header."
+  },
+  "calendar.day-header-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.regular}",
+    "$description": "Font weight of the calendar day header."
+  },
+  "breadcrumb.page-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.regular}",
+    "$description": "Font weight of the current page item in the breadcrumb."
+  },
+  "toast.default-background": {
+    "$type": "color",
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the default toast, a raised surface. Pairs with `toast.text`."
+  },
+  "label.default-color": {
+    "$type": "color",
+    "$value": "{color.foreground.muted}",
+    "$description": "Default text colour of labels."
+  },
+  "context-menu.sub-content-min-width": {
+    "$type": "spacing",
+    "$value": "{space.1000}",
+    "$description": "Minimum width of the context menu sub content."
+  },
+  "command.group.heading-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the command menu group heading."
+  },
+  "command.shortcut-letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.widest}",
+    "$description": "Letter spacing of the command menu shortcut."
+  },
+  "toast.content-gap": {
+    "$type": "spacing",
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the toast content."
+  },
+  "resizable.handle-height": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Height of the resizable handle."
+  },
+  "resizable.handle-width": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Width of the resizable handle."
+  },
+  "feature-grid.description-text": {
+    "$type": "color",
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the feature grid description."
+  },
+  "menubar.radio-indicator-size": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Size of the menubar radio indicator."
+  },
+  "menubar.label-font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the menubar label."
+  },
+  "menubar.item.indicator-left": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Left offset of the menubar item check indicator."
+  },
+  "menubar.shortcut-letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.widest}",
+    "$description": "Letter spacing of the menubar shortcut."
+  },
+  "navigation-menu.indicator-height": {
+    "$type": "dimension",
+    "$value": "0px",
+    "$description": "Height of the navigation menu indicator."
+  },
+  "select.trigger.icon-opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}",
+    "$description": "Opacity of the select trigger icon."
+  },
+  "label.error-text": {
+    "$type": "color",
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Text colour of a label when its field has an error."
+  },
+  "label.required-text": {
+    "$type": "color",
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Colour of the required marker on labels."
+  },
+  "resizable.handle-focus-ring-width": {
+    "$type": "spacing",
+    "$value": "{focus.width}",
+    "$description": "Width of the resizable handle focus ring."
+  },
+  "resizable.handle-focus-ring-offset": {
+    "$type": "spacing",
+    "$value": "{focus.offset}",
+    "$description": "Gap between the resizable handle and its focus ring."
+  },
+  "form.label-error-text": {
+    "$type": "color",
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Text colour of a form label when its field has an error."
+  },
   "site-header.background": {
     "$type": "color",
     "$value": "{color.background.default}",
@@ -3674,20 +3634,10 @@
     "$value": "{color.background.muted}",
     "$description": "Fill of the site header nav link while hovered. Pairs with `site-header.nav-link.text-hover`."
   },
-  "site-header.nav-link.background-highlighted": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the site header nav link while highlighted. Pairs with `site-header.nav-link.text-highlighted`."
-  },
   "site-header.nav-link.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
     "$description": "Text colour of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
-  },
-  "site-header.nav-link.text-highlighted": {
-    "$type": "color",
-    "$value": "{color.foreground.default}",
-    "$description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
   },
   "site-footer.background": {
     "$type": "color",
@@ -4103,6 +4053,56 @@
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of a pressed (on) toggle when disabled, a quiet neutral so it reads as unavailable."
+  },
+  "menubar.trigger-highlighted": {
+    "$type": "color",
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the menubar trigger while highlighted. Pairs with `menubar.trigger-text-highlighted`."
+  },
+  "menubar.trigger-text-highlighted": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
+  },
+  "menubar.item-highlighted": {
+    "$type": "color",
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the menubar item while highlighted. Pairs with `menubar.item-text-highlighted`."
+  },
+  "menubar.item-text-highlighted": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
+  },
+  "navigation.highlighted": {
+    "$type": "color",
+    "$value": "{color.background.muted}",
+    "$description": "Fill of a navigation menu trigger while highlighted. Pairs with `navigation.text-highlighted`."
+  },
+  "navigation.text-highlighted": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
+  },
+  "select.item.background-highlighted": {
+    "$type": "color",
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the select item while highlighted. Pairs with `select.item.text-highlighted`."
+  },
+  "select.item.text-highlighted": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
+  },
+  "site-header.nav-link.background-highlighted": {
+    "$type": "color",
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the site header nav link while highlighted. Pairs with `site-header.nav-link.text-highlighted`."
+  },
+  "site-header.nav-link.text-highlighted": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
   },
   "page-layout.main.padding-y": {
     "$type": "spacing",
@@ -4766,7 +4766,7 @@
   },
   "navigation-menu.indicator-z-index": {
     "$type": "number",
-    "$value": "{z-index.1}",
+    "$value": "{z-index.01}",
     "$description": "Stacking order of the navigation menu indicator inside the menu."
   },
   "resizable.handle-z-index": {

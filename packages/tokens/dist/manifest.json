@@ -9,7 +9,7 @@
             "polar-night",
             "50"
           ],
-          "value": "oklch(0.94 0.006 224.44)",
+          "value": "oklch(0.94 0.006 224.93)",
           "type": "color",
           "variable": "var(--color-polar-night-50)",
           "description": ""
@@ -21,7 +21,7 @@
             "polar-night",
             "100"
           ],
-          "value": "oklch(0.813 0.019 218.72)",
+          "value": "oklch(0.813 0.019 218.87)",
           "type": "color",
           "variable": "var(--color-polar-night-100)",
           "description": ""
@@ -33,7 +33,7 @@
             "polar-night",
             "200"
           ],
-          "value": "oklch(0.719 0.028 218.23)",
+          "value": "oklch(0.719 0.028 218.32)",
           "type": "color",
           "variable": "var(--color-polar-night-200)",
           "description": ""
@@ -45,7 +45,7 @@
             "polar-night",
             "300"
           ],
-          "value": "oklch(0.584 0.041 217.95)",
+          "value": "oklch(0.584 0.041 218)",
           "type": "color",
           "variable": "var(--color-polar-night-300)",
           "description": ""
@@ -57,7 +57,7 @@
             "polar-night",
             "400"
           ],
-          "value": "oklch(0.496 0.049 218.99)",
+          "value": "oklch(0.496 0.049 219.03)",
           "type": "color",
           "variable": "var(--color-polar-night-400)",
           "description": ""
@@ -69,7 +69,7 @@
             "polar-night",
             "500"
           ],
-          "value": "oklch(0.361 0.058 221.78)",
+          "value": "oklch(0.361 0.058 221.8)",
           "type": "color",
           "variable": "var(--color-polar-night-500)",
           "description": ""
@@ -81,7 +81,7 @@
             "polar-night",
             "600"
           ],
-          "value": "oklch(0.34 0.054 222.03)",
+          "value": "oklch(0.34 0.054 222.05)",
           "type": "color",
           "variable": "var(--color-polar-night-600)",
           "description": ""
@@ -93,7 +93,7 @@
             "polar-night",
             "700"
           ],
-          "value": "oklch(0.289 0.045 222.05)",
+          "value": "oklch(0.289 0.045 222.07)",
           "type": "color",
           "variable": "var(--color-polar-night-700)",
           "description": ""
@@ -105,7 +105,7 @@
             "polar-night",
             "800"
           ],
-          "value": "oklch(0.248 0.037 222.7)",
+          "value": "oklch(0.248 0.037 222.72)",
           "type": "color",
           "variable": "var(--color-polar-night-800)",
           "description": ""
@@ -117,7 +117,7 @@
             "polar-night",
             "900"
           ],
-          "value": "oklch(0.216 0.03 218.45)",
+          "value": "oklch(0.216 0.03 218.48)",
           "type": "color",
           "variable": "var(--color-polar-night-900)",
           "description": ""
@@ -129,7 +129,7 @@
             "polar-night",
             "950"
           ],
-          "value": "oklch(0.17 0.022 212.04)",
+          "value": "oklch(0.17 0.022 212.07)",
           "type": "color",
           "variable": "var(--color-polar-night-950)",
           "description": ""
@@ -143,7 +143,7 @@
             "fiery-coral",
             "50"
           ],
-          "value": "oklch(0.962 0.017 40.23)",
+          "value": "oklch(0.962 0.017 40.04)",
           "type": "color",
           "variable": "var(--color-fiery-coral-50)",
           "description": ""
@@ -155,7 +155,7 @@
             "fiery-coral",
             "100"
           ],
-          "value": "oklch(0.882 0.053 38.67)",
+          "value": "oklch(0.882 0.053 38.62)",
           "type": "color",
           "variable": "var(--color-fiery-coral-100)",
           "description": ""
@@ -167,7 +167,7 @@
             "fiery-coral",
             "200"
           ],
-          "value": "oklch(0.825 0.081 37.74)",
+          "value": "oklch(0.825 0.081 37.71)",
           "type": "color",
           "variable": "var(--color-fiery-coral-200)",
           "description": ""
@@ -179,7 +179,7 @@
             "fiery-coral",
             "300"
           ],
-          "value": "oklch(0.751 0.122 38.42)",
+          "value": "oklch(0.751 0.122 38.4)",
           "type": "color",
           "variable": "var(--color-fiery-coral-300)",
           "description": ""
@@ -191,7 +191,7 @@
             "fiery-coral",
             "400"
           ],
-          "value": "oklch(0.709 0.147 38.45)",
+          "value": "oklch(0.709 0.147 38.44)",
           "type": "color",
           "variable": "var(--color-fiery-coral-400)",
           "description": ""
@@ -203,7 +203,7 @@
             "fiery-coral",
             "500"
           ],
-          "value": "oklch(0.653 0.183 37.62)",
+          "value": "oklch(0.653 0.183 37.61)",
           "type": "color",
           "variable": "var(--color-fiery-coral-500)",
           "description": ""
@@ -215,7 +215,7 @@
             "fiery-coral",
             "600"
           ],
-          "value": "oklch(0.61 0.169 37.71)",
+          "value": "oklch(0.61 0.169 37.7)",
           "type": "color",
           "variable": "var(--color-fiery-coral-600)",
           "description": ""
@@ -227,7 +227,7 @@
             "fiery-coral",
             "700"
           ],
-          "value": "oklch(0.508 0.139 37.83)",
+          "value": "oklch(0.508 0.139 37.82)",
           "type": "color",
           "variable": "var(--color-fiery-coral-700)",
           "description": ""
@@ -239,7 +239,7 @@
             "fiery-coral",
             "800"
           ],
-          "value": "oklch(0.425 0.113 38.01)",
+          "value": "oklch(0.425 0.113 38)",
           "type": "color",
           "variable": "var(--color-fiery-coral-800)",
           "description": ""
@@ -251,7 +251,7 @@
             "fiery-coral",
             "900"
           ],
-          "value": "oklch(0.354 0.091 38.06)",
+          "value": "oklch(0.354 0.091 38.05)",
           "type": "color",
           "variable": "var(--color-fiery-coral-900)",
           "description": ""
@@ -263,7 +263,7 @@
             "fiery-coral",
             "950"
           ],
-          "value": "oklch(0.223 0.049 38.43)",
+          "value": "oklch(0.223 0.049 38.42)",
           "type": "color",
           "variable": "var(--color-fiery-coral-950)",
           "description": ""
@@ -277,7 +277,7 @@
             "sandcastle",
             "50"
           ],
-          "value": "oklch(0.977 0.003 66.49)",
+          "value": "oklch(0.977 0.003 66.01)",
           "type": "color",
           "variable": "var(--color-sandcastle-50)",
           "description": ""
@@ -289,7 +289,7 @@
             "sandcastle",
             "100"
           ],
-          "value": "oklch(0.927 0.012 75.22)",
+          "value": "oklch(0.927 0.012 75.17)",
           "type": "color",
           "variable": "var(--color-sandcastle-100)",
           "description": ""
@@ -301,7 +301,7 @@
             "sandcastle",
             "200"
           ],
-          "value": "oklch(0.893 0.018 72.94)",
+          "value": "oklch(0.893 0.018 72.9)",
           "type": "color",
           "variable": "var(--color-sandcastle-200)",
           "description": ""
@@ -313,7 +313,7 @@
             "sandcastle",
             "300"
           ],
-          "value": "oklch(0.843 0.027 71.09)",
+          "value": "oklch(0.843 0.027 71.06)",
           "type": "color",
           "variable": "var(--color-sandcastle-300)",
           "description": ""
@@ -325,7 +325,7 @@
             "sandcastle",
             "400"
           ],
-          "value": "oklch(0.813 0.033 73.42)",
+          "value": "oklch(0.813 0.033 73.4)",
           "type": "color",
           "variable": "var(--color-sandcastle-400)",
           "description": ""
@@ -337,7 +337,7 @@
             "sandcastle",
             "500"
           ],
-          "value": "oklch(0.765 0.041 73.27)",
+          "value": "oklch(0.765 0.041 73.26)",
           "type": "color",
           "variable": "var(--color-sandcastle-500)",
           "description": ""
@@ -349,7 +349,7 @@
             "sandcastle",
             "600"
           ],
-          "value": "oklch(0.712 0.037 72.68)",
+          "value": "oklch(0.712 0.037 72.67)",
           "type": "color",
           "variable": "var(--color-sandcastle-600)",
           "description": ""
@@ -361,7 +361,7 @@
             "sandcastle",
             "700"
           ],
-          "value": "oklch(0.594 0.03 72.52)",
+          "value": "oklch(0.594 0.03 72.51)",
           "type": "color",
           "variable": "var(--color-sandcastle-700)",
           "description": ""
@@ -373,7 +373,7 @@
             "sandcastle",
             "800"
           ],
-          "value": "oklch(0.496 0.025 71.79)",
+          "value": "oklch(0.496 0.025 71.77)",
           "type": "color",
           "variable": "var(--color-sandcastle-800)",
           "description": ""
@@ -385,7 +385,7 @@
             "sandcastle",
             "900"
           ],
-          "value": "oklch(0.414 0.021 75.83)",
+          "value": "oklch(0.414 0.021 75.82)",
           "type": "color",
           "variable": "var(--color-sandcastle-900)",
           "description": ""
@@ -397,7 +397,7 @@
             "sandcastle",
             "950"
           ],
-          "value": "oklch(0.376 0.018 75.84)",
+          "value": "oklch(0.376 0.018 75.83)",
           "type": "color",
           "variable": "var(--color-sandcastle-950)",
           "description": ""
@@ -411,7 +411,7 @@
             "petrified-wood",
             "50"
           ],
-          "value": "oklch(0.962 0.002 44.69)",
+          "value": "oklch(0.962 0.002 43.15)",
           "type": "color",
           "variable": "var(--color-petrified-wood-50)",
           "description": ""
@@ -423,7 +423,7 @@
             "petrified-wood",
             "100"
           ],
-          "value": "oklch(0.882 0.009 67.32)",
+          "value": "oklch(0.882 0.009 67.19)",
           "type": "color",
           "variable": "var(--color-petrified-wood-100)",
           "description": ""
@@ -435,7 +435,7 @@
             "petrified-wood",
             "200"
           ],
-          "value": "oklch(0.824 0.013 71.12)",
+          "value": "oklch(0.824 0.013 71.06)",
           "type": "color",
           "variable": "var(--color-petrified-wood-200)",
           "description": ""
@@ -447,7 +447,7 @@
             "petrified-wood",
             "300"
           ],
-          "value": "oklch(0.74 0.019 70.08)",
+          "value": "oklch(0.74 0.019 70.04)",
           "type": "color",
           "variable": "var(--color-petrified-wood-300)",
           "description": ""
@@ -459,7 +459,7 @@
             "petrified-wood",
             "400"
           ],
-          "value": "oklch(0.686 0.023 69.59)",
+          "value": "oklch(0.686 0.023 69.56)",
           "type": "color",
           "variable": "var(--color-petrified-wood-400)",
           "description": ""
@@ -471,7 +471,7 @@
             "petrified-wood",
             "500"
           ],
-          "value": "oklch(0.602 0.03 68.98)",
+          "value": "oklch(0.602 0.03 68.96)",
           "type": "color",
           "variable": "var(--color-petrified-wood-500)",
           "description": ""
@@ -483,7 +483,7 @@
             "petrified-wood",
             "600"
           ],
-          "value": "oklch(0.563 0.028 71.16)",
+          "value": "oklch(0.563 0.028 71.14)",
           "type": "color",
           "variable": "var(--color-petrified-wood-600)",
           "description": ""
@@ -495,7 +495,7 @@
             "petrified-wood",
             "700"
           ],
-          "value": "oklch(0.471 0.022 67.18)",
+          "value": "oklch(0.471 0.022 67.15)",
           "type": "color",
           "variable": "var(--color-petrified-wood-700)",
           "description": ""
@@ -507,7 +507,7 @@
             "petrified-wood",
             "800"
           ],
-          "value": "oklch(0.397 0.018 63.87)",
+          "value": "oklch(0.397 0.018 63.84)",
           "type": "color",
           "variable": "var(--color-petrified-wood-800)",
           "description": ""
@@ -519,7 +519,7 @@
             "petrified-wood",
             "900"
           ],
-          "value": "oklch(0.333 0.015 71.5)",
+          "value": "oklch(0.333 0.015 71.48)",
           "type": "color",
           "variable": "var(--color-petrified-wood-900)",
           "description": ""
@@ -531,7 +531,7 @@
             "petrified-wood",
             "950"
           ],
-          "value": "oklch(0.261 0.016 71.33)",
+          "value": "oklch(0.261 0.016 71.32)",
           "type": "color",
           "variable": "var(--color-petrified-wood-950)",
           "description": ""
@@ -545,7 +545,7 @@
             "black-bear",
             "50"
           ],
-          "value": "oklch(0.941 0.002 64.94)",
+          "value": "oklch(0.941 0.002 64.18)",
           "type": "color",
           "variable": "var(--color-black-bear-50)",
           "description": ""
@@ -557,7 +557,7 @@
             "black-bear",
             "100"
           ],
-          "value": "oklch(0.808 0.006 42.04)",
+          "value": "oklch(0.808 0.006 41.6)",
           "type": "color",
           "variable": "var(--color-black-bear-100)",
           "description": ""
@@ -569,7 +569,7 @@
             "black-bear",
             "200"
           ],
-          "value": "oklch(0.713 0.009 55.9)",
+          "value": "oklch(0.713 0.009 55.72)",
           "type": "color",
           "variable": "var(--color-black-bear-200)",
           "description": ""
@@ -581,7 +581,7 @@
             "black-bear",
             "300"
           ],
-          "value": "oklch(0.572 0.013 50.96)",
+          "value": "oklch(0.572 0.013 50.85)",
           "type": "color",
           "variable": "var(--color-black-bear-300)",
           "description": ""
@@ -593,7 +593,7 @@
             "black-bear",
             "400"
           ],
-          "value": "oklch(0.48 0.017 50.34)",
+          "value": "oklch(0.48 0.017 50.27)",
           "type": "color",
           "variable": "var(--color-black-bear-400)",
           "description": ""
@@ -605,7 +605,7 @@
             "black-bear",
             "500"
           ],
-          "value": "oklch(0.33 0.024 47.91)",
+          "value": "oklch(0.33 0.024 47.87)",
           "type": "color",
           "variable": "var(--color-black-bear-500)",
           "description": ""
@@ -617,7 +617,7 @@
             "black-bear",
             "600"
           ],
-          "value": "oklch(0.312 0.021 51.81)",
+          "value": "oklch(0.312 0.021 51.78)",
           "type": "color",
           "variable": "var(--color-black-bear-600)",
           "description": ""
@@ -629,7 +629,7 @@
             "black-bear",
             "700"
           ],
-          "value": "oklch(0.269 0.016 50.61)",
+          "value": "oklch(0.269 0.016 50.57)",
           "type": "color",
           "variable": "var(--color-black-bear-700)",
           "description": ""
@@ -641,7 +641,7 @@
             "black-bear",
             "800"
           ],
-          "value": "oklch(0.233 0.013 51.39)",
+          "value": "oklch(0.233 0.013 51.35)",
           "type": "color",
           "variable": "var(--color-black-bear-800)",
           "description": ""
@@ -653,7 +653,7 @@
             "black-bear",
             "900"
           ],
-          "value": "oklch(0.202 0.011 47.99)",
+          "value": "oklch(0.202 0.011 47.94)",
           "type": "color",
           "variable": "var(--color-black-bear-900)",
           "description": ""
@@ -665,7 +665,7 @@
             "black-bear",
             "950"
           ],
-          "value": "oklch(0.138 0.008 60.32)",
+          "value": "oklch(0.138 0.008 60.29)",
           "type": "color",
           "variable": "var(--color-black-bear-950)",
           "description": ""
@@ -679,7 +679,7 @@
             "gray",
             "50"
           ],
-          "value": "oklch(0.991 0.003 264.45)",
+          "value": "oklch(0.991 0.003 264.42)",
           "type": "color",
           "variable": "var(--color-gray-50)",
           "description": ""
@@ -691,7 +691,7 @@
             "gray",
             "100"
           ],
-          "value": "oklch(0.952 0.003 264.48)",
+          "value": "oklch(0.952 0.003 264.45)",
           "type": "color",
           "variable": "var(--color-gray-100)",
           "description": ""
@@ -703,7 +703,7 @@
             "gray",
             "200"
           ],
-          "value": "oklch(0.87 0.003 264.48)",
+          "value": "oklch(0.87 0.003 264.45)",
           "type": "color",
           "variable": "var(--color-gray-200)",
           "description": ""
@@ -715,7 +715,7 @@
             "gray",
             "300"
           ],
-          "value": "oklch(0.786 0.004 271.11)",
+          "value": "oklch(0.786 0.004 270.98)",
           "type": "color",
           "variable": "var(--color-gray-300)",
           "description": ""
@@ -727,7 +727,7 @@
             "gray",
             "400"
           ],
-          "value": "oklch(0.699 0.005 271.07)",
+          "value": "oklch(0.699 0.005 270.98)",
           "type": "color",
           "variable": "var(--color-gray-400)",
           "description": ""
@@ -739,7 +739,7 @@
             "gray",
             "500"
           ],
-          "value": "oklch(0.613 0.005 258.45)",
+          "value": "oklch(0.613 0.005 258.5)",
           "type": "color",
           "variable": "var(--color-gray-500)",
           "description": ""
@@ -775,7 +775,7 @@
             "gray",
             "800"
           ],
-          "value": "oklch(0.321 0.009 268.35)",
+          "value": "oklch(0.321 0.009 268.34)",
           "type": "color",
           "variable": "var(--color-gray-800)",
           "description": ""
@@ -799,7 +799,7 @@
             "gray",
             "950"
           ],
-          "value": "oklch(0.149 0.012 259.72)",
+          "value": "oklch(0.149 0.012 259.73)",
           "type": "color",
           "variable": "var(--color-gray-950)",
           "description": ""
@@ -813,7 +813,7 @@
             "blue",
             "50"
           ],
-          "value": "oklch(0.97 0.014 254.77)",
+          "value": "oklch(0.97 0.014 254.82)",
           "type": "color",
           "variable": "var(--color-blue-50)",
           "description": ""
@@ -825,7 +825,7 @@
             "blue",
             "100"
           ],
-          "value": "oklch(0.932 0.032 255.63)",
+          "value": "oklch(0.932 0.032 255.65)",
           "type": "color",
           "variable": "var(--color-blue-100)",
           "description": ""
@@ -837,7 +837,7 @@
             "blue",
             "200"
           ],
-          "value": "oklch(0.882 0.057 254.17)",
+          "value": "oklch(0.882 0.057 254.19)",
           "type": "color",
           "variable": "var(--color-blue-200)",
           "description": ""
@@ -849,7 +849,7 @@
             "blue",
             "300"
           ],
-          "value": "oklch(0.809 0.096 251.83)",
+          "value": "oklch(0.809 0.096 251.84)",
           "type": "color",
           "variable": "var(--color-blue-300)",
           "description": ""
@@ -861,7 +861,7 @@
             "blue",
             "400"
           ],
-          "value": "oklch(0.714 0.143 254.64)",
+          "value": "oklch(0.714 0.143 254.65)",
           "type": "color",
           "variable": "var(--color-blue-400)",
           "description": ""
@@ -873,7 +873,7 @@
             "blue",
             "500"
           ],
-          "value": "oklch(0.623 0.188 259.83)",
+          "value": "oklch(0.623 0.188 259.84)",
           "type": "color",
           "variable": "var(--color-blue-500)",
           "description": ""
@@ -885,7 +885,7 @@
             "blue",
             "600"
           ],
-          "value": "oklch(0.546 0.215 262.9)",
+          "value": "oklch(0.546 0.215 262.91)",
           "type": "color",
           "variable": "var(--color-blue-600)",
           "description": ""
@@ -897,7 +897,7 @@
             "blue",
             "700"
           ],
-          "value": "oklch(0.488 0.217 264.4)",
+          "value": "oklch(0.488 0.217 264.41)",
           "type": "color",
           "variable": "var(--color-blue-700)",
           "description": ""
@@ -909,7 +909,7 @@
             "blue",
             "800"
           ],
-          "value": "oklch(0.424 0.181 265.66)",
+          "value": "oklch(0.424 0.181 265.67)",
           "type": "color",
           "variable": "var(--color-blue-800)",
           "description": ""
@@ -921,7 +921,7 @@
             "blue",
             "900"
           ],
-          "value": "oklch(0.379 0.138 265.54)",
+          "value": "oklch(0.379 0.138 265.55)",
           "type": "color",
           "variable": "var(--color-blue-900)",
           "description": ""
@@ -947,7 +947,7 @@
             "green",
             "50"
           ],
-          "value": "oklch(0.97 0.018 156.61)",
+          "value": "oklch(0.97 0.018 156.87)",
           "type": "color",
           "variable": "var(--color-green-50)",
           "description": ""
@@ -959,7 +959,7 @@
             "green",
             "100"
           ],
-          "value": "oklch(0.932 0.043 156.96)",
+          "value": "oklch(0.932 0.043 157.07)",
           "type": "color",
           "variable": "var(--color-green-100)",
           "description": ""
@@ -971,7 +971,7 @@
             "green",
             "200"
           ],
-          "value": "oklch(0.882 0.081 156.11)",
+          "value": "oklch(0.882 0.081 156.16)",
           "type": "color",
           "variable": "var(--color-green-200)",
           "description": ""
@@ -983,7 +983,7 @@
             "green",
             "300"
           ],
-          "value": "oklch(0.809 0.136 154.54)",
+          "value": "oklch(0.809 0.136 154.57)",
           "type": "color",
           "variable": "var(--color-green-300)",
           "description": ""
@@ -995,7 +995,7 @@
             "green",
             "400"
           ],
-          "value": "oklch(0.714 0.182 151.75)",
+          "value": "oklch(0.714 0.182 151.77)",
           "type": "color",
           "variable": "var(--color-green-400)",
           "description": ""
@@ -1007,7 +1007,7 @@
             "green",
             "500"
           ],
-          "value": "oklch(0.623 0.173 149.64)",
+          "value": "oklch(0.623 0.173 149.66)",
           "type": "color",
           "variable": "var(--color-green-500)",
           "description": ""
@@ -1019,7 +1019,7 @@
             "green",
             "600"
           ],
-          "value": "oklch(0.543 0.152 149.29)",
+          "value": "oklch(0.543 0.152 149.31)",
           "type": "color",
           "variable": "var(--color-green-600)",
           "description": ""
@@ -1031,7 +1031,7 @@
             "green",
             "700"
           ],
-          "value": "oklch(0.488 0.134 150.11)",
+          "value": "oklch(0.488 0.134 150.13)",
           "type": "color",
           "variable": "var(--color-green-700)",
           "description": ""
@@ -1043,7 +1043,7 @@
             "green",
             "800"
           ],
-          "value": "oklch(0.424 0.108 151.37)",
+          "value": "oklch(0.424 0.108 151.39)",
           "type": "color",
           "variable": "var(--color-green-800)",
           "description": ""
@@ -1055,7 +1055,7 @@
             "green",
             "900"
           ],
-          "value": "oklch(0.379 0.09 152.58)",
+          "value": "oklch(0.379 0.09 152.6)",
           "type": "color",
           "variable": "var(--color-green-900)",
           "description": ""
@@ -1067,7 +1067,7 @@
             "green",
             "950"
           ],
-          "value": "oklch(0.282 0.063 152.97)",
+          "value": "oklch(0.282 0.063 152.99)",
           "type": "color",
           "variable": "var(--color-green-950)",
           "description": ""
@@ -1081,7 +1081,7 @@
             "orange",
             "50"
           ],
-          "value": "oklch(0.97 0.018 72)",
+          "value": "oklch(0.97 0.018 71.95)",
           "type": "color",
           "variable": "var(--color-orange-50)",
           "description": ""
@@ -1093,7 +1093,7 @@
             "orange",
             "100"
           ],
-          "value": "oklch(0.932 0.04 70)",
+          "value": "oklch(0.932 0.04 69.98)",
           "type": "color",
           "variable": "var(--color-orange-100)",
           "description": ""
@@ -1105,7 +1105,7 @@
             "orange",
             "200"
           ],
-          "value": "oklch(0.882 0.071 66)",
+          "value": "oklch(0.882 0.071 65.99)",
           "type": "color",
           "variable": "var(--color-orange-200)",
           "description": ""
@@ -1117,7 +1117,7 @@
             "orange",
             "300"
           ],
-          "value": "oklch(0.809 0.125 62)",
+          "value": "oklch(0.809 0.125 61.99)",
           "type": "color",
           "variable": "var(--color-orange-300)",
           "description": ""
@@ -1129,7 +1129,7 @@
             "orange",
             "400"
           ],
-          "value": "oklch(0.714 0.169 56)",
+          "value": "oklch(0.714 0.169 55.99)",
           "type": "color",
           "variable": "var(--color-orange-400)",
           "description": ""
@@ -1141,7 +1141,7 @@
             "orange",
             "500"
           ],
-          "value": "oklch(0.623 0.167 48)",
+          "value": "oklch(0.623 0.167 47.99)",
           "type": "color",
           "variable": "var(--color-orange-500)",
           "description": ""
@@ -1153,7 +1153,7 @@
             "orange",
             "600"
           ],
-          "value": "oklch(0.546 0.162 42)",
+          "value": "oklch(0.546 0.162 41.99)",
           "type": "color",
           "variable": "var(--color-orange-600)",
           "description": ""
@@ -1165,7 +1165,7 @@
             "orange",
             "700"
           ],
-          "value": "oklch(0.488 0.149 41)",
+          "value": "oklch(0.488 0.149 40.99)",
           "type": "color",
           "variable": "var(--color-orange-700)",
           "description": ""
@@ -1177,7 +1177,7 @@
             "orange",
             "800"
           ],
-          "value": "oklch(0.424 0.129 41)",
+          "value": "oklch(0.424 0.129 40.99)",
           "type": "color",
           "variable": "var(--color-orange-800)",
           "description": ""
@@ -1189,7 +1189,7 @@
             "orange",
             "900"
           ],
-          "value": "oklch(0.379 0.115 41)",
+          "value": "oklch(0.379 0.115 40.99)",
           "type": "color",
           "variable": "var(--color-orange-900)",
           "description": ""
@@ -1201,7 +1201,7 @@
             "orange",
             "950"
           ],
-          "value": "oklch(0.282 0.086 41)",
+          "value": "oklch(0.282 0.086 40.99)",
           "type": "color",
           "variable": "var(--color-orange-950)",
           "description": ""
@@ -1215,7 +1215,7 @@
             "red",
             "50"
           ],
-          "value": "oklch(0.97 0.013 16.7)",
+          "value": "oklch(0.97 0.013 16.36)",
           "type": "color",
           "variable": "var(--color-red-50)",
           "description": ""
@@ -1227,7 +1227,7 @@
             "red",
             "100"
           ],
-          "value": "oklch(0.932 0.031 17.2)",
+          "value": "oklch(0.932 0.031 17.07)",
           "type": "color",
           "variable": "var(--color-red-100)",
           "description": ""
@@ -1239,7 +1239,7 @@
             "red",
             "200"
           ],
-          "value": "oklch(0.882 0.059 18.15)",
+          "value": "oklch(0.882 0.059 18.09)",
           "type": "color",
           "variable": "var(--color-red-200)",
           "description": ""
@@ -1251,7 +1251,7 @@
             "red",
             "300"
           ],
-          "value": "oklch(0.809 0.103 19.48)",
+          "value": "oklch(0.809 0.103 19.45)",
           "type": "color",
           "variable": "var(--color-red-300)",
           "description": ""
@@ -1263,7 +1263,7 @@
             "red",
             "400"
           ],
-          "value": "oklch(0.714 0.166 22.2)",
+          "value": "oklch(0.714 0.166 22.19)",
           "type": "color",
           "variable": "var(--color-red-400)",
           "description": ""
@@ -1275,7 +1275,7 @@
             "red",
             "500"
           ],
-          "value": "oklch(0.623 0.208 25.31)",
+          "value": "oklch(0.623 0.208 25.3)",
           "type": "color",
           "variable": "var(--color-red-500)",
           "description": ""
@@ -1287,7 +1287,7 @@
             "red",
             "600"
           ],
-          "value": "oklch(0.546 0.215 27.31)",
+          "value": "oklch(0.546 0.215 27.3)",
           "type": "color",
           "variable": "var(--color-red-600)",
           "description": ""
@@ -1299,7 +1299,7 @@
             "red",
             "700"
           ],
-          "value": "oklch(0.488 0.19 27.49)",
+          "value": "oklch(0.488 0.19 27.48)",
           "type": "color",
           "variable": "var(--color-red-700)",
           "description": ""
@@ -1311,7 +1311,7 @@
             "red",
             "800"
           ],
-          "value": "oklch(0.424 0.161 26.88)",
+          "value": "oklch(0.424 0.161 26.87)",
           "type": "color",
           "variable": "var(--color-red-800)",
           "description": ""
@@ -1323,7 +1323,7 @@
             "red",
             "900"
           ],
-          "value": "oklch(0.379 0.133 25.69)",
+          "value": "oklch(0.379 0.133 25.68)",
           "type": "color",
           "variable": "var(--color-red-900)",
           "description": ""
@@ -1335,7 +1335,7 @@
             "red",
             "950"
           ],
-          "value": "oklch(0.282 0.089 26.02)",
+          "value": "oklch(0.282 0.089 26.01)",
           "type": "color",
           "variable": "var(--color-red-950)",
           "description": ""
@@ -1349,7 +1349,7 @@
             "purple",
             "50"
           ],
-          "value": "oklch(0.97 0.014 307.82)",
+          "value": "oklch(0.97 0.014 307.58)",
           "type": "color",
           "variable": "var(--color-purple-50)",
           "description": ""
@@ -1361,7 +1361,7 @@
             "purple",
             "100"
           ],
-          "value": "oklch(0.932 0.033 306.99)",
+          "value": "oklch(0.932 0.033 306.9)",
           "type": "color",
           "variable": "var(--color-purple-100)",
           "description": ""
@@ -1373,7 +1373,7 @@
             "purple",
             "200"
           ],
-          "value": "oklch(0.882 0.06 306.55)",
+          "value": "oklch(0.882 0.06 306.5)",
           "type": "color",
           "variable": "var(--color-purple-200)",
           "description": ""
@@ -1385,7 +1385,7 @@
             "purple",
             "300"
           ],
-          "value": "oklch(0.809 0.108 306.34)",
+          "value": "oklch(0.809 0.108 306.32)",
           "type": "color",
           "variable": "var(--color-purple-300)",
           "description": ""
@@ -1397,7 +1397,7 @@
             "purple",
             "400"
           ],
-          "value": "oklch(0.714 0.177 305.48)",
+          "value": "oklch(0.714 0.177 305.47)",
           "type": "color",
           "variable": "var(--color-purple-400)",
           "description": ""
@@ -1483,7 +1483,7 @@
             "pink",
             "50"
           ],
-          "value": "oklch(0.97 0.011 356.14)",
+          "value": "oklch(0.97 0.011 355.71)",
           "type": "color",
           "variable": "var(--color-pink-50)",
           "description": ""
@@ -1495,7 +1495,7 @@
             "pink",
             "100"
           ],
-          "value": "oklch(0.932 0.027 354.18)",
+          "value": "oklch(0.932 0.027 354.01)",
           "type": "color",
           "variable": "var(--color-pink-100)",
           "description": ""
@@ -1507,7 +1507,7 @@
             "pink",
             "200"
           ],
-          "value": "oklch(0.882 0.049 353.38)",
+          "value": "oklch(0.882 0.049 353.29)",
           "type": "color",
           "variable": "var(--color-pink-200)",
           "description": ""
@@ -1519,7 +1519,7 @@
             "pink",
             "300"
           ],
-          "value": "oklch(0.809 0.085 357.23)",
+          "value": "oklch(0.809 0.085 357.19)",
           "type": "color",
           "variable": "var(--color-pink-300)",
           "description": ""
@@ -1531,7 +1531,7 @@
             "pink",
             "400"
           ],
-          "value": "oklch(0.714 0.137 2.17)",
+          "value": "oklch(0.714 0.137 2.15)",
           "type": "color",
           "variable": "var(--color-pink-400)",
           "description": ""
@@ -1543,7 +1543,7 @@
             "pink",
             "500"
           ],
-          "value": "oklch(0.623 0.177 5.37)",
+          "value": "oklch(0.623 0.177 5.36)",
           "type": "color",
           "variable": "var(--color-pink-500)",
           "description": ""
@@ -1555,7 +1555,7 @@
             "pink",
             "600"
           ],
-          "value": "oklch(0.546 0.209 7.99)",
+          "value": "oklch(0.546 0.209 7.98)",
           "type": "color",
           "variable": "var(--color-pink-600)",
           "description": ""
@@ -1567,7 +1567,7 @@
             "pink",
             "700"
           ],
-          "value": "oklch(0.488 0.195 10.53)",
+          "value": "oklch(0.488 0.195 10.52)",
           "type": "color",
           "variable": "var(--color-pink-700)",
           "description": ""
@@ -1579,7 +1579,7 @@
             "pink",
             "800"
           ],
-          "value": "oklch(0.424 0.169 14.62)",
+          "value": "oklch(0.424 0.169 14.61)",
           "type": "color",
           "variable": "var(--color-pink-800)",
           "description": ""
@@ -1591,7 +1591,7 @@
             "pink",
             "900"
           ],
-          "value": "oklch(0.379 0.151 15.96)",
+          "value": "oklch(0.379 0.151 15.95)",
           "type": "color",
           "variable": "var(--color-pink-900)",
           "description": ""
@@ -1603,7 +1603,7 @@
             "pink",
             "950"
           ],
-          "value": "oklch(0.282 0.113 18.62)",
+          "value": "oklch(0.282 0.113 18.61)",
           "type": "color",
           "variable": "var(--color-pink-950)",
           "description": ""
@@ -1617,7 +1617,7 @@
             "yellow",
             "50"
           ],
-          "value": "oklch(0.97 0.04 96)",
+          "value": "oklch(0.97 0.04 96.03)",
           "type": "color",
           "variable": "var(--color-yellow-50)",
           "description": ""
@@ -1629,7 +1629,7 @@
             "yellow",
             "100"
           ],
-          "value": "oklch(0.932 0.086 95)",
+          "value": "oklch(0.932 0.086 95.01)",
           "type": "color",
           "variable": "var(--color-yellow-100)",
           "description": ""
@@ -1641,7 +1641,7 @@
             "yellow",
             "200"
           ],
-          "value": "oklch(0.882 0.139 92)",
+          "value": "oklch(0.882 0.139 92.01)",
           "type": "color",
           "variable": "var(--color-yellow-200)",
           "description": ""
@@ -2646,34 +2646,10 @@
           "background",
           "default"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-background-default)",
         "description": "Page background. The default, muted and faint foreground tokens are readable on it."
-      },
-      "color-background-muted": {
-        "name": "colorBackgroundMuted",
-        "path": [
-          "color",
-          "background",
-          "muted"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-background-muted)",
-        "description": "Quiet surface for sections, panels and containers. The default, muted and faint foreground tokens are readable on it."
-      },
-      "color-background-emphasis": {
-        "name": "colorBackgroundEmphasis",
-        "path": [
-          "color",
-          "background",
-          "emphasis"
-        ],
-        "value": "oklch(0.87 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-background-emphasis)",
-        "description": "Stronger surface for nested or emphasized areas, one step more contrast than muted. The default and muted foreground tokens are readable on it."
       },
       "color-background-raised": {
         "name": "colorBackgroundRaised",
@@ -2682,7 +2658,7 @@
           "background",
           "raised"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-background-raised)",
         "description": "Surface of a component that floats above the page (card, popover, dropdown, dialog, sheet, toast). The same as the page in Light, one step lighter in Dark."
@@ -2694,10 +2670,34 @@
           "background",
           "overlay"
         ],
-        "value": "oklch(0.149 0.012 259.72)",
+        "value": "oklch(0.149 0.012 259.73)",
         "type": "color",
         "variable": "var(--color-background-overlay)",
         "description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque."
+      },
+      "color-background-muted": {
+        "name": "colorBackgroundMuted",
+        "path": [
+          "color",
+          "background",
+          "muted"
+        ],
+        "value": "oklch(0.952 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-background-muted)",
+        "description": "Quiet surface for sections, panels and containers. The default, muted and faint foreground tokens are readable on it."
+      },
+      "color-background-emphasis": {
+        "name": "colorBackgroundEmphasis",
+        "path": [
+          "color",
+          "background",
+          "emphasis"
+        ],
+        "value": "oklch(0.87 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-background-emphasis)",
+        "description": "Stronger surface for nested or emphasized areas, one step more contrast than muted. The default and muted foreground tokens are readable on it."
       },
       "color-background-inverse": {
         "name": "colorBackgroundInverse",
@@ -2706,7 +2706,7 @@
           "background",
           "inverse"
         ],
-        "value": "oklch(0.149 0.012 259.72)",
+        "value": "oklch(0.149 0.012 259.73)",
         "type": "color",
         "variable": "var(--color-background-inverse)",
         "description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
@@ -2718,7 +2718,7 @@
           "background",
           "primary"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-background-primary)",
         "description": "Solid fill for the main action colour. Pairs with foreground.primary."
@@ -2730,7 +2730,7 @@
           "background",
           "primary-muted"
         ],
-        "value": "oklch(0.97 0.014 254.77)",
+        "value": "oklch(0.97 0.014 254.82)",
         "type": "color",
         "variable": "var(--color-background-primary-muted)",
         "description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
@@ -2742,7 +2742,7 @@
           "background",
           "primary-emphasis"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-background-primary-emphasis)",
         "description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
@@ -2754,7 +2754,7 @@
           "background",
           "danger"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-background-danger)",
         "description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
@@ -2766,7 +2766,7 @@
           "background",
           "danger-muted"
         ],
-        "value": "oklch(0.97 0.013 16.7)",
+        "value": "oklch(0.97 0.013 16.36)",
         "type": "color",
         "variable": "var(--color-background-danger-muted)",
         "description": "Quiet tint of the danger role for alerts, badges and highlights. Pairs with foreground.danger-muted."
@@ -2778,7 +2778,7 @@
           "background",
           "danger-emphasis"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-background-danger-emphasis)",
         "description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it."
@@ -2790,7 +2790,7 @@
           "background",
           "success"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-background-success)",
         "description": "Solid fill for positive confirmation. Pairs with foreground.success."
@@ -2802,7 +2802,7 @@
           "background",
           "success-muted"
         ],
-        "value": "oklch(0.97 0.018 156.61)",
+        "value": "oklch(0.97 0.018 156.87)",
         "type": "color",
         "variable": "var(--color-background-success-muted)",
         "description": "Quiet tint of the success role for alerts, badges and highlights. Pairs with foreground.success-muted."
@@ -2814,7 +2814,7 @@
           "background",
           "success-emphasis"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.488 0.134 150.13)",
         "type": "color",
         "variable": "var(--color-background-success-emphasis)",
         "description": "Stronger tone of the solid success fill. Components use it for hover and pressed states; foreground.success is readable on it."
@@ -2838,7 +2838,7 @@
           "background",
           "warning-muted"
         ],
-        "value": "oklch(0.97 0.04 96)",
+        "value": "oklch(0.97 0.04 96.03)",
         "type": "color",
         "variable": "var(--color-background-warning-muted)",
         "description": "Quiet tint of the warning role for alerts, badges and highlights. Pairs with foreground.warning-muted."
@@ -2862,7 +2862,7 @@
           "background",
           "info-muted"
         ],
-        "value": "oklch(0.97 0.014 254.77)",
+        "value": "oklch(0.97 0.014 254.82)",
         "type": "color",
         "variable": "var(--color-background-info-muted)",
         "description": "Quiet informational tint for alerts and highlights. Pairs with foreground.info-muted."
@@ -2912,7 +2912,7 @@
           "foreground",
           "inverse"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-foreground-inverse)",
         "description": "Text and icons on background.inverse."
@@ -2924,7 +2924,7 @@
           "foreground",
           "primary"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-foreground-primary)",
         "description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
@@ -2936,7 +2936,7 @@
           "foreground",
           "primary-muted"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-foreground-primary-muted)",
         "description": "Primary text on its tint (background.primary-muted) and on the page."
@@ -2948,7 +2948,7 @@
           "foreground",
           "danger"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-foreground-danger)",
         "description": "Text and icons on the solid danger fill. Pairs with background.danger and background.danger-emphasis."
@@ -2960,7 +2960,7 @@
           "foreground",
           "danger-muted"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-foreground-danger-muted)",
         "description": "Danger text on its tint (background.danger-muted) and on the page."
@@ -2972,7 +2972,7 @@
           "foreground",
           "success"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-foreground-success)",
         "description": "Text and icons on the solid success fill. Pairs with background.success and background.success-emphasis."
@@ -2984,7 +2984,7 @@
           "foreground",
           "success-muted"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.488 0.134 150.13)",
         "type": "color",
         "variable": "var(--color-foreground-success-muted)",
         "description": "Success text on its tint (background.success-muted) and on the page."
@@ -2996,7 +2996,7 @@
           "foreground",
           "warning"
         ],
-        "value": "oklch(0.149 0.012 259.72)",
+        "value": "oklch(0.149 0.012 259.73)",
         "type": "color",
         "variable": "var(--color-foreground-warning)",
         "description": "Dark text and icons on the solid warning fill (an amber fill cannot hold light text). Pairs with background.warning and background.warning-emphasis."
@@ -3020,7 +3020,7 @@
           "foreground",
           "info-muted"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-foreground-info-muted)",
         "description": "Informational text on its tint (background.info-muted) and on the page."
@@ -3034,7 +3034,7 @@
           "border",
           "default"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-border-default)",
         "description": "Default border for cards, inputs and containers."
@@ -3046,7 +3046,7 @@
           "border",
           "muted"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-border-muted)",
         "description": "Quieter border for subtle dividers."
@@ -3058,7 +3058,7 @@
           "border",
           "emphasis"
         ],
-        "value": "oklch(0.613 0.005 258.45)",
+        "value": "oklch(0.613 0.005 258.5)",
         "type": "color",
         "variable": "var(--color-border-emphasis)",
         "description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches)."
@@ -3070,7 +3070,7 @@
           "border",
           "primary"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-border-primary)",
         "description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
@@ -3082,7 +3082,7 @@
           "border",
           "danger"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-border-danger)",
         "description": "Border in the danger colour for alerts, toasts and highlights."
@@ -3094,7 +3094,7 @@
           "border",
           "success"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-border-success)",
         "description": "Border in the success colour for alerts, toasts and highlights."
@@ -3132,7 +3132,7 @@
           "focus",
           "halo"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-focus-halo)",
         "description": "Keyboard focus halo: the page-tone band drawn between the control and the outline and outside the outline, so the indicator is separated from any fill or surface it sits on."
@@ -3327,7 +3327,7 @@
           "default",
           "background"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-badge-default-background)",
         "description": "Fill of the default badge. Pairs with `badge.default.text`."
@@ -3339,7 +3339,7 @@
           "default",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-badge-default-text)",
         "description": "Text colour of the default badge. Pairs with `badge.default.background`."
@@ -3351,7 +3351,7 @@
           "default",
           "border"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-badge-default-border)",
         "description": "Border colour of the default badge."
@@ -3363,7 +3363,7 @@
           "secondary",
           "background"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background)",
         "description": "Fill of the secondary badge. Pairs with `badge.secondary.text`."
@@ -3387,7 +3387,7 @@
           "secondary",
           "border"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-secondary-border)",
         "description": "Border colour of the secondary badge."
@@ -3399,7 +3399,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-badge-success-background)",
         "description": "Fill of the success badge. Pairs with `badge.success.text`."
@@ -3411,7 +3411,7 @@
           "success",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-badge-success-text)",
         "description": "Label colour on the success badge. Pairs with `badge.success.background`."
@@ -3423,7 +3423,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-badge-success-border)",
         "description": "Border colour of the success badge."
@@ -3447,7 +3447,7 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.149 0.012 259.72)",
+        "value": "oklch(0.149 0.012 259.73)",
         "type": "color",
         "variable": "var(--color-badge-warning-text)",
         "description": "Text colour of the warning badge. Pairs with `badge.warning.background`."
@@ -3471,7 +3471,7 @@
           "destructive",
           "background"
         ],
-        "value": "oklch(0.97 0.013 16.7)",
+        "value": "oklch(0.97 0.013 16.36)",
         "type": "color",
         "variable": "var(--color-badge-destructive-background)",
         "description": "Fill of the destructive badge, a muted danger tint rather than a solid. Pairs with `badge.destructive.text`."
@@ -3483,7 +3483,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-badge-destructive-text)",
         "description": "Text colour of the destructive badge. Pairs with `badge.destructive.background`."
@@ -3495,7 +3495,7 @@
           "destructive",
           "border"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-badge-destructive-border)",
         "description": "Outline of the destructive badge, in the danger border tone."
@@ -3507,7 +3507,7 @@
           "outline",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-badge-outline-background)",
         "description": "Fill of the outline badge. Pairs with `badge.outline.text`."
@@ -3531,7 +3531,7 @@
           "outline",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-badge-outline-border)",
         "description": "Border colour of the outline badge."
@@ -3695,7 +3695,7 @@
           "default",
           "background-hover"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-badge-default-background-hover)",
         "description": "Fill of an interactive default badge while hovered. Applies only when the badge is interactive."
@@ -3707,7 +3707,7 @@
           "secondary",
           "background-hover"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background-hover)",
         "description": "Fill of the secondary badge while hovered."
@@ -3719,7 +3719,7 @@
           "success",
           "background-hover"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.488 0.134 150.13)",
         "type": "color",
         "variable": "var(--color-badge-success-background-hover)",
         "description": "Fill of the success badge while hovered."
@@ -3743,7 +3743,7 @@
           "destructive",
           "background-hover"
         ],
-        "value": "oklch(0.97 0.013 16.7)",
+        "value": "oklch(0.97 0.013 16.36)",
         "type": "color",
         "variable": "var(--color-badge-destructive-background-hover)",
         "description": "Fill of the destructive badge while hovered."
@@ -3755,7 +3755,7 @@
           "outline",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-outline-background-hover)",
         "description": "Fill of the outline badge while hovered."
@@ -3767,7 +3767,7 @@
           "default",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-default-background-disabled)",
         "description": "Fill of the default badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.default.text-disabled`."
@@ -3779,7 +3779,7 @@
           "secondary",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background-disabled)",
         "description": "Fill of the secondary badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.secondary.text-disabled`."
@@ -3791,7 +3791,7 @@
           "success",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-success-background-disabled)",
         "description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`."
@@ -3803,7 +3803,7 @@
           "warning",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-warning-background-disabled)",
         "description": "Fill of the warning badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.warning.text-disabled`."
@@ -3815,7 +3815,7 @@
           "destructive",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-destructive-background-disabled)",
         "description": "Fill of the destructive badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.destructive.text-disabled`."
@@ -3827,7 +3827,7 @@
           "outline",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-outline-background-disabled)",
         "description": "Fill of the outline badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.outline.text-disabled`."
@@ -3851,7 +3851,7 @@
           "default",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-default-border-disabled)",
         "description": "Border colour of the default badge when disabled, in the muted border tone."
@@ -3875,7 +3875,7 @@
           "secondary",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-secondary-border-disabled)",
         "description": "Border colour of the secondary badge when disabled, in the muted border tone."
@@ -3899,7 +3899,7 @@
           "success",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-success-border-disabled)",
         "description": "Border colour of the success badge when disabled, in the muted border tone."
@@ -3923,7 +3923,7 @@
           "warning",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-warning-border-disabled)",
         "description": "Border colour of the warning badge when disabled, in the muted border tone."
@@ -3947,7 +3947,7 @@
           "destructive",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-destructive-border-disabled)",
         "description": "Border colour of the destructive badge when disabled, in the muted border tone."
@@ -3971,7 +3971,7 @@
           "outline",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-badge-outline-border-disabled)",
         "description": "Border colour of the outline badge when disabled, in the muted border tone."
@@ -3985,7 +3985,7 @@
           "primary",
           "background"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-button-primary-background)",
         "description": "Fill of the primary button. Pairs with `button.primary.text`."
@@ -3997,7 +3997,7 @@
           "primary",
           "background-hover"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-button-primary-background-hover)",
         "description": "Primary button fill while hovered, one step stronger than the resting fill."
@@ -4009,7 +4009,7 @@
           "primary",
           "background-active"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-button-primary-background-active)",
         "description": "Fill of the primary button while pressed."
@@ -4021,7 +4021,7 @@
           "primary",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-button-primary-text)",
         "description": "Label colour on the primary button. Pairs with `button.primary.background`."
@@ -4033,7 +4033,7 @@
           "primary",
           "border"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-button-primary-border)",
         "description": "Border colour of the primary button."
@@ -4045,7 +4045,7 @@
           "secondary",
           "background"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-secondary-background)",
         "description": "Fill of the secondary button. Pairs with `button.secondary.text`."
@@ -4057,7 +4057,7 @@
           "secondary",
           "background-hover"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-secondary-background-hover)",
         "description": "Fill of the secondary button while hovered."
@@ -4069,7 +4069,7 @@
           "secondary",
           "background-active"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-secondary-background-active)",
         "description": "Fill of the secondary button while pressed."
@@ -4093,7 +4093,7 @@
           "secondary",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-button-secondary-border)",
         "description": "Outline of the secondary button, in the default border tone."
@@ -4105,7 +4105,7 @@
           "outline",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-button-outline-background)",
         "description": "Fill of the outline button. Pairs with `button.outline.text`."
@@ -4117,7 +4117,7 @@
           "ghost",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-button-ghost-background)",
         "description": "Fill of the ghost button. Pairs with `button.ghost.text`."
@@ -4129,7 +4129,7 @@
           "ghost",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-ghost-background-hover)",
         "description": "Fill of the ghost button while hovered."
@@ -4141,7 +4141,7 @@
           "ghost",
           "background-active"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-ghost-background-active)",
         "description": "Fill of the ghost button while pressed."
@@ -4165,7 +4165,7 @@
           "outline",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-outline-background-hover)",
         "description": "Fill of the outline button while hovered."
@@ -4189,7 +4189,7 @@
           "outline",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-button-outline-border)",
         "description": "Border colour of the outline button."
@@ -4201,7 +4201,7 @@
           "destructive",
           "background"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-button-destructive-background)",
         "description": "Fill of the destructive button. Pairs with `button.destructive.text`."
@@ -4213,7 +4213,7 @@
           "destructive",
           "background-hover"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-button-destructive-background-hover)",
         "description": "Fill of the destructive button while hovered."
@@ -4225,7 +4225,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-button-destructive-text)",
         "description": "Text colour of the destructive button. Pairs with `button.destructive.background`."
@@ -4237,7 +4237,7 @@
           "destructive",
           "border"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-button-destructive-border)",
         "description": "Border colour of the destructive button."
@@ -4277,17 +4277,6 @@
         "type": "spacing",
         "variable": "var(--button-padding-y-lg)",
         "description": "Vertical padding of the large button."
-      },
-      "button-icon-size": {
-        "name": "buttonIconSize",
-        "path": [
-          "button",
-          "icon-size"
-        ],
-        "value": "40px",
-        "type": "spacing",
-        "variable": "var(--button-icon-size)",
-        "description": "Width and height of the icon-only button."
       },
       "button-padding-x-sm": {
         "name": "buttonPaddingXSm",
@@ -4405,13 +4394,24 @@
         "variable": "var(--button-border-width)",
         "description": "Border thickness shared by every button variant."
       },
+      "button-icon-size": {
+        "name": "buttonIconSize",
+        "path": [
+          "button",
+          "icon-size"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--button-icon-size)",
+        "description": "Width and height of the icon-only button."
+      },
       "button-link-text": {
         "name": "buttonLinkText",
         "path": [
           "button",
           "link-text"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-button-link-text)",
         "description": "Label colour of the link-style button, which has no fill or border."
@@ -4423,7 +4423,7 @@
           "primary",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-primary-background-disabled)",
         "description": "Primary button fill when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.primary.text-disabled`."
@@ -4447,7 +4447,7 @@
           "primary",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-primary-border-disabled)",
         "description": "Border colour of the primary button when disabled, in the muted border tone."
@@ -4459,7 +4459,7 @@
           "secondary",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-secondary-background-disabled)",
         "description": "Fill of the secondary button when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.secondary.text-disabled`."
@@ -4483,7 +4483,7 @@
           "secondary",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-secondary-border-disabled)",
         "description": "Border colour of the secondary button when disabled, in the muted border tone."
@@ -4495,7 +4495,7 @@
           "destructive",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-destructive-background-disabled)",
         "description": "Fill of the destructive button when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.destructive.text-disabled`."
@@ -4519,7 +4519,7 @@
           "destructive",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-destructive-border-disabled)",
         "description": "Border colour of the destructive button when disabled, in the muted border tone."
@@ -4543,7 +4543,7 @@
           "outline",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-button-outline-border-disabled)",
         "description": "Border colour of the outline button when disabled, in the muted border tone."
@@ -4615,7 +4615,7 @@
           "card",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-card-background)",
         "description": "Fill of the card."
@@ -4626,7 +4626,7 @@
           "card",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-card-border)",
         "description": "Border colour of the card."
@@ -4663,17 +4663,6 @@
         "type": "dimension",
         "variable": "var(--card-radius)",
         "description": "Corner radius of the card."
-      },
-      "card-header-gap": {
-        "name": "cardHeaderGap",
-        "path": [
-          "card",
-          "header-gap"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--card-header-gap)",
-        "description": "Gap between the title and description in the card header."
       },
       "card-header-title-font-size": {
         "name": "cardHeaderTitleFontSize",
@@ -4853,7 +4842,7 @@
           "card",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-card-background-hover)",
         "description": "Fill of an interactive card while hovered."
@@ -4864,7 +4853,7 @@
           "card",
           "border-hover"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-card-border-hover)",
         "description": "Border colour of an interactive card while hovered."
@@ -4875,7 +4864,7 @@
           "card",
           "background-active"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-card-background-active)",
         "description": "Fill of an interactive card while pressed."
@@ -4886,10 +4875,21 @@
           "card",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-card-background-disabled)",
         "description": "Fill of a disabled card, a quiet neutral so it reads as unavailable."
+      },
+      "card-header-gap": {
+        "name": "cardHeaderGap",
+        "path": [
+          "card",
+          "header-gap"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--card-header-gap)",
+        "description": "Gap between the title and description in the card header."
       },
       "card-border-disabled": {
         "name": "cardBorderDisabled",
@@ -4897,7 +4897,7 @@
           "card",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-card-border-disabled)",
         "description": "Border colour of a disabled card, in the muted border tone."
@@ -4910,7 +4910,7 @@
           "input",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-input-background-hover)",
         "description": "Fill of the input while hovered."
@@ -4921,7 +4921,7 @@
           "input",
           "border"
         ],
-        "value": "oklch(0.613 0.005 258.45)",
+        "value": "oklch(0.613 0.005 258.5)",
         "type": "color",
         "variable": "var(--color-input-border)",
         "description": "Border colour of the input."
@@ -4932,7 +4932,7 @@
           "input",
           "border-error"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-input-border-error)",
         "description": "Border colour of the input in the error state."
@@ -4947,28 +4947,6 @@
         "type": "color",
         "variable": "var(--color-input-placeholder)",
         "description": "Colour of placeholder text, muted so it reads as a hint rather than a value."
-      },
-      "input-background-disabled": {
-        "name": "inputBackgroundDisabled",
-        "path": [
-          "input",
-          "background-disabled"
-        ],
-        "value": "oklch(0.87 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-input-background-disabled)",
-        "description": "Fill of the input when disabled, a quiet neutral so it reads as unavailable. Pairs with `input.text-disabled`."
-      },
-      "input-text-disabled": {
-        "name": "inputTextDisabled",
-        "path": [
-          "input",
-          "text-disabled"
-        ],
-        "value": "oklch(0.52 0.007 264.5)",
-        "type": "color",
-        "variable": "var(--color-input-text-disabled)",
-        "description": "Text colour of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
       },
       "input-padding-x": {
         "name": "inputPaddingX",
@@ -5035,7 +5013,7 @@
           "default",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-input-default-background)",
         "description": "Fill of the default input. Pairs with `input.default.text`."
@@ -5088,13 +5066,35 @@
         "variable": "var(--input-padding-y-lg)",
         "description": "Vertical padding of the large input. `space.200` (16px) plus `font-size.lg` (18px) gives a 50px height."
       },
+      "input-background-disabled": {
+        "name": "inputBackgroundDisabled",
+        "path": [
+          "input",
+          "background-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-input-background-disabled)",
+        "description": "Fill of the input when disabled, a quiet neutral so it reads as unavailable. Pairs with `input.text-disabled`."
+      },
+      "input-text-disabled": {
+        "name": "inputTextDisabled",
+        "path": [
+          "input",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-input-text-disabled)",
+        "description": "Text colour of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
+      },
       "input-border-success": {
         "name": "inputBorderSuccess",
         "path": [
           "input",
           "border-success"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-input-border-success)",
         "description": "Border colour of the input in the success state."
@@ -5119,7 +5119,7 @@
           "default",
           "background"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-alert-default-background)",
         "description": "Fill of the default alert. Pairs with `alert.default.text`."
@@ -5131,7 +5131,7 @@
           "default",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-alert-default-border)",
         "description": "Border colour of the default alert."
@@ -5155,7 +5155,7 @@
           "destructive",
           "background"
         ],
-        "value": "oklch(0.97 0.013 16.7)",
+        "value": "oklch(0.97 0.013 16.36)",
         "type": "color",
         "variable": "var(--color-alert-destructive-background)",
         "description": "Fill of the destructive alert. Pairs with `alert.destructive.text`."
@@ -5167,7 +5167,7 @@
           "destructive",
           "border"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-alert-destructive-border)",
         "description": "Border colour of the destructive alert."
@@ -5179,7 +5179,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-alert-destructive-text)",
         "description": "Text colour of the destructive alert. Pairs with `alert.destructive.background`."
@@ -5191,7 +5191,7 @@
           "warning",
           "background"
         ],
-        "value": "oklch(0.97 0.04 96)",
+        "value": "oklch(0.97 0.04 96.03)",
         "type": "color",
         "variable": "var(--color-alert-warning-background)",
         "description": "Fill of the warning alert. Pairs with `alert.warning.text`."
@@ -5227,7 +5227,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.97 0.018 156.61)",
+        "value": "oklch(0.97 0.018 156.87)",
         "type": "color",
         "variable": "var(--color-alert-success-background)",
         "description": "Fill of the success alert. Pairs with `alert.success.text`."
@@ -5239,7 +5239,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-alert-success-border)",
         "description": "Border colour of the success alert."
@@ -5251,7 +5251,7 @@
           "success",
           "text"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.488 0.134 150.13)",
         "type": "color",
         "variable": "var(--color-alert-success-text)",
         "description": "Text colour of the success alert. Pairs with `alert.success.background`."
@@ -5402,7 +5402,7 @@
           "menubar",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-menubar-border)",
         "description": "Border colour of the menubar."
@@ -5413,32 +5413,10 @@
           "menubar",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-menubar-background)",
         "description": "Fill of the menubar."
-      },
-      "menubar-trigger-highlighted": {
-        "name": "menubarTriggerHighlighted",
-        "path": [
-          "menubar",
-          "trigger-highlighted"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-menubar-trigger-highlighted)",
-        "description": "Fill of the menubar trigger while highlighted. Pairs with `menubar.trigger-text-highlighted`."
-      },
-      "menubar-trigger-text-highlighted": {
-        "name": "menubarTriggerTextHighlighted",
-        "path": [
-          "menubar",
-          "trigger-text-highlighted"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-menubar-trigger-text-highlighted)",
-        "description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
       },
       "menubar-trigger-open": {
         "name": "menubarTriggerOpen",
@@ -5446,7 +5424,7 @@
           "menubar",
           "trigger-open"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-menubar-trigger-open)",
         "description": "Fill of the menubar trigger when open. Pairs with `menubar.trigger-text-open`."
@@ -5468,7 +5446,7 @@
           "menubar",
           "content-border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-menubar-content-border)",
         "description": "Border colour of the menubar content."
@@ -5479,7 +5457,7 @@
           "menubar",
           "content-background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-menubar-content-background)",
         "description": "Fill of the menubar content. Pairs with `menubar.content-text`."
@@ -5494,28 +5472,6 @@
         "type": "color",
         "variable": "var(--color-menubar-content-text)",
         "description": "Text colour of the menubar content. Pairs with `menubar.content-background`."
-      },
-      "menubar-item-highlighted": {
-        "name": "menubarItemHighlighted",
-        "path": [
-          "menubar",
-          "item-highlighted"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-menubar-item-highlighted)",
-        "description": "Fill of the menubar item while highlighted. Pairs with `menubar.item-text-highlighted`."
-      },
-      "menubar-item-text-highlighted": {
-        "name": "menubarItemTextHighlighted",
-        "path": [
-          "menubar",
-          "item-text-highlighted"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-menubar-item-text-highlighted)",
-        "description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
       },
       "menubar-label": {
         "name": "menubarLabel",
@@ -5534,7 +5490,7 @@
           "menubar",
           "separator"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-menubar-separator)",
         "description": "Fill of the menubar separator."
@@ -5598,28 +5554,6 @@
         "variable": "var(--menubar-trigger-padding-y)",
         "description": "Vertical padding of the menubar trigger."
       },
-      "menubar-content-min-width": {
-        "name": "menubarContentMinWidth",
-        "path": [
-          "menubar",
-          "content-min-width"
-        ],
-        "value": "256px",
-        "type": "spacing",
-        "variable": "var(--menubar-content-min-width)",
-        "description": "Minimum width of the menubar content."
-      },
-      "menubar-sub-content-min-width": {
-        "name": "menubarSubContentMinWidth",
-        "path": [
-          "menubar",
-          "sub-content-min-width"
-        ],
-        "value": "160px",
-        "type": "spacing",
-        "variable": "var(--menubar-sub-content-min-width)",
-        "description": "Minimum width of the menubar sub content."
-      },
       "menubar-item-padding-x": {
         "name": "menubarItemPaddingX",
         "path": [
@@ -5667,50 +5601,6 @@
         "type": "spacing",
         "variable": "var(--menubar-item-icon-size)",
         "description": "Size of the menubar item icon."
-      },
-      "menubar-shortcut-font-size": {
-        "name": "menubarShortcutFontSize",
-        "path": [
-          "menubar",
-          "shortcut-font-size"
-        ],
-        "value": 12,
-        "type": "number",
-        "variable": "var(--menubar-shortcut-font-size)",
-        "description": "Font size of the menubar shortcut."
-      },
-      "menubar-separator-height": {
-        "name": "menubarSeparatorHeight",
-        "path": [
-          "menubar",
-          "separator-height"
-        ],
-        "value": "1px",
-        "type": "spacing",
-        "variable": "var(--menubar-separator-height)",
-        "description": "Height of the menubar separator."
-      },
-      "menubar-separator-margin-y": {
-        "name": "menubarSeparatorMarginY",
-        "path": [
-          "menubar",
-          "separator-margin-y"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--menubar-separator-margin-y)",
-        "description": "Vertical margin of the menubar separator."
-      },
-      "menubar-separator-margin-x": {
-        "name": "menubarSeparatorMarginX",
-        "path": [
-          "menubar",
-          "separator-margin-x"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--menubar-separator-margin-x)",
-        "description": "Horizontal margin of the menubar separator."
       },
       "menubar-list-gap": {
         "name": "menubarListGap",
@@ -5800,17 +5690,6 @@
         "variable": "var(--menubar-item-font-size)",
         "description": "Font size of the menubar item."
       },
-      "menubar-radio-indicator-size": {
-        "name": "menubarRadioIndicatorSize",
-        "path": [
-          "menubar",
-          "radio-indicator-size"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--menubar-radio-indicator-size)",
-        "description": "Size of the menubar radio indicator."
-      },
       "menubar-trigger-font-weight": {
         "name": "menubarTriggerFontWeight",
         "path": [
@@ -5822,6 +5701,83 @@
         "type": "number",
         "variable": "var(--menubar-trigger-font-weight)",
         "description": "Font weight of the menubar trigger."
+      },
+      "menubar-content-min-width": {
+        "name": "menubarContentMinWidth",
+        "path": [
+          "menubar",
+          "content-min-width"
+        ],
+        "value": "256px",
+        "type": "spacing",
+        "variable": "var(--menubar-content-min-width)",
+        "description": "Minimum width of the menubar content."
+      },
+      "menubar-sub-content-min-width": {
+        "name": "menubarSubContentMinWidth",
+        "path": [
+          "menubar",
+          "sub-content-min-width"
+        ],
+        "value": "160px",
+        "type": "spacing",
+        "variable": "var(--menubar-sub-content-min-width)",
+        "description": "Minimum width of the menubar sub content."
+      },
+      "menubar-shortcut-font-size": {
+        "name": "menubarShortcutFontSize",
+        "path": [
+          "menubar",
+          "shortcut-font-size"
+        ],
+        "value": 12,
+        "type": "number",
+        "variable": "var(--menubar-shortcut-font-size)",
+        "description": "Font size of the menubar shortcut."
+      },
+      "menubar-separator-height": {
+        "name": "menubarSeparatorHeight",
+        "path": [
+          "menubar",
+          "separator-height"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--menubar-separator-height)",
+        "description": "Height of the menubar separator."
+      },
+      "menubar-separator-margin-y": {
+        "name": "menubarSeparatorMarginY",
+        "path": [
+          "menubar",
+          "separator-margin-y"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--menubar-separator-margin-y)",
+        "description": "Vertical margin of the menubar separator."
+      },
+      "menubar-separator-margin-x": {
+        "name": "menubarSeparatorMarginX",
+        "path": [
+          "menubar",
+          "separator-margin-x"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--menubar-separator-margin-x)",
+        "description": "Horizontal margin of the menubar separator."
+      },
+      "menubar-radio-indicator-size": {
+        "name": "menubarRadioIndicatorSize",
+        "path": [
+          "menubar",
+          "radio-indicator-size"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--menubar-radio-indicator-size)",
+        "description": "Size of the menubar radio indicator."
       },
       "menubar-label-font-weight": {
         "name": "menubarLabelFontWeight",
@@ -5867,6 +5823,50 @@
         "type": "color",
         "variable": "var(--color-menubar-item-text-disabled)",
         "description": "Text colour of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "menubar-trigger-highlighted": {
+        "name": "menubarTriggerHighlighted",
+        "path": [
+          "menubar",
+          "trigger-highlighted"
+        ],
+        "value": "oklch(0.952 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-menubar-trigger-highlighted)",
+        "description": "Fill of the menubar trigger while highlighted. Pairs with `menubar.trigger-text-highlighted`."
+      },
+      "menubar-trigger-text-highlighted": {
+        "name": "menubarTriggerTextHighlighted",
+        "path": [
+          "menubar",
+          "trigger-text-highlighted"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-menubar-trigger-text-highlighted)",
+        "description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
+      },
+      "menubar-item-highlighted": {
+        "name": "menubarItemHighlighted",
+        "path": [
+          "menubar",
+          "item-highlighted"
+        ],
+        "value": "oklch(0.952 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-menubar-item-highlighted)",
+        "description": "Fill of the menubar item while highlighted. Pairs with `menubar.item-text-highlighted`."
+      },
+      "menubar-item-text-highlighted": {
+        "name": "menubarItemTextHighlighted",
+        "path": [
+          "menubar",
+          "item-text-highlighted"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-menubar-item-text-highlighted)",
+        "description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
       },
       "menubar-content-shadow": {
         "name": "menubarContentShadow",
@@ -5920,7 +5920,7 @@
           "navigation",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-navigation-background)",
         "description": "Fill of a navigation menu trigger at rest."
@@ -5936,35 +5936,13 @@
         "variable": "var(--color-navigation-text-hover)",
         "description": "Text colour of the navigation menu while hovered. Pairs with `navigation.background-hover`."
       },
-      "navigation-highlighted": {
-        "name": "navigationHighlighted",
-        "path": [
-          "navigation",
-          "highlighted"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-navigation-highlighted)",
-        "description": "Fill of a navigation menu trigger while highlighted. Pairs with `navigation.text-highlighted`."
-      },
-      "navigation-text-highlighted": {
-        "name": "navigationTextHighlighted",
-        "path": [
-          "navigation",
-          "text-highlighted"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-navigation-text-highlighted)",
-        "description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
-      },
       "navigation-active": {
         "name": "navigationActive",
         "path": [
           "navigation",
           "active"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-navigation-active)",
         "description": "Fill of the navigation menu trigger for the current link."
@@ -5975,7 +5953,7 @@
           "navigation",
           "open"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-navigation-open)",
         "description": "Fill of a navigation menu trigger while its content is open."
@@ -5986,7 +5964,7 @@
           "navigation",
           "content-border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-navigation-content-border)",
         "description": "Border colour of the navigation menu content."
@@ -5997,7 +5975,7 @@
           "navigation",
           "content-background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-navigation-content-background)",
         "description": "Fill of the navigation menu content. Pairs with `navigation.content-text`."
@@ -6019,7 +5997,7 @@
           "navigation",
           "indicator"
         ],
-        "value": "oklch(0.613 0.005 258.45)",
+        "value": "oklch(0.613 0.005 258.5)",
         "type": "color",
         "variable": "var(--color-navigation-indicator)",
         "description": "Fill of the small arrow that points from the open navigation menu content to its trigger."
@@ -6030,7 +6008,7 @@
           "navigation",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-navigation-background-hover)",
         "description": "Fill of the navigation menu while hovered. Pairs with `navigation.text-hover`."
@@ -6045,6 +6023,28 @@
         "type": "color",
         "variable": "var(--color-navigation-text-disabled)",
         "description": "Text colour of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "navigation-highlighted": {
+        "name": "navigationHighlighted",
+        "path": [
+          "navigation",
+          "highlighted"
+        ],
+        "value": "oklch(0.952 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-navigation-highlighted)",
+        "description": "Fill of a navigation menu trigger while highlighted. Pairs with `navigation.text-highlighted`."
+      },
+      "navigation-text-highlighted": {
+        "name": "navigationTextHighlighted",
+        "path": [
+          "navigation",
+          "text-highlighted"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-navigation-text-highlighted)",
+        "description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
       }
     },
     "command": {
@@ -6054,7 +6054,7 @@
           "command",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-command-background)",
         "description": "Fill of the command menu. Pairs with `command.text`."
@@ -6076,7 +6076,7 @@
           "command",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-command-border)",
         "description": "Border colour of the command menu."
@@ -6120,7 +6120,7 @@
           "command",
           "separator"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-command-separator)",
         "description": "Fill of the command menu separator."
@@ -6131,7 +6131,7 @@
           "command",
           "item-selected"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-command-item-selected)",
         "description": "Fill of the command menu item when selected. Pairs with `command.item-text-selected`."
@@ -6194,17 +6194,6 @@
         "type": "spacing",
         "variable": "var(--command-input-icon-size)",
         "description": "Size of the search icon in the command menu input."
-      },
-      "command-list-max-height": {
-        "name": "commandListMaxHeight",
-        "path": [
-          "command",
-          "list-max-height"
-        ],
-        "value": "448px",
-        "type": "spacing",
-        "variable": "var(--command-list-max-height)",
-        "description": "Maximum height of the command menu list."
       },
       "command-group-padding": {
         "name": "commandGroupPadding",
@@ -6352,6 +6341,17 @@
         "variable": "var(--command-input-icon-opacity)",
         "description": "Opacity of the search icon in the command menu input."
       },
+      "command-list-max-height": {
+        "name": "commandListMaxHeight",
+        "path": [
+          "command",
+          "list-max-height"
+        ],
+        "value": "448px",
+        "type": "spacing",
+        "variable": "var(--command-list-max-height)",
+        "description": "Maximum height of the command menu list."
+      },
       "command-group-heading-font-weight": {
         "name": "commandGroupHeadingFontWeight",
         "path": [
@@ -6406,7 +6406,7 @@
           "list",
           "background"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-tabs-list-background)",
         "description": "Fill of the tabs list. Pairs with `tabs.list.text`."
@@ -6430,7 +6430,7 @@
           "trigger",
           "background-active"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-background-active)",
         "description": "Fill of the selected tab trigger. Pairs with `tabs.trigger.text-active`."
@@ -6454,7 +6454,7 @@
           "trigger",
           "background-hover"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-background-hover)",
         "description": "Fill of the tabs trigger while hovered. Pairs with `tabs.trigger.text-hover`."
@@ -6479,22 +6479,10 @@
           "border",
           "color"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-tabs-list-border-color)",
         "description": "Border colour of the tabs list."
-      },
-      "tabs-trigger-indicator-color": {
-        "name": "tabsTriggerIndicatorColor",
-        "path": [
-          "tabs",
-          "trigger",
-          "indicator-color"
-        ],
-        "value": "oklch(0.546 0.215 262.9)",
-        "type": "color",
-        "variable": "var(--color-tabs-trigger-indicator-color)",
-        "description": "Colour of the underline that marks the selected tab."
       },
       "tabs-list-height-sm": {
         "name": "tabsListHeightSm",
@@ -6764,6 +6752,18 @@
         "variable": "var(--tabs-trigger-font-weight)",
         "description": "Font weight of the tabs trigger."
       },
+      "tabs-trigger-indicator-color": {
+        "name": "tabsTriggerIndicatorColor",
+        "path": [
+          "tabs",
+          "trigger",
+          "indicator-color"
+        ],
+        "value": "oklch(0.546 0.215 262.91)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-indicator-color)",
+        "description": "Colour of the underline that marks the selected tab."
+      },
       "tabs-trigger-text-disabled": {
         "name": "tabsTriggerTextDisabled",
         "path": [
@@ -6796,7 +6796,7 @@
           "collapsible",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-collapsible-background)",
         "description": "Fill of the collapsible."
@@ -6820,7 +6820,7 @@
           "calendar",
           "nav-border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-calendar-nav-border)",
         "description": "Border colour of the calendar nav."
@@ -6831,7 +6831,7 @@
           "calendar",
           "nav-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-calendar-nav-hover)",
         "description": "Fill of the calendar nav while hovered. Pairs with `calendar.nav-text-hover`."
@@ -6864,7 +6864,7 @@
           "calendar",
           "day-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-calendar-day-hover)",
         "description": "Fill of the calendar day while hovered. Pairs with `calendar.day-text-hover`."
@@ -6886,7 +6886,7 @@
           "calendar",
           "day-selected"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-calendar-day-selected)",
         "description": "Fill of the calendar day when selected. Pairs with `calendar.day-text-selected`."
@@ -6897,56 +6897,10 @@
           "calendar",
           "day-text-selected"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-calendar-day-text-selected)",
         "description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`."
-      },
-      "calendar-container-padding": {
-        "name": "calendarContainerPadding",
-        "path": [
-          "calendar",
-          "container-padding"
-        ],
-        "value": "12px",
-        "type": "spacing",
-        "variable": "var(--calendar-container-padding)",
-        "description": "Padding inside the calendar container."
-      },
-      "calendar-nav-button-size": {
-        "name": "calendarNavButtonSize",
-        "path": [
-          "calendar",
-          "nav",
-          "button-size"
-        ],
-        "value": "24px",
-        "type": "spacing",
-        "variable": "var(--calendar-nav-button-size)",
-        "description": "Size of the calendar nav button."
-      },
-      "calendar-nav-icon-size": {
-        "name": "calendarNavIconSize",
-        "path": [
-          "calendar",
-          "nav",
-          "icon-size"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--calendar-nav-icon-size)",
-        "description": "Size of the calendar nav icon."
-      },
-      "calendar-cell-size": {
-        "name": "calendarCellSize",
-        "path": [
-          "calendar",
-          "cell-size"
-        ],
-        "value": "32px",
-        "type": "spacing",
-        "variable": "var(--calendar-cell-size)",
-        "description": "Size of the calendar cell."
       },
       "calendar-day-size": {
         "name": "calendarDaySize",
@@ -7050,17 +7004,6 @@
         "variable": "var(--calendar-nav-button-opacity-hover)",
         "description": "Opacity of the calendar nav button while hovered."
       },
-      "calendar-header-font-weight": {
-        "name": "calendarHeaderFontWeight",
-        "path": [
-          "calendar",
-          "header-font-weight"
-        ],
-        "value": 500,
-        "type": "number",
-        "variable": "var(--calendar-header-font-weight)",
-        "description": "Font weight of the calendar header."
-      },
       "calendar-nav-button-font-weight": {
         "name": "calendarNavButtonFontWeight",
         "path": [
@@ -7073,17 +7016,6 @@
         "variable": "var(--calendar-nav-button-font-weight)",
         "description": "Font weight of the calendar nav button."
       },
-      "calendar-day-header-font-weight": {
-        "name": "calendarDayHeaderFontWeight",
-        "path": [
-          "calendar",
-          "day-header-font-weight"
-        ],
-        "value": 400,
-        "type": "number",
-        "variable": "var(--calendar-day-header-font-weight)",
-        "description": "Font weight of the calendar day header."
-      },
       "calendar-day-font-weight": {
         "name": "calendarDayFontWeight",
         "path": [
@@ -7095,6 +7027,74 @@
         "type": "number",
         "variable": "var(--calendar-day-font-weight)",
         "description": "Font weight of the calendar day."
+      },
+      "calendar-container-padding": {
+        "name": "calendarContainerPadding",
+        "path": [
+          "calendar",
+          "container-padding"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--calendar-container-padding)",
+        "description": "Padding inside the calendar container."
+      },
+      "calendar-nav-button-size": {
+        "name": "calendarNavButtonSize",
+        "path": [
+          "calendar",
+          "nav",
+          "button-size"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--calendar-nav-button-size)",
+        "description": "Size of the calendar nav button."
+      },
+      "calendar-nav-icon-size": {
+        "name": "calendarNavIconSize",
+        "path": [
+          "calendar",
+          "nav",
+          "icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--calendar-nav-icon-size)",
+        "description": "Size of the calendar nav icon."
+      },
+      "calendar-cell-size": {
+        "name": "calendarCellSize",
+        "path": [
+          "calendar",
+          "cell-size"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--calendar-cell-size)",
+        "description": "Size of the calendar cell."
+      },
+      "calendar-header-font-weight": {
+        "name": "calendarHeaderFontWeight",
+        "path": [
+          "calendar",
+          "header-font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--calendar-header-font-weight)",
+        "description": "Font weight of the calendar header."
+      },
+      "calendar-day-header-font-weight": {
+        "name": "calendarDayHeaderFontWeight",
+        "path": [
+          "calendar",
+          "day-header-font-weight"
+        ],
+        "value": 400,
+        "type": "number",
+        "variable": "var(--calendar-day-header-font-weight)",
+        "description": "Font weight of the calendar day header."
       },
       "calendar-nav-text-disabled": {
         "name": "calendarNavTextDisabled",
@@ -7113,7 +7113,7 @@
           "calendar",
           "nav-border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-calendar-nav-border-disabled)",
         "description": "Border colour of the calendar nav when disabled, in the muted border tone."
@@ -7126,7 +7126,7 @@
           "accordion",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-accordion-border)",
         "description": "Border colour of the accordion."
@@ -7159,7 +7159,7 @@
           "accordion",
           "trigger-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-hover)",
         "description": "Fill of the accordion trigger while hovered. Pairs with `accordion.trigger-text-hover`."
@@ -7203,7 +7203,7 @@
           "accordion",
           "trigger-pressed"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-pressed)",
         "description": "Fill of the accordion trigger while pressed."
@@ -7214,7 +7214,7 @@
           "accordion",
           "trigger-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-disabled)",
         "description": "Fill of the accordion trigger when disabled, a quiet neutral so it reads as unavailable. Pairs with `accordion.trigger-text-disabled`."
@@ -7263,17 +7263,6 @@
         "variable": "var(--color-accordion-icon-disabled)",
         "description": "Colour of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
-      "accordion-item-border-width": {
-        "name": "accordionItemBorderWidth",
-        "path": [
-          "accordion",
-          "item-border-width"
-        ],
-        "value": "1px",
-        "type": "dimension",
-        "variable": "var(--accordion-item-border-width)",
-        "description": "Border width of the accordion item."
-      },
       "accordion-trigger-padding": {
         "name": "accordionTriggerPadding",
         "path": [
@@ -7297,18 +7286,6 @@
         "type": "number",
         "variable": "var(--accordion-trigger-font-size)",
         "description": "Font size of the accordion trigger."
-      },
-      "accordion-trigger-icon-size": {
-        "name": "accordionTriggerIconSize",
-        "path": [
-          "accordion",
-          "trigger",
-          "icon-size"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--accordion-trigger-icon-size)",
-        "description": "Size of the accordion trigger icon."
       },
       "accordion-content-padding": {
         "name": "accordionContentPadding",
@@ -7370,6 +7347,29 @@
         "variable": "var(--accordion-content-line-height)",
         "description": "Line height of the accordion content."
       },
+      "accordion-item-border-width": {
+        "name": "accordionItemBorderWidth",
+        "path": [
+          "accordion",
+          "item-border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--accordion-item-border-width)",
+        "description": "Border width of the accordion item."
+      },
+      "accordion-trigger-icon-size": {
+        "name": "accordionTriggerIconSize",
+        "path": [
+          "accordion",
+          "trigger",
+          "icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--accordion-trigger-icon-size)",
+        "description": "Size of the accordion trigger icon."
+      },
       "accordion-trigger-icon-duration": {
         "name": "accordionTriggerIconDuration",
         "path": [
@@ -7390,7 +7390,7 @@
           "avatar",
           "background"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-avatar-background)",
         "description": "Fill of the avatar."
@@ -7401,7 +7401,7 @@
           "avatar",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-avatar-border)",
         "description": "Border colour of the avatar."
@@ -7412,7 +7412,7 @@
           "avatar",
           "fallback-background"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-avatar-fallback-background)",
         "description": "Fill of the avatar fallback. Pairs with `avatar.fallback-text`."
@@ -7487,17 +7487,6 @@
         "variable": "var(--avatar-rounded)",
         "description": "Corner radius of the avatar and its fallback. Fully rounded (circle)."
       },
-      "avatar-fallback-font-weight": {
-        "name": "avatarFallbackFontWeight",
-        "path": [
-          "avatar",
-          "fallback-font-weight"
-        ],
-        "value": 500,
-        "type": "number",
-        "variable": "var(--avatar-fallback-font-weight)",
-        "description": "Font weight of the avatar fallback."
-      },
       "avatar-fallback-font-size-sm": {
         "name": "avatarFallbackFontSizeSm",
         "path": [
@@ -7549,6 +7538,17 @@
         "type": "number",
         "variable": "var(--avatar-fallback-font-size-xl)",
         "description": "Font size of the extra-large avatar fallback."
+      },
+      "avatar-fallback-font-weight": {
+        "name": "avatarFallbackFontWeight",
+        "path": [
+          "avatar",
+          "fallback-font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--avatar-fallback-font-weight)",
+        "description": "Font weight of the avatar fallback."
       }
     },
     "breadcrumb": {
@@ -7569,7 +7569,7 @@
           "breadcrumb",
           "link"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link)",
         "description": "Text colour of the breadcrumb link."
@@ -7596,6 +7596,39 @@
         "variable": "var(--color-breadcrumb-text)",
         "description": "Text colour of breadcrumb text that is not a link."
       },
+      "breadcrumb-font-size": {
+        "name": "breadcrumbFontSize",
+        "path": [
+          "breadcrumb",
+          "font-size"
+        ],
+        "value": 14,
+        "type": "number",
+        "variable": "var(--breadcrumb-font-size)",
+        "description": "Font size of the breadcrumb."
+      },
+      "breadcrumb-link-radius": {
+        "name": "breadcrumbLinkRadius",
+        "path": [
+          "breadcrumb",
+          "link-radius"
+        ],
+        "value": "4px",
+        "type": "dimension",
+        "variable": "var(--breadcrumb-link-radius)",
+        "description": "Corner radius of the breadcrumb link."
+      },
+      "breadcrumb-link-disabled": {
+        "name": "breadcrumbLinkDisabled",
+        "path": [
+          "breadcrumb",
+          "link-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-breadcrumb-link-disabled)",
+        "description": "Text colour of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
       "breadcrumb-list-gap": {
         "name": "breadcrumbListGap",
         "path": [
@@ -7617,17 +7650,6 @@
         "type": "spacing",
         "variable": "var(--breadcrumb-item-gap)",
         "description": "Gap between the items inside the breadcrumb item."
-      },
-      "breadcrumb-font-size": {
-        "name": "breadcrumbFontSize",
-        "path": [
-          "breadcrumb",
-          "font-size"
-        ],
-        "value": 14,
-        "type": "number",
-        "variable": "var(--breadcrumb-font-size)",
-        "description": "Font size of the breadcrumb."
       },
       "breadcrumb-separator-size": {
         "name": "breadcrumbSeparatorSize",
@@ -7651,17 +7673,6 @@
         "variable": "var(--breadcrumb-ellipsis-size)",
         "description": "Size of the breadcrumb ellipsis."
       },
-      "breadcrumb-link-radius": {
-        "name": "breadcrumbLinkRadius",
-        "path": [
-          "breadcrumb",
-          "link-radius"
-        ],
-        "value": "4px",
-        "type": "dimension",
-        "variable": "var(--breadcrumb-link-radius)",
-        "description": "Corner radius of the breadcrumb link."
-      },
       "breadcrumb-page-font-weight": {
         "name": "breadcrumbPageFontWeight",
         "path": [
@@ -7672,17 +7683,6 @@
         "type": "number",
         "variable": "var(--breadcrumb-page-font-weight)",
         "description": "Font weight of the current page item in the breadcrumb."
-      },
-      "breadcrumb-link-disabled": {
-        "name": "breadcrumbLinkDisabled",
-        "path": [
-          "breadcrumb",
-          "link-disabled"
-        ],
-        "value": "oklch(0.52 0.007 264.5)",
-        "type": "color",
-        "variable": "var(--color-breadcrumb-link-disabled)",
-        "description": "Text colour of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       }
     },
     "carousel": {
@@ -7692,7 +7692,7 @@
           "carousel",
           "nav-background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-carousel-nav-background)",
         "description": "Fill of the carousel nav."
@@ -7703,7 +7703,7 @@
           "carousel",
           "nav-border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-carousel-nav-border)",
         "description": "Border colour of the carousel nav."
@@ -7714,7 +7714,7 @@
           "carousel",
           "nav-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-carousel-nav-hover)",
         "description": "Fill of the carousel nav while hovered. Pairs with `carousel.nav-text-hover`."
@@ -7729,17 +7729,6 @@
         "type": "color",
         "variable": "var(--color-carousel-nav-text-hover)",
         "description": "Text colour of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
-      },
-      "carousel-item-spacing": {
-        "name": "carouselItemSpacing",
-        "path": [
-          "carousel",
-          "item-spacing"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--carousel-item-spacing)",
-        "description": "Spacing between carousel slides."
       },
       "carousel-button-size": {
         "name": "carouselButtonSize",
@@ -7799,6 +7788,17 @@
         "variable": "var(--carousel-button-rounded-full)",
         "description": "Corner radius of the carousel previous and next buttons. Fully rounded (circle)."
       },
+      "carousel-item-spacing": {
+        "name": "carouselItemSpacing",
+        "path": [
+          "carousel",
+          "item-spacing"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--carousel-item-spacing)",
+        "description": "Spacing between carousel slides."
+      },
       "carousel-nav-text-disabled": {
         "name": "carouselNavTextDisabled",
         "path": [
@@ -7816,7 +7816,7 @@
           "carousel",
           "nav-border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-carousel-nav-border-disabled)",
         "description": "Border colour of the carousel nav when disabled, in the muted border tone."
@@ -7827,7 +7827,7 @@
           "carousel",
           "nav-background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-carousel-nav-background-disabled)",
         "description": "Fill of the carousel nav when disabled, a quiet neutral so it reads as unavailable. Pairs with `carousel.nav-text-disabled`."
@@ -7840,7 +7840,7 @@
           "contextmenu",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-contextmenu-background)",
         "description": "Fill of the context menu. Pairs with `contextmenu.text`."
@@ -7851,7 +7851,7 @@
           "contextmenu",
           "item-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-contextmenu-item-hover)",
         "description": "Fill of the context menu item while hovered. Pairs with `contextmenu.item-text-hover`."
@@ -7884,7 +7884,7 @@
           "contextmenu",
           "separator"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-contextmenu-separator)",
         "description": "Fill of the context menu separator."
@@ -7930,7 +7930,7 @@
           "dialog",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-dialog-background)",
         "description": "Fill of the dialog panel. Also the colour of the gap between the close button and its focus ring."
@@ -7941,7 +7941,7 @@
           "dialog",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-dialog-border)",
         "description": "Border colour of the dialog."
@@ -7963,7 +7963,7 @@
           "dialog",
           "overlay"
         ],
-        "value": "oklch(0.149 0.012 259.72)",
+        "value": "oklch(0.149 0.012 259.73)",
         "type": "color",
         "variable": "var(--color-dialog-overlay)",
         "description": "Fill of the dialog overlay."
@@ -8078,28 +8078,6 @@
         "variable": "var(--dialog-header-margin-bottom)",
         "description": "Bottom margin of the dialog header."
       },
-      "dialog-title-font-size": {
-        "name": "dialogTitleFontSize",
-        "path": [
-          "dialog",
-          "title-font-size"
-        ],
-        "value": 20,
-        "type": "number",
-        "variable": "var(--dialog-title-font-size)",
-        "description": "Font size of the dialog title."
-      },
-      "dialog-description-font-size": {
-        "name": "dialogDescriptionFontSize",
-        "path": [
-          "dialog",
-          "description-font-size"
-        ],
-        "value": 14,
-        "type": "number",
-        "variable": "var(--dialog-description-font-size)",
-        "description": "Font size of the dialog description."
-      },
       "dialog-footer-margin-top": {
         "name": "dialogFooterMarginTop",
         "path": [
@@ -8169,6 +8147,28 @@
         "type": "number",
         "variable": "var(--dialog-close-button-opacity-hover)",
         "description": "Opacity of the dialog close button while hovered."
+      },
+      "dialog-title-font-size": {
+        "name": "dialogTitleFontSize",
+        "path": [
+          "dialog",
+          "title-font-size"
+        ],
+        "value": 20,
+        "type": "number",
+        "variable": "var(--dialog-title-font-size)",
+        "description": "Font size of the dialog title."
+      },
+      "dialog-description-font-size": {
+        "name": "dialogDescriptionFontSize",
+        "path": [
+          "dialog",
+          "description-font-size"
+        ],
+        "value": 14,
+        "type": "number",
+        "variable": "var(--dialog-description-font-size)",
+        "description": "Font size of the dialog description."
       },
       "dialog-title-font-weight": {
         "name": "dialogTitleFontWeight",
@@ -8291,7 +8291,7 @@
           "form",
           "error"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-form-error)",
         "description": "Text colour of form error messages."
@@ -8390,7 +8390,7 @@
           "form",
           "required-color"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-form-required-color)",
         "description": "Colour of the required-field marker on form labels."
@@ -8401,7 +8401,7 @@
           "form",
           "label-error-text"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-form-label-error-text)",
         "description": "Text colour of a form label when its field has an error."
@@ -8436,7 +8436,7 @@
           "hover-card",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-hover-card-background)",
         "description": "Fill of the hover card. Pairs with `hover-card.text`."
@@ -8447,7 +8447,7 @@
           "hover-card",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-hover-card-border)",
         "description": "Border colour of the hover card."
@@ -8502,17 +8502,6 @@
         "variable": "var(--hover-card-content-width-lg)",
         "description": "Width of the large hover card content."
       },
-      "hover-card-content-padding": {
-        "name": "hoverCardContentPadding",
-        "path": [
-          "hover-card",
-          "content-padding"
-        ],
-        "value": "24px",
-        "type": "spacing",
-        "variable": "var(--hover-card-content-padding)",
-        "description": "Padding inside the hover card content."
-      },
       "hover-card-content-radius": {
         "name": "hoverCardContentRadius",
         "path": [
@@ -8523,6 +8512,17 @@
         "type": "dimension",
         "variable": "var(--hover-card-content-radius)",
         "description": "Corner radius of the hover card content."
+      },
+      "hover-card-content-padding": {
+        "name": "hoverCardContentPadding",
+        "path": [
+          "hover-card",
+          "content-padding"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--hover-card-content-padding)",
+        "description": "Padding inside the hover card content."
       },
       "hover-card-content-shadow": {
         "name": "hoverCardContentShadow",
@@ -8554,7 +8554,7 @@
           "pagination",
           "active"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-pagination-active)",
         "description": "Fill of the page link for the current page. Pairs with `pagination.text-active`."
@@ -8576,7 +8576,7 @@
           "pagination",
           "text-active"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-pagination-text-active)",
         "description": "Text colour of the page link for the current page. Pairs with `pagination.active`."
@@ -8652,17 +8652,6 @@
         "variable": "var(--pagination-item-gap)",
         "description": "Gap between the items inside the pagination item."
       },
-      "pagination-icon-size": {
-        "name": "paginationIconSize",
-        "path": [
-          "pagination",
-          "icon-size"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--pagination-icon-size)",
-        "description": "Size of the pagination icon."
-      },
       "pagination-list-gap": {
         "name": "paginationListGap",
         "path": [
@@ -8702,7 +8691,7 @@
           "pagination",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-pagination-background-hover)",
         "description": "Fill of the pagination while hovered. Pairs with `pagination.text-hover`."
@@ -8718,6 +8707,17 @@
         "type": "number",
         "variable": "var(--pagination-item-font-weight)",
         "description": "Font weight of the pagination item."
+      },
+      "pagination-icon-size": {
+        "name": "paginationIconSize",
+        "path": [
+          "pagination",
+          "icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--pagination-icon-size)",
+        "description": "Size of the pagination icon."
       },
       "pagination-ellipsis-text": {
         "name": "paginationEllipsisText",
@@ -8749,7 +8749,7 @@
           "popover",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-popover-background)",
         "description": "Fill of the popover. Pairs with `popover.text`."
@@ -8760,7 +8760,7 @@
           "popover",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-popover-border)",
         "description": "Border colour of the popover."
@@ -8815,17 +8815,6 @@
         "variable": "var(--popover-content-width-lg)",
         "description": "Width of the large popover content."
       },
-      "popover-content-padding": {
-        "name": "popoverContentPadding",
-        "path": [
-          "popover",
-          "content-padding"
-        ],
-        "value": "24px",
-        "type": "spacing",
-        "variable": "var(--popover-content-padding)",
-        "description": "Padding inside the popover content."
-      },
       "popover-content-radius": {
         "name": "popoverContentRadius",
         "path": [
@@ -8836,6 +8825,17 @@
         "type": "dimension",
         "variable": "var(--popover-content-radius)",
         "description": "Corner radius of the popover content."
+      },
+      "popover-content-padding": {
+        "name": "popoverContentPadding",
+        "path": [
+          "popover",
+          "content-padding"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--popover-content-padding)",
+        "description": "Padding inside the popover content."
       },
       "popover-content-shadow": {
         "name": "popoverContentShadow",
@@ -8867,7 +8867,7 @@
           "progress",
           "background"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-progress-background)",
         "description": "Fill of the progress track behind the bar."
@@ -8878,7 +8878,7 @@
           "progress",
           "default-fill"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-progress-default-fill)",
         "description": "Fill of the progress bar in its default variant."
@@ -8889,7 +8889,7 @@
           "progress",
           "destructive-fill"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-progress-destructive-fill)",
         "description": "Fill of the progress bar in its destructive variant."
@@ -8900,7 +8900,7 @@
           "progress",
           "success-fill"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-progress-success-fill)",
         "description": "Fill of the progress bar in its success variant."
@@ -8957,7 +8957,7 @@
           "radio",
           "background-checked"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-radio-background-checked)",
         "description": "Fill of the radio when checked."
@@ -8968,7 +8968,7 @@
           "radio",
           "border"
         ],
-        "value": "oklch(0.613 0.005 258.45)",
+        "value": "oklch(0.613 0.005 258.5)",
         "type": "color",
         "variable": "var(--color-radio-border)",
         "description": "Border colour of the radio."
@@ -8979,7 +8979,7 @@
           "radio",
           "border-checked"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-radio-border-checked)",
         "description": "Border colour of the radio when checked."
@@ -8990,7 +8990,7 @@
           "radio",
           "indicator"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-radio-indicator)",
         "description": "Colour of the dot inside the selected radio."
@@ -9116,7 +9116,7 @@
           "radio",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-radio-background-disabled)",
         "description": "Fill of the radio when disabled, a quiet neutral so it reads as unavailable."
@@ -9127,7 +9127,7 @@
           "radio",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-radio-border-disabled)",
         "description": "Border colour of the radio when disabled, in the muted border tone."
@@ -9151,7 +9151,7 @@
           "resizable",
           "handle"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-resizable-handle)",
         "description": "Fill of the thin divider line between resizable panels."
@@ -9162,7 +9162,7 @@
           "resizable",
           "handle-background"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-resizable-handle-background)",
         "description": "Fill of the grip box on the resizable divider."
@@ -9173,7 +9173,7 @@
           "resizable",
           "handle-border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-resizable-handle-border)",
         "description": "Border colour of the resizable handle."
@@ -9188,6 +9188,17 @@
         "type": "dimension",
         "variable": "var(--resizable-handle-radius)",
         "description": "Corner radius of the resizable handle."
+      },
+      "resizable-grip-icon-size": {
+        "name": "resizableGripIconSize",
+        "path": [
+          "resizable",
+          "grip-icon-size"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--resizable-grip-icon-size)",
+        "description": "Size of the grip icon inside the resizable handle (xs icon, 12px)."
       },
       "resizable-handle-height": {
         "name": "resizableHandleHeight",
@@ -9210,17 +9221,6 @@
         "type": "spacing",
         "variable": "var(--resizable-handle-width)",
         "description": "Width of the resizable handle."
-      },
-      "resizable-grip-icon-size": {
-        "name": "resizableGripIconSize",
-        "path": [
-          "resizable",
-          "grip-icon-size"
-        ],
-        "value": "12px",
-        "type": "spacing",
-        "variable": "var(--resizable-grip-icon-size)",
-        "description": "Size of the grip icon inside the resizable handle (xs icon, 12px)."
       },
       "resizable-handle-focus-ring-width": {
         "name": "resizableHandleFocusRingWidth",
@@ -9263,7 +9263,7 @@
           "scrollbar",
           "thumb"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-scrollbar-thumb)",
         "description": "Fill of the scroll area scrollbar thumb."
@@ -9331,7 +9331,7 @@
           "skeleton",
           "background"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-skeleton-background)",
         "description": "Fill of the skeleton."
@@ -9425,7 +9425,7 @@
           "slider",
           "range"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-slider-range)",
         "description": "Fill of the filled part of the slider track, from the start to the thumb."
@@ -9436,7 +9436,7 @@
           "slider",
           "thumb"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-slider-thumb)",
         "description": "Fill of the slider thumb."
@@ -9447,7 +9447,7 @@
           "slider",
           "thumb-border"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-slider-thumb-border)",
         "description": "Border colour of the slider thumb."
@@ -9458,7 +9458,7 @@
           "slider",
           "track"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-slider-track)",
         "description": "Fill of the slider track."
@@ -9548,7 +9548,7 @@
           "slider",
           "thumb-background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-slider-thumb-background-disabled)",
         "description": "Fill of the slider thumb when disabled, a quiet neutral so it reads as unavailable."
@@ -9559,7 +9559,7 @@
           "slider",
           "thumb-border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-slider-thumb-border-disabled)",
         "description": "Border colour of the slider thumb when disabled, in the muted border tone."
@@ -9572,7 +9572,7 @@
           "table",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-table-border)",
         "description": "Border colour of the table."
@@ -9594,7 +9594,7 @@
           "table",
           "footer-background"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-table-footer-background)",
         "description": "Fill of the table footer."
@@ -9616,7 +9616,7 @@
           "table",
           "row-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-table-row-hover)",
         "description": "Fill of the table row while hovered."
@@ -9627,7 +9627,7 @@
           "table",
           "row-selected"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-table-row-selected)",
         "description": "Fill of the table row when selected."
@@ -9680,39 +9680,6 @@
         "variable": "var(--table-cell-font-size)",
         "description": "Font size of the table cell."
       },
-      "table-caption-font-size": {
-        "name": "tableCaptionFontSize",
-        "path": [
-          "table",
-          "caption-font-size"
-        ],
-        "value": 14,
-        "type": "number",
-        "variable": "var(--table-caption-font-size)",
-        "description": "Font size of the table caption."
-      },
-      "table-caption-margin-top": {
-        "name": "tableCaptionMarginTop",
-        "path": [
-          "table",
-          "caption-margin-top"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--table-caption-margin-top)",
-        "description": "Top margin of the table caption."
-      },
-      "table-border-width": {
-        "name": "tableBorderWidth",
-        "path": [
-          "table",
-          "border-width"
-        ],
-        "value": "1px",
-        "type": "dimension",
-        "variable": "var(--table-border-width)",
-        "description": "Border width of the table row dividers."
-      },
       "table-header-height": {
         "name": "tableHeaderHeight",
         "path": [
@@ -9748,6 +9715,39 @@
         "variable": "var(--table-header-font-weight)",
         "description": "Font weight of the table header."
       },
+      "table-caption-font-size": {
+        "name": "tableCaptionFontSize",
+        "path": [
+          "table",
+          "caption-font-size"
+        ],
+        "value": 14,
+        "type": "number",
+        "variable": "var(--table-caption-font-size)",
+        "description": "Font size of the table caption."
+      },
+      "table-caption-margin-top": {
+        "name": "tableCaptionMarginTop",
+        "path": [
+          "table",
+          "caption-margin-top"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--table-caption-margin-top)",
+        "description": "Top margin of the table caption."
+      },
+      "table-border-width": {
+        "name": "tableBorderWidth",
+        "path": [
+          "table",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--table-border-width)",
+        "description": "Border width of the table row dividers."
+      },
       "table-footer-font-weight": {
         "name": "tableFooterFontWeight",
         "path": [
@@ -9767,7 +9767,7 @@
           "toast",
           "action-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-toast-action-hover)",
         "description": "Fill of the toast action button while hovered."
@@ -9933,17 +9933,6 @@
         "variable": "var(--toast-action-font-size)",
         "description": "Font size of the toast action."
       },
-      "toast-close-size": {
-        "name": "toastCloseSize",
-        "path": [
-          "toast",
-          "close-size"
-        ],
-        "value": "24px",
-        "type": "spacing",
-        "variable": "var(--toast-close-size)",
-        "description": "Width and height of the toast close button."
-      },
       "toast-destructive-border": {
         "name": "toastDestructiveBorder",
         "path": [
@@ -9951,7 +9940,7 @@
           "destructive",
           "border"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-toast-destructive-border)",
         "description": "Border colour of the destructive toast."
@@ -9963,7 +9952,7 @@
           "destructive",
           "background"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-toast-destructive-background)",
         "description": "Fill of the destructive toast. Pairs with `toast.destructive.text`."
@@ -9975,7 +9964,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-toast-success-border)",
         "description": "Border colour of the success toast."
@@ -9987,7 +9976,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.543 0.152 149.29)",
+        "value": "oklch(0.543 0.152 149.31)",
         "type": "color",
         "variable": "var(--color-toast-success-background)",
         "description": "Fill of the success toast. Pairs with `toast.success.text`."
@@ -10023,7 +10012,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-toast-destructive-text)",
         "description": "Text colour on the destructive toast. Pairs with `toast.destructive.background`."
@@ -10035,7 +10024,7 @@
           "success",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-toast-success-text)",
         "description": "Text colour on the success toast. Pairs with `toast.success.background`."
@@ -10047,7 +10036,7 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.149 0.012 259.72)",
+        "value": "oklch(0.149 0.012 259.73)",
         "type": "color",
         "variable": "var(--color-toast-warning-text)",
         "description": "Text colour on the warning toast. Pairs with `toast.warning.background`."
@@ -10086,17 +10075,6 @@
         "variable": "var(--toast-action-radius)",
         "description": "Corner radius of the toast action."
       },
-      "toast-default-background": {
-        "name": "toastDefaultBackground",
-        "path": [
-          "toast",
-          "default-background"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-toast-default-background)",
-        "description": "Fill of the default toast, a raised surface. Pairs with `toast.text`."
-      },
       "toast-viewport-padding": {
         "name": "toastViewportPadding",
         "path": [
@@ -10120,17 +10098,6 @@
         "type": "spacing",
         "variable": "var(--toast-viewport-gap)",
         "description": "Gap between the items inside the toast viewport."
-      },
-      "toast-content-gap": {
-        "name": "toastContentGap",
-        "path": [
-          "toast",
-          "content-gap"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--toast-content-gap)",
-        "description": "Gap between the items inside the toast content."
       },
       "toast-close-button-opacity": {
         "name": "toastCloseButtonOpacity",
@@ -10180,6 +10147,39 @@
         "variable": "var(--toast-description-opacity)",
         "description": "Opacity of the toast description."
       },
+      "toast-close-size": {
+        "name": "toastCloseSize",
+        "path": [
+          "toast",
+          "close-size"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--toast-close-size)",
+        "description": "Width and height of the toast close button."
+      },
+      "toast-default-background": {
+        "name": "toastDefaultBackground",
+        "path": [
+          "toast",
+          "default-background"
+        ],
+        "value": "oklch(0.991 0.003 264.42)",
+        "type": "color",
+        "variable": "var(--color-toast-default-background)",
+        "description": "Fill of the default toast, a raised surface. Pairs with `toast.text`."
+      },
+      "toast-content-gap": {
+        "name": "toastContentGap",
+        "path": [
+          "toast",
+          "content-gap"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--toast-content-gap)",
+        "description": "Gap between the items inside the toast content."
+      },
       "toast-action-text-disabled": {
         "name": "toastActionTextDisabled",
         "path": [
@@ -10197,7 +10197,7 @@
           "toast",
           "action-border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-toast-action-border-disabled)",
         "description": "Border colour of the toast action when disabled, in the muted border tone."
@@ -10245,7 +10245,7 @@
           "toggle",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-toggle-border)",
         "description": "Border colour of the toggle."
@@ -10256,7 +10256,7 @@
           "toggle",
           "pressed"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-toggle-pressed)",
         "description": "Fill of the toggle when pressed (on). Pairs with `toggle.text-pressed`."
@@ -10289,7 +10289,7 @@
           "toggle",
           "text-pressed"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-toggle-text-pressed)",
         "description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`."
@@ -10411,7 +10411,7 @@
           "toggle",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-toggle-background-hover)",
         "description": "Fill of the toggle while hovered. Pairs with `toggle.text-hover`."
@@ -10433,7 +10433,7 @@
           "toggle",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-toggle-border-disabled)",
         "description": "Border colour of the toggle when disabled, in the muted border tone."
@@ -10444,7 +10444,7 @@
           "toggle",
           "pressed-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-toggle-pressed-disabled)",
         "description": "Fill of a pressed (on) toggle when disabled, a quiet neutral so it reads as unavailable."
@@ -10457,7 +10457,7 @@
           "tooltip",
           "background"
         ],
-        "value": "oklch(0.149 0.012 259.72)",
+        "value": "oklch(0.149 0.012 259.73)",
         "type": "color",
         "variable": "var(--color-tooltip-background)",
         "description": "Fill of the tooltip. Pairs with `tooltip.text`."
@@ -10468,7 +10468,7 @@
           "tooltip",
           "border"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-tooltip-border)",
         "description": "Border colour of the tooltip."
@@ -10479,7 +10479,7 @@
           "tooltip",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-tooltip-text)",
         "description": "Text colour of the tooltip. Pairs with `tooltip.background`."
@@ -10834,30 +10834,6 @@
         "variable": "var(--select-content-z-index)",
         "description": "Stacking order of the select content."
       },
-      "select-item-background-highlighted": {
-        "name": "selectItemBackgroundHighlighted",
-        "path": [
-          "select",
-          "item",
-          "background-highlighted"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-select-item-background-highlighted)",
-        "description": "Fill of the select item while highlighted. Pairs with `select.item.text-highlighted`."
-      },
-      "select-item-text-highlighted": {
-        "name": "selectItemTextHighlighted",
-        "path": [
-          "select",
-          "item",
-          "text-highlighted"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-select-item-text-highlighted)",
-        "description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
-      },
       "select-item-indicator-left": {
         "name": "selectItemIndicatorLeft",
         "path": [
@@ -10870,18 +10846,6 @@
         "variable": "var(--select-item-indicator-left)",
         "description": "Left offset of the select item check indicator."
       },
-      "select-trigger-icon-opacity": {
-        "name": "selectTriggerIconOpacity",
-        "path": [
-          "select",
-          "trigger",
-          "icon-opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--select-trigger-icon-opacity)",
-        "description": "Opacity of the select trigger icon."
-      },
       "select-content-background": {
         "name": "selectContentBackground",
         "path": [
@@ -10889,7 +10853,7 @@
           "content",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-select-content-background)",
         "description": "Fill of the select content. Pairs with `select.content.text`."
@@ -10913,10 +10877,22 @@
           "separator",
           "background"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-select-separator-background)",
         "description": "Fill of the select separator."
+      },
+      "select-trigger-icon-opacity": {
+        "name": "selectTriggerIconOpacity",
+        "path": [
+          "select",
+          "trigger",
+          "icon-opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--select-trigger-icon-opacity)",
+        "description": "Opacity of the select trigger icon."
       },
       "select-trigger-background-disabled": {
         "name": "selectTriggerBackgroundDisabled",
@@ -10925,7 +10901,7 @@
           "trigger",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-select-trigger-background-disabled)",
         "description": "Fill of the select trigger when disabled, a quiet neutral so it reads as unavailable. Pairs with `select.trigger.text-disabled`."
@@ -10949,7 +10925,7 @@
           "trigger",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-select-trigger-border-disabled)",
         "description": "Border colour of the select trigger when disabled, in the muted border tone."
@@ -10965,6 +10941,30 @@
         "type": "color",
         "variable": "var(--color-select-item-text-disabled)",
         "description": "Text colour of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "select-item-background-highlighted": {
+        "name": "selectItemBackgroundHighlighted",
+        "path": [
+          "select",
+          "item",
+          "background-highlighted"
+        ],
+        "value": "oklch(0.952 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-select-item-background-highlighted)",
+        "description": "Fill of the select item while highlighted. Pairs with `select.item.text-highlighted`."
+      },
+      "select-item-text-highlighted": {
+        "name": "selectItemTextHighlighted",
+        "path": [
+          "select",
+          "item",
+          "text-highlighted"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-select-item-text-highlighted)",
+        "description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
       },
       "select-trigger-icon-size": {
         "name": "selectTriggerIconSize",
@@ -11115,6 +11115,18 @@
         "variable": "var(--checkbox-icon-size-lg)",
         "description": "Size of the large checkbox icon."
       },
+      "checkbox-border-color": {
+        "name": "checkboxBorderColor",
+        "path": [
+          "checkbox",
+          "border",
+          "color"
+        ],
+        "value": "oklch(0.613 0.005 258.5)",
+        "type": "color",
+        "variable": "var(--color-checkbox-border-color)",
+        "description": "Border of an unchecked checkbox in its normal state."
+      },
       "checkbox-focus-ring-width": {
         "name": "checkboxFocusRingWidth",
         "path": [
@@ -11139,25 +11151,13 @@
         "variable": "var(--checkbox-focus-ring-offset)",
         "description": "Gap between the checkbox and its focus ring."
       },
-      "checkbox-border-color": {
-        "name": "checkboxBorderColor",
-        "path": [
-          "checkbox",
-          "border",
-          "color"
-        ],
-        "value": "oklch(0.613 0.005 258.45)",
-        "type": "color",
-        "variable": "var(--color-checkbox-border-color)",
-        "description": "Border of an unchecked checkbox in its normal state."
-      },
       "checkbox-background-checked": {
         "name": "checkboxBackgroundChecked",
         "path": [
           "checkbox",
           "background-checked"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-checkbox-background-checked)",
         "description": "Fill of a checked or indeterminate checkbox. Pairs with `checkbox.text-checked`."
@@ -11168,7 +11168,7 @@
           "checkbox",
           "text-checked"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-checkbox-text-checked)",
         "description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
@@ -11179,7 +11179,7 @@
           "checkbox",
           "border-checked"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-checkbox-border-checked)",
         "description": "Border colour of the checkbox when checked."
@@ -11190,7 +11190,7 @@
           "checkbox",
           "error-border"
         ],
-        "value": "oklch(0.546 0.215 27.31)",
+        "value": "oklch(0.546 0.215 27.3)",
         "type": "color",
         "variable": "var(--color-checkbox-error-border)",
         "description": "Border of a checkbox marked invalid."
@@ -11201,7 +11201,7 @@
           "checkbox",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-checkbox-background-disabled)",
         "description": "Fill of the checkbox when disabled, a quiet neutral so it reads as unavailable. Pairs with `checkbox.text-disabled`."
@@ -11223,7 +11223,7 @@
           "checkbox",
           "border-disabled"
         ],
-        "value": "oklch(0.87 0.003 264.48)",
+        "value": "oklch(0.87 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-checkbox-border-disabled)",
         "description": "Border colour of the checkbox when disabled, in the muted border tone."
@@ -11320,18 +11320,6 @@
         "variable": "var(--switch-track-radius)",
         "description": "Corner radius of the switch track."
       },
-      "switch-track-border-width": {
-        "name": "switchTrackBorderWidth",
-        "path": [
-          "switch",
-          "track",
-          "border-width"
-        ],
-        "value": "2px",
-        "type": "dimension",
-        "variable": "var(--switch-track-border-width)",
-        "description": "Border width of the switch track."
-      },
       "switch-thumb-size-sm": {
         "name": "switchThumbSizeSm",
         "path": [
@@ -11422,6 +11410,30 @@
         "variable": "var(--switch-thumb-translate-lg)",
         "description": "Travel distance of the large switch thumb."
       },
+      "switch-thumb-background": {
+        "name": "switchThumbBackground",
+        "path": [
+          "switch",
+          "thumb",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.42)",
+        "type": "color",
+        "variable": "var(--color-switch-thumb-background)",
+        "description": "Fill of the sliding thumb."
+      },
+      "switch-track-border-width": {
+        "name": "switchTrackBorderWidth",
+        "path": [
+          "switch",
+          "track",
+          "border-width"
+        ],
+        "value": "2px",
+        "type": "dimension",
+        "variable": "var(--switch-track-border-width)",
+        "description": "Border width of the switch track."
+      },
       "switch-focus-ring-width": {
         "name": "switchFocusRingWidth",
         "path": [
@@ -11453,7 +11465,7 @@
           "track",
           "background-checked"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-switch-track-background-checked)",
         "description": "Track fill when the switch is on."
@@ -11465,22 +11477,10 @@
           "track",
           "background-unchecked"
         ],
-        "value": "oklch(0.613 0.005 258.45)",
+        "value": "oklch(0.613 0.005 258.5)",
         "type": "color",
         "variable": "var(--color-switch-track-background-unchecked)",
         "description": "Track fill when the switch is off, in the emphasis border tone."
-      },
-      "switch-thumb-background": {
-        "name": "switchThumbBackground",
-        "path": [
-          "switch",
-          "thumb",
-          "background"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-switch-thumb-background)",
-        "description": "Fill of the sliding thumb."
       },
       "switch-track-background-disabled": {
         "name": "switchTrackBackgroundDisabled",
@@ -11489,7 +11489,7 @@
           "track",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-switch-track-background-disabled)",
         "description": "Track fill when disabled, in either state. A quiet neutral, not a fade."
@@ -11594,7 +11594,7 @@
           "textarea",
           "background-disabled"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-textarea-background-disabled)",
         "description": "Fill of the textarea when disabled, a quiet neutral so it reads as unavailable. Pairs with `textarea.text-disabled`."
@@ -11648,17 +11648,6 @@
         "variable": "var(--label-font-size-lg)",
         "description": "Font size of the large label."
       },
-      "label-disabled-color": {
-        "name": "labelDisabledColor",
-        "path": [
-          "label",
-          "disabled-color"
-        ],
-        "value": "oklch(0.52 0.007 264.5)",
-        "type": "color",
-        "variable": "var(--color-label-disabled-color)",
-        "description": "Text colour of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-      },
       "label-required-margin-left": {
         "name": "labelRequiredMarginLeft",
         "path": [
@@ -11669,17 +11658,6 @@
         "type": "spacing",
         "variable": "var(--label-required-margin-left)",
         "description": "Space between a label and its required marker."
-      },
-      "label-default-color": {
-        "name": "labelDefaultColor",
-        "path": [
-          "label",
-          "default-color"
-        ],
-        "value": "oklch(0.423 0.007 264.49)",
-        "type": "color",
-        "variable": "var(--color-label-default-color)",
-        "description": "Default text colour of labels."
       },
       "label-font-weight": {
         "name": "labelFontWeight",
@@ -11692,13 +11670,35 @@
         "variable": "var(--label-font-weight)",
         "description": "Font weight of the label."
       },
+      "label-disabled-color": {
+        "name": "labelDisabledColor",
+        "path": [
+          "label",
+          "disabled-color"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-label-disabled-color)",
+        "description": "Text colour of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "label-default-color": {
+        "name": "labelDefaultColor",
+        "path": [
+          "label",
+          "default-color"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-label-default-color)",
+        "description": "Default text colour of labels."
+      },
       "label-error-text": {
         "name": "labelErrorText",
         "path": [
           "label",
           "error-text"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-label-error-text)",
         "description": "Text colour of a label when its field has an error."
@@ -11709,7 +11709,7 @@
           "label",
           "required-text"
         ],
-        "value": "oklch(0.488 0.19 27.49)",
+        "value": "oklch(0.488 0.19 27.48)",
         "type": "color",
         "variable": "var(--color-label-required-text)",
         "description": "Colour of the required marker on labels."
@@ -11727,17 +11727,6 @@
       }
     },
     "sheet": {
-      "sheet-overlay-background": {
-        "name": "sheetOverlayBackground",
-        "path": [
-          "sheet",
-          "overlay-background"
-        ],
-        "value": "oklch(0.149 0.012 259.72)",
-        "type": "color",
-        "variable": "var(--color-sheet-overlay-background)",
-        "description": "Fill of the sheet overlay."
-      },
       "sheet-content-width-sm": {
         "name": "sheetContentWidthSm",
         "path": [
@@ -11927,7 +11916,7 @@
           "content",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-sheet-content-background)",
         "description": "Fill of the sheet panel. Also the colour of the gap between the close button and its focus ring."
@@ -11967,6 +11956,17 @@
         "type": "color",
         "variable": "var(--color-sheet-description-text)",
         "description": "Text colour of the sheet description."
+      },
+      "sheet-overlay-background": {
+        "name": "sheetOverlayBackground",
+        "path": [
+          "sheet",
+          "overlay-background"
+        ],
+        "value": "oklch(0.149 0.012 259.73)",
+        "type": "color",
+        "variable": "var(--color-sheet-overlay-background)",
+        "description": "Fill of the sheet overlay."
       },
       "sheet-close-button-icon-size": {
         "name": "sheetCloseButtonIconSize",
@@ -12052,28 +12052,6 @@
       }
     },
     "separator": {
-      "separator-height-horizontal": {
-        "name": "separatorHeightHorizontal",
-        "path": [
-          "separator",
-          "height-horizontal"
-        ],
-        "value": "1px",
-        "type": "spacing",
-        "variable": "var(--separator-height-horizontal)",
-        "description": "Thickness of a horizontal separator."
-      },
-      "separator-width-vertical": {
-        "name": "separatorWidthVertical",
-        "path": [
-          "separator",
-          "width-vertical"
-        ],
-        "value": "1px",
-        "type": "spacing",
-        "variable": "var(--separator-width-vertical)",
-        "description": "Thickness of a vertical separator."
-      },
       "separator-margin-horizontal": {
         "name": "separatorMarginHorizontal",
         "path": [
@@ -12104,10 +12082,32 @@
           "separator",
           "color"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-separator-color)",
         "description": "Colour of the separator line."
+      },
+      "separator-height-horizontal": {
+        "name": "separatorHeightHorizontal",
+        "path": [
+          "separator",
+          "height-horizontal"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--separator-height-horizontal)",
+        "description": "Thickness of a horizontal separator."
+      },
+      "separator-width-vertical": {
+        "name": "separatorWidthVertical",
+        "path": [
+          "separator",
+          "width-vertical"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--separator-width-vertical)",
+        "description": "Thickness of a vertical separator."
       }
     },
     "context-menu": {
@@ -12183,18 +12183,6 @@
         "type": "spacing",
         "variable": "var(--context-menu-item-indicator-size)",
         "description": "Size of the context menu item indicator."
-      },
-      "context-menu-item-icon-size": {
-        "name": "contextMenuItemIconSize",
-        "path": [
-          "context-menu",
-          "item",
-          "icon-size"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--context-menu-item-icon-size)",
-        "description": "Size of the context menu item icon."
       },
       "context-menu-checkbox-padding": {
         "name": "contextMenuCheckboxPadding",
@@ -12273,6 +12261,31 @@
         "variable": "var(--context-menu-shortcut-font-size)",
         "description": "Font size of the context menu shortcut."
       },
+      "context-menu-item-indicator-left": {
+        "name": "contextMenuItemIndicatorLeft",
+        "path": [
+          "context-menu",
+          "item",
+          "indicator",
+          "left"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-indicator-left)",
+        "description": "Left offset of the context menu item check indicator."
+      },
+      "context-menu-item-icon-size": {
+        "name": "contextMenuItemIconSize",
+        "path": [
+          "context-menu",
+          "item",
+          "icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-icon-size)",
+        "description": "Size of the context menu item icon."
+      },
       "context-menu-label-font-weight": {
         "name": "contextMenuLabelFontWeight",
         "path": [
@@ -12294,19 +12307,6 @@
         "type": "dimension",
         "variable": "var(--context-menu-shortcut-letter-spacing)",
         "description": "Letter spacing of the context menu shortcut."
-      },
-      "context-menu-item-indicator-left": {
-        "name": "contextMenuItemIndicatorLeft",
-        "path": [
-          "context-menu",
-          "item",
-          "indicator",
-          "left"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--context-menu-item-indicator-left)",
-        "description": "Left offset of the context menu item check indicator."
       },
       "context-menu-sub-content-min-width": {
         "name": "contextMenuSubContentMinWidth",
@@ -12437,18 +12437,6 @@
         "variable": "var(--dropdown-menu-item-inset)",
         "description": "Extra left padding for dropdown menu items without an indicator, so their labels line up with indicator items."
       },
-      "dropdown-menu-item-icon-size": {
-        "name": "dropdownMenuItemIconSize",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "icon-size"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--dropdown-menu-item-icon-size)",
-        "description": "Size of the dropdown menu item icon."
-      },
       "dropdown-menu-item-font-size": {
         "name": "dropdownMenuItemFontSize",
         "path": [
@@ -12551,7 +12539,7 @@
           "content",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-content-background)",
         "description": "Fill of the dropdown menu content. Pairs with `dropdown-menu.content.text`."
@@ -12575,7 +12563,7 @@
           "content",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-content-border)",
         "description": "Border colour of the dropdown menu content."
@@ -12587,7 +12575,7 @@
           "item",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-item-background-hover)",
         "description": "Fill of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.text-hover`."
@@ -12611,7 +12599,7 @@
           "separator",
           "background"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-separator-background)",
         "description": "Fill of the dropdown menu separator."
@@ -12627,17 +12615,6 @@
         "type": "number",
         "variable": "var(--dropdown-menu-shortcut-opacity)",
         "description": "Opacity of the dropdown menu shortcut."
-      },
-      "dropdown-menu-label-font-weight": {
-        "name": "dropdownMenuLabelFontWeight",
-        "path": [
-          "dropdown-menu",
-          "label-font-weight"
-        ],
-        "value": 600,
-        "type": "number",
-        "variable": "var(--dropdown-menu-label-font-weight)",
-        "description": "Font weight of the dropdown menu label."
       },
       "dropdown-menu-shortcut-letter-spacing": {
         "name": "dropdownMenuShortcutLetterSpacing",
@@ -12663,6 +12640,29 @@
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-indicator-left)",
         "description": "Left offset of the dropdown menu item check indicator."
+      },
+      "dropdown-menu-item-icon-size": {
+        "name": "dropdownMenuItemIconSize",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-icon-size)",
+        "description": "Size of the dropdown menu item icon."
+      },
+      "dropdown-menu-label-font-weight": {
+        "name": "dropdownMenuLabelFontWeight",
+        "path": [
+          "dropdown-menu",
+          "label-font-weight"
+        ],
+        "value": 600,
+        "type": "number",
+        "variable": "var(--dropdown-menu-label-font-weight)",
+        "description": "Font weight of the dropdown menu label."
       },
       "dropdown-menu-item-radio-indicator-radius": {
         "name": "dropdownMenuItemRadioIndicatorRadius",
@@ -12882,17 +12882,6 @@
         "variable": "var(--color-feature-grid-title-text)",
         "description": "Text colour of the feature grid title."
       },
-      "feature-grid-description-text": {
-        "name": "featureGridDescriptionText",
-        "path": [
-          "feature-grid",
-          "description-text"
-        ],
-        "value": "oklch(0.423 0.007 264.49)",
-        "type": "color",
-        "variable": "var(--color-feature-grid-description-text)",
-        "description": "Text colour of the feature grid description."
-      },
       "feature-grid-item-border-color": {
         "name": "featureGridItemBorderColor",
         "path": [
@@ -12900,7 +12889,7 @@
           "item",
           "border-color"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-feature-grid-item-border-color)",
         "description": "Border colour of the feature grid item."
@@ -12912,10 +12901,21 @@
           "item",
           "border-color-hover"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-feature-grid-item-border-color-hover)",
         "description": "Border colour of the feature grid item while hovered."
+      },
+      "feature-grid-description-text": {
+        "name": "featureGridDescriptionText",
+        "path": [
+          "feature-grid",
+          "description-text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-feature-grid-description-text)",
+        "description": "Text colour of the feature grid description."
       },
       "feature-grid-icon-shadow": {
         "name": "featureGridIconShadow",
@@ -13197,17 +13197,6 @@
         "variable": "var(--navigation-menu-trigger-font-size)",
         "description": "Font size of the navigation menu trigger."
       },
-      "navigation-menu-indicator-height": {
-        "name": "navigationMenuIndicatorHeight",
-        "path": [
-          "navigation-menu",
-          "indicator-height"
-        ],
-        "value": "0px",
-        "type": "dimension",
-        "variable": "var(--navigation-menu-indicator-height)",
-        "description": "Height of the navigation menu indicator."
-      },
       "navigation-menu-trigger-height": {
         "name": "navigationMenuTriggerHeight",
         "path": [
@@ -13231,6 +13220,17 @@
         "type": "number",
         "variable": "var(--navigation-menu-trigger-font-weight)",
         "description": "Font weight of the navigation menu trigger."
+      },
+      "navigation-menu-indicator-height": {
+        "name": "navigationMenuIndicatorHeight",
+        "path": [
+          "navigation-menu",
+          "indicator-height"
+        ],
+        "value": "0px",
+        "type": "dimension",
+        "variable": "var(--navigation-menu-indicator-height)",
+        "description": "Height of the navigation menu indicator."
       },
       "navigation-menu-trigger-icon-size": {
         "name": "navigationMenuTriggerIconSize",
@@ -13367,17 +13367,6 @@
         "variable": "var(--toggle-group-item-font-size)",
         "description": "Font size of the toggle group item."
       },
-      "toggle-group-item-font-weight": {
-        "name": "toggleGroupItemFontWeight",
-        "path": [
-          "toggle-group",
-          "item-font-weight"
-        ],
-        "value": 500,
-        "type": "number",
-        "variable": "var(--toggle-group-item-font-weight)",
-        "description": "Font weight of the toggle group item."
-      },
       "toggle-group-item-height": {
         "name": "toggleGroupItemHeight",
         "path": [
@@ -13388,6 +13377,17 @@
         "type": "spacing",
         "variable": "var(--toggle-group-item-height)",
         "description": "Height of toggle group items (40px, matches default toggle height)."
+      },
+      "toggle-group-item-font-weight": {
+        "name": "toggleGroupItemFontWeight",
+        "path": [
+          "toggle-group",
+          "item-font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--toggle-group-item-font-weight)",
+        "description": "Font weight of the toggle group item."
       }
     },
     "site-header": {
@@ -13397,7 +13397,7 @@
           "site-header",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-site-header-background)",
         "description": "Fill of the site header."
@@ -13408,7 +13408,7 @@
           "site-header",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-site-header-border)",
         "description": "Border colour of the site header."
@@ -13420,7 +13420,7 @@
           "nav-link",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-background)",
         "description": "Fill of the site header nav link."
@@ -13432,22 +13432,10 @@
           "nav-link",
           "background-hover"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-background-hover)",
         "description": "Fill of the site header nav link while hovered. Pairs with `site-header.nav-link.text-hover`."
-      },
-      "site-header-nav-link-background-highlighted": {
-        "name": "siteHeaderNavLinkBackgroundHighlighted",
-        "path": [
-          "site-header",
-          "nav-link",
-          "background-highlighted"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-site-header-nav-link-background-highlighted)",
-        "description": "Fill of the site header nav link while highlighted. Pairs with `site-header.nav-link.text-highlighted`."
       },
       "site-header-nav-link-text-hover": {
         "name": "siteHeaderNavLinkTextHover",
@@ -13461,18 +13449,6 @@
         "variable": "var(--color-site-header-nav-link-text-hover)",
         "description": "Text colour of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
       },
-      "site-header-nav-link-text-highlighted": {
-        "name": "siteHeaderNavLinkTextHighlighted",
-        "path": [
-          "site-header",
-          "nav-link",
-          "text-highlighted"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-site-header-nav-link-text-highlighted)",
-        "description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
-      },
       "site-header-nav-link-text-disabled": {
         "name": "siteHeaderNavLinkTextDisabled",
         "path": [
@@ -13484,6 +13460,30 @@
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-disabled)",
         "description": "Text colour of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "site-header-nav-link-background-highlighted": {
+        "name": "siteHeaderNavLinkBackgroundHighlighted",
+        "path": [
+          "site-header",
+          "nav-link",
+          "background-highlighted"
+        ],
+        "value": "oklch(0.952 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-background-highlighted)",
+        "description": "Fill of the site header nav link while highlighted. Pairs with `site-header.nav-link.text-highlighted`."
+      },
+      "site-header-nav-link-text-highlighted": {
+        "name": "siteHeaderNavLinkTextHighlighted",
+        "path": [
+          "site-header",
+          "nav-link",
+          "text-highlighted"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-text-highlighted)",
+        "description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
       },
       "site-header-container-padding-x-sm": {
         "name": "siteHeaderContainerPaddingXSm",
@@ -13692,7 +13692,7 @@
           "site-footer",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-site-footer-background)",
         "description": "Fill of the site footer. Pairs with `site-footer.text`."
@@ -13703,7 +13703,7 @@
           "site-footer",
           "background-muted"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-site-footer-background-muted)",
         "description": "Fill of the muted variant of the site footer."
@@ -13714,7 +13714,7 @@
           "site-footer",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-site-footer-border)",
         "description": "Border colour of the site footer."
@@ -13976,7 +13976,7 @@
           "section-hero",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-section-hero-background)",
         "description": "Fill of the hero section."
@@ -13988,7 +13988,7 @@
           "gradient",
           "from"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-section-hero-gradient-from)",
         "description": "Colour stop (from) of the hero section background gradient."
@@ -14000,7 +14000,7 @@
           "gradient",
           "via"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-section-hero-gradient-via)",
         "description": "Colour stop (via) of the hero section background gradient."
@@ -14012,7 +14012,7 @@
           "gradient",
           "to"
         ],
-        "value": "oklch(0.97 0.014 254.77)",
+        "value": "oklch(0.97 0.014 254.82)",
         "type": "color",
         "variable": "var(--color-section-hero-gradient-to)",
         "description": "Colour stop (to) of the hero section background gradient."
@@ -14272,7 +14272,7 @@
           "section-features",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-section-features-background)",
         "description": "Fill of the features section."
@@ -14283,7 +14283,7 @@
           "section-features",
           "background-muted"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.952 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-section-features-background-muted)",
         "description": "Fill of the muted variant of the features section."
@@ -14316,7 +14316,7 @@
           "section-features",
           "icon-background"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.546 0.215 262.91)",
         "type": "color",
         "variable": "var(--color-section-features-icon-background)",
         "description": "Fill of the features section icon. Pairs with `section-features.icon-text`."
@@ -14327,7 +14327,7 @@
           "section-features",
           "icon-text"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.488 0.217 264.41)",
         "type": "color",
         "variable": "var(--color-section-features-icon-text)",
         "description": "Colour of the features section icon. Pairs with `section-features.icon-background`."
@@ -14601,7 +14601,7 @@
           "page-layout",
           "skip-link-background"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.991 0.003 264.42)",
         "type": "color",
         "variable": "var(--color-page-layout-skip-link-background)",
         "description": "Fill of the page layout skip link. Pairs with `page-layout.skip-link-text`."
@@ -14623,7 +14623,7 @@
           "page-layout",
           "sidebar-border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.786 0.004 270.98)",
         "type": "color",
         "variable": "var(--color-page-layout-sidebar-border)",
         "description": "Border colour of the page layout sidebar."

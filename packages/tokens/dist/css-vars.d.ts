@@ -1328,7 +1328,7 @@ export type CssVarName =
   | "--typography-font-family-sans"
   | "--typography-font-family-serif"
   | "--z-index-0"
-  | "--z-index-1"
+  | "--z-index-01"
   | "--z-index-10"
   | "--z-index-100"
   | "--z-index-20"
@@ -2677,7 +2677,7 @@ export declare const cssVars: Readonly<{
   "typographyFontFamilySans": "--typography-font-family-sans";
   "typographyFontFamilySerif": "--typography-font-family-serif";
   "zIndex0": "--z-index-0";
-  "zIndex1": "--z-index-1";
+  "zIndex01": "--z-index-01";
   "zIndex10": "--z-index-10";
   "zIndex100": "--z-index-100";
   "zIndex20": "--z-index-20";
