@@ -33,7 +33,7 @@ const FILL_SCOPES = ["FRAME_FILL", "SHAPE_FILL"];
 // Text, and vector icons (which are shapes)
 const FOREGROUND_SCOPES = ["TEXT_FILL", "SHAPE_FILL"];
 const STROKE_SCOPES = ["STROKE_COLOR"];
-// A focus ring can be a stroke or a shadow
+// The focus indicator is an outline (a stroke) plus a halo (a shadow)
 const FOCUS_BORDER_SCOPES = ["STROKE_COLOR", "EFFECT_COLOR"];
 
 // Property words in component token names. Stroke words are checked first
@@ -143,9 +143,10 @@ function inferScopesForColor(tokenName: string): string[] {
       case "foreground":
         return [...FOREGROUND_SCOPES];
       case "border":
-        return segments[2] === "focus"
-          ? [...FOCUS_BORDER_SCOPES]
-          : [...STROKE_SCOPES];
+        return [...STROKE_SCOPES];
+      case "focus":
+        // The ring is an outline (a stroke) and the halo is a shadow (an effect)
+        return [...FOCUS_BORDER_SCOPES];
       default:
         // Primitive palette (color.blue.600): stays visible everywhere
         return ["ALL_SCOPES"];

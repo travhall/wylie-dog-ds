@@ -105,16 +105,16 @@ Native `EASING` and `TIMING` variables, composed colors and anything that aliase
 
 Scopes decide which pickers (fill, text fill, stroke) list a colour variable. They are inferred from the token name by `src/plugin/variables/scopes.ts` and re-applied on every import, so importing or pulling updates scopes on variables that already exist.
 
-| Token                                                                                                                                        | Scopes                         |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| `color.background.*`                                                                                                                         | `FRAME_FILL`, `SHAPE_FILL`     |
-| `color.foreground.*`                                                                                                                         | `TEXT_FILL`, `SHAPE_FILL`      |
-| `color.border.*`                                                                                                                             | `STROKE_COLOR`                 |
-| `color.border.focus`                                                                                                                         | `STROKE_COLOR`, `EFFECT_COLOR` |
-| Component, name contains `background`, `fill`, `track`, `thumb`, `indicator` or `overlay`                                                    | `FRAME_FILL`, `SHAPE_FILL`     |
-| Component, name contains `text`, `label`, `foreground`, `placeholder`, `link` or `icon`                                                      | `TEXT_FILL`, `SHAPE_FILL`      |
-| Component, name contains `border`, `ring`, `outline` or `stroke`                                                                             | `STROKE_COLOR`                 |
-| Primitive colours (`color.blue.600`), and any component name without a property word (`select.trigger-focus`, a bare `color`, `ring-offset`) | `ALL_SCOPES`                   |
+| Token                                                                                                                                       | Scopes                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `color.background.*`                                                                                                                        | `FRAME_FILL`, `SHAPE_FILL`     |
+| `color.foreground.*`                                                                                                                        | `TEXT_FILL`, `SHAPE_FILL`      |
+| `color.border.*`                                                                                                                            | `STROKE_COLOR`                 |
+| `color.focus.ring`, `color.focus.halo`                                                                                                      | `STROKE_COLOR`, `EFFECT_COLOR` |
+| Component, name contains `background`, `fill`, `track`, `thumb`, `indicator` or `overlay`                                                   | `FRAME_FILL`, `SHAPE_FILL`     |
+| Component, name contains `text`, `label`, `foreground`, `placeholder`, `link` or `icon`                                                     | `TEXT_FILL`, `SHAPE_FILL`      |
+| Component, name contains `border`, `ring`, `outline` or `stroke`                                                                            | `STROKE_COLOR`                 |
+| Primitive colours (`color.blue.600`), and any component name without a property word (`select.trigger-open`, a bare `color`, `ring-offset`) | `ALL_SCOPES`                   |
 
 For component tokens the last name segment is read first (`background-hover`), then earlier ones. Non-colour types keep their type-based scopes (dimension tokens are still inferred from the name). Behaviour inside Figma is checked by hand: open a fill, a text fill and a stroke picker and confirm only the intended variables appear.
 

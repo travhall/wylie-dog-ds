@@ -409,11 +409,6 @@
     "$value": "{color.border.emphasis}",
     "$description": "Border colour of the input."
   },
-  "input.border-focus": {
-    "$type": "color",
-    "$value": "{color.border.focus}",
-    "$description": "Border of the input while focused. Specification only: the code uses the focus ring (`color.border.focus`) and does not bind this token."
-  },
   "input.border-error": {
     "$type": "color",
     "$value": "{color.border.danger}",
@@ -529,15 +524,15 @@
     "$value": "{color.background.default}",
     "$description": "Fill of the menubar."
   },
-  "menubar.trigger-focus": {
+  "menubar.trigger-highlighted": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
-    "$description": "Fill of the menubar trigger while focused. Pairs with `menubar.trigger-text-focus`."
+    "$description": "Fill of the menubar trigger while highlighted. Pairs with `menubar.trigger-text-highlighted`."
   },
-  "menubar.trigger-text-focus": {
+  "menubar.trigger-text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the menubar trigger while focused. Pairs with `menubar.trigger-focus`."
+    "$description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
   },
   "menubar.trigger-open": {
     "$type": "color",
@@ -564,15 +559,15 @@
     "$value": "{color.foreground.default}",
     "$description": "Text colour of the menubar content. Pairs with `menubar.content-background`."
   },
-  "menubar.item-focus": {
+  "menubar.item-highlighted": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
-    "$description": "Fill of the menubar item while focused. Pairs with `menubar.item-text-focus`."
+    "$description": "Fill of the menubar item while highlighted. Pairs with `menubar.item-text-highlighted`."
   },
-  "menubar.item-text-focus": {
+  "menubar.item-text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the menubar item while focused. Pairs with `menubar.item-focus`."
+    "$description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
   },
   "menubar.label": {
     "$type": "color",
@@ -599,15 +594,15 @@
     "$value": "{color.foreground.default}",
     "$description": "Text colour of the navigation menu while hovered. Pairs with `navigation.background-hover`."
   },
-  "navigation.focus": {
+  "navigation.highlighted": {
     "$type": "color",
     "$value": "{color.background.muted}",
-    "$description": "Fill of a navigation menu trigger while focused. Pairs with `navigation.text-focus`."
+    "$description": "Fill of a navigation menu trigger while highlighted. Pairs with `navigation.text-highlighted`."
   },
-  "navigation.text-focus": {
+  "navigation.text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of a navigation menu trigger while focused. Pairs with `navigation.focus`."
+    "$description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
   },
   "navigation.active": {
     "$type": "color",
@@ -813,11 +808,6 @@
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of the accordion trigger while pressed."
-  },
-  "accordion.trigger-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}",
-    "$description": "Fill of the accordion trigger while focused."
   },
   "accordion.trigger-disabled": {
     "$type": "color",
@@ -1371,13 +1361,13 @@
   },
   "checkbox.focus-ring.width": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.width}",
     "$description": "Width of the checkbox focus ring."
   },
   "checkbox.focus-ring.offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
-    "$description": "Gap between the checkbox and its focus ring. The ring colour is `color.border.focus`, the documented exception."
+    "$value": "{focus.offset}",
+    "$description": "Gap between the checkbox and its focus ring."
   },
   "switch.track.height.sm": {
     "$type": "spacing",
@@ -1456,12 +1446,12 @@
   },
   "switch.focus-ring.width": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.width}",
     "$description": "Width of the switch focus ring."
   },
   "switch.focus-ring.offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.offset}",
     "$description": "Gap between the switch and its focus ring."
   },
   "switch.track.background-checked": {
@@ -1516,12 +1506,12 @@
   },
   "radio.focus-ring.width": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.width}",
     "$description": "Width of the radio focus ring."
   },
   "radio.focus-ring.offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.offset}",
     "$description": "Gap between the radio and its focus ring."
   },
   "slider.track-height": {
@@ -1551,12 +1541,12 @@
   },
   "slider.focus-ring.width": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.width}",
     "$description": "Width of the slider focus ring."
   },
   "slider.focus-ring.offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.offset}",
     "$description": "Gap between the slider and its focus ring."
   },
   "textarea.min-height.sm": {
@@ -3261,7 +3251,7 @@
   },
   "card.border-hover": {
     "$type": "color",
-    "$value": "{color.border.focus}",
+    "$value": "{color.border.primary}",
     "$description": "Border colour of an interactive card while hovered."
   },
   "form.label-font-weight": {
@@ -3284,70 +3274,35 @@
     "$value": "{color.foreground.danger-muted}",
     "$description": "Colour of the required-field marker on form labels."
   },
-  "badge.default.background-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-emphasis}",
-    "$description": "Fill of the default badge while focused."
-  },
   "badge.default.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of the default badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.default.text-disabled`."
-  },
-  "badge.secondary.background-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}",
-    "$description": "Fill of an interactive secondary badge while it has keyboard focus."
   },
   "badge.secondary.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of the secondary badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.secondary.text-disabled`."
   },
-  "badge.success.background-focus": {
-    "$type": "color",
-    "$value": "{color.background.success-emphasis}",
-    "$description": "Fill of the success badge while focused."
-  },
   "badge.success.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`."
-  },
-  "badge.warning.background-focus": {
-    "$type": "color",
-    "$value": "{color.background.warning-emphasis}",
-    "$description": "Fill of the warning badge while focused."
   },
   "badge.warning.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of the warning badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.warning.text-disabled`."
   },
-  "badge.destructive.background-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}",
-    "$description": "Fill of the destructive badge while focused."
-  },
   "badge.destructive.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of the destructive badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.destructive.text-disabled`."
   },
-  "badge.outline.background-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}",
-    "$description": "Fill of the outline badge while focused."
-  },
   "badge.outline.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of the outline badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.outline.text-disabled`."
-  },
-  "card.background-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}",
-    "$description": "Fill of an interactive card while focused."
   },
   "card.background-active": {
     "$type": "color",
@@ -3424,15 +3379,15 @@
     "$value": "{z-index.dropdown}",
     "$description": "Stacking order of the select content."
   },
-  "select.item.background-focus": {
+  "select.item.background-highlighted": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
-    "$description": "Fill of the select item while focused. Pairs with `select.item.text-focus`."
+    "$description": "Fill of the select item while highlighted. Pairs with `select.item.text-highlighted`."
   },
-  "select.item.text-focus": {
+  "select.item.text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the select item while focused. Pairs with `select.item.background-focus`."
+    "$description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
   },
   "select.item.indicator-left": {
     "$type": "spacing",
@@ -3604,11 +3559,6 @@
     "$value": "{color.border.default}",
     "$description": "Fill of the select separator."
   },
-  "slider.thumb-ring-offset": {
-    "$type": "color",
-    "$value": "{color.background.default}",
-    "$description": "Colour of the gap between the slider thumb and its focus ring, matching the surface behind it."
-  },
   "textarea.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.regular}",
@@ -3636,12 +3586,12 @@
   },
   "resizable.handle-focus-ring-width": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.width}",
     "$description": "Width of the resizable handle focus ring."
   },
   "resizable.handle-focus-ring-offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}",
+    "$value": "{focus.offset}",
     "$description": "Gap between the resizable handle and its focus ring."
   },
   "sheet.content.background": {
@@ -3664,11 +3614,6 @@
     "$value": "{color.foreground.muted}",
     "$description": "Text colour of the sheet description."
   },
-  "toast.action.ring-offset": {
-    "$type": "color",
-    "$value": "{color.background.default}",
-    "$description": "Colour of the gap between the toast action and its focus ring, matching the surface behind it."
-  },
   "toast.close-button.position": {
     "$type": "spacing",
     "$value": "{space.100}",
@@ -3678,21 +3623,6 @@
     "$type": "number",
     "$value": "{opacity.100}",
     "$description": "Opacity of the toast description."
-  },
-  "tabs.trigger.ring-offset": {
-    "$type": "color",
-    "$value": "{color.background.default}",
-    "$description": "Colour of the gap between the tabs trigger and its focus ring, matching the surface behind it."
-  },
-  "tabs.content.ring-offset": {
-    "$type": "color",
-    "$value": "{color.background.default}",
-    "$description": "Colour of the gap between the tabs content and its focus ring, matching the surface behind it."
-  },
-  "calendar.nav-button.ring-offset": {
-    "$type": "color",
-    "$value": "{color.background.default}",
-    "$description": "Colour of the gap between the calendar nav button and its focus ring, matching the surface behind it."
   },
   "form.label-error-text": {
     "$type": "color",
@@ -3744,20 +3674,20 @@
     "$value": "{color.background.muted}",
     "$description": "Fill of the site header nav link while hovered. Pairs with `site-header.nav-link.text-hover`."
   },
-  "site-header.nav-link.background-focus": {
+  "site-header.nav-link.background-highlighted": {
     "$type": "color",
     "$value": "{color.background.muted}",
-    "$description": "Fill of the site header nav link while focused. Pairs with `site-header.nav-link.text-focus`."
+    "$description": "Fill of the site header nav link while highlighted. Pairs with `site-header.nav-link.text-highlighted`."
   },
   "site-header.nav-link.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
     "$description": "Text colour of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
   },
-  "site-header.nav-link.text-focus": {
+  "site-header.nav-link.text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the site header nav link while focused. Pairs with `site-header.nav-link.background-focus`."
+    "$description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
   },
   "site-footer.background": {
     "$type": "color",

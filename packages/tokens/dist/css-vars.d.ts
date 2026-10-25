@@ -26,7 +26,6 @@ export type CssVarName =
   | "--color-accordion-icon-hover"
   | "--color-accordion-icon-open"
   | "--color-accordion-trigger-disabled"
-  | "--color-accordion-trigger-focus"
   | "--color-accordion-trigger-hover"
   | "--color-accordion-trigger-pressed"
   | "--color-accordion-trigger-text"
@@ -70,7 +69,6 @@ export type CssVarName =
   | "--color-background-warning-muted"
   | "--color-badge-default-background"
   | "--color-badge-default-background-disabled"
-  | "--color-badge-default-background-focus"
   | "--color-badge-default-background-hover"
   | "--color-badge-default-border"
   | "--color-badge-default-border-disabled"
@@ -78,7 +76,6 @@ export type CssVarName =
   | "--color-badge-default-text-disabled"
   | "--color-badge-destructive-background"
   | "--color-badge-destructive-background-disabled"
-  | "--color-badge-destructive-background-focus"
   | "--color-badge-destructive-background-hover"
   | "--color-badge-destructive-border"
   | "--color-badge-destructive-border-disabled"
@@ -86,7 +83,6 @@ export type CssVarName =
   | "--color-badge-destructive-text-disabled"
   | "--color-badge-outline-background"
   | "--color-badge-outline-background-disabled"
-  | "--color-badge-outline-background-focus"
   | "--color-badge-outline-background-hover"
   | "--color-badge-outline-border"
   | "--color-badge-outline-border-disabled"
@@ -94,7 +90,6 @@ export type CssVarName =
   | "--color-badge-outline-text-disabled"
   | "--color-badge-secondary-background"
   | "--color-badge-secondary-background-disabled"
-  | "--color-badge-secondary-background-focus"
   | "--color-badge-secondary-background-hover"
   | "--color-badge-secondary-border"
   | "--color-badge-secondary-border-disabled"
@@ -102,7 +97,6 @@ export type CssVarName =
   | "--color-badge-secondary-text-disabled"
   | "--color-badge-success-background"
   | "--color-badge-success-background-disabled"
-  | "--color-badge-success-background-focus"
   | "--color-badge-success-background-hover"
   | "--color-badge-success-border"
   | "--color-badge-success-border-disabled"
@@ -110,7 +104,6 @@ export type CssVarName =
   | "--color-badge-success-text-disabled"
   | "--color-badge-warning-background"
   | "--color-badge-warning-background-disabled"
-  | "--color-badge-warning-background-focus"
   | "--color-badge-warning-background-hover"
   | "--color-badge-warning-border"
   | "--color-badge-warning-border-disabled"
@@ -141,7 +134,6 @@ export type CssVarName =
   | "--color-border-danger"
   | "--color-border-default"
   | "--color-border-emphasis"
-  | "--color-border-focus"
   | "--color-border-muted"
   | "--color-border-primary"
   | "--color-border-success"
@@ -194,14 +186,12 @@ export type CssVarName =
   | "--color-calendar-header-text"
   | "--color-calendar-nav-border"
   | "--color-calendar-nav-border-disabled"
-  | "--color-calendar-nav-button-ring-offset"
   | "--color-calendar-nav-hover"
   | "--color-calendar-nav-text-disabled"
   | "--color-calendar-nav-text-hover"
   | "--color-card-background"
   | "--color-card-background-active"
   | "--color-card-background-disabled"
-  | "--color-card-background-focus"
   | "--color-card-background-hover"
   | "--color-card-border"
   | "--color-card-border-disabled"
@@ -272,6 +262,8 @@ export type CssVarName =
   | "--color-fiery-coral-800"
   | "--color-fiery-coral-900"
   | "--color-fiery-coral-950"
+  | "--color-focus-halo"
+  | "--color-focus-ring"
   | "--color-foreground-danger"
   | "--color-foreground-danger-muted"
   | "--color-foreground-default"
@@ -320,7 +312,6 @@ export type CssVarName =
   | "--color-input-background-hover"
   | "--color-input-border"
   | "--color-input-border-error"
-  | "--color-input-border-focus"
   | "--color-input-border-success"
   | "--color-input-default-background"
   | "--color-input-default-text"
@@ -335,15 +326,15 @@ export type CssVarName =
   | "--color-menubar-content-background"
   | "--color-menubar-content-border"
   | "--color-menubar-content-text"
-  | "--color-menubar-item-focus"
+  | "--color-menubar-item-highlighted"
   | "--color-menubar-item-text-disabled"
-  | "--color-menubar-item-text-focus"
+  | "--color-menubar-item-text-highlighted"
   | "--color-menubar-label"
   | "--color-menubar-separator"
   | "--color-menubar-shortcut"
-  | "--color-menubar-trigger-focus"
+  | "--color-menubar-trigger-highlighted"
   | "--color-menubar-trigger-open"
-  | "--color-menubar-trigger-text-focus"
+  | "--color-menubar-trigger-text-highlighted"
   | "--color-menubar-trigger-text-open"
   | "--color-navigation-active"
   | "--color-navigation-background"
@@ -351,11 +342,11 @@ export type CssVarName =
   | "--color-navigation-content-background"
   | "--color-navigation-content-border"
   | "--color-navigation-content-text"
-  | "--color-navigation-focus"
+  | "--color-navigation-highlighted"
   | "--color-navigation-indicator"
   | "--color-navigation-open"
   | "--color-navigation-text-disabled"
-  | "--color-navigation-text-focus"
+  | "--color-navigation-text-highlighted"
   | "--color-navigation-text-hover"
   | "--color-orange-100"
   | "--color-orange-200"
@@ -476,9 +467,9 @@ export type CssVarName =
   | "--color-section-hero-gradient-via"
   | "--color-select-content-background"
   | "--color-select-content-text"
-  | "--color-select-item-background-focus"
+  | "--color-select-item-background-highlighted"
   | "--color-select-item-text-disabled"
-  | "--color-select-item-text-focus"
+  | "--color-select-item-text-highlighted"
   | "--color-select-separator-background"
   | "--color-select-trigger-background-disabled"
   | "--color-select-trigger-border-disabled"
@@ -497,10 +488,10 @@ export type CssVarName =
   | "--color-site-header-background"
   | "--color-site-header-border"
   | "--color-site-header-nav-link-background"
-  | "--color-site-header-nav-link-background-focus"
+  | "--color-site-header-nav-link-background-highlighted"
   | "--color-site-header-nav-link-background-hover"
   | "--color-site-header-nav-link-text-disabled"
-  | "--color-site-header-nav-link-text-focus"
+  | "--color-site-header-nav-link-text-highlighted"
   | "--color-site-header-nav-link-text-hover"
   | "--color-skeleton-background"
   | "--color-slider-range"
@@ -508,7 +499,6 @@ export type CssVarName =
   | "--color-slider-thumb-background-disabled"
   | "--color-slider-thumb-border"
   | "--color-slider-thumb-border-disabled"
-  | "--color-slider-thumb-ring-offset"
   | "--color-slider-track"
   | "--color-switch-thumb-background"
   | "--color-switch-track-background-checked"
@@ -520,14 +510,12 @@ export type CssVarName =
   | "--color-table-header-text"
   | "--color-table-row-hover"
   | "--color-table-row-selected"
-  | "--color-tabs-content-ring-offset"
   | "--color-tabs-list-background"
   | "--color-tabs-list-border-color"
   | "--color-tabs-list-text"
   | "--color-tabs-trigger-background-active"
   | "--color-tabs-trigger-background-hover"
   | "--color-tabs-trigger-indicator-color"
-  | "--color-tabs-trigger-ring-offset"
   | "--color-tabs-trigger-text-active"
   | "--color-tabs-trigger-text-disabled"
   | "--color-tabs-trigger-text-hover"
@@ -535,7 +523,6 @@ export type CssVarName =
   | "--color-textarea-text-disabled"
   | "--color-toast-action-border-disabled"
   | "--color-toast-action-hover"
-  | "--color-toast-action-ring-offset"
   | "--color-toast-action-text-disabled"
   | "--color-toast-close"
   | "--color-toast-close-hover"
@@ -922,8 +909,9 @@ export type CssVarName =
   | "--space-feature-grid-item-gap"
   | "--space-feature-grid-item-padding"
   | "--space-feature-grid-item-radius"
-  | "--space-focus-ring-offset"
-  | "--space-focus-ring-width"
+  | "--space-focus-halo-width"
+  | "--space-focus-offset"
+  | "--space-focus-width"
   | "--space-form-error-margin"
   | "--space-form-item-gap"
   | "--space-form-label-gap"
@@ -1223,7 +1211,6 @@ export declare const cssVars: Readonly<{
   "colorAccordionIconHover": "--color-accordion-icon-hover";
   "colorAccordionIconOpen": "--color-accordion-icon-open";
   "colorAccordionTriggerDisabled": "--color-accordion-trigger-disabled";
-  "colorAccordionTriggerFocus": "--color-accordion-trigger-focus";
   "colorAccordionTriggerHover": "--color-accordion-trigger-hover";
   "colorAccordionTriggerPressed": "--color-accordion-trigger-pressed";
   "colorAccordionTriggerText": "--color-accordion-trigger-text";
@@ -1267,7 +1254,6 @@ export declare const cssVars: Readonly<{
   "colorBackgroundWarningMuted": "--color-background-warning-muted";
   "colorBadgeDefaultBackground": "--color-badge-default-background";
   "colorBadgeDefaultBackgroundDisabled": "--color-badge-default-background-disabled";
-  "colorBadgeDefaultBackgroundFocus": "--color-badge-default-background-focus";
   "colorBadgeDefaultBackgroundHover": "--color-badge-default-background-hover";
   "colorBadgeDefaultBorder": "--color-badge-default-border";
   "colorBadgeDefaultBorderDisabled": "--color-badge-default-border-disabled";
@@ -1275,7 +1261,6 @@ export declare const cssVars: Readonly<{
   "colorBadgeDefaultTextDisabled": "--color-badge-default-text-disabled";
   "colorBadgeDestructiveBackground": "--color-badge-destructive-background";
   "colorBadgeDestructiveBackgroundDisabled": "--color-badge-destructive-background-disabled";
-  "colorBadgeDestructiveBackgroundFocus": "--color-badge-destructive-background-focus";
   "colorBadgeDestructiveBackgroundHover": "--color-badge-destructive-background-hover";
   "colorBadgeDestructiveBorder": "--color-badge-destructive-border";
   "colorBadgeDestructiveBorderDisabled": "--color-badge-destructive-border-disabled";
@@ -1283,7 +1268,6 @@ export declare const cssVars: Readonly<{
   "colorBadgeDestructiveTextDisabled": "--color-badge-destructive-text-disabled";
   "colorBadgeOutlineBackground": "--color-badge-outline-background";
   "colorBadgeOutlineBackgroundDisabled": "--color-badge-outline-background-disabled";
-  "colorBadgeOutlineBackgroundFocus": "--color-badge-outline-background-focus";
   "colorBadgeOutlineBackgroundHover": "--color-badge-outline-background-hover";
   "colorBadgeOutlineBorder": "--color-badge-outline-border";
   "colorBadgeOutlineBorderDisabled": "--color-badge-outline-border-disabled";
@@ -1291,7 +1275,6 @@ export declare const cssVars: Readonly<{
   "colorBadgeOutlineTextDisabled": "--color-badge-outline-text-disabled";
   "colorBadgeSecondaryBackground": "--color-badge-secondary-background";
   "colorBadgeSecondaryBackgroundDisabled": "--color-badge-secondary-background-disabled";
-  "colorBadgeSecondaryBackgroundFocus": "--color-badge-secondary-background-focus";
   "colorBadgeSecondaryBackgroundHover": "--color-badge-secondary-background-hover";
   "colorBadgeSecondaryBorder": "--color-badge-secondary-border";
   "colorBadgeSecondaryBorderDisabled": "--color-badge-secondary-border-disabled";
@@ -1299,7 +1282,6 @@ export declare const cssVars: Readonly<{
   "colorBadgeSecondaryTextDisabled": "--color-badge-secondary-text-disabled";
   "colorBadgeSuccessBackground": "--color-badge-success-background";
   "colorBadgeSuccessBackgroundDisabled": "--color-badge-success-background-disabled";
-  "colorBadgeSuccessBackgroundFocus": "--color-badge-success-background-focus";
   "colorBadgeSuccessBackgroundHover": "--color-badge-success-background-hover";
   "colorBadgeSuccessBorder": "--color-badge-success-border";
   "colorBadgeSuccessBorderDisabled": "--color-badge-success-border-disabled";
@@ -1307,7 +1289,6 @@ export declare const cssVars: Readonly<{
   "colorBadgeSuccessTextDisabled": "--color-badge-success-text-disabled";
   "colorBadgeWarningBackground": "--color-badge-warning-background";
   "colorBadgeWarningBackgroundDisabled": "--color-badge-warning-background-disabled";
-  "colorBadgeWarningBackgroundFocus": "--color-badge-warning-background-focus";
   "colorBadgeWarningBackgroundHover": "--color-badge-warning-background-hover";
   "colorBadgeWarningBorder": "--color-badge-warning-border";
   "colorBadgeWarningBorderDisabled": "--color-badge-warning-border-disabled";
@@ -1338,7 +1319,6 @@ export declare const cssVars: Readonly<{
   "colorBorderDanger": "--color-border-danger";
   "colorBorderDefault": "--color-border-default";
   "colorBorderEmphasis": "--color-border-emphasis";
-  "colorBorderFocus": "--color-border-focus";
   "colorBorderMuted": "--color-border-muted";
   "colorBorderPrimary": "--color-border-primary";
   "colorBorderSuccess": "--color-border-success";
@@ -1391,14 +1371,12 @@ export declare const cssVars: Readonly<{
   "colorCalendarHeaderText": "--color-calendar-header-text";
   "colorCalendarNavBorder": "--color-calendar-nav-border";
   "colorCalendarNavBorderDisabled": "--color-calendar-nav-border-disabled";
-  "colorCalendarNavButtonRingOffset": "--color-calendar-nav-button-ring-offset";
   "colorCalendarNavHover": "--color-calendar-nav-hover";
   "colorCalendarNavTextDisabled": "--color-calendar-nav-text-disabled";
   "colorCalendarNavTextHover": "--color-calendar-nav-text-hover";
   "colorCardBackground": "--color-card-background";
   "colorCardBackgroundActive": "--color-card-background-active";
   "colorCardBackgroundDisabled": "--color-card-background-disabled";
-  "colorCardBackgroundFocus": "--color-card-background-focus";
   "colorCardBackgroundHover": "--color-card-background-hover";
   "colorCardBorder": "--color-card-border";
   "colorCardBorderDisabled": "--color-card-border-disabled";
@@ -1469,6 +1447,8 @@ export declare const cssVars: Readonly<{
   "colorFieryCoral800": "--color-fiery-coral-800";
   "colorFieryCoral900": "--color-fiery-coral-900";
   "colorFieryCoral950": "--color-fiery-coral-950";
+  "colorFocusHalo": "--color-focus-halo";
+  "colorFocusRing": "--color-focus-ring";
   "colorForegroundDanger": "--color-foreground-danger";
   "colorForegroundDangerMuted": "--color-foreground-danger-muted";
   "colorForegroundDefault": "--color-foreground-default";
@@ -1517,7 +1497,6 @@ export declare const cssVars: Readonly<{
   "colorInputBackgroundHover": "--color-input-background-hover";
   "colorInputBorder": "--color-input-border";
   "colorInputBorderError": "--color-input-border-error";
-  "colorInputBorderFocus": "--color-input-border-focus";
   "colorInputBorderSuccess": "--color-input-border-success";
   "colorInputDefaultBackground": "--color-input-default-background";
   "colorInputDefaultText": "--color-input-default-text";
@@ -1532,15 +1511,15 @@ export declare const cssVars: Readonly<{
   "colorMenubarContentBackground": "--color-menubar-content-background";
   "colorMenubarContentBorder": "--color-menubar-content-border";
   "colorMenubarContentText": "--color-menubar-content-text";
-  "colorMenubarItemFocus": "--color-menubar-item-focus";
+  "colorMenubarItemHighlighted": "--color-menubar-item-highlighted";
   "colorMenubarItemTextDisabled": "--color-menubar-item-text-disabled";
-  "colorMenubarItemTextFocus": "--color-menubar-item-text-focus";
+  "colorMenubarItemTextHighlighted": "--color-menubar-item-text-highlighted";
   "colorMenubarLabel": "--color-menubar-label";
   "colorMenubarSeparator": "--color-menubar-separator";
   "colorMenubarShortcut": "--color-menubar-shortcut";
-  "colorMenubarTriggerFocus": "--color-menubar-trigger-focus";
+  "colorMenubarTriggerHighlighted": "--color-menubar-trigger-highlighted";
   "colorMenubarTriggerOpen": "--color-menubar-trigger-open";
-  "colorMenubarTriggerTextFocus": "--color-menubar-trigger-text-focus";
+  "colorMenubarTriggerTextHighlighted": "--color-menubar-trigger-text-highlighted";
   "colorMenubarTriggerTextOpen": "--color-menubar-trigger-text-open";
   "colorNavigationActive": "--color-navigation-active";
   "colorNavigationBackground": "--color-navigation-background";
@@ -1548,11 +1527,11 @@ export declare const cssVars: Readonly<{
   "colorNavigationContentBackground": "--color-navigation-content-background";
   "colorNavigationContentBorder": "--color-navigation-content-border";
   "colorNavigationContentText": "--color-navigation-content-text";
-  "colorNavigationFocus": "--color-navigation-focus";
+  "colorNavigationHighlighted": "--color-navigation-highlighted";
   "colorNavigationIndicator": "--color-navigation-indicator";
   "colorNavigationOpen": "--color-navigation-open";
   "colorNavigationTextDisabled": "--color-navigation-text-disabled";
-  "colorNavigationTextFocus": "--color-navigation-text-focus";
+  "colorNavigationTextHighlighted": "--color-navigation-text-highlighted";
   "colorNavigationTextHover": "--color-navigation-text-hover";
   "colorOrange100": "--color-orange-100";
   "colorOrange200": "--color-orange-200";
@@ -1673,9 +1652,9 @@ export declare const cssVars: Readonly<{
   "colorSectionHeroGradientVia": "--color-section-hero-gradient-via";
   "colorSelectContentBackground": "--color-select-content-background";
   "colorSelectContentText": "--color-select-content-text";
-  "colorSelectItemBackgroundFocus": "--color-select-item-background-focus";
+  "colorSelectItemBackgroundHighlighted": "--color-select-item-background-highlighted";
   "colorSelectItemTextDisabled": "--color-select-item-text-disabled";
-  "colorSelectItemTextFocus": "--color-select-item-text-focus";
+  "colorSelectItemTextHighlighted": "--color-select-item-text-highlighted";
   "colorSelectSeparatorBackground": "--color-select-separator-background";
   "colorSelectTriggerBackgroundDisabled": "--color-select-trigger-background-disabled";
   "colorSelectTriggerBorderDisabled": "--color-select-trigger-border-disabled";
@@ -1694,10 +1673,10 @@ export declare const cssVars: Readonly<{
   "colorSiteHeaderBackground": "--color-site-header-background";
   "colorSiteHeaderBorder": "--color-site-header-border";
   "colorSiteHeaderNavLinkBackground": "--color-site-header-nav-link-background";
-  "colorSiteHeaderNavLinkBackgroundFocus": "--color-site-header-nav-link-background-focus";
+  "colorSiteHeaderNavLinkBackgroundHighlighted": "--color-site-header-nav-link-background-highlighted";
   "colorSiteHeaderNavLinkBackgroundHover": "--color-site-header-nav-link-background-hover";
   "colorSiteHeaderNavLinkTextDisabled": "--color-site-header-nav-link-text-disabled";
-  "colorSiteHeaderNavLinkTextFocus": "--color-site-header-nav-link-text-focus";
+  "colorSiteHeaderNavLinkTextHighlighted": "--color-site-header-nav-link-text-highlighted";
   "colorSiteHeaderNavLinkTextHover": "--color-site-header-nav-link-text-hover";
   "colorSkeletonBackground": "--color-skeleton-background";
   "colorSliderRange": "--color-slider-range";
@@ -1705,7 +1684,6 @@ export declare const cssVars: Readonly<{
   "colorSliderThumbBackgroundDisabled": "--color-slider-thumb-background-disabled";
   "colorSliderThumbBorder": "--color-slider-thumb-border";
   "colorSliderThumbBorderDisabled": "--color-slider-thumb-border-disabled";
-  "colorSliderThumbRingOffset": "--color-slider-thumb-ring-offset";
   "colorSliderTrack": "--color-slider-track";
   "colorSwitchThumbBackground": "--color-switch-thumb-background";
   "colorSwitchTrackBackgroundChecked": "--color-switch-track-background-checked";
@@ -1717,14 +1695,12 @@ export declare const cssVars: Readonly<{
   "colorTableHeaderText": "--color-table-header-text";
   "colorTableRowHover": "--color-table-row-hover";
   "colorTableRowSelected": "--color-table-row-selected";
-  "colorTabsContentRingOffset": "--color-tabs-content-ring-offset";
   "colorTabsListBackground": "--color-tabs-list-background";
   "colorTabsListBorderColor": "--color-tabs-list-border-color";
   "colorTabsListText": "--color-tabs-list-text";
   "colorTabsTriggerBackgroundActive": "--color-tabs-trigger-background-active";
   "colorTabsTriggerBackgroundHover": "--color-tabs-trigger-background-hover";
   "colorTabsTriggerIndicatorColor": "--color-tabs-trigger-indicator-color";
-  "colorTabsTriggerRingOffset": "--color-tabs-trigger-ring-offset";
   "colorTabsTriggerTextActive": "--color-tabs-trigger-text-active";
   "colorTabsTriggerTextDisabled": "--color-tabs-trigger-text-disabled";
   "colorTabsTriggerTextHover": "--color-tabs-trigger-text-hover";
@@ -1732,7 +1708,6 @@ export declare const cssVars: Readonly<{
   "colorTextareaTextDisabled": "--color-textarea-text-disabled";
   "colorToastActionBorderDisabled": "--color-toast-action-border-disabled";
   "colorToastActionHover": "--color-toast-action-hover";
-  "colorToastActionRingOffset": "--color-toast-action-ring-offset";
   "colorToastActionTextDisabled": "--color-toast-action-text-disabled";
   "colorToastClose": "--color-toast-close";
   "colorToastCloseHover": "--color-toast-close-hover";
@@ -2119,8 +2094,9 @@ export declare const cssVars: Readonly<{
   "spaceFeatureGridItemGap": "--space-feature-grid-item-gap";
   "spaceFeatureGridItemPadding": "--space-feature-grid-item-padding";
   "spaceFeatureGridItemRadius": "--space-feature-grid-item-radius";
-  "spaceFocusRingOffset": "--space-focus-ring-offset";
-  "spaceFocusRingWidth": "--space-focus-ring-width";
+  "spaceFocusHaloWidth": "--space-focus-halo-width";
+  "spaceFocusOffset": "--space-focus-offset";
+  "spaceFocusWidth": "--space-focus-width";
   "spaceFormErrorMargin": "--space-form-error-margin";
   "spaceFormItemGap": "--space-form-item-gap";
   "spaceFormLabelGap": "--space-form-label-gap";
