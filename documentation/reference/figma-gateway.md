@@ -1,12 +1,46 @@
-# Figma Gateway: Line-Height Computed Token Plan
+# Figma Gateway: Line-Height and Letter-Spacing in Figma
 
-**Status:** Deferred to backlog  
+**Status:** Decided: percent text styles, no variable binding (2026-10-25). The computed-pixel gateway below is deferred  
 **Created:** 2026-05-14  
 **Context:** Emerged during Badge component Figma audit
 
 ---
 
+## Decision (2026-10-25, Plan 204): percent text styles, no variable binding
+
+Line height and letter spacing are **not bound to Figma variables**. In Figma they are **percent properties on text styles**, generated from the tokens by the component builder (`apps/figma-plugin/wylie-dog-figma-builder`, owner-run, gitignored). A percent value matches CSS exactly (125% of 14px is 17.5px) and scales with the font size. The line-height and tracking variables stay in the sync, because they are tokens and the repo is the source, but their scope is `[]`, so no Figma picker lists them. Changing a token updates Figma only when the builder is rerun.
+
+Owner choices: tracking and letter-spacing variables hidden like line height; both families kept in the sync but hidden (not excluded); the builder writes letter spacing as PERCENT (em x 100, `-0.025em` becomes `-2.5%`) where a component has a tracking token (alert, card and dialog titles); the percent lives on local text styles (nodes inherit through `textStyleId`) and the builder is run in the Token Bridge file only.
+
+### Test results (Token Bridge file, scratch items, all deleted afterwards)
+
+- A number variable bound to a text style or text node `lineHeight` always becomes **PIXELS**: 20 gives 20px, 150 gives **150px**, whatever unit was set before binding.
+- A letter-spacing variable behaves the same: `-0.05` gives **-0.05px** and `-5` gives -5px, while the tracking tokens are em fractions.
+- Binding to text styles and nodes does work for `lineHeight`, `letterSpacing` and `fontSize`, and explicit variable modes resolve on nodes (20 to 30 to 20).
+
+### Research
+
+Figma does not support percentages in number variables. It is an open feature request (forum.figma.com, including an October 2026 thread). The usual workarounds are text styles with a percent line height, or plugins. Aliasing a percent token through a variable cannot carry a unit, so it resolves to a pixel number.
+
+### Options and outcome
+
+| Option                                                | Outcome                                                                                                      |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Percent text styles, variables hidden (chosen)**    | Exact match with CSS, scales with font size, no new variables. Cost: a token change needs a builder rerun.   |
+| Computed-pixel gateway (derived collection, below)    | Deferred: adds ~129 variables and a build-to-sync cycle; revisit if designers need token-driven line heights |
+| Pixel pairs (a px variable beside each percent token) | Deferred: duplicates tokens, drifts from CSS at fractional sizes                                             |
+| Bind the percent variable directly                    | Rejected: Figma reads it as pixels (150 gives 150px)                                                         |
+| Bind the em tracking variable directly                | Rejected: Figma reads it as pixels (-0.05 gives -0.05px)                                                     |
+| Leave the variables bindable (`LINE_HEIGHT` scopes)   | Rejected: a designer picking `line-height/none` gets a 100px line height                                     |
+| Exclude the variables from the sync                   | Rejected: they are tokens, and Push and Pull stay lossless when they are kept                                |
+
+If Figma ever supports percent in number variables, bind the variables and change the scope rule in `scopes.ts`.
+
+---
+
 ## Background
+
+The sections below are the original analysis (2026-05-14) and the deferred computed-pixel gateway.
 
 During the Badge component audit, line-height was identified as a token that works correctly in CSS but cannot be accurately represented as a native Figma Variable. This document captures everything known about the problem, the proposed solution (Option A), and what implementation would require.
 
@@ -44,7 +78,7 @@ Setting line-height to "Auto" in Figma produces inaccurate component dimensions 
 
 ---
 
-## Current State (Option C)
+## Earlier state (Option C, superseded by the decision above)
 
 Line-height tokens are **excluded from Figma sync**. The CSS token (`--line-height-badge-line-height: 1`) ships and works correctly in the browser. In Figma, text layer line-heights are set manually per component in PIXELS mode, matching the font-size at each size (e.g. 12/14/16px for sm/md/lg badge).
 
@@ -52,7 +86,7 @@ This is intentional and acceptable for now. The CSS is correct. The Figma diverg
 
 ---
 
-## Option A — The Figma Gateway
+## Deferred: the Figma Gateway (computed pixel values)
 
 ### Concept
 
