@@ -5,7 +5,7 @@ import { Button, buttonVariants } from "../button";
 import { Badge } from "../badge";
 
 export const sectionHeroVariants = cva(
-  "relative w-full py-20 md:py-32 overflow-hidden",
+  "relative w-full py-(--space-section-hero-padding-y-sm) md:py-(--space-section-hero-padding-y-md) overflow-hidden",
   {
     variants: {
       variant: {
@@ -69,19 +69,22 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
         aria-labelledby={headingId}
         {...props}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-(--space-section-hero-container-padding-x-sm) sm:px-(--space-section-hero-container-padding-x-md) lg:px-(--space-section-hero-container-padding-x-lg)">
           <div
             className={cn(
-              "flex flex-col gap-8",
-              hasImage && !isCentered && "md:grid md:grid-cols-2 md:gap-12",
+              "flex flex-col gap-(--space-section-hero-layout-gap-sm)",
+              hasImage &&
+                !isCentered &&
+                "md:grid md:grid-cols-2 md:gap-(--space-section-hero-layout-gap-md)",
               hasImage && !isCentered && "items-center",
-              isCentered && "items-center max-w-4xl mx-auto"
+              isCentered &&
+                "items-center max-w-(--space-section-hero-layout-max-width-centered) mx-auto"
             )}
           >
             {/* Content Column */}
             <div
               className={cn(
-                "flex flex-col gap-6",
+                "flex flex-col gap-(--space-section-hero-content-gap)",
                 imagePosition === "right" && "md:order-1",
                 imagePosition === "left" && "md:order-2",
                 isCentered && "items-center"
@@ -98,7 +101,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
               <h1
                 id={headingId}
                 className={cn(
-                  "text-(length:--font-size-display-sm) md:text-(length:--font-size-display-md) lg:text-(length:--font-size-display-lg) font-(--font-weight-bold) tracking-(--space-typography-tracking-tight)",
+                  "text-(length:--font-size-section-hero-title-font-size-sm) md:text-(length:--font-size-section-hero-title-font-size-md) lg:text-(length:--font-size-section-hero-title-font-size-lg) font-(--font-weight-section-hero-title-font-weight) tracking-(--space-section-hero-title-tracking)",
                   isCentered && "text-center"
                 )}
               >
@@ -109,7 +112,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
               {description && (
                 <p
                   className={cn(
-                    "text-(length:--font-size-lg) md:text-(length:--font-size-xl) text-(--color-section-hero-description-text) max-w-2xl",
+                    "text-(length:--font-size-section-hero-description-font-size-sm) md:text-(length:--font-size-section-hero-description-font-size-md) text-(--color-section-hero-description-text) max-w-(--space-section-hero-description-max-width)",
                     isCentered && "text-center"
                   )}
                 >
@@ -121,7 +124,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
               {(primaryAction || secondaryAction) && (
                 <div
                   className={cn(
-                    "flex flex-col sm:flex-row gap-4",
+                    "flex flex-col sm:flex-row gap-(--space-section-hero-actions-gap)",
                     isCentered && "justify-center"
                   )}
                 >
@@ -184,7 +187,9 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
 
             {/* Centered Image Below Content */}
             {hasImage && isCentered && (
-              <div className="relative w-full max-w-3xl mt-8">{image}</div>
+              <div className="relative w-full max-w-(--space-section-hero-image-max-width) mt-(--space-section-hero-image-margin-top)">
+                {image}
+              </div>
             )}
           </div>
         </div>
