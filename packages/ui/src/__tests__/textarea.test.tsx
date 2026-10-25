@@ -290,9 +290,10 @@ describe("Textarea", () => {
       render(<Textarea aria-label="Test" />);
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
-        "focus:ring-(length:--space-focus-ring-width)"
+        "focus-visible:outline-(length:--space-focus-width)",
+        "focus-visible:outline-(color:--color-focus-ring)",
+        "focus-visible:outline-offset-(length:--space-focus-offset)"
       );
-      expect(textarea).toHaveClass("focus:outline-none");
     });
 
     it("should have disabled styles", () => {

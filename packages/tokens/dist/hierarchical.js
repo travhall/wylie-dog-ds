@@ -239,6 +239,7 @@ export const spacing = {
   "spread-neg-sm": "-1px",
   "width": "8px",
   "offset": "2px",
+  "halo-width": "2px",
   "size-xs": "12px",
   "size-sm": "32px",
   "size-md": "40px",

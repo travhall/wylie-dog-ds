@@ -26,14 +26,16 @@ const ALL = ["ALL_SCOPES"];
 describe("inferScopes: semantic colours", () => {
   const names = colorNames("semantic");
 
-  it("covers the 40 semantic colour tokens", () => {
-    expect(names).toHaveLength(40);
+  it("covers the 41 semantic colour tokens", () => {
+    expect(names).toHaveLength(41);
   });
 
-  // The grammar is color.<background|foreground|border>.<token>. A new group
+  // The grammar is color.<background|foreground|border|focus>.<token>. A new group
   // or a renamed one fails here instead of silently keeping ALL_SCOPES.
   it.each(names)("%s follows the grammar and is restricted", (name) => {
-    expect(name).toMatch(/^color\.(background|foreground|border)\.[a-z-]+$/);
+    expect(name).toMatch(
+      /^color\.(background|foreground|border|focus)\.[a-z-]+$/
+    );
     expect(inferScopes("color", name)).not.toEqual(ALL);
   });
 
@@ -51,23 +53,23 @@ describe("inferScopes: semantic colours", () => {
     }
   );
 
-  it.each(
-    names.filter(
-      (n) => n.startsWith("color.border.") && n !== "color.border.focus"
-    )
-  )("%s is a stroke", (name) => {
-    expect(inferScopes("color", name)).toEqual(STROKE);
-  });
+  it.each(names.filter((n) => n.startsWith("color.border.")))(
+    "%s is a stroke",
+    (name) => {
+      expect(inferScopes("color", name)).toEqual(STROKE);
+    }
+  );
 
-  it("lets the focus border be a stroke or an effect", () => {
-    expect(inferScopes("color", "color.border.focus")).toEqual(FOCUS);
+  it("lets the focus ring and halo be a stroke or an effect", () => {
+    expect(inferScopes("color", "color.focus.ring")).toEqual(FOCUS);
+    expect(inferScopes("color", "color.focus.halo")).toEqual(FOCUS);
   });
 
   it("treats the Figma slash form like the dotted form", () => {
     expect(inferScopes("color", "color/background/primary-muted")).toEqual(
       FILL
     );
-    expect(inferScopes("color", "color/border/focus")).toEqual(FOCUS);
+    expect(inferScopes("color", "color/focus/ring")).toEqual(FOCUS);
   });
 });
 

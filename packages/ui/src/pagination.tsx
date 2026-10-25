@@ -4,7 +4,7 @@ import {
   ChevronRightIcon,
   MoreHorizontalIcon,
 } from "lucide-react";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
@@ -57,7 +57,7 @@ const PaginationLink = ({
       "rounded-(--space-pagination-item-radius)",
       "text-(length:--font-size-pagination-item-font-size)",
       "hover:bg-(--color-pagination-background-hover) hover:text-(--color-pagination-text-hover)",
-      "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
+      focusRingClasses,
       "disabled:pointer-events-none disabled:text-(--color-pagination-text-disabled)",
       isActive
         ? "bg-(--color-pagination-active) text-(--color-pagination-text-active)"

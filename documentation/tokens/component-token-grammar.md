@@ -14,7 +14,7 @@ The three tiers stay intact: primitives hold raw values, semantic tokens hold me
 
 Each exception is an entry with a reason in the allowlist of `scripts/check-component-binding.mjs`.
 
-1. **The focus ring colour.** Components use the one centralized semantic token `color.border.focus` directly (`focus:ring-(--color-border-focus)`). The ring is a single accessibility indicator that must look the same everywhere, so there is no per-component focus colour token. The ring width and offset are still component tokens where a component defines them (`checkbox.focus-ring.width`).
+1. **The focus indicator colours.** Components use the two centralized semantic tokens `color.focus.ring` and `color.focus.halo` directly (through `focusRingClasses`). The indicator must look the same everywhere, so there is no per-component focus colour token. The width and offset are component tokens where a component defines them (`checkbox.focus-ring.width`); they alias `focus.width` and `focus.offset`. See `focus-states.md`.
 2. **Font family.** Text may bind the primitive `typography/font-family/sans` (and serif and mono) directly. In code no component sets a font family: text inherits it from the page (`font-sans` on the body, which aliases the primitive). The exception matters in Figma, where the generated text layers bind the primitive.
 
 Everything else that is a colour, including a composition, needs a component token.
@@ -38,7 +38,7 @@ Non-colour component tokens alias the shared scale, as colour tokens alias a sem
 
 **Not yet covered: the base components' non-colour references.** Measured 2026-10-24 in `packages/ui/src`, tests excluded:
 
-- 90 references to semantic tokens: `--space-icon-size-*` (24), `--space-focus-ring-offset` (10), `--shadow-*` (19), `--z-index-*` (19), `--opacity-scrim` (3).
+- 90 references to semantic tokens: `--space-icon-size-*` (24), `--space-focus-offset`, `--space-focus-width` and `--space-focus-halo-width`, `--shadow-*` (19), `--z-index-*` (19), `--opacity-scrim` (3).
 - 43 references to primitives: `--duration-*`, `--font-weight-*`, `--border-radius-*`, `--line-height-*`.
 - One hardcoded Tailwind spacing class (`pr-0` in `table.tsx`).
 
@@ -60,7 +60,7 @@ The component generator leaves these unbound because no component token exists a
 - **Component**: the component or composition (`button`, `site-header`).
 - **Part** (optional): a part or a variant (`trigger`, `nav-link`, `primary`, `gradient`). A variant such as a button's `primary` is a part.
 - **Property**: `background`, `text`, `border`, `radius`, `width`, `padding-x`, and so on.
-- **State or variant suffix** (optional, at most one, last): `-hover`, `-active`, `-focus`, `-disabled`, `-checked`, `-unchecked`, `-pressed`, `-muted`.
+- **State or variant suffix** (optional, at most one, last): `-hover`, `-active`, `-highlighted`, `-disabled`, `-checked`, `-unchecked`, `-pressed`, `-muted`.
 
 Structure rules, which keep the Figma variable tree flat and legible (the plugin turns each dot into a Figma group):
 

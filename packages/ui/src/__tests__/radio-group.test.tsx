@@ -394,10 +394,9 @@ describe("RadioGroup", () => {
 
       const radios = screen.getAllByRole("radio");
       expect(radios[0]).toHaveClass(
-        "focus:outline-none",
-        "focus:ring-(length:--space-radio-focus-ring-width)",
-        "focus:ring-(--color-border-focus)",
-        "focus:ring-offset-(length:--space-radio-focus-ring-offset)"
+        "focus-visible:outline-(length:--space-radio-focus-ring-width)",
+        "focus-visible:outline-(color:--color-focus-ring)",
+        "focus-visible:outline-offset-(length:--space-radio-focus-ring-offset)"
       );
     });
 

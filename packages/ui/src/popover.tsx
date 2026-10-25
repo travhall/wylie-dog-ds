@@ -9,7 +9,7 @@ const PopoverAnchor = PopoverPrimitive.Anchor;
 
 export const popoverContentVariants = cva(
   cn(
-    "z-(--z-index-popover) border outline-none shadow-(--shadow-md)",
+    "z-(--z-index-popover) border outline-hidden shadow-(--shadow-md)",
     "rounded-(--space-popover-content-radius)",
     "p-(--space-popover-content-padding)",
     "border-(--color-popover-border)",

@@ -174,10 +174,15 @@
     "$value": "{color.gray.600}",
     "$description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches)."
   },
-  "color.border.focus": {
+  "color.focus.ring": {
     "$type": "color",
-    "$value": "{color.blue.500}",
-    "$description": "Keyboard focus ring colour. Centralized: every component's focus indicator uses it."
+    "$value": "{color.gray.100}",
+    "$description": "Keyboard focus indicator: the 2px outline. Foreground tone, so it reaches at least 3:1 against the halo and the page in both modes. Centralized: every component's focus indicator uses it."
+  },
+  "color.focus.halo": {
+    "$type": "color",
+    "$value": "{color.gray.950}",
+    "$description": "Keyboard focus halo: the page-tone band drawn between the control and the outline and outside the outline, so the indicator is separated from any fill or surface it sits on."
   },
   "color.border.primary": {
     "$type": "color",
@@ -304,15 +309,20 @@
     "$value": "{opacity.80}",
     "$description": "Opacity for overlay backgrounds"
   },
-  "focus-ring.width": {
+  "focus.width": {
     "$type": "dimension",
     "$value": "{border-width.2}",
-    "$description": "Width of focus ring outline"
+    "$description": "Width of the focus outline."
   },
-  "focus-ring.offset": {
+  "focus.offset": {
     "$type": "dimension",
     "$value": "{border-width.2}",
-    "$description": "Offset of focus ring from element"
+    "$description": "Gap between the control and the focus outline, filled with the halo colour."
+  },
+  "focus.halo-width": {
+    "$type": "dimension",
+    "$value": "{border-width.2}",
+    "$description": "Width of the halo band outside the focus outline."
   },
   "icon.size.xs": {
     "$type": "dimension",

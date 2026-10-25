@@ -1,13 +1,13 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn, focusRingInputClasses } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 export const inputVariants = cva(
   cn(
     "flex w-full border transition-colors",
     "rounded-(--space-input-radius)",
     "placeholder:text-(--color-input-placeholder)",
-    focusRingInputClasses,
+    focusRingClasses,
     "disabled:cursor-not-allowed disabled:bg-(--color-input-background-disabled) disabled:text-(--color-input-text-disabled)",
     "text-(--color-input-default-text)"
   ),

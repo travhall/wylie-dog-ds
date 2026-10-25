@@ -22,7 +22,6 @@ export const cardVariants = cva(
           "cursor-pointer transition-colors",
           "hover:bg-(--color-card-background-hover)",
           "hover:border-(--color-card-border-hover)",
-          "focus:bg-(--color-card-background-focus)",
           focusRingClasses,
           "active:bg-(--color-card-background-active)",
           "disabled:bg-(--color-card-background-disabled)",

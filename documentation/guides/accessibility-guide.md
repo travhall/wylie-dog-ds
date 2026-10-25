@@ -87,6 +87,17 @@ describe('Component Accessibility', () => {
 - [ ] Color blindness simulation
 - [ ] Focus indicator visibility
 
+## Focus indicators (WCAG 2.2)
+
+Every interactive component draws one two-tone indicator for keyboard focus: an outline in `color.focus.ring` with a halo in `color.focus.halo`. It is a real outline, so Windows high contrast and other forced-colors modes draw it.
+
+- 2.4.7 Focus Visible (AA): checked for every component story in Light, Dark and forced-colors mode (`pnpm check:focus-visible`).
+- 2.4.11 Focus Not Obscured, Minimum (AA): the indicator sits outside the control. Keep sticky headers and overlays from covering a focused element.
+- 1.4.11 Non-text Contrast (AA): the ring against the halo reaches 3:1 in both modes (`pnpm check:contrast`).
+- 2.4.13 Focus Appearance (AAA, guidance): a 2px outline against a 17:1 halo meets the area and contrast.
+
+See [focus states](../tokens/focus-states.md) for the tokens and the decision record.
+
 ## Component Guidelines
 
 ### Button
@@ -103,7 +114,7 @@ describe('Component Accessibility', () => {
 </button>
 ```
 
-**Focus**: Clear visible focus indicator
+**Focus**: Clear visible focus indicator (see [focus states](../tokens/focus-states.md))
 **Keyboard**: Enter and Space activation
 **Screen Reader**: Descriptive labels
 

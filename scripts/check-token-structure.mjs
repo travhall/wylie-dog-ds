@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 // Structure check for the semantic colour tokens (Plan 188).
 //
-// Names are color.<part>.<token> with the part background, foreground or border.
+// Names are color.<part>.<token> with the part background, foreground, border or focus.
 // The token is a ground name or a role, with at most one modifier:
 //   ground background  default, muted, emphasis, raised, overlay, inverse
 //   ground foreground  default, muted, faint, inverse
-//   ground border      default, muted, emphasis, focus
+//   ground border      default, muted, emphasis
+//   ground focus       ring, halo
 //   roles              primary, danger, success, warning, info, optionally
 //                      followed by -muted or -emphasis
 //
@@ -34,7 +35,8 @@ const names = Object.keys(variables).filter(
 const ground = {
   background: ["default", "muted", "emphasis", "raised", "overlay", "inverse"],
   foreground: ["default", "muted", "faint", "inverse"],
-  border: ["default", "muted", "emphasis", "focus"],
+  border: ["default", "muted", "emphasis"],
+  focus: ["ring", "halo"],
 };
 const roles = ["primary", "danger", "success", "warning", "info"];
 const roleToken = new RegExp(`^(${roles.join("|")})(-muted|-emphasis)?$`);
@@ -55,7 +57,7 @@ for (const name of names) {
   const [, part, token] = parts;
   if (!ground[part]) {
     problems.push(
-      `${name}: part "${part}" is not background, foreground or border`
+      `${name}: part "${part}" is not background, foreground, border or focus`
     );
     continue;
   }

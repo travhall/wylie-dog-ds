@@ -54,7 +54,7 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
         {/* Skip navigation — lets keyboard users jump past repeated header content (WCAG 2.4.1) */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-(--space-page-layout-skip-link-offset) focus:left-(--space-page-layout-skip-link-offset) focus:z-(--page-layout-skip-link-z-index) focus:rounded-(--space-page-layout-skip-link-radius) focus:bg-(--color-page-layout-skip-link-background) focus:px-(--space-page-layout-skip-link-padding-x) focus:py-(--space-page-layout-skip-link-padding-y) focus:text-(--color-page-layout-skip-link-text) focus:ring-2 focus:ring-(--color-border-focus)"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-(--space-page-layout-skip-link-offset) focus:left-(--space-page-layout-skip-link-offset) focus:z-(--page-layout-skip-link-z-index) focus:rounded-(--space-page-layout-skip-link-radius) focus:bg-(--color-page-layout-skip-link-background) focus:px-(--space-page-layout-skip-link-padding-x) focus:py-(--space-page-layout-skip-link-padding-y) focus:text-(--color-page-layout-skip-link-text) focus:outline-solid focus:outline-(length:--space-focus-width) focus:outline-(color:--color-focus-ring) focus:outline-offset-(length:--space-focus-offset) focus:shadow-[0_0_0_calc(var(--space-focus-offset)+var(--space-focus-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus:transition-none"
         >
           Skip to main content
         </a>

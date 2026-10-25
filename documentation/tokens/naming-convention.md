@@ -20,7 +20,7 @@ Names are `color.<part>.<token>` with the part `background`, `foreground` or `bo
 - **Modifiers have one meaning each:** `muted` is the quieter tone, `emphasis` the stronger one. `faint` exists only for ground text.
 - **Pairs:** `foreground.X` is the text over `background.X`, for every X. `pnpm check:contrast` checks the declared pairs.
 - **No states in semantic names.** Hover, active, focus and disabled belong to the component layer: a component token references a semantic tone.
-- **The focus ring** is the centralized `color.border.focus`.
+- **The focus indicator** is the centralized `color.focus.ring` (the outline) and `color.focus.halo` (the band that separates it from the surface).
 
 The reasoning and the old-to-new history are in [semantic-pairing-model.md](semantic-pairing-model.md).
 
@@ -100,7 +100,7 @@ Your system follows **property-based organization** (not role-based):
 │  SEMANTIC TOKENS (Context & Purpose)            │
 │  --color-background-default                     │
 │  --color-foreground-muted                         │
-│  --color-border-focus                           │
+│  --color-focus-ring                           │
 └──────────────────┬──────────────────────────────┘
                    │
                    ▼
@@ -166,7 +166,7 @@ className = "border-(--color-border-default)";
 className = "border-(--color-border-muted)";
 
 // Focus border (for focus states)
-className = "border-(--color-border-focus)";
+className = "border-(--color-focus-ring)";
 
 // Danger border (for error states)
 className = "border-(--color-border-danger)";
@@ -250,8 +250,8 @@ className="
 ```tsx
 className="
   border-(--color-border-default)
-  focus:border-(--color-border-focus)
-  focus:ring-(--color-border-focus)
+  focus:border-(--color-focus-ring)
+  focus:ring-(--color-focus-ring)
 "
 ```
 
@@ -347,7 +347,7 @@ className="
   hover:bg-(--color-background-muted)
   focus:bg-(--color-background-muted)
   border-(--color-border-default)
-  focus:border-(--color-border-focus)
+  focus:border-(--color-focus-ring)
   text-(--color-foreground-default)
   transition-colors
 "
@@ -388,8 +388,8 @@ When you need to use tokens outside of Tailwind utilities:
 }
 
 .custom-component:focus {
-  border-color: var(--color-border-focus);
-  outline: 2px solid var(--color-border-focus);
+  border-color: var(--color-focus-ring);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 ```
@@ -515,11 +515,11 @@ pnpm --filter @wyliedog/tokens build
 | ---------------------- | --------------------------------------------------- | ------------------------------------------------------ |
 | **Background**         | `bg-(--color-background-{level})`                   | `bg-(--color-background-default)`                      |
 | **Text**               | `text-(--color-foreground-{level})`                 | `text-(--color-foreground-muted)`                      |
-| **Border**             | `border-(--color-border-{purpose})`                 | `border-(--color-border-focus)`                        |
+| **Border**             | `border-(--color-border-{purpose})`                 | `border-(--color-focus-ring)`                          |
 | **Role fill**          | `bg-(--color-background-{role}[-muted\|-emphasis])` | `bg-(--color-background-primary)`                      |
 | **Component Specific** | `bg-(--color-{component}-{variant}-{property})`     | `bg-(--color-dialog-overlay)`                          |
 | **Hover State**        | `hover:bg-(--color-{token})`                        | `hover:bg-(--color-background-muted)`                  |
-| **Focus State**        | `focus:border-(--color-border-focus)`               | `focus:ring-(--color-border-focus)`                    |
+| **Focus State**        | `focus:border-(--color-focus-ring)`                 | `focus:ring-(--color-focus-ring)`                      |
 | **Data State**         | `data-[state={value}]:bg-(--color-{token})`         | `data-[state=checked]:bg-(--color-background-primary)` |
 
 ## Common Mistakes to Avoid

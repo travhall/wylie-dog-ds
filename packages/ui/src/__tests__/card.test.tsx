@@ -403,10 +403,11 @@ describe("Card", () => {
     it("should apply focus state token classes when interactive", () => {
       const { container } = render(<Card interactive>Content</Card>);
       const card = container.firstChild as HTMLElement;
-      expect(card).toHaveClass("focus:bg-(--color-card-background-focus)");
-      expect(card).toHaveClass("focus:outline-none");
-      expect(card).toHaveClass("focus:ring-(length:--space-focus-ring-width)");
-      expect(card).toHaveClass("focus:ring-(--color-border-focus)");
+      expect(card).toHaveClass(
+        "focus-visible:outline-(length:--space-focus-width)",
+        "focus-visible:outline-(color:--color-focus-ring)",
+        "focus-visible:outline-offset-(length:--space-focus-offset)"
+      );
     });
 
     it("should apply active and disabled state token classes when interactive", () => {
@@ -575,7 +576,9 @@ describe("Card", () => {
       expect(classes).toContain("cursor-pointer");
       expect(classes).toContain("transition-colors");
       expect(classes).toContain("hover:bg-(--color-card-background-hover)");
-      expect(classes).toContain("focus:bg-(--color-card-background-focus)");
+      expect(classes).toContain(
+        "focus-visible:outline-(color:--color-focus-ring)"
+      );
       expect(classes).toContain("active:bg-(--color-card-background-active)");
       expect(classes).toContain(
         "disabled:bg-(--color-card-background-disabled)"

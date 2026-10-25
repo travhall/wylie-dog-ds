@@ -455,10 +455,9 @@ describe("Tabs", () => {
 
       const tab = screen.getByRole("tab", { name: "Tab 1" });
       expect(tab).toHaveClass(
-        "focus-visible:outline-none",
-        "focus-visible:ring-(length:--space-focus-ring-width)",
-        "focus-visible:ring-(--color-border-focus)",
-        "focus-visible:ring-offset-(--space-focus-ring-offset)"
+        "focus-visible:outline-(length:--space-focus-width)",
+        "focus-visible:outline-(color:--color-focus-ring)",
+        "focus-visible:outline-offset-(length:--space-focus-offset)"
       );
     });
 

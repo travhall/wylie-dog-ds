@@ -63,7 +63,7 @@ const ColorSwatch = ({
       className="group relative flex flex-col items-center gap-1 cursor-pointer focus:outline-none"
     >
       <div
-        className="w-12 h-12 rounded border border-(--color-border-muted) group-hover:ring-2 group-hover:ring-(--color-border-focus) group-focus-visible:ring-2 group-focus-visible:ring-(--color-border-focus) transition-all"
+        className="w-12 h-12 rounded border border-(--color-border-muted) group-hover:ring-2 group-hover:ring-(--color-focus-ring) group-focus-visible:ring-2 group-focus-visible:ring-(--color-focus-ring) transition-all"
         style={{ backgroundColor: value }}
       />
       <span className="text-xs font-mono text-(--color-foreground-faint)">
@@ -519,7 +519,7 @@ export const SemanticTokens: Story = {
                 <button
                   key={token.name}
                   onClick={() => handleCopy(token.name)}
-                  className="relative flex items-center gap-3 p-2.5 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) group"
+                  className="relative flex items-center gap-3 p-2.5 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-2 group"
                 >
                   {/* Swatch — var() resolves correctly since semantic tokens are on :root */}
                   <div
@@ -947,7 +947,7 @@ export const TokenBrowser: Story = {
             <button
               key={token.name}
               onClick={() => handleCopy(token)}
-              className="relative flex items-center gap-3 p-3 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:border-(--color-border-focus) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus)"
+              className="relative flex items-center gap-3 p-3 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:border-(--color-focus-ring) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-2"
             >
               <div
                 className="w-10 h-10 rounded border border-(--color-border-muted) shrink-0"

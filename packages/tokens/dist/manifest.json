@@ -3063,18 +3063,6 @@
         "variable": "var(--color-border-emphasis)",
         "description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches)."
       },
-      "color-border-focus": {
-        "name": "colorBorderFocus",
-        "path": [
-          "color",
-          "border",
-          "focus"
-        ],
-        "value": "oklch(0.623 0.188 259.83)",
-        "type": "color",
-        "variable": "var(--color-border-focus)",
-        "description": "Keyboard focus ring colour. Centralized: every component's focus indicator uses it."
-      },
       "color-border-primary": {
         "name": "colorBorderPrimary",
         "path": [
@@ -3124,7 +3112,32 @@
         "description": "Border in the warning colour for alerts, toasts and highlights."
       }
     },
-    "other": {},
+    "other": {
+      "color-focus-ring": {
+        "name": "colorFocusRing",
+        "path": [
+          "color",
+          "focus",
+          "ring"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-focus-ring)",
+        "description": "Keyboard focus indicator: the 2px outline. Foreground tone, so it reaches at least 3:1 against the halo and the page in both modes. Centralized: every component's focus indicator uses it."
+      },
+      "color-focus-halo": {
+        "name": "colorFocusHalo",
+        "path": [
+          "color",
+          "focus",
+          "halo"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-focus-halo)",
+        "description": "Keyboard focus halo: the page-tone band drawn between the control and the outline and outside the outline, so the indicator is separated from any fill or surface it sits on."
+      }
+    },
     "shadow": {
       "shadow-none": {
         "name": "shadowNone",
@@ -3747,18 +3760,6 @@
         "variable": "var(--color-badge-outline-background-hover)",
         "description": "Fill of the outline badge while hovered."
       },
-      "badge-default-background-focus": {
-        "name": "badgeDefaultBackgroundFocus",
-        "path": [
-          "badge",
-          "default",
-          "background-focus"
-        ],
-        "value": "oklch(0.488 0.217 264.4)",
-        "type": "color",
-        "variable": "var(--color-badge-default-background-focus)",
-        "description": "Fill of the default badge while focused."
-      },
       "badge-default-background-disabled": {
         "name": "badgeDefaultBackgroundDisabled",
         "path": [
@@ -3770,18 +3771,6 @@
         "type": "color",
         "variable": "var(--color-badge-default-background-disabled)",
         "description": "Fill of the default badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.default.text-disabled`."
-      },
-      "badge-secondary-background-focus": {
-        "name": "badgeSecondaryBackgroundFocus",
-        "path": [
-          "badge",
-          "secondary",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-background-focus)",
-        "description": "Fill of an interactive secondary badge while it has keyboard focus."
       },
       "badge-secondary-background-disabled": {
         "name": "badgeSecondaryBackgroundDisabled",
@@ -3795,18 +3784,6 @@
         "variable": "var(--color-badge-secondary-background-disabled)",
         "description": "Fill of the secondary badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.secondary.text-disabled`."
       },
-      "badge-success-background-focus": {
-        "name": "badgeSuccessBackgroundFocus",
-        "path": [
-          "badge",
-          "success",
-          "background-focus"
-        ],
-        "value": "oklch(0.488 0.134 150.11)",
-        "type": "color",
-        "variable": "var(--color-badge-success-background-focus)",
-        "description": "Fill of the success badge while focused."
-      },
       "badge-success-background-disabled": {
         "name": "badgeSuccessBackgroundDisabled",
         "path": [
@@ -3818,18 +3795,6 @@
         "type": "color",
         "variable": "var(--color-badge-success-background-disabled)",
         "description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`."
-      },
-      "badge-warning-background-focus": {
-        "name": "badgeWarningBackgroundFocus",
-        "path": [
-          "badge",
-          "warning",
-          "background-focus"
-        ],
-        "value": "oklch(0.714 0.143 81)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-background-focus)",
-        "description": "Fill of the warning badge while focused."
       },
       "badge-warning-background-disabled": {
         "name": "badgeWarningBackgroundDisabled",
@@ -3843,18 +3808,6 @@
         "variable": "var(--color-badge-warning-background-disabled)",
         "description": "Fill of the warning badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.warning.text-disabled`."
       },
-      "badge-destructive-background-focus": {
-        "name": "badgeDestructiveBackgroundFocus",
-        "path": [
-          "badge",
-          "destructive",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-background-focus)",
-        "description": "Fill of the destructive badge while focused."
-      },
       "badge-destructive-background-disabled": {
         "name": "badgeDestructiveBackgroundDisabled",
         "path": [
@@ -3866,18 +3819,6 @@
         "type": "color",
         "variable": "var(--color-badge-destructive-background-disabled)",
         "description": "Fill of the destructive badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.destructive.text-disabled`."
-      },
-      "badge-outline-background-focus": {
-        "name": "badgeOutlineBackgroundFocus",
-        "path": [
-          "badge",
-          "outline",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-background-focus)",
-        "description": "Fill of the outline badge while focused."
       },
       "badge-outline-background-disabled": {
         "name": "badgeOutlineBackgroundDisabled",
@@ -4887,21 +4828,10 @@
           "card",
           "border-hover"
         ],
-        "value": "oklch(0.623 0.188 259.83)",
+        "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
         "variable": "var(--color-card-border-hover)",
         "description": "Border colour of an interactive card while hovered."
-      },
-      "card-background-focus": {
-        "name": "cardBackgroundFocus",
-        "path": [
-          "card",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-card-background-focus)",
-        "description": "Fill of an interactive card while focused."
       },
       "card-background-active": {
         "name": "cardBackgroundActive",
@@ -4959,17 +4889,6 @@
         "type": "color",
         "variable": "var(--color-input-border)",
         "description": "Border colour of the input."
-      },
-      "input-border-focus": {
-        "name": "inputBorderFocus",
-        "path": [
-          "input",
-          "border-focus"
-        ],
-        "value": "oklch(0.623 0.188 259.83)",
-        "type": "color",
-        "variable": "var(--color-input-border-focus)",
-        "description": "Border of the input while focused. Specification only: the code uses the focus ring (`color.border.focus`) and does not bind this token."
       },
       "input-border-error": {
         "name": "inputBorderError",
@@ -5452,27 +5371,27 @@
         "variable": "var(--color-menubar-background)",
         "description": "Fill of the menubar."
       },
-      "menubar-trigger-focus": {
-        "name": "menubarTriggerFocus",
+      "menubar-trigger-highlighted": {
+        "name": "menubarTriggerHighlighted",
         "path": [
           "menubar",
-          "trigger-focus"
+          "trigger-highlighted"
         ],
         "value": "oklch(0.952 0.003 264.48)",
         "type": "color",
-        "variable": "var(--color-menubar-trigger-focus)",
-        "description": "Fill of the menubar trigger while focused. Pairs with `menubar.trigger-text-focus`."
+        "variable": "var(--color-menubar-trigger-highlighted)",
+        "description": "Fill of the menubar trigger while highlighted. Pairs with `menubar.trigger-text-highlighted`."
       },
-      "menubar-trigger-text-focus": {
-        "name": "menubarTriggerTextFocus",
+      "menubar-trigger-text-highlighted": {
+        "name": "menubarTriggerTextHighlighted",
         "path": [
           "menubar",
-          "trigger-text-focus"
+          "trigger-text-highlighted"
         ],
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
-        "variable": "var(--color-menubar-trigger-text-focus)",
-        "description": "Text colour of the menubar trigger while focused. Pairs with `menubar.trigger-focus`."
+        "variable": "var(--color-menubar-trigger-text-highlighted)",
+        "description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
       },
       "menubar-trigger-open": {
         "name": "menubarTriggerOpen",
@@ -5529,27 +5448,27 @@
         "variable": "var(--color-menubar-content-text)",
         "description": "Text colour of the menubar content. Pairs with `menubar.content-background`."
       },
-      "menubar-item-focus": {
-        "name": "menubarItemFocus",
+      "menubar-item-highlighted": {
+        "name": "menubarItemHighlighted",
         "path": [
           "menubar",
-          "item-focus"
+          "item-highlighted"
         ],
         "value": "oklch(0.952 0.003 264.48)",
         "type": "color",
-        "variable": "var(--color-menubar-item-focus)",
-        "description": "Fill of the menubar item while focused. Pairs with `menubar.item-text-focus`."
+        "variable": "var(--color-menubar-item-highlighted)",
+        "description": "Fill of the menubar item while highlighted. Pairs with `menubar.item-text-highlighted`."
       },
-      "menubar-item-text-focus": {
-        "name": "menubarItemTextFocus",
+      "menubar-item-text-highlighted": {
+        "name": "menubarItemTextHighlighted",
         "path": [
           "menubar",
-          "item-text-focus"
+          "item-text-highlighted"
         ],
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
-        "variable": "var(--color-menubar-item-text-focus)",
-        "description": "Text colour of the menubar item while focused. Pairs with `menubar.item-focus`."
+        "variable": "var(--color-menubar-item-text-highlighted)",
+        "description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
       },
       "menubar-label": {
         "name": "menubarLabel",
@@ -5926,27 +5845,27 @@
         "variable": "var(--color-navigation-text-hover)",
         "description": "Text colour of the navigation menu while hovered. Pairs with `navigation.background-hover`."
       },
-      "navigation-focus": {
-        "name": "navigationFocus",
+      "navigation-highlighted": {
+        "name": "navigationHighlighted",
         "path": [
           "navigation",
-          "focus"
+          "highlighted"
         ],
         "value": "oklch(0.952 0.003 264.48)",
         "type": "color",
-        "variable": "var(--color-navigation-focus)",
-        "description": "Fill of a navigation menu trigger while focused. Pairs with `navigation.text-focus`."
+        "variable": "var(--color-navigation-highlighted)",
+        "description": "Fill of a navigation menu trigger while highlighted. Pairs with `navigation.text-highlighted`."
       },
-      "navigation-text-focus": {
-        "name": "navigationTextFocus",
+      "navigation-text-highlighted": {
+        "name": "navigationTextHighlighted",
         "path": [
           "navigation",
-          "text-focus"
+          "text-highlighted"
         ],
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
-        "variable": "var(--color-navigation-text-focus)",
-        "description": "Text colour of a navigation menu trigger while focused. Pairs with `navigation.focus`."
+        "variable": "var(--color-navigation-text-highlighted)",
+        "description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
       },
       "navigation-active": {
         "name": "navigationActive",
@@ -6754,30 +6673,6 @@
         "variable": "var(--tabs-trigger-font-weight)",
         "description": "Font weight of the tabs trigger."
       },
-      "tabs-trigger-ring-offset": {
-        "name": "tabsTriggerRingOffset",
-        "path": [
-          "tabs",
-          "trigger",
-          "ring-offset"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-tabs-trigger-ring-offset)",
-        "description": "Colour of the gap between the tabs trigger and its focus ring, matching the surface behind it."
-      },
-      "tabs-content-ring-offset": {
-        "name": "tabsContentRingOffset",
-        "path": [
-          "tabs",
-          "content",
-          "ring-offset"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-tabs-content-ring-offset)",
-        "description": "Colour of the gap between the tabs content and its focus ring, matching the surface behind it."
-      },
       "tabs-trigger-text-disabled": {
         "name": "tabsTriggerTextDisabled",
         "path": [
@@ -7098,18 +6993,6 @@
         "variable": "var(--calendar-day-font-weight)",
         "description": "Font weight of the calendar day."
       },
-      "calendar-nav-button-ring-offset": {
-        "name": "calendarNavButtonRingOffset",
-        "path": [
-          "calendar",
-          "nav-button",
-          "ring-offset"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-button-ring-offset)",
-        "description": "Colour of the gap between the calendar nav button and its focus ring, matching the surface behind it."
-      },
       "calendar-nav-text-disabled": {
         "name": "calendarNavTextDisabled",
         "path": [
@@ -7221,17 +7104,6 @@
         "type": "color",
         "variable": "var(--color-accordion-trigger-pressed)",
         "description": "Fill of the accordion trigger while pressed."
-      },
-      "accordion-trigger-focus": {
-        "name": "accordionTriggerFocus",
-        "path": [
-          "accordion",
-          "trigger-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-accordion-trigger-focus)",
-        "description": "Fill of the accordion trigger while focused."
       },
       "accordion-trigger-disabled": {
         "name": "accordionTriggerDisabled",
@@ -9398,17 +9270,6 @@
         "variable": "var(--slider-focus-ring-offset)",
         "description": "Gap between the slider and its focus ring."
       },
-      "slider-thumb-ring-offset": {
-        "name": "sliderThumbRingOffset",
-        "path": [
-          "slider",
-          "thumb-ring-offset"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-slider-thumb-ring-offset)",
-        "description": "Colour of the gap between the slider thumb and its focus ring, matching the surface behind it."
-      },
       "slider-thumb-background-disabled": {
         "name": "sliderThumbBackgroundDisabled",
         "path": [
@@ -10022,18 +9883,6 @@
         "type": "number",
         "variable": "var(--toast-close-button-opacity-hover)",
         "description": "Opacity of the close button once the toast is hovered or the button has focus."
-      },
-      "toast-action-ring-offset": {
-        "name": "toastActionRingOffset",
-        "path": [
-          "toast",
-          "action",
-          "ring-offset"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-toast-action-ring-offset)",
-        "description": "Colour of the gap between the toast action and its focus ring, matching the surface behind it."
       },
       "toast-close-button-position": {
         "name": "toastCloseButtonPosition",
@@ -10656,29 +10505,29 @@
         "variable": "var(--select-content-z-index)",
         "description": "Stacking order of the select content."
       },
-      "select-item-background-focus": {
-        "name": "selectItemBackgroundFocus",
+      "select-item-background-highlighted": {
+        "name": "selectItemBackgroundHighlighted",
         "path": [
           "select",
           "item",
-          "background-focus"
+          "background-highlighted"
         ],
         "value": "oklch(0.952 0.003 264.48)",
         "type": "color",
-        "variable": "var(--color-select-item-background-focus)",
-        "description": "Fill of the select item while focused. Pairs with `select.item.text-focus`."
+        "variable": "var(--color-select-item-background-highlighted)",
+        "description": "Fill of the select item while highlighted. Pairs with `select.item.text-highlighted`."
       },
-      "select-item-text-focus": {
-        "name": "selectItemTextFocus",
+      "select-item-text-highlighted": {
+        "name": "selectItemTextHighlighted",
         "path": [
           "select",
           "item",
-          "text-focus"
+          "text-highlighted"
         ],
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
-        "variable": "var(--color-select-item-text-focus)",
-        "description": "Text colour of the select item while focused. Pairs with `select.item.background-focus`."
+        "variable": "var(--color-select-item-text-highlighted)",
+        "description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
       },
       "select-item-indicator-left": {
         "name": "selectItemIndicatorLeft",
@@ -10911,7 +10760,7 @@
         "value": "2px",
         "type": "spacing",
         "variable": "var(--checkbox-focus-ring-offset)",
-        "description": "Gap between the checkbox and its focus ring. The ring colour is `color.border.focus`, the documented exception."
+        "description": "Gap between the checkbox and its focus ring."
       },
       "checkbox-border-color": {
         "name": "checkboxBorderColor",
@@ -12805,17 +12654,17 @@
         "variable": "var(--color-site-header-nav-link-background-hover)",
         "description": "Fill of the site header nav link while hovered. Pairs with `site-header.nav-link.text-hover`."
       },
-      "site-header-nav-link-background-focus": {
-        "name": "siteHeaderNavLinkBackgroundFocus",
+      "site-header-nav-link-background-highlighted": {
+        "name": "siteHeaderNavLinkBackgroundHighlighted",
         "path": [
           "site-header",
           "nav-link",
-          "background-focus"
+          "background-highlighted"
         ],
         "value": "oklch(0.952 0.003 264.48)",
         "type": "color",
-        "variable": "var(--color-site-header-nav-link-background-focus)",
-        "description": "Fill of the site header nav link while focused. Pairs with `site-header.nav-link.text-focus`."
+        "variable": "var(--color-site-header-nav-link-background-highlighted)",
+        "description": "Fill of the site header nav link while highlighted. Pairs with `site-header.nav-link.text-highlighted`."
       },
       "site-header-nav-link-text-hover": {
         "name": "siteHeaderNavLinkTextHover",
@@ -12829,17 +12678,17 @@
         "variable": "var(--color-site-header-nav-link-text-hover)",
         "description": "Text colour of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
       },
-      "site-header-nav-link-text-focus": {
-        "name": "siteHeaderNavLinkTextFocus",
+      "site-header-nav-link-text-highlighted": {
+        "name": "siteHeaderNavLinkTextHighlighted",
         "path": [
           "site-header",
           "nav-link",
-          "text-focus"
+          "text-highlighted"
         ],
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
-        "variable": "var(--color-site-header-nav-link-text-focus)",
-        "description": "Text colour of the site header nav link while focused. Pairs with `site-header.nav-link.background-focus`."
+        "variable": "var(--color-site-header-nav-link-text-highlighted)",
+        "description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
       },
       "site-header-nav-link-text-disabled": {
         "name": "siteHeaderNavLinkTextDisabled",

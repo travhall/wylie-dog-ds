@@ -253,11 +253,10 @@ describe("Badge", () => {
     it("should apply focus ring token classes when interactive", () => {
       render(<Badge interactive>Badge</Badge>);
       const badge = screen.getByText("Badge");
-      expect(badge).toHaveClass("focus:outline-none");
-      expect(badge).toHaveClass("focus:ring-(length:--space-focus-ring-width)");
-      expect(badge).toHaveClass("focus:ring-(--color-border-focus)");
       expect(badge).toHaveClass(
-        "focus:ring-offset-(--space-focus-ring-offset)"
+        "focus-visible:outline-(length:--space-focus-width)",
+        "focus-visible:outline-(color:--color-focus-ring)",
+        "focus-visible:outline-offset-(length:--space-focus-offset)"
       );
     });
 
@@ -300,9 +299,6 @@ describe("Badge", () => {
         "hover:bg-(--color-badge-default-background-hover)"
       );
       expect(badge).toHaveClass(
-        "focus:bg-(--color-badge-default-background-focus)"
-      );
-      expect(badge).toHaveClass(
         "disabled:bg-(--color-badge-default-background-disabled)"
       );
     });
@@ -326,9 +322,6 @@ describe("Badge", () => {
         const badge = screen.getByText(variant);
         expect(badge).toHaveClass(
           `hover:bg-(--color-badge-${variant}-background-hover)`
-        );
-        expect(badge).toHaveClass(
-          `focus:bg-(--color-badge-${variant}-background-focus)`
         );
         expect(badge).toHaveClass(
           `disabled:bg-(--color-badge-${variant}-background-disabled)`
@@ -500,7 +493,9 @@ describe("Badge", () => {
     it("should include interactive classes when interactive is true", () => {
       const classes = badgeVariants({ interactive: true });
       expect(classes).toContain("cursor-pointer");
-      expect(classes).toContain("focus:outline-none");
+      expect(classes).toContain(
+        "focus-visible:outline-(color:--color-focus-ring)"
+      );
     });
 
     it("should include compound hover classes for variant + interactive", () => {
@@ -512,9 +507,6 @@ describe("Badge", () => {
         "hover:bg-(--color-badge-destructive-background-hover)"
       );
       expect(classes).toContain(
-        "focus:bg-(--color-badge-destructive-background-focus)"
-      );
-      expect(classes).toContain(
         "disabled:bg-(--color-badge-destructive-background-disabled)"
       );
     });
@@ -522,7 +514,9 @@ describe("Badge", () => {
     it("should not include interactive classes when interactive is false", () => {
       const classes = badgeVariants({ interactive: false });
       expect(classes).not.toContain("cursor-pointer");
-      expect(classes).not.toContain("focus:outline-none");
+      expect(classes).not.toContain(
+        "focus-visible:outline-(color:--color-focus-ring)"
+      );
     });
 
     it("should include correct size classes", () => {

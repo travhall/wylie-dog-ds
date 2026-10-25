@@ -111,7 +111,7 @@ export const SheetContent = React.forwardRef<
       >
         {children}
         <DialogPrimitive.Close
-          className={`absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--sheet-close-button-opacity) ring-offset-(--color-sheet-content-background) transition-opacity hover:opacity-(--sheet-close-button-opacity-hover) ${focusRingClasses} disabled:pointer-events-none`}
+          className={`absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--sheet-close-button-opacity) transition-opacity hover:opacity-(--sheet-close-button-opacity-hover) ${focusRingClasses} disabled:pointer-events-none`}
         >
           <svg
             className="h-(--space-icon-size-md) w-(--space-icon-size-md)"

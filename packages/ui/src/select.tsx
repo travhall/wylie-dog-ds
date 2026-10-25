@@ -1,14 +1,14 @@
 import React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cva } from "class-variance-authority";
-import { cn, focusRingInputClasses } from "./lib/utils";
+import { cn, focusRingClasses, focusRingInsetClasses } from "./lib/utils";
 
 export const selectTriggerVariants = cva(
   cn(
     "flex w-full items-center justify-between border border-(--color-input-border) transition-colors",
     "rounded-(--space-select-trigger-radius)",
     "placeholder:text-(--color-input-placeholder)",
-    focusRingInputClasses,
+    focusRingClasses,
     "disabled:cursor-not-allowed disabled:bg-(--color-select-trigger-background-disabled) disabled:text-(--color-select-trigger-text-disabled) disabled:border-(--color-select-trigger-border-disabled)",
     "[&>span]:line-clamp-1",
     "text-(--color-input-default-text)"
@@ -165,13 +165,14 @@ export const SelectItem = React.forwardRef<
     <SelectPrimitive.Item
       ref={ref}
       className={cn(
-        "relative flex w-full cursor-default select-none items-center outline-none",
+        "relative flex w-full cursor-default select-none items-center outline-hidden",
+        focusRingInsetClasses,
         "rounded-(--space-select-item-radius)",
         "py-(--space-select-item-padding-y)",
         "pl-(--space-select-item-padding-left)",
         "pr-(--space-select-item-padding-right)",
         selectItemFontSizes[size],
-        "focus:bg-(--color-select-item-background-focus) focus:text-(--color-select-item-text-focus) hover:bg-(--color-select-item-background-focus) hover:text-(--color-select-item-text-focus)",
+        "focus:bg-(--color-select-item-background-highlighted) focus:text-(--color-select-item-text-highlighted) hover:bg-(--color-select-item-background-highlighted) hover:text-(--color-select-item-text-highlighted)",
         "data-disabled:pointer-events-none data-disabled:text-(--color-select-item-text-disabled)",
         className
       )}
