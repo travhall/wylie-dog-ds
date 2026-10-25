@@ -1616,12 +1616,12 @@
   },
   "sheet.content.width.sm": {
     "$type": "spacing",
-    "$value": "{space.1600}",
+    "$value": "{space.1550}",
     "$description": "Width of the small sheet content."
   },
   "sheet.content.width.md": {
     "$type": "spacing",
-    "$value": "{space.1700}",
+    "$value": "{space.1650}",
     "$description": "Width of the medium sheet content."
   },
   "sheet.content.width.lg": {
@@ -1836,7 +1836,7 @@
   },
   "dialog.content.width.sm": {
     "$type": "spacing",
-    "$value": "{space.1600}",
+    "$value": "{space.1550}",
     "$description": "Width of the small dialog content."
   },
   "dialog.content.width.md": {
@@ -1851,7 +1851,7 @@
   },
   "dialog.content.max-width": {
     "$type": "spacing",
-    "$value": "{space.1700}",
+    "$value": "{space.1800}",
     "$description": "Maximum width of the dialog content."
   },
   "dialog.content.padding": {
@@ -1901,7 +1901,7 @@
   },
   "popover.content.width.md": {
     "$type": "spacing",
-    "$value": "{space.1600}",
+    "$value": "{space.1550}",
     "$description": "Width of the medium popover content."
   },
   "popover.content.width.lg": {
@@ -1921,7 +1921,7 @@
   },
   "hover-card.content.width.md": {
     "$type": "spacing",
-    "$value": "{space.1600}",
+    "$value": "{space.1550}",
     "$description": "Width of the medium hover card content."
   },
   "hover-card.content.width.lg": {

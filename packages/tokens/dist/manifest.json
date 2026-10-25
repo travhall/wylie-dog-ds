@@ -1844,6 +1844,17 @@
         "variable": "var(--space-400)",
         "description": ""
       },
+      "space-450": {
+        "name": "space450",
+        "path": [
+          "space",
+          "450"
+        ],
+        "value": "36px",
+        "type": "spacing",
+        "variable": "var(--space-450)",
+        "description": ""
+      },
       "space-500": {
         "name": "space500",
         "path": [
@@ -1864,6 +1875,17 @@
         "value": "48px",
         "type": "spacing",
         "variable": "var(--space-600)",
+        "description": ""
+      },
+      "space-650": {
+        "name": "space650",
+        "path": [
+          "space",
+          "650"
+        ],
+        "value": "56px",
+        "type": "spacing",
+        "variable": "var(--space-650)",
         "description": ""
       },
       "space-700": {
@@ -1965,6 +1987,17 @@
         "variable": "var(--space-1500)",
         "description": ""
       },
+      "space-1550": {
+        "name": "space1550",
+        "path": [
+          "space",
+          "1550"
+        ],
+        "value": "384px",
+        "type": "spacing",
+        "variable": "var(--space-1550)",
+        "description": ""
+      },
       "space-1600": {
         "name": "space1600",
         "path": [
@@ -1974,6 +2007,17 @@
         "value": "448px",
         "type": "spacing",
         "variable": "var(--space-1600)",
+        "description": ""
+      },
+      "space-1650": {
+        "name": "space1650",
+        "path": [
+          "space",
+          "1650"
+        ],
+        "value": "512px",
+        "type": "spacing",
+        "variable": "var(--space-1650)",
         "description": ""
       },
       "space-1700": {
@@ -1993,9 +2037,31 @@
           "space",
           "1800"
         ],
-        "value": "576px",
+        "value": "672px",
         "type": "spacing",
         "variable": "var(--space-1800)",
+        "description": ""
+      },
+      "space-1900": {
+        "name": "space1900",
+        "path": [
+          "space",
+          "1900"
+        ],
+        "value": "768px",
+        "type": "spacing",
+        "variable": "var(--space-1900)",
+        "description": ""
+      },
+      "space-2000": {
+        "name": "space2000",
+        "path": [
+          "space",
+          "2000"
+        ],
+        "value": "896px",
+        "type": "spacing",
+        "variable": "var(--space-2000)",
         "description": ""
       }
     },
@@ -7934,7 +8000,7 @@
           "width",
           "sm"
         ],
-        "value": "448px",
+        "value": "384px",
         "type": "spacing",
         "variable": "var(--dialog-content-width-sm)",
         "description": "Width of the small dialog content."
@@ -7972,7 +8038,7 @@
           "content",
           "max-width"
         ],
-        "value": "576px",
+        "value": "672px",
         "type": "spacing",
         "variable": "var(--dialog-content-max-width)",
         "description": "Maximum width of the dialog content."
@@ -8340,7 +8406,7 @@
           "width",
           "md"
         ],
-        "value": "448px",
+        "value": "384px",
         "type": "spacing",
         "variable": "var(--hover-card-content-width-md)",
         "description": "Width of the medium hover card content."
@@ -8631,7 +8697,7 @@
           "width",
           "md"
         ],
-        "value": "448px",
+        "value": "384px",
         "type": "spacing",
         "variable": "var(--popover-content-width-md)",
         "description": "Width of the medium popover content."
@@ -11431,7 +11497,7 @@
           "width",
           "sm"
         ],
-        "value": "448px",
+        "value": "384px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-sm)",
         "description": "Width of the small sheet content."
@@ -11444,7 +11510,7 @@
           "width",
           "md"
         ],
-        "value": "576px",
+        "value": "512px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-md)",
         "description": "Width of the medium sheet content."
@@ -11457,7 +11523,7 @@
           "width",
           "lg"
         ],
-        "value": "576px",
+        "value": "672px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-lg)",
         "description": "Width of the large sheet content."

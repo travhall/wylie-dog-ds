@@ -2921,19 +2921,19 @@
         },
         "sheet.content.width.sm": {
           "$type": "spacing",
-          "$value": "{space.1600}",
+          "$value": "{space.1550}",
           "valuesByMode": {
-            "Light": "{space.1600}",
-            "Dark": "{space.1600}"
+            "Light": "{space.1550}",
+            "Dark": "{space.1550}"
           },
           "$description": "Width of the small sheet content."
         },
         "sheet.content.width.md": {
           "$type": "spacing",
-          "$value": "{space.1700}",
+          "$value": "{space.1650}",
           "valuesByMode": {
-            "Light": "{space.1700}",
-            "Dark": "{space.1700}"
+            "Light": "{space.1650}",
+            "Dark": "{space.1650}"
           },
           "$description": "Width of the medium sheet content."
         },
@@ -3317,10 +3317,10 @@
         },
         "dialog.content.width.sm": {
           "$type": "spacing",
-          "$value": "{space.1600}",
+          "$value": "{space.1550}",
           "valuesByMode": {
-            "Light": "{space.1600}",
-            "Dark": "{space.1600}"
+            "Light": "{space.1550}",
+            "Dark": "{space.1550}"
           },
           "$description": "Width of the small dialog content."
         },
@@ -3344,10 +3344,10 @@
         },
         "dialog.content.max-width": {
           "$type": "spacing",
-          "$value": "{space.1700}",
+          "$value": "{space.1800}",
           "valuesByMode": {
-            "Light": "{space.1700}",
-            "Dark": "{space.1700}"
+            "Light": "{space.1800}",
+            "Dark": "{space.1800}"
           },
           "$description": "Maximum width of the dialog content."
         },
@@ -3434,10 +3434,10 @@
         },
         "popover.content.width.md": {
           "$type": "spacing",
-          "$value": "{space.1600}",
+          "$value": "{space.1550}",
           "valuesByMode": {
-            "Light": "{space.1600}",
-            "Dark": "{space.1600}"
+            "Light": "{space.1550}",
+            "Dark": "{space.1550}"
           },
           "$description": "Width of the medium popover content."
         },
@@ -3470,10 +3470,10 @@
         },
         "hover-card.content.width.md": {
           "$type": "spacing",
-          "$value": "{space.1600}",
+          "$value": "{space.1550}",
           "valuesByMode": {
-            "Light": "{space.1600}",
-            "Dark": "{space.1600}"
+            "Light": "{space.1550}",
+            "Dark": "{space.1550}"
           },
           "$description": "Width of the medium hover card content."
         },
