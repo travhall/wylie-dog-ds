@@ -7,15 +7,16 @@
 //
 // An empty list ([]) is valid and hides the variable from every picker.
 // Owner decisions (Plan 201, 2026-10-25):
-// - line-height is hidden: the tokens are percentages (100, 125, 137.5) but
-//   Figma binds line-height variables as pixels, so LINE_HEIGHT would give a
-//   100px line height. How to handle it long term is a separate decision.
+// - line-height and tracking/letter-spacing are hidden (Plans 201 and 204):
+//   the tokens are percentages (100, 125, 137.5) and em fractions (-0.05em),
+//   but Figma binds both properties as pixels, so LINE_HEIGHT would give a
+//   100px line height and LETTER_SPACING -0.05px. Figma shows them as percent
+//   text-style properties generated from the tokens (figma-gateway.md).
 // - primitive colours (color.blue.600) are hidden: designers bind semantic and
 //   component variables, not the raw palette.
 // - z-index, duration, easing, shadow value strings and the semantic focus
 //   dimensions are hidden: no Figma property binds them.
-// - shadow blur, offset and spread are EFFECT_FLOAT; tracking and
-//   letter-spacing are LETTER_SPACING.
+// - shadow blur, offset and spread are EFFECT_FLOAT.
 // The only variables left on ALL_SCOPES are component colours whose name has
 // no property word (see inferScopesForComponentColor).
 
@@ -26,8 +27,9 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   fontSize: ["FONT_SIZE"],
   fontWeight: ["FONT_WEIGHT"],
   fontFamily: ["FONT_FAMILY"],
-  lineHeight: ["LINE_HEIGHT"],
-  letterSpacing: ["LETTER_SPACING"],
+  // hidden: Figma binds both as pixels (see the header)
+  lineHeight: [],
+  letterSpacing: [],
   spacing: ["GAP", "WIDTH_HEIGHT"],
   sizing: ["WIDTH_HEIGHT"],
   borderRadius: ["CORNER_RADIUS"],
@@ -183,12 +185,12 @@ function inferScopesForColor(tokenName: string): string[] {
 function inferScopesFromName(tokenName: string): string[] | null {
   const name = tokenName.toLowerCase();
 
-  // Percentages, but Figma binds line height as pixels: hidden for now
+  // Percentages and em fractions, but Figma binds both as pixels: hidden
   if (name.includes("line-height")) return [];
   if (name.includes("font-size")) return ["FONT_SIZE"];
   if (name.includes("font-weight")) return ["FONT_WEIGHT"];
   if (name.includes("tracking") || name.includes("letter-spacing")) {
-    return ["LETTER_SPACING"];
+    return [];
   }
   if (name.includes("opacity")) return ["OPACITY"];
   if (name.includes("z-index")) return [];

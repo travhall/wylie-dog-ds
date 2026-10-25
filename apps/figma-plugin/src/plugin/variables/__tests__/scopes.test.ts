@@ -158,8 +158,8 @@ describe("inferScopes: primitives and other types", () => {
     ["fontSize", "font.size.base", ["FONT_SIZE"]],
     ["fontWeight", "font.weight.bold", ["FONT_WEIGHT"]],
     ["fontFamily", "font.family.sans", ["FONT_FAMILY"]],
-    ["lineHeight", "line.height.tight", ["LINE_HEIGHT"]],
-    ["letterSpacing", "letter.spacing.wide", ["LETTER_SPACING"]],
+    ["lineHeight", "line.height.tight", []],
+    ["letterSpacing", "letter.spacing.wide", []],
     ["spacing", "spacing.4", ["GAP", "WIDTH_HEIGHT"]],
     ["sizing", "sizing.4", ["WIDTH_HEIGHT"]],
     ["borderRadius", "radius.md", ["CORNER_RADIUS"]],
@@ -204,8 +204,8 @@ describe("inferScopes: non-colour tokens by name", () => {
     ["number", "typography.line-height.tight", []],
     ["number", "dialog.title-line-height", []],
     ["lineHeight", "typography.line-height.tight", []],
-    ["dimension", "typography.tracking.wide", ["LETTER_SPACING"]],
-    ["dimension", "dialog.title-letter-spacing", ["LETTER_SPACING"]],
+    ["dimension", "typography.tracking.wide", []],
+    ["dimension", "dialog.title-letter-spacing", []],
     ["number", "opacity.50", ["OPACITY"]],
     ["number", "opacity.scrim", ["OPACITY"]],
     ["number", "state.opacity.disabled", ["OPACITY"]],
@@ -333,11 +333,11 @@ describe("inferScopes: the real token files", () => {
     };
     expectFamily(/font-size/, ["FONT_SIZE"]);
     expectFamily(/font-weight/, ["FONT_WEIGHT"]);
-    expectFamily(/tracking|letter-spacing/, ["LETTER_SPACING"]);
     expectFamily(/opacity/, ["OPACITY"]);
     expectFamily(/^shadow\.(blur|offset|spread)/, ["EFFECT_FLOAT"]);
     // Hidden: percentages Figma would bind as pixels, and CSS-only values
     expectFamily(/line-height/, []);
+    expectFamily(/tracking|letter-spacing/, []);
     expectFamily(/z-index/, []);
     expectFamily(/^focus\./, []);
   });
@@ -354,8 +354,13 @@ describe("inferScopes: the real token files", () => {
   });
 
   it("never scopes a number to a picker its value cannot feed", () => {
-    // Percent line heights as LINE_HEIGHT would bind as pixels
-    expect(variables.some((v) => v.scopes.includes("LINE_HEIGHT"))).toBe(false);
+    // Percent line heights and em tracking would bind as pixels
+    for (const scope of ["LINE_HEIGHT", "LETTER_SPACING"]) {
+      expect(
+        variables.some((v) => v.scopes.includes(scope)),
+        scope
+      ).toBe(false);
+    }
     // Tracking and shadow values must not appear in gap or padding pickers
     const gap = variables.filter((v) => v.scopes.includes("GAP"));
     for (const v of gap) {
@@ -391,7 +396,7 @@ describe("inferScopes: the real token files", () => {
       "number OPACITY": 15,
       "number []": 18,
       "dimension EFFECT_FLOAT": 23,
-      "dimension LETTER_SPACING": 6,
+      "dimension []": 6,
       "duration []": 9,
     });
     expect(all.semantic).toMatchObject({
@@ -407,7 +412,7 @@ describe("inferScopes: the real token files", () => {
       "number FONT_WEIGHT": 40,
       "number OPACITY": 17,
       "number []": 35,
-      "dimension LETTER_SPACING": 9,
+      "dimension []": 9,
       "shadow []": 19,
       "duration []": 11,
       "color ALL_SCOPES": 49,
