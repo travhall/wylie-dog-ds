@@ -15,6 +15,20 @@
  *     from GitHub) are flagged so the review can group and acknowledge them.
  *  7. Push in pull-request mode shows the same diff plus a notice (UI side).
  *
+ * Owner decisions (2026-10-25, plan 202): scopes are derived settings the
+ * importer writes on every Pull but the token JSON does not hold, so tokens
+ * can match while a Pull would still change them.
+ *  8. Pull and the overview list them in a `settings` section, grouped by
+ *     transition ("42 variables: all pickers → font size") with the
+ *     per-variable list behind each group. Push never lists them.
+ *  9. Current scopes ride beside the tokens (`LocalScopes`), never inside, so
+ *     hashes and the sync baseline are untouched. Expected scopes are
+ *     `inferScopes` of the incoming tokens; comparison ignores order.
+ * 10. The Sync tab status stays "Up to date" for tokens and adds a second line
+ *     naming the scope changes; the overview says so too instead of "in sync".
+ * 11. Scopes are the only invisible setting: descriptions, the original type
+ *     and modes already show in the token diff.
+ *
  * Direction decides which side is "from" (what the destination holds now) and
  * "to" (what it will hold): Push writes Figma to GitHub; Pull writes GitHub to
  * Figma; "overview" is a read-only look, ordered like a Push.
@@ -24,6 +38,7 @@
 import type { ExportData, ProcessedToken } from "../variables/processor";
 import { ConflictDetector } from "./conflict-detector";
 import type { SyncChangeItem, SyncChangeSummary } from "./change-summary";
+import { inferScopes } from "../variables/scopes";
 import { classifyChanges } from "./sync-baseline";
 import type { ChangeSide, SyncBaseline } from "./sync-baseline";
 import type { TokenConflict } from "./types";
@@ -61,6 +76,25 @@ export interface DiffRow {
   deletesInFigma: boolean;
 }
 
+/** Current Figma scopes: collection name, then token name, then scopes. */
+export type LocalScopes = Record<string, Record<string, string[]>>;
+
+/** One variable whose picker scopes a Pull would change. */
+export interface ScopeChange {
+  collection: string;
+  tokenPath: string;
+  from: string[];
+  to: string[];
+}
+
+/** Variables that move between the same two scope sets. */
+export interface ScopeGroup {
+  id: string;
+  from: string[];
+  to: string[];
+  changes: ScopeChange[];
+}
+
 export interface SyncDiff {
   direction: SyncDirection;
   hasBaseline: boolean;
@@ -77,6 +111,13 @@ export interface SyncDiff {
   deletions: DiffRow[];
   /** Pull: rows that overwrite Figma-side edits. */
   overwrites: DiffRow[];
+  /**
+   * Pull and overview: picker scopes a Pull would change although the tokens
+   * may match. Always empty for Push (scopes are never pushed).
+   */
+  settings: ScopeGroup[];
+  /** Variables across all `settings` groups. */
+  settingsCount: number;
 }
 
 export interface BuildDiffOptions {
@@ -84,6 +125,8 @@ export interface BuildDiffOptions {
   baseline: SyncBaseline | null | undefined;
   localTokens: ExportData[];
   remoteTokens: ExportData[];
+  /** Figma's current scopes; without them no scope differences are reported. */
+  localScopes?: LocalScopes;
 }
 
 const SEP = "\u0000";
@@ -165,11 +208,64 @@ function scopeToLocalCollections(
   };
 }
 
+const sameScopes = (a: string[], b: string[]) =>
+  a.length === b.length && [...a].sort().join() === [...b].sort().join();
+
+/** Plain words for a scope set: "font size", "all pickers", "hidden". */
+export function describeScopes(scopes: string[]): string {
+  if (scopes.length === 0) return "hidden from pickers";
+  if (scopes.includes("ALL_SCOPES")) return "all pickers";
+  return [...scopes]
+    .sort()
+    .map((s) => s.toLowerCase().replace(/_/g, " "))
+    .join(", ");
+}
+
+/**
+ * Variables whose current Figma scopes differ from what the rules would set for
+ * the incoming tokens. Variables Figma lacks (additions) and tokens that
+ * already have a row (type or rename changes) are left to the token diff.
+ */
+function diffScopes(
+  localScopes: LocalScopes,
+  remoteIndex: Map<string, ProcessedToken>,
+  rows: DiffRow[]
+): ScopeGroup[] {
+  const hasRow = new Set(rows.map((r) => `${r.collection}${SEP}${r.toName}`));
+  const groups = new Map<string, ScopeGroup>();
+  for (const [key, token] of remoteIndex) {
+    if (hasRow.has(key)) continue;
+    const [collection, name] = key.split(SEP);
+    const current = localScopes[collection]?.[name];
+    if (!current) continue;
+    const expected = inferScopes(String(token.$type), name);
+    if (sameScopes(current, expected)) continue;
+    const from = [...current].sort();
+    const to = [...expected].sort();
+    const id = `${from.join("+")}>${to.join("+")}`;
+    const group = groups.get(id) ?? { id, from, to, changes: [] };
+    group.changes.push({ collection, tokenPath: name, from, to });
+    groups.set(id, group);
+  }
+  const list = [...groups.values()];
+  for (const g of list) {
+    g.changes.sort(
+      (a, b) =>
+        a.collection.localeCompare(b.collection) ||
+        a.tokenPath.localeCompare(b.tokenPath)
+    );
+  }
+  return list.sort(
+    (a, b) => b.changes.length - a.changes.length || a.id.localeCompare(b.id)
+  );
+}
+
 export function buildSyncDiff({
   direction,
   baseline,
   localTokens,
   remoteTokens,
+  localScopes,
 }: BuildDiffOptions): SyncDiff {
   // A Push may cover only the selected collections; don't report the others.
   const scoped =
@@ -274,6 +370,11 @@ export function buildSyncDiff({
       a.toName.localeCompare(b.toName)
   );
 
+  const settings =
+    direction !== "push" && localScopes
+      ? diffScopes(localScopes, remoteIndex, rows)
+      : [];
+
   return {
     direction,
     hasBaseline: classified.hasBaseline,
@@ -288,6 +389,8 @@ export function buildSyncDiff({
     deletions: direction === "pull" ? rows.filter((r) => r.deletesInFigma) : [],
     overwrites:
       direction === "pull" ? rows.filter((r) => r.overwritesFigma) : [],
+    settings,
+    settingsCount: settings.reduce((n, g) => n + g.changes.length, 0),
   };
 }
 

@@ -61,7 +61,8 @@ const posted = (type: string) =>
 function figmaHolds(
   localTokens: ExportData[],
   baseline: SyncBaseline | null,
-  fail = false
+  fail = false,
+  localScopes?: Record<string, Record<string, string[]>>
 ) {
   post.mockImplementation((data: unknown) => {
     const type = (data as { pluginMessage?: { type?: string } }).pluginMessage
@@ -73,7 +74,12 @@ function figmaHolds(
           data: {
             pluginMessage: fail
               ? { type: "local-tokens-error" }
-              : { type: "local-tokens-exported", localTokens, baseline },
+              : {
+                  type: "local-tokens-exported",
+                  localTokens,
+                  baseline,
+                  localScopes,
+                },
           },
         })
       );
@@ -172,6 +178,42 @@ describe("Pull review", () => {
     expect(current().review?.diff.rows).toEqual([]);
     expect(current().review?.onConfirm).toBeUndefined();
     expect(current().review?.onMarkSynced).toBeUndefined();
+  });
+
+  // Plan 202: the tokens match but Figma's scopes differ from the rules, so
+  // the importer would change them. Pull must show that and be confirmable.
+  // Colours named "a" and "b" carry no property word, so the rules give ALL_SCOPES
+  const staleScopes = { colors: { a: ["TEXT_FILL"], b: [] } };
+
+  it("equal tokens with stale scopes show the scope changes and can be pulled", async () => {
+    figmaHolds(onGitHub, baselineOf(onGitHub), false, staleScopes);
+    const { current } = setup(pulls());
+
+    await act(() => current().handleGitHubPull());
+
+    expect(current().review?.diff.rows).toEqual([]);
+    expect(current().review?.diff.settingsCount).toBe(2);
+    expect(current().review?.onConfirm).toBeDefined();
+    expect(current().review?.onMarkSynced).toBeUndefined();
+    expect(posted("import-tokens")).toHaveLength(0);
+
+    await confirmReview(current);
+    expect(posted("import-tokens")).toHaveLength(1);
+    expect(posted("import-tokens")[0]).toMatchObject({
+      mergeStrategy: "replace",
+    });
+  });
+
+  it("equal tokens with scopes the rules already give still say nothing to pull", async () => {
+    figmaHolds(onGitHub, baselineOf(onGitHub), false, {
+      colors: { a: ["ALL_SCOPES"], b: ["ALL_SCOPES"] },
+    });
+    const { current } = setup(pulls());
+
+    await act(() => current().handleGitHubPull());
+
+    expect(current().review?.diff.settingsCount).toBe(0);
+    expect(current().review?.onConfirm).toBeUndefined();
   });
 
   it("with no baseline and nothing different, offers to record the sync", async () => {
@@ -282,6 +324,8 @@ describe("Push review", () => {
 
     expect(current().review?.diff.direction).toBe("push");
     expect(current().review?.diff.rows).toHaveLength(1);
+    // Scopes are never pushed, so a Push review never lists them (plan 202)
+    expect(current().review?.diff.settings).toEqual([]);
     expect(calls("setShowConflictResolution")).toHaveLength(0);
     expect(client.syncTokens).not.toHaveBeenCalled();
   });

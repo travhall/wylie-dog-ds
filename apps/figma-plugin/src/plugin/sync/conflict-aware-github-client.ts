@@ -9,7 +9,7 @@ import { SyncMetadataManager } from "./metadata-manager";
 import { classifyChanges } from "./sync-baseline";
 import type { ClassifiedChanges, SyncBaseline } from "./sync-baseline";
 import { buildSyncDiff } from "./sync-diff";
-import type { SyncDiff } from "./sync-diff";
+import type { LocalScopes, SyncDiff } from "./sync-diff";
 import type {
   TokenConflict,
   ConflictResolution,
@@ -407,7 +407,8 @@ export class ConflictAwareGitHubClient extends GitHubClient {
    */
   async getSyncStatus(
     localTokens?: ExportData[],
-    baseline?: SyncBaseline | null
+    baseline?: SyncBaseline | null,
+    localScopes?: LocalScopes
   ): Promise<SyncStatusResult> {
     const unknown: SyncStatusResult = {
       diff: buildSyncDiff({
@@ -454,7 +455,9 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         baseline,
         localTokens,
         remoteTokens: pullResult.tokens,
+        localScopes,
       });
+      // `upToDate` is about tokens; scope differences ride on `diff.settings`
       return { ...classified, upToDate, diff };
     } catch (error) {
       console.error("Failed to get sync status:", error);
