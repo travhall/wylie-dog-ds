@@ -61,7 +61,8 @@ const posted = (type: string) =>
 function figmaHolds(
   localTokens: ExportData[],
   baseline: SyncBaseline | null,
-  fail = false
+  fail = false,
+  localScopes?: Record<string, Record<string, string[]>>
 ) {
   post.mockImplementation((data: unknown) => {
     const type = (data as { pluginMessage?: { type?: string } }).pluginMessage
@@ -73,7 +74,12 @@ function figmaHolds(
           data: {
             pluginMessage: fail
               ? { type: "local-tokens-error" }
-              : { type: "local-tokens-exported", localTokens, baseline },
+              : {
+                  type: "local-tokens-exported",
+                  localTokens,
+                  baseline,
+                  localScopes,
+                },
           },
         })
       );
@@ -172,6 +178,20 @@ describe("Pull review", () => {
     expect(current().review?.diff.rows).toEqual([]);
     expect(current().review?.onConfirm).toBeUndefined();
     expect(current().review?.onMarkSynced).toBeUndefined();
+  });
+
+  // Plan 202 Step 0: Figma's scopes differ from what the rules would set, but
+  // the tokens are equal, so today the review is empty and Pull cannot run.
+  it("REGRESSION: equal tokens with stale scopes offer no way to pull", async () => {
+    figmaHolds(onGitHub, baselineOf(onGitHub), false, {
+      colors: { a: ["ALL_SCOPES"], b: ["ALL_SCOPES"] },
+    });
+    const { current } = setup(pulls());
+
+    await act(() => current().handleGitHubPull());
+
+    expect(current().review?.diff.rows).toEqual([]);
+    expect(current().review?.onConfirm).toBeUndefined();
   });
 
   it("with no baseline and nothing different, offers to record the sync", async () => {
