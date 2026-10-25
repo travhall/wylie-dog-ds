@@ -40,7 +40,7 @@ export default function BordersPage() {
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6">
-          <h2 className="mb-6 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+          <h2 className="mb-6 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
             Corner radius
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
@@ -57,7 +57,7 @@ export default function BordersPage() {
                   <div className="text-xs font-bold text-(--color-foreground-default)">
                     {r.name}
                   </div>
-                  <div className="text-[10px] font-mono text-(--color-foreground-faint)">
+                  <div className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
                     {formatSize(r.value)}
                   </div>
                 </div>
@@ -67,7 +67,7 @@ export default function BordersPage() {
         </section>
 
         <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6">
-          <h2 className="mb-6 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+          <h2 className="mb-6 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
             Border width
           </h2>
           <div className="space-y-6">
@@ -82,7 +82,7 @@ export default function BordersPage() {
                     border: `${w.value} solid var(--color-background-primary)`,
                   }}
                 />
-                <div className="text-[10px] font-mono text-(--color-foreground-faint)">
+                <div className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
                   {w.value}
                 </div>
               </div>

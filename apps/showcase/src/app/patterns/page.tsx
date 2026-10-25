@@ -57,7 +57,7 @@ function PatCard({
             href={`https://wyliedogstorybook.com/?path=${getPatternDocsPath(story) ?? "/"}`}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-[10px] text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
+            className="font-mono text-[0.625rem] text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
           >
             Storybook ↗
           </a>
@@ -69,7 +69,7 @@ function PatCard({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center px-2 py-0.5 rounded-full border border-(--color-border-default) bg-(--color-background-default) font-mono text-[10px] text-(--color-foreground-muted)"
+              className="inline-flex items-center px-2 py-0.5 rounded-full border border-(--color-border-default) bg-(--color-background-default) font-mono text-[0.625rem] text-(--color-foreground-muted)"
             >
               {tag}
             </span>
@@ -96,13 +96,13 @@ function CatHeader({
     <header className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
       <div>
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+          <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
             Category {num}
           </span>
-          <span className="font-mono text-[11px] text-(--color-foreground-faint)">
+          <span className="font-mono text-[0.6875rem] text-(--color-foreground-faint)">
             ·
           </span>
-          <span className="font-mono text-[11px] text-(--color-foreground-faint)">
+          <span className="font-mono text-[0.6875rem] text-(--color-foreground-faint)">
             {count} pattern{count !== 1 ? "s" : ""}
           </span>
         </div>
@@ -142,11 +142,11 @@ export default function PatternsPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-muted)">
+              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
                 04 · Patterns
               </span>
               <span className="text-(--color-foreground-faint)">·</span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                 @wyliedog/ui v{meta.versions.ui}
               </span>
             </div>
@@ -170,7 +170,7 @@ export default function PatternsPage() {
           <div className="mt-12 flex flex-col lg:flex-row gap-3">
             {/* INPUTS — takes 2/4 cols */}
             <div className="md:col-span-2 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 grow">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
+              <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                 inputs
               </p>
               <div className="mt-3 grid grid-cols-2 gap-2">
@@ -178,14 +178,14 @@ export default function PatternsPage() {
                   <p className="text-xs font-semibold text-(--color-foreground-default)">
                     Components
                   </p>
-                  <p className="font-mono text-[10px] text-(--color-foreground-faint) mt-1">
+                  <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-1">
                     42 typed primitives
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1">
                     {["Button", "Input", "Card"].map((c) => (
                       <span
                         key={c}
-                        className="inline-flex items-center px-1.5 py-px rounded-full border border-(--color-border-default) font-mono text-[9px] text-(--color-foreground-muted) bg-(--color-background-default)"
+                        className="inline-flex items-center px-1.5 py-px rounded-full border border-(--color-border-default) font-mono text-[0.5625rem] text-(--color-foreground-muted) bg-(--color-background-default)"
                       >
                         {c}
                       </span>
@@ -196,7 +196,7 @@ export default function PatternsPage() {
                   <p className="text-xs font-semibold text-(--color-foreground-default)">
                     Tokens
                   </p>
-                  <p className="font-mono text-[10px] text-(--color-foreground-faint) mt-1">
+                  <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-1">
                     {Object.values(manifest.primitives.colors).reduce(
                       (n, g) => n + Object.keys(g).length,
                       0
@@ -243,7 +243,7 @@ export default function PatternsPage() {
               }}
             >
               <p
-                className="font-mono text-[10px] uppercase tracking-wider"
+                className="font-mono text-[0.625rem] uppercase tracking-wider"
                 style={{ color: "var(--color-foreground-primary-muted)" }}
               >
                 composed into
@@ -282,7 +282,7 @@ export default function PatternsPage() {
 
             {/* SHIPPED AS — Pages */}
             <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 grow">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
+              <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                 shipped as
               </p>
               <p className="mt-3 font-serif text-2xl font-semibold text-(--color-foreground-default)">
@@ -330,7 +330,7 @@ export default function PatternsPage() {
                   key={label}
                   className={`px-2 py-6 lg:py-7 ${i < 3 ? "lg:border-r border-(--color-border-default)" : ""} ${i >= 2 ? "border-t lg:border-t-0" : ""} ${i > 0 ? "lg:pl-8" : ""}`}
                 >
-                  <dt className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <dt className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     {label}
                   </dt>
                   <dd className="mt-1 flex items-baseline gap-2">
@@ -370,7 +370,7 @@ export default function PatternsPage() {
               tags={["Card", "Form", "Input", "Button", "Tabs", "Checkbox"]}
               preview={
                 <div
-                  className="mx-auto max-w-[320px] rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-5"
+                  className="mx-auto max-w-[20rem] rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-5"
                   style={{ boxShadow: "var(--shadow-md)" }}
                 >
                   <div className="flex items-center gap-2">
@@ -401,25 +401,25 @@ export default function PatternsPage() {
                   <h3 className="mt-3 font-serif text-lg font-semibold leading-tight text-(--color-foreground-default)">
                     Welcome back
                   </h3>
-                  <p className="text-[11px] text-(--color-foreground-faint)">
+                  <p className="text-[0.6875rem] text-(--color-foreground-faint)">
                     Sign in to continue to your workspace.
                   </p>
                   <div className="mt-4 space-y-2.5">
                     <div>
-                      <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
+                      <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
                         Email
                       </label>
-                      <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default) text-(--color-foreground-default)">
+                      <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-default)">
                         elena@wyliedog.dev
                       </div>
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-1">
-                        <label className="text-[10px] font-medium text-(--color-foreground-muted)">
+                        <label className="text-[0.625rem] font-medium text-(--color-foreground-muted)">
                           Password
                         </label>
                         <a
-                          className="font-mono text-[9px]"
+                          className="font-mono text-[0.5625rem]"
                           style={{
                             color: "var(--color-foreground-primary-muted)",
                           }}
@@ -427,7 +427,7 @@ export default function PatternsPage() {
                           Forgot?
                         </a>
                       </div>
-                      <div className="flex items-center justify-between h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default)">
+                      <div className="flex items-center justify-between h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)">
                         <span className="tracking-[0.3em] text-(--color-foreground-faint)">
                           ••••••••
                         </span>
@@ -443,7 +443,7 @@ export default function PatternsPage() {
                         </svg>
                       </div>
                     </div>
-                    <Button className="w-full h-7.5 text-[11px] font-semibold">
+                    <Button className="w-full h-7.5 text-[0.6875rem] font-semibold">
                       Sign in
                     </Button>
                   </div>
@@ -452,7 +452,7 @@ export default function PatternsPage() {
                       className="h-px flex-1"
                       style={{ background: "var(--color-border-default)" }}
                     />
-                    <span className="font-mono text-[9px] uppercase text-(--color-foreground-faint)">
+                    <span className="font-mono text-[0.5625rem] uppercase text-(--color-foreground-faint)">
                       or continue with
                     </span>
                     <span
@@ -465,7 +465,7 @@ export default function PatternsPage() {
                       <Button
                         key={i}
                         variant="outline"
-                        className="h-7 text-[11px] font-semibold"
+                        className="h-7 text-[0.6875rem] font-semibold"
                       >
                         {i === 0 ? (
                           "G"
@@ -489,7 +489,7 @@ export default function PatternsPage() {
                       </Button>
                     ))}
                   </div>
-                  <p className="mt-3 text-center text-[10px] text-(--color-foreground-faint)">
+                  <p className="mt-3 text-center text-[0.625rem] text-(--color-foreground-faint)">
                     No account?{" "}
                     <span
                       className="font-medium"
@@ -515,23 +515,23 @@ export default function PatternsPage() {
                     className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4"
                     style={{ boxShadow: "var(--shadow-sm)" }}
                   >
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       step 1
                     </span>
                     <h4 className="mt-1 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
                       Reset password
                     </h4>
-                    <p className="text-[10px] text-(--color-foreground-faint) mt-0.5">
+                    <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
                       We&apos;ll send a link.
                     </p>
                     <div className="mt-3 space-y-2">
-                      <label className="block text-[10px] font-medium text-(--color-foreground-muted)">
+                      <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted)">
                         Email
                       </label>
-                      <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default) text-(--color-foreground-faint)">
+                      <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-faint)">
                         elena@…
                       </div>
-                      <Button className="w-full h-7 text-[11px] font-semibold">
+                      <Button className="w-full h-7 text-[0.6875rem] font-semibold">
                         Send reset link
                       </Button>
                     </div>
@@ -544,7 +544,7 @@ export default function PatternsPage() {
                     }}
                   >
                     <span
-                      className="font-mono text-[9px] uppercase tracking-wider"
+                      className="font-mono text-[0.5625rem] uppercase tracking-wider"
                       style={{
                         color: "var(--color-foreground-success-muted)",
                       }}
@@ -573,18 +573,18 @@ export default function PatternsPage() {
                     <h4 className="mt-2 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
                       Check your inbox
                     </h4>
-                    <p className="text-[10px] text-(--color-foreground-faint) mt-0.5">
+                    <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
                       Link valid for 15 min.
                     </p>
                     <div className="mt-3 flex items-center gap-1">
-                      <span className="font-mono text-[10px] text-(--color-foreground-muted) truncate">
+                      <span className="font-mono text-[0.625rem] text-(--color-foreground-muted) truncate">
                         e****@wyliedog.dev
                       </span>
                     </div>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="mt-2 h-6 gap-1 text-[11px] text-(--color-foreground-muted)"
+                      className="mt-2 h-6 gap-1 text-[0.6875rem] text-(--color-foreground-muted)"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -627,11 +627,11 @@ export default function PatternsPage() {
               tags={["CardGrid", "Card", "Badge", "Button"]}
               preview={
                 <div className="space-y-2 max-w-105 mx-auto">
-                  <div className="flex items-center justify-between text-[10px]">
+                  <div className="flex items-center justify-between text-[0.625rem]">
                     <span className="font-mono text-(--color-foreground-faint)">
                       Showing 3 of 248
                     </span>
-                    <span className="inline-flex h-5 items-center rounded border border-(--color-border-default) bg-(--color-background-default) px-1.5 font-mono text-[9px] text-(--color-foreground-muted)">
+                    <span className="inline-flex h-5 items-center rounded border border-(--color-border-default) bg-(--color-background-default) px-1.5 font-mono text-[0.5625rem] text-(--color-foreground-muted)">
                       grid · 3 cols
                     </span>
                   </div>
@@ -671,15 +671,15 @@ export default function PatternsPage() {
                             className="aspect-4/3 rounded mb-2"
                             style={{ background: bg }}
                           />
-                          <p className="text-[10px] font-semibold leading-tight text-(--color-foreground-default)">
+                          <p className="text-[0.625rem] font-semibold leading-tight text-(--color-foreground-default)">
                             {name}
                           </p>
-                          <p className="font-mono text-[9px] text-(--color-foreground-faint) mt-0.5">
+                          <p className="font-mono text-[0.5625rem] text-(--color-foreground-faint) mt-0.5">
                             {members} members
                           </p>
                           <div className="mt-1.5 flex items-center justify-between">
                             <span
-                              className="inline-flex items-center gap-0.5 rounded-full px-1 py-px font-mono text-[8px]"
+                              className="inline-flex items-center gap-0.5 rounded-full px-1 py-px font-mono text-[0.5rem]"
                               style={{
                                 background: `color-mix(in oklch, ${statusColor} 18%, transparent)`,
                                 color: statusColor,
@@ -687,7 +687,7 @@ export default function PatternsPage() {
                             >
                               ● {status}
                             </span>
-                            <span className="font-mono text-[8px] text-(--color-foreground-faint)">
+                            <span className="font-mono text-[0.5rem] text-(--color-foreground-faint)">
                               {price}
                             </span>
                           </div>
@@ -696,11 +696,11 @@ export default function PatternsPage() {
                     )}
                   </div>
                   <div className="flex items-center justify-center gap-1 pt-1">
-                    <span className="font-mono text-[9px] text-(--color-foreground-faint)">
+                    <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                       1
                     </span>
                     <span
-                      className="grid h-4 w-4 place-items-center rounded font-mono text-[9px]"
+                      className="grid h-4 w-4 place-items-center rounded font-mono text-[0.5625rem]"
                       style={{
                         background: "var(--color-background-primary)",
                         color: "var(--color-foreground-inverse)",
@@ -708,7 +708,7 @@ export default function PatternsPage() {
                     >
                       2
                     </span>
-                    <span className="font-mono text-[9px] text-(--color-foreground-faint)">
+                    <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                       3 … 83
                     </span>
                   </div>
@@ -770,10 +770,10 @@ export default function PatternsPage() {
                           <path d={icon} />
                         </svg>
                       </span>
-                      <p className="mt-2 text-[11px] font-semibold leading-tight text-(--color-foreground-default)">
+                      <p className="mt-2 text-[0.6875rem] font-semibold leading-tight text-(--color-foreground-default)">
                         {title}
                       </p>
-                      <p className="text-[10px] text-(--color-foreground-faint) mt-0.5">
+                      <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
                         {sub}
                       </p>
                     </div>
@@ -831,11 +831,11 @@ export default function PatternsPage() {
                     <h4 className="mt-3 font-serif text-base font-semibold leading-tight text-(--color-foreground-default)">
                       Something broke on our end
                     </h4>
-                    <p className="text-[11px] text-(--color-foreground-muted) mt-1">
+                    <p className="text-[0.6875rem] text-(--color-foreground-muted) mt-1">
                       The team has been pinged. Your work was auto-saved 12s
                       ago.
                     </p>
-                    <div className="mt-3 rounded border border-(--color-border-default) bg-(--color-background-muted) p-2 font-mono text-[9px] text-(--color-foreground-faint)">
+                    <div className="mt-3 rounded border border-(--color-border-default) bg-(--color-background-muted) p-2 font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                       error.id&nbsp;&nbsp;
                       <span className="text-(--color-foreground-muted)">
                         err_8f3a2b1c
@@ -844,7 +844,7 @@ export default function PatternsPage() {
                     <div className="mt-3 flex gap-1.5">
                       <Button
                         size="sm"
-                        className="h-7 gap-1 text-[11px] font-semibold"
+                        className="h-7 gap-1 text-[0.6875rem] font-semibold"
                       >
                         <svg
                           viewBox="0 0 24 24"
@@ -860,14 +860,14 @@ export default function PatternsPage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="h-7 text-[11px] font-semibold"
+                        className="h-7 text-[0.6875rem] font-semibold"
                       >
                         Go to dashboard
                       </Button>
                     </div>
                   </div>
                   <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       component-scoped
                     </p>
                     <div
@@ -896,16 +896,16 @@ export default function PatternsPage() {
                           </svg>
                         </span>
                         <div className="flex-1">
-                          <p className="text-[11px] font-semibold text-(--color-foreground-default)">
+                          <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
                             Chart failed to render
                           </p>
-                          <p className="text-[10px] text-(--color-foreground-faint) mt-0.5">
+                          <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
                             RangeError: data points exceed buffer.
                           </p>
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="mt-2 h-5 px-1.5 font-mono text-[9px]"
+                            className="mt-2 h-5 px-1.5 font-mono text-[0.5625rem]"
                             style={{
                               background:
                                 "color-mix(in oklch, var(--color-foreground-danger-muted) 14%, transparent)",
@@ -917,7 +917,7 @@ export default function PatternsPage() {
                         </div>
                       </div>
                     </div>
-                    <p className="font-mono text-[9px] mt-3 text-(--color-foreground-faint)">
+                    <p className="font-mono text-[0.5625rem] mt-3 text-(--color-foreground-faint)">
                       <span
                         style={{
                           color: "var(--color-foreground-success-muted)",
@@ -964,28 +964,28 @@ export default function PatternsPage() {
                     <p className="font-serif text-sm font-semibold text-(--color-foreground-default)">
                       Workspace settings
                     </p>
-                    <span className="ml-auto font-mono text-[9px] text-(--color-foreground-faint)">
+                    <span className="ml-auto font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                       Step 2 of 3
                     </span>
                   </div>
                   <div className="mt-3">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       General
                     </p>
                     <div className="mt-1.5 space-y-2 rounded-md border border-(--color-border-default) p-2.5">
                       <div>
-                        <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
+                        <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
                           Name
                         </label>
-                        <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default) text-(--color-foreground-default)">
+                        <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-default)">
                           Helios Workspace
                         </div>
                       </div>
                       <div>
-                        <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
+                        <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
                           URL
                         </label>
-                        <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default)">
+                        <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)">
                           <span className="font-mono text-(--color-foreground-faint)">
                             wyliedog.dev/
                           </span>
@@ -997,16 +997,16 @@ export default function PatternsPage() {
                     </div>
                   </div>
                   <div className="mt-3">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       Billing
                     </p>
                     <div className="mt-1.5 space-y-2 rounded-md border border-(--color-border-default) p-2.5">
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-[11px] font-semibold text-(--color-foreground-default)">
+                          <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
                             Annual billing
                           </p>
-                          <p className="text-[9px] text-(--color-foreground-faint)">
+                          <p className="text-[0.5625rem] text-(--color-foreground-faint)">
                             Save 20%
                           </p>
                         </div>
@@ -1030,13 +1030,13 @@ export default function PatternsPage() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="h-7 px-2.5 text-[11px] font-semibold"
+                      className="h-7 px-2.5 text-[0.6875rem] font-semibold"
                     >
                       Back
                     </Button>
                     <Button
                       size="sm"
-                      className="h-7 gap-1 text-[11px] font-semibold"
+                      className="h-7 gap-1 text-[0.6875rem] font-semibold"
                     >
                       Continue
                       <svg
@@ -1065,11 +1065,11 @@ export default function PatternsPage() {
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div>
-                    <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
+                    <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
                       Email
                     </label>
                     <div
-                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px]"
+                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[0.6875rem]"
                       style={{
                         borderColor: "var(--color-border-danger)",
                         background:
@@ -1094,21 +1094,21 @@ export default function PatternsPage() {
                       </svg>
                     </div>
                     <p
-                      className="mt-1 text-[10px]"
+                      className="mt-1 text-[0.625rem]"
                       style={{ color: "var(--color-foreground-danger-muted)" }}
                     >
                       Invalid email format. Expected name@domain.com.
                     </p>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
+                    <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
                       Workspace URL
                     </label>
-                    <div className="flex items-center justify-between h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default)">
+                    <div className="flex items-center justify-between h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)">
                       <span className="text-(--color-foreground-default)">
                         acme-co
                       </span>
-                      <span className="inline-flex items-center gap-1 font-mono text-[9px] text-(--color-foreground-faint)">
+                      <span className="inline-flex items-center gap-1 font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                         <svg
                           viewBox="0 0 24 24"
                           className="h-3 w-3 animate-spin"
@@ -1123,11 +1123,11 @@ export default function PatternsPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
+                    <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
                       Password
                     </label>
                     <div
-                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px] bg-(--color-background-default)"
+                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)"
                       style={{
                         borderColor: "var(--color-foreground-success-muted)",
                       }}
@@ -1159,7 +1159,7 @@ export default function PatternsPage() {
                         />
                       ))}
                       <span
-                        className="ml-1 text-[10px]"
+                        className="ml-1 text-[0.625rem]"
                         style={{
                           color: "var(--color-foreground-success-muted)",
                         }}
@@ -1214,10 +1214,10 @@ export default function PatternsPage() {
                       />
                     ))}
                   </div>
-                  <span className="font-mono text-[9px] text-(--color-foreground-faint) ml-2">
+                  <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint) ml-2">
                     helios.wyliedog.dev/projects
                   </span>
-                  <span className="ml-auto inline-flex h-4 items-center rounded border border-(--color-border-default) bg-(--color-background-default) px-1 font-mono text-[8px] text-(--color-foreground-muted)">
+                  <span className="ml-auto inline-flex h-4 items-center rounded border border-(--color-border-default) bg-(--color-background-default) px-1 font-mono text-[0.5rem] text-(--color-foreground-muted)">
                     ⌘K
                   </span>
                 </div>
@@ -1230,13 +1230,13 @@ export default function PatternsPage() {
                           background: "var(--color-background-primary)",
                         }}
                       />
-                      <span className="text-[10px] font-serif font-semibold text-(--color-foreground-default)">
+                      <span className="text-[0.625rem] font-serif font-semibold text-(--color-foreground-default)">
                         Helios
                       </span>
                     </div>
                     <div className="mt-3 space-y-0.5">
                       <div
-                        className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] font-medium"
+                        className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[0.625rem] font-medium"
                         style={{
                           background:
                             "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
@@ -1252,7 +1252,7 @@ export default function PatternsPage() {
                       {["Tasks", "Members", "Reports"].map((s) => (
                         <div
                           key={s}
-                          className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] text-(--color-foreground-muted)"
+                          className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[0.625rem] text-(--color-foreground-muted)"
                         >
                           {s}
                         </div>
@@ -1261,12 +1261,12 @@ export default function PatternsPage() {
                   </aside>
                   <main className="col-span-9 p-3">
                     <div className="flex items-center justify-between">
-                      <p className="text-[11px] font-serif font-semibold text-(--color-foreground-default)">
+                      <p className="text-[0.6875rem] font-serif font-semibold text-(--color-foreground-default)">
                         Projects
                       </p>
                       <Button
                         size="sm"
-                        className="h-5.5 px-2 text-[10px] font-semibold"
+                        className="h-5.5 px-2 text-[0.625rem] font-semibold"
                       >
                         + New
                       </Button>
@@ -1300,7 +1300,7 @@ export default function PatternsPage() {
                       ))}
                     </div>
                     <div className="mt-3 rounded border border-(--color-border-default)">
-                      <div className="grid grid-cols-4 px-2 py-1 bg-(--color-background-muted) font-mono text-[8px] uppercase tracking-wider text-(--color-foreground-faint)">
+                      <div className="grid grid-cols-4 px-2 py-1 bg-(--color-background-muted) font-mono text-[0.5rem] uppercase tracking-wider text-(--color-foreground-faint)">
                         <span>Name</span>
                         <span>Owner</span>
                         <span>Due</span>
@@ -1324,7 +1324,7 @@ export default function PatternsPage() {
                       ].map(({ name, owner, due, status, color }) => (
                         <div
                           key={name}
-                          className="grid grid-cols-4 px-2 py-1 border-t border-(--color-border-default) text-[9px] text-(--color-foreground-default)"
+                          className="grid grid-cols-4 px-2 py-1 border-t border-(--color-border-default) text-[0.5625rem] text-(--color-foreground-default)"
                         >
                           <span>{name}</span>
                           <span className="text-(--color-foreground-muted)">
@@ -1335,7 +1335,7 @@ export default function PatternsPage() {
                           </span>
                           <span className="text-right">
                             <span
-                              className="inline-block rounded px-1 font-mono text-[8px]"
+                              className="inline-block rounded px-1 font-mono text-[0.5rem]"
                               style={{
                                 background: `color-mix(in oklch, ${color} 18%, transparent)`,
                                 color,
@@ -1406,10 +1406,10 @@ export default function PatternsPage() {
                         <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
                       </svg>
                     </span>
-                    <span className="font-serif text-[11px] font-semibold text-(--color-foreground-default)">
+                    <span className="font-serif text-[0.6875rem] font-semibold text-(--color-foreground-default)">
                       Wylie Dog
                     </span>
-                    <nav className="ml-3 flex items-center gap-0.5 text-[9px]">
+                    <nav className="ml-3 flex items-center gap-0.5 text-[0.5625rem]">
                       <span
                         className="rounded px-1.5 py-0.5 font-medium text-(--color-foreground-default)"
                         style={{
@@ -1426,7 +1426,7 @@ export default function PatternsPage() {
                       </span>
                     </nav>
                     <div className="ml-auto flex items-center gap-1">
-                      <span className="inline-flex h-4 items-center gap-1 rounded border border-(--color-border-default) px-1 font-mono text-[8px] text-(--color-foreground-faint)">
+                      <span className="inline-flex h-4 items-center gap-1 rounded border border-(--color-border-default) px-1 font-mono text-[0.5rem] text-(--color-foreground-faint)">
                         ⌘K
                       </span>
                     </div>
@@ -1437,7 +1437,7 @@ export default function PatternsPage() {
                       <div className="h-2 w-full rounded-full bg-(--color-background-emphasis)" />
                       <div className="h-2 w-2/3 rounded-full bg-(--color-background-emphasis)" />
                     </div>
-                    <div className="mt-2 font-mono text-[9px] text-(--color-foreground-faint) flex items-center gap-1">
+                    <div className="mt-2 font-mono text-[0.5625rem] text-(--color-foreground-faint) flex items-center gap-1">
                       <svg
                         viewBox="0 0 24 24"
                         className="h-2.5 w-2.5"
@@ -1473,10 +1473,10 @@ export default function PatternsPage() {
                             background: "var(--color-background-primary)",
                           }}
                         />
-                        <p className="mt-1.5 font-serif text-[10px] font-semibold text-(--color-foreground-default)">
+                        <p className="mt-1.5 font-serif text-[0.625rem] font-semibold text-(--color-foreground-default)">
                           Wylie Dog
                         </p>
-                        <p className="text-[8px] text-(--color-foreground-faint) mt-0.5 leading-tight">
+                        <p className="text-[0.5rem] text-(--color-foreground-faint) mt-0.5 leading-tight">
                           The shared system for everything we ship.
                         </p>
                       </div>
@@ -1495,10 +1495,10 @@ export default function PatternsPage() {
                         },
                       ].map(({ heading, items }) => (
                         <div key={heading}>
-                          <p className="font-mono text-[7px] uppercase tracking-wider text-(--color-foreground-faint)">
+                          <p className="font-mono text-[0.4375rem] uppercase tracking-wider text-(--color-foreground-faint)">
                             {heading}
                           </p>
-                          <ul className="mt-1 space-y-0.5 text-[9px] text-(--color-foreground-muted)">
+                          <ul className="mt-1 space-y-0.5 text-[0.5625rem] text-(--color-foreground-muted)">
                             {items.map((i) => (
                               <li key={i}>{i}</li>
                             ))}
@@ -1507,10 +1507,10 @@ export default function PatternsPage() {
                       ))}
                     </div>
                     <div className="mt-3 pt-2 border-t border-(--color-border-default) flex items-center justify-between">
-                      <span className="font-mono text-[8px] text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.5rem] text-(--color-foreground-faint)">
                         © 2026 Wylie Dog
                       </span>
-                      <span className="inline-flex items-center gap-1 font-mono text-[8px] text-(--color-foreground-faint)">
+                      <span className="inline-flex items-center gap-1 font-mono text-[0.5rem] text-(--color-foreground-faint)">
                         <span
                           className="h-1 w-1 rounded-full"
                           style={{
@@ -1560,7 +1560,7 @@ export default function PatternsPage() {
                         "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-background-primary) 22%, transparent) 0%, transparent 60%)",
                     }}
                   >
-                    <span className="inline-flex items-center gap-1 rounded-full border border-(--color-border-default) bg-(--color-background-default) px-1.5 py-0.5 font-mono text-[8px] text-(--color-foreground-muted)">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-(--color-border-default) bg-(--color-background-default) px-1.5 py-0.5 font-mono text-[0.5rem] text-(--color-foreground-muted)">
                       <span
                         className="h-1 w-1 rounded-full"
                         style={{
@@ -1574,20 +1574,20 @@ export default function PatternsPage() {
                       <br />
                       Ship calmer.
                     </p>
-                    <p className="text-[9px] text-(--color-foreground-muted) mt-1.5 leading-tight">
+                    <p className="text-[0.5625rem] text-(--color-foreground-muted) mt-1.5 leading-tight">
                       The shared system that finally keeps brand and product in
                       sync.
                     </p>
                     <div className="mt-2 flex gap-1">
                       <span
-                        className="inline-flex h-5 items-center rounded-md px-2 text-[9px] font-semibold text-(--color-foreground-inverse)"
+                        className="inline-flex h-5 items-center rounded-md px-2 text-[0.5625rem] font-semibold text-(--color-foreground-inverse)"
                         style={{
                           background: "var(--color-background-primary)",
                         }}
                       >
                         Start free
                       </span>
-                      <span className="inline-flex h-5 items-center rounded-md border border-(--color-border-default) px-2 text-[9px] font-semibold text-(--color-foreground-default)">
+                      <span className="inline-flex h-5 items-center rounded-md border border-(--color-border-default) px-2 text-[0.5625rem] font-semibold text-(--color-foreground-default)">
                         Docs
                       </span>
                     </div>
@@ -1606,7 +1606,7 @@ export default function PatternsPage() {
                   className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) p-3"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
-                  <p className="font-mono text-[8px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <p className="font-mono text-[0.5rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     Why teams choose us
                   </p>
                   <p className="mt-1 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
@@ -1651,10 +1651,10 @@ export default function PatternsPage() {
                           </svg>
                         </span>
                         <div>
-                          <p className="text-[10px] font-semibold leading-tight text-(--color-foreground-default)">
+                          <p className="text-[0.625rem] font-semibold leading-tight text-(--color-foreground-default)">
                             {label}
                           </p>
-                          <p className="text-[9px] text-(--color-foreground-faint) leading-tight">
+                          <p className="text-[0.5625rem] text-(--color-foreground-faint) leading-tight">
                             {sub}
                           </p>
                         </div>
@@ -1774,10 +1774,10 @@ export default function PatternsPage() {
                   {/* mobile */}
                   <div className="col-span-3">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                         sm · 375
                       </span>
-                      <span className="font-mono text-[9px] text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                         1 col
                       </span>
                     </div>
@@ -1806,10 +1806,10 @@ export default function PatternsPage() {
                   {/* tablet */}
                   <div className="col-span-4">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                         md · 768
                       </span>
-                      <span className="font-mono text-[9px] text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                         2 col
                       </span>
                     </div>
@@ -1839,7 +1839,7 @@ export default function PatternsPage() {
                   <div className="col-span-5">
                     <div className="flex items-center justify-between mb-1.5">
                       <span
-                        className="rounded px-1.5 py-0.5 font-mono text-[9px]"
+                        className="rounded px-1.5 py-0.5 font-mono text-[0.5625rem]"
                         style={{
                           background: "var(--color-background-primary)",
                           color: "var(--color-foreground-inverse)",
@@ -1847,7 +1847,7 @@ export default function PatternsPage() {
                       >
                         lg · 1280
                       </span>
-                      <span className="font-mono text-[9px] text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                         sidebar + 3 col
                       </span>
                     </div>
@@ -1892,7 +1892,7 @@ export default function PatternsPage() {
                   </div>
                 </div>
                 {/* decision strip */}
-                <div className="mt-4 mx-auto max-w-205 rounded-md border border-(--color-border-default) bg-(--color-background-default) px-3 py-2 grid grid-cols-3 gap-3 text-[10px]">
+                <div className="mt-4 mx-auto max-w-205 rounded-md border border-(--color-border-default) bg-(--color-background-default) px-3 py-2 grid grid-cols-3 gap-3 text-[0.625rem]">
                   {[
                     {
                       label: "Below md",
@@ -1908,10 +1908,10 @@ export default function PatternsPage() {
                     },
                   ].map(({ label, desc }) => (
                     <div key={label}>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                         {label}
                       </span>
-                      <p className="mt-0.5 text-[10px] text-(--color-foreground-muted)">
+                      <p className="mt-0.5 text-[0.625rem] text-(--color-foreground-muted)">
                         {desc}
                       </p>
                     </div>
@@ -1956,12 +1956,12 @@ export default function PatternsPage() {
                 <div className="grid md:grid-cols-3 gap-3 max-w-205 mx-auto">
                   {/* Focus ring demo */}
                   <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       Focus management
                     </p>
                     <div className="mt-3 flex flex-col gap-2">
                       <Button
-                        className="w-full h-7 text-[11px] font-semibold"
+                        className="w-full h-7 text-[0.6875rem] font-semibold"
                         style={{
                           boxShadow:
                             "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 30%, transparent)",
@@ -1970,7 +1970,7 @@ export default function PatternsPage() {
                         Focused button
                       </Button>
                       <div
-                        className="flex items-center h-7 border rounded-md px-2 text-[11px] text-(--color-foreground-faint)"
+                        className="flex items-center h-7 border rounded-md px-2 text-[0.6875rem] text-(--color-foreground-faint)"
                         style={{
                           borderColor: "var(--color-border-primary)",
                           boxShadow:
@@ -1979,19 +1979,19 @@ export default function PatternsPage() {
                       >
                         Focused input
                       </div>
-                      <p className="text-[10px] text-(--color-foreground-faint)">
+                      <p className="text-[0.625rem] text-(--color-foreground-faint)">
                         3px offset ring · OKLCH token
                       </p>
                     </div>
                   </div>
                   {/* Error announcement */}
                   <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       Error announcement
                     </p>
                     <div className="mt-3 space-y-2">
                       <div>
-                        <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
+                        <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
                           Email{" "}
                           <span
                             style={{
@@ -2003,7 +2003,7 @@ export default function PatternsPage() {
                           </span>
                         </label>
                         <div
-                          className="flex items-center h-7 border rounded-md px-2 text-[11px]"
+                          className="flex items-center h-7 border rounded-md px-2 text-[0.6875rem]"
                           style={{
                             borderColor: "var(--color-border-danger)",
                             background:
@@ -2015,7 +2015,7 @@ export default function PatternsPage() {
                           </span>
                         </div>
                         <p
-                          className="mt-1 flex items-center gap-1 text-[10px]"
+                          className="mt-1 flex items-center gap-1 text-[0.625rem]"
                           style={{
                             color: "var(--color-foreground-danger-muted)",
                           }}
@@ -2034,19 +2034,19 @@ export default function PatternsPage() {
                           Invalid email format
                         </p>
                       </div>
-                      <p className="font-mono text-[9px] text-(--color-foreground-faint)">
+                      <p className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
                         role=&quot;alert&quot; · aria-describedby
                       </p>
                     </div>
                   </div>
                   {/* Keyboard nav */}
                   <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                       Keyboard navigation
                     </p>
                     <div className="mt-3 space-y-1.5">
                       <div
-                        className="flex items-center justify-between rounded px-2 py-1.5 text-[11px]"
+                        className="flex items-center justify-between rounded px-2 py-1.5 text-[0.6875rem]"
                         style={{
                           background:
                             "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
@@ -2054,17 +2054,17 @@ export default function PatternsPage() {
                         }}
                       >
                         <span>Option one</span>
-                        <kbd className="font-mono text-[9px]">↑ ↓</kbd>
+                        <kbd className="font-mono text-[0.5625rem]">↑ ↓</kbd>
                       </div>
                       {["Option two", "Option three"].map((opt) => (
                         <div
                           key={opt}
-                          className="flex items-center justify-between rounded px-2 py-1.5 text-[11px] text-(--color-foreground-muted)"
+                          className="flex items-center justify-between rounded px-2 py-1.5 text-[0.6875rem] text-(--color-foreground-muted)"
                         >
                           {opt}
                         </div>
                       ))}
-                      <p className="font-mono text-[9px] text-(--color-foreground-faint) mt-2">
+                      <p className="font-mono text-[0.5625rem] text-(--color-foreground-faint) mt-2">
                         roving tabIndex · Arrow keys
                       </p>
                     </div>
@@ -2081,7 +2081,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid md:grid-cols-12 gap-10 items-start">
             <div className="md:col-span-5">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                 Philosophy
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05] text-(--color-foreground-default)">
@@ -2162,7 +2162,7 @@ export default function PatternsPage() {
                           <div className="mt-4 flex items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-muted) px-3 py-2.5">
                             {["tokens", "components"].map((label) => (
                               <React.Fragment key={label}>
-                                <span className="font-mono text-[10px] text-(--color-foreground-muted)">
+                                <span className="font-mono text-[0.625rem] text-(--color-foreground-muted)">
                                   {label}
                                 </span>
                                 <svg
@@ -2177,7 +2177,7 @@ export default function PatternsPage() {
                               </React.Fragment>
                             ))}
                             <span
-                              className="font-mono text-[10px]"
+                              className="font-mono text-[0.625rem]"
                               style={{
                                 color: "var(--color-foreground-primary-muted)",
                               }}
@@ -2193,7 +2193,7 @@ export default function PatternsPage() {
                             >
                               <path d="M5 12h14M13 6l6 6-6 6" />
                             </svg>
-                            <span className="font-mono text-[10px] text-(--color-foreground-muted)">
+                            <span className="font-mono text-[0.625rem] text-(--color-foreground-muted)">
                               your pages
                             </span>
                           </div>
@@ -2213,7 +2213,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="glass rounded-2xl p-8 lg:p-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
             <div className="flex-1">
-              <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+              <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                 Ready to build?
               </p>
               <h2 className="mt-2 font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-(--color-foreground-default)">

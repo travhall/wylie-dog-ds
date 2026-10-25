@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@wyliedog/ui/button";
+import { formatSize } from "@/lib/token-units";
 
 // rowY has no exact token at any density (original values were 10px/14px/20px);
 // each is rounded down to the nearest real --space-* step so it lines up with
@@ -9,29 +10,29 @@ import { Button } from "@wyliedog/ui/button";
 const densities = [
   {
     label: "Compact",
-    rowY: "8px",
+    rowY: "0.5rem",
     rowYToken: "--space-100",
-    gap: "8px",
+    gap: "0.5rem",
     gapToken: "--space-100",
-    avatar: "24px",
+    avatar: "1.5rem",
     avatarToken: "--space-300",
   },
   {
     label: "Comfortable",
-    rowY: "12px",
+    rowY: "0.75rem",
     rowYToken: "--space-150",
-    gap: "12px",
+    gap: "0.75rem",
     gapToken: "--space-150",
-    avatar: "32px",
+    avatar: "2rem",
     avatarToken: "--space-400",
   },
   {
     label: "Spacious",
-    rowY: "16px",
+    rowY: "1rem",
     rowYToken: "--space-200",
-    gap: "16px",
+    gap: "1rem",
     gapToken: "--space-200",
-    avatar: "40px",
+    avatar: "2.5rem",
     avatarToken: "--space-500",
   },
 ];
@@ -88,13 +89,13 @@ export function SpacingDemo() {
       {/* Header */}
       <div
         className="flex items-center justify-between gap-4 border-b border-(--color-border-default)"
-        style={{ padding: `${d.rowY} 24px` }}
+        style={{ padding: `${d.rowY} 1.5rem` }}
       >
         <div>
           <h3 className="font-semibold text-(--color-foreground-default)">
             Team members
           </h3>
-          <p className="font-mono text-[10px] text-(--color-foreground-faint) mt-0.5">
+          <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
             14 active · 3 invited
           </p>
         </div>
@@ -126,10 +127,10 @@ export function SpacingDemo() {
         <div
           key={m.initials}
           className={`flex items-center ${i < members.length - 1 ? "border-b border-(--color-border-default)" : ""}`}
-          style={{ gap: d.gap, padding: `${d.rowY} 24px` }}
+          style={{ gap: d.gap, padding: `${d.rowY} 1.5rem` }}
         >
           <div
-            className="rounded-full grid place-items-center font-mono text-[10px] font-semibold shrink-0 transition-all"
+            className="rounded-full grid place-items-center font-mono text-[0.625rem] font-semibold shrink-0 transition-all"
             style={{
               width: d.avatar,
               height: d.avatar,
@@ -144,18 +145,18 @@ export function SpacingDemo() {
             <p className="text-sm font-medium text-(--color-foreground-default) truncate">
               {m.name}
             </p>
-            <p className="font-mono text-[10px] text-(--color-foreground-faint) truncate">
+            <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) truncate">
               {m.email}
             </p>
           </div>
           <span className="hidden sm:block text-xs text-(--color-foreground-muted) w-16 shrink-0">
             {m.role}
           </span>
-          <span className="hidden sm:block font-mono text-[10px] text-(--color-foreground-faint) w-16 shrink-0 text-right">
+          <span className="hidden sm:block font-mono text-[0.625rem] text-(--color-foreground-faint) w-16 shrink-0 text-right">
             {m.last}
           </span>
           <span
-            className="shrink-0 text-[10px] font-mono font-medium px-2 py-0.5 rounded-full"
+            className="shrink-0 text-[0.625rem] font-mono font-medium px-2 py-0.5 rounded-full"
             style={{
               background:
                 m.status === "active"
@@ -177,22 +178,22 @@ export function SpacingDemo() {
       ))}
 
       {/* Token readout footer */}
-      <div className="border-t border-(--color-border-default) bg-(--color-background-muted) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-[10px] text-(--color-foreground-faint)">
+      <div className="border-t border-(--color-border-default) bg-(--color-background-muted) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-[0.625rem] text-(--color-foreground-faint)">
         <span>
           <span className="text-(--color-foreground-muted)">
             {d.rowYToken}:
           </span>{" "}
-          {d.rowY}
+          {formatSize(d.rowY)}
         </span>
         <span>
           <span className="text-(--color-foreground-muted)">{d.gapToken}:</span>{" "}
-          {d.gap}
+          {formatSize(d.gap)}
         </span>
         <span>
           <span className="text-(--color-foreground-muted)">
             {d.avatarToken}:
           </span>{" "}
-          {d.avatar}
+          {formatSize(d.avatar)}
         </span>
       </div>
     </div>

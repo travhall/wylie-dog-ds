@@ -101,11 +101,11 @@ export default function PluginPage() {
           <div className="grid md:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="md:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-muted)">
+                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
                   05 · Token Bridge
                 </span>
                 <span className="text-(--color-foreground-faint)">·</span>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                   v{meta.versions.plugin} · development build
                 </span>
               </div>
@@ -141,7 +141,7 @@ export default function PluginPage() {
 
             <div className="md:col-span-5">
               <div className="glass rounded-2xl p-5 sm:p-6">
-                <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
+                <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
                   Collections it syncs
                 </p>
                 <ul className="mt-3 space-y-2">
@@ -153,13 +153,13 @@ export default function PluginPage() {
                       <span className="font-mono text-xs text-(--color-foreground-default)">
                         {c.name}
                       </span>
-                      <span className="font-mono text-[11px] text-(--color-foreground-faint)">
+                      <span className="font-mono text-[0.6875rem] text-(--color-foreground-faint)">
                         {c.count} tokens · {c.modes}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-3 font-mono text-[11px] text-(--color-foreground-faint)">
+                <p className="mt-3 font-mono text-[0.6875rem] text-(--color-foreground-faint)">
                   {meta.tokens.total.toLocaleString()} tokens total
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function PluginPage() {
         className="border-b border-(--color-border-default) bg-(--color-background-muted)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+          <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
             How it works
           </p>
           <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">
@@ -205,7 +205,7 @@ export default function PluginPage() {
       {/* ── What syncs ── */}
       <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+          <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
             What syncs
           </p>
           <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">
@@ -216,19 +216,19 @@ export default function PluginPage() {
             <table className="w-full text-sm">
               <thead className="bg-(--color-background-muted) text-left">
                 <tr>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <th className="px-4 py-3 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     File in packages/tokens/io/sync
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <th className="px-4 py-3 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     Collection
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <th className="px-4 py-3 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     Tokens
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <th className="px-4 py-3 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     Modes
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <th className="px-4 py-3 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     Holds
                   </th>
                 </tr>
@@ -265,7 +265,7 @@ export default function PluginPage() {
       {/* ── Light and dark values ── */}
       <section className="border-b border-(--color-border-default) bg-(--color-background-muted)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+          <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
             Light and dark
           </p>
           <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">
@@ -280,13 +280,13 @@ export default function PluginPage() {
             <table className="w-full text-sm">
               <thead className="text-left">
                 <tr>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <th className="px-4 py-3 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     Token
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <th className="px-4 py-3 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     Light
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <th className="px-4 py-3 font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                     Dark
                   </th>
                 </tr>
@@ -309,7 +309,7 @@ export default function PluginPage() {
                               className="h-4 w-4 rounded border border-(--color-border-default)"
                               style={{ background: value }}
                             />
-                            <span className="font-mono text-[11px] text-(--color-foreground-muted)">
+                            <span className="font-mono text-[0.6875rem] text-(--color-foreground-muted)">
                               {value}
                             </span>
                           </span>
@@ -327,7 +327,7 @@ export default function PluginPage() {
       {/* ── Guardrails ── */}
       <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
+          <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
             Worth knowing
           </p>
           <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">

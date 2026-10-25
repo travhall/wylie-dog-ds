@@ -1,0 +1,4 @@
+{
+  "$comment": "Documented exceptions for scripts/check-units.mjs. Each entry names a file, a substring of the offending line and the reason px is correct there.",
+  "allow": []
+}

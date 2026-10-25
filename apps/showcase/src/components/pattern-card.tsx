@@ -30,7 +30,7 @@ export function PatternCard({
       </CardHeader>
       <CardContent className="p-6 pt-0 space-y-4">
         <div>
-          <p className="text-[10px] font-black uppercase tracking-widest text-(--color-foreground-muted) mb-2">
+          <p className="text-[0.625rem] font-black uppercase tracking-widest text-(--color-foreground-muted) mb-2">
             Components used
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -38,7 +38,7 @@ export function PatternCard({
               <Badge
                 key={comp}
                 variant="outline"
-                className="text-[10px] border-(--color-border-default)/20"
+                className="text-[0.625rem] border-(--color-border-default)/20"
               >
                 {comp}
               </Badge>
