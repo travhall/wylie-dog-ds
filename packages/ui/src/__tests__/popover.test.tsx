@@ -377,7 +377,7 @@ describe("Popover", () => {
       await waitFor(() => {
         const content =
           screen.getByText("Popover Heading").parentElement?.parentElement;
-        expect(content).toHaveClass("z-(--z-index-popover)");
+        expect(content).toHaveClass("z-(--popover-z-index)");
       });
     });
 

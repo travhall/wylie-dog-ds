@@ -355,7 +355,9 @@ describe("Progress", () => {
       const innerDiv = progress.querySelector("div");
 
       expect(innerDiv).toHaveClass("transition-all");
-      expect(innerDiv).toHaveClass("duration-(--duration-slow)");
+      expect(innerDiv).toHaveClass(
+        "duration-(--duration-progress-indicator-duration)"
+      );
       expect(innerDiv).toHaveClass("ease-in-out");
     });
 
@@ -594,7 +596,9 @@ describe("Progress", () => {
       rerender(<Progress value={50} />);
       innerDiv = screen.getByRole("progressbar").querySelector("div");
 
-      expect(innerDiv).toHaveClass("duration-(--duration-slow)");
+      expect(innerDiv).toHaveClass(
+        "duration-(--duration-progress-indicator-duration)"
+      );
       expect(innerDiv).toHaveClass("ease-in-out");
     });
 
@@ -603,7 +607,9 @@ describe("Progress", () => {
       const innerDiv = screen.getByRole("progressbar").querySelector("div");
 
       expect(innerDiv).toHaveClass("transition-all");
-      expect(innerDiv).toHaveClass("duration-(--duration-slow)");
+      expect(innerDiv).toHaveClass(
+        "duration-(--duration-progress-indicator-duration)"
+      );
       expect(innerDiv).toHaveClass("ease-in-out");
     });
   });
