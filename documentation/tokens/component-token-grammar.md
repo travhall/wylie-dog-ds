@@ -21,7 +21,7 @@ Everything else that is a colour, including a composition, needs a component tok
 
 ## Stories never bind to tokens
 
-The goal is always to tokenise the Wylie Dog UI package. It is the contract between UI and design: the tokens it binds to are what adopters rely on to customise the design for themselves. Stories are not part of that contract. A story must not reference token variables; its demo is built from the UI components and plain layout classes. The exception is the Foundations pages whose subject is the tokens (`apps/storybook/stories/Foundations/Design Tokens/*`), which display token values by design. Existing stories predate this rule; see Plan 196 for the measurement and the open decision on how demo chrome is styled.
+The goal is always to tokenise the Wylie Dog UI package. It is the contract between UI and design: the tokens it binds to are what adopters rely on to customise the design for themselves. Stories are not part of that contract. A story must not reference token variables; its demo is built from the UI components and plain layout classes. The exception is the Foundations pages whose subject is the tokens (`apps/storybook/stories/Foundations/Design Tokens/*`), which display token values by design. Demo chrome that must follow Light and Dark comes from the UI components only (`Card`, `Badge`), with no custom colours; the generator's story template does this. Existing stories predate the rule: 60 of 76 story files outside the token pages reference token variables (measured 2026-10-24), and retrofitting them is separate work.
 
 ## What the check enforces, and what it does not
 
