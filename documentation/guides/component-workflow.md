@@ -14,7 +14,9 @@ pnpm generate:component my-component --category=content-display
 pnpm generate:component my-header --composition --category="Navigation Patterns"
 ```
 
-The name must be lowercase kebab-case. The command stops with a message if you leave out `--category`, if the name or story already exists, or if the category is not valid.
+The name must be lowercase kebab-case. The command stops with a message if you leave out `--category`, if the name, its story or any of its tokens already exist, or if the category is not valid.
+
+Add `--dry-run` to see the files, edits and token entries it would write, without writing anything (`--json` prints the same as one JSON object). `--help` prints the usage.
 
 Primitive categories (the key, and the Storybook folder it maps to):
 
@@ -38,11 +40,19 @@ For a primitive named `my-component` (compositions use `src/compositions/` and `
 | `packages/ui/src/my-component.tsx`                                     | Component: `cva` variants, `cn`, `focusRingClasses`, `asChild` via Radix `Slot`, `forwardRef`     |
 | `packages/ui/src/__tests__/my-component.test.tsx`                      | Vitest + Testing Library + `jest-axe` tests (a11y audit, render, className, ref, default variant) |
 | `apps/storybook/stories/Components/<Folder>/my-component.stories.tsx`  | Story with Default, AllVariants, States, WithInteractions, UsageExample                           |
+| `packages/tokens/io/sync/components.json`                              | The component's tokens, with descriptions (see below)                                             |
 | `packages/ui/tsup.config.ts`                                           | New entry in `entryPoints`                                                                        |
 | `packages/ui/package.json`                                             | New `exports["./my-component"]`                                                                   |
 | `packages/ui/src/index.ts` (compositions: `src/compositions/index.ts`) | New export line                                                                                   |
 
-Then it runs Prettier and ESLint on the generated files.
+Then it runs Prettier and ESLint on the generated files, rebuilds the tokens (`pnpm --filter @wyliedog/tokens build`) and runs `pnpm check:tokens`. It stops and prints the output if either fails.
+
+The tokens it adds, so the scaffold passes `pnpm check:tokens` with no hand edits:
+
+- `<name>.default.background`, `<name>.default.text` and `<name>.default.border`, aliasing `color.background.default`, `color.foreground.default` and `color.border.default`.
+- For a composition, also `<name>.padding-x`, `<name>.padding-y` and `<name>.gap`, aliasing `space.200`. The scaffold uses them as `px-(--space-<name>-padding-x)` and so on, so a composition starts with no Tailwind scale values.
+
+The aliases are placeholders to adjust. Rename or extend the tokens in `components.json` together with the classes.
 
 The export map entry looks like this (the build emits ESM `.js`, CommonJS `.cjs`, and `.d.ts`/`.d.cts` types, not `.mjs`):
 
@@ -58,7 +68,7 @@ The export map entry looks like this (the build emits ESM `.js`, CommonJS `.cjs`
 
 The scaffold is a starting point, not a finished component. It marks the gaps with `TODO` comments.
 
-- **Tokens.** The generated classes use placeholder names like `bg-(--color-my-component-default-background)`. Those tokens do not exist. Either add real component tokens to `packages/tokens/io/sync/components.json` and rebuild (`pnpm --filter @wyliedog/tokens build`), or use existing semantic tokens. Always write token-backed values as `-(--token-name)` (font sizes as `text-(length:--font-size-...)`) and never hardcode colors or spacing. See `documentation/tokens/naming-convention.md`.
+- **Tokens.** The generator added a starting set (`my-component.default.background`, `.text`, `.border`, and spacing for a composition). Add the rest to `packages/tokens/io/sync/components.json` with a `$description` and rebuild (`pnpm --filter @wyliedog/tokens build`); a component binds only to component tokens (`documentation/tokens/component-token-grammar.md`). Always write token-backed values as `-(--token-name)` (font sizes as `text-(length:--font-size-...)`) and never hardcode colors or spacing. See `documentation/tokens/naming-convention.md`.
 - **Role and semantics.** The scaffold renders a `div` with `role="group"` only so it passes the axe audit. Replace it with the right element or WAI-ARIA role, and add keyboard and state tests for that pattern. See `documentation/guides/accessibility-guide.md` (WCAG 2.2).
 - **Variants and sizes.** Replace the single `default` variant. Look at `packages/ui/src/badge.tsx` and `button.tsx` for the house style: `cva` variants, token-backed classes, `compoundVariants` for interactive states, `Slot` for `asChild`. Sizes are per component (for example `sm`/`md`/`lg`); there is no shared pixel-height scale.
 - **Sub-components** are separate named exports (`Card`, `CardHeader`, `CardTitle`, ...), not dot notation.

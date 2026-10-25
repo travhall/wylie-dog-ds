@@ -10,12 +10,12 @@ import {
 } from "../navigation-menu";
 
 export const siteHeaderVariants = cva(
-  "w-full transition-colors duration-(--duration-200)",
+  "w-full transition-colors duration-(--duration-site-header-transition-duration)",
   {
     variants: {
       variant: {
         default:
-          "bg-(--color-site-header-background) border-b border-(--color-site-header-border) sticky top-0 z-(--z-index-sticky) backdrop-blur supports-[backdrop-filter]:bg-(--color-site-header-background)/95",
+          "bg-(--color-site-header-background) border-b border-(--color-site-header-border) sticky top-0 z-(--site-header-z-index) backdrop-blur supports-[backdrop-filter]:bg-(--color-site-header-background)/95",
         transparent: "bg-transparent border-b border-transparent",
       },
     },
@@ -28,8 +28,8 @@ export const siteHeaderVariants = cva(
 const siteHeaderInnerVariants = cva("flex items-center justify-between", {
   variants: {
     size: {
-      default: "h-16",
-      sm: "h-14",
+      default: "h-(--space-site-header-height)",
+      sm: "h-(--space-site-header-height-sm)",
     },
   },
   defaultVariants: {
@@ -78,7 +78,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
       >
         <div
           className={cn(
-            "container mx-auto px-4 sm:px-6 lg:px-8",
+            "container mx-auto px-(--space-site-header-container-padding-x-sm) sm:px-(--space-site-header-container-padding-x-md) lg:px-(--space-site-header-container-padding-x-lg)",
             containerClassName
           )}
         >
@@ -86,8 +86,11 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
             {/* Logo Section */}
             <div className="flex items-center">
               {logo || (
-                <a href="/" className="flex items-center space-x-2">
-                  <span className="text-(length:--font-size-heading-sm) font-(--font-weight-bold)">
+                <a
+                  href="/"
+                  className="flex items-center space-x-(--space-site-header-logo-gap)"
+                >
+                  <span className="text-(length:--font-size-site-header-logo-font-size) font-(--font-weight-site-header-logo-font-weight)">
                     Logo
                   </span>
                 </a>
@@ -108,7 +111,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                       <NavigationMenuItem key={index}>
                         <NavigationMenuLink
                           href={item.href}
-                          className="group inline-flex h-9 w-max items-center justify-center rounded-(--border-radius-md) bg-(--color-site-header-nav-link-background) px-4 py-2 text-(length:--font-size-sm) font-(--font-weight-medium) transition-colors hover:bg-(--color-site-header-nav-link-background-hover) hover:text-(--color-site-header-nav-link-text-hover) focus:bg-(--color-site-header-nav-link-background-focus) focus:text-(--color-site-header-nav-link-text-focus) focus:outline-none disabled:pointer-events-none disabled:text-(--color-site-header-nav-link-text-disabled)"
+                          className="group inline-flex h-(--space-site-header-nav-link-height) w-max items-center justify-center rounded-(--space-site-header-nav-link-radius) bg-(--color-site-header-nav-link-background) px-(--space-site-header-nav-link-padding-x) py-(--space-site-header-nav-link-padding-y) text-(length:--font-size-site-header-nav-link-font-size) font-(--font-weight-site-header-nav-link-font-weight) transition-colors hover:bg-(--color-site-header-nav-link-background-hover) hover:text-(--color-site-header-nav-link-text-hover) focus:bg-(--color-site-header-nav-link-background-focus) focus:text-(--color-site-header-nav-link-text-focus) focus:outline-none disabled:pointer-events-none disabled:text-(--color-site-header-nav-link-text-disabled)"
                         >
                           {item.label}
                         </NavigationMenuLink>
@@ -120,7 +123,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
             )}
 
             {/* Actions Section */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-(--space-site-header-actions-gap)">
               {actions || (
                 <>
                   <Button variant="ghost" size="sm">

@@ -589,6 +589,7 @@ export type CssVarName =
   | "--duration-fast"
   | "--duration-instant"
   | "--duration-normal"
+  | "--duration-site-header-transition-duration"
   | "--duration-slow"
   | "--font-size-2xl"
   | "--font-size-3xl"
@@ -647,11 +648,27 @@ export type CssVarName =
   | "--font-size-menubar-shortcut-font-size"
   | "--font-size-navigation-menu-trigger-font-size"
   | "--font-size-pagination-item-font-size"
+  | "--font-size-section-features-description-font-size"
+  | "--font-size-section-features-item-title-font-size"
+  | "--font-size-section-features-title-font-size-lg"
+  | "--font-size-section-features-title-font-size-md"
+  | "--font-size-section-features-title-font-size-sm"
+  | "--font-size-section-hero-description-font-size-md"
+  | "--font-size-section-hero-description-font-size-sm"
+  | "--font-size-section-hero-title-font-size-lg"
+  | "--font-size-section-hero-title-font-size-md"
+  | "--font-size-section-hero-title-font-size-sm"
   | "--font-size-select-trigger-font-size-lg"
   | "--font-size-select-trigger-font-size-md"
   | "--font-size-select-trigger-font-size-sm"
   | "--font-size-sheet-description-font-size"
   | "--font-size-sheet-title-font-size"
+  | "--font-size-site-footer-column-title-font-size"
+  | "--font-size-site-footer-font-size"
+  | "--font-size-site-footer-link-font-size"
+  | "--font-size-site-footer-logo-font-size"
+  | "--font-size-site-header-logo-font-size"
+  | "--font-size-site-header-nav-link-font-size"
   | "--font-size-sm"
   | "--font-size-table-caption-font-size"
   | "--font-size-table-cell-font-size"
@@ -699,8 +716,15 @@ export type CssVarName =
   | "--font-weight-navigation-menu-trigger-font-weight"
   | "--font-weight-pagination-item-font-weight"
   | "--font-weight-regular"
+  | "--font-weight-section-features-item-title-font-weight"
+  | "--font-weight-section-features-title-font-weight"
+  | "--font-weight-section-hero-title-font-weight"
   | "--font-weight-semibold"
   | "--font-weight-sheet-title-font-weight"
+  | "--font-weight-site-footer-column-title-font-weight"
+  | "--font-weight-site-footer-logo-font-weight"
+  | "--font-weight-site-header-logo-font-weight"
+  | "--font-weight-site-header-nav-link-font-weight"
   | "--font-weight-table-footer-font-weight"
   | "--font-weight-table-header-font-weight"
   | "--font-weight-tabs-trigger-font-weight"
@@ -746,6 +770,7 @@ export type CssVarName =
   | "--opacity-overlay"
   | "--opacity-scrim"
   | "--opacity-subtle"
+  | "--page-layout-skip-link-z-index"
   | "--select-content-z-index"
   | "--select-trigger-icon-opacity"
   | "--shadow-base"
@@ -758,6 +783,7 @@ export type CssVarName =
   | "--shadow-xl"
   | "--sheet-close-button-opacity"
   | "--sheet-close-button-opacity-hover"
+  | "--site-header-z-index"
   | "--space-0"
   | "--space-010"
   | "--space-025"
@@ -980,6 +1006,16 @@ export type CssVarName =
   | "--space-navigation-menu-trigger-padding-x"
   | "--space-navigation-menu-trigger-padding-y"
   | "--space-navigation-menu-trigger-radius"
+  | "--space-page-layout-main-max-width-centered"
+  | "--space-page-layout-main-padding-x-lg"
+  | "--space-page-layout-main-padding-x-md"
+  | "--space-page-layout-main-padding-x-sm"
+  | "--space-page-layout-main-padding-y"
+  | "--space-page-layout-sidebar-width"
+  | "--space-page-layout-skip-link-offset"
+  | "--space-page-layout-skip-link-padding-x"
+  | "--space-page-layout-skip-link-padding-y"
+  | "--space-page-layout-skip-link-radius"
   | "--space-pagination-ellipsis-padding-left"
   | "--space-pagination-ellipsis-padding-right"
   | "--space-pagination-icon-size"
@@ -1016,6 +1052,35 @@ export type CssVarName =
   | "--space-scrollbar-thumb-min-height"
   | "--space-scrollbar-thumb-radius"
   | "--space-scrollbar-width"
+  | "--space-section-features-card-icon-margin-bottom"
+  | "--space-section-features-card-row-margin-bottom"
+  | "--space-section-features-container-padding-x-lg"
+  | "--space-section-features-container-padding-x-md"
+  | "--space-section-features-container-padding-x-sm"
+  | "--space-section-features-grid-gap"
+  | "--space-section-features-header-margin-bottom"
+  | "--space-section-features-header-max-width"
+  | "--space-section-features-icon-radius"
+  | "--space-section-features-icon-size"
+  | "--space-section-features-item-gap"
+  | "--space-section-features-padding-y-md"
+  | "--space-section-features-padding-y-sm"
+  | "--space-section-features-title-margin-bottom"
+  | "--space-section-features-title-tracking"
+  | "--space-section-hero-actions-gap"
+  | "--space-section-hero-container-padding-x-lg"
+  | "--space-section-hero-container-padding-x-md"
+  | "--space-section-hero-container-padding-x-sm"
+  | "--space-section-hero-content-gap"
+  | "--space-section-hero-description-max-width"
+  | "--space-section-hero-image-margin-top"
+  | "--space-section-hero-image-max-width"
+  | "--space-section-hero-layout-gap-md"
+  | "--space-section-hero-layout-gap-sm"
+  | "--space-section-hero-layout-max-width-centered"
+  | "--space-section-hero-padding-y-md"
+  | "--space-section-hero-padding-y-sm"
+  | "--space-section-hero-title-tracking"
   | "--space-select-content-max-height"
   | "--space-select-content-min-width"
   | "--space-select-content-padding"
@@ -1073,6 +1138,29 @@ export type CssVarName =
   | "--space-sheet-footer-padding-top"
   | "--space-sheet-header-gap"
   | "--space-sheet-header-padding-bottom"
+  | "--space-site-footer-bottom-gap"
+  | "--space-site-footer-column-links-gap"
+  | "--space-site-footer-column-title-margin-bottom"
+  | "--space-site-footer-columns-gap"
+  | "--space-site-footer-columns-margin-bottom"
+  | "--space-site-footer-container-padding-x-lg"
+  | "--space-site-footer-container-padding-x-md"
+  | "--space-site-footer-container-padding-x-sm"
+  | "--space-site-footer-container-padding-y"
+  | "--space-site-footer-logo-margin-bottom"
+  | "--space-site-footer-separator-margin-bottom"
+  | "--space-site-footer-social-gap"
+  | "--space-site-header-actions-gap"
+  | "--space-site-header-container-padding-x-lg"
+  | "--space-site-header-container-padding-x-md"
+  | "--space-site-header-container-padding-x-sm"
+  | "--space-site-header-height"
+  | "--space-site-header-height-sm"
+  | "--space-site-header-logo-gap"
+  | "--space-site-header-nav-link-height"
+  | "--space-site-header-nav-link-padding-x"
+  | "--space-site-header-nav-link-padding-y"
+  | "--space-site-header-nav-link-radius"
   | "--space-skeleton-height-avatar"
   | "--space-skeleton-height-button"
   | "--space-skeleton-height-text"
@@ -1792,6 +1880,7 @@ export declare const cssVars: Readonly<{
   "durationFast": "--duration-fast";
   "durationInstant": "--duration-instant";
   "durationNormal": "--duration-normal";
+  "durationSiteHeaderTransitionDuration": "--duration-site-header-transition-duration";
   "durationSlow": "--duration-slow";
   "fontSize2xl": "--font-size-2xl";
   "fontSize3xl": "--font-size-3xl";
@@ -1850,11 +1939,27 @@ export declare const cssVars: Readonly<{
   "fontSizeMenubarShortcutFontSize": "--font-size-menubar-shortcut-font-size";
   "fontSizeNavigationMenuTriggerFontSize": "--font-size-navigation-menu-trigger-font-size";
   "fontSizePaginationItemFontSize": "--font-size-pagination-item-font-size";
+  "fontSizeSectionFeaturesDescriptionFontSize": "--font-size-section-features-description-font-size";
+  "fontSizeSectionFeaturesItemTitleFontSize": "--font-size-section-features-item-title-font-size";
+  "fontSizeSectionFeaturesTitleFontSizeLg": "--font-size-section-features-title-font-size-lg";
+  "fontSizeSectionFeaturesTitleFontSizeMd": "--font-size-section-features-title-font-size-md";
+  "fontSizeSectionFeaturesTitleFontSizeSm": "--font-size-section-features-title-font-size-sm";
+  "fontSizeSectionHeroDescriptionFontSizeMd": "--font-size-section-hero-description-font-size-md";
+  "fontSizeSectionHeroDescriptionFontSizeSm": "--font-size-section-hero-description-font-size-sm";
+  "fontSizeSectionHeroTitleFontSizeLg": "--font-size-section-hero-title-font-size-lg";
+  "fontSizeSectionHeroTitleFontSizeMd": "--font-size-section-hero-title-font-size-md";
+  "fontSizeSectionHeroTitleFontSizeSm": "--font-size-section-hero-title-font-size-sm";
   "fontSizeSelectTriggerFontSizeLg": "--font-size-select-trigger-font-size-lg";
   "fontSizeSelectTriggerFontSizeMd": "--font-size-select-trigger-font-size-md";
   "fontSizeSelectTriggerFontSizeSm": "--font-size-select-trigger-font-size-sm";
   "fontSizeSheetDescriptionFontSize": "--font-size-sheet-description-font-size";
   "fontSizeSheetTitleFontSize": "--font-size-sheet-title-font-size";
+  "fontSizeSiteFooterColumnTitleFontSize": "--font-size-site-footer-column-title-font-size";
+  "fontSizeSiteFooterFontSize": "--font-size-site-footer-font-size";
+  "fontSizeSiteFooterLinkFontSize": "--font-size-site-footer-link-font-size";
+  "fontSizeSiteFooterLogoFontSize": "--font-size-site-footer-logo-font-size";
+  "fontSizeSiteHeaderLogoFontSize": "--font-size-site-header-logo-font-size";
+  "fontSizeSiteHeaderNavLinkFontSize": "--font-size-site-header-nav-link-font-size";
   "fontSizeSm": "--font-size-sm";
   "fontSizeTableCaptionFontSize": "--font-size-table-caption-font-size";
   "fontSizeTableCellFontSize": "--font-size-table-cell-font-size";
@@ -1902,8 +2007,15 @@ export declare const cssVars: Readonly<{
   "fontWeightNavigationMenuTriggerFontWeight": "--font-weight-navigation-menu-trigger-font-weight";
   "fontWeightPaginationItemFontWeight": "--font-weight-pagination-item-font-weight";
   "fontWeightRegular": "--font-weight-regular";
+  "fontWeightSectionFeaturesItemTitleFontWeight": "--font-weight-section-features-item-title-font-weight";
+  "fontWeightSectionFeaturesTitleFontWeight": "--font-weight-section-features-title-font-weight";
+  "fontWeightSectionHeroTitleFontWeight": "--font-weight-section-hero-title-font-weight";
   "fontWeightSemibold": "--font-weight-semibold";
   "fontWeightSheetTitleFontWeight": "--font-weight-sheet-title-font-weight";
+  "fontWeightSiteFooterColumnTitleFontWeight": "--font-weight-site-footer-column-title-font-weight";
+  "fontWeightSiteFooterLogoFontWeight": "--font-weight-site-footer-logo-font-weight";
+  "fontWeightSiteHeaderLogoFontWeight": "--font-weight-site-header-logo-font-weight";
+  "fontWeightSiteHeaderNavLinkFontWeight": "--font-weight-site-header-nav-link-font-weight";
   "fontWeightTableFooterFontWeight": "--font-weight-table-footer-font-weight";
   "fontWeightTableHeaderFontWeight": "--font-weight-table-header-font-weight";
   "fontWeightTabsTriggerFontWeight": "--font-weight-tabs-trigger-font-weight";
@@ -1949,6 +2061,7 @@ export declare const cssVars: Readonly<{
   "opacityOverlay": "--opacity-overlay";
   "opacityScrim": "--opacity-scrim";
   "opacitySubtle": "--opacity-subtle";
+  "pageLayoutSkipLinkZIndex": "--page-layout-skip-link-z-index";
   "selectContentZIndex": "--select-content-z-index";
   "selectTriggerIconOpacity": "--select-trigger-icon-opacity";
   "shadowBase": "--shadow-base";
@@ -1961,6 +2074,7 @@ export declare const cssVars: Readonly<{
   "shadowXl": "--shadow-xl";
   "sheetCloseButtonOpacity": "--sheet-close-button-opacity";
   "sheetCloseButtonOpacityHover": "--sheet-close-button-opacity-hover";
+  "siteHeaderZIndex": "--site-header-z-index";
   "space0": "--space-0";
   "space010": "--space-010";
   "space025": "--space-025";
@@ -2183,6 +2297,16 @@ export declare const cssVars: Readonly<{
   "spaceNavigationMenuTriggerPaddingX": "--space-navigation-menu-trigger-padding-x";
   "spaceNavigationMenuTriggerPaddingY": "--space-navigation-menu-trigger-padding-y";
   "spaceNavigationMenuTriggerRadius": "--space-navigation-menu-trigger-radius";
+  "spacePageLayoutMainMaxWidthCentered": "--space-page-layout-main-max-width-centered";
+  "spacePageLayoutMainPaddingXLg": "--space-page-layout-main-padding-x-lg";
+  "spacePageLayoutMainPaddingXMd": "--space-page-layout-main-padding-x-md";
+  "spacePageLayoutMainPaddingXSm": "--space-page-layout-main-padding-x-sm";
+  "spacePageLayoutMainPaddingY": "--space-page-layout-main-padding-y";
+  "spacePageLayoutSidebarWidth": "--space-page-layout-sidebar-width";
+  "spacePageLayoutSkipLinkOffset": "--space-page-layout-skip-link-offset";
+  "spacePageLayoutSkipLinkPaddingX": "--space-page-layout-skip-link-padding-x";
+  "spacePageLayoutSkipLinkPaddingY": "--space-page-layout-skip-link-padding-y";
+  "spacePageLayoutSkipLinkRadius": "--space-page-layout-skip-link-radius";
   "spacePaginationEllipsisPaddingLeft": "--space-pagination-ellipsis-padding-left";
   "spacePaginationEllipsisPaddingRight": "--space-pagination-ellipsis-padding-right";
   "spacePaginationIconSize": "--space-pagination-icon-size";
@@ -2219,6 +2343,35 @@ export declare const cssVars: Readonly<{
   "spaceScrollbarThumbMinHeight": "--space-scrollbar-thumb-min-height";
   "spaceScrollbarThumbRadius": "--space-scrollbar-thumb-radius";
   "spaceScrollbarWidth": "--space-scrollbar-width";
+  "spaceSectionFeaturesCardIconMarginBottom": "--space-section-features-card-icon-margin-bottom";
+  "spaceSectionFeaturesCardRowMarginBottom": "--space-section-features-card-row-margin-bottom";
+  "spaceSectionFeaturesContainerPaddingXLg": "--space-section-features-container-padding-x-lg";
+  "spaceSectionFeaturesContainerPaddingXMd": "--space-section-features-container-padding-x-md";
+  "spaceSectionFeaturesContainerPaddingXSm": "--space-section-features-container-padding-x-sm";
+  "spaceSectionFeaturesGridGap": "--space-section-features-grid-gap";
+  "spaceSectionFeaturesHeaderMarginBottom": "--space-section-features-header-margin-bottom";
+  "spaceSectionFeaturesHeaderMaxWidth": "--space-section-features-header-max-width";
+  "spaceSectionFeaturesIconRadius": "--space-section-features-icon-radius";
+  "spaceSectionFeaturesIconSize": "--space-section-features-icon-size";
+  "spaceSectionFeaturesItemGap": "--space-section-features-item-gap";
+  "spaceSectionFeaturesPaddingYMd": "--space-section-features-padding-y-md";
+  "spaceSectionFeaturesPaddingYSm": "--space-section-features-padding-y-sm";
+  "spaceSectionFeaturesTitleMarginBottom": "--space-section-features-title-margin-bottom";
+  "spaceSectionFeaturesTitleTracking": "--space-section-features-title-tracking";
+  "spaceSectionHeroActionsGap": "--space-section-hero-actions-gap";
+  "spaceSectionHeroContainerPaddingXLg": "--space-section-hero-container-padding-x-lg";
+  "spaceSectionHeroContainerPaddingXMd": "--space-section-hero-container-padding-x-md";
+  "spaceSectionHeroContainerPaddingXSm": "--space-section-hero-container-padding-x-sm";
+  "spaceSectionHeroContentGap": "--space-section-hero-content-gap";
+  "spaceSectionHeroDescriptionMaxWidth": "--space-section-hero-description-max-width";
+  "spaceSectionHeroImageMarginTop": "--space-section-hero-image-margin-top";
+  "spaceSectionHeroImageMaxWidth": "--space-section-hero-image-max-width";
+  "spaceSectionHeroLayoutGapMd": "--space-section-hero-layout-gap-md";
+  "spaceSectionHeroLayoutGapSm": "--space-section-hero-layout-gap-sm";
+  "spaceSectionHeroLayoutMaxWidthCentered": "--space-section-hero-layout-max-width-centered";
+  "spaceSectionHeroPaddingYMd": "--space-section-hero-padding-y-md";
+  "spaceSectionHeroPaddingYSm": "--space-section-hero-padding-y-sm";
+  "spaceSectionHeroTitleTracking": "--space-section-hero-title-tracking";
   "spaceSelectContentMaxHeight": "--space-select-content-max-height";
   "spaceSelectContentMinWidth": "--space-select-content-min-width";
   "spaceSelectContentPadding": "--space-select-content-padding";
@@ -2276,6 +2429,29 @@ export declare const cssVars: Readonly<{
   "spaceSheetFooterPaddingTop": "--space-sheet-footer-padding-top";
   "spaceSheetHeaderGap": "--space-sheet-header-gap";
   "spaceSheetHeaderPaddingBottom": "--space-sheet-header-padding-bottom";
+  "spaceSiteFooterBottomGap": "--space-site-footer-bottom-gap";
+  "spaceSiteFooterColumnLinksGap": "--space-site-footer-column-links-gap";
+  "spaceSiteFooterColumnTitleMarginBottom": "--space-site-footer-column-title-margin-bottom";
+  "spaceSiteFooterColumnsGap": "--space-site-footer-columns-gap";
+  "spaceSiteFooterColumnsMarginBottom": "--space-site-footer-columns-margin-bottom";
+  "spaceSiteFooterContainerPaddingXLg": "--space-site-footer-container-padding-x-lg";
+  "spaceSiteFooterContainerPaddingXMd": "--space-site-footer-container-padding-x-md";
+  "spaceSiteFooterContainerPaddingXSm": "--space-site-footer-container-padding-x-sm";
+  "spaceSiteFooterContainerPaddingY": "--space-site-footer-container-padding-y";
+  "spaceSiteFooterLogoMarginBottom": "--space-site-footer-logo-margin-bottom";
+  "spaceSiteFooterSeparatorMarginBottom": "--space-site-footer-separator-margin-bottom";
+  "spaceSiteFooterSocialGap": "--space-site-footer-social-gap";
+  "spaceSiteHeaderActionsGap": "--space-site-header-actions-gap";
+  "spaceSiteHeaderContainerPaddingXLg": "--space-site-header-container-padding-x-lg";
+  "spaceSiteHeaderContainerPaddingXMd": "--space-site-header-container-padding-x-md";
+  "spaceSiteHeaderContainerPaddingXSm": "--space-site-header-container-padding-x-sm";
+  "spaceSiteHeaderHeight": "--space-site-header-height";
+  "spaceSiteHeaderHeightSm": "--space-site-header-height-sm";
+  "spaceSiteHeaderLogoGap": "--space-site-header-logo-gap";
+  "spaceSiteHeaderNavLinkHeight": "--space-site-header-nav-link-height";
+  "spaceSiteHeaderNavLinkPaddingX": "--space-site-header-nav-link-padding-x";
+  "spaceSiteHeaderNavLinkPaddingY": "--space-site-header-nav-link-padding-y";
+  "spaceSiteHeaderNavLinkRadius": "--space-site-header-nav-link-radius";
   "spaceSkeletonHeightAvatar": "--space-skeleton-height-avatar";
   "spaceSkeletonHeightButton": "--space-skeleton-height-button";
   "spaceSkeletonHeightText": "--space-skeleton-height-text";
