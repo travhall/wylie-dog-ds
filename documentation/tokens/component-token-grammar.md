@@ -44,6 +44,17 @@ Non-colour component tokens alias the shared scale, as colour tokens alias a sem
 
 Extending the rule to them is a separate piece of work, decided after the compositions.
 
+## Decisions for the non-colour values of the base components (Plan 198, 2026-10-24)
+
+Decided with the owner, one at a time. Every new token aliases a shared value (semantic where one exists, otherwise a primitive) and resolves to exactly the value of the reference it replaces.
+
+1. **Icon size.** One component token per icon part, aliasing the semantic icon scale `icon.size.xs|sm|md`. Names follow the existing structure of each component (`dialog.close-button.icon-size`, `select.trigger.icon-size`, `button.spinner.size`). A part that already has a token of the same value reuses it (the dropdown sub-menu chevron uses `dropdown-menu.item.icon-size`).
+2. **Shadow.** One component token per layered part, aliasing the semantic `shadow.sm|md|lg` (`dialog.shadow`, `popover.content-shadow`). Repo-only: Figma keeps the shared effect styles (Shadow/sm, md, lg); shadows are not Figma variables and no effect style is generated per component token.
+3. **z-index.** One component token per layered part, aliasing the semantic `z-index.*`, so the single scale stays in the primitives. Figma holds them as number variables (documentation and plugin round trip; they cannot be bound to a layer). The precedent is `select.content.z-index`.
+4. **Scrim opacity and duration.** Scrim opacity is `<component>.overlay-opacity` aliasing `opacity.scrim`. Durations alias the semantic `transition.duration.*` where one exists and the primitive `duration.300|500` otherwise. Easing is not a token; the Tailwind keyword `ease-in-out` stays.
+5. **Leftovers.** Line height, radius and border width get per-part tokens aliasing the primitive the code used (`dialog.title-line-height`, `button.spinner.radius`, `button.spinner.border-width`). The webkit spin-button reset `opacity-100` is `input.spin-button-opacity`. The navigation menu indicator used `z-1`, for which no step existed, so the primitive `z-index.1` was added. Font weight had no direct references left.
+6. **Pattern-level compositions.** `card-grid.tsx` and `feature-grid.tsx` at the package root are compositions: the literal check applies to them as well.
+
 ## Unbound in the generated Figma components (by design)
 
 The component generator leaves these unbound because no component token exists and the real component does not set the value:
