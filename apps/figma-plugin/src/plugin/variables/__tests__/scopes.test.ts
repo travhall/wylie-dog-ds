@@ -17,6 +17,23 @@ function colorNames(collection: string): string[] {
     .map(([name]) => name);
 }
 
+const COLLECTIONS = ["primitive", "semantic", "components"] as const;
+
+function allVariables(): Array<{
+  collection: string;
+  name: string;
+  type: string;
+}> {
+  return COLLECTIONS.flatMap((collection) => {
+    const data = JSON.parse(
+      readFileSync(resolve(SYNC_DIR, `${collection}.json`), "utf8")
+    ) as Array<Record<string, { variables: Record<string, SyncToken> }>>;
+    return Object.entries(data[0][collection].variables).map(
+      ([name, token]) => ({ collection, name, type: token.$type })
+    );
+  });
+}
+
 const FILL = ["FRAME_FILL", "SHAPE_FILL"];
 const FOREGROUND = ["TEXT_FILL", "SHAPE_FILL"];
 const STROKE = ["STROKE_COLOR"];
@@ -129,11 +146,11 @@ describe("inferScopes: component colours", () => {
 });
 
 describe("inferScopes: primitives and other types", () => {
-  it("leaves primitive colours on ALL_SCOPES", () => {
+  it("hides primitive colours from every picker", () => {
     const names = colorNames("primitive");
     expect(names.length).toBeGreaterThan(0);
     for (const name of names) {
-      expect(inferScopes("color", name)).toEqual(ALL);
+      expect(inferScopes("color", name)).toEqual([]);
     }
   });
 
@@ -152,7 +169,9 @@ describe("inferScopes: primitives and other types", () => {
     ["dimension", "button.height", ["WIDTH_HEIGHT"]],
     ["dimension", "spacing.4", ["GAP"]],
     ["dimension", "anything", ["GAP"]],
-    ["shadow", "shadow.md", ALL],
+    ["shadow", "shadow.md", []],
+    ["duration", "duration.150", []],
+    ["cubicBezier", "transition.easing.default", []],
     ["boolean", "flag", ALL],
     ["number", "n", ALL],
     ["string", "s", ALL],
@@ -171,5 +190,227 @@ describe("inferScopes: primitives and other types", () => {
     const first = inferScopes("fontSize", "a");
     first.push("MUTATED");
     expect(inferScopes("fontSize", "a")).toEqual(["FONT_SIZE"]);
+  });
+});
+
+describe("inferScopes: non-colour tokens by name", () => {
+  // Font size, weight, line height, opacity and z-index are typed "number" on
+  // purpose, so the name decides.
+  it.each([
+    ["number", "typography.font-size.base", ["FONT_SIZE"]],
+    ["number", "button.font-size", ["FONT_SIZE"]],
+    ["number", "typography.font-weight.bold", ["FONT_WEIGHT"]],
+    ["number", "dialog.title-font-weight", ["FONT_WEIGHT"]],
+    ["number", "typography.line-height.tight", []],
+    ["number", "dialog.title-line-height", []],
+    ["lineHeight", "typography.line-height.tight", []],
+    ["dimension", "typography.tracking.wide", ["LETTER_SPACING"]],
+    ["dimension", "dialog.title-letter-spacing", ["LETTER_SPACING"]],
+    ["number", "opacity.50", ["OPACITY"]],
+    ["number", "opacity.scrim", ["OPACITY"]],
+    ["number", "state.opacity.disabled", ["OPACITY"]],
+    ["number", "z-index.modal", []],
+    ["number", "z-index.50", []],
+    ["dimension", "focus.width", []],
+    ["dimension", "focus.offset", []],
+    ["dimension", "focus.halo-width", []],
+    ["dimension", "shadow.blur.md", ["EFFECT_FLOAT"]],
+    ["dimension", "shadow.offset.y.md", ["EFFECT_FLOAT"]],
+    ["dimension", "shadow.spread.lg", ["EFFECT_FLOAT"]],
+    ["shadow", "shadow.md", []],
+    ["duration", "transition.duration.fast", []],
+    ["cubicBezier", "transition.easing.default", []],
+    ["number", "button.border-width", ["STROKE_FLOAT"]],
+  ])("%s %s", (type, name, expected) => {
+    expect(inferScopes(type, name)).toEqual(expected);
+  });
+
+  it("keeps the focus colours scoped to stroke and effect", () => {
+    expect(inferScopes("color", "color.focus.ring")).toEqual(FOCUS);
+  });
+
+  it("keeps an offset that is not the focus indicator on GAP", () => {
+    expect(inferScopes("dimension", "sheet.close-button-offset")).toEqual([
+      "GAP",
+    ]);
+  });
+});
+
+// Components colours whose name has no property word. They stay ALL_SCOPES
+// until they are renamed (Plan 201); anything else on ALL_SCOPES is a bug.
+const AMBIGUOUS_COMPONENT_COLOURS = [
+  "card.header.title.color",
+  "card.header.description.color",
+  "menubar.trigger-open",
+  "menubar.separator",
+  "menubar.shortcut",
+  "navigation.active",
+  "navigation.open",
+  "command.empty",
+  "command.group-heading",
+  "command.separator",
+  "command.item-selected",
+  "command.shortcut",
+  "tabs.list.border.color",
+  "calendar.nav-hover",
+  "calendar.day-hover",
+  "calendar.day-selected",
+  "accordion.trigger-hover",
+  "accordion.trigger-pressed",
+  "accordion.trigger-disabled",
+  "breadcrumb.current",
+  "carousel.nav-hover",
+  "contextmenu.item-hover",
+  "contextmenu.separator",
+  "contextmenu.shortcut",
+  "dialog.description",
+  "dialog.title",
+  "form.description",
+  "form.error",
+  "pagination.active",
+  "resizable.handle",
+  "slider.range",
+  "table.caption",
+  "table.row-hover",
+  "table.row-selected",
+  "toast.action-hover",
+  "toast.close",
+  "toast.close-hover",
+  "toggle.pressed",
+  "card.content.color",
+  "checkbox.border.color",
+  "separator.color",
+  "form.required-color",
+  "section-hero.gradient.from",
+  "section-hero.gradient.via",
+  "section-hero.gradient.to",
+  "toggle.pressed-disabled",
+  "menubar.trigger-highlighted",
+  "menubar.item-highlighted",
+  "navigation.highlighted",
+];
+
+describe("inferScopes: the real token files", () => {
+  const variables = allVariables().map((v) => ({
+    ...v,
+    scopes: inferScopes(v.type, v.name),
+  }));
+  const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
+
+  it("reads all three collections (276, 978 and 91 variables)", () => {
+    const count = (c: string) =>
+      variables.filter((v) => v.collection === c).length;
+    expect([
+      count("primitive"),
+      count("components"),
+      count("semantic"),
+    ]).toEqual([276, 978, 91]);
+  });
+
+  it("leaves ALL_SCOPES only on the named ambiguous component colours", () => {
+    const unrestricted = variables
+      .filter((v) => v.scopes.includes("ALL_SCOPES"))
+      .map((v) => `${v.collection}:${v.type}:${v.name}`)
+      .sort();
+    expect(unrestricted).toEqual(
+      AMBIGUOUS_COMPONENT_COLOURS.map((n) => `components:color:${n}`).sort()
+    );
+  });
+
+  it("never combines ALL_SCOPES with another scope", () => {
+    for (const v of variables) {
+      if (v.scopes.includes("ALL_SCOPES")) expect(v.scopes).toEqual(ALL);
+    }
+  });
+
+  it("scopes every property family to its own picker", () => {
+    const expectFamily = (word: RegExp, expected: string[]) => {
+      const matches = variables.filter((v) => word.test(v.name));
+      expect(matches.length, String(word)).toBeGreaterThan(0);
+      for (const v of matches) {
+        expect(v.scopes, `${v.collection}:${v.name}`).toEqual(expected);
+      }
+    };
+    expectFamily(/font-size/, ["FONT_SIZE"]);
+    expectFamily(/font-weight/, ["FONT_WEIGHT"]);
+    expectFamily(/tracking|letter-spacing/, ["LETTER_SPACING"]);
+    expectFamily(/opacity/, ["OPACITY"]);
+    expectFamily(/^shadow\.(blur|offset|spread)/, ["EFFECT_FLOAT"]);
+    // Hidden: percentages Figma would bind as pixels, and CSS-only values
+    expectFamily(/line-height/, []);
+    expectFamily(/z-index/, []);
+    expectFamily(/^focus\./, []);
+  });
+
+  it("hides every duration, easing and shadow string and every primitive colour", () => {
+    const hiddenTypes = new Set(["duration", "cubicBezier", "shadow"]);
+    const hidden = variables.filter(
+      (v) =>
+        hiddenTypes.has(v.type) ||
+        (v.collection === "primitive" && v.type === "color")
+    );
+    expect(hidden.length).toBeGreaterThan(0);
+    for (const v of hidden) expect(v.scopes, v.name).toEqual([]);
+  });
+
+  it("never scopes a number to a picker its value cannot feed", () => {
+    // Percent line heights as LINE_HEIGHT would bind as pixels
+    expect(variables.some((v) => v.scopes.includes("LINE_HEIGHT"))).toBe(false);
+    // Tracking and shadow values must not appear in gap or padding pickers
+    const gap = variables.filter((v) => v.scopes.includes("GAP"));
+    for (const v of gap) {
+      expect(v.name).not.toMatch(/tracking|letter-spacing|shadow\./);
+    }
+  });
+
+  it("fails on a token family no rule matches", () => {
+    // A non-colour variable with a dimension-style fallback (GAP) must be a
+    // spacing token; anything else needs an explicit rule.
+    const gapFallback = variables
+      .filter((v) => v.type === "dimension" && key(v.scopes) === "GAP")
+      .map((v) => v.name);
+    expect(gapFallback).toEqual(["sheet.close-button-offset"]);
+  });
+
+  it("matches the per-collection tally", () => {
+    const tally = (collection: string) => {
+      const counts: Record<string, number> = {};
+      for (const v of variables.filter((x) => x.collection === collection)) {
+        const k = `${v.type} ${key(v.scopes)}`;
+        counts[k] = (counts[k] ?? 0) + 1;
+      }
+      return counts;
+    };
+    // Printed so a failure (or -t run) shows the full table
+    const all = Object.fromEntries(COLLECTIONS.map((c) => [c, tally(c)]));
+    console.info(JSON.stringify(all, null, 2));
+    expect(all.primitive).toMatchObject({
+      "color []": 143,
+      "number FONT_SIZE": 10,
+      "number FONT_WEIGHT": 8,
+      "number OPACITY": 15,
+      "number []": 18,
+      "dimension EFFECT_FLOAT": 23,
+      "dimension LETTER_SPACING": 6,
+      "duration []": 9,
+    });
+    expect(all.semantic).toMatchObject({
+      "number OPACITY": 12,
+      "number []": 9,
+      "shadow []": 7,
+      "duration []": 4,
+      "cubicBezier []": 4,
+      "dimension []": 3,
+    });
+    expect(all.components).toMatchObject({
+      "number FONT_SIZE": 78,
+      "number FONT_WEIGHT": 40,
+      "number OPACITY": 17,
+      "number []": 35,
+      "dimension LETTER_SPACING": 9,
+      "shadow []": 19,
+      "duration []": 11,
+      "color ALL_SCOPES": 49,
+    });
   });
 });
