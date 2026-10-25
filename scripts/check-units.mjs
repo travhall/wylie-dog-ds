@@ -97,6 +97,18 @@ function scan(file) {
         `\\b(?:${LENGTH_PROPERTIES})\\s*:\\s*(["'\`])((?:(?!\\1).)*)\\1`,
         "g"
       );
+      // React turns a bare number in a style object into px: minHeight: 280, padding: 20
+      const bare = new RegExp(
+        `\\b(?:${LENGTH_PROPERTIES.replace("|line-height|lineHeight", "")})\\s*:\\s*(-?\\d*\\.?\\d+)\\s*(?:[,}]|$)`,
+        "g"
+      );
+      for (const m of line.matchAll(bare)) {
+        if (Number(m[1]) > 1)
+          add(
+            m[0].replace(/\s*[,}]$/, ""),
+            "bare number in a style object is px: use rem"
+          );
+      }
       for (const m of line.matchAll(prop)) {
         if (pxValues(m[2]).some((n) => n !== 1 && n !== 0)) {
           add(m[0], "px in a length property: use rem");

@@ -32,8 +32,8 @@ function PatCard({
       <div
         className="relative bg-(--color-background-muted) border-b border-(--color-border-default) overflow-hidden flex place-content-center grow"
         style={{
-          minHeight: 280,
-          padding: 20,
+          minHeight: "17.5rem",
+          padding: "1.25rem",
         }}
       >
         <div

@@ -257,8 +257,8 @@ export default function ComponentsPage() {
                           style={{
                             background: "var(--color-blue-300)",
                             color: "var(--color-blue-950)",
-                            height: 38,
-                            width: 38,
+                            height: "2.375rem",
+                            width: "2.375rem",
                           }}
                         >
                           EM
@@ -574,7 +574,12 @@ export default function ComponentsPage() {
                     <span
                       key={init}
                       className="inline-grid place-items-center rounded-full text-xs font-semibold"
-                      style={{ background: bg, color, height: 40, width: 40 }}
+                      style={{
+                        background: bg,
+                        color,
+                        height: "2.5rem",
+                        width: "2.5rem",
+                      }}
                     >
                       {init}
                     </span>
@@ -584,8 +589,8 @@ export default function ComponentsPage() {
                     style={{
                       background: "var(--color-background-emphasis)",
                       color: "var(--color-foreground-muted)",
-                      height: 40,
-                      width: 40,
+                      height: "2.5rem",
+                      width: "2.5rem",
                     }}
                   >
                     +8
@@ -763,8 +768,8 @@ export default function ComponentsPage() {
                           style={{
                             background: bg,
                             color: c,
-                            height: 18,
-                            width: 18,
+                            height: "1.125rem",
+                            width: "1.125rem",
                           }}
                         >
                           {i}
@@ -1675,7 +1680,7 @@ export default function ComponentsPage() {
                     borderColor: "var(--color-border-primary)",
                     boxShadow:
                       "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 22%, transparent)",
-                    height: 100,
+                    height: "6.25rem",
                   }}
                 >
                   <p>
@@ -2373,10 +2378,10 @@ export default function ComponentsPage() {
                   <div
                     className="absolute rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[0.6875rem]"
                     style={{
-                      top: 20,
-                      left: 20,
+                      top: "1.25rem",
+                      left: "1.25rem",
                       boxShadow: "var(--shadow-md)",
-                      width: 130,
+                      width: "8.125rem",
                     }}
                   >
                     <div
@@ -2486,7 +2491,7 @@ export default function ComponentsPage() {
                   </Button>
                   <div
                     className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[0.6875rem]"
-                    style={{ boxShadow: "var(--shadow-md)", width: 150 }}
+                    style={{ boxShadow: "var(--shadow-md)", width: "9.375rem" }}
                   >
                     <div className="flex items-center gap-2 px-2 py-1 text-(--color-foreground-default)">
                       <svg
@@ -2555,7 +2560,10 @@ export default function ComponentsPage() {
                   </span>
                   <div
                     className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3"
-                    style={{ boxShadow: "var(--shadow-md)", width: 190 }}
+                    style={{
+                      boxShadow: "var(--shadow-md)",
+                      width: "11.875rem",
+                    }}
                   >
                     <div className="flex items-center gap-2">
                       <span
@@ -2563,8 +2571,8 @@ export default function ComponentsPage() {
                         style={{
                           background: "var(--color-blue-300)",
                           color: "var(--color-blue-950)",
-                          height: 32,
-                          width: 32,
+                          height: "2rem",
+                          width: "2rem",
                         }}
                       >
                         EM
@@ -2614,7 +2622,7 @@ export default function ComponentsPage() {
                   </Button>
                   <div
                     className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 space-y-2"
-                    style={{ boxShadow: "var(--shadow-md)", width: 180 }}
+                    style={{ boxShadow: "var(--shadow-md)", width: "11.25rem" }}
                   >
                     <p className="text-[0.625rem] font-semibold text-(--color-foreground-default)">
                       Filter by status
