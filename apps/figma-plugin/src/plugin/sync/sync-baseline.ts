@@ -243,6 +243,16 @@ export function classifyChanges(
         continue;
       }
 
+      // One side moved, but both sides now mean the same thing (a format-only
+      // difference between the two export pipelines): nothing to sync.
+      if (
+        lNow !== null &&
+        rNow !== null &&
+        !differs.has(`${collection}.${token}`)
+      ) {
+        continue;
+      }
+
       const side: ChangeSide = localMoved ? "local" : "remote";
       const [before, now] = localMoved ? [l0, lNow] : [r0, rNow];
       const kind: ChangeKind =
