@@ -2,7 +2,7 @@ import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { Icon } from "./common/Icon";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
-import type { ExportData } from "../../plugin/variables/processor";
+import { checkSyncStatus as runSyncStatusCheck } from "../utils/check-sync-status";
 
 interface SyncStatusProps {
   githubClient: ConflictAwareGitHubClient;
@@ -12,8 +12,17 @@ interface SyncStatusProps {
 
 interface SyncStatusData {
   upToDate: boolean;
-  localChanges: number;
-  remoteChanges: number;
+  /** False until a Push or Pull sets the baseline; counts are then unknown. */
+  hasBaseline: boolean;
+  /** Changed in Figma since the last sync. */
+  toPush: number;
+  /** Changed on GitHub since the last sync. */
+  toPull: number;
+  /** Changed on both sides to different values. */
+  conflicts: number;
+  renamed: number;
+  /** Plain Figma-vs-GitHub difference count (the no-baseline number). */
+  differences: number;
   lastSync?: string;
   checking?: boolean;
   checked?: boolean;
@@ -27,8 +36,12 @@ export function SyncStatus({
 }: SyncStatusProps) {
   const [status, setStatus] = useState<SyncStatusData>({
     upToDate: true,
-    localChanges: 0,
-    remoteChanges: 0,
+    hasBaseline: false,
+    toPush: 0,
+    toPull: 0,
+    conflicts: 0,
+    renamed: 0,
+    differences: 0,
     checking: false,
     checked: false,
   });
@@ -39,40 +52,20 @@ export function SyncStatus({
     setStatus((prev) => ({ ...prev, checking: true, error: undefined }));
 
     try {
-      // Request local tokens from the plugin thread, then diff against remote.
-      const localTokens = await new Promise<ExportData[]>((resolve) => {
-        const handler = (event: MessageEvent) => {
-          const type = event.data.pluginMessage?.type;
-          if (type === "local-tokens-exported") {
-            window.removeEventListener("message", handler);
-            resolve(event.data.pluginMessage.localTokens || []);
-          } else if (type === "local-tokens-error") {
-            window.removeEventListener("message", handler);
-            resolve([]);
-          }
-        };
-        window.addEventListener("message", handler);
-
-        parent.postMessage(
-          { pluginMessage: { type: "get-local-tokens" } },
-          "*"
-        );
-
-        // Timeout after 10 seconds
-        setTimeout(() => {
-          window.removeEventListener("message", handler);
-          resolve([]);
-        }, 10000);
-      });
-
-      const syncStatus = await githubClient.getSyncStatus(localTokens);
+      // Figma export + baseline come from the plugin thread, then the client
+      // diffs against GitHub and classifies which side changed.
+      const syncStatus = await runSyncStatusCheck(githubClient);
       // Preserve lastSync — it's sourced from the `last-sync-loaded` message
       // (plugin-thread storage), not from getSyncStatus (which runs UI-side and
       // can't read figma.clientStorage).
       setStatus((prev) => ({
         upToDate: syncStatus.upToDate,
-        localChanges: syncStatus.localChanges,
-        remoteChanges: syncStatus.remoteChanges,
+        hasBaseline: syncStatus.hasBaseline,
+        toPush: syncStatus.toPush,
+        toPull: syncStatus.toPull,
+        conflicts: syncStatus.conflicts,
+        renamed: syncStatus.renamedLocal + syncStatus.renamedRemote,
+        differences: syncStatus.differences,
         lastSync: prev.lastSync,
         checking: false,
         checked: true,
@@ -172,7 +165,9 @@ export function SyncStatus({
   const getStatusText = () => {
     if (status.error) return "Error checking status";
     if (status.checking) return "Checking sync status…";
-    if (!status.upToDate) return "Changes detected";
+    if (!status.upToDate) {
+      return status.hasBaseline ? "Changes detected" : "Differences found";
+    }
     return "Up to date";
   };
 
@@ -236,7 +231,30 @@ export function SyncStatus({
         <div style={{ color: "var(--text-secondary)" }}>
           <div>Last sync: {formatLastSync(status.lastSync)}</div>
           {!status.upToDate &&
-            (status.localChanges > 0 || status.remoteChanges > 0) && (
+            !status.hasBaseline &&
+            status.differences > 0 && (
+              <div style={{ marginTop: "4px" }}>
+                <div
+                  title="Figma and GitHub differ, but there is no record of the last sync to say which side changed."
+                  style={{ color: "var(--warning)" }}
+                >
+                  {status.differences}{" "}
+                  {status.differences === 1 ? "difference" : "differences"},
+                  direction unknown
+                </div>
+                <div
+                  style={{
+                    color: "var(--text-tertiary)",
+                    marginTop: "2px",
+                  }}
+                >
+                  Pull or Push once to set a baseline.
+                </div>
+              </div>
+            )}
+          {!status.upToDate &&
+            status.hasBaseline &&
+            status.toPush + status.toPull + status.conflicts > 0 && (
               <div
                 style={{
                   marginTop: "4px",
@@ -244,25 +262,51 @@ export function SyncStatus({
                   display: "flex",
                   alignItems: "center",
                   gap: "6px",
+                  flexWrap: "wrap",
                 }}
               >
-                {status.localChanges > 0 && (
-                  <span style={{ color: "var(--warning)" }}>
-                    <Icon name="check" size={10} color="var(--warning)" />{" "}
-                    {status.localChanges} local
+                {status.toPush > 0 && (
+                  <span
+                    style={{ color: "var(--warning)" }}
+                    title="Changed in Figma since the last sync (Push sends these to GitHub)"
+                  >
+                    <Icon name="upload" size={10} color="var(--warning)" />{" "}
+                    {status.toPush} to push
                   </span>
                 )}
-                {status.localChanges > 0 && status.remoteChanges > 0 && (
+                {status.toPush > 0 && status.toPull > 0 && (
                   <span style={{ color: "var(--text-tertiary)" }}>•</span>
                 )}
-                {status.remoteChanges > 0 && (
-                  <span style={{ color: "var(--info)" }}>
+                {status.toPull > 0 && (
+                  <span
+                    style={{ color: "var(--info)" }}
+                    title="Changed on GitHub since the last sync (Pull brings these into Figma)"
+                  >
                     <Icon name="download" size={10} color="var(--info)" />{" "}
-                    {status.remoteChanges} remote
+                    {status.toPull} to pull
+                  </span>
+                )}
+                {(status.toPush > 0 || status.toPull > 0) &&
+                  status.conflicts > 0 && (
+                    <span style={{ color: "var(--text-tertiary)" }}>•</span>
+                  )}
+                {status.conflicts > 0 && (
+                  <span
+                    style={{ color: "var(--error)" }}
+                    title="Changed on both sides to different values"
+                  >
+                    <Icon name="warning" size={10} color="var(--error)" />{" "}
+                    {status.conflicts}{" "}
+                    {status.conflicts === 1 ? "conflict" : "conflicts"}
                   </span>
                 )}
               </div>
             )}
+          {!status.upToDate && status.hasBaseline && status.renamed > 0 && (
+            <div style={{ color: "var(--text-tertiary)", marginTop: "2px" }}>
+              Includes {status.renamed} renamed
+            </div>
+          )}
         </div>
       )}
     </div>

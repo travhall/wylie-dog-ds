@@ -1,3 +1,7 @@
+import {
+  setPendingRemoteHashes,
+  takePendingRemoteHashes,
+} from "../utils/pending-sync-hashes";
 import { useState, useEffect, useCallback, useRef } from "preact/hooks";
 import type { GitHubConfig, PluginMessage } from "../../shared/types";
 import { needsGitHubToken } from "../../shared/github-config";
@@ -141,6 +145,22 @@ export interface PluginMessageActions {
   registerGitHubPullHandler: (handler: () => Promise<void>) => void;
   clearShouldSwitchToTokensTab: () => void;
   clearDownloadQueue: () => void;
+}
+
+/**
+ * Tell the plugin a sync finished. If a Push or Pull left GitHub-side hashes
+ * pending, they go along so the plugin records a sync baseline (plan 199).
+ */
+function recordLastSync(): void {
+  const remoteHashes = takePendingRemoteHashes();
+  parent.postMessage(
+    {
+      pluginMessage: remoteHashes
+        ? { type: "record-last-sync", remoteHashes }
+        : { type: "record-last-sync" },
+    },
+    "*"
+  );
 }
 
 /**
@@ -354,10 +374,7 @@ export function usePluginMessages(
             );
 
             // Record the sync timestamp (a pull applies via import)
-            parent.postMessage(
-              { pluginMessage: { type: "record-last-sync" } },
-              "*"
-            );
+            recordLastSync();
 
             // Reload collections immediately to show imported variables
             console.log("🔄 Requesting collections reload...");
@@ -367,6 +384,7 @@ export function usePluginMessages(
             console.log("🔀 Signaling tab switch to tokens...");
             setShouldSwitchToTokensTab(true);
           } else {
+            setPendingRemoteHashes(null);
             console.error("❌ Import failed:", msg.result);
             setError(
               `Import failed: ${msg.result?.message || "Unknown error"}`
@@ -386,6 +404,7 @@ export function usePluginMessages(
           break;
 
         case "import-error":
+          setPendingRemoteHashes(null);
           console.error("Import error:", msg.error);
           setImportLoading(false);
           setLoading(false);
@@ -467,10 +486,7 @@ export function usePluginMessages(
             setTimeout(() => setSuccessMessage(null), 6000);
 
             // Record the sync timestamp on a successful push
-            parent.postMessage(
-              { pluginMessage: { type: "record-last-sync" } },
-              "*"
-            );
+            recordLastSync();
           } else {
             setError(msg.result?.error || "GitHub sync failed");
           }

@@ -150,6 +150,8 @@ git diff packages/tokens   # io/sync, io/processed and dist change together
 
 **Change a token in code:** edit `io/sync/*.json` (keep the structure above), run the same build, and bring the change into Figma with the plugin's import or pull.
 
+**Sync status:** the plugin's Sync tab reports `to push`, `to pull` and `conflicts` by comparing Figma and GitHub each with a baseline recorded at the last successful push or pull, and says `N differences, direction unknown` until a baseline exists. The baseline stays in the Figma file and is never written to `io/sync/`. See [Sync status and the sync baseline](../../apps/figma-plugin/README.md#sync-status-and-the-sync-baseline).
+
 **Figma variable scopes:** the plugin sets each colour variable's scopes from its token name when it imports (semantic `color.background.*` as fills, `color.foreground.*` as text and shape fills, `color.border.*` as strokes, component tokens by the property word in the name, primitives unrestricted), and re-sets them on every import, so pulling updates existing variables. The rule and table are in [`apps/figma-plugin/README.md`](../../apps/figma-plugin/README.md#variable-scopes). Renaming a token can change its scopes.
 
 **Dark mode:** put the dark value in `valuesByMode.Dark` of the semantic or component token; the build writes it into `.dark` in `tokens.css` and `semantic-dark.css`.

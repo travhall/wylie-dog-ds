@@ -16,6 +16,25 @@ import type {
 import type { PluginMessageActions } from "../usePluginMessages";
 import { Result } from "../../../shared/result";
 import { PUSH_STEPS, PULL_STEPS } from "../../components/ProgressFeedback";
+import { hashTokens } from "../../../plugin/sync/sync-baseline";
+import type { TokenHashes } from "../../../plugin/sync/sync-baseline";
+import { setPendingRemoteHashes } from "../../utils/pending-sync-hashes";
+
+/**
+ * Hash what GitHub holds right now. Taken after a successful push so the
+ * baseline's GitHub side comes from the same pipeline the status check reads
+ * later; null (fetch failed) just means no baseline is recorded this time.
+ */
+async function fetchRemoteHashes(
+  client: ConflictAwareGitHubClient
+): Promise<TokenHashes | null> {
+  try {
+    const result = await client.pullTokens();
+    return result.success && result.tokens ? hashTokens(result.tokens) : null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Hook for GitHub synchronization operations
@@ -120,6 +139,12 @@ export function useGitHubSync(
           requestAnimationFrame(() => resolve(undefined))
         );
 
+        // A direct push leaves GitHub equal to Figma: remember that as the
+        // baseline. A pull request leaves the branch untouched, so it doesn't.
+        if (syncResult.success && !syncResult.pullRequestUrl) {
+          setPendingRemoteHashes(await fetchRemoteHashes(githubClient));
+        }
+
         // Send success message back to plugin
         parent.postMessage(
           {
@@ -221,6 +246,10 @@ export function useGitHubSync(
           requestAnimationFrame(() => resolve(undefined))
         );
 
+        // Once the import lands, the plugin records these as GitHub's side of
+        // the sync baseline (usePluginMessages sends them with record-last-sync).
+        setPendingRemoteHashes(hashTokens(pullResult.tokens));
+
         parent.postMessage(
           {
             pluginMessage: {
@@ -309,6 +338,9 @@ export function useGitHubSync(
           actions.setLoadingMessage("");
 
           if (syncResult.success) {
+            // No baseline is recorded here: where the user took GitHub's side,
+            // Figma still differs from what was just pushed, so claiming the
+            // two agree would hide that change.
             const message = syncResult.pullRequestUrl
               ? "✅ Pull request created! Check GitHub to review"
               : "✅ Pushed to GitHub successfully!";

@@ -9,6 +9,7 @@ import {
 } from "vitest";
 import { act, renderHook } from "@testing-library/preact";
 import { usePluginMessages } from "../usePluginMessages";
+import { setPendingRemoteHashes } from "../../utils/pending-sync-hashes";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 
 const configure = vi.fn();
@@ -535,5 +536,86 @@ describe("usePluginMessages message handling", () => {
       post({ type: "last-sync-loaded" });
       expect(warn).not.toHaveBeenCalled();
     });
+  });
+});
+
+describe("usePluginMessages: sync baseline hashes", () => {
+  const hashes = { primitive: { a: "abc12" } };
+  const imported = { type: "tokens-imported", result: { success: true } };
+
+  const recorded = () =>
+    sent("record-last-sync") as Array<{
+      type: string;
+      remoteHashes?: unknown;
+    }>;
+
+  beforeEach(() => {
+    postMessage = vi
+      .spyOn(window.parent, "postMessage")
+      .mockImplementation(() => {});
+    vi.spyOn(console, "log").mockImplementation(() => {});
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    vi.spyOn(console, "warn").mockImplementation(() => {});
+    setPendingRemoteHashes(null);
+  });
+
+  afterEach(() => {
+    setPendingRemoteHashes(null);
+    vi.restoreAllMocks();
+    vi.useRealTimers();
+  });
+
+  it("sends the GitHub hashes of a pull along with record-last-sync, once", () => {
+    vi.useFakeTimers();
+    setup();
+    setPendingRemoteHashes(hashes);
+    postMessage.mockClear();
+
+    post(imported);
+    post(imported);
+
+    expect(recorded()).toEqual([
+      { type: "record-last-sync", remoteHashes: hashes },
+      { type: "record-last-sync" },
+    ]);
+  });
+
+  it("sends the hashes of a direct push the same way", () => {
+    setup();
+    setPendingRemoteHashes(hashes);
+    postMessage.mockClear();
+
+    post({ type: "github-sync-complete", result: { success: true } });
+
+    expect(recorded()).toEqual([
+      { type: "record-last-sync", remoteHashes: hashes },
+    ]);
+  });
+
+  it("records no baseline for a manual import (nothing pending)", () => {
+    vi.useFakeTimers();
+    setup();
+    postMessage.mockClear();
+    post(imported);
+    expect(recorded()).toEqual([{ type: "record-last-sync" }]);
+  });
+
+  it.each([
+    [
+      "a failed import",
+      { type: "tokens-imported", result: { success: false } },
+    ],
+    ["an import error", { type: "import-error", error: "bad" }],
+  ])("forgets pending hashes after %s", (_label, failure) => {
+    vi.useFakeTimers();
+    setup();
+    setPendingRemoteHashes(hashes);
+    post(failure);
+    postMessage.mockClear();
+
+    // A later manual import must not inherit the failed pull's hashes.
+    post(imported);
+
+    expect(recorded()).toEqual([{ type: "record-last-sync" }]);
   });
 });
