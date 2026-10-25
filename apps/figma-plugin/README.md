@@ -9,7 +9,7 @@
 
 ## Overview
 
-Token Bridge moves design tokens between Figma Variables and token JSON files in a GitHub repository. It exports Figma variables to JSON, pushes them to GitHub (directly or as a pull request), pulls them back with conflict detection, and imports token files in several common formats.
+Token Bridge moves design tokens between Figma Variables and token JSON files in a GitHub repository. It exports Figma variables to JSON, pushes them to GitHub (directly or as a pull request), pulls them back, shows a per-token review before either one writes, and imports token files in several common formats.
 
 ### Key Features
 
