@@ -152,7 +152,7 @@ Non-colour variables are scoped by the property word in the name, whatever their
 | -------------------------------------------------------------------------- | ------------------------------ |
 | `font-size`                                                                | `FONT_SIZE`                    |
 | `font-weight`                                                              | `FONT_WEIGHT`                  |
-| `tracking`, `letter-spacing`                                               | `LETTER_SPACING`               |
+| `tracking`, `letter-spacing`                                               | none (hidden), see below       |
 | `opacity`                                                                  | `OPACITY`                      |
 | `shadow.blur`, `shadow.offset`, `shadow.spread`                            | `EFFECT_FLOAT`                 |
 | `radius`                                                                   | `CORNER_RADIUS`                |
@@ -163,9 +163,11 @@ Non-colour variables are scoped by the property word in the name, whatever their
 
 An empty scope list (`[]`) is valid Figma: the variable still exists and aliases still resolve, but no picker lists it. The importer assigns it as is.
 
-**Line height is hidden on purpose.** The line-height tokens are percentages (100, 125, 137.5) but Figma binds a line-height variable as pixels, so scoping them `LINE_HEIGHT` would let a designer pick `line-height/none` and get a 100px line height. Set line height on text layers by hand until the tokens are converted to pixel values (Option A in [figma-gateway.md](../../documentation/reference/figma-gateway.md)); then scope them `LINE_HEIGHT`.
+**Line height and letter spacing are hidden on purpose.** The line-height tokens are percentages (100, 125, 137.5) and the tracking tokens are em fractions (`-0.025em`), but Figma binds a number variable to line height or letter spacing as **pixels**: tested in the Token Bridge file, `150` gave a 150px line height and `-0.05` gave -0.05px letter spacing. Figma variables cannot carry a percent, so `LINE_HEIGHT` and `LETTER_SPACING` scopes would only let a designer pick a wrong value. The 6 primitive and 14 component line-height variables and the 6 primitive and 9 component tracking and letter-spacing variables stay in the sync (they are tokens) with an empty scope list.
 
-Tests build their expectations from the real sync files, so a new token family with no rule fails `scopes.test.ts` instead of silently becoming `ALL_SCOPES`. Behaviour inside Figma is checked by hand: after a pull, open the font size, font weight, line height and letter spacing pickers on a text layer and the opacity field, and confirm each lists only its own variables (line height lists none) and that no primitive appears in a fill picker.
+In Figma both properties are **percent text-style properties generated from the tokens** (decision recorded in [figma-gateway.md](../../documentation/reference/figma-gateway.md), 2026-10-25). The component builder (`wylie-dog-figma-builder/code.js`, owner-run, not in git) writes `lineHeight` as `PERCENT` (125% stays 125%, so 14px text gets 17.5px as in CSS), leaves it `AUTO` where the real component sets no line height, and writes `letterSpacing` as `PERCENT` (em x 100, `-0.025em` becomes -2.5%) where the component has a tracking token. It binds no variable to either property, and it runs in the Token Bridge file only. To change a value, edit the token and rerun the builder; Figma does not update on its own.
+
+Tests build their expectations from the real sync files, so a new token family with no rule fails `scopes.test.ts` instead of silently becoming `ALL_SCOPES`. Behaviour inside Figma is checked by hand: after a pull, open the font size, font weight, line height and letter spacing pickers on a text layer and the opacity field, and confirm each lists only its own variables (line height and letter spacing list none) and that no primitive appears in a fill picker.
 
 ### Dark Mode
 
