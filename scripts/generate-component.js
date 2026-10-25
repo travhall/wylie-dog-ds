@@ -10,9 +10,20 @@
  * - Auto-updates tsup config
  * - Auto-updates package.json exports
  *
+ * It also adds the component's tokens to packages/tokens/io/sync/components.json
+ * (so the scaffold passes `pnpm check:tokens` with no hand edits), rebuilds the
+ * tokens, and runs the token checks at the end.
+ *
  * Usage:
- *   node scripts/generate-component.js <name> --category=<key>
- *   node scripts/generate-component.js <name> --composition --category="<Patterns Folder Name>"
+ *   node scripts/generate-component.js <name> --category=<key> [--dry-run]
+ *   node scripts/generate-component.js <name> --composition --category="<Patterns Folder Name>" [--dry-run]
+ *
+ * --dry-run prints the files and token entries it would write and writes nothing
+ * (add --json for a machine-readable form).
+ *
+ * Stories never bind to tokens: the UI package is the contract with adopters, and
+ * stories are not part of it. A generated story is built from the UI components
+ * and plain layout classes, with no --color-*, --space-* or --font-* variable.
  *
  * Examples:
  *   node scripts/generate-component.js tooltip-2 --category=overlays-popovers
@@ -23,6 +34,8 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { execSync } from "child_process";
+
+const COMPONENTS_JSON = "packages/tokens/io/sync/components.json";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -76,6 +89,25 @@ function isComposition() {
   return process.argv.includes("--composition");
 }
 
+const isDryRun = () => process.argv.includes("--dry-run");
+const wantsJson = () => process.argv.includes("--json");
+
+function printUsage() {
+  console.log(`Usage:
+  node scripts/generate-component.js <name> --category=<key> [--dry-run]
+  node scripts/generate-component.js <name> --composition --category="<Patterns Folder>" [--dry-run]
+
+Adds the component's tokens to ${COMPONENTS_JSON}, writes the component, test and
+story, wires the exports, then rebuilds the tokens and runs pnpm check:tokens.
+
+  --dry-run   print the files and token entries, write nothing
+  --json      with --dry-run, print one JSON object instead of text
+
+Stories never bind to tokens. The UI package is the contract with adopters;
+stories are not part of it. A story is built from the UI components and plain
+layout classes, with no --color-*, --space-* or --font-* variable.`);
+}
+
 const PRIMITIVE_CATEGORIES = {
   "content-display": { dir: "Content-Display", title: "Content Display" },
   "feedback-status": { dir: "Feedback-Status", title: "Feedback & Status" },
@@ -127,6 +159,90 @@ function toTitleCase(str) {
     .join(" ");
 }
 
+// Tokens the scaffold uses. Names follow documentation/tokens/component-token-grammar.md:
+// <component>.<part>.<property>. Colours alias a semantic tone, spacing aliases the scale.
+function tokenSpec(name, composition = false) {
+  const title = toTitleCase(name).toLowerCase();
+  const colour = (property, alias, description) => ({
+    name: `${name}.default.${property}`,
+    type: "color",
+    alias,
+    description,
+  });
+  const tokens = [
+    colour(
+      "background",
+      "{color.background.default}",
+      `Fill of the default ${title}. Pairs with \`${name}.default.text\`.`
+    ),
+    colour(
+      "text",
+      "{color.foreground.default}",
+      `Text colour of the default ${title}. Pairs with \`${name}.default.background\`.`
+    ),
+    colour(
+      "border",
+      "{color.border.default}",
+      `Border colour of the default ${title}.`
+    ),
+  ];
+  if (composition) {
+    const spacing = (property, alias, description) => ({
+      name: `${name}.${property}`,
+      type: "spacing",
+      alias,
+      description,
+    });
+    tokens.push(
+      spacing("padding-x", "{space.200}", `Horizontal padding of the ${title}.`),
+      spacing("padding-y", "{space.200}", `Vertical padding of the ${title}.`),
+      spacing("gap", "{space.200}", `Gap between the parts of the ${title}.`)
+    );
+  }
+  return tokens;
+}
+
+// CSS variable of a token, following packages/tokens/style-dictionary.config.js.
+function tokenCssVar(token) {
+  const key = token.name.replaceAll(".", "-");
+  return token.type === "color" ? `--color-${key}` : `--space-${key}`;
+}
+
+async function readComponentTokens() {
+  const file = path.join(rootDir, COMPONENTS_JSON);
+  const json = JSON.parse(await fs.readFile(file, "utf-8"));
+  return { file, json, variables: json[0].components.variables };
+}
+
+// Refuse to touch a component that already has tokens.
+async function checkTokensFree(name) {
+  const { variables } = await readComponentTokens();
+  const existing = Object.keys(variables).filter((key) =>
+    key.startsWith(`${name}.`)
+  );
+  if (existing.length) {
+    error(
+      `Tokens for '${name}' already exist in ${COMPONENTS_JSON} (${existing.length}, e.g. ${existing[0]}). Remove them or pick another name.`
+    );
+  }
+}
+
+// Insert the tokens, keeping the file's formatting (2-space JSON, trailing newline)
+// so the diff shows only the added entries.
+async function addTokens(name, composition) {
+  const { file, json, variables } = await readComponentTokens();
+  for (const token of tokenSpec(name, composition)) {
+    variables[token.name] = {
+      $type: token.type,
+      $value: token.alias,
+      valuesByMode: { Light: token.alias, Dark: token.alias },
+      $description: token.description,
+    };
+  }
+  await fs.writeFile(file, JSON.stringify(json, null, 2) + "\n", "utf-8");
+  success(`Added ${tokenSpec(name, composition).length} tokens to ${COMPONENTS_JSON}`);
+}
+
 // Generate component template
 function generateComponentTemplate(name, composition = false) {
   const pascalName = toPascalCase(name);
@@ -143,16 +259,15 @@ ${primitiveImportComment}
 const ${pascalName.charAt(0).toLowerCase() + pascalName.slice(1)}Variants = cva(
   cn(
     "relative",
-    focusRingClasses
+    ${composition ? `"flex flex-col px-(${tokenCssVar({ name: `${name}.padding-x`, type: "spacing" })}) py-(${tokenCssVar({ name: `${name}.padding-y`, type: "spacing" })}) gap-(${tokenCssVar({ name: `${name}.gap`, type: "spacing" })})",\n    ` : ""}focusRingClasses
   ),
   {
-    // TODO: These are placeholder token names — define them in
-    // packages/tokens/io/sync/components.json, or replace with real
-    // existing semantic tokens if this component doesn't need its own.
+    // These tokens were added to packages/tokens/io/sync/components.json when the
+    // component was generated. Rename or extend them there, in step with the classes.
     variants: {
       variant: {
         default:
-          "bg-(--color-${name}-default-background) text-(--color-${name}-default-text)",
+          "bg-(${tokenCssVar({ name: `${name}.default.background`, type: "color" })}) text-(${tokenCssVar({ name: `${name}.default.text`, type: "color" })}) border border-(${tokenCssVar({ name: `${name}.default.border`, type: "color" })})",
       },
     },
     defaultVariants: {
@@ -651,12 +766,87 @@ async function lintFiles(name, composition = false, category) {
   }
 }
 
+// Everything the generator would write, as data (used by --dry-run).
+function plannedOutput(name, composition, category) {
+  const storyPath = composition
+    ? `apps/storybook/stories/Patterns/${category}/${name}.stories.tsx`
+    : `apps/storybook/stories/Components/${category.dir}/${name}.stories.tsx`;
+  const componentPath = composition
+    ? `packages/ui/src/compositions/${name}.tsx`
+    : `packages/ui/src/${name}.tsx`;
+  return {
+    files: [
+      { path: componentPath, content: generateComponentTemplate(name, composition) },
+      {
+        path: `packages/ui/src/__tests__/${name}.test.tsx`,
+        content: generateTestTemplate(name, composition),
+      },
+      {
+        path: storyPath,
+        content: generateStoryTemplate(name, composition, category),
+      },
+    ],
+    tokens: Object.fromEntries(
+      tokenSpec(name, composition).map((token) => [
+        token.name,
+        {
+          type: token.type,
+          value: token.alias,
+          cssVar: tokenCssVar(token),
+          description: token.description,
+        },
+      ])
+    ),
+    edits: [
+      "packages/ui/tsup.config.ts",
+      "packages/ui/package.json",
+      composition
+        ? "packages/ui/src/compositions/index.ts"
+        : "packages/ui/src/index.ts",
+      COMPONENTS_JSON,
+    ],
+  };
+}
+
+function printDryRun(plan) {
+  if (wantsJson()) {
+    console.log(JSON.stringify(plan, null, 2));
+    return;
+  }
+  log("Dry run: nothing is written.\n", "yellow");
+  console.log("Files it would create:");
+  for (const file of plan.files) console.log(`  ${file.path}`);
+  console.log("\nFiles it would edit:");
+  for (const file of plan.edits) console.log(`  ${file}`);
+  console.log(`\nTokens it would add to ${COMPONENTS_JSON}:`);
+  for (const [name, token] of Object.entries(plan.tokens)) {
+    console.log(`  ${name}  (${token.type})  ${token.value}  ->  ${token.cssVar}`);
+  }
+  console.log(`\n--- ${plan.files[0].path} ---\n${plan.files[0].content}`);
+}
+
+// Run a check and fail loudly, with its output, if it fails.
+function runCheck(label, command) {
+  info(`${label}...`);
+  try {
+    execSync(command, { cwd: rootDir, stdio: "pipe", encoding: "utf-8" });
+    success(label);
+  } catch (err) {
+    console.error(`${err.stdout ?? ""}${err.stderr ?? ""}`);
+    error(`${label} failed. Fix the output above; the generated files are left in place.`);
+  }
+}
+
 // Main execution
 async function main() {
+  if (process.argv.includes("--help") || process.argv.includes("-h")) {
+    printUsage();
+    return;
+  }
   const componentName = process.argv[2];
   const composition = isComposition();
 
-  log("\n🎨 Wylie Dog Component Generator\n", "blue");
+  if (!wantsJson()) log("\n🎨 Wylie Dog Component Generator\n", "blue");
 
   // Validate
   validateComponentName(componentName);
@@ -666,6 +856,12 @@ async function main() {
     : await resolvePrimitiveCategory(categoryKey);
 
   await checkExistence(componentName, composition, category);
+  await checkTokensFree(componentName);
+
+  if (isDryRun()) {
+    printDryRun(plannedOutput(componentName, composition, category));
+    return;
+  }
 
   const pascalName = toPascalCase(componentName);
   const tier = composition ? "Tier 2 (Composition)" : "Tier 1 (Primitive)";
@@ -673,6 +869,9 @@ async function main() {
   console.log();
 
   try {
+    // Tokens first, so the classes in the scaffold always resolve
+    await addTokens(componentName, composition);
+
     // Create files
     await createComponentFile(componentName, composition);
     await createTestFile(componentName, composition);
@@ -686,42 +885,45 @@ async function main() {
     // Format and lint
     await formatFiles(componentName, composition, category);
     await lintFiles(componentName, composition, category);
-
-    // Success summary
-    console.log();
-    log("✨ Component generated successfully!\n", "green");
-
-    log("📝 Next steps:", "blue");
-    const componentPath = composition
-      ? `packages/ui/src/compositions/${componentName}.tsx`
-      : `packages/ui/src/${componentName}.tsx`;
-    const storyPath = composition
-      ? `apps/storybook/stories/Patterns/${category}/${componentName}.stories.tsx`
-      : `apps/storybook/stories/Components/${category.dir}/${componentName}.stories.tsx`;
-
-    console.log(`  1. Customize the component in ${componentPath}`);
-    console.log(`  2. Add variants and props as needed`);
-    if (composition) {
-      console.log(`  3. Import and compose primitives from parent directory`);
-      console.log(`  4. Enhance stories in ${storyPath}`);
-    } else {
-      console.log(`  3. Enhance stories in ${storyPath}`);
-      console.log(
-        `  4. Add more test cases in packages/ui/src/__tests__/${componentName}.test.tsx`
-      );
-    }
-    console.log();
-
-    log("🚀 Development commands:", "blue");
-    console.log(`  pnpm dev                     - Start all dev servers`);
-    console.log(
-      `  pnpm --filter storybook dev  - View your story at http://localhost:6006`
-    );
-    console.log(`  pnpm test                    - Run tests`);
-    console.log();
   } catch (err) {
     error(`Failed to generate component: ${err.message}`);
   }
+
+  // Validate the tokens: rebuild, then run the token checks (refs, structure, binding)
+  runCheck("Rebuilding tokens", "pnpm --filter @wyliedog/tokens build");
+  runCheck("Token checks (pnpm check:tokens)", "pnpm check:tokens");
+
+  console.log();
+  log("✨ Component generated successfully!\n", "green");
+
+  log("📝 Next steps:", "blue");
+  const componentPath = composition
+    ? `packages/ui/src/compositions/${componentName}.tsx`
+    : `packages/ui/src/${componentName}.tsx`;
+  const storyPath = composition
+    ? `apps/storybook/stories/Patterns/${category}/${componentName}.stories.tsx`
+    : `apps/storybook/stories/Components/${category.dir}/${componentName}.stories.tsx`;
+
+  console.log(`  1. Customize the component in ${componentPath}`);
+  console.log(`  2. Add variants and props as needed (new tokens go in ${COMPONENTS_JSON})`);
+  if (composition) {
+    console.log(`  3. Import and compose primitives from parent directory`);
+    console.log(`  4. Enhance stories in ${storyPath}`);
+  } else {
+    console.log(`  3. Enhance stories in ${storyPath}`);
+    console.log(
+      `  4. Add more test cases in packages/ui/src/__tests__/${componentName}.test.tsx`
+    );
+  }
+  console.log();
+
+  log("🚀 Development commands:", "blue");
+  console.log(`  pnpm dev                     - Start all dev servers`);
+  console.log(
+    `  pnpm --filter storybook dev  - View your story at http://localhost:6006`
+  );
+  console.log(`  pnpm test                    - Run tests`);
+  console.log();
 }
 
 main();
