@@ -11,8 +11,8 @@
  * - Auto-updates package.json exports
  *
  * It also adds the component's tokens to packages/tokens/io/sync/components.json
- * (so the scaffold passes `pnpm check:tokens` with no hand edits), rebuilds the
- * tokens, and runs the token checks at the end.
+ * (so the scaffold passes `pnpm check:tokens` with no hand edits), declares its contrast pair,
+ * rebuilds the tokens, and runs the token and contrast checks at the end.
  *
  * Usage:
  *   node scripts/generate-component.js <name> --category=<key> [--dry-run]
@@ -36,6 +36,7 @@ import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 
 const COMPONENTS_JSON = "packages/tokens/io/sync/components.json";
+const CONTRAST_PAIRS_JSON = "scripts/contrast-pairs.json";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -241,6 +242,28 @@ async function addTokens(name, composition) {
   }
   await fs.writeFile(file, JSON.stringify(json, null, 2) + "\n", "utf-8");
   success(`Added ${tokenSpec(name, composition).length} tokens to ${COMPONENTS_JSON}`);
+}
+
+// Declare the text/background pair, so `pnpm check:contrast` covers the new tokens.
+async function addContrastPair(name) {
+  // Text insertion, not a JSON rewrite: the file is hand-formatted, and a rewrite
+  // would reformat unrelated entries.
+  const file = path.join(rootDir, CONTRAST_PAIRS_JSON);
+  const text = await fs.readFile(file, "utf-8");
+  const start = text.indexOf('"pairs": [');
+  const end = start === -1 ? -1 : text.indexOf("\n  ]", start);
+  if (end === -1) error(`Could not find the "pairs" array in ${CONTRAST_PAIRS_JSON}`);
+  const entry = `,
+    {
+      "foreground": "${name}.default.text",
+      "backgrounds": [
+        "${name}.default.background"
+      ],
+      "kind": "text"
+    }`;
+  await fs.writeFile(file, text.slice(0, end) + entry + text.slice(end), "utf-8");
+  JSON.parse(await fs.readFile(file, "utf-8")); // still valid JSON
+  success(`Declared the text pair in ${CONTRAST_PAIRS_JSON}`);
 }
 
 // Generate component template
@@ -804,6 +827,7 @@ function plannedOutput(name, composition, category) {
         ? "packages/ui/src/compositions/index.ts"
         : "packages/ui/src/index.ts",
       COMPONENTS_JSON,
+      CONTRAST_PAIRS_JSON,
     ],
   };
 }
@@ -871,6 +895,7 @@ async function main() {
   try {
     // Tokens first, so the classes in the scaffold always resolve
     await addTokens(componentName, composition);
+    await addContrastPair(componentName);
 
     // Create files
     await createComponentFile(componentName, composition);
@@ -892,6 +917,7 @@ async function main() {
   // Validate the tokens: rebuild, then run the token checks (refs, structure, binding)
   runCheck("Rebuilding tokens", "pnpm --filter @wyliedog/tokens build");
   runCheck("Token checks (pnpm check:tokens)", "pnpm check:tokens");
+  runCheck("Contrast check (pnpm check:contrast)", "pnpm check:contrast");
 
   console.log();
   log("✨ Component generated successfully!\n", "green");
