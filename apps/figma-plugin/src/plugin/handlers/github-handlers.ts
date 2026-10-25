@@ -14,6 +14,8 @@ import {
   notifyUnsupportedVariables,
 } from "./utils";
 import type { PluginMessage } from "../../shared/types";
+import { fileConfigStorage } from "../storage/file-storage";
+import { syncStateStorage } from "../storage/sync-state-storage";
 
 /**
  * Sync tokens to GitHub (prepare data and forward to UI)
@@ -87,11 +89,17 @@ export async function handleGitHubSyncTokens(
     );
     notifyUnsupportedVariables(skipped);
 
+    // The sync baseline rides along so the UI can tell which side changed
+    // without exporting Figma's variables a second time.
+    const config = await fileConfigStorage.getGitHubConfig();
+    const baseline = syncStateStorage.loadBaseline(config);
+
     // Forward to UI thread for GitHub operations
     figma.ui.postMessage({
       type: "github-sync-tokens",
       selectedCollectionIds: collectionIds,
       exportData: exportData,
+      baseline,
       skipped,
     });
   } catch (error: unknown) {

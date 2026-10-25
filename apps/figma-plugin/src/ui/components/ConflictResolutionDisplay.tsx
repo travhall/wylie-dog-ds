@@ -6,45 +6,13 @@ import type {
   ConflictResolution,
 } from "../../plugin/sync/types";
 import { useVirtualizer } from "../hooks/useVirtualizer";
+import { ColorSwatch, isColorValue } from "./common/ColorSwatch";
 
 interface ConflictResolutionDisplayProps {
   conflicts: TokenConflict[];
   onResolve: (resolutions: ConflictResolution[]) => void;
   onCancel: () => void;
   loading?: boolean;
-}
-
-/** Whether a value string is a CSS-renderable color (hex/oklch/rgb/hsl). */
-function isColorValue(value: unknown): value is string {
-  if (typeof value !== "string") return false;
-  const s = value.trim();
-  return (
-    s.startsWith("#") ||
-    s.startsWith("oklch(") ||
-    s.startsWith("rgb(") ||
-    s.startsWith("hsl(")
-  );
-}
-
-/** Small color preview swatch — modern Chromium (Figma's iframe) renders oklch. */
-function ColorSwatch({ value }: { value: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      title={value}
-      style={{
-        display: "inline-block",
-        width: 10,
-        height: 10,
-        borderRadius: "2px",
-        background: value,
-        border: "1px solid var(--border-default)",
-        marginRight: "4px",
-        verticalAlign: "middle",
-        flexShrink: 0,
-      }}
-    />
-  );
 }
 
 /** Renders a token's value(s) as code, with a color swatch for color values. */

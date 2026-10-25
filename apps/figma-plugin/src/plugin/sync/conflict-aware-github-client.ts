@@ -8,6 +8,8 @@ import { ConflictResolver } from "./conflict-resolver";
 import { SyncMetadataManager } from "./metadata-manager";
 import { classifyChanges } from "./sync-baseline";
 import type { ClassifiedChanges, SyncBaseline } from "./sync-baseline";
+import { buildSyncDiff } from "./sync-diff";
+import type { SyncDiff } from "./sync-diff";
 import type {
   TokenConflict,
   ConflictResolution,
@@ -28,6 +30,8 @@ export interface ConflictAwareSyncResult extends SyncResult {
 
 export interface SyncStatusResult extends ClassifiedChanges {
   upToDate: boolean;
+  /** Read-only per-token overview, for the "Review changes" modal. */
+  diff: SyncDiff;
 }
 
 export class ConflictAwareGitHubClient extends GitHubClient {
@@ -406,6 +410,12 @@ export class ConflictAwareGitHubClient extends GitHubClient {
     baseline?: SyncBaseline | null
   ): Promise<SyncStatusResult> {
     const unknown: SyncStatusResult = {
+      diff: buildSyncDiff({
+        direction: "overview",
+        baseline: null,
+        localTokens: [],
+        remoteTokens: [],
+      }),
       upToDate: false,
       hasBaseline: false,
       toPush: 0,
@@ -439,7 +449,13 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         ? classified.toPush + classified.toPull + classified.conflicts === 0
         : classified.differences === 0;
 
-      return { ...classified, upToDate };
+      const diff = buildSyncDiff({
+        direction: "overview",
+        baseline,
+        localTokens,
+        remoteTokens: pullResult.tokens,
+      });
+      return { ...classified, upToDate, diff };
     } catch (error) {
       console.error("Failed to get sync status:", error);
       return unknown;

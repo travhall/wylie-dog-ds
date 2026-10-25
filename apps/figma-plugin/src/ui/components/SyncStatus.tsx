@@ -3,6 +3,8 @@ import { useState, useEffect } from "preact/hooks";
 import { Icon } from "./common/Icon";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
 import { checkSyncStatus as runSyncStatusCheck } from "../utils/check-sync-status";
+import { DiffReview } from "./DiffReview";
+import type { SyncDiff } from "../../plugin/sync/sync-diff";
 
 interface SyncStatusProps {
   githubClient: ConflictAwareGitHubClient;
@@ -23,6 +25,8 @@ interface SyncStatusData {
   renamed: number;
   /** Plain Figma-vs-GitHub difference count (the no-baseline number). */
   differences: number;
+  /** Per-token overview behind the "Review changes" button. */
+  diff?: SyncDiff;
   lastSync?: string;
   checking?: boolean;
   checked?: boolean;
@@ -46,6 +50,8 @@ export function SyncStatus({
     checked: false,
   });
 
+  const [showReview, setShowReview] = useState(false);
+
   const checkSyncStatus = async () => {
     if (!githubConfigured) return;
 
@@ -66,6 +72,7 @@ export function SyncStatus({
         conflicts: syncStatus.conflicts,
         renamed: syncStatus.renamedLocal + syncStatus.renamedRemote,
         differences: syncStatus.differences,
+        diff: syncStatus.diff,
         lastSync: prev.lastSync,
         checking: false,
         checked: true,
@@ -202,25 +209,44 @@ export function SyncStatus({
           <span>{getStatusText()}</span>
         </div>
 
-        <button
-          onClick={() => {
-            checkSyncStatus();
-            onRefresh?.();
-          }}
-          disabled={status.checking}
-          aria-label="Refresh sync status"
-          style={{
-            padding: "2px 8px",
-            background: "var(--surface-tertiary)",
-            border: "1px solid var(--border-default)",
-            borderRadius: "var(--radius-sm)",
-            cursor: status.checking ? "not-allowed" : "pointer",
-            fontSize: "var(--font-size-xs)",
-            color: "var(--text-primary)",
-          }}
-        >
-          {status.checking ? "…" : "Refresh"}
-        </button>
+        <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+          {status.checked && status.diff && !status.checking && (
+            <button
+              onClick={() => setShowReview(true)}
+              aria-label="Review changes"
+              style={{
+                padding: "2px 8px",
+                background: "var(--surface-tertiary)",
+                border: "1px solid var(--border-default)",
+                borderRadius: "var(--radius-sm)",
+                cursor: "pointer",
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Review changes
+            </button>
+          )}
+          <button
+            onClick={() => {
+              checkSyncStatus();
+              onRefresh?.();
+            }}
+            disabled={status.checking}
+            aria-label="Refresh sync status"
+            style={{
+              padding: "2px 8px",
+              background: "var(--surface-tertiary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-sm)",
+              cursor: status.checking ? "not-allowed" : "pointer",
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-primary)",
+            }}
+          >
+            {status.checking ? "…" : "Refresh"}
+          </button>
+        </div>
       </div>
 
       {status.error ? (
@@ -248,7 +274,7 @@ export function SyncStatus({
                     marginTop: "2px",
                   }}
                 >
-                  Pull or Push once to set a baseline.
+                  Pull once to set a baseline.
                 </div>
               </div>
             )}
@@ -308,6 +334,9 @@ export function SyncStatus({
             </div>
           )}
         </div>
+      )}
+      {showReview && status.diff && (
+        <DiffReview diff={status.diff} onClose={() => setShowReview(false)} />
       )}
     </div>
   );

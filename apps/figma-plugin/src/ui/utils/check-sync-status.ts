@@ -20,6 +20,8 @@ const PLUGIN_TIMEOUT_MS = 10000;
 export interface LocalExport {
   localTokens: ExportData[];
   baseline: SyncBaseline | null;
+  /** The plugin reported an error or never answered. */
+  failed?: boolean;
 }
 
 /** Ask the plugin thread for the Figma tokens and the file's sync baseline. */
@@ -37,7 +39,7 @@ export function requestLocalExport(): Promise<LocalExport> {
           baseline: isSyncBaseline(message.baseline) ? message.baseline : null,
         });
       } else if (message?.type === "local-tokens-error") {
-        finish({ localTokens: [], baseline: null });
+        finish({ localTokens: [], baseline: null, failed: true });
       }
     };
     window.addEventListener("message", handler);
@@ -45,7 +47,7 @@ export function requestLocalExport(): Promise<LocalExport> {
     parent.postMessage({ pluginMessage: { type: "get-local-tokens" } }, "*");
 
     setTimeout(
-      () => finish({ localTokens: [], baseline: null }),
+      () => finish({ localTokens: [], baseline: null, failed: true }),
       PLUGIN_TIMEOUT_MS
     );
   });
