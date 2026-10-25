@@ -129,20 +129,42 @@ Native `EASING` and `TIMING` variables, composed colors and anything that aliase
 
 ### Variable Scopes
 
-Scopes decide which pickers (fill, text fill, stroke) list a colour variable. They are inferred from the token name by `src/plugin/variables/scopes.ts` and re-applied on every import, so importing or pulling updates scopes on variables that already exist.
+Scopes decide which pickers (fill, text fill, stroke, font size, opacity...) list a variable. A variable left on `ALL_SCOPES` appears in every picker of its type, so every variable gets a scope. They are inferred from the token name by `src/plugin/variables/scopes.ts` and re-applied on every import, so importing or pulling updates scopes on variables that already exist.
 
-| Token                                                                                                                                       | Scopes                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| `color.background.*`                                                                                                                        | `FRAME_FILL`, `SHAPE_FILL`     |
-| `color.foreground.*`                                                                                                                        | `TEXT_FILL`, `SHAPE_FILL`      |
-| `color.border.*`                                                                                                                            | `STROKE_COLOR`                 |
-| `color.focus.ring`, `color.focus.halo`                                                                                                      | `STROKE_COLOR`, `EFFECT_COLOR` |
-| Component, name contains `background`, `fill`, `track`, `thumb`, `indicator` or `overlay`                                                   | `FRAME_FILL`, `SHAPE_FILL`     |
-| Component, name contains `text`, `label`, `foreground`, `placeholder`, `link` or `icon`                                                     | `TEXT_FILL`, `SHAPE_FILL`      |
-| Component, name contains `border`, `ring`, `outline` or `stroke`                                                                            | `STROKE_COLOR`                 |
-| Primitive colours (`color.blue.600`), and any component name without a property word (`select.trigger-open`, a bare `color`, `ring-offset`) | `ALL_SCOPES`                   |
+| Token                                                                                                                                | Scopes                         |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
+| `color.background.*`                                                                                                                 | `FRAME_FILL`, `SHAPE_FILL`     |
+| `color.foreground.*`                                                                                                                 | `TEXT_FILL`, `SHAPE_FILL`      |
+| `color.border.*`                                                                                                                     | `STROKE_COLOR`                 |
+| `color.focus.ring`, `color.focus.halo`                                                                                               | `STROKE_COLOR`, `EFFECT_COLOR` |
+| Component, name contains `background`, `fill`, `track`, `thumb`, `indicator` or `overlay`                                            | `FRAME_FILL`, `SHAPE_FILL`     |
+| Component, name contains `text`, `label`, `foreground`, `placeholder`, `link` or `icon`                                              | `TEXT_FILL`, `SHAPE_FILL`      |
+| Component, name contains `border`, `ring`, `outline` or `stroke`                                                                     | `STROKE_COLOR`                 |
+| Primitive colours (`color.blue.600`): bound through semantic and component variables, not directly                                   | none (hidden)                  |
+| Component name without a property word (`select.trigger-open`, a bare `color`, `ring-offset`): 49 variables, ambiguous until renamed | `ALL_SCOPES`                   |
 
-For component tokens the last name segment is read first (`background-hover`), then earlier ones. Non-colour types keep their type-based scopes (dimension tokens are still inferred from the name). Behaviour inside Figma is checked by hand: open a fill, a text fill and a stroke picker and confirm only the intended variables appear.
+For component tokens the last name segment is read first (`background-hover`), then earlier ones.
+
+Non-colour variables are scoped by the property word in the name, whatever their `$type` (font size, weight, line height, opacity and z-index are typed `number` on purpose, for Figma Variables compatibility):
+
+| Name contains                                                              | Scopes                         |
+| -------------------------------------------------------------------------- | ------------------------------ |
+| `font-size`                                                                | `FONT_SIZE`                    |
+| `font-weight`                                                              | `FONT_WEIGHT`                  |
+| `tracking`, `letter-spacing`                                               | `LETTER_SPACING`               |
+| `opacity`                                                                  | `OPACITY`                      |
+| `shadow.blur`, `shadow.offset`, `shadow.spread`                            | `EFFECT_FLOAT`                 |
+| `radius`                                                                   | `CORNER_RADIUS`                |
+| `border-width`                                                             | `STROKE_FLOAT`                 |
+| size, width, height, space, gap, padding (spacing and dimension variables) | `WIDTH_HEIGHT` and/or `GAP`    |
+| `line-height`                                                              | none (hidden), see below       |
+| `z-index`, durations, easings, shadow value strings, `focus.*` dimensions  | none (hidden): CSS-only values |
+
+An empty scope list (`[]`) is valid Figma: the variable still exists and aliases still resolve, but no picker lists it. The importer assigns it as is.
+
+**Line height is hidden on purpose.** The line-height tokens are percentages (100, 125, 137.5) but Figma binds a line-height variable as pixels, so scoping them `LINE_HEIGHT` would let a designer pick `line-height/none` and get a 100px line height. Set line height on text layers by hand until the tokens are converted to pixel values (Option A in [figma-gateway.md](../../documentation/reference/figma-gateway.md)); then scope them `LINE_HEIGHT`.
+
+Tests build their expectations from the real sync files, so a new token family with no rule fails `scopes.test.ts` instead of silently becoming `ALL_SCOPES`. Behaviour inside Figma is checked by hand: after a pull, open the font size, font weight, line height and letter spacing pickers on a text layer and the opacity field, and confirm each lists only its own variables (line height lists none) and that no primitive appears in a fill picker.
 
 ### Dark Mode
 

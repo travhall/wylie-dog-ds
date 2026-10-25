@@ -1,8 +1,23 @@
 // Figma variable scope inference.
 //
 // Scopes decide which property pickers (fill, text fill, stroke...) list a
-// variable. Colour scopes are inferred from the token name; every other type
-// keeps its type-based (or, for dimension, name-based) scopes.
+// variable. A variable left on ALL_SCOPES appears in every picker of its type,
+// so every token gets a scope, inferred from its name (the type is often
+// "number" on purpose, see documentation/reference/figma-gateway.md).
+//
+// An empty list ([]) is valid and hides the variable from every picker.
+// Owner decisions (Plan 201, 2026-10-25):
+// - line-height is hidden: the tokens are percentages (100, 125, 137.5) but
+//   Figma binds line-height variables as pixels, so LINE_HEIGHT would give a
+//   100px line height. How to handle it long term is a separate decision.
+// - primitive colours (color.blue.600) are hidden: designers bind semantic and
+//   component variables, not the raw palette.
+// - z-index, duration, easing, shadow value strings and the semantic focus
+//   dimensions are hidden: no Figma property binds them.
+// - shadow blur, offset and spread are EFFECT_FLOAT; tracking and
+//   letter-spacing are LETTER_SPACING.
+// The only variables left on ALL_SCOPES are component colours whose name has
+// no property word (see inferScopesForComponentColor).
 
 // Map W3C DTCG types to Figma scopes with enhanced typography support
 const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
@@ -19,7 +34,10 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   borderWidth: ["STROKE_FLOAT"],
   // dimension type requires name-based scope inference (see inferScopesForDimension)
   dimension: ["ALL_SCOPES"],
-  shadow: ["ALL_SCOPES"],
+  // CSS-only values no Figma property can bind
+  shadow: [],
+  duration: [],
+  cubicBezier: [],
   boolean: ["ALL_SCOPES"],
   // Add fallbacks for common token types
   number: ["ALL_SCOPES"],
@@ -148,8 +166,9 @@ function inferScopesForColor(tokenName: string): string[] {
         // The ring is an outline (a stroke) and the halo is a shadow (an effect)
         return [...FOCUS_BORDER_SCOPES];
       default:
-        // Primitive palette (color.blue.600): stays visible everywhere
-        return ["ALL_SCOPES"];
+        // Primitive palette (color.blue.600): bound through semantic and
+        // component variables, so hidden from every picker
+        return [];
     }
   }
 
@@ -157,10 +176,36 @@ function inferScopesForColor(tokenName: string): string[] {
 }
 
 /**
+ * Scopes decided by the property word in a non-colour token's name, whatever
+ * its type (font size, weight, line height, opacity and z-index are typed
+ * number). Returns null when the name carries no such word.
+ */
+function inferScopesFromName(tokenName: string): string[] | null {
+  const name = tokenName.toLowerCase();
+
+  // Percentages, but Figma binds line height as pixels: hidden for now
+  if (name.includes("line-height")) return [];
+  if (name.includes("font-size")) return ["FONT_SIZE"];
+  if (name.includes("font-weight")) return ["FONT_WEIGHT"];
+  if (name.includes("tracking") || name.includes("letter-spacing")) {
+    return ["LETTER_SPACING"];
+  }
+  if (name.includes("opacity")) return ["OPACITY"];
+  if (name.includes("z-index")) return [];
+  // The focus indicator is sized in code, not by a layer property
+  if (/^focus[./]/.test(name)) return [];
+  if (/^shadow[./](blur|offset|spread)/.test(name)) return ["EFFECT_FLOAT"];
+  if (name.includes("border-width")) return ["STROKE_FLOAT"];
+  return null;
+}
+
+/**
  * Figma scopes for a token of the given W3C type and name.
  */
 export function inferScopes(type: string, tokenName: string): string[] {
-  if (type === "dimension") return inferScopesForDimension(tokenName);
   if (type === "color") return inferScopesForColor(tokenName);
+  const byName = inferScopesFromName(tokenName);
+  if (byName) return byName;
+  if (type === "dimension") return inferScopesForDimension(tokenName);
   return [...(W3C_TO_FIGMA_SCOPES_MAP[type] || ["ALL_SCOPES"])];
 }
