@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { ConflictAwareGitHubClient } from "../conflict-aware-github-client";
 import { GitHubClient } from "../../github/client";
+import { buildBaseline, hashTokens } from "../sync-baseline";
 import type { ExportData, ProcessedToken } from "../../variables/processor";
 
 const token = (
@@ -18,10 +19,11 @@ afterEach(() => {
  * `z-index.01` in Figma; Figma re-pointed the one token aliasing it. Nothing
  * changed on GitHub, yet the Sync tab showed "1 local, 3 remote".
  *
- * This documents the two-way diff's behaviour (no baseline) so the baseline
- * work can be measured against it.
+ * Before the baseline, getSyncStatus diffed Figma against GitHub with no
+ * memory and called every difference "remote". Now each side is compared with
+ * what the last sync agreed on.
  */
-describe("getSyncStatus without a baseline: z-index rename scenario", () => {
+describe("getSyncStatus: z-index rename scenario", () => {
   const remote: ExportData[] = [
     {
       primitive: {
@@ -62,7 +64,7 @@ describe("getSyncStatus without a baseline: z-index rename scenario", () => {
     },
   ];
 
-  it("reports 1 local and 3 remote although nothing changed on GitHub", async () => {
+  it("without a baseline reports honest differences, not local or remote", async () => {
     vi.spyOn(GitHubClient.prototype, "pullTokens").mockResolvedValue({
       success: true,
       tokens: remote,
@@ -71,13 +73,33 @@ describe("getSyncStatus without a baseline: z-index rename scenario", () => {
     const status = await new ConflictAwareGitHubClient().getSyncStatus(local);
 
     expect(status.upToDate).toBe(false);
-    expect(status.localChanges).toBe(1);
-    expect(status.remoteChanges).toBe(3);
-    expect(status.conflicts?.map((c) => c.type).sort()).toEqual([
-      "addition",
-      "deletion",
-      "value-change",
-    ]);
+    expect(status.hasBaseline).toBe(false);
+    // 1 value change + 1 addition + 1 deletion, direction unknown
+    expect(status.differences).toBe(3);
+    expect(status.toPush).toBe(0);
+    expect(status.toPull).toBe(0);
+  });
+
+  it("with a baseline shows the rename as Figma-side changes and 0 to pull", async () => {
+    vi.spyOn(GitHubClient.prototype, "pullTokens").mockResolvedValue({
+      success: true,
+      tokens: remote,
+    });
+    // Last sync: Figma and GitHub both held the old names.
+    const baseline = buildBaseline(hashTokens(remote), hashTokens(remote));
+
+    const status = await new ConflictAwareGitHubClient().getSyncStatus(
+      local,
+      baseline
+    );
+
+    expect(status.upToDate).toBe(false);
+    expect(status.hasBaseline).toBe(true);
+    expect(status.toPull).toBe(0);
+    expect(status.conflicts).toBe(0);
+    // The renamed primitive and the alias Figma re-pointed.
+    expect(status.toPush).toBe(2);
+    expect(status.renamedLocal).toBe(1);
   });
 
   it("reports nothing for a pure reorder", async () => {
@@ -92,7 +114,6 @@ describe("getSyncStatus without a baseline: z-index rename scenario", () => {
     );
 
     expect(status.upToDate).toBe(true);
-    expect(status.localChanges).toBe(0);
-    expect(status.remoteChanges).toBe(0);
+    expect(status.differences).toBe(0);
   });
 });

@@ -20,8 +20,13 @@ import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aw
 
 type SyncResult = {
   upToDate: boolean;
-  localChanges: number;
-  remoteChanges: number;
+  hasBaseline?: boolean;
+  toPush?: number;
+  toPull?: number;
+  conflicts?: number;
+  renamedLocal?: number;
+  renamedRemote?: number;
+  differences?: number;
 };
 
 function makeClient(impl: () => Promise<SyncResult>) {
@@ -81,7 +86,7 @@ describe("SyncStatus", () => {
   });
 
   describe("with a repository", () => {
-    const upToDate = { upToDate: true, localChanges: 0, remoteChanges: 0 };
+    const upToDate = { upToDate: true, hasBaseline: true };
 
     it("asks the plugin for the last sync time and starts as up to date", () => {
       const { client, getSyncStatus } = makeClient(async () => upToDate);
@@ -134,8 +139,10 @@ describe("SyncStatus", () => {
       const onRefresh = vi.fn();
       const { client, getSyncStatus } = makeClient(async () => ({
         upToDate: false,
-        localChanges: 2,
-        remoteChanges: 3,
+        hasBaseline: true,
+        toPush: 2,
+        toPull: 3,
+        conflicts: 1,
       }));
       render(
         <SyncStatus
@@ -151,27 +158,40 @@ describe("SyncStatus", () => {
       expect(posted("get-local-tokens")).toBe(true);
 
       const localTokens = [{ collection: "primitive" }];
-      pluginMessage({ type: "local-tokens-exported", localTokens });
+      const baseline = {
+        schema: 1,
+        recordedAt: ago(5 * MIN),
+        collections: {},
+      };
+      pluginMessage({ type: "local-tokens-exported", localTokens, baseline });
 
       await waitFor(() =>
         expect(screen.getByText("Changes detected")).toBeInTheDocument()
       );
-      expect(getSyncStatus).toHaveBeenCalledWith(localTokens);
-      expect(screen.getByText(/2 local/)).toBeInTheDocument();
-      expect(screen.getByText(/3 remote/)).toBeInTheDocument();
-      expect(screen.getByText("•")).toBeInTheDocument();
+      // The baseline that came with the Figma export is handed to the client.
+      expect(getSyncStatus).toHaveBeenCalledWith(localTokens, baseline);
+      expect(screen.getByText(/2 to push/)).toBeInTheDocument();
+      expect(screen.getByText(/3 to pull/)).toBeInTheDocument();
+      expect(screen.getByText(/1 conflict$/)).toBeInTheDocument();
+      expect(screen.getAllByText("•")).toHaveLength(2);
+      // The old wording is gone: nothing here says "local" or "remote".
+      expect(
+        screen.queryByText(/\blocal\b|\bremote\b/)
+      ).not.toBeInTheDocument();
       // The last sync time survives the refresh.
       expect(screen.getByText("Last sync: 5m ago")).toBeInTheDocument();
     });
 
     it.each([
-      ["local", { localChanges: 4, remoteChanges: 0 }, /4 local/, /remote/],
-      ["remote", { localChanges: 0, remoteChanges: 1 }, /1 remote/, /local/],
+      ["push", { toPush: 4, toPull: 0 }, /4 to push/, /to pull/],
+      ["pull", { toPush: 0, toPull: 1 }, /1 to pull/, /to push/],
     ])(
       "shows only the %s count when that is the only change",
       async (_label, counts, present, absent) => {
         const { client } = makeClient(async () => ({
           upToDate: false,
+          hasBaseline: true,
+          conflicts: 0,
           ...counts,
         }));
         render(<SyncStatus githubClient={client} githubConfigured />);
@@ -186,12 +206,81 @@ describe("SyncStatus", () => {
       }
     );
 
+    it("never claims a direction when there is no baseline", async () => {
+      const { client } = makeClient(async () => ({
+        upToDate: false,
+        hasBaseline: false,
+        differences: 3,
+      }));
+      render(<SyncStatus githubClient={client} githubConfigured />);
+      fireEvent.click(screen.getByLabelText("Refresh sync status"));
+      pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+      await waitFor(() =>
+        expect(screen.getByText("Differences found")).toBeInTheDocument()
+      );
+      expect(
+        screen.getByText("3 differences, direction unknown")
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText("Pull or Push once to set a baseline.")
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByText(/to push|to pull|conflict/)
+      ).not.toBeInTheDocument();
+    });
+
+    it("singularises one difference", async () => {
+      const { client } = makeClient(async () => ({
+        upToDate: false,
+        hasBaseline: false,
+        differences: 1,
+      }));
+      render(<SyncStatus githubClient={client} githubConfigured />);
+      fireEvent.click(screen.getByLabelText("Refresh sync status"));
+      pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+      await waitFor(() =>
+        expect(
+          screen.getByText("1 difference, direction unknown")
+        ).toBeInTheDocument()
+      );
+    });
+
+    it("mentions renames, which are already counted in the totals", async () => {
+      const { client } = makeClient(async () => ({
+        upToDate: false,
+        hasBaseline: true,
+        toPush: 2,
+        toPull: 0,
+        conflicts: 0,
+        renamedLocal: 1,
+        renamedRemote: 0,
+      }));
+      render(<SyncStatus githubClient={client} githubConfigured />);
+      fireEvent.click(screen.getByLabelText("Refresh sync status"));
+      pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+      await waitFor(() =>
+        expect(screen.getByText("Includes 1 renamed")).toBeInTheDocument()
+      );
+    });
+
+    it("treats a baseline sent in a malformed shape as no baseline", async () => {
+      const { client, getSyncStatus } = makeClient(async () => upToDate);
+      render(<SyncStatus githubClient={client} githubConfigured />);
+      fireEvent.click(screen.getByLabelText("Refresh sync status"));
+      pluginMessage({
+        type: "local-tokens-exported",
+        localTokens: [],
+        baseline: { nonsense: true },
+      });
+      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledWith([], null));
+    });
+
     it("falls back to an empty list when the plugin reports an export error", async () => {
       const { client, getSyncStatus } = makeClient(async () => upToDate);
       render(<SyncStatus githubClient={client} githubConfigured />);
       fireEvent.click(screen.getByLabelText("Refresh sync status"));
       pluginMessage({ type: "local-tokens-error" });
-      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledWith([]));
+      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledWith([], null));
     });
 
     it("falls back to an empty list when the export has no tokens field", async () => {
@@ -199,7 +288,7 @@ describe("SyncStatus", () => {
       render(<SyncStatus githubClient={client} githubConfigured />);
       fireEvent.click(screen.getByLabelText("Refresh sync status"));
       pluginMessage({ type: "local-tokens-exported" });
-      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledWith([]));
+      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledWith([], null));
     });
 
     it("stops waiting for the plugin after ten seconds", async () => {
@@ -211,7 +300,7 @@ describe("SyncStatus", () => {
       await act(async () => {
         await vi.advanceTimersByTimeAsync(10000);
       });
-      expect(getSyncStatus).toHaveBeenCalledWith([]);
+      expect(getSyncStatus).toHaveBeenCalledWith([], null);
     });
 
     it("shows a checking state and disables Refresh while the diff runs", async () => {

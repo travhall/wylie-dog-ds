@@ -1,8 +1,11 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
+import { useRef, useState } from "preact/hooks";
 import { SetupWizard } from "../SetupWizard";
 import { ImportPreview } from "../ImportPreview";
 import { SyncStatus } from "../SyncStatus";
+import { PullConfirm } from "../PullConfirm";
+import type { PullCheck } from "../PullConfirm";
+import { checkSyncStatus } from "../../utils/check-sync-status";
 import { Icon } from "../common/Icon";
 import { useUIContext } from "../../state";
 import type { GitHubConfig } from "../../../shared/types";
@@ -53,6 +56,24 @@ export function SyncTab({
 
   const [showEditConfig, setShowEditConfig] = useState(false);
   const [confirmingPull, setConfirmingPull] = useState(false);
+  const [pullCheck, setPullCheck] = useState<PullCheck>({ phase: "checking" });
+
+  const pullCheckId = useRef(0);
+
+  // Before a Pull, find out what it would overwrite in Figma. Only the latest
+  // click's answer is kept, so a slow earlier check can't replace a newer one.
+  const startPull = async () => {
+    const id = ++pullCheckId.current;
+    setPullCheck({ phase: "checking" });
+    setConfirmingPull(true);
+    try {
+      const status = await checkSyncStatus(githubClient);
+      if (id === pullCheckId.current) setPullCheck({ phase: "done", status });
+    } catch (error) {
+      console.error("Could not check what Pull would overwrite:", error);
+      if (id === pullCheckId.current) setPullCheck({ phase: "failed" });
+    }
+  };
   // File has repo settings (shared) but this user has no token (per user)
   const needsToken = needsGitHubToken(githubConfig);
 
@@ -536,77 +557,21 @@ export function SyncTab({
           </div>
 
           {confirmingPull ? (
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              {/* Warning notice */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: 6,
-                  padding: "6px 8px",
-                  borderRadius: "var(--radius-sm)",
-                  background: "var(--warning-light)",
-                  border: "1px solid var(--warning)",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Icon
-                  name="warning"
-                  size={12}
-                  color="var(--warning)"
-                  style={{ marginTop: 1, flexShrink: 0 }}
-                />
-                <span
-                  style={{
-                    fontSize: "var(--font-size-xs)",
-                    color: "var(--text-secondary)",
-                    lineHeight: "var(--line-height-relaxed)",
-                  }}
-                >
-                  Overwrites local Figma variables.
-                </span>
-              </div>
-              <div style={{ display: "flex", gap: 4 }}>
-                <button
-                  onClick={() => {
-                    onPullFromGitHub();
-                    setConfirmingPull(false);
-                  }}
-                  style={{
-                    flex: 1,
-                    height: 26,
-                    borderRadius: "var(--radius-sm)",
-                    background: "var(--warning)",
-                    color: "#fff",
-                    border: "none",
-                    fontFamily: "var(--font-family-base)",
-                    fontSize: "var(--font-size-sm)",
-                    fontWeight: "var(--font-weight-semibold)",
-                    cursor: "pointer",
-                  }}
-                >
-                  Confirm
-                </button>
-                <button
-                  onClick={() => setConfirmingPull(false)}
-                  style={{
-                    height: 26,
-                    padding: "0 8px",
-                    borderRadius: "var(--radius-sm)",
-                    border: "1px solid var(--border-default)",
-                    background: "var(--surface-primary)",
-                    color: "var(--text-secondary)",
-                    fontFamily: "var(--font-family-base)",
-                    fontSize: "var(--font-size-sm)",
-                    cursor: "pointer",
-                  }}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
+            <PullConfirm
+              check={pullCheck}
+              onConfirm={() => {
+                onPullFromGitHub();
+                setConfirmingPull(false);
+              }}
+              onPushFirst={() => {
+                setConfirmingPull(false);
+                onPushToGitHub();
+              }}
+              onCancel={() => setConfirmingPull(false)}
+            />
           ) : (
             <button
-              onClick={() => setConfirmingPull(true)}
+              onClick={startPull}
               disabled={loading}
               style={{
                 height: 28,

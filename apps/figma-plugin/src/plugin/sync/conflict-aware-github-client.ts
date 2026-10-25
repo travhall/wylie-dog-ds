@@ -6,6 +6,8 @@ import type { ExportData, ProcessedToken } from "../variables/processor";
 import { ConflictDetector } from "./conflict-detector";
 import { ConflictResolver } from "./conflict-resolver";
 import { SyncMetadataManager } from "./metadata-manager";
+import { classifyChanges } from "./sync-baseline";
+import type { ClassifiedChanges, SyncBaseline } from "./sync-baseline";
 import type {
   TokenConflict,
   ConflictResolution,
@@ -22,6 +24,10 @@ export interface ConflictAwareSyncResult extends SyncResult {
   conflicts?: TokenConflict[];
   requiresConflictResolution?: boolean;
   remoteTokens?: ExportData[];
+}
+
+export interface SyncStatusResult extends ClassifiedChanges {
+  upToDate: boolean;
 }
 
 export class ConflictAwareGitHubClient extends GitHubClient {
@@ -385,95 +391,58 @@ export class ConflictAwareGitHubClient extends GitHubClient {
   }
 
   /**
-   * Check sync status and detect changes
+   * Check sync status: which side changed since the last sync.
+   *
+   * With a baseline (recorded after the last successful Push or Pull) each side
+   * is compared with its own baseline, so Figma edits count as "to push" and
+   * GitHub edits as "to pull". Without one only the plain two-way difference
+   * count is honest, and that is what is returned (`hasBaseline: false`).
+   *
+   * The last-sync time is not part of this result: it is per file and lives in
+   * the plugin thread, which the UI reads via the `get-last-sync` message.
    */
-  async getSyncStatus(localTokens?: ExportData[]): Promise<{
-    upToDate: boolean;
-    localChanges: number;
-    remoteChanges: number;
-    lastSync?: string;
-    conflicts?: TokenConflict[];
-  }> {
+  async getSyncStatus(
+    localTokens?: ExportData[],
+    baseline?: SyncBaseline | null
+  ): Promise<SyncStatusResult> {
+    const unknown: SyncStatusResult = {
+      upToDate: false,
+      hasBaseline: false,
+      toPush: 0,
+      toPull: 0,
+      conflicts: 0,
+      renamedLocal: 0,
+      renamedRemote: 0,
+      differences: 0,
+      entries: [],
+    };
+
     try {
       // If localTokens not provided, we can't detect local changes
       if (!localTokens || localTokens.length === 0) {
-        // console.log("⚠️ No local tokens provided for sync status check");
-        return {
-          upToDate: false,
-          localChanges: 0,
-          remoteChanges: 0,
-          lastSync: await this.getLastSyncTime(),
-        };
+        return unknown;
       }
 
       // Pull remote tokens
       const pullResult = await super.pullTokens();
 
       if (!pullResult.success || !pullResult.tokens) {
-        return {
-          upToDate: false,
-          localChanges: 0,
-          remoteChanges: 0,
-          lastSync: await this.getLastSyncTime(),
-        };
+        return unknown;
       }
 
-      // Detect conflicts
-      const conflictResult = this.conflictDetector.detectConflicts(
+      const classified = classifyChanges(
+        baseline,
         localTokens,
         pullResult.tokens
       );
+      const upToDate = classified.hasBaseline
+        ? classified.toPush + classified.toPull + classified.conflicts === 0
+        : classified.differences === 0;
 
-      // Calculate change counts
-      const localChanges = conflictResult.conflicts.filter(
-        (c) => c.type === "value-change" && c.localToken
-      ).length;
-
-      const remoteChanges = conflictResult.conflicts.filter(
-        (c) =>
-          c.type === "value-change" ||
-          c.type === "addition" ||
-          c.type === "deletion"
-      ).length;
-
-      const upToDate = conflictResult.conflicts.length === 0;
-
-      // console.log(
-      //   `📊 Sync status: ${localChanges} local changes, ${remoteChanges} remote changes`
-      // );
-
-      return {
-        upToDate,
-        localChanges,
-        remoteChanges,
-        lastSync: await this.getLastSyncTime(),
-        conflicts: conflictResult.conflicts,
-      };
+      return { ...classified, upToDate };
     } catch (error) {
       console.error("Failed to get sync status:", error);
-      return {
-        upToDate: false,
-        localChanges: 0,
-        remoteChanges: 0,
-        lastSync: await this.getLastSyncTime(),
-      };
-    }
-  }
-
-  /**
-   * Get last sync timestamp from storage
-   */
-  private async getLastSyncTime(): Promise<string | undefined> {
-    // `figma` only exists in the plugin thread. getSyncStatus() runs in the UI
-    // thread (network + diff), so guard against touching figma there — the UI
-    // reads last-sync via the `get-last-sync` message instead.
-    if (typeof figma === "undefined") return undefined;
-    try {
-      const syncData = await figma.clientStorage.getAsync("github-last-sync");
-      return syncData?.timestamp;
-    } catch (error) {
-      console.error("Error getting last sync time:", error);
-      return undefined;
+      return unknown;
     }
   }
 }
