@@ -594,3 +594,116 @@ describe("GitHubClient pull-request sync", () => {
     expect(mockOctokit.pulls.create).not.toHaveBeenCalled();
   });
 });
+
+describe("GitHubClient.fetchTextStyleDefinitions (plan 206)", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  const file = {
+    description: "x",
+    styles: [
+      {
+        name: "button/sm",
+        fontFamily: "typography.font-family.sans",
+        fontSize: "button.font-size.sm",
+      },
+    ],
+  };
+
+  it("keeps the file next to the token folder, not inside it", () => {
+    expect(
+      makeClient({
+        tokenPath: "packages/tokens/io/sync",
+      }).textStyleDefinitionsPath()
+    ).toBe("packages/tokens/io/styles/text-styles.json");
+    expect(
+      makeClient({
+        tokenPath: "packages/tokens/io/sync/",
+      }).textStyleDefinitionsPath()
+    ).toBe("packages/tokens/io/styles/text-styles.json");
+    expect(makeClient({ tokenPath: "tokens" }).textStyleDefinitionsPath()).toBe(
+      "styles/text-styles.json"
+    );
+  });
+
+  it("reads and parses the file from the pulled branch", async () => {
+    const client = makeClient({ tokenPath: "packages/tokens/io/sync" });
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify(file),
+    });
+
+    const result = await client.fetchTextStyleDefinitions();
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      "https://raw.githubusercontent.com/wylie-dog/design-tokens/main/packages/tokens/io/styles/text-styles.json"
+    );
+    expect(result).toEqual({
+      status: "found",
+      definitions: [
+        {
+          name: "button/sm",
+          fontFamily: "typography.font-family.sans",
+          fontSize: "button.font-size.sm",
+          fontWeight: undefined,
+          lineHeight: undefined,
+          letterSpacing: undefined,
+        },
+      ],
+    });
+  });
+
+  it("reports a missing file as absent, not an error", async () => {
+    const client = makeClient();
+    mockFetch.mockResolvedValue({
+      ok: false,
+      status: 404,
+      text: async () => "",
+    });
+    expect(await client.fetchTextStyleDefinitions()).toEqual({
+      status: "absent",
+    });
+  });
+
+  it("reports other HTTP failures, invalid JSON and wrong shapes as errors", async () => {
+    const client = makeClient();
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      status: 500,
+      text: async () => "",
+    });
+    expect(await client.fetchTextStyleDefinitions()).toMatchObject({
+      status: "error",
+      error: expect.stringContaining("HTTP 500"),
+    });
+
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      text: async () => "{nope",
+    });
+    expect(await client.fetchTextStyleDefinitions()).toMatchObject({
+      status: "error",
+    });
+
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({ hello: 1 }),
+    });
+    expect(await client.fetchTextStyleDefinitions()).toMatchObject({
+      status: "error",
+      error: expect.stringContaining("not a text style definitions file"),
+    });
+  });
+
+  it("never lists the definitions as a token file, so Push and the baseline cannot see them", async () => {
+    const client = makeClient({ tokenPath: "packages/tokens/io/sync" });
+    mockOctokit.repos.getContent.mockResolvedValue({
+      data: [{ type: "file", name: "primitive.json" }],
+    });
+    expect(await client.listFiles()).toEqual(["primitive.json"]);
+  });
+});

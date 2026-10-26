@@ -29,7 +29,11 @@ import {
 import type { SyncDiff } from "../../../plugin/sync/sync-diff";
 import type { SyncChangeSummary } from "../../../plugin/sync/change-summary";
 import { setPendingRemoteHashes } from "../../utils/pending-sync-hashes";
-import { requestLocalExport } from "../../utils/check-sync-status";
+import {
+  readTextStyleDefinitions,
+  requestLocalExport,
+} from "../../utils/check-sync-status";
+import { planWork } from "../../../plugin/variables/text-style-definitions";
 
 /**
  * The review shown before a Push or Pull writes anything (plan 200). The
@@ -53,6 +57,11 @@ export interface GitHubSyncOptions {
   onPullSummary?: (summary: SyncChangeSummary) => void;
   /** Start a Push of the selected collections (for "Push first"). */
   onRequestPush?: () => void;
+  /**
+   * Pull also creates and updates the text styles in the definitions file
+   * (plan 206). Read when a Pull starts; Push never uses it.
+   */
+  includeTextStyles?: boolean;
 }
 
 /** Message for a repo path that has no token files yet (first ever push). */
@@ -101,6 +110,9 @@ export function useGitHubSync(
   // Ref to hold the pull handler so handleGitHubConfigTest can call it
   // without creating a circular dependency
   const pullHandlerRef = useRef<() => Promise<void>>();
+  // The last Pull review's text style work, for the per-token (Advanced) path,
+  // which imports from the conflict list instead of `performPull`.
+  const lastPullStylesRef = useRef<SyncDiff["textStyles"] | null>(null);
 
   /**
    * Save GitHub configuration after wizard completes.
@@ -352,6 +364,8 @@ export function useGitHubSync(
             // The linked text styles the review listed; the plugin applies
             // them once the import has landed (plan 205).
             textStyleChanges: diff.textStyles.changes,
+            // The styles the definitions file creates and updates (plan 206)
+            textStyleDefinitions: planWork(diff.textStyles.definitions),
           },
         },
         "*"
@@ -402,6 +416,23 @@ export function useGitHubSync(
         return;
       }
 
+      // The definitions file, only when "Text styles" is ticked (plan 206). A
+      // missing file is not an error; an unreadable one is.
+      let textStyleDefinitions: Awaited<
+        ReturnType<typeof readTextStyleDefinitions>
+      >;
+      if (optionsRef.current.includeTextStyles) {
+        const definitions = await githubClient.fetchTextStyleDefinitions();
+        if (definitions.status === "error") {
+          actions.setLoading(false);
+          actions.setLoadingMessage("");
+          actions.setError(definitions.error);
+          return;
+        }
+        textStyleDefinitions =
+          definitions.status === "found" ? definitions.definitions : null;
+      }
+
       const diff = buildSyncDiff({
         direction: "pull",
         baseline: local.baseline,
@@ -409,7 +440,9 @@ export function useGitHubSync(
         remoteTokens,
         localScopes: local.localScopes,
         localTextStyles: local.localTextStyles,
+        textStyleDefinitions,
       });
+      lastPullStylesRef.current = diff.textStyles;
 
       actions.setLoading(false);
       actions.setLoadingMessage("");
@@ -579,6 +612,17 @@ export function useGitHubSync(
                 // Use "replace" strategy to delete orphaned variables
                 // This ensures bi-directional sync: tokens deleted in code are deleted in Figma
                 mergeStrategy: "replace",
+                // The text style work the Pull review listed (plans 205, 206)
+                ...(lastPullStylesRef.current?.changes.length
+                  ? { textStyleChanges: lastPullStylesRef.current.changes }
+                  : {}),
+                ...(planWork(lastPullStylesRef.current?.definitions).length
+                  ? {
+                      textStyleDefinitions: planWork(
+                        lastPullStylesRef.current?.definitions
+                      ),
+                    }
+                  : {}),
               },
             },
             "*"

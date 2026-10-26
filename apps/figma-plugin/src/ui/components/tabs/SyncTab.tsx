@@ -307,6 +307,7 @@ export function SyncTab({
         <SyncStatus
           githubClient={githubClient}
           githubConfigured={githubConfigured}
+          includeTextStyles={uiState.includeTextStyles}
         />
       </div>
 
@@ -432,6 +433,63 @@ export function SyncTab({
           </div>
         </div>
       )}
+
+      {/* Styles: what else a Pull creates and keeps in line (plan 206) */}
+      <div style={{ padding: "4px 12px 8px" }}>
+        <div
+          style={{
+            fontWeight: "var(--font-weight-semibold)",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-primary)",
+            marginBottom: 6,
+          }}
+        >
+          Styles
+        </div>
+        <label
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            gap: 8,
+            padding: "2px 4px",
+            cursor: "pointer",
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={uiState.includeTextStyles}
+            onChange={(e) =>
+              dispatch({
+                type: "SET_INCLUDE_TEXT_STYLES",
+                value: (e.target as HTMLInputElement).checked,
+              })
+            }
+            style={{ marginTop: 2 }}
+          />
+          <span>
+            <span
+              style={{
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Text styles
+            </span>
+            <span
+              style={{
+                display: "block",
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-tertiary)",
+                marginTop: 2,
+              }}
+            >
+              Pull creates and updates them from the definitions in your repo.
+              Push never touches styles.
+            </span>
+          </span>
+        </label>
+      </div>
 
       {/* Push / Pull action cards — side by side */}
       <div

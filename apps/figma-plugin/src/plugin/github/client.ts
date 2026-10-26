@@ -4,6 +4,8 @@ import fetch from "cross-fetch";
 import { Octokit } from "@octokit/rest";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
 import type { ExportData } from "../variables/processor";
+import { parseTextStyleDefinitions } from "../variables/text-style-definitions";
+import type { TextStyleDefinition } from "../variables/text-style-definitions";
 
 /** Duck-typed shape of the errors Octokit throws (RequestError extends Error, adds `status`). */
 interface GitHubApiError {
@@ -46,6 +48,12 @@ export interface PullResult {
   error?: string;
   lastModified?: string;
 }
+
+/** The text style definitions file on the pulled branch (plan 206). */
+export type TextStyleDefinitionsResult =
+  | { status: "found"; definitions: TextStyleDefinition[] }
+  | { status: "absent" }
+  | { status: "error"; error: string };
 
 export class GitHubClient {
   private octokit: Octokit | null = null;
@@ -204,6 +212,57 @@ export class GitHubClient {
       throw new Error(`Failed to fetch ${filename}: HTTP ${response.status}`);
     }
     return response.text();
+  }
+
+  /**
+   * Where the text style definitions live: a `styles` folder next to the token
+   * folder (`packages/tokens/io/sync` gives `packages/tokens/io/styles/
+   * text-styles.json`). It is not a token file, so listing, Push and the
+   * baseline never include it.
+   */
+  textStyleDefinitionsPath(): string {
+    const base = this.basePath();
+    const parent = base.includes("/")
+      ? base.slice(0, base.lastIndexOf("/"))
+      : "";
+    return `${parent ? `${parent}/` : ""}styles/text-styles.json`;
+  }
+
+  /**
+   * Read the definitions file from the pulled branch. A missing file is
+   * `absent` (Pull still works, the review says so); anything else that goes
+   * wrong is an `error`, so a broken file never silently skips the styles.
+   */
+  async fetchTextStyleDefinitions(): Promise<TextStyleDefinitionsResult> {
+    if (!this.config)
+      return { status: "error", error: "GitHub client not initialized" };
+    const path = this.textStyleDefinitionsPath();
+    try {
+      const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${path}`;
+      const response = await fetch(url);
+      if (response.status === 404) return { status: "absent" };
+      if (!response.ok) {
+        return {
+          status: "error",
+          error: `Could not read ${path}: HTTP ${response.status}`,
+        };
+      }
+      const definitions = parseTextStyleDefinitions(
+        JSON.parse(await response.text())
+      );
+      if (!definitions) {
+        return {
+          status: "error",
+          error: `${path} is not a text style definitions file (no "styles" list).`,
+        };
+      }
+      return { status: "found", definitions };
+    } catch (error) {
+      return {
+        status: "error",
+        error: `Could not read ${path}: ${error instanceof Error ? error.message : String(error)}`,
+      };
+    }
   }
 
   async pushFiles(

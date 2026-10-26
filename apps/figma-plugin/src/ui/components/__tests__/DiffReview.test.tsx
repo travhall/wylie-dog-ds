@@ -544,3 +544,141 @@ describe("DiffReview: text styles (plan 205)", () => {
     expect(screen.queryByRole("region", { name: "Text styles" })).toBeNull();
   });
 });
+
+describe("DiffReview: text styles from definitions (plan 206)", () => {
+  const tokens = [
+    col("primitive", {
+      "typography.font-family.sans": { $type: "fontFamily", $value: "Manrope" },
+      "typography.font-size.sm": tok(14),
+      "typography.line-height.none": tok(125),
+    }),
+    col("components", {
+      "button.font-size.sm": tok("{typography.font-size.sm}"),
+      "button.line-height": tok("{typography.line-height.none}"),
+      "tooltip.font-size": tok("{typography.font-size.sm}"),
+    }),
+  ];
+  const definitions = [
+    {
+      name: "button/sm",
+      fontFamily: "typography.font-family.sans",
+      fontSize: "button.font-size.sm",
+      lineHeight: "button.line-height",
+    },
+    {
+      name: "tooltip",
+      fontFamily: "typography.font-family.sans",
+      fontSize: "tooltip.font-size",
+    },
+  ];
+  const managedStyle = (over: Record<string, unknown> = {}) => ({
+    id: "S:1",
+    name: "button/sm",
+    lineHeight: { unit: "PERCENT" as const, value: 100 },
+    letterSpacing: { unit: "PERCENT" as const, value: 0 },
+    lineHeightToken: "button.line-height",
+    managed: true,
+    bound: {
+      fontFamily: "typography.font-family.sans",
+      fontSize: "button.font-size.sm",
+    },
+    ...over,
+  });
+  const planned = (
+    direction: SyncDirection,
+    textStyleDefinitions: typeof definitions | null | undefined,
+    localTextStyles: ReturnType<typeof managedStyle>[] = []
+  ) =>
+    buildSyncDiff({
+      direction,
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+      localTextStyles,
+      textStyleDefinitions,
+    });
+
+  it("lists the styles to create for an empty file and confirms a styles-only Pull", () => {
+    const { onConfirm } = setup(planned("pull", definitions));
+    expect(
+      screen.getByRole("dialog", { name: "Pull will create 2 text styles" })
+    ).toBeInTheDocument();
+    const section = screen.getByRole("region", { name: "Text styles" });
+    expect(section).toHaveTextContent("Text styles will be created (2)");
+    expect(section).toHaveTextContent("button/sm");
+    expect(section).toHaveTextContent("tooltip");
+    fireEvent.click(screen.getByRole("button", { name: "Pull from GitHub" }));
+    expect(onConfirm).toHaveBeenCalledTimes(1);
+  });
+
+  it("lists updates with the change, and how many already match", () => {
+    setup(
+      planned("pull", definitions, [
+        managedStyle({ lineHeight: { unit: "PERCENT", value: 100 } }),
+      ])
+    );
+    const section = screen.getByRole("region", { name: "Text styles" });
+    expect(section).toHaveTextContent("Text styles will be updated (1)");
+    expect(section).toHaveTextContent("button/sm: line height 100% → 125%");
+    expect(section).toHaveTextContent("Text styles will be created (1)");
+  });
+
+  it("says nothing differs when every definition already matches", () => {
+    setup(
+      planned("pull", definitions.slice(0, 1), [
+        managedStyle({ lineHeight: { unit: "PERCENT", value: 125 } }),
+      ])
+    );
+    expect(
+      screen.getByRole("dialog", { name: "Nothing to pull" })
+    ).toBeVisible();
+    expect(
+      screen.getByRole("region", { name: "Text styles" })
+    ).toHaveTextContent("1 text style already match the definitions");
+  });
+
+  it("explains a missing definitions file without an error", () => {
+    setup(planned("pull", null));
+    const section = screen.getByRole("region", { name: "Text styles" });
+    expect(section).toHaveTextContent("No text style definitions found");
+    expect(section).toHaveTextContent("styles/text-styles.json");
+    expect(
+      screen.getByRole("dialog", { name: "Nothing to pull" })
+    ).toBeVisible();
+  });
+
+  it("reports a designer's style with the same name as left alone", () => {
+    setup(
+      planned("pull", definitions, [
+        {
+          id: "S:9",
+          name: "button/sm",
+          lineHeight: { unit: "AUTO" as never },
+          letterSpacing: { unit: "PERCENT", value: 0 },
+        } as never,
+      ])
+    );
+    const section = screen.getByRole("region", { name: "Text styles" });
+    expect(section).toHaveTextContent("not managed by Token Bridge");
+    expect(section).toHaveTextContent("left alone: button/sm");
+    expect(section).toHaveTextContent("Text styles will be created (1)");
+  });
+
+  it("reports definitions that name a missing token and styles whose definition is gone", () => {
+    setup(
+      planned(
+        "pull",
+        [{ ...definitions[0], lineHeight: "button.gone" }, definitions[1]],
+        [managedStyle({ id: "S:2", name: "old/style" })]
+      )
+    );
+    const section = screen.getByRole("region", { name: "Text styles" });
+    expect(section).toHaveTextContent("button/sm (button.gone)");
+    expect(section).toHaveTextContent("no longer in the definitions");
+  });
+
+  it("shows nothing about styles when the option is off", () => {
+    setup(planned("pull", undefined));
+    expect(screen.queryByRole("region", { name: "Text styles" })).toBeNull();
+  });
+});

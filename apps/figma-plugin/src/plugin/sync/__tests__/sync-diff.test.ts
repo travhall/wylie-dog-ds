@@ -611,3 +611,95 @@ describe("buildSyncDiff: text styles (plan 205)", () => {
     expect(hashTokens(tokens)).toEqual(hashTokens(tokens));
   });
 });
+
+describe("buildSyncDiff: text styles from definitions (plan 206)", () => {
+  const tokens = [
+    col("primitive", {
+      "typography.font-family.sans": { $type: "fontFamily", $value: "Manrope" },
+      "typography.font-size.sm": tok(14),
+      "typography.line-height.none": tok(125),
+    }),
+    col("components", {
+      "button.font-size.sm": tok("{typography.font-size.sm}"),
+      "button.line-height": tok("{typography.line-height.none}"),
+    }),
+  ];
+  const definitions = [
+    {
+      name: "button/sm",
+      fontFamily: "typography.font-family.sans",
+      fontSize: "button.font-size.sm",
+      lineHeight: "button.line-height",
+    },
+  ];
+  const diff = (
+    direction: "pull" | "overview" | "push",
+    textStyleDefinitions: typeof definitions | null | undefined,
+    localTextStyles: Array<Record<string, unknown>> = []
+  ) =>
+    buildSyncDiff({
+      direction,
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+      localTextStyles: localTextStyles as never,
+      textStyleDefinitions,
+    });
+
+  it("plans a create for every definition in a file with no styles, though tokens match", () => {
+    const d = diff("pull", definitions);
+    expect(d.rows).toEqual([]);
+    expect(d.textStyles.definitions?.status).toBe("found");
+    expect(d.textStyles.definitions?.creates.map((c) => c.name)).toEqual([
+      "button/sm",
+    ]);
+    expect(d.textStyleCount).toBe(1);
+  });
+
+  it("is off by default: no plan, no count", () => {
+    const d = diff("pull", undefined);
+    expect(d.textStyles.definitions).toBeUndefined();
+    expect(d.textStyleCount).toBe(0);
+  });
+
+  it("reports an absent definitions file without counting any work", () => {
+    const d = diff("pull", null);
+    expect(d.textStyles.definitions?.status).toBe("absent");
+    expect(d.textStyleCount).toBe(0);
+  });
+
+  it("includes the plan in the overview but never in a Push", () => {
+    expect(diff("overview", definitions).textStyleCount).toBe(1);
+    const push = diff("push", definitions);
+    expect(push.textStyleCount).toBe(0);
+    expect(push.textStyles.definitions).toBeUndefined();
+  });
+
+  it("leaves a style a definition names out of the plan 205 links list", () => {
+    const linked = {
+      id: "S:1",
+      name: "button/sm",
+      lineHeight: { unit: "PERCENT", value: 100 },
+      letterSpacing: { unit: "PERCENT", value: 0 },
+      lineHeightToken: "button.line-height",
+    };
+    const d = diff("pull", definitions, [linked]);
+    expect(d.textStyles.changes).toEqual([]);
+    expect(d.textStyles.definitions?.updates.map((u) => u.style.name)).toEqual([
+      "button/sm",
+    ]);
+    expect(d.textStyleCount).toBe(1);
+    // without definitions the same style is handled by the links as before
+    expect(diff("pull", undefined, [linked]).textStyles.changes).toHaveLength(
+      1
+    );
+  });
+
+  it("never changes the token rows, counts or hashes", () => {
+    const without = diff("pull", undefined);
+    const withPlan = diff("pull", definitions);
+    expect(withPlan.rows).toEqual(without.rows);
+    expect(withPlan.counts).toEqual(without.counts);
+    expect(hashTokens(tokens)).toEqual(hashTokens(tokens));
+  });
+});

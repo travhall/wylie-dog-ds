@@ -11,6 +11,7 @@ import type { ClassifiedChanges, SyncBaseline } from "./sync-baseline";
 import { buildSyncDiff } from "./sync-diff";
 import type { LocalScopes, SyncDiff } from "./sync-diff";
 import type { TextStyleInfo } from "../variables/text-style-links";
+import type { TextStyleDefinition } from "../variables/text-style-definitions";
 import type {
   TokenConflict,
   ConflictResolution,
@@ -410,7 +411,8 @@ export class ConflictAwareGitHubClient extends GitHubClient {
     localTokens?: ExportData[],
     baseline?: SyncBaseline | null,
     localScopes?: LocalScopes,
-    localTextStyles?: TextStyleInfo[]
+    localTextStyles?: TextStyleInfo[],
+    textStyleDefinitions?: TextStyleDefinition[] | null
   ): Promise<SyncStatusResult> {
     const unknown: SyncStatusResult = {
       diff: buildSyncDiff({
@@ -459,6 +461,7 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         remoteTokens: pullResult.tokens,
         localScopes,
         localTextStyles,
+        textStyleDefinitions,
       });
       // `upToDate` is about tokens; scope and text style differences ride on
       // `diff.settings` and `diff.textStyles`

@@ -5,11 +5,17 @@ import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware
 import { checkSyncStatus as runSyncStatusCheck } from "../utils/check-sync-status";
 import { DiffReview } from "./DiffReview";
 import type { SyncDiff } from "../../plugin/sync/sync-diff";
+import {
+  TEXT_STYLE_DEFINITIONS_HINT,
+  describePlanWork,
+} from "../../plugin/variables/text-style-definitions";
 
 interface SyncStatusProps {
   githubClient: ConflictAwareGitHubClient;
   githubConfigured: boolean;
   onRefresh?: () => void;
+  /** Sync tab "Text styles" is ticked: the status also looks at the definitions. */
+  includeTextStyles?: boolean;
 }
 
 interface SyncStatusData {
@@ -37,6 +43,7 @@ export function SyncStatus({
   githubClient,
   githubConfigured,
   onRefresh,
+  includeTextStyles = false,
 }: SyncStatusProps) {
   const [status, setStatus] = useState<SyncStatusData>({
     upToDate: true,
@@ -60,7 +67,10 @@ export function SyncStatus({
     try {
       // Figma export + baseline come from the plugin thread, then the client
       // diffs against GitHub and classifies which side changed.
-      const syncStatus = await runSyncStatusCheck(githubClient);
+      const syncStatus = await runSyncStatusCheck(
+        githubClient,
+        includeTextStyles
+      );
       // Preserve lastSync — it's sourced from the `last-sync-loaded` message
       // (plugin-thread storage), not from getSyncStatus (which runs UI-side and
       // can't read figma.clientStorage).
@@ -177,6 +187,9 @@ export function SyncStatus({
     }
     return "Up to date";
   };
+
+  const definitions = status.diff?.textStyles.definitions;
+  const linkedStyleCount = status.diff?.textStyles.changes.length ?? 0;
 
   return (
     <div
@@ -338,16 +351,30 @@ export function SyncStatus({
               picker scopes will change on Pull
             </div>
           )}
-          {(status.diff?.textStyleCount ?? 0) > 0 && (
+          {linkedStyleCount > 0 && (
             <div
               title="Linked text styles differ from their tokens. Pull updates them; Push never does."
               style={{ color: "var(--info)", marginTop: "4px" }}
             >
-              {status.diff?.textStyleCount}{" "}
-              {status.diff?.textStyleCount === 1
-                ? "text style's"
-                : "text styles'"}{" "}
-              line height or letter spacing will change on Pull
+              {linkedStyleCount}{" "}
+              {linkedStyleCount === 1 ? "text style's" : "text styles'"} line
+              height or letter spacing will change on Pull
+            </div>
+          )}
+          {(definitions?.creates.length ?? 0) +
+            (definitions?.updates.length ?? 0) >
+            0 && (
+            <div
+              title="Text styles come from the definitions file in the repo. Pull writes them; Push never does."
+              style={{ color: "var(--info)", marginTop: "4px" }}
+            >
+              {describePlanWork(definitions)} on Pull
+            </div>
+          )}
+          {definitions?.status === "absent" && (
+            <div style={{ color: "var(--text-tertiary)", marginTop: "4px" }}>
+              No text style definitions found on this branch (
+              {TEXT_STYLE_DEFINITIONS_HINT} next to the token files)
             </div>
           )}
           {!status.upToDate && status.hasBaseline && status.renamed > 0 && (

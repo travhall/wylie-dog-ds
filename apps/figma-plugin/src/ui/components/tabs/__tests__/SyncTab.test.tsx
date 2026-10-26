@@ -74,3 +74,48 @@ describe("SyncTab Pull", () => {
     expect(screen.queryByText("Confirm")).not.toBeInTheDocument();
   });
 });
+
+describe("SyncTab Styles section (plan 206)", () => {
+  const renderConfigured = (onPullFromGitHub = vi.fn()) => {
+    vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
+    render(
+      <UIProvider>
+        <SyncTab
+          githubClient={{} as ConflictAwareGitHubClient}
+          githubConfig={{ ...repoOnly, accessToken: "test-token" }}
+          githubConfigured
+          collections={[]}
+          loading={false}
+          onPushToGitHub={vi.fn()}
+          onPullFromGitHub={onPullFromGitHub}
+          onImportFile={vi.fn()}
+          onGitHubConfigComplete={vi.fn()}
+        />
+      </UIProvider>
+    );
+  };
+
+  it("offers a Text styles checkbox, off by default, with a Pull-only note", () => {
+    renderConfigured();
+    const box = screen.getByRole("checkbox", { name: /Text styles/ });
+    expect(box).not.toBeChecked();
+    expect(screen.getByText("Styles")).toBeInTheDocument();
+    expect(screen.getByText(/Push never touches styles/)).toBeInTheDocument();
+  });
+
+  it("toggles on and off without starting a Pull", () => {
+    const onPull = vi.fn();
+    renderConfigured(onPull);
+    const box = screen.getByRole("checkbox", { name: /Text styles/ });
+    fireEvent.click(box);
+    expect(box).toBeChecked();
+    fireEvent.click(box);
+    expect(box).not.toBeChecked();
+    expect(onPull).not.toHaveBeenCalled();
+  });
+
+  it("is not shown before GitHub is connected", () => {
+    renderTab(null, false);
+    expect(screen.queryByRole("checkbox", { name: /Text styles/ })).toBeNull();
+  });
+});

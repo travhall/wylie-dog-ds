@@ -175,6 +175,7 @@ describe("SyncStatus", () => {
         localTokens,
         baseline,
         undefined,
+        undefined,
         undefined
       );
       expect(screen.getByText(/2 to push/)).toBeInTheDocument();
@@ -284,6 +285,7 @@ describe("SyncStatus", () => {
           [],
           null,
           undefined,
+          undefined,
           undefined
         )
       );
@@ -299,6 +301,7 @@ describe("SyncStatus", () => {
           [],
           null,
           undefined,
+          undefined,
           undefined
         )
       );
@@ -313,6 +316,7 @@ describe("SyncStatus", () => {
         expect(getSyncStatus).toHaveBeenCalledWith(
           [],
           null,
+          undefined,
           undefined,
           undefined
         )
@@ -331,6 +335,7 @@ describe("SyncStatus", () => {
       expect(getSyncStatus).toHaveBeenCalledWith(
         [],
         null,
+        undefined,
         undefined,
         undefined
       );
@@ -474,6 +479,7 @@ describe("SyncStatus scopes (plan 202)", () => {
       tokens,
       null,
       localScopes,
+      undefined,
       undefined
     );
     expect(await screen.findByText("Up to date")).toBeInTheDocument();
@@ -560,7 +566,8 @@ describe("SyncStatus text styles (plan 205)", () => {
       tokens,
       null,
       undefined,
-      textStyles
+      textStyles,
+      undefined
     );
     expect(await screen.findByText("Up to date")).toBeInTheDocument();
     expect(
@@ -576,5 +583,113 @@ describe("SyncStatus text styles (plan 205)", () => {
     ]);
     expect(await screen.findByText("Up to date")).toBeInTheDocument();
     expect(screen.queryByText(/text style.*will change on Pull/)).toBeNull();
+  });
+});
+
+describe("SyncStatus text styles from definitions (plan 206)", () => {
+  const tokens = [
+    {
+      primitive: {
+        variables: {
+          "typography.font-family.sans": {
+            $type: "fontFamily",
+            $value: "Manrope",
+          },
+          "typography.font-size.sm": { $type: "number", $value: 14 },
+        },
+      },
+    },
+  ] as unknown as ExportData[];
+  const definitions = [
+    {
+      name: "tooltip",
+      fontFamily: "typography.font-family.sans",
+      fontSize: "typography.font-size.sm",
+    },
+  ];
+
+  const run = async (
+    includeTextStyles: boolean,
+    fetchTextStyleDefinitions: ReturnType<typeof vi.fn>
+  ) => {
+    vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const getSyncStatus = vi.fn(
+      async (
+        _tokens: unknown,
+        _baseline: unknown,
+        _scopes: unknown,
+        localTextStyles: never,
+        textStyleDefinitions: never
+      ) => ({
+        upToDate: true,
+        hasBaseline: false,
+        differences: 0,
+        diff: buildSyncDiff({
+          direction: "overview",
+          baseline: null,
+          localTokens: tokens,
+          remoteTokens: tokens,
+          localTextStyles,
+          textStyleDefinitions,
+        }),
+      })
+    );
+    const client = {
+      getSyncStatus,
+      fetchTextStyleDefinitions,
+    } as unknown as ConflictAwareGitHubClient;
+    render(
+      <SyncStatus
+        githubClient={client}
+        githubConfigured
+        includeTextStyles={includeTextStyles}
+      />
+    );
+    fireEvent.click(screen.getByLabelText("Refresh sync status"));
+    pluginMessage({
+      type: "local-tokens-exported",
+      localTokens: tokens,
+      textStyles: [],
+    });
+    await waitFor(() => expect(getSyncStatus).toHaveBeenCalled());
+    return { getSyncStatus };
+  };
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("reads no definitions while Text styles is off", async () => {
+    const fetchDefs = vi.fn();
+    const { getSyncStatus } = await run(false, fetchDefs);
+    expect(fetchDefs).not.toHaveBeenCalled();
+    expect(getSyncStatus.mock.calls[0][4]).toBeUndefined();
+    expect(screen.queryByText(/will be created on Pull/)).toBeNull();
+  });
+
+  it("with Text styles on, hands the definitions over and says how many styles Pull would create", async () => {
+    const fetchDefs = vi
+      .fn()
+      .mockResolvedValue({ status: "found", definitions });
+    const { getSyncStatus } = await run(true, fetchDefs);
+    expect(fetchDefs).toHaveBeenCalledTimes(1);
+    expect(getSyncStatus.mock.calls[0][4]).toEqual(definitions);
+    expect(await screen.findByText("Up to date")).toBeInTheDocument();
+    expect(
+      await screen.findByText("1 text style will be created on Pull")
+    ).toBeInTheDocument();
+  });
+
+  it("with no definitions file, says so quietly and stays Up to date", async () => {
+    const { getSyncStatus } = await run(
+      true,
+      vi.fn().mockResolvedValue({ status: "absent" })
+    );
+    expect(getSyncStatus.mock.calls[0][4]).toBeNull();
+    expect(await screen.findByText("Up to date")).toBeInTheDocument();
+    expect(
+      await screen.findByText(/No text style definitions found on this branch/)
+    ).toBeInTheDocument();
   });
 });

@@ -109,6 +109,8 @@ function AppInner() {
     {
       // What a pull changed, shown once the import succeeds
       onPullSummary: syncChanges.remember,
+      // Sync tab "Text styles": Pull also creates and updates the text styles
+      includeTextStyles: uiState.includeTextStyles,
       // "Push first" from the Pull review: push the selected collections
       onRequestPush: () => {
         if (uiState.selectedCollections.size === 0) {

@@ -19,6 +19,8 @@ import type {
   TextStyleApplyResult,
   TextStyleInfo,
 } from "../variables/text-style-links";
+import { applyTextStyleDefinitions } from "../variables/text-style-definitions";
+import type { TextStyleDefinitionResult } from "../variables/text-style-definitions";
 import {
   importMultipleCollections,
   parseTokenFile,
@@ -323,6 +325,20 @@ export async function handleImportTokens(msg: PluginMessage): Promise<void> {
       }
     }
 
+    // The styles the definitions file creates and updates (plan 206), also
+    // after the import so the variables they bind to exist. Never fatal.
+    let textStyleDefinitionResult: TextStyleDefinitionResult | undefined;
+    if (globalResult.success && msg.textStyleDefinitions?.length) {
+      setLoading(true, "Creating text styles...");
+      try {
+        textStyleDefinitionResult = await applyTextStyleDefinitions(
+          msg.textStyleDefinitions
+        );
+      } catch (error) {
+        console.error("Creating text styles failed:", error);
+      }
+    }
+
     setLoading(false);
 
     // Send results back to UI including format adapter information
@@ -334,6 +350,7 @@ export async function handleImportTokens(msg: PluginMessage): Promise<void> {
       validationReport: globalResult.validationReport, // Include enhanced validation
       adapterResults: adapterResults, // Include format adaptation results
       textStyleResult,
+      textStyleDefinitionResult,
     });
 
     console.log("Global import completed:", globalResult);

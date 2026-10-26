@@ -16,6 +16,7 @@ import { isSyncBaseline } from "../../plugin/sync/sync-baseline";
 import type { LocalScopes } from "../../plugin/sync/sync-diff";
 import type { ExportData } from "../../plugin/variables/processor";
 import type { TextStyleInfo } from "../../plugin/variables/text-style-links";
+import type { TextStyleDefinition } from "../../plugin/variables/text-style-definitions";
 
 const PLUGIN_TIMEOUT_MS = 10000;
 
@@ -61,8 +62,24 @@ export function requestLocalExport(): Promise<LocalExport> {
   });
 }
 
+/**
+ * The definitions file when "Text styles" is ticked (plan 206): the list, or
+ * `null` when the branch has none. `undefined` when the option is off or the
+ * file could not be read (the status then simply leaves styles out).
+ */
+export async function readTextStyleDefinitions(
+  client: ConflictAwareGitHubClient,
+  includeTextStyles: boolean
+): Promise<TextStyleDefinition[] | null | undefined> {
+  if (!includeTextStyles) return undefined;
+  const result = await client.fetchTextStyleDefinitions();
+  if (result.status === "found") return result.definitions;
+  return result.status === "absent" ? null : undefined;
+}
+
 export async function checkSyncStatus(
-  client: ConflictAwareGitHubClient
+  client: ConflictAwareGitHubClient,
+  includeTextStyles = false
 ): Promise<SyncStatusResult> {
   const { localTokens, baseline, localScopes, localTextStyles } =
     await requestLocalExport();
@@ -70,7 +87,8 @@ export async function checkSyncStatus(
     localTokens,
     baseline,
     localScopes,
-    localTextStyles
+    localTextStyles,
+    await readTextStyleDefinitions(client, includeTextStyles)
   );
 }
 
