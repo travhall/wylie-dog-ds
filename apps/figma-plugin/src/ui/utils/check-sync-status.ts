@@ -77,19 +77,72 @@ export async function readTextStyleDefinitions(
   return result.status === "absent" ? null : undefined;
 }
 
+/**
+ * What GitHub offers while "Text styles" is unticked (plan 207): how many
+ * styles the definitions file lists, and how many styles this file already
+ * manages (a file with some is not on its first run).
+ */
+export interface TextStylesAvailability {
+  available: number;
+  managedExisting: number;
+}
+
+export type CheckedSyncStatus = SyncStatusResult & {
+  /** Null: no definitions file, an empty one, or it could not be read. */
+  textStylesAvailability: TextStylesAvailability | null;
+};
+
+/**
+ * Refresh. The definitions file is read once either way: ticked, it feeds the
+ * comparison; unticked, only its size is kept, so the Sync tab can say styles
+ * are on offer. A read error never blocks the status (ticked, it propagates as
+ * before).
+ */
 export async function checkSyncStatus(
   client: ConflictAwareGitHubClient,
   includeTextStyles = false
-): Promise<SyncStatusResult> {
+): Promise<CheckedSyncStatus> {
   const { localTokens, baseline, localScopes, localTextStyles } =
     await requestLocalExport();
-  return client.getSyncStatus(
+
+  let fetched: Awaited<
+    ReturnType<ConflictAwareGitHubClient["fetchTextStyleDefinitions"]>
+  > | null = null;
+  try {
+    fetched = await client.fetchTextStyleDefinitions();
+  } catch (error) {
+    if (includeTextStyles) throw error;
+  }
+
+  const definitions = !includeTextStyles
+    ? undefined
+    : fetched?.status === "found"
+      ? fetched.definitions
+      : fetched?.status === "absent"
+        ? null
+        : undefined;
+
+  const status = await client.getSyncStatus(
     localTokens,
     baseline,
     localScopes,
     localTextStyles,
-    await readTextStyleDefinitions(client, includeTextStyles)
+    definitions
   );
+
+  const available =
+    fetched?.status === "found" ? fetched.definitions.length : 0;
+  return {
+    ...status,
+    textStylesAvailability:
+      available > 0
+        ? {
+            available,
+            managedExisting: (localTextStyles ?? []).filter((s) => s.managed)
+              .length,
+          }
+        : null,
+  };
 }
 
 /** "collection / token", or "collection / old → new" for a rename. */

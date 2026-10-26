@@ -1,12 +1,16 @@
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import { Icon } from "./common/Icon";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
-import { checkSyncStatus as runSyncStatusCheck } from "../utils/check-sync-status";
+import {
+  checkSyncStatus as runSyncStatusCheck,
+  type TextStylesAvailability,
+} from "../utils/check-sync-status";
 import { DiffReview } from "./DiffReview";
 import type { SyncDiff } from "../../plugin/sync/sync-diff";
 import {
   TEXT_STYLE_DEFINITIONS_HINT,
+  describeAvailableTextStyles,
   describePlanWork,
 } from "../../plugin/variables/text-style-definitions";
 
@@ -16,6 +20,13 @@ interface SyncStatusProps {
   onRefresh?: () => void;
   /** Sync tab "Text styles" is ticked: the status also looks at the definitions. */
   includeTextStyles?: boolean;
+  /**
+   * Called after each Refresh with what the definitions file offers (plan 207),
+   * or null when it offers nothing or could not be read.
+   */
+  onTextStylesAvailability?: (
+    availability: TextStylesAvailability | null
+  ) => void;
 }
 
 interface SyncStatusData {
@@ -33,6 +44,8 @@ interface SyncStatusData {
   differences: number;
   /** Per-token overview behind the "Review changes" button. */
   diff?: SyncDiff;
+  /** Styles on offer from GitHub (plan 207); shown while Text styles is off. */
+  textStylesAvailable?: number;
   lastSync?: string;
   checking?: boolean;
   checked?: boolean;
@@ -44,6 +57,7 @@ export function SyncStatus({
   githubConfigured,
   onRefresh,
   includeTextStyles = false,
+  onTextStylesAvailability,
 }: SyncStatusProps) {
   const [status, setStatus] = useState<SyncStatusData>({
     upToDate: true,
@@ -74,6 +88,7 @@ export function SyncStatus({
       // Preserve lastSync — it's sourced from the `last-sync-loaded` message
       // (plugin-thread storage), not from getSyncStatus (which runs UI-side and
       // can't read figma.clientStorage).
+      onTextStylesAvailability?.(syncStatus.textStylesAvailability);
       setStatus((prev) => ({
         upToDate: syncStatus.upToDate,
         hasBaseline: syncStatus.hasBaseline,
@@ -83,6 +98,8 @@ export function SyncStatus({
         renamed: syncStatus.renamedLocal + syncStatus.renamedRemote,
         differences: syncStatus.differences,
         diff: syncStatus.diff,
+        textStylesAvailable:
+          syncStatus.textStylesAvailability?.available ?? undefined,
         lastSync: prev.lastSync,
         checking: false,
         checked: true,
@@ -99,6 +116,16 @@ export function SyncStatus({
       }));
     }
   };
+
+  // Ticking or unticking Text styles after a Refresh (or the first-run default
+  // ticking it) changes what the status compares, so it reads again. Before the
+  // first Refresh nothing runs: opening the tab never fires a GitHub request.
+  const previousInclude = useRef(includeTextStyles);
+  useEffect(() => {
+    if (previousInclude.current === includeTextStyles) return;
+    previousInclude.current = includeTextStyles;
+    if (status.checked && !status.checking) checkSyncStatus();
+  }, [includeTextStyles]);
 
   // Last-sync time lives in plugin-thread storage; the UI receives it via the
   // `last-sync-loaded` message (on request, and pushed after each sync).
@@ -165,6 +192,10 @@ export function SyncStatus({
     }
   };
 
+  const offeredStyles = includeTextStyles
+    ? 0
+    : (status.textStylesAvailable ?? 0);
+
   const getStatusColor = () => {
     if (status.error) return "var(--error)";
     if (status.checking) return "var(--warning)";
@@ -185,7 +216,9 @@ export function SyncStatus({
     if (!status.upToDate) {
       return status.hasBaseline ? "Changes detected" : "Differences found";
     }
-    return "Up to date";
+    // Unticked Text styles with styles on offer: tokens are current, but the
+    // card must not read as finished (plan 207).
+    return offeredStyles > 0 ? "Tokens up to date" : "Up to date";
   };
 
   const definitions = status.diff?.textStyles.definitions;
@@ -375,6 +408,14 @@ export function SyncStatus({
             <div style={{ color: "var(--text-tertiary)", marginTop: "4px" }}>
               No text style definitions found on this branch (
               {TEXT_STYLE_DEFINITIONS_HINT} next to the token files)
+            </div>
+          )}
+          {offeredStyles > 0 && (
+            <div
+              title="The definitions file is on this branch, but Text styles is unticked, so Pull leaves styles out."
+              style={{ color: "var(--info)", marginTop: "4px" }}
+            >
+              {describeAvailableTextStyles(offeredStyles)}
             </div>
           )}
           {!status.upToDate && status.hasBaseline && status.renamed > 0 && (

@@ -610,7 +610,11 @@ describe("SyncStatus text styles from definitions (plan 206)", () => {
 
   const run = async (
     includeTextStyles: boolean,
-    fetchTextStyleDefinitions: ReturnType<typeof vi.fn>
+    fetchTextStyleDefinitions: ReturnType<typeof vi.fn>,
+    options: {
+      localTextStyles?: unknown[];
+      onTextStylesAvailability?: (a: unknown) => void;
+    } = {}
   ) => {
     vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
     vi.spyOn(console, "error").mockImplementation(() => {});
@@ -644,13 +648,14 @@ describe("SyncStatus text styles from definitions (plan 206)", () => {
         githubClient={client}
         githubConfigured
         includeTextStyles={includeTextStyles}
+        onTextStylesAvailability={options.onTextStylesAvailability}
       />
     );
     fireEvent.click(screen.getByLabelText("Refresh sync status"));
     pluginMessage({
       type: "local-tokens-exported",
       localTokens: tokens,
-      textStyles: [],
+      textStyles: options.localTextStyles ?? [],
     });
     await waitFor(() => expect(getSyncStatus).toHaveBeenCalled());
     return { getSyncStatus };
@@ -660,12 +665,171 @@ describe("SyncStatus text styles from definitions (plan 206)", () => {
     vi.restoreAllMocks();
   });
 
-  it("reads no definitions while Text styles is off", async () => {
-    const fetchDefs = vi.fn();
+  it("while Text styles is off, looks at the definitions but hands none to the client (plan 207)", async () => {
+    const fetchDefs = vi
+      .fn()
+      .mockResolvedValue({ status: "found", definitions });
     const { getSyncStatus } = await run(false, fetchDefs);
-    expect(fetchDefs).not.toHaveBeenCalled();
+    expect(fetchDefs).toHaveBeenCalledTimes(1);
     expect(getSyncStatus.mock.calls[0][4]).toBeUndefined();
     expect(screen.queryByText(/will be created on Pull/)).toBeNull();
+  });
+
+  describe("availability while Text styles is off (plan 207)", () => {
+    it("names the unticked option and the count, and stops saying Up to date", async () => {
+      const onAvailability = vi.fn();
+      await run(
+        false,
+        vi.fn().mockResolvedValue({ status: "found", definitions }),
+        { onTextStylesAvailability: onAvailability }
+      );
+      expect(
+        await screen.findByText(
+          "1 text style is available from GitHub. Tick Text styles to review it."
+        )
+      ).toBeInTheDocument();
+      expect(screen.getByText("Tokens up to date")).toBeInTheDocument();
+      expect(screen.queryByText("Up to date")).toBeNull();
+      expect(onAvailability).toHaveBeenCalledWith({
+        available: 1,
+        managedExisting: 0,
+      });
+    });
+
+    it("uses the plural form", async () => {
+      await run(
+        false,
+        vi.fn().mockResolvedValue({
+          status: "found",
+          definitions: [definitions[0], { ...definitions[0], name: "badge" }],
+        })
+      );
+      expect(
+        await screen.findByText(
+          "2 text styles are available from GitHub. Tick Text styles to review them."
+        )
+      ).toBeInTheDocument();
+    });
+
+    it("counts the styles the file already manages", async () => {
+      const onAvailability = vi.fn();
+      await run(
+        false,
+        vi.fn().mockResolvedValue({ status: "found", definitions }),
+        {
+          localTextStyles: [
+            { id: "1", name: "a", managed: true },
+            { id: "2", name: "b" },
+          ],
+          onTextStylesAvailability: onAvailability,
+        }
+      );
+      await waitFor(() =>
+        expect(onAvailability).toHaveBeenCalledWith({
+          available: 1,
+          managedExisting: 1,
+        })
+      );
+    });
+
+    it("shows nothing new when the branch has no definitions file", async () => {
+      const onAvailability = vi.fn();
+      await run(false, vi.fn().mockResolvedValue({ status: "absent" }), {
+        onTextStylesAvailability: onAvailability,
+      });
+      expect(await screen.findByText("Up to date")).toBeInTheDocument();
+      expect(screen.queryByText(/available from GitHub/)).toBeNull();
+      expect(onAvailability).toHaveBeenCalledWith(null);
+    });
+
+    it("never blocks on a read error or a client that cannot read definitions", async () => {
+      const onAvailability = vi.fn();
+      await run(
+        false,
+        vi.fn().mockResolvedValue({ status: "error", error: "rate limited" }),
+        { onTextStylesAvailability: onAvailability }
+      );
+      expect(await screen.findByText("Up to date")).toBeInTheDocument();
+      expect(screen.queryByText(/available from GitHub/)).toBeNull();
+      expect(onAvailability).toHaveBeenCalledWith(null);
+    });
+
+    it("reads again when Text styles is ticked after a Refresh, so Review changes lists the styles", async () => {
+      const fetchDefs = vi
+        .fn()
+        .mockResolvedValue({ status: "found", definitions });
+      const getSyncStatus = vi.fn(async (..._args: unknown[]) => ({
+        upToDate: true,
+        hasBaseline: false,
+        differences: 0,
+      }));
+      const client = {
+        getSyncStatus,
+        fetchTextStyleDefinitions: fetchDefs,
+      } as unknown as ConflictAwareGitHubClient;
+      const view = render(
+        <SyncStatus
+          githubClient={client}
+          githubConfigured
+          includeTextStyles={false}
+        />
+      );
+      const exported = () =>
+        pluginMessage({
+          type: "local-tokens-exported",
+          localTokens: tokens,
+          textStyles: [],
+        });
+      fireEvent.click(screen.getByLabelText("Refresh sync status"));
+      exported();
+      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledTimes(1));
+      await screen.findByText("Tokens up to date");
+
+      view.rerender(
+        <SyncStatus
+          githubClient={client}
+          githubConfigured
+          includeTextStyles={true}
+        />
+      );
+      exported();
+      await waitFor(() => expect(getSyncStatus).toHaveBeenCalledTimes(2));
+      expect(getSyncStatus.mock.calls[1][4]).toEqual(definitions);
+      expect(await screen.findByText("Up to date")).toBeInTheDocument();
+    });
+
+    it("does not read before the first Refresh when the box changes", async () => {
+      const getSyncStatus = vi.fn();
+      const client = {
+        getSyncStatus,
+        fetchTextStyleDefinitions: vi.fn(),
+      } as unknown as ConflictAwareGitHubClient;
+      const view = render(
+        <SyncStatus
+          githubClient={client}
+          githubConfigured
+          includeTextStyles={false}
+        />
+      );
+      view.rerender(
+        <SyncStatus
+          githubClient={client}
+          githubConfigured
+          includeTextStyles={true}
+        />
+      );
+      await Promise.resolve();
+      expect(getSyncStatus).not.toHaveBeenCalled();
+    });
+
+    it("leaves the hint out once Text styles is ticked", async () => {
+      await run(
+        true,
+        vi.fn().mockResolvedValue({ status: "found", definitions })
+      );
+      expect(await screen.findByText("Up to date")).toBeInTheDocument();
+      expect(screen.queryByText(/available from GitHub/)).toBeNull();
+    });
   });
 
   it("with Text styles on, hands the definitions over and says how many styles Pull would create", async () => {
