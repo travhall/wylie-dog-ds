@@ -7,6 +7,7 @@ import {
   formatSpacing,
   readLocalTextStyles,
   resolveTokenNumber,
+  TEXT_STYLE_LINK_NAMESPACE,
 } from "../text-style-links";
 import type { TextStyleInfo } from "../text-style-links";
 import type { ExportData } from "../processor";
@@ -55,6 +56,15 @@ const style = (over: Partial<TextStyleInfo> = {}): TextStyleInfo => ({
   lineHeight: { unit: "PERCENT", value: 100 },
   letterSpacing: { unit: "PERCENT", value: 0 },
   ...over,
+});
+
+describe("TEXT_STYLE_LINK_NAMESPACE", () => {
+  it("is a namespace Figma accepts for shared plugin data", () => {
+    // Figma rejects anything but letters, digits, underscore and dot
+    // ("The namespace can only consist of alphanumeric characters, _ or .");
+    // a hyphenated name made every getSharedPluginData call throw.
+    expect(TEXT_STYLE_LINK_NAMESPACE).toMatch(/^[A-Za-z0-9_.]{3,}$/);
+  });
 });
 
 describe("resolveTokenNumber", () => {
@@ -262,12 +272,12 @@ describe("figma text styles", () => {
       lineHeight: { unit: "AUTO" },
       letterSpacing: { unit: "PERCENT", value: 0 },
       getSharedPluginData: (ns: string, key: string) =>
-        ns === "wylie-dog" ? (shared[key] ?? "") : "",
+        ns === "wylie_dog" ? (shared[key] ?? "") : "",
     };
     return styles[id];
   };
 
-  it("reads links from the wylie-dog namespace and leaves unlinked styles bare", async () => {
+  it("reads links from the wylie_dog namespace and leaves unlinked styles bare", async () => {
     addStyle("S:1", {
       lineHeightToken: "button.line-height",
       letterSpacingToken: "card.title.letter-spacing",

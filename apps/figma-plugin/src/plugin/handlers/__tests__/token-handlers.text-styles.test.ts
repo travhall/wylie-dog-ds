@@ -43,7 +43,7 @@ const textStyle = (id: string, shared: Record<string, string> = {}) => ({
   lineHeight: { unit: "AUTO" },
   letterSpacing: { unit: "PERCENT", value: 0 },
   getSharedPluginData: (ns: string, key: string) =>
-    ns === "wylie-dog" ? (shared[key] ?? "") : "",
+    ns === "wylie_dog" ? (shared[key] ?? "") : "",
 });
 
 const variables: Record<string, unknown> = {

@@ -9,7 +9,7 @@
  *
  * Owner decisions (2026-10-25, plan 205):
  *  1. Link format: two shared plugin data keys on the style, namespace
- *     `wylie-dog`, keys `lineHeightToken` and `letterSpacingToken`, the value a
+ *     `wylie_dog`, keys `lineHeightToken` and `letterSpacingToken`, the value a
  *     dotted token path ("button.line-height"). Shared plugin data is readable
  *     by every plugin; the builder writes it, Token Bridge reads it. Anyone can
  *     make a hand-built style token-driven by adding the keys.
@@ -35,7 +35,7 @@
  */
 import type { ExportData } from "./processor";
 
-export const TEXT_STYLE_LINK_NAMESPACE = "wylie-dog";
+export const TEXT_STYLE_LINK_NAMESPACE = "wylie_dog";
 export const LINE_HEIGHT_LINK_KEY = "lineHeightToken";
 export const LETTER_SPACING_LINK_KEY = "letterSpacingToken";
 
