@@ -87,6 +87,16 @@ describeA11y("SiteHeader", () => {
     await expectToPassA11yAudit(container);
   });
 
+  it("passes audit when renderNavItem returns only the link", async () => {
+    const { container } = render(
+      <SiteHeader
+        navigation={defaultNavigation}
+        renderNavItem={(item) => <a href={item.href}>{item.label}</a>}
+      />
+    );
+    await expectToPassA11yAudit(container);
+  });
+
   it("passes audit with transparent variant", async () => {
     const { container } = render(
       <SiteHeader variant="transparent" navigation={defaultNavigation} />
