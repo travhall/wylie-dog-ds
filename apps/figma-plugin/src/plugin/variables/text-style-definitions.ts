@@ -34,7 +34,10 @@
  *
  * Links: shared plugin data, namespace `wylie_dog` (letters, digits, underscore
  * and dot only; a hyphen throws), keys `lineHeightToken`, `letterSpacingToken`
- * (plan 205) and `definition` (the marker).
+ * (plan 205), `fontSizeToken` (plan 208: the font-size token path, which
+ * identifies the style for the component builder) and `definition` (the marker).
+ * An existing managed style without `fontSizeToken` is adopted on the next Pull:
+ * the key is written with no review row (owner decision 2026-10-26, plan 208).
  *
  * The planning is pure (no `figma`); only `applyTextStyleDefinitions` touches
  * the file.
@@ -44,6 +47,7 @@ import { createTokenName } from "./processor";
 import {
   DEFINITION_LINK_KEY,
   DEFINITION_LINK_VALUE,
+  FONT_SIZE_LINK_KEY,
   LETTER_SPACING_LINK_KEY,
   LINE_HEIGHT_LINK_KEY,
   TEXT_STYLE_LINK_NAMESPACE,
@@ -113,7 +117,11 @@ export interface ResolvedTextStyle {
   /** Token paths whose variables the family, size and weight bind to. */
   bindings: { fontFamily: string; fontSize: string; fontWeight?: string };
   /** Token paths recorded as links, read back by the plan 205 flow. */
-  links: { lineHeightToken?: string; letterSpacingToken?: string };
+  links: {
+    fontSizeToken: string;
+    lineHeightToken?: string;
+    letterSpacingToken?: string;
+  };
 }
 
 export interface TextStyleUpdate {
@@ -138,6 +146,12 @@ export interface TextStylePlan {
   updates: TextStyleUpdate[];
   /** Definitions whose style already matches. */
   unchanged: number;
+  /**
+   * Matching managed styles that lack the font size link (plan 208). Written
+   * with the Pull but not listed as changes: the link is metadata, nothing a
+   * person sees in the file changes.
+   */
+  adopted: ResolvedTextStyle[];
   /** Same name as a designer's own style (no link, no marker): left alone. */
   collisions: Array<{ id: string; name: string }>;
   /** Definitions skipped because a token they name is missing or unusable. */
@@ -151,6 +165,7 @@ export const EMPTY_TEXT_STYLE_PLAN: TextStylePlan = {
   creates: [],
   updates: [],
   unchanged: 0,
+  adopted: [],
   collisions: [],
   problems: [],
   removed: [],
@@ -257,6 +272,7 @@ function resolveDefinition(
       fontWeight: def.fontWeight,
     },
     links: {
+      fontSizeToken: def.fontSize,
       lineHeightToken: def.lineHeight,
       letterSpacingToken: def.letterSpacing,
     },
@@ -328,6 +344,7 @@ export function planTextStyles(
     creates: [],
     updates: [],
     unchanged: 0,
+    adopted: [],
     collisions: [],
     problems: [],
     removed: [],
@@ -358,6 +375,9 @@ export function planTextStyles(
     const changes = differences(local, resolved);
     if (changes.length === 0) {
       plan.unchanged++;
+      if (local.fontSizeToken !== resolved.links.fontSizeToken) {
+        plan.adopted.push({ ...resolved, id: local.id });
+      }
     } else {
       plan.updates.push({ style: { ...resolved, id: local.id }, changes });
     }
@@ -387,7 +407,13 @@ export const planWorkCount = (plan: TextStylePlan | undefined) =>
 export const planWork = (
   plan: TextStylePlan | undefined
 ): ResolvedTextStyle[] =>
-  plan ? [...plan.creates, ...plan.updates.map((u) => u.style)] : [];
+  plan
+    ? [...plan.creates, ...plan.updates.map((u) => u.style), ...plan.adopted]
+    : [];
+
+/** Styles that only gain the font size link (plan 208): no review rows. */
+export const planAdoptCount = (plan: TextStylePlan | undefined) =>
+  plan?.adopted.length ?? 0;
 
 /** Where the definitions live, as shown to people (relative to the repo's token folder). */
 export const TEXT_STYLE_DEFINITIONS_HINT = "styles/text-styles.json";
@@ -514,6 +540,7 @@ export async function applyTextStyleDefinitions(
 
       const link = (key: string, value: string | undefined) =>
         target.setSharedPluginData(TEXT_STYLE_LINK_NAMESPACE, key, value ?? "");
+      link(FONT_SIZE_LINK_KEY, spec.links.fontSizeToken);
       link(LINE_HEIGHT_LINK_KEY, spec.links.lineHeightToken);
       link(LETTER_SPACING_LINK_KEY, spec.links.letterSpacingToken);
       link(DEFINITION_LINK_KEY, DEFINITION_LINK_VALUE);

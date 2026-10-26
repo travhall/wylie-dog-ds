@@ -281,6 +281,7 @@ describe("figma text styles", () => {
     addStyle("S:1", {
       lineHeightToken: "button.line-height",
       letterSpacingToken: "card.title.letter-spacing",
+      fontSizeToken: "button.font-size.sm",
     });
     addStyle("S:2");
     const read = await readLocalTextStyles();
@@ -293,6 +294,8 @@ describe("figma text styles", () => {
     });
     expect(read[1].lineHeightToken).toBeUndefined();
     expect(read[1].letterSpacingToken).toBeUndefined();
+    expect(read[0].fontSizeToken).toBe("button.font-size.sm");
+    expect(read[1].fontSizeToken).toBeUndefined();
   });
 
   it("loads the font, then sets percent line height and letter spacing", async () => {

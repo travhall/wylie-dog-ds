@@ -9,6 +9,7 @@ import {
   TEXT_STYLE_DEFINITIONS_HINT,
   describeAvailableTextStyles,
 } from "../../plugin/variables/text-style-definitions";
+import { planAdoptCount } from "../../plugin/variables/text-style-definitions";
 import type { TextStylePlan } from "../../plugin/variables/text-style-definitions";
 import type {
   DiffKind,
@@ -529,6 +530,12 @@ function TextStyleDefinitionsView({
           {plural(plan.unchanged, "text style")} already match the definitions.
         </p>
       )}
+      {plan.adopted.length > 0 && (
+        <p style={noteStyle}>
+          {plural(plan.adopted.length, "text style")} will record a font size
+          link (no visible change).
+        </p>
+      )}
       {plan.problems.length > 0 && (
         <Notice>
           {plural(plan.problems.length, "text style definition")} will be
@@ -713,6 +720,7 @@ export function DiffReview({
     diff.rows.length === 0 &&
     diff.settingsCount === 0 &&
     diff.textStyleCount === 0 &&
+    planAdoptCount(diff.textStyles.definitions) === 0 &&
     diff.textStyles.problems.length === 0;
   const canConfirm = !!onConfirm && !nothing;
   const confirmDisabled = needsAck && !acknowledged;
