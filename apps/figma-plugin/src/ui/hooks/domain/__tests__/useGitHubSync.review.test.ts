@@ -604,16 +604,58 @@ describe("Pull review: text styles from definitions (plan 206)", () => {
     ...over,
   });
 
-  it("reads no definitions and plans no styles when Text styles is off", async () => {
+  it("plans no styles when Text styles is off, but notes how many are on offer (plan 207)", async () => {
     figmaHolds(sync, baselineOf(sync), false, undefined, []);
     const client = pulls();
     const { current } = setup(client);
 
     await act(() => current().handleGitHubPull());
 
-    expect(client.fetchTextStyleDefinitions).not.toHaveBeenCalled();
+    expect(client.fetchTextStyleDefinitions).toHaveBeenCalledTimes(1);
     expect(current().review?.diff.textStyles.definitions).toBeUndefined();
     expect(current().review?.diff.textStyleCount).toBe(0);
+    expect(current().review?.textStylesAvailable).toBe(1);
+    // Nothing about the styles is written without the box.
+    expect(current().review?.onConfirm).toBeUndefined();
+  });
+
+  it("says nothing about styles when the branch has no definitions file (Text styles off)", async () => {
+    figmaHolds(sync, baselineOf(sync), false, undefined, []);
+    const client = pulls({
+      fetchTextStyleDefinitions: vi
+        .fn()
+        .mockResolvedValue({ status: "absent" }),
+    });
+    const { current } = setup(client);
+
+    await act(() => current().handleGitHubPull());
+
+    expect(current().review).not.toBeNull();
+    expect(current().review?.textStylesAvailable).toBeUndefined();
+  });
+
+  it("never blocks the Pull when the definitions cannot be read (Text styles off)", async () => {
+    figmaHolds(sync, baselineOf(sync), false, undefined, []);
+    for (const fetchTextStyleDefinitions of [
+      vi.fn().mockResolvedValue({ status: "error", error: "rate limited" }),
+      vi.fn().mockRejectedValue(new Error("network")),
+    ]) {
+      const { current } = setup(pulls({ fetchTextStyleDefinitions }));
+      await act(() => current().handleGitHubPull());
+      expect(current().review).not.toBeNull();
+      expect(current().review?.textStylesAvailable).toBeUndefined();
+    }
+  });
+
+  it("with Text styles on, reads the definitions once and announces nothing", async () => {
+    figmaHolds(sync, baselineOf(sync), false, undefined, []);
+    const client = pulls();
+    const { current } = setup(client, { includeTextStyles: true });
+
+    await act(() => current().handleGitHubPull());
+
+    expect(client.fetchTextStyleDefinitions).toHaveBeenCalledTimes(1);
+    expect(current().review?.textStylesAvailable).toBeUndefined();
   });
 
   it("in an empty file with Text styles on, plans every definition as a create", async () => {

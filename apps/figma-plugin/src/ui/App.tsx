@@ -736,6 +736,7 @@ function AppInner() {
           onAdvanced={review.onAdvanced}
           onPushFirst={review.onPushFirst}
           onMarkSynced={review.onMarkSynced}
+          textStylesAvailable={review.textStylesAvailable}
           onClose={review.onClose}
         />
       )}

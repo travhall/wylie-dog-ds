@@ -49,6 +49,11 @@ export interface SyncReview {
   onPushFirst?: () => void;
   /** Pull with nothing to change and no baseline yet: record the sync. */
   onMarkSynced?: () => void;
+  /**
+   * Pull with "Text styles" unticked while the repo has a definitions file:
+   * how many styles it lists, so the review can say they are left out (plan 207).
+   */
+  textStylesAvailable?: number;
   onClose: () => void;
 }
 
@@ -433,6 +438,20 @@ export function useGitHubSync(
           definitions.status === "found" ? definitions.definitions : null;
       }
 
+      // Unticked: the review still says when styles are on offer (plan 207).
+      // Best effort: a missing file or a failed read says nothing.
+      let textStylesAvailable = 0;
+      if (!optionsRef.current.includeTextStyles) {
+        try {
+          const offered = await githubClient.fetchTextStyleDefinitions();
+          if (offered.status === "found") {
+            textStylesAvailable = offered.definitions.length;
+          }
+        } catch {
+          // Not announcing is the safe failure.
+        }
+      }
+
       const diff = buildSyncDiff({
         direction: "pull",
         baseline: local.baseline,
@@ -448,6 +467,7 @@ export function useGitHubSync(
       actions.setLoadingMessage("");
       setReview({
         diff,
+        textStylesAvailable: textStylesAvailable || undefined,
         // Scopes are derived, so Pull can have work to do (the import
         // re-applies them) even when no token differs (plan 202). Linked
         // text styles are too: a token can match while a style lags (plan 205).
