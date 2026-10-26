@@ -15,6 +15,7 @@ import type {
 import { isSyncBaseline } from "../../plugin/sync/sync-baseline";
 import type { LocalScopes } from "../../plugin/sync/sync-diff";
 import type { ExportData } from "../../plugin/variables/processor";
+import type { TextStyleInfo } from "../../plugin/variables/text-style-links";
 
 const PLUGIN_TIMEOUT_MS = 10000;
 
@@ -23,6 +24,8 @@ export interface LocalExport {
   baseline: SyncBaseline | null;
   /** Figma's current variable scopes, beside (never inside) the tokens. */
   localScopes?: LocalScopes;
+  /** Figma's local text styles with their token links (plan 205). */
+  localTextStyles?: TextStyleInfo[];
   /** The plugin reported an error or never answered. */
   failed?: boolean;
 }
@@ -41,6 +44,7 @@ export function requestLocalExport(): Promise<LocalExport> {
           localTokens: message.localTokens || [],
           baseline: isSyncBaseline(message.baseline) ? message.baseline : null,
           localScopes: message.localScopes ?? undefined,
+          localTextStyles: message.textStyles ?? undefined,
         });
       } else if (message?.type === "local-tokens-error") {
         finish({ localTokens: [], baseline: null, failed: true });
@@ -60,8 +64,14 @@ export function requestLocalExport(): Promise<LocalExport> {
 export async function checkSyncStatus(
   client: ConflictAwareGitHubClient
 ): Promise<SyncStatusResult> {
-  const { localTokens, baseline, localScopes } = await requestLocalExport();
-  return client.getSyncStatus(localTokens, baseline, localScopes);
+  const { localTokens, baseline, localScopes, localTextStyles } =
+    await requestLocalExport();
+  return client.getSyncStatus(
+    localTokens,
+    baseline,
+    localScopes,
+    localTextStyles
+  );
 }
 
 /** "collection / token", or "collection / old → new" for a rename. */

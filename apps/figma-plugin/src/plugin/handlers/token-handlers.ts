@@ -12,6 +12,14 @@ import {
 } from "../variables/processor";
 import type { LocalScopes } from "../sync/sync-diff";
 import {
+  applyTextStyleChanges,
+  readLocalTextStyles,
+} from "../variables/text-style-links";
+import type {
+  TextStyleApplyResult,
+  TextStyleInfo,
+} from "../variables/text-style-links";
+import {
   importMultipleCollections,
   parseTokenFile,
   validateTokenStructure,
@@ -302,6 +310,19 @@ export async function handleImportTokens(msg: PluginMessage): Promise<void> {
       globalResult.message = enhancedError;
     }
 
+    // The text style changes the Pull review showed, applied now that the
+    // variables are in place (plan 205). Never fatal: an unavailable font or a
+    // deleted style is skipped and reported, the import itself already landed.
+    let textStyleResult: TextStyleApplyResult | undefined;
+    if (globalResult.success && msg.textStyleChanges?.length) {
+      setLoading(true, "Updating text styles...");
+      try {
+        textStyleResult = await applyTextStyleChanges(msg.textStyleChanges);
+      } catch (error) {
+        console.error("Updating text styles failed:", error);
+      }
+    }
+
     setLoading(false);
 
     // Send results back to UI including format adapter information
@@ -312,6 +333,7 @@ export async function handleImportTokens(msg: PluginMessage): Promise<void> {
       referenceValidation: referenceValidation,
       validationReport: globalResult.validationReport, // Include enhanced validation
       adapterResults: adapterResults, // Include format adaptation results
+      textStyleResult,
     });
 
     console.log("Global import completed:", globalResult);
@@ -522,6 +544,15 @@ export async function handleGetLocalTokens(msg: PluginMessage): Promise<void> {
     const config = await fileConfigStorage.getGitHubConfig();
     const baseline = syncStateStorage.loadBaseline(config);
 
+    // Text styles and their token links (plan 205). A failure here must not
+    // break the token export the status and review depend on.
+    let textStyles: TextStyleInfo[] | undefined;
+    try {
+      textStyles = await readLocalTextStyles();
+    } catch (error) {
+      console.error("Could not read local text styles:", error);
+    }
+
     setLoading(false);
 
     figma.ui.postMessage({
@@ -529,6 +560,8 @@ export async function handleGetLocalTokens(msg: PluginMessage): Promise<void> {
       localTokens: exportData,
       // Current Figma scopes beside the tokens, never inside them (plan 202)
       localScopes,
+      // Text styles with their token links, also beside the tokens (plan 205)
+      textStyles,
       baseline,
     });
 

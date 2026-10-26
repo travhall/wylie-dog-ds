@@ -15,6 +15,8 @@ import type {
   UnsupportedVariable,
 } from "../../plugin/variables/processor";
 import type { ValidationReport } from "../../plugin/variables/validation";
+import { describeApplyResult } from "../../plugin/variables/text-style-links";
+import type { TextStyleApplyResult } from "../../plugin/variables/text-style-links";
 import type { AdapterResultWithFilename } from "../../plugin/handlers/token-handlers";
 import type { ProgressStep } from "../components/ProgressFeedback";
 import type { Result } from "../../shared/result";
@@ -375,10 +377,20 @@ export function usePluginMessages(
             );
             console.log("Current collections state:", collections);
 
+            // A Pull also updates linked text styles (plan 205); say what
+            // happened, and keep the message longer when something was skipped.
+            const styleResult = msg.textStyleResult as
+              TextStyleApplyResult | undefined;
+            const styleNote = styleResult
+              ? ` ${describeApplyResult(styleResult)}.`
+              : "";
             setSuccessMessage(
-              `✅ Added ${tokenCount} token${tokenCount !== 1 ? "s" : ""} in ${collectionCount} collection${collectionCount !== 1 ? "s" : ""}!`
+              `✅ Added ${tokenCount} token${tokenCount !== 1 ? "s" : ""} in ${collectionCount} collection${collectionCount !== 1 ? "s" : ""}!${styleNote}`
             );
-            setTimeout(() => setSuccessMessage(null), 5000);
+            setTimeout(
+              () => setSuccessMessage(null),
+              styleResult?.skipped.length ? 15000 : 5000
+            );
 
             // Mark file as engaged after successful import
             console.log("📝 Marking file as engaged...");

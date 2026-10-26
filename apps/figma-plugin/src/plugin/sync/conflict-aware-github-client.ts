@@ -10,6 +10,7 @@ import { classifyChanges } from "./sync-baseline";
 import type { ClassifiedChanges, SyncBaseline } from "./sync-baseline";
 import { buildSyncDiff } from "./sync-diff";
 import type { LocalScopes, SyncDiff } from "./sync-diff";
+import type { TextStyleInfo } from "../variables/text-style-links";
 import type {
   TokenConflict,
   ConflictResolution,
@@ -408,7 +409,8 @@ export class ConflictAwareGitHubClient extends GitHubClient {
   async getSyncStatus(
     localTokens?: ExportData[],
     baseline?: SyncBaseline | null,
-    localScopes?: LocalScopes
+    localScopes?: LocalScopes,
+    localTextStyles?: TextStyleInfo[]
   ): Promise<SyncStatusResult> {
     const unknown: SyncStatusResult = {
       diff: buildSyncDiff({
@@ -456,8 +458,10 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         localTokens,
         remoteTokens: pullResult.tokens,
         localScopes,
+        localTextStyles,
       });
-      // `upToDate` is about tokens; scope differences ride on `diff.settings`
+      // `upToDate` is about tokens; scope and text style differences ride on
+      // `diff.settings` and `diff.textStyles`
       return { ...classified, upToDate, diff };
     } catch (error) {
       console.error("Failed to get sync status:", error);

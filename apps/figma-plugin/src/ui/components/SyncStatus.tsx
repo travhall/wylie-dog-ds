@@ -338,6 +338,18 @@ export function SyncStatus({
               picker scopes will change on Pull
             </div>
           )}
+          {(status.diff?.textStyleCount ?? 0) > 0 && (
+            <div
+              title="Linked text styles differ from their tokens. Pull updates them; Push never does."
+              style={{ color: "var(--info)", marginTop: "4px" }}
+            >
+              {status.diff?.textStyleCount}{" "}
+              {status.diff?.textStyleCount === 1
+                ? "text style's"
+                : "text styles'"}{" "}
+              line height or letter spacing will change on Pull
+            </div>
+          )}
           {!status.upToDate && status.hasBaseline && status.renamed > 0 && (
             <div style={{ color: "var(--text-tertiary)", marginTop: "2px" }}>
               Includes {status.renamed} renamed

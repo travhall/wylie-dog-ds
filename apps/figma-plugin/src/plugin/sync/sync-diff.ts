@@ -29,6 +29,15 @@
  * 11. Scopes are the only invisible setting: descriptions, the original type
  *     and modes already show in the token diff.
  *
+ * Owner decisions (2026-10-25, plan 205): text styles linked to a line-height
+ * or letter-spacing token are the second derived setting a Pull writes.
+ * 12. They are a "Text styles" group in the same `settings` section and the
+ *     same confirm; the values come from the incoming tokens (see
+ *     text-style-links.ts). Styles without a link are only listed, read-only.
+ * 13. The Figma-side style list rides beside the tokens (`localTextStyles`),
+ *     never inside, so hashes and the baseline are untouched. Push never lists
+ *     or writes them.
+ *
  * Direction decides which side is "from" (what the destination holds now) and
  * "to" (what it will hold): Push writes Figma to GitHub; Pull writes GitHub to
  * Figma; "overview" is a read-only look, ordered like a Push.
@@ -39,6 +48,14 @@ import type { ExportData, ProcessedToken } from "../variables/processor";
 import { ConflictDetector } from "./conflict-detector";
 import type { SyncChangeItem, SyncChangeSummary } from "./change-summary";
 import { inferScopes } from "../variables/scopes";
+import {
+  EMPTY_TEXT_STYLE_DIFF,
+  computeTextStyleChanges,
+} from "../variables/text-style-links";
+import type {
+  TextStyleDiff,
+  TextStyleInfo,
+} from "../variables/text-style-links";
 import { classifyChanges } from "./sync-baseline";
 import type { ChangeSide, SyncBaseline } from "./sync-baseline";
 import type { TokenConflict } from "./types";
@@ -118,6 +135,14 @@ export interface SyncDiff {
   settings: ScopeGroup[];
   /** Variables across all `settings` groups. */
   settingsCount: number;
+  /**
+   * Pull and overview: linked text styles a Pull would change, linked tokens
+   * that cannot give a percent, and styles with no link (read-only). Always
+   * empty for Push (text styles are never pushed).
+   */
+  textStyles: TextStyleDiff;
+  /** Styles in `textStyles.changes`. */
+  textStyleCount: number;
 }
 
 export interface BuildDiffOptions {
@@ -127,6 +152,8 @@ export interface BuildDiffOptions {
   remoteTokens: ExportData[];
   /** Figma's current scopes; without them no scope differences are reported. */
   localScopes?: LocalScopes;
+  /** Figma's local text styles with their links; without them none are reported. */
+  localTextStyles?: TextStyleInfo[];
 }
 
 const SEP = "\u0000";
@@ -266,6 +293,7 @@ export function buildSyncDiff({
   localTokens,
   remoteTokens,
   localScopes,
+  localTextStyles,
 }: BuildDiffOptions): SyncDiff {
   // A Push may cover only the selected collections; don't report the others.
   const scoped =
@@ -375,6 +403,11 @@ export function buildSyncDiff({
       ? diffScopes(localScopes, remoteIndex, rows)
       : [];
 
+  const textStyles =
+    direction !== "push" && localTextStyles
+      ? computeTextStyleChanges(localTextStyles, remoteTokens)
+      : EMPTY_TEXT_STYLE_DIFF;
+
   return {
     direction,
     hasBaseline: classified.hasBaseline,
@@ -391,6 +424,8 @@ export function buildSyncDiff({
       direction === "pull" ? rows.filter((r) => r.overwritesFigma) : [],
     settings,
     settingsCount: settings.reduce((n, g) => n + g.changes.length, 0),
+    textStyles,
+    textStyleCount: textStyles.changes.length,
   };
 }
 
