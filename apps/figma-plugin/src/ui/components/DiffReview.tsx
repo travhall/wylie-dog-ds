@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { Icon } from "./common/Icon";
 import { ColorSwatch, isColorValue } from "./common/ColorSwatch";
 import { describeScopes } from "../../plugin/sync/sync-diff";
+import { describeTextStyleChange } from "../../plugin/variables/text-style-links";
 import type {
   DiffKind,
   DiffRow,
@@ -299,21 +300,143 @@ function ScopeGroupView({ group }: { group: ScopeGroup }) {
   );
 }
 
+const SETTINGS_TEXT_STYLES_LIMIT = 100;
+
+/** "A", "A and B", "A, B and C". */
+function joinParts(parts: string[]): string {
+  return parts.length < 2
+    ? (parts[0] ?? "")
+    : `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
+}
+
+/**
+ * Linked text styles a Pull would change (plan 205), as their own list, plus
+ * linked tokens that cannot give a percent and, read-only, the styles that have
+ * no token link at all (designer-owned, never modified).
+ */
+function TextStylesSection({ diff }: { diff: SyncDiff }) {
+  const { changes, problems, unlinked } = diff.textStyles;
+  if (
+    diff.direction === "push" ||
+    (changes.length === 0 && problems.length === 0 && unlinked.length === 0)
+  ) {
+    return null;
+  }
+  const shown = changes.slice(0, SETTINGS_TEXT_STYLES_LIMIT);
+  const listStyle = {
+    listStyle: "none",
+    fontFamily: "var(--font-mono)",
+    color: "var(--text-secondary)",
+    wordBreak: "break-all" as const,
+    padding: "1px 0",
+  };
+  const noteStyle = {
+    margin: "0 0 var(--space-2)",
+    fontSize: "var(--font-size-xs)",
+    color: "var(--text-tertiary)",
+  };
+  return (
+    <section
+      aria-label="Text styles"
+      style={{ marginBottom: "var(--space-4)" }}
+    >
+      {changes.length > 0 && (
+        <>
+          <h4
+            style={{
+              margin: "0 0 var(--space-1)",
+              fontSize: "var(--font-size-sm)",
+              color: "var(--text-primary)",
+            }}
+          >
+            Text styles will change ({changes.length})
+          </h4>
+          <p style={noteStyle}>
+            Line height and letter spacing are percent values on text styles,
+            because variables cannot hold a percent. Styles linked to a token
+            follow it when you Pull.
+          </p>
+          <ul
+            style={{ margin: 0, padding: 0, fontSize: "var(--font-size-xs)" }}
+          >
+            {shown.map((c) => (
+              <li key={c.id} style={listStyle}>
+                {c.name}: {describeTextStyleChange(c)}
+              </li>
+            ))}
+            {changes.length > shown.length && (
+              <li style={{ listStyle: "none", color: "var(--text-tertiary)" }}>
+                and {changes.length - shown.length} more
+              </li>
+            )}
+          </ul>
+        </>
+      )}
+      {problems.length > 0 && (
+        <Notice>
+          {plural(problems.length, "text style")} will not change because a
+          linked token{" "}
+          {problems.every((p) => p.reason === "missing")
+            ? "no longer exists"
+            : "cannot give a percent"}
+          :{" "}
+          {problems
+            .slice(0, 5)
+            .map((p) => `${p.name} (${p.token})`)
+            .join(", ")}
+          {problems.length > 5 ? ` and ${problems.length - 5} more` : ""}
+        </Notice>
+      )}
+      {unlinked.length > 0 && (
+        <details
+          style={{
+            fontSize: "var(--font-size-xs)",
+            marginTop: "var(--space-2)",
+          }}
+        >
+          <summary
+            style={{ cursor: "pointer", color: "var(--text-secondary)" }}
+          >
+            {plural(unlinked.length, "text style")} with no token link (not
+            changed)
+          </summary>
+          <ul style={{ margin: "var(--space-1) 0 0", padding: 0 }}>
+            {unlinked.slice(0, SETTINGS_TEXT_STYLES_LIMIT).map((u) => (
+              <li key={u.id} style={listStyle}>
+                {u.name}
+              </li>
+            ))}
+            {unlinked.length > SETTINGS_TEXT_STYLES_LIMIT && (
+              <li style={{ listStyle: "none", color: "var(--text-tertiary)" }}>
+                and {unlinked.length - SETTINGS_TEXT_STYLES_LIMIT} more
+              </li>
+            )}
+          </ul>
+        </details>
+      )}
+    </section>
+  );
+}
+
 function headline(diff: SyncDiff): string {
   const n = diff.rows.length;
   const s = diff.settingsCount;
+  const t = diff.textStyleCount;
   const scopes = `${s} ${s === 1 ? "variable's" : "variables'"} picker scopes`;
+  const styles = `${t} ${t === 1 ? "text style's" : "text styles'"} line height or letter spacing`;
   if (diff.direction === "pull") {
-    if (n === 0 && s === 0) return "Nothing to pull";
-    if (n === 0)
-      return `Pull will update the picker scopes of ${plural(s, "variable")}`;
-    return s === 0
-      ? `Pull will change ${plural(n, "token")} in Figma`
-      : `Pull will change ${plural(n, "token")} and the picker scopes of ${plural(s, "variable")} in Figma`;
+    if (n === 0 && s === 0 && t === 0) return "Nothing to pull";
+    const extras = [
+      s > 0 && `the picker scopes of ${plural(s, "variable")}`,
+      t > 0 &&
+        `the line height and letter spacing of ${plural(t, "text style")}`,
+    ].filter((x): x is string => !!x);
+    if (n === 0) return `Pull will update ${joinParts(extras)}`;
+    return `Pull will change ${joinParts([plural(n, "token"), ...extras])} in Figma`;
   }
   if (diff.direction === "overview") {
-    if (n === 0 && s > 0) {
-      return `Tokens match, but ${scopes} differ`;
+    if (n === 0 && (s > 0 || t > 0)) {
+      return `Tokens match, but ${joinParts([s > 0 && scopes, t > 0 && styles].filter((x): x is string => !!x))} differ`;
     }
     return n === 0
       ? "Figma and GitHub are in sync"
@@ -397,7 +520,11 @@ export function DiffReview({
   const visible = matching.slice(0, limit);
 
   const needsAck = diff.direction === "pull" && diff.deletions.length > 0;
-  const nothing = diff.rows.length === 0 && diff.settingsCount === 0;
+  const nothing =
+    diff.rows.length === 0 &&
+    diff.settingsCount === 0 &&
+    diff.textStyleCount === 0 &&
+    diff.textStyles.problems.length === 0;
   const canConfirm = !!onConfirm && !nothing;
   const confirmDisabled = needsAck && !acknowledged;
 
@@ -597,6 +724,7 @@ export function DiffReview({
               {diff.settingsCount > 0 && <SettingsSection diff={diff} />}
             </>
           )}
+          <TextStylesSection diff={diff} />
 
           {needsAck && (
             <label

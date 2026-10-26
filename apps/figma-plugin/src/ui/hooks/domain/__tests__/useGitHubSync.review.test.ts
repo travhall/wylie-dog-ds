@@ -62,7 +62,8 @@ function figmaHolds(
   localTokens: ExportData[],
   baseline: SyncBaseline | null,
   fail = false,
-  localScopes?: Record<string, Record<string, string[]>>
+  localScopes?: Record<string, Record<string, string[]>>,
+  textStyles?: unknown[]
 ) {
   post.mockImplementation((data: unknown) => {
     const type = (data as { pluginMessage?: { type?: string } }).pluginMessage
@@ -79,6 +80,7 @@ function figmaHolds(
                   localTokens,
                   baseline,
                   localScopes,
+                  textStyles,
                 },
           },
         })
@@ -480,5 +482,79 @@ describe("Push review", () => {
     expect(calls("setError")).toEqual([["Bad credentials"]]);
     expect(current().review).toBeNull();
     expect(client.syncTokens).not.toHaveBeenCalled();
+  });
+});
+
+describe("Pull review: text styles (plan 205)", () => {
+  const lineHeights = (value: number) =>
+    [
+      {
+        components: {
+          variables: {
+            "button.line-height": { $type: "number", $value: value },
+          },
+        },
+      },
+    ] as unknown as ExportData[];
+  const onGitHub = lineHeights(125);
+  const style = (name: string, linked: boolean) => ({
+    id: `S:${name}`,
+    name,
+    lineHeight: { unit: "PERCENT", value: 100 },
+    letterSpacing: { unit: "PERCENT", value: 0 },
+    ...(linked ? { lineHeightToken: "button.line-height" } : {}),
+  });
+  const pulls = () => ({
+    pullTokens: vi.fn().mockResolvedValue({ success: true, tokens: onGitHub }),
+  });
+
+  it("equal tokens with a lagging linked style show it and can be pulled", async () => {
+    figmaHolds(onGitHub, baselineOf(onGitHub), false, undefined, [
+      style("button/label/sm", true),
+      style("designer/hero", false),
+    ]);
+    const { current } = setup(pulls());
+
+    await act(() => current().handleGitHubPull());
+
+    const diff = current().review?.diff;
+    expect(diff?.rows).toEqual([]);
+    expect(diff?.textStyleCount).toBe(1);
+    expect(diff?.textStyles.unlinked).toHaveLength(1);
+    expect(current().review?.onConfirm).toBeDefined();
+    expect(current().review?.onMarkSynced).toBeUndefined();
+    expect(posted("import-tokens")).toHaveLength(0);
+  });
+
+  it("sends the reviewed text style changes with the import, and nothing for unlinked styles", async () => {
+    figmaHolds(onGitHub, baselineOf(onGitHub), false, undefined, [
+      style("button/label/sm", true),
+      style("designer/hero", false),
+    ]);
+    const { current } = setup(pulls());
+    await act(() => current().handleGitHubPull());
+
+    await confirmReview(current);
+
+    const imports = posted("import-tokens");
+    expect(imports).toHaveLength(1);
+    expect(imports[0]!.textStyleChanges).toEqual([
+      {
+        id: "S:button/label/sm",
+        name: "button/label/sm",
+        lineHeight: { from: { unit: "PERCENT", value: 100 }, to: 125 },
+      },
+    ]);
+  });
+
+  it("with only unlinked styles there is nothing to confirm", async () => {
+    figmaHolds(onGitHub, baselineOf(onGitHub), false, undefined, [
+      style("designer/hero", false),
+    ]);
+    const { current } = setup(pulls());
+    await act(() => current().handleGitHubPull());
+
+    expect(current().review?.diff.textStyleCount).toBe(0);
+    expect(current().review?.onConfirm).toBeUndefined();
   });
 });

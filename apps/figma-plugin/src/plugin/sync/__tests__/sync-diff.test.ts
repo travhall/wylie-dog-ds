@@ -491,3 +491,123 @@ describe("buildSyncDiff: picker scopes (plan 202)", () => {
     );
   });
 });
+
+describe("buildSyncDiff: text styles (plan 205)", () => {
+  const tokens = [
+    col("primitive", {
+      "typography.line-height.none": tok(125),
+      "typography.tracking.tight": {
+        $type: "dimension",
+        $value: "-0.025em",
+      },
+    }),
+    col("components", {
+      "button.line-height": tok("{typography.line-height.none}"),
+      "card.title.letter-spacing": {
+        $type: "dimension",
+        $value: "{typography.tracking.tight}",
+      },
+    }),
+  ];
+  const styles = [
+    {
+      id: "S:1",
+      name: "button/label/sm",
+      lineHeight: { unit: "PERCENT" as const, value: 100 },
+      letterSpacing: { unit: "PERCENT" as const, value: 0 },
+      lineHeightToken: "button.line-height",
+    },
+    {
+      id: "S:2",
+      name: "card/title",
+      lineHeight: { unit: "AUTO" as const },
+      letterSpacing: { unit: "PERCENT" as const, value: 0 },
+      letterSpacingToken: "card.title.letter-spacing",
+    },
+    {
+      id: "S:3",
+      name: "designer/hero",
+      lineHeight: { unit: "AUTO" as const },
+      letterSpacing: { unit: "PERCENT" as const, value: 0 },
+    },
+  ];
+  const diff = (
+    direction: "pull" | "overview" | "push",
+    localTextStyles = styles
+  ) =>
+    buildSyncDiff({
+      direction,
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+      localTextStyles,
+    });
+
+  it("reports linked styles that lag their tokens although every token matches", () => {
+    const d = diff("pull");
+    expect(d.rows).toEqual([]);
+    expect(d.textStyleCount).toBe(2);
+    expect(d.textStyles.changes.map((c) => c.name)).toEqual([
+      "button/label/sm",
+      "card/title",
+    ]);
+    expect(d.textStyles.changes[0].lineHeight).toEqual({
+      from: { unit: "PERCENT", value: 100 },
+      to: 125,
+    });
+    expect(d.textStyles.changes[1].letterSpacing?.to).toBe(-2.5);
+  });
+
+  it("lists styles without a link as unlinked and never as changes", () => {
+    const d = diff("pull");
+    expect(d.textStyles.unlinked).toEqual([
+      { id: "S:3", name: "designer/hero" },
+    ]);
+    expect(d.textStyles.changes.some((c) => c.id === "S:3")).toBe(false);
+  });
+
+  it("resolves from the incoming tokens, not from Figma's variables", () => {
+    const remote = [
+      col("primitive", { "typography.line-height.none": tok(110) }),
+      tokens[1],
+    ];
+    const d = buildSyncDiff({
+      direction: "pull",
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: remote,
+      localTextStyles: [styles[0]],
+    });
+    expect(d.textStyles.changes[0].lineHeight?.to).toBe(110);
+  });
+
+  it("includes text styles in the overview", () => {
+    expect(diff("overview").textStyleCount).toBe(2);
+  });
+
+  it("reports nothing for Push, and nothing without text styles", () => {
+    expect(diff("push").textStyleCount).toBe(0);
+    expect(diff("push").textStyles.unlinked).toEqual([]);
+    const d = buildSyncDiff({
+      direction: "pull",
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+    });
+    expect(d.textStyleCount).toBe(0);
+    expect(d.textStyles).toEqual({ changes: [], problems: [], unlinked: [] });
+  });
+
+  it("does not touch the token rows, counts or hashes", () => {
+    const without = buildSyncDiff({
+      direction: "pull",
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+    });
+    const withStyles = diff("pull");
+    expect(withStyles.rows).toEqual(without.rows);
+    expect(withStyles.counts).toEqual(without.counts);
+    expect(hashTokens(tokens)).toEqual(hashTokens(tokens));
+  });
+});

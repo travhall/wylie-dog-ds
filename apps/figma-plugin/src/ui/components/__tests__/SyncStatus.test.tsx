@@ -1,3 +1,4 @@
+import type { ExportData } from "../../../plugin/variables/processor";
 import { h } from "preact";
 import {
   afterEach,
@@ -173,6 +174,7 @@ describe("SyncStatus", () => {
       expect(getSyncStatus).toHaveBeenCalledWith(
         localTokens,
         baseline,
+        undefined,
         undefined
       );
       expect(screen.getByText(/2 to push/)).toBeInTheDocument();
@@ -278,7 +280,12 @@ describe("SyncStatus", () => {
         baseline: { nonsense: true },
       });
       await waitFor(() =>
-        expect(getSyncStatus).toHaveBeenCalledWith([], null, undefined)
+        expect(getSyncStatus).toHaveBeenCalledWith(
+          [],
+          null,
+          undefined,
+          undefined
+        )
       );
     });
 
@@ -288,7 +295,12 @@ describe("SyncStatus", () => {
       fireEvent.click(screen.getByLabelText("Refresh sync status"));
       pluginMessage({ type: "local-tokens-error" });
       await waitFor(() =>
-        expect(getSyncStatus).toHaveBeenCalledWith([], null, undefined)
+        expect(getSyncStatus).toHaveBeenCalledWith(
+          [],
+          null,
+          undefined,
+          undefined
+        )
       );
     });
 
@@ -298,7 +310,12 @@ describe("SyncStatus", () => {
       fireEvent.click(screen.getByLabelText("Refresh sync status"));
       pluginMessage({ type: "local-tokens-exported" });
       await waitFor(() =>
-        expect(getSyncStatus).toHaveBeenCalledWith([], null, undefined)
+        expect(getSyncStatus).toHaveBeenCalledWith(
+          [],
+          null,
+          undefined,
+          undefined
+        )
       );
     });
 
@@ -311,7 +328,12 @@ describe("SyncStatus", () => {
       await act(async () => {
         await vi.advanceTimersByTimeAsync(10000);
       });
-      expect(getSyncStatus).toHaveBeenCalledWith([], null, undefined);
+      expect(getSyncStatus).toHaveBeenCalledWith(
+        [],
+        null,
+        undefined,
+        undefined
+      );
     });
 
     it("shows a checking state and disables Refresh while the diff runs", async () => {
@@ -448,7 +470,12 @@ describe("SyncStatus scopes (plan 202)", () => {
 
   it("hands the scopes to the client, keeps tokens Up to date and adds a second line", async () => {
     const { getSyncStatus, localScopes } = await run(["ALL_SCOPES"]);
-    expect(getSyncStatus).toHaveBeenCalledWith(tokens, null, localScopes);
+    expect(getSyncStatus).toHaveBeenCalledWith(
+      tokens,
+      null,
+      localScopes,
+      undefined
+    );
     expect(await screen.findByText("Up to date")).toBeInTheDocument();
     expect(
       await screen.findByText("1 variable's picker scopes will change on Pull")
@@ -469,5 +496,85 @@ describe("SyncStatus scopes (plan 202)", () => {
     await run(["FONT_SIZE"]);
     expect(await screen.findByText("Up to date")).toBeInTheDocument();
     expect(screen.queryByText(/picker scopes will change/)).toBeNull();
+  });
+});
+
+describe("SyncStatus text styles (plan 205)", () => {
+  const tokens: ExportData[] = [
+    {
+      primitive: {
+        variables: { "line-height.tight": { $type: "number", $value: 125 } },
+      },
+    },
+    {
+      components: {
+        variables: {
+          "button.line-height": {
+            $type: "number",
+            $value: "{line-height.tight}",
+          },
+        },
+      },
+    },
+  ];
+  const textStyles = [
+    {
+      id: "S:1",
+      name: "button/label/sm",
+      lineHeight: { unit: "PERCENT" as const, value: 100 },
+      letterSpacing: { unit: "PERCENT" as const, value: 0 },
+      lineHeightToken: "button.line-height",
+    },
+  ];
+  const run = async (styles: typeof textStyles) => {
+    vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    const diff = buildSyncDiff({
+      direction: "overview",
+      baseline: null,
+      localTokens: tokens,
+      remoteTokens: tokens,
+      localTextStyles: styles,
+    });
+    const getSyncStatus = vi.fn(async () => ({
+      upToDate: true,
+      hasBaseline: false,
+      differences: 0,
+      diff,
+    }));
+    const client = { getSyncStatus } as unknown as ConflictAwareGitHubClient;
+    render(<SyncStatus githubClient={client} githubConfigured />);
+    fireEvent.click(screen.getByLabelText("Refresh sync status"));
+    pluginMessage({
+      type: "local-tokens-exported",
+      localTokens: tokens,
+      textStyles: styles,
+    });
+    await waitFor(() => expect(getSyncStatus).toHaveBeenCalled());
+    return { getSyncStatus };
+  };
+
+  it("hands the text styles to the client, keeps tokens Up to date and adds a second line", async () => {
+    const { getSyncStatus } = await run(textStyles);
+    expect(getSyncStatus).toHaveBeenCalledWith(
+      tokens,
+      null,
+      undefined,
+      textStyles
+    );
+    expect(await screen.findByText("Up to date")).toBeInTheDocument();
+    expect(
+      await screen.findByText(
+        "1 text style's line height or letter spacing will change on Pull"
+      )
+    ).toBeInTheDocument();
+  });
+
+  it("adds no second line when the styles already match their tokens", async () => {
+    await run([
+      { ...textStyles[0], lineHeight: { unit: "PERCENT", value: 125 } },
+    ]);
+    expect(await screen.findByText("Up to date")).toBeInTheDocument();
+    expect(screen.queryByText(/text style.*will change on Pull/)).toBeNull();
   });
 });

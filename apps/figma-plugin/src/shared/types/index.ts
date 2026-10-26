@@ -1,5 +1,6 @@
 // Shared types for plugin communication
 import type { MergeStrategy } from "../../plugin/variables/importer";
+import type { TextStyleChange } from "../../plugin/variables/text-style-links";
 
 export interface VariableCollection {
   id: string;
@@ -28,6 +29,11 @@ export interface PluginMessage {
   resolutions?: unknown;
   originalTokens?: unknown;
   mergeStrategy?: MergeStrategy;
+  /**
+   * With `import-tokens`: the text style changes the Pull review showed
+   * (plan 205), applied after a successful import.
+   */
+  textStyleChanges?: TextStyleChange[];
   /**
    * With `record-last-sync`: hashes of the GitHub tokens as they are after a
    * Push or Pull. Their presence makes the plugin record a sync baseline.

@@ -427,3 +427,120 @@ describe("DiffReview: picker scopes (plan 202)", () => {
     expect(screen.queryByRole("region", { name: "Picker scopes" })).toBeNull();
   });
 });
+
+describe("DiffReview: text styles (plan 205)", () => {
+  const tokens = [
+    col("primitive", { "typography.line-height.none": tok(125) }),
+    col("components", {
+      "button.line-height": tok("{typography.line-height.none}"),
+    }),
+  ];
+  const style = (id: string, name: string, linked: boolean) => ({
+    id,
+    name,
+    lineHeight: { unit: "PERCENT" as const, value: 100 },
+    letterSpacing: { unit: "PERCENT" as const, value: 0 },
+    ...(linked ? { lineHeightToken: "button.line-height" } : {}),
+  });
+  const styled = (
+    direction: SyncDirection,
+    localTextStyles = [
+      style("S:1", "button/label/sm", true),
+      style("S:2", "button/label/md", true),
+      style("S:3", "designer/hero", false),
+    ]
+  ) =>
+    buildSyncDiff({
+      direction,
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: tokens,
+      localTextStyles,
+    });
+
+  it("lists the styles with from and to for a style-only Pull, and confirms", () => {
+    const { onConfirm } = setup(styled("pull"));
+    expect(
+      screen.getByRole("dialog", {
+        name: "Pull will update the line height and letter spacing of 2 text styles",
+      })
+    ).toBeInTheDocument();
+    const section = screen.getByRole("region", { name: "Text styles" });
+    expect(section).toHaveTextContent("Text styles will change (2)");
+    expect(section).toHaveTextContent(
+      "button/label/sm: line height 100% → 125%"
+    );
+    expect(screen.queryByText("Nothing to pull")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByText("Pull from GitHub"));
+    expect(onConfirm).toHaveBeenCalled();
+  });
+
+  it("shows styles with no link as a read-only report", () => {
+    setup(styled("pull"));
+    const section = screen.getByRole("region", { name: "Text styles" });
+    expect(section).toHaveTextContent(
+      "1 text style with no token link (not changed)"
+    );
+    expect(within(section).getByText("designer/hero")).toBeInTheDocument();
+  });
+
+  it("keeps 'Nothing to pull' when only unlinked styles exist, but still lists them", () => {
+    setup(styled("pull", [style("S:3", "designer/hero", false)]));
+    expect(
+      screen.getByRole("dialog", { name: "Nothing to pull" })
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Pull from GitHub")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("region", { name: "Text styles" })
+    ).toHaveTextContent("designer/hero");
+  });
+
+  it("reports a linked style whose token is gone, without a change", () => {
+    const gone = {
+      ...style("S:1", "button/label/sm", false),
+      lineHeightToken: "gone.line-height",
+    };
+    setup(styled("pull", [gone]));
+    const section = screen.getByRole("region", { name: "Text styles" });
+    expect(section).toHaveTextContent("no longer exists");
+    expect(section).toHaveTextContent("button/label/sm (gone.line-height)");
+    expect(section).not.toHaveTextContent("Text styles will change");
+  });
+
+  it("shows text styles beside scopes and tokens in the headline", () => {
+    const changed = [
+      col("primitive", { "typography.line-height.none": tok(130) }),
+      tokens[1],
+    ];
+    const diff = buildSyncDiff({
+      direction: "pull",
+      baseline: agreed(tokens),
+      localTokens: tokens,
+      remoteTokens: changed,
+      localTextStyles: [style("S:1", "button/label/sm", true)],
+    });
+    setup(diff);
+    expect(
+      screen.getByRole("dialog", {
+        name: "Pull will change 1 token and the line height and letter spacing of 1 text style in Figma",
+      })
+    ).toBeInTheDocument();
+  });
+
+  it("makes the overview say tokens match but text styles differ", () => {
+    setup(styled("overview"), { onConfirm: undefined });
+    expect(
+      screen.getByRole("dialog", {
+        name: "Tokens match, but 2 text styles' line height or letter spacing differ",
+      })
+    ).toBeInTheDocument();
+  });
+
+  it("never lists text styles in a Push", () => {
+    setup(styled("push"));
+    expect(
+      screen.getByRole("dialog", { name: "Nothing to push" })
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Text styles" })).toBeNull();
+  });
+});

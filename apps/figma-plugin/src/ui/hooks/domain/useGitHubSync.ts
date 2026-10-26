@@ -349,6 +349,9 @@ export function useGitHubSync(
             // Use "replace" strategy to delete orphaned variables
             // This ensures bi-directional sync: tokens deleted in code are deleted in Figma
             mergeStrategy: "replace",
+            // The linked text styles the review listed; the plugin applies
+            // them once the import has landed (plan 205).
+            textStyleChanges: diff.textStyles.changes,
           },
         },
         "*"
@@ -405,6 +408,7 @@ export function useGitHubSync(
         localTokens: local.localTokens,
         remoteTokens,
         localScopes: local.localScopes,
+        localTextStyles: local.localTextStyles,
       });
 
       actions.setLoading(false);
@@ -412,9 +416,12 @@ export function useGitHubSync(
       setReview({
         diff,
         // Scopes are derived, so Pull can have work to do (the import
-        // re-applies them) even when no token differs (plan 202).
+        // re-applies them) even when no token differs (plan 202). Linked
+        // text styles are too: a token can match while a style lags (plan 205).
         onConfirm:
-          diff.rows.length > 0 || diff.settingsCount > 0
+          diff.rows.length > 0 ||
+          diff.settingsCount > 0 ||
+          diff.textStyleCount > 0
             ? () => {
                 setReview(null);
                 performPull(remoteTokens, diff);
@@ -448,6 +455,7 @@ export function useGitHubSync(
         onMarkSynced:
           diff.rows.length === 0 &&
           diff.settingsCount === 0 &&
+          diff.textStyleCount === 0 &&
           !diff.hasBaseline
             ? () => {
                 setReview(null);
