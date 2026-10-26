@@ -38,6 +38,15 @@
  *     never inside, so hashes and the baseline are untouched. Push never lists
  *     or writes them.
  *
+ * Owner decisions (2026-10-25, plan 206): with "Text styles" ticked, Pull also
+ * creates and updates the styles in the definitions file.
+ * 14. The plan (creates, updates, unchanged, collisions, removed) rides in
+ *     `textStyles.definitions`, inside the same Text styles group and the same
+ *     confirm. `textStyleCount` counts every style a Pull would write. A style
+ *     a definition names is handled by the plan, not by the plan 205 links.
+ * 15. The definitions file is not a token file: Push, the baseline and the
+ *     token diff never see it.
+ *
  * Direction decides which side is "from" (what the destination holds now) and
  * "to" (what it will hold): Push writes Figma to GitHub; Pull writes GitHub to
  * Figma; "overview" is a read-only look, ordered like a Push.
@@ -56,6 +65,12 @@ import type {
   TextStyleDiff,
   TextStyleInfo,
 } from "../variables/text-style-links";
+import {
+  EMPTY_TEXT_STYLE_PLAN,
+  planTextStyles,
+  planWorkCount,
+} from "../variables/text-style-definitions";
+import type { TextStyleDefinition } from "../variables/text-style-definitions";
 import { classifyChanges } from "./sync-baseline";
 import type { ChangeSide, SyncBaseline } from "./sync-baseline";
 import type { TokenConflict } from "./types";
@@ -141,7 +156,7 @@ export interface SyncDiff {
    * empty for Push (text styles are never pushed).
    */
   textStyles: TextStyleDiff;
-  /** Styles in `textStyles.changes`. */
+  /** Styles a Pull would write: `textStyles.changes` plus creates and updates. */
   textStyleCount: number;
 }
 
@@ -154,6 +169,12 @@ export interface BuildDiffOptions {
   localScopes?: LocalScopes;
   /** Figma's local text styles with their links; without them none are reported. */
   localTextStyles?: TextStyleInfo[];
+  /**
+   * The definitions file (plan 206): the list when "Text styles" is ticked and
+   * the branch has one, `null` when ticked but the file is absent, `undefined`
+   * when the option is off.
+   */
+  textStyleDefinitions?: TextStyleDefinition[] | null;
 }
 
 const SEP = "\u0000";
@@ -294,6 +315,7 @@ export function buildSyncDiff({
   remoteTokens,
   localScopes,
   localTextStyles,
+  textStyleDefinitions,
 }: BuildDiffOptions): SyncDiff {
   // A Push may cover only the selected collections; don't report the others.
   const scoped =
@@ -403,10 +425,24 @@ export function buildSyncDiff({
       ? diffScopes(localScopes, remoteIndex, rows)
       : [];
 
-  const textStyles =
-    direction !== "push" && localTextStyles
-      ? computeTextStyleChanges(localTextStyles, remoteTokens)
-      : EMPTY_TEXT_STYLE_DIFF;
+  let textStyles: TextStyleDiff = EMPTY_TEXT_STYLE_DIFF;
+  if (direction !== "push" && localTextStyles) {
+    const wantsDefinitions = textStyleDefinitions !== undefined;
+    const defined = new Set((textStyleDefinitions ?? []).map((d) => d.name));
+    // A style a definition names is the plan's: leave it out of the links flow
+    textStyles = computeTextStyleChanges(
+      localTextStyles.filter((s) => !defined.has(s.name)),
+      remoteTokens
+    );
+    if (wantsDefinitions) {
+      textStyles = {
+        ...textStyles,
+        definitions: textStyleDefinitions
+          ? planTextStyles(textStyleDefinitions, localTextStyles, remoteTokens)
+          : { ...EMPTY_TEXT_STYLE_PLAN, status: "absent" },
+      };
+    }
+  }
 
   return {
     direction,
@@ -425,7 +461,8 @@ export function buildSyncDiff({
     settings,
     settingsCount: settings.reduce((n, g) => n + g.changes.length, 0),
     textStyles,
-    textStyleCount: textStyles.changes.length,
+    textStyleCount:
+      textStyles.changes.length + planWorkCount(textStyles.definitions),
   };
 }
 

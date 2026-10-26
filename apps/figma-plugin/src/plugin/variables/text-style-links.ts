@@ -34,10 +34,19 @@
  * `applyTextStyleChanges` touch the file.
  */
 import type { ExportData } from "./processor";
+import { createTokenName } from "./processor";
+import type { TextStylePlan } from "./text-style-definitions";
 
 export const TEXT_STYLE_LINK_NAMESPACE = "wylie_dog";
 export const LINE_HEIGHT_LINK_KEY = "lineHeightToken";
 export const LETTER_SPACING_LINK_KEY = "letterSpacingToken";
+/**
+ * Marks a style Token Bridge created or adopted from the text style
+ * definitions file (plan 206). Its value names the file; the key's presence is
+ * what matters. Styles without it and without a link are designer-owned.
+ */
+export const DEFINITION_LINK_KEY = "definition";
+export const DEFINITION_LINK_VALUE = "text-styles";
 
 /** A line height or letter spacing as Figma stores it. */
 export interface SpacingValue {
@@ -55,6 +64,13 @@ export interface TextStyleInfo {
   lineHeightToken?: string;
   /** Dotted token path driving the letter spacing, when linked. */
   letterSpacingToken?: string;
+  /** Created or adopted from the definitions file (plan 206). */
+  managed?: boolean;
+  /**
+   * Token paths of the variables bound to the style's font family, size and
+   * weight. Bound values follow the variable, so only the binding is compared.
+   */
+  bound?: { fontFamily?: string; fontSize?: string; fontWeight?: string };
 }
 
 export interface SpacingChange {
@@ -84,6 +100,11 @@ export interface TextStyleDiff {
   problems: TextStyleProblem[];
   /** Styles with no link at all: designer-owned, never modified. */
   unlinked: Array<{ id: string; name: string }>;
+  /**
+   * With "Text styles" ticked (plan 206): what the definitions file would
+   * create and update. Absent when the option is off.
+   */
+  definitions?: TextStylePlan;
 }
 
 export const EMPTY_TEXT_STYLE_DIFF: TextStyleDiff = {
@@ -117,13 +138,13 @@ export function describeTextStyleChange(change: TextStyleChange): string {
   return parts.join(", ");
 }
 
-type Resolved =
+export type Resolved =
   | { ok: true; value: number; unit: "none" | "em" | "percent" }
   | { ok: false; reason: "missing" | "unsupported" };
 
 const MAX_ALIAS_DEPTH = 10;
 
-function findToken(path: string, tokens: ExportData[]) {
+export function findToken(path: string, tokens: ExportData[]) {
   for (const data of tokens) {
     for (const content of Object.values(data)) {
       const token = content.variables[path];
@@ -154,18 +175,18 @@ export function resolveTokenNumber(
 }
 
 /** Line height: a bare number or % is already percent; em is times 100. */
-function lineHeightPercent(r: Resolved): number | null {
+export function lineHeightPercent(r: Resolved): number | null {
   if (!r.ok) return null;
   return round3(r.unit === "em" ? r.value * 100 : r.value);
 }
 
 /** Letter spacing: a bare number or em is em, times 100; % is already percent. */
-function letterSpacingPercent(r: Resolved): number | null {
+export function letterSpacingPercent(r: Resolved): number | null {
   if (!r.ok) return null;
   return round3(r.unit === "percent" ? r.value : r.value * 100);
 }
 
-const sameSpacing = (current: SpacingValue, to: number) =>
+export const sameSpacing = (current: SpacingValue, to: number) =>
   current.unit === "PERCENT" && Math.abs((current.value ?? 0) - to) < 0.001;
 
 /**
@@ -228,7 +249,7 @@ export function computeTextStyleChanges(
   return diff;
 }
 
-const spacingOf = (value: LineHeight | LetterSpacing): SpacingValue =>
+export const spacingOf = (value: LineHeight | LetterSpacing): SpacingValue =>
   value.unit === "AUTO"
     ? { unit: "AUTO" }
     : { unit: value.unit, value: value.value };
@@ -236,18 +257,47 @@ const spacingOf = (value: LineHeight | LetterSpacing): SpacingValue =>
 /** Every local text style with its spacing and links (plugin thread). */
 export async function readLocalTextStyles(): Promise<TextStyleInfo[]> {
   const styles = await figma.getLocalTextStylesAsync();
-  return styles.map((style) => {
-    const link = (key: string) =>
-      style.getSharedPluginData(TEXT_STYLE_LINK_NAMESPACE, key) || undefined;
-    return {
-      id: style.id,
-      name: style.name,
-      lineHeight: spacingOf(style.lineHeight),
-      letterSpacing: spacingOf(style.letterSpacing),
-      lineHeightToken: link(LINE_HEIGHT_LINK_KEY),
-      letterSpacingToken: link(LETTER_SPACING_LINK_KEY),
-    };
-  });
+  const tokenOfVariable = new Map<string, Promise<string | undefined>>();
+  const boundToken = (alias: VariableAlias | undefined) => {
+    if (!alias) return Promise.resolve(undefined);
+    let found = tokenOfVariable.get(alias.id);
+    if (!found) {
+      found = figma.variables
+        .getVariableByIdAsync(alias.id)
+        .then((variable) =>
+          variable ? createTokenName(variable.name) : undefined
+        )
+        .catch(() => undefined);
+      tokenOfVariable.set(alias.id, found);
+    }
+    return found;
+  };
+
+  return Promise.all(
+    styles.map(async (style) => {
+      const link = (key: string) =>
+        style.getSharedPluginData(TEXT_STYLE_LINK_NAMESPACE, key) || undefined;
+      const info: TextStyleInfo = {
+        id: style.id,
+        name: style.name,
+        lineHeight: spacingOf(style.lineHeight),
+        letterSpacing: spacingOf(style.letterSpacing),
+        lineHeightToken: link(LINE_HEIGHT_LINK_KEY),
+        letterSpacingToken: link(LETTER_SPACING_LINK_KEY),
+      };
+      if (link(DEFINITION_LINK_KEY)) info.managed = true;
+      const bound = style.boundVariables;
+      if (bound) {
+        const [fontFamily, fontSize, fontWeight] = await Promise.all([
+          boundToken(bound.fontFamily),
+          boundToken(bound.fontSize),
+          boundToken(bound.fontWeight),
+        ]);
+        info.bound = { fontFamily, fontSize, fontWeight };
+      }
+      return info;
+    })
+  );
 }
 
 export interface TextStyleSkip {
