@@ -17,6 +17,8 @@ import type {
 import type { ValidationReport } from "../../plugin/variables/validation";
 import { describeApplyResult } from "../../plugin/variables/text-style-links";
 import type { TextStyleApplyResult } from "../../plugin/variables/text-style-links";
+import { describeDefinitionResult } from "../../plugin/variables/text-style-definitions";
+import type { TextStyleDefinitionResult } from "../../plugin/variables/text-style-definitions";
 import type { AdapterResultWithFilename } from "../../plugin/handlers/token-handlers";
 import type { ProgressStep } from "../components/ProgressFeedback";
 import type { Result } from "../../shared/result";
@@ -381,15 +383,24 @@ export function usePluginMessages(
             // happened, and keep the message longer when something was skipped.
             const styleResult = msg.textStyleResult as
               TextStyleApplyResult | undefined;
-            const styleNote = styleResult
-              ? ` ${describeApplyResult(styleResult)}.`
-              : "";
+            const definitionResult = msg.textStyleDefinitionResult as
+              TextStyleDefinitionResult | undefined;
+            const styleNote = [
+              definitionResult && describeDefinitionResult(definitionResult),
+              styleResult && describeApplyResult(styleResult),
+            ]
+              .filter(Boolean)
+              .map((note) => ` ${note}.`)
+              .join("");
+            const styleSkipped =
+              (styleResult?.skipped.length ?? 0) +
+              (definitionResult?.skipped.length ?? 0);
             setSuccessMessage(
               `✅ Added ${tokenCount} token${tokenCount !== 1 ? "s" : ""} in ${collectionCount} collection${collectionCount !== 1 ? "s" : ""}!${styleNote}`
             );
             setTimeout(
               () => setSuccessMessage(null),
-              styleResult?.skipped.length ? 15000 : 5000
+              styleSkipped ? 15000 : 5000
             );
 
             // Mark file as engaged after successful import

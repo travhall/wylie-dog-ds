@@ -43,6 +43,9 @@ export interface UIState {
   selectedCollectionId: string | null;
   selectedExportFormat: string;
   selectedCollections: Set<string>;
+  // Sync tab Styles section (plan 206): Pull also creates and updates the text
+  // styles in the definitions file. Pull only; Push never offers it.
+  includeTextStyles: boolean;
 
   // Advanced mode toggles
   showAdvancedGitHub: boolean;
@@ -74,7 +77,8 @@ export type UIAction =
   | { type: "RESET_UI" }
   | { type: "TOGGLE_COLLECTION"; id: string }
   | { type: "SELECT_ALL_COLLECTIONS"; ids: string[] }
-  | { type: "DESELECT_ALL_COLLECTIONS" };
+  | { type: "DESELECT_ALL_COLLECTIONS" }
+  | { type: "SET_INCLUDE_TEXT_STYLES"; value: boolean };
 
 /**
  * Initial UI state
@@ -93,6 +97,7 @@ export const initialUIState: UIState = {
   selectedCollectionId: null,
   selectedExportFormat: "w3c-dtcg",
   selectedCollections: new Set<string>(),
+  includeTextStyles: false,
 
   // Advanced toggles
   showAdvancedGitHub: false,

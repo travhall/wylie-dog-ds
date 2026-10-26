@@ -117,6 +117,9 @@ export function uiReducer(state: UIState, action: UIAction): UIState {
     case "DESELECT_ALL_COLLECTIONS":
       return { ...state, selectedCollections: new Set<string>() };
 
+    case "SET_INCLUDE_TEXT_STYLES":
+      return { ...state, includeTextStyles: action.value };
+
     default:
       // Exhaustiveness check
       const _exhaustive: never = action;

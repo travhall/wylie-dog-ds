@@ -5,6 +5,8 @@ import { Icon } from "./common/Icon";
 import { ColorSwatch, isColorValue } from "./common/ColorSwatch";
 import { describeScopes } from "../../plugin/sync/sync-diff";
 import { describeTextStyleChange } from "../../plugin/variables/text-style-links";
+import { TEXT_STYLE_DEFINITIONS_HINT } from "../../plugin/variables/text-style-definitions";
+import type { TextStylePlan } from "../../plugin/variables/text-style-definitions";
 import type {
   DiffKind,
   DiffRow,
@@ -315,10 +317,14 @@ function joinParts(parts: string[]): string {
  * no token link at all (designer-owned, never modified).
  */
 function TextStylesSection({ diff }: { diff: SyncDiff }) {
-  const { changes, problems, unlinked } = diff.textStyles;
+  const { changes, problems, unlinked, definitions } = diff.textStyles;
+  const hasDefinitions = !!definitions && definitions.status !== "off";
   if (
     diff.direction === "push" ||
-    (changes.length === 0 && problems.length === 0 && unlinked.length === 0)
+    (changes.length === 0 &&
+      problems.length === 0 &&
+      unlinked.length === 0 &&
+      !hasDefinitions)
   ) {
     return null;
   }
@@ -340,6 +346,13 @@ function TextStylesSection({ diff }: { diff: SyncDiff }) {
       aria-label="Text styles"
       style={{ marginBottom: "var(--space-4)" }}
     >
+      {hasDefinitions && definitions && (
+        <TextStyleDefinitionsView
+          plan={definitions}
+          listStyle={listStyle}
+          noteStyle={noteStyle}
+        />
+      )}
       {changes.length > 0 && (
         <>
           <h4
@@ -418,25 +431,190 @@ function TextStylesSection({ diff }: { diff: SyncDiff }) {
   );
 }
 
+/**
+ * The styles the definitions file creates and updates (plan 206), then, read
+ * only, what is left alone: a designer's own style with the same name, and
+ * styles whose definition was removed.
+ */
+function TextStyleDefinitionsView({
+  plan,
+  listStyle,
+  noteStyle,
+}: {
+  plan: TextStylePlan;
+  listStyle: Record<string, string | number>;
+  noteStyle: Record<string, string | number>;
+}) {
+  const headingStyle = {
+    margin: "0 0 var(--space-1)",
+    fontSize: "var(--font-size-sm)",
+    color: "var(--text-primary)",
+  };
+  const more = (total: number) =>
+    total > SETTINGS_TEXT_STYLES_LIMIT ? (
+      <li style={{ listStyle: "none", color: "var(--text-tertiary)" }}>
+        and {total - SETTINGS_TEXT_STYLES_LIMIT} more
+      </li>
+    ) : null;
+
+  if (plan.status === "absent") {
+    return (
+      <Notice>
+        No text style definitions found on this branch (
+        {TEXT_STYLE_DEFINITIONS_HINT} next to the token files), so Pull will not
+        create text styles. Tokens are pulled as usual.
+      </Notice>
+    );
+  }
+
+  return (
+    <>
+      {plan.creates.length > 0 && (
+        <>
+          <h4 style={headingStyle}>
+            Text styles will be created ({plan.creates.length})
+          </h4>
+          <p style={noteStyle}>
+            Created from the definitions file. Font family, size and weight are
+            bound to variables; line height and letter spacing are percent
+            values, because variables cannot hold a percent.
+          </p>
+          <ul
+            style={{
+              margin: "0 0 var(--space-3)",
+              padding: 0,
+              fontSize: "var(--font-size-xs)",
+            }}
+          >
+            {plan.creates.slice(0, SETTINGS_TEXT_STYLES_LIMIT).map((c) => (
+              <li key={c.name} style={listStyle}>
+                {c.name}
+              </li>
+            ))}
+            {more(plan.creates.length)}
+          </ul>
+        </>
+      )}
+      {plan.updates.length > 0 && (
+        <>
+          <h4 style={headingStyle}>
+            Text styles will be updated ({plan.updates.length})
+          </h4>
+          <ul
+            style={{
+              margin: "0 0 var(--space-3)",
+              padding: 0,
+              fontSize: "var(--font-size-xs)",
+            }}
+          >
+            {plan.updates.slice(0, SETTINGS_TEXT_STYLES_LIMIT).map((u) => (
+              <li key={u.style.id ?? u.style.name} style={listStyle}>
+                {u.style.name}: {u.changes.join(", ")}
+              </li>
+            ))}
+            {more(plan.updates.length)}
+          </ul>
+        </>
+      )}
+      {plan.unchanged > 0 && (
+        <p style={noteStyle}>
+          {plural(plan.unchanged, "text style")} already match the definitions.
+        </p>
+      )}
+      {plan.problems.length > 0 && (
+        <Notice>
+          {plural(plan.problems.length, "text style definition")} will be
+          skipped because a token they name{" "}
+          {plan.problems.every((p) => p.reason === "missing")
+            ? "does not exist"
+            : "has no usable value"}
+          :{" "}
+          {plan.problems
+            .slice(0, 5)
+            .map((p) => `${p.name} (${p.token})`)
+            .join(", ")}
+          {plan.problems.length > 5
+            ? ` and ${plan.problems.length - 5} more`
+            : ""}
+        </Notice>
+      )}
+      {plan.collisions.length > 0 && (
+        <Notice>
+          {plural(plan.collisions.length, "text style")} already exist with a
+          definition's name but are not managed by Token Bridge, so they are
+          left alone:{" "}
+          {plan.collisions
+            .slice(0, 5)
+            .map((c) => c.name)
+            .join(", ")}
+          {plan.collisions.length > 5
+            ? ` and ${plan.collisions.length - 5} more`
+            : ""}
+          . Rename or delete them to let Pull create the managed style.
+        </Notice>
+      )}
+      {plan.removed.length > 0 && (
+        <details
+          style={{
+            fontSize: "var(--font-size-xs)",
+            marginBottom: "var(--space-2)",
+          }}
+        >
+          <summary
+            style={{ cursor: "pointer", color: "var(--text-secondary)" }}
+          >
+            {plural(plan.removed.length, "text style")} no longer in the
+            definitions (kept, not changed)
+          </summary>
+          <ul style={{ margin: "var(--space-1) 0 0", padding: 0 }}>
+            {plan.removed.slice(0, SETTINGS_TEXT_STYLES_LIMIT).map((r) => (
+              <li key={r.id} style={listStyle}>
+                {r.name}
+              </li>
+            ))}
+            {more(plan.removed.length)}
+          </ul>
+        </details>
+      )}
+    </>
+  );
+}
+
 function headline(diff: SyncDiff): string {
   const n = diff.rows.length;
   const s = diff.settingsCount;
-  const t = diff.textStyleCount;
+  const linked = diff.textStyles.changes.length;
+  const created = diff.textStyles.definitions?.creates.length ?? 0;
+  const updated = diff.textStyles.definitions?.updates.length ?? 0;
+  const t = linked + updated;
   const scopes = `${s} ${s === 1 ? "variable's" : "variables'"} picker scopes`;
-  const styles = `${t} ${t === 1 ? "text style's" : "text styles'"} line height or letter spacing`;
+  const styles = `${linked} ${linked === 1 ? "text style's" : "text styles'"} line height or letter spacing`;
   if (diff.direction === "pull") {
-    if (n === 0 && s === 0 && t === 0) return "Nothing to pull";
+    if (n === 0 && s === 0 && t === 0 && created === 0)
+      return "Nothing to pull";
     const extras = [
       s > 0 && `the picker scopes of ${plural(s, "variable")}`,
-      t > 0 &&
-        `the line height and letter spacing of ${plural(t, "text style")}`,
+      linked > 0 &&
+        `the line height and letter spacing of ${plural(linked, "text style")}`,
+      updated > 0 && `${plural(updated, "managed text style")}`,
     ].filter((x): x is string => !!x);
-    if (n === 0) return `Pull will update ${joinParts(extras)}`;
-    return `Pull will change ${joinParts([plural(n, "token"), ...extras])} in Figma`;
+    const create = created > 0 ? `create ${plural(created, "text style")}` : "";
+    if (n === 0 && extras.length === 0) return `Pull will ${create}`;
+    const head =
+      n === 0
+        ? `Pull will update ${joinParts(extras)}`
+        : `Pull will change ${joinParts([plural(n, "token"), ...extras])} in Figma`;
+    return create ? `${head} and ${create}` : head;
   }
   if (diff.direction === "overview") {
-    if (n === 0 && (s > 0 || t > 0)) {
-      return `Tokens match, but ${joinParts([s > 0 && scopes, t > 0 && styles].filter((x): x is string => !!x))} differ`;
+    const parts = [
+      s > 0 && scopes,
+      linked > 0 && styles,
+      created + updated > 0 &&
+        `${plural(created + updated, "text style")} to create or update`,
+    ].filter((x): x is string => !!x);
+    if (n === 0 && parts.length > 0) {
+      return `Tokens match, but ${joinParts(parts)} differ`;
     }
     return n === 0
       ? "Figma and GitHub are in sync"

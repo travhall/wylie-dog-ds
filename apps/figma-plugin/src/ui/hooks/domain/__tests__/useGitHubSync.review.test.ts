@@ -558,3 +558,148 @@ describe("Pull review: text styles (plan 205)", () => {
     expect(current().review?.onConfirm).toBeUndefined();
   });
 });
+
+describe("Pull review: text styles from definitions (plan 206)", () => {
+  const sync: ExportData[] = [
+    {
+      primitive: {
+        variables: {
+          "typography.font-family.sans": {
+            $type: "fontFamily",
+            $value: "Manrope",
+          },
+          "typography.font-size.sm": { $type: "number", $value: 14 },
+          "typography.line-height.tight": { $type: "number", $value: 125 },
+        },
+      },
+    },
+    {
+      components: {
+        variables: {
+          "button.font-size.sm": {
+            $type: "number",
+            $value: "{typography.font-size.sm}",
+          },
+          "button.line-height": {
+            $type: "number",
+            $value: "{typography.line-height.tight}",
+          },
+        },
+      },
+    },
+  ] as unknown as ExportData[];
+  const definitions = [
+    {
+      name: "button/sm",
+      fontFamily: "typography.font-family.sans",
+      fontSize: "button.font-size.sm",
+      lineHeight: "button.line-height",
+    },
+  ];
+  const pulls = (over: Record<string, unknown> = {}) => ({
+    pullTokens: vi.fn().mockResolvedValue({ success: true, tokens: sync }),
+    fetchTextStyleDefinitions: vi
+      .fn()
+      .mockResolvedValue({ status: "found", definitions }),
+    ...over,
+  });
+
+  it("reads no definitions and plans no styles when Text styles is off", async () => {
+    figmaHolds(sync, baselineOf(sync), false, undefined, []);
+    const client = pulls();
+    const { current } = setup(client);
+
+    await act(() => current().handleGitHubPull());
+
+    expect(client.fetchTextStyleDefinitions).not.toHaveBeenCalled();
+    expect(current().review?.diff.textStyles.definitions).toBeUndefined();
+    expect(current().review?.diff.textStyleCount).toBe(0);
+  });
+
+  it("in an empty file with Text styles on, plans every definition as a create", async () => {
+    figmaHolds(sync, baselineOf(sync), false, undefined, []);
+    const client = pulls();
+    const { current } = setup(client, { includeTextStyles: true });
+
+    await act(() => current().handleGitHubPull());
+
+    const plan = current().review?.diff.textStyles.definitions;
+    expect(plan?.status).toBe("found");
+    expect(plan?.creates.map((c) => c.name)).toEqual(["button/sm"]);
+    expect(plan?.creates[0].lineHeight).toEqual({
+      unit: "PERCENT",
+      value: 125,
+    });
+    expect(current().review?.diff.textStyleCount).toBe(1);
+    // tokens match, but there is styles work to confirm
+    expect(current().review?.diff.rows).toEqual([]);
+    expect(current().review?.onConfirm).toBeDefined();
+    expect(posted("import-tokens")).toHaveLength(0);
+  });
+
+  it("sends the resolved styles with the import on confirm", async () => {
+    figmaHolds(sync, baselineOf(sync), false, undefined, []);
+    const { current } = setup(pulls(), { includeTextStyles: true });
+    await act(() => current().handleGitHubPull());
+
+    await confirmReview(current);
+
+    const imports = posted("import-tokens");
+    expect(imports).toHaveLength(1);
+    expect(imports[0]!.textStyleDefinitions).toEqual([
+      expect.objectContaining({
+        name: "button/sm",
+        fontSize: 14,
+        lineHeight: { unit: "PERCENT", value: 125 },
+      }),
+    ]);
+  });
+
+  it("with no definitions file on the branch still pulls, and says so instead of failing", async () => {
+    figmaHolds(sync, baselineOf(sync), false, undefined, []);
+    const client = pulls({
+      fetchTextStyleDefinitions: vi
+        .fn()
+        .mockResolvedValue({ status: "absent" }),
+    });
+    const { current, calls } = setup(client, { includeTextStyles: true });
+
+    await act(() => current().handleGitHubPull());
+
+    expect(current().review?.diff.textStyles.definitions?.status).toBe(
+      "absent"
+    );
+    expect(current().review?.diff.textStyleCount).toBe(0);
+    expect(calls("setError").filter(([e]) => e)).toHaveLength(0);
+  });
+
+  it("reports an unreadable definitions file instead of silently skipping the styles", async () => {
+    figmaHolds(sync, baselineOf(sync), false, undefined, []);
+    const client = pulls({
+      fetchTextStyleDefinitions: vi
+        .fn()
+        .mockResolvedValue({ status: "error", error: "HTTP 500" }),
+    });
+    const { current, calls } = setup(client, { includeTextStyles: true });
+
+    await act(() => current().handleGitHubPull());
+
+    expect(current().review).toBeNull();
+    expect(calls("setError")).toContainEqual(["HTTP 500"]);
+  });
+
+  it("a Push with Text styles on reads and writes nothing about styles", async () => {
+    const client = {
+      pullTokens: vi.fn().mockResolvedValue({ success: true, tokens: sync }),
+      syncTokens: vi.fn().mockResolvedValue({ success: true }),
+      fetchTextStyleDefinitions: vi.fn(),
+    };
+    const { current } = setup(client, { includeTextStyles: true });
+
+    await act(() => current().handleGitHubSync(sync, baselineOf(sync)));
+
+    expect(client.fetchTextStyleDefinitions).not.toHaveBeenCalled();
+    expect(current().review?.diff.textStyles.definitions).toBeUndefined();
+    expect(current().review?.diff.textStyleCount).toBe(0);
+  });
+});
