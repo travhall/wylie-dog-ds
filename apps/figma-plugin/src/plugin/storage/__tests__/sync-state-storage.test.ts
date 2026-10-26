@@ -142,4 +142,37 @@ describe("SyncStateStorage last sync", () => {
     storage.saveLastSync(config, "2026-10-25T08:00:00.000Z");
     expect(storage.loadLastSync({ ...config, branch: "dev" })).toBeNull();
   });
+
+  describe("Text styles choice (plan 207)", () => {
+    it("is null before the file ever chose", () => {
+      vi.stubGlobal("figma", { root: fakeFile().root });
+      expect(storage.loadIncludeTextStyles()).toBeNull();
+    });
+
+    it("reads back both a yes and a no", () => {
+      vi.stubGlobal("figma", { root: fakeFile().root });
+      storage.saveIncludeTextStyles(true);
+      expect(storage.loadIncludeTextStyles()).toBe(true);
+      storage.saveIncludeTextStyles(false);
+      expect(storage.loadIncludeTextStyles()).toBe(false);
+    });
+
+    it("belongs to the file, whatever repo or branch it syncs with", () => {
+      const a = fakeFile();
+      const b = fakeFile();
+      vi.stubGlobal("figma", { root: a.root });
+      storage.saveIncludeTextStyles(true);
+      vi.stubGlobal("figma", { root: b.root });
+      expect(storage.loadIncludeTextStyles()).toBeNull();
+      vi.stubGlobal("figma", { root: a.root });
+      expect(storage.loadIncludeTextStyles()).toBe(true);
+    });
+
+    it("treats an unreadable value as never chosen", () => {
+      const file = fakeFile();
+      file.data["include-text-styles"] = "maybe";
+      vi.stubGlobal("figma", { root: file.root });
+      expect(storage.loadIncludeTextStyles()).toBeNull();
+    });
+  });
 });

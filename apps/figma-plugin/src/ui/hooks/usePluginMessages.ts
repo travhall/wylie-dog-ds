@@ -635,6 +635,7 @@ export function usePluginMessages(
             "local-tokens-exported",
             "local-tokens-error",
             "last-sync-loaded",
+            "text-styles-choice-loaded",
           ];
           if (
             !outgoingMessageTypes.includes(msg.type) &&

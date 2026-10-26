@@ -10,6 +10,7 @@ import { needsGitHubToken } from "../../../shared/github-config";
 import type { Collection } from "../../hooks/usePluginMessages";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 import type { ImportPreviewSummary } from "../ImportPreview";
+import { saveTextStylesChoice } from "../../hooks/useTextStylesChoice";
 
 interface SyncTabProps {
   githubClient: ConflictAwareGitHubClient;
@@ -458,12 +459,11 @@ export function SyncTab({
           <input
             type="checkbox"
             checked={uiState.includeTextStyles}
-            onChange={(e) =>
-              dispatch({
-                type: "SET_INCLUDE_TEXT_STYLES",
-                value: (e.target as HTMLInputElement).checked,
-              })
-            }
+            onChange={(e) => {
+              const value = (e.target as HTMLInputElement).checked;
+              dispatch({ type: "SET_INCLUDE_TEXT_STYLES", value });
+              saveTextStylesChoice(value);
+            }}
             style={{ marginTop: 2 }}
           />
           <span>

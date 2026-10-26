@@ -1,5 +1,7 @@
 /**
  * Per-file sync state (plan 199): the sync baseline and the last-sync time.
+ * Plan 207 adds the "Text styles" choice, which belongs to the file alone (no
+ * repo scope): "1", "0", or absent when the file never chose.
  *
  * Both live in Figma's root plugin data, so they belong to the file (not to the
  * user, as figma.clientStorage does, which is shared across every file). They
@@ -23,6 +25,7 @@ import {
 const BASELINE_KEY = "sync-baseline";
 const BASELINE_META_KEY = "sync-baseline-meta";
 const LAST_SYNC_KEY = "sync-last";
+const INCLUDE_TEXT_STYLES_KEY = "include-text-styles";
 
 /** Figma allows 100 KB per plugin data entry; stay clear of the edge. */
 export const MAX_ENTRY_CHARS = 90_000;
@@ -138,6 +141,18 @@ export class SyncStateStorage {
       `${LAST_SYNC_KEY}:${syncScope(config)}`,
       JSON.stringify({ timestamp })
     );
+  }
+
+  /** The file's "Text styles" choice, or null when it never made one. */
+  loadIncludeTextStyles(): boolean | null {
+    const raw = figma.root.getPluginData(INCLUDE_TEXT_STYLES_KEY);
+    if (raw === "1") return true;
+    if (raw === "0") return false;
+    return null;
+  }
+
+  saveIncludeTextStyles(value: boolean): void {
+    figma.root.setPluginData(INCLUDE_TEXT_STYLES_KEY, value ? "1" : "0");
   }
 }
 

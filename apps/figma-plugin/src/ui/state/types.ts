@@ -46,6 +46,11 @@ export interface UIState {
   // Sync tab Styles section (plan 206): Pull also creates and updates the text
   // styles in the definitions file. Pull only; Push never offers it.
   includeTextStyles: boolean;
+  // Plan 207: the box holds a choice (restored from the file, or made here), so
+  // the first-run default must not touch it.
+  textStylesChosen: boolean;
+  // Plan 207: the first-run default was weighed once; it never runs again.
+  textStylesDefaultChecked: boolean;
 
   // Advanced mode toggles
   showAdvancedGitHub: boolean;
@@ -78,7 +83,11 @@ export type UIAction =
   | { type: "TOGGLE_COLLECTION"; id: string }
   | { type: "SELECT_ALL_COLLECTIONS"; ids: string[] }
   | { type: "DESELECT_ALL_COLLECTIONS" }
-  | { type: "SET_INCLUDE_TEXT_STYLES"; value: boolean };
+  | { type: "SET_INCLUDE_TEXT_STYLES"; value: boolean }
+  // The file's stored choice arrived (null: it never chose).
+  | { type: "LOAD_TEXT_STYLES_CHOICE"; value: boolean | null }
+  // First-run default after the first Refresh (plan 207).
+  | { type: "APPLY_TEXT_STYLES_DEFAULT"; value: boolean };
 
 /**
  * Initial UI state
@@ -98,6 +107,8 @@ export const initialUIState: UIState = {
   selectedExportFormat: "w3c-dtcg",
   selectedCollections: new Set<string>(),
   includeTextStyles: false,
+  textStylesChosen: false,
+  textStylesDefaultChecked: false,
 
   // Advanced toggles
   showAdvancedGitHub: false,

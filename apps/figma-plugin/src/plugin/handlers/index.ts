@@ -42,6 +42,8 @@ import {
   handleMarkFileEngaged,
   handleGetLastSync,
   handleRecordLastSync,
+  handleGetTextStylesChoice,
+  handleSaveTextStylesChoice,
 } from "./storage-handlers";
 
 // Utility handlers
@@ -100,6 +102,8 @@ export function createHandlerRegistry(): HandlerRegistry {
     "mark-file-engaged": handleMarkFileEngaged,
     "get-last-sync": handleGetLastSync,
     "record-last-sync": handleRecordLastSync,
+    "get-text-styles-choice": handleGetTextStylesChoice,
+    "save-text-styles-choice": handleSaveTextStylesChoice,
 
     // Utility handlers
     "generate-demo-tokens": handleGenerateDemoTokens,

@@ -118,7 +118,32 @@ export function uiReducer(state: UIState, action: UIAction): UIState {
       return { ...state, selectedCollections: new Set<string>() };
 
     case "SET_INCLUDE_TEXT_STYLES":
-      return { ...state, includeTextStyles: action.value };
+      return {
+        ...state,
+        includeTextStyles: action.value,
+        textStylesChosen: true,
+      };
+
+    case "LOAD_TEXT_STYLES_CHOICE":
+      // Nothing stored, or the user already chose in this session: keep it.
+      if (action.value === null || state.textStylesChosen) return state;
+      return {
+        ...state,
+        includeTextStyles: action.value,
+        textStylesChosen: true,
+      };
+
+    case "APPLY_TEXT_STYLES_DEFAULT":
+      // Weighed once, and never over a choice (stored or made here).
+      if (state.textStylesChosen || state.textStylesDefaultChecked)
+        return state;
+      return {
+        ...state,
+        textStylesDefaultChecked: true,
+        ...(action.value
+          ? { includeTextStyles: true, textStylesChosen: true }
+          : {}),
+      };
 
     default:
       // Exhaustiveness check
