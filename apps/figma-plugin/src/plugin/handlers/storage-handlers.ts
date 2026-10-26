@@ -70,6 +70,33 @@ export async function handleRecordLastSync(msg?: PluginMessage): Promise<void> {
 }
 
 /**
+ * Return this file's "Text styles" choice to the UI (plan 207): true, false,
+ * or null when the file never chose. It lives in the file's own plugin data,
+ * so a plugin reload keeps it.
+ */
+export function handleGetTextStylesChoice(): void {
+  try {
+    figma.ui.postMessage({
+      type: "text-styles-choice-loaded",
+      value: syncStateStorage.loadIncludeTextStyles(),
+    });
+  } catch (error) {
+    console.error("Error loading the Text styles choice:", error);
+    figma.ui.postMessage({ type: "text-styles-choice-loaded", value: null });
+  }
+}
+
+/** Remember the "Text styles" choice for this file. */
+export function handleSaveTextStylesChoice(msg: PluginMessage): void {
+  try {
+    if (typeof msg.includeTextStyles !== "boolean") return;
+    syncStateStorage.saveIncludeTextStyles(msg.includeTextStyles);
+  } catch (error) {
+    console.error("Error saving the Text styles choice:", error);
+  }
+}
+
+/**
  * Get GitHub configuration
  */
 export async function handleGetGitHubConfig(msg: PluginMessage): Promise<void> {

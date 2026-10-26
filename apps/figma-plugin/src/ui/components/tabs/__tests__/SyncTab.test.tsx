@@ -1,8 +1,15 @@
 import { h } from "preact";
-import { describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/preact";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/preact";
 import { SyncTab } from "../SyncTab";
 import { UIProvider } from "../../../state";
+import type { UIState } from "../../../state/types";
 import type { GitHubConfig } from "../../../../shared/types";
 import type { ConflictAwareGitHubClient } from "../../../../plugin/sync/conflict-aware-github-client";
 
@@ -117,5 +124,148 @@ describe("SyncTab Styles section (plan 206)", () => {
   it("is not shown before GitHub is connected", () => {
     renderTab(null, false);
     expect(screen.queryByRole("checkbox", { name: /Text styles/ })).toBeNull();
+  });
+});
+
+describe("SyncTab Text styles remembered and announced (plan 207)", () => {
+  const definitions = [
+    { name: "a", fontFamily: "f", fontSize: "s" },
+    { name: "b", fontFamily: "f", fontSize: "s" },
+  ];
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  const renderRefreshed = async (
+    fetched: unknown,
+    localTextStyles: unknown[] = [],
+    initialState?: Partial<UIState>
+  ) => {
+    const postMessage = vi
+      .spyOn(window.parent, "postMessage")
+      .mockImplementation(() => {});
+    const client = {
+      getSyncStatus: vi.fn(async () => ({
+        upToDate: true,
+        hasBaseline: false,
+        differences: 0,
+      })),
+      fetchTextStyleDefinitions: vi.fn(async () => fetched),
+    } as unknown as ConflictAwareGitHubClient;
+    render(
+      <UIProvider initialState={initialState}>
+        <SyncTab
+          githubClient={client}
+          githubConfig={{ ...repoOnly, accessToken: "test-token" }}
+          githubConfigured
+          collections={[]}
+          loading={false}
+          onPushToGitHub={vi.fn()}
+          onPullFromGitHub={vi.fn()}
+          onImportFile={vi.fn()}
+          onGitHubConfigComplete={vi.fn()}
+        />
+      </UIProvider>
+    );
+    fireEvent.click(screen.getByLabelText("Refresh sync status"));
+    act(() => {
+      window.dispatchEvent(
+        new MessageEvent("message", {
+          data: {
+            pluginMessage: {
+              type: "local-tokens-exported",
+              localTokens: [],
+              textStyles: localTextStyles,
+            },
+          },
+        })
+      );
+    });
+    await waitFor(() => expect(client.getSyncStatus).toHaveBeenCalled());
+    const saves = () =>
+      postMessage.mock.calls
+        .map(
+          ([data]) =>
+            (data as { pluginMessage?: Record<string, unknown> }).pluginMessage
+        )
+        .filter((m) => m?.type === "save-text-styles-choice");
+    return { saves };
+  };
+
+  const box = () => screen.getByRole("checkbox", { name: /Text styles/ });
+
+  it("ticks the box on a file's first Refresh when styles are on offer and none are managed, and remembers it", async () => {
+    const { saves } = await renderRefreshed({ status: "found", definitions });
+    await waitFor(() => expect(box()).toBeChecked());
+    expect(saves()).toEqual([
+      { type: "save-text-styles-choice", includeTextStyles: true },
+    ]);
+  });
+
+  it("stays off when the file already has managed styles, and announces the offer", async () => {
+    const { saves } = await renderRefreshed({ status: "found", definitions }, [
+      { id: "1", name: "x", managed: true },
+    ]);
+    expect(
+      await screen.findByText("2 styles available from GitHub.")
+    ).toBeInTheDocument();
+    expect(box()).not.toBeChecked();
+    expect(saves()).toEqual([]);
+  });
+
+  it("never overrides a stored choice", async () => {
+    const { saves } = await renderRefreshed(
+      { status: "found", definitions },
+      [],
+      { includeTextStyles: false, textStylesChosen: true }
+    );
+    expect(
+      await screen.findByText("2 styles available from GitHub.")
+    ).toBeInTheDocument();
+    expect(box()).not.toBeChecked();
+    expect(saves()).toEqual([]);
+  });
+
+  it("leaves the box off, quietly, when the branch has no definitions", async () => {
+    const { saves } = await renderRefreshed({ status: "absent" });
+    await screen.findByText("Up to date");
+    expect(box()).not.toBeChecked();
+    expect(screen.queryByText(/available from GitHub/)).toBeNull();
+    expect(saves()).toEqual([]);
+  });
+
+  it("saves a click so a reload keeps it", () => {
+    const postMessage = vi
+      .spyOn(window.parent, "postMessage")
+      .mockImplementation(() => {});
+    render(
+      <UIProvider>
+        <SyncTab
+          githubClient={{} as ConflictAwareGitHubClient}
+          githubConfig={{ ...repoOnly, accessToken: "test-token" }}
+          githubConfigured
+          collections={[]}
+          loading={false}
+          onPushToGitHub={vi.fn()}
+          onPullFromGitHub={vi.fn()}
+          onImportFile={vi.fn()}
+          onGitHubConfigComplete={vi.fn()}
+        />
+      </UIProvider>
+    );
+    fireEvent.click(box());
+    fireEvent.click(box());
+    expect(
+      postMessage.mock.calls
+        .map(
+          ([data]) =>
+            (data as { pluginMessage?: Record<string, unknown> }).pluginMessage
+        )
+        .filter((m) => m?.type === "save-text-styles-choice")
+    ).toEqual([
+      { type: "save-text-styles-choice", includeTextStyles: true },
+      { type: "save-text-styles-choice", includeTextStyles: false },
+    ]);
   });
 });

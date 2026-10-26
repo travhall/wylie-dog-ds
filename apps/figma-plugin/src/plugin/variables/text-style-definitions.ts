@@ -404,6 +404,21 @@ export function describePlanWork(plan: TextStylePlan | undefined): string {
   return `${styles(updated)} will be updated`;
 }
 
+/**
+ * What the repo offers while "Text styles" is unticked (plan 207). `short`
+ * sits beside the checkbox, where "Tick Text styles" would repeat the label.
+ */
+export function describeAvailableTextStyles(
+  available: number,
+  short = false
+): string {
+  const one = available === 1;
+  const styles = `${available} text style${one ? " is" : "s are"} available from GitHub.`;
+  if (short)
+    return `${available} style${one ? "" : "s"} available from GitHub.`;
+  return `${styles} Tick Text styles to review ${one ? "it" : "them"}.`;
+}
+
 export interface TextStyleDefinitionResult {
   created: number;
   updated: number;

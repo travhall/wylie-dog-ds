@@ -12,7 +12,12 @@ vi.mock("../../storage/file-storage", () => ({
   fileConfigStorage: { getGitHubConfig: () => getGitHubConfig() },
 }));
 
-import { handleGetLastSync, handleRecordLastSync } from "../storage-handlers";
+import {
+  handleGetLastSync,
+  handleGetTextStylesChoice,
+  handleRecordLastSync,
+  handleSaveTextStylesChoice,
+} from "../storage-handlers";
 import { syncStateStorage } from "../../storage/sync-state-storage";
 
 const config = { owner: "o", repo: "r", branch: "main", tokenPath: "tokens" };
@@ -145,5 +150,47 @@ describe("get-last-sync", () => {
     expect(posted).toEqual([
       { type: "last-sync-loaded", timestamp: "2026-10-25T08:00:00.000Z" },
     ]);
+  });
+});
+
+describe("Text styles choice handlers (plan 207)", () => {
+  let pluginData: Record<string, string>;
+  let posted: Array<Record<string, unknown>>;
+
+  beforeEach(() => {
+    pluginData = {};
+    posted = [];
+    vi.stubGlobal("figma", {
+      root: {
+        getPluginData: (k: string) => pluginData[k] ?? "",
+        setPluginData: (k: string, v: string) => {
+          pluginData[k] = v;
+        },
+      },
+      ui: { postMessage: (m: Record<string, unknown>) => posted.push(m) },
+    });
+  });
+
+  it("reports null while the file never chose", () => {
+    handleGetTextStylesChoice();
+    expect(posted).toEqual([
+      { type: "text-styles-choice-loaded", value: null },
+    ]);
+  });
+
+  it("stores the choice in the file and reports it after a reload", () => {
+    handleSaveTextStylesChoice({
+      type: "save-text-styles-choice",
+      includeTextStyles: false,
+    });
+    handleGetTextStylesChoice();
+    expect(posted).toEqual([
+      { type: "text-styles-choice-loaded", value: false },
+    ]);
+  });
+
+  it("ignores a save that carries no boolean", () => {
+    handleSaveTextStylesChoice({ type: "save-text-styles-choice" });
+    expect(pluginData).toEqual({});
   });
 });

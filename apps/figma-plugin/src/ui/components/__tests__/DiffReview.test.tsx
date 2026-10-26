@@ -53,6 +53,40 @@ function setup(
   return handlers;
 }
 
+describe("DiffReview: styles on offer while Text styles is off (plan 207)", () => {
+  it("names the option and the count instead of claiming there is nothing to pull", () => {
+    setup(diffOf("pull", synced, synced), { textStylesAvailable: 78 });
+    expect(
+      screen.getByRole("dialog", { name: "No token changes to pull" })
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Nothing to pull")).toBeNull();
+    expect(
+      screen.getByText(/Text styles are not included in this Pull/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /78 text styles are available from GitHub\. Tick Text styles to review them\./
+      )
+    ).toBeInTheDocument();
+  });
+
+  it("keeps the original wording when no styles are on offer", () => {
+    setup(diffOf("pull", synced, synced));
+    expect(
+      screen.getByRole("dialog", { name: "Nothing to pull" })
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/not included in this Pull/)).toBeNull();
+  });
+
+  it("only speaks about styles on a Pull", () => {
+    setup(diffOf("push", synced, synced), { textStylesAvailable: 78 });
+    expect(screen.queryByText(/not included in this Pull/)).toBeNull();
+    expect(
+      screen.getByRole("dialog", { name: "Nothing to push" })
+    ).toBeInTheDocument();
+  });
+});
+
 describe("DiffReview: empty states", () => {
   it.each([
     ["push", "Nothing to push", /would change nothing/],

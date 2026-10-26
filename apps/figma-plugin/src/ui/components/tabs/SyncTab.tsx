@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
+import { useRef, useState } from "preact/hooks";
 import { SetupWizard } from "../SetupWizard";
 import { ImportPreview } from "../ImportPreview";
 import { SyncStatus } from "../SyncStatus";
@@ -10,6 +10,9 @@ import { needsGitHubToken } from "../../../shared/github-config";
 import type { Collection } from "../../hooks/usePluginMessages";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 import type { ImportPreviewSummary } from "../ImportPreview";
+import { saveTextStylesChoice } from "../../hooks/useTextStylesChoice";
+import type { TextStylesAvailability } from "../../utils/check-sync-status";
+import { describeAvailableTextStyles } from "../../../plugin/variables/text-style-definitions";
 
 interface SyncTabProps {
   githubClient: ConflictAwareGitHubClient;
@@ -52,6 +55,30 @@ export function SyncTab({
   const hasSelections = selectedCollections.size > 0;
 
   const [showEditConfig, setShowEditConfig] = useState(false);
+
+  // What GitHub's definitions file offers, from the last Refresh (plan 207)
+  const [textStylesOffer, setTextStylesOffer] =
+    useState<TextStylesAvailability | null>(null);
+  // Refresh answers after the user may have clicked: read the latest choice
+  const uiStateRef = useRef(uiState);
+  uiStateRef.current = uiState;
+
+  /**
+   * First run: styles on offer and none managed here yet means the file is
+   * new to them, so the box starts ticked. Weighed once, never over a choice
+   * (stored or made here). A default-on is stored like a click, so it survives
+   * the reload and is not re-decided once the file does have managed styles.
+   */
+  const handleTextStylesAvailability = (
+    availability: TextStylesAvailability | null
+  ) => {
+    setTextStylesOffer(availability);
+    const { textStylesChosen, textStylesDefaultChecked } = uiStateRef.current;
+    if (!availability || textStylesChosen || textStylesDefaultChecked) return;
+    const value = availability.managedExisting === 0;
+    dispatch({ type: "APPLY_TEXT_STYLES_DEFAULT", value });
+    if (value) saveTextStylesChoice(true);
+  };
   // File has repo settings (shared) but this user has no token (per user)
   const needsToken = needsGitHubToken(githubConfig);
 
@@ -308,6 +335,7 @@ export function SyncTab({
           githubClient={githubClient}
           githubConfigured={githubConfigured}
           includeTextStyles={uiState.includeTextStyles}
+          onTextStylesAvailability={handleTextStylesAvailability}
         />
       </div>
 
@@ -458,12 +486,11 @@ export function SyncTab({
           <input
             type="checkbox"
             checked={uiState.includeTextStyles}
-            onChange={(e) =>
-              dispatch({
-                type: "SET_INCLUDE_TEXT_STYLES",
-                value: (e.target as HTMLInputElement).checked,
-              })
-            }
+            onChange={(e) => {
+              const value = (e.target as HTMLInputElement).checked;
+              dispatch({ type: "SET_INCLUDE_TEXT_STYLES", value });
+              saveTextStylesChoice(value);
+            }}
             style={{ marginTop: 2 }}
           />
           <span>
@@ -487,6 +514,22 @@ export function SyncTab({
               Pull creates and updates them from the definitions in your repo.
               Push never touches styles.
             </span>
+            {!uiState.includeTextStyles &&
+              (textStylesOffer?.available ?? 0) > 0 && (
+                <span
+                  style={{
+                    display: "block",
+                    fontSize: "var(--font-size-xs)",
+                    color: "var(--info)",
+                    marginTop: 2,
+                  }}
+                >
+                  {describeAvailableTextStyles(
+                    textStylesOffer?.available ?? 0,
+                    true
+                  )}
+                </span>
+              )}
           </span>
         </label>
       </div>

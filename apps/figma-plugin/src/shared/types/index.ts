@@ -45,6 +45,8 @@ export interface PluginMessage {
    * Push or Pull. Their presence makes the plugin record a sync baseline.
    */
   remoteHashes?: unknown;
+  /** With `save-text-styles-choice`: the file's "Text styles" choice (plan 207). */
+  includeTextStyles?: boolean;
   config?: GitHubConfig;
   result?: {
     success?: boolean;

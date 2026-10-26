@@ -5,7 +5,10 @@ import { Icon } from "./common/Icon";
 import { ColorSwatch, isColorValue } from "./common/ColorSwatch";
 import { describeScopes } from "../../plugin/sync/sync-diff";
 import { describeTextStyleChange } from "../../plugin/variables/text-style-links";
-import { TEXT_STYLE_DEFINITIONS_HINT } from "../../plugin/variables/text-style-definitions";
+import {
+  TEXT_STYLE_DEFINITIONS_HINT,
+  describeAvailableTextStyles,
+} from "../../plugin/variables/text-style-definitions";
 import type { TextStylePlan } from "../../plugin/variables/text-style-definitions";
 import type {
   DiffKind,
@@ -29,6 +32,11 @@ export interface DiffReviewProps {
   onPushFirst?: () => void;
   /** Nothing differs and no sync is on record yet: record this state. */
   onMarkSynced?: () => void;
+  /**
+   * Pull with "Text styles" unticked while the repo lists this many styles
+   * (plan 207): the review says they are left out and names the option.
+   */
+  textStylesAvailable?: number;
   onClose: () => void;
 }
 
@@ -580,7 +588,7 @@ function TextStyleDefinitionsView({
   );
 }
 
-function headline(diff: SyncDiff): string {
+function headline(diff: SyncDiff, stylesLeftOut = 0): string {
   const n = diff.rows.length;
   const s = diff.settingsCount;
   const linked = diff.textStyles.changes.length;
@@ -590,8 +598,10 @@ function headline(diff: SyncDiff): string {
   const scopes = `${s} ${s === 1 ? "variable's" : "variables'"} picker scopes`;
   const styles = `${linked} ${linked === 1 ? "text style's" : "text styles'"} line height or letter spacing`;
   if (diff.direction === "pull") {
-    if (n === 0 && s === 0 && t === 0 && created === 0)
-      return "Nothing to pull";
+    if (n === 0 && s === 0 && t === 0 && created === 0) {
+      // Styles on offer but unticked: the tokens match, "nothing" would mislead.
+      return stylesLeftOut > 0 ? "No token changes to pull" : "Nothing to pull";
+    }
     const extras = [
       s > 0 && `the picker scopes of ${plural(s, "variable")}`,
       linked > 0 &&
@@ -647,6 +657,7 @@ export function DiffReview({
   onAdvanced,
   onPushFirst,
   onMarkSynced,
+  textStylesAvailable = 0,
   onClose,
 }: DiffReviewProps) {
   const [filter, setFilter] = useState("");
@@ -757,7 +768,10 @@ export function DiffReview({
               color: "var(--text-primary)",
             }}
           >
-            {headline(diff)}
+            {headline(
+              diff,
+              diff.direction === "pull" ? textStylesAvailable : 0
+            )}
           </h3>
           {diff.hasBaseline && diff.rows.length > 0 && (
             <p
@@ -792,6 +806,12 @@ export function DiffReview({
               There is no record of the last sync, so these are plain
               differences and the direction is unknown. Pull or Push once to set
               a baseline.
+            </Notice>
+          )}
+          {diff.direction === "pull" && textStylesAvailable > 0 && (
+            <Notice>
+              Text styles are not included in this Pull.{" "}
+              {describeAvailableTextStyles(textStylesAvailable)}
             </Notice>
           )}
           {diff.direction === "pull" && diff.overwrites.length > 0 && (

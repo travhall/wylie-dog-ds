@@ -16,6 +16,7 @@ import { useState, useCallback, useEffect } from "preact/hooks";
 import { UIProvider, useUIContext } from "./state";
 import { usePluginMessages } from "./hooks/usePluginMessages";
 import { useSyncChangesSummary } from "./hooks/useSyncChangesSummary";
+import { useStoredTextStylesChoice } from "./hooks/useTextStylesChoice";
 import { useGitHubSync } from "./hooks/domain/useGitHubSync";
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
 import type { GitHubConfig } from "../shared/types";
@@ -58,6 +59,9 @@ function AppInner() {
 
   // UI State from context
   const { state: uiState, dispatch } = useUIContext();
+
+  // The file's "Text styles" choice survives a plugin reload (plan 207)
+  useStoredTextStylesChoice(dispatch);
 
   // GitHub client (singleton)
   const [githubClient] = useState(() => new ConflictAwareGitHubClient());
@@ -732,6 +736,7 @@ function AppInner() {
           onAdvanced={review.onAdvanced}
           onPushFirst={review.onPushFirst}
           onMarkSynced={review.onMarkSynced}
+          textStylesAvailable={review.textStylesAvailable}
           onClose={review.onClose}
         />
       )}
