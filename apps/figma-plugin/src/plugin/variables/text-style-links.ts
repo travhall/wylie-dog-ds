@@ -41,6 +41,13 @@ export const TEXT_STYLE_LINK_NAMESPACE = "wylie_dog";
 export const LINE_HEIGHT_LINK_KEY = "lineHeightToken";
 export const LETTER_SPACING_LINK_KEY = "letterSpacingToken";
 /**
+ * The dotted path of the style's font-size token ("button.font-size.md"),
+ * written on every managed style (plan 208). Definitions are one per font-size
+ * token, so it identifies a style; the component builder finds the style for
+ * a text layer by it.
+ */
+export const FONT_SIZE_LINK_KEY = "fontSizeToken";
+/**
  * Marks a style Token Bridge created or adopted from the text style
  * definitions file (plan 206). Its value names the file; the key's presence is
  * what matters. Styles without it and without a link are designer-owned.
@@ -64,6 +71,8 @@ export interface TextStyleInfo {
   lineHeightToken?: string;
   /** Dotted token path driving the letter spacing, when linked. */
   letterSpacingToken?: string;
+  /** Dotted token path of the font size, on managed styles (plan 208). */
+  fontSizeToken?: string;
   /** Created or adopted from the definitions file (plan 206). */
   managed?: boolean;
   /**
@@ -284,6 +293,7 @@ export async function readLocalTextStyles(): Promise<TextStyleInfo[]> {
         letterSpacing: spacingOf(style.letterSpacing),
         lineHeightToken: link(LINE_HEIGHT_LINK_KEY),
         letterSpacingToken: link(LETTER_SPACING_LINK_KEY),
+        fontSizeToken: link(FONT_SIZE_LINK_KEY),
       };
       if (link(DEFINITION_LINK_KEY)) info.managed = true;
       const bound = style.boundVariables;

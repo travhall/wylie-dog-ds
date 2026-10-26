@@ -87,6 +87,7 @@ const managed = (over: Partial<TextStyleInfo> = {}): TextStyleInfo => ({
   lineHeight: { unit: "PERCENT", value: 125 },
   letterSpacing: { unit: "PERCENT", value: 0 },
   lineHeightToken: "button.line-height",
+  fontSizeToken: "button.font-size.sm",
   managed: true,
   bound: {
     fontFamily: "typography.font-family.sans",
@@ -175,6 +176,7 @@ describe("planTextStyles", () => {
       fontWeight: "button.font-weight",
     });
     expect(button.links).toEqual({
+      fontSizeToken: "button.font-size.sm",
       lineHeightToken: "button.line-height",
       letterSpacingToken: undefined,
     });
@@ -207,6 +209,48 @@ describe("planTextStyles", () => {
     expect(plan.creates).toEqual([]);
     expect(plan.updates).toEqual([]);
     expect(planWorkCount(plan)).toBe(0);
+  });
+
+  it("adopts a matching managed style that lacks the font size link, with no review row", () => {
+    const plan = planTextStyles(
+      [BUTTON],
+      [managed({ fontSizeToken: undefined })],
+      TOKENS
+    );
+    expect(plan.unchanged).toBe(1);
+    expect(plan.updates).toEqual([]);
+    expect(planWorkCount(plan)).toBe(0);
+    expect(plan.adopted).toHaveLength(1);
+    expect(plan.adopted[0]).toMatchObject({ id: "S:1", name: "button/sm" });
+    expect(planWork(plan)).toHaveLength(1);
+  });
+
+  it("does not adopt a style that already has the link or a style without the marker", () => {
+    expect(planTextStyles([BUTTON], [managed()], TOKENS).adopted).toEqual([]);
+    const designer = managed({
+      managed: undefined,
+      lineHeightToken: undefined,
+      fontSizeToken: undefined,
+    });
+    const plan = planTextStyles([BUTTON], [designer], TOKENS);
+    expect(plan.adopted).toEqual([]);
+    expect(plan.collisions).toHaveLength(1);
+  });
+
+  it("does not list the missing font size link as a change when another change updates the style", () => {
+    const plan = planTextStyles(
+      [BUTTON],
+      [
+        managed({
+          fontSizeToken: undefined,
+          lineHeight: { unit: "PERCENT", value: 100 },
+        }),
+      ],
+      TOKENS
+    );
+    expect(plan.updates[0].changes).toEqual(["line height 100% → 125%"]);
+    expect(plan.adopted).toEqual([]);
+    expect(planWork(plan)).toHaveLength(1);
   });
 
   it("updates a style when a line-height token changes, naming from and to", () => {
@@ -395,6 +439,7 @@ describe("applyTextStyleDefinitions", () => {
     expect(s.lineHeight).toEqual({ unit: "PERCENT", value: 125 });
     expect(s.letterSpacing).toEqual({ unit: "PERCENT", value: 0 });
     expect(s.shared).toEqual({
+      fontSizeToken: "button.font-size.sm",
       lineHeightToken: "button.line-height",
       letterSpacingToken: "",
       definition: "text-styles",
@@ -445,6 +490,23 @@ describe("applyTextStyleDefinitions", () => {
     expect(created).toHaveLength(0);
     expect(style.lineHeight).toEqual({ unit: "PERCENT", value: 125 });
     expect(style.fontSize).toBe(14);
+    expect(style.name).toBe("button/sm");
+  });
+
+  it("writes only the links on an adopted style and leaves everything else as it was", async () => {
+    const style = fake("S:1");
+    style.name = "button/sm";
+    style.fontSize = 14;
+    style.lineHeight = { unit: "PERCENT", value: 125 };
+    existing["S:1"] = style;
+    const result = await applyTextStyleDefinitions(
+      work([BUTTON], [managed({ fontSizeToken: undefined })])
+    );
+    expect(result).toEqual({ created: 0, updated: 1, skipped: [] });
+    expect(created).toHaveLength(0);
+    expect(style.shared.fontSizeToken).toBe("button.font-size.sm");
+    expect(style.shared.definition).toBe("text-styles");
+    expect(style.lineHeight).toEqual({ unit: "PERCENT", value: 125 });
     expect(style.name).toBe("button/sm");
   });
 

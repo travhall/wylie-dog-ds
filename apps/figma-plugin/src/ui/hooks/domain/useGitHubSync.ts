@@ -33,7 +33,10 @@ import {
   readTextStyleDefinitions,
   requestLocalExport,
 } from "../../utils/check-sync-status";
-import { planWork } from "../../../plugin/variables/text-style-definitions";
+import {
+  planAdoptCount,
+  planWork,
+} from "../../../plugin/variables/text-style-definitions";
 
 /**
  * The review shown before a Push or Pull writes anything (plan 200). The
@@ -474,7 +477,8 @@ export function useGitHubSync(
         onConfirm:
           diff.rows.length > 0 ||
           diff.settingsCount > 0 ||
-          diff.textStyleCount > 0
+          diff.textStyleCount > 0 ||
+          planAdoptCount(diff.textStyles.definitions) > 0
             ? () => {
                 setReview(null);
                 performPull(remoteTokens, diff);
@@ -509,6 +513,7 @@ export function useGitHubSync(
           diff.rows.length === 0 &&
           diff.settingsCount === 0 &&
           diff.textStyleCount === 0 &&
+          planAdoptCount(diff.textStyles.definitions) === 0 &&
           !diff.hasBaseline
             ? () => {
                 setReview(null);
