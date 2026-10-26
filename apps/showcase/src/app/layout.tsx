@@ -111,7 +111,7 @@ export default function RootLayout({
           }
           navigation={navLinks}
           renderNavItem={(item) => (
-            <NavLink key={item.href} href={item.href} label={item.label} />
+            <NavLink href={item.href} label={item.label} />
           )}
           actions={
             <>

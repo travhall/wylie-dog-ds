@@ -71,6 +71,21 @@ export const Default: Story = {
   ),
 };
 
+export const CustomNavItems: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "`renderNavItem` supplies the link only. SiteHeader wraps each result in the navigation list item, so the list stays valid whatever link component you render (for example a framework router link).",
+      },
+    },
+  },
+  args: {
+    navigation: navigation,
+    renderNavItem: (item) => <a href={item.href}>{item.label}</a>,
+  },
+};
+
 export const Transparent: Story = {
   args: {
     variant: "transparent",
