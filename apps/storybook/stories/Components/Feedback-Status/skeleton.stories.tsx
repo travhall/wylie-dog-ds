@@ -196,7 +196,7 @@ export const TableLoading: Story = {
 
       <div className="border rounded-lg overflow-hidden">
         {/* Table Header */}
-        <div className="bg-(--color-background-muted) p-4 border-b">
+        <div className="bg-current/5 p-4 border-b">
           <div className="grid grid-cols-4 gap-4">
             <Skeleton className="h-4 w-16" />
             <Skeleton className="h-4 w-20" />
@@ -324,10 +324,8 @@ export const LoadingToContent: Story = {
           </>
         ) : (
           <div className="space-y-3">
-            <p className="text-sm text-(--color-foreground-default)">
-              Content has loaded successfully.
-            </p>
-            <p className="text-sm text-(--color-foreground-faint)">
+            <p className="text-sm">Content has loaded successfully.</p>
+            <p className="text-sm text-current/70">
               This is the real content that replaced the skeleton.
             </p>
           </div>
