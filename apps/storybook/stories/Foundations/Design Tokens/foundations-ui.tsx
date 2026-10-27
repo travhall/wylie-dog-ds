@@ -68,12 +68,14 @@ export function TokenTable({
   caption,
   rows,
   specimenLabel = "Specimen",
+  variableLabel = "CSS variable",
   specimen,
   renderValue,
 }: {
   caption: string;
   rows: TokenRow[];
   specimenLabel?: string;
+  variableLabel?: string;
   specimen: (row: TokenRow) => ReactNode;
   renderValue?: (row: TokenRow) => ReactNode;
 }) {
@@ -90,7 +92,7 @@ export function TokenTable({
               Token
             </th>
             <th scope="col" className="px-4 py-2 font-semibold">
-              CSS variable
+              {variableLabel}
             </th>
             <th scope="col" className="px-4 py-2 font-semibold">
               Value
