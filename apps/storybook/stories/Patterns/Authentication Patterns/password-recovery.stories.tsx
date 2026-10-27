@@ -107,11 +107,11 @@ export const ForgotPasswordEmail: Story = {
               </AlertDescription>
             </Alert>
 
-            <div className="rounded-lg border border-(--color-border-default) p-4 space-y-2">
+            <div className="rounded-lg border border-current/20 p-4 space-y-2">
               <p className="text-sm font-medium">
                 Didn&apos;t receive the email?
               </p>
-              <ul className="text-sm text-(--color-foreground-faint) space-y-1 list-disc list-inside">
+              <ul className="text-sm text-current/70 space-y-1 list-disc list-inside">
                 <li>Check your spam or junk folder</li>
                 <li>Make sure you entered the correct email</li>
                 <li>Wait a few minutes for the email to arrive</li>
@@ -131,7 +131,7 @@ export const ForgotPasswordEmail: Story = {
             </Button>
             <Button
               variant="ghost"
-              className="w-full text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-default)"
+              className="w-full text-sm text-current/70 hover:text-current"
             >
               Back to login
             </Button>
@@ -168,7 +168,7 @@ export const ForgotPasswordEmail: Story = {
                   setError("");
                 }}
               />
-              <p className="text-sm text-(--color-foreground-faint)">
+              <p className="text-sm text-current/70">
                 We&apos;ll send a password reset link to this email
               </p>
             </FormField>
@@ -179,7 +179,7 @@ export const ForgotPasswordEmail: Story = {
             </Button>
             <Button
               variant="ghost"
-              className="w-full text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-default)"
+              className="w-full text-sm text-current/70 hover:text-current"
             >
               Back to login
             </Button>
@@ -236,18 +236,18 @@ export const ResetPasswordForm: Story = {
         return {
           strength: 2,
           label: "Weak",
-          color: "bg-(--color-background-warning)",
+          color: "bg-amber-500",
         };
       if (password.length < 14)
         return {
           strength: 3,
           label: "Good",
-          color: "bg-(--color-background-primary)",
+          color: "bg-blue-600",
         };
       return {
         strength: 4,
         label: "Strong",
-        color: "bg-(--color-background-success)",
+        color: "bg-green-600",
       };
     };
 
@@ -348,26 +348,26 @@ export const ResetPasswordForm: Story = {
                             className={`h-1 flex-1 rounded-full ${
                               level <= passwordStrength.strength
                                 ? passwordStrength.color
-                                : "bg-(--color-background-muted)"
+                                : "bg-current/5"
                             }`}
                           />
                         ))}
                       </div>
-                      <p className="text-xs text-(--color-foreground-faint)">
+                      <p className="text-xs text-current/70">
                         Password strength: {passwordStrength.label}
                       </p>
                     </div>
                   )}
                   <div
                     id="password-requirements"
-                    className="text-sm text-(--color-foreground-faint) space-y-1"
+                    className="text-sm text-current/70 space-y-1"
                   >
                     <p className="font-medium">Password must contain:</p>
                     <ul className="list-disc list-inside space-y-1">
                       <li
                         className={
                           formData.password.length >= 8
-                            ? "text-(--color-foreground-success-muted)"
+                            ? "text-green-700 dark:text-green-400"
                             : ""
                         }
                       >
@@ -376,7 +376,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[A-Z]/.test(formData.password)
-                            ? "text-(--color-foreground-success-muted)"
+                            ? "text-green-700 dark:text-green-400"
                             : ""
                         }
                       >
@@ -385,7 +385,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[a-z]/.test(formData.password)
-                            ? "text-(--color-foreground-success-muted)"
+                            ? "text-green-700 dark:text-green-400"
                             : ""
                         }
                       >
@@ -394,7 +394,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[0-9]/.test(formData.password)
-                            ? "text-(--color-foreground-success-muted)"
+                            ? "text-green-700 dark:text-green-400"
                             : ""
                         }
                       >
@@ -471,7 +471,7 @@ export const InvalidResetLink: Story = {
           <CardFooter>
             <Button
               variant="ghost"
-              className="w-full text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-default)"
+              className="w-full text-sm text-current/70 hover:text-current"
             >
               Back to login
             </Button>
@@ -495,9 +495,9 @@ export const InvalidResetLink: Story = {
             </AlertDescription>
           </Alert>
 
-          <div className="rounded-lg border border-(--color-border-default) p-4 space-y-2">
+          <div className="rounded-lg border border-current/20 p-4 space-y-2">
             <p className="text-sm font-medium">Why did this happen?</p>
-            <ul className="text-sm text-(--color-foreground-faint) space-y-1 list-disc list-inside">
+            <ul className="text-sm text-current/70 space-y-1 list-disc list-inside">
               <li>The link has expired (older than 1 hour)</li>
               <li>The link has already been used</li>
               <li>You requested a new reset link</li>
@@ -513,7 +513,7 @@ export const InvalidResetLink: Story = {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <p className="text-sm text-(--color-foreground-faint)">
+              <p className="text-sm text-current/70">
                 We&apos;ll send you a new reset link
               </p>
             </FormField>
@@ -526,7 +526,7 @@ export const InvalidResetLink: Story = {
         <CardFooter>
           <Button
             variant="ghost"
-            className="w-full text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-default)"
+            className="w-full text-sm text-current/70 hover:text-current"
           >
             Back to login
           </Button>
@@ -608,22 +608,20 @@ export const MultiStepPasswordRecovery: Story = {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       index <= currentStepIndex
-                        ? "bg-(--color-background-primary) text-(--color-foreground-primary)"
-                        : "bg-(--color-background-muted) text-(--color-foreground-faint)"
+                        ? "bg-blue-600 text-white"
+                        : "bg-current/5 text-current/70"
                     }`}
                   >
                     {index + 1}
                   </div>
-                  <span className="text-xs mt-1 text-(--color-foreground-faint)">
+                  <span className="text-xs mt-1 text-current/70">
                     {s.label}
                   </span>
                 </div>
                 {index < steps.length - 1 && (
                   <div
                     className={`flex-1 h-0.5 ${
-                      index < currentStepIndex
-                        ? "bg-(--color-background-primary)"
-                        : "bg-(--color-background-muted)"
+                      index < currentStepIndex ? "bg-blue-600" : "bg-current/5"
                     }`}
                   />
                 )}
@@ -694,7 +692,7 @@ export const MultiStepPasswordRecovery: Story = {
                   onChange={(e) => setVerificationCode(e.target.value)}
                   maxLength={6}
                 />
-                <p className="text-sm text-(--color-foreground-faint)">
+                <p className="text-sm text-current/70">
                   Didn&apos;t receive the code?{" "}
                   <Button
                     type="button"
@@ -757,7 +755,7 @@ export const MultiStepPasswordRecovery: Story = {
           <CardFooter>
             <Button
               variant="ghost"
-              className="w-full text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-default)"
+              className="w-full text-sm text-current/70 hover:text-current"
             >
               Back to login
             </Button>
