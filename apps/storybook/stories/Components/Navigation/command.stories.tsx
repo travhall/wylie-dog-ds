@@ -296,9 +296,9 @@ export const WithModal: Story = {
     return (
       <div className="space-y-4">
         <div className="text-center space-y-2">
-          <p className="text-sm text-(--color-foreground-faint)">
+          <p className="text-sm text-current/70">
             Press{" "}
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-(--color-background-muted) px-1.5 font-mono text-[10px] font-medium text-(--color-foreground-faint)">
+            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-current/5 px-1.5 font-mono text-[10px] font-medium text-current/70">
               <span className="text-xs">⌘</span>K
             </kbd>{" "}
             to open command palette
@@ -308,7 +308,7 @@ export const WithModal: Story = {
 
         {open && (
           <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-[20vh] z-50">
-            <Command className="rounded-lg border shadow-md w-125 bg-(--color-background-default)">
+            <Command className="rounded-lg border shadow-md w-125">
               <CommandInput
                 placeholder="Type a command or search..."
                 onKeyDown={(e) => {
@@ -422,14 +422,12 @@ export const TeamDirectory: Story = {
 export const CodeEditor: Story = {
   render: () => (
     <div className="space-y-4 w-full max-w-2xl">
-      <div className="bg-(--color-background-inverse) text-(--color-foreground-inverse) p-4 rounded-lg font-mono text-sm">
+      <div className="bg-gray-950 dark:bg-gray-50 text-gray-50 dark:text-gray-950 p-4 rounded-lg font-mono text-sm">
         <div className="flex items-center justify-between mb-4">
           <span>editor.tsx</span>
-          <kbd className="text-xs bg-(--color-background-muted) text-(--color-foreground-default) px-2 py-1 rounded">
-            ⌘K
-          </kbd>
+          <kbd className="text-xs bg-current/5 px-2 py-1 rounded">⌘K</kbd>
         </div>
-        <div className="space-y-1 text-(--color-foreground-inverse)/70">
+        <div className="space-y-1 text-gray-50/70 dark:text-gray-950/70">
           <div>import React from &apos;react&apos;;</div>
           <div>import {"{ useState }"} from &apos;react&apos;;</div>
           <div></div>
@@ -537,7 +535,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 w-full max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-(--color-foreground-faint)">
+        <p className="text-sm text-current/70">
           Command palette supports full keyboard navigation. Use arrows to
           navigate, Enter to select, Escape to close.
         </p>
@@ -578,7 +576,7 @@ export const Accessibility: Story = {
         </CommandList>
       </Command>
 
-      <p className="text-xs text-(--color-foreground-faint)">
+      <p className="text-xs text-current/70">
         Screen readers announce group headings and selected items
       </p>
     </div>
