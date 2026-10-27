@@ -49,6 +49,11 @@ export interface SiteHeaderProps
   }>;
   actions?: React.ReactNode;
   containerClassName?: string;
+  /**
+   * Custom renderer for a navigation link. Return only the link: SiteHeader
+   * wraps the result in a `NavigationMenuItem` (the list item), so the
+   * navigation list stays valid. Do not return a `NavigationMenuItem`.
+   */
   renderNavItem?: (
     item: { label: string; href: string },
     index: number
@@ -104,20 +109,20 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                 aria-label="Main navigation"
               >
                 <NavigationMenuList>
-                  {navigation.map((item, index) =>
-                    renderNavItem ? (
-                      renderNavItem(item, index)
-                    ) : (
-                      <NavigationMenuItem key={index}>
+                  {navigation.map((item, index) => (
+                    <NavigationMenuItem key={index}>
+                      {renderNavItem ? (
+                        renderNavItem(item, index)
+                      ) : (
                         <NavigationMenuLink
                           href={item.href}
                           className="group inline-flex h-(--space-site-header-nav-link-height) w-max items-center justify-center rounded-(--space-site-header-nav-link-radius) bg-(--color-site-header-nav-link-background) px-(--space-site-header-nav-link-padding-x) py-(--space-site-header-nav-link-padding-y) text-(length:--font-size-site-header-nav-link-font-size) font-(--font-weight-site-header-nav-link-font-weight) transition-colors hover:bg-(--color-site-header-nav-link-background-hover) hover:text-(--color-site-header-nav-link-text-hover) focus:bg-(--color-site-header-nav-link-background-highlighted) focus:text-(--color-site-header-nav-link-text-highlighted) focus-visible:outline-solid focus-visible:outline-(length:--space-focus-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-focus-offset) focus-visible:shadow-[0_0_0_calc(var(--space-focus-offset)+var(--space-focus-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none disabled:pointer-events-none disabled:text-(--color-site-header-nav-link-text-disabled)"
                         >
                           {item.label}
                         </NavigationMenuLink>
-                      </NavigationMenuItem>
-                    )
-                  )}
+                      )}
+                    </NavigationMenuItem>
+                  ))}
                 </NavigationMenuList>
               </NavigationMenu>
             )}
