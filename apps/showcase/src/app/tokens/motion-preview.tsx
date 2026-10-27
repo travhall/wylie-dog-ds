@@ -144,7 +144,7 @@ export function MotionPreview() {
                   dur === ms
                     ? {
                         background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-inverse)",
+                        color: "var(--color-foreground-primary)",
                       }
                     : { color: "var(--color-foreground-faint)" }
                 }

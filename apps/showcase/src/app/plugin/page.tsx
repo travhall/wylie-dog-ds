@@ -212,7 +212,12 @@ export default function PluginPage() {
             Three files, three collections
           </h2>
 
-          <div className="mt-8 overflow-x-auto rounded-xl border border-(--color-border-default)">
+          <div
+            tabIndex={0}
+            role="region"
+            aria-label="Synced files and collections"
+            className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) mt-8 overflow-x-auto rounded-xl border border-(--color-border-default)"
+          >
             <table className="w-full text-sm">
               <thead className="bg-(--color-background-muted) text-left">
                 <tr>
@@ -276,7 +281,12 @@ export default function PluginPage() {
             changes when the tokens do.
           </p>
 
-          <div className="mt-8 overflow-x-auto rounded-xl border border-(--color-border-default) bg-(--color-background-default)">
+          <div
+            tabIndex={0}
+            role="region"
+            aria-label="Light and dark semantic values"
+            className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) mt-8 overflow-x-auto rounded-xl border border-(--color-border-default) bg-(--color-background-default)"
+          >
             <table className="w-full text-sm">
               <thead className="text-left">
                 <tr>

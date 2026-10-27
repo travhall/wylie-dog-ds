@@ -82,7 +82,12 @@ export default function MotionPage() {
         <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
           Semantic durations
         </h2>
-        <div className="overflow-x-auto rounded-xl border border-(--color-border-default)">
+        <div
+          tabIndex={0}
+          role="region"
+          aria-label="Semantic durations table"
+          className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) overflow-x-auto rounded-xl border border-(--color-border-default)"
+        >
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-(--color-border-default) bg-(--color-background-muted)">

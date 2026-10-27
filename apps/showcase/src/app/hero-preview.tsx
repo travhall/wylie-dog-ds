@@ -58,9 +58,9 @@ export function HeroPreview() {
                 <p className="text-xs font-medium text-(--color-foreground-faint)">
                   Project
                 </p>
-                <h3 className="mt-1 text-base font-semibold">
+                <p className="mt-1 text-base font-semibold">
                   Migration to v1.4
-                </h3>
+                </p>
               </div>
               <Badge variant="success" className="gap-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-current" />
@@ -152,7 +152,11 @@ export function HeroPreview() {
             <CardContent className="p-0">
               <p className="text-xs font-semibold mb-1.5">Theme</p>
               <Select defaultValue="system">
-                <SelectTrigger size="sm" className="h-7 text-xs">
+                <SelectTrigger
+                  size="sm"
+                  className="h-7 text-xs"
+                  aria-label="Theme"
+                >
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

@@ -414,7 +414,7 @@ export default function ShowcasePage() {
                   className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold"
                   style={{
                     background: "var(--color-background-primary)",
-                    color: "var(--color-foreground-inverse, white)",
+                    color: "var(--color-foreground-primary)",
                   }}
                 >
                   Save changes
@@ -587,8 +587,7 @@ export default function ShowcasePage() {
                     <span
                       className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[0.5625rem] font-medium"
                       style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        background: "var(--color-background-success-muted)",
                         color: "var(--color-foreground-success-muted)",
                       }}
                     >
@@ -1280,7 +1279,7 @@ export default function ShowcasePage() {
                             className="font-mono text-[0.625rem] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                                "var(--color-background-success-muted)",
                               color: "var(--color-foreground-success-muted)",
                             }}
                           >
@@ -1341,7 +1340,7 @@ export default function ShowcasePage() {
                             className="inline-flex h-7 items-center gap-1.5 rounded-md px-2.5 text-[0.6875rem] font-semibold"
                             style={{
                               background: "var(--color-background-primary)",
-                              color: "var(--color-foreground-inverse, white)",
+                              color: "var(--color-foreground-primary)",
                             }}
                           >
                             Open PR

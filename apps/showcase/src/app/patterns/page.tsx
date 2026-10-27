@@ -224,7 +224,7 @@ export default function PatternsPage() {
             <div className="hidden lg:flex items-center justify-center w-16">
               <svg
                 viewBox="0 0 80 24"
-                className="w-16 h-6 text-fg-tertiary"
+                className="w-16 h-6"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.5"
@@ -271,7 +271,7 @@ export default function PatternsPage() {
             <div className="hidden lg:flex items-center justify-center w-16">
               <svg
                 viewBox="0 0 80 24"
-                className="w-16 h-6 text-fg-tertiary"
+                className="w-16 h-6"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.5"
@@ -362,7 +362,7 @@ export default function PatternsPage() {
             title="Authentication"
             desc="Sign-in, registration and account recovery examples, with validation states, error messages and social-auth placeholders."
           />
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
               story="login-registration"
               title="Login & Registration"
@@ -464,6 +464,13 @@ export default function PatternsPage() {
                     {["G", "GH", ""].map((label, i) => (
                       <Button
                         key={i}
+                        aria-label={
+                          [
+                            "Continue with Google",
+                            "Continue with GitHub",
+                            "Continue with Apple",
+                          ][i]
+                        }
                         variant="outline"
                         className="h-7 text-[0.6875rem] font-semibold"
                       >
@@ -554,8 +561,7 @@ export default function PatternsPage() {
                     <div
                       className="mt-2 grid h-9 w-9 place-items-center rounded-full"
                       style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        background: "var(--color-background-success-muted)",
                         color: "var(--color-foreground-success-muted)",
                       }}
                     >
@@ -619,7 +625,7 @@ export default function PatternsPage() {
             title="Data display"
             desc="Browseable grids and showcase grids. Both share the same card primitive but differ in density and what they ask the user to do next."
           />
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
               story="card-grid"
               title="Card Grid"
@@ -681,7 +687,10 @@ export default function PatternsPage() {
                             <span
                               className="inline-flex items-center gap-0.5 rounded-full px-1 py-px font-mono text-[0.5rem]"
                               style={{
-                                background: `color-mix(in oklch, ${statusColor} 18%, transparent)`,
+                                background: statusColor.replace(
+                                  "--color-foreground-",
+                                  "--color-background-"
+                                ),
                                 color: statusColor,
                               }}
                             >
@@ -703,7 +712,7 @@ export default function PatternsPage() {
                       className="grid h-4 w-4 place-items-center rounded font-mono text-[0.5625rem]"
                       style={{
                         background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-inverse)",
+                        color: "var(--color-foreground-primary)",
                       }}
                     >
                       2
@@ -799,7 +808,7 @@ export default function PatternsPage() {
             title="Feedback"
             desc="When something fails, the pattern catches it. Error states aren't an afterthought — they're designed as carefully as the happy path."
           />
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
               story="error-boundary-patterns"
               full
@@ -807,7 +816,7 @@ export default function PatternsPage() {
               desc="Basic and recoverable error boundaries, multiple and granular boundaries, custom fallback UI, and error logging."
               tags={["Alert", "Badge", "Button", "Card"]}
               preview={
-                <div className="grid lg:grid-cols-2 gap-3 max-w-160 mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 max-w-160 mx-auto">
                   <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
                     <span
                       className="grid h-9 w-9 place-items-center rounded-full"
@@ -828,9 +837,9 @@ export default function PatternsPage() {
                         <path d="M12 8v5M12 16h.01" />
                       </svg>
                     </span>
-                    <h4 className="mt-3 font-serif text-base font-semibold leading-tight text-(--color-foreground-default)">
+                    <p className="mt-3 font-serif text-base font-semibold leading-tight text-(--color-foreground-default)">
                       Something broke on our end
-                    </h4>
+                    </p>
                     <p className="text-[0.6875rem] text-(--color-foreground-muted) mt-1">
                       The team has been pinged. Your work was auto-saved 12s
                       ago.
@@ -949,7 +958,7 @@ export default function PatternsPage() {
             title="Forms"
             desc="Form composition and validation are the largest source of bespoke UI in any product. These patterns close the gap so teams stop reinventing field groupings, error display, and async submit states."
           />
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
               story="form-compositions"
               title="Form Compositions"
@@ -1259,7 +1268,7 @@ export default function PatternsPage() {
                       ))}
                     </div>
                   </aside>
-                  <main className="col-span-9 p-3">
+                  <div className="col-span-9 p-3">
                     <div className="flex items-center justify-between">
                       <p className="text-[0.6875rem] font-serif font-semibold text-(--color-foreground-default)">
                         Projects
@@ -1337,7 +1346,10 @@ export default function PatternsPage() {
                             <span
                               className="inline-block rounded px-1 font-mono text-[0.5rem]"
                               style={{
-                                background: `color-mix(in oklch, ${color} 18%, transparent)`,
+                                background: color.replace(
+                                  "--color-foreground-",
+                                  "--color-background-"
+                                ),
                                 color,
                               }}
                             >
@@ -1347,7 +1359,7 @@ export default function PatternsPage() {
                         </div>
                       ))}
                     </div>
-                  </main>
+                  </div>
                 </div>
               </div>
             }
@@ -1369,7 +1381,7 @@ export default function PatternsPage() {
             title="Navigation"
             desc="Header and footer for marketing surfaces — the bookends of every public page. Used on this site too, so they're self-eating dog food."
           />
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
               story="site-header"
               title="Site Header"
@@ -1580,7 +1592,7 @@ export default function PatternsPage() {
                     </p>
                     <div className="mt-2 flex gap-1">
                       <span
-                        className="inline-flex h-5 items-center rounded-md px-2 text-[0.5625rem] font-semibold text-(--color-foreground-inverse)"
+                        className="inline-flex h-5 items-center rounded-md px-2 text-[0.5625rem] font-semibold text-(--color-foreground-primary)"
                         style={{
                           background: "var(--color-background-primary)",
                         }}
@@ -1627,7 +1639,7 @@ export default function PatternsPage() {
                         sub: "WCAG 2.2 AA across every state.",
                       },
                       {
-                        color: "var(--color-yellow-500)",
+                        color: "var(--color-foreground-warning-muted)",
                         label: "Typed end-to-end",
                         sub: "No prop guesswork in your IDE.",
                       },
@@ -1842,7 +1854,7 @@ export default function PatternsPage() {
                         className="rounded px-1.5 py-0.5 font-mono text-[0.5625rem]"
                         style={{
                           background: "var(--color-background-primary)",
-                          color: "var(--color-foreground-inverse)",
+                          color: "var(--color-foreground-primary)",
                         }}
                       >
                         lg · 1280
@@ -1937,7 +1949,7 @@ export default function PatternsPage() {
             title="Accessibility"
             desc="Components are tested against WCAG 2.2 AA. These patterns show focus management, live-region announcements, a keyboard-only form, color-contrast checks and skip navigation."
           />
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
               story="accessibility-patterns"
               full
@@ -2079,7 +2091,7 @@ export default function PatternsPage() {
       {/* ── PHILOSOPHY ──────────────────────────────────────────── */}
       <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-          <div className="grid md:grid-cols-12 gap-10 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             <div className="md:col-span-5">
               <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
                 Philosophy
@@ -2119,7 +2131,7 @@ export default function PatternsPage() {
                 },
                 {
                   num: "03",
-                  color: "var(--color-yellow-500)",
+                  color: "var(--color-foreground-warning-muted)",
                   title: "Patterns stay in sync via the token layer.",
                   body: null,
                   tokenFlow: true,
@@ -2213,7 +2225,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="glass rounded-2xl p-8 lg:p-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
             <div className="flex-1">
-              <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
                 Ready to build?
               </p>
               <h2 className="mt-2 font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -2231,7 +2243,7 @@ export default function PatternsPage() {
                 className="inline-flex h-10 items-center gap-1.5 rounded-md px-4 text-sm font-semibold"
                 style={{
                   background: "var(--color-background-primary)",
-                  color: "var(--color-foreground-inverse)",
+                  color: "var(--color-foreground-primary)",
                 }}
               >
                 View in Storybook

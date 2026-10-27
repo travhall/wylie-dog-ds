@@ -265,7 +265,7 @@ export default function TokensPage() {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-3">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
             {/* Analytics chart */}
             <div className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
               <div className="flex items-center justify-between gap-4 px-6 py-4 border-b border-(--color-border-default)">
@@ -277,8 +277,7 @@ export default function TokensPage() {
                     <span
                       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[0.625rem]"
                       style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        background: "var(--color-background-success-muted)",
                         color: "var(--color-foreground-success-muted)",
                       }}
                     >
@@ -504,7 +503,7 @@ export default function TokensPage() {
                             className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                                "var(--color-background-success-muted)",
                               color: "var(--color-foreground-success-muted)",
                             }}
                           >
@@ -625,7 +624,7 @@ export default function TokensPage() {
             </Link>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-3">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
             <article className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
               <div className="flex items-center justify-between px-8 py-3 border-b border-(--color-border-default) bg-(--color-background-muted)">
                 <div className="flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
@@ -798,7 +797,7 @@ export default function TokensPage() {
             </Link>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-3">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
             <div className="lg:col-span-8">
               <SpacingDemo />
             </div>
@@ -854,7 +853,7 @@ export default function TokensPage() {
                       className="font-mono text-[0.625rem] ml-auto shrink-0"
                       style={{
                         color: s.inUse
-                          ? "var(--color-background-primary)"
+                          ? "var(--color-foreground-primary-muted)"
                           : "var(--color-foreground-faint)",
                       }}
                     >
@@ -1115,7 +1114,7 @@ export default function TokensPage() {
             </Link>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-3">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
             {/* Layered scene */}
             <div
               className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-muted) overflow-hidden relative grid-bg"

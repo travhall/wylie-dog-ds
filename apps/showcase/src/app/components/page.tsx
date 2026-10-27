@@ -276,8 +276,7 @@ export default function ComponentsPage() {
                       <span
                         className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
                         style={{
-                          background:
-                            "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                          background: "var(--color-background-success-muted)",
                           color: "var(--color-foreground-success-muted)",
                         }}
                       >
@@ -610,7 +609,7 @@ export default function ComponentsPage() {
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-semibold"
                       style={{
                         background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-inverse)",
+                        color: "var(--color-foreground-primary)",
                       }}
                     >
                       Default
@@ -621,8 +620,7 @@ export default function ComponentsPage() {
                     <span
                       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
                       style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        background: "var(--color-background-success-muted)",
                         color: "var(--color-foreground-success-muted)",
                       }}
                     >
@@ -715,7 +713,7 @@ export default function ComponentsPage() {
                       className="py-0.5 rounded font-semibold"
                       style={{
                         background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-inverse)",
+                        color: "var(--color-foreground-primary)",
                       }}
                     >
                       10
@@ -779,8 +777,7 @@ export default function ComponentsPage() {
                     <span
                       className="ml-auto inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[0.5625rem] font-medium"
                       style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        background: "var(--color-background-success-muted)",
                         color: "var(--color-foreground-success-muted)",
                       }}
                     >
@@ -804,6 +801,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-57.5 flex items-center gap-2">
                   <Button
+                    aria-label="Previous"
                     variant="outline"
                     size="icon"
                     className="h-7 w-7 rounded-full shrink-0"
@@ -833,6 +831,7 @@ export default function ComponentsPage() {
                     />
                   </div>
                   <Button
+                    aria-label="Next"
                     variant="outline"
                     size="icon"
                     className="h-7 w-7 rounded-full shrink-0"
@@ -908,7 +907,10 @@ export default function ComponentsPage() {
                           <span
                             className="inline-flex items-center gap-1 rounded-full px-1 py-0 text-[0.5rem] font-medium"
                             style={{
-                              background: `color-mix(in oklch, ${color} 18%, transparent)`,
+                              background: color.replace(
+                                "--color-foreground-",
+                                "--color-background-"
+                              ),
                               color,
                             }}
                           >
@@ -1144,6 +1146,7 @@ export default function ComponentsPage() {
                       </p>
                     </div>
                     <Button
+                      aria-label="Dismiss"
                       variant="ghost"
                       className="h-3.5 w-3.5 p-0 text-(--color-foreground-faint)"
                     >
@@ -1204,7 +1207,7 @@ export default function ComponentsPage() {
                       className="inline-flex h-7 items-center rounded-md px-2.5 text-[0.6875rem] font-semibold"
                       style={{
                         background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-inverse)",
+                        color: "var(--color-foreground-primary)",
                       }}
                     >
                       Primary
@@ -1232,7 +1235,7 @@ export default function ComponentsPage() {
                     className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[0.6875rem] font-semibold"
                     style={{
                       background: "var(--color-background-primary-emphasis)",
-                      color: "var(--color-foreground-inverse)",
+                      color: "var(--color-foreground-primary)",
                       boxShadow:
                         "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 25%, transparent)",
                     }}
@@ -1261,7 +1264,7 @@ export default function ComponentsPage() {
                       className="grid h-4 w-4 place-items-center rounded-sm"
                       style={{
                         background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-inverse)",
+                        color: "var(--color-foreground-primary)",
                       }}
                     >
                       <svg
@@ -1281,7 +1284,7 @@ export default function ComponentsPage() {
                       className="grid h-4 w-4 place-items-center rounded-sm"
                       style={{
                         background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-inverse)",
+                        color: "var(--color-foreground-primary)",
                       }}
                     >
                       <svg
@@ -1702,6 +1705,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="flex gap-1.5">
                   <Button
+                    aria-label="Bold"
                     variant="ghost"
                     size="icon"
                     className="h-8 w-8"
@@ -1721,7 +1725,12 @@ export default function ComponentsPage() {
                       <path d="M6 4v16M14 6h2a4 4 0 0 1 0 8h-2zM14 14h3a4 4 0 0 1 0 8h-3z" />
                     </svg>
                   </Button>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Button
+                    aria-label="Italic"
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8"
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       className="h-4 w-4"
@@ -1732,7 +1741,12 @@ export default function ComponentsPage() {
                       <path d="M19 4h-9M14 20H5M15 4 9 20" />
                     </svg>
                   </Button>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Button
+                    aria-label="Text style"
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8"
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       className="h-4 w-4"
@@ -1785,6 +1799,7 @@ export default function ComponentsPage() {
                   </div>
                   <div className="inline-flex rounded-md border border-(--color-border-default) overflow-hidden">
                     <Button
+                      aria-label="Justify"
                       variant="ghost"
                       size="icon"
                       className="h-7 w-8"
@@ -1805,6 +1820,7 @@ export default function ComponentsPage() {
                       </svg>
                     </Button>
                     <Button
+                      aria-label="Align right"
                       variant="ghost"
                       size="icon"
                       className="h-7 w-8 text-(--color-foreground-muted)"
@@ -1820,6 +1836,7 @@ export default function ComponentsPage() {
                       </svg>
                     </Button>
                     <Button
+                      aria-label="Align right, narrow"
                       variant="ghost"
                       size="icon"
                       className="h-7 w-8 text-(--color-foreground-muted)"
@@ -1864,7 +1881,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-50 flex gap-1.5">
                   <div
-                    className="aspect-video flex-1 rounded border border-(--color-border-default) flex items-center justify-center font-mono text-[0.5625rem] text-(--color-foreground-faint)"
+                    className="aspect-video flex-1 rounded border border-(--color-border-default) flex items-center justify-center font-mono text-[0.5625rem] text-(--color-foreground-muted)"
                     style={{ background: "var(--color-background-emphasis)" }}
                   >
                     16 : 9
@@ -1959,7 +1976,9 @@ export default function ComponentsPage() {
                     <p>v1.3.2 — Toast variants</p>
                     <p>v1.3.1 — Fix focus ring</p>
                     <p>v1.3.0 — Calendar locales</p>
-                    <p className="opacity-50">v1.2.4 — Pagination</p>
+                    <p className="text-(--color-foreground-faint)">
+                      v1.2.4 — Pagination
+                    </p>
                   </div>
                   <div
                     className="w-1.5 my-1 mr-1 rounded-full relative"
@@ -2214,6 +2233,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="flex items-center gap-1 text-[0.6875rem]">
                   <Button
+                    aria-label="Previous"
                     variant="outline"
                     size="icon"
                     className="h-7 w-7 opacity-50"
@@ -2243,7 +2263,12 @@ export default function ComponentsPage() {
                   <Button variant="outline" size="icon" className="h-7 w-7">
                     12
                   </Button>
-                  <Button variant="outline" size="icon" className="h-7 w-7">
+                  <Button
+                    aria-label="Next"
+                    variant="outline"
+                    size="icon"
+                    className="h-7 w-7"
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3"
@@ -2456,7 +2481,7 @@ export default function ComponentsPage() {
                         className="inline-flex h-6 items-center rounded px-2 text-[0.625rem] font-semibold"
                         style={{
                           background: "var(--color-background-primary)",
-                          color: "var(--color-foreground-inverse)",
+                          color: "var(--color-foreground-primary)",
                         }}
                       >
                         Send invite
