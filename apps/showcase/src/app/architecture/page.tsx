@@ -495,13 +495,21 @@ export default function ArchitecturePage() {
                     </div>
                     <div className="pl-4 text-(--color-foreground-muted)">
                       -{" "}
-                      <span style={{ color: "var(--color-green-700)" }}>
+                      <span
+                        style={{
+                          color: "var(--color-foreground-success-muted)",
+                        }}
+                      >
                         &quot;packages/*&quot;
                       </span>
                     </div>
                     <div className="pl-4 text-(--color-foreground-muted)">
                       -{" "}
-                      <span style={{ color: "var(--color-green-700)" }}>
+                      <span
+                        style={{
+                          color: "var(--color-foreground-success-muted)",
+                        }}
+                      >
                         &quot;apps/*&quot;
                       </span>
                     </div>
@@ -1047,13 +1055,13 @@ export default function ArchitecturePage() {
                   </div>
                   <span
                     className="ml-2 font-mono text-[0.6875rem]"
-                    style={{ color: "var(--color-gray-500)" }}
+                    style={{ color: "var(--color-gray-400)" }}
                   >
                     ~/wyliedog · main
                   </span>
                   <span
                     className="ml-auto font-mono text-[0.625rem]"
-                    style={{ color: "var(--color-gray-500)" }}
+                    style={{ color: "var(--color-gray-400)" }}
                   >
                     zsh
                   </span>
@@ -1066,7 +1074,7 @@ export default function ArchitecturePage() {
                       build
                     </span>
                   </div>
-                  <div style={{ color: "var(--color-gray-500)" }}>
+                  <div style={{ color: "var(--color-gray-400)" }}>
                     turbo run build
                   </div>
                   <div className="mt-2">
@@ -1074,13 +1082,13 @@ export default function ArchitecturePage() {
                     <span style={{ color: "var(--color-fiery-coral-200)" }}>
                       @wyliedog/tokens#build
                     </span>{" "}
-                    <span style={{ color: "var(--color-gray-500)" }}>
+                    <span style={{ color: "var(--color-gray-400)" }}>
                       style-dictionary
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-gray-500)" }}
+                    style={{ color: "var(--color-gray-400)" }}
                   >
                     → dist/tokens.css{" "}
                     <span style={{ color: "var(--color-green-500)" }}>
@@ -1089,13 +1097,13 @@ export default function ArchitecturePage() {
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-gray-500)" }}
+                    style={{ color: "var(--color-gray-400)" }}
                   >
                     → dist/index.js
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-gray-500)" }}
+                    style={{ color: "var(--color-gray-400)" }}
                   >
                     → dist/manifest.json
                   </div>
@@ -1110,13 +1118,13 @@ export default function ArchitecturePage() {
                     <span style={{ color: "var(--color-fiery-coral-200)" }}>
                       @wyliedog/ui#build
                     </span>{" "}
-                    <span style={{ color: "var(--color-gray-500)" }}>
+                    <span style={{ color: "var(--color-gray-400)" }}>
                       tailwind + tsup
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-gray-500)" }}
+                    style={{ color: "var(--color-gray-400)" }}
                   >
                     → dist/index.css
                   </div>
@@ -1167,64 +1175,67 @@ export default function ArchitecturePage() {
                 <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint) mb-5">
                   Build dependency graph
                 </p>
-                <ol className="relative space-y-5">
+                <div className="relative">
                   <span
+                    aria-hidden="true"
                     className="absolute left-3.75 top-3 bottom-3 w-px"
                     style={{
                       background:
                         "linear-gradient(to bottom, color-mix(in oklch, var(--color-background-primary) 70%, transparent), color-mix(in oklch, var(--color-background-primary) 70%, transparent) 70%, var(--color-border-default))",
                     }}
                   />
-                  {[
-                    {
-                      n: "1",
-                      title: "Tokens build",
-                      meta: "style-dictionary",
-                      desc: `Reads JSON source files, resolves aliases, emits tokens.css with all ${meta.tokens.total} custom properties plus JS exports, types and a manifest.`,
-                    },
-                    {
-                      n: "2",
-                      title: "UI build",
-                      meta: "tailwind + tsup",
-                      desc: `Picks up the fresh tokens.css via workspace symlink. tsup builds each of the ${meta.components.count} components as its own ESM and CommonJS entry, so imports are tree-shakeable.`,
-                    },
-                    {
-                      n: "3",
-                      title: "Storybook",
-                      meta: "build:css + storybook build",
-                      desc: "Compiles its own Tailwind sheet and builds the docs, so the stories render against the new token values.",
-                    },
-                    {
-                      n: "4",
-                      title: "Showcase",
-                      meta: "next build",
-                      desc: "Reads token values and counts from the repo, so the public site reflects the new tokens on its next build.",
-                    },
-                  ].map((step) => (
-                    <li key={step.n} className="relative pl-12">
-                      <span
-                        className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full font-mono text-xs font-semibold"
-                        style={{
-                          background: "var(--color-background-primary)",
-                          color: "var(--color-foreground-inverse)",
-                        }}
-                      >
-                        {step.n}
-                      </span>
-                      <div className="flex flex-wrap items-baseline justify-between gap-2">
-                        <h3 className="font-semibold text-(--color-foreground-default)">
-                          {step.title}
-                        </h3>
-                        <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
-                          {step.meta}
+                  <ol className="space-y-5">
+                    {[
+                      {
+                        n: "1",
+                        title: "Tokens build",
+                        meta: "style-dictionary",
+                        desc: `Reads JSON source files, resolves aliases, emits tokens.css with all ${meta.tokens.total} custom properties plus JS exports, types and a manifest.`,
+                      },
+                      {
+                        n: "2",
+                        title: "UI build",
+                        meta: "tailwind + tsup",
+                        desc: `Picks up the fresh tokens.css via workspace symlink. tsup builds each of the ${meta.components.count} components as its own ESM and CommonJS entry, so imports are tree-shakeable.`,
+                      },
+                      {
+                        n: "3",
+                        title: "Storybook",
+                        meta: "build:css + storybook build",
+                        desc: "Compiles its own Tailwind sheet and builds the docs, so the stories render against the new token values.",
+                      },
+                      {
+                        n: "4",
+                        title: "Showcase",
+                        meta: "next build",
+                        desc: "Reads token values and counts from the repo, so the public site reflects the new tokens on its next build.",
+                      },
+                    ].map((step) => (
+                      <li key={step.n} className="relative pl-12">
+                        <span
+                          className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full font-mono text-xs font-semibold"
+                          style={{
+                            background: "var(--color-background-primary)",
+                            color: "var(--color-foreground-primary)",
+                          }}
+                        >
+                          {step.n}
                         </span>
-                      </div>
-                      <p className="mt-1 text-sm text-(--color-foreground-muted) leading-relaxed">
-                        {step.desc}
-                      </p>
-                    </li>
-                  ))}
-                </ol>
+                        <div className="flex flex-wrap items-baseline justify-between gap-2">
+                          <h3 className="font-semibold text-(--color-foreground-default)">
+                            {step.title}
+                          </h3>
+                          <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                            {step.meta}
+                          </span>
+                        </div>
+                        <p className="mt-1 text-sm text-(--color-foreground-muted) leading-relaxed">
+                          {step.desc}
+                        </p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
               </div>
             </div>
           </div>
@@ -1287,7 +1298,7 @@ export default function ArchitecturePage() {
                   </div>
                   <span
                     className="ml-2 font-mono text-[0.6875rem]"
-                    style={{ color: "var(--color-gray-500)" }}
+                    style={{ color: "var(--color-gray-400)" }}
                   >
                     Button.tsx
                   </span>

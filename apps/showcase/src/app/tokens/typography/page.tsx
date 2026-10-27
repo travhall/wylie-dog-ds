@@ -63,7 +63,12 @@ export default function TypographyPage() {
             </h2>
           </div>
           <div className="space-y-4">
-            <div className="overflow-x-auto">
+            <div
+              tabIndex={0}
+              role="region"
+              aria-label="Families and sizes table"
+              className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) overflow-x-auto"
+            >
               <table className="w-full border-collapse text-left">
                 <thead>
                   <tr className="border-b border-(--color-border-default)">

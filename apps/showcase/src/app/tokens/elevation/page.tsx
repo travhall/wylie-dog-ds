@@ -55,9 +55,9 @@ export default function ElevationPage() {
               className="h-16 w-16 rounded-lg border border-(--color-border-default) bg-(--color-background-default)"
               style={{ boxShadow: s.variable }}
             />
-            <p className="mt-4 font-semibold text-sm text-(--color-foreground-default)">
+            <h2 className="mt-4 font-semibold text-sm text-(--color-foreground-default)">
               {s.name}
-            </p>
+            </h2>
             {s.description ? (
               <p className="mt-1 text-[0.6875rem] text-(--color-foreground-faint) leading-relaxed">
                 {s.description}

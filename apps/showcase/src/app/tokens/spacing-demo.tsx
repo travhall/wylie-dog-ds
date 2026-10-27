@@ -92,9 +92,9 @@ export function SpacingDemo() {
         style={{ padding: `${d.rowY} 1.5rem` }}
       >
         <div>
-          <h3 className="font-semibold text-(--color-foreground-default)">
+          <p className="font-semibold text-(--color-foreground-default)">
             Team members
-          </h3>
+          </p>
           <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
             14 active · 3 invited
           </p>
@@ -160,16 +160,16 @@ export function SpacingDemo() {
             style={{
               background:
                 m.status === "active"
-                  ? "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)"
+                  ? "var(--color-background-success-muted)"
                   : m.status === "invited"
-                    ? "color-mix(in oklch, var(--color-background-primary) 12%, transparent)"
-                    : "color-mix(in oklch, var(--color-border-default) 70%, transparent)",
+                    ? "var(--color-background-primary-muted)"
+                    : "var(--color-background-muted)",
               color:
                 m.status === "active"
                   ? "var(--color-foreground-success-muted)"
                   : m.status === "invited"
-                    ? "var(--color-background-primary)"
-                    : "var(--color-foreground-faint)",
+                    ? "var(--color-foreground-primary-muted)"
+                    : "var(--color-foreground-muted)",
             }}
           >
             {m.status}
