@@ -179,9 +179,7 @@ export const States: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
-          Normal States
-        </h4>
+        <h4 className="text-sm font-medium text-current/70">Normal States</h4>
         <div className="flex items-center space-x-2">
           <Checkbox id="unchecked" />
           <Label htmlFor="unchecked">Unchecked</Label>
@@ -193,9 +191,7 @@ export const States: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
-          Disabled States
-        </h4>
+        <h4 className="text-sm font-medium text-current/70">Disabled States</h4>
         <div className="flex items-center space-x-2">
           <Checkbox id="disabled-unchecked" disabled />
           <Label htmlFor="disabled-unchecked">Disabled unchecked</Label>
@@ -207,9 +203,7 @@ export const States: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
-          Error States
-        </h4>
+        <h4 className="text-sm font-medium text-current/70">Error States</h4>
         <div className="flex items-center space-x-2">
           <Checkbox id="error-unchecked" error />
           <Label htmlFor="error-unchecked" error>
@@ -351,7 +345,7 @@ export const FormExamples: Story = {
       {/* Survey Form */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Quick Survey</h3>
-        <p className="text-sm text-(--color-foreground-faint)">
+        <p className="text-sm text-current/70">
           What topics interest you? (Select all that apply)
         </p>
 

@@ -27,3 +27,9 @@
  * sort all breakpoints together.
  */
 @source "../../../../packages/ui/src/**/*.tsx";
+
+/*
+ * Stories follow the Storybook theme switch (a .dark class on <html>) without
+ * binding to design tokens: dark: utilities listen for that class.
+ */
+@custom-variant dark (&:where(.dark, .dark *));

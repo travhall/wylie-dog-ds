@@ -210,13 +210,13 @@ export const MediaControls: Story = {
 
     return (
       <div className="space-y-4">
-        <div className="flex items-center gap-2 p-4 bg-(--color-background-inverse) text-(--color-foreground-inverse) rounded-lg">
+        <div className="flex items-center gap-2 p-4 bg-gray-900 dark:bg-gray-100 text-gray-50 dark:text-gray-900 rounded-lg">
           <span className="text-sm">Audio Controls:</span>
           <Toggle
             pressed={muted}
             onPressedChange={setMuted}
             aria-label="Toggle speaker mute"
-            className="text-(--color-foreground-inverse) data-[state=on]:bg-(--color-background-danger) data-[state=on]:text-(--color-foreground-danger)"
+            className="text-gray-50 dark:text-gray-900 data-[state=on]:bg-red-600 data-[state=on]:text-white"
           >
             {muted ? (
               <VolumeXIcon className="h-4 w-4" />
@@ -228,7 +228,7 @@ export const MediaControls: Story = {
             pressed={micMuted}
             onPressedChange={setMicMuted}
             aria-label="Toggle microphone mute"
-            className="text-(--color-foreground-inverse) data-[state=on]:bg-(--color-background-danger) data-[state=on]:text-(--color-foreground-danger)"
+            className="text-gray-50 dark:text-gray-900 data-[state=on]:bg-red-600 data-[state=on]:text-white"
           >
             {micMuted ? (
               <MicOffIcon className="h-4 w-4" />
@@ -238,7 +238,7 @@ export const MediaControls: Story = {
           </Toggle>
         </div>
 
-        <div className="text-sm text-(--color-foreground-faint)">
+        <div className="text-sm text-current/70">
           Speaker: {muted ? "Muted" : "Active"} | Microphone:{" "}
           {micMuted ? "Muted" : "Active"}
         </div>
@@ -287,7 +287,7 @@ export const Settings: Story = {
               <span className="text-xl">🔔</span>
               <div>
                 <div className="font-medium">Notifications</div>
-                <div className="text-sm text-(--color-foreground-faint)">
+                <div className="text-sm text-current/70">
                   Push notifications and alerts
                 </div>
               </div>
@@ -304,7 +304,7 @@ export const Settings: Story = {
               <span className="text-xl">📍</span>
               <div>
                 <div className="font-medium">Location Services</div>
-                <div className="text-sm text-(--color-foreground-faint)">
+                <div className="text-sm text-current/70">
                   Share location data
                 </div>
               </div>
@@ -321,7 +321,7 @@ export const Settings: Story = {
               <span className="text-xl">📊</span>
               <div>
                 <div className="font-medium">Analytics</div>
-                <div className="text-sm text-(--color-foreground-faint)">
+                <div className="text-sm text-current/70">
                   Usage data collection
                 </div>
               </div>
@@ -376,7 +376,7 @@ export const ViewToggle: Story = {
           </div>
         </div>
 
-        <p className="text-xs text-(--color-foreground-faint)">
+        <p className="text-xs text-current/70">
           Click the eye icon to {showPassword ? "hide" : "show"} password
         </p>
       </div>
@@ -440,7 +440,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-(--color-foreground-faint)">
+        <p className="text-sm text-current/70">
           Toggle buttons support keyboard navigation, screen readers, and proper
           ARIA states.
         </p>
@@ -454,10 +454,7 @@ export const Accessibility: Story = {
           >
             🌙 Dark Mode
           </Toggle>
-          <p
-            id="dark-mode-description"
-            className="text-sm text-(--color-foreground-faint)"
-          >
+          <p id="dark-mode-description" className="text-sm text-current/70">
             Switch to dark theme
           </p>
         </div>
@@ -469,10 +466,7 @@ export const Accessibility: Story = {
           >
             ⚡ High Contrast
           </Toggle>
-          <p
-            id="contrast-description"
-            className="text-sm text-(--color-foreground-faint)"
-          >
+          <p id="contrast-description" className="text-sm text-current/70">
             Increase visual contrast
           </p>
         </div>
@@ -484,16 +478,13 @@ export const Accessibility: Story = {
           >
             🔍 Large Text
           </Toggle>
-          <p
-            id="text-description"
-            className="text-sm text-(--color-foreground-faint)"
-          >
+          <p id="text-description" className="text-sm text-current/70">
             Increase font sizes
           </p>
         </div>
       </div>
 
-      <p className="text-xs text-(--color-foreground-faint)">
+      <p className="text-xs text-current/70">
         Use Tab to navigate, Space or Enter to toggle
       </p>
     </div>
