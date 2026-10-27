@@ -72,7 +72,7 @@ export const Default: Story = {
         <CardTitle>Basic Card</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-(--color-foreground-faint)">
+        <p className="text-current/70">
           This is a basic card with a title and some content text.
         </p>
       </CardContent>
@@ -95,7 +95,7 @@ export const WithActions: Story = {
         <CardTitle>Project Status</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-(--color-foreground-faint)">
+        <p className="text-current/70">
           Track the progress of your current project with this status card.
         </p>
         <div className="flex items-center justify-between">
@@ -127,9 +127,7 @@ export const ProductCard: Story = {
         <div className="flex items-start justify-between">
           <div>
             <CardTitle>Premium Plan</CardTitle>
-            <p className="text-sm text-(--color-foreground-faint) mt-1">
-              For growing teams
-            </p>
+            <p className="text-sm text-current/70 mt-1">For growing teams</p>
           </div>
           <Badge>Popular</Badge>
         </div>
@@ -137,11 +135,9 @@ export const ProductCard: Story = {
       <CardContent className="space-y-4">
         <div className="text-3xl font-bold">
           $29
-          <span className="text-lg text-(--color-foreground-faint)">
-            /month
-          </span>
+          <span className="text-lg text-current/70">/month</span>
         </div>
-        <ul className="space-y-2 text-sm text-(--color-foreground-faint)">
+        <ul className="space-y-2 text-sm text-current/70">
           <li>✓ Up to 10 team members</li>
           <li>✓ Advanced analytics</li>
           <li>✓ Priority support</li>
@@ -169,20 +165,18 @@ export const CardVariations: Story = {
           <CardTitle>Simple Card</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-foreground-faint)">
-            A simple card with minimal content.
-          </p>
+          <p className="text-current/70">A simple card with minimal content.</p>
         </CardContent>
       </Card>
 
-      <Card className="border-(--color-border-primary)">
+      <Card className="border-blue-500">
         <CardHeader>
-          <CardTitle className="text-(--color-foreground-info-muted)">
+          <CardTitle className="text-blue-700 dark:text-blue-400">
             Highlighted Card
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-foreground-faint)">
+          <p className="text-current/70">
             A card with custom border color for emphasis.
           </p>
         </CardContent>
@@ -193,18 +187,18 @@ export const CardVariations: Story = {
           <CardTitle>Elevated Card</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-foreground-faint)">
+          <p className="text-current/70">
             A card with increased shadow for more prominence.
           </p>
         </CardContent>
       </Card>
 
-      <Card className="bg-(--color-background-muted)">
+      <Card className="bg-current/5">
         <CardHeader>
           <CardTitle>Subtle Background</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-foreground-faint)">
+          <p className="text-current/70">
             A card with a subtle background color variation.
           </p>
         </CardContent>
@@ -232,7 +226,7 @@ export const InteractiveCard: Story = {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-foreground-faint) text-sm">
+          <p className="text-current/70 text-sm">
             Background transitions through hover → focus → active using
             component-scoped tokens.
           </p>
@@ -247,7 +241,7 @@ export const InteractiveCard: Story = {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-foreground-faint) text-sm">
+          <p className="text-current/70 text-sm">
             Each card is individually focusable and keyboard-activatable.
           </p>
         </CardContent>
@@ -274,7 +268,7 @@ export const InteractiveAsLink: Story = {
             <CardDescription>Renders as an &lt;a&gt; element.</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-(--color-foreground-faint) text-sm">
+            <p className="text-current/70 text-sm">
               Right-click to confirm this is a real anchor. All card tokens
               apply; hover, focus and active states use the card state tokens.
             </p>
@@ -294,7 +288,7 @@ export const InteractiveAsLink: Story = {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-(--color-foreground-faint) text-sm">
+            <p className="text-current/70 text-sm">
               Ideal for selection UIs (plan picker, option grid) where a click
               triggers an action rather than navigation.
             </p>
