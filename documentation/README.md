@@ -8,6 +8,7 @@ Central documentation hub for the Wylie Dog Design System.
 - [Accessibility Guide](guides/accessibility-guide.md) - Accessibility standards and testing
 - [Performance Monitoring](guides/performance.md) - Performance budgets and CI/CD integration
 - [Visual Comparison](guides/visual-comparison.md) - Compare two Storybook builds story by story
+- [Showcase Audit](guides/showcase-audit.md) - Hand-run accessibility and layout audit of the built showcase
 - [Testing Coverage Report](reference/testing-coverage.md) - Current test coverage status
 - [Token Cheatsheet](tokens/token-cheatsheet.md) - Real token names, values and dark mode
 - [Styling Architecture](STYLING_ARCHITECTURE.md) - How components are styled with tokens
