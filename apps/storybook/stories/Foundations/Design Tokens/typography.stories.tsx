@@ -6,6 +6,9 @@ import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
 import { Textarea } from "@wyliedog/ui/textarea";
 import manifest from "@wyliedog/tokens/manifest.json";
+import { spacing } from "@wyliedog/tokens/hierarchical";
+import { PageIntro, Section, TokenTable } from "./foundations-ui";
+import type { TokenRow } from "./token-data";
 
 const meta: Meta = {
   title: "Foundations/Typography",
@@ -143,252 +146,165 @@ function findTokenOrFirst(
 // Static Stories (these use CSS custom properties directly)
 // =============================================================================
 
+// =============================================================================
+// Type scale, weights, line heights and tracking, all read from the tokens.
+// Specimens are drawn with the token value itself, so a label can never drift
+// from what is shown.
+// =============================================================================
+
+const SPECIMEN = "Typography";
+const PARAGRAPH =
+  "The crisis consists precisely in the fact that the old is dying and the new cannot be born: in this interregnum, morbid phenomena of the most varied kind come to pass.";
+
+function asTokenRow(token: TypographyTokenData): TokenRow {
+  return {
+    variable: token.cssVar.replace(/^var\((.*)\)$/, "$1"),
+    key: token.key,
+    value: String(token.value),
+  };
+}
+
+const sizeRows = [...fontSizes].reverse().map(asTokenRow);
+const weightRows = fontWeights.map(asTokenRow);
+const lineHeightRows = lineHeights.map(asTokenRow);
+const trackingRows: TokenRow[] = Object.entries(spacing)
+  .filter(([name]) =>
+    /^tracking-(tighter|tight|normal|wide|wider|widest)$/.test(name)
+  )
+  .map(([name, value]) => ({
+    variable: `typography.${name.replace("-", ".")}`,
+    key: name.replace("tracking-", ""),
+    value: String(value),
+  }));
+
+function SizesSection() {
+  return (
+    <Section
+      title="Type scale"
+      description="Sizes are authored in rem. The px figure beside each is what Figma shows."
+    >
+      <TokenTable
+        caption="Font size tokens"
+        rows={sizeRows}
+        specimen={(row) => (
+          <span
+            className="block text-(--color-foreground-default)"
+            style={{ fontSize: row.value }}
+          >
+            {SPECIMEN}
+          </span>
+        )}
+      />
+    </Section>
+  );
+}
+
+function WeightsSection() {
+  return (
+    <Section title="Font weights">
+      <TokenTable
+        caption="Font weight tokens"
+        rows={weightRows}
+        specimen={(row) => (
+          <span
+            className="block text-xl text-(--color-foreground-default)"
+            style={{ fontWeight: row.value }}
+          >
+            {SPECIMEN}
+          </span>
+        )}
+      />
+    </Section>
+  );
+}
+
+function LineHeightsSection() {
+  return (
+    <Section
+      title="Line heights"
+      description="Line height is a percentage of the font size. Figma stores it as a percent text-style property rather than a variable, so the percent figure here is the one a Figma text style carries."
+    >
+      <TokenTable
+        caption="Line height tokens"
+        rows={lineHeightRows}
+        specimenLabel="Paragraph"
+        specimen={(row) => (
+          <p
+            className="max-w-sm text-sm text-(--color-foreground-muted)"
+            style={{ lineHeight: parseFloat(row.value) / 100 }}
+          >
+            {PARAGRAPH}
+          </p>
+        )}
+        renderValue={(row) => <span>{row.value}%</span>}
+      />
+    </Section>
+  );
+}
+
+function TrackingSection() {
+  return (
+    <Section
+      title="Letter spacing"
+      description="Tracking is in em, so it scales with the font size. Like line height it is a text-style property in Figma, so these tokens are named here rather than exposed as CSS variables."
+    >
+      <TokenTable
+        caption="Letter spacing tokens"
+        rows={trackingRows}
+        variableLabel="Token name"
+        specimen={(row) => (
+          <span
+            className="block text-lg text-(--color-foreground-default)"
+            style={{ letterSpacing: row.value }}
+          >
+            {SPECIMEN}
+          </span>
+        )}
+      />
+    </Section>
+  );
+}
+
 export const AllVariants: Story = {
   render: () => (
-    <div className="space-y-12">
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold">Type Scale</h2>
-        <div className="space-y-4">
-          <div>
-            <h1 className="text-5xl font-bold">Heading 1 - 48px</h1>
-          </div>
-          <div>
-            <h2 className="text-4xl font-bold">Heading 2 - 36px</h2>
-          </div>
-          <div>
-            <h3 className="text-3xl font-bold">Heading 3 - 30px</h3>
-          </div>
-          <div>
-            <h4 className="text-2xl font-bold">Heading 4 - 24px</h4>
-          </div>
-          <div>
-            <h5 className="text-xl font-bold">Heading 5 - 20px</h5>
-          </div>
-          <div>
-            <h6 className="text-lg font-bold">Heading 6 - 18px</h6>
-          </div>
-          <div>
-            <p className="text-base">Body (Base) - 16px</p>
-          </div>
-          <div>
-            <p className="text-sm">Small - 14px</p>
-          </div>
-          <div>
-            <p className="text-xs">Extra Small - 12px</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold">Font Weights</h2>
-        <div className="space-y-2">
-          <p className="text-xl font-light">Light (300)</p>
-          <p className="text-xl font-normal">Normal (400)</p>
-          <p className="text-xl font-medium">Medium (500)</p>
-          <p className="text-xl font-semibold">Semibold (600)</p>
-          <p className="text-xl font-bold">Bold (700)</p>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold">Line Heights</h2>
-        <div className="space-y-4 max-w-2xl">
-          <div>
-            <p className="text-sm font-semibold mb-1">Tight</p>
-            <p className="leading-tight text-(--color-foreground-muted)">
-              The crisis consists precisely in the fact that the old is dying
-              and the new cannot be born: in this interregnum, morbid phenomena
-              of the most varied kind come to pass.
-            </p>
-          </div>
-          <div>
-            <p className="text-sm font-semibold mb-1">Normal</p>
-            <p className="leading-normal text-(--color-foreground-muted)">
-              The crisis consists precisely in the fact that the old is dying
-              and the new cannot be born: in this interregnum, morbid phenomena
-              of the most varied kind come to pass.
-            </p>
-          </div>
-          <div>
-            <p className="text-sm font-semibold mb-1">Relaxed</p>
-            <p className="leading-relaxed text-(--color-foreground-muted)">
-              The crisis consists precisely in the fact that the old is dying
-              and the new cannot be born: in this interregnum, morbid phenomena
-              of the most varied kind come to pass.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div>
+      <PageIntro title="Typography">
+        <p>
+          {fontSizes.length} sizes, {fontWeights.length} weights,{" "}
+          {lineHeights.length} line heights and {trackingRows.length} letter
+          spacings, read from the tokens.
+        </p>
+      </PageIntro>
+      <SizesSection />
+      <WeightsSection />
+      <LineHeightsSection />
+      <TrackingSection />
     </div>
   ),
   parameters: {
     docs: {
       description: {
         story:
-          "Overview of all typography variants including type scale, font weights, and line heights.",
+          "Overview of the type scale, font weights, line heights and letter spacing.",
       },
     },
   },
 };
 
 export const TypeScale: Story = {
-  render: () => (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-5xl font-bold mb-2">Heading 1</h1>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-5xl / 48px
-        </p>
-      </div>
-
-      <div>
-        <h2 className="text-4xl font-bold mb-2">Heading 2</h2>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-4xl / 36px
-        </p>
-      </div>
-
-      <div>
-        <h3 className="text-3xl font-bold mb-2">Heading 3</h3>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-3xl / 30px
-        </p>
-      </div>
-
-      <div>
-        <h4 className="text-2xl font-bold mb-2">Heading 4</h4>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-2xl / 24px
-        </p>
-      </div>
-
-      <div>
-        <h5 className="text-xl font-bold mb-2">Heading 5</h5>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-xl / 20px
-        </p>
-      </div>
-
-      <div>
-        <h6 className="text-lg font-bold mb-2">Heading 6</h6>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-lg / 18px
-        </p>
-      </div>
-
-      <div>
-        <p className="text-base mb-2">Body Large (Base)</p>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-base / 16px
-        </p>
-      </div>
-
-      <div>
-        <p className="text-sm mb-2">Body Small</p>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-sm / 14px
-        </p>
-      </div>
-
-      <div>
-        <p className="text-xs mb-2">Caption</p>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-size-xs / 12px
-        </p>
-      </div>
-    </div>
-  ),
+  render: () => <SizesSection />,
 };
 
 export const FontWeights: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <div>
-        <p className="text-xl font-light mb-1">Light Weight</p>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-weight-light / 300
-        </p>
-      </div>
-
-      <div>
-        <p className="text-xl font-normal mb-1">Normal Weight</p>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-weight-normal / 400
-        </p>
-      </div>
-
-      <div>
-        <p className="text-xl font-medium mb-1">Medium Weight</p>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-weight-medium / 500
-        </p>
-      </div>
-
-      <div>
-        <p className="text-xl font-semibold mb-1">Semibold Weight</p>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-weight-semibold / 600
-        </p>
-      </div>
-
-      <div>
-        <p className="text-xl font-bold mb-1">Bold Weight</p>
-        <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --font-weight-bold / 700
-        </p>
-      </div>
-    </div>
-  ),
+  render: () => <WeightsSection />,
 };
 
 export const LineHeights: Story = {
-  render: () => (
-    <div className="space-y-8 max-w-2xl">
-      <div>
-        <h4 className="text-lg font-semibold mb-2">
-          Tight (--line-height-tight)
-        </h4>
-        <p className="leading-tight text-(--color-foreground-muted)">
-          The crisis consists precisely in the fact that the old is dying and
-          the new cannot be born: in this interregnum, morbid phenomena of the
-          most varied kind come to pass.
-        </p>
-      </div>
+  render: () => <LineHeightsSection />,
+};
 
-      <div>
-        <h4 className="text-lg font-semibold mb-2">
-          Normal (--line-height-normal)
-        </h4>
-        <p className="leading-normal text-(--color-foreground-muted)">
-          The crisis consists precisely in the fact that the old is dying and
-          the new cannot be born: in this interregnum, morbid phenomena of the
-          most varied kind come to pass.
-        </p>
-      </div>
-
-      <div>
-        <h4 className="text-lg font-semibold mb-2">
-          Relaxed (--line-height-relaxed)
-        </h4>
-        <p className="leading-relaxed text-(--color-foreground-muted)">
-          The crisis consists precisely in the fact that the old is dying and
-          the new cannot be born: in this interregnum, morbid phenomena of the
-          most varied kind come to pass.
-        </p>
-      </div>
-
-      <div>
-        <h4 className="text-lg font-semibold mb-2">
-          Loose (--line-height-loose)
-        </h4>
-        <p className="leading-loose text-(--color-foreground-muted)">
-          The crisis consists precisely in the fact that the old is dying and
-          the new cannot be born: in this interregnum, morbid phenomena of the
-          most varied kind come to pass.
-        </p>
-      </div>
-    </div>
-  ),
+export const LetterSpacing: Story = {
+  render: () => <TrackingSection />,
 };
 
 export const TextColors: Story = {
