@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, waitFor } from "storybook/test";
 import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
 import { Label } from "@wyliedog/ui/label";
 
@@ -773,26 +773,30 @@ export const WithInteractions: Story = {
 
     // Test 3: Click express with mouse
     await userEvent.click(expressRadio);
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(expressRadio).toHaveAttribute("data-state", "checked");
+    await waitFor(() =>
+      expect(expressRadio).toHaveAttribute("data-state", "checked")
+    );
     expect(standardRadio).toHaveAttribute("data-state", "unchecked");
 
     // Tests 4–12: Click-based multi-option selection
     // (Radix RadioGroup arrow key navigation requires native browser focus
     //  events that Playwright's synthetic events don't fully replicate)
     await userEvent.click(overnightRadio);
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(overnightRadio).toHaveAttribute("data-state", "checked");
+    await waitFor(() =>
+      expect(overnightRadio).toHaveAttribute("data-state", "checked")
+    );
     expect(expressRadio).toHaveAttribute("data-state", "unchecked");
 
     await userEvent.click(pickupRadio);
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(pickupRadio).toHaveAttribute("data-state", "checked");
+    await waitFor(() =>
+      expect(pickupRadio).toHaveAttribute("data-state", "checked")
+    );
     expect(overnightRadio).toHaveAttribute("data-state", "unchecked");
 
     await userEvent.click(expressRadio);
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(expressRadio).toHaveAttribute("data-state", "checked");
+    await waitFor(() =>
+      expect(expressRadio).toHaveAttribute("data-state", "checked")
+    );
 
     // Test 13: Verify only one option is selected
     const checkedRadios = [

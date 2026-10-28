@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, waitFor } from "storybook/test";
 import { Switch } from "@wyliedog/ui/switch";
 import { Label } from "@wyliedog/ui/label";
 
@@ -498,19 +498,16 @@ export const WithInteractions: Story = {
     expect(notificationsSwitch).toBeChecked();
 
     // Test 4: Tab to next switch
-    await new Promise((resolve) => setTimeout(resolve, 100));
     await userEvent.tab();
     expect(darkModeSwitch).toHaveFocus();
 
     // Test 5: Toggle with Space key
     await userEvent.keyboard(" ");
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(darkModeSwitch).not.toBeChecked();
+    await waitFor(() => expect(darkModeSwitch).not.toBeChecked());
 
     // Toggle back on with Space
     await userEvent.keyboard(" ");
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(darkModeSwitch).toBeChecked();
+    await waitFor(() => expect(darkModeSwitch).toBeChecked());
 
     // Test 6: Test Enter key (some implementations support this)
     await userEvent.keyboard("{Enter}");
@@ -519,13 +516,11 @@ export const WithInteractions: Story = {
 
     // Test 7: Tab to sound switch
     await userEvent.tab();
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(soundSwitch).toHaveFocus();
+    await waitFor(() => expect(soundSwitch).toHaveFocus());
 
     // Test 8: Toggle with Space
     await userEvent.keyboard(" ");
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(soundSwitch).toBeChecked();
+    await waitFor(() => expect(soundSwitch).toBeChecked());
 
     // Test 9: Tab (should skip disabled switch)
     // From sound switch, tabbing should go to the next focusable element after the disabled ones
