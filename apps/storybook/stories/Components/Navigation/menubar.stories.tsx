@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import { useState } from "react";
 import {
   Menubar,
@@ -413,10 +413,12 @@ export const WithInteractions: Story = {
     const editTrigger = canvas.getByRole("menuitem", { name: /edit/i });
     await userEvent.click(editTrigger);
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 3: Menu items are visible
-    expect(screen.getByRole("menuitem", { name: /undo/i })).toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.getByRole("menuitem", { name: /undo/i })
+      ).toBeInTheDocument()
+    );
     expect(screen.getByRole("menuitem", { name: /redo/i })).toBeInTheDocument();
     expect(
       screen.getByRole("menuitem", { name: /^cut$/i })
@@ -432,9 +434,10 @@ export const WithInteractions: Story = {
 
     // Test 6: Escape closes the menu
     await userEvent.keyboard("{Escape}");
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    expect(
-      screen.queryByRole("menuitem", { name: /undo/i })
-    ).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("menuitem", { name: /undo/i })
+      ).not.toBeInTheDocument()
+    );
   },
 };

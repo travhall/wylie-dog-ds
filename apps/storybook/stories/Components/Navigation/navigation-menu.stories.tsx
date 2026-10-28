@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, waitFor } from "storybook/test";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -402,10 +402,10 @@ export const WithInteractions: Story = {
     const productsTrigger = canvas.getByRole("button", { name: /products/i });
     await userEvent.click(productsTrigger);
 
-    await new Promise((resolve) => setTimeout(resolve, 400));
-
     // Test 3: Dropdown content is now visible
-    expect(canvas.getByText("Analytics")).toBeInTheDocument();
+    await waitFor(() =>
+      expect(canvas.getByText("Analytics")).toBeInTheDocument()
+    );
     expect(canvas.getByText("Automation")).toBeInTheDocument();
 
     // Test 4: The trigger has aria-expanded="true"
@@ -413,8 +413,9 @@ export const WithInteractions: Story = {
 
     // Test 5: Pressing Escape closes the dropdown
     await userEvent.keyboard("{Escape}");
-    await new Promise((resolve) => setTimeout(resolve, 400));
 
-    expect(productsTrigger).toHaveAttribute("aria-expanded", "false");
+    await waitFor(() =>
+      expect(productsTrigger).toHaveAttribute("aria-expanded", "false")
+    );
   },
 };

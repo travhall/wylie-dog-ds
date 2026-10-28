@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   Sheet,
   SheetClose,
@@ -263,11 +263,8 @@ export const WithInteractions: Story = {
     const triggerButton = canvas.getByRole("button", { name: /open sheet/i });
     await userEvent.click(triggerButton);
 
-    // Wait for open animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 3: Sheet dialog is visible with title and description
-    const dialog = screen.getByRole("dialog");
+    const dialog = await screen.findByRole("dialog");
     expect(dialog).toBeInTheDocument();
 
     expect(
@@ -286,8 +283,9 @@ export const WithInteractions: Story = {
 
     // Test 5: Escape key closes the sheet
     await userEvent.keyboard("{Escape}");
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    );
 
     // Test 6: Trigger regains focus after close
     expect(triggerButton).toHaveFocus();

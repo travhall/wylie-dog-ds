@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import { Popover, PopoverContent, PopoverTrigger } from "@wyliedog/ui/popover";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
@@ -723,11 +723,10 @@ export const WithInteractions: Story = {
     expect(triggerButton).toBeInTheDocument();
     await userEvent.click(triggerButton);
 
-    // Wait for popover animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 3: Popover content is visible
-    const heading = screen.getByRole("heading", { name: /user information/i });
+    const heading = await screen.findByRole("heading", {
+      name: /user information/i,
+    });
     expect(heading).toBeInTheDocument();
 
     const description = screen.getByText(/update your profile details below/i);
@@ -750,32 +749,33 @@ export const WithInteractions: Story = {
     // Test 6: Escape key closes the popover
     await userEvent.keyboard("{Escape}");
 
-    // Wait for close animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Popover should be closed
-    const closedHeading = screen.queryByRole("heading", {
-      name: /user information/i,
-    });
-    expect(closedHeading).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("heading", {
+          name: /user information/i,
+        })
+      ).not.toBeInTheDocument()
+    );
 
     // Test 7: Open popover again to test positioning
     await userEvent.click(triggerButton);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedHeading = screen.getByRole("heading", {
+    const reopenedHeading = await screen.findByRole("heading", {
       name: /user information/i,
     });
     expect(reopenedHeading).toBeInTheDocument();
 
     // Test 8: Click outside to close (click the trigger button again)
     await userEvent.click(triggerButton);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const finalClosedHeading = screen.queryByRole("heading", {
-      name: /user information/i,
-    });
-    expect(finalClosedHeading).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("heading", {
+          name: /user information/i,
+        })
+      ).not.toBeInTheDocument()
+    );
   },
   parameters: {
     docs: {

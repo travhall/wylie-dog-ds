@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   Tooltip,
   TooltipContent,
@@ -414,30 +414,39 @@ export const WithInteractions: Story = {
 
     // Test 1: Tooltips are initially shown on hover
     await userEvent.hover(noDelayButton);
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    expect(
-      screen.getAllByText(/interactive tooltips appear immediately/i)[0]
-    ).toBeVisible();
+    await waitFor(
+      () =>
+        expect(
+          screen.getAllByText(/interactive tooltips appear immediately/i)[0]
+        ).toBeVisible(),
+      { timeout: 3000 }
+    );
 
     // Test 2: Test medium delay tooltip (500ms)
     const mediumDelayButton = canvas.getByRole("button", {
       name: /medium delay/i,
     });
     await userEvent.hover(mediumDelayButton);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    expect(
-      screen.getAllByText(/interactive tooltips appear after 500ms/i)[0]
-    ).toBeVisible();
+    await waitFor(
+      () =>
+        expect(
+          screen.getAllByText(/interactive tooltips appear after 500ms/i)[0]
+        ).toBeVisible(),
+      { timeout: 3000 }
+    );
 
     // Test 3: Test long delay tooltip (1000ms)
     const longDelayButton = canvas.getByRole("button", {
       name: /long delay/i,
     });
     await userEvent.hover(longDelayButton);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    expect(
-      screen.getAllByText(/interactive tooltips appear after 1000ms/i)[0]
-    ).toBeVisible();
+    await waitFor(
+      () =>
+        expect(
+          screen.getAllByText(/interactive tooltips appear after 1000ms/i)[0]
+        ).toBeVisible(),
+      { timeout: 3000 }
+    );
 
     // Cleanup
     await userEvent.unhover(longDelayButton);
