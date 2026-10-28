@@ -50,7 +50,7 @@ export default function MotionPage() {
       description={`Every easing curve and duration token, in full — plus the raw ${primitiveDuration.length}-step duration scale they're built from.`}
     >
       <section className="space-y-4">
-        <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
           Easing
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -63,14 +63,14 @@ export default function MotionPage() {
                 {e.name}
               </p>
               {e.description ? (
-                <p className="mt-1 text-[0.6875rem] text-(--color-foreground-faint) leading-relaxed">
+                <p className="mt-1 text-xs text-(--color-foreground-faint) leading-relaxed">
                   {e.description}
                 </p>
               ) : null}
-              <p className="mt-3 font-mono text-[0.625rem] text-(--color-foreground-muted) break-all">
+              <p className="mt-3 font-mono text-xs text-(--color-foreground-muted) break-all">
                 {e.value}
               </p>
-              <p className="mt-1 font-mono text-[0.625rem] text-(--color-foreground-faint)">
+              <p className="mt-1 font-mono text-xs text-(--color-foreground-faint)">
                 {e.variable}
               </p>
             </div>
@@ -79,7 +79,7 @@ export default function MotionPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
           Semantic durations
         </h2>
         <div
@@ -131,7 +131,7 @@ export default function MotionPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
           Raw duration scale
         </h2>
         <div className="flex flex-wrap gap-3">
@@ -143,7 +143,7 @@ export default function MotionPage() {
               <p className="font-mono text-xs text-(--color-foreground-default)">
                 {d.value}
               </p>
-              <p className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+              <p className="font-mono text-xs text-(--color-foreground-faint)">
                 {d.variable}
               </p>
             </div>
@@ -152,7 +152,7 @@ export default function MotionPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
           Try it
         </h2>
         <MotionPreview />

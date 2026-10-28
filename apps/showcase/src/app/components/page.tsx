@@ -17,11 +17,13 @@ function CompCard({
   desc,
   href,
   preview,
+  decorative = false,
 }: {
   name: string;
   desc: string;
   href: string;
   preview: React.ReactNode;
+  decorative?: boolean;
 }) {
   const dotGrid = {
     backgroundImage:
@@ -37,7 +39,11 @@ function CompCard({
         className="relative bg-(--color-background-muted) border-b border-(--color-border-default) h-42 flex items-center justify-center overflow-hidden p-4"
         style={dotGrid}
       >
-        <div className="relative z-10 flex items-center justify-center w-full h-full">
+        <div
+          data-mock
+          aria-hidden={decorative || undefined}
+          className="relative z-10 flex items-center justify-center w-full h-full"
+        >
           {preview}
         </div>
       </div>
@@ -50,7 +56,7 @@ function CompCard({
         </p>
         <a
           href={getStoryDocsUrl(href)}
-          className="mt-2 inline-flex items-center gap-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
+          className="mt-2 inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
         >
           Storybook
           <svg
@@ -83,7 +89,7 @@ function SectionHeader({
   return (
     <header className="grid lg:grid-cols-12 gap-6 mb-10">
       <div className="lg:col-span-5">
-        <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+        <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
           {num} · Category
         </span>
         <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -160,11 +166,11 @@ export default function ComponentsPage() {
             {/* left */}
             <div className="lg:col-span-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
-                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
+                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
                   03 · Components
                 </span>
                 <span className="text-(--color-foreground-faint)">·</span>
-                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   @wyliedog/ui v{meta.versions.ui}
                 </span>
               </div>
@@ -201,7 +207,7 @@ export default function ComponentsPage() {
                   { label: "Tested for", value: "WCAG 2.2" },
                 ].map(({ label, value }) => (
                   <div key={label} className="self-stretch">
-                    <dt className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <dt className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                       {label}
                     </dt>
                     <dd className="mt-1 font-serif text-2xl font-semibold text-(--color-foreground-default)">
@@ -216,7 +222,7 @@ export default function ComponentsPage() {
             <div className="lg:col-span-6">
               <div className="relative">
                 <div
-                  className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-muted)"
+                  className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)"
                   style={{
                     background:
                       "color-mix(in oklch, var(--color-background-emphasis) 80%, transparent)",
@@ -268,13 +274,13 @@ export default function ComponentsPage() {
                             Elena Mori
                           </p>
                           {/* cSpell:ignore Mori */}
-                          <p className="text-[0.6875rem] text-(--color-foreground-faint)">
+                          <p className="text-xs text-(--color-foreground-faint)">
                             Lead, Design Systems
                           </p>
                         </div>
                       </div>
                       <span
-                        className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
+                        className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium"
                         style={{
                           background: "var(--color-background-success-muted)",
                           color: "var(--color-foreground-success-muted)",
@@ -323,7 +329,7 @@ export default function ComponentsPage() {
                     </div>
 
                     {/* Input */}
-                    <label className="mt-5 block text-[0.6875rem] font-medium text-(--color-foreground-muted)">
+                    <label className="mt-5 block text-xs font-medium text-(--color-foreground-muted)">
                       Search components
                     </label>
                     <div
@@ -359,7 +365,7 @@ export default function ComponentsPage() {
                         <p className="text-xs font-semibold text-(--color-foreground-default)">
                           Dark mode preview
                         </p>
-                        <p className="text-[0.6875rem] text-(--color-foreground-faint)">
+                        <p className="text-xs text-(--color-foreground-faint)">
                           render every story in both themes
                         </p>
                       </div>
@@ -407,7 +413,7 @@ export default function ComponentsPage() {
 
                   {/* component tag strip */}
                   <div className="mt-3 flex flex-wrap items-center gap-1.5">
-                    <span className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) mr-1">
+                    <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mr-1">
                       uses
                     </span>
                     {[
@@ -422,7 +428,7 @@ export default function ComponentsPage() {
                     ].map((c) => (
                       <span
                         key={c}
-                        className="inline-flex items-center rounded-full border border-(--color-border-default) bg-(--color-background-default) px-2 py-0.5 font-mono text-[0.625rem] text-(--color-foreground-muted)"
+                        className="inline-flex items-center rounded-full border border-(--color-border-default) bg-(--color-background-default) px-2 py-0.5 font-mono text-xs text-(--color-foreground-muted)"
                       >
                         {c}
                       </span>
@@ -495,6 +501,7 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
+              decorative
               name="Accordion"
               desc="Vertically stacked sections that expand one at a time or independently."
               href="accordion"
@@ -548,6 +555,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Avatar"
               desc="Image with a fallback for initials or an icon, in four sizes (sm to xl)."
               href="avatar"
@@ -599,6 +607,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Badge"
               desc="Small status pill — default, secondary, outline, success, warning, destructive, in three sizes."
               href="badge"
@@ -660,6 +669,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Calendar"
               desc="Single date, multiple dates, or a date range, with month navigation."
               href="calendar"
@@ -729,6 +739,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Card"
               desc="A surface with header, title, description, content and footer slots, plus an optional interactive (hover) state."
               href="card"
@@ -852,6 +863,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Table"
               desc="Semantic table parts — header, body, footer, row, head, cell, caption — in a horizontally scrollable wrapper."
               href="table"
@@ -947,6 +959,7 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
+              decorative
               name="Alert"
               desc="Inline status banner — default, success, warning, destructive."
               href="alert"
@@ -1004,6 +1017,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Progress"
               desc="Linear progress bar with default, success, warning and destructive variants."
               href="progress"
@@ -1083,6 +1097,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Skeleton"
               desc="Placeholder shapes — default, text, circular, rectangular — with a pulse animation."
               href="skeleton"
@@ -1197,6 +1212,7 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
+              decorative
               name="Button"
               desc="Six variants (default, secondary, outline, ghost, link, destructive), sm to lg sizes plus an icon size, and a loading state."
               href="button"
@@ -1254,6 +1270,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Checkbox"
               desc="Checked, unchecked and indeterminate states in three sizes."
               href="checkbox"
@@ -1314,6 +1331,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Form"
               desc="Field wrappers that tie labels, descriptions and error messages to inputs with matching ids and aria attributes."
               href="form"
@@ -1351,6 +1369,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Input"
               desc="Text-style input for any native type, with sm to lg sizes and error and success states."
               href="input"
@@ -1403,6 +1422,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Label"
               desc="Accessible label with a required marker, an error state and three sizes."
               href="label"
@@ -1437,6 +1457,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Radio Group"
               desc="Single-select cluster with horizontal or vertical orientation."
               href="radio-group"
@@ -1477,6 +1498,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Select"
               desc="Dropdown with groups, separators and keyboard navigation, in three sizes."
               href="select"
@@ -1529,6 +1551,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Slider"
               desc="Single-value or range slider, horizontal or vertical, with optional thumb labels."
               href="slider"
@@ -1612,6 +1635,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Switch"
               desc="Boolean toggle in three sizes with accessible labeling."
               href="switch"
@@ -1673,6 +1697,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Textarea"
               desc="Multi-line input with three sizes, a resize option, and error and success states."
               href="textarea"
@@ -1875,6 +1900,7 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
+              decorative
               name="Aspect Ratio"
               desc="Maintain a fixed ratio for media or canvases regardless of viewport."
               href="aspect-ratio"
@@ -1891,6 +1917,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Collapsible"
               desc="A single open/closed disclosure region — the building block of Accordion."
               href="collapsible"
@@ -1933,6 +1960,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Resizable"
               desc="Split panes with drag handles — horizontal, vertical, nested."
               href="resizable"
@@ -1963,6 +1991,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Scroll Area"
               desc="Custom-styled scrollbars (Radix Scroll Area)."
               href="scroll-area"
@@ -1997,6 +2026,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Separator"
               desc="Horizontal or vertical divider, optionally purely decorative."
               href="separator"
@@ -2071,6 +2101,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Command"
               desc="Searchable command list — input, groups, items, shortcuts and an empty state."
               href="command"
@@ -2120,6 +2151,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Menubar"
               desc="Application-style top bar with cascading menus and keyboard shortcuts."
               href="menubar"
@@ -2166,6 +2198,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Navigation Menu"
               desc="Multi-level top nav with mega-menu panels and viewport positioning."
               href="navigation-menu"
@@ -2284,6 +2317,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Tabs"
               desc="Tabbed content panels in three sizes (Radix Tabs)."
               href="tabs"
@@ -2334,6 +2368,7 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
+              decorative
               name="Alert Dialog"
               desc="Confirmation modal for destructive actions — cannot be dismissed by overlay click."
               href="alert-dialog"
@@ -2395,6 +2430,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Context Menu"
               desc="Right-click menu with sub-items, checkboxes, and shortcut hints."
               href="context-menu"
@@ -2440,6 +2476,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Dialog"
               desc="Modal panel with header, footer, and overlay — the workhorse modal."
               href="dialog"
@@ -2568,6 +2605,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Hover Card"
               desc="Rich preview on hover — useful for user profiles, link previews."
               href="hover-card"
@@ -2692,6 +2730,7 @@ export default function ComponentsPage() {
             />
 
             <CompCard
+              decorative
               name="Sheet"
               desc="Side drawer that slides in from any edge — with overlay and focus trap."
               href="sheet"
@@ -2824,7 +2863,7 @@ export default function ComponentsPage() {
               },
             ].map(({ label, value, desc }) => (
               <div key={label}>
-                <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   {label}
                 </p>
                 <p className="mt-1 font-serif text-xl font-semibold text-(--color-foreground-default)">

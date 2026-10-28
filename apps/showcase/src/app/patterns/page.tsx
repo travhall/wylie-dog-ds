@@ -16,6 +16,7 @@ function PatCard({
   preview,
   story,
   full = false,
+  decorative = false,
 }: {
   title: string;
   desc: string;
@@ -23,6 +24,7 @@ function PatCard({
   preview: React.ReactNode;
   story: string;
   full?: boolean;
+  decorative?: boolean;
 }) {
   return (
     <article
@@ -44,7 +46,11 @@ function PatCard({
             backgroundSize: "16px 16px",
           }}
         />
-        <div className="relative flex items-center justify-center">
+        <div
+          data-mock
+          aria-hidden={decorative || undefined}
+          className="relative flex items-center justify-center"
+        >
           {preview}
         </div>
       </div>
@@ -57,7 +63,7 @@ function PatCard({
             href={`https://wyliedogstorybook.com/?path=${getPatternDocsPath(story) ?? "/"}`}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-[0.625rem] text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
+            className="font-mono text-xs text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
           >
             Storybook ↗
           </a>
@@ -69,7 +75,7 @@ function PatCard({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center px-2 py-0.5 rounded-full border border-(--color-border-default) bg-(--color-background-default) font-mono text-[0.625rem] text-(--color-foreground-muted)"
+              className="inline-flex items-center px-2 py-0.5 rounded-full border border-(--color-border-default) bg-(--color-background-default) font-mono text-xs text-(--color-foreground-muted)"
             >
               {tag}
             </span>
@@ -96,13 +102,13 @@ function CatHeader({
     <header className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
       <div>
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+          <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
             Category {num}
           </span>
-          <span className="font-mono text-[0.6875rem] text-(--color-foreground-faint)">
+          <span className="font-mono text-xs text-(--color-foreground-faint)">
             ·
           </span>
-          <span className="font-mono text-[0.6875rem] text-(--color-foreground-faint)">
+          <span className="font-mono text-xs text-(--color-foreground-faint)">
             {count} pattern{count !== 1 ? "s" : ""}
           </span>
         </div>
@@ -142,11 +148,11 @@ export default function PatternsPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
                 04 · Patterns
               </span>
               <span className="text-(--color-foreground-faint)">·</span>
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 @wyliedog/ui v{meta.versions.ui}
               </span>
             </div>
@@ -170,7 +176,7 @@ export default function PatternsPage() {
           <div className="mt-12 flex flex-col lg:flex-row gap-3">
             {/* INPUTS — takes 2/4 cols */}
             <div className="md:col-span-2 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 grow">
-              <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 inputs
               </p>
               <div className="mt-3 grid grid-cols-2 gap-2">
@@ -178,14 +184,14 @@ export default function PatternsPage() {
                   <p className="text-xs font-semibold text-(--color-foreground-default)">
                     Components
                   </p>
-                  <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-1">
+                  <p className="font-mono text-xs text-(--color-foreground-faint) mt-1">
                     42 typed primitives
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1">
                     {["Button", "Input", "Card"].map((c) => (
                       <span
                         key={c}
-                        className="inline-flex items-center px-1.5 py-px rounded-full border border-(--color-border-default) font-mono text-[0.5625rem] text-(--color-foreground-muted) bg-(--color-background-default)"
+                        className="inline-flex items-center px-1.5 py-px rounded-full border border-(--color-border-default) font-mono text-xs text-(--color-foreground-muted) bg-(--color-background-default)"
                       >
                         {c}
                       </span>
@@ -196,7 +202,7 @@ export default function PatternsPage() {
                   <p className="text-xs font-semibold text-(--color-foreground-default)">
                     Tokens
                   </p>
-                  <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-1">
+                  <p className="font-mono text-xs text-(--color-foreground-faint) mt-1">
                     {Object.values(manifest.primitives.colors).reduce(
                       (n, g) => n + Object.keys(g).length,
                       0
@@ -243,7 +249,7 @@ export default function PatternsPage() {
               }}
             >
               <p
-                className="font-mono text-[0.625rem] uppercase tracking-wider"
+                className="font-mono text-xs uppercase tracking-wider"
                 style={{ color: "var(--color-foreground-primary-muted)" }}
               >
                 composed into
@@ -282,7 +288,7 @@ export default function PatternsPage() {
 
             {/* SHIPPED AS — Pages */}
             <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 grow">
-              <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 shipped as
               </p>
               <p className="mt-3 font-serif text-2xl font-semibold text-(--color-foreground-default)">
@@ -330,7 +336,7 @@ export default function PatternsPage() {
                   key={label}
                   className={`px-2 py-6 lg:py-7 ${i < 3 ? "lg:border-r border-(--color-border-default)" : ""} ${i >= 2 ? "border-t lg:border-t-0" : ""} ${i > 0 ? "lg:pl-8" : ""}`}
                 >
-                  <dt className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <dt className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     {label}
                   </dt>
                   <dd className="mt-1 flex items-baseline gap-2">
@@ -627,6 +633,7 @@ export default function PatternsPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
+              decorative
               story="card-grid"
               title="Card Grid"
               desc="Responsive grid of cards with default, all-variants and interactive examples. CardGrid takes a column count per breakpoint."
@@ -726,6 +733,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              decorative
               story="feature-grid"
               title="Feature Grid"
               desc="A grid of features with icons, titles and short descriptions, with several column configurations."
@@ -1064,6 +1072,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              decorative
               story="form-validation-patterns"
               title="Form Validation Patterns"
               desc="Required-field, inline, password-strength, multi-step and async validation using the Form components and controlled state, with no external validation library."
@@ -1383,6 +1392,7 @@ export default function PatternsPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
+              decorative
               story="site-header"
               title="Site Header"
               desc="Header with logo, navigation links and actions, sticky with a backdrop blur; default and transparent variants. Used as the header on this site."
@@ -1467,6 +1477,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              decorative
               story="site-footer"
               title="Site Footer"
               desc="Footer with logo, navigation columns, social links and copyright; default and minimal variants with a responsive grid."
@@ -1556,6 +1567,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-3 gap-4">
             <PatCard
+              decorative
               story="section-hero"
               title="Section: Hero"
               desc="Headline, description, action buttons and an optional badge or image, in default, gradient and centered layouts."
@@ -1609,6 +1621,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              decorative
               story="section-features"
               title="Section: Features"
               desc="Features section built on FeatureGrid, with optional badges, several column configurations and style variants."
@@ -1678,6 +1691,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              decorative
               story="page-layout"
               title="Page Layout"
               desc="Full-page layout with header, footer, sidebar and main content, in several width variants with a left or right sidebar."
@@ -1775,6 +1789,7 @@ export default function PatternsPage() {
             desc={`Breakpoint-aware layout decisions. Not just "shrink the desktop" — structural reflows that pick the right pattern for each surface size.`}
           />
           <PatCard
+            decorative
             story="responsive-patterns"
             full
             title="Responsive Patterns"
@@ -2093,7 +2108,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
             <div className="md:col-span-5">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 Philosophy
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05] text-(--color-foreground-default)">
@@ -2171,10 +2186,10 @@ export default function PatternsPage() {
                             every pattern moves with it — no pattern-by-pattern
                             refactor required.
                           </p>
-                          <div className="mt-4 flex items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-muted) px-3 py-2.5">
+                          <div className="mt-4 flex flex-wrap items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-muted) px-3 py-2.5">
                             {["tokens", "components"].map((label) => (
                               <React.Fragment key={label}>
-                                <span className="font-mono text-[0.625rem] text-(--color-foreground-muted)">
+                                <span className="font-mono text-xs text-(--color-foreground-muted)">
                                   {label}
                                 </span>
                                 <svg
@@ -2189,7 +2204,7 @@ export default function PatternsPage() {
                               </React.Fragment>
                             ))}
                             <span
-                              className="font-mono text-[0.625rem]"
+                              className="font-mono text-xs"
                               style={{
                                 color: "var(--color-foreground-primary-muted)",
                               }}
@@ -2205,7 +2220,7 @@ export default function PatternsPage() {
                             >
                               <path d="M5 12h14M13 6l6 6-6 6" />
                             </svg>
-                            <span className="font-mono text-[0.625rem] text-(--color-foreground-muted)">
+                            <span className="font-mono text-xs text-(--color-foreground-muted)">
                               your pages
                             </span>
                           </div>
@@ -2225,7 +2240,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="glass rounded-2xl p-8 lg:p-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
             <div className="flex-1">
-              <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
+              <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
                 Ready to build?
               </p>
               <h2 className="mt-2 font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-(--color-foreground-default)">

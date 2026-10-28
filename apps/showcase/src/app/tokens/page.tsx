@@ -68,11 +68,11 @@ export default function TokensPage() {
                 "color-mix(in oklch, var(--color-background-default) 60%, transparent)",
             }}
           >
-            <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
+            <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
               02 · Tokens
             </span>
             <span className="text-(--color-foreground-faint)">·</span>
-            <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+            <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
               Three-tiered System
             </span>
           </div>
@@ -106,7 +106,7 @@ export default function TokensPage() {
                     key={s.label}
                     className={`px-4 py-4 ${i < 2 ? "border-r border-(--color-border-default)" : ""}`}
                   >
-                    <dt className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <dt className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                       {s.label}
                     </dt>
                     <dd className="mt-1 font-serif text-2xl font-semibold text-(--color-foreground-default)">
@@ -115,7 +115,7 @@ export default function TokensPage() {
                   </div>
                 ))}
               </dl>
-              <p className="mt-3 font-mono text-[0.6875rem] text-(--color-foreground-faint)">
+              <p className="mt-3 font-mono text-xs text-(--color-foreground-faint)">
                 All {meta.tokens.total.toLocaleString()} tokens are typed. Zero
                 hex codes ship in the components package.
               </p>
@@ -156,17 +156,17 @@ export default function TokensPage() {
                   className={`relative rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 ${i === 0 ? "lg:rounded-r-none lg:border-r-0" : i === 1 ? "lg:rounded-none" : "lg:rounded-l-none lg:border-l-0"}`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                       {tier.tier}
                     </span>
-                    <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                    <span className="font-mono text-xs text-(--color-foreground-faint)">
                       {tier.count}
                     </span>
                   </div>
                   <p className="mt-3 text-xs text-(--color-foreground-muted)">
                     {tier.desc}
                   </p>
-                  <div className="mt-4 rounded-lg border border-(--color-border-default) bg-(--color-background-muted) p-3 font-mono text-[0.6875rem] leading-relaxed">
+                  <div className="mt-4 rounded-lg border border-(--color-border-default) bg-(--color-background-muted) p-3 font-mono text-xs leading-relaxed">
                     <div className="flex items-center gap-2">
                       <span
                         className="h-3 w-3 rounded-sm shrink-0"
@@ -176,7 +176,7 @@ export default function TokensPage() {
                         {tier.tokenName}
                       </span>
                     </div>
-                    <div className="mt-1 pl-5 text-(--color-foreground-faint) text-[0.625rem]">
+                    <div className="mt-1 pl-5 text-(--color-foreground-faint) text-xs">
                       {tier.tokenVal}
                     </div>
                   </div>
@@ -185,7 +185,7 @@ export default function TokensPage() {
             </div>
 
             <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-4">
-              <span className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) shrink-0">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) shrink-0">
                 Renders →
               </span>
               <Button>
@@ -229,7 +229,7 @@ export default function TokensPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 01 · Color
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -248,7 +248,7 @@ export default function TokensPage() {
               </p>
             </div>
             <div className="flex items-center gap-2 shrink-0">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-(--color-border-default) bg-(--color-background-default) px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-muted)">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-(--color-border-default) bg-(--color-background-default) px-2.5 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
                 <span
                   className="h-1.5 w-1.5 rounded-full"
                   style={{
@@ -267,7 +267,10 @@ export default function TokensPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
             {/* Analytics chart */}
-            <div className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
+            <div
+              data-mock
+              className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden"
+            >
               <div className="flex items-center justify-between gap-4 px-6 py-4 border-b border-(--color-border-default)">
                 <div>
                   <div className="flex items-center gap-2">
@@ -452,10 +455,10 @@ export default function TokensPage() {
             <div className="lg:col-span-4 space-y-3">
               <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
                 <div className="flex items-center justify-between">
-                  <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     brand ramp · blue
                   </p>
-                  <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                  <span className="font-mono text-xs text-(--color-foreground-faint)">
                     contrast vs white
                   </span>
                 </div>
@@ -487,17 +490,17 @@ export default function TokensPage() {
                         }}
                       />
                       <span
-                        className={`font-mono text-[0.625rem] w-8 shrink-0 ${r.brand ? "font-semibold text-(--color-foreground-default)" : "text-(--color-foreground-faint)"}`}
+                        className={`font-mono text-xs w-8 shrink-0 ${r.brand ? "font-semibold text-(--color-foreground-default)" : "text-(--color-foreground-faint)"}`}
                       >
                         {r.step}
                       </span>
                       <span
-                        className={`font-mono text-[0.625rem] ${r.brand ? "text-(--color-foreground-default)" : "text-(--color-foreground-faint)"}`}
+                        className={`font-mono text-xs ${r.brand ? "text-(--color-foreground-default)" : "text-(--color-foreground-faint)"}`}
                       >
                         {(r.lightness * 100).toFixed(1)}% L
                         {r.brand ? " · brand" : ""}
                       </span>
-                      <span className="ml-auto font-mono text-[0.625rem]">
+                      <span className="ml-auto font-mono text-xs">
                         {r.level ? (
                           <span
                             className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5"
@@ -521,7 +524,7 @@ export default function TokensPage() {
               </div>
 
               <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
-                <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   status tones
                 </p>
                 <div className="mt-3 space-y-1.5">
@@ -570,7 +573,7 @@ export default function TokensPage() {
                         <p className="font-medium text-(--color-foreground-default)">
                           {s.label}
                         </p>
-                        <p className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                        <p className="font-mono text-xs text-(--color-foreground-faint)">
                           {s.token}
                         </p>
                       </div>
@@ -591,7 +594,7 @@ export default function TokensPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 02 · Typography
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -627,17 +630,17 @@ export default function TokensPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
             <article className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
               <div className="flex items-center justify-between px-8 py-3 border-b border-(--color-border-default) bg-(--color-background-muted)">
-                <div className="flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   <span>Wylie Dog Field Notes</span>
                   <span>·</span>
                   <span>Issue 14</span>
                 </div>
-                <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                <span className="font-mono text-xs text-(--color-foreground-faint)">
                   8 min read
                 </span>
               </div>
               <div className="px-8 py-10 lg:px-12 lg:py-12">
-                <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-(--color-foreground-faint)">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-(--color-foreground-faint)">
                   Engineering · April 2026
                 </p>
                 <h3 className="mt-5 font-serif text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.02] text-(--color-foreground-default)">
@@ -667,7 +670,7 @@ export default function TokensPage() {
                     </p>
                   </div>
                   <span
-                    className="ml-auto inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
+                    className="ml-auto inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium"
                     style={{
                       background:
                         "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
@@ -744,7 +747,7 @@ export default function TokensPage() {
                   key={group.label}
                   className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
                 >
-                  <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) mb-3">
+                  <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-3">
                     {group.label}
                   </p>
                   {group.samples.map((s) => (
@@ -767,7 +770,7 @@ export default function TokensPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 03 · Spacing
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -804,7 +807,7 @@ export default function TokensPage() {
 
             {/* Spacing scale panel */}
             <div className="lg:col-span-4 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
-              <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint) mb-4">
+              <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-4">
                 Scale · --space-*
               </p>
               <div className="space-y-2">
@@ -831,7 +834,7 @@ export default function TokensPage() {
                         : undefined
                     }
                   >
-                    <span className="font-mono text-[0.625rem] w-4 text-(--color-foreground-faint) shrink-0">
+                    <span className="font-mono text-xs w-4 text-(--color-foreground-faint) shrink-0">
                       {s.step}
                     </span>
                     <div
@@ -850,7 +853,7 @@ export default function TokensPage() {
                       />
                     </div>
                     <span
-                      className="font-mono text-[0.625rem] ml-auto shrink-0"
+                      className="font-mono text-xs ml-auto shrink-0"
                       style={{
                         color: s.inUse
                           ? "var(--color-foreground-primary-muted)"
@@ -862,7 +865,7 @@ export default function TokensPage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 pt-4 border-t border-(--color-border-default) space-y-1 font-mono text-[0.625rem] text-(--color-foreground-faint)">
+              <div className="mt-4 pt-4 border-t border-(--color-border-default) space-y-1 font-mono text-xs text-(--color-foreground-faint)">
                 <p className="text-(--color-foreground-muted) mb-2">
                   Composed tokens
                 </p>
@@ -883,7 +886,7 @@ export default function TokensPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 04 · Radius
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -1056,18 +1059,21 @@ export default function TokensPage() {
                   <span className="font-semibold text-(--color-foreground-default)">
                     {r.step}
                   </span>
-                  <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                  <span className="font-mono text-xs text-(--color-foreground-faint)">
                     {r.px}
                   </span>
                 </div>
-                <div className="flex-1 flex items-center justify-center py-4">
+                <div
+                  data-mock
+                  className="flex-1 flex items-center justify-center py-4"
+                >
                   {r.preview}
                 </div>
                 <div className="mt-4 pt-4 border-t border-(--color-border-default)">
                   <p className="text-xs text-(--color-foreground-muted)">
                     {r.surface}
                   </p>
-                  <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
+                  <p className="font-mono text-xs text-(--color-foreground-faint) mt-0.5">
                     {r.token}
                   </p>
                 </div>
@@ -1085,7 +1091,7 @@ export default function TokensPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 05 · Elevation
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -1117,6 +1123,7 @@ export default function TokensPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
             {/* Layered scene */}
             <div
+              data-mock
               className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-muted) overflow-hidden relative grid-bg"
               style={{ minHeight: "30rem" }}
             >
@@ -1218,7 +1225,7 @@ export default function TokensPage() {
 
             {/* Elevation ladder */}
             <div className="lg:col-span-4 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
-              <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint) mb-4">
+              <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-4">
                 Elevation ladder
               </p>
               <div className="space-y-3">
@@ -1260,20 +1267,20 @@ export default function TokensPage() {
                       style={{ boxShadow: e.shadow }}
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="font-mono text-[0.625rem] text-(--color-foreground-default)">
+                      <p className="font-mono text-xs text-(--color-foreground-default)">
                         {e.level}
                       </p>
-                      <p className="text-[0.6875rem] text-(--color-foreground-faint)">
+                      <p className="text-xs text-(--color-foreground-faint)">
                         {e.role}
                       </p>
                     </div>
-                    <span className="font-mono text-[0.625rem] text-(--color-foreground-faint) shrink-0">
+                    <span className="font-mono text-xs text-(--color-foreground-faint) shrink-0">
                       {e.token}
                     </span>
                   </div>
                 ))}
               </div>
-              <p className="mt-4 pt-4 border-t border-(--color-border-default) text-[0.6875rem] text-(--color-foreground-faint) leading-relaxed">
+              <p className="mt-4 pt-4 border-t border-(--color-border-default) text-xs text-(--color-foreground-faint) leading-relaxed">
                 Dark mode redefines the same shadow tokens with higher opacity
                 (0.3 to 0.4 instead of 0.05 to 0.1).
               </p>
@@ -1290,7 +1297,7 @@ export default function TokensPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 06 · Motion
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">

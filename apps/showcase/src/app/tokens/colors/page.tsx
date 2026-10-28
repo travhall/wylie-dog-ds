@@ -50,7 +50,7 @@ export default function ColorsPage() {
     >
       {/* Primitives */}
       <section className="space-y-6">
-        <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
           Primitive palettes
         </h2>
         <div className="space-y-10">
@@ -67,7 +67,7 @@ export default function ColorsPage() {
                       style={{ backgroundColor: token.variable }}
                       title={`${token.variable}\n${token.value}`}
                     />
-                    <div className="text-center font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                    <div className="text-center font-mono text-xs text-(--color-foreground-faint)">
                       {shade}
                     </div>
                   </div>
@@ -80,7 +80,7 @@ export default function ColorsPage() {
 
       {/* Semantics */}
       <section className="space-y-6">
-        <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
           Semantic mapping
         </h2>
         <div className="grid gap-4 lg:grid-cols-3">
@@ -103,7 +103,7 @@ export default function ColorsPage() {
                         <div className="text-sm font-medium text-(--color-foreground-default)">
                           {token.name}
                         </div>
-                        <div className="max-w-40 truncate font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                        <div className="max-w-40 truncate font-mono text-xs text-(--color-foreground-faint)">
                           {token.var}
                         </div>
                       </div>

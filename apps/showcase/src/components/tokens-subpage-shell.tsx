@@ -37,7 +37,7 @@ export function TokensSubpageShell({
       </Link>
 
       <section className="max-w-2xl">
-        <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+        <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
           {categoryNumber} · {categoryLabel}
         </span>
         <h1 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -67,7 +67,7 @@ export function TokensSubpageShell({
             }
             aria-current={c.label === categoryLabel ? "page" : undefined}
           >
-            <span className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) mr-0.5">
+            <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mr-0.5">
               {c.n}
             </span>
             {c.label}

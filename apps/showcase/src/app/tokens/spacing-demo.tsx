@@ -95,7 +95,7 @@ export function SpacingDemo() {
           <p className="font-semibold text-(--color-foreground-default)">
             Team members
           </p>
-          <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
+          <p className="font-mono text-xs text-(--color-foreground-faint) mt-0.5">
             14 active · 3 invited
           </p>
         </div>
@@ -130,7 +130,7 @@ export function SpacingDemo() {
           style={{ gap: d.gap, padding: `${d.rowY} 1.5rem` }}
         >
           <div
-            className="rounded-full grid place-items-center font-mono text-[0.625rem] font-semibold shrink-0 transition-all"
+            className="rounded-full grid place-items-center font-mono text-xs font-semibold shrink-0 transition-all"
             style={{
               width: d.avatar,
               height: d.avatar,
@@ -145,18 +145,18 @@ export function SpacingDemo() {
             <p className="text-sm font-medium text-(--color-foreground-default) truncate">
               {m.name}
             </p>
-            <p className="font-mono text-[0.625rem] text-(--color-foreground-faint) truncate">
+            <p className="font-mono text-xs text-(--color-foreground-faint) truncate">
               {m.email}
             </p>
           </div>
           <span className="hidden sm:block text-xs text-(--color-foreground-muted) w-16 shrink-0">
             {m.role}
           </span>
-          <span className="hidden sm:block font-mono text-[0.625rem] text-(--color-foreground-faint) w-16 shrink-0 text-right">
+          <span className="hidden sm:block font-mono text-xs text-(--color-foreground-faint) w-16 shrink-0 text-right">
             {m.last}
           </span>
           <span
-            className="shrink-0 text-[0.625rem] font-mono font-medium px-2 py-0.5 rounded-full"
+            className="shrink-0 text-xs font-mono font-medium px-2 py-0.5 rounded-full"
             style={{
               background:
                 m.status === "active"
@@ -178,7 +178,7 @@ export function SpacingDemo() {
       ))}
 
       {/* Token readout footer */}
-      <div className="border-t border-(--color-border-default) bg-(--color-background-muted) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-[0.625rem] text-(--color-foreground-faint)">
+      <div className="border-t border-(--color-border-default) bg-(--color-background-muted) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-xs text-(--color-foreground-faint)">
         <span>
           <span className="text-(--color-foreground-muted)">
             {d.rowYToken}:
