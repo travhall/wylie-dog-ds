@@ -22,7 +22,7 @@ Options: `--base <url>` (default `http://localhost:3099`), `--only <regex>` to l
 
 It covers 12 routes (`/`, `/components`, `/patterns`, `/architecture`, `/plugin`, `/tokens` and its six subpages) in Light and Dark at 1280 and 375 pixels, 48 runs, using the axe tags `wcag2a`, `wcag2aa`, `wcag21aa`, `wcag22aa` and `best-practice`. The theme is set through the `wd-theme` local-storage key the site itself uses.
 
-The report lists violations by rule (nodes, runs, one example selector), horizontal page overflow with the offending elements that are not inside a scroll container, console errors and failed requests, pages without exactly one `<h1>`, images without `alt`, and the count of text nodes under 12px. The script exits 1 if any critical or serious violation or any horizontal overflow remains. The sub-12px count is information only; the type size policy belongs to Plan 212.
+The report lists violations by rule (nodes, runs, one example selector), horizontal page overflow with the offending elements that are not inside a scroll container, console errors and failed requests, pages without exactly one `<h1>`, images without `alt`, and the count of text nodes under 12px. The script exits 1 if any critical or serious violation or any horizontal overflow remains. The sub-12px count is information only; what may be under 12px is enforced by `pnpm check:units` (real content at `text-xs` or larger; mock previews marked `data-mock`).
 
 ## Rules for new showcase markup
 
@@ -30,6 +30,7 @@ The report lists violations by rule (nodes, runs, one example selector), horizon
 - Scrollable wrappers (`overflow-x-auto`) around tables get `tabIndex={0}`, `role="region"`, an `aria-label` and a visible focus outline, so the keyboard can reach them.
 - A grid that only gets columns at a breakpoint needs `grid-cols-1` below it; without it the single implicit column grows to its widest content and the page scrolls sideways.
 - Text on a tinted or filled chip uses a declared pair from the semantic layer (`foreground-X` on `background-X`, for example `foreground-success-muted` on `background-success-muted`, or `foreground-primary` on `background-primary`), not a colour mixed from a transparent tint. `foreground-inverse` flips dark in Dark mode, so it is wrong on a fill that stays blue.
+- Text is at least `text-xs` (0.75rem). Only a mock UI preview may go smaller, and it is marked `data-mock` (static previews also `aria-hidden`; previews with live controls stay reachable). `pnpm check:units` fails otherwise.
 - Code and terminal mocks sit on a fixed dark ground: use `gray-400` for quiet text (6.82:1 on `#101828`, 7.32:1 on `#041215`), never `gray-500` (3.66 and 3.93).
 
 ## Decisions (owner, 2026-10-27, Plan 210)
