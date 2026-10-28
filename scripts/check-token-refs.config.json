@@ -1,7 +1,7 @@
 {
   "allow": ["^--radix-", "^--font-(sans|serif|mono)$"],
   "allowByFile": {
-    "apps/storybook/stories/Patterns/Accessibility/accessibility-patterns.stories.tsx": [
+    "apps/storybook/stories/Foundations/Design Tokens/color-contrast.stories.tsx": [
       "^--token$"
     ]
   }

@@ -331,7 +331,15 @@ The goal is always to tokenise the Wylie Dog UI package (`packages/ui`). It is t
 
 The one exception is the Foundations pages whose subject is the tokens (`Foundations/Design Tokens/*`), which display token values by design.
 
-Existing stories predate this rule and still style demo text and borders with `-(--token-name)` classes. Do not copy that pattern into new stories. Decided 2026-10-24 (Plan 196): demo chrome that must follow Light and Dark comes from the UI components only. Frame a demo in `Card` (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`), label states with `Badge`, and add no custom colours or borders. The component generator's story template does this.
+Decided 2026-10-24 (Plan 196) and applied to every story and MDX file in Plan 213 (2026-10-27). How a demo gets its colours without a token:
+
+- **Neutral chrome follows the theme through `currentColor`.** Captions and helper text use `text-current/70`, dividers and outlines `border-current/20`, panels `bg-current/5`. These follow Light and Dark by themselves because they derive from the text colour. Do not nest `text-current/70` inside an element that already has it: the colour is already semi-transparent for the child, so the opacity compounds (70% of 70%) and fails the contrast check. Where a muted panel sits inside a `Card` and the original was flat in Dark, add `dark:bg-transparent`.
+- **Status and decorative colour uses a palette pair with a `dark:` variant** (`bg-red-50 dark:bg-red-950`, `text-red-700 dark:text-red-400`). The Storybook stylesheet defines `@custom-variant dark` against the `.dark` class that the theme switch sets on `<html>`. Use a UI component variant instead when the colour means a status (`Badge`, `Alert`, a destructive `Button`).
+- **Frame a demo in `Card`** (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`) where a frame is needed. The component generator's story template does this.
+- **Token documentation is text, not a binding.** Token names in MDX code fences, comments and `summary:` snippet strings are allowed because they teach how to use tokens. A story whose subject is the tokens belongs on a Foundations page (the colour contrast pairs moved to `Foundations/Color Contrast`).
+- **Visual bound.** A conversion may change a story's chrome tone slightly: at most about 6% of the pixels of a shot, with no layout shift. Check with `pnpm visual:compare` (Light and Dark) and the Storybook Vitest suite.
+
+`scripts/check-story-token-bindings.mjs` (part of `pnpm check:tokens`) fails, naming the file and line, on a token variable in any story or MDX file outside `Foundations/Design Tokens/*`.
 
 ---
 
