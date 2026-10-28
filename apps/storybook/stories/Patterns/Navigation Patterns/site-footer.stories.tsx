@@ -115,7 +115,7 @@ const defaultSocialLinks = [
 
 const defaultLogo = (
   <div className="flex items-center space-x-2">
-    <Heart className="h-6 w-6 text-(--color-foreground-primary-muted)" />
+    <Heart className="h-6 w-6 text-blue-700 dark:text-blue-400" />
     <span className="text-xl font-bold">Wylie Dog</span>
   </div>
 );
@@ -158,7 +158,7 @@ export const AllVariants: Story = {
   render: () => (
     <div className="space-y-12">
       <div>
-        <h3 className="px-4 py-2 text-sm font-medium text-(--color-foreground-faint)">
+        <h3 className="px-4 py-2 text-sm font-medium text-current/70">
           Default Variant
         </h3>
         <SiteFooter
@@ -169,7 +169,7 @@ export const AllVariants: Story = {
         />
       </div>
       <div>
-        <h3 className="px-4 py-2 text-sm font-medium text-(--color-foreground-faint)">
+        <h3 className="px-4 py-2 text-sm font-medium text-current/70">
           Minimal Variant
         </h3>
         <SiteFooter
