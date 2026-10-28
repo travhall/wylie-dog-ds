@@ -95,22 +95,22 @@ export const ProductCarousel: Story = {
           {
             name: "Product 1",
             price: "$99",
-            color: "bg-(--color-background-muted)",
+            color: "bg-current/5 dark:bg-transparent",
           },
           {
             name: "Product 2",
             price: "$149",
-            color: "bg-(--color-background-muted)",
+            color: "bg-current/5 dark:bg-transparent",
           },
           {
             name: "Product 3",
             price: "$199",
-            color: "bg-(--color-background-muted)",
+            color: "bg-current/5 dark:bg-transparent",
           },
           {
             name: "Product 4",
             price: "$79",
-            color: "bg-(--color-background-muted)",
+            color: "bg-current/5 dark:bg-transparent",
           },
         ].map((product, index) => (
           <CarouselItem key={index}>
@@ -120,14 +120,10 @@ export const ProductCarousel: Story = {
                   <div
                     className={`${product.color} h-32 rounded mb-4 flex items-center justify-center`}
                   >
-                    <span className="text-sm text-(--color-foreground-faint)">
-                      Image
-                    </span>
+                    <span className="text-sm text-current/70">Image</span>
                   </div>
                   <h3 className="font-semibold">{product.name}</h3>
-                  <p className="text-xl font-bold text-(--color-foreground-default)">
-                    {product.price}
-                  </p>
+                  <p className="text-xl font-bold">{product.price}</p>
                 </CardContent>
               </Card>
             </div>
@@ -211,7 +207,7 @@ export const Testimonials: Story = {
                   </blockquote>
                   <div className="text-right">
                     <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-(--color-foreground-faint)">
+                    <p className="text-sm text-current/70">
                       {testimonial.role}
                     </p>
                   </div>
@@ -315,9 +311,9 @@ export const ImageGallery: Story = {
               <Card>
                 <CardContent className="p-0">
                   <div
-                    className={`aspect-video rounded bg-gradient-to-br from-(--color-background-emphasis) to-(--color-background-muted) flex items-center justify-center`}
+                    className={`aspect-video rounded bg-gradient-to-br from-gray-200 dark:from-gray-800 to-gray-100 dark:to-gray-900 flex items-center justify-center`}
                   >
-                    <span className="text-lg text-(--color-foreground-faint)">
+                    <span className="text-lg text-current/70">
                       Image {index + 1}
                     </span>
                   </div>

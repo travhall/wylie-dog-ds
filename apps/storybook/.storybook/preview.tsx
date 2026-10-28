@@ -41,6 +41,7 @@ const preview: Preview = {
           [
             "Design Principles",
             "Colors",
+            "Color Contrast",
             "Typography",
             "Spacing & Layout",
             "Borders",

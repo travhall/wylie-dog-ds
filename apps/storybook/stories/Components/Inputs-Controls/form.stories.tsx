@@ -263,9 +263,7 @@ export const RequiredFields: Story = {
         <FieldInput placeholder="Acme Inc. (optional)" />
       </FormField>
 
-      <p className="text-xs text-(--color-foreground-faint)">
-        Fields marked * are required.
-      </p>
+      <p className="text-xs text-current/70">Fields marked * are required.</p>
 
       <Button type="submit" className="w-full">
         Continue
@@ -294,7 +292,7 @@ export const AllFieldTypes: Story = {
       <div className="mx-auto w-full max-w-2xl space-y-8">
         {/* Text inputs */}
         <section className="space-y-4">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-(--color-foreground-faint)">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-current/70">
             Text inputs
           </h3>
           <Form className="grid grid-cols-2 gap-2">
@@ -330,7 +328,7 @@ export const AllFieldTypes: Story = {
 
         {/* Selection controls */}
         <section className="space-y-4">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-(--color-foreground-faint)">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-current/70">
             Selection controls
           </h3>
           <div className="grid grid-cols-2 gap-6">
@@ -371,7 +369,7 @@ export const AllFieldTypes: Story = {
 
         {/* Toggle controls */}
         <section className="space-y-4">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-(--color-foreground-faint)">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-current/70">
             Toggle controls
           </h3>
           <div className="space-y-3">
@@ -382,7 +380,7 @@ export const AllFieldTypes: Story = {
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label htmlFor="aft-switch">Marketing emails</Label>
-                <p className="text-xs text-(--color-foreground-faint)">
+                <p className="text-xs text-current/70">
                   Receive product updates.
                 </p>
               </div>
@@ -395,7 +393,7 @@ export const AllFieldTypes: Story = {
 
         {/* Range */}
         <section className="space-y-4">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-(--color-foreground-faint)">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-current/70">
             Range
           </h3>
           <div className="space-y-3">
@@ -408,9 +406,7 @@ export const AllFieldTypes: Story = {
               max={100}
               step={5}
             />
-            <p className="text-xs text-(--color-foreground-faint)">
-              Drag to adjust the value.
-            </p>
+            <p className="text-xs text-current/70">Drag to adjust the value.</p>
           </div>
         </section>
       </div>
@@ -435,7 +431,7 @@ export const MultiSection: Story = {
     <Form className="mx-auto w-full max-w-lg">
       <div className="space-y-1">
         <h2 className="text-base font-semibold">Personal information</h2>
-        <p className="text-sm text-(--color-foreground-faint)">
+        <p className="text-sm text-current/70">
           Your name and contact details.
         </p>
       </div>
@@ -466,7 +462,7 @@ export const MultiSection: Story = {
 
       <div className="space-y-1">
         <h2 className="text-base font-semibold">Account setup</h2>
-        <p className="text-sm text-(--color-foreground-faint)">
+        <p className="text-sm text-current/70">
           Choose your username and secure your account.
         </p>
       </div>
@@ -494,7 +490,7 @@ export const MultiSection: Story = {
 
       <div className="space-y-1">
         <h2 className="text-base font-semibold">Notifications</h2>
-        <p className="text-sm text-(--color-foreground-faint)">
+        <p className="text-sm text-current/70">
           Choose how you&apos;d like to hear from us.
         </p>
       </div>
@@ -503,7 +499,7 @@ export const MultiSection: Story = {
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
             <Label htmlFor="ms-marketing">Marketing emails</Label>
-            <p className="text-xs text-(--color-foreground-faint)">
+            <p className="text-xs text-current/70">
               Product updates and announcements.
             </p>
           </div>
@@ -512,7 +508,7 @@ export const MultiSection: Story = {
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
             <Label htmlFor="ms-security">Security alerts</Label>
-            <p className="text-xs text-(--color-foreground-faint)">
+            <p className="text-xs text-current/70">
               Unusual sign-in activity and password changes.
             </p>
           </div>
@@ -628,7 +624,7 @@ export const ConditionalFields: Story = {
         )}
 
         {contactMethod === "none" && (
-          <p className="text-sm text-(--color-foreground-faint)">
+          <p className="text-sm text-current/70">
             You won&apos;t receive any outbound communications.
           </p>
         )}
@@ -664,7 +660,7 @@ export const DisabledState: Story = {
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-semibold">Profile settings</p>
-          <p className="text-xs text-(--color-foreground-faint)">
+          <p className="text-xs text-current/70">
             Editing is currently unavailable.
           </p>
         </div>
@@ -690,9 +686,7 @@ export const DisabledState: Story = {
       <div className="flex items-center justify-between opacity-50">
         <div className="space-y-0.5">
           <Label htmlFor="ds-notifications">Email notifications</Label>
-          <p className="text-xs text-(--color-foreground-faint)">
-            Receive product updates.
-          </p>
+          <p className="text-xs text-current/70">Receive product updates.</p>
         </div>
         <Switch id="ds-notifications" disabled defaultChecked />
       </div>

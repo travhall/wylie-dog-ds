@@ -124,9 +124,7 @@ export const CustomSeparator: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <p className="text-sm text-(--color-foreground-faint) mb-2">
-          Slash separator
-        </p>
+        <p className="text-sm text-current/70 mb-2">Slash separator</p>
         <Breadcrumb aria-label="Slash separator breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -149,22 +147,20 @@ export const CustomSeparator: Story = {
       </div>
 
       <div>
-        <p className="text-sm text-(--color-foreground-faint) mb-2">
-          Text separator
-        </p>
+        <p className="text-sm text-current/70 mb-2">Text separator</p>
         <Breadcrumb aria-label="Text separator breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <span className="text-(--color-foreground-faint)">→</span>
+              <span className="text-current/70">→</span>
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <span className="text-(--color-foreground-faint)">→</span>
+              <span className="text-current/70">→</span>
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbPage>Components</BreadcrumbPage>
@@ -364,9 +360,7 @@ export const ApplicationExamples: Story = {
   render: () => (
     <div className="space-y-8 w-full max-w-3xl">
       <div className="space-y-3">
-        <h4 className="font-medium text-(--color-foreground-default)">
-          E-commerce Product Page
-        </h4>
+        <h4 className="font-medium">E-commerce Product Page</h4>
         <Breadcrumb aria-label="E-commerce product page breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -397,9 +391,7 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-(--color-foreground-default)">
-          Documentation Site
-        </h4>
+        <h4 className="font-medium">Documentation Site</h4>
         <Breadcrumb aria-label="Documentation site breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -429,9 +421,7 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-(--color-foreground-default)">
-          Admin Dashboard
-        </h4>
+        <h4 className="font-medium">Admin Dashboard</h4>
         <Breadcrumb aria-label="Admin dashboard breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -458,9 +448,7 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-(--color-foreground-default)">
-          File Manager
-        </h4>
+        <h4 className="font-medium">File Manager</h4>
         <Breadcrumb aria-label="File manager breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -506,7 +494,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 w-full max-w-2xl">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-(--color-foreground-faint)">
+        <p className="text-sm text-current/70">
           Breadcrumbs use semantic HTML with proper ARIA attributes for screen
           readers. Use Tab to navigate links and Enter to activate.
         </p>
@@ -514,7 +502,7 @@ export const Accessibility: Story = {
 
       <div className="space-y-4">
         <div>
-          <p className="text-sm font-medium text-(--color-foreground-faint) mb-2">
+          <p className="text-sm font-medium text-current/70 mb-2">
             With aria-label navigation
           </p>
           <Breadcrumb>
@@ -544,7 +532,7 @@ export const Accessibility: Story = {
         </div>
 
         <div>
-          <p className="text-sm font-medium text-(--color-foreground-faint) mb-2">
+          <p className="text-sm font-medium text-current/70 mb-2">
             Screen reader friendly
           </p>
           <Breadcrumb aria-label="Page navigation">

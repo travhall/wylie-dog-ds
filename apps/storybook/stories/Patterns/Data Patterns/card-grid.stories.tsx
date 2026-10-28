@@ -45,11 +45,11 @@ export const Default: Story = {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-(--color-foreground-faint) mb-4">
+          <p className="text-sm text-current/70 mb-4">
             Advanced design system with comprehensive token management and
             real-time synchronization.
           </p>
-          <div className="flex items-center justify-between text-xs text-(--color-foreground-faint)">
+          <div className="flex items-center justify-between text-xs text-current/70">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
                 <Star className="h-3 w-3" /> 4.8
@@ -73,11 +73,11 @@ export const Default: Story = {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-(--color-foreground-faint) mb-4">
+          <p className="text-sm text-current/70 mb-4">
             Cross-platform mobile application with React Native and TypeScript
             integration.
           </p>
-          <div className="flex items-center justify-between text-xs text-(--color-foreground-faint)">
+          <div className="flex items-center justify-between text-xs text-current/70">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
                 <Star className="h-3 w-3" /> 4.6
@@ -101,11 +101,11 @@ export const Default: Story = {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-(--color-foreground-faint) mb-4">
+          <p className="text-sm text-current/70 mb-4">
             Comprehensive component library with accessibility features and dark
             mode support.
           </p>
-          <div className="flex items-center justify-between text-xs text-(--color-foreground-faint)">
+          <div className="flex items-center justify-between text-xs text-current/70">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
                 <Star className="h-3 w-3" /> 4.9
@@ -132,9 +132,7 @@ export const AllVariants: Story = {
     <div className="space-y-16">
       {/* Default Variant */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-foreground-default)">
-          Default Variant
-        </h3>
+        <h3 className="text-lg font-semibold mb-4">Default Variant</h3>
         <CardGrid aria-label="Default variant" columns={{ sm: 1, md: 2 }}>
           <Card className="hover:shadow-md transition-shadow">
             <CardHeader>
@@ -161,9 +159,7 @@ export const AllVariants: Story = {
 
       {/* Compact Variant */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-foreground-default)">
-          Compact Variant
-        </h3>
+        <h3 className="text-lg font-semibold mb-4">Compact Variant</h3>
         <CardGrid
           aria-label="Compact variant"
           variant="compact"
@@ -173,8 +169,8 @@ export const AllVariants: Story = {
             <Card key={label} className="hover:shadow-sm transition-shadow">
               <CardContent className="p-4">
                 <div className="text-center">
-                  <div className="w-8 h-8 bg-(--color-background-primary)/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                    <Zap className="h-4 w-4 text-(--color-foreground-primary-muted)" />
+                  <div className="w-8 h-8 bg-blue-600/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Zap className="h-4 w-4 text-blue-700 dark:text-blue-400" />
                   </div>
                   <h4 className="font-medium text-sm">{label} Card</h4>
                 </div>
@@ -186,9 +182,7 @@ export const AllVariants: Story = {
 
       {/* Spacious Variant */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-foreground-default)">
-          Spacious Variant
-        </h3>
+        <h3 className="text-lg font-semibold mb-4">Spacious Variant</h3>
         <CardGrid
           aria-label="Spacious variant"
           variant="spacious"
@@ -203,7 +197,7 @@ export const AllVariants: Story = {
                 Extra spacing creates a luxurious feel with more visual
                 hierarchy and emphasis on content.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-(--color-foreground-faint)">
+              <div className="mt-6 flex items-center gap-2 text-sm text-current/70">
                 <Clock className="h-4 w-4" />
                 <span>5 min read</span>
               </div>
@@ -218,7 +212,7 @@ export const AllVariants: Story = {
                 Perfect for premium content and featured sections that need more
                 visual impact.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-(--color-foreground-faint)">
+              <div className="mt-6 flex items-center gap-2 text-sm text-current/70">
                 <TrendingUp className="h-4 w-4" />
                 <span>Trending</span>
               </div>
@@ -229,9 +223,7 @@ export const AllVariants: Story = {
 
       {/* Elevated Variant */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-foreground-default)">
-          Elevated Variant
-        </h3>
+        <h3 className="text-lg font-semibold mb-4">Elevated Variant</h3>
         <CardGrid
           aria-label="Elevated variant"
           variant="elevated"
@@ -240,7 +232,7 @@ export const AllVariants: Story = {
           {["Premium", "Featured", "Spotlight"].map((label, index) => (
             <Card
               key={label}
-              className="bg-linear-to-br from-(--color-background-muted) to-white border-(--color-border-default)/20 shadow-md hover:shadow-xl transition-all duration-300"
+              className="bg-linear-to-br from-gray-100 dark:from-gray-900 to-white border-current/10 shadow-md hover:shadow-xl transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-center justify-between">
@@ -279,9 +271,7 @@ export const Interactive: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-foreground-default)">
-          Interactive Grid
-        </h3>
+        <h3 className="text-lg font-semibold mb-4">Interactive Grid</h3>
         <CardGrid
           aria-label="Interactive grid"
           interactive={true}
@@ -332,11 +322,11 @@ export const Interactive: Story = {
           ].map((item, index) => (
             <Card
               key={index}
-              className="group cursor-pointer border-(--color-border-default)/20 hover:border-(--color-border-primary)/30 hover:shadow-lg transition-all duration-300"
+              className="group cursor-pointer border-current/10 hover:border-blue-500/30 hover:shadow-lg transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-start justify-between">
-                  <CardTitle className="text-base group-hover:text-(--color-foreground-primary-muted) transition-colors">
+                  <CardTitle className="text-base group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                     {item.title}
                   </CardTitle>
                   <div className="flex items-center gap-2">
@@ -351,17 +341,17 @@ export const Interactive: Story = {
                       className="opacity-0 group-hover:opacity-100 transition-opacity h-6 w-6"
                       aria-label={`More actions for ${item.title}`}
                     >
-                      <MoreHorizontal className="h-4 w-4 text-(--color-foreground-faint)" />
+                      <MoreHorizontal className="h-4 w-4 text-current/70" />
                     </Button>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-(--color-foreground-faint) mb-4">
+                <p className="text-sm text-current/70 mb-4">
                   {item.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-xs text-(--color-foreground-faint)">
+                  <div className="flex items-center gap-3 text-xs text-current/70">
                     <span className="flex items-center gap-1">
                       <TrendingUp className="h-3 w-3" /> {item.stats.views}
                     </span>
@@ -369,7 +359,7 @@ export const Interactive: Story = {
                       <Heart className="h-3 w-3" /> {item.stats.likes}
                     </span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-foreground-primary-muted) group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="h-4 w-4 text-current/70 group-hover:text-blue-700 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
                 </div>
               </CardContent>
             </Card>
@@ -378,9 +368,7 @@ export const Interactive: Story = {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-foreground-default)">
-          Centered Layout
-        </h3>
+        <h3 className="text-lg font-semibold mb-4">Centered Layout</h3>
         <CardGrid
           aria-label="Centered layout"
           interactive={true}
@@ -388,26 +376,26 @@ export const Interactive: Story = {
           columns={{ sm: 1, md: 2, lg: 2 }}
           className="max-w-2xl"
         >
-          <Card className="bg-linear-to-r from-(--color-background-primary)/5 to-(--color-background-primary)/5 border-(--color-border-primary)/20">
+          <Card className="bg-linear-to-r from-blue-600/5 to-blue-600/5 border-blue-500/20">
             <CardContent className="p-8 text-center">
-              <div className="w-12 h-12 bg-(--color-background-primary) rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="h-6 w-6 text-(--color-foreground-inverse)" />
+              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="h-6 w-6 text-gray-50 dark:text-gray-950" />
               </div>
               <CardTitle className="text-xl mb-2">Featured Content</CardTitle>
-              <p className="text-sm text-(--color-foreground-faint) mb-4">
+              <p className="text-sm text-current/70 mb-4">
                 Centered cards work great for highlighting important
                 information.
               </p>
               <Button size="sm">Get Started</Button>
             </CardContent>
           </Card>
-          <Card className="bg-linear-to-r from-(--color-background-success)/5 to-(--color-background-warning)/5 border-(--color-foreground-success-muted)/20">
+          <Card className="bg-linear-to-r from-green-600/5 to-amber-500/5 border-green-700/20 dark:border-green-400/20">
             <CardContent className="p-8 text-center">
-              <div className="w-12 h-12 bg-(--color-background-success) rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-6 w-6 text-(--color-foreground-inverse)" />
+              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-6 w-6 text-gray-50 dark:text-gray-950" />
               </div>
               <CardTitle className="text-xl mb-2">Quick Actions</CardTitle>
-              <p className="text-sm text-(--color-foreground-faint) mb-4">
+              <p className="text-sm text-current/70 mb-4">
                 Perfect for call-to-action cards and user interactions.
               </p>
               <Button size="sm" variant="outline">

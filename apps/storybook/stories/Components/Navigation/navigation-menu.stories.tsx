@@ -113,13 +113,13 @@ export const Default: Story = {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-(--color-background-muted) to-(--color-background-emphasis) p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-gray-100 dark:from-gray-900 to-gray-200 dark:to-gray-800 p-6 no-underline outline-none focus:shadow-md"
                     href="#"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Featured Product
                     </div>
-                    <p className="text-sm leading-tight text-(--color-foreground-faint)">
+                    <p className="text-sm leading-tight text-current/70">
                       Discover our most popular item with advanced features and
                       modern design.
                     </p>
@@ -183,13 +183,13 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-(--color-background-muted) hover:text-(--color-foreground-default) focus:bg-(--color-background-muted) focus:text-(--color-foreground-default)",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-current/5 hover:text-current focus:bg-current/5 focus:text-current",
             className
           )}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-(--color-foreground-faint)">
+          <p className="line-clamp-2 text-sm leading-snug text-current/70">
             {children}
           </p>
         </a>
@@ -322,12 +322,12 @@ export const WithCallToAction: Story = {
                   White-label tools and client management.
                 </ListItem>
               </div>
-              <div className="flex flex-col justify-between rounded-md bg-(--color-background-muted) p-4">
+              <div className="flex flex-col justify-between rounded-md bg-current/5 p-4">
                 <div>
                   <p className="text-sm font-medium mb-1">
                     New: Design System Kit
                   </p>
-                  <p className="text-xs text-(--color-foreground-faint) leading-relaxed">
+                  <p className="text-xs text-current/70 leading-relaxed">
                     Everything you need to build consistent, accessible UIs —
                     tokens, components, and docs.
                   </p>

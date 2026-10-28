@@ -251,7 +251,7 @@ export const InFormContext: Story = {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-5 w-5 text-(--color-foreground-muted) hover:text-(--color-foreground-default)"
+                  className="h-5 w-5 text-current/70 hover:text-current"
                   aria-label="Username requirements"
                 >
                   <svg
@@ -283,7 +283,7 @@ export const InFormContext: Story = {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-5 w-5 text-(--color-foreground-muted) hover:text-(--color-foreground-default)"
+                  className="h-5 w-5 text-current/70 hover:text-current"
                   aria-label="Email notifications info"
                 >
                   <svg

@@ -100,9 +100,7 @@ export const Default: Story = {
       columns={{ sm: 1, md: 2, lg: 4 }}
       features={[
         {
-          icon: (
-            <Rocket className="h-5 w-5 text-(--color-foreground-primary-muted)" />
-          ),
+          icon: <Rocket className="h-5 w-5 text-blue-700 dark:text-blue-400" />,
           title: "Fast Performance",
           description:
             "Lightning-fast load times and smooth interactions for the best user experience.",
@@ -111,7 +109,7 @@ export const Default: Story = {
         },
         {
           icon: (
-            <Palette className="h-5 w-5 text-(--color-foreground-primary-muted)" />
+            <Palette className="h-5 w-5 text-blue-700 dark:text-blue-400" />
           ),
           title: "Beautiful Design",
           description:
@@ -121,7 +119,7 @@ export const Default: Story = {
         },
         {
           icon: (
-            <ShieldCheck className="h-5 w-5 text-(--color-foreground-primary-muted)" />
+            <ShieldCheck className="h-5 w-5 text-blue-700 dark:text-blue-400" />
           ),
           title: "Secure & Reliable",
           description:
@@ -129,7 +127,7 @@ export const Default: Story = {
         },
         {
           icon: (
-            <Settings className="h-5 w-5 text-(--color-foreground-primary-muted)" />
+            <Settings className="h-5 w-5 text-blue-700 dark:text-blue-400" />
           ),
           title: "Easy to Customize",
           description:
@@ -158,15 +156,13 @@ export const CompactTwoColumn: Story = {
       columns={{ sm: 1, md: 2 }}
       features={[
         {
-          icon: (
-            <Rocket className="h-5 w-5 text-(--color-foreground-primary-muted)" />
-          ),
+          icon: <Rocket className="h-5 w-5 text-blue-700 dark:text-blue-400" />,
           title: "Quick Setup",
           description: "Get started in minutes with sensible defaults.",
         },
         {
           icon: (
-            <ShieldCheck className="h-5 w-5 text-(--color-foreground-primary-muted)" />
+            <ShieldCheck className="h-5 w-5 text-blue-700 dark:text-blue-400" />
           ),
           title: "Built-in Safety",
           description: "Validation and error handling included out of the box.",

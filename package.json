@@ -8,7 +8,7 @@
     "check:docs:coverage": "pnpm --filter @wyliedog/ui exec vitest run --coverage && node scripts/check-docs.mjs --require-coverage",
     "check:focus": "node scripts/check-focus-classes.mjs",
     "check:focus-visible": "node scripts/check-focus-visible.mjs apps/storybook/storybook-static",
-    "check:tokens": "node scripts/check-token-refs.mjs && node scripts/check-token-structure.mjs && node scripts/check-component-binding.mjs && node scripts/check-units.mjs && node scripts/generate-text-styles.mjs --check",
+    "check:tokens": "node scripts/check-token-refs.mjs && node scripts/check-token-structure.mjs && node scripts/check-component-binding.mjs && node scripts/check-units.mjs && node scripts/check-story-token-bindings.mjs && node scripts/generate-text-styles.mjs --check",
     "check:units": "node scripts/check-units.mjs",
     "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo run dev",

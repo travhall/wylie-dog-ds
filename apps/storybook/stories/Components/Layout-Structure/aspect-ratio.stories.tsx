@@ -41,7 +41,7 @@ export const Default: Story = {
   render: () => (
     <div className="w-75">
       <AspectRatio ratio={16 / 9}>
-        <div className="bg-(--color-background-muted) w-full h-full flex items-center justify-center text-(--color-foreground-faint)">
+        <div className="bg-current/5 w-full h-full flex items-center justify-center text-current/70">
           16:9 Aspect Ratio
         </div>
       </AspectRatio>
@@ -61,7 +61,7 @@ export const Square: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={1}>
-        <div className="bg-(--color-background-info-muted) w-full h-full flex items-center justify-center text-(--color-foreground-info-muted)">
+        <div className="bg-blue-50 dark:bg-blue-950 w-full h-full flex items-center justify-center text-blue-700 dark:text-blue-400">
           1:1 Square
         </div>
       </AspectRatio>
@@ -80,7 +80,7 @@ export const Portrait: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={3 / 4}>
-        <div className="bg-(--color-background-success-muted) w-full h-full flex items-center justify-center text-(--color-foreground-success-muted)">
+        <div className="bg-green-50 dark:bg-green-950 w-full h-full flex items-center justify-center text-green-700 dark:text-green-400">
           3:4 Portrait
         </div>
       </AspectRatio>
@@ -102,7 +102,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">16:9 Widescreen</h4>
         <div className="w-75">
           <AspectRatio ratio={16 / 9}>
-            <div className="bg-(--color-background-danger-muted) w-full h-full flex items-center justify-center text-(--color-foreground-danger-muted)">
+            <div className="bg-red-50 dark:bg-red-950 w-full h-full flex items-center justify-center text-red-700 dark:text-red-400">
               Video/Monitor
             </div>
           </AspectRatio>
@@ -113,7 +113,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">4:3 Traditional</h4>
         <div className="w-75">
           <AspectRatio ratio={4 / 3}>
-            <div className="bg-(--color-background-warning-muted) w-full h-full flex items-center justify-center text-(--color-foreground-warning-muted)">
+            <div className="bg-amber-100/70 dark:bg-yellow-950 w-full h-full flex items-center justify-center text-amber-700 dark:text-amber-400">
               Old TV/Photo
             </div>
           </AspectRatio>
@@ -124,7 +124,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">1:1 Square</h4>
         <div className="w-50">
           <AspectRatio ratio={1}>
-            <div className="bg-(--color-background-info-muted) w-full h-full flex items-center justify-center text-(--color-foreground-info-muted)">
+            <div className="bg-blue-50 dark:bg-blue-950 w-full h-full flex items-center justify-center text-blue-700 dark:text-blue-400">
               Instagram
             </div>
           </AspectRatio>
@@ -168,12 +168,12 @@ export const VideoFrame: Story = {
   render: () => (
     <div className="w-125">
       <AspectRatio ratio={16 / 9}>
-        <div className="bg-(--color-background-inverse) w-full h-full flex items-center justify-center text-(--color-foreground-inverse) rounded-md">
+        <div className="bg-gray-950 dark:bg-gray-50 w-full h-full flex items-center justify-center text-gray-50 dark:text-gray-950 rounded-md">
           <div className="text-center">
             <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2">
               <div className="w-0 h-0 border-l-4 border-l-white border-t-2 border-t-transparent border-b-2 border-b-transparent ml-1"></div>
             </div>
-            <p className="text-sm text-(--color-foreground-inverse)">
+            <p className="text-sm text-gray-50 dark:text-gray-950">
               Video Player
             </p>
           </div>
@@ -195,12 +195,8 @@ export const ResponsiveGallery: Story = {
   render: () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {Array.from({ length: 6 }, (_, i) => (
-        <AspectRatio
-          key={i}
-          ratio={1}
-          className="bg-(--color-background-muted) rounded-lg"
-        >
-          <div className="w-full h-full flex items-center justify-center text-(--color-foreground-faint)">
+        <AspectRatio key={i} ratio={1} className="bg-current/5 rounded-lg">
+          <div className="w-full h-full flex items-center justify-center text-current/70">
             Item {i + 1}
           </div>
         </AspectRatio>

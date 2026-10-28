@@ -203,7 +203,7 @@ export const IDELayout: Story = {
               <div className="flex items-center justify-center p-3 border-b">
                 <span className="font-semibold text-sm">Editor</span>
               </div>
-              <div className="flex-1 p-3 bg-(--color-background-muted)">
+              <div className="flex-1 p-3 bg-current/5">
                 <pre className="text-sm">
                   {`function App() {
   return (
@@ -222,7 +222,7 @@ export const IDELayout: Story = {
               <div className="flex items-center justify-center p-3 border-b">
                 <span className="font-semibold text-sm">Terminal</span>
               </div>
-              <div className="flex-1 p-3 bg-(--color-background-inverse) text-(--color-foreground-inverse) font-mono text-sm">
+              <div className="flex-1 p-3 bg-gray-950 dark:bg-gray-50 text-gray-50 dark:text-gray-950 font-mono text-sm">
                 $ npm run dev
                 <br />
                 Starting development server...
@@ -271,7 +271,7 @@ export const Dashboard: Story = {
       className="max-w-4xl min-h-125 rounded-lg border"
     >
       <ResizablePanel defaultSize={20}>
-        <div className="flex h-full items-center justify-center p-6 bg-(--color-background-info-muted)">
+        <div className="flex h-full items-center justify-center p-6 bg-blue-50 dark:bg-blue-950">
           <span className="font-semibold">Header & Navigation</span>
         </div>
       </ResizablePanel>
@@ -279,7 +279,7 @@ export const Dashboard: Story = {
       <ResizablePanel defaultSize={80}>
         <ResizablePanelGroup direction="horizontal">
           <ResizablePanel defaultSize={30}>
-            <div className="flex h-full items-center justify-center p-6 bg-(--color-background-success-muted)">
+            <div className="flex h-full items-center justify-center p-6 bg-green-50 dark:bg-green-950">
               <span className="font-semibold">Sidebar</span>
             </div>
           </ResizablePanel>
@@ -293,7 +293,7 @@ export const Dashboard: Story = {
               </ResizablePanel>
               <ResizableHandle />
               <ResizablePanel defaultSize={40}>
-                <div className="flex h-full items-center justify-center p-6 bg-(--color-background-warning-muted)">
+                <div className="flex h-full items-center justify-center p-6 bg-amber-100/70 dark:bg-yellow-950">
                   <span className="font-semibold">Activity Feed</span>
                 </div>
               </ResizablePanel>

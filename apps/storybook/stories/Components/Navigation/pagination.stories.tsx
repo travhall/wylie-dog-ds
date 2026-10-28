@@ -213,9 +213,7 @@ export const Interactive: Story = {
     const [page, setPage] = React.useState(3);
     return (
       <div className="space-y-4">
-        <p className="text-sm text-(--color-foreground-faint)">
-          Current page: {page}
-        </p>
+        <p className="text-sm text-current/70">Current page: {page}</p>
         <Pagination>
           <PaginationContent>
             <PaginationItem>

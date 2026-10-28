@@ -132,7 +132,7 @@ export const SimpleLogin: Story = {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Signing in..." : "Sign in"}
             </Button>
-            <p className="text-sm text-center text-(--color-foreground-faint)">
+            <p className="text-sm text-center text-current/70">
               Don&apos;t have an account?{" "}
               <Button variant="link" className="h-auto p-0 text-sm font-normal">
                 Sign up
@@ -254,7 +254,7 @@ export const LoginWithSocialAuth: Story = {
               <Separator />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-(--color-card-background) px-2 text-(--color-foreground-faint)">
+              <span className="bg-white dark:bg-gray-950 px-2 text-current/70">
                 Or continue with email
               </span>
             </div>
@@ -286,7 +286,7 @@ export const LoginWithSocialAuth: Story = {
           </Form>
         </CardContent>
         <CardFooter>
-          <p className="text-sm text-center text-(--color-foreground-faint) w-full">
+          <p className="text-sm text-center text-current/70 w-full">
             Don&apos;t have an account?{" "}
             <Button variant="link" className="h-auto p-0 text-sm font-normal">
               Sign up
@@ -434,16 +434,16 @@ export const RegistrationForm: Story = {
                             ? passwordStrength.strength === 1
                               ? "bg-destructive"
                               : passwordStrength.strength === 2
-                                ? "bg-(--color-background-warning)"
+                                ? "bg-amber-500"
                                 : passwordStrength.strength === 3
-                                  ? "bg-(--color-background-primary)"
-                                  : "bg-(--color-border-success)"
-                            : "bg-(--color-background-muted)"
+                                  ? "bg-blue-600"
+                                  : "bg-green-600"
+                            : "bg-current/5"
                         }`}
                       />
                     ))}
                   </div>
-                  <p className="text-xs text-(--color-foreground-faint)">
+                  <p className="text-xs text-current/70">
                     Password strength: {passwordStrength.label}
                   </p>
                 </div>
@@ -496,7 +496,7 @@ export const RegistrationForm: Story = {
               {errors.terms && (
                 <p
                   id="terms-error"
-                  className="text-sm text-(--color-foreground-danger-muted)"
+                  className="text-sm text-red-700 dark:text-red-400"
                 >
                   {errors.terms}
                 </p>
@@ -507,7 +507,7 @@ export const RegistrationForm: Story = {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Creating account..." : "Create account"}
             </Button>
-            <p className="text-sm text-center text-(--color-foreground-faint)">
+            <p className="text-sm text-center text-current/70">
               Already have an account?{" "}
               <Button variant="link" className="h-auto p-0 text-sm font-normal">
                 Sign in
@@ -656,7 +656,7 @@ export const LoginRegistrationTabs: Story = {
                       })
                     }
                   />
-                  <p className="text-xs text-(--color-foreground-faint)">
+                  <p className="text-xs text-current/70">
                     Must be at least 8 characters
                   </p>
                 </FormField>

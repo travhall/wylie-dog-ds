@@ -170,7 +170,7 @@ export const MultiStepForm: Story = {
                   </Label>
                   <Input id="username" placeholder="johndoe" />{" "}
                   {/* cSpell:ignore johndoe */}
-                  <p className="text-xs text-(--color-foreground-faint)">
+                  <p className="text-xs text-current/70">
                     This will be your unique identifier
                   </p>
                 </div>
@@ -538,7 +538,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="email-notifications">Email notifications</Label>
-                <p className="text-xs text-(--color-foreground-faint)">
+                <p className="text-xs text-current/70">
                   Get notified about important updates
                 </p>
               </div>
@@ -548,7 +548,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="push-notifications">Push notifications</Label>
-                <p className="text-xs text-(--color-foreground-faint)">
+                <p className="text-xs text-current/70">
                   Receive browser notifications
                 </p>
               </div>
@@ -558,7 +558,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="marketing-emails">Marketing emails</Label>
-                <p className="text-xs text-(--color-foreground-faint)">
+                <p className="text-xs text-current/70">
                   Product updates and promotions
                 </p>
               </div>
@@ -746,7 +746,7 @@ export const ProjectCreation: Story = {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="auto-deploy">Auto-deploy to staging</Label>
-              <p className="text-xs text-(--color-foreground-faint)">
+              <p className="text-xs text-current/70">
                 Automatically deploy commits to staging environment
               </p>
             </div>
@@ -756,7 +756,7 @@ export const ProjectCreation: Story = {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="notifications">Build notifications</Label>
-              <p className="text-xs text-(--color-foreground-faint)">
+              <p className="text-xs text-current/70">
                 Get notified about build status
               </p>
             </div>
@@ -782,12 +782,10 @@ export const PaymentForm: Story = {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-(--color-background-muted) rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-current/5 dark:bg-transparent rounded-lg">
             <div>
               <p className="font-medium">Pro Plan</p>
-              <p className="text-sm text-(--color-foreground-faint)">
-                Monthly subscription
-              </p>
+              <p className="text-sm text-current/70">Monthly subscription</p>
             </div>
             <div className="text-right">
               <p className="font-bold text-lg">$29.99</p>
@@ -998,7 +996,7 @@ export const WithInteractions: Story = {
                 <div className="flex items-center justify-between">
                   <div>
                     <Label htmlFor="marketing-int">Marketing emails</Label>
-                    <p className="text-xs text-(--color-foreground-faint)">
+                    <p className="text-xs text-current/70">
                       Promotional content
                     </p>
                   </div>
@@ -1469,7 +1467,7 @@ export const RealTimeValidation: Story = {
               <FormMessage>
                 {errors.username && `✕ ${errors.username}`}
               </FormMessage>
-              <p className="text-xs text-(--color-foreground-faint)">
+              <p className="text-xs text-current/70">
                 3-20 characters, letters, numbers, and underscores only
               </p>
             </FormField>
@@ -1524,15 +1522,15 @@ export const RealTimeValidation: Story = {
             </div>
 
             <div id="password-requirements" className="space-y-2">
-              <p className="text-xs font-medium text-(--color-foreground-faint)">
+              <p className="text-xs font-medium text-current/70">
                 Password requirements:
               </p>
-              <ul className="text-xs text-(--color-foreground-faint) space-y-1 pl-4">
+              <ul className="text-xs text-current/70 space-y-1 pl-4">
                 <li
                   className={
                     formValues.password.length >= 8
-                      ? "text-(--color-foreground-success-muted)"
-                      : "text-(--color-foreground-faint)"
+                      ? "text-green-700 dark:text-green-400"
+                      : ""
                   }
                 >
                   {formValues.password.length >= 8 ? "✓" : "○"} At least 8
@@ -1541,8 +1539,8 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[a-z])/.test(formValues.password)
-                      ? "text-(--color-foreground-success-muted)"
-                      : "text-(--color-foreground-faint)"
+                      ? "text-green-700 dark:text-green-400"
+                      : ""
                   }
                 >
                   {/(?=.*[a-z])/.test(formValues.password) ? "✓" : "○"} One
@@ -1551,8 +1549,8 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[A-Z])/.test(formValues.password)
-                      ? "text-(--color-foreground-success-muted)"
-                      : "text-(--color-foreground-faint)"
+                      ? "text-green-700 dark:text-green-400"
+                      : ""
                   }
                 >
                   {/(?=.*[A-Z])/.test(formValues.password) ? "✓" : "○"} One
@@ -1561,8 +1559,8 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*\d)/.test(formValues.password)
-                      ? "text-(--color-foreground-success-muted)"
-                      : "text-(--color-foreground-faint)"
+                      ? "text-green-700 dark:text-green-400"
+                      : ""
                   }
                 >
                   {/(?=.*\d)/.test(formValues.password) ? "✓" : "○"} One number
@@ -1570,8 +1568,8 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[@$!%*?&])/.test(formValues.password)
-                      ? "text-(--color-foreground-success-muted)"
-                      : "text-(--color-foreground-faint)"
+                      ? "text-green-700 dark:text-green-400"
+                      : ""
                   }
                 >
                   {/(?=.*[@$!%*?&])/.test(formValues.password) ? "✓" : "○"} One
@@ -1726,7 +1724,7 @@ export const SettingsForm: Story = {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Email notifications</Label>
-                  <div className="text-sm text-(--color-foreground-faint)">
+                  <div className="text-sm text-current/70">
                     Receive notifications via email
                   </div>
                 </div>
@@ -1736,7 +1734,7 @@ export const SettingsForm: Story = {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Marketing emails</Label>
-                  <div className="text-sm text-(--color-foreground-faint)">
+                  <div className="text-sm text-current/70">
                     Receive promotional content
                   </div>
                 </div>
@@ -1786,7 +1784,7 @@ export const SettingsForm: Story = {
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label>Two-factor authentication</Label>
-                <div className="text-sm text-(--color-foreground-faint)">
+                <div className="text-sm text-current/70">
                   Add an extra layer of security
                 </div>
               </div>

@@ -111,7 +111,7 @@ export const WithCards: Story = {
             <CardTitle>Overview</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-foreground-faint)">
+            <p className="text-sm text-current/70">
               This is the overview tab content. Here you can see a summary of
               your account.
             </p>
@@ -125,7 +125,7 @@ export const WithCards: Story = {
             <CardTitle>Analytics</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-foreground-faint)">
+            <p className="text-sm text-current/70">
               View your analytics and performance metrics here.
             </p>
           </CardContent>
@@ -138,7 +138,7 @@ export const WithCards: Story = {
             <CardTitle>Reports</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-foreground-faint)">
+            <p className="text-sm text-current/70">
               Generate and download reports from this section.
             </p>
           </CardContent>
@@ -151,7 +151,7 @@ export const WithCards: Story = {
             <CardTitle>Notifications</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-foreground-faint)">
+            <p className="text-sm text-current/70">
               Manage your notification preferences here.
             </p>
           </CardContent>
@@ -288,9 +288,7 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-foreground-faint)">
-          Small (sm)
-        </h3>
+        <h3 className="text-sm font-medium text-current/70">Small (sm)</h3>
         <Tabs defaultValue="tab1" className="w-[425px]">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="tab1" size="sm">
@@ -310,7 +308,7 @@ export const Sizes: Story = {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-foreground-faint)">
+        <h3 className="text-sm font-medium text-current/70">
           Medium (md) - Default
         </h3>
         <Tabs defaultValue="tab1" className="w-[425px]">
@@ -332,9 +330,7 @@ export const Sizes: Story = {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-foreground-faint)">
-          Large (lg)
-        </h3>
+        <h3 className="text-sm font-medium text-current/70">Large (lg)</h3>
         <Tabs defaultValue="tab1" className="w-[425px]">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="tab1" size="lg">

@@ -61,7 +61,7 @@ export const Dashboard: Story = {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-(--color-foreground-faint)">
+              <CardTitle className="text-sm font-medium text-current/70">
                 Total Revenue
               </CardTitle>
             </CardHeader>
@@ -75,7 +75,7 @@ export const Dashboard: Story = {
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-(--color-foreground-faint)">
+              <CardTitle className="text-sm font-medium text-current/70">
                 Subscriptions
               </CardTitle>
             </CardHeader>
@@ -89,7 +89,7 @@ export const Dashboard: Story = {
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-(--color-foreground-faint)">
+              <CardTitle className="text-sm font-medium text-current/70">
                 Sales
               </CardTitle>
             </CardHeader>
@@ -103,7 +103,7 @@ export const Dashboard: Story = {
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-(--color-foreground-faint)">
+              <CardTitle className="text-sm font-medium text-current/70">
                 Active Now
               </CardTitle>
             </CardHeader>
@@ -123,15 +123,13 @@ export const Dashboard: Story = {
             <Card>
               <CardHeader>
                 <CardTitle>Analytics Overview</CardTitle>
-                <p className="text-sm text-(--color-foreground-faint)">
+                <p className="text-sm text-current/70">
                   Your performance metrics for the last 30 days
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="h-75 bg-(--color-background-muted) rounded flex items-center justify-center">
-                  <p className="text-(--color-foreground-faint)">
-                    Chart Component Placeholder
-                  </p>
+                <div className="h-75 bg-current/5 rounded flex items-center justify-center">
+                  <p className="text-current/70">Chart Component Placeholder</p>
                 </div>
               </CardContent>
             </Card>
@@ -169,15 +167,11 @@ export const Dashboard: Story = {
                         .join("")}
                     </Avatar>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-(--color-foreground-default)">
-                        {activity.user}
-                      </p>
-                      <p className="text-sm text-(--color-foreground-faint)">
+                      <p className="text-sm font-medium">{activity.user}</p>
+                      <p className="text-sm text-current/70">
                         {activity.action}
                       </p>
-                      <p className="text-xs text-(--color-foreground-faint)">
-                        {activity.time}
-                      </p>
+                      <p className="text-xs text-current/70">{activity.time}</p>
                     </div>
                   </div>
                 ))}
@@ -197,7 +191,7 @@ export const SettingsPage: Story = {
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Settings</h1>
-          <p className="mt-2 text-(--color-foreground-faint)">
+          <p className="mt-2 text-current/70">
             Manage your account settings and preferences.
           </p>
         </div>
@@ -230,7 +224,7 @@ export const SettingsPage: Story = {
             <Card>
               <CardHeader>
                 <CardTitle>General Settings</CardTitle>
-                <p className="text-sm text-(--color-foreground-faint)">
+                <p className="text-sm text-current/70">
                   Update your account information and preferences.
                 </p>
               </CardHeader>
@@ -281,13 +275,13 @@ export const SettingsPage: Story = {
 
 export const LandingPage: Story = {
   render: () => (
-    <div className="min-h-screen bg-(--color-background-default)">
+    <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-(--color-border-default)">
+      <header className="border-b border-current/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-(--color-foreground-primary-muted)">
+              <span className="text-xl font-bold text-blue-700 dark:text-blue-400">
                 WylieDog
               </span>
             </div>
@@ -307,16 +301,16 @@ export const LandingPage: Story = {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-(--color-background-muted)">
+      <section className="py-20 bg-current/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-(--color-foreground-default) mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Build Better
-            <span className="text-(--color-foreground-primary-muted)">
+            <span className="text-blue-700 dark:text-blue-400">
               {" "}
               Design Systems
             </span>
           </h1>
-          <p className="text-xl text-(--color-foreground-faint) mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-current/70 mb-8 max-w-3xl mx-auto">
             Create consistent, accessible, and beautiful user interfaces with
             our modern design system built on cutting-edge OKLCH color science.
           </p>
@@ -333,10 +327,10 @@ export const LandingPage: Story = {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-(--color-foreground-default) mb-4">
+            <h2 className="text-3xl font-bold mb-4">
               Everything you need to build at scale
             </h2>
-            <p className="text-lg text-(--color-foreground-faint) max-w-2xl mx-auto">
+            <p className="text-lg text-current/70 max-w-2xl mx-auto">
               Our design system provides all the tools and components you need
               to create consistent user experiences.
             </p>
@@ -369,9 +363,7 @@ export const LandingPage: Story = {
                   <h3 className="text-xl font-semibold mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-(--color-foreground-faint)">
-                    {feature.description}
-                  </p>
+                  <p className="text-current/70">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -380,12 +372,10 @@ export const LandingPage: Story = {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-(--color-background-muted)">
+      <section className="py-20 bg-current/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-(--color-foreground-default) mb-4">
-            Ready to get started?
-          </h2>
-          <p className="text-lg text-(--color-foreground-faint) mb-8">
+          <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
+          <p className="text-lg text-current/70 mb-8">
             Join thousands of developers already building with Wylie Dog Design
             System.
           </p>
@@ -398,7 +388,7 @@ export const LandingPage: Story = {
 
 export const UserProfile: Story = {
   render: () => (
-    <div className=" bg-(--color-background-muted)">
+    <div className="bg-current/5">
       <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         {/* Profile Header */}
         <Card className="mb-8">
@@ -406,13 +396,9 @@ export const UserProfile: Story = {
             <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
               <Avatar className="h-24 w-24 text-2xl">JD</Avatar>
               <div className="text-center sm:text-left flex-1">
-                <h1 className="text-2xl font-bold text-(--color-foreground-default)">
-                  John Doe
-                </h1>
-                <p className="text-(--color-foreground-faint)">
-                  Senior Product Designer
-                </p>
-                <p className="text-sm text-(--color-foreground-faint) mt-1">
+                <h1 className="text-2xl font-bold">John Doe</h1>
+                <p className="text-current/70">Senior Product Designer</p>
+                <p className="text-sm text-current/70 mt-1">
                   San Francisco, CA
                 </p>
                 <div className="flex flex-wrap gap-2 mt-3 justify-center sm:justify-start">
@@ -439,7 +425,7 @@ export const UserProfile: Story = {
                 <CardTitle>About</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-(--color-foreground-faint)">
+                <p className="text-current/70">
                   Passionate product designer with 8+ years of experience
                   creating user-centered digital experiences. Specialized in
                   design systems, accessibility, and modern web technologies.
@@ -470,12 +456,9 @@ export const UserProfile: Story = {
                     status: "Planning",
                   },
                 ].map((project, index) => (
-                  <div
-                    key={index}
-                    className="border-l-4 border-(--color-border-primary) pl-4"
-                  >
+                  <div key={index} className="border-l-4 border-blue-500 pl-4">
                     <h4 className="font-semibold">{project.name}</h4>
-                    <p className="text-sm text-(--color-foreground-faint) mb-1">
+                    <p className="text-sm text-current/70 mb-1">
                       {project.description}
                     </p>
                     <Badge
@@ -503,21 +486,15 @@ export const UserProfile: Story = {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-(--color-foreground-faint)">
-                    Projects
-                  </span>
+                  <span className="text-current/70">Projects</span>
                   <span className="font-semibold">24</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-(--color-foreground-faint)">
-                    Followers
-                  </span>
+                  <span className="text-current/70">Followers</span>
                   <span className="font-semibold">1.2k</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-(--color-foreground-faint)">
-                    Following
-                  </span>
+                  <span className="text-current/70">Following</span>
                   <span className="font-semibold">387</span>
                 </div>
               </CardContent>

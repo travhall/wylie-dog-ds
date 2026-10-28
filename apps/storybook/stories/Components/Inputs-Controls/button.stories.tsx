@@ -166,9 +166,7 @@ export const ButtonGroup: Story = {
   render: () => (
     <div className="space-y-6">
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
-          Action Group
-        </h4>
+        <h4 className="text-sm font-medium text-current/70">Action Group</h4>
         <div className="flex gap-2">
           <Button>Save</Button>
           <Button variant="ghost">Cancel</Button>
@@ -176,7 +174,7 @@ export const ButtonGroup: Story = {
       </div>
 
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
+        <h4 className="text-sm font-medium text-current/70">
           Navigation Group
         </h4>
         <div className="flex gap-2">
@@ -188,9 +186,7 @@ export const ButtonGroup: Story = {
       </div>
 
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
-          Toolbar
-        </h4>
+        <h4 className="text-sm font-medium text-current/70">Toolbar</h4>
         <div className="flex gap-1">
           <Button variant="ghost" size="sm">
             Edit
