@@ -24,11 +24,11 @@ export default function ArchitecturePage() {
                     "color-mix(in oklch, var(--color-background-default) 60%, transparent)",
                 }}
               >
-                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-muted)">
+                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
                   01 · Architecture
                 </span>
                 <span className="text-(--color-foreground-faint)">·</span>
-                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   pnpm workspaces
                 </span>
               </div>
@@ -85,7 +85,7 @@ export default function ArchitecturePage() {
                   },
                 ].map((s) => (
                   <div key={s.label}>
-                    <dt className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                    <dt className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                       {s.label}
                     </dt>
                     <dd className="mt-1 flex items-baseline gap-1">
@@ -104,7 +104,7 @@ export default function ArchitecturePage() {
             {/* Right: dependency graph */}
             <div className="lg:col-span-7">
               <div className="relative">
-                <div className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-muted)">
+                <div className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
                   <svg
                     viewBox="0 0 24 24"
                     className="h-3 w-3"
@@ -178,7 +178,7 @@ export default function ArchitecturePage() {
                       >
                         <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-default) p-3 shadow-sm">
                           <div className="flex items-center justify-between">
-                            <span className="inline-flex items-center gap-1.5 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                            <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
                                 style={{
@@ -187,14 +187,14 @@ export default function ArchitecturePage() {
                               />
                               App
                             </span>
-                            <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                            <span className="font-mono text-xs text-(--color-foreground-faint)">
                               {meta.versions.storybook}
                             </span>
                           </div>
                           <p className="mt-1.5 text-sm font-semibold text-(--color-foreground-default)">
                             apps/storybook
                           </p>
-                          <p className="font-mono text-[0.625rem] text-(--color-foreground-muted) mt-0.5">
+                          <p className="font-mono text-xs text-(--color-foreground-muted) mt-0.5">
                             component docs
                           </p>
                         </div>
@@ -207,21 +207,21 @@ export default function ArchitecturePage() {
                       >
                         <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-default) p-3 shadow-sm">
                           <div className="flex items-center justify-between">
-                            <span className="inline-flex items-center gap-1.5 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                            <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
                                 style={{ background: "var(--color-blue-400)" }}
                               />
                               App
                             </span>
-                            <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                            <span className="font-mono text-xs text-(--color-foreground-faint)">
                               Next.js 16
                             </span>
                           </div>
                           <p className="mt-1.5 text-sm font-semibold text-(--color-foreground-default)">
                             apps/showcase
                           </p>
-                          <p className="font-mono text-[0.625rem] text-(--color-foreground-muted) mt-0.5">
+                          <p className="font-mono text-xs text-(--color-foreground-muted) mt-0.5">
                             this site
                           </p>
                         </div>
@@ -241,7 +241,7 @@ export default function ArchitecturePage() {
                         >
                           <div className="flex items-center justify-between">
                             <span
-                              className="inline-flex items-center gap-1.5 font-mono text-[0.625rem] uppercase tracking-wider"
+                              className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider"
                               style={{
                                 color: "var(--color-foreground-primary-muted)",
                               }}
@@ -254,14 +254,14 @@ export default function ArchitecturePage() {
                               />
                               Package · components
                             </span>
-                            <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                            <span className="font-mono text-xs text-(--color-foreground-faint)">
                               v{meta.versions.ui}
                             </span>
                           </div>
                           <p className="mt-1.5 text-sm font-semibold text-(--color-foreground-default)">
                             packages/ui
                           </p>
-                          <p className="font-mono text-[0.625rem] text-(--color-foreground-muted) mt-0.5">
+                          <p className="font-mono text-xs text-(--color-foreground-muted) mt-0.5">
                             42 React components on Radix
                           </p>
                         </div>
@@ -274,7 +274,7 @@ export default function ArchitecturePage() {
                       >
                         <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-3.5 shadow-sm">
                           <div className="flex items-center justify-between">
-                            <span className="inline-flex items-center gap-1.5 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                            <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
                                 style={{
@@ -283,14 +283,14 @@ export default function ArchitecturePage() {
                               />
                               Package · tokens
                             </span>
-                            <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                            <span className="font-mono text-xs text-(--color-foreground-faint)">
                               v{meta.versions.tokens}
                             </span>
                           </div>
                           <p className="mt-1.5 text-sm font-semibold text-(--color-foreground-default)">
                             packages/tokens
                           </p>
-                          <p className="font-mono text-[0.625rem] text-(--color-foreground-muted) mt-0.5">
+                          <p className="font-mono text-xs text-(--color-foreground-muted) mt-0.5">
                             {meta.tokens.total} OKLCH design tokens
                           </p>
                         </div>
@@ -302,10 +302,10 @@ export default function ArchitecturePage() {
                         style={{ bottom: "24%", right: "1%", width: "18%" }}
                       >
                         <div className="rounded-md border border-dashed border-(--color-border-default) bg-(--color-background-default)/70 p-2">
-                          <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                          <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                             Figma plugin
                           </p>
-                          <p className="text-[0.6875rem] font-semibold mt-0.5 leading-tight text-(--color-foreground-default)">
+                          <p className="text-xs font-semibold mt-0.5 leading-tight text-(--color-foreground-default)">
                             Token Bridge
                           </p>
                         </div>
@@ -314,7 +314,7 @@ export default function ArchitecturePage() {
                   </div>
 
                   {/* Legend */}
-                  <div className="mt-6 pt-4 border-t border-(--color-border-default) flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <div className="mt-6 pt-4 border-t border-(--color-border-default) flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     <span className="inline-flex items-center gap-1.5">
                       <span
                         className="inline-block h-px w-6"
@@ -348,7 +348,7 @@ export default function ArchitecturePage() {
                   </div>
                 </div>
 
-                <div className="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-muted)">
+                <div className="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
                   4 nodes · 3 edges
                 </div>
               </div>
@@ -365,7 +365,7 @@ export default function ArchitecturePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10 mb-12">
             <div className="lg:col-span-5">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 01 · Workspaces
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -388,10 +388,10 @@ export default function ArchitecturePage() {
             <aside className="lg:col-span-4">
               <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                  <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Repo layout
                   </p>
-                  <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                  <span className="font-mono text-xs text-(--color-foreground-faint)">
                     pnpm-workspace.yaml
                   </span>
                 </div>
@@ -470,7 +470,7 @@ export default function ArchitecturePage() {
                         {row.name}
                       </span>
                       {row.badge && (
-                        <span className="ml-auto font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                        <span className="ml-auto font-mono text-xs text-(--color-foreground-faint)">
                           {row.badge}
                         </span>
                       )}
@@ -479,10 +479,10 @@ export default function ArchitecturePage() {
                 </div>
 
                 <div className="mt-5">
-                  <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) mb-2">
+                  <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-2">
                     pnpm-workspace.yaml
                   </p>
-                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-muted) p-3 font-mono text-[0.6875rem] leading-relaxed">
+                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-muted) p-3 font-mono text-xs leading-relaxed">
                     <div className="text-(--color-foreground-muted)">
                       <span
                         style={{
@@ -660,7 +660,7 @@ export default function ArchitecturePage() {
                         </h3>
                       </div>
                     </div>
-                    <span className="font-mono text-[0.625rem] text-(--color-foreground-faint) mt-1">
+                    <span className="font-mono text-xs text-(--color-foreground-faint) mt-1">
                       {card.version}
                     </span>
                   </header>
@@ -669,7 +669,7 @@ export default function ArchitecturePage() {
                     {card.desc}
                   </p>
 
-                  <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-[0.6875rem]">
+                  <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-xs">
                     {card.meta.map(([k, v]) => (
                       <React.Fragment key={k}>
                         <dt className="font-mono uppercase tracking-wider text-(--color-foreground-faint)">
@@ -680,7 +680,7 @@ export default function ArchitecturePage() {
                     ))}
                   </dl>
 
-                  <footer className="pt-4 border-t border-(--color-border-default) mt-5 flex items-center gap-2 text-[0.6875rem] font-mono text-(--color-foreground-faint)">
+                  <footer className="pt-4 border-t border-(--color-border-default) mt-5 flex items-center gap-2 text-xs font-mono text-(--color-foreground-faint)">
                     {card.footerDot && (
                       <span
                         className="h-1.5 w-1.5 rounded-full"
@@ -703,7 +703,7 @@ export default function ArchitecturePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10 mb-10">
             <div className="lg:col-span-5">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 02 · Token pipeline
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -734,7 +734,7 @@ export default function ArchitecturePage() {
                 path: "packages/tokens/io/sync/",
                 title: "primitive.json (excerpt)",
                 content: (
-                  <div className="mt-3 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 font-mono text-[0.6875rem] leading-relaxed">
+                  <div className="mt-3 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 font-mono text-xs leading-relaxed">
                     {[
                       { indent: 0, rest: "{" },
                       { indent: 1, key: "primitive", rest: ": {" },
@@ -777,7 +777,7 @@ export default function ArchitecturePage() {
                 path: "style-dictionary.config.js",
                 title: "build pipeline",
                 content: (
-                  <ul className="mt-3 space-y-2 text-[0.6875rem] font-mono">
+                  <ul className="mt-3 space-y-2 text-xs font-mono">
                     {[
                       "parse JSON refs",
                       "resolve alias chains",
@@ -786,7 +786,7 @@ export default function ArchitecturePage() {
                     ].map((step, i) => (
                       <li key={step} className="flex items-center gap-2">
                         <span
-                          className="grid h-4 w-4 place-items-center rounded text-[0.625rem]"
+                          className="grid h-4 w-4 place-items-center rounded text-xs"
                           style={{
                             background:
                               "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
@@ -820,7 +820,7 @@ export default function ArchitecturePage() {
                 path: "packages/tokens/dist/",
                 title: "tokens.css",
                 content: (
-                  <div className="mt-3 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 font-mono text-[0.6875rem] leading-relaxed">
+                  <div className="mt-3 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 font-mono text-xs leading-relaxed">
                     <div className="text-(--color-foreground-faint) italic">
                       {"/* primitive */"}
                     </div>
@@ -888,7 +888,7 @@ export default function ArchitecturePage() {
                 title: "Button.tsx",
                 content: (
                   <div className="mt-3">
-                    <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 font-mono text-[0.6875rem] leading-relaxed">
+                    <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 font-mono text-xs leading-relaxed">
                       <div className="text-(--color-foreground-muted)">
                         {"<"}button
                       </div>
@@ -925,7 +925,7 @@ export default function ArchitecturePage() {
                       </div>
                     </div>
                     <div className="mt-2 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3">
-                      <p className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) mb-2">
+                      <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-2">
                         render
                       </p>
                       <Button size="sm">Save changes</Button>
@@ -939,10 +939,10 @@ export default function ArchitecturePage() {
                 key={stage.stage}
                 className="relative rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 pt-7"
               >
-                <div className="absolute -top-2.5 left-4 px-2 py-0.5 bg-(--color-background-default) border border-(--color-border-default) rounded-full font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                <div className="absolute -top-2.5 left-4 px-2 py-0.5 bg-(--color-background-default) border border-(--color-border-default) rounded-full font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   {stage.stage}
                 </div>
-                <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                <span className="font-mono text-xs text-(--color-foreground-faint)">
                   {stage.path}
                 </span>
                 <h3 className="mt-1 font-semibold text-sm text-(--color-foreground-default)">
@@ -950,7 +950,7 @@ export default function ArchitecturePage() {
                 </h3>
                 {stage.content}
                 {stage.footer && (
-                  <div className="mt-3 flex items-center gap-2 text-[0.6875rem] font-mono text-(--color-foreground-faint)">
+                  <div className="mt-3 flex items-center gap-2 text-xs font-mono text-(--color-foreground-faint)">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3"
@@ -983,7 +983,7 @@ export default function ArchitecturePage() {
               ],
             ].map(([label, desc]) => (
               <div key={label}>
-                <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+                <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   {label}
                 </p>
                 <p className="mt-2 text-sm text-(--color-foreground-muted) leading-relaxed">
@@ -1003,7 +1003,7 @@ export default function ArchitecturePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10 mb-10">
             <div className="lg:col-span-5">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 03 · Build flow
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -1054,13 +1054,13 @@ export default function ArchitecturePage() {
                     />
                   </div>
                   <span
-                    className="ml-2 font-mono text-[0.6875rem]"
+                    className="ml-2 font-mono text-xs"
                     style={{ color: "var(--color-gray-400)" }}
                   >
                     ~/wyliedog · main
                   </span>
                   <span
-                    className="ml-auto font-mono text-[0.625rem]"
+                    className="ml-auto font-mono text-xs"
                     style={{ color: "var(--color-gray-400)" }}
                   >
                     zsh
@@ -1172,7 +1172,7 @@ export default function ArchitecturePage() {
             {/* Build flowchart */}
             <div className="lg:col-span-7">
               <div className="rounded-2xl border border-(--color-border-default) bg-(--color-background-default) p-6 shadow-sm">
-                <p className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint) mb-5">
+                <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-5">
                   Build dependency graph
                 </p>
                 <div className="relative">
@@ -1225,7 +1225,7 @@ export default function ArchitecturePage() {
                           <h3 className="font-semibold text-(--color-foreground-default)">
                             {step.title}
                           </h3>
-                          <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                          <span className="font-mono text-xs text-(--color-foreground-faint)">
                             {step.meta}
                           </span>
                         </div>
@@ -1247,7 +1247,7 @@ export default function ArchitecturePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10 mb-12">
             <div className="lg:col-span-5">
-              <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 04 · Component layer
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
@@ -1297,13 +1297,13 @@ export default function ArchitecturePage() {
                     />
                   </div>
                   <span
-                    className="ml-2 font-mono text-[0.6875rem]"
+                    className="ml-2 font-mono text-xs"
                     style={{ color: "var(--color-gray-400)" }}
                   >
                     Button.tsx
                   </span>
                 </div>
-                <div className="px-4 py-4 font-mono text-[0.6875rem] leading-[1.8] overflow-x-auto">
+                <div className="px-4 py-4 font-mono text-xs leading-[1.8] overflow-x-auto">
                   <div>
                     <span style={{ color: "var(--color-blue-400)" }}>
                       import

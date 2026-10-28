@@ -32,7 +32,7 @@ export function HeroPreview() {
   return (
     <div className="relative">
       {/* floating tag */}
-      <div className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-muted)">
+      <div className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
         <svg
           viewBox="0 0 24 24"
           className="h-3 w-3"
@@ -134,7 +134,7 @@ export function HeroPreview() {
             <CardContent className="p-0 flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold">Auto-deploy</p>
-                <p className="text-[0.6875rem] text-(--color-foreground-faint)">
+                <p className="text-xs text-(--color-foreground-faint)">
                   on merge to main
                 </p>
               </div>
@@ -171,7 +171,7 @@ export function HeroPreview() {
       </div>
 
       {/* Corner annotation */}
-      <div className="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-muted)">
+      <div className="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
         7 components rendered
       </div>
     </div>

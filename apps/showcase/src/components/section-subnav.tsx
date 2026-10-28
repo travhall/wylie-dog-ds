@@ -66,19 +66,19 @@ export function SectionSubnav({
                   : undefined
               }
             >
-              <span className="font-mono text-[0.625rem] uppercase tracking-wider text-(--color-foreground-faint) mr-0.5">
+              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mr-0.5">
                 {item.n}
               </span>
               {item.label}
               {item.count !== undefined && (
-                <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
+                <span className="font-mono text-xs text-(--color-foreground-faint)">
                   {item.count}
                 </span>
               )}
             </a>
           ))}
           {meta && (
-            <span className="ml-auto hidden md:flex font-mono text-[0.6875rem] text-(--color-foreground-faint) shrink-0 pl-4">
+            <span className="ml-auto hidden md:flex font-mono text-xs text-(--color-foreground-faint) shrink-0 pl-4">
               {meta}
             </span>
           )}

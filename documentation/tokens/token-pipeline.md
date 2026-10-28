@@ -147,6 +147,8 @@ Front-end code follows the same rule: `pnpm check:units` fails on px literals fo
 
 Decisions (owner, 2026-10-25): radius converts to rem with `full` left in px; focus dimensions stay px; the units check fails for UI and showcase and warns for stories; the showcase's sub-12px text converts to its exact rem equivalent now (11px is `0.6875rem`), with sub-12px text recorded as an accessibility follow-up; token pages show rem and px together.
 
+Decisions (owner, 2026-10-27, Plan 212): real showcase content is never below `0.75rem` (the `xs` token size), written `text-xs`; mock UI previews (miniature dashboards, chips and cards that imitate the product at reduced scale) keep their tiny sizes and are marked `data-mock`, or are the `preview` prop of a pattern or component card. A preview with no focusable control is also `aria-hidden`; one with live controls (Button, Switch, links) stays keyboard-reachable and is only marked `data-mock`. `pnpm check:units` fails on any `text-[Nrem]` below `0.75rem` in `apps/showcase/src` outside a mock preview, with file and line. Measured on the built showcase at 1280 pixels (text nodes under 12px, Light): `/` 112 to 11, `/components` 268 to 175, `/patterns` 311 to 165, `/tokens` 250 to 38, every other route to 0; all that remain sit inside marked previews.
+
 ## Resolution chain
 
 Component tokens alias semantic tokens, which alias primitives, which hold the value:

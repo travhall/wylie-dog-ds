@@ -58,7 +58,7 @@ export default function TypographyPage() {
       <div className="space-y-4">
         <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6 space-y-4">
           <div>
-            <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+            <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
               Families and sizes
             </h2>
           </div>
@@ -74,7 +74,7 @@ export default function TypographyPage() {
                   <tr className="border-b border-(--color-border-default)">
                     <th
                       scope="col"
-                      className="pb-3 pr-4 text-[0.625rem] font-mono uppercase tracking-wider text-(--color-foreground-faint)"
+                      className="pb-3 pr-4 text-xs font-mono uppercase tracking-wider text-(--color-foreground-faint)"
                     >
                       Size
                     </th>
@@ -82,7 +82,7 @@ export default function TypographyPage() {
                       <th
                         key={f.name}
                         scope="col"
-                        className="pb-3 px-4 text-[0.625rem] font-mono uppercase tracking-wider text-(--color-foreground-faint)"
+                        className="pb-3 px-4 text-xs font-mono uppercase tracking-wider text-(--color-foreground-faint)"
                       >
                         {f.name} · {f.value}
                       </th>
@@ -102,10 +102,10 @@ export default function TypographyPage() {
                         <div className="text-sm text-(--color-foreground-default)">
                           {s.name}
                         </div>
-                        <div className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
+                        <div className="text-xs font-mono text-(--color-foreground-faint)">
                           {formatSize(s.value)}
                         </div>
-                        <div className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
+                        <div className="text-xs font-mono text-(--color-foreground-faint)">
                           fontSize: {s.var}
                         </div>
                       </th>
@@ -136,7 +136,7 @@ export default function TypographyPage() {
 
         <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6 space-y-8">
           <div>
-            <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint)">
+            <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
               Attributes
             </h2>
           </div>
@@ -153,7 +153,7 @@ export default function TypographyPage() {
                   >
                     {w.name}
                   </span>
-                  <span className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
+                  <span className="text-xs font-mono text-(--color-foreground-faint)">
                     {w.value}
                   </span>
                 </div>
@@ -171,7 +171,7 @@ export default function TypographyPage() {
                   <span className="text-sm text-(--color-foreground-default)">
                     {lh.name}
                   </span>
-                  <span className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
+                  <span className="text-xs font-mono text-(--color-foreground-faint)">
                     {lh.value}
                   </span>
                 </div>

@@ -40,10 +40,10 @@ export default function SpacingPage() {
       <SpacingDemo />
 
       <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 max-w-sm">
-        <h2 className="font-mono text-[0.6875rem] uppercase tracking-wider text-(--color-foreground-faint) mb-2">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-2">
           Composed tokens
         </h2>
-        <div className="space-y-1 font-mono text-[0.625rem] text-(--color-foreground-faint)">
+        <div className="space-y-1 font-mono text-xs text-(--color-foreground-faint)">
           {composedSpacingTokens.map((t) => (
             <p key={t}>{t}</p>
           ))}
@@ -57,7 +57,7 @@ export default function SpacingPage() {
               <div className="text-sm font-bold text-(--color-foreground-default)">
                 {s.name}
               </div>
-              <div className="text-[0.625rem] font-mono text-(--color-foreground-faint)">
+              <div className="text-xs font-mono text-(--color-foreground-faint)">
                 {formatSize(s.value)}
               </div>
             </div>

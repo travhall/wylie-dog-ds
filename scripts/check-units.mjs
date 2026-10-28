@@ -9,15 +9,25 @@
 // background sizes and transforms (decorative geometry, not text-relative sizes);
 // media-query breakpoints; test files; prose. Everything else needs an entry in
 // scripts/check-units.config.json with a reason.
+//
+// Plan 212: text in apps/showcase/src is never below 0.75rem (the xs token size)
+// unless it sits inside a mock UI preview: an element with a `data-mock` attribute,
+// or the `preview` prop / property of a card. Mock previews imitate the product at
+// reduced scale and are not meant to be read.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
   fs.readFileSync(path.join(root, "scripts/check-units.config.json"), "utf8")
 );
 const list = process.argv.includes("--list");
+const ts = createRequire(path.join(root, "package.json"))("typescript");
+
+const MIN_TEXT_REM = 0.75;
+const MIN_TEXT_DIR = "apps/showcase/src";
 
 const FAIL_DIRS = ["packages/ui/src", "apps/showcase/src"];
 const WARN_DIRS = ["apps/storybook/stories"];
@@ -119,8 +129,64 @@ function scan(file) {
   return out;
 }
 
+// text-[0.6875rem] and friends, outside a mock preview (JSX `data-mock` element or
+// a `preview` prop / property).
+function scanMinText(file) {
+  const out = [];
+  const source = fs.readFileSync(path.join(root, file), "utf8");
+  const sf = ts.createSourceFile(
+    file,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TSX
+  );
+  const isMockAttrs = (attrs) =>
+    attrs.properties.some((p) => p.name?.getText() === "data-mock");
+  const visit = (node, mock) => {
+    if (
+      (ts.isJsxAttribute(node) || ts.isPropertyAssignment(node)) &&
+      node.name.getText() === "preview"
+    )
+      mock = true;
+    if (ts.isJsxElement(node) && isMockAttrs(node.openingElement.attributes))
+      mock = true;
+    if (ts.isJsxSelfClosingElement(node) && isMockAttrs(node.attributes))
+      mock = true;
+    if (
+      !mock &&
+      (ts.isStringLiteralLike(node) ||
+        ts.isTemplateHead(node) ||
+        ts.isTemplateMiddle(node) ||
+        ts.isTemplateTail(node))
+    ) {
+      const text = node.getText();
+      for (const m of text.matchAll(/text-\[(\d*\.?\d+)rem\]/g)) {
+        if (Number(m[1]) >= MIN_TEXT_REM) continue;
+        const pos = node.getStart() + m.index;
+        const line = sf.getLineAndCharacterOfPosition(pos).line + 1;
+        if (!allowed(file, source.split("\n")[line - 1]))
+          out.push({
+            file,
+            line,
+            match: m[0],
+            why: `text under ${MIN_TEXT_REM}rem outside a mock preview: use text-xs or mark the preview with data-mock`,
+          });
+      }
+    }
+    ts.forEachChild(node, (c) => visit(c, mock));
+  };
+  visit(sf, false);
+  return out;
+}
+
 const gather = (dirs) => dirs.flatMap((d) => files(d)).flatMap(scan);
-const failures = gather(FAIL_DIRS);
+const failures = [
+  ...gather(FAIL_DIRS),
+  ...files(MIN_TEXT_DIR)
+    .filter((f) => f.endsWith(".tsx"))
+    .flatMap(scanMinText),
+];
 const warnings = gather(WARN_DIRS);
 
 if (warnings.length) {
@@ -132,7 +198,7 @@ if (warnings.length) {
 }
 if (failures.length) {
   console.error(
-    `Units check failed: ${failures.length} px literal(s) for text size, spacing, sizing or radius:`
+    `Units check failed: ${failures.length} violation(s) for text size, spacing, sizing or radius:`
   );
   failures.forEach((r) =>
     console.error(`  ${r.file}:${r.line}  ${r.match}  (${r.why})`)
@@ -143,5 +209,5 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(
-  `Units OK: no px literals for text size, spacing, sizing or radius in ${FAIL_DIRS.join(" and ")} (${config.allow.length} allowlisted).`
+  `Units OK: no px literals for text size, spacing, sizing or radius in ${FAIL_DIRS.join(" and ")}, and no text under ${MIN_TEXT_REM}rem outside a mock preview in ${MIN_TEXT_DIR} (${config.allow.length} allowlisted).`
 );
