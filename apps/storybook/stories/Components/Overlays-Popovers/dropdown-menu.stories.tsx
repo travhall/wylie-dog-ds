@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -173,14 +173,17 @@ export const WithInteractions: Story = {
     expect(triggerButton).toBeInTheDocument();
     await userEvent.click(triggerButton);
 
-    // Wait for menu animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 3: Menu is visible with all items
-    const profileItem = screen.getByRole("menuitem", { name: /profile/i });
-    const settingsItem = screen.getByRole("menuitem", { name: /settings/i });
-    const billingItem = screen.getByRole("menuitem", { name: /billing/i });
-    const logoutItem = screen.getByRole("menuitem", { name: /logout/i });
+    const profileItem = await screen.findByRole("menuitem", {
+      name: /profile/i,
+    });
+    const settingsItem = await screen.findByRole("menuitem", {
+      name: /settings/i,
+    });
+    const billingItem = await screen.findByRole("menuitem", {
+      name: /billing/i,
+    });
+    const logoutItem = await screen.findByRole("menuitem", { name: /logout/i });
 
     expect(profileItem).toBeInTheDocument();
     expect(settingsItem).toBeInTheDocument();
@@ -207,42 +210,48 @@ export const WithInteractions: Story = {
     // Test 5: Enter key to select
     await userEvent.keyboard("{Enter}");
 
-    // Wait for menu to close
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Menu should be closed after selection
-    const closedMenu = screen.queryByRole("menuitem", { name: /settings/i });
-    expect(closedMenu).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("menuitem", { name: /settings/i })
+      ).not.toBeInTheDocument()
+    );
 
     // Test 6: Open menu again and test Escape key
     await userEvent.click(triggerButton);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedMenu = screen.getByRole("menuitem", { name: /profile/i });
+    const reopenedMenu = await screen.findByRole("menuitem", {
+      name: /profile/i,
+    });
     expect(reopenedMenu).toBeInTheDocument();
 
     // Press Escape to close
     await userEvent.keyboard("{Escape}");
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const escapedMenu = screen.queryByRole("menuitem", { name: /profile/i });
-    expect(escapedMenu).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("menuitem", { name: /profile/i })
+      ).not.toBeInTheDocument()
+    );
 
     // Test 7: Open menu and click an item
     await userEvent.click(triggerButton);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const billingMenuItem = screen.getByRole("menuitem", { name: /billing/i });
+    const billingMenuItem = await screen.findByRole("menuitem", {
+      name: /billing/i,
+    });
     expect(billingMenuItem).toBeInTheDocument();
 
     await userEvent.click(billingMenuItem);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Menu should close after clicking
-    const finalClosedMenu = screen.queryByRole("menuitem", {
-      name: /billing/i,
-    });
-    expect(finalClosedMenu).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("menuitem", {
+          name: /billing/i,
+        })
+      ).not.toBeInTheDocument()
+    );
   },
   parameters: {
     docs: {
@@ -364,8 +373,9 @@ export const WithSubMenuNavigation: Story = {
     const subTrigger = await screen.findByText(/more actions/i);
     expect(subTrigger).toBeInTheDocument();
     await userEvent.hover(subTrigger);
-    await new Promise((r) => setTimeout(r, 300));
-    expect(document.querySelector('[role="menu"]')).toBeInTheDocument();
+    await waitFor(() =>
+      expect(document.querySelector('[role="menu"]')).toBeInTheDocument()
+    );
 
     // Close the (sub)menu so the story settles back to its resting state —
     // Radix aria-hides background content while open, and leaving it open

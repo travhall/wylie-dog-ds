@@ -564,13 +564,11 @@ export const DeleteConfirmation: Story = {
 
     // Test Escape key closes dialog
     await userEvent.keyboard('{Escape}');
-    await sleep(300); // Wait for animation
-    expect(canvas.queryByRole('alertdialog')).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(canvas.queryByRole('alertdialog')).not.toBeInTheDocument()
+    );
   },
 };
-
-// Helper for animations
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 ```
 
 #### Testing Dropdown Menus

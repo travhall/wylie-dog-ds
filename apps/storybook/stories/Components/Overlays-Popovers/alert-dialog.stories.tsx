@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -590,11 +590,8 @@ export const WithInteractions: Story = {
     expect(triggerButton).toBeInTheDocument();
     await userEvent.click(triggerButton);
 
-    // Wait for dialog animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 3: Alert dialog is visible with correct content
-    const openDialog = screen.getByRole("alertdialog");
+    const openDialog = await screen.findByRole("alertdialog");
     expect(openDialog).toBeInTheDocument();
 
     const dialogTitle = screen.getByRole("heading", {
@@ -629,29 +626,25 @@ export const WithInteractions: Story = {
     // Test 5: Escape key closes the dialog
     await userEvent.keyboard("{Escape}");
 
-    // Wait for close animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Dialog should be closed
-    const closedDialog = screen.queryByRole("alertdialog");
-    expect(closedDialog).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument()
+    );
 
     // Test 6: Open again and test cancel button
     await userEvent.click(triggerButton);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedDialog = screen.getByRole("alertdialog");
+    const reopenedDialog = await screen.findByRole("alertdialog");
     expect(reopenedDialog).toBeInTheDocument();
 
     // Click cancel button
     const cancelBtn = screen.getByRole("button", { name: /^cancel$/i });
     await userEvent.click(cancelBtn);
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Verify dialog is closed
-    const finalClosedDialog = screen.queryByRole("alertdialog");
-    expect(finalClosedDialog).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument()
+    );
   },
   parameters: {
     docs: {

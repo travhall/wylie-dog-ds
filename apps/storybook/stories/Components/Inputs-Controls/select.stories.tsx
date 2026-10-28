@@ -494,15 +494,12 @@ export const WithInteractions: Story = {
 
     await userEvent.click(selectTrigger);
 
-    // Wait for select animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 3: Select is open with all options visible
-    const appleOption = screen.getByRole("option", { name: /apple/i });
-    const bananaOption = screen.getByRole("option", { name: /banana/i });
-    const orangeOption = screen.getByRole("option", { name: /orange/i });
-    const grapeOption = screen.getByRole("option", { name: /grape/i });
-    const mangoOption = screen.getByRole("option", { name: /mango/i });
+    const appleOption = await screen.findByRole("option", { name: /apple/i });
+    const bananaOption = await screen.findByRole("option", { name: /banana/i });
+    const orangeOption = await screen.findByRole("option", { name: /orange/i });
+    const grapeOption = await screen.findByRole("option", { name: /grape/i });
+    const mangoOption = await screen.findByRole("option", { name: /mango/i });
 
     expect(appleOption).toBeInTheDocument();
     expect(bananaOption).toBeInTheDocument();
@@ -518,12 +515,12 @@ export const WithInteractions: Story = {
     // Test 5: Select should close after selection
     // (reusing keyboard Enter path below handles the same assertion)
 
-    // Wait for select to close
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Select should be closed
-    const closedOption = screen.queryByRole("option", { name: /banana/i });
-    expect(closedOption).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("option", { name: /banana/i })
+      ).not.toBeInTheDocument()
+    );
 
     // Selected value should be displayed
     const updatedTrigger = canvas.getByRole("combobox");
@@ -531,31 +528,35 @@ export const WithInteractions: Story = {
 
     // Test 6: Open again and test Escape key
     await userEvent.click(updatedTrigger);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedOption = screen.getByRole("option", { name: /apple/i });
+    const reopenedOption = await screen.findByRole("option", {
+      name: /apple/i,
+    });
     expect(reopenedOption).toBeInTheDocument();
 
     // Press Escape to close
     await userEvent.keyboard("{Escape}");
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const escapedOption = screen.queryByRole("option", { name: /apple/i });
-    expect(escapedOption).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("option", { name: /apple/i })
+      ).not.toBeInTheDocument()
+    );
 
     // Test 7: Open and click an option directly
     await userEvent.click(updatedTrigger);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const mangoOpt = screen.getByRole("option", { name: /mango/i });
+    const mangoOpt = await screen.findByRole("option", { name: /mango/i });
     expect(mangoOpt).toBeInTheDocument();
 
     await userEvent.click(mangoOpt);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Select should close and show selected value
-    const finalClosedOption = screen.queryByRole("option", { name: /mango/i });
-    expect(finalClosedOption).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("option", { name: /mango/i })
+      ).not.toBeInTheDocument()
+    );
 
     const finalTrigger = canvas.getByRole("combobox");
     expect(finalTrigger).toHaveTextContent(/mango/i);

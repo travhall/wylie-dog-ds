@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   HoverCard,
   HoverCardContent,
@@ -536,7 +536,11 @@ export const HoverInteraction: Story = {
     );
     expect(content).toBeInTheDocument();
     await userEvent.unhover(trigger);
-    await new Promise((r) => setTimeout(r, 500));
+    await waitFor(() =>
+      expect(
+        screen.queryByText(/Design system by Wylie Dog/i)
+      ).not.toBeInTheDocument()
+    );
   },
   parameters: {
     docs: {
@@ -592,11 +596,8 @@ export const WithInteractions: Story = {
     expect(triggerButton).toBeInTheDocument();
     await userEvent.hover(triggerButton);
 
-    // Wait for open delay (200ms) plus animation
-    await new Promise((resolve) => setTimeout(resolve, 400));
-
     // Test 3: Hover card content is visible after hover
-    cardContent = canvas.getByText(/this is a test hover card/i);
+    cardContent = await canvas.findByText(/this is a test hover card/i);
     expect(cardContent).toBeInTheDocument();
 
     // Test 4: Verify heading is visible
@@ -610,32 +611,29 @@ export const WithInteractions: Story = {
     // Test 6: Unhover to close the card
     await userEvent.unhover(triggerButton);
 
-    // Wait for close delay (100ms) plus animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 7: Hover card content should be hidden after unhover
-    cardContent = canvas.queryByText(/this is a test hover card/i);
-    expect(cardContent).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        canvas.queryByText(/this is a test hover card/i)
+      ).not.toBeInTheDocument()
+    );
 
     // Test 8: Hover again to verify reopening works
     await userEvent.hover(triggerButton);
 
-    // Wait for open delay plus animation
-    await new Promise((resolve) => setTimeout(resolve, 400));
-
     // Content should be visible again
-    cardContent = canvas.getByText(/this is a test hover card/i);
+    cardContent = await canvas.findByText(/this is a test hover card/i);
     expect(cardContent).toBeInTheDocument();
 
     // Test 9: Unhover one more time to verify consistent behavior
     await userEvent.unhover(triggerButton);
 
-    // Wait for close delay plus animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Verify closed state
-    cardContent = canvas.queryByText(/this is a test hover card/i);
-    expect(cardContent).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        canvas.queryByText(/this is a test hover card/i)
+      ).not.toBeInTheDocument()
+    );
   },
   parameters: {
     docs: {

@@ -70,7 +70,7 @@ apps/storybook/
 
 ## Technology Stack
 
-- **Storybook 10.5.5** with React Vite adapter
+- **Storybook 10** with React Vite adapter
 - **React 19** with TypeScript
 - **Tailwind CSS 4** for styling
 - **Radix UI** primitives for accessible components

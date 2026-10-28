@@ -154,9 +154,6 @@ export const WithInteractions: Story = {
     const trigger = canvas.getByText(/right-click to open menu/i);
     await userEvent.pointer({ keys: "[MouseRight]", target: trigger });
 
-    // Wait for the menu to open
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
     // Test 3: Menu is now visible
     const menu = await screen.findByRole("menu");
     expect(menu).toBeInTheDocument();

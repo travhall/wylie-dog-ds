@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, waitFor } from "storybook/test";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@wyliedog/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { Input } from "@wyliedog/ui/input";
@@ -202,11 +202,10 @@ export const WithInteractions: Story = {
     // Test 2: Click profile tab
     await userEvent.click(profileTab);
 
-    // Wait for transition
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Profile tab should be active
-    expect(profileTab).toHaveAttribute("data-state", "active");
+    await waitFor(() =>
+      expect(profileTab).toHaveAttribute("data-state", "active")
+    );
     expect(homeTab).toHaveAttribute("data-state", "inactive");
 
     // Profile content should be visible
@@ -221,9 +220,10 @@ export const WithInteractions: Story = {
 
     // Test 3: Click settings tab
     await userEvent.click(settingsTab);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(settingsTab).toHaveAttribute("data-state", "active");
+    await waitFor(() =>
+      expect(settingsTab).toHaveAttribute("data-state", "active")
+    );
     expect(profileTab).toHaveAttribute("data-state", "inactive");
 
     const settingsContent = canvas.getByText(/manage your settings here/i);
@@ -239,8 +239,7 @@ export const WithInteractions: Story = {
     expect(profileTab).toHaveFocus();
     expect(profileTab).toHaveAttribute("data-state", "active");
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    const profileContent2 = canvas.getByText(
+    const profileContent2 = await canvas.findByText(
       /this is your profile information/i
     );
     expect(profileContent2).toBeInTheDocument();
@@ -250,8 +249,7 @@ export const WithInteractions: Story = {
     expect(homeTab).toHaveFocus();
     expect(homeTab).toHaveAttribute("data-state", "active");
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    const homeContent2 = canvas.getByText(/welcome to the home tab/i);
+    const homeContent2 = await canvas.findByText(/welcome to the home tab/i);
     expect(homeContent2).toBeInTheDocument();
 
     // Arrow Right to profile tab
@@ -264,8 +262,9 @@ export const WithInteractions: Story = {
     expect(settingsTab).toHaveFocus();
     expect(settingsTab).toHaveAttribute("data-state", "active");
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    const settingsContent2 = canvas.getByText(/manage your settings here/i);
+    const settingsContent2 = await canvas.findByText(
+      /manage your settings here/i
+    );
     expect(settingsContent2).toBeInTheDocument();
   },
   parameters: {
