@@ -714,13 +714,15 @@ export const AsyncValidation: Story = {
 
     // Type a taken username and wait for debounce
     await userEvent.type(input, "admin");
-    await new Promise((r) => setTimeout(r, 800));
-    expect(await canvas.findByText("✗ Already taken")).toBeInTheDocument();
+    expect(
+      await canvas.findByText("✗ Already taken", {}, { timeout: 3000 })
+    ).toBeInTheDocument();
 
     // Clear and type an available username
     await userEvent.clear(input);
     await userEvent.type(input, "travishall");
-    await new Promise((r) => setTimeout(r, 800));
-    expect(await canvas.findByText("✓ Available")).toBeInTheDocument();
+    expect(
+      await canvas.findByText("✓ Available", {}, { timeout: 3000 })
+    ).toBeInTheDocument();
   },
 };

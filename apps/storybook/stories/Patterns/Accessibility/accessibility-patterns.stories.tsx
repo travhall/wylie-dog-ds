@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   Dialog,
   DialogTrigger,
@@ -114,9 +114,10 @@ export const FocusManagement: Story = {
     await userEvent.click(openBtn);
 
     // Dialog renders into a portal — use screen to query across the whole document
-    // Wait for dialog animation before querying portal content
-    await new Promise((r) => setTimeout(r, 300));
-    const dialogInput = screen.getByRole("textbox", { name: /your name/i });
+    // Retry until the dialog has rendered into its portal
+    const dialogInput = await screen.findByRole("textbox", {
+      name: /your name/i,
+    });
     expect(dialogInput).toBeInTheDocument();
 
     // Tab through dialog elements (close button → input → cancel → confirm)
@@ -240,9 +241,14 @@ export const LiveRegionAnnouncements: Story = {
     const liveRegion = canvas.getByTestId("live-region");
     expect(liveRegion).toBeInTheDocument();
 
-    // Wait for the save to complete
-    await new Promise((r) => setTimeout(r, 1000));
-    expect(liveRegion.textContent).not.toBe("");
+    // Retry until the save has completed and the region holds the final message
+    await waitFor(
+      () =>
+        expect(liveRegion.textContent).toMatch(
+          /Saved successfully|Error saving/
+        ),
+      { timeout: 3000 }
+    );
   },
 };
 

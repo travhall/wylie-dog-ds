@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
@@ -1081,15 +1081,18 @@ export const WithInteractions: Story = {
     expect(countrySelect).toHaveFocus();
     await userEvent.click(countrySelect);
 
-    // Wait for select animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Select options render in a portal — use screen, not canvas
-    const usOption = screen.getByRole("option", { name: /united states/i });
+    const usOption = await screen.findByRole("option", {
+      name: /united states/i,
+    });
     await userEvent.click(usOption);
 
-    // Wait for select to close
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    // Select closes after the choice
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("option", { name: /united states/i })
+      ).not.toBeInTheDocument()
+    );
 
     // Test 7: Navigate to radio group and select option
     const emailRadio = canvas.getByRole("radio", { name: /email only/i });
