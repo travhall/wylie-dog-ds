@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, waitFor } from "storybook/test";
 import {
   Collapsible,
   CollapsibleContent,
@@ -555,11 +555,10 @@ export const WithInteractions: Story = {
 
     await userEvent.click(triggerButton);
 
-    // Wait for animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 3: Collapsible is expanded, content is visible
-    expect(triggerButton).toHaveAttribute("data-state", "open");
+    await waitFor(() =>
+      expect(triggerButton).toHaveAttribute("data-state", "open")
+    );
 
     const packageFile = canvas.getByText(/package\.json/i);
     const tsconfigFile = canvas.getByText(/tsconfig\.json/i);
@@ -571,36 +570,39 @@ export const WithInteractions: Story = {
 
     // Test 4: Click to collapse
     await userEvent.click(triggerButton);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(triggerButton).toHaveAttribute("data-state", "closed");
+    await waitFor(() =>
+      expect(triggerButton).toHaveAttribute("data-state", "closed")
+    );
 
     // Hidden files should not be visible
-    const hiddenFile2 = canvas.queryByText(/package\.json/i);
-    if (hiddenFile2) {
-      expect(hiddenFile2).not.toBeVisible();
-    }
+    await waitFor(() => {
+      const file = canvas.queryByText(/package\.json/i);
+      if (file) expect(file).not.toBeVisible();
+    });
 
     // Test 5: Test Enter key to expand
     triggerButton.focus();
     expect(triggerButton).toHaveFocus();
 
     await userEvent.keyboard("{Enter}");
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(triggerButton).toHaveAttribute("data-state", "open");
+    await waitFor(() =>
+      expect(triggerButton).toHaveAttribute("data-state", "open")
+    );
     const expandedFile = canvas.getByText(/package\.json/i);
     expect(expandedFile).toBeVisible();
 
     // Test 6: Test Space key to collapse
     await userEvent.keyboard(" ");
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(triggerButton).toHaveAttribute("data-state", "closed");
-    const collapsedFile = canvas.queryByText(/package\.json/i);
-    if (collapsedFile) {
-      expect(collapsedFile).not.toBeVisible();
-    }
+    await waitFor(() =>
+      expect(triggerButton).toHaveAttribute("data-state", "closed")
+    );
+    await waitFor(() => {
+      const file = canvas.queryByText(/package\.json/i);
+      if (file) expect(file).not.toBeVisible();
+    });
   },
   parameters: {
     docs: {

@@ -279,9 +279,7 @@ export const NavigationInteraction: Story = {
     expect(prevBtn).toBeInTheDocument();
     // Navigate forward then back
     await userEvent.click(nextBtn);
-    await new Promise((r) => setTimeout(r, 300));
     await userEvent.click(prevBtn);
-    await new Promise((r) => setTimeout(r, 300));
   },
   parameters: {
     docs: {

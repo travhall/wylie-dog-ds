@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, waitFor } from "storybook/test";
 import {
   Accordion,
   AccordionContent,
@@ -535,11 +535,10 @@ export const WithInteractions: Story = {
 
     await userEvent.click(reactTrigger);
 
-    // Wait for animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // First accordion should be open
-    expect(reactTrigger).toHaveAttribute("data-state", "open");
+    await waitFor(() =>
+      expect(reactTrigger).toHaveAttribute("data-state", "open")
+    );
     const reactContentOpen = canvas.getByText(/react is a javascript library/i);
     expect(reactContentOpen).toBeVisible();
 
@@ -548,9 +547,10 @@ export const WithInteractions: Story = {
       name: /what is typescript/i,
     });
     await userEvent.click(typescriptTrigger);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(typescriptTrigger).toHaveAttribute("data-state", "open");
+    await waitFor(() =>
+      expect(typescriptTrigger).toHaveAttribute("data-state", "open")
+    );
     const typescriptContent = canvas.getByText(
       /typescript is a superset of javascript/i
     );
@@ -567,9 +567,10 @@ export const WithInteractions: Story = {
     expect(tailwindTrigger).toHaveFocus();
 
     await userEvent.keyboard("{Enter}");
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(tailwindTrigger).toHaveAttribute("data-state", "open");
+    await waitFor(() =>
+      expect(tailwindTrigger).toHaveAttribute("data-state", "open")
+    );
     const tailwindContent = canvas.getByText(
       /tailwind css is a utility-first css framework/i
     );
@@ -577,15 +578,17 @@ export const WithInteractions: Story = {
 
     // Test 5: Test Space key to toggle
     await userEvent.keyboard(" ");
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(tailwindTrigger).toHaveAttribute("data-state", "closed");
+    await waitFor(() =>
+      expect(tailwindTrigger).toHaveAttribute("data-state", "closed")
+    );
 
     // Test 6: Open an accordion and close it with click
     await userEvent.click(reactTrigger);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(reactTrigger).toHaveAttribute("data-state", "open");
+    await waitFor(() =>
+      expect(reactTrigger).toHaveAttribute("data-state", "open")
+    );
     const reactContentReopened = canvas.getByText(
       /react is a javascript library/i
     );
@@ -593,9 +596,10 @@ export const WithInteractions: Story = {
 
     // Click again to close
     await userEvent.click(reactTrigger);
-    await new Promise((resolve) => setTimeout(resolve, 300));
 
-    expect(reactTrigger).toHaveAttribute("data-state", "closed");
+    await waitFor(() =>
+      expect(reactTrigger).toHaveAttribute("data-state", "closed")
+    );
   },
   parameters: {
     docs: {
