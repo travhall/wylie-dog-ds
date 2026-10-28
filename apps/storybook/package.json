@@ -10,7 +10,7 @@
     "clean": "rm -rf .turbo node_modules dist",
     "dev": "pnpm build:css && concurrently \"pnpm dev:css:watch\" \"storybook dev -p 6006\"",
     "dev:css:watch": "tailwindcss -i ./src/styles/index.css -o ./dist/storybook.css --watch",
-    "lint": "eslint \"./stories/**/*.stories.tsx\" \"./.storybook/**/*.ts\" \"./.storybook/**/*.tsx\" --max-warnings 0",
+    "lint": "eslint \"./stories/**/*.{ts,tsx}\" \"./.storybook/**/*.ts\" \"./.storybook/**/*.tsx\" --max-warnings 0",
     "preview-storybook": "serve storybook-static",
     "test": "vitest run",
     "test:visual": "playwright test",

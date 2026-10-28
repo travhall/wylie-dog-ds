@@ -2,6 +2,15 @@
   "$schema": "https://v2-10-12.turborepo.dev/schema.json",
   "extends": ["//"],
   "tasks": {
+    "lint": {
+      "inputs": [
+        "stories/**/*.{ts,tsx}",
+        ".storybook/**",
+        "eslint.config.js",
+        "package.json"
+      ],
+      "cache": true
+    },
     "test": {
       "inputs": ["stories/**/*.stories.tsx", ".storybook/**", "vite.config.ts"],
       "cache": true
