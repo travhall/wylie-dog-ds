@@ -232,7 +232,7 @@ export const AllVariants: Story = {
           {["Premium", "Featured", "Spotlight"].map((label, index) => (
             <Card
               key={label}
-              className="bg-linear-to-br from-gray-100 dark:from-gray-900 to-white border-current/20/20 shadow-md hover:shadow-xl transition-all duration-300"
+              className="bg-linear-to-br from-gray-100 dark:from-gray-900 to-white border-current/10 shadow-md hover:shadow-xl transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-center justify-between">
@@ -322,7 +322,7 @@ export const Interactive: Story = {
           ].map((item, index) => (
             <Card
               key={index}
-              className="group cursor-pointer border-current/20/20 hover:border-blue-500/30 hover:shadow-lg transition-all duration-300"
+              className="group cursor-pointer border-current/10 hover:border-blue-500/30 hover:shadow-lg transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-start justify-between">
