@@ -279,15 +279,15 @@ function getStrength(password: string): Strength | null {
 }
 
 const strengthBarColor: Record<Strength, string> = {
-  Weak: "bg-(--color-background-danger)",
-  Fair: "bg-(--color-background-warning)",
-  Strong: "bg-(--color-border-success)",
+  Weak: "bg-red-600",
+  Fair: "bg-amber-500",
+  Strong: "bg-green-600",
 };
 
 const strengthTextColor: Record<Strength, string> = {
-  Weak: "text-(--color-foreground-danger-muted)",
-  Fair: "text-(--color-foreground-warning-muted)",
-  Strong: "text-(--color-foreground-success-muted)",
+  Weak: "text-red-700 dark:text-red-400",
+  Fair: "text-amber-700 dark:text-amber-400",
+  Strong: "text-green-700 dark:text-green-400",
 };
 
 const strengthBarWidth: Record<Strength, string> = {
@@ -343,7 +343,7 @@ function PasswordStrengthComponent() {
         />
         {strength && (
           <div className="space-y-1" aria-live="polite">
-            <div className="h-1.5 w-full rounded-full bg-(--color-background-emphasis)">
+            <div className="h-1.5 w-full rounded-full bg-gray-200 dark:bg-gray-800">
               <div
                 className={`h-full rounded-full transition-all duration-300 ${strengthBarWidth[strength]} ${strengthBarColor[strength]}`}
               />
@@ -466,10 +466,10 @@ function MultiStepValidationComponent() {
   if (done) {
     return (
       <div role="status" className="w-100 space-y-2 text-center p-6">
-        <p className="font-semibold text-(--color-foreground-success-muted)">
+        <p className="font-semibold text-green-700 dark:text-green-400">
           Account created!
         </p>
-        <p className="text-sm text-(--color-foreground-faint)">
+        <p className="text-sm text-current/70">
           Welcome, {step2.firstName || step1.username}.
         </p>
       </div>
@@ -485,21 +485,19 @@ function MultiStepValidationComponent() {
             <span
               className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold ${
                 step === n
-                  ? "bg-(--color-background-primary) text-(--color-foreground-primary)"
+                  ? "bg-blue-600 text-white"
                   : step > n
-                    ? "bg-(--color-background-success-muted) text-(--color-foreground-success-muted)"
-                    : "bg-(--color-background-muted) text-(--color-foreground-faint)"
+                    ? "bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-400"
+                    : "bg-current/5 text-current/70"
               }`}
               aria-current={step === n ? "step" : undefined}
             >
               {n}
             </span>
-            <span className="text-sm text-(--color-foreground-faint)">
+            <span className="text-sm text-current/70">
               {n === 1 ? "Account" : "Profile"}
             </span>
-            {n < 2 && (
-              <span className="text-(--color-foreground-faint) mx-1">—</span>
-            )}
+            {n < 2 && <span className="text-current/70 mx-1">—</span>}
           </div>
         ))}
       </div>
@@ -679,7 +677,7 @@ function AsyncValidationComponent() {
               aria-label="Checking availability"
             >
               <span
-                className="block h-4 w-4 animate-spin rounded-full border-2 border-(--color-border-primary) border-t-transparent"
+                className="block h-4 w-4 animate-spin rounded-full border-2 border-blue-500 border-t-transparent"
                 aria-hidden="true"
               />
             </span>
@@ -688,7 +686,7 @@ function AsyncValidationComponent() {
 
         {status === "available" && (
           <p
-            className="text-sm font-medium text-(--color-foreground-success-muted)"
+            className="text-sm font-medium text-green-700 dark:text-green-400"
             role="status"
           >
             ✓ Available
