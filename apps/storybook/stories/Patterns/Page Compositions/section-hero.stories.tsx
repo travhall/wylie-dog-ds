@@ -86,7 +86,7 @@ export const WithImage: Story = {
     badge: "Production Ready",
     title: "Design System Excellence",
     description:
-      "42 components with OKLCH color science and design tokens. Built for production with comprehensive testing and documentation.",
+      "44 components with OKLCH color science and design tokens. Built for production with comprehensive testing and documentation.",
     primaryAction: {
       label: "View Components",
       href: "#components",
@@ -99,7 +99,7 @@ export const WithImage: Story = {
       <div className="aspect-square rounded-lg bg-linear-to-br from-blue-600 via-blue-600/50 to-blue-50 dark:to-blue-950 p-8 flex items-center justify-center">
         <div className="text-white text-center">
           <Code2 className="h-24 w-24 mx-auto mb-4" />
-          <p className="text-2xl font-bold">42 Components</p>
+          <p className="text-2xl font-bold">44 Components</p>
         </div>
       </div>
     ),

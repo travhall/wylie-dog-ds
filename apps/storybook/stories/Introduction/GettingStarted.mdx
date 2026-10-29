@@ -8,18 +8,15 @@ Get up and running with the Wylie Dog Design System in minutes.
 
 ## Installation
 
-Install the UI library and tokens package:
+`@wyliedog/ui` is not published to npm. Use it as a workspace package from inside this monorepo (see `apps/showcase` and `apps/storybook` for working examples):
 
-```bash
-# Using pnpm (recommended)
-pnpm add @wyliedog/ui
-
-# Using npm
-npm install @wyliedog/ui
-
-# Using yarn
-yarn add @wyliedog/ui
+```json
+{
+  "dependencies": { "@wyliedog/ui": "workspace:*" }
+}
 ```
+
+Then run `pnpm install` from the repository root.
 
 > `@wyliedog/tokens` is a dependency of `@wyliedog/ui` and is installed automatically. You only need to add it explicitly if you want to import its TypeScript types or token manifest directly.
 

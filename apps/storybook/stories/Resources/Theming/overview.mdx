@@ -32,8 +32,12 @@ color: oklch(0.6 0.2 240); /* Blue at 60% lightness - same brightness! */
 
 ### 1. Install the Package
 
-```bash
-pnpm add @wyliedog/ui
+`@wyliedog/ui` is not published to npm. Add it as a workspace dependency inside this monorepo, then run `pnpm install` from the repository root:
+
+```json
+{
+  "dependencies": { "@wyliedog/ui": "workspace:*" }
+}
 ```
 
 ### 2. Import Global Styles

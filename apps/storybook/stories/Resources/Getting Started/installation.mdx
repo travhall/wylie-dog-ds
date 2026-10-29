@@ -16,16 +16,18 @@ Detailed setup reference for all supported environments. For a quick introductio
 
 ## Install Packages
 
-```bash
-# pnpm (recommended)
-pnpm add @wyliedog/ui @wyliedog/tokens
+`@wyliedog/ui` and `@wyliedog/tokens` are not published to npm. Use them as workspace packages from inside this monorepo (see `apps/showcase` and `apps/storybook` for working examples):
 
-# npm
-npm install @wyliedog/ui @wyliedog/tokens
-
-# yarn
-yarn add @wyliedog/ui @wyliedog/tokens
+```json
+{
+  "dependencies": {
+    "@wyliedog/ui": "workspace:*",
+    "@wyliedog/tokens": "workspace:*"
+  }
+}
 ```
+
+Then run `pnpm install` from the repository root.
 
 ### Peer Dependencies
 

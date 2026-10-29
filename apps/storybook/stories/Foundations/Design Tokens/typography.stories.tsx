@@ -630,10 +630,9 @@ export const CodeTypography: Story = {
       <div>
         <h4 className="text-lg font-semibold mb-3">Terminal Output</h4>
         <pre className="bg-(--color-background-inverse) text-(--color-foreground-inverse) p-4 rounded-lg font-mono text-sm">
-          {`$ npm install @wyliedog/ui
-+ @wyliedog/ui@1.0.0
-added 1 package from 1 contributor
-✨ Done in 2.34s`}
+          {`$ pnpm install
+Scope: all workspace projects
+Done in 2.3s`}
         </pre>
       </div>
     </div>
