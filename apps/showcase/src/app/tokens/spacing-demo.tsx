@@ -13,7 +13,6 @@ const densities = [
     rowY: "0.5rem",
     rowYToken: "--space-100",
     gap: "0.5rem",
-    gapToken: "--space-100",
     avatar: "1.5rem",
     avatarToken: "--space-300",
   },
@@ -22,7 +21,6 @@ const densities = [
     rowY: "0.75rem",
     rowYToken: "--space-150",
     gap: "0.75rem",
-    gapToken: "--space-150",
     avatar: "2rem",
     avatarToken: "--space-400",
   },
@@ -31,7 +29,6 @@ const densities = [
     rowY: "1rem",
     rowYToken: "--space-200",
     gap: "1rem",
-    gapToken: "--space-200",
     avatar: "2.5rem",
     avatarToken: "--space-500",
   },
@@ -183,11 +180,7 @@ export function SpacingDemo() {
           <span className="text-(--color-foreground-muted)">
             {d.rowYToken}:
           </span>{" "}
-          {formatSize(d.rowY)}
-        </span>
-        <span>
-          <span className="text-(--color-foreground-muted)">{d.gapToken}:</span>{" "}
-          {formatSize(d.gap)}
+          {formatSize(d.rowY)} (row padding and gap)
         </span>
         <span>
           <span className="text-(--color-foreground-muted)">

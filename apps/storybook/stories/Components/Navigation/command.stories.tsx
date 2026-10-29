@@ -298,7 +298,7 @@ export const WithModal: Story = {
         <div className="text-center space-y-2">
           <p className="text-sm text-current/70">
             Press{" "}
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-current/5 px-1.5 font-mono text-[10px] font-medium text-current/70">
+            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-current/5 px-1.5 font-mono text-xs font-medium text-current/70">
               <span className="text-xs">⌘</span>K
             </kbd>{" "}
             to open command palette

@@ -602,7 +602,7 @@ export const SpacingPlayground: Story = {
             </CardHeader>
             <CardContent>
               <div className="space-y-1">
-                <p className="text-[10px] font-mono text-(--color-foreground-info-muted)">
+                <p className="text-xs font-mono text-(--color-foreground-info-muted)">
                   padding area
                 </p>
                 <div
@@ -628,7 +628,7 @@ export const SpacingPlayground: Story = {
             </CardHeader>
             <CardContent>
               <div className="space-y-1">
-                <p className="text-[10px] font-mono text-(--color-foreground-warning-muted)">
+                <p className="text-xs font-mono text-(--color-foreground-warning-muted)">
                   margin area
                 </p>
                 <div className="border-2 border-dashed border-(--color-foreground-warning-muted)/40 bg-(--color-background-warning)/5 rounded">
