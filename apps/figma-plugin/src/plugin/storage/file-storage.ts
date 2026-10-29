@@ -114,16 +114,30 @@ export class FileConfigStorage {
   }
 
   /**
-   * Clear GitHub configuration from the current file and the user's token
+   * Disconnect the current file: clear its repo settings. The user's token
+   * stays in clientStorage so their other files keep working.
    */
   async clearGitHubConfig(): Promise<void> {
     try {
       figma.root.setPluginData(PLUGIN_DATA_KEYS.GITHUB_CONFIG, "");
-      await figma.clientStorage.deleteAsync(ACCESS_TOKEN_STORAGE_KEY);
       console.log("GitHub config cleared from file");
     } catch (error) {
       console.error("Failed to clear GitHub config from file:", error);
       throw new Error("Failed to clear configuration from file");
+    }
+  }
+
+  /**
+   * Forget the user's token. It is shared by every file this user opens, so
+   * files with repo settings will ask for a token again.
+   */
+  async clearGitHubToken(): Promise<void> {
+    try {
+      await figma.clientStorage.deleteAsync(ACCESS_TOKEN_STORAGE_KEY);
+      console.log("GitHub token removed from user storage");
+    } catch (error) {
+      console.error("Failed to remove GitHub token:", error);
+      throw new Error("Failed to remove GitHub token");
     }
   }
 

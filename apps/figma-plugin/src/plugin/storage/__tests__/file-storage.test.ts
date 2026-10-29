@@ -79,10 +79,20 @@ describe("FileConfigStorage token handling", () => {
     expect(pluginData["github-config"]).not.toContain("ghp_theirs");
   });
 
-  it("clear removes file config and user token", async () => {
+  it("clear removes the file config and keeps the user token", async () => {
     await storage.setGitHubConfig({ ...base, accessToken: "ghp_secret" });
     await storage.clearGitHubConfig();
     expect(pluginData["github-config"]).toBe("");
+    expect(client[ACCESS_TOKEN_STORAGE_KEY]).toBe("ghp_secret");
+  });
+
+  it("clearGitHubToken removes the user token and keeps the file config", async () => {
+    await storage.setGitHubConfig({ ...base, accessToken: "ghp_secret" });
+    await storage.clearGitHubToken();
     expect(client[ACCESS_TOKEN_STORAGE_KEY]).toBeUndefined();
+    expect(pluginData["github-config"]).not.toBe("");
+    const cfg = await storage.getGitHubConfig();
+    expect(cfg?.owner).toBe(base.owner);
+    expect(cfg?.accessToken).toBeUndefined();
   });
 });

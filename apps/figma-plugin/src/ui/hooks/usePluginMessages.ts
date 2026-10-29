@@ -496,6 +496,29 @@ export function usePluginMessages(
           }
           break;
 
+        case "github-config-cleared":
+          if (msg.success) {
+            githubClient.reset();
+            setGithubConfig(null);
+            setGithubConfigured(false);
+            setSuccessMessage("Disconnected from GitHub for this file.");
+            setTimeout(() => setSuccessMessage(null), 3000);
+          } else {
+            setError(msg.error || "Failed to disconnect");
+          }
+          break;
+
+        case "github-token-cleared":
+          if (msg.success) {
+            setSuccessMessage("GitHub token removed.");
+            setTimeout(() => setSuccessMessage(null), 3000);
+            // Reload: the file config comes back without a token
+            loadGitHubConfig();
+          } else {
+            setError(msg.error || "Failed to remove token");
+          }
+          break;
+
         // test-github-config is now handled by plugin thread
         // Response comes back as github-config-test-result
 

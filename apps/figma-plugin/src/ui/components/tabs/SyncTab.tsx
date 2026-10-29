@@ -24,6 +24,10 @@ interface SyncTabProps {
   onPullFromGitHub: () => void;
   onImportFile: () => void;
   onGitHubConfigComplete: (config: GitHubConfig) => void;
+  /** Clear this file's repo settings; the user's token is kept */
+  onDisconnect: () => void;
+  /** Delete the user's token (shared by all their files) */
+  onForgetToken: () => void;
   importPreview?: ImportPreviewSummary;
   onConfirmImport?: () => void;
   onCancelImport?: () => void;
@@ -46,6 +50,8 @@ export function SyncTab({
   onPullFromGitHub,
   onImportFile,
   onGitHubConfigComplete,
+  onDisconnect,
+  onForgetToken,
   importPreview,
   onConfirmImport,
   onCancelImport,
@@ -55,6 +61,7 @@ export function SyncTab({
   const hasSelections = selectedCollections.size > 0;
 
   const [showEditConfig, setShowEditConfig] = useState(false);
+  const [confirmForget, setConfirmForget] = useState(false);
 
   // What GitHub's definitions file offers, from the last Refresh (plan 207)
   const [textStylesOffer, setTextStylesOffer] =
@@ -312,22 +319,87 @@ export function SyncTab({
             </span>
           )}
         </div>
-        <button
-          onClick={() => setShowEditConfig(true)}
+        <div style={{ display: "flex", gap: 10, flexShrink: 0 }}>
+          {[
+            { label: "Edit", onClick: () => setShowEditConfig(true) },
+            { label: "Disconnect", onClick: onDisconnect },
+            { label: "Forget token", onClick: () => setConfirmForget(true) },
+          ].map(({ label, onClick }) => (
+            <button
+              key={label}
+              onClick={onClick}
+              style={{
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "var(--font-size-xs)",
+                color: "var(--accent-primary)",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {confirmForget && (
+        <div
+          role="alertdialog"
+          aria-label="Forget your GitHub token"
           style={{
-            fontFamily: "var(--font-family-mono)",
-            fontSize: "var(--font-size-xs)",
-            color: "var(--accent-primary)",
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-            padding: 0,
-            flexShrink: 0,
+            padding: "8px 12px",
+            background: "var(--error-light)",
+            borderBottom: "1px solid var(--border-default)",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-primary)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
           }}
         >
-          Edit
-        </button>
-      </div>
+          <span>
+            This removes your token from every Figma file you use with this
+            plugin. Files stay connected to their repository but will ask for a
+            token again.
+          </span>
+          <div style={{ display: "flex", gap: 12 }}>
+            <button
+              onClick={() => {
+                setConfirmForget(false);
+                onForgetToken();
+              }}
+              style={{
+                fontSize: "var(--font-size-xs)",
+                fontWeight: "var(--font-weight-medium)",
+                color: "var(--error)",
+                background: "transparent",
+                border: "1px solid var(--error)",
+                borderRadius: "var(--radius-md)",
+                padding: "4px 12px",
+                cursor: "pointer",
+              }}
+            >
+              Forget token
+            </button>
+            <button
+              onClick={() => setConfirmForget(false)}
+              style={{
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-secondary)",
+                background: "transparent",
+                border: "1px solid var(--border-default)",
+                borderRadius: "var(--radius-md)",
+                padding: "4px 12px",
+                cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Sync status — in-sync / drift / last-synced at a glance */}
       <div style={{ padding: "12px 12px 0" }}>

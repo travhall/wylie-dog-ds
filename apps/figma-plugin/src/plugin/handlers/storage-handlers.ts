@@ -145,7 +145,30 @@ export async function handleSaveGitHubConfig(
 }
 
 /**
- * Clear GitHub configuration
+ * Forget the user's GitHub token (shared by all of their files)
+ */
+export async function handleClearGitHubToken(
+  msg: PluginMessage
+): Promise<void> {
+  try {
+    await fileConfigStorage.clearGitHubToken();
+
+    figma.ui.postMessage({
+      type: "github-token-cleared",
+      success: true,
+    });
+  } catch (error) {
+    console.error("Error clearing GitHub token:", error);
+    figma.ui.postMessage({
+      type: "github-token-cleared",
+      success: false,
+      error: error instanceof Error ? error.message : "Failed to remove token",
+    });
+  }
+}
+
+/**
+ * Disconnect this file: clear its GitHub repo settings (the token stays)
  */
 export async function handleClearGitHubConfig(
   msg: PluginMessage

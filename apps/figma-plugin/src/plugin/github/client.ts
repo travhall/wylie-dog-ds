@@ -86,12 +86,19 @@ export class GitHubClient {
 
   configure(config: GitHubConfig): void {
     this.config = config;
-    if (config.accessToken) {
-      this.octokit = new Octokit({
-        auth: config.accessToken,
-        userAgent: "Token Bridge Figma Plugin v1.0.0",
-      });
-    }
+    // No token (forgotten or never added) must not leave an old client behind
+    this.octokit = config.accessToken
+      ? new Octokit({
+          auth: config.accessToken,
+          userAgent: "Token Bridge Figma Plugin v1.0.0",
+        })
+      : null;
+  }
+
+  /** Drop the configuration and the authenticated client (Disconnect) */
+  reset(): void {
+    this.config = null;
+    this.octokit = null;
   }
 
   async validateConfiguration(): Promise<boolean> {

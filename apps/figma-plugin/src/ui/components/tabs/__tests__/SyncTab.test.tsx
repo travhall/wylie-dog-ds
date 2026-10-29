@@ -6,6 +6,7 @@ import {
   render,
   screen,
   waitFor,
+  within,
 } from "@testing-library/preact";
 import { SyncTab } from "../SyncTab";
 import { UIProvider } from "../../../state";
@@ -36,6 +37,8 @@ function renderTab(
         onPullFromGitHub={vi.fn()}
         onImportFile={vi.fn()}
         onGitHubConfigComplete={vi.fn()}
+        onDisconnect={vi.fn()}
+        onForgetToken={vi.fn()}
       />
     </UIProvider>
   );
@@ -56,6 +59,63 @@ describe("SyncTab token prompt", () => {
   });
 });
 
+describe("SyncTab Disconnect and Forget token", () => {
+  const renderConnected = () => {
+    vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
+    const onDisconnect = vi.fn();
+    const onForgetToken = vi.fn();
+    render(
+      <UIProvider>
+        <SyncTab
+          githubClient={{} as ConflictAwareGitHubClient}
+          githubConfig={{ ...repoOnly, accessToken: "test-token" }}
+          githubConfigured
+          collections={[]}
+          loading={false}
+          onPushToGitHub={vi.fn()}
+          onPullFromGitHub={vi.fn()}
+          onImportFile={vi.fn()}
+          onGitHubConfigComplete={vi.fn()}
+          onDisconnect={onDisconnect}
+          onForgetToken={onForgetToken}
+        />
+      </UIProvider>
+    );
+    return { onDisconnect, onForgetToken };
+  };
+
+  it("Disconnect acts on this file straight away and never touches the token", () => {
+    const { onDisconnect, onForgetToken } = renderConnected();
+    fireEvent.click(screen.getByRole("button", { name: "Disconnect" }));
+    expect(onDisconnect).toHaveBeenCalledOnce();
+    expect(onForgetToken).not.toHaveBeenCalled();
+  });
+
+  it("Forget token warns about every file first and only acts on confirm", () => {
+    const { onDisconnect, onForgetToken } = renderConnected();
+    fireEvent.click(screen.getByRole("button", { name: "Forget token" }));
+    expect(onForgetToken).not.toHaveBeenCalled();
+    expect(screen.getByRole("alertdialog")).toHaveTextContent(
+      /every Figma file/
+    );
+    fireEvent.click(
+      within(screen.getByRole("alertdialog")).getByRole("button", {
+        name: "Forget token",
+      })
+    );
+    expect(onForgetToken).toHaveBeenCalledOnce();
+    expect(onDisconnect).not.toHaveBeenCalled();
+  });
+
+  it("Cancel leaves the token alone", () => {
+    const { onForgetToken } = renderConnected();
+    fireEvent.click(screen.getByRole("button", { name: "Forget token" }));
+    fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
+    expect(onForgetToken).not.toHaveBeenCalled();
+    expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
+  });
+});
+
 describe("SyncTab Pull", () => {
   it("starts the Pull flow straight away: the review is the confirmation", () => {
     vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
@@ -72,6 +132,8 @@ describe("SyncTab Pull", () => {
           onPullFromGitHub={onPullFromGitHub}
           onImportFile={vi.fn()}
           onGitHubConfigComplete={vi.fn()}
+          onDisconnect={vi.fn()}
+          onForgetToken={vi.fn()}
         />
       </UIProvider>
     );
@@ -97,6 +159,8 @@ describe("SyncTab Styles section (plan 206)", () => {
           onPullFromGitHub={onPullFromGitHub}
           onImportFile={vi.fn()}
           onGitHubConfigComplete={vi.fn()}
+          onDisconnect={vi.fn()}
+          onForgetToken={vi.fn()}
         />
       </UIProvider>
     );
@@ -165,6 +229,8 @@ describe("SyncTab Text styles remembered and announced (plan 207)", () => {
           onPullFromGitHub={vi.fn()}
           onImportFile={vi.fn()}
           onGitHubConfigComplete={vi.fn()}
+          onDisconnect={vi.fn()}
+          onForgetToken={vi.fn()}
         />
       </UIProvider>
     );
@@ -251,6 +317,8 @@ describe("SyncTab Text styles remembered and announced (plan 207)", () => {
           onPullFromGitHub={vi.fn()}
           onImportFile={vi.fn()}
           onGitHubConfigComplete={vi.fn()}
+          onDisconnect={vi.fn()}
+          onForgetToken={vi.fn()}
         />
       </UIProvider>
     );

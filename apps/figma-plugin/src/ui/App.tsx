@@ -661,6 +661,12 @@ function AppInner() {
                 onPullFromGitHub={handleGitHubPull}
                 onImportFile={handleTokenImport}
                 onGitHubConfigComplete={handleGitHubConfigTest}
+                onDisconnect={() =>
+                  pluginActions.sendMessage({ type: "clear-github-config" })
+                }
+                onForgetToken={() =>
+                  pluginActions.sendMessage({ type: "clear-github-token" })
+                }
                 importPreview={importPreviewData ?? undefined}
                 onConfirmImport={handleConfirmImport}
                 onCancelImport={handleCancelImport}
