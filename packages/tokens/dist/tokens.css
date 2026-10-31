@@ -361,14 +361,14 @@
   --color-foreground-faint: oklch(0.52 0.007 264.5);
   --color-foreground-inverse: oklch(0.991 0.003 264.39);
   --color-foreground-primary: oklch(0.991 0.003 264.39);
-  --color-foreground-primary-muted: oklch(0.488 0.217 264.42);
+  --color-foreground-primary-muted: oklch(0.709 0.147 38.43);
   --color-foreground-danger: oklch(0.991 0.003 264.39);
   --color-foreground-danger-muted: oklch(0.488 0.19 27.47);
   --color-foreground-success: oklch(0.991 0.003 264.39);
   --color-foreground-success-muted: oklch(0.488 0.134 150.15);
   --color-foreground-warning: oklch(0.149 0.012 259.74);
   --color-foreground-warning-muted: oklch(0.488 0.1 74);
-  --color-foreground-info-muted: oklch(0.488 0.217 264.42);
+  --color-foreground-info-muted: oklch(0.594 0.03 72.5);
   --color-border-default: oklch(0.786 0.004 270.86);
   --color-border-muted: oklch(0.87 0.003 264.42);
   --color-border-emphasis: oklch(0.613 0.005 258.55);
@@ -540,7 +540,7 @@
   --color-avatar-fallback-background: oklch(0.87 0.003 264.42);
   --color-avatar-fallback-text: oklch(0.423 0.007 264.49);
   --color-breadcrumb-current: oklch(0.209 0.01 268.18);
-  --color-breadcrumb-link: oklch(0.488 0.217 264.42);
+  --color-breadcrumb-link: oklch(0.709 0.147 38.43);
   --color-breadcrumb-link-hover: oklch(0.209 0.01 268.18);
   --color-breadcrumb-text: oklch(0.423 0.007 264.49);
   --color-carousel-nav-background: oklch(0.991 0.003 264.39);
@@ -1000,7 +1000,7 @@
   --space-input-padding-y-md: 0.75rem;
   --space-input-padding-y-lg: 1rem;
   --space-button-icon-size: 2.5rem;
-  --color-button-link-text: oklch(0.488 0.217 264.42);
+  --color-button-link-text: oklch(0.709 0.147 38.43);
   --space-card-header-gap: 0.5rem;
   --color-input-background-disabled: oklch(0.87 0.003 264.42);
   --color-input-text-disabled: oklch(0.52 0.007 264.5);
@@ -1124,7 +1124,7 @@
   --color-section-features-description-text: oklch(0.423 0.007 264.49);
   --color-section-features-item-text: oklch(0.423 0.007 264.49);
   --color-section-features-icon-background: oklch(0.61 0.169 37.69);
-  --color-section-features-icon-text: oklch(0.488 0.217 264.42);
+  --color-section-features-icon-text: oklch(0.709 0.147 38.43);
   --color-page-layout-skip-link-background: oklch(0.991 0.003 264.39);
   --color-page-layout-skip-link-text: oklch(0.209 0.01 268.18);
   --color-page-layout-sidebar-border: oklch(0.786 0.004 270.86);
@@ -1441,14 +1441,14 @@
   --color-foreground-faint: oklch(0.613 0.005 258.55);
   --color-foreground-inverse: oklch(0.209 0.01 268.18);
   --color-foreground-primary: oklch(0.991 0.003 264.39);
-  --color-foreground-primary-muted: oklch(0.714 0.143 254.66);
+  --color-foreground-primary-muted: oklch(0.508 0.139 37.81);
   --color-foreground-danger: oklch(0.991 0.003 264.39);
   --color-foreground-danger-muted: oklch(0.714 0.166 22.18);
   --color-foreground-success: oklch(0.991 0.003 264.39);
   --color-foreground-success-muted: oklch(0.714 0.182 151.79);
   --color-foreground-warning: oklch(0.149 0.012 259.74);
   --color-foreground-warning-muted: oklch(0.714 0.143 81);
-  --color-foreground-info-muted: oklch(0.714 0.143 254.66);
+  --color-foreground-info-muted: oklch(0.843 0.027 71.03);
   --color-border-default: oklch(0.423 0.007 264.49);
   --color-border-muted: oklch(0.321 0.009 268.33);
   --color-border-emphasis: oklch(0.52 0.007 264.5);
@@ -1617,7 +1617,7 @@
   --color-avatar-fallback-background: oklch(0.321 0.009 268.33);
   --color-avatar-fallback-text: oklch(0.786 0.004 270.86);
   --color-breadcrumb-current: oklch(0.952 0.003 264.42);
-  --color-breadcrumb-link: oklch(0.714 0.143 254.66);
+  --color-breadcrumb-link: oklch(0.508 0.139 37.81);
   --color-breadcrumb-link-hover: oklch(0.952 0.003 264.42);
   --color-breadcrumb-text: oklch(0.786 0.004 270.86);
   --color-carousel-nav-background: oklch(0.149 0.012 259.74);
@@ -2077,7 +2077,7 @@
   --space-input-padding-y-md: 0.75rem;
   --space-input-padding-y-lg: 1rem;
   --space-button-icon-size: 2.5rem;
-  --color-button-link-text: oklch(0.714 0.143 254.66);
+  --color-button-link-text: oklch(0.508 0.139 37.81);
   --space-card-header-gap: 0.5rem;
   --color-input-background-disabled: oklch(0.321 0.009 268.33);
   --color-input-text-disabled: oklch(0.613 0.005 258.55);
@@ -2201,7 +2201,7 @@
   --color-section-features-description-text: oklch(0.786 0.004 270.86);
   --color-section-features-item-text: oklch(0.786 0.004 270.86);
   --color-section-features-icon-background: oklch(0.61 0.169 37.69);
-  --color-section-features-icon-text: oklch(0.714 0.143 254.66);
+  --color-section-features-icon-text: oklch(0.508 0.139 37.81);
   --color-page-layout-skip-link-background: oklch(0.149 0.012 259.74);
   --color-page-layout-skip-link-text: oklch(0.952 0.003 264.42);
   --color-page-layout-sidebar-border: oklch(0.423 0.007 264.49);

@@ -376,7 +376,7 @@
   },
   "color.foreground.primary-muted": {
     "$type": "color",
-    "$value": "{color.blue.400}",
+    "$value": "{color.fiery-coral.700}",
     "$description": "Primary text on its tint (background.primary-muted) and on the page."
   },
   "color.foreground.danger": {
@@ -411,7 +411,7 @@
   },
   "color.foreground.info-muted": {
     "$type": "color",
-    "$value": "{color.blue.400}",
+    "$value": "{color.sandcastle.300}",
     "$description": "Informational text on its tint (background.info-muted) and on the page."
   },
   "color.border.default": {

@@ -2936,7 +2936,7 @@
           "foreground",
           "primary-muted"
         ],
-        "value": "oklch(0.488 0.217 264.42)",
+        "value": "oklch(0.709 0.147 38.43)",
         "type": "color",
         "variable": "var(--color-foreground-primary-muted)",
         "description": "Primary text on its tint (background.primary-muted) and on the page."
@@ -3020,7 +3020,7 @@
           "foreground",
           "info-muted"
         ],
-        "value": "oklch(0.488 0.217 264.42)",
+        "value": "oklch(0.594 0.03 72.5)",
         "type": "color",
         "variable": "var(--color-foreground-info-muted)",
         "description": "Informational text on its tint (background.info-muted) and on the page."
@@ -4411,7 +4411,7 @@
           "button",
           "link-text"
         ],
-        "value": "oklch(0.488 0.217 264.42)",
+        "value": "oklch(0.709 0.147 38.43)",
         "type": "color",
         "variable": "var(--color-button-link-text)",
         "description": "Label colour of the link-style button, which has no fill or border."
@@ -7569,7 +7569,7 @@
           "breadcrumb",
           "link"
         ],
-        "value": "oklch(0.488 0.217 264.42)",
+        "value": "oklch(0.709 0.147 38.43)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link)",
         "description": "Text colour of the breadcrumb link."
@@ -14327,7 +14327,7 @@
           "section-features",
           "icon-text"
         ],
-        "value": "oklch(0.488 0.217 264.42)",
+        "value": "oklch(0.709 0.147 38.43)",
         "type": "color",
         "variable": "var(--color-section-features-icon-text)",
         "description": "Colour of the features section icon. Pairs with `section-features.icon-background`."
