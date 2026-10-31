@@ -312,7 +312,7 @@ export const TextColors: Story = {
     <div className="space-y-4">
       <div>
         <p className="text-(--color-foreground-default) text-lg mb-1">
-          Primary Text
+          Default Text
         </p>
         <p className="text-sm text-(--color-foreground-muted) font-mono">
           --color-foreground-default
@@ -321,7 +321,7 @@ export const TextColors: Story = {
 
       <div>
         <p className="text-(--color-foreground-muted) text-lg mb-1">
-          Secondary Text
+          Muted Text
         </p>
         <p className="text-sm text-(--color-foreground-muted) font-mono">
           --color-foreground-muted
@@ -429,7 +429,7 @@ export const TypographyHierarchy: Story = {
       },
       {
         tag: "p",
-        sample: "Small — labels, captions, secondary text",
+        sample: "Small — labels, captions, muted text",
         className: "text-sm",
         token: "text-sm · --font-size-sm",
         usage: "Input labels, helper text.",

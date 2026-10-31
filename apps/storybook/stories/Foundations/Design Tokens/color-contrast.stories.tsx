@@ -33,7 +33,7 @@ interface ContrastSample {
 
 const contrastSamples: ContrastSample[] = [
   {
-    label: "Primary text on primary background",
+    label: "Default text on the page",
     textToken: "--color-foreground-default",
     bgToken: "--color-background-default",
     sampleText: "The quick brown fox jumps over the lazy dog",
@@ -41,7 +41,7 @@ const contrastSamples: ContrastSample[] = [
     compliant: true,
   },
   {
-    label: "Secondary text on primary background",
+    label: "Muted text on the page",
     textToken: "--color-foreground-muted",
     bgToken: "--color-background-default",
     sampleText: "Supporting description and metadata",
@@ -49,7 +49,7 @@ const contrastSamples: ContrastSample[] = [
     compliant: true,
   },
   {
-    label: "Primary text on secondary background",
+    label: "Default text on a muted surface",
     textToken: "--color-foreground-default",
     bgToken: "--color-background-muted",
     sampleText: "Content on card or panel surface",
@@ -66,7 +66,7 @@ const contrastSamples: ContrastSample[] = [
     captionToken: "--color-foreground-inverse",
   },
   {
-    label: "Danger status on primary background",
+    label: "Danger text on the page",
     textToken: "--color-foreground-danger-muted",
     bgToken: "--color-background-default",
     sampleText: "Error message text",
