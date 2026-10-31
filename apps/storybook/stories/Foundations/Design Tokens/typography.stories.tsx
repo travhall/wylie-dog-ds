@@ -330,7 +330,7 @@ export const TextColors: Story = {
 
       <div>
         <p className="text-(--color-foreground-faint) text-lg mb-1">
-          Muted Text
+          Faint Text
         </p>
         <p className="text-sm text-(--color-foreground-muted) font-mono">
           --color-foreground-faint
@@ -338,11 +338,11 @@ export const TextColors: Story = {
       </div>
 
       <div>
-        <p className="text-(--color-foreground-info-muted) text-lg mb-1">
+        <p className="text-(--color-foreground-primary-muted) text-lg mb-1">
           Link Text
         </p>
         <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --color-background-primary
+          --color-foreground-primary-muted
         </p>
       </div>
 
