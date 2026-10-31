@@ -467,11 +467,13 @@ class TokenIOProcessor {
       variables[key] = {
         $type: baseToken.$type,
         $value: lightToken ? lightToken.$value : darkToken.$value,
+        // Key order matches what the Token Bridge plugin writes, so a local
+        // build never rewrites io/sync/ and conflicts with a Figma push.
+        ...(baseToken.$description && { $description: baseToken.$description }),
         valuesByMode: {
           Light: lightToken ? lightToken.$value : darkToken.$value,
           Dark: darkToken ? darkToken.$value : lightToken.$value,
         },
-        ...(baseToken.$description && { $description: baseToken.$description }),
       };
     }
 
