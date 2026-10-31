@@ -3032,7 +3032,7 @@
           "foreground",
           "info-muted"
         ],
-        "value": "oklch(0.594 0.03 72.5)",
+        "value": "oklch(0.496 0.025 71.75)",
         "type": "color",
         "variable": "var(--color-foreground-info-muted)",
         "description": "Informational text on its tint (background.info-muted) and on the page."

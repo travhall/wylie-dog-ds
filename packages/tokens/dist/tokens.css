@@ -369,7 +369,7 @@
   --color-foreground-success-muted: oklch(0.488 0.134 150.15);
   --color-foreground-warning: oklch(0.149 0.012 259.74);
   --color-foreground-warning-muted: oklch(0.488 0.1 74);
-  --color-foreground-info-muted: oklch(0.594 0.03 72.5);
+  --color-foreground-info-muted: oklch(0.496 0.025 71.75);
   --color-border-default: oklch(0.786 0.004 270.86);
   --color-border-muted: oklch(0.87 0.003 264.42);
   --color-border-emphasis: oklch(0.613 0.005 258.55);

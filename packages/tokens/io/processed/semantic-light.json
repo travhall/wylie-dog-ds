@@ -416,7 +416,7 @@
   },
   "color.foreground.info-muted": {
     "$type": "color",
-    "$value": "{color.sandcastle.700}",
+    "$value": "{color.sandcastle.800}",
     "$description": "Informational text on its tint (background.info-muted) and on the page."
   },
   "color.border.default": {

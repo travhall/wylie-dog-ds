@@ -361,7 +361,7 @@ export declare const colorForegroundSuccess: "oklch(0.991 0.003 264.39)";
 export declare const colorForegroundSuccessMuted: "oklch(0.488 0.134 150.15)";
 export declare const colorForegroundWarning: "oklch(0.149 0.012 259.74)";
 export declare const colorForegroundWarningMuted: "oklch(0.488 0.1 74)";
-export declare const colorForegroundInfoMuted: "oklch(0.594 0.03 72.5)";
+export declare const colorForegroundInfoMuted: "oklch(0.496 0.025 71.75)";
 export declare const colorBorderDefault: "oklch(0.786 0.004 270.86)";
 export declare const colorBorderMuted: "oklch(0.87 0.003 264.42)";
 export declare const colorBorderEmphasis: "oklch(0.613 0.005 258.55)";
