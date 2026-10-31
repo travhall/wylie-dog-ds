@@ -689,11 +689,11 @@
         },
         "color.foreground.primary-muted": {
           "$type": "color",
-          "$value": "{color.blue.700}",
+          "$value": "{color.fiery-coral.400}",
           "$description": "Primary text on its tint (background.primary-muted) and on the page.",
           "valuesByMode": {
-            "Light": "{color.blue.700}",
-            "Dark": "{color.blue.400}"
+            "Light": "{color.fiery-coral.400}",
+            "Dark": "{color.fiery-coral.700}"
           }
         },
         "color.foreground.danger": {
@@ -752,11 +752,11 @@
         },
         "color.foreground.info-muted": {
           "$type": "color",
-          "$value": "{color.blue.700}",
+          "$value": "{color.sandcastle.700}",
           "$description": "Informational text on its tint (background.info-muted) and on the page.",
           "valuesByMode": {
-            "Light": "{color.blue.700}",
-            "Dark": "{color.blue.400}"
+            "Light": "{color.sandcastle.700}",
+            "Dark": "{color.sandcastle.300}"
           }
         },
         "color.border.default": {
