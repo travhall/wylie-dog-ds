@@ -146,6 +146,9 @@ className = "text-(--color-foreground-muted)";
 // Faint text (lowest contrast, placeholders)
 className = "text-(--color-foreground-faint)";
 
+// Link text (polar-night; underline inline links)
+className = "text-(--color-foreground-link)";
+
 // Danger/error text
 className = "text-(--color-foreground-danger-muted)";
 

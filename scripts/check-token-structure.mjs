@@ -4,7 +4,7 @@
 // Names are color.<part>.<token> with the part background, foreground, border or focus.
 // The token is a ground name or a role, with at most one modifier:
 //   ground background  default, muted, emphasis, raised, overlay, inverse
-//   ground foreground  default, muted, faint, inverse
+//   ground foreground  default, muted, faint, link, inverse
 //   ground border      default, muted, emphasis
 //   ground focus       ring, halo
 //   roles              primary, danger, success, warning, info, optionally
@@ -34,7 +34,7 @@ const names = Object.keys(variables).filter(
 
 const ground = {
   background: ["default", "muted", "emphasis", "raised", "overlay", "inverse"],
-  foreground: ["default", "muted", "faint", "inverse"],
+  foreground: ["default", "muted", "faint", "link", "inverse"],
   border: ["default", "muted", "emphasis"],
   focus: ["ring", "halo"],
 };

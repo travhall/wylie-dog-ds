@@ -211,3 +211,4 @@ The first table above records the rename of 2026-10-20. On 2026-10-23 the semant
 | (new)                               | `background.danger-emphasis` (the value of `danger.background.default.hover`)         |
 | (new)                               | `background.success-emphasis` (the value of `success.background.default.hover`)       |
 | (new)                               | `background.warning-emphasis` (the value of `warning.background.default.hover`)       |
+| (new)                               | `foreground.link` (links on the page; was `foreground.primary-muted`)                 |

@@ -690,6 +690,15 @@
       "kind": "text"
     },
     {
+      "foreground": "color.foreground.link",
+      "backgrounds": [
+        "color.background.default",
+        "color.background.muted",
+        "color.background.raised"
+      ],
+      "kind": "text"
+    },
+    {
       "foreground": "color.foreground.info-muted",
       "backgrounds": [
         "color.background.info-muted",

@@ -801,7 +801,7 @@
   },
   "breadcrumb.link": {
     "$type": "color",
-    "$value": "{color.foreground.primary-muted}",
+    "$value": "{color.foreground.link}",
     "$description": "Text colour of the breadcrumb link."
   },
   "breadcrumb.link-hover": {
@@ -3101,7 +3101,7 @@
   },
   "button.link-text": {
     "$type": "color",
-    "$value": "{color.foreground.primary-muted}",
+    "$value": "{color.foreground.link}",
     "$description": "Label colour of the link-style button, which has no fill or border."
   },
   "card.header-gap": {

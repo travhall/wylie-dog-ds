@@ -364,6 +364,11 @@
     "$value": "{color.gray.400}",
     "$description": "Faintest text for timestamps, metadata and hints. Readable on the page, muted and raised backgrounds."
   },
+  "color.foreground.link": {
+    "$type": "color",
+    "$value": "{color.polar-night.200}",
+    "$description": "Text colour for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links."
+  },
   "color.foreground.inverse": {
     "$type": "color",
     "$value": "{color.gray.900}",
@@ -371,12 +376,12 @@
   },
   "color.foreground.primary": {
     "$type": "color",
-    "$value": "{color.fiery-coral.600}",
+    "$value": "{color.gray.950}",
     "$description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
   },
   "color.foreground.primary-muted": {
     "$type": "color",
-    "$value": "{color.fiery-coral.700}",
+    "$value": "{color.fiery-coral.300}",
     "$description": "Primary text on its tint (background.primary-muted) and on the page."
   },
   "color.foreground.danger": {

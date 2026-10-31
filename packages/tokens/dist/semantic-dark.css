@@ -77,9 +77,10 @@
   --color-foreground-default: oklch(0.991 0.003 264.39);
   --color-foreground-muted: oklch(0.87 0.003 264.42);
   --color-foreground-faint: oklch(0.699 0.005 270.89);
+  --color-foreground-link: oklch(0.719 0.028 218.41);
   --color-foreground-inverse: oklch(0.209 0.01 268.18);
-  --color-foreground-primary: oklch(0.61 0.169 37.69);
-  --color-foreground-primary-muted: oklch(0.508 0.139 37.81);
+  --color-foreground-primary: oklch(0.149 0.012 259.74);
+  --color-foreground-primary-muted: oklch(0.751 0.122 38.38);
   --color-foreground-danger: oklch(0.991 0.003 264.39);
   --color-foreground-danger-muted: oklch(0.714 0.166 22.18);
   --color-foreground-success: oklch(0.991 0.003 264.39);
@@ -96,7 +97,7 @@
   --space-focus-offset: 2px;
   --space-focus-halo-width: 2px;
   --color-badge-default-background: oklch(0.61 0.169 37.69);
-  --color-badge-default-text: oklch(0.61 0.169 37.69);
+  --color-badge-default-text: oklch(0.149 0.012 259.74);
   --color-badge-default-border: oklch(0.61 0.169 37.69);
   --color-badge-secondary-background: oklch(0.321 0.009 268.33);
   --color-badge-secondary-text: oklch(0.991 0.003 264.39);
@@ -129,7 +130,7 @@
   --color-button-primary-background: oklch(0.61 0.169 37.69);
   --color-button-primary-background-hover: oklch(0.653 0.183 37.6);
   --color-button-primary-background-active: oklch(0.653 0.183 37.6);
-  --color-button-primary-text: oklch(0.61 0.169 37.69);
+  --color-button-primary-text: oklch(0.149 0.012 259.74);
   --color-button-primary-border: oklch(0.61 0.169 37.69);
   --color-button-secondary-background: oklch(0.209 0.01 268.18);
   --color-button-secondary-background-hover: oklch(0.321 0.009 268.33);
@@ -236,7 +237,7 @@
   --color-calendar-day-hover: oklch(0.321 0.009 268.33);
   --color-calendar-day-text-hover: oklch(0.991 0.003 264.39);
   --color-calendar-day-selected: oklch(0.61 0.169 37.69);
-  --color-calendar-day-text-selected: oklch(0.61 0.169 37.69);
+  --color-calendar-day-text-selected: oklch(0.149 0.012 259.74);
   --color-accordion-border: oklch(0.423 0.007 264.49);
   --color-accordion-content-text: oklch(0.991 0.003 264.39);
   --color-accordion-icon: oklch(0.87 0.003 264.42);
@@ -255,7 +256,7 @@
   --color-avatar-fallback-background: oklch(0.321 0.009 268.33);
   --color-avatar-fallback-text: oklch(0.87 0.003 264.42);
   --color-breadcrumb-current: oklch(0.991 0.003 264.39);
-  --color-breadcrumb-link: oklch(0.508 0.139 37.81);
+  --color-breadcrumb-link: oklch(0.719 0.028 218.41);
   --color-breadcrumb-link-hover: oklch(0.991 0.003 264.39);
   --color-breadcrumb-text: oklch(0.87 0.003 264.42);
   --color-carousel-nav-background: oklch(0.149 0.012 259.74);
@@ -282,7 +283,7 @@
   --color-hover-card-text: oklch(0.991 0.003 264.39);
   --color-pagination-active: oklch(0.61 0.169 37.69);
   --color-pagination-text: oklch(0.991 0.003 264.39);
-  --color-pagination-text-active: oklch(0.61 0.169 37.69);
+  --color-pagination-text-active: oklch(0.149 0.012 259.74);
   --color-pagination-text-hover: oklch(0.991 0.003 264.39);
   --color-popover-background: oklch(0.209 0.01 268.18);
   --color-popover-border: oklch(0.423 0.007 264.49);
@@ -295,7 +296,7 @@
   --color-radio-background-checked: oklch(0.61 0.169 37.69);
   --color-radio-border: oklch(0.52 0.007 264.5);
   --color-radio-border-checked: oklch(0.61 0.169 37.69);
-  --color-radio-indicator: oklch(0.61 0.169 37.69);
+  --color-radio-indicator: oklch(0.149 0.012 259.74);
   --color-resizable-handle: oklch(0.423 0.007 264.49);
   --color-resizable-handle-background: oklch(0.209 0.01 268.18);
   --color-resizable-handle-border: oklch(0.423 0.007 264.49);
@@ -319,7 +320,7 @@
   --color-toggle-pressed: oklch(0.61 0.169 37.69);
   --color-toggle-text: oklch(0.991 0.003 264.39);
   --color-toggle-text-hover: oklch(0.991 0.003 264.39);
-  --color-toggle-text-pressed: oklch(0.61 0.169 37.69);
+  --color-toggle-text-pressed: oklch(0.149 0.012 259.74);
   --color-tooltip-background: oklch(0.991 0.003 264.39);
   --color-tooltip-border: oklch(0.321 0.009 268.33);
   --color-tooltip-text: oklch(0.209 0.01 268.18);
@@ -715,7 +716,7 @@
   --space-input-padding-y-md: 0.75rem;
   --space-input-padding-y-lg: 1rem;
   --space-button-icon-size: 2.5rem;
-  --color-button-link-text: oklch(0.508 0.139 37.81);
+  --color-button-link-text: oklch(0.719 0.028 218.41);
   --space-card-header-gap: 0.5rem;
   --color-input-background-disabled: oklch(0.321 0.009 268.33);
   --color-input-text-disabled: oklch(0.699 0.005 270.89);
@@ -786,7 +787,7 @@
   --font-weight-avatar-fallback-font-weight: 500;
   --font-weight-table-footer-font-weight: 500;
   --color-checkbox-background-checked: oklch(0.61 0.169 37.69);
-  --color-checkbox-text-checked: oklch(0.61 0.169 37.69);
+  --color-checkbox-text-checked: oklch(0.149 0.012 259.74);
   --color-checkbox-border-checked: oklch(0.61 0.169 37.69);
   --color-checkbox-error-border: oklch(0.546 0.215 27.29);
   --font-weight-dialog-title-font-weight: 600;
@@ -839,7 +840,7 @@
   --color-section-features-description-text: oklch(0.87 0.003 264.42);
   --color-section-features-item-text: oklch(0.87 0.003 264.42);
   --color-section-features-icon-background: oklch(0.61 0.169 37.69);
-  --color-section-features-icon-text: oklch(0.508 0.139 37.81);
+  --color-section-features-icon-text: oklch(0.751 0.122 38.38);
   --color-page-layout-skip-link-background: oklch(0.149 0.012 259.74);
   --color-page-layout-skip-link-text: oklch(0.991 0.003 264.39);
   --color-page-layout-sidebar-border: oklch(0.423 0.007 264.49);

@@ -698,6 +698,12 @@ export const Accessibility: Story = {
         background: "var(--color-background-default)",
         usage: "Metadata, labels",
       },
+      {
+        name: "Link Text",
+        foreground: "var(--color-foreground-link)",
+        background: "var(--color-background-default)",
+        usage: "Links, link-styled actions",
+      },
     ];
 
     return (

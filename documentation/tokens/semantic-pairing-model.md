@@ -47,7 +47,7 @@ Measured on 2026-10-20:
 11. **The ground text hierarchy uses different words from the surface levels** (`muted`, `faint`), so `subtle` never means two things: on a role, `foreground.subtle` is the text on the subtle tint.
 12. **Inverse is a role of its own** (`color.inverse.background.default` and `color.inverse.foreground.default`), because it is a true one-to-one pair.
 13. **States are a suffix after the level** (`.hover`, `.active`, `.focus`, `.disabled`) on any background, including the ground, since hover and active are relative to the surface they sit on. The focus ring is its own group (`color.focus.ring`), and disabled is a state, not a level.
-14. **Primary is the main role.** Links and the focus fill follow it (color.primary.foreground.subtle and color.primary.background.subtle). The brand and accent tokens are retired. The primary colour stays blue until the owner changes it through Figma.
+14. **Primary is the main role.** Links and the focus fill follow it (color.primary.foreground.subtle and color.primary.background.subtle). The brand and accent tokens are retired. The primary colour stays blue until the owner changes it through Figma. _Links now use `color.foreground.link`, see "Link and the primary pair" below._
 15. **Placeholder values.** The values of raised and overlay, like every other value, are provisional; a design pass follows the migration.
 
 ## Proposed grammar
@@ -119,6 +119,16 @@ About 60 places used `color.primary.background.default` as text on the page (blu
 - **`color.background.overlay`** is the scrim colour behind a modal or sheet: gray 950 in both modes. The dialog, alert dialog and sheet apply it at `opacity.scrim` (0.9) with `opacity-(--opacity-scrim)`, so it is never opaque. Tooltip keeps the inverse role.
 - **Pairs:** default, muted and faint foreground, and the primary and danger subtle text, are declared on `raised`.
 - **Still open:** the scrim opacity (0.9, raised from 0.8 on 2026-10-21) and whether Light needs a visibly different raised surface are design decisions for later.
+
+## Link and the primary pair (2026-10-31)
+
+The primary colour moved from blue to fiery-coral through Figma. Two things broke the pairing model's reading of `primary`, and both were decided with the owner the same day.
+
+- **Links get their own ground token, `color.foreground.link`.** Before, `foreground.primary-muted` meant three things at once: link text (3 component tokens: `button.link-text`, `breadcrumb.link`, one icon), primary-coloured emphasis text on the page (about 68 direct uses in the showcase) and text over the primary tint. A link token separates the first from the other two, the way Carbon (`$link-primary`), Primer (`fgColor-link` against `fgColor-accent`) and Atlassian (`color.link`) do. It is a ground text token beside `default`, `muted` and `faint`, so it does not become a role; hover stays at the component layer and there is no visited token. Value: polar-night 400 in Light (5.84:1 on the page) and polar-night 200 in Dark (7.98:1 on the page). Polar-night 300 passes on the Dark page (4.74:1) but fails on the raised and muted surfaces (about 4.3:1), so 200 is the Dark step. Coral links were rejected because coral 700 (hue 38) is too close to red 700 error text (hue 27) in both modes. Inline links are still underlined: polar-night 400 against black-bear 900 body text is 3.0:1, only just enough to carry a link by colour.
+- **`foreground.primary` is text over the primary fill again**, now `gray.950` in both modes. Coral 600 holds 4.83:1 with `gray.950` text, but only 3.98:1 with `gray.50`, so the fill keeps its brand step and the text turns dark. `background.primary-emphasis` (the hover and active fill) is coral 500 in both modes, because dark text on a darker fill fails (coral 700 with `gray.950` is 3.18:1) and on a lighter fill it holds (5.70:1).
+- **`foreground.primary-muted`** is coral 700 in Light and coral 300 in Dark. Coral 400 in Dark is 4.2:1 on the coral 900 tint.
+- **Light text scale** is black-bear 900, 500 and 400 (17.6, 12.0 and 6.4:1 on the page). Lightness steps are 0.128 and 0.150, against 0.214 and 0.097 for gray 900, 700 and 600, so muted and faint stop looking alike. Dark is unchanged (gray 50, 200 and 400).
+- **Still open:** the sandcastle surfaces, petrified-wood borders and a Dark surface change for the brand palettes. Each moves the contrast of the others (faint at gray 600 fails on sandcastle 100 and 200 at 4.44:1), so they belong in one design pass.
 
 ## What exists today
 

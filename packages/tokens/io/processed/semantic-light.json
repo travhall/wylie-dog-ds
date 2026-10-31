@@ -301,7 +301,7 @@
   },
   "color.background.primary-emphasis": {
     "$type": "color",
-    "$value": "{color.fiery-coral.700}",
+    "$value": "{color.fiery-coral.500}",
     "$description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
   },
   "color.background.danger-muted": {
@@ -351,18 +351,23 @@
   },
   "color.foreground.default": {
     "$type": "color",
-    "$value": "{color.gray.900}",
+    "$value": "{color.black-bear.900}",
     "$description": "Default text and icon colour for headings and body content. Readable on the page, muted, emphasis and raised backgrounds."
   },
   "color.foreground.muted": {
     "$type": "color",
-    "$value": "{color.gray.700}",
+    "$value": "{color.black-bear.500}",
     "$description": "Quieter text for descriptions and captions. Readable on the page, muted, emphasis and raised backgrounds."
   },
   "color.foreground.faint": {
     "$type": "color",
-    "$value": "{color.gray.600}",
+    "$value": "{color.black-bear.400}",
     "$description": "Faintest text for timestamps, metadata and hints. Readable on the page, muted and raised backgrounds."
+  },
+  "color.foreground.link": {
+    "$type": "color",
+    "$value": "{color.polar-night.400}",
+    "$description": "Text colour for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links."
   },
   "color.foreground.inverse": {
     "$type": "color",
@@ -371,12 +376,12 @@
   },
   "color.foreground.primary": {
     "$type": "color",
-    "$value": "{color.fiery-coral.600}",
+    "$value": "{color.gray.950}",
     "$description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
   },
   "color.foreground.primary-muted": {
     "$type": "color",
-    "$value": "{color.fiery-coral.400}",
+    "$value": "{color.fiery-coral.700}",
     "$description": "Primary text on its tint (background.primary-muted) and on the page."
   },
   "color.foreground.danger": {

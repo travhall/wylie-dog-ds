@@ -338,11 +338,9 @@ export const TextColors: Story = {
       </div>
 
       <div>
-        <p className="text-(--color-foreground-primary-muted) text-lg mb-1">
-          Link Text
-        </p>
+        <p className="text-(--color-foreground-link) text-lg mb-1">Link Text</p>
         <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --color-foreground-primary-muted
+          --color-foreground-link
         </p>
       </div>
 

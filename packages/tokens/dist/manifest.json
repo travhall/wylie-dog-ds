@@ -2754,7 +2754,7 @@
           "background",
           "primary-emphasis"
         ],
-        "value": "oklch(0.508 0.139 37.81)",
+        "value": "oklch(0.653 0.183 37.6)",
         "type": "color",
         "variable": "var(--color-background-primary-emphasis)",
         "description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
@@ -2876,7 +2876,7 @@
           "foreground",
           "default"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-foreground-default)",
         "description": "Default text and icon colour for headings and body content. Readable on the page, muted, emphasis and raised backgrounds."
@@ -2888,7 +2888,7 @@
           "foreground",
           "muted"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-foreground-muted)",
         "description": "Quieter text for descriptions and captions. Readable on the page, muted, emphasis and raised backgrounds."
@@ -2900,10 +2900,22 @@
           "foreground",
           "faint"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-foreground-faint)",
         "description": "Faintest text for timestamps, metadata and hints. Readable on the page, muted and raised backgrounds."
+      },
+      "color-foreground-link": {
+        "name": "colorForegroundLink",
+        "path": [
+          "color",
+          "foreground",
+          "link"
+        ],
+        "value": "oklch(0.496 0.049 219.07)",
+        "type": "color",
+        "variable": "var(--color-foreground-link)",
+        "description": "Text colour for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links."
       },
       "color-foreground-inverse": {
         "name": "colorForegroundInverse",
@@ -2924,7 +2936,7 @@
           "foreground",
           "primary"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-foreground-primary)",
         "description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
@@ -2936,7 +2948,7 @@
           "foreground",
           "primary-muted"
         ],
-        "value": "oklch(0.709 0.147 38.43)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-foreground-primary-muted)",
         "description": "Primary text on its tint (background.primary-muted) and on the page."
@@ -3339,7 +3351,7 @@
           "default",
           "text"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-badge-default-text)",
         "description": "Text colour of the default badge. Pairs with `badge.default.background`."
@@ -3375,7 +3387,7 @@
           "secondary",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-badge-secondary-text)",
         "description": "Text colour of the secondary badge. Pairs with `badge.secondary.background`."
@@ -3519,7 +3531,7 @@
           "outline",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-badge-outline-text)",
         "description": "Text colour of the outline badge. Pairs with `badge.outline.background`."
@@ -3695,7 +3707,7 @@
           "default",
           "background-hover"
         ],
-        "value": "oklch(0.508 0.139 37.81)",
+        "value": "oklch(0.653 0.183 37.6)",
         "type": "color",
         "variable": "var(--color-badge-default-background-hover)",
         "description": "Fill of an interactive default badge while hovered. Applies only when the badge is interactive."
@@ -3839,7 +3851,7 @@
           "default",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-default-text-disabled)",
         "description": "Text colour of the default badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.default.background-disabled`."
@@ -3863,7 +3875,7 @@
           "secondary",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-secondary-text-disabled)",
         "description": "Text colour of the secondary badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.secondary.background-disabled`."
@@ -3887,7 +3899,7 @@
           "success",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-success-text-disabled)",
         "description": "Text colour of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
@@ -3911,7 +3923,7 @@
           "warning",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-warning-text-disabled)",
         "description": "Text colour of the warning badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.warning.background-disabled`."
@@ -3935,7 +3947,7 @@
           "destructive",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-destructive-text-disabled)",
         "description": "Text colour of the destructive badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.destructive.background-disabled`."
@@ -3959,7 +3971,7 @@
           "outline",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-outline-text-disabled)",
         "description": "Text colour of the outline badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.outline.background-disabled`."
@@ -3997,7 +4009,7 @@
           "primary",
           "background-hover"
         ],
-        "value": "oklch(0.508 0.139 37.81)",
+        "value": "oklch(0.653 0.183 37.6)",
         "type": "color",
         "variable": "var(--color-button-primary-background-hover)",
         "description": "Primary button fill while hovered, one step stronger than the resting fill."
@@ -4009,7 +4021,7 @@
           "primary",
           "background-active"
         ],
-        "value": "oklch(0.508 0.139 37.81)",
+        "value": "oklch(0.653 0.183 37.6)",
         "type": "color",
         "variable": "var(--color-button-primary-background-active)",
         "description": "Fill of the primary button while pressed."
@@ -4021,7 +4033,7 @@
           "primary",
           "text"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-button-primary-text)",
         "description": "Label colour on the primary button. Pairs with `button.primary.background`."
@@ -4081,7 +4093,7 @@
           "secondary",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-button-secondary-text)",
         "description": "Text colour of the secondary button. Pairs with `button.secondary.background`."
@@ -4153,7 +4165,7 @@
           "ghost",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-button-ghost-text)",
         "description": "Text colour of the ghost button. Pairs with `button.ghost.background`."
@@ -4177,7 +4189,7 @@
           "outline",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-button-outline-text)",
         "description": "Text colour of the outline button. Pairs with `button.outline.background`."
@@ -4411,7 +4423,7 @@
           "button",
           "link-text"
         ],
-        "value": "oklch(0.709 0.147 38.43)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-button-link-text)",
         "description": "Label colour of the link-style button, which has no fill or border."
@@ -4435,7 +4447,7 @@
           "primary",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-primary-text-disabled)",
         "description": "Text colour of the primary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.primary.background-disabled`."
@@ -4471,7 +4483,7 @@
           "secondary",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-secondary-text-disabled)",
         "description": "Text colour of the secondary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.secondary.background-disabled`."
@@ -4507,7 +4519,7 @@
           "destructive",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-destructive-text-disabled)",
         "description": "Text colour of the destructive button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.destructive.background-disabled`."
@@ -4531,7 +4543,7 @@
           "outline",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-outline-text-disabled)",
         "description": "Label colour of a disabled outline button. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -4555,7 +4567,7 @@
           "ghost",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-ghost-text-disabled)",
         "description": "Text colour of the ghost button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -4566,7 +4578,7 @@
           "button",
           "link-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-link-text-disabled)",
         "description": "Text colour of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -4685,7 +4697,7 @@
           "title",
           "color"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-card-header-title-color)",
         "description": "Text colour of the card header title."
@@ -4711,7 +4723,7 @@
           "description",
           "color"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-card-header-description-color)",
         "description": "Text colour of the card header description."
@@ -4819,7 +4831,7 @@
           "content",
           "color"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-card-content-color)",
         "description": "Text colour of the card content."
@@ -4943,7 +4955,7 @@
           "input",
           "placeholder"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-input-placeholder)",
         "description": "Colour of placeholder text, muted so it reads as a hint rather than a value."
@@ -5025,7 +5037,7 @@
           "default",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-input-default-text)",
         "description": "Colour of typed text. Pairs with `input.default.background`."
@@ -5083,7 +5095,7 @@
           "input",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-input-text-disabled)",
         "description": "Text colour of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
@@ -5143,7 +5155,7 @@
           "default",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-alert-default-text)",
         "description": "Text colour of the default alert. Pairs with `alert.default.background`."
@@ -5435,7 +5447,7 @@
           "menubar",
           "trigger-text-open"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-menubar-trigger-text-open)",
         "description": "Text colour of the menubar trigger when open. Pairs with `menubar.trigger-open`."
@@ -5468,7 +5480,7 @@
           "menubar",
           "content-text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-menubar-content-text)",
         "description": "Text colour of the menubar content. Pairs with `menubar.content-background`."
@@ -5479,7 +5491,7 @@
           "menubar",
           "label"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-menubar-label)",
         "description": "Text colour of the menubar label."
@@ -5501,7 +5513,7 @@
           "menubar",
           "shortcut"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-menubar-shortcut)",
         "description": "Text colour of the menubar shortcut."
@@ -5819,7 +5831,7 @@
           "menubar",
           "item-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-menubar-item-text-disabled)",
         "description": "Text colour of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -5841,7 +5853,7 @@
           "menubar",
           "trigger-text-highlighted"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-menubar-trigger-text-highlighted)",
         "description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
@@ -5863,7 +5875,7 @@
           "menubar",
           "item-text-highlighted"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-menubar-item-text-highlighted)",
         "description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
@@ -5931,7 +5943,7 @@
           "navigation",
           "text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-navigation-text-hover)",
         "description": "Text colour of the navigation menu while hovered. Pairs with `navigation.background-hover`."
@@ -5986,7 +5998,7 @@
           "navigation",
           "content-text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-navigation-content-text)",
         "description": "Text colour of the navigation menu content. Pairs with `navigation.content-background`."
@@ -6019,7 +6031,7 @@
           "navigation",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-navigation-text-disabled)",
         "description": "Text colour of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -6041,7 +6053,7 @@
           "navigation",
           "text-highlighted"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-navigation-text-highlighted)",
         "description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
@@ -6065,7 +6077,7 @@
           "command",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-command-text)",
         "description": "Text colour of the command menu. Pairs with `command.background`."
@@ -6087,7 +6099,7 @@
           "command",
           "placeholder"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-command-placeholder)",
         "description": "Colour of placeholder text in the command menu, muted so it reads as a hint rather than a value."
@@ -6098,7 +6110,7 @@
           "command",
           "empty"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-command-empty)",
         "description": "Text colour of the empty-results message in the command menu."
@@ -6109,7 +6121,7 @@
           "command",
           "group-heading"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-command-group-heading)",
         "description": "Text colour of the command menu group heading."
@@ -6142,7 +6154,7 @@
           "command",
           "item-text-selected"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-command-item-text-selected)",
         "description": "Text colour of the command menu item when selected. Pairs with `command.item-selected`."
@@ -6153,7 +6165,7 @@
           "command",
           "shortcut"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-command-shortcut)",
         "description": "Text colour of the command menu shortcut."
@@ -6381,7 +6393,7 @@
           "command",
           "item-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-command-item-text-disabled)",
         "description": "Text colour of the command menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -6392,7 +6404,7 @@
           "command",
           "input-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-command-input-text-disabled)",
         "description": "Text colour of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -6418,7 +6430,7 @@
           "list",
           "text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-tabs-list-text)",
         "description": "Text colour of the tabs list. Pairs with `tabs.list.background`."
@@ -6442,7 +6454,7 @@
           "trigger",
           "text-active"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-text-active)",
         "description": "Text colour of the selected tab trigger. Pairs with `tabs.trigger.background-active`."
@@ -6466,7 +6478,7 @@
           "trigger",
           "text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-text-hover)",
         "description": "Text colour of the tabs trigger while hovered. Pairs with `tabs.trigger.background-hover`."
@@ -6771,7 +6783,7 @@
           "trigger",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-text-disabled)",
         "description": "Text colour of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -6842,7 +6854,7 @@
           "calendar",
           "nav-text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-calendar-nav-text-hover)",
         "description": "Text colour of the calendar nav while hovered. Pairs with `calendar.nav-hover`."
@@ -6853,7 +6865,7 @@
           "calendar",
           "header-text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-calendar-header-text)",
         "description": "Text colour of the calendar header."
@@ -6875,7 +6887,7 @@
           "calendar",
           "day-text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-calendar-day-text-hover)",
         "description": "Text colour of the calendar day while hovered. Pairs with `calendar.day-hover`."
@@ -6897,7 +6909,7 @@
           "calendar",
           "day-text-selected"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-calendar-day-text-selected)",
         "description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`."
@@ -7102,7 +7114,7 @@
           "calendar",
           "nav-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-calendar-nav-text-disabled)",
         "description": "Text colour of the calendar nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -7137,7 +7149,7 @@
           "accordion",
           "content-text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-content-text)",
         "description": "Text colour of the accordion content."
@@ -7148,7 +7160,7 @@
           "accordion",
           "icon"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-accordion-icon)",
         "description": "Colour of the accordion chevron icon."
@@ -7170,7 +7182,7 @@
           "accordion",
           "trigger-text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text)",
         "description": "Text colour of the accordion trigger."
@@ -7181,7 +7193,7 @@
           "accordion",
           "trigger-text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-hover)",
         "description": "Text colour of the accordion trigger while hovered. Pairs with `accordion.trigger-hover`."
@@ -7192,7 +7204,7 @@
           "accordion",
           "trigger-text-open"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-open)",
         "description": "Text colour of the accordion trigger when open."
@@ -7225,7 +7237,7 @@
           "accordion",
           "trigger-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-disabled)",
         "description": "Text colour of the accordion trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `accordion.trigger-disabled`."
@@ -7236,7 +7248,7 @@
           "accordion",
           "icon-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-icon-hover)",
         "description": "Colour of the accordion icon while hovered."
@@ -7247,7 +7259,7 @@
           "accordion",
           "icon-open"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-icon-open)",
         "description": "Colour of the accordion icon when open."
@@ -7258,7 +7270,7 @@
           "accordion",
           "icon-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-accordion-icon-disabled)",
         "description": "Colour of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -7423,7 +7435,7 @@
           "avatar",
           "fallback-text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-avatar-fallback-text)",
         "description": "Text colour of the avatar fallback. Pairs with `avatar.fallback-background`."
@@ -7558,7 +7570,7 @@
           "breadcrumb",
           "current"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-breadcrumb-current)",
         "description": "Text colour of the current page item in the breadcrumb."
@@ -7569,7 +7581,7 @@
           "breadcrumb",
           "link"
         ],
-        "value": "oklch(0.709 0.147 38.43)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link)",
         "description": "Text colour of the breadcrumb link."
@@ -7580,7 +7592,7 @@
           "breadcrumb",
           "link-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link-hover)",
         "description": "Text colour of the breadcrumb link while hovered."
@@ -7591,7 +7603,7 @@
           "breadcrumb",
           "text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-breadcrumb-text)",
         "description": "Text colour of breadcrumb text that is not a link."
@@ -7624,7 +7636,7 @@
           "breadcrumb",
           "link-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link-disabled)",
         "description": "Text colour of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -7725,7 +7737,7 @@
           "carousel",
           "nav-text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-carousel-nav-text-hover)",
         "description": "Text colour of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
@@ -7805,7 +7817,7 @@
           "carousel",
           "nav-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-carousel-nav-text-disabled)",
         "description": "Text colour of the carousel nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `carousel.nav-background-disabled`."
@@ -7862,7 +7874,7 @@
           "contextmenu",
           "item-text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-contextmenu-item-text-hover)",
         "description": "Text colour of the context menu item while hovered. Pairs with `contextmenu.item-hover`."
@@ -7873,7 +7885,7 @@
           "contextmenu",
           "label"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-contextmenu-label)",
         "description": "Text colour of the context menu label."
@@ -7895,7 +7907,7 @@
           "contextmenu",
           "shortcut"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-contextmenu-shortcut)",
         "description": "Text colour of the context menu shortcut."
@@ -7906,7 +7918,7 @@
           "contextmenu",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-contextmenu-text)",
         "description": "Text colour of the context menu. Pairs with `contextmenu.background`."
@@ -7917,7 +7929,7 @@
           "contextmenu",
           "item-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-contextmenu-item-text-disabled)",
         "description": "Text colour of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -7952,7 +7964,7 @@
           "dialog",
           "description"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-dialog-description)",
         "description": "Text colour of the dialog description."
@@ -7974,7 +7986,7 @@
           "dialog",
           "title"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-dialog-title)",
         "description": "Text colour of the dialog title."
@@ -8280,7 +8292,7 @@
           "form",
           "description"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-form-description)",
         "description": "Text colour of the help text under a form field."
@@ -8302,7 +8314,7 @@
           "form",
           "label"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-form-label)",
         "description": "Text colour of form labels."
@@ -8412,7 +8424,7 @@
           "form",
           "label-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-form-label-text-disabled)",
         "description": "Text colour of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -8458,7 +8470,7 @@
           "hover-card",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-hover-card-text)",
         "description": "Text colour of the hover card. Pairs with `hover-card.background`."
@@ -8565,7 +8577,7 @@
           "pagination",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-pagination-text)",
         "description": "Text colour of page links other than the current page."
@@ -8576,7 +8588,7 @@
           "pagination",
           "text-active"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-pagination-text-active)",
         "description": "Text colour of the page link for the current page. Pairs with `pagination.active`."
@@ -8587,7 +8599,7 @@
           "pagination",
           "text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-pagination-text-hover)",
         "description": "Text colour of the pagination while hovered. Pairs with `pagination.background-hover`."
@@ -8725,7 +8737,7 @@
           "pagination",
           "ellipsis-text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-pagination-ellipsis-text)",
         "description": "Text colour of the ellipsis that stands in for skipped pages."
@@ -8736,7 +8748,7 @@
           "pagination",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-pagination-text-disabled)",
         "description": "Text colour of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -8771,7 +8783,7 @@
           "popover",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-popover-text)",
         "description": "Text colour of the popover. Pairs with `popover.background`."
@@ -8990,7 +9002,7 @@
           "radio",
           "indicator"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-radio-indicator)",
         "description": "Colour of the dot inside the selected radio."
@@ -9138,7 +9150,7 @@
           "radio",
           "indicator-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-radio-indicator-disabled)",
         "description": "Colour of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -9583,7 +9595,7 @@
           "table",
           "caption"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-table-caption)",
         "description": "Text colour of the table caption."
@@ -9605,7 +9617,7 @@
           "table",
           "header-text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-table-header-text)",
         "description": "Text colour of the table header."
@@ -9778,7 +9790,7 @@
           "toast",
           "close"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-toast-close)",
         "description": "Colour of the close icon on the toast."
@@ -9789,7 +9801,7 @@
           "toast",
           "close-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-toast-close-hover)",
         "description": "Colour of the close icon on the toast while hovered."
@@ -9800,7 +9812,7 @@
           "toast",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-toast-text)",
         "description": "Text colour of the toast."
@@ -10186,7 +10198,7 @@
           "toast",
           "action-text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-toast-action-text-disabled)",
         "description": "Text colour of the toast action when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -10267,7 +10279,7 @@
           "toggle",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-toggle-text)",
         "description": "Text colour of the toggle."
@@ -10278,7 +10290,7 @@
           "toggle",
           "text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-toggle-text-hover)",
         "description": "Text colour of the toggle while hovered. Pairs with `toggle.background-hover`."
@@ -10289,7 +10301,7 @@
           "toggle",
           "text-pressed"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-toggle-text-pressed)",
         "description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`."
@@ -10422,7 +10434,7 @@
           "toggle",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-toggle-text-disabled)",
         "description": "Text colour of the toggle when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -10865,7 +10877,7 @@
           "content",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-select-content-text)",
         "description": "Text colour of the select content. Pairs with `select.content.background`."
@@ -10913,7 +10925,7 @@
           "trigger",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-select-trigger-text-disabled)",
         "description": "Text colour of the select trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `select.trigger.background-disabled`."
@@ -10937,7 +10949,7 @@
           "item",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-select-item-text-disabled)",
         "description": "Text colour of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -10961,7 +10973,7 @@
           "item",
           "text-highlighted"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-select-item-text-highlighted)",
         "description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
@@ -11168,7 +11180,7 @@
           "checkbox",
           "text-checked"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-checkbox-text-checked)",
         "description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
@@ -11212,7 +11224,7 @@
           "checkbox",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-checkbox-text-disabled)",
         "description": "Text colour of the checkbox when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `checkbox.background-disabled`."
@@ -11605,7 +11617,7 @@
           "textarea",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-textarea-text-disabled)",
         "description": "Text colour of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -11676,7 +11688,7 @@
           "label",
           "disabled-color"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-label-disabled-color)",
         "description": "Text colour of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -11687,7 +11699,7 @@
           "label",
           "default-color"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-label-default-color)",
         "description": "Default text colour of labels."
@@ -11940,7 +11952,7 @@
           "title",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-sheet-title-text)",
         "description": "Text colour of the sheet title."
@@ -11952,7 +11964,7 @@
           "description",
           "text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-sheet-description-text)",
         "description": "Text colour of the sheet description."
@@ -12551,7 +12563,7 @@
           "content",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-content-text)",
         "description": "Text colour of the dropdown menu content. Pairs with `dropdown-menu.content.background`."
@@ -12587,7 +12599,7 @@
           "item",
           "text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-item-text-hover)",
         "description": "Text colour of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.background-hover`."
@@ -12683,7 +12695,7 @@
           "item",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-item-text-disabled)",
         "description": "Text colour of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -12877,7 +12889,7 @@
           "title",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-feature-grid-title-text)",
         "description": "Text colour of the feature grid title."
@@ -12912,7 +12924,7 @@
           "feature-grid",
           "description-text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-feature-grid-description-text)",
         "description": "Text colour of the feature grid description."
@@ -13444,7 +13456,7 @@
           "nav-link",
           "text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-hover)",
         "description": "Text colour of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
@@ -13456,7 +13468,7 @@
           "nav-link",
           "text-disabled"
         ],
-        "value": "oklch(0.52 0.007 264.5)",
+        "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-disabled)",
         "description": "Text colour of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
@@ -13480,7 +13492,7 @@
           "nav-link",
           "text-highlighted"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-highlighted)",
         "description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
@@ -13725,7 +13737,7 @@
           "site-footer",
           "text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-site-footer-text)",
         "description": "Text colour of the site footer. Pairs with `site-footer.background`."
@@ -13737,7 +13749,7 @@
           "link",
           "text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-site-footer-link-text)",
         "description": "Text colour of the site footer link."
@@ -13749,7 +13761,7 @@
           "link",
           "text-hover"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-site-footer-link-text-hover)",
         "description": "Text colour of the site footer link while hovered."
@@ -14023,7 +14035,7 @@
           "section-hero",
           "description-text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-section-hero-description-text)",
         "description": "Text colour of the hero section description."
@@ -14294,7 +14306,7 @@
           "section-features",
           "description-text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-section-features-description-text)",
         "description": "Text colour of the features section description."
@@ -14305,7 +14317,7 @@
           "section-features",
           "item-text"
         ],
-        "value": "oklch(0.423 0.007 264.49)",
+        "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-section-features-item-text)",
         "description": "Text colour of the features section item."
@@ -14327,7 +14339,7 @@
           "section-features",
           "icon-text"
         ],
-        "value": "oklch(0.709 0.147 38.43)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-section-features-icon-text)",
         "description": "Colour of the features section icon. Pairs with `section-features.icon-background`."
@@ -14612,7 +14624,7 @@
           "page-layout",
           "skip-link-text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-page-layout-skip-link-text)",
         "description": "Text colour of the page layout skip link. Pairs with `page-layout.skip-link-background`."

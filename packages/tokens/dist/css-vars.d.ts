@@ -273,6 +273,7 @@ export type CssVarName =
   | "--color-foreground-faint"
   | "--color-foreground-info-muted"
   | "--color-foreground-inverse"
+  | "--color-foreground-link"
   | "--color-foreground-muted"
   | "--color-foreground-primary"
   | "--color-foreground-primary-muted"
@@ -1622,6 +1623,7 @@ export declare const cssVars: Readonly<{
   "colorForegroundFaint": "--color-foreground-faint";
   "colorForegroundInfoMuted": "--color-foreground-info-muted";
   "colorForegroundInverse": "--color-foreground-inverse";
+  "colorForegroundLink": "--color-foreground-link";
   "colorForegroundMuted": "--color-foreground-muted";
   "colorForegroundPrimary": "--color-foreground-primary";
   "colorForegroundPrimaryMuted": "--color-foreground-primary-muted";
