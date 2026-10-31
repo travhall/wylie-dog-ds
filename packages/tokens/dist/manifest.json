@@ -2742,7 +2742,7 @@
           "background",
           "primary-muted"
         ],
-        "value": "oklch(0.97 0.014 254.87)",
+        "value": "oklch(0.962 0.017 39.85)",
         "type": "color",
         "variable": "var(--color-background-primary-muted)",
         "description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
@@ -2924,7 +2924,7 @@
           "foreground",
           "primary"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-foreground-primary)",
         "description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
@@ -3339,7 +3339,7 @@
           "default",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-badge-default-text)",
         "description": "Text colour of the default badge. Pairs with `badge.default.background`."
@@ -4021,7 +4021,7 @@
           "primary",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-button-primary-text)",
         "description": "Label colour on the primary button. Pairs with `button.primary.background`."
@@ -6897,7 +6897,7 @@
           "calendar",
           "day-text-selected"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-calendar-day-text-selected)",
         "description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`."
@@ -8576,7 +8576,7 @@
           "pagination",
           "text-active"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-pagination-text-active)",
         "description": "Text colour of the page link for the current page. Pairs with `pagination.active`."
@@ -8990,7 +8990,7 @@
           "radio",
           "indicator"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-radio-indicator)",
         "description": "Colour of the dot inside the selected radio."
@@ -10289,7 +10289,7 @@
           "toggle",
           "text-pressed"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-toggle-text-pressed)",
         "description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`."
@@ -11168,7 +11168,7 @@
           "checkbox",
           "text-checked"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-checkbox-text-checked)",
         "description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
@@ -14012,7 +14012,7 @@
           "gradient",
           "to"
         ],
-        "value": "oklch(0.97 0.014 254.87)",
+        "value": "oklch(0.962 0.017 39.85)",
         "type": "color",
         "variable": "var(--color-section-hero-gradient-to)",
         "description": "Colour stop (to) of the hero section background gradient."

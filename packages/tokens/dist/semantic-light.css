@@ -345,7 +345,7 @@
   --color-background-overlay: oklch(0.149 0.012 259.74);
   --color-background-muted: oklch(0.952 0.003 264.42);
   --color-background-emphasis: oklch(0.87 0.003 264.42);
-  --color-background-primary-muted: oklch(0.97 0.014 254.87);
+  --color-background-primary-muted: oklch(0.962 0.017 39.85);
   --color-background-primary-emphasis: oklch(0.508 0.139 37.81);
   --color-background-danger-muted: oklch(0.97 0.013 16.02);
   --color-background-danger-emphasis: oklch(0.488 0.19 27.47);
@@ -360,7 +360,7 @@
   --color-foreground-muted: oklch(0.423 0.007 264.49);
   --color-foreground-faint: oklch(0.52 0.007 264.5);
   --color-foreground-inverse: oklch(0.991 0.003 264.39);
-  --color-foreground-primary: oklch(0.991 0.003 264.39);
+  --color-foreground-primary: oklch(0.61 0.169 37.69);
   --color-foreground-primary-muted: oklch(0.709 0.147 38.43);
   --color-foreground-danger: oklch(0.991 0.003 264.39);
   --color-foreground-danger-muted: oklch(0.488 0.19 27.47);
@@ -381,7 +381,7 @@
 
 :root {
   --color-badge-default-background: oklch(0.61 0.169 37.69);
-  --color-badge-default-text: oklch(0.991 0.003 264.39);
+  --color-badge-default-text: oklch(0.61 0.169 37.69);
   --color-badge-default-border: oklch(0.61 0.169 37.69);
   --color-badge-secondary-background: oklch(0.952 0.003 264.42);
   --color-badge-secondary-text: oklch(0.209 0.01 268.18);
@@ -414,7 +414,7 @@
   --color-button-primary-background: oklch(0.61 0.169 37.69);
   --color-button-primary-background-hover: oklch(0.508 0.139 37.81);
   --color-button-primary-background-active: oklch(0.508 0.139 37.81);
-  --color-button-primary-text: oklch(0.991 0.003 264.39);
+  --color-button-primary-text: oklch(0.61 0.169 37.69);
   --color-button-primary-border: oklch(0.61 0.169 37.69);
   --color-button-secondary-background: oklch(0.952 0.003 264.42);
   --color-button-secondary-background-hover: oklch(0.87 0.003 264.42);
@@ -521,7 +521,7 @@
   --color-calendar-day-hover: oklch(0.952 0.003 264.42);
   --color-calendar-day-text-hover: oklch(0.209 0.01 268.18);
   --color-calendar-day-selected: oklch(0.61 0.169 37.69);
-  --color-calendar-day-text-selected: oklch(0.991 0.003 264.39);
+  --color-calendar-day-text-selected: oklch(0.61 0.169 37.69);
   --color-accordion-border: oklch(0.786 0.004 270.86);
   --color-accordion-content-text: oklch(0.209 0.01 268.18);
   --color-accordion-icon: oklch(0.423 0.007 264.49);
@@ -567,7 +567,7 @@
   --color-hover-card-text: oklch(0.209 0.01 268.18);
   --color-pagination-active: oklch(0.61 0.169 37.69);
   --color-pagination-text: oklch(0.209 0.01 268.18);
-  --color-pagination-text-active: oklch(0.991 0.003 264.39);
+  --color-pagination-text-active: oklch(0.61 0.169 37.69);
   --color-pagination-text-hover: oklch(0.209 0.01 268.18);
   --color-popover-background: oklch(0.991 0.003 264.39);
   --color-popover-border: oklch(0.786 0.004 270.86);
@@ -580,7 +580,7 @@
   --color-radio-background-checked: oklch(0.61 0.169 37.69);
   --color-radio-border: oklch(0.613 0.005 258.55);
   --color-radio-border-checked: oklch(0.61 0.169 37.69);
-  --color-radio-indicator: oklch(0.991 0.003 264.39);
+  --color-radio-indicator: oklch(0.61 0.169 37.69);
   --color-resizable-handle: oklch(0.786 0.004 270.86);
   --color-resizable-handle-background: oklch(0.952 0.003 264.42);
   --color-resizable-handle-border: oklch(0.786 0.004 270.86);
@@ -604,7 +604,7 @@
   --color-toggle-pressed: oklch(0.61 0.169 37.69);
   --color-toggle-text: oklch(0.209 0.01 268.18);
   --color-toggle-text-hover: oklch(0.209 0.01 268.18);
-  --color-toggle-text-pressed: oklch(0.991 0.003 264.39);
+  --color-toggle-text-pressed: oklch(0.61 0.169 37.69);
   --color-tooltip-background: oklch(0.149 0.012 259.74);
   --color-tooltip-border: oklch(0.87 0.003 264.42);
   --color-tooltip-text: oklch(0.991 0.003 264.39);
@@ -1071,7 +1071,7 @@
   --font-weight-avatar-fallback-font-weight: 500;
   --font-weight-table-footer-font-weight: 500;
   --color-checkbox-background-checked: oklch(0.61 0.169 37.69);
-  --color-checkbox-text-checked: oklch(0.991 0.003 264.39);
+  --color-checkbox-text-checked: oklch(0.61 0.169 37.69);
   --color-checkbox-border-checked: oklch(0.61 0.169 37.69);
   --color-checkbox-error-border: oklch(0.546 0.215 27.29);
   --font-weight-dialog-title-font-weight: 600;
@@ -1117,7 +1117,7 @@
   --color-section-hero-background: oklch(0.991 0.003 264.39);
   --color-section-hero-gradient-from: oklch(0.61 0.169 37.69);
   --color-section-hero-gradient-via: oklch(0.991 0.003 264.39);
-  --color-section-hero-gradient-to: oklch(0.97 0.014 254.87);
+  --color-section-hero-gradient-to: oklch(0.962 0.017 39.85);
   --color-section-hero-description-text: oklch(0.423 0.007 264.49);
   --color-section-features-background: oklch(0.991 0.003 264.39);
   --color-section-features-background-muted: oklch(0.952 0.003 264.42);

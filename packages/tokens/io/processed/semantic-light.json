@@ -296,7 +296,7 @@
   },
   "color.background.primary-muted": {
     "$type": "color",
-    "$value": "{color.blue.50}",
+    "$value": "{color.fiery-coral.50}",
     "$description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
   },
   "color.background.primary-emphasis": {
@@ -371,7 +371,7 @@
   },
   "color.foreground.primary": {
     "$type": "color",
-    "$value": "{color.gray.50}",
+    "$value": "{color.fiery-coral.600}",
     "$description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
   },
   "color.foreground.primary-muted": {
