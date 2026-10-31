@@ -519,7 +519,7 @@ export const SemanticTokens: Story = {
                 <button
                   key={token.name}
                   onClick={() => handleCopy(token.name)}
-                  className="relative flex items-center gap-3 p-2.5 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-2 group"
+                  className="relative flex items-center gap-3 p-2.5 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-(--color-focus-ring) focus-visible:outline-offset-2 group"
                 >
                   {/* Swatch — var() resolves correctly since semantic tokens are on :root */}
                   <div
@@ -594,10 +594,10 @@ export const SemanticTokens: Story = {
 
 // ----------------------------------------------------------------------------
 // Contrast helpers: the ratios on the Accessibility story are computed from the
-// colours the browser actually renders, never typed by hand.
+// colors the browser actually renders, never typed by hand.
 // ----------------------------------------------------------------------------
 
-/** Resolve any CSS colour (var(), oklch, ...) to 8-bit sRGB through a canvas. */
+/** Resolve any CSS color (var(), oklch, ...) to 8-bit sRGB through a canvas. */
 function resolveSrgb(color: string): [number, number, number] | null {
   const probe = document.createElement("span");
   probe.style.color = color;
@@ -674,7 +674,7 @@ export const Accessibility: Story = {
     docs: {
       description: {
         story:
-          "Semantic token pairings and their WCAG 2.2 contrast ratios, computed from the colours rendered in the current mode. Verify custom pairings with browser DevTools (Elements → Computed → contrast ratio).",
+          "Semantic token pairings and their WCAG 2.2 contrast ratios, computed from the colors rendered in the current mode. Verify custom pairings with browser DevTools (Elements → Computed → contrast ratio).",
       },
     },
   },
@@ -714,7 +714,7 @@ export const Accessibility: Story = {
           </h2>
           <p className="text-sm text-(--color-foreground-muted) mb-6">
             All semantic tokens meet WCAG 2.2 Level AA for their intended use
-            cases. Ratios below are computed from the colours rendered in the
+            cases. Ratios below are computed from the colors rendered in the
             current mode (8-bit sRGB, within about 0.05 of the exact value).
             Declared pairings are enforced by{" "}
             <code className="font-mono text-xs">pnpm check:contrast</code>; use
@@ -953,7 +953,7 @@ export const TokenBrowser: Story = {
             <button
               key={token.name}
               onClick={() => handleCopy(token)}
-              className="relative flex items-center gap-3 p-3 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:border-(--color-focus-ring) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-2"
+              className="relative flex items-center gap-3 p-3 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:border-(--color-focus-ring) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-(--color-focus-ring) focus-visible:outline-offset-2"
             >
               <div
                 className="w-10 h-10 rounded border border-(--color-border-muted) shrink-0"
