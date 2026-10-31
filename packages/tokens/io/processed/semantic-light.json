@@ -1,4 +1,274 @@
 {
+  "color.background.primary": {
+    "$type": "color",
+    "$value": "{color.fiery-coral.600}",
+    "$description": "Solid fill for the main action colour. Pairs with foreground.primary."
+  },
+  "color.background.inverse": {
+    "$type": "color",
+    "$value": "{color.gray.950}",
+    "$description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
+  },
+  "color.background.danger": {
+    "$type": "color",
+    "$value": "{color.red.600}",
+    "$description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
+  },
+  "color.border.primary": {
+    "$type": "color",
+    "$value": "{color.fiery-coral.600}",
+    "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
+  },
+  "color.border.success": {
+    "$type": "color",
+    "$value": "{color.green.600}",
+    "$description": "Border in the success colour for alerts, toasts and highlights."
+  },
+  "color.border.warning": {
+    "$type": "color",
+    "$value": "{color.yellow.600}",
+    "$description": "Border in the warning colour for alerts, toasts and highlights."
+  },
+  "color.border.danger": {
+    "$type": "color",
+    "$value": "{color.red.600}",
+    "$description": "Border in the danger colour for alerts, toasts and highlights."
+  },
+  "shadow.none": {
+    "$type": "shadow",
+    "$value": "none",
+    "$description": "No shadow"
+  },
+  "shadow.sm": {
+    "$type": "shadow",
+    "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+    "$description": "Subtle shadow for slight elevation"
+  },
+  "shadow.base": {
+    "$type": "shadow",
+    "$value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+    "$description": "Default shadow for cards and raised elements"
+  },
+  "shadow.md": {
+    "$type": "shadow",
+    "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    "$description": "Medium shadow for dropdowns and popovers"
+  },
+  "shadow.lg": {
+    "$type": "shadow",
+    "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+    "$description": "Large shadow for modals and overlays"
+  },
+  "shadow.xl": {
+    "$type": "shadow",
+    "$value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+    "$description": "Extra large shadow for maximum elevation"
+  },
+  "shadow.inner": {
+    "$type": "shadow",
+    "$value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
+    "$description": "Inner shadow for recessed elements"
+  },
+  "transition.duration.instant": {
+    "$type": "duration",
+    "$value": "0ms",
+    "$description": "Instant transition (no animation)"
+  },
+  "transition.duration.fast": {
+    "$type": "duration",
+    "$value": "150ms",
+    "$description": "Fast transition for micro-interactions"
+  },
+  "transition.duration.normal": {
+    "$type": "duration",
+    "$value": "250ms",
+    "$description": "Normal transition duration"
+  },
+  "transition.duration.slow": {
+    "$type": "duration",
+    "$value": "400ms",
+    "$description": "Slow transition for emphasized changes"
+  },
+  "z-index.dropdown": {
+    "$type": "number",
+    "$value": "{z-index.10}",
+    "$description": "Dropdown menus and select panels"
+  },
+  "z-index.sticky": {
+    "$type": "number",
+    "$value": "{z-index.20}",
+    "$description": "Sticky positioned elements (sticky headers, etc.)"
+  },
+  "z-index.modal": {
+    "$type": "number",
+    "$value": "{z-index.50}",
+    "$description": "Modal dialogs, sheets, and similar blocking overlays"
+  },
+  "z-index.toast": {
+    "$type": "number",
+    "$value": "{z-index.80}",
+    "$description": "Toast notifications — above all UI"
+  },
+  "z-index.tooltip": {
+    "$type": "number",
+    "$value": "{z-index.70}",
+    "$description": "Tooltips — highest priority for transient hints"
+  },
+  "state.opacity.disabled": {
+    "$type": "number",
+    "$value": "{opacity.50}",
+    "$description": "Opacity for disabled elements"
+  },
+  "state.opacity.muted": {
+    "$type": "number",
+    "$value": "{opacity.70}",
+    "$description": "Opacity for muted/secondary elements"
+  },
+  "state.opacity.subtle": {
+    "$type": "number",
+    "$value": "{opacity.90}",
+    "$description": "Opacity for subtle elements"
+  },
+  "state.opacity.hover": {
+    "$type": "number",
+    "$value": "{opacity.100}",
+    "$description": "Opacity for hover state (full visibility)"
+  },
+  "state.opacity.overlay": {
+    "$type": "number",
+    "$value": "{opacity.80}",
+    "$description": "Opacity for overlay backgrounds"
+  },
+  "icon.size.xs": {
+    "$type": "dimension",
+    "$value": "{space.150}",
+    "$description": "Extra small icon size (12px)"
+  },
+  "icon.size.sm": {
+    "$type": "dimension",
+    "$value": "{space.200}",
+    "$description": "Small icon size (16px)"
+  },
+  "icon.size.md": {
+    "$type": "dimension",
+    "$value": "{space.300}",
+    "$description": "Medium icon size (24px)"
+  },
+  "icon.size.lg": {
+    "$type": "dimension",
+    "$value": "{space.400}",
+    "$description": "Large icon size (32px)"
+  },
+  "icon.size.xl": {
+    "$type": "dimension",
+    "$value": "{space.500}",
+    "$description": "Extra large icon size (40px)"
+  },
+  "transition.easing.default": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "$description": "Default easing for most transitions"
+  },
+  "transition.easing.in": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0.4, 0, 1, 1)",
+    "$description": "Ease-in (accelerating) curve, for elements leaving"
+  },
+  "transition.easing.out": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0, 0, 0.2, 1)",
+    "$description": "Ease-out (decelerating) curve, for elements entering"
+  },
+  "transition.easing.in-out": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "$description": "Ease-in-out for symmetric transitions"
+  },
+  "z-index.base": {
+    "$type": "number",
+    "$value": "{z-index.0}",
+    "$description": "Default stacking context"
+  },
+  "z-index.fixed": {
+    "$type": "number",
+    "$value": "{z-index.30}",
+    "$description": "Fixed positioned elements (app shell)"
+  },
+  "z-index.modal-backdrop": {
+    "$type": "number",
+    "$value": "{z-index.40}",
+    "$description": "Modal/dialog backdrop overlay"
+  },
+  "z-index.popover": {
+    "$type": "number",
+    "$value": "{z-index.60}",
+    "$description": "Popovers, hover cards, and floating panels"
+  },
+  "opacity.interactive.hover": {
+    "$type": "number",
+    "$value": "{opacity.80}",
+    "$description": "Hover-state opacity for interactive elements"
+  },
+  "opacity.interactive.active": {
+    "$type": "number",
+    "$value": "{opacity.90}",
+    "$description": "Active/pressed-state opacity for interactive elements"
+  },
+  "opacity.interactive.disabled": {
+    "$type": "number",
+    "$value": "{opacity.50}",
+    "$description": "Disabled-state opacity for interactive elements"
+  },
+  "opacity.muted": {
+    "$type": "number",
+    "$value": "{opacity.70}",
+    "$description": "Muted/secondary content opacity"
+  },
+  "opacity.subtle": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Subtle/tertiary content opacity"
+  },
+  "opacity.overlay": {
+    "$type": "number",
+    "$value": "{opacity.40}",
+    "$description": "Overlay/scrim opacity for partial backdrops"
+  },
+  "opacity.scrim": {
+    "$type": "number",
+    "$value": "{opacity.90}",
+    "$description": "Heavy scrim opacity for modal backdrops"
+  },
+  "typography.font-size.display.lg": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.6xl}",
+    "$description": "Display Large — hero H1 at largest breakpoint (60px)"
+  },
+  "typography.font-size.display.md": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.5xl}",
+    "$description": "Display Medium — hero H1 at medium breakpoint (48px)"
+  },
+  "typography.font-size.display.sm": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.4xl}",
+    "$description": "Display Small — hero H1 base or section H2 large (36px)"
+  },
+  "typography.font-size.heading.lg": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.3xl}",
+    "$description": "Heading Large — section H2 base breakpoint (30px)"
+  },
+  "typography.font-size.heading.md": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.2xl}",
+    "$description": "Heading Medium — subheadings and prominent labels (24px)"
+  },
+  "typography.font-size.heading.sm": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.xl}",
+    "$description": "Heading Small — card titles and feature item headings (20px)"
+  },
   "color.background.default": {
     "$type": "color",
     "$value": "{color.gray.50}",
@@ -24,16 +294,6 @@
     "$value": "{color.gray.200}",
     "$description": "Stronger surface for nested or emphasized areas, one step more contrast than muted. The default and muted foreground tokens are readable on it."
   },
-  "color.background.inverse": {
-    "$type": "color",
-    "$value": "{color.gray.950}",
-    "$description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
-  },
-  "color.background.primary": {
-    "$type": "color",
-    "$value": "{color.blue.600}",
-    "$description": "Solid fill for the main action colour. Pairs with foreground.primary."
-  },
   "color.background.primary-muted": {
     "$type": "color",
     "$value": "{color.blue.50}",
@@ -41,13 +301,8 @@
   },
   "color.background.primary-emphasis": {
     "$type": "color",
-    "$value": "{color.blue.700}",
+    "$value": "{color.fiery-coral.700}",
     "$description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
-  },
-  "color.background.danger": {
-    "$type": "color",
-    "$value": "{color.red.600}",
-    "$description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
   },
   "color.background.danger-muted": {
     "$type": "color",
@@ -174,26 +429,6 @@
     "$value": "{color.gray.500}",
     "$description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches)."
   },
-  "color.border.primary": {
-    "$type": "color",
-    "$value": "{color.blue.600}",
-    "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
-  },
-  "color.border.danger": {
-    "$type": "color",
-    "$value": "{color.red.600}",
-    "$description": "Border in the danger colour for alerts, toasts and highlights."
-  },
-  "color.border.success": {
-    "$type": "color",
-    "$value": "{color.green.600}",
-    "$description": "Border in the success colour for alerts, toasts and highlights."
-  },
-  "color.border.warning": {
-    "$type": "color",
-    "$value": "{color.yellow.600}",
-    "$description": "Border in the warning colour for alerts, toasts and highlights."
-  },
   "color.focus.ring": {
     "$type": "color",
     "$value": "{color.gray.900}",
@@ -218,240 +453,5 @@
     "$type": "dimension",
     "$value": "{border-width.2}",
     "$description": "Width of the halo band outside the focus outline."
-  },
-  "icon.size.xs": {
-    "$type": "dimension",
-    "$value": "{space.150}",
-    "$description": "Extra small icon size (12px)"
-  },
-  "icon.size.sm": {
-    "$type": "dimension",
-    "$value": "{space.200}",
-    "$description": "Small icon size (16px)"
-  },
-  "icon.size.md": {
-    "$type": "dimension",
-    "$value": "{space.300}",
-    "$description": "Medium icon size (24px)"
-  },
-  "icon.size.lg": {
-    "$type": "dimension",
-    "$value": "{space.400}",
-    "$description": "Large icon size (32px)"
-  },
-  "icon.size.xl": {
-    "$type": "dimension",
-    "$value": "{space.500}",
-    "$description": "Extra large icon size (40px)"
-  },
-  "opacity.interactive.hover": {
-    "$type": "number",
-    "$value": "{opacity.80}",
-    "$description": "Hover-state opacity for interactive elements"
-  },
-  "opacity.interactive.active": {
-    "$type": "number",
-    "$value": "{opacity.90}",
-    "$description": "Active/pressed-state opacity for interactive elements"
-  },
-  "opacity.interactive.disabled": {
-    "$type": "number",
-    "$value": "{opacity.50}",
-    "$description": "Disabled-state opacity for interactive elements"
-  },
-  "opacity.muted": {
-    "$type": "number",
-    "$value": "{opacity.70}",
-    "$description": "Muted/secondary content opacity"
-  },
-  "shadow.none": {
-    "$type": "shadow",
-    "$value": "none",
-    "$description": "No shadow"
-  },
-  "shadow.sm": {
-    "$type": "shadow",
-    "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-    "$description": "Subtle shadow for slight elevation"
-  },
-  "shadow.base": {
-    "$type": "shadow",
-    "$value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-    "$description": "Default shadow for cards and raised elements"
-  },
-  "shadow.md": {
-    "$type": "shadow",
-    "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
-    "$description": "Medium shadow for dropdowns and popovers"
-  },
-  "shadow.lg": {
-    "$type": "shadow",
-    "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-    "$description": "Large shadow for modals and overlays"
-  },
-  "shadow.xl": {
-    "$type": "shadow",
-    "$value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
-    "$description": "Extra large shadow for maximum elevation"
-  },
-  "shadow.inner": {
-    "$type": "shadow",
-    "$value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
-    "$description": "Inner shadow for recessed elements"
-  },
-  "state.opacity.disabled": {
-    "$type": "number",
-    "$value": "{opacity.50}",
-    "$description": "Opacity for disabled elements"
-  },
-  "state.opacity.muted": {
-    "$type": "number",
-    "$value": "{opacity.70}",
-    "$description": "Opacity for muted/secondary elements"
-  },
-  "state.opacity.subtle": {
-    "$type": "number",
-    "$value": "{opacity.90}",
-    "$description": "Opacity for subtle elements"
-  },
-  "state.opacity.hover": {
-    "$type": "number",
-    "$value": "{opacity.100}",
-    "$description": "Opacity for hover state (full visibility)"
-  },
-  "state.opacity.overlay": {
-    "$type": "number",
-    "$value": "{opacity.80}",
-    "$description": "Opacity for overlay backgrounds"
-  },
-  "transition.duration.instant": {
-    "$type": "duration",
-    "$value": "0ms",
-    "$description": "Instant transition (no animation)"
-  },
-  "transition.duration.fast": {
-    "$type": "duration",
-    "$value": "150ms",
-    "$description": "Fast transition for micro-interactions"
-  },
-  "transition.duration.normal": {
-    "$type": "duration",
-    "$value": "250ms",
-    "$description": "Normal transition duration"
-  },
-  "transition.duration.slow": {
-    "$type": "duration",
-    "$value": "400ms",
-    "$description": "Slow transition for emphasized changes"
-  },
-  "transition.easing.default": {
-    "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
-    "$description": "Default easing for most transitions"
-  },
-  "transition.easing.in": {
-    "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 1, 1)",
-    "$description": "Ease-in (accelerating) curve, for elements leaving"
-  },
-  "transition.easing.out": {
-    "$type": "cubicBezier",
-    "$value": "cubic-bezier(0, 0, 0.2, 1)",
-    "$description": "Ease-out (decelerating) curve, for elements entering"
-  },
-  "transition.easing.in-out": {
-    "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
-    "$description": "Ease-in-out for symmetric transitions"
-  },
-  "opacity.subtle": {
-    "$type": "number",
-    "$value": "{opacity.60}",
-    "$description": "Subtle/tertiary content opacity"
-  },
-  "opacity.overlay": {
-    "$type": "number",
-    "$value": "{opacity.40}",
-    "$description": "Overlay/scrim opacity for partial backdrops"
-  },
-  "opacity.scrim": {
-    "$type": "number",
-    "$value": "{opacity.90}",
-    "$description": "Heavy scrim opacity for modal backdrops"
-  },
-  "typography.font-size.display.lg": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.6xl}",
-    "$description": "Display Large — hero H1 at largest breakpoint (60px)"
-  },
-  "typography.font-size.display.md": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.5xl}",
-    "$description": "Display Medium — hero H1 at medium breakpoint (48px)"
-  },
-  "typography.font-size.display.sm": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.4xl}",
-    "$description": "Display Small — hero H1 base or section H2 large (36px)"
-  },
-  "typography.font-size.heading.lg": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.3xl}",
-    "$description": "Heading Large — section H2 base breakpoint (30px)"
-  },
-  "typography.font-size.heading.md": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.2xl}",
-    "$description": "Heading Medium — subheadings and prominent labels (24px)"
-  },
-  "typography.font-size.heading.sm": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.xl}",
-    "$description": "Heading Small — card titles and feature item headings (20px)"
-  },
-  "z-index.dropdown": {
-    "$type": "number",
-    "$value": "{z-index.10}",
-    "$description": "Dropdown menus and select panels"
-  },
-  "z-index.sticky": {
-    "$type": "number",
-    "$value": "{z-index.20}",
-    "$description": "Sticky positioned elements (sticky headers, etc.)"
-  },
-  "z-index.modal": {
-    "$type": "number",
-    "$value": "{z-index.50}",
-    "$description": "Modal dialogs, sheets, and similar blocking overlays"
-  },
-  "z-index.toast": {
-    "$type": "number",
-    "$value": "{z-index.80}",
-    "$description": "Toast notifications — above all UI"
-  },
-  "z-index.tooltip": {
-    "$type": "number",
-    "$value": "{z-index.70}",
-    "$description": "Tooltips — highest priority for transient hints"
-  },
-  "z-index.base": {
-    "$type": "number",
-    "$value": "{z-index.0}",
-    "$description": "Default stacking context"
-  },
-  "z-index.fixed": {
-    "$type": "number",
-    "$value": "{z-index.30}",
-    "$description": "Fixed positioned elements (app shell)"
-  },
-  "z-index.modal-backdrop": {
-    "$type": "number",
-    "$value": "{z-index.40}",
-    "$description": "Modal/dialog backdrop overlay"
-  },
-  "z-index.popover": {
-    "$type": "number",
-    "$value": "{z-index.60}",
-    "$description": "Popovers, hover cards, and floating panels"
   }
 }
