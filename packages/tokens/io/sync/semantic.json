@@ -545,11 +545,11 @@
         },
         "color.background.primary-muted": {
           "$type": "color",
-          "$value": "{color.blue.50}",
+          "$value": "{color.fiery-coral.50}",
           "$description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted.",
           "valuesByMode": {
-            "Light": "{color.blue.50}",
-            "Dark": "{color.blue.950}"
+            "Light": "{color.fiery-coral.50}",
+            "Dark": "{color.fiery-coral.900}"
           }
         },
         "color.background.primary-emphasis": {
@@ -648,7 +648,7 @@
           "$description": "Default text and icon colour for headings and body content. Readable on the page, muted, emphasis and raised backgrounds.",
           "valuesByMode": {
             "Light": "{color.gray.900}",
-            "Dark": "{color.gray.100}"
+            "Dark": "{color.gray.50}"
           }
         },
         "color.foreground.muted": {
@@ -657,7 +657,7 @@
           "$description": "Quieter text for descriptions and captions. Readable on the page, muted, emphasis and raised backgrounds.",
           "valuesByMode": {
             "Light": "{color.gray.700}",
-            "Dark": "{color.gray.300}"
+            "Dark": "{color.gray.200}"
           }
         },
         "color.foreground.faint": {
@@ -666,7 +666,7 @@
           "$description": "Faintest text for timestamps, metadata and hints. Readable on the page, muted and raised backgrounds.",
           "valuesByMode": {
             "Light": "{color.gray.600}",
-            "Dark": "{color.gray.500}"
+            "Dark": "{color.gray.400}"
           }
         },
         "color.foreground.inverse": {
@@ -680,11 +680,11 @@
         },
         "color.foreground.primary": {
           "$type": "color",
-          "$value": "{color.gray.50}",
+          "$value": "{color.fiery-coral.600}",
           "$description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis.",
           "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.50}"
+            "Light": "{color.fiery-coral.600}",
+            "Dark": "{color.fiery-coral.600}"
           }
         },
         "color.foreground.primary-muted": {
