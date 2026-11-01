@@ -89,7 +89,7 @@ function CompCard({
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
-        className="relative bg-(--color-background-muted) border-b border-(--color-border-default) min-h-42 flex items-center justify-center overflow-hidden p-4"
+        className="relative bg-(--color-background-muted) border-b border-(--color-border-default) min-h-48 flex items-center justify-center overflow-hidden p-4"
         style={dotGrid}
       >
         <div
@@ -552,7 +552,7 @@ export default function ComponentsPage() {
             desc="Surfaces that present information — cards, tables, calendars, carousels. Compose them; don't customize them."
             count={categoryCount("Content-Display")}
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <CompCard
               live
               name="Accordion"
@@ -626,7 +626,7 @@ export default function ComponentsPage() {
             desc="Tell the user what's happening — is it loading, did it work, did something go wrong? All four states map to the same role tokens."
             count={categoryCount("Feedback-Status")}
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <CompCard
               live
               name="Alert"
@@ -676,7 +676,7 @@ export default function ComponentsPage() {
             desc="The shape of every form. They share sizes, the focus ring and error styling, and the Form wrappers connect labels and messages to them."
             count={categoryCount("Inputs-Controls")}
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <CompCard
               live
               name="Button"
@@ -791,7 +791,7 @@ export default function ComponentsPage() {
             desc="The shape of the page itself — aspect, scroll, split, collapse. Headless utilities you compose around your content."
             count={categoryCount("Layout-Structure")}
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <CompCard
               live
               name="Aspect Ratio"
@@ -915,7 +915,7 @@ export default function ComponentsPage() {
             desc="Anything that floats above the page — modal, sheet, popover, tooltip. All eight go through Radix's portal and share focus-trap and dismiss behavior."
             count={categoryCount("Overlays-Popovers")}
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <CompCard
               live
               name="Alert Dialog"

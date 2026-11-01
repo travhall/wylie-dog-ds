@@ -205,8 +205,8 @@ export function SliderPreview() {
   const [volume, setVolume] = useState([62]);
   const [range, setRange] = useState([24, 78]);
   return (
-    <div className="flex w-full max-w-60 flex-col gap-4">
-      <div className="flex flex-col gap-2">
+    <div className="flex w-full max-w-60 flex-col gap-5">
+      <div className="flex flex-col gap-3">
         <div className="flex justify-between text-xs text-(--color-foreground-muted)">
           <span>Volume</span>
           <span className="font-mono">{volume[0]}</span>
@@ -218,7 +218,7 @@ export function SliderPreview() {
           max={100}
         />
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <div className="flex justify-between text-xs text-(--color-foreground-muted)">
           <span>Range</span>
           <span className="font-mono">
@@ -281,7 +281,8 @@ export function TextareaPreview() {
         size="sm"
         resize="none"
         aria-label="Message"
-        defaultValue="Designers can edit tokens directly in Figma; the bridge opens a pull request with the diff."
+        rows={3}
+        defaultValue="Edit tokens in Figma; the bridge opens a pull request."
       />
     </div>
   );
