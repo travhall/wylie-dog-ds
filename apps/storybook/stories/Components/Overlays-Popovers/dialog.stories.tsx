@@ -44,8 +44,17 @@ const meta: Meta<typeof Dialog> = {
     layout: "centered",
     docs: {
       description: {
-        component:
-          "Modal dialog component with focus trapping and backdrop. Built on Radix UI primitives with full keyboard and screen reader support.",
+        component: `Modal dialog component with focus trapping and backdrop. Built on Radix UI primitives with full keyboard and screen reader support.
+
+Each example below shows only its open button; activate it to see the dialog over the page, press Escape to close it.
+
+**Use it for** a focused task that needs the user's full attention, such as editing a profile.
+
+- Give every dialog a title and a description (\`DialogTitle\`, \`DialogDescription\`); screen readers announce them on open.
+- For a destructive confirmation use an Alert Dialog, which cannot be dismissed by clicking outside.
+- For a side panel of options or filters use a Sheet. For a small anchored panel use a Popover.
+
+**Don't** open a dialog from another dialog, or use one for a message that needs no decision.`,
       },
     },
   },

@@ -145,7 +145,7 @@ export const SystemOverview: Story = {
                   tier: "1",
                   label: "Primitive",
                   desc: "Raw OKLCH color scales (50–950). Context-free named values.",
-                  examples: ["--color-gray-500", "--color-blue-600"],
+                  examples: ["--color-gray-500", "--color-fiery-coral-600"],
                 },
                 {
                   tier: "2",
@@ -218,7 +218,7 @@ export const SystemOverview: Story = {
                 </p>
                 <div className="p-3 rounded-md bg-(--color-background-muted) text-xs font-mono text-(--color-foreground-muted) space-y-1">
                   <div>color: var(--color-gray-900);</div>
-                  <div>background: var(--color-blue-600);</div>
+                  <div>background: var(--color-fiery-coral-600);</div>
                   <div>border: 1px solid var(--color-gray-200);</div>
                 </div>
                 <p className="text-xs text-(--color-foreground-faint)">
@@ -918,7 +918,7 @@ export const TokenBrowser: Story = {
           <div className="flex-1">
             <Input
               type="search"
-              placeholder="Search (e.g., blue-500, gray)"
+              placeholder="Search (e.g., fiery-coral, gray)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

@@ -17,6 +17,7 @@ import {
 const meta: Meta<typeof CardGrid> = {
   title: "Patterns/Data Patterns/Card Grid",
   component: CardGrid,
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
     docs: {

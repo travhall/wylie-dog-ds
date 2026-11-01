@@ -12,8 +12,17 @@ const meta: Meta<typeof Button> = {
     layout: "centered",
     docs: {
       description: {
-        component:
-          "Versatile button component for user actions. Supports multiple variants, sizes, loading states, and full keyboard accessibility.",
+        component: `Versatile button component for user actions. Supports multiple variants, sizes, loading states, and full keyboard accessibility.
+
+**Use it for** actions: submit, save, open, delete. Use a link for navigation.
+
+- One \`default\` (primary) button per view. Pair it with \`secondary\` or \`outline\` for the other actions.
+- Use \`destructive\` only for actions that remove something, and confirm them with an Alert Dialog.
+- Use \`loading\` while an action runs; the button is disabled until it finishes.
+- An icon-only button (\`size="icon"\`) needs an \`aria-label\`.
+- \`size="md"\` is the same as \`size="default"\`.
+
+**Don't** use a button to move to another page, or stack several primary buttons side by side.`,
       },
     },
   },

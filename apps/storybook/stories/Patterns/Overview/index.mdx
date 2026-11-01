@@ -23,61 +23,61 @@ Use patterns when you need to:
 
 ## Pattern Categories
 
-### Form Patterns
+Each pattern is built from the system's own components, so it follows the same tokens in Light and Dark.
 
-Complete form solutions including layout, validation, and error handling.
+### Authentication
 
-**Examples:**
+Sign in, create an account, and recover a password.
 
-- Form layouts (single column, multi-column, wizard)
-- Validation and error handling strategies
-- Multi-step forms with progress indicators
+→ [Login & Registration](/docs/patterns-authentication-patterns-login-registration--docs) · [Password Recovery](/docs/patterns-authentication-patterns-password-recovery--docs)
 
-**Use when:** Building any form-based interface, from simple contact forms to complex multi-step wizards.
+### Forms
 
-→ [Explore Form Patterns](/docs/patterns-form-patterns-form-compositions--docs)
+Composed forms and validation that shows errors when a field has been visited.
 
-### Authentication Patterns
+→ [Form Compositions](/docs/patterns-form-patterns-form-compositions--docs) · [Form Validation](/docs/patterns-form-patterns-form-validation--docs)
 
-User authentication and account management flows.
+### Data display
 
-**Examples:**
+Grids of cards and features that reflow with the space they are given.
 
-- Login and registration forms
-- Password recovery workflows
-- Social authentication integration
+→ [Card Grid](/docs/patterns-data-patterns-card-grid--docs) · [Feature Grid](/docs/patterns-data-patterns-feature-grid--docs)
 
-**Use when:** Implementing user authentication, account creation, or password management.
+### Feedback
 
-→ [Explore Authentication Patterns](/docs/patterns-authentication-patterns-login-registration--docs)
+What happens when something fails: error boundaries that keep the rest of the page working.
 
-### Data Patterns
+→ [Error Boundaries](/docs/patterns-feedback-patterns-error-boundaries--docs)
 
-Solutions for displaying, filtering, and interacting with data.
+### Layout
 
-**Examples:**
+Dashboard, settings, landing and profile layouts composed from cards, inputs and separators.
 
-- Sortable and filterable tables
-- Search interfaces with results
-- Data loading and pagination strategies
+→ [Layout Patterns](/docs/patterns-layout-patterns-layout-patterns--docs)
 
-**Use when:** Working with lists, tables, search results, or any data-heavy interfaces.
+### Navigation
 
-→ [Explore Data Patterns](/docs/patterns-data-patterns-card-grid--docs)
+The header and footer used across a public site, including this one.
 
-### Navigation Patterns
+→ [Site Header](/docs/patterns-navigation-patterns-site-header--docs) · [Site Footer](/docs/patterns-navigation-patterns-site-footer--docs)
 
-Application navigation and menu structures.
+### Page compositions
 
-**Examples:**
+Hero, features and full-page layouts that wire the smaller patterns together.
 
-- Primary and secondary navigation
-- Responsive navigation (mobile/desktop)
-- Breadcrumb implementations
+→ [Hero Section](/docs/patterns-page-compositions-hero-section--docs) · [Features Section](/docs/patterns-page-compositions-features-section--docs) · [Page Layout](/docs/patterns-page-compositions-page-layout--docs)
 
-**Use when:** Building app navigation, menus, or wayfinding systems.
+### Responsive
 
-→ [Explore Navigation Patterns](/docs/patterns-navigation-patterns-site-header--docs)
+A card grid, navigation and form that adapt across mobile, tablet and desktop.
+
+→ [Responsive Patterns](/docs/patterns-responsive--docs)
+
+### Accessibility
+
+Reference implementations for focus, live regions, error announcement and keyboard navigation.
+
+→ [Accessibility Patterns](/docs/patterns-accessibility--docs)
 
 ## Patterns vs. Components vs. Examples
 
@@ -134,16 +134,11 @@ Application navigation and menu structures.
 4. **Adapt to your context** - Customize the pattern for your specific requirements
 5. **Test thoroughly** - Ensure the pattern works in your application
 
-## Pattern Documentation Structure
+## What a Pattern Page Shows
 
-Each pattern includes:
-
-- **Problem statement** - What challenge this pattern solves
-- **Solution overview** - High-level approach and key components used
-- **Implementation** - Complete, working code examples
-- **Variations** - Common adaptations and alternatives
-- **Accessibility** - WCAG compliance and keyboard navigation
-- **Best practices** - Do's and don'ts
+- **Working examples** built from the real components, in Light and Dark
+- **The code** for each example, using the same imports your app would use
+- **Notes** on behavior and accessibility where they matter for the pattern
 
 ## Contributing Patterns
 

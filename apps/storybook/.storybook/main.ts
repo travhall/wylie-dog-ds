@@ -9,6 +9,9 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const config: StorybookConfig = {
   stories: ["../stories/**/*.mdx", "../stories/**/*.stories.tsx"],
 
+  // favicon.svg here is the brand mark the manager shows (see theme.ts).
+  staticDirs: ["../public"],
+
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-docs"),

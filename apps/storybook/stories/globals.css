@@ -32,3 +32,28 @@ body {
   background-color: var(--color-background-default);
   color: var(--color-foreground-default);
 }
+
+/*
+ * Brand type and links for stories and docs. The fonts are loaded in
+ * .storybook/preview-head.html. The design system reads --font-sans, --font-serif
+ * and --font-mono (the Next.js app sets them with next/font), so Storybook sets
+ * them here, which gives components the same typefaces they have on the site.
+ */
+:root {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Besley", ui-serif, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--typography-font-family-sans);
+}
+
+.sbdocs h1,
+.sbdocs h2 {
+  font-family: var(--typography-font-family-serif);
+}
+
+.sbdocs a:not([class]) {
+  color: var(--color-foreground-link);
+}

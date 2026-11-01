@@ -4,6 +4,7 @@ import { FeatureGrid } from "@wyliedog/ui/feature-grid";
 const meta: Meta<typeof FeatureGrid> = {
   title: "Patterns/Data Patterns/Feature Grid",
   component: FeatureGrid,
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
     docs: {

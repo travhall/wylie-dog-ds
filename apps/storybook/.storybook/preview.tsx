@@ -5,9 +5,11 @@ import { themeManager } from "./theme-sync";
 import type { ThemeChoice } from "./theme-sync";
 import type { Preview } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "storybook/viewport";
+import { docsTheme } from "./theme";
 
 const preview: Preview = {
   parameters: {
+    docs: { theme: docsTheme },
     viewport: {
       options: INITIAL_VIEWPORTS,
     },
