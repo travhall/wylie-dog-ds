@@ -93,10 +93,10 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
  * box-shadow, which forced-colors mode drops. It shows for keyboard focus only
  * (`focus-visible`). The outline style is set explicitly, because
  * `outline-hidden` elsewhere sets it to none, and the transition is cancelled so
- * the outline does not fade in from the text colour.
+ * the outline does not fade in from the text color.
  *
  * Every arbitrary value carries a type hint (`color:`, `length:`). Without
- * one Tailwind v4 reads a bare `--space-*` variable as a colour and the
+ * one Tailwind v4 reads a bare `--space-*` variable as a color and the
  * utility silently does nothing.
  */
 export const focusRingClasses =

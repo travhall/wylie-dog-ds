@@ -29,7 +29,7 @@ The report lists violations by rule (nodes, runs, one example selector), horizon
 - Demo UI inside a page is not page structure: no `<main>`, no headings (use `<p>` with the same classes), no unlabelled icon-only buttons (give each an `aria-label` matching its icon).
 - Scrollable wrappers (`overflow-x-auto`) around tables get `tabIndex={0}`, `role="region"`, an `aria-label` and a visible focus outline, so the keyboard can reach them.
 - A grid that only gets columns at a breakpoint needs `grid-cols-1` below it; without it the single implicit column grows to its widest content and the page scrolls sideways.
-- Text on a tinted or filled chip uses a declared pair from the semantic layer (`foreground-X` on `background-X`, for example `foreground-success-muted` on `background-success-muted`, or `foreground-primary` on `background-primary`), not a colour mixed from a transparent tint. `foreground-inverse` flips dark in Dark mode, so it is wrong on a fill that stays blue.
+- Text on a tinted or filled chip uses a declared pair from the semantic layer (`foreground-X` on `background-X`, for example `foreground-success-muted` on `background-success-muted`, or `foreground-primary` on `background-primary`), not a color mixed from a transparent tint. `foreground-inverse` flips dark in Dark mode, so it is wrong on a fill that stays blue.
 - Text is at least `text-xs` (0.75rem). Only a mock UI preview may go smaller, and it is marked `data-mock` (static previews also `aria-hidden`; previews with live controls stay reachable). `pnpm check:units` fails otherwise.
 - Code and terminal mocks sit on a fixed dark ground: use `gray-400` for quiet text (6.82:1 on `#101828`, 7.32:1 on `#041215`), never `gray-500` (3.66 and 3.93).
 
@@ -54,4 +54,4 @@ Before: 134 `color-contrast` nodes in 26 runs, 56 `button-name` (critical), 16 `
 | Code captions on `#101828` | 3.66          | 6.82        |
 | Code captions on `#041215` | 3.93          | 7.32        |
 
-At 1280 pixels the before and after screenshots differ in 0.00 to 0.11% of pixels (the chip colours). At 375 pixels `/tokens` and `/patterns` reflow where they used to overflow.
+At 1280 pixels the before and after screenshots differ in 0.00 to 0.11% of pixels (the chip colors). At 375 pixels `/tokens` and `/patterns` reflow where they used to overflow.

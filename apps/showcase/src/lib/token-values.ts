@@ -87,13 +87,13 @@ const readSemanticSource = cache((): Record<string, SyncVariable> => {
   return file[0].semantic.variables;
 });
 
-/** A primitive colour reference such as `{ palette: "fiery-coral", step: "600" }`. */
+/** A primitive color reference such as `{ palette: "fiery-coral", step: "600" }`. */
 export interface PrimitiveRef {
   palette: string;
   step: string;
 }
 
-/** Parses `{color.fiery-coral.600}`; null for anything that is not a plain colour alias. */
+/** Parses `{color.fiery-coral.600}`; null for anything that is not a plain color alias. */
 export function parsePrimitiveRef(value: string): PrimitiveRef | null {
   const match = /^\{color\.([a-z-]+)\.(\d+)\}$/.exec(value);
   return match ? { palette: match[1], step: match[2] } : null;
@@ -102,7 +102,7 @@ export function parsePrimitiveRef(value: string): PrimitiveRef | null {
 export type TokenMode = "Light" | "Dark";
 
 /**
- * The primitive a semantic colour points at in one mode, e.g.
+ * The primitive a semantic color points at in one mode, e.g.
  * `getAlias("color.background.primary")`. Throws if the token is missing or is
  * not a plain alias, so a renamed token fails the build.
  */
@@ -114,7 +114,7 @@ export function getAlias(
   const ref = variable ? parsePrimitiveRef(variable.valuesByMode[mode]) : null;
   if (!ref) {
     throw new Error(
-      `Token ${name} is not a plain colour alias in ${mode} (packages/tokens/io/sync/semantic.json)`
+      `Token ${name} is not a plain color alias in ${mode} (packages/tokens/io/sync/semantic.json)`
     );
   }
   return ref;
@@ -131,7 +131,7 @@ export function primitiveVar(ref: PrimitiveRef): string {
 }
 
 /**
- * Where a semantic colour lands, in words: `fiery-coral-600 in light and dark`,
+ * Where a semantic color lands, in words: `fiery-coral-600 in light and dark`,
  * or `fiery-coral-700 in light, fiery-coral-300 in dark` when the modes differ.
  */
 export function describeAlias(name: string): string {

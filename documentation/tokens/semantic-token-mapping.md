@@ -1,11 +1,11 @@
-# Semantic colour token mapping
+# Semantic color token mapping
 
 **Status:** Executed on 2026-10-20. This is the record of the rename (old name, new name, action); the old names no longer exist. It is the old-to-new table for the model in [semantic-pairing-model.md](semantic-pairing-model.md), generated from the token files on 2026-10-20 so counts are measured, not estimated.
 
 ## How to read it
 
 - **Component tokens** is how many component-tier tokens alias the current token. **Code refs** is how many times its CSS variable appears in the UI package, the showcase and Storybook (tests excluded).
-- **Actions:** _rename_ (one to one), _merge_ (same purpose and value as another token, so it folds into it), _split_ (one token becomes one per role), _keep_ (name stays), _move_ (leaves the colour ground for its own group) and _retire_ (unused, removed).
+- **Actions:** _rename_ (one to one), _merge_ (same purpose and value as another token, so it folds into it), _split_ (one token becomes one per role), _keep_ (name stays), _move_ (leaves the color ground for its own group) and _retire_ (unused, removed).
 - A merged token's references are rewritten to the surviving token. The retired tokens have no references.
 
 ## The vocabulary
@@ -23,7 +23,7 @@
 
 ## Summary
 
-- 74 semantic colour tokens map to 45 distinct names (36 rename, 10 merge, 1 split into four, 3 keep, 1 move and 23 retire). The retired tokens are the unused parts of the primary, secondary and neutral families, the accent family except its surface (which merges into the primary tint), the four brand tokens and one status token.
+- 74 semantic color tokens map to 45 distinct names (36 rename, 10 merge, 1 split into four, 3 keep, 1 move and 23 retire). The retired tokens are the unused parts of the primary, secondary and neutral families, the accent family except its surface (which merges into the primary tint), the four brand tokens and one status token.
 
 ### Ground: background
 
@@ -33,13 +33,13 @@
 | `color.background.secondary` | gray.100 / gray.900     | 13               | 160       | `color.background.subtle`          | rename |                                                                                                  |
 | `color.background.tertiary`  | gray.200 / gray.800     | 7                | 45        | `color.background.strong`          | rename |                                                                                                  |
 | `color.background.inverse`   | gray.950 / gray.50      | 3                | 9         | `color.inverse.background.default` | rename | Inverse becomes a role: a true one-to-one pair (the tooltip).                                    |
-| `color.background.brand`     | orange.600 / orange.500 | 0                | 0         | none                               | retire | Unused. Brand versus primary is decided with the primary-colour case study.                      |
+| `color.background.brand`     | orange.600 / orange.500 | 0                | 0         | none                               | retire | Unused. Brand versus primary is decided with the primary-color case study.                       |
 | `color.background.danger`    | red.600 / red.600       | 1                | 0         | `color.danger.background.default`  | merge  | Same value as the solid danger fill (used for the destructive progress fill).                    |
 | `color.surface.primary`      | gray.50 / gray.950      | 2                | 76        | `color.background.default`         | merge  | Same values as the page.                                                                         |
 | `color.surface.secondary`    | gray.100 / gray.900     | 0                | 0         | `color.background.subtle`          | merge  | Unused; same values as the subtle surface.                                                       |
 | `color.surface.raised`       | gray.50 / gray.950      | 0                | 0         | `color.background.raised`          | keep   | Unused; same value as the page today. Keep the name for when a component needs a lifted surface. |
 | `color.surface.overlay`      | gray.300 / gray.700     | 0                | 0         | `color.background.overlay`         | keep   | Unused; the value (gray 300 / gray 700) needs a design review before use.                        |
-| `color.surface.brand`        | blue.50 / blue.950      | 0                | 0         | none                               | retire | Unused. Brand versus primary is decided with the primary-colour case study.                      |
+| `color.surface.brand`        | blue.50 / blue.950      | 0                | 0         | none                               | retire | Unused. Brand versus primary is decided with the primary-color case study.                       |
 | `color.surface.success`      | green.50 / green.950    | 1                | 4         | `color.success.background.subtle`  | rename |                                                                                                  |
 | `color.surface.warning`      | orange.50 / orange.950  | 1                | 2         | `color.warning.background.subtle`  | rename |                                                                                                  |
 | `color.surface.danger`       | red.50 / red.950        | 3                | 8         | `color.danger.background.subtle`   | rename |                                                                                                  |
@@ -82,14 +82,14 @@
 | `color.interactive.danger`         | red.600 / red.600       | 4                | 3         | `color.danger.background.default`         | rename |      |
 | `color.interactive.danger-hover`   | red.700 / red.700       | 1                | 0         | `color.danger.background.default.hover`   | rename |      |
 
-### Roles: tints and role-coloured text
+### Roles: tints and role-colored text
 
-| Current token        | Light / Dark            | Component tokens | Code refs | New name                          | Action | Note                                                                                                              |
-| -------------------- | ----------------------- | ---------------- | --------- | --------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------- |
-| `color.text.success` | green.700 / green.400   | 1                | 23        | `color.success.foreground.subtle` | rename | Text on the tint; also used as role-coloured text on the page.                                                    |
-| `color.text.warning` | orange.700 / orange.400 | 1                | 10        | `color.warning.foreground.subtle` | rename | Text on the tint; also used as role-coloured text on the page.                                                    |
-| `color.text.danger`  | red.700 / red.400       | 7                | 40        | `color.danger.foreground.subtle`  | rename | Text on the tint; also used as role-coloured text on the page.                                                    |
-| `color.text.info`    | blue.700 / blue.400     | 2                | 9         | `color.info.foreground.subtle`    | rename | Open question: link colour (button link, breadcrumb) is info today; should links follow the primary role instead? |
+| Current token        | Light / Dark            | Component tokens | Code refs | New name                          | Action | Note                                                                                                             |
+| -------------------- | ----------------------- | ---------------- | --------- | --------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------- |
+| `color.text.success` | green.700 / green.400   | 1                | 23        | `color.success.foreground.subtle` | rename | Text on the tint; also used as role-colored text on the page.                                                    |
+| `color.text.warning` | orange.700 / orange.400 | 1                | 10        | `color.warning.foreground.subtle` | rename | Text on the tint; also used as role-colored text on the page.                                                    |
+| `color.text.danger`  | red.700 / red.400       | 7                | 40        | `color.danger.foreground.subtle`  | rename | Text on the tint; also used as role-colored text on the page.                                                    |
+| `color.text.info`    | blue.700 / blue.400     | 2                | 9         | `color.info.foreground.subtle`    | rename | Open question: link color (button link, breadcrumb) is info today; should links follow the primary role instead? |
 
 ### Ground states (neutral fills)
 
@@ -117,8 +117,8 @@
 
 | Current token             | Light / Dark            | Component tokens | Code refs | New name                          | Action | Note                                                                                                                                                                                                           |
 | ------------------------- | ----------------------- | ---------------- | --------- | --------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `color.text.brand`        | orange.600 / orange.500 | 0                | 0         | none                              | retire | Unused. Brand versus primary is decided with the primary-colour case study.                                                                                                                                    |
-| `color.border.brand`      | orange.600 / orange.500 | 0                | 0         | none                              | retire | Unused. Brand versus primary is decided with the primary-colour case study.                                                                                                                                    |
+| `color.text.brand`        | orange.600 / orange.500 | 0                | 0         | none                              | retire | Unused. Brand versus primary is decided with the primary-color case study.                                                                                                                                     |
+| `color.border.brand`      | orange.600 / orange.500 | 0                | 0         | none                              | retire | Unused. Brand versus primary is decided with the primary-color case study.                                                                                                                                     |
 | `color.primary.base`      | orange.700 / orange.400 | 0                | 0         | none                              | retire | Unused family; its own text-on-base pairs fail contrast.                                                                                                                                                       |
 | `color.primary.hover`     | orange.800 / orange.500 | 0                | 0         | none                              | retire | Unused family; its own text-on-base pairs fail contrast.                                                                                                                                                       |
 | `color.primary.active`    | orange.900 / orange.600 | 0                | 0         | none                              | retire | Unused family; its own text-on-base pairs fail contrast.                                                                                                                                                       |
@@ -141,14 +141,14 @@
 
 ## Tokens that are new
 
-- `color.primary.foreground.subtle`: blue 700 / blue 400. The primary-coloured text on the primary tint and on the page; used by links.
+- `color.primary.foreground.subtle`: blue 700 / blue 400. The primary-colored text on the primary tint and on the page; used by links.
 - Added 2026-10-21: `color.primary.border.default` (blue 600 in both modes; the accent border, so primary has a border like danger, success and warning); `color.background.subtle.hover` (gray 200 / gray 800; the secondary button and tab trigger hover) and `color.danger.background.subtle.hover` (red 100 / red 900; the tinted destructive badge hover). To keep red text readable on that Dark hover, `color.danger.foreground.subtle` in Dark moved from red 400 to red 300.
 
 ## Decisions made (2026-10-20)
 
 - Links follow the primary role (button link and breadcrumb link use `color.primary.foreground.subtle`).
 - The focus fill follows the primary role (`color.primary.background.subtle`).
-- Primary is the main role and the brand tokens are retired. The primary colour itself stays blue until the owner changes it through Figma as a case study.
+- Primary is the main role and the brand tokens are retired. The primary color itself stays blue until the owner changes it through Figma as a case study.
 - The accent role is not kept; the hero gradient uses the primary tint.
 - `color.background.raised` and `color.background.overlay` keep their placeholder values and, like everything else, get a design pass later.
 - Merging `status.danger` is accepted (the required-field marker moves to red 700 / 400).

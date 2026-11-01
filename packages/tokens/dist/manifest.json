@@ -2649,7 +2649,7 @@
         "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-background-primary)",
-        "description": "Solid fill for the main action colour. Pairs with foreground.primary."
+        "description": "Solid fill for the main action color. Pairs with foreground.primary."
       },
       "color-background-inverse": {
         "name": "colorBackgroundInverse",
@@ -2709,7 +2709,7 @@
         "value": "oklch(0.138 0.008 60.26)",
         "type": "color",
         "variable": "var(--color-background-overlay)",
-        "description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque."
+        "description": "Scrim color behind a modal or sheet; applied at opacity.scrim, never opaque."
       },
       "color-background-muted": {
         "name": "colorBackgroundMuted",
@@ -3023,7 +3023,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-foreground-default)",
-        "description": "Default text and icon colour for headings and body content. Readable on the page, muted, emphasis and raised backgrounds."
+        "description": "Default text and icon color for headings and body content. Readable on the page, muted, emphasis and raised backgrounds."
       },
       "color-foreground-muted": {
         "name": "colorForegroundMuted",
@@ -3059,7 +3059,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-foreground-link)",
-        "description": "Text colour for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links."
+        "description": "Text color for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links."
       },
       "color-foreground-inverse": {
         "name": "colorForegroundInverse",
@@ -3229,7 +3229,7 @@
         "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-border-primary)",
-        "description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
+        "description": "Accent border in the primary color (cards, highlights, rings); non-text, so it needs 3:1 on the page."
       },
       "color-border-success": {
         "name": "colorBorderSuccess",
@@ -3241,7 +3241,7 @@
         "value": "oklch(0.543 0.152 149.33)",
         "type": "color",
         "variable": "var(--color-border-success)",
-        "description": "Border in the success colour for alerts, toasts and highlights."
+        "description": "Border in the success color for alerts, toasts and highlights."
       },
       "color-border-warning": {
         "name": "colorBorderWarning",
@@ -3253,7 +3253,7 @@
         "value": "oklch(0.546 0.111 76)",
         "type": "color",
         "variable": "var(--color-border-warning)",
-        "description": "Border in the warning colour for alerts, toasts and highlights."
+        "description": "Border in the warning color for alerts, toasts and highlights."
       },
       "color-border-danger": {
         "name": "colorBorderDanger",
@@ -3265,7 +3265,7 @@
         "value": "oklch(0.546 0.215 27.29)",
         "type": "color",
         "variable": "var(--color-border-danger)",
-        "description": "Border in the danger colour for alerts, toasts and highlights."
+        "description": "Border in the danger color for alerts, toasts and highlights."
       },
       "color-border-info": {
         "name": "colorBorderInfo",
@@ -3277,7 +3277,7 @@
         "value": "oklch(0.584 0.041 218.05)",
         "type": "color",
         "variable": "var(--color-border-info)",
-        "description": "Border in the info colour for alerts and highlights; non-text, so it needs 3:1 on the page."
+        "description": "Border in the info color for alerts and highlights; non-text, so it needs 3:1 on the page."
       },
       "color-border-default": {
         "name": "colorBorderDefault",
@@ -3546,7 +3546,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-badge-default-text)",
-        "description": "Text colour of the default badge. Pairs with `badge.default.background`."
+        "description": "Text color of the default badge. Pairs with `badge.default.background`."
       },
       "badge-default-border": {
         "name": "badgeDefaultBorder",
@@ -3558,7 +3558,7 @@
         "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-badge-default-border)",
-        "description": "Border colour of the default badge."
+        "description": "Border color of the default badge."
       },
       "badge-secondary-background": {
         "name": "badgeSecondaryBackground",
@@ -3582,7 +3582,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-badge-secondary-text)",
-        "description": "Text colour of the secondary badge. Pairs with `badge.secondary.background`."
+        "description": "Text color of the secondary badge. Pairs with `badge.secondary.background`."
       },
       "badge-secondary-border": {
         "name": "badgeSecondaryBorder",
@@ -3594,7 +3594,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-badge-secondary-border)",
-        "description": "Border colour of the secondary badge."
+        "description": "Border color of the secondary badge."
       },
       "badge-success-background": {
         "name": "badgeSuccessBackground",
@@ -3618,7 +3618,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-badge-success-text)",
-        "description": "Label colour on the success badge. Pairs with `badge.success.background`."
+        "description": "Label color on the success badge. Pairs with `badge.success.background`."
       },
       "badge-success-border": {
         "name": "badgeSuccessBorder",
@@ -3630,7 +3630,7 @@
         "value": "oklch(0.543 0.152 149.33)",
         "type": "color",
         "variable": "var(--color-badge-success-border)",
-        "description": "Border colour of the success badge."
+        "description": "Border color of the success badge."
       },
       "badge-warning-background": {
         "name": "badgeWarningBackground",
@@ -3654,7 +3654,7 @@
         "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-badge-warning-text)",
-        "description": "Text colour of the warning badge. Pairs with `badge.warning.background`."
+        "description": "Text color of the warning badge. Pairs with `badge.warning.background`."
       },
       "badge-warning-border": {
         "name": "badgeWarningBorder",
@@ -3666,7 +3666,7 @@
         "value": "oklch(0.809 0.152 86)",
         "type": "color",
         "variable": "var(--color-badge-warning-border)",
-        "description": "Border colour of the warning badge."
+        "description": "Border color of the warning badge."
       },
       "badge-destructive-background": {
         "name": "badgeDestructiveBackground",
@@ -3690,7 +3690,7 @@
         "value": "oklch(0.488 0.19 27.47)",
         "type": "color",
         "variable": "var(--color-badge-destructive-text)",
-        "description": "Text colour of the destructive badge. Pairs with `badge.destructive.background`."
+        "description": "Text color of the destructive badge. Pairs with `badge.destructive.background`."
       },
       "badge-destructive-border": {
         "name": "badgeDestructiveBorder",
@@ -3726,7 +3726,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-badge-outline-text)",
-        "description": "Text colour of the outline badge. Pairs with `badge.outline.background`."
+        "description": "Text color of the outline badge. Pairs with `badge.outline.background`."
       },
       "badge-outline-border": {
         "name": "badgeOutlineBorder",
@@ -3738,7 +3738,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-badge-outline-border)",
-        "description": "Border colour of the outline badge."
+        "description": "Border color of the outline badge."
       },
       "badge-padding-x-sm": {
         "name": "badgePaddingXSm",
@@ -4106,7 +4106,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-default-text-disabled)",
-        "description": "Text colour of the default badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.default.background-disabled`."
+        "description": "Text color of the default badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.default.background-disabled`."
       },
       "badge-default-border-disabled": {
         "name": "badgeDefaultBorderDisabled",
@@ -4118,7 +4118,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-badge-default-border-disabled)",
-        "description": "Border colour of the default badge when disabled, in the muted border tone."
+        "description": "Border color of the default badge when disabled, in the muted border tone."
       },
       "badge-secondary-text-disabled": {
         "name": "badgeSecondaryTextDisabled",
@@ -4130,7 +4130,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-secondary-text-disabled)",
-        "description": "Text colour of the secondary badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.secondary.background-disabled`."
+        "description": "Text color of the secondary badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.secondary.background-disabled`."
       },
       "badge-secondary-border-disabled": {
         "name": "badgeSecondaryBorderDisabled",
@@ -4142,7 +4142,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-badge-secondary-border-disabled)",
-        "description": "Border colour of the secondary badge when disabled, in the muted border tone."
+        "description": "Border color of the secondary badge when disabled, in the muted border tone."
       },
       "badge-success-text-disabled": {
         "name": "badgeSuccessTextDisabled",
@@ -4154,7 +4154,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-success-text-disabled)",
-        "description": "Text colour of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
+        "description": "Text color of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
       },
       "badge-success-border-disabled": {
         "name": "badgeSuccessBorderDisabled",
@@ -4166,7 +4166,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-badge-success-border-disabled)",
-        "description": "Border colour of the success badge when disabled, in the muted border tone."
+        "description": "Border color of the success badge when disabled, in the muted border tone."
       },
       "badge-warning-text-disabled": {
         "name": "badgeWarningTextDisabled",
@@ -4178,7 +4178,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-warning-text-disabled)",
-        "description": "Text colour of the warning badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.warning.background-disabled`."
+        "description": "Text color of the warning badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.warning.background-disabled`."
       },
       "badge-warning-border-disabled": {
         "name": "badgeWarningBorderDisabled",
@@ -4190,7 +4190,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-badge-warning-border-disabled)",
-        "description": "Border colour of the warning badge when disabled, in the muted border tone."
+        "description": "Border color of the warning badge when disabled, in the muted border tone."
       },
       "badge-destructive-text-disabled": {
         "name": "badgeDestructiveTextDisabled",
@@ -4202,7 +4202,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-destructive-text-disabled)",
-        "description": "Text colour of the destructive badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.destructive.background-disabled`."
+        "description": "Text color of the destructive badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.destructive.background-disabled`."
       },
       "badge-destructive-border-disabled": {
         "name": "badgeDestructiveBorderDisabled",
@@ -4214,7 +4214,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-badge-destructive-border-disabled)",
-        "description": "Border colour of the destructive badge when disabled, in the muted border tone."
+        "description": "Border color of the destructive badge when disabled, in the muted border tone."
       },
       "badge-outline-text-disabled": {
         "name": "badgeOutlineTextDisabled",
@@ -4226,7 +4226,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-badge-outline-text-disabled)",
-        "description": "Text colour of the outline badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.outline.background-disabled`."
+        "description": "Text color of the outline badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.outline.background-disabled`."
       },
       "badge-outline-border-disabled": {
         "name": "badgeOutlineBorderDisabled",
@@ -4238,7 +4238,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-badge-outline-border-disabled)",
-        "description": "Border colour of the outline badge when disabled, in the muted border tone."
+        "description": "Border color of the outline badge when disabled, in the muted border tone."
       }
     },
     "button": {
@@ -4288,7 +4288,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-button-primary-text)",
-        "description": "Label colour on the primary button. Pairs with `button.primary.background`."
+        "description": "Label color on the primary button. Pairs with `button.primary.background`."
       },
       "button-primary-border": {
         "name": "buttonPrimaryBorder",
@@ -4300,7 +4300,7 @@
         "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-button-primary-border)",
-        "description": "Border colour of the primary button."
+        "description": "Border color of the primary button."
       },
       "button-secondary-background": {
         "name": "buttonSecondaryBackground",
@@ -4348,7 +4348,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-button-secondary-text)",
-        "description": "Text colour of the secondary button. Pairs with `button.secondary.background`."
+        "description": "Text color of the secondary button. Pairs with `button.secondary.background`."
       },
       "button-secondary-border": {
         "name": "buttonSecondaryBorder",
@@ -4420,7 +4420,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-button-ghost-text)",
-        "description": "Text colour of the ghost button. Pairs with `button.ghost.background`."
+        "description": "Text color of the ghost button. Pairs with `button.ghost.background`."
       },
       "button-outline-background-hover": {
         "name": "buttonOutlineBackgroundHover",
@@ -4456,7 +4456,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-button-outline-text)",
-        "description": "Text colour of the outline button. Pairs with `button.outline.background`."
+        "description": "Text color of the outline button. Pairs with `button.outline.background`."
       },
       "button-outline-border": {
         "name": "buttonOutlineBorder",
@@ -4468,7 +4468,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-button-outline-border)",
-        "description": "Border colour of the outline button."
+        "description": "Border color of the outline button."
       },
       "button-destructive-background": {
         "name": "buttonDestructiveBackground",
@@ -4516,7 +4516,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-button-destructive-text)",
-        "description": "Text colour of the destructive button. Pairs with `button.destructive.background`."
+        "description": "Text color of the destructive button. Pairs with `button.destructive.background`."
       },
       "button-destructive-border": {
         "name": "buttonDestructiveBorder",
@@ -4528,7 +4528,7 @@
         "value": "oklch(0.546 0.215 27.29)",
         "type": "color",
         "variable": "var(--color-button-destructive-border)",
-        "description": "Border colour of the destructive button."
+        "description": "Border color of the destructive button."
       },
       "button-padding-y-sm": {
         "name": "buttonPaddingYSm",
@@ -4702,7 +4702,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-button-link-text)",
-        "description": "Label colour of the link-style button, which has no fill or border."
+        "description": "Label color of the link-style button, which has no fill or border."
       },
       "button-primary-background-disabled": {
         "name": "buttonPrimaryBackgroundDisabled",
@@ -4726,7 +4726,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-primary-text-disabled)",
-        "description": "Text colour of the primary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.primary.background-disabled`."
+        "description": "Text color of the primary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.primary.background-disabled`."
       },
       "button-primary-border-disabled": {
         "name": "buttonPrimaryBorderDisabled",
@@ -4738,7 +4738,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-button-primary-border-disabled)",
-        "description": "Border colour of the primary button when disabled, in the muted border tone."
+        "description": "Border color of the primary button when disabled, in the muted border tone."
       },
       "button-secondary-background-disabled": {
         "name": "buttonSecondaryBackgroundDisabled",
@@ -4762,7 +4762,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-secondary-text-disabled)",
-        "description": "Text colour of the secondary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.secondary.background-disabled`."
+        "description": "Text color of the secondary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.secondary.background-disabled`."
       },
       "button-secondary-border-disabled": {
         "name": "buttonSecondaryBorderDisabled",
@@ -4774,7 +4774,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-button-secondary-border-disabled)",
-        "description": "Border colour of the secondary button when disabled, in the muted border tone."
+        "description": "Border color of the secondary button when disabled, in the muted border tone."
       },
       "button-destructive-background-disabled": {
         "name": "buttonDestructiveBackgroundDisabled",
@@ -4798,7 +4798,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-destructive-text-disabled)",
-        "description": "Text colour of the destructive button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.destructive.background-disabled`."
+        "description": "Text color of the destructive button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.destructive.background-disabled`."
       },
       "button-destructive-border-disabled": {
         "name": "buttonDestructiveBorderDisabled",
@@ -4810,7 +4810,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-button-destructive-border-disabled)",
-        "description": "Border colour of the destructive button when disabled, in the muted border tone."
+        "description": "Border color of the destructive button when disabled, in the muted border tone."
       },
       "button-outline-text-disabled": {
         "name": "buttonOutlineTextDisabled",
@@ -4822,7 +4822,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-outline-text-disabled)",
-        "description": "Label colour of a disabled outline button. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Label color of a disabled outline button. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "button-outline-border-disabled": {
         "name": "buttonOutlineBorderDisabled",
@@ -4834,7 +4834,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-button-outline-border-disabled)",
-        "description": "Border colour of the outline button when disabled, in the muted border tone."
+        "description": "Border color of the outline button when disabled, in the muted border tone."
       },
       "button-ghost-text-disabled": {
         "name": "buttonGhostTextDisabled",
@@ -4846,7 +4846,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-ghost-text-disabled)",
-        "description": "Text colour of the ghost button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the ghost button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "button-link-text-disabled": {
         "name": "buttonLinkTextDisabled",
@@ -4857,7 +4857,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-button-link-text-disabled)",
-        "description": "Text colour of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "button-spinner-size": {
         "name": "buttonSpinnerSize",
@@ -4917,7 +4917,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-card-border)",
-        "description": "Border colour of the card."
+        "description": "Border color of the card."
       },
       "card-padding": {
         "name": "cardPadding",
@@ -4976,7 +4976,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-card-header-title-color)",
-        "description": "Text colour of the card header title."
+        "description": "Text color of the card header title."
       },
       "card-header-description-font-size": {
         "name": "cardHeaderDescriptionFontSize",
@@ -5002,7 +5002,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-card-header-description-color)",
-        "description": "Text colour of the card header description."
+        "description": "Text color of the card header description."
       },
       "card-header-description-line-height": {
         "name": "cardHeaderDescriptionLineHeight",
@@ -5110,7 +5110,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-card-content-color)",
-        "description": "Text colour of the card content."
+        "description": "Text color of the card content."
       },
       "card-content-line-height": {
         "name": "cardContentLineHeight",
@@ -5144,7 +5144,7 @@
         "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-card-border-hover)",
-        "description": "Border colour of an interactive card while hovered."
+        "description": "Border color of an interactive card while hovered."
       },
       "card-background-active": {
         "name": "cardBackgroundActive",
@@ -5188,7 +5188,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-card-border-disabled)",
-        "description": "Border colour of a disabled card, in the muted border tone."
+        "description": "Border color of a disabled card, in the muted border tone."
       }
     },
     "input": {
@@ -5212,7 +5212,7 @@
         "value": "oklch(0.602 0.03 68.94)",
         "type": "color",
         "variable": "var(--color-input-border)",
-        "description": "Border colour of the input."
+        "description": "Border color of the input."
       },
       "input-border-error": {
         "name": "inputBorderError",
@@ -5223,7 +5223,7 @@
         "value": "oklch(0.546 0.215 27.29)",
         "type": "color",
         "variable": "var(--color-input-border-error)",
-        "description": "Border colour of the input in the error state."
+        "description": "Border color of the input in the error state."
       },
       "input-placeholder": {
         "name": "inputPlaceholder",
@@ -5234,7 +5234,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-input-placeholder)",
-        "description": "Colour of placeholder text, muted so it reads as a hint rather than a value."
+        "description": "Color of placeholder text, muted so it reads as a hint rather than a value."
       },
       "input-padding-x": {
         "name": "inputPaddingX",
@@ -5316,7 +5316,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-input-default-text)",
-        "description": "Colour of typed text. Pairs with `input.default.background`."
+        "description": "Color of typed text. Pairs with `input.default.background`."
       },
       "input-padding-y-sm": {
         "name": "inputPaddingYSm",
@@ -5374,7 +5374,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-input-text-disabled)",
-        "description": "Text colour of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
+        "description": "Text color of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
       },
       "input-border-success": {
         "name": "inputBorderSuccess",
@@ -5385,7 +5385,7 @@
         "value": "oklch(0.543 0.152 149.33)",
         "type": "color",
         "variable": "var(--color-input-border-success)",
-        "description": "Border colour of the input in the success state."
+        "description": "Border color of the input in the success state."
       },
       "input-spin-button-opacity": {
         "name": "inputSpinButtonOpacity",
@@ -5422,7 +5422,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-alert-default-border)",
-        "description": "Border colour of the default alert."
+        "description": "Border color of the default alert."
       },
       "alert-default-text": {
         "name": "alertDefaultText",
@@ -5434,7 +5434,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-alert-default-text)",
-        "description": "Text colour of the default alert. Pairs with `alert.default.background`."
+        "description": "Text color of the default alert. Pairs with `alert.default.background`."
       },
       "alert-destructive-background": {
         "name": "alertDestructiveBackground",
@@ -5458,7 +5458,7 @@
         "value": "oklch(0.546 0.215 27.29)",
         "type": "color",
         "variable": "var(--color-alert-destructive-border)",
-        "description": "Border colour of the destructive alert."
+        "description": "Border color of the destructive alert."
       },
       "alert-destructive-text": {
         "name": "alertDestructiveText",
@@ -5470,7 +5470,7 @@
         "value": "oklch(0.488 0.19 27.47)",
         "type": "color",
         "variable": "var(--color-alert-destructive-text)",
-        "description": "Text colour of the destructive alert. Pairs with `alert.destructive.background`."
+        "description": "Text color of the destructive alert. Pairs with `alert.destructive.background`."
       },
       "alert-warning-background": {
         "name": "alertWarningBackground",
@@ -5494,7 +5494,7 @@
         "value": "oklch(0.546 0.111 76)",
         "type": "color",
         "variable": "var(--color-alert-warning-border)",
-        "description": "Border colour of the warning alert."
+        "description": "Border color of the warning alert."
       },
       "alert-warning-text": {
         "name": "alertWarningText",
@@ -5506,7 +5506,7 @@
         "value": "oklch(0.488 0.1 74)",
         "type": "color",
         "variable": "var(--color-alert-warning-text)",
-        "description": "Text colour of the warning alert. Pairs with `alert.warning.background`."
+        "description": "Text color of the warning alert. Pairs with `alert.warning.background`."
       },
       "alert-success-background": {
         "name": "alertSuccessBackground",
@@ -5530,7 +5530,7 @@
         "value": "oklch(0.543 0.152 149.33)",
         "type": "color",
         "variable": "var(--color-alert-success-border)",
-        "description": "Border colour of the success alert."
+        "description": "Border color of the success alert."
       },
       "alert-success-text": {
         "name": "alertSuccessText",
@@ -5542,7 +5542,7 @@
         "value": "oklch(0.488 0.134 150.15)",
         "type": "color",
         "variable": "var(--color-alert-success-text)",
-        "description": "Text colour of the success alert. Pairs with `alert.success.background`."
+        "description": "Text color of the success alert. Pairs with `alert.success.background`."
       },
       "alert-info-background": {
         "name": "alertInfoBackground",
@@ -5566,7 +5566,7 @@
         "value": "oklch(0.584 0.041 218.05)",
         "type": "color",
         "variable": "var(--color-alert-info-border)",
-        "description": "Border colour of the info alert."
+        "description": "Border color of the info alert."
       },
       "alert-info-text": {
         "name": "alertInfoText",
@@ -5578,7 +5578,7 @@
         "value": "oklch(0.361 0.058 221.82)",
         "type": "color",
         "variable": "var(--color-alert-info-text)",
-        "description": "Text colour of the info alert. Pairs with `alert.info.background`."
+        "description": "Text color of the info alert. Pairs with `alert.info.background`."
       },
       "alert-padding-x": {
         "name": "alertPaddingX",
@@ -5729,7 +5729,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-menubar-border)",
-        "description": "Border colour of the menubar."
+        "description": "Border color of the menubar."
       },
       "menubar-background": {
         "name": "menubarBackground",
@@ -5762,7 +5762,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-menubar-trigger-text-open)",
-        "description": "Text colour of the menubar trigger when open. Pairs with `menubar.trigger-open`."
+        "description": "Text color of the menubar trigger when open. Pairs with `menubar.trigger-open`."
       },
       "menubar-content-border": {
         "name": "menubarContentBorder",
@@ -5773,7 +5773,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-menubar-content-border)",
-        "description": "Border colour of the menubar content."
+        "description": "Border color of the menubar content."
       },
       "menubar-content-background": {
         "name": "menubarContentBackground",
@@ -5795,7 +5795,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-menubar-content-text)",
-        "description": "Text colour of the menubar content. Pairs with `menubar.content-background`."
+        "description": "Text color of the menubar content. Pairs with `menubar.content-background`."
       },
       "menubar-label": {
         "name": "menubarLabel",
@@ -5806,7 +5806,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-menubar-label)",
-        "description": "Text colour of the menubar label."
+        "description": "Text color of the menubar label."
       },
       "menubar-separator": {
         "name": "menubarSeparator",
@@ -5828,7 +5828,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-menubar-shortcut)",
-        "description": "Text colour of the menubar shortcut."
+        "description": "Text color of the menubar shortcut."
       },
       "menubar-root-height": {
         "name": "menubarRootHeight",
@@ -6146,7 +6146,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-menubar-item-text-disabled)",
-        "description": "Text colour of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "menubar-trigger-highlighted": {
         "name": "menubarTriggerHighlighted",
@@ -6168,7 +6168,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-menubar-trigger-text-highlighted)",
-        "description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
+        "description": "Text color of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
       },
       "menubar-item-highlighted": {
         "name": "menubarItemHighlighted",
@@ -6190,7 +6190,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-menubar-item-text-highlighted)",
-        "description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
+        "description": "Text color of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
       },
       "menubar-content-shadow": {
         "name": "menubarContentShadow",
@@ -6258,7 +6258,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-navigation-text-hover)",
-        "description": "Text colour of the navigation menu while hovered. Pairs with `navigation.background-hover`."
+        "description": "Text color of the navigation menu while hovered. Pairs with `navigation.background-hover`."
       },
       "navigation-active": {
         "name": "navigationActive",
@@ -6291,7 +6291,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-navigation-content-border)",
-        "description": "Border colour of the navigation menu content."
+        "description": "Border color of the navigation menu content."
       },
       "navigation-content-background": {
         "name": "navigationContentBackground",
@@ -6313,7 +6313,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-navigation-content-text)",
-        "description": "Text colour of the navigation menu content. Pairs with `navigation.content-background`."
+        "description": "Text color of the navigation menu content. Pairs with `navigation.content-background`."
       },
       "navigation-indicator": {
         "name": "navigationIndicator",
@@ -6346,7 +6346,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-navigation-text-disabled)",
-        "description": "Text colour of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "navigation-highlighted": {
         "name": "navigationHighlighted",
@@ -6368,7 +6368,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-navigation-text-highlighted)",
-        "description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
+        "description": "Text color of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
       }
     },
     "command": {
@@ -6392,7 +6392,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-command-text)",
-        "description": "Text colour of the command menu. Pairs with `command.background`."
+        "description": "Text color of the command menu. Pairs with `command.background`."
       },
       "command-border": {
         "name": "commandBorder",
@@ -6403,7 +6403,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-command-border)",
-        "description": "Border colour of the command menu."
+        "description": "Border color of the command menu."
       },
       "command-placeholder": {
         "name": "commandPlaceholder",
@@ -6414,7 +6414,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-command-placeholder)",
-        "description": "Colour of placeholder text in the command menu, muted so it reads as a hint rather than a value."
+        "description": "Color of placeholder text in the command menu, muted so it reads as a hint rather than a value."
       },
       "command-empty": {
         "name": "commandEmpty",
@@ -6425,7 +6425,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-command-empty)",
-        "description": "Text colour of the empty-results message in the command menu."
+        "description": "Text color of the empty-results message in the command menu."
       },
       "command-group-heading": {
         "name": "commandGroupHeading",
@@ -6436,7 +6436,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-command-group-heading)",
-        "description": "Text colour of the command menu group heading."
+        "description": "Text color of the command menu group heading."
       },
       "command-separator": {
         "name": "commandSeparator",
@@ -6469,7 +6469,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-command-item-text-selected)",
-        "description": "Text colour of the command menu item when selected. Pairs with `command.item-selected`."
+        "description": "Text color of the command menu item when selected. Pairs with `command.item-selected`."
       },
       "command-shortcut": {
         "name": "commandShortcut",
@@ -6480,7 +6480,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-command-shortcut)",
-        "description": "Text colour of the command menu shortcut."
+        "description": "Text color of the command menu shortcut."
       },
       "command-input-height": {
         "name": "commandInputHeight",
@@ -6708,7 +6708,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-command-item-text-disabled)",
-        "description": "Text colour of the command menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the command menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "command-input-text-disabled": {
         "name": "commandInputTextDisabled",
@@ -6719,7 +6719,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-command-input-text-disabled)",
-        "description": "Text colour of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       }
     },
     "tabs": {
@@ -6745,7 +6745,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-tabs-list-text)",
-        "description": "Text colour of the tabs list. Pairs with `tabs.list.background`."
+        "description": "Text color of the tabs list. Pairs with `tabs.list.background`."
       },
       "tabs-trigger-background-active": {
         "name": "tabsTriggerBackgroundActive",
@@ -6769,7 +6769,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-text-active)",
-        "description": "Text colour of the selected tab trigger. Pairs with `tabs.trigger.background-active`."
+        "description": "Text color of the selected tab trigger. Pairs with `tabs.trigger.background-active`."
       },
       "tabs-trigger-background-hover": {
         "name": "tabsTriggerBackgroundHover",
@@ -6793,7 +6793,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-text-hover)",
-        "description": "Text colour of the tabs trigger while hovered. Pairs with `tabs.trigger.background-hover`."
+        "description": "Text color of the tabs trigger while hovered. Pairs with `tabs.trigger.background-hover`."
       },
       "tabs-list-border-color": {
         "name": "tabsListBorderColor",
@@ -6806,7 +6806,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-tabs-list-border-color)",
-        "description": "Border colour of the tabs list."
+        "description": "Border color of the tabs list."
       },
       "tabs-list-height-sm": {
         "name": "tabsListHeightSm",
@@ -7086,7 +7086,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-indicator-color)",
-        "description": "Colour of the underline that marks the selected tab."
+        "description": "Color of the underline that marks the selected tab."
       },
       "tabs-trigger-text-disabled": {
         "name": "tabsTriggerTextDisabled",
@@ -7098,7 +7098,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-text-disabled)",
-        "description": "Text colour of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "tabs-trigger-shadow": {
         "name": "tabsTriggerShadow",
@@ -7147,7 +7147,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-calendar-nav-border)",
-        "description": "Border colour of the calendar nav."
+        "description": "Border color of the calendar nav."
       },
       "calendar-nav-hover": {
         "name": "calendarNavHover",
@@ -7169,7 +7169,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-calendar-nav-text-hover)",
-        "description": "Text colour of the calendar nav while hovered. Pairs with `calendar.nav-hover`."
+        "description": "Text color of the calendar nav while hovered. Pairs with `calendar.nav-hover`."
       },
       "calendar-header-text": {
         "name": "calendarHeaderText",
@@ -7180,7 +7180,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-calendar-header-text)",
-        "description": "Text colour of the calendar header."
+        "description": "Text color of the calendar header."
       },
       "calendar-day-hover": {
         "name": "calendarDayHover",
@@ -7202,7 +7202,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-calendar-day-text-hover)",
-        "description": "Text colour of the calendar day while hovered. Pairs with `calendar.day-hover`."
+        "description": "Text color of the calendar day while hovered. Pairs with `calendar.day-hover`."
       },
       "calendar-day-selected": {
         "name": "calendarDaySelected",
@@ -7224,7 +7224,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-calendar-day-text-selected)",
-        "description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`."
+        "description": "Text color of the calendar day when selected. Pairs with `calendar.day-selected`."
       },
       "calendar-day-size": {
         "name": "calendarDaySize",
@@ -7429,7 +7429,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-calendar-nav-text-disabled)",
-        "description": "Text colour of the calendar nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the calendar nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "calendar-nav-border-disabled": {
         "name": "calendarNavBorderDisabled",
@@ -7440,7 +7440,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-calendar-nav-border-disabled)",
-        "description": "Border colour of the calendar nav when disabled, in the muted border tone."
+        "description": "Border color of the calendar nav when disabled, in the muted border tone."
       }
     },
     "accordion": {
@@ -7453,7 +7453,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-accordion-border)",
-        "description": "Border colour of the accordion."
+        "description": "Border color of the accordion."
       },
       "accordion-content-text": {
         "name": "accordionContentText",
@@ -7464,7 +7464,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-content-text)",
-        "description": "Text colour of the accordion content."
+        "description": "Text color of the accordion content."
       },
       "accordion-icon": {
         "name": "accordionIcon",
@@ -7475,7 +7475,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-accordion-icon)",
-        "description": "Colour of the accordion chevron icon."
+        "description": "Color of the accordion chevron icon."
       },
       "accordion-trigger-hover": {
         "name": "accordionTriggerHover",
@@ -7497,7 +7497,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text)",
-        "description": "Text colour of the accordion trigger."
+        "description": "Text color of the accordion trigger."
       },
       "accordion-trigger-text-hover": {
         "name": "accordionTriggerTextHover",
@@ -7508,7 +7508,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-hover)",
-        "description": "Text colour of the accordion trigger while hovered. Pairs with `accordion.trigger-hover`."
+        "description": "Text color of the accordion trigger while hovered. Pairs with `accordion.trigger-hover`."
       },
       "accordion-trigger-text-open": {
         "name": "accordionTriggerTextOpen",
@@ -7519,7 +7519,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-open)",
-        "description": "Text colour of the accordion trigger when open."
+        "description": "Text color of the accordion trigger when open."
       },
       "accordion-trigger-pressed": {
         "name": "accordionTriggerPressed",
@@ -7552,7 +7552,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-disabled)",
-        "description": "Text colour of the accordion trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `accordion.trigger-disabled`."
+        "description": "Text color of the accordion trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `accordion.trigger-disabled`."
       },
       "accordion-icon-hover": {
         "name": "accordionIconHover",
@@ -7563,7 +7563,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-icon-hover)",
-        "description": "Colour of the accordion icon while hovered."
+        "description": "Color of the accordion icon while hovered."
       },
       "accordion-icon-open": {
         "name": "accordionIconOpen",
@@ -7574,7 +7574,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-accordion-icon-open)",
-        "description": "Colour of the accordion icon when open."
+        "description": "Color of the accordion icon when open."
       },
       "accordion-icon-disabled": {
         "name": "accordionIconDisabled",
@@ -7585,7 +7585,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-accordion-icon-disabled)",
-        "description": "Colour of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Color of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "accordion-trigger-padding": {
         "name": "accordionTriggerPadding",
@@ -7728,7 +7728,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-avatar-border)",
-        "description": "Border colour of the avatar."
+        "description": "Border color of the avatar."
       },
       "avatar-fallback-background": {
         "name": "avatarFallbackBackground",
@@ -7750,7 +7750,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-avatar-fallback-text)",
-        "description": "Text colour of the avatar fallback. Pairs with `avatar.fallback-background`."
+        "description": "Text color of the avatar fallback. Pairs with `avatar.fallback-background`."
       },
       "avatar-size-sm": {
         "name": "avatarSizeSm",
@@ -7885,7 +7885,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-breadcrumb-current)",
-        "description": "Text colour of the current page item in the breadcrumb."
+        "description": "Text color of the current page item in the breadcrumb."
       },
       "breadcrumb-link": {
         "name": "breadcrumbLink",
@@ -7896,7 +7896,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link)",
-        "description": "Text colour of the breadcrumb link."
+        "description": "Text color of the breadcrumb link."
       },
       "breadcrumb-link-hover": {
         "name": "breadcrumbLinkHover",
@@ -7907,7 +7907,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link-hover)",
-        "description": "Text colour of the breadcrumb link while hovered."
+        "description": "Text color of the breadcrumb link while hovered."
       },
       "breadcrumb-text": {
         "name": "breadcrumbText",
@@ -7918,7 +7918,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-breadcrumb-text)",
-        "description": "Text colour of breadcrumb text that is not a link."
+        "description": "Text color of breadcrumb text that is not a link."
       },
       "breadcrumb-font-size": {
         "name": "breadcrumbFontSize",
@@ -7951,7 +7951,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link-disabled)",
-        "description": "Text colour of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "breadcrumb-list-gap": {
         "name": "breadcrumbListGap",
@@ -8030,7 +8030,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-carousel-nav-border)",
-        "description": "Border colour of the carousel nav."
+        "description": "Border color of the carousel nav."
       },
       "carousel-nav-hover": {
         "name": "carouselNavHover",
@@ -8052,7 +8052,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-carousel-nav-text-hover)",
-        "description": "Text colour of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
+        "description": "Text color of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
       },
       "carousel-button-size": {
         "name": "carouselButtonSize",
@@ -8132,7 +8132,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-carousel-nav-text-disabled)",
-        "description": "Text colour of the carousel nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `carousel.nav-background-disabled`."
+        "description": "Text color of the carousel nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `carousel.nav-background-disabled`."
       },
       "carousel-nav-border-disabled": {
         "name": "carouselNavBorderDisabled",
@@ -8143,7 +8143,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-carousel-nav-border-disabled)",
-        "description": "Border colour of the carousel nav when disabled, in the muted border tone."
+        "description": "Border color of the carousel nav when disabled, in the muted border tone."
       },
       "carousel-nav-background-disabled": {
         "name": "carouselNavBackgroundDisabled",
@@ -8189,7 +8189,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-contextmenu-item-text-hover)",
-        "description": "Text colour of the context menu item while hovered. Pairs with `contextmenu.item-hover`."
+        "description": "Text color of the context menu item while hovered. Pairs with `contextmenu.item-hover`."
       },
       "contextmenu-label": {
         "name": "contextmenuLabel",
@@ -8200,7 +8200,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-contextmenu-label)",
-        "description": "Text colour of the context menu label."
+        "description": "Text color of the context menu label."
       },
       "contextmenu-separator": {
         "name": "contextmenuSeparator",
@@ -8222,7 +8222,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-contextmenu-shortcut)",
-        "description": "Text colour of the context menu shortcut."
+        "description": "Text color of the context menu shortcut."
       },
       "contextmenu-text": {
         "name": "contextmenuText",
@@ -8233,7 +8233,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-contextmenu-text)",
-        "description": "Text colour of the context menu. Pairs with `contextmenu.background`."
+        "description": "Text color of the context menu. Pairs with `contextmenu.background`."
       },
       "contextmenu-item-text-disabled": {
         "name": "contextmenuItemTextDisabled",
@@ -8244,7 +8244,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-contextmenu-item-text-disabled)",
-        "description": "Text colour of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       }
     },
     "dialog": {
@@ -8257,7 +8257,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-dialog-background)",
-        "description": "Fill of the dialog panel. Also the colour of the gap between the close button and its focus ring."
+        "description": "Fill of the dialog panel. Also the color of the gap between the close button and its focus ring."
       },
       "dialog-border": {
         "name": "dialogBorder",
@@ -8268,7 +8268,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-dialog-border)",
-        "description": "Border colour of the dialog."
+        "description": "Border color of the dialog."
       },
       "dialog-description": {
         "name": "dialogDescription",
@@ -8279,7 +8279,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-dialog-description)",
-        "description": "Text colour of the dialog description."
+        "description": "Text color of the dialog description."
       },
       "dialog-overlay": {
         "name": "dialogOverlay",
@@ -8301,7 +8301,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-dialog-title)",
-        "description": "Text colour of the dialog title."
+        "description": "Text color of the dialog title."
       },
       "dialog-content-width-sm": {
         "name": "dialogContentWidthSm",
@@ -8607,7 +8607,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-form-description)",
-        "description": "Text colour of the help text under a form field."
+        "description": "Text color of the help text under a form field."
       },
       "form-error": {
         "name": "formError",
@@ -8618,7 +8618,7 @@
         "value": "oklch(0.488 0.19 27.47)",
         "type": "color",
         "variable": "var(--color-form-error)",
-        "description": "Text colour of form error messages."
+        "description": "Text color of form error messages."
       },
       "form-label": {
         "name": "formLabel",
@@ -8629,7 +8629,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-form-label)",
-        "description": "Text colour of form labels."
+        "description": "Text color of form labels."
       },
       "form-item-gap": {
         "name": "formItemGap",
@@ -8717,7 +8717,7 @@
         "value": "oklch(0.488 0.19 27.47)",
         "type": "color",
         "variable": "var(--color-form-required-color)",
-        "description": "Colour of the required-field marker on form labels."
+        "description": "Color of the required-field marker on form labels."
       },
       "form-label-error-text": {
         "name": "formLabelErrorText",
@@ -8728,7 +8728,7 @@
         "value": "oklch(0.488 0.19 27.47)",
         "type": "color",
         "variable": "var(--color-form-label-error-text)",
-        "description": "Text colour of a form label when its field has an error."
+        "description": "Text color of a form label when its field has an error."
       },
       "form-label-text-disabled": {
         "name": "formLabelTextDisabled",
@@ -8739,7 +8739,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-form-label-text-disabled)",
-        "description": "Text colour of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "form-label-line-height": {
         "name": "formLabelLineHeight",
@@ -8774,7 +8774,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-hover-card-border)",
-        "description": "Border colour of the hover card."
+        "description": "Border color of the hover card."
       },
       "hover-card-text": {
         "name": "hoverCardText",
@@ -8785,7 +8785,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-hover-card-text)",
-        "description": "Text colour of the hover card. Pairs with `hover-card.background`."
+        "description": "Text color of the hover card. Pairs with `hover-card.background`."
       },
       "hover-card-content-width-sm": {
         "name": "hoverCardContentWidthSm",
@@ -8892,7 +8892,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-pagination-text)",
-        "description": "Text colour of page links other than the current page."
+        "description": "Text color of page links other than the current page."
       },
       "pagination-text-active": {
         "name": "paginationTextActive",
@@ -8903,7 +8903,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-pagination-text-active)",
-        "description": "Text colour of the page link for the current page. Pairs with `pagination.active`."
+        "description": "Text color of the page link for the current page. Pairs with `pagination.active`."
       },
       "pagination-text-hover": {
         "name": "paginationTextHover",
@@ -8914,7 +8914,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-pagination-text-hover)",
-        "description": "Text colour of the pagination while hovered. Pairs with `pagination.background-hover`."
+        "description": "Text color of the pagination while hovered. Pairs with `pagination.background-hover`."
       },
       "pagination-item-size": {
         "name": "paginationItemSize",
@@ -9052,7 +9052,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-pagination-ellipsis-text)",
-        "description": "Text colour of the ellipsis that stands in for skipped pages."
+        "description": "Text color of the ellipsis that stands in for skipped pages."
       },
       "pagination-text-disabled": {
         "name": "paginationTextDisabled",
@@ -9063,7 +9063,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-pagination-text-disabled)",
-        "description": "Text colour of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       }
     },
     "popover": {
@@ -9087,7 +9087,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-popover-border)",
-        "description": "Border colour of the popover."
+        "description": "Border color of the popover."
       },
       "popover-text": {
         "name": "popoverText",
@@ -9098,7 +9098,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-popover-text)",
-        "description": "Text colour of the popover. Pairs with `popover.background`."
+        "description": "Text color of the popover. Pairs with `popover.background`."
       },
       "popover-content-width-sm": {
         "name": "popoverContentWidthSm",
@@ -9295,7 +9295,7 @@
         "value": "oklch(0.602 0.03 68.94)",
         "type": "color",
         "variable": "var(--color-radio-border)",
-        "description": "Border colour of the radio."
+        "description": "Border color of the radio."
       },
       "radio-border-checked": {
         "name": "radioBorderChecked",
@@ -9306,7 +9306,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-radio-border-checked)",
-        "description": "Border colour of the radio when checked."
+        "description": "Border color of the radio when checked."
       },
       "radio-indicator": {
         "name": "radioIndicator",
@@ -9317,7 +9317,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-radio-indicator)",
-        "description": "Colour of the dot inside the selected radio."
+        "description": "Color of the dot inside the selected radio."
       },
       "radio-size-sm": {
         "name": "radioSizeSm",
@@ -9454,7 +9454,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-radio-border-disabled)",
-        "description": "Border colour of the radio when disabled, in the muted border tone."
+        "description": "Border color of the radio when disabled, in the muted border tone."
       },
       "radio-indicator-disabled": {
         "name": "radioIndicatorDisabled",
@@ -9465,7 +9465,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-radio-indicator-disabled)",
-        "description": "Colour of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Color of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       }
     },
     "resizable": {
@@ -9500,7 +9500,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-resizable-handle-border)",
-        "description": "Border colour of the resizable handle."
+        "description": "Border color of the resizable handle."
       },
       "resizable-handle-radius": {
         "name": "resizableHandleRadius",
@@ -9774,7 +9774,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-slider-thumb-border)",
-        "description": "Border colour of the slider thumb."
+        "description": "Border color of the slider thumb."
       },
       "slider-track": {
         "name": "sliderTrack",
@@ -9886,7 +9886,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-slider-thumb-border-disabled)",
-        "description": "Border colour of the slider thumb when disabled, in the muted border tone."
+        "description": "Border color of the slider thumb when disabled, in the muted border tone."
       }
     },
     "table": {
@@ -9899,7 +9899,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-table-border)",
-        "description": "Border colour of the table."
+        "description": "Border color of the table."
       },
       "table-caption": {
         "name": "tableCaption",
@@ -9910,7 +9910,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-table-caption)",
-        "description": "Text colour of the table caption."
+        "description": "Text color of the table caption."
       },
       "table-footer-background": {
         "name": "tableFooterBackground",
@@ -9932,7 +9932,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-table-header-text)",
-        "description": "Text colour of the table header."
+        "description": "Text color of the table header."
       },
       "table-row-hover": {
         "name": "tableRowHover",
@@ -10105,7 +10105,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-toast-close)",
-        "description": "Colour of the close icon on the toast."
+        "description": "Color of the close icon on the toast."
       },
       "toast-close-hover": {
         "name": "toastCloseHover",
@@ -10116,7 +10116,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-toast-close-hover)",
-        "description": "Colour of the close icon on the toast while hovered."
+        "description": "Color of the close icon on the toast while hovered."
       },
       "toast-text": {
         "name": "toastText",
@@ -10127,7 +10127,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-toast-text)",
-        "description": "Text colour of the toast."
+        "description": "Text color of the toast."
       },
       "toast-width": {
         "name": "toastWidth",
@@ -10267,7 +10267,7 @@
         "value": "oklch(0.546 0.215 27.29)",
         "type": "color",
         "variable": "var(--color-toast-destructive-border)",
-        "description": "Border colour of the destructive toast."
+        "description": "Border color of the destructive toast."
       },
       "toast-destructive-background": {
         "name": "toastDestructiveBackground",
@@ -10291,7 +10291,7 @@
         "value": "oklch(0.543 0.152 149.33)",
         "type": "color",
         "variable": "var(--color-toast-success-border)",
-        "description": "Border colour of the success toast."
+        "description": "Border color of the success toast."
       },
       "toast-success-background": {
         "name": "toastSuccessBackground",
@@ -10315,7 +10315,7 @@
         "value": "oklch(0.809 0.152 86)",
         "type": "color",
         "variable": "var(--color-toast-warning-border)",
-        "description": "Border colour of the warning toast."
+        "description": "Border color of the warning toast."
       },
       "toast-warning-background": {
         "name": "toastWarningBackground",
@@ -10339,7 +10339,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-toast-destructive-text)",
-        "description": "Text colour on the destructive toast. Pairs with `toast.destructive.background`."
+        "description": "Text color on the destructive toast. Pairs with `toast.destructive.background`."
       },
       "toast-success-text": {
         "name": "toastSuccessText",
@@ -10351,7 +10351,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-toast-success-text)",
-        "description": "Text colour on the success toast. Pairs with `toast.success.background`."
+        "description": "Text color on the success toast. Pairs with `toast.success.background`."
       },
       "toast-info-border": {
         "name": "toastInfoBorder",
@@ -10363,7 +10363,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-toast-info-border)",
-        "description": "Border colour of the info toast."
+        "description": "Border color of the info toast."
       },
       "toast-info-background": {
         "name": "toastInfoBackground",
@@ -10387,7 +10387,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-toast-info-text)",
-        "description": "Text colour on the info toast. Pairs with `toast.info.background`."
+        "description": "Text color on the info toast. Pairs with `toast.info.background`."
       },
       "toast-warning-text": {
         "name": "toastWarningText",
@@ -10399,7 +10399,7 @@
         "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-toast-warning-text)",
-        "description": "Text colour on the warning toast. Pairs with `toast.warning.background`."
+        "description": "Text color on the warning toast. Pairs with `toast.warning.background`."
       },
       "toast-close-button-padding": {
         "name": "toastCloseButtonPadding",
@@ -10549,7 +10549,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-toast-action-text-disabled)",
-        "description": "Text colour of the toast action when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the toast action when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "toast-action-border-disabled": {
         "name": "toastActionBorderDisabled",
@@ -10560,7 +10560,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-toast-action-border-disabled)",
-        "description": "Border colour of the toast action when disabled, in the muted border tone."
+        "description": "Border color of the toast action when disabled, in the muted border tone."
       },
       "toast-close-button-icon-size": {
         "name": "toastCloseButtonIconSize",
@@ -10608,7 +10608,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-toggle-border)",
-        "description": "Border colour of the toggle."
+        "description": "Border color of the toggle."
       },
       "toggle-pressed": {
         "name": "togglePressed",
@@ -10630,7 +10630,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-toggle-text)",
-        "description": "Text colour of the toggle."
+        "description": "Text color of the toggle."
       },
       "toggle-text-hover": {
         "name": "toggleTextHover",
@@ -10641,7 +10641,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-toggle-text-hover)",
-        "description": "Text colour of the toggle while hovered. Pairs with `toggle.background-hover`."
+        "description": "Text color of the toggle while hovered. Pairs with `toggle.background-hover`."
       },
       "toggle-text-pressed": {
         "name": "toggleTextPressed",
@@ -10652,7 +10652,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-toggle-text-pressed)",
-        "description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`."
+        "description": "Text color of the toggle when pressed (on). Pairs with `toggle.pressed`."
       },
       "toggle-size-default-height": {
         "name": "toggleSizeDefaultHeight",
@@ -10785,7 +10785,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-toggle-text-disabled)",
-        "description": "Text colour of the toggle when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the toggle when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "toggle-border-disabled": {
         "name": "toggleBorderDisabled",
@@ -10796,7 +10796,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-toggle-border-disabled)",
-        "description": "Border colour of the toggle when disabled, in the muted border tone."
+        "description": "Border color of the toggle when disabled, in the muted border tone."
       },
       "toggle-pressed-disabled": {
         "name": "togglePressedDisabled",
@@ -10831,7 +10831,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-tooltip-border)",
-        "description": "Border colour of the tooltip."
+        "description": "Border color of the tooltip."
       },
       "tooltip-text": {
         "name": "tooltipText",
@@ -10842,7 +10842,7 @@
         "value": "oklch(0.977 0.003 65.52)",
         "type": "color",
         "variable": "var(--color-tooltip-text)",
-        "description": "Text colour of the tooltip. Pairs with `tooltip.background`."
+        "description": "Text color of the tooltip. Pairs with `tooltip.background`."
       },
       "tooltip-padding-x": {
         "name": "tooltipPaddingX",
@@ -11228,7 +11228,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-select-content-text)",
-        "description": "Text colour of the select content. Pairs with `select.content.background`."
+        "description": "Text color of the select content. Pairs with `select.content.background`."
       },
       "select-separator-background": {
         "name": "selectSeparatorBackground",
@@ -11276,7 +11276,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-select-trigger-text-disabled)",
-        "description": "Text colour of the select trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `select.trigger.background-disabled`."
+        "description": "Text color of the select trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `select.trigger.background-disabled`."
       },
       "select-trigger-border-disabled": {
         "name": "selectTriggerBorderDisabled",
@@ -11288,7 +11288,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-select-trigger-border-disabled)",
-        "description": "Border colour of the select trigger when disabled, in the muted border tone."
+        "description": "Border color of the select trigger when disabled, in the muted border tone."
       },
       "select-item-text-disabled": {
         "name": "selectItemTextDisabled",
@@ -11300,7 +11300,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-select-item-text-disabled)",
-        "description": "Text colour of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "select-item-background-highlighted": {
         "name": "selectItemBackgroundHighlighted",
@@ -11324,7 +11324,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-select-item-text-highlighted)",
-        "description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
+        "description": "Text color of the select item while highlighted. Pairs with `select.item.background-highlighted`."
       },
       "select-trigger-icon-size": {
         "name": "selectTriggerIconSize",
@@ -11531,7 +11531,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-checkbox-text-checked)",
-        "description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
+        "description": "Color of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
       },
       "checkbox-border-checked": {
         "name": "checkboxBorderChecked",
@@ -11542,7 +11542,7 @@
         "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-checkbox-border-checked)",
-        "description": "Border colour of the checkbox when checked."
+        "description": "Border color of the checkbox when checked."
       },
       "checkbox-error-border": {
         "name": "checkboxErrorBorder",
@@ -11575,7 +11575,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-checkbox-text-disabled)",
-        "description": "Text colour of the checkbox when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `checkbox.background-disabled`."
+        "description": "Text color of the checkbox when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `checkbox.background-disabled`."
       },
       "checkbox-border-disabled": {
         "name": "checkboxBorderDisabled",
@@ -11586,7 +11586,7 @@
         "value": "oklch(0.882 0.009 67.06)",
         "type": "color",
         "variable": "var(--color-checkbox-border-disabled)",
-        "description": "Border colour of the checkbox when disabled, in the muted border tone."
+        "description": "Border color of the checkbox when disabled, in the muted border tone."
       }
     },
     "switch": {
@@ -11968,7 +11968,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-textarea-text-disabled)",
-        "description": "Text colour of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       }
     },
     "label": {
@@ -12039,7 +12039,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-label-disabled-color)",
-        "description": "Text colour of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "label-default-color": {
         "name": "labelDefaultColor",
@@ -12050,7 +12050,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-label-default-color)",
-        "description": "Default text colour of labels."
+        "description": "Default text color of labels."
       },
       "label-error-text": {
         "name": "labelErrorText",
@@ -12061,7 +12061,7 @@
         "value": "oklch(0.488 0.19 27.47)",
         "type": "color",
         "variable": "var(--color-label-error-text)",
-        "description": "Text colour of a label when its field has an error."
+        "description": "Text color of a label when its field has an error."
       },
       "label-required-text": {
         "name": "labelRequiredText",
@@ -12072,7 +12072,7 @@
         "value": "oklch(0.488 0.19 27.47)",
         "type": "color",
         "variable": "var(--color-label-required-text)",
-        "description": "Colour of the required marker on labels."
+        "description": "Color of the required marker on labels."
       },
       "label-line-height": {
         "name": "labelLineHeight",
@@ -12279,7 +12279,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-sheet-content-background)",
-        "description": "Fill of the sheet panel. Also the colour of the gap between the close button and its focus ring."
+        "description": "Fill of the sheet panel. Also the color of the gap between the close button and its focus ring."
       },
       "sheet-close-button-opacity": {
         "name": "sheetCloseButtonOpacity",
@@ -12303,7 +12303,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-sheet-title-text)",
-        "description": "Text colour of the sheet title."
+        "description": "Text color of the sheet title."
       },
       "sheet-description-text": {
         "name": "sheetDescriptionText",
@@ -12315,7 +12315,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-sheet-description-text)",
-        "description": "Text colour of the sheet description."
+        "description": "Text color of the sheet description."
       },
       "sheet-overlay-background": {
         "name": "sheetOverlayBackground",
@@ -12445,7 +12445,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-separator-color)",
-        "description": "Colour of the separator line."
+        "description": "Color of the separator line."
       },
       "separator-height-horizontal": {
         "name": "separatorHeightHorizontal",
@@ -12914,7 +12914,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-content-text)",
-        "description": "Text colour of the dropdown menu content. Pairs with `dropdown-menu.content.background`."
+        "description": "Text color of the dropdown menu content. Pairs with `dropdown-menu.content.background`."
       },
       "dropdown-menu-content-border": {
         "name": "dropdownMenuContentBorder",
@@ -12926,7 +12926,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-content-border)",
-        "description": "Border colour of the dropdown menu content."
+        "description": "Border color of the dropdown menu content."
       },
       "dropdown-menu-item-background-hover": {
         "name": "dropdownMenuItemBackgroundHover",
@@ -12950,7 +12950,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-item-text-hover)",
-        "description": "Text colour of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.background-hover`."
+        "description": "Text color of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.background-hover`."
       },
       "dropdown-menu-separator-background": {
         "name": "dropdownMenuSeparatorBackground",
@@ -13046,7 +13046,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-item-text-disabled)",
-        "description": "Text colour of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "dropdown-menu-item-radio-indicator-size": {
         "name": "dropdownMenuItemRadioIndicatorSize",
@@ -13240,7 +13240,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-feature-grid-title-text)",
-        "description": "Text colour of the feature grid title."
+        "description": "Text color of the feature grid title."
       },
       "feature-grid-item-border-color": {
         "name": "featureGridItemBorderColor",
@@ -13252,7 +13252,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-feature-grid-item-border-color)",
-        "description": "Border colour of the feature grid item."
+        "description": "Border color of the feature grid item."
       },
       "feature-grid-item-border-color-hover": {
         "name": "featureGridItemBorderColorHover",
@@ -13264,7 +13264,7 @@
         "value": "oklch(0.61 0.169 37.69)",
         "type": "color",
         "variable": "var(--color-feature-grid-item-border-color-hover)",
-        "description": "Border colour of the feature grid item while hovered."
+        "description": "Border color of the feature grid item while hovered."
       },
       "feature-grid-description-text": {
         "name": "featureGridDescriptionText",
@@ -13275,7 +13275,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-feature-grid-description-text)",
-        "description": "Text colour of the feature grid description."
+        "description": "Text color of the feature grid description."
       },
       "feature-grid-icon-shadow": {
         "name": "featureGridIconShadow",
@@ -13771,7 +13771,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-site-header-border)",
-        "description": "Border colour of the site header."
+        "description": "Border color of the site header."
       },
       "site-header-nav-link-background": {
         "name": "siteHeaderNavLinkBackground",
@@ -13807,7 +13807,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-hover)",
-        "description": "Text colour of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
+        "description": "Text color of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
       },
       "site-header-nav-link-text-disabled": {
         "name": "siteHeaderNavLinkTextDisabled",
@@ -13819,7 +13819,7 @@
         "value": "oklch(0.48 0.017 50.2)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-disabled)",
-        "description": "Text colour of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "description": "Text color of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "site-header-nav-link-background-highlighted": {
         "name": "siteHeaderNavLinkBackgroundHighlighted",
@@ -13843,7 +13843,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-highlighted)",
-        "description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
+        "description": "Text color of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
       },
       "site-header-container-padding-x-sm": {
         "name": "siteHeaderContainerPaddingXSm",
@@ -14031,7 +14031,7 @@
         "value": "200ms",
         "type": "duration",
         "variable": "var(--site-header-transition-duration)",
-        "description": "Duration of the header colour transition."
+        "description": "Duration of the header color transition."
       },
       "site-header-z-index": {
         "name": "siteHeaderZIndex",
@@ -14077,7 +14077,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-site-footer-border)",
-        "description": "Border colour of the site footer."
+        "description": "Border color of the site footer."
       },
       "site-footer-text": {
         "name": "siteFooterText",
@@ -14088,7 +14088,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-site-footer-text)",
-        "description": "Text colour of the site footer. Pairs with `site-footer.background`."
+        "description": "Text color of the site footer. Pairs with `site-footer.background`."
       },
       "site-footer-link-text": {
         "name": "siteFooterLinkText",
@@ -14100,7 +14100,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-site-footer-link-text)",
-        "description": "Text colour of the site footer link."
+        "description": "Text color of the site footer link."
       },
       "site-footer-link-text-hover": {
         "name": "siteFooterLinkTextHover",
@@ -14112,7 +14112,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-site-footer-link-text-hover)",
-        "description": "Text colour of the site footer link while hovered."
+        "description": "Text color of the site footer link while hovered."
       },
       "site-footer-container-padding-x-sm": {
         "name": "siteFooterContainerPaddingXSm",
@@ -14351,7 +14351,7 @@
         "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-section-hero-gradient-from)",
-        "description": "Colour stop (from) of the hero section background gradient."
+        "description": "Color stop (from) of the hero section background gradient."
       },
       "section-hero-gradient-via": {
         "name": "sectionHeroGradientVia",
@@ -14363,7 +14363,7 @@
         "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-section-hero-gradient-via)",
-        "description": "Colour stop (via) of the hero section background gradient."
+        "description": "Color stop (via) of the hero section background gradient."
       },
       "section-hero-gradient-to": {
         "name": "sectionHeroGradientTo",
@@ -14375,7 +14375,7 @@
         "value": "oklch(0.962 0.017 39.85)",
         "type": "color",
         "variable": "var(--color-section-hero-gradient-to)",
-        "description": "Colour stop (to) of the hero section background gradient."
+        "description": "Color stop (to) of the hero section background gradient."
       },
       "section-hero-description-text": {
         "name": "sectionHeroDescriptionText",
@@ -14386,7 +14386,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-section-hero-description-text)",
-        "description": "Text colour of the hero section description."
+        "description": "Text color of the hero section description."
       },
       "section-hero-padding-y-sm": {
         "name": "sectionHeroPaddingYSm",
@@ -14657,7 +14657,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-section-features-description-text)",
-        "description": "Text colour of the features section description."
+        "description": "Text color of the features section description."
       },
       "section-features-item-text": {
         "name": "sectionFeaturesItemText",
@@ -14668,7 +14668,7 @@
         "value": "oklch(0.33 0.024 47.83)",
         "type": "color",
         "variable": "var(--color-section-features-item-text)",
-        "description": "Text colour of the features section item."
+        "description": "Text color of the features section item."
       },
       "section-features-icon-background": {
         "name": "sectionFeaturesIconBackground",
@@ -14690,7 +14690,7 @@
         "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-section-features-icon-text)",
-        "description": "Colour of the features section icon. Pairs with `section-features.icon-background`."
+        "description": "Color of the features section icon. Pairs with `section-features.icon-background`."
       },
       "section-features-padding-y-sm": {
         "name": "sectionFeaturesPaddingYSm",
@@ -14975,7 +14975,7 @@
         "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-page-layout-skip-link-text)",
-        "description": "Text colour of the page layout skip link. Pairs with `page-layout.skip-link-background`."
+        "description": "Text color of the page layout skip link. Pairs with `page-layout.skip-link-background`."
       },
       "page-layout-sidebar-border": {
         "name": "pageLayoutSidebarBorder",
@@ -14986,7 +14986,7 @@
         "value": "oklch(0.74 0.019 70)",
         "type": "color",
         "variable": "var(--color-page-layout-sidebar-border)",
-        "description": "Border colour of the page layout sidebar."
+        "description": "Border color of the page layout sidebar."
       },
       "page-layout-main-padding-y": {
         "name": "pageLayoutMainPaddingY",

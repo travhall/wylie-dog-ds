@@ -264,7 +264,7 @@ async function createVariableWithReferences(
   try {
     const figmaType = W3C_TO_FIGMA_TYPE_MAP[token.$type] || "STRING";
 
-    // Colour and dimension scopes are inferred from the token name
+    // Color and dimension scopes are inferred from the token name
     const scopes = inferScopes(token.$type, tokenName);
 
     const figmaName = tokenName.replace(/\./g, "/");

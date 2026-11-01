@@ -7,7 +7,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          "Semantic colour pairs rendered from their live CSS variables, with the WCAG 2.2 AA contrast targets they are designed for.",
+          "Semantic color pairs rendered from their live CSS variables, with the WCAG 2.2 AA contrast targets they are designed for.",
       },
     },
   },

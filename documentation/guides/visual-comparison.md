@@ -43,4 +43,4 @@ Options:
 
 ## How a shot is compared
 
-Each story loads in an 800 by 600 viewport with the theme global set (`globals=theme:light` or `theme:dark`), animations and transitions disabled, and a short settle wait. The PNGs are compared pixel by pixel; a pixel counts as different when any colour channel differs by more than 8. A shot of a different size counts as 100 percent different.
+Each story loads in an 800 by 600 viewport with the theme global set (`globals=theme:light` or `theme:dark`), animations and transitions disabled, and a short settle wait. The PNGs are compared pixel by pixel; a pixel counts as different when any color channel differs by more than 8. A shot of a different size counts as 100 percent different.

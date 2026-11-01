@@ -293,7 +293,7 @@ for (const { pattern, reason } of vocabulary.phrases) {
 }
 
 // ---------- G. counts stated in prose ----------
-// "N scales" and "N palettes" must equal the number of colour palettes in the
+// "N scales" and "N palettes" must equal the number of color palettes in the
 // primitive tokens (distinct names in color.<name>.<step>).
 
 const paletteCount = new Set(

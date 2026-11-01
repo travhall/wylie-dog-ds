@@ -3,16 +3,16 @@
 //
 // The rule (decided 2026-11-01): the showcase binds to semantic tokens, never to
 // the primitive palette, so changing a token re-themes every page. A static
-// reference to a primitive colour in a showcase page is a violation:
+// reference to a primitive color in a showcase page is a violation:
 //   - a palette variable, such as var(--color-blue-600)
 //   - a Tailwind palette utility, such as bg-blue-600 or text-gray-400
-//   - a hex colour literal, such as #de622e
+//   - a hex color literal, such as #de622e
 // A page that has to name a primitive derives it instead (`getAlias` in
 // apps/showcase/src/lib/token-values.ts), and a template such as
 // `var(--color-${palette}-${step})` is not static, so it passes.
 //
 // Not counted: comments, tests, and the dog illustration (wyliedoglogo.tsx),
-// whose fills are the brand artwork and not UI colour.
+// whose fills are the brand artwork and not UI color.
 // Usage: node scripts/check-showcase-palette.mjs
 
 import fs from "node:fs";
@@ -34,7 +34,7 @@ const rules = [
       `\\b(?:bg|text|border|ring|from|to|via|fill|stroke|divide|outline|decoration|shadow|accent|caret)-(?:${PALETTES})-\\d+\\b`
     ),
   },
-  { name: "hex colour literal", re: /#[0-9a-fA-F]{6}(?:[0-9a-fA-F]{2})?\b/ },
+  { name: "hex color literal", re: /#[0-9a-fA-F]{6}(?:[0-9a-fA-F]{2})?\b/ },
 ];
 
 const files = execSync("git ls-files -z", {
@@ -80,5 +80,5 @@ if (violations.length > 0) {
   process.exit(1);
 }
 console.log(
-  `Showcase palette OK: ${files.length} files, no static primitive colours.`
+  `Showcase palette OK: ${files.length} files, no static primitive colors.`
 );

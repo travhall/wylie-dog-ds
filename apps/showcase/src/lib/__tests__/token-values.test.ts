@@ -50,21 +50,21 @@ describe("getColorModes", () => {
 });
 
 describe("parsePrimitiveRef", () => {
-  it("reads a palette and step from a colour alias", () => {
+  it("reads a palette and step from a color alias", () => {
     expect(parsePrimitiveRef("{color.fiery-coral.600}")).toEqual({
       palette: "fiery-coral",
       step: "600",
     });
   });
 
-  it("returns null for anything that is not a plain colour alias", () => {
+  it("returns null for anything that is not a plain color alias", () => {
     expect(parsePrimitiveRef("{color.background.primary}")).toBeNull();
     expect(parsePrimitiveRef("oklch(0.5 0 0)")).toBeNull();
   });
 });
 
 describe("getAlias", () => {
-  it("resolves a semantic colour to the primitive it points at", () => {
+  it("resolves a semantic color to the primitive it points at", () => {
     const ref = getAlias("color.background.primary");
     expect(ref.step).toMatch(/^\d+$/);
     // The primitive it names exists in the built CSS.
@@ -89,7 +89,7 @@ describe("getAlias", () => {
 
   it("throws for a token that is missing", () => {
     expect(() => getAlias("color.background.does-not-exist")).toThrow(
-      /not a plain colour alias/
+      /not a plain color alias/
     );
   });
 });

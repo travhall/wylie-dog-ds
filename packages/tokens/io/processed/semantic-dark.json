@@ -2,7 +2,7 @@
   "color.background.primary": {
     "$type": "color",
     "$value": "{color.fiery-coral.700}",
-    "$description": "Solid fill for the main action colour. Pairs with foreground.primary."
+    "$description": "Solid fill for the main action color. Pairs with foreground.primary."
   },
   "color.background.inverse": {
     "$type": "color",
@@ -17,22 +17,22 @@
   "color.border.primary": {
     "$type": "color",
     "$value": "{color.fiery-coral.600}",
-    "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
+    "$description": "Accent border in the primary color (cards, highlights, rings); non-text, so it needs 3:1 on the page."
   },
   "color.border.success": {
     "$type": "color",
     "$value": "{color.green.600}",
-    "$description": "Border in the success colour for alerts, toasts and highlights."
+    "$description": "Border in the success color for alerts, toasts and highlights."
   },
   "color.border.warning": {
     "$type": "color",
     "$value": "{color.yellow.600}",
-    "$description": "Border in the warning colour for alerts, toasts and highlights."
+    "$description": "Border in the warning color for alerts, toasts and highlights."
   },
   "color.border.danger": {
     "$type": "color",
     "$value": "{color.red.600}",
-    "$description": "Border in the danger colour for alerts, toasts and highlights."
+    "$description": "Border in the danger color for alerts, toasts and highlights."
   },
   "shadow.none": {
     "$type": "shadow",
@@ -282,7 +282,7 @@
   "color.background.overlay": {
     "$type": "color",
     "$value": "{color.black-bear.950}",
-    "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque."
+    "$description": "Scrim color behind a modal or sheet; applied at opacity.scrim, never opaque."
   },
   "color.background.muted": {
     "$type": "color",
@@ -412,7 +412,7 @@
   "color.foreground.default": {
     "$type": "color",
     "$value": "{color.sandcastle.50}",
-    "$description": "Default text and icon colour for headings and body content. Readable on the page, muted, emphasis and raised backgrounds."
+    "$description": "Default text and icon color for headings and body content. Readable on the page, muted, emphasis and raised backgrounds."
   },
   "color.foreground.muted": {
     "$type": "color",
@@ -427,7 +427,7 @@
   "color.foreground.link": {
     "$type": "color",
     "$value": "{color.polar-night.200}",
-    "$description": "Text colour for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links."
+    "$description": "Text color for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links."
   },
   "color.foreground.inverse": {
     "$type": "color",
@@ -497,7 +497,7 @@
   "color.border.info": {
     "$type": "color",
     "$value": "{color.polar-night.300}",
-    "$description": "Border in the info colour for alerts and highlights; non-text, so it needs 3:1 on the page."
+    "$description": "Border in the info color for alerts and highlights; non-text, so it needs 3:1 on the page."
   },
   "color.border.default": {
     "$type": "color",
@@ -532,7 +532,7 @@
   "focus.offset": {
     "$type": "dimension",
     "$value": "{border-width.2}",
-    "$description": "Gap between the control and the focus outline, filled with the halo colour."
+    "$description": "Gap between the control and the focus outline, filled with the halo color."
   },
   "focus.halo-width": {
     "$type": "dimension",

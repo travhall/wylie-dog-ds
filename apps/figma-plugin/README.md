@@ -82,7 +82,7 @@ You can revoke the token at any time from GitHub settings. See [Security](#secur
 
 Push and Pull never write anything until you have seen what they will change. Pressing either one opens a **review** (a modal), and nothing is sent or imported until you confirm it. The review is always shown; when nothing would change it says so and offers only **Close**.
 
-- **What a row shows**: the token name grouped by collection, what happens (changed, added, removed, renamed), old to new value, a colour swatch for colours, every mode when a token has several, and notes when the type or description changed. A filter appears above 8 rows, and long lists load 100 at a time.
+- **What a row shows**: the token name grouped by collection, what happens (changed, added, removed, renamed), old to new value, a color swatch for colors, every mode when a token has several, and notes when the type or description changed. A filter appears above 8 rows, and long lists load 100 at a time.
 - **Push** (Figma to GitHub): lists what GitHub will gain, change or lose. In pull-request sync mode a banner says it opens a pull request and nothing changes on the branch until it is merged, and the button reads "Open pull request" instead of "Push to <branch>". Only changes that would lose something on GitHub block a Push: GitHub edits Figma lacks, or tokens changed on both sides to different values. Those open the per-token conflict list; one-sided Figma edits go straight to the review. With no baseline every difference still opens the conflict list. A first push to an empty path has nothing to protect and goes to the review.
 - **Pull** (GitHub to Figma): lists what Figma will gain, change, lose or have overwritten. Variables that exist only in Figma are deleted by a Pull (it uses the "replace" strategy), so they appear under "Will be removed from Figma" and **Pull stays disabled until you tick the acknowledgement**. Edits you made in Figma since the last sync are marked "Overwrites your Figma edit", with a **Push first** shortcut.
 - **Picker scopes** (Pull and the overview): scopes are derived from token names, not stored in the token JSON, and every import re-applies them, so a Pull can change them even when no token differs (for example after the scope rules change). The review lists them in a "Picker scopes will change" section, grouped by transition ("42 variables: all pickers → font size") with the variable list behind each group. The plugin thread reports each variable's current scopes beside the tokens (`localScopes` in the `local-tokens-exported` message, never inside the token objects), and the UI compares them, ignoring order, with what `inferScopes` gives the incoming tokens. Pull can be confirmed when there are token rows or scope rows; with neither it says "Nothing to pull". Push never lists scopes and never writes them, and the sync baseline hashes ignore them. On the Sync tab the status stays "Up to date" for tokens and adds a line "N variables' picker scopes will change on Pull", and the overview reads "Tokens match, but N variables' picker scopes differ" instead of "in sync". Scopes are the only setting the token diff cannot see: descriptions, the original type and modes already show as token changes.
@@ -143,12 +143,12 @@ Scopes decide which pickers (fill, text fill, stroke, font size, opacity...) lis
 | Component, name contains `background`, `fill`, `track`, `thumb`, `indicator` or `overlay`                                            | `FRAME_FILL`, `SHAPE_FILL`     |
 | Component, name contains `text`, `label`, `foreground`, `placeholder`, `link` or `icon`                                              | `TEXT_FILL`, `SHAPE_FILL`      |
 | Component, name contains `border`, `ring`, `outline` or `stroke`                                                                     | `STROKE_COLOR`                 |
-| Primitive colours (`color.blue.600`): bound through semantic and component variables, not directly                                   | none (hidden)                  |
+| Primitive colors (`color.blue.600`): bound through semantic and component variables, not directly                                    | none (hidden)                  |
 | Component name without a property word (`select.trigger-open`, a bare `color`, `ring-offset`): 49 variables, ambiguous until renamed | `ALL_SCOPES`                   |
 
 For component tokens the last name segment is read first (`background-hover`), then earlier ones.
 
-Non-colour variables are scoped by the property word in the name, whatever their `$type` (font size, weight, line height, opacity and z-index are typed `number` on purpose, for Figma Variables compatibility):
+Non-color variables are scoped by the property word in the name, whatever their `$type` (font size, weight, line height, opacity and z-index are typed `number` on purpose, for Figma Variables compatibility):
 
 | Name contains                                                              | Scopes                         |
 | -------------------------------------------------------------------------- | ------------------------------ |
@@ -195,7 +195,7 @@ What Pull creates for each definition: the font (loaded first; an unavailable fo
 
 Recurring use: change a token (for example `typography.line-height.none` 100 to 110), push to GitHub, regenerate the definitions if a part was added or removed, and Pull with Text styles ticked: the review lists the affected styles with from and to. The advanced per-token path carries the reviewed styles too.
 
-Not in this plan: **effect styles** (phase 2, its own plan; owner decision: bind the shadow colour to a mode-aware variable so one set follows Light and Dark, which needs shadows as composite tokens with a colour token), and **renaming variables in place** so component bindings survive (a separate plan; the importer deletes and recreates on rename today).
+Not in this plan: **effect styles** (phase 2, its own plan; owner decision: bind the shadow color to a mode-aware variable so one set follows Light and Dark, which needs shadows as composite tokens with a color token), and **renaming variables in place** so component bindings survive (a separate plan; the importer deletes and recreates on rename today).
 
 Unverified until the owner runs it: Token Bridge cannot be run inside Figma from the repo, so style creation, the variable bindings and the shared plugin data are covered by unit tests with a mocked `figma` only.
 

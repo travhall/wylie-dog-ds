@@ -56,7 +56,7 @@ for (const [label, args] of [
       Object.entries(tokens).map(([name, token]) => cssVar(name, token))
     );
     const used = scaffoldVars(files[0].content);
-    // focus ring colour is the one documented semantic exception (focusRingClasses)
+    // focus ring color is the one documented semantic exception (focusRingClasses)
     assert.ok(used.size > 0);
     for (const variable of used) {
       assert.ok(known.has(variable), `${variable} is not in the dry-run tokens`);

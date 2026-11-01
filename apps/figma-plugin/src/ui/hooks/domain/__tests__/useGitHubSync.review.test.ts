@@ -184,7 +184,7 @@ describe("Pull review", () => {
 
   // Plan 202: the tokens match but Figma's scopes differ from the rules, so
   // the importer would change them. Pull must show that and be confirmable.
-  // Colours named "a" and "b" carry no property word, so the rules give ALL_SCOPES
+  // Colors named "a" and "b" carry no property word, so the rules give ALL_SCOPES
   const staleScopes = { colors: { a: ["TEXT_FILL"], b: [] } };
 
   it("equal tokens with stale scopes show the scope changes and can be pulled", async () => {

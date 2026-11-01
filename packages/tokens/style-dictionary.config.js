@@ -374,7 +374,7 @@ StyleDictionary.registerFormat({
       switch (token.$type) {
         case "color":
           // Only primitive palettes (color.<palette>.<step>, numeric step) belong
-          // in the hierarchical output. Semantic colours are exposed through the
+          // in the hierarchical output. Semantic colors are exposed through the
           // CSS variables and manifest.json; nesting them here collapsed their
           // levels.
           if (
@@ -515,7 +515,7 @@ StyleDictionary.registerFormat({
         duration: {},
       },
       semantics: {
-        // Colour groups are the three parts of a semantic colour name.
+        // Color groups are the three parts of a semantic color name.
         background: {},
         foreground: {},
         border: {},

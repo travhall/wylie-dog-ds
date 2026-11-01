@@ -161,30 +161,30 @@ function toTitleCase(str) {
 }
 
 // Tokens the scaffold uses. Names follow documentation/tokens/component-token-grammar.md:
-// <component>.<part>.<property>. Colours alias a semantic tone, spacing aliases the scale.
+// <component>.<part>.<property>. Colors alias a semantic tone, spacing aliases the scale.
 function tokenSpec(name, composition = false) {
   const title = toTitleCase(name).toLowerCase();
-  const colour = (property, alias, description) => ({
+  const color = (property, alias, description) => ({
     name: `${name}.default.${property}`,
     type: "color",
     alias,
     description,
   });
   const tokens = [
-    colour(
+    color(
       "background",
       "{color.background.default}",
       `Fill of the default ${title}. Pairs with \`${name}.default.text\`.`
     ),
-    colour(
+    color(
       "text",
       "{color.foreground.default}",
-      `Text colour of the default ${title}. Pairs with \`${name}.default.background\`.`
+      `Text color of the default ${title}. Pairs with \`${name}.default.background\`.`
     ),
-    colour(
+    color(
       "border",
       "{color.border.default}",
-      `Border colour of the default ${title}.`
+      `Border color of the default ${title}.`
     ),
   ];
   if (composition) {

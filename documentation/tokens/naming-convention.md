@@ -11,12 +11,12 @@ This guide establishes the naming convention for using design tokens in Wylie Do
 3. **Semantic Naming:** Prefer semantic tokens (`--color-background-default`) over primitives (`--color-gray-50`)
 4. **Standards Compliance:** Align with [Tailwind CSS 4](https://tailwindcss.com/docs/theme), [design token best practices](https://www.smashingmagazine.com/2024/05/naming-best-practices/), and [industry standards](https://primer.style/foundations/primitives/token-names/)
 
-## Semantic colour grammar
+## Semantic color grammar
 
 Names are `color.<part>.<token>` with the part `background`, `foreground` or `border`; there are never more than three segments.
 
 - **Ground tokens:** `color.background.{default, muted, emphasis, raised, overlay, inverse}`, `color.foreground.{default, muted, faint, inverse}` and `color.border.{default, muted, emphasis, focus}`.
-- **Roles** (`primary`, `danger`, `success`, `warning`, `info`) put the role in the token name, with an optional modifier: `color.background.success` (the solid fill), `color.background.success-muted` (the tint), `color.background.success-emphasis` (the stronger tone of the fill), `color.foreground.success` (text over the fill), `color.foreground.success-muted` (text over the tint, and the role colour on the page) and `color.border.success`. `info` has only the muted tint and its text.
+- **Roles** (`primary`, `danger`, `success`, `warning`, `info`) put the role in the token name, with an optional modifier: `color.background.success` (the solid fill), `color.background.success-muted` (the tint), `color.background.success-emphasis` (the stronger tone of the fill), `color.foreground.success` (text over the fill), `color.foreground.success-muted` (text over the tint, and the role color on the page) and `color.border.success`. `info` has only the muted tint and its text.
 - **Modifiers have one meaning each:** `muted` is the quieter tone, `emphasis` the stronger one. `faint` exists only for ground text.
 - **Pairs:** `foreground.X` is the text over `background.X`, for every X. `pnpm check:contrast` checks the declared pairs.
 - **No states in semantic names.** Hover, active, focus and disabled belong to the component layer: a component token references a semantic tone.
@@ -116,7 +116,7 @@ Your system follows **property-based organization** (not role-based):
 
 ### Semantic Tokens (for application code)
 
-Use semantic tokens in application code, pages and stories. They say what a colour means and adapt to light and dark mode automatically. Components in `packages/ui` do not use them directly: a component binds only to its own component tokens (see Component Tokens below).
+Use semantic tokens in application code, pages and stories. They say what a color means and adapt to light and dark mode automatically. Components in `packages/ui` do not use them directly: a component binds only to its own component tokens (see Component Tokens below).
 
 **Background:**
 
@@ -192,7 +192,7 @@ Hover, active, focus and disabled are not semantic tokens. In a component they c
 
 ### Component Tokens (the only tokens a component uses)
 
-A component binds only to component tokens. Each one encapsulates a design decision (a colour, a spacing, a state) for one part of one component and references a semantic tone. The two exceptions (the focus ring colour and font family), the component naming grammar and the disabled-state model are in [component-token-grammar.md](component-token-grammar.md); `pnpm check:tokens` enforces the rule.
+A component binds only to component tokens. Each one encapsulates a design decision (a color, a spacing, a state) for one part of one component and references a semantic tone. The two exceptions (the focus ring color and font family), the component naming grammar and the disabled-state model are in [component-token-grammar.md](component-token-grammar.md); `pnpm check:tokens` enforces the rule.
 
 **Dialog:**
 
@@ -399,7 +399,7 @@ When you need to use tokens outside of Tailwind utilities:
 
 ## JavaScript Access
 
-When you need to access token values in JavaScript, use the hierarchical module for primitive colour scales:
+When you need to access token values in JavaScript, use the hierarchical module for primitive color scales:
 
 ```tsx
 import { color } from "@wyliedog/tokens/hierarchical";
@@ -407,7 +407,7 @@ import { color } from "@wyliedog/tokens/hierarchical";
 const blue = color.blue[600]; // "oklch(...)"
 ```
 
-Semantic colours are CSS variables only. Use `var(--color-foreground-default)` (or the Tailwind class) rather than reading a semantic value in JavaScript; the variable follows the active mode, a JavaScript constant does not.
+Semantic colors are CSS variables only. Use `var(--color-foreground-default)` (or the Tailwind class) rather than reading a semantic value in JavaScript; the variable follows the active mode, a JavaScript constant does not.
 
 ## Migration Strategy
 
@@ -463,7 +463,7 @@ className = "bg-(--color-button-primary-background)";
 
 ### Dropdown Menu
 
-The real component binds only to its own component tokens (colour, spacing and state):
+The real component binds only to its own component tokens (color, spacing and state):
 
 ```tsx
 <DropdownMenuContent
@@ -486,7 +486,7 @@ The real component binds only to its own component tokens (colour, spacing and s
 
 **Why this works:**
 
-- Every colour is a component token, so a theme or a Figma change reaches the component through one tier
+- Every color is a component token, so a theme or a Figma change reaches the component through one tier
 - The hover state is its own component token that references a semantic tone
 - Spacing and radius are component tokens too
 

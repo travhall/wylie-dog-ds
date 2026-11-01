@@ -9,7 +9,7 @@
 //   - a box-shadow focus ring (focus:ring-*, focus-visible:ring-*) and any
 //     ring-offset-*: box-shadow is dropped in forced-colors mode
 //   - an un-hinted arbitrary value on outline or ring: Tailwind v4 reads a bare
-//     --space-* variable as a colour, so the utility silently does nothing
+//     --space-* variable as a color, so the utility silently does nothing
 //     (this is how the old ring offset rendered as 0px). Write
 //     outline-(length:--x) or outline-(color:--x).
 //
@@ -43,7 +43,7 @@ const rules = [
   {
     pattern: /ring-\(--space-/,
     message:
-      "un-hinted ring value: a --space-* variable reads as a colour; write ring-(length:--x)",
+      "un-hinted ring value: a --space-* variable reads as a color; write ring-(length:--x)",
   },
 ];
 

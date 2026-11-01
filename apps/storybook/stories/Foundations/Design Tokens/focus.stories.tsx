@@ -43,7 +43,7 @@ function pairVariable(name: string): string {
   return name.startsWith("color.") ? `--${path}` : `--color-${path}`;
 }
 
-/** sRGB channels of any CSS colour, via a canvas pixel. */
+/** sRGB channels of any CSS color, via a canvas pixel. */
 function toRgb(color: string): [number, number, number] {
   const canvas = document.createElement("canvas");
   canvas.width = 1;
@@ -83,7 +83,7 @@ interface MeasuredRow {
   note?: string;
 }
 
-/** Measures every focus pair with the colours the page currently shows. */
+/** Measures every focus pair with the colors the page currently shows. */
 function useMeasuredRows(): MeasuredRow[] {
   const [rows, setRows] = useState<MeasuredRow[]>([]);
   useEffect(() => {
@@ -229,7 +229,7 @@ export const Indicator: Story = {
     <div>
       <PageIntro title="Focus">
         <p>
-          Keyboard focus is a two-tone outline: the ring colour sits the focus
+          Keyboard focus is a two-tone outline: the ring color sits the focus
           offset away from the control, and a halo in the page tone fills the
           gap and extends past the outline so the ring separates from any
           surface behind it.
@@ -255,15 +255,15 @@ export const Tokens: Story = {
   parameters: {
     docs: {
       description: {
-        story: "The five focus tokens, with Light and Dark values for colours.",
+        story: "The five focus tokens, with Light and Dark values for colors.",
       },
     },
   },
   render: () => (
     <div className="space-y-10">
-      <Section title="Colours">
+      <Section title="Colors">
         <TokenTable
-          caption="Focus colour tokens"
+          caption="Focus color tokens"
           rows={colorTokens}
           specimenLabel="Swatch"
           specimen={(row) => (
@@ -315,7 +315,7 @@ export const Contrast: Story = {
     docs: {
       description: {
         story:
-          "Every focus pair declared in scripts/contrast-pairs.json, measured live with the colours of the current theme. The project check runs the same pairs in Light and Dark.",
+          "Every focus pair declared in scripts/contrast-pairs.json, measured live with the colors of the current theme. The project check runs the same pairs in Light and Dark.",
       },
     },
   },

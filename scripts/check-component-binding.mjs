@@ -2,11 +2,11 @@
 // Binding check for the UI package (Plan 193).
 //
 // The rule: components bind only to component tokens. Every --color-* reference in
-// packages/ui/src (tests excluded) must be a colour token from the components
-// collection. A reference to a semantic or primitive colour is a violation, with
+// packages/ui/src (tests excluded) must be a color token from the components
+// collection. A reference to a semantic or primitive color is a violation, with
 // the documented exceptions below.
 //
-// Everything that is not a colour is covered too (Plan 198), in every file of
+// Everything that is not a color is covered too (Plan 198), in every file of
 // packages/ui/src (tests excluded): a variable reference to a token that is not in
 // the components collection (a semantic or primitive such as --space-icon-size-md,
 // --shadow-md, --z-index-modal, --duration-normal, --border-radius-md,
@@ -49,7 +49,7 @@ const ALLOWLIST = [
   {
     name: "--typography-font-family-",
     reason:
-      "Font family: text may bind the primitive directly; it is the only non-colour exception (Plan 193 decision). Listed so the exception is recorded.",
+      "Font family: text may bind the primitive directly; it is the only non-color exception (Plan 193 decision). Listed so the exception is recorded.",
   },
   {
     name: "--radix-",
@@ -73,7 +73,7 @@ const variables = Object.assign(
   {},
   ...JSON.parse(fs.readFileSync(tokenFile, "utf8"))
 ).components.variables;
-const componentColours = new Set(
+const componentColors = new Set(
   Object.entries(variables)
     .filter(([, token]) => token.$type === "color")
     .map(([name]) => `--color-${name.replaceAll(".", "-")}`)
@@ -142,13 +142,13 @@ for (const file of files) {
     )) {
       const ref = match[0];
       checked++;
-      if (componentColours.has(ref) || isAllowed(ref)) continue;
+      if (componentColors.has(ref) || isAllowed(ref)) continue;
       problems.push(`${file}:${index + 1}  ${ref}`);
     }
   });
 }
 
-// Non-colour variable references in every file, and hardcoded scale utilities in the
+// Non-color variable references in every file, and hardcoded scale utilities in the
 // compositions.
 const SCALE_PROPERTY =
   /^-?(?:p[xytblrse]?|m[xytblrse]?|gap(?:-[xy])?|space-[xy]|(?:min-|max-)?[hw]|size|inset(?:-[xy])?|top|left|right|bottom|start|end|leading|tracking|rounded(?:-[a-z]{1,2})?|shadow|z|duration|delay|opacity|ring|ring-offset)-(.+)$/;
@@ -164,7 +164,7 @@ const isComposition = (file) =>
   file.split(path.sep).includes("compositions") ||
   PATTERN_COMPOSITIONS.includes(path.basename(file));
 let literalClasses = 0;
-let nonColourVars = 0;
+let nonColorVars = 0;
 for (const file of files) {
   const lines = stripComments(fs.readFileSync(file, "utf8")).split("\n");
   lines.forEach((line, index) => {
@@ -172,8 +172,8 @@ for (const file of files) {
       /\((?:[a-z]+:)?(--[a-z0-9-]*[a-z0-9])[,)]/g
     )) {
       const ref = match[1];
-      if (ref.startsWith("--color-")) continue; // colours: handled above
-      nonColourVars++;
+      if (ref.startsWith("--color-")) continue; // colors: handled above
+      nonColorVars++;
       if (componentVars.has(ref) || isAllowed(ref)) continue;
       problems.push(`${file}:${index + 1}  ${ref}  (not a component token)`);
     }
@@ -207,13 +207,13 @@ if (problems.length) {
   );
   for (const p of problems) console.error(`  ${p}`);
   console.error(
-    "\nA component binds only to component tokens. Add a token to packages/tokens/io/sync/components.json that aliases the semantic tone (or the scale, for a non-colour value), then reference it."
+    "\nA component binds only to component tokens. Add a token to packages/tokens/io/sync/components.json that aliases the semantic tone (or the scale, for a non-color value), then reference it."
   );
   process.exit(1);
 }
 console.log(
-  `Component binding OK: ${checked} colour references in ${files.length} files, all component tokens or allowlisted (${ALLOWLIST.length} exceptions).`
+  `Component binding OK: ${checked} color references in ${files.length} files, all component tokens or allowlisted (${ALLOWLIST.length} exceptions).`
 );
 console.log(
-  `Non-colour OK: ${nonColourVars} variable references in ${files.length} files are component tokens or allowlisted; compositions have ${literalClasses} scale literals (${COMPOSITION_LITERAL_ALLOWLIST.length} allowlisted).`
+  `Non-color OK: ${nonColorVars} variable references in ${files.length} files are component tokens or allowlisted; compositions have ${literalClasses} scale literals (${COMPOSITION_LITERAL_ALLOWLIST.length} allowlisted).`
 );

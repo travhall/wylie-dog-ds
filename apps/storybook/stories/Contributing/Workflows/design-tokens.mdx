@@ -177,7 +177,7 @@ Before committing token changes, run these from the repo root:
 
 ```bash
 pnpm --filter @wyliedog/tokens test:tokens   # structure, references, OKLCH ranges
-pnpm check:tokens                            # references, component binding, and no primitive colours in the showcase
+pnpm check:tokens                            # references, component binding, and no primitive colors in the showcase
 pnpm check:docs                              # docs and stories reference tokens that exist
 pnpm check:contrast                          # declared foreground and background pairs meet WCAG AA
 pnpm --filter @wyliedog/tokens run audit     # unused, missing and misnamed tokens
@@ -277,7 +277,7 @@ Components consume component tokens. Component tokens reference semantic tokens.
 
 ### 3. Document Token Decisions
 
-Each token has a `$description`, shown as the Variable description in Figma. Say what the token is for and which foreground or background it pairs with, not which colour it holds:
+Each token has a `$description`, shown as the Variable description in Figma. Say what the token is for and which foreground or background it pairs with, not which color it holds:
 
 ```
 Description: "Main page background color. The default, muted and faint

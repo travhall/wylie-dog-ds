@@ -10,7 +10,7 @@ A two-tone outline with a halo:
 page or surface
   halo       color.focus.halo   fills the gap and extends focus.halo-width past the outline
   outline    color.focus.ring   focus.width thick, focus.offset away from the control
-  gap        halo colour
+  gap        halo color
 control
 ```
 
@@ -37,17 +37,17 @@ An adopter overrides the indicator at the primitive level (the gray ramp), the s
 
 ### The exception
 
-Components bind to component tokens, with one documented exception: they use `--color-focus-ring` and `--color-focus-halo` directly. The indicator has to look the same everywhere, so it has no per-component colour token. The exception is listed in `scripts/check-component-binding.mjs`.
+Components bind to component tokens, with one documented exception: they use `--color-focus-ring` and `--color-focus-halo` directly. The indicator has to look the same everywhere, so it has no per-component color token. The exception is listed in `scripts/check-component-binding.mjs`.
 
 ## Why a foreground and page tone
 
 The first indicator was a blue.500 box-shadow ring. Measured on the default Button:
 
 - ring against the blue.600 fill: 1.41:1 (needs 3:1)
-- the ring sat directly on the fill, because the ring-offset utility had no `length:` type hint, so Tailwind v4 read the width token as a colour and the offset width stayed 0px
+- the ring sat directly on the fill, because the ring-offset utility had no `length:` type hint, so Tailwind v4 read the width token as a color and the offset width stayed 0px
 - in forced-colors mode no indicator was drawn (box-shadow is removed and `outline-none` left nothing)
 
-An outline in the foreground tone, flanked by a halo in the page tone, reaches 17:1 against the halo in both modes, so the 3:1 requirement for non-text contrast (WCAG 2.2, 1.4.11) is met on any background the control sits on without a per-background token. Measured against the primary fill: 3.44:1 in Light, 4.49:1 in Dark. The outline is a real outline, so forced-colors mode draws it in the system colour.
+An outline in the foreground tone, flanked by a halo in the page tone, reaches 17:1 against the halo in both modes, so the 3:1 requirement for non-text contrast (WCAG 2.2, 1.4.11) is met on any background the control sits on without a per-background token. Measured against the primary fill: 3.44:1 in Light, 4.49:1 in Dark. The outline is a real outline, so forced-colors mode draws it in the system color.
 
 ## The three meanings of "focus"
 
@@ -57,7 +57,7 @@ Before this change "focus" named three different things. Now each has its own na
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The keyboard indicator                                     | `color.focus.ring`, `color.focus.halo`, `focus.*`                                                                                                           |
 | A menu-like item that is highlighted (keyboard or pointer) | `*-highlighted` (`menubar.item-highlighted`, `select.item.background-highlighted`, `navigation.highlighted`, `site-header.nav-link.background-highlighted`) |
-| An input border colour on focus                            | removed; the input uses the indicator                                                                                                                       |
+| An input border color on focus                             | removed; the input uses the indicator                                                                                                                       |
 
 The standalone focus fills (accordion trigger, the six badge variants, card) were removed. The indicator is their keyboard cue, and the fills were inconsistent with hover (the destructive badge turned blue on focus).
 

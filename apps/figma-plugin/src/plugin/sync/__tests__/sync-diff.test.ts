@@ -414,14 +414,12 @@ describe("buildSyncDiff: picker scopes (plan 202)", () => {
       },
     });
     expect(d.settings).toEqual([]);
-    const colours = [
-      col("c", { "color.background.x": typed("color", "#fff") }),
-    ];
+    const colors = [col("c", { "color.background.x": typed("color", "#fff") })];
     const reordered = buildSyncDiff({
       direction: "pull",
       baseline: null,
-      localTokens: colours,
-      remoteTokens: colours,
+      localTokens: colors,
+      remoteTokens: colors,
       localScopes: {
         c: { "color.background.x": ["SHAPE_FILL", "FRAME_FILL"] },
       },

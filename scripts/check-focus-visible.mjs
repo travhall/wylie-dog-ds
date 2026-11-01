@@ -5,7 +5,7 @@
 //
 // Serves a static Storybook build, opens the first story of every component,
 // tabs through it with the keyboard and asserts that every focused element
-// draws an indicator: a real outline (style not none, width above 0, colour not
+// draws an indicator: a real outline (style not none, width above 0, color not
 // transparent), in Light and Dark and in forced-colors mode (where the outline
 // must still be drawn, because box-shadow is dropped).
 //

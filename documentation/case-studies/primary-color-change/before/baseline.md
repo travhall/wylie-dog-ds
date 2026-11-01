@@ -1,4 +1,4 @@
-# Baseline: before the primary colour changes
+# Baseline: before the primary color changes
 
 Measured 2026-10-29 on `main` at `f81bf319`, with primary still blue. Screenshots in this folder were taken from a production build of the showcase (port 3099) and the running Storybook (port 6006), at 1280 x 900, in Light and Dark.
 
@@ -38,12 +38,12 @@ Primary solid fill is step 600 today. Fiery-coral 600 measures 3.98:1, below the
 
 ## Screenshots
 
-| Surface                | Light                                 | Dark                                 |
-| ---------------------- | ------------------------------------- | ------------------------------------ |
-| Showcase home          | `showcase-home-light.png`             | `showcase-home-dark.png`             |
-| Showcase components    | `showcase-components-light.png`       | `showcase-components-dark.png`       |
-| Showcase token colours | `showcase-tokens-colors-light.png`    | `showcase-tokens-colors-dark.png`    |
-| Storybook button       | `storybook-button-variants-light.png` | `storybook-button-variants-dark.png` |
-| Storybook badge        | `storybook-badge-light.png`           | `storybook-badge-dark.png`           |
+| Surface               | Light                                 | Dark                                 |
+| --------------------- | ------------------------------------- | ------------------------------------ |
+| Showcase home         | `showcase-home-light.png`             | `showcase-home-dark.png`             |
+| Showcase components   | `showcase-components-light.png`       | `showcase-components-dark.png`       |
+| Showcase token colors | `showcase-tokens-colors-light.png`    | `showcase-tokens-colors-dark.png`    |
+| Storybook button      | `storybook-button-variants-light.png` | `storybook-button-variants-dark.png` |
+| Storybook badge       | `storybook-badge-light.png`           | `storybook-badge-dark.png`           |
 
-Not tokens, so they would not follow the change on their own: raster artwork and hard-coded colour literals. The Wylie Dog logo is an inline SVG that already uses the brand palette (coral, polar-night, sandcastle, black-bear), so it needs no change; the earlier note calling it a blue square was wrong. The showcase tokens and architecture pages hard-code `blue-600` as the primary chain and do not follow the change either.
+Not tokens, so they would not follow the change on their own: raster artwork and hard-coded color literals. The Wylie Dog logo is an inline SVG that already uses the brand palette (coral, polar-night, sandcastle, black-bear), so it needs no change; the earlier note calling it a blue square was wrong. The showcase tokens and architecture pages hard-code `blue-600` as the primary chain and do not follow the change either.

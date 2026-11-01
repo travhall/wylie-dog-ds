@@ -59,7 +59,7 @@ describe("importer applies scopes", () => {
     vi.restoreAllMocks();
   });
 
-  it("sets [] for line height and primitive colours, never ALL_SCOPES", async () => {
+  it("sets [] for line height and primitive colors, never ALL_SCOPES", async () => {
     const data = [
       {
         primitive: {

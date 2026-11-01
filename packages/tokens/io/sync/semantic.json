@@ -15,7 +15,7 @@
         "color.background.primary": {
           "$type": "color",
           "$value": "{color.fiery-coral.700}",
-          "$description": "Solid fill for the main action colour. Pairs with foreground.primary.",
+          "$description": "Solid fill for the main action color. Pairs with foreground.primary.",
           "valuesByMode": {
             "Light": "{color.fiery-coral.700}",
             "Dark": "{color.fiery-coral.700}"
@@ -42,7 +42,7 @@
         "color.border.primary": {
           "$type": "color",
           "$value": "{color.fiery-coral.600}",
-          "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page.",
+          "$description": "Accent border in the primary color (cards, highlights, rings); non-text, so it needs 3:1 on the page.",
           "valuesByMode": {
             "Light": "{color.fiery-coral.600}",
             "Dark": "{color.fiery-coral.600}"
@@ -51,7 +51,7 @@
         "color.border.success": {
           "$type": "color",
           "$value": "{color.green.600}",
-          "$description": "Border in the success colour for alerts, toasts and highlights.",
+          "$description": "Border in the success color for alerts, toasts and highlights.",
           "valuesByMode": {
             "Light": "{color.green.600}",
             "Dark": "{color.green.600}"
@@ -60,7 +60,7 @@
         "color.border.warning": {
           "$type": "color",
           "$value": "{color.yellow.600}",
-          "$description": "Border in the warning colour for alerts, toasts and highlights.",
+          "$description": "Border in the warning color for alerts, toasts and highlights.",
           "valuesByMode": {
             "Light": "{color.yellow.600}",
             "Dark": "{color.yellow.600}"
@@ -69,7 +69,7 @@
         "color.border.danger": {
           "$type": "color",
           "$value": "{color.red.600}",
-          "$description": "Border in the danger colour for alerts, toasts and highlights.",
+          "$description": "Border in the danger color for alerts, toasts and highlights.",
           "valuesByMode": {
             "Light": "{color.red.600}",
             "Dark": "{color.red.600}"
@@ -519,7 +519,7 @@
         "color.background.overlay": {
           "$type": "color",
           "$value": "{color.black-bear.950}",
-          "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque.",
+          "$description": "Scrim color behind a modal or sheet; applied at opacity.scrim, never opaque.",
           "valuesByMode": {
             "Light": "{color.black-bear.950}",
             "Dark": "{color.black-bear.950}"
@@ -753,7 +753,7 @@
         "color.foreground.default": {
           "$type": "color",
           "$value": "{color.black-bear.900}",
-          "$description": "Default text and icon colour for headings and body content. Readable on the page, muted, emphasis and raised backgrounds.",
+          "$description": "Default text and icon color for headings and body content. Readable on the page, muted, emphasis and raised backgrounds.",
           "valuesByMode": {
             "Light": "{color.black-bear.900}",
             "Dark": "{color.sandcastle.50}"
@@ -780,7 +780,7 @@
         "color.foreground.link": {
           "$type": "color",
           "$value": "{color.polar-night.400}",
-          "$description": "Text colour for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links.",
+          "$description": "Text color for links on the page, raised and muted surfaces; needs 4.5:1 on each. Underline inline links.",
           "valuesByMode": {
             "Light": "{color.polar-night.400}",
             "Dark": "{color.polar-night.200}"
@@ -906,7 +906,7 @@
         "color.border.info": {
           "$type": "color",
           "$value": "{color.polar-night.300}",
-          "$description": "Border in the info colour for alerts and highlights; non-text, so it needs 3:1 on the page.",
+          "$description": "Border in the info color for alerts and highlights; non-text, so it needs 3:1 on the page.",
           "valuesByMode": {
             "Light": "{color.polar-night.300}",
             "Dark": "{color.polar-night.300}"
@@ -969,7 +969,7 @@
         "focus.offset": {
           "$type": "dimension",
           "$value": "{border-width.2}",
-          "$description": "Gap between the control and the focus outline, filled with the halo colour.",
+          "$description": "Gap between the control and the focus outline, filled with the halo color.",
           "valuesByMode": {
             "Light": "{border-width.2}",
             "Dark": "{border-width.2}"

@@ -898,7 +898,7 @@
       "foreground": "color.focus.ring",
       "backgrounds": ["color.focus.halo"],
       "kind": "non-text",
-      "note": "The outline is flanked by the halo on both sides, so the halo is the colour adjacent to it on every surface."
+      "note": "The outline is flanked by the halo on both sides, so the halo is the color adjacent to it on every surface."
     },
     {
       "foreground": "color.focus.ring",

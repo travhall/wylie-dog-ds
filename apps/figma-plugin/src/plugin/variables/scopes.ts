@@ -12,17 +12,17 @@
 //   but Figma binds both properties as pixels, so LINE_HEIGHT would give a
 //   100px line height and LETTER_SPACING -0.05px. Figma shows them as percent
 //   text-style properties generated from the tokens (figma-gateway.md).
-// - primitive colours (color.blue.600) are hidden: designers bind semantic and
+// - primitive colors (color.blue.600) are hidden: designers bind semantic and
 //   component variables, not the raw palette.
 // - z-index, duration, easing, shadow value strings and the semantic focus
 //   dimensions are hidden: no Figma property binds them.
 // - shadow blur, offset and spread are EFFECT_FLOAT.
-// The only variables left on ALL_SCOPES are component colours whose name has
+// The only variables left on ALL_SCOPES are component colors whose name has
 // no property word (see inferScopesForComponentColor).
 
 // Map W3C DTCG types to Figma scopes with enhanced typography support
 const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
-  // colour is name-based, see inferScopesForColor
+  // color is name-based, see inferScopesForColor
   color: ["ALL_SCOPES"],
   fontSize: ["FONT_SIZE"],
   fontWeight: ["FONT_WEIGHT"],
@@ -124,7 +124,7 @@ function inferScopesForDimension(tokenName: string): string[] {
 }
 
 /**
- * Scopes for a component colour token, from the property word in its name.
+ * Scopes for a component color token, from the property word in its name.
  * The last segment names the property ("background-hover"); earlier segments
  * name the part or variant ("checkbox.checked.border"), so they are only
  * consulted when the last one has no property word. A name with no property
@@ -136,7 +136,7 @@ function inferScopesForComponentColor(segments: string[]): string[] {
     // A bare "color" names no property; the parent segment cannot settle it
     // either (indicator.color is a stroke, separator.color a fill)
     if (words.length === 1 && words[0] === "color") return ["ALL_SCOPES"];
-    // The offset ring colour fills the gap around a ring, neither stroke nor fill
+    // The offset ring color fills the gap around a ring, neither stroke nor fill
     if (words.includes("offset")) return ["ALL_SCOPES"];
     if (STROKE_WORDS.some((w) => words.includes(w))) return [...STROKE_SCOPES];
     if (FOREGROUND_WORDS.some((w) => words.includes(w))) {
@@ -148,7 +148,7 @@ function inferScopesForComponentColor(segments: string[]): string[] {
 }
 
 /**
- * Infer Figma scopes for colour tokens based on token name.
+ * Infer Figma scopes for color tokens based on token name.
  * Names are dotted ("color.background.primary"); the Figma name only
  * replaces dots with slashes, so the same rules apply to both.
  */
@@ -156,7 +156,7 @@ function inferScopesForColor(tokenName: string): string[] {
   const segments = tokenName.toLowerCase().split(/[./]/);
 
   if (segments[0] === "color") {
-    // Semantic colours are property-first: color.<property>.<token>
+    // Semantic colors are property-first: color.<property>.<token>
     switch (segments[1]) {
       case "background":
         return [...FILL_SCOPES];
@@ -178,7 +178,7 @@ function inferScopesForColor(tokenName: string): string[] {
 }
 
 /**
- * Scopes decided by the property word in a non-colour token's name, whatever
+ * Scopes decided by the property word in a non-color token's name, whatever
  * its type (font size, weight, line height, opacity and z-index are typed
  * number). Returns null when the name carries no such word.
  */

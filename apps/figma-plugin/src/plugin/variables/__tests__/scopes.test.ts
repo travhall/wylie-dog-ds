@@ -40,10 +40,10 @@ const STROKE = ["STROKE_COLOR"];
 const FOCUS = ["STROKE_COLOR", "EFFECT_COLOR"];
 const ALL = ["ALL_SCOPES"];
 
-describe("inferScopes: semantic colours", () => {
+describe("inferScopes: semantic colors", () => {
   const names = colorNames("semantic");
 
-  it("covers the 58 semantic colour tokens", () => {
+  it("covers the 58 semantic color tokens", () => {
     expect(names).toHaveLength(58);
   });
 
@@ -90,7 +90,7 @@ describe("inferScopes: semantic colours", () => {
   });
 });
 
-describe("inferScopes: component colours", () => {
+describe("inferScopes: component colors", () => {
   it.each([
     ["button.primary.background", FILL],
     ["card.background-hover", FILL],
@@ -129,7 +129,7 @@ describe("inferScopes: component colours", () => {
     expect(inferScopes("color", name)).toEqual(ALL);
   });
 
-  it("gives every component colour token a valid scope set", () => {
+  it("gives every component color token a valid scope set", () => {
     const valid = new Set([
       ...FILL,
       ...FOREGROUND,
@@ -146,7 +146,7 @@ describe("inferScopes: component colours", () => {
 });
 
 describe("inferScopes: primitives and other types", () => {
-  it("hides primitive colours from every picker", () => {
+  it("hides primitive colors from every picker", () => {
     const names = colorNames("primitive");
     expect(names.length).toBeGreaterThan(0);
     for (const name of names) {
@@ -182,7 +182,7 @@ describe("inferScopes: primitives and other types", () => {
     expect(inferScopes(type, name)).toEqual(expected);
   });
 
-  it("does not name-match non-colour tokens as colours", () => {
+  it("does not name-match non-color tokens as colors", () => {
     expect(inferScopes("number", "color.background.default")).toEqual(ALL);
   });
 
@@ -193,7 +193,7 @@ describe("inferScopes: primitives and other types", () => {
   });
 });
 
-describe("inferScopes: non-colour tokens by name", () => {
+describe("inferScopes: non-color tokens by name", () => {
   // Font size, weight, line height, opacity and z-index are typed "number" on
   // purpose, so the name decides.
   it.each([
@@ -225,7 +225,7 @@ describe("inferScopes: non-colour tokens by name", () => {
     expect(inferScopes(type, name)).toEqual(expected);
   });
 
-  it("keeps the focus colours scoped to stroke and effect", () => {
+  it("keeps the focus colors scoped to stroke and effect", () => {
     expect(inferScopes("color", "color.focus.ring")).toEqual(FOCUS);
   });
 
@@ -236,9 +236,9 @@ describe("inferScopes: non-colour tokens by name", () => {
   });
 });
 
-// Components colours whose name has no property word. They stay ALL_SCOPES
+// Components colors whose name has no property word. They stay ALL_SCOPES
 // until they are renamed (Plan 201); anything else on ALL_SCOPES is a bug.
-const AMBIGUOUS_COMPONENT_COLOURS = [
+const AMBIGUOUS_COMPONENT_COLORS = [
   "card.header.title.color",
   "card.header.description.color",
   "menubar.trigger-open",
@@ -307,13 +307,13 @@ describe("inferScopes: the real token files", () => {
     ]).toEqual([276, 991, 108]);
   });
 
-  it("leaves ALL_SCOPES only on the named ambiguous component colours", () => {
+  it("leaves ALL_SCOPES only on the named ambiguous component colors", () => {
     const unrestricted = variables
       .filter((v) => v.scopes.includes("ALL_SCOPES"))
       .map((v) => `${v.collection}:${v.type}:${v.name}`)
       .sort();
     expect(unrestricted).toEqual(
-      AMBIGUOUS_COMPONENT_COLOURS.map((n) => `components:color:${n}`).sort()
+      AMBIGUOUS_COMPONENT_COLORS.map((n) => `components:color:${n}`).sort()
     );
   });
 
@@ -342,7 +342,7 @@ describe("inferScopes: the real token files", () => {
     expectFamily(/^focus\./, []);
   });
 
-  it("hides every duration, easing and shadow string and every primitive colour", () => {
+  it("hides every duration, easing and shadow string and every primitive color", () => {
     const hiddenTypes = new Set(["duration", "cubicBezier", "shadow"]);
     const hidden = variables.filter(
       (v) =>
@@ -369,7 +369,7 @@ describe("inferScopes: the real token files", () => {
   });
 
   it("fails on a token family no rule matches", () => {
-    // A non-colour variable with a dimension-style fallback (GAP) must be a
+    // A non-color variable with a dimension-style fallback (GAP) must be a
     // spacing token; anything else needs an explicit rule.
     const gapFallback = variables
       .filter((v) => v.type === "dimension" && key(v.scopes) === "GAP")

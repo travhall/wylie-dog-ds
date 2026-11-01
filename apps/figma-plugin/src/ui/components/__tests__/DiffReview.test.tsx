@@ -160,7 +160,7 @@ describe("DiffReview: rows", () => {
     ).toHaveTextContent("z.1 → z.01");
   });
 
-  it("lists every mode and draws a swatch for colours", () => {
+  it("lists every mode and draws a swatch for colors", () => {
     const base = [
       col("semantic", {
         bg: tok("#ffffff", {

@@ -180,7 +180,7 @@ export function classifyChanges(
   remoteTokens: ExportData[]
 ): ClassifiedChanges {
   // The detector is the one place that knows when a Figma token and a GitHub
-  // token mean the same thing (colour formats, dimension types, ...).
+  // token mean the same thing (color formats, dimension types, ...).
   const diff = new ConflictDetector().detectConflicts(
     localTokens,
     remoteTokens

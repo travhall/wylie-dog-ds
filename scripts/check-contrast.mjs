@@ -3,14 +3,14 @@
 //
 // A pair is the contract: scripts/contrast-pairs.json lists each foreground
 // token with the backgrounds it must be readable on. Every pair is resolved to
-// its final colour in both Light and Dark and must meet WCAG 2.2 AA (4.5:1 for
+// its final color in both Light and Dark and must meet WCAG 2.2 AA (4.5:1 for
 // text, 3:1 for icons, indicators and boundaries).
 //
 // knownFailures is a ratchet. A listed failure is reported but does not fail
 // the run; a new failure does, and so does a listed failure that now passes
 // (remove it). This lets the check run in CI while real problems are fixed.
 //
-// Completeness: a component colour token whose name marks it as text or an
+// Completeness: a component color token whose name marks it as text or an
 // icon must be declared as a pair, or listed in "exempt" with a reason, so a new
 // component foreground cannot ship without a contrast declaration.
 //
@@ -35,7 +35,7 @@ const tokens = {
   ...collection("components"),
 };
 
-/** Final colour string for a token in one mode, following alias chains. */
+/** Final color string for a token in one mode, following alias chains. */
 function resolve(name, mode) {
   let token = tokens[name];
   if (!token) throw new Error(`unknown token "${name}"`);
@@ -51,12 +51,12 @@ function resolve(name, mode) {
     value = token.valuesByMode?.[mode] ?? token.$value;
   }
   if (typeof value !== "string") {
-    throw new Error(`"${name}" does not resolve to a colour string`);
+    throw new Error(`"${name}" does not resolve to a color string`);
   }
   return value;
 }
 
-// ---------- colour maths (OKLCH or hex to WCAG relative luminance) ----------
+// ---------- color maths (OKLCH or hex to WCAG relative luminance) ----------
 
 function toLinearSrgb(css) {
   const hex = /^#([0-9a-f]{6})$/i.exec(css);
@@ -70,9 +70,9 @@ function toLinearSrgb(css) {
     /^oklch\(\s*([\d.]+)(%?)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+%?))?\s*\)$/i.exec(
       css
     );
-  if (!m) throw new Error(`unsupported colour "${css}"`);
+  if (!m) throw new Error(`unsupported color "${css}"`);
   if (m[5] !== undefined && parseFloat(m[5]) !== 1 && m[5] !== "100%") {
-    throw new Error(`colour "${css}" has alpha; contrast needs opaque colours`);
+    throw new Error(`color "${css}" has alpha; contrast needs opaque colors`);
   }
   const L = m[2] ? parseFloat(m[1]) / 100 : parseFloat(m[1]);
   const C = parseFloat(m[3]);

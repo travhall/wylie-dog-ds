@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Structure check for the semantic colour tokens (Plan 188).
+// Structure check for the semantic color tokens (Plan 188).
 //
 // Names are color.<part>.<token> with the part background, foreground, border or focus.
 // The token is a ground name or a role, with at most one modifier:
@@ -148,5 +148,5 @@ if (problems.length) {
   process.exit(1);
 }
 console.log(
-  `Token structure OK: ${names.length} semantic colour tokens in ${groups.size} groups, depth 3.`
+  `Token structure OK: ${names.length} semantic color tokens in ${groups.size} groups, depth 3.`
 );

@@ -7,12 +7,12 @@
   "badge.default.text": {
     "$type": "color",
     "$value": "{color.foreground.primary}",
-    "$description": "Text colour of the default badge. Pairs with `badge.default.background`."
+    "$description": "Text color of the default badge. Pairs with `badge.default.background`."
   },
   "badge.default.border": {
     "$type": "color",
     "$value": "{color.background.primary}",
-    "$description": "Border colour of the default badge."
+    "$description": "Border color of the default badge."
   },
   "badge.secondary.background": {
     "$type": "color",
@@ -22,12 +22,12 @@
   "badge.secondary.text": {
     "$type": "color",
     "$value": "{color.foreground.secondary}",
-    "$description": "Text colour of the secondary badge. Pairs with `badge.secondary.background`."
+    "$description": "Text color of the secondary badge. Pairs with `badge.secondary.background`."
   },
   "badge.secondary.border": {
     "$type": "color",
     "$value": "{color.background.secondary}",
-    "$description": "Border colour of the secondary badge."
+    "$description": "Border color of the secondary badge."
   },
   "badge.success.background": {
     "$type": "color",
@@ -37,12 +37,12 @@
   "badge.success.text": {
     "$type": "color",
     "$value": "{color.foreground.success}",
-    "$description": "Label colour on the success badge. Pairs with `badge.success.background`."
+    "$description": "Label color on the success badge. Pairs with `badge.success.background`."
   },
   "badge.success.border": {
     "$type": "color",
     "$value": "{color.background.success}",
-    "$description": "Border colour of the success badge."
+    "$description": "Border color of the success badge."
   },
   "badge.warning.background": {
     "$type": "color",
@@ -52,12 +52,12 @@
   "badge.warning.text": {
     "$type": "color",
     "$value": "{color.foreground.warning}",
-    "$description": "Text colour of the warning badge. Pairs with `badge.warning.background`."
+    "$description": "Text color of the warning badge. Pairs with `badge.warning.background`."
   },
   "badge.warning.border": {
     "$type": "color",
     "$value": "{color.background.warning}",
-    "$description": "Border colour of the warning badge."
+    "$description": "Border color of the warning badge."
   },
   "badge.destructive.background": {
     "$type": "color",
@@ -67,7 +67,7 @@
   "badge.destructive.text": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}",
-    "$description": "Text colour of the destructive badge. Pairs with `badge.destructive.background`."
+    "$description": "Text color of the destructive badge. Pairs with `badge.destructive.background`."
   },
   "badge.destructive.border": {
     "$type": "color",
@@ -82,12 +82,12 @@
   "badge.outline.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the outline badge. Pairs with `badge.outline.background`."
+    "$description": "Text color of the outline badge. Pairs with `badge.outline.background`."
   },
   "badge.outline.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the outline badge."
+    "$description": "Border color of the outline badge."
   },
   "badge.padding-x.sm": {
     "$type": "spacing",
@@ -172,12 +172,12 @@
   "button.primary.text": {
     "$type": "color",
     "$value": "{color.foreground.primary}",
-    "$description": "Label colour on the primary button. Pairs with `button.primary.background`."
+    "$description": "Label color on the primary button. Pairs with `button.primary.background`."
   },
   "button.primary.border": {
     "$type": "color",
     "$value": "{color.background.primary}",
-    "$description": "Border colour of the primary button."
+    "$description": "Border color of the primary button."
   },
   "button.secondary.background": {
     "$type": "color",
@@ -197,7 +197,7 @@
   "button.secondary.text": {
     "$type": "color",
     "$value": "{color.foreground.secondary}",
-    "$description": "Text colour of the secondary button. Pairs with `button.secondary.background`."
+    "$description": "Text color of the secondary button. Pairs with `button.secondary.background`."
   },
   "button.secondary.border": {
     "$type": "color",
@@ -227,7 +227,7 @@
   "button.ghost.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the ghost button. Pairs with `button.ghost.background`."
+    "$description": "Text color of the ghost button. Pairs with `button.ghost.background`."
   },
   "button.outline.background-hover": {
     "$type": "color",
@@ -242,12 +242,12 @@
   "button.outline.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the outline button. Pairs with `button.outline.background`."
+    "$description": "Text color of the outline button. Pairs with `button.outline.background`."
   },
   "button.outline.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the outline button."
+    "$description": "Border color of the outline button."
   },
   "button.destructive.background": {
     "$type": "color",
@@ -267,12 +267,12 @@
   "button.destructive.text": {
     "$type": "color",
     "$value": "{color.foreground.danger}",
-    "$description": "Text colour of the destructive button. Pairs with `button.destructive.background`."
+    "$description": "Text color of the destructive button. Pairs with `button.destructive.background`."
   },
   "button.destructive.border": {
     "$type": "color",
     "$value": "{color.background.danger}",
-    "$description": "Border colour of the destructive button."
+    "$description": "Border color of the destructive button."
   },
   "button.padding-y.sm": {
     "$type": "spacing",
@@ -347,7 +347,7 @@
   "card.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the card."
+    "$description": "Border color of the card."
   },
   "card.padding": {
     "$type": "spacing",
@@ -372,7 +372,7 @@
   "card.header.title.color": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the card header title."
+    "$description": "Text color of the card header title."
   },
   "card.header.description.font-size": {
     "$type": "number",
@@ -382,7 +382,7 @@
   "card.header.description.color": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the card header description."
+    "$description": "Text color of the card header description."
   },
   "card.header.description.line-height": {
     "$type": "number",
@@ -402,17 +402,17 @@
   "input.border": {
     "$type": "color",
     "$value": "{color.border.emphasis}",
-    "$description": "Border colour of the input."
+    "$description": "Border color of the input."
   },
   "input.border-error": {
     "$type": "color",
     "$value": "{color.border.danger}",
-    "$description": "Border colour of the input in the error state."
+    "$description": "Border color of the input in the error state."
   },
   "input.placeholder": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Colour of placeholder text, muted so it reads as a hint rather than a value."
+    "$description": "Color of placeholder text, muted so it reads as a hint rather than a value."
   },
   "input.padding-x": {
     "$type": "spacing",
@@ -447,12 +447,12 @@
   "alert.default.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the default alert."
+    "$description": "Border color of the default alert."
   },
   "alert.default.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the default alert. Pairs with `alert.default.background`."
+    "$description": "Text color of the default alert. Pairs with `alert.default.background`."
   },
   "alert.destructive.background": {
     "$type": "color",
@@ -462,12 +462,12 @@
   "alert.destructive.border": {
     "$type": "color",
     "$value": "{color.border.danger}",
-    "$description": "Border colour of the destructive alert."
+    "$description": "Border color of the destructive alert."
   },
   "alert.destructive.text": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}",
-    "$description": "Text colour of the destructive alert. Pairs with `alert.destructive.background`."
+    "$description": "Text color of the destructive alert. Pairs with `alert.destructive.background`."
   },
   "alert.warning.background": {
     "$type": "color",
@@ -477,12 +477,12 @@
   "alert.warning.border": {
     "$type": "color",
     "$value": "{color.border.warning}",
-    "$description": "Border colour of the warning alert."
+    "$description": "Border color of the warning alert."
   },
   "alert.warning.text": {
     "$type": "color",
     "$value": "{color.foreground.warning-muted}",
-    "$description": "Text colour of the warning alert. Pairs with `alert.warning.background`."
+    "$description": "Text color of the warning alert. Pairs with `alert.warning.background`."
   },
   "alert.success.background": {
     "$type": "color",
@@ -492,12 +492,12 @@
   "alert.success.border": {
     "$type": "color",
     "$value": "{color.border.success}",
-    "$description": "Border colour of the success alert."
+    "$description": "Border color of the success alert."
   },
   "alert.success.text": {
     "$type": "color",
     "$value": "{color.foreground.success-muted}",
-    "$description": "Text colour of the success alert. Pairs with `alert.success.background`."
+    "$description": "Text color of the success alert. Pairs with `alert.success.background`."
   },
   "alert.info.background": {
     "$type": "color",
@@ -507,17 +507,17 @@
   "alert.info.border": {
     "$type": "color",
     "$value": "{color.border.info}",
-    "$description": "Border colour of the info alert."
+    "$description": "Border color of the info alert."
   },
   "alert.info.text": {
     "$type": "color",
     "$value": "{color.foreground.info-muted}",
-    "$description": "Text colour of the info alert. Pairs with `alert.info.background`."
+    "$description": "Text color of the info alert. Pairs with `alert.info.background`."
   },
   "menubar.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the menubar."
+    "$description": "Border color of the menubar."
   },
   "menubar.background": {
     "$type": "color",
@@ -532,12 +532,12 @@
   "menubar.trigger-text-open": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the menubar trigger when open. Pairs with `menubar.trigger-open`."
+    "$description": "Text color of the menubar trigger when open. Pairs with `menubar.trigger-open`."
   },
   "menubar.content-border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the menubar content."
+    "$description": "Border color of the menubar content."
   },
   "menubar.content-background": {
     "$type": "color",
@@ -547,12 +547,12 @@
   "menubar.content-text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the menubar content. Pairs with `menubar.content-background`."
+    "$description": "Text color of the menubar content. Pairs with `menubar.content-background`."
   },
   "menubar.label": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the menubar label."
+    "$description": "Text color of the menubar label."
   },
   "menubar.separator": {
     "$type": "color",
@@ -562,7 +562,7 @@
   "menubar.shortcut": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the menubar shortcut."
+    "$description": "Text color of the menubar shortcut."
   },
   "navigation.background": {
     "$type": "color",
@@ -572,7 +572,7 @@
   "navigation.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the navigation menu while hovered. Pairs with `navigation.background-hover`."
+    "$description": "Text color of the navigation menu while hovered. Pairs with `navigation.background-hover`."
   },
   "navigation.active": {
     "$type": "color",
@@ -587,7 +587,7 @@
   "navigation.content-border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the navigation menu content."
+    "$description": "Border color of the navigation menu content."
   },
   "navigation.content-background": {
     "$type": "color",
@@ -597,7 +597,7 @@
   "navigation.content-text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the navigation menu content. Pairs with `navigation.content-background`."
+    "$description": "Text color of the navigation menu content. Pairs with `navigation.content-background`."
   },
   "navigation.indicator": {
     "$type": "color",
@@ -612,27 +612,27 @@
   "command.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the command menu. Pairs with `command.background`."
+    "$description": "Text color of the command menu. Pairs with `command.background`."
   },
   "command.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the command menu."
+    "$description": "Border color of the command menu."
   },
   "command.placeholder": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Colour of placeholder text in the command menu, muted so it reads as a hint rather than a value."
+    "$description": "Color of placeholder text in the command menu, muted so it reads as a hint rather than a value."
   },
   "command.empty": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the empty-results message in the command menu."
+    "$description": "Text color of the empty-results message in the command menu."
   },
   "command.group-heading": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the command menu group heading."
+    "$description": "Text color of the command menu group heading."
   },
   "command.separator": {
     "$type": "color",
@@ -647,12 +647,12 @@
   "command.item-text-selected": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the command menu item when selected. Pairs with `command.item-selected`."
+    "$description": "Text color of the command menu item when selected. Pairs with `command.item-selected`."
   },
   "command.shortcut": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the command menu shortcut."
+    "$description": "Text color of the command menu shortcut."
   },
   "tabs.list.background": {
     "$type": "color",
@@ -662,7 +662,7 @@
   "tabs.list.text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the tabs list. Pairs with `tabs.list.background`."
+    "$description": "Text color of the tabs list. Pairs with `tabs.list.background`."
   },
   "tabs.trigger.background-active": {
     "$type": "color",
@@ -672,7 +672,7 @@
   "tabs.trigger.text-active": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the selected tab trigger. Pairs with `tabs.trigger.background-active`."
+    "$description": "Text color of the selected tab trigger. Pairs with `tabs.trigger.background-active`."
   },
   "tabs.trigger.background-hover": {
     "$type": "color",
@@ -682,12 +682,12 @@
   "tabs.trigger.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the tabs trigger while hovered. Pairs with `tabs.trigger.background-hover`."
+    "$description": "Text color of the tabs trigger while hovered. Pairs with `tabs.trigger.background-hover`."
   },
   "tabs.list.border.color": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the tabs list."
+    "$description": "Border color of the tabs list."
   },
   "collapsible.background": {
     "$type": "color",
@@ -697,7 +697,7 @@
   "calendar.nav-border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the calendar nav."
+    "$description": "Border color of the calendar nav."
   },
   "calendar.nav-hover": {
     "$type": "color",
@@ -707,12 +707,12 @@
   "calendar.nav-text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the calendar nav while hovered. Pairs with `calendar.nav-hover`."
+    "$description": "Text color of the calendar nav while hovered. Pairs with `calendar.nav-hover`."
   },
   "calendar.header-text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the calendar header."
+    "$description": "Text color of the calendar header."
   },
   "calendar.day-hover": {
     "$type": "color",
@@ -722,7 +722,7 @@
   "calendar.day-text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the calendar day while hovered. Pairs with `calendar.day-hover`."
+    "$description": "Text color of the calendar day while hovered. Pairs with `calendar.day-hover`."
   },
   "calendar.day-selected": {
     "$type": "color",
@@ -732,22 +732,22 @@
   "calendar.day-text-selected": {
     "$type": "color",
     "$value": "{color.foreground.accent}",
-    "$description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`."
+    "$description": "Text color of the calendar day when selected. Pairs with `calendar.day-selected`."
   },
   "accordion.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the accordion."
+    "$description": "Border color of the accordion."
   },
   "accordion.content-text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the accordion content."
+    "$description": "Text color of the accordion content."
   },
   "accordion.icon": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Colour of the accordion chevron icon."
+    "$description": "Color of the accordion chevron icon."
   },
   "accordion.trigger-hover": {
     "$type": "color",
@@ -757,17 +757,17 @@
   "accordion.trigger-text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the accordion trigger."
+    "$description": "Text color of the accordion trigger."
   },
   "accordion.trigger-text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the accordion trigger while hovered. Pairs with `accordion.trigger-hover`."
+    "$description": "Text color of the accordion trigger while hovered. Pairs with `accordion.trigger-hover`."
   },
   "accordion.trigger-text-open": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the accordion trigger when open."
+    "$description": "Text color of the accordion trigger when open."
   },
   "accordion.trigger-pressed": {
     "$type": "color",
@@ -782,22 +782,22 @@
   "accordion.trigger-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the accordion trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `accordion.trigger-disabled`."
+    "$description": "Text color of the accordion trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `accordion.trigger-disabled`."
   },
   "accordion.icon-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Colour of the accordion icon while hovered."
+    "$description": "Color of the accordion icon while hovered."
   },
   "accordion.icon-open": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Colour of the accordion icon when open."
+    "$description": "Color of the accordion icon when open."
   },
   "accordion.icon-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Colour of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Color of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "avatar.background": {
     "$type": "color",
@@ -807,7 +807,7 @@
   "avatar.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the avatar."
+    "$description": "Border color of the avatar."
   },
   "avatar.fallback-background": {
     "$type": "color",
@@ -817,27 +817,27 @@
   "avatar.fallback-text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the avatar fallback. Pairs with `avatar.fallback-background`."
+    "$description": "Text color of the avatar fallback. Pairs with `avatar.fallback-background`."
   },
   "breadcrumb.current": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the current page item in the breadcrumb."
+    "$description": "Text color of the current page item in the breadcrumb."
   },
   "breadcrumb.link": {
     "$type": "color",
     "$value": "{color.foreground.link}",
-    "$description": "Text colour of the breadcrumb link."
+    "$description": "Text color of the breadcrumb link."
   },
   "breadcrumb.link-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the breadcrumb link while hovered."
+    "$description": "Text color of the breadcrumb link while hovered."
   },
   "breadcrumb.text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of breadcrumb text that is not a link."
+    "$description": "Text color of breadcrumb text that is not a link."
   },
   "carousel.nav-background": {
     "$type": "color",
@@ -847,7 +847,7 @@
   "carousel.nav-border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the carousel nav."
+    "$description": "Border color of the carousel nav."
   },
   "carousel.nav-hover": {
     "$type": "color",
@@ -857,7 +857,7 @@
   "carousel.nav-text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
+    "$description": "Text color of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
   },
   "contextmenu.background": {
     "$type": "color",
@@ -872,12 +872,12 @@
   "contextmenu.item-text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the context menu item while hovered. Pairs with `contextmenu.item-hover`."
+    "$description": "Text color of the context menu item while hovered. Pairs with `contextmenu.item-hover`."
   },
   "contextmenu.label": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the context menu label."
+    "$description": "Text color of the context menu label."
   },
   "contextmenu.separator": {
     "$type": "color",
@@ -887,27 +887,27 @@
   "contextmenu.shortcut": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the context menu shortcut."
+    "$description": "Text color of the context menu shortcut."
   },
   "contextmenu.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the context menu. Pairs with `contextmenu.background`."
+    "$description": "Text color of the context menu. Pairs with `contextmenu.background`."
   },
   "dialog.background": {
     "$type": "color",
     "$value": "{color.background.raised}",
-    "$description": "Fill of the dialog panel. Also the colour of the gap between the close button and its focus ring."
+    "$description": "Fill of the dialog panel. Also the color of the gap between the close button and its focus ring."
   },
   "dialog.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the dialog."
+    "$description": "Border color of the dialog."
   },
   "dialog.description": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the dialog description."
+    "$description": "Text color of the dialog description."
   },
   "dialog.overlay": {
     "$type": "color",
@@ -917,22 +917,22 @@
   "dialog.title": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the dialog title."
+    "$description": "Text color of the dialog title."
   },
   "form.description": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the help text under a form field."
+    "$description": "Text color of the help text under a form field."
   },
   "form.error": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}",
-    "$description": "Text colour of form error messages."
+    "$description": "Text color of form error messages."
   },
   "form.label": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of form labels."
+    "$description": "Text color of form labels."
   },
   "hover-card.background": {
     "$type": "color",
@@ -942,12 +942,12 @@
   "hover-card.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the hover card."
+    "$description": "Border color of the hover card."
   },
   "hover-card.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the hover card. Pairs with `hover-card.background`."
+    "$description": "Text color of the hover card. Pairs with `hover-card.background`."
   },
   "pagination.active": {
     "$type": "color",
@@ -957,17 +957,17 @@
   "pagination.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of page links other than the current page."
+    "$description": "Text color of page links other than the current page."
   },
   "pagination.text-active": {
     "$type": "color",
     "$value": "{color.foreground.accent}",
-    "$description": "Text colour of the page link for the current page. Pairs with `pagination.active`."
+    "$description": "Text color of the page link for the current page. Pairs with `pagination.active`."
   },
   "pagination.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the pagination while hovered. Pairs with `pagination.background-hover`."
+    "$description": "Text color of the pagination while hovered. Pairs with `pagination.background-hover`."
   },
   "popover.background": {
     "$type": "color",
@@ -977,12 +977,12 @@
   "popover.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the popover."
+    "$description": "Border color of the popover."
   },
   "popover.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the popover. Pairs with `popover.background`."
+    "$description": "Text color of the popover. Pairs with `popover.background`."
   },
   "progress.background": {
     "$type": "color",
@@ -1017,17 +1017,17 @@
   "radio.border": {
     "$type": "color",
     "$value": "{color.border.emphasis}",
-    "$description": "Border colour of the radio."
+    "$description": "Border color of the radio."
   },
   "radio.border-checked": {
     "$type": "color",
     "$value": "{color.background.accent}",
-    "$description": "Border colour of the radio when checked."
+    "$description": "Border color of the radio when checked."
   },
   "radio.indicator": {
     "$type": "color",
     "$value": "{color.foreground.accent}",
-    "$description": "Colour of the dot inside the selected radio."
+    "$description": "Color of the dot inside the selected radio."
   },
   "resizable.handle": {
     "$type": "color",
@@ -1042,7 +1042,7 @@
   "resizable.handle-border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the resizable handle."
+    "$description": "Border color of the resizable handle."
   },
   "scrollbar.thumb": {
     "$type": "color",
@@ -1067,7 +1067,7 @@
   "slider.thumb-border": {
     "$type": "color",
     "$value": "{color.background.accent}",
-    "$description": "Border colour of the slider thumb."
+    "$description": "Border color of the slider thumb."
   },
   "slider.track": {
     "$type": "color",
@@ -1077,12 +1077,12 @@
   "table.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the table."
+    "$description": "Border color of the table."
   },
   "table.caption": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the table caption."
+    "$description": "Text color of the table caption."
   },
   "table.footer-background": {
     "$type": "color",
@@ -1092,7 +1092,7 @@
   "table.header-text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the table header."
+    "$description": "Text color of the table header."
   },
   "table.row-hover": {
     "$type": "color",
@@ -1112,22 +1112,22 @@
   "toast.close": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Colour of the close icon on the toast."
+    "$description": "Color of the close icon on the toast."
   },
   "toast.close-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Colour of the close icon on the toast while hovered."
+    "$description": "Color of the close icon on the toast while hovered."
   },
   "toast.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the toast."
+    "$description": "Text color of the toast."
   },
   "toggle.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the toggle."
+    "$description": "Border color of the toggle."
   },
   "toggle.pressed": {
     "$type": "color",
@@ -1137,17 +1137,17 @@
   "toggle.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the toggle."
+    "$description": "Text color of the toggle."
   },
   "toggle.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the toggle while hovered. Pairs with `toggle.background-hover`."
+    "$description": "Text color of the toggle while hovered. Pairs with `toggle.background-hover`."
   },
   "toggle.text-pressed": {
     "$type": "color",
     "$value": "{color.foreground.accent}",
-    "$description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`."
+    "$description": "Text color of the toggle when pressed (on). Pairs with `toggle.pressed`."
   },
   "tooltip.background": {
     "$type": "color",
@@ -1157,12 +1157,12 @@
   "tooltip.border": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the tooltip."
+    "$description": "Border color of the tooltip."
   },
   "tooltip.text": {
     "$type": "color",
     "$value": "{color.foreground.inverse}",
-    "$description": "Text colour of the tooltip. Pairs with `tooltip.background`."
+    "$description": "Text color of the tooltip. Pairs with `tooltip.background`."
   },
   "tooltip.padding-x": {
     "$type": "spacing",
@@ -2132,7 +2132,7 @@
   "toast.destructive.border": {
     "$type": "color",
     "$value": "{color.background.danger}",
-    "$description": "Border colour of the destructive toast."
+    "$description": "Border color of the destructive toast."
   },
   "toast.destructive.background": {
     "$type": "color",
@@ -2142,7 +2142,7 @@
   "toast.success.border": {
     "$type": "color",
     "$value": "{color.background.success}",
-    "$description": "Border colour of the success toast."
+    "$description": "Border color of the success toast."
   },
   "toast.success.background": {
     "$type": "color",
@@ -2152,7 +2152,7 @@
   "toast.warning.border": {
     "$type": "color",
     "$value": "{color.background.warning}",
-    "$description": "Border colour of the warning toast."
+    "$description": "Border color of the warning toast."
   },
   "toast.warning.background": {
     "$type": "color",
@@ -2162,17 +2162,17 @@
   "toast.destructive.text": {
     "$type": "color",
     "$value": "{color.foreground.danger}",
-    "$description": "Text colour on the destructive toast. Pairs with `toast.destructive.background`."
+    "$description": "Text color on the destructive toast. Pairs with `toast.destructive.background`."
   },
   "toast.success.text": {
     "$type": "color",
     "$value": "{color.foreground.success}",
-    "$description": "Text colour on the success toast. Pairs with `toast.success.background`."
+    "$description": "Text color on the success toast. Pairs with `toast.success.background`."
   },
   "toast.info.border": {
     "$type": "color",
     "$value": "{color.background.info}",
-    "$description": "Border colour of the info toast."
+    "$description": "Border color of the info toast."
   },
   "toast.info.background": {
     "$type": "color",
@@ -2182,12 +2182,12 @@
   "toast.info.text": {
     "$type": "color",
     "$value": "{color.foreground.info}",
-    "$description": "Text colour on the info toast. Pairs with `toast.info.background`."
+    "$description": "Text color on the info toast. Pairs with `toast.info.background`."
   },
   "toast.warning.text": {
     "$type": "color",
     "$value": "{color.foreground.warning}",
-    "$description": "Text colour on the warning toast. Pairs with `toast.warning.background`."
+    "$description": "Text color on the warning toast. Pairs with `toast.warning.background`."
   },
   "card-grid.gap-horizontal": {
     "$type": "spacing",
@@ -2612,12 +2612,12 @@
   "dropdown-menu.content.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the dropdown menu content. Pairs with `dropdown-menu.content.background`."
+    "$description": "Text color of the dropdown menu content. Pairs with `dropdown-menu.content.background`."
   },
   "dropdown-menu.content.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the dropdown menu content."
+    "$description": "Border color of the dropdown menu content."
   },
   "dropdown-menu.item.background-hover": {
     "$type": "color",
@@ -2627,7 +2627,7 @@
   "dropdown-menu.item.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.background-hover`."
+    "$description": "Text color of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.background-hover`."
   },
   "dropdown-menu.separator.background": {
     "$type": "color",
@@ -2802,7 +2802,7 @@
   "card.content.color": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the card content."
+    "$description": "Text color of the card content."
   },
   "card.content.line-height": {
     "$type": "number",
@@ -2902,7 +2902,7 @@
   "card.border-hover": {
     "$type": "color",
     "$value": "{color.border.primary}",
-    "$description": "Border colour of an interactive card while hovered."
+    "$description": "Border color of an interactive card while hovered."
   },
   "badge.default.background-disabled": {
     "$type": "color",
@@ -2972,7 +2972,7 @@
   "breadcrumb.link-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "pagination.background-hover": {
     "$type": "color",
@@ -3007,7 +3007,7 @@
   "input.default.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Colour of typed text. Pairs with `input.default.background`."
+    "$description": "Color of typed text. Pairs with `input.default.background`."
   },
   "command.item-padding-y": {
     "$type": "spacing",
@@ -3057,7 +3057,7 @@
   "feature-grid.title.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the feature grid title."
+    "$description": "Text color of the feature grid title."
   },
   "menubar.trigger.font-weight": {
     "$type": "number",
@@ -3082,7 +3082,7 @@
   "select.content.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the select content. Pairs with `select.content.background`."
+    "$description": "Text color of the select content. Pairs with `select.content.background`."
   },
   "select.separator.background": {
     "$type": "color",
@@ -3102,12 +3102,12 @@
   "separator.color": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Colour of the separator line."
+    "$description": "Color of the separator line."
   },
   "sheet.content.background": {
     "$type": "color",
     "$value": "{color.background.raised}",
-    "$description": "Fill of the sheet panel. Also the colour of the gap between the close button and its focus ring."
+    "$description": "Fill of the sheet panel. Also the color of the gap between the close button and its focus ring."
   },
   "sheet.close-button.opacity": {
     "$type": "number",
@@ -3117,12 +3117,12 @@
   "sheet.title.text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the sheet title."
+    "$description": "Text color of the sheet title."
   },
   "sheet.description.text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the sheet description."
+    "$description": "Text color of the sheet description."
   },
   "toast.close-button.position": {
     "$type": "spacing",
@@ -3137,12 +3137,12 @@
   "feature-grid.item.border-color": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the feature grid item."
+    "$description": "Border color of the feature grid item."
   },
   "feature-grid.item.border-color-hover": {
     "$type": "color",
     "$value": "{color.border.primary}",
-    "$description": "Border colour of the feature grid item while hovered."
+    "$description": "Border color of the feature grid item while hovered."
   },
   "input.padding-y.sm": {
     "$type": "spacing",
@@ -3167,7 +3167,7 @@
   "button.link-text": {
     "$type": "color",
     "$value": "{color.foreground.link}",
-    "$description": "Label colour of the link-style button, which has no fill or border."
+    "$description": "Label color of the link-style button, which has no fill or border."
   },
   "card.header-gap": {
     "$type": "spacing",
@@ -3182,12 +3182,12 @@
   "input.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
+    "$description": "Text color of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
   },
   "tabs.trigger.indicator-color": {
     "$type": "color",
     "$value": "{color.background.accent}",
-    "$description": "Colour of the underline that marks the selected tab."
+    "$description": "Color of the underline that marks the selected tab."
   },
   "checkbox.focus-ring.width": {
     "$type": "spacing",
@@ -3292,7 +3292,7 @@
   "label.disabled-color": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "sheet.overlay-background": {
     "$type": "color",
@@ -3522,12 +3522,12 @@
   "checkbox.text-checked": {
     "$type": "color",
     "$value": "{color.foreground.accent}",
-    "$description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
+    "$description": "Color of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
   },
   "checkbox.border-checked": {
     "$type": "color",
     "$value": "{color.background.accent}",
-    "$description": "Border colour of the checkbox when checked."
+    "$description": "Border color of the checkbox when checked."
   },
   "checkbox.error-border": {
     "$type": "color",
@@ -3562,7 +3562,7 @@
   "form.required-color": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}",
-    "$description": "Colour of the required-field marker on form labels."
+    "$description": "Color of the required-field marker on form labels."
   },
   "calendar.header-font-weight": {
     "$type": "number",
@@ -3587,7 +3587,7 @@
   "label.default-color": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Default text colour of labels."
+    "$description": "Default text color of labels."
   },
   "context-menu.sub-content-min-width": {
     "$type": "spacing",
@@ -3622,7 +3622,7 @@
   "feature-grid.description-text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the feature grid description."
+    "$description": "Text color of the feature grid description."
   },
   "menubar.radio-indicator-size": {
     "$type": "spacing",
@@ -3657,12 +3657,12 @@
   "label.error-text": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}",
-    "$description": "Text colour of a label when its field has an error."
+    "$description": "Text color of a label when its field has an error."
   },
   "label.required-text": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}",
-    "$description": "Colour of the required marker on labels."
+    "$description": "Color of the required marker on labels."
   },
   "resizable.handle-focus-ring-width": {
     "$type": "spacing",
@@ -3677,7 +3677,7 @@
   "form.label-error-text": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}",
-    "$description": "Text colour of a form label when its field has an error."
+    "$description": "Text color of a form label when its field has an error."
   },
   "site-header.background": {
     "$type": "color",
@@ -3687,7 +3687,7 @@
   "site-header.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the site header."
+    "$description": "Border color of the site header."
   },
   "site-header.nav-link.background": {
     "$type": "color",
@@ -3702,7 +3702,7 @@
   "site-header.nav-link.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
+    "$description": "Text color of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
   },
   "site-footer.background": {
     "$type": "color",
@@ -3717,22 +3717,22 @@
   "site-footer.border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the site footer."
+    "$description": "Border color of the site footer."
   },
   "site-footer.text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the site footer. Pairs with `site-footer.background`."
+    "$description": "Text color of the site footer. Pairs with `site-footer.background`."
   },
   "site-footer.link.text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the site footer link."
+    "$description": "Text color of the site footer link."
   },
   "site-footer.link.text-hover": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the site footer link while hovered."
+    "$description": "Text color of the site footer link while hovered."
   },
   "section-hero.background": {
     "$type": "color",
@@ -3742,22 +3742,22 @@
   "section-hero.gradient.from": {
     "$type": "color",
     "$value": "{color.background.primary}",
-    "$description": "Colour stop (from) of the hero section background gradient."
+    "$description": "Color stop (from) of the hero section background gradient."
   },
   "section-hero.gradient.via": {
     "$type": "color",
     "$value": "{color.background.default}",
-    "$description": "Colour stop (via) of the hero section background gradient."
+    "$description": "Color stop (via) of the hero section background gradient."
   },
   "section-hero.gradient.to": {
     "$type": "color",
     "$value": "{color.background.primary-muted}",
-    "$description": "Colour stop (to) of the hero section background gradient."
+    "$description": "Color stop (to) of the hero section background gradient."
   },
   "section-hero.description-text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the hero section description."
+    "$description": "Text color of the hero section description."
   },
   "section-features.background": {
     "$type": "color",
@@ -3772,12 +3772,12 @@
   "section-features.description-text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the features section description."
+    "$description": "Text color of the features section description."
   },
   "section-features.item-text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the features section item."
+    "$description": "Text color of the features section item."
   },
   "section-features.icon-background": {
     "$type": "color",
@@ -3787,7 +3787,7 @@
   "section-features.icon-text": {
     "$type": "color",
     "$value": "{color.foreground.primary-muted}",
-    "$description": "Colour of the features section icon. Pairs with `section-features.icon-background`."
+    "$description": "Color of the features section icon. Pairs with `section-features.icon-background`."
   },
   "page-layout.skip-link-background": {
     "$type": "color",
@@ -3797,22 +3797,22 @@
   "page-layout.skip-link-text": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the page layout skip link. Pairs with `page-layout.skip-link-background`."
+    "$description": "Text color of the page layout skip link. Pairs with `page-layout.skip-link-background`."
   },
   "page-layout.sidebar-border": {
     "$type": "color",
     "$value": "{color.border.default}",
-    "$description": "Border colour of the page layout sidebar."
+    "$description": "Border color of the page layout sidebar."
   },
   "input.border-success": {
     "$type": "color",
     "$value": "{color.border.success}",
-    "$description": "Border colour of the input in the success state."
+    "$description": "Border color of the input in the success state."
   },
   "pagination.ellipsis-text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
-    "$description": "Text colour of the ellipsis that stands in for skipped pages."
+    "$description": "Text color of the ellipsis that stands in for skipped pages."
   },
   "button.primary.background-disabled": {
     "$type": "color",
@@ -3822,12 +3822,12 @@
   "button.primary.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the primary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.primary.background-disabled`."
+    "$description": "Text color of the primary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.primary.background-disabled`."
   },
   "button.primary.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the primary button when disabled, in the muted border tone."
+    "$description": "Border color of the primary button when disabled, in the muted border tone."
   },
   "button.secondary.background-disabled": {
     "$type": "color",
@@ -3837,12 +3837,12 @@
   "button.secondary.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the secondary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.secondary.background-disabled`."
+    "$description": "Text color of the secondary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.secondary.background-disabled`."
   },
   "button.secondary.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the secondary button when disabled, in the muted border tone."
+    "$description": "Border color of the secondary button when disabled, in the muted border tone."
   },
   "button.destructive.background-disabled": {
     "$type": "color",
@@ -3852,97 +3852,97 @@
   "button.destructive.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the destructive button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.destructive.background-disabled`."
+    "$description": "Text color of the destructive button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.destructive.background-disabled`."
   },
   "button.destructive.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the destructive button when disabled, in the muted border tone."
+    "$description": "Border color of the destructive button when disabled, in the muted border tone."
   },
   "button.outline.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Label colour of a disabled outline button. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Label color of a disabled outline button. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "button.outline.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the outline button when disabled, in the muted border tone."
+    "$description": "Border color of the outline button when disabled, in the muted border tone."
   },
   "button.ghost.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the ghost button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the ghost button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "button.link-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "badge.default.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the default badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.default.background-disabled`."
+    "$description": "Text color of the default badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.default.background-disabled`."
   },
   "badge.default.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the default badge when disabled, in the muted border tone."
+    "$description": "Border color of the default badge when disabled, in the muted border tone."
   },
   "badge.secondary.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the secondary badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.secondary.background-disabled`."
+    "$description": "Text color of the secondary badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.secondary.background-disabled`."
   },
   "badge.secondary.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the secondary badge when disabled, in the muted border tone."
+    "$description": "Border color of the secondary badge when disabled, in the muted border tone."
   },
   "badge.success.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
+    "$description": "Text color of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
   },
   "badge.success.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the success badge when disabled, in the muted border tone."
+    "$description": "Border color of the success badge when disabled, in the muted border tone."
   },
   "badge.warning.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the warning badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.warning.background-disabled`."
+    "$description": "Text color of the warning badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.warning.background-disabled`."
   },
   "badge.warning.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the warning badge when disabled, in the muted border tone."
+    "$description": "Border color of the warning badge when disabled, in the muted border tone."
   },
   "badge.destructive.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the destructive badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.destructive.background-disabled`."
+    "$description": "Text color of the destructive badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.destructive.background-disabled`."
   },
   "badge.destructive.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the destructive badge when disabled, in the muted border tone."
+    "$description": "Border color of the destructive badge when disabled, in the muted border tone."
   },
   "badge.outline.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the outline badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.outline.background-disabled`."
+    "$description": "Text color of the outline badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.outline.background-disabled`."
   },
   "badge.outline.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the outline badge when disabled, in the muted border tone."
+    "$description": "Border color of the outline badge when disabled, in the muted border tone."
   },
   "card.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of a disabled card, in the muted border tone."
+    "$description": "Border color of a disabled card, in the muted border tone."
   },
   "textarea.background-disabled": {
     "$type": "color",
@@ -3952,7 +3952,7 @@
   "textarea.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "select.trigger.background-disabled": {
     "$type": "color",
@@ -3962,17 +3962,17 @@
   "select.trigger.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the select trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `select.trigger.background-disabled`."
+    "$description": "Text color of the select trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `select.trigger.background-disabled`."
   },
   "select.trigger.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the select trigger when disabled, in the muted border tone."
+    "$description": "Border color of the select trigger when disabled, in the muted border tone."
   },
   "select.item.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "checkbox.background-disabled": {
     "$type": "color",
@@ -3982,12 +3982,12 @@
   "checkbox.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the checkbox when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `checkbox.background-disabled`."
+    "$description": "Text color of the checkbox when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `checkbox.background-disabled`."
   },
   "checkbox.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the checkbox when disabled, in the muted border tone."
+    "$description": "Border color of the checkbox when disabled, in the muted border tone."
   },
   "radio.background-disabled": {
     "$type": "color",
@@ -3997,12 +3997,12 @@
   "radio.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the radio when disabled, in the muted border tone."
+    "$description": "Border color of the radio when disabled, in the muted border tone."
   },
   "radio.indicator-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Colour of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Color of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "switch.track.background-disabled": {
     "$type": "color",
@@ -4017,67 +4017,67 @@
   "slider.thumb-border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the slider thumb when disabled, in the muted border tone."
+    "$description": "Border color of the slider thumb when disabled, in the muted border tone."
   },
   "toggle.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the toggle when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the toggle when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "toggle.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the toggle when disabled, in the muted border tone."
+    "$description": "Border color of the toggle when disabled, in the muted border tone."
   },
   "tabs.trigger.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "pagination.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "navigation.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "dropdown-menu.item.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "contextmenu.item-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "menubar.item-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "command.item-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the command menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the command menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "command.input-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "carousel.nav-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the carousel nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `carousel.nav-background-disabled`."
+    "$description": "Text color of the carousel nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `carousel.nav-background-disabled`."
   },
   "carousel.nav-border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the carousel nav when disabled, in the muted border tone."
+    "$description": "Border color of the carousel nav when disabled, in the muted border tone."
   },
   "carousel.nav-background-disabled": {
     "$type": "color",
@@ -4087,32 +4087,32 @@
   "calendar.nav-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the calendar nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the calendar nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "calendar.nav-border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the calendar nav when disabled, in the muted border tone."
+    "$description": "Border color of the calendar nav when disabled, in the muted border tone."
   },
   "toast.action-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the toast action when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the toast action when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "toast.action-border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
-    "$description": "Border colour of the toast action when disabled, in the muted border tone."
+    "$description": "Border color of the toast action when disabled, in the muted border tone."
   },
   "site-header.nav-link.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "form.label-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
-    "$description": "Text colour of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+    "$description": "Text color of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "toggle.pressed-disabled": {
     "$type": "color",
@@ -4127,7 +4127,7 @@
   "menubar.trigger-text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
+    "$description": "Text color of the menubar trigger while highlighted. Pairs with `menubar.trigger-highlighted`."
   },
   "menubar.item-highlighted": {
     "$type": "color",
@@ -4137,7 +4137,7 @@
   "menubar.item-text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
+    "$description": "Text color of the menubar item while highlighted. Pairs with `menubar.item-highlighted`."
   },
   "navigation.highlighted": {
     "$type": "color",
@@ -4147,7 +4147,7 @@
   "navigation.text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
+    "$description": "Text color of a navigation menu trigger while highlighted. Pairs with `navigation.highlighted`."
   },
   "select.item.background-highlighted": {
     "$type": "color",
@@ -4157,7 +4157,7 @@
   "select.item.text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the select item while highlighted. Pairs with `select.item.background-highlighted`."
+    "$description": "Text color of the select item while highlighted. Pairs with `select.item.background-highlighted`."
   },
   "site-header.nav-link.background-highlighted": {
     "$type": "color",
@@ -4167,7 +4167,7 @@
   "site-header.nav-link.text-highlighted": {
     "$type": "color",
     "$value": "{color.foreground.default}",
-    "$description": "Text colour of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
+    "$description": "Text color of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
   },
   "page-layout.main.padding-y": {
     "$type": "spacing",
@@ -4602,7 +4602,7 @@
   "site-header.transition-duration": {
     "$type": "duration",
     "$value": "{duration.200}",
-    "$description": "Duration of the header colour transition."
+    "$description": "Duration of the header color transition."
   },
   "site-header.z-index": {
     "$type": "number",
