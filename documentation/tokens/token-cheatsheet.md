@@ -4,11 +4,11 @@ Names and values below were read from the built CSS in `packages/tokens/dist/`. 
 
 ## Tiers
 
-| Tier      | Purpose                                | Example                             |
-| --------- | -------------------------------------- | ----------------------------------- |
-| Primitive | Raw scale values                       | `--color-blue-500`, `--space-200`   |
-| Semantic  | Meaning, with light and dark values    | `--color-foreground-default`        |
-| Component | Per-component values aliasing semantic | `--color-button-primary-background` |
+| Tier      | Purpose                                | Example                                  |
+| --------- | -------------------------------------- | ---------------------------------------- |
+| Primitive | Raw scale values                       | `--color-fiery-coral-500`, `--space-200` |
+| Semantic  | Meaning, with light and dark values    | `--color-foreground-default`             |
+| Component | Per-component values aliasing semantic | `--color-button-primary-background`      |
 
 In application code and stories, use the `-(--token-name)` Tailwind syntax with semantic tokens, for example `bg-(--color-background-default)`. Components in `packages/ui` bind to component tokens instead, for example `bg-(--color-button-primary-background)`.
 

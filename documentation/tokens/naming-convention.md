@@ -92,7 +92,7 @@ Your system follows **property-based organization** (not role-based):
 ```
 ┌─────────────────────────────────────────────────┐
 │  PRIMITIVE TOKENS (Foundation)                  │
-│  --color-gray-50, --color-blue-500, etc.       │
+│  --color-gray-50, --color-fiery-coral-500, etc. │
 └──────────────────┬──────────────────────────────┘
                    │
                    ▼
