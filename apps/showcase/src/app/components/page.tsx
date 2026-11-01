@@ -22,6 +22,19 @@ import {
   TogglePreview,
   ToggleGroupPreview,
 } from "./inputs/control-previews";
+import {
+  AccordionPreview,
+  AlertPreview,
+  AvatarPreview,
+  BadgePreview,
+  CalendarPreview,
+  CardPreview,
+  CarouselPreview,
+  ProgressPreview,
+  SkeletonPreview,
+  TablePreview,
+  ToastPreview,
+} from "./inputs/content-previews";
 import { SectionSubnav } from "@/components/section-subnav";
 import { getShowcaseMeta, getStoryDocsUrl } from "@/lib/showcase-metadata";
 
@@ -53,7 +66,7 @@ function CompCard({
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
-        className="relative bg-(--color-background-muted) border-b border-(--color-border-default) h-42 flex items-center justify-center overflow-hidden p-4"
+        className="relative bg-(--color-background-muted) border-b border-(--color-border-default) min-h-42 flex items-center justify-center overflow-hidden p-4"
         style={dotGrid}
       >
         <div
@@ -518,449 +531,59 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
-              decorative
+              live
               name="Accordion"
               desc="Vertically stacked sections that expand one at a time or independently."
               href="accordion"
-              preview={
-                <div className="w-full max-w-55 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
-                  <div className="flex items-center justify-between px-3 py-2 text-xs font-semibold border-b border-(--color-border-default) bg-(--color-background-muted)">
-                    <span>Shipping</span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      style={{
-                        color: "var(--color-foreground-primary-muted)",
-                        transform: "rotate(180deg)",
-                      }}
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </div>
-                  <div className="px-3 py-2 text-[0.6875rem] text-(--color-foreground-muted)">
-                    Free over $50, 2-day delivery on stock items.
-                  </div>
-                  <div className="flex items-center justify-between px-3 py-2 text-xs border-t border-(--color-border-default)">
-                    <span>Returns</span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-foreground-faint)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </div>
-                  <div className="flex items-center justify-between px-3 py-2 text-xs border-t border-(--color-border-default)">
-                    <span>Warranty</span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-foreground-faint)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </div>
-                </div>
-              }
+              preview={<AccordionPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Avatar"
               desc="Image with a fallback for initials or an icon, in four sizes (sm to xl)."
               href="avatar"
-              preview={
-                <div className="flex items-center gap-3">
-                  {[
-                    {
-                      bg: "var(--color-background-primary-muted)",
-                      color: "var(--color-foreground-primary-muted)",
-                      init: "EM",
-                    },
-                    {
-                      bg: "var(--color-background-info-muted)",
-                      color: "var(--color-foreground-info-muted)",
-                      init: "JR",
-                    },
-                    {
-                      bg: "var(--color-background-success-muted)",
-                      color: "var(--color-foreground-success-muted)",
-                      init: "AK",
-                    },
-                  ].map(({ bg, color, init }) => (
-                    <span
-                      key={init}
-                      className="inline-grid place-items-center rounded-full text-xs font-semibold"
-                      style={{
-                        background: bg,
-                        color,
-                        height: "2.5rem",
-                        width: "2.5rem",
-                      }}
-                    >
-                      {init}
-                    </span>
-                  ))}
-                  <span
-                    className="inline-grid place-items-center rounded-full text-[0.6875rem] font-medium"
-                    style={{
-                      background: "var(--color-background-emphasis)",
-                      color: "var(--color-foreground-muted)",
-                      height: "2.5rem",
-                      width: "2.5rem",
-                    }}
-                  >
-                    +8
-                  </span>
-                </div>
-              }
+              preview={<AvatarPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Badge"
               desc="Small status pill — default, secondary, outline, success, warning, destructive, in three sizes."
               href="badge"
-              preview={
-                <div className="flex flex-col gap-2 items-center">
-                  <div className="flex flex-wrap gap-1.5 justify-center">
-                    <span
-                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-semibold"
-                      style={{
-                        background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-primary)",
-                      }}
-                    >
-                      Default
-                    </span>
-                    <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium border border-(--color-border-default) text-(--color-foreground-default)">
-                      Outline
-                    </span>
-                    <span
-                      className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
-                      style={{
-                        background: "var(--color-background-success-muted)",
-                        color: "var(--color-foreground-success-muted)",
-                      }}
-                    >
-                      <span
-                        className="h-1.5 w-1.5 rounded-full"
-                        style={{
-                          background: "var(--color-foreground-success-muted)",
-                        }}
-                      />
-                      Active
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 justify-center">
-                    <span
-                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-warning-muted) 18%, transparent)",
-                        color: "var(--color-foreground-warning-muted)",
-                      }}
-                    >
-                      Beta
-                    </span>
-                    <span
-                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-danger-muted) 18%, transparent)",
-                        color: "var(--color-foreground-danger-muted)",
-                      }}
-                    >
-                      Deprecated
-                    </span>
-                  </div>
-                </div>
-              }
+              preview={<BadgePreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Calendar"
               desc="Single date, multiple dates, or a date range, with month navigation."
               href="calendar"
-              preview={
-                <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 w-full max-w-55">
-                  <div className="flex items-center justify-between text-[0.6875rem] font-semibold pb-1.5 text-(--color-foreground-default)">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-foreground-faint)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m15 18-6-6 6-6" />
-                    </svg>
-                    <span>May 2026</span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-foreground-faint)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m9 18 6-6-6-6" />
-                    </svg>
-                  </div>
-                  <div className="grid grid-cols-7 gap-0.5 font-mono text-[0.5rem] text-(--color-foreground-faint) text-center">
-                    {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
-                      <span key={i}>{d}</span>
-                    ))}
-                  </div>
-                  <div className="grid grid-cols-7 gap-0.5 mt-1 text-[0.625rem] text-center text-(--color-foreground-default)">
-                    {["26", "27", "28", "29", "30", "1", "2"].map((d, i) => (
-                      <span
-                        key={i}
-                        className={
-                          i < 4
-                            ? "text-(--color-foreground-faint) py-0.5"
-                            : "py-0.5"
-                        }
-                      >
-                        {d}
-                      </span>
-                    ))}
-                    {["3", "4", "5", "6", "7", "8", "9"].map((d, i) => (
-                      <span key={i} className="py-0.5">
-                        {d}
-                      </span>
-                    ))}
-                    <span
-                      className="py-0.5 rounded font-semibold"
-                      style={{
-                        background: "var(--color-background-accent)",
-                        color: "var(--color-foreground-accent)",
-                      }}
-                    >
-                      10
-                    </span>
-                    {["11", "12", "13", "14", "15", "16"].map((d, i) => (
-                      <span key={i} className="py-0.5">
-                        {d}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              }
+              preview={<CalendarPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Card"
               desc="A surface with header, title, description, content and footer slots, plus an optional interactive (hover) state."
               href="card"
-              preview={
-                <div
-                  className="w-full max-w-55 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3"
-                  style={{ boxShadow: "var(--shadow-sm)" }}
-                >
-                  <p className="text-[0.625rem] font-mono uppercase tracking-wider text-(--color-foreground-faint)">
-                    Project
-                  </p>
-                  <p className="mt-0.5 text-xs font-semibold text-(--color-foreground-default)">
-                    Migration to v1.4
-                  </p>
-                  <p className="mt-1 text-[0.625rem] text-(--color-foreground-faint) leading-snug">
-                    68 components migrated · 6 outstanding tickets
-                  </p>
-                  <div className="mt-2 flex items-center gap-2">
-                    <div className="flex -space-x-1.5">
-                      {[
-                        [
-                          "var(--color-background-primary-muted)",
-                          "var(--color-foreground-primary-muted)",
-                          "EM",
-                        ],
-                        [
-                          "var(--color-background-info-muted)",
-                          "var(--color-foreground-info-muted)",
-                          "JR",
-                        ],
-                      ].map(([bg, c, i]) => (
-                        <span
-                          key={i}
-                          className="inline-grid place-items-center rounded-full font-semibold border-[1.5px] border-(--color-background-default) text-[0.5rem]"
-                          style={{
-                            background: bg,
-                            color: c,
-                            height: "1.125rem",
-                            width: "1.125rem",
-                          }}
-                        >
-                          {i}
-                        </span>
-                      ))}
-                    </div>
-                    <span
-                      className="ml-auto inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[0.5625rem] font-medium"
-                      style={{
-                        background: "var(--color-background-success-muted)",
-                        color: "var(--color-foreground-success-muted)",
-                      }}
-                    >
-                      <span
-                        className="h-1 w-1 rounded-full"
-                        style={{
-                          background: "var(--color-foreground-success-muted)",
-                        }}
-                      />
-                      Active
-                    </span>
-                  </div>
-                </div>
-              }
+              preview={<CardPreview />}
             />
 
             <CompCard
+              live
               name="Carousel"
               desc="Slider with previous and next controls for cycling through items."
               href="carousel"
-              preview={
-                <div className="w-full max-w-57.5 flex items-center gap-2">
-                  <Button
-                    aria-label="Previous"
-                    variant="outline"
-                    size="icon"
-                    className="h-7 w-7 rounded-full shrink-0"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m15 18-6-6 6-6" />
-                    </svg>
-                  </Button>
-                  <div className="flex-1 grid grid-cols-3 gap-1.5">
-                    <div
-                      className="aspect-3/4 rounded"
-                      style={{
-                        background: "var(--color-background-primary-muted)",
-                      }}
-                    />
-                    <div
-                      className="aspect-3/4 rounded ring-2 ring-(--color-background-accent)"
-                      style={{
-                        background: "var(--color-background-info-muted)",
-                      }}
-                    />
-                    <div
-                      className="aspect-3/4 rounded"
-                      style={{
-                        background: "var(--color-background-success-muted)",
-                      }}
-                    />
-                  </div>
-                  <Button
-                    aria-label="Next"
-                    variant="outline"
-                    size="icon"
-                    className="h-7 w-7 rounded-full shrink-0"
-                    style={{ boxShadow: "var(--shadow-sm)" }}
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m9 18 6-6-6-6" />
-                    </svg>
-                  </Button>
-                </div>
-              }
+              preview={<CarouselPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Table"
               desc="Semantic table parts — header, body, footer, row, head, cell, caption — in a horizontally scrollable wrapper."
               href="table"
-              preview={
-                <div className="w-full max-w-57.5 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden text-[0.625rem]">
-                  <div
-                    className="grid px-2.5 py-1.5 font-mono uppercase tracking-wider text-(--color-foreground-faint) text-[0.5rem] bg-(--color-background-muted)"
-                    style={{
-                      gridTemplateColumns: "1.4fr 1fr 0.8fr",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    <span>Name</span>
-                    <span>Role</span>
-                    <span className="text-right">Status</span>
-                  </div>
-                  {[
-                    {
-                      name: "Elena Mori",
-                      role: "Lead",
-                      status: "Active",
-                      color: "var(--color-foreground-success-muted)",
-                    },
-                    {
-                      name: "Jude Reyes",
-                      role: "Eng",
-                      status: "—",
-                      color: null,
-                    },
-                    {
-                      name: "Ari Klein",
-                      role: "Design",
-                      status: "Away",
-                      color: "var(--color-foreground-warning-muted)",
-                    },
-                  ].map(({ name, role, status, color }) => (
-                    <div
-                      key={name}
-                      className="grid px-2.5 py-1.5 border-t border-(--color-border-default) items-center"
-                      style={{
-                        gridTemplateColumns: "1.4fr 1fr 0.8fr",
-                        gap: "0.5rem",
-                      }}
-                    >
-                      <span className="text-(--color-foreground-default)">
-                        {name}
-                      </span>
-                      <span className="text-(--color-foreground-muted)">
-                        {role}
-                      </span>
-                      <span className="text-right">
-                        {color ? (
-                          <span
-                            className="inline-flex items-center gap-1 rounded-full px-1 py-0 text-[0.5rem] font-medium"
-                            style={{
-                              background: color.replace(
-                                "--color-foreground-",
-                                "--color-background-"
-                              ),
-                              color,
-                            }}
-                          >
-                            {status}
-                          </span>
-                        ) : (
-                          <span className="text-(--color-foreground-faint)">
-                            —
-                          </span>
-                        )}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              }
+              preview={<TablePreview />}
             />
           </div>
         </div>
@@ -982,238 +605,35 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
-              decorative
+              live
               name="Alert"
               desc="Inline status banner — default, success, warning, destructive."
               href="alert"
-              preview={
-                <div className="w-full max-w-57.5 flex flex-col gap-1.5">
-                  {[
-                    {
-                      color: "var(--color-foreground-success-muted)",
-                      msg: "Build passed · 3,402 tests",
-                      icon: "m5 12 5 5L20 7",
-                    },
-                    {
-                      color: "var(--color-foreground-warning-muted)",
-                      msg: "2 deprecation warnings",
-                      icon: "M12 9v4M12 17h.01",
-                    },
-                    {
-                      color: "var(--color-foreground-danger-muted)",
-                      msg: "Connection lost · retrying",
-                      icon: "M18 6 6 18M6 6l12 12",
-                    },
-                  ].map(({ color, msg, icon }) => (
-                    <div
-                      key={msg}
-                      className="flex items-start gap-2 rounded-md border px-2.5 py-1.5"
-                      style={{
-                        borderColor: `color-mix(in oklch, ${color} 35%, transparent)`,
-                        background: `color-mix(in oklch, ${color} 10%, transparent)`,
-                      }}
-                    >
-                      <span
-                        className="grid h-3.5 w-3.5 mt-px place-items-center rounded-full shrink-0"
-                        style={{
-                          background: color,
-                          color: "var(--color-foreground-inverse)",
-                        }}
-                      >
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="h-2 w-2"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={3}
-                        >
-                          <path d={icon} />
-                        </svg>
-                      </span>
-                      <p className="text-[0.625rem] font-semibold leading-tight text-(--color-foreground-default)">
-                        {msg}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              }
+              preview={<AlertPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Progress"
               desc="Linear progress bar with default, success, warning and destructive variants."
               href="progress"
-              preview={
-                <div className="w-full max-w-55 flex flex-col gap-3">
-                  <div>
-                    <div className="flex items-center justify-between text-[0.625rem] mb-1">
-                      <span className="text-(--color-foreground-muted)">
-                        Uploading
-                      </span>
-                      <span className="font-mono text-(--color-foreground-faint)">
-                        68%
-                      </span>
-                    </div>
-                    <div
-                      className="h-1.5 w-full overflow-hidden rounded-full"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    >
-                      <div
-                        className="h-full rounded-full"
-                        style={{
-                          width: "68%",
-                          background: "var(--color-background-accent)",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-center justify-between text-[0.625rem] mb-1">
-                      <span className="text-(--color-foreground-muted)">
-                        Indexing
-                      </span>
-                      <span className="font-mono text-(--color-foreground-faint)">
-                        indeterminate
-                      </span>
-                    </div>
-                    <div
-                      className="relative h-1.5 w-full overflow-hidden rounded-full"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    >
-                      <div
-                        className="absolute h-full w-1/3 rounded-full animate-pulse"
-                        style={{
-                          background: "var(--color-background-accent)",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg viewBox="0 0 36 36" className="h-9 w-9 -rotate-90">
-                      <circle
-                        cx="18"
-                        cy="18"
-                        r="14"
-                        fill="none"
-                        stroke="var(--color-background-emphasis)"
-                        strokeWidth="3"
-                      />
-                      <circle
-                        cx="18"
-                        cy="18"
-                        r="14"
-                        fill="none"
-                        stroke="var(--color-background-accent)"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeDasharray="88"
-                        strokeDashoffset="26"
-                      />
-                    </svg>
-                    <span className="font-mono text-[0.625rem] text-(--color-foreground-faint)">
-                      circular · 70%
-                    </span>
-                  </div>
-                </div>
-              }
+              preview={<ProgressPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Skeleton"
               desc="Placeholder shapes — default, text, circular, rectangular — with a pulse animation."
               href="skeleton"
-              preview={
-                <div className="w-full max-w-55 flex items-center gap-3">
-                  <div
-                    className="h-9 w-9 rounded-full animate-pulse"
-                    style={{ background: "var(--color-background-emphasis)" }}
-                  />
-                  <div className="flex-1 flex flex-col gap-1.5">
-                    <div
-                      className="h-2 w-3/4 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    />
-                    <div
-                      className="h-2 w-1/2 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    />
-                    <div
-                      className="h-2 w-2/3 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    />
-                  </div>
-                </div>
-              }
+              preview={<SkeletonPreview />}
             />
 
             <CompCard
+              live
               name="Toast"
               desc="Transient notifications with default, success, warning and destructive variants and auto-dismiss."
               href="toast"
-              preview={
-                <div className="w-full max-w-57.5 flex flex-col gap-1.5 items-end">
-                  <div
-                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 flex items-start gap-2 w-full"
-                    style={{ boxShadow: "var(--shadow-md)" }}
-                  >
-                    <span
-                      className="grid h-5 w-5 place-items-center rounded-full shrink-0"
-                      style={{
-                        background: "var(--color-foreground-success-muted)",
-                        color: "var(--color-foreground-inverse)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                      >
-                        <path d="m5 12 5 5L20 7" />
-                      </svg>
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[0.625rem] font-semibold text-(--color-foreground-default)">
-                        Theme published
-                      </p>
-                      <p className="text-[0.5625rem] text-(--color-foreground-faint)">
-                        v1.4.0 is live in production
-                      </p>
-                    </div>
-                    <Button
-                      aria-label="Dismiss"
-                      variant="ghost"
-                      className="h-3.5 w-3.5 p-0 text-(--color-foreground-faint)"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="M18 6 6 18M6 6l12 12" />
-                      </svg>
-                    </Button>
-                  </div>
-                  <div
-                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 flex items-start gap-2 w-[90%]"
-                    style={{ boxShadow: "var(--shadow-sm)", opacity: 0.7 }}
-                  >
-                    <span
-                      className="h-5 w-5 rounded-full shrink-0"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    />
-                    <div
-                      className="flex-1 h-3 rounded-full"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    />
-                  </div>
-                </div>
-              }
+              preview={<ToastPreview />}
             />
           </div>
         </div>
