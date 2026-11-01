@@ -18,6 +18,7 @@
 // Usage: node scripts/check-contrast.mjs [--list]
 
 import fs from "node:fs";
+import { contrastRatio as contrast } from "../packages/tokens/lib/color.js";
 
 const MODES = ["Light", "Dark"];
 const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
@@ -56,50 +57,9 @@ function resolve(name, mode) {
   return value;
 }
 
-// ---------- color maths (OKLCH or hex to WCAG relative luminance) ----------
+// ---------- color maths: shared with the showcase and the Storybook theme ----------
 
-function toLinearSrgb(css) {
-  const hex = /^#([0-9a-f]{6})$/i.exec(css);
-  if (hex) {
-    return [0, 2, 4].map((i) => {
-      const c = parseInt(hex[1].slice(i, i + 2), 16) / 255;
-      return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-    });
-  }
-  const m =
-    /^oklch\(\s*([\d.]+)(%?)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+%?))?\s*\)$/i.exec(
-      css
-    );
-  if (!m) throw new Error(`unsupported color "${css}"`);
-  if (m[5] !== undefined && parseFloat(m[5]) !== 1 && m[5] !== "100%") {
-    throw new Error(`color "${css}" has alpha; contrast needs opaque colors`);
-  }
-  const L = m[2] ? parseFloat(m[1]) / 100 : parseFloat(m[1]);
-  const C = parseFloat(m[3]);
-  const h = (parseFloat(m[4]) * Math.PI) / 180;
-  const a = C * Math.cos(h);
-  const b = C * Math.sin(h);
-  const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
-  const mm = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3;
-  const s = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
-  const clamp = (v) => Math.min(1, Math.max(0, v));
-  return [
-    clamp(4.0767416621 * l - 3.3077115913 * mm + 0.2309699292 * s),
-    clamp(-1.2684380046 * l + 2.6097574011 * mm - 0.3413193965 * s),
-    clamp(-0.0041960863 * l - 0.7034186147 * mm + 1.707614701 * s),
-  ];
-}
-
-const luminance = (css) => {
-  const [r, g, b] = toLinearSrgb(css);
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-};
-
-export function contrast(foregroundCss, backgroundCss) {
-  const a = luminance(foregroundCss);
-  const b = luminance(backgroundCss);
-  return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
-}
+export { contrast };
 
 // Guard the maths: white on black is exactly 21:1, and a neutral grey of
 // lightness 0.5 has luminance 0.5^3, so against white it is 1.05 / 0.175 = 6.

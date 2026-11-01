@@ -19,6 +19,9 @@
 import { cache } from "react";
 import fs from "fs";
 import path from "path";
+import { findCssVar } from "@wyliedog/tokens/color";
+
+export { findCssVar };
 
 // Next.js sets process.cwd() to the app root (apps/showcase/); see the note in
 // showcase-metadata.ts about why __dirname is not used.
@@ -30,15 +33,6 @@ const TOKENS_DIST_DIR = path.resolve(
 const readCss = cache((file: string): string =>
   fs.readFileSync(path.join(TOKENS_DIST_DIR, file), "utf-8")
 );
-
-/** First `--name: value;` declaration in a stylesheet, or null. */
-export function findCssVar(css: string, name: string): string | null {
-  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const match = new RegExp(`(?:^|[\\s;{])${escaped}\\s*:\\s*([^;}]+);`).exec(
-    css
-  );
-  return match ? match[1].trim() : null;
-}
 
 /** Shape of a token entry in `@wyliedog/tokens/manifest.json`. */
 export interface ManifestToken {

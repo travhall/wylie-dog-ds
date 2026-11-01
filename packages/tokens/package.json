@@ -16,18 +16,24 @@
       "types": "./dist/css-vars.d.ts",
       "default": "./dist/css-vars.js"
     },
-    "./manifest.json": "./dist/manifest.json"
+    "./manifest.json": "./dist/manifest.json",
+    "./color": {
+      "types": "./lib/color.d.ts",
+      "default": "./lib/color.js"
+    },
+    "./color-modes.json": "./dist/color-modes.json"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "lib"
   ],
   "scripts": {
     "audit": "node scripts/audit-tokens.js",
     "audit:verbose": "node scripts/audit-tokens.js --verbose",
-    "build": "pnpm process-io && node style-dictionary.config.js && node scripts/generate-font-loaders.js && node scripts/generate-token-types.js",
+    "build": "pnpm process-io && node style-dictionary.config.js && node scripts/generate-mode-values.js && node scripts/generate-font-loaders.js && node scripts/generate-token-types.js",
     "build:tokens": "pnpm build",
     "clean": "rm -rf dist io/processed",
     "dev": "node scripts/watch-tokens.js",
@@ -37,7 +43,7 @@
     "report:coverage": "node scripts/coverage-matrix.mjs",
     "report:tokens": "node scripts/report-token-usage.mjs",
     "report:usage": "node scripts/analyze-component-usage.js",
-    "test:tokens": "node scripts/validate-tokens.js"
+    "test:tokens": "node scripts/validate-tokens.js && node --test \"lib/**/*.test.js\""
   },
   "dependencies": {
     "culori": "^4.0.2"
