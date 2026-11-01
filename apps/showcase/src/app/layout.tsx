@@ -100,7 +100,7 @@ export default function RootLayout({
               <span
                 className="grid h-7 w-7 place-items-center rounded-md"
                 style={{
-                  background: "var(--color-background-primary)",
+                  background: "var(--color-background-accent)",
                 }}
               >
                 <WylieDogLogo />
@@ -170,7 +170,7 @@ export default function RootLayout({
               <span
                 className="grid h-7 w-7 place-items-center rounded-md shrink-0"
                 style={{
-                  background: "var(--color-background-primary)",
+                  background: "var(--color-background-accent)",
                 }}
               >
                 <WylieDogLogo />
