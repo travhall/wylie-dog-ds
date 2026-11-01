@@ -186,4 +186,4 @@ The first pass chose dark text on mid-tone fills (`gray.950` on coral 600 and po
 
 ## Case study
 
-The primary colour change will be run through Figma and pushed to code to show the whole flow end to end, and written up in `documentation/case-studies/` using the template there. It is not written yet.
+The primary colour change was run through Figma and pushed to code to show the whole flow end to end. The write-up is a draft at [`documentation/case-studies/primary-colour-change/`](../case-studies/primary-colour-change/README.md), with before and after evidence next to it.
