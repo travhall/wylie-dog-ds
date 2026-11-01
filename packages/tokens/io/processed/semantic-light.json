@@ -1,7 +1,7 @@
 {
   "color.background.primary": {
     "$type": "color",
-    "$value": "{color.fiery-coral.600}",
+    "$value": "{color.fiery-coral.700}",
     "$description": "Solid fill for the main action colour. Pairs with foreground.primary."
   },
   "color.background.inverse": {
@@ -306,12 +306,12 @@
   },
   "color.background.primary-emphasis": {
     "$type": "color",
-    "$value": "{color.fiery-coral.500}",
+    "$value": "{color.fiery-coral.800}",
     "$description": "Stronger tone of the solid primary fill. Components use it for hover states; foreground.primary is readable on it."
   },
   "color.background.primary-intense": {
     "$type": "color",
-    "$value": "{color.fiery-coral.400}",
+    "$value": "{color.fiery-coral.900}",
     "$description": "Strongest tone of the solid primary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.primary is readable on it."
   },
   "color.background.danger-muted": {
@@ -376,32 +376,32 @@
   },
   "color.background.info": {
     "$type": "color",
-    "$value": "{color.polar-night.300}",
+    "$value": "{color.polar-night.400}",
     "$description": "Solid fill for informational messages (the info toast, info badge). Pairs with foreground.info."
   },
   "color.background.info-emphasis": {
     "$type": "color",
-    "$value": "{color.polar-night.200}",
+    "$value": "{color.polar-night.500}",
     "$description": "Stronger tone of the solid info fill. Components use it for hover states; foreground.info is readable on it."
   },
   "color.background.info-intense": {
     "$type": "color",
-    "$value": "{color.polar-night.100}",
+    "$value": "{color.polar-night.600}",
     "$description": "Strongest tone of the solid info fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.info is readable on it."
   },
   "color.background.secondary": {
     "$type": "color",
-    "$value": "{color.polar-night.300}",
+    "$value": "{color.polar-night.400}",
     "$description": "Solid fill of the secondary action (the Secondary button and badge). Pairs with foreground.secondary."
   },
   "color.background.secondary-emphasis": {
     "$type": "color",
-    "$value": "{color.polar-night.200}",
+    "$value": "{color.polar-night.500}",
     "$description": "Stronger tone of the solid secondary fill. Components use it for hover states; foreground.secondary is readable on it."
   },
   "color.background.secondary-intense": {
     "$type": "color",
-    "$value": "{color.polar-night.100}",
+    "$value": "{color.polar-night.600}",
     "$description": "Strongest tone of the solid secondary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.secondary is readable on it."
   },
   "color.background.accent": {
@@ -436,7 +436,7 @@
   },
   "color.foreground.primary": {
     "$type": "color",
-    "$value": "{color.gray.950}",
+    "$value": "{color.gray.50}",
     "$description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
   },
   "color.foreground.primary-muted": {
@@ -481,12 +481,12 @@
   },
   "color.foreground.info": {
     "$type": "color",
-    "$value": "{color.gray.950}",
+    "$value": "{color.gray.50}",
     "$description": "Text over the solid info fill. Readable on background.info and its emphasis and intense tones."
   },
   "color.foreground.secondary": {
     "$type": "color",
-    "$value": "{color.gray.950}",
+    "$value": "{color.gray.50}",
     "$description": "Text over the solid secondary fill. Readable on background.secondary and its emphasis and intense tones."
   },
   "color.foreground.accent": {

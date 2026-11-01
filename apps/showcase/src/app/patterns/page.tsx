@@ -1030,7 +1030,7 @@ export default function PatternsPage() {
                         <span
                           className="relative inline-flex h-4 w-7 items-center rounded-full"
                           style={{
-                            background: "var(--color-background-primary)",
+                            background: "var(--color-background-accent)",
                           }}
                         >
                           <span
@@ -1310,7 +1310,7 @@ export default function PatternsPage() {
                                 background:
                                   i === 2
                                     ? "var(--color-foreground-success-muted)"
-                                    : "var(--color-background-primary)",
+                                    : "var(--color-background-accent)",
                               }}
                             />
                           </div>
@@ -1412,7 +1412,7 @@ export default function PatternsPage() {
                     <span
                       className="grid h-4 w-4 place-items-center rounded"
                       style={{
-                        background: "var(--color-background-primary)",
+                        background: "var(--color-background-accent)",
                       }}
                     >
                       <svg
@@ -1422,7 +1422,7 @@ export default function PatternsPage() {
                         stroke="currentColor"
                         strokeWidth={2.4}
                         style={{
-                          color: "var(--color-foreground-inverse)",
+                          color: "var(--color-foreground-accent)",
                         }}
                       >
                         <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
@@ -1991,7 +1991,7 @@ export default function PatternsPage() {
                         className="w-full h-7 text-[0.6875rem] font-semibold"
                         style={{
                           boxShadow:
-                            "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 30%, transparent)",
+                            "0 0 0 2px var(--color-focus-halo), 0 0 0 4px var(--color-focus-ring)",
                         }}
                       >
                         Focused button
@@ -1999,9 +1999,9 @@ export default function PatternsPage() {
                       <div
                         className="flex items-center h-7 border rounded-md px-2 text-[0.6875rem] text-(--color-foreground-faint)"
                         style={{
-                          borderColor: "var(--color-border-primary)",
+                          borderColor: "var(--color-focus-ring)",
                           boxShadow:
-                            "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 22%, transparent)",
+                            "0 0 0 2px var(--color-focus-halo), 0 0 0 4px var(--color-focus-ring)",
                         }}
                       >
                         Focused input

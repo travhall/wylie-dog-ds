@@ -503,7 +503,7 @@ export default function ShowcasePage() {
                   <span
                     className="-mb-px border-b-2 px-3 py-2 font-medium"
                     style={{
-                      borderColor: "var(--color-border-primary)",
+                      borderColor: "var(--color-background-accent)",
                       color: "var(--color-foreground-default)",
                     }}
                   >
@@ -745,7 +745,7 @@ export default function ShowcasePage() {
                     <div
                       className="h-1.5 w-3/4 rounded-full"
                       style={{
-                        background: "var(--color-background-primary)",
+                        background: "var(--color-background-accent)",
                       }}
                     />
                     <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-muted)" />
@@ -903,7 +903,7 @@ export default function ShowcasePage() {
                       <div
                         className="h-1.5 w-1/2 rounded-full"
                         style={{
-                          background: "var(--color-background-primary)",
+                          background: "var(--color-background-accent)",
                         }}
                       />
                     </div>

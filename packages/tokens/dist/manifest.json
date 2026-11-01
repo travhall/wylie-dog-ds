@@ -2646,7 +2646,7 @@
           "background",
           "primary"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-background-primary)",
         "description": "Solid fill for the main action colour. Pairs with foreground.primary."
@@ -2766,7 +2766,7 @@
           "background",
           "primary-emphasis"
         ],
-        "value": "oklch(0.653 0.183 37.6)",
+        "value": "oklch(0.425 0.113 37.99)",
         "type": "color",
         "variable": "var(--color-background-primary-emphasis)",
         "description": "Stronger tone of the solid primary fill. Components use it for hover states; foreground.primary is readable on it."
@@ -2778,7 +2778,7 @@
           "background",
           "primary-intense"
         ],
-        "value": "oklch(0.709 0.147 38.43)",
+        "value": "oklch(0.354 0.091 38.04)",
         "type": "color",
         "variable": "var(--color-background-primary-intense)",
         "description": "Strongest tone of the solid primary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.primary is readable on it."
@@ -2934,7 +2934,7 @@
           "background",
           "info"
         ],
-        "value": "oklch(0.584 0.041 218.05)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-background-info)",
         "description": "Solid fill for informational messages (the info toast, info badge). Pairs with foreground.info."
@@ -2946,7 +2946,7 @@
           "background",
           "info-emphasis"
         ],
-        "value": "oklch(0.719 0.028 218.41)",
+        "value": "oklch(0.361 0.058 221.82)",
         "type": "color",
         "variable": "var(--color-background-info-emphasis)",
         "description": "Stronger tone of the solid info fill. Components use it for hover states; foreground.info is readable on it."
@@ -2958,7 +2958,7 @@
           "background",
           "info-intense"
         ],
-        "value": "oklch(0.813 0.019 219.02)",
+        "value": "oklch(0.34 0.054 222.07)",
         "type": "color",
         "variable": "var(--color-background-info-intense)",
         "description": "Strongest tone of the solid info fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.info is readable on it."
@@ -2970,7 +2970,7 @@
           "background",
           "secondary"
         ],
-        "value": "oklch(0.584 0.041 218.05)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-background-secondary)",
         "description": "Solid fill of the secondary action (the Secondary button and badge). Pairs with foreground.secondary."
@@ -2982,7 +2982,7 @@
           "background",
           "secondary-emphasis"
         ],
-        "value": "oklch(0.719 0.028 218.41)",
+        "value": "oklch(0.361 0.058 221.82)",
         "type": "color",
         "variable": "var(--color-background-secondary-emphasis)",
         "description": "Stronger tone of the solid secondary fill. Components use it for hover states; foreground.secondary is readable on it."
@@ -2994,7 +2994,7 @@
           "background",
           "secondary-intense"
         ],
-        "value": "oklch(0.813 0.019 219.02)",
+        "value": "oklch(0.34 0.054 222.07)",
         "type": "color",
         "variable": "var(--color-background-secondary-intense)",
         "description": "Strongest tone of the solid secondary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.secondary is readable on it."
@@ -3080,7 +3080,7 @@
           "foreground",
           "primary"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-foreground-primary)",
         "description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
@@ -3188,7 +3188,7 @@
           "foreground",
           "info"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-foreground-info)",
         "description": "Text over the solid info fill. Readable on background.info and its emphasis and intense tones."
@@ -3200,7 +3200,7 @@
           "foreground",
           "secondary"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-foreground-secondary)",
         "description": "Text over the solid secondary fill. Readable on background.secondary and its emphasis and intense tones."
@@ -3531,7 +3531,7 @@
           "default",
           "background"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-badge-default-background)",
         "description": "Fill of the default badge. Pairs with `badge.default.text`."
@@ -3543,7 +3543,7 @@
           "default",
           "text"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-badge-default-text)",
         "description": "Text colour of the default badge. Pairs with `badge.default.background`."
@@ -3555,7 +3555,7 @@
           "default",
           "border"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-badge-default-border)",
         "description": "Border colour of the default badge."
@@ -3567,7 +3567,7 @@
           "secondary",
           "background"
         ],
-        "value": "oklch(0.584 0.041 218.05)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background)",
         "description": "Fill of the secondary badge. Pairs with `badge.secondary.text`."
@@ -3579,7 +3579,7 @@
           "secondary",
           "text"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-badge-secondary-text)",
         "description": "Text colour of the secondary badge. Pairs with `badge.secondary.background`."
@@ -3591,7 +3591,7 @@
           "secondary",
           "border"
         ],
-        "value": "oklch(0.584 0.041 218.05)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-badge-secondary-border)",
         "description": "Border colour of the secondary badge."
@@ -3899,7 +3899,7 @@
           "default",
           "background-hover"
         ],
-        "value": "oklch(0.653 0.183 37.6)",
+        "value": "oklch(0.425 0.113 37.99)",
         "type": "color",
         "variable": "var(--color-badge-default-background-hover)",
         "description": "Fill of an interactive default badge while hovered. Applies only when the badge is interactive."
@@ -3911,7 +3911,7 @@
           "default",
           "background-active"
         ],
-        "value": "oklch(0.709 0.147 38.43)",
+        "value": "oklch(0.354 0.091 38.04)",
         "type": "color",
         "variable": "var(--color-badge-default-background-active)",
         "description": "Fill of an interactive default badge while pressed. Applies only when the badge is interactive."
@@ -3923,7 +3923,7 @@
           "secondary",
           "background-hover"
         ],
-        "value": "oklch(0.719 0.028 218.41)",
+        "value": "oklch(0.361 0.058 221.82)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background-hover)",
         "description": "Fill of the secondary badge while hovered."
@@ -3935,7 +3935,7 @@
           "secondary",
           "background-active"
         ],
-        "value": "oklch(0.813 0.019 219.02)",
+        "value": "oklch(0.34 0.054 222.07)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background-active)",
         "description": "Fill of an interactive secondary badge while pressed. Applies only when the badge is interactive."
@@ -4249,7 +4249,7 @@
           "primary",
           "background"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-button-primary-background)",
         "description": "Fill of the primary button. Pairs with `button.primary.text`."
@@ -4261,7 +4261,7 @@
           "primary",
           "background-hover"
         ],
-        "value": "oklch(0.653 0.183 37.6)",
+        "value": "oklch(0.425 0.113 37.99)",
         "type": "color",
         "variable": "var(--color-button-primary-background-hover)",
         "description": "Primary button fill while hovered, one step stronger than the resting fill."
@@ -4273,7 +4273,7 @@
           "primary",
           "background-active"
         ],
-        "value": "oklch(0.709 0.147 38.43)",
+        "value": "oklch(0.354 0.091 38.04)",
         "type": "color",
         "variable": "var(--color-button-primary-background-active)",
         "description": "Fill of the primary button while pressed."
@@ -4285,7 +4285,7 @@
           "primary",
           "text"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-button-primary-text)",
         "description": "Label colour on the primary button. Pairs with `button.primary.background`."
@@ -4297,7 +4297,7 @@
           "primary",
           "border"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-button-primary-border)",
         "description": "Border colour of the primary button."
@@ -4309,7 +4309,7 @@
           "secondary",
           "background"
         ],
-        "value": "oklch(0.584 0.041 218.05)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-button-secondary-background)",
         "description": "Fill of the secondary button. Pairs with `button.secondary.text`."
@@ -4321,7 +4321,7 @@
           "secondary",
           "background-hover"
         ],
-        "value": "oklch(0.719 0.028 218.41)",
+        "value": "oklch(0.361 0.058 221.82)",
         "type": "color",
         "variable": "var(--color-button-secondary-background-hover)",
         "description": "Fill of the secondary button while hovered."
@@ -4333,7 +4333,7 @@
           "secondary",
           "background-active"
         ],
-        "value": "oklch(0.813 0.019 219.02)",
+        "value": "oklch(0.34 0.054 222.07)",
         "type": "color",
         "variable": "var(--color-button-secondary-background-active)",
         "description": "Fill of the secondary button while pressed."
@@ -4345,7 +4345,7 @@
           "secondary",
           "text"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-button-secondary-text)",
         "description": "Text colour of the secondary button. Pairs with `button.secondary.background`."
@@ -4357,7 +4357,7 @@
           "secondary",
           "border"
         ],
-        "value": "oklch(0.584 0.041 218.05)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-button-secondary-border)",
         "description": "Outline of the secondary button, in the default border tone."
@@ -10360,7 +10360,7 @@
           "info",
           "border"
         ],
-        "value": "oklch(0.584 0.041 218.05)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-toast-info-border)",
         "description": "Border colour of the info toast."
@@ -10372,7 +10372,7 @@
           "info",
           "background"
         ],
-        "value": "oklch(0.584 0.041 218.05)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-toast-info-background)",
         "description": "Fill of the info toast. Pairs with `toast.info.text`."
@@ -10384,7 +10384,7 @@
           "info",
           "text"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-toast-info-text)",
         "description": "Text colour on the info toast. Pairs with `toast.info.background`."
@@ -14348,7 +14348,7 @@
           "gradient",
           "from"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-section-hero-gradient-from)",
         "description": "Colour stop (from) of the hero section background gradient."
@@ -14676,7 +14676,7 @@
           "section-features",
           "icon-background"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.508 0.139 37.81)",
         "type": "color",
         "variable": "var(--color-section-features-icon-background)",
         "description": "Fill of the features section icon. Pairs with `section-features.icon-text`."
