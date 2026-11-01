@@ -40,6 +40,8 @@ export interface SectionHeroProps
   };
   image?: React.ReactNode;
   imagePosition?: "left" | "right";
+  /** Heading level of the title. Defaults to 1; use a lower level when the page already has an h1. */
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
@@ -54,12 +56,14 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
       secondaryAction,
       image,
       imagePosition = "right",
+      headingLevel = 1,
       ...props
     },
     ref
   ) => {
     const headingId = React.useId();
     const isCentered = variant === "centered";
+    const Heading = `h${headingLevel}` as "h1";
     const hasImage = !!image;
 
     return (
@@ -98,7 +102,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
               )}
 
               {/* Title — id ties this heading to the section landmark via aria-labelledby */}
-              <h1
+              <Heading
                 id={headingId}
                 className={cn(
                   "text-(length:--font-size-section-hero-title-font-size-sm) md:text-(length:--font-size-section-hero-title-font-size-md) lg:text-(length:--font-size-section-hero-title-font-size-lg) font-(--font-weight-section-hero-title-font-weight) tracking-(--space-section-hero-title-tracking)",
@@ -106,7 +110,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
                 )}
               >
                 {title}
-              </h1>
+              </Heading>
 
               {/* Description */}
               {description && (

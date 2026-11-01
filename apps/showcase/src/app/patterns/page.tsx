@@ -1,6 +1,15 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
+import {
+  SiteHeaderPreview,
+  SiteFooterPreview,
+  SectionHeroPreview,
+  SectionFeaturesPreview,
+  PageLayoutPreview,
+  CardGridPreview,
+  FeatureGridPreview,
+} from "./composition-previews";
 import manifest from "@wyliedog/tokens/manifest.json";
 import {
   getShowcaseMeta,
@@ -17,6 +26,7 @@ function PatCard({
   story,
   full = false,
   decorative = false,
+  live = false,
 }: {
   title: string;
   desc: string;
@@ -25,6 +35,8 @@ function PatCard({
   story: string;
   full?: boolean;
   decorative?: boolean;
+  /** Real components: not a mock, so no `data-mock` and no `aria-hidden`. */
+  live?: boolean;
 }) {
   return (
     <article
@@ -47,9 +59,9 @@ function PatCard({
           }}
         />
         <div
-          data-mock
-          aria-hidden={decorative || undefined}
-          className="relative flex items-center justify-center"
+          data-mock={live ? undefined : true}
+          aria-hidden={live ? undefined : decorative || undefined}
+          className={`relative flex items-center justify-center${live ? " w-full" : ""}`}
         >
           {preview}
         </div>
@@ -633,170 +645,21 @@ export default function PatternsPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
-              decorative
+              live
               story="card-grid"
               title="Card Grid"
               desc="Responsive grid of cards with default, all-variants and interactive examples. CardGrid takes a column count per breakpoint."
               tags={["CardGrid", "Card", "Badge", "Button"]}
-              preview={
-                <div className="space-y-2 max-w-105 mx-auto">
-                  <div className="flex items-center justify-between text-[0.625rem]">
-                    <span className="font-mono text-(--color-foreground-faint)">
-                      Showing 3 of 248
-                    </span>
-                    <span className="inline-flex h-5 items-center rounded border border-(--color-border-default) bg-(--color-background-default) px-1.5 font-mono text-[0.5625rem] text-(--color-foreground-muted)">
-                      grid · 3 cols
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    {[
-                      {
-                        name: "Helios Workspace",
-                        members: 12,
-                        status: "active",
-                        statusColor: "var(--color-foreground-success-muted)",
-                        price: "$42/mo",
-                        bg: "linear-gradient(135deg, var(--color-background-primary-muted), var(--color-background-primary))",
-                      },
-                      {
-                        name: "Atlas Studio",
-                        members: 5,
-                        status: "active",
-                        statusColor: "var(--color-foreground-success-muted)",
-                        price: "$24/mo",
-                        bg: "linear-gradient(135deg, var(--color-background-info-muted), var(--color-foreground-info-muted))",
-                      },
-                      {
-                        name: "Northwind Co.", //cSpell:ignore Northwind
-                        members: 28,
-                        status: "trial",
-                        statusColor: "var(--color-foreground-warning-muted)",
-                        price: "14d left",
-                        bg: "linear-gradient(135deg, var(--color-background-success-muted), var(--color-background-success))",
-                      },
-                    ].map(
-                      ({ name, members, status, statusColor, price, bg }) => (
-                        <div
-                          key={name}
-                          className="rounded-md bg-(--color-background-default) border border-(--color-border-default) p-2.5"
-                        >
-                          <div
-                            className="aspect-4/3 rounded mb-2"
-                            style={{ background: bg }}
-                          />
-                          <p className="text-[0.625rem] font-semibold leading-tight text-(--color-foreground-default)">
-                            {name}
-                          </p>
-                          <p className="font-mono text-[0.5625rem] text-(--color-foreground-faint) mt-0.5">
-                            {members} members
-                          </p>
-                          <div className="mt-1.5 flex items-center justify-between">
-                            <span
-                              className="inline-flex items-center gap-0.5 rounded-full px-1 py-px font-mono text-[0.5rem]"
-                              style={{
-                                background: statusColor.replace(
-                                  "--color-foreground-",
-                                  "--color-background-"
-                                ),
-                                color: statusColor,
-                              }}
-                            >
-                              ● {status}
-                            </span>
-                            <span className="font-mono text-[0.5rem] text-(--color-foreground-faint)">
-                              {price}
-                            </span>
-                          </div>
-                        </div>
-                      )
-                    )}
-                  </div>
-                  <div className="flex items-center justify-center gap-1 pt-1">
-                    <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                      1
-                    </span>
-                    <span
-                      className="grid h-4 w-4 place-items-center rounded font-mono text-[0.5625rem]"
-                      style={{
-                        background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-primary)",
-                      }}
-                    >
-                      2
-                    </span>
-                    <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                      3 … 83
-                    </span>
-                  </div>
-                </div>
-              }
+              preview={<CardGridPreview />}
             />
 
             <PatCard
-              decorative
+              live
               story="feature-grid"
               title="Feature Grid"
               desc="A grid of features with icons, titles and short descriptions, with several column configurations."
               tags={["FeatureGrid"]}
-              preview={
-                <div className="grid grid-cols-2 gap-2 max-w-105 mx-auto">
-                  {[
-                    {
-                      color: "var(--color-foreground-primary-muted)",
-                      icon: "M13 2 3 14h9l-1 8 10-12h-9z",
-                      title: "Lightning fast",
-                      sub: "Edge-rendered. 38ms p95.",
-                    },
-                    {
-                      color: "var(--color-foreground-success-muted)",
-                      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-                      title: "SOC 2 Type II",
-                      sub: "Audited yearly.",
-                    },
-                    {
-                      color: "var(--color-foreground-warning-muted)",
-                      icon: "M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 7v5l3 2",
-                      title: "24/7 monitoring",
-                      sub: "Status & alerts built in.",
-                    },
-                    {
-                      color: "var(--color-foreground-danger-muted)",
-                      icon: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
-                      title: "Human support",
-                      sub: "Median reply 4 min.",
-                    },
-                  ].map(({ color, icon, title, sub }) => (
-                    <div
-                      key={title}
-                      className="rounded-md bg-(--color-background-default) border border-(--color-border-default) p-3"
-                    >
-                      <span
-                        className="grid h-7 w-7 place-items-center rounded"
-                        style={{
-                          background: `color-mix(in oklch, ${color} 14%, transparent)`,
-                          color,
-                        }}
-                      >
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="h-4 w-4"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path d={icon} />
-                        </svg>
-                      </span>
-                      <p className="mt-2 text-[0.6875rem] font-semibold leading-tight text-(--color-foreground-default)">
-                        {title}
-                      </p>
-                      <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
-                        {sub}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              }
+              preview={<FeatureGridPreview />}
             />
           </div>
         </div>
@@ -1392,160 +1255,23 @@ export default function PatternsPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
-              decorative
+              live
+              full
               story="site-header"
               title="Site Header"
               desc="Header with logo, navigation links and actions, sticky with a backdrop blur; default and transparent variants. Used as the header on this site."
               tags={["SiteHeader", "Button"]}
-              preview={
-                <div
-                  className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
-                  style={{ boxShadow: "var(--shadow-sm)" }}
-                >
-                  <div
-                    className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-default)"
-                    style={{
-                      background:
-                        "color-mix(in oklch, var(--color-background-default) 80%, transparent)",
-                    }}
-                  >
-                    <span
-                      className="grid h-4 w-4 place-items-center rounded"
-                      style={{
-                        background: "var(--color-background-accent)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.4}
-                        style={{
-                          color: "var(--color-foreground-accent)",
-                        }}
-                      >
-                        <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
-                      </svg>
-                    </span>
-                    <span className="font-serif text-[0.6875rem] font-semibold text-(--color-foreground-default)">
-                      Wylie Dog
-                    </span>
-                    <nav className="ml-3 flex items-center gap-0.5 text-[0.5625rem]">
-                      <span
-                        className="rounded px-1.5 py-0.5 font-medium text-(--color-foreground-default)"
-                        style={{
-                          background: "var(--color-background-muted)",
-                        }}
-                      >
-                        Home
-                      </span>
-                      <span className="rounded px-1.5 py-0.5 text-(--color-foreground-muted)">
-                        Docs
-                      </span>
-                      <span className="rounded px-1.5 py-0.5 text-(--color-foreground-muted)">
-                        Pricing
-                      </span>
-                    </nav>
-                    <div className="ml-auto flex items-center gap-1">
-                      <span className="inline-flex h-4 items-center gap-1 rounded border border-(--color-border-default) px-1 font-mono text-[0.5rem] text-(--color-foreground-faint)">
-                        ⌘K
-                      </span>
-                    </div>
-                  </div>
-                  <div className="px-3 py-4 bg-(--color-background-muted)">
-                    <div className="space-y-1.5">
-                      <div className="h-2 w-3/4 rounded-full bg-(--color-background-emphasis)" />
-                      <div className="h-2 w-full rounded-full bg-(--color-background-emphasis)" />
-                      <div className="h-2 w-2/3 rounded-full bg-(--color-background-emphasis)" />
-                    </div>
-                    <div className="mt-2 font-mono text-[0.5625rem] text-(--color-foreground-faint) flex items-center gap-1">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="M19 9l-7 7-7-7" />
-                      </svg>
-                      sticky · blurs on scroll
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<SiteHeaderPreview />}
             />
 
             <PatCard
-              decorative
+              live
+              full
               story="site-footer"
               title="Site Footer"
               desc="Footer with logo, navigation columns, social links and copyright; default and minimal variants with a responsive grid."
               tags={["SiteFooter"]}
-              preview={
-                <div
-                  className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
-                  style={{ boxShadow: "var(--shadow-sm)" }}
-                >
-                  <div className="p-3">
-                    <div className="grid grid-cols-4 gap-3">
-                      <div className="col-span-1">
-                        <span
-                          className="grid h-4 w-4 place-items-center rounded"
-                          style={{
-                            background: "var(--color-background-primary)",
-                          }}
-                        />
-                        <p className="mt-1.5 font-serif text-[0.625rem] font-semibold text-(--color-foreground-default)">
-                          Wylie Dog
-                        </p>
-                        <p className="text-[0.5rem] text-(--color-foreground-faint) mt-0.5 leading-tight">
-                          The shared system for everything we ship.
-                        </p>
-                      </div>
-                      {[
-                        {
-                          heading: "Product",
-                          items: ["Tokens", "Components", "Patterns"],
-                        },
-                        {
-                          heading: "Tools",
-                          items: ["Storybook", "Figma plugin", "CLI"],
-                        },
-                        {
-                          heading: "Legal",
-                          items: ["Privacy", "Terms", "Security"],
-                        },
-                      ].map(({ heading, items }) => (
-                        <div key={heading}>
-                          <p className="font-mono text-[0.4375rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                            {heading}
-                          </p>
-                          <ul className="mt-1 space-y-0.5 text-[0.5625rem] text-(--color-foreground-muted)">
-                            {items.map((i) => (
-                              <li key={i}>{i}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 pt-2 border-t border-(--color-border-default) flex items-center justify-between">
-                      <span className="font-mono text-[0.5rem] text-(--color-foreground-faint)">
-                        © 2026 Wylie Dog
-                      </span>
-                      <span className="inline-flex items-center gap-1 font-mono text-[0.5rem] text-(--color-foreground-faint)">
-                        <span
-                          className="h-1 w-1 rounded-full"
-                          style={{
-                            background: "var(--color-foreground-success-muted)",
-                          }}
-                        />
-                        All systems operational
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<SiteFooterPreview />}
             />
           </div>
         </div>
@@ -1565,210 +1291,35 @@ export default function PatternsPage() {
             title="Page compositions"
             desc="Pre-assembled marketing surfaces — the big building blocks of a public page. Each section composes lower-order patterns; the page composition wires them together end-to-end."
           />
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
-              decorative
+              live
+              full
               story="section-hero"
               title="Section: Hero"
               desc="Headline, description, action buttons and an optional badge or image, in default, gradient and centered layouts."
               tags={["SectionHero"]}
-              preview={
-                <div
-                  className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
-                  style={{ boxShadow: "var(--shadow-sm)" }}
-                >
-                  <div
-                    className="relative p-4"
-                    style={{
-                      background:
-                        "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-background-primary) 22%, transparent) 0%, transparent 60%)",
-                    }}
-                  >
-                    <span className="inline-flex items-center gap-1 rounded-full border border-(--color-border-default) bg-(--color-background-default) px-1.5 py-0.5 font-mono text-[0.5rem] text-(--color-foreground-muted)">
-                      <span
-                        className="h-1 w-1 rounded-full"
-                        style={{
-                          background: "var(--color-foreground-success-muted)",
-                        }}
-                      />
-                      v1.4 just shipped
-                    </span>
-                    <p className="mt-2 font-serif text-base font-semibold leading-[1.1] text-(--color-foreground-default)">
-                      Build faster.
-                      <br />
-                      Ship calmer.
-                    </p>
-                    <p className="text-[0.5625rem] text-(--color-foreground-muted) mt-1.5 leading-tight">
-                      The shared system that finally keeps brand and product in
-                      sync.
-                    </p>
-                    <div className="mt-2 flex gap-1">
-                      <span
-                        className="inline-flex h-5 items-center rounded-md px-2 text-[0.5625rem] font-semibold text-(--color-foreground-primary)"
-                        style={{
-                          background: "var(--color-background-primary)",
-                        }}
-                      >
-                        Start free
-                      </span>
-                      <span className="inline-flex h-5 items-center rounded-md border border-(--color-border-default) px-2 text-[0.5625rem] font-semibold text-(--color-foreground-default)">
-                        Docs
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<SectionHeroPreview />}
             />
 
             <PatCard
-              decorative
+              live
+              full
               story="section-features"
               title="Section: Features"
               desc="Features section built on FeatureGrid, with optional badges, several column configurations and style variants."
               tags={["SectionFeatures"]}
-              preview={
-                <div
-                  className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) p-3"
-                  style={{ boxShadow: "var(--shadow-sm)" }}
-                >
-                  <p className="font-mono text-[0.5rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                    Why teams choose us
-                  </p>
-                  <p className="mt-1 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
-                    Three pillars,
-                    <br />
-                    one promise.
-                  </p>
-                  <div className="mt-3 space-y-2">
-                    {[
-                      {
-                        color: "var(--color-foreground-primary-muted)",
-                        label: "Token-driven",
-                        sub: "Change one variable, every surface updates.",
-                      },
-                      {
-                        color: "var(--color-foreground-success-muted)",
-                        label: "Accessible by default",
-                        sub: "WCAG 2.2 AA across every state.",
-                      },
-                      {
-                        color: "var(--color-foreground-warning-muted)",
-                        label: "Typed end-to-end",
-                        sub: "No prop guesswork in your IDE.",
-                      },
-                    ].map(({ color, label, sub }) => (
-                      <div key={label} className="flex items-start gap-2">
-                        <span
-                          className="grid h-5 w-5 shrink-0 place-items-center rounded"
-                          style={{
-                            background: `color-mix(in oklch, ${color} 14%, transparent)`,
-                            color,
-                          }}
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            className="h-3 w-3"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2.4}
-                          >
-                            <path d="m5 12 5 5L20 7" />
-                          </svg>
-                        </span>
-                        <div>
-                          <p className="text-[0.625rem] font-semibold leading-tight text-(--color-foreground-default)">
-                            {label}
-                          </p>
-                          <p className="text-[0.5625rem] text-(--color-foreground-faint) leading-tight">
-                            {sub}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              }
+              preview={<SectionFeaturesPreview />}
             />
 
             <PatCard
-              decorative
+              live
+              full
               story="page-layout"
               title="Page Layout"
               desc="Full-page layout with header, footer, sidebar and main content, in several width variants with a left or right sidebar."
               tags={["PageLayout", "SiteHeader", "SiteFooter", "Button"]}
-              preview={
-                <div
-                  className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
-                  style={{ boxShadow: "var(--shadow-sm)" }}
-                >
-                  {/* header strip */}
-                  <div className="h-3 border-b border-(--color-border-default) flex items-center px-2 gap-1 bg-(--color-background-muted)">
-                    <span className="h-1 w-6 rounded-full bg-(--color-background-emphasis)" />
-                    <span className="ml-auto h-1 w-3 rounded-full bg-(--color-background-emphasis)" />
-                  </div>
-                  {/* hero */}
-                  <div
-                    className="p-2 border-b border-(--color-border-default)"
-                    style={{
-                      background:
-                        "radial-gradient(ellipse at top, color-mix(in oklch, var(--color-background-primary) 18%, transparent), transparent)",
-                    }}
-                  >
-                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-emphasis)" />
-                    <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-emphasis)" />
-                    <div className="mt-1.5 flex gap-1">
-                      <span
-                        className="h-2 w-8 rounded-sm"
-                        style={{
-                          background: "var(--color-background-primary)",
-                        }}
-                      />
-                      <span className="h-2 w-6 rounded-sm bg-(--color-background-emphasis)" />
-                    </div>
-                  </div>
-                  {/* features */}
-                  <div className="grid grid-cols-3 gap-1 p-2 border-b border-(--color-border-default)">
-                    {[
-                      "var(--color-background-primary)",
-                      "var(--color-foreground-success-muted)",
-                      "var(--color-foreground-warning-muted)",
-                    ].map((color, i) => (
-                      <div
-                        key={i}
-                        className="rounded border border-(--color-border-default) p-1.5 space-y-1"
-                      >
-                        <span
-                          className="block h-2 w-2 rounded"
-                          style={{ background: color }}
-                        />
-                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-emphasis)" />
-                        <div className="h-1 w-full rounded-full bg-(--color-background-emphasis)" />
-                      </div>
-                    ))}
-                  </div>
-                  {/* cta */}
-                  <div className="p-2 border-b border-(--color-border-default) bg-(--color-background-muted)">
-                    <div className="rounded border border-(--color-border-default) bg-(--color-background-default) p-1.5 flex items-center justify-between">
-                      <div className="h-1.5 w-16 rounded-full bg-(--color-background-emphasis)" />
-                      <span
-                        className="h-2.5 w-8 rounded-sm"
-                        style={{
-                          background: "var(--color-background-primary)",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  {/* footer */}
-                  <div className="p-2 grid grid-cols-4 gap-1">
-                    {[0, 1, 2, 3].map((i) => (
-                      <div
-                        key={i}
-                        className="h-1 rounded-full bg-(--color-background-emphasis)"
-                      />
-                    ))}
-                  </div>
-                </div>
-              }
+              preview={<PageLayoutPreview />}
             />
           </div>
         </div>
