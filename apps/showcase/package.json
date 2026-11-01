@@ -12,6 +12,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/besley": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
     "@wyliedog/tokens": "workspace:*",
     "@wyliedog/ui": "workspace:*",
     "lucide-react": "^1.60.0",

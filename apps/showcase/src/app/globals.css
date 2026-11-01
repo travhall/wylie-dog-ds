@@ -1,6 +1,16 @@
 @import "@wyliedog/ui/styles";
 @import "tailwindcss";
 
+/*
+ * Brand fonts are self-hosted through @fontsource (imported in layout.tsx), so the
+ * build never fetches from Google. The design system reads these three variables.
+ */
+:root {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Besley", ui-serif, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
 /* prototype/ holds reference HTML whose class names are code samples. Without
    this, Tailwind generates CSS rules for them that no page uses. */
 @source not "../../prototype";

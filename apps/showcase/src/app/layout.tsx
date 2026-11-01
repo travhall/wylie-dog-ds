@@ -3,7 +3,20 @@ import Link from "next/link";
 import { Button, buttonVariants } from "@wyliedog/ui/button";
 import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
 import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
-import { fontVariables } from "@/lib/fonts";
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/manrope/700.css";
+import "@fontsource/besley/500.css";
+import "@fontsource/besley/600.css";
+import "@fontsource/besley/700.css";
+import "@fontsource/besley/500-italic.css";
+import "@fontsource/besley/600-italic.css";
+import "@fontsource/besley/700-italic.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/600.css";
+import "@fontsource/jetbrains-mono/700.css";
 import { WylieDogLogo } from "./wyliedoglogo";
 import { MobileNav } from "./mobile-nav";
 import { NavLink } from "./nav-link";
@@ -90,7 +103,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fontVariables} font-sans min-h-screen antialiased bg-(--color-background-default) text-(--color-foreground-default)`}
+        className={`font-sans min-h-screen antialiased bg-(--color-background-default) text-(--color-foreground-default)`}
       >
         <SiteHeader
           size="sm"
