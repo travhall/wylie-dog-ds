@@ -109,6 +109,16 @@ describe("Alert", () => {
       expect(alert).toHaveAttribute("aria-live", "polite");
     });
 
+    it("should have polite aria-live for info", () => {
+      render(
+        <Alert variant="info">
+          <AlertDescription>Info</AlertDescription>
+        </Alert>
+      );
+      const alert = screen.getByRole("status");
+      expect(alert).toHaveAttribute("aria-live", "polite");
+    });
+
     it("should have off aria-live for default", () => {
       render(
         <Alert variant="default">
@@ -423,6 +433,7 @@ describe("Alert", () => {
         "destructive",
         "warning",
         "success",
+        "info",
       ] as const;
       variants.forEach((variant) => {
         const { unmount } = render(

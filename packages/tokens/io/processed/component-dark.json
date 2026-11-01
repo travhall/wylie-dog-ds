@@ -16,17 +16,17 @@
   },
   "badge.secondary.background": {
     "$type": "color",
-    "$value": "{color.background.emphasis}",
+    "$value": "{color.background.secondary}",
     "$description": "Fill of the secondary badge. Pairs with `badge.secondary.text`."
   },
   "badge.secondary.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}",
+    "$value": "{color.foreground.secondary}",
     "$description": "Text colour of the secondary badge. Pairs with `badge.secondary.background`."
   },
   "badge.secondary.border": {
     "$type": "color",
-    "$value": "{color.border.muted}",
+    "$value": "{color.background.secondary}",
     "$description": "Border colour of the secondary badge."
   },
   "badge.success.background": {
@@ -181,27 +181,27 @@
   },
   "button.secondary.background": {
     "$type": "color",
-    "$value": "{color.background.muted}",
+    "$value": "{color.background.secondary}",
     "$description": "Fill of the secondary button. Pairs with `button.secondary.text`."
   },
   "button.secondary.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}",
+    "$value": "{color.background.secondary-emphasis}",
     "$description": "Fill of the secondary button while hovered."
   },
   "button.secondary.background-active": {
     "$type": "color",
-    "$value": "{color.background.intense}",
+    "$value": "{color.background.secondary-intense}",
     "$description": "Fill of the secondary button while pressed."
   },
   "button.secondary.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}",
+    "$value": "{color.foreground.secondary}",
     "$description": "Text colour of the secondary button. Pairs with `button.secondary.background`."
   },
   "button.secondary.border": {
     "$type": "color",
-    "$value": "{color.border.default}",
+    "$value": "{color.background.secondary}",
     "$description": "Outline of the secondary button, in the default border tone."
   },
   "button.outline.background": {
@@ -499,6 +499,21 @@
     "$value": "{color.foreground.success-muted}",
     "$description": "Text colour of the success alert. Pairs with `alert.success.background`."
   },
+  "alert.info.background": {
+    "$type": "color",
+    "$value": "{color.background.info-muted}",
+    "$description": "Fill of the info alert. Pairs with `alert.info.text`."
+  },
+  "alert.info.border": {
+    "$type": "color",
+    "$value": "{color.border.info}",
+    "$description": "Border colour of the info alert."
+  },
+  "alert.info.text": {
+    "$type": "color",
+    "$value": "{color.foreground.info-muted}",
+    "$description": "Text colour of the info alert. Pairs with `alert.info.background`."
+  },
   "menubar.border": {
     "$type": "color",
     "$value": "{color.border.default}",
@@ -711,12 +726,12 @@
   },
   "calendar.day-selected": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Fill of the calendar day when selected. Pairs with `calendar.day-text-selected`."
   },
   "calendar.day-text-selected": {
     "$type": "color",
-    "$value": "{color.foreground.primary}",
+    "$value": "{color.foreground.accent}",
     "$description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`."
   },
   "accordion.border": {
@@ -936,7 +951,7 @@
   },
   "pagination.active": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Fill of the page link for the current page. Pairs with `pagination.text-active`."
   },
   "pagination.text": {
@@ -946,7 +961,7 @@
   },
   "pagination.text-active": {
     "$type": "color",
-    "$value": "{color.foreground.primary}",
+    "$value": "{color.foreground.accent}",
     "$description": "Text colour of the page link for the current page. Pairs with `pagination.active`."
   },
   "pagination.text-hover": {
@@ -976,7 +991,7 @@
   },
   "progress.default-fill": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Fill of the progress bar in its default variant."
   },
   "progress.destructive-fill": {
@@ -996,7 +1011,7 @@
   },
   "radio.background-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Fill of the radio when checked."
   },
   "radio.border": {
@@ -1006,12 +1021,12 @@
   },
   "radio.border-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Border colour of the radio when checked."
   },
   "radio.indicator": {
     "$type": "color",
-    "$value": "{color.foreground.primary}",
+    "$value": "{color.foreground.accent}",
     "$description": "Colour of the dot inside the selected radio."
   },
   "resizable.handle": {
@@ -1041,7 +1056,7 @@
   },
   "slider.range": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Fill of the filled part of the slider track, from the start to the thumb."
   },
   "slider.thumb": {
@@ -1051,7 +1066,7 @@
   },
   "slider.thumb-border": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Border colour of the slider thumb."
   },
   "slider.track": {
@@ -1116,7 +1131,7 @@
   },
   "toggle.pressed": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Fill of the toggle when pressed (on). Pairs with `toggle.text-pressed`."
   },
   "toggle.text": {
@@ -1131,7 +1146,7 @@
   },
   "toggle.text-pressed": {
     "$type": "color",
-    "$value": "{color.foreground.primary}",
+    "$value": "{color.foreground.accent}",
     "$description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`."
   },
   "tooltip.background": {
@@ -2154,6 +2169,21 @@
     "$value": "{color.foreground.success}",
     "$description": "Text colour on the success toast. Pairs with `toast.success.background`."
   },
+  "toast.info.border": {
+    "$type": "color",
+    "$value": "{color.background.info}",
+    "$description": "Border colour of the info toast."
+  },
+  "toast.info.background": {
+    "$type": "color",
+    "$value": "{color.background.info}",
+    "$description": "Fill of the info toast. Pairs with `toast.info.text`."
+  },
+  "toast.info.text": {
+    "$type": "color",
+    "$value": "{color.foreground.info}",
+    "$description": "Text colour on the info toast. Pairs with `toast.info.background`."
+  },
   "toast.warning.text": {
     "$type": "color",
     "$value": "{color.foreground.warning}",
@@ -2821,12 +2851,12 @@
   },
   "badge.secondary.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}",
+    "$value": "{color.background.secondary-emphasis}",
     "$description": "Fill of the secondary badge while hovered."
   },
   "badge.secondary.background-active": {
     "$type": "color",
-    "$value": "{color.background.intense}",
+    "$value": "{color.background.secondary-intense}",
     "$description": "Fill of an interactive secondary badge while pressed. Applies only when the badge is interactive."
   },
   "badge.success.background-hover": {
@@ -3156,7 +3186,7 @@
   },
   "tabs.trigger.indicator-color": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Colour of the underline that marks the selected tab."
   },
   "checkbox.focus-ring.width": {
@@ -3186,7 +3216,7 @@
   },
   "switch.track.background-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Track fill when the switch is on."
   },
   "switch.track.background-unchecked": {
@@ -3486,17 +3516,17 @@
   },
   "checkbox.background-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Fill of a checked or indeterminate checkbox. Pairs with `checkbox.text-checked`."
   },
   "checkbox.text-checked": {
     "$type": "color",
-    "$value": "{color.foreground.primary}",
+    "$value": "{color.foreground.accent}",
     "$description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
   },
   "checkbox.border-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}",
+    "$value": "{color.background.accent}",
     "$description": "Border colour of the checkbox when checked."
   },
   "checkbox.error-border": {

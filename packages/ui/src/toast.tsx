@@ -23,6 +23,7 @@ export const toastVariants = cva(
           "border-(--color-toast-success-border) bg-(--color-toast-success-background) text-(--color-toast-success-text)",
         warning:
           "border-(--color-toast-warning-border) bg-(--color-toast-warning-background) text-(--color-toast-warning-text)",
+        info: "border-(--color-toast-info-border) bg-(--color-toast-info-background) text-(--color-toast-info-text)",
       },
     },
     defaultVariants: {
@@ -138,7 +139,7 @@ type ToastData = {
   id: string;
   title?: string;
   description?: string;
-  variant?: "default" | "destructive" | "warning" | "success";
+  variant?: "default" | "destructive" | "warning" | "success" | "info";
   duration?: number;
 };
 

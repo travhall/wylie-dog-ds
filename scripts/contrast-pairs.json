@@ -25,6 +25,7 @@
       "backgrounds": [
         "badge.secondary.background",
         "badge.secondary.background-hover",
+        "badge.secondary.background-active",
         "badge.secondary.background-active"
       ],
       "kind": "text"
@@ -709,6 +710,53 @@
         "color.background.muted",
         "color.background.raised"
       ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.foreground.info",
+      "backgrounds": [
+        "color.background.info",
+        "color.background.info-emphasis",
+        "color.background.info-intense"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.foreground.secondary",
+      "backgrounds": [
+        "color.background.secondary",
+        "color.background.secondary-emphasis",
+        "color.background.secondary-intense"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.foreground.accent",
+      "backgrounds": ["color.background.accent"],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.border.info",
+      "backgrounds": ["color.background.default"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "color.background.accent",
+      "backgrounds": [
+        "color.background.default",
+        "color.background.muted",
+        "color.background.raised"
+      ],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "alert.info.text",
+      "backgrounds": ["alert.info.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.info.text",
+      "backgrounds": ["toast.info.background"],
       "kind": "text"
     },
     {

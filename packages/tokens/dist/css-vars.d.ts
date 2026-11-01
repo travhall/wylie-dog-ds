@@ -41,6 +41,9 @@ export type CssVarName =
   | "--color-alert-destructive-background"
   | "--color-alert-destructive-border"
   | "--color-alert-destructive-text"
+  | "--color-alert-info-background"
+  | "--color-alert-info-border"
+  | "--color-alert-info-text"
   | "--color-alert-success-background"
   | "--color-alert-success-border"
   | "--color-alert-success-text"
@@ -51,12 +54,16 @@ export type CssVarName =
   | "--color-avatar-border"
   | "--color-avatar-fallback-background"
   | "--color-avatar-fallback-text"
+  | "--color-background-accent"
   | "--color-background-danger"
   | "--color-background-danger-emphasis"
   | "--color-background-danger-intense"
   | "--color-background-danger-muted"
   | "--color-background-default"
   | "--color-background-emphasis"
+  | "--color-background-info"
+  | "--color-background-info-emphasis"
+  | "--color-background-info-intense"
   | "--color-background-info-muted"
   | "--color-background-intense"
   | "--color-background-inverse"
@@ -67,6 +74,9 @@ export type CssVarName =
   | "--color-background-primary-intense"
   | "--color-background-primary-muted"
   | "--color-background-raised"
+  | "--color-background-secondary"
+  | "--color-background-secondary-emphasis"
+  | "--color-background-secondary-intense"
   | "--color-background-success"
   | "--color-background-success-emphasis"
   | "--color-background-success-intense"
@@ -147,6 +157,7 @@ export type CssVarName =
   | "--color-border-danger"
   | "--color-border-default"
   | "--color-border-emphasis"
+  | "--color-border-info"
   | "--color-border-muted"
   | "--color-border-primary"
   | "--color-border-success"
@@ -279,16 +290,19 @@ export type CssVarName =
   | "--color-fiery-coral-950"
   | "--color-focus-halo"
   | "--color-focus-ring"
+  | "--color-foreground-accent"
   | "--color-foreground-danger"
   | "--color-foreground-danger-muted"
   | "--color-foreground-default"
   | "--color-foreground-faint"
+  | "--color-foreground-info"
   | "--color-foreground-info-muted"
   | "--color-foreground-inverse"
   | "--color-foreground-link"
   | "--color-foreground-muted"
   | "--color-foreground-primary"
   | "--color-foreground-primary-muted"
+  | "--color-foreground-secondary"
   | "--color-foreground-success"
   | "--color-foreground-success-muted"
   | "--color-foreground-warning"
@@ -546,6 +560,9 @@ export type CssVarName =
   | "--color-toast-destructive-background"
   | "--color-toast-destructive-border"
   | "--color-toast-destructive-text"
+  | "--color-toast-info-background"
+  | "--color-toast-info-border"
+  | "--color-toast-info-text"
   | "--color-toast-success-background"
   | "--color-toast-success-border"
   | "--color-toast-success-text"
@@ -1403,6 +1420,9 @@ export declare const cssVars: Readonly<{
   "colorAlertDestructiveBackground": "--color-alert-destructive-background";
   "colorAlertDestructiveBorder": "--color-alert-destructive-border";
   "colorAlertDestructiveText": "--color-alert-destructive-text";
+  "colorAlertInfoBackground": "--color-alert-info-background";
+  "colorAlertInfoBorder": "--color-alert-info-border";
+  "colorAlertInfoText": "--color-alert-info-text";
   "colorAlertSuccessBackground": "--color-alert-success-background";
   "colorAlertSuccessBorder": "--color-alert-success-border";
   "colorAlertSuccessText": "--color-alert-success-text";
@@ -1413,12 +1433,16 @@ export declare const cssVars: Readonly<{
   "colorAvatarBorder": "--color-avatar-border";
   "colorAvatarFallbackBackground": "--color-avatar-fallback-background";
   "colorAvatarFallbackText": "--color-avatar-fallback-text";
+  "colorBackgroundAccent": "--color-background-accent";
   "colorBackgroundDanger": "--color-background-danger";
   "colorBackgroundDangerEmphasis": "--color-background-danger-emphasis";
   "colorBackgroundDangerIntense": "--color-background-danger-intense";
   "colorBackgroundDangerMuted": "--color-background-danger-muted";
   "colorBackgroundDefault": "--color-background-default";
   "colorBackgroundEmphasis": "--color-background-emphasis";
+  "colorBackgroundInfo": "--color-background-info";
+  "colorBackgroundInfoEmphasis": "--color-background-info-emphasis";
+  "colorBackgroundInfoIntense": "--color-background-info-intense";
   "colorBackgroundInfoMuted": "--color-background-info-muted";
   "colorBackgroundIntense": "--color-background-intense";
   "colorBackgroundInverse": "--color-background-inverse";
@@ -1429,6 +1453,9 @@ export declare const cssVars: Readonly<{
   "colorBackgroundPrimaryIntense": "--color-background-primary-intense";
   "colorBackgroundPrimaryMuted": "--color-background-primary-muted";
   "colorBackgroundRaised": "--color-background-raised";
+  "colorBackgroundSecondary": "--color-background-secondary";
+  "colorBackgroundSecondaryEmphasis": "--color-background-secondary-emphasis";
+  "colorBackgroundSecondaryIntense": "--color-background-secondary-intense";
   "colorBackgroundSuccess": "--color-background-success";
   "colorBackgroundSuccessEmphasis": "--color-background-success-emphasis";
   "colorBackgroundSuccessIntense": "--color-background-success-intense";
@@ -1509,6 +1536,7 @@ export declare const cssVars: Readonly<{
   "colorBorderDanger": "--color-border-danger";
   "colorBorderDefault": "--color-border-default";
   "colorBorderEmphasis": "--color-border-emphasis";
+  "colorBorderInfo": "--color-border-info";
   "colorBorderMuted": "--color-border-muted";
   "colorBorderPrimary": "--color-border-primary";
   "colorBorderSuccess": "--color-border-success";
@@ -1641,16 +1669,19 @@ export declare const cssVars: Readonly<{
   "colorFieryCoral950": "--color-fiery-coral-950";
   "colorFocusHalo": "--color-focus-halo";
   "colorFocusRing": "--color-focus-ring";
+  "colorForegroundAccent": "--color-foreground-accent";
   "colorForegroundDanger": "--color-foreground-danger";
   "colorForegroundDangerMuted": "--color-foreground-danger-muted";
   "colorForegroundDefault": "--color-foreground-default";
   "colorForegroundFaint": "--color-foreground-faint";
+  "colorForegroundInfo": "--color-foreground-info";
   "colorForegroundInfoMuted": "--color-foreground-info-muted";
   "colorForegroundInverse": "--color-foreground-inverse";
   "colorForegroundLink": "--color-foreground-link";
   "colorForegroundMuted": "--color-foreground-muted";
   "colorForegroundPrimary": "--color-foreground-primary";
   "colorForegroundPrimaryMuted": "--color-foreground-primary-muted";
+  "colorForegroundSecondary": "--color-foreground-secondary";
   "colorForegroundSuccess": "--color-foreground-success";
   "colorForegroundSuccessMuted": "--color-foreground-success-muted";
   "colorForegroundWarning": "--color-foreground-warning";
@@ -1908,6 +1939,9 @@ export declare const cssVars: Readonly<{
   "colorToastDestructiveBackground": "--color-toast-destructive-background";
   "colorToastDestructiveBorder": "--color-toast-destructive-border";
   "colorToastDestructiveText": "--color-toast-destructive-text";
+  "colorToastInfoBackground": "--color-toast-info-background";
+  "colorToastInfoBorder": "--color-toast-info-border";
+  "colorToastInfoText": "--color-toast-info-text";
   "colorToastSuccessBackground": "--color-toast-success-background";
   "colorToastSuccessBorder": "--color-toast-success-border";
   "colorToastSuccessText": "--color-toast-success-text";

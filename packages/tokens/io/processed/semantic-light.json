@@ -6,7 +6,7 @@
   },
   "color.background.inverse": {
     "$type": "color",
-    "$value": "{color.black-bear.950}",
+    "$value": "{color.polar-night.950}",
     "$description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
   },
   "color.background.danger": {
@@ -374,6 +374,41 @@
     "$value": "{color.polar-night.50}",
     "$description": "Quiet informational tint for alerts and highlights. Pairs with foreground.info-muted."
   },
+  "color.background.info": {
+    "$type": "color",
+    "$value": "{color.polar-night.300}",
+    "$description": "Solid fill for informational messages (the info toast, info badge). Pairs with foreground.info."
+  },
+  "color.background.info-emphasis": {
+    "$type": "color",
+    "$value": "{color.polar-night.200}",
+    "$description": "Stronger tone of the solid info fill. Components use it for hover states; foreground.info is readable on it."
+  },
+  "color.background.info-intense": {
+    "$type": "color",
+    "$value": "{color.polar-night.100}",
+    "$description": "Strongest tone of the solid info fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.info is readable on it."
+  },
+  "color.background.secondary": {
+    "$type": "color",
+    "$value": "{color.polar-night.300}",
+    "$description": "Solid fill of the secondary action (the Secondary button and badge). Pairs with foreground.secondary."
+  },
+  "color.background.secondary-emphasis": {
+    "$type": "color",
+    "$value": "{color.polar-night.200}",
+    "$description": "Stronger tone of the solid secondary fill. Components use it for hover states; foreground.secondary is readable on it."
+  },
+  "color.background.secondary-intense": {
+    "$type": "color",
+    "$value": "{color.polar-night.100}",
+    "$description": "Strongest tone of the solid secondary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.secondary is readable on it."
+  },
+  "color.background.accent": {
+    "$type": "color",
+    "$value": "{color.polar-night.400}",
+    "$description": "Fill of selected and on-state controls (checked checkbox, radio and switch, slider range, progress, selected tab and page). Pairs with foreground.accent; non-text, so it needs 3:1 on the page."
+  },
   "color.foreground.default": {
     "$type": "color",
     "$value": "{color.black-bear.900}",
@@ -443,6 +478,26 @@
     "$type": "color",
     "$value": "{color.polar-night.500}",
     "$description": "Informational text on its tint (background.info-muted) and on the page."
+  },
+  "color.foreground.info": {
+    "$type": "color",
+    "$value": "{color.gray.950}",
+    "$description": "Text over the solid info fill. Readable on background.info and its emphasis and intense tones."
+  },
+  "color.foreground.secondary": {
+    "$type": "color",
+    "$value": "{color.gray.950}",
+    "$description": "Text over the solid secondary fill. Readable on background.secondary and its emphasis and intense tones."
+  },
+  "color.foreground.accent": {
+    "$type": "color",
+    "$value": "{color.gray.50}",
+    "$description": "Mark or text over the accent fill (check, dot, selected number). Readable on background.accent."
+  },
+  "color.border.info": {
+    "$type": "color",
+    "$value": "{color.polar-night.300}",
+    "$description": "Border in the info colour for alerts and highlights; non-text, so it needs 3:1 on the page."
   },
   "color.border.default": {
     "$type": "color",

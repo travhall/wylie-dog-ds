@@ -16,6 +16,7 @@ export const alertVariants = cva(
           "bg-(--color-alert-warning-background) border-(--color-alert-warning-border) text-(--color-alert-warning-text)",
         success:
           "bg-(--color-alert-success-background) border-(--color-alert-success-border) text-(--color-alert-success-text)",
+        info: "bg-(--color-alert-info-background) border-(--color-alert-info-border) text-(--color-alert-info-text)",
       },
     },
     defaultVariants: {
@@ -43,6 +44,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         case "warning":
           return "alert"; // High urgency - interrupts screen reader
         case "success":
+        case "info":
           return "status"; // Medium urgency - announced politely
         default:
           return "region"; // Low urgency - announced when focused
@@ -57,6 +59,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
           return "assertive";
         case "warning":
         case "success":
+        case "info":
           return "polite";
         default:
           return "off";

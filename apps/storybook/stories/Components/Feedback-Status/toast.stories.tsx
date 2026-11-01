@@ -26,7 +26,7 @@ const meta: Meta<typeof Toast> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "destructive", "success", "warning"],
+      options: ["default", "destructive", "success", "warning", "info"],
       description: "The visual style variant of the toast notification",
       table: {
         type: { summary: "string" },
@@ -111,6 +111,22 @@ export const SuccessToast: Story = {
     <Toast variant="success">
       <ToastTitle>Success!</ToastTitle>
       <ToastDescription>Operation completed successfully.</ToastDescription>
+    </Toast>
+  ),
+};
+
+export const InfoToast: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Info toast variant for neutral, informational notifications.",
+      },
+    },
+  },
+  render: () => (
+    <Toast variant="info">
+      <ToastTitle>New version available</ToastTitle>
+      <ToastDescription>The design tokens were updated.</ToastDescription>
     </Toast>
   ),
 };

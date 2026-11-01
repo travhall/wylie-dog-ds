@@ -119,6 +119,15 @@ describe("Toast", () => {
       );
     });
 
+    it("should support info variant", () => {
+      const { container } = render(<Toast variant="info">Info toast</Toast>);
+      const toast = container.firstChild as HTMLElement;
+      expect(toast).toHaveClass(
+        "bg-(--color-toast-info-background)",
+        "text-(--color-toast-info-text)"
+      );
+    });
+
     it("should support success variant", () => {
       const { container } = render(
         <Toast variant="success">Success toast</Toast>

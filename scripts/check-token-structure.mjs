@@ -7,7 +7,8 @@
 //   ground foreground  default, muted, faint, link, inverse
 //   ground border      default, muted, emphasis
 //   ground focus       ring, halo
-//   roles              primary, danger, success, warning, info, optionally
+//   roles              primary, secondary, accent, danger, success, warning, info,
+//                      optionally
 //                      followed by -muted, -emphasis or -intense
 //
 // The plugin turns a dotted name into a Figma path, so the shape of the names is
@@ -46,7 +47,15 @@ const ground = {
   border: ["default", "muted", "emphasis"],
   focus: ["ring", "halo"],
 };
-const roles = ["primary", "danger", "success", "warning", "info"];
+const roles = [
+  "primary",
+  "secondary",
+  "accent",
+  "danger",
+  "success",
+  "warning",
+  "info",
+];
 const roleToken = new RegExp(
   `^(${roles.join("|")})(-muted|-emphasis|-intense)?$`
 );

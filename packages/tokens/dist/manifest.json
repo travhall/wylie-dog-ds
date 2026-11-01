@@ -2658,7 +2658,7 @@
           "background",
           "inverse"
         ],
-        "value": "oklch(0.138 0.008 60.26)",
+        "value": "oklch(0.17 0.022 212.1)",
         "type": "color",
         "variable": "var(--color-background-inverse)",
         "description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
@@ -2926,6 +2926,90 @@
         "type": "color",
         "variable": "var(--color-background-info-muted)",
         "description": "Quiet informational tint for alerts and highlights. Pairs with foreground.info-muted."
+      },
+      "color-background-info": {
+        "name": "colorBackgroundInfo",
+        "path": [
+          "color",
+          "background",
+          "info"
+        ],
+        "value": "oklch(0.584 0.041 218.05)",
+        "type": "color",
+        "variable": "var(--color-background-info)",
+        "description": "Solid fill for informational messages (the info toast, info badge). Pairs with foreground.info."
+      },
+      "color-background-info-emphasis": {
+        "name": "colorBackgroundInfoEmphasis",
+        "path": [
+          "color",
+          "background",
+          "info-emphasis"
+        ],
+        "value": "oklch(0.719 0.028 218.41)",
+        "type": "color",
+        "variable": "var(--color-background-info-emphasis)",
+        "description": "Stronger tone of the solid info fill. Components use it for hover states; foreground.info is readable on it."
+      },
+      "color-background-info-intense": {
+        "name": "colorBackgroundInfoIntense",
+        "path": [
+          "color",
+          "background",
+          "info-intense"
+        ],
+        "value": "oklch(0.813 0.019 219.02)",
+        "type": "color",
+        "variable": "var(--color-background-info-intense)",
+        "description": "Strongest tone of the solid info fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.info is readable on it."
+      },
+      "color-background-secondary": {
+        "name": "colorBackgroundSecondary",
+        "path": [
+          "color",
+          "background",
+          "secondary"
+        ],
+        "value": "oklch(0.584 0.041 218.05)",
+        "type": "color",
+        "variable": "var(--color-background-secondary)",
+        "description": "Solid fill of the secondary action (the Secondary button and badge). Pairs with foreground.secondary."
+      },
+      "color-background-secondary-emphasis": {
+        "name": "colorBackgroundSecondaryEmphasis",
+        "path": [
+          "color",
+          "background",
+          "secondary-emphasis"
+        ],
+        "value": "oklch(0.719 0.028 218.41)",
+        "type": "color",
+        "variable": "var(--color-background-secondary-emphasis)",
+        "description": "Stronger tone of the solid secondary fill. Components use it for hover states; foreground.secondary is readable on it."
+      },
+      "color-background-secondary-intense": {
+        "name": "colorBackgroundSecondaryIntense",
+        "path": [
+          "color",
+          "background",
+          "secondary-intense"
+        ],
+        "value": "oklch(0.813 0.019 219.02)",
+        "type": "color",
+        "variable": "var(--color-background-secondary-intense)",
+        "description": "Strongest tone of the solid secondary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.secondary is readable on it."
+      },
+      "color-background-accent": {
+        "name": "colorBackgroundAccent",
+        "path": [
+          "color",
+          "background",
+          "accent"
+        ],
+        "value": "oklch(0.496 0.049 219.07)",
+        "type": "color",
+        "variable": "var(--color-background-accent)",
+        "description": "Fill of selected and on-state controls (checked checkbox, radio and switch, slider range, progress, selected tab and page). Pairs with foreground.accent; non-text, so it needs 3:1 on the page."
       }
     },
     "foreground": {
@@ -3096,6 +3180,42 @@
         "type": "color",
         "variable": "var(--color-foreground-info-muted)",
         "description": "Informational text on its tint (background.info-muted) and on the page."
+      },
+      "color-foreground-info": {
+        "name": "colorForegroundInfo",
+        "path": [
+          "color",
+          "foreground",
+          "info"
+        ],
+        "value": "oklch(0.149 0.012 259.74)",
+        "type": "color",
+        "variable": "var(--color-foreground-info)",
+        "description": "Text over the solid info fill. Readable on background.info and its emphasis and intense tones."
+      },
+      "color-foreground-secondary": {
+        "name": "colorForegroundSecondary",
+        "path": [
+          "color",
+          "foreground",
+          "secondary"
+        ],
+        "value": "oklch(0.149 0.012 259.74)",
+        "type": "color",
+        "variable": "var(--color-foreground-secondary)",
+        "description": "Text over the solid secondary fill. Readable on background.secondary and its emphasis and intense tones."
+      },
+      "color-foreground-accent": {
+        "name": "colorForegroundAccent",
+        "path": [
+          "color",
+          "foreground",
+          "accent"
+        ],
+        "value": "oklch(0.991 0.003 264.39)",
+        "type": "color",
+        "variable": "var(--color-foreground-accent)",
+        "description": "Mark or text over the accent fill (check, dot, selected number). Readable on background.accent."
       }
     },
     "border": {
@@ -3146,6 +3266,18 @@
         "type": "color",
         "variable": "var(--color-border-danger)",
         "description": "Border in the danger colour for alerts, toasts and highlights."
+      },
+      "color-border-info": {
+        "name": "colorBorderInfo",
+        "path": [
+          "color",
+          "border",
+          "info"
+        ],
+        "value": "oklch(0.584 0.041 218.05)",
+        "type": "color",
+        "variable": "var(--color-border-info)",
+        "description": "Border in the info colour for alerts and highlights; non-text, so it needs 3:1 on the page."
       },
       "color-border-default": {
         "name": "colorBorderDefault",
@@ -3435,7 +3567,7 @@
           "secondary",
           "background"
         ],
-        "value": "oklch(0.927 0.012 75.12)",
+        "value": "oklch(0.584 0.041 218.05)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background)",
         "description": "Fill of the secondary badge. Pairs with `badge.secondary.text`."
@@ -3447,7 +3579,7 @@
           "secondary",
           "text"
         ],
-        "value": "oklch(0.202 0.011 47.89)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-badge-secondary-text)",
         "description": "Text colour of the secondary badge. Pairs with `badge.secondary.background`."
@@ -3459,7 +3591,7 @@
           "secondary",
           "border"
         ],
-        "value": "oklch(0.882 0.009 67.06)",
+        "value": "oklch(0.584 0.041 218.05)",
         "type": "color",
         "variable": "var(--color-badge-secondary-border)",
         "description": "Border colour of the secondary badge."
@@ -3791,7 +3923,7 @@
           "secondary",
           "background-hover"
         ],
-        "value": "oklch(0.893 0.018 72.86)",
+        "value": "oklch(0.719 0.028 218.41)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background-hover)",
         "description": "Fill of the secondary badge while hovered."
@@ -3803,7 +3935,7 @@
           "secondary",
           "background-active"
         ],
-        "value": "oklch(0.843 0.027 71.03)",
+        "value": "oklch(0.813 0.019 219.02)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background-active)",
         "description": "Fill of an interactive secondary badge while pressed. Applies only when the badge is interactive."
@@ -4177,7 +4309,7 @@
           "secondary",
           "background"
         ],
-        "value": "oklch(0.927 0.012 75.12)",
+        "value": "oklch(0.584 0.041 218.05)",
         "type": "color",
         "variable": "var(--color-button-secondary-background)",
         "description": "Fill of the secondary button. Pairs with `button.secondary.text`."
@@ -4189,7 +4321,7 @@
           "secondary",
           "background-hover"
         ],
-        "value": "oklch(0.893 0.018 72.86)",
+        "value": "oklch(0.719 0.028 218.41)",
         "type": "color",
         "variable": "var(--color-button-secondary-background-hover)",
         "description": "Fill of the secondary button while hovered."
@@ -4201,7 +4333,7 @@
           "secondary",
           "background-active"
         ],
-        "value": "oklch(0.843 0.027 71.03)",
+        "value": "oklch(0.813 0.019 219.02)",
         "type": "color",
         "variable": "var(--color-button-secondary-background-active)",
         "description": "Fill of the secondary button while pressed."
@@ -4213,7 +4345,7 @@
           "secondary",
           "text"
         ],
-        "value": "oklch(0.202 0.011 47.89)",
+        "value": "oklch(0.149 0.012 259.74)",
         "type": "color",
         "variable": "var(--color-button-secondary-text)",
         "description": "Text colour of the secondary button. Pairs with `button.secondary.background`."
@@ -4225,7 +4357,7 @@
           "secondary",
           "border"
         ],
-        "value": "oklch(0.74 0.019 70)",
+        "value": "oklch(0.584 0.041 218.05)",
         "type": "color",
         "variable": "var(--color-button-secondary-border)",
         "description": "Outline of the secondary button, in the default border tone."
@@ -5411,6 +5543,42 @@
         "type": "color",
         "variable": "var(--color-alert-success-text)",
         "description": "Text colour of the success alert. Pairs with `alert.success.background`."
+      },
+      "alert-info-background": {
+        "name": "alertInfoBackground",
+        "path": [
+          "alert",
+          "info",
+          "background"
+        ],
+        "value": "oklch(0.94 0.006 225.41)",
+        "type": "color",
+        "variable": "var(--color-alert-info-background)",
+        "description": "Fill of the info alert. Pairs with `alert.info.text`."
+      },
+      "alert-info-border": {
+        "name": "alertInfoBorder",
+        "path": [
+          "alert",
+          "info",
+          "border"
+        ],
+        "value": "oklch(0.584 0.041 218.05)",
+        "type": "color",
+        "variable": "var(--color-alert-info-border)",
+        "description": "Border colour of the info alert."
+      },
+      "alert-info-text": {
+        "name": "alertInfoText",
+        "path": [
+          "alert",
+          "info",
+          "text"
+        ],
+        "value": "oklch(0.361 0.058 221.82)",
+        "type": "color",
+        "variable": "var(--color-alert-info-text)",
+        "description": "Text colour of the info alert. Pairs with `alert.info.background`."
       },
       "alert-padding-x": {
         "name": "alertPaddingX",
@@ -6915,7 +7083,7 @@
           "trigger",
           "indicator-color"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-indicator-color)",
         "description": "Colour of the underline that marks the selected tab."
@@ -7042,7 +7210,7 @@
           "calendar",
           "day-selected"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-calendar-day-selected)",
         "description": "Fill of the calendar day when selected. Pairs with `calendar.day-text-selected`."
@@ -7053,7 +7221,7 @@
           "calendar",
           "day-text-selected"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-calendar-day-text-selected)",
         "description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`."
@@ -8710,7 +8878,7 @@
           "pagination",
           "active"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-pagination-active)",
         "description": "Fill of the page link for the current page. Pairs with `pagination.text-active`."
@@ -8732,7 +8900,7 @@
           "pagination",
           "text-active"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-pagination-text-active)",
         "description": "Text colour of the page link for the current page. Pairs with `pagination.active`."
@@ -9034,7 +9202,7 @@
           "progress",
           "default-fill"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-progress-default-fill)",
         "description": "Fill of the progress bar in its default variant."
@@ -9113,7 +9281,7 @@
           "radio",
           "background-checked"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-radio-background-checked)",
         "description": "Fill of the radio when checked."
@@ -9135,7 +9303,7 @@
           "radio",
           "border-checked"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-radio-border-checked)",
         "description": "Border colour of the radio when checked."
@@ -9146,7 +9314,7 @@
           "radio",
           "indicator"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-radio-indicator)",
         "description": "Colour of the dot inside the selected radio."
@@ -9581,7 +9749,7 @@
           "slider",
           "range"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-slider-range)",
         "description": "Fill of the filled part of the slider track, from the start to the thumb."
@@ -9603,7 +9771,7 @@
           "slider",
           "thumb-border"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-slider-thumb-border)",
         "description": "Border colour of the slider thumb."
@@ -10185,6 +10353,42 @@
         "variable": "var(--color-toast-success-text)",
         "description": "Text colour on the success toast. Pairs with `toast.success.background`."
       },
+      "toast-info-border": {
+        "name": "toastInfoBorder",
+        "path": [
+          "toast",
+          "info",
+          "border"
+        ],
+        "value": "oklch(0.584 0.041 218.05)",
+        "type": "color",
+        "variable": "var(--color-toast-info-border)",
+        "description": "Border colour of the info toast."
+      },
+      "toast-info-background": {
+        "name": "toastInfoBackground",
+        "path": [
+          "toast",
+          "info",
+          "background"
+        ],
+        "value": "oklch(0.584 0.041 218.05)",
+        "type": "color",
+        "variable": "var(--color-toast-info-background)",
+        "description": "Fill of the info toast. Pairs with `toast.info.text`."
+      },
+      "toast-info-text": {
+        "name": "toastInfoText",
+        "path": [
+          "toast",
+          "info",
+          "text"
+        ],
+        "value": "oklch(0.149 0.012 259.74)",
+        "type": "color",
+        "variable": "var(--color-toast-info-text)",
+        "description": "Text colour on the info toast. Pairs with `toast.info.background`."
+      },
       "toast-warning-text": {
         "name": "toastWarningText",
         "path": [
@@ -10412,7 +10616,7 @@
           "toggle",
           "pressed"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-toggle-pressed)",
         "description": "Fill of the toggle when pressed (on). Pairs with `toggle.text-pressed`."
@@ -10445,7 +10649,7 @@
           "toggle",
           "text-pressed"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-toggle-text-pressed)",
         "description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`."
@@ -10613,7 +10817,7 @@
           "tooltip",
           "background"
         ],
-        "value": "oklch(0.138 0.008 60.26)",
+        "value": "oklch(0.17 0.022 212.1)",
         "type": "color",
         "variable": "var(--color-tooltip-background)",
         "description": "Fill of the tooltip. Pairs with `tooltip.text`."
@@ -11313,7 +11517,7 @@
           "checkbox",
           "background-checked"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-checkbox-background-checked)",
         "description": "Fill of a checked or indeterminate checkbox. Pairs with `checkbox.text-checked`."
@@ -11324,7 +11528,7 @@
           "checkbox",
           "text-checked"
         ],
-        "value": "oklch(0.149 0.012 259.74)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-checkbox-text-checked)",
         "description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
@@ -11335,7 +11539,7 @@
           "checkbox",
           "border-checked"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-checkbox-border-checked)",
         "description": "Border colour of the checkbox when checked."
@@ -11621,7 +11825,7 @@
           "track",
           "background-checked"
         ],
-        "value": "oklch(0.61 0.169 37.69)",
+        "value": "oklch(0.496 0.049 219.07)",
         "type": "color",
         "variable": "var(--color-switch-track-background-checked)",
         "description": "Track fill when the switch is on."

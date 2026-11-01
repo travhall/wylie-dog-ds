@@ -144,7 +144,13 @@ describeA11y("Alert", () => {
   });
 
   describe("All Variants", () => {
-    const variants = ["default", "destructive", "warning", "success"] as const;
+    const variants = [
+      "default",
+      "destructive",
+      "warning",
+      "success",
+      "info",
+    ] as const;
 
     variants.forEach((variant) => {
       it(`passes accessibility audit with ${variant} variant`, async () => {

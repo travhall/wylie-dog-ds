@@ -139,11 +139,11 @@ The brand palettes now carry the neutral ground, so the whole UI reads as the br
 - **Dark surfaces:** black-bear 950 for the page, 900 for muted and raised, 700 for emphasis. Overlay is black-bear 950 in both modes; inverse is black-bear 950 in Light and sandcastle 50 in Dark.
 - **Dark borders:** petrified-wood 900, 800 and 600.
 - **Dark text:** sandcastle 50, 300 and 600 (18.4, 12.1 and 7.7:1 on the page), evenly spaced.
-- **Info:** `background.info-muted` is polar-night 50 and 950, and `foreground.info-muted` is polar-night 500 and 200. Polar-night is the cool counterpoint to the warm neutrals and the coral primary. No Alert or Toast variant uses the role yet, see the open item below.
+- **Info:** `background.info-muted` is polar-night 50 and 950, and `foreground.info-muted` is polar-night 500 and 200. Polar-night is the cool counterpoint to the warm neutrals and the coral primary; the role is completed in "Secondary, accent and info roles" below.
 
 Faint text at gray 600 fails on sandcastle 100 and 200 (4.44:1), which is why the Light scale is black-bear and not gray. Surfaces, borders and text were changed together for that reason.
 
-**Still open:** Alert and Toast have no `info` variant (they have default, destructive, warning and success), so the info tokens are bound by no component. Wiring them in needs `background.info`, `foreground.info`, `background.info-emphasis` and `border.info` to make the role complete.
+Alert and Toast gained their `info` variants on 2026-11-01, see "Secondary, accent and info roles".
 
 ## Pressed tones (2026-11-01)
 
@@ -155,6 +155,19 @@ Hover and pressed were the same fill everywhere, and the destructive and outline
 - **New component tokens (7):** `button.destructive.background-active`, `button.outline.background-active`, and `badge.default`, `secondary`, `success`, `warning` and `outline` `background-active`, each with the matching `active:` class in `button.tsx` and `badge.tsx`.
 - **Not covered:** the tinted destructive badge. Its hover keeps the `danger-muted` tint and no stronger tint step exists; a pressed tone for tinted fills belongs with the role design pass.
 - **Guards:** `check-token-structure.mjs` allows the `-intense` suffix and `intense` as a ground background; the declared contrast pairs cover the foreground on each new fill.
+
+## Secondary, accent and info roles (2026-11-01)
+
+Polar-night, the cool counterpoint to the coral primary, now carries three roles with separate jobs. They resolve to the same hue today and can be recoloured independently, which is the point of keeping them apart. Primary stays the action and brand colour.
+
+- **`info`** (5 tokens): `background.info` (polar-night 300), `-emphasis` (200, hover) and `-intense` (100, pressed), `foreground.info` (`gray.950`, 4.74:1 on the fill) and `border.info` (300, 4.05:1 on the Light page). With the existing `info-muted` tint this completes the role. Alert and Toast gain an `info` variant: the alert is the tint with the info border, the toast is the solid fill, as for success. Both announce politely.
+- **`secondary`** (4 tokens): `background.secondary` (300), `-emphasis` (200) and `-intense` (100), and `foreground.secondary` (`gray.950`). The Secondary button and badge move to it from the neutral ground, so the role and the variant are the same thing. Both fills are solid; the polar-night chroma (0.04) is far below coral's (0.17), so the secondary reads as secondary.
+- **`accent`** (2 tokens): `background.accent` (polar-night 400 in Light, 200 in Dark) and `foreground.accent` (`gray.50` in Light, `gray.950` in Dark). It is the fill of selected and on-state controls: checkbox, radio and switch, slider range, progress, selected tab and page, calendar day and pressed toggle (12 background and 5 foreground component tokens). A control needs 3:1 against the page and a readable mark, hence the per-mode steps (5.84:1 in Light, 8.09:1 in Dark). Controls reuse the fill for their border, as primary does.
+- **Primary stays coral** where it is the brand or the action: the primary button and badge, the feature icon, the hero gradient and the card and feature-grid hover borders.
+- **Tooltip:** `background.inverse` is polar-night 950 in Light and 50 in Dark, and `foreground.inverse` is sandcastle 50 and black-bear 900 (17.8:1 and 15.2:1). The tooltip is its only consumer.
+- **Focus ring:** stays neutral. A polar-night ring passes against the surfaces (8 to 11:1) but would rely on the halo gap against a coral fill, where it is 1.65:1 in Dark.
+- **Rejected:** polar-night 500 as an info or secondary fill in Dark (1.88:1 against the page).
+- **Guards:** `check-token-structure.mjs` allows `secondary` and `accent` as roles; the declared pairs cover each new foreground and fill, the info border, the accent fill on the page, muted and raised surfaces, and the info alert and toast text.
 
 ## What exists today
 

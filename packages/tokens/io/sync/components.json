@@ -41,29 +41,29 @@
         },
         "badge.secondary.background": {
           "$type": "color",
-          "$value": "{color.background.muted}",
+          "$value": "{color.background.secondary}",
           "$description": "Fill of the secondary badge. Pairs with `badge.secondary.text`.",
           "valuesByMode": {
-            "Light": "{color.background.muted}",
-            "Dark": "{color.background.emphasis}"
+            "Light": "{color.background.secondary}",
+            "Dark": "{color.background.secondary}"
           }
         },
         "badge.secondary.text": {
           "$type": "color",
-          "$value": "{color.foreground.default}",
+          "$value": "{color.foreground.secondary}",
           "$description": "Text colour of the secondary badge. Pairs with `badge.secondary.background`.",
           "valuesByMode": {
-            "Light": "{color.foreground.default}",
-            "Dark": "{color.foreground.default}"
+            "Light": "{color.foreground.secondary}",
+            "Dark": "{color.foreground.secondary}"
           }
         },
         "badge.secondary.border": {
           "$type": "color",
-          "$value": "{color.border.muted}",
+          "$value": "{color.background.secondary}",
           "$description": "Border colour of the secondary badge.",
           "valuesByMode": {
-            "Light": "{color.border.muted}",
-            "Dark": "{color.border.muted}"
+            "Light": "{color.background.secondary}",
+            "Dark": "{color.background.secondary}"
           }
         },
         "badge.success.background": {
@@ -338,47 +338,47 @@
         },
         "button.secondary.background": {
           "$type": "color",
-          "$value": "{color.background.muted}",
+          "$value": "{color.background.secondary}",
           "$description": "Fill of the secondary button. Pairs with `button.secondary.text`.",
           "valuesByMode": {
-            "Light": "{color.background.muted}",
-            "Dark": "{color.background.muted}"
+            "Light": "{color.background.secondary}",
+            "Dark": "{color.background.secondary}"
           }
         },
         "button.secondary.background-hover": {
           "$type": "color",
-          "$value": "{color.background.emphasis}",
+          "$value": "{color.background.secondary-emphasis}",
           "$description": "Fill of the secondary button while hovered.",
           "valuesByMode": {
-            "Light": "{color.background.emphasis}",
-            "Dark": "{color.background.emphasis}"
+            "Light": "{color.background.secondary-emphasis}",
+            "Dark": "{color.background.secondary-emphasis}"
           }
         },
         "button.secondary.background-active": {
           "$type": "color",
-          "$value": "{color.background.intense}",
+          "$value": "{color.background.secondary-intense}",
           "$description": "Fill of the secondary button while pressed.",
           "valuesByMode": {
-            "Light": "{color.background.intense}",
-            "Dark": "{color.background.intense}"
+            "Light": "{color.background.secondary-intense}",
+            "Dark": "{color.background.secondary-intense}"
           }
         },
         "button.secondary.text": {
           "$type": "color",
-          "$value": "{color.foreground.default}",
+          "$value": "{color.foreground.secondary}",
           "$description": "Text colour of the secondary button. Pairs with `button.secondary.background`.",
           "valuesByMode": {
-            "Light": "{color.foreground.default}",
-            "Dark": "{color.foreground.default}"
+            "Light": "{color.foreground.secondary}",
+            "Dark": "{color.foreground.secondary}"
           }
         },
         "button.secondary.border": {
           "$type": "color",
-          "$value": "{color.border.default}",
+          "$value": "{color.background.secondary}",
           "$description": "Outline of the secondary button, in the default border tone.",
           "valuesByMode": {
-            "Light": "{color.border.default}",
-            "Dark": "{color.border.default}"
+            "Light": "{color.background.secondary}",
+            "Dark": "{color.background.secondary}"
           }
         },
         "button.outline.background": {
@@ -912,6 +912,33 @@
             "Dark": "{color.foreground.success-muted}"
           }
         },
+        "alert.info.background": {
+          "$type": "color",
+          "$value": "{color.background.info-muted}",
+          "$description": "Fill of the info alert. Pairs with `alert.info.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.info-muted}",
+            "Dark": "{color.background.info-muted}"
+          }
+        },
+        "alert.info.border": {
+          "$type": "color",
+          "$value": "{color.border.info}",
+          "$description": "Border colour of the info alert.",
+          "valuesByMode": {
+            "Light": "{color.border.info}",
+            "Dark": "{color.border.info}"
+          }
+        },
+        "alert.info.text": {
+          "$type": "color",
+          "$value": "{color.foreground.info-muted}",
+          "$description": "Text colour of the info alert. Pairs with `alert.info.background`.",
+          "valuesByMode": {
+            "Light": "{color.foreground.info-muted}",
+            "Dark": "{color.foreground.info-muted}"
+          }
+        },
         "menubar.border": {
           "$type": "color",
           "$value": "{color.border.default}",
@@ -1292,20 +1319,20 @@
         },
         "calendar.day-selected": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Fill of the calendar day when selected. Pairs with `calendar.day-text-selected`.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "calendar.day-text-selected": {
           "$type": "color",
-          "$value": "{color.foreground.primary}",
+          "$value": "{color.foreground.accent}",
           "$description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`.",
           "valuesByMode": {
-            "Light": "{color.foreground.primary}",
-            "Dark": "{color.foreground.primary}"
+            "Light": "{color.foreground.accent}",
+            "Dark": "{color.foreground.accent}"
           }
         },
         "accordion.border": {
@@ -1697,11 +1724,11 @@
         },
         "pagination.active": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Fill of the page link for the current page. Pairs with `pagination.text-active`.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "pagination.text": {
@@ -1715,11 +1742,11 @@
         },
         "pagination.text-active": {
           "$type": "color",
-          "$value": "{color.foreground.primary}",
+          "$value": "{color.foreground.accent}",
           "$description": "Text colour of the page link for the current page. Pairs with `pagination.active`.",
           "valuesByMode": {
-            "Light": "{color.foreground.primary}",
-            "Dark": "{color.foreground.primary}"
+            "Light": "{color.foreground.accent}",
+            "Dark": "{color.foreground.accent}"
           }
         },
         "pagination.text-hover": {
@@ -1769,11 +1796,11 @@
         },
         "progress.default-fill": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Fill of the progress bar in its default variant.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "progress.destructive-fill": {
@@ -1805,11 +1832,11 @@
         },
         "radio.background-checked": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Fill of the radio when checked.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "radio.border": {
@@ -1823,20 +1850,20 @@
         },
         "radio.border-checked": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Border colour of the radio when checked.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "radio.indicator": {
           "$type": "color",
-          "$value": "{color.foreground.primary}",
+          "$value": "{color.foreground.accent}",
           "$description": "Colour of the dot inside the selected radio.",
           "valuesByMode": {
-            "Light": "{color.foreground.primary}",
-            "Dark": "{color.foreground.primary}"
+            "Light": "{color.foreground.accent}",
+            "Dark": "{color.foreground.accent}"
           }
         },
         "resizable.handle": {
@@ -1886,11 +1913,11 @@
         },
         "slider.range": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Fill of the filled part of the slider track, from the start to the thumb.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "slider.thumb": {
@@ -1904,11 +1931,11 @@
         },
         "slider.thumb-border": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Border colour of the slider thumb.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "slider.track": {
@@ -2021,11 +2048,11 @@
         },
         "toggle.pressed": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Fill of the toggle when pressed (on). Pairs with `toggle.text-pressed`.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "toggle.text": {
@@ -2048,11 +2075,11 @@
         },
         "toggle.text-pressed": {
           "$type": "color",
-          "$value": "{color.foreground.primary}",
+          "$value": "{color.foreground.accent}",
           "$description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`.",
           "valuesByMode": {
-            "Light": "{color.foreground.primary}",
-            "Dark": "{color.foreground.primary}"
+            "Light": "{color.foreground.accent}",
+            "Dark": "{color.foreground.accent}"
           }
         },
         "tooltip.background": {
@@ -3891,6 +3918,33 @@
             "Dark": "{color.foreground.success}"
           }
         },
+        "toast.info.border": {
+          "$type": "color",
+          "$value": "{color.background.info}",
+          "$description": "Border colour of the info toast.",
+          "valuesByMode": {
+            "Light": "{color.background.info}",
+            "Dark": "{color.background.info}"
+          }
+        },
+        "toast.info.background": {
+          "$type": "color",
+          "$value": "{color.background.info}",
+          "$description": "Fill of the info toast. Pairs with `toast.info.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.info}",
+            "Dark": "{color.background.info}"
+          }
+        },
+        "toast.info.text": {
+          "$type": "color",
+          "$value": "{color.foreground.info}",
+          "$description": "Text colour on the info toast. Pairs with `toast.info.background`.",
+          "valuesByMode": {
+            "Light": "{color.foreground.info}",
+            "Dark": "{color.foreground.info}"
+          }
+        },
         "toast.warning.text": {
           "$type": "color",
           "$value": "{color.foreground.warning}",
@@ -5090,20 +5144,20 @@
         },
         "badge.secondary.background-hover": {
           "$type": "color",
-          "$value": "{color.background.emphasis}",
+          "$value": "{color.background.secondary-emphasis}",
           "$description": "Fill of the secondary badge while hovered.",
           "valuesByMode": {
-            "Light": "{color.background.emphasis}",
-            "Dark": "{color.background.emphasis}"
+            "Light": "{color.background.secondary-emphasis}",
+            "Dark": "{color.background.secondary-emphasis}"
           }
         },
         "badge.secondary.background-active": {
           "$type": "color",
-          "$value": "{color.background.intense}",
+          "$value": "{color.background.secondary-intense}",
           "$description": "Fill of an interactive secondary badge while pressed. Applies only when the badge is interactive.",
           "valuesByMode": {
-            "Light": "{color.background.intense}",
-            "Dark": "{color.background.intense}"
+            "Light": "{color.background.secondary-intense}",
+            "Dark": "{color.background.secondary-intense}"
           }
         },
         "badge.success.background-hover": {
@@ -5693,11 +5747,11 @@
         },
         "tabs.trigger.indicator-color": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Colour of the underline that marks the selected tab.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "checkbox.focus-ring.width": {
@@ -5747,11 +5801,11 @@
         },
         "switch.track.background-checked": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Track fill when the switch is on.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "switch.track.background-unchecked": {
@@ -6287,29 +6341,29 @@
         },
         "checkbox.background-checked": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Fill of a checked or indeterminate checkbox. Pairs with `checkbox.text-checked`.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "checkbox.text-checked": {
           "$type": "color",
-          "$value": "{color.foreground.primary}",
+          "$value": "{color.foreground.accent}",
           "$description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`.",
           "valuesByMode": {
-            "Light": "{color.foreground.primary}",
-            "Dark": "{color.foreground.primary}"
+            "Light": "{color.foreground.accent}",
+            "Dark": "{color.foreground.accent}"
           }
         },
         "checkbox.border-checked": {
           "$type": "color",
-          "$value": "{color.background.primary}",
+          "$value": "{color.background.accent}",
           "$description": "Border colour of the checkbox when checked.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.accent}",
+            "Dark": "{color.background.accent}"
           }
         },
         "checkbox.error-border": {

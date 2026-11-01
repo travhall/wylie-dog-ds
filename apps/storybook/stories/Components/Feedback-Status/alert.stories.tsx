@@ -12,7 +12,7 @@ const meta: Meta<typeof Alert> = {
     docs: {
       description: {
         component:
-          "Alert component for displaying important messages to users. Includes support for different variants (default, destructive, warning, success) and compound components for structured content.",
+          "Alert component for displaying important messages to users. Includes support for different variants (default, destructive, warning, success, info) and compound components for structured content.",
       },
     },
   },
@@ -20,7 +20,7 @@ const meta: Meta<typeof Alert> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "destructive", "warning", "success"],
+      options: ["default", "destructive", "warning", "success", "info"],
       description: "The visual style variant of the alert",
       table: {
         type: { summary: "string" },
@@ -101,6 +101,13 @@ export const AllVariants: Story = {
         <AlertTitle>Success Alert</AlertTitle>
         <AlertDescription>
           Your changes have been saved successfully!
+        </AlertDescription>
+      </Alert>
+
+      <Alert variant="info">
+        <AlertTitle>Info Alert</AlertTitle>
+        <AlertDescription>
+          A new version of the design tokens is available.
         </AlertDescription>
       </Alert>
     </div>
