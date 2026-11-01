@@ -656,7 +656,7 @@ export default function PatternsPage() {
                         status: "active",
                         statusColor: "var(--color-foreground-success-muted)",
                         price: "$42/mo",
-                        bg: "linear-gradient(135deg, var(--color-fiery-coral-300), var(--color-red-400))",
+                        bg: "linear-gradient(135deg, var(--color-background-primary-muted), var(--color-background-primary))",
                       },
                       {
                         name: "Atlas Studio",
@@ -664,7 +664,7 @@ export default function PatternsPage() {
                         status: "active",
                         statusColor: "var(--color-foreground-success-muted)",
                         price: "$24/mo",
-                        bg: "linear-gradient(135deg, var(--color-blue-300), var(--color-blue-500))",
+                        bg: "linear-gradient(135deg, var(--color-background-info-muted), var(--color-foreground-info-muted))",
                       },
                       {
                         name: "Northwind Co.", //cSpell:ignore Northwind
@@ -672,7 +672,7 @@ export default function PatternsPage() {
                         status: "trial",
                         statusColor: "var(--color-foreground-warning-muted)",
                         price: "14d left",
-                        bg: "linear-gradient(135deg, var(--color-green-300), var(--color-green-400))",
+                        bg: "linear-gradient(135deg, var(--color-background-success-muted), var(--color-background-success))",
                       },
                     ].map(
                       ({ name, members, status, statusColor, price, bg }) => (
@@ -1221,9 +1221,9 @@ export default function PatternsPage() {
                 <div className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-default) bg-(--color-background-muted)">
                   <div className="flex gap-1">
                     {[
-                      "var(--color-red-400)",
-                      "var(--color-yellow-400)",
-                      "var(--color-green-500)",
+                      "var(--color-background-danger)",
+                      "var(--color-background-warning)",
+                      "var(--color-background-success)",
                     ].map((c, i) => (
                       <span
                         key={i}

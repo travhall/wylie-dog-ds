@@ -17,15 +17,19 @@ import {
 const TEAM = [
   {
     initials: "EM",
-    bg: "var(--color-fiery-coral-300)",
-    fg: "var(--color-fiery-coral-950)",
+    bg: "var(--color-background-primary-muted)",
+    fg: "var(--color-foreground-primary-muted)",
   },
   {
     initials: "JR",
-    bg: "var(--color-green-300)",
-    fg: "var(--color-green-950)",
+    bg: "var(--color-background-success-muted)",
+    fg: "var(--color-foreground-success-muted)",
   },
-  { initials: "AK", bg: "var(--color-blue-300)", fg: "var(--color-blue-950)" },
+  {
+    initials: "AK",
+    bg: "var(--color-background-info-muted)",
+    fg: "var(--color-foreground-info-muted)",
+  },
 ];
 
 export function HeroPreview() {

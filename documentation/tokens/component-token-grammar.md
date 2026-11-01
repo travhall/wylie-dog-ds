@@ -8,7 +8,7 @@ A component binds only to component tokens. In `packages/ui/src`, including the 
 
 The three tiers stay intact: primitives hold raw values, semantic tokens hold meaning (`color.background.success-muted`), component tokens hold decisions for one part of one component and alias a semantic tone. A component token for colour never aliases a primitive directly.
 
-`pnpm check:tokens` runs `scripts/check-component-binding.mjs`, which fails on any other variable reference, and on the composition rules below, and names the file and line. The Lint workflow runs it.
+`pnpm check:tokens` runs `scripts/check-component-binding.mjs`, which fails on any other variable reference, and on the composition rules below, and names the file and line. The Lint workflow runs it. The showcase has its own guard in the same command, `scripts/check-showcase-palette.mjs`: a showcase page binds to semantic tokens and fails on a static primitive colour (a palette variable, a Tailwind palette utility or a hex literal). A page that has to name a primitive derives it with `getAlias` in `apps/showcase/src/lib/token-values.ts`.
 
 ## The two documented exceptions
 

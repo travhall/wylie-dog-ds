@@ -46,4 +46,4 @@ Primary solid fill is step 600 today. Fiery-coral 600 measures 3.98:1, below the
 | Storybook button       | `storybook-button-variants-light.png` | `storybook-button-variants-dark.png` |
 | Storybook badge        | `storybook-badge-light.png`           | `storybook-badge-dark.png`           |
 
-Not tokens, so they will not follow the change on their own: the Wylie Dog logo (an image with a blue square) and any raster artwork.
+Not tokens, so they would not follow the change on their own: raster artwork and hard-coded colour literals. The Wylie Dog logo is an inline SVG that already uses the brand palette (coral, polar-night, sandcastle, black-bear), so it needs no change; the earlier note calling it a blue square was wrong. The showcase tokens and architecture pages hard-code `blue-600` as the primary chain and do not follow the change either.

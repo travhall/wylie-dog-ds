@@ -2,10 +2,19 @@ import manifest from "@wyliedog/tokens/manifest.json";
 import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
+import { getAlias, primitiveVar } from "@/lib/token-values";
 import { HeroPreview } from "./hero-preview";
 
 export default function ShowcasePage() {
   const meta = getShowcaseMeta();
+  const primary = getAlias("color.background.primary");
+  const primaryRamp = (
+    manifest.primitives.colors as Record<
+      string,
+      Record<string, { value: string }>
+    >
+  )[primary.palette];
+  const previousStep = String(Number(primary.step) - 100);
   const categoryCount = (dirName: string) =>
     meta.componentCategories.find((c) => c.dirName === dirName)?.count ?? 0;
 
@@ -148,7 +157,10 @@ export default function ShowcasePage() {
               <p className="mt-4 text-(--color-foreground-muted)">
                 Three tiers — primitives, semantic, and component — so a single
                 source of truth flows from{" "}
-                <span className="font-mono text-xs">--color-blue-500</span> to{" "}
+                <span className="font-mono text-xs">
+                  {primitiveVar(primary)}
+                </span>{" "}
+                to{" "}
                 <span className="font-mono text-xs">
                   --color-button-primary-background
                 </span>
@@ -202,7 +214,7 @@ export default function ShowcasePage() {
                     background · primary
                   </p>
                   <p className="font-mono text-xs text-(--color-foreground-faint)">
-                    --color-blue-*
+                    {`--color-${primary.palette}-*`}
                   </p>
                 </div>
                 <div className="grid grid-cols-11 gap-1">
@@ -219,13 +231,13 @@ export default function ShowcasePage() {
                     "900",
                     "950",
                   ]
-                    .map((stop) => ({ stop, active: stop === "600" }))
+                    .map((stop) => ({ stop, active: stop === primary.step }))
                     .map((s) => (
                       <div
                         key={s.stop}
                         className={`aspect-3/4 rounded${s.active ? " ring-2 ring-offset-2" : ""}`}
                         style={{
-                          background: `var(--color-blue-${s.stop})`,
+                          background: `var(--color-${primary.palette}-${s.stop})`,
                           ...(s.active
                             ? ({
                                 "--tw-ring-color":
@@ -549,7 +561,7 @@ export default function ShowcasePage() {
                     <span
                       className="inline-flex h-6 items-center rounded px-2 text-[0.625rem] font-semibold"
                       style={{
-                        background: "var(--color-red-600)",
+                        background: "var(--color-background-danger)",
                         color: "var(--color-foreground-danger)",
                       }}
                     >
@@ -1118,15 +1130,19 @@ export default function ShowcasePage() {
                     <div className="flex gap-1.5">
                       <span
                         className="h-2.5 w-2.5 rounded-full"
-                        style={{ background: "var(--color-red-400)" }}
+                        style={{ background: "var(--color-background-danger)" }}
                       />
                       <span
                         className="h-2.5 w-2.5 rounded-full"
-                        style={{ background: "var(--color-yellow-400)" }}
+                        style={{
+                          background: "var(--color-background-warning)",
+                        }}
                       />
                       <span
                         className="h-2.5 w-2.5 rounded-full"
-                        style={{ background: "var(--color-green-500)" }}
+                        style={{
+                          background: "var(--color-background-success)",
+                        }}
                       />
                     </div>
                     <div className="flex-1 text-center font-mono text-xs text-(--color-foreground-faint)">
@@ -1254,10 +1270,12 @@ export default function ShowcasePage() {
                           <div className="flex items-center gap-2 rounded border border-(--color-border-default) px-2 py-1.5">
                             <span
                               className="h-4 w-4 rounded shrink-0"
-                              style={{ background: "var(--color-blue-500)" }}
+                              style={{
+                                background: `var(--color-${primary.palette}-${previousStep})`,
+                              }}
                             />
                             <span className="font-mono text-(--color-foreground-faint) line-through">
-                              {manifest.primitives.colors.blue["500"].value}
+                              {primaryRamp[previousStep].value}
                             </span>
                           </div>
                           <div
@@ -1271,10 +1289,12 @@ export default function ShowcasePage() {
                           >
                             <span
                               className="h-4 w-4 rounded shrink-0"
-                              style={{ background: "var(--color-blue-600)" }}
+                              style={{
+                                background: `var(${primitiveVar(primary)})`,
+                              }}
                             />
                             <span className="font-mono text-(--color-foreground-default)">
-                              {manifest.primitives.colors.blue["600"].value}
+                              {primaryRamp[primary.step].value}
                             </span>
                           </div>
                         </div>

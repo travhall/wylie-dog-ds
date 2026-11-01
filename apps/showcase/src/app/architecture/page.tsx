@@ -3,9 +3,17 @@ import React from "react";
 import Link from "next/link";
 import { Button, buttonVariants } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
+import { describeAlias, getAlias, primitiveVar } from "@/lib/token-values";
 
 export default function ArchitecturePage() {
   const meta = getShowcaseMeta();
+  const primary = getAlias("color.background.primary");
+  const primaryRamp = (
+    manifest.primitives.colors as Record<
+      string,
+      Record<string, { value: string }>
+    >
+  )[primary.palette];
   return (
     <>
       {/* ── HERO ── */}
@@ -182,7 +190,7 @@ export default function ArchitecturePage() {
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
                                 style={{
-                                  background: "var(--color-fiery-coral-400)",
+                                  background: "var(--color-background-primary)",
                                 }}
                               />
                               App
@@ -210,7 +218,9 @@ export default function ArchitecturePage() {
                             <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
-                                style={{ background: "var(--color-blue-400)" }}
+                                style={{
+                                  background: "var(--color-foreground-link)",
+                                }}
                               />
                               App
                             </span>
@@ -590,9 +600,9 @@ export default function ArchitecturePage() {
                       <path d="M8 9h8M8 13h6" />
                     </svg>
                   ),
-                  iconColor: "var(--color-fiery-coral-600)",
+                  iconColor: "var(--color-foreground-primary-muted)",
                   iconBg:
-                    "color-mix(in oklch, var(--color-fiery-coral-400) 22%, transparent)",
+                    "color-mix(in oklch, var(--color-background-primary) 22%, transparent)",
                   desc: "Component documentation and the pattern playground. Every component in @wyliedog/ui has a story file. Stories run as accessibility tests in the test suite, and a curated set has visual regression baselines.",
                   meta: [
                     [
@@ -621,9 +631,9 @@ export default function ArchitecturePage() {
                       <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
                     </svg>
                   ),
-                  iconColor: "var(--color-blue-700)",
+                  iconColor: "var(--color-foreground-link)",
                   iconBg:
-                    "color-mix(in oklch, var(--color-blue-400) 22%, transparent)",
+                    "color-mix(in oklch, var(--color-foreground-link) 22%, transparent)",
                   desc: "The page you're reading. A Next.js App Router site that consumes @wyliedog/ui as its only component dependency — the marketing site eats its own design system.",
                   meta: [
                     ["Stack", `Next.js ${meta.stack.next} · App Router`],
@@ -739,12 +749,16 @@ export default function ArchitecturePage() {
                       { indent: 0, rest: "{" },
                       { indent: 1, key: "primitive", rest: ": {" },
                       { indent: 2, key: "variables", rest: ": {" },
-                      { indent: 3, key: "color.blue.600", rest: ": {" },
+                      {
+                        indent: 3,
+                        key: `color.${primary.palette}.${primary.step}`,
+                        rest: ": {",
+                      },
                       { indent: 4, key: "$type", rest: ': "color",' },
                       {
                         indent: 4,
                         key: "$value",
-                        rest: `: "${manifest.primitives.colors.blue["600"].value}"`,
+                        rest: `: "${primaryRamp[primary.step].value}"`,
                       },
                       { indent: 3, rest: "}" },
                       { indent: 2, rest: "}" },
@@ -830,10 +844,10 @@ export default function ArchitecturePage() {
                           color: "var(--color-foreground-primary-muted)",
                         }}
                       >
-                        --color-blue-600
+                        {primitiveVar(primary)}
                       </span>
                       <span className="text-(--color-foreground-muted)">
-                        : {manifest.primitives.colors.blue["600"].value};
+                        : {primaryRamp[primary.step].value};
                       </span>
                     </div>
                     <div className="mt-1 text-(--color-foreground-faint) italic">
@@ -971,11 +985,11 @@ export default function ArchitecturePage() {
             {[
               [
                 "Tier 1 · primitive",
-                "Raw OKLCH ramps. --color-blue-600 doesn't know what it'll be used for — it just is.",
+                `Raw OKLCH ramps. ${primitiveVar(primary)} doesn't know what it'll be used for — it just is.`,
               ],
               [
                 "Tier 2 · semantic",
-                "Role aliases. --color-background-primary maps to --color-blue-600 in both light and dark, and re-resolves under any future theme.",
+                `Role aliases. --color-background-primary maps to ${describeAlias("color.background.primary")}, and re-resolves under any future theme.`,
               ],
               [
                 "Tier 3 · component",
@@ -1024,10 +1038,10 @@ export default function ArchitecturePage() {
             {/* Terminal */}
             <div className="lg:col-span-5">
               <div
-                className="rounded-xl overflow-hidden shadow-lg"
+                className="dark rounded-xl overflow-hidden shadow-lg"
                 style={{
-                  background: "var(--color-polar-night-950)",
-                  color: "var(--color-polar-night-50)",
+                  background: "var(--color-background-default)",
+                  color: "var(--color-foreground-default)",
                   border:
                     "1px solid color-mix(in oklch, var(--color-border-default) 60%, transparent)",
                 }}
@@ -1035,134 +1049,168 @@ export default function ArchitecturePage() {
                 <div
                   className="flex items-center gap-2 px-3 py-2"
                   style={{
-                    background: "var(--color-gray-900)",
-                    borderBottom: "1px solid var(--color-black-bear-700)",
+                    background: "var(--color-background-muted)",
+                    borderBottom: "1px solid var(--color-border-default)",
                   }}
                 >
                   <div className="flex gap-1.5">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--color-red-400)" }}
+                      style={{ background: "var(--color-background-danger)" }}
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--color-yellow-400)" }}
+                      style={{ background: "var(--color-background-warning)" }}
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--color-green-500)" }}
+                      style={{ background: "var(--color-background-success)" }}
                     />
                   </div>
                   <span
                     className="ml-2 font-mono text-xs"
-                    style={{ color: "var(--color-gray-400)" }}
+                    style={{ color: "var(--color-foreground-faint)" }}
                   >
                     ~/wyliedog · main
                   </span>
                   <span
                     className="ml-auto font-mono text-xs"
-                    style={{ color: "var(--color-gray-400)" }}
+                    style={{ color: "var(--color-foreground-faint)" }}
                   >
                     zsh
                   </span>
                 </div>
                 <div className="px-4 py-4 font-mono text-[0.75rem] leading-[1.65] space-y-0.5">
                   <div>
-                    <span style={{ color: "var(--color-green-500)" }}>$</span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
+                      $
+                    </span>{" "}
                     pnpm{" "}
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       build
                     </span>
                   </div>
-                  <div style={{ color: "var(--color-gray-400)" }}>
+                  <div style={{ color: "var(--color-foreground-faint)" }}>
                     turbo run build
                   </div>
                   <div className="mt-2">
-                    <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
-                    <span style={{ color: "var(--color-fiery-coral-200)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
+                      ▸
+                    </span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-primary-muted)" }}
+                    >
                       @wyliedog/tokens#build
                     </span>{" "}
-                    <span style={{ color: "var(--color-gray-400)" }}>
+                    <span style={{ color: "var(--color-foreground-faint)" }}>
                       style-dictionary
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-gray-400)" }}
+                    style={{ color: "var(--color-foreground-faint)" }}
                   >
                     → dist/tokens.css{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       {meta.tokens.total} vars
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-gray-400)" }}
+                    style={{ color: "var(--color-foreground-faint)" }}
                   >
                     → dist/index.js
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-gray-400)" }}
+                    style={{ color: "var(--color-foreground-faint)" }}
                   >
                     → dist/manifest.json
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-green-500)" }}
+                    style={{ color: "var(--color-foreground-success-muted)" }}
                   >
                     ✓ done
                   </div>
                   <div className="mt-1">
-                    <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
-                    <span style={{ color: "var(--color-fiery-coral-200)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
+                      ▸
+                    </span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-primary-muted)" }}
+                    >
                       @wyliedog/ui#build
                     </span>{" "}
-                    <span style={{ color: "var(--color-gray-400)" }}>
+                    <span style={{ color: "var(--color-foreground-faint)" }}>
                       tailwind + tsup
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-gray-400)" }}
+                    style={{ color: "var(--color-foreground-faint)" }}
                   >
                     → dist/index.css
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-green-500)" }}
+                    style={{ color: "var(--color-foreground-success-muted)" }}
                   >
                     ✓ done · one entry per component (.js · .cjs · .d.ts)
                   </div>
                   <div className="mt-1">
-                    <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
-                    <span style={{ color: "var(--color-fiery-coral-200)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
+                      ▸
+                    </span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-primary-muted)" }}
+                    >
                       @wyliedog/storybook#build
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-green-500)" }}
+                    style={{ color: "var(--color-foreground-success-muted)" }}
                   >
                     ✓ build:css, then storybook build
                   </div>
                   <div className="mt-1">
-                    <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
-                    <span style={{ color: "var(--color-fiery-coral-200)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
+                      ▸
+                    </span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-primary-muted)" }}
+                    >
                       @wyliedog/showcase#build
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "var(--color-green-500)" }}
+                    style={{ color: "var(--color-foreground-success-muted)" }}
                   >
                     ✓ next build
                   </div>
                   <div className="mt-1">
-                    <span style={{ color: "var(--color-green-500)" }}>$</span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
+                      $
+                    </span>{" "}
                     <span
                       className="inline-block w-1.5 h-3 align-middle"
-                      style={{ background: "var(--color-polar-night-50)" }}
+                      style={{ background: "var(--color-foreground-default)" }}
                     />
                   </div>
                 </div>
@@ -1272,275 +1320,334 @@ export default function ArchitecturePage() {
             {/* Code panel */}
             <div className="lg:col-span-7">
               <div
-                className="rounded-xl overflow-hidden border border-(--color-border-default) shadow-sm"
-                style={{ background: "var(--color-polar-night-950)" }}
+                className="dark rounded-xl overflow-hidden border border-(--color-border-default) shadow-sm"
+                style={{
+                  background: "var(--color-background-default)",
+                  color: "var(--color-foreground-default)",
+                }}
               >
                 <div
                   className="flex items-center gap-2 px-4 py-2.5 border-b"
                   style={{
-                    background: "var(--color-gray-900)",
-                    borderColor: "var(--color-black-bear-700)",
+                    background: "var(--color-background-muted)",
+                    borderColor: "var(--color-border-default)",
                   }}
                 >
                   <div className="flex gap-1.5">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--color-red-400)" }}
+                      style={{ background: "var(--color-background-danger)" }}
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--color-yellow-400)" }}
+                      style={{ background: "var(--color-background-warning)" }}
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--color-green-500)" }}
+                      style={{ background: "var(--color-background-success)" }}
                     />
                   </div>
                   <span
                     className="ml-2 font-mono text-xs"
-                    style={{ color: "var(--color-gray-400)" }}
+                    style={{ color: "var(--color-foreground-faint)" }}
                   >
                     Button.tsx
                   </span>
                 </div>
                 <div className="px-4 py-4 font-mono text-xs leading-[1.8] overflow-x-auto">
                   <div>
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       import
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"{ forwardRef }"}
                     </span>{" "}
-                    <span style={{ color: "var(--color-blue-400)" }}>from</span>{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
+                      from
+                    </span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       &quot;react&quot;
                     </span>
                   </div>
                   <div>
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       import
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"{ Slot }"}
                     </span>{" "}
-                    <span style={{ color: "var(--color-blue-400)" }}>from</span>{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
+                      from
+                    </span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       &quot;@radix-ui/react-slot&quot;
                     </span>
                   </div>
                   <div>
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       import
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"{ cva, type VariantProps }"}
                     </span>{" "}
-                    <span style={{ color: "var(--color-blue-400)" }}>from</span>{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
+                      from
+                    </span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       &quot;class-variance-authority&quot;
                     </span>
                   </div>
                   <div>
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       import
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"{ cn }"}
                     </span>{" "}
-                    <span style={{ color: "var(--color-blue-400)" }}>from</span>{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
+                      from
+                    </span>{" "}
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       &quot;./lib/utils&quot;
                     </span>
                   </div>
                   <div className="mt-3">
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       const
                     </span>{" "}
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       buttonVariants
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       =
                     </span>{" "}
-                    <span style={{ color: "var(--color-blue-400)" }}>cva</span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
+                      cva
+                    </span>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       (
                     </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       &quot;inline-flex items-center justify-center rounded-md
                       font-medium&quot;
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       ,
                     </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"{"}
                     </span>
                   </div>
                   <div className="pl-8">
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       variants
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       : {"{"}
                     </span>
                   </div>
                   <div className="pl-12">
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       variant
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       : {"{"}
                     </span>
                   </div>
                   <div className="pl-16">
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       default
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       :
                     </span>{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       &quot;bg-(--color-background-primary)
                       text-(--color-foreground-inverse)&quot;
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       ,
                     </span>
                   </div>
                   <div className="pl-16">
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       outline
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       :
                     </span>{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       &quot;border border-(--color-border-default)
                       bg-transparent&quot;
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       ,
                     </span>
                   </div>
                   <div className="pl-12">
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"},"}
                     </span>
                   </div>
                   <div className="pl-8">
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"}"}
                     </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"}"}
                     </span>
                   </div>
                   <div>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       )
                     </span>
                   </div>
                   <div className="mt-3">
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       export const
                     </span>{" "}
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       Button
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       = forwardRef&lt;
                     </span>
-                    <span style={{ color: "var(--color-fiery-coral-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-primary-muted)" }}
+                    >
                       HTMLButtonElement
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       ,
                     </span>{" "}
-                    <span style={{ color: "var(--color-fiery-coral-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-primary-muted)" }}
+                    >
                       ButtonProps
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       &gt;(
                     </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       ({"{"}
                     </span>{" "}
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       className, variant, size, asChild, ...props
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"}"}, ref) =&gt; {"{"}
                     </span>
                   </div>
                   <div className="pl-8">
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       const
                     </span>{" "}
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       Comp
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       =
                     </span>{" "}
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       asChild
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       ?
                     </span>{" "}
-                    <span style={{ color: "var(--color-fiery-coral-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-primary-muted)" }}
+                    >
                       Slot
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       :
                     </span>{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-success-muted)" }}
+                    >
                       &quot;button&quot;
                     </span>
                   </div>
                   <div className="pl-8">
-                    <span style={{ color: "var(--color-blue-400)" }}>
+                    <span style={{ color: "var(--color-foreground-link)" }}>
                       return
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       &lt;
                     </span>
-                    <span style={{ color: "var(--color-fiery-coral-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-primary-muted)" }}
+                    >
                       Comp
                     </span>{" "}
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       ref
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       ={"{"}ref{"}"}
                     </span>{" "}
-                    <span style={{ color: "var(--color-yellow-400)" }}>
+                    <span
+                      style={{ color: "var(--color-foreground-warning-muted)" }}
+                    >
                       className
                     </span>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       ={"{"}cn(buttonVariants({"{"} variant, size {"}"}),
                       className){"}"}
                     </span>{" "}
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"{"} ...props {"}"} /&gt;
                     </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       {"}"}
                     </span>
                   </div>
                   <div>
-                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                    <span style={{ color: "var(--color-foreground-default)" }}>
                       )
                     </span>
                   </div>

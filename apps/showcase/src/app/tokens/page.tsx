@@ -2,13 +2,29 @@ import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
 import manifest from "@wyliedog/tokens/manifest.json";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
+import { describeAlias, getAlias, primitiveVar } from "@/lib/token-values";
 import { contrastRatio, parseOklch, wcagLevel } from "@/lib/contrast";
 import { SpacingDemo } from "./spacing-demo";
 import { MotionPreview } from "./motion-preview";
 import { SectionSubnav } from "@/components/section-subnav";
 
+/** Share of the primary fill in each demo chart series, strongest first. */
+const SERIES_SHARE = [100, 70, 45, 25];
+
+/** A tint of the primary role, mixed toward the page, so the chart follows the theme. */
+function seriesColor(index: number): string {
+  return `color-mix(in oklch, var(--color-background-primary) ${SERIES_SHARE[index]}%, var(--color-background-default))`;
+}
+
 export default function TokensPage() {
   const meta = getShowcaseMeta();
+  const primary = getAlias("color.background.primary");
+  const primaryRamp = (
+    manifest.primitives.colors as Record<
+      string,
+      Record<string, { value: string }>
+    >
+  )[primary.palette];
 
   const composedSpacingTokens = [
     manifest.components.card["card-padding"],
@@ -30,15 +46,14 @@ export default function TokensPage() {
     [54, 41, 27, 20],
   ];
 
-  // Real blue ramp from the manifest; contrast is computed against white.
-  // --color-background-primary resolves to blue-600 in both modes.
-  const blue = manifest.primitives.colors.blue as Record<
-    string,
-    { value: string; variable: string }
-  >;
+  // The primary role's ramp from the manifest, whichever palette that is;
+  // contrast is computed against white.
+  const ramp = manifest.primitives.colors[
+    primary.palette as keyof typeof manifest.primitives.colors
+  ] as unknown as Record<string, { value: string; variable: string }>;
   const brandRamp = ["50", "100", "300", "500", "600", "700", "900"].map(
     (step) => {
-      const token = blue[step];
+      const token = ramp[step];
       // Contrast is computed against pure white on purpose; white is not a token.
       // eslint-disable-next-line no-restricted-syntax
       const ratio = contrastRatio(token.value, "oklch(1 0 0)");
@@ -48,7 +63,7 @@ export default function TokensPage() {
         lightness: parseOklch(token.value)[0],
         ratio,
         level: wcagLevel(ratio),
-        brand: step === "600",
+        brand: step === primary.step,
       };
     }
   );
@@ -130,16 +145,16 @@ export default function TokensPage() {
                   tier: "Tier 01 · Primitive",
                   count: meta.tokens.primitive,
                   desc: "Raw values. Never referenced directly by components.",
-                  tokenName: "--color-blue-600",
-                  tokenVal: manifest.primitives.colors.blue["600"].value,
-                  swatch: "var(--color-blue-600)",
+                  tokenName: primitiveVar(primary),
+                  tokenVal: primaryRamp[primary.step].value,
+                  swatch: `var(${primitiveVar(primary)})`,
                 },
                 {
                   tier: "Tier 02 · Semantic",
                   count: meta.tokens.semantic,
                   desc: "Roles. The contract every theme must satisfy.",
                   tokenName: "--color-background-primary",
-                  tokenVal: "→ blue-600 (light and dark)",
+                  tokenVal: `→ ${describeAlias("color.background.primary")}`,
                   swatch: "var(--color-background-primary)",
                 },
                 {
@@ -352,12 +367,7 @@ export default function TokensPage() {
                               className="rounded-sm"
                               style={{
                                 height: `${h}%`,
-                                background: [
-                                  "var(--color-blue-900)",
-                                  "var(--color-blue-600)",
-                                  "var(--color-blue-400)",
-                                  "var(--color-blue-200)",
-                                ][ci],
+                                background: seriesColor(ci),
                               }}
                             />
                           ))}
@@ -403,26 +413,26 @@ export default function TokensPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-(--color-border-default)">
                 {[
                   {
-                    color: "var(--color-blue-900)",
-                    label: "blue · 900",
+                    color: seriesColor(0),
+                    label: "primary · 100%",
                     name: "Direct",
                     pct: "42% of new users",
                   },
                   {
-                    color: "var(--color-blue-600)",
-                    label: "blue · 600",
+                    color: seriesColor(1),
+                    label: "primary · 70%",
                     name: "Referral",
                     pct: "28% of new users",
                   },
                   {
-                    color: "var(--color-blue-400)",
-                    label: "blue · 400",
+                    color: seriesColor(2),
+                    label: "primary · 45%",
                     name: "Search",
                     pct: "21% of new users",
                   },
                   {
-                    color: "var(--color-blue-200)",
-                    label: "blue · 200",
+                    color: seriesColor(3),
+                    label: "primary · 25%",
                     name: "Social",
                     pct: "9% of new users",
                   },
@@ -456,7 +466,7 @@ export default function TokensPage() {
               <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
                 <div className="flex items-center justify-between">
                   <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                    brand ramp · blue
+                    brand ramp · {primary.palette}
                   </p>
                   <span className="font-mono text-xs text-(--color-foreground-faint)">
                     contrast vs white
@@ -655,8 +665,8 @@ export default function TokensPage() {
                   <div
                     className="h-8 w-8 rounded-full grid place-items-center font-semibold text-xs"
                     style={{
-                      background: "var(--color-blue-300)",
-                      color: "var(--color-blue-950)",
+                      background: "var(--color-background-primary-muted)",
+                      color: "var(--color-foreground-primary-muted)",
                     }}
                   >
                     EM
@@ -690,11 +700,11 @@ export default function TokensPage() {
                   OKLCH fixes this because perceptual lightness is a first-class
                   axis. When you step from{" "}
                   <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-muted) text-(--color-foreground-default)">
-                    {manifest.primitives.colors.blue["600"].value}
+                    {primaryRamp[primary.step].value}
                   </code>{" "}
                   to{" "}
                   <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-muted) text-(--color-foreground-default)">
-                    {manifest.primitives.colors.blue["900"].value}
+                    {primaryRamp["900"].value}
                   </code>
                   , the difference is predictable — not a guess.
                 </p>

@@ -261,8 +261,8 @@ export default function ComponentsPage() {
                         <span
                           className="inline-grid place-items-center rounded-full font-semibold text-xs"
                           style={{
-                            background: "var(--color-blue-300)",
-                            color: "var(--color-blue-950)",
+                            background: "var(--color-background-info-muted)",
+                            color: "var(--color-foreground-info-muted)",
                             height: "2.375rem",
                             width: "2.375rem",
                           }}
@@ -563,18 +563,18 @@ export default function ComponentsPage() {
                 <div className="flex items-center gap-3">
                   {[
                     {
-                      bg: "var(--color-fiery-coral-300)",
-                      color: "var(--color-fiery-coral-950)",
+                      bg: "var(--color-background-primary-muted)",
+                      color: "var(--color-foreground-primary-muted)",
                       init: "EM",
                     },
                     {
-                      bg: "var(--color-blue-300)",
-                      color: "var(--color-blue-950)",
+                      bg: "var(--color-background-info-muted)",
+                      color: "var(--color-foreground-info-muted)",
                       init: "JR",
                     },
                     {
-                      bg: "var(--color-green-300)",
-                      color: "var(--color-green-950)",
+                      bg: "var(--color-background-success-muted)",
+                      color: "var(--color-foreground-success-muted)",
                       init: "AK",
                     },
                   ].map(({ bg, color, init }) => (
@@ -761,13 +761,13 @@ export default function ComponentsPage() {
                     <div className="flex -space-x-1.5">
                       {[
                         [
-                          "var(--color-fiery-coral-300)",
-                          "var(--color-fiery-coral-950)",
+                          "var(--color-background-primary-muted)",
+                          "var(--color-foreground-primary-muted)",
                           "EM",
                         ],
                         [
-                          "var(--color-blue-300)",
-                          "var(--color-blue-950)",
+                          "var(--color-background-info-muted)",
+                          "var(--color-foreground-info-muted)",
                           "JR",
                         ],
                       ].map(([bg, c, i]) => (
@@ -830,15 +830,21 @@ export default function ComponentsPage() {
                   <div className="flex-1 grid grid-cols-3 gap-1.5">
                     <div
                       className="aspect-3/4 rounded"
-                      style={{ background: "var(--color-fiery-coral-300)" }}
+                      style={{
+                        background: "var(--color-background-primary-muted)",
+                      }}
                     />
                     <div
                       className="aspect-3/4 rounded ring-2 ring-(--color-border-primary)"
-                      style={{ background: "var(--color-blue-400)" }}
+                      style={{
+                        background: "var(--color-background-info-muted)",
+                      }}
                     />
                     <div
                       className="aspect-3/4 rounded"
-                      style={{ background: "var(--color-green-300)" }}
+                      style={{
+                        background: "var(--color-background-success-muted)",
+                      }}
                     />
                   </div>
                   <Button
@@ -2632,8 +2638,8 @@ export default function ComponentsPage() {
                       <span
                         className="inline-grid place-items-center rounded-full text-xs font-semibold"
                         style={{
-                          background: "var(--color-blue-300)",
-                          color: "var(--color-blue-950)",
+                          background: "var(--color-background-info-muted)",
+                          color: "var(--color-foreground-info-muted)",
                           height: "2rem",
                           width: "2rem",
                         }}
