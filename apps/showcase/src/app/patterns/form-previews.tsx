@@ -55,7 +55,7 @@ function FieldInput(props: InputProps) {
   );
 }
 
-function Field({
+export function Field({
   label,
   required,
   error,

@@ -16,6 +16,12 @@ import {
   ContactFormPreview,
   ValidationPreview,
 } from "./form-previews";
+import {
+  ErrorBoundaryPreview,
+  LayoutPreview,
+  ResponsivePreview,
+  AccessibilityPreview,
+} from "./behavior-previews";
 import manifest from "@wyliedog/tokens/manifest.json";
 import {
   getShowcaseMeta,
@@ -460,135 +466,13 @@ export default function PatternsPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
-              story="error-boundary-patterns"
+              live
               full
+              story="error-boundary-patterns"
               title="Error Boundary Patterns"
               desc="Basic and recoverable error boundaries, multiple and granular boundaries, custom fallback UI, and error logging."
               tags={["Alert", "Badge", "Button", "Card"]}
-              preview={
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 max-w-160 mx-auto">
-                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <span
-                      className="grid h-9 w-9 place-items-center rounded-full"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-danger-muted) 14%, transparent)",
-                        color: "var(--color-foreground-danger-muted)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-4 w-4"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.2}
-                      >
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 8v5M12 16h.01" />
-                      </svg>
-                    </span>
-                    <p className="mt-3 font-serif text-base font-semibold leading-tight text-(--color-foreground-default)">
-                      Something broke on our end
-                    </p>
-                    <p className="text-[0.6875rem] text-(--color-foreground-muted) mt-1">
-                      The team has been pinged. Your work was auto-saved 12s
-                      ago.
-                    </p>
-                    <div className="mt-3 rounded border border-(--color-border-default) bg-(--color-background-muted) p-2 font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                      error.id&nbsp;&nbsp;
-                      <span className="text-(--color-foreground-muted)">
-                        err_8f3a2b1c
-                      </span>
-                    </div>
-                    <div className="mt-3 flex gap-1.5">
-                      <Button
-                        size="sm"
-                        className="h-7 gap-1 text-[0.6875rem] font-semibold"
-                      >
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="h-3 w-3"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" />
-                        </svg>
-                        Try again
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="h-7 text-[0.6875rem] font-semibold"
-                      >
-                        Go to dashboard
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                      component-scoped
-                    </p>
-                    <div
-                      className="mt-2 rounded-md border bg-(--color-background-default) p-3"
-                      style={{
-                        borderColor:
-                          "color-mix(in oklch, var(--color-foreground-danger-muted) 40%, transparent)",
-                      }}
-                    >
-                      <div className="flex items-start gap-2">
-                        <span
-                          className="grid h-4 w-4 mt-px place-items-center rounded"
-                          style={{
-                            color: "var(--color-foreground-danger-muted)",
-                          }}
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            className="h-3.5 w-3.5"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2.4}
-                          >
-                            <path d="M12 2 2 22h20z" />
-                            <path d="M12 9v5M12 18h.01" />
-                          </svg>
-                        </span>
-                        <div className="flex-1">
-                          <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
-                            Chart failed to render
-                          </p>
-                          <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
-                            RangeError: data points exceed buffer.
-                          </p>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="mt-2 h-5 px-1.5 font-mono text-[0.5625rem]"
-                            style={{
-                              background:
-                                "color-mix(in oklch, var(--color-foreground-danger-muted) 14%, transparent)",
-                              color: "var(--color-foreground-danger-muted)",
-                            }}
-                          >
-                            Retry isolated
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="font-mono text-[0.5625rem] mt-3 text-(--color-foreground-faint)">
-                      <span
-                        style={{
-                          color: "var(--color-foreground-success-muted)",
-                        }}
-                      >
-                        ●
-                      </span>{" "}
-                      rest of the page still works
-                    </p>
-                  </div>
-                </div>
-              }
+              preview={<ErrorBoundaryPreview />}
             />
           </div>
         </div>
@@ -645,170 +529,13 @@ export default function PatternsPage() {
             desc="Page-level layouts built from the system's components: a dashboard, a settings page, a landing page and a user profile."
           />
           <PatCard
-            story="layout-patterns"
+            live
             full
+            story="layout-patterns"
             title="Layout Patterns"
             desc="Dashboard, settings page, landing page and user profile layouts, each composed from cards, inputs and separators."
             tags={["Card", "Avatar", "Badge", "Button", "Input", "Separator"]}
-            preview={
-              <div
-                className="mx-auto max-w-180 rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
-                style={{ boxShadow: "var(--shadow-md)" }}
-              >
-                <div className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-default) bg-(--color-background-muted)">
-                  <div className="flex gap-1">
-                    {[
-                      "var(--color-background-danger)",
-                      "var(--color-background-warning)",
-                      "var(--color-background-success)",
-                    ].map((c, i) => (
-                      <span
-                        key={i}
-                        className="h-2 w-2 rounded-full"
-                        style={{ background: c }}
-                      />
-                    ))}
-                  </div>
-                  <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint) ml-2">
-                    helios.wyliedog.dev/projects
-                  </span>
-                  <span className="ml-auto inline-flex h-4 items-center rounded border border-(--color-border-default) bg-(--color-background-default) px-1 font-mono text-[0.5rem] text-(--color-foreground-muted)">
-                    ⌘K
-                  </span>
-                </div>
-                <div className="grid grid-cols-12 h-55">
-                  <aside className="col-span-3 border-r border-(--color-border-default) p-3 bg-(--color-background-default)">
-                    <div className="flex items-center gap-1.5">
-                      <span
-                        className="grid h-4 w-4 place-items-center rounded"
-                        style={{
-                          background: "var(--color-background-primary)",
-                        }}
-                      />
-                      <span className="text-[0.625rem] font-serif font-semibold text-(--color-foreground-default)">
-                        Helios
-                      </span>
-                    </div>
-                    <div className="mt-3 space-y-0.5">
-                      <div
-                        className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[0.625rem] font-medium"
-                        style={{
-                          background:
-                            "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
-                          color: "var(--color-foreground-primary-muted)",
-                        }}
-                      >
-                        <span
-                          className="h-1 w-1 rounded-full"
-                          style={{ background: "currentColor" }}
-                        />
-                        Projects
-                      </div>
-                      {["Tasks", "Members", "Reports"].map((s) => (
-                        <div
-                          key={s}
-                          className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[0.625rem] text-(--color-foreground-muted)"
-                        >
-                          {s}
-                        </div>
-                      ))}
-                    </div>
-                  </aside>
-                  <div className="col-span-9 p-3">
-                    <div className="flex items-center justify-between">
-                      <p className="text-[0.6875rem] font-serif font-semibold text-(--color-foreground-default)">
-                        Projects
-                      </p>
-                      <Button
-                        size="sm"
-                        className="h-5.5 px-2 text-[0.625rem] font-semibold"
-                      >
-                        + New
-                      </Button>
-                    </div>
-                    <div className="mt-2 grid grid-cols-3 gap-1.5">
-                      {[60, 30, 85].map((w, i) => (
-                        <div
-                          key={i}
-                          className="rounded border border-(--color-border-default) p-2"
-                        >
-                          <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-emphasis)" />
-                          <div className="mt-1.5 h-1.5 w-1/2 rounded-full bg-(--color-background-emphasis)" />
-                          <div
-                            className="mt-2 h-1 w-full rounded-full"
-                            style={{
-                              background: "var(--color-background-emphasis)",
-                            }}
-                          >
-                            <div
-                              className="h-full rounded-full"
-                              style={{
-                                width: `${w}%`,
-                                background:
-                                  i === 2
-                                    ? "var(--color-foreground-success-muted)"
-                                    : "var(--color-background-accent)",
-                              }}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 rounded border border-(--color-border-default)">
-                      <div className="grid grid-cols-4 px-2 py-1 bg-(--color-background-muted) font-mono text-[0.5rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                        <span>Name</span>
-                        <span>Owner</span>
-                        <span>Due</span>
-                        <span className="text-right">Status</span>
-                      </div>
-                      {[
-                        {
-                          name: "Migration v1.4",
-                          owner: "EM",
-                          due: "Jun 12",
-                          status: "on track",
-                          color: "var(--color-foreground-success-muted)",
-                        },
-                        {
-                          name: "Token bridge",
-                          owner: "JR",
-                          due: "Jun 18",
-                          status: "at risk",
-                          color: "var(--color-foreground-warning-muted)",
-                        },
-                      ].map(({ name, owner, due, status, color }) => (
-                        <div
-                          key={name}
-                          className="grid grid-cols-4 px-2 py-1 border-t border-(--color-border-default) text-[0.5625rem] text-(--color-foreground-default)"
-                        >
-                          <span>{name}</span>
-                          <span className="text-(--color-foreground-muted)">
-                            {owner}
-                          </span>
-                          <span className="text-(--color-foreground-muted)">
-                            {due}
-                          </span>
-                          <span className="text-right">
-                            <span
-                              className="inline-block rounded px-1 font-mono text-[0.5rem]"
-                              style={{
-                                background: color.replace(
-                                  "--color-foreground-",
-                                  "--color-background-"
-                                ),
-                                color,
-                              }}
-                            >
-                              {status}
-                            </span>
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            }
+            preview={<LayoutPreview />}
           />
         </div>
       </section>
@@ -914,163 +641,13 @@ export default function PatternsPage() {
             desc={`Breakpoint-aware layout decisions. Not just "shrink the desktop" — structural reflows that pick the right pattern for each surface size.`}
           />
           <PatCard
-            decorative
-            story="responsive-patterns"
+            live
             full
+            story="responsive-patterns"
             title="Responsive Patterns"
             desc="A responsive card grid, navigation and form. Use Storybook's viewport toolbar to compare mobile, tablet and desktop."
             tags={["Card", "CardGrid", "Badge", "Button", "Label"]}
-            preview={
-              <div>
-                <div className="grid grid-cols-12 gap-3 max-w-205 mx-auto">
-                  {/* mobile */}
-                  <div className="col-span-3">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                        sm · 375
-                      </span>
-                      <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                        1 col
-                      </span>
-                    </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-3/5 p-1.5 space-y-1">
-                      <div className="h-3 rounded bg-(--color-background-emphasis)" />
-                      <div
-                        className="rounded p-1.5"
-                        style={{
-                          background:
-                            "color-mix(in oklch, var(--color-background-primary) 10%, transparent)",
-                        }}
-                      >
-                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-emphasis)" />
-                        <div className="mt-1 h-1 w-1/2 rounded-full bg-(--color-background-emphasis)" />
-                      </div>
-                      <div className="grid grid-cols-1 gap-1">
-                        {[0, 1, 2].map((i) => (
-                          <div
-                            key={i}
-                            className="rounded border border-(--color-border-default) h-5"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  {/* tablet */}
-                  <div className="col-span-4">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                        md · 768
-                      </span>
-                      <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                        2 col
-                      </span>
-                    </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-4/5 p-2 space-y-1.5">
-                      <div className="h-3 rounded bg-(--color-background-emphasis)" />
-                      <div
-                        className="rounded p-2"
-                        style={{
-                          background:
-                            "color-mix(in oklch, var(--color-background-primary) 10%, transparent)",
-                        }}
-                      >
-                        <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-emphasis)" />
-                        <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-emphasis)" />
-                      </div>
-                      <div className="grid grid-cols-2 gap-1">
-                        {[0, 1, 2, 3].map((i) => (
-                          <div
-                            key={i}
-                            className="rounded border border-(--color-border-default) h-6"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  {/* desktop */}
-                  <div className="col-span-5">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span
-                        className="rounded px-1.5 py-0.5 font-mono text-[0.5625rem]"
-                        style={{
-                          background: "var(--color-background-primary)",
-                          color: "var(--color-foreground-primary)",
-                        }}
-                      >
-                        lg · 1280
-                      </span>
-                      <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                        sidebar + 3 col
-                      </span>
-                    </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-5/4 p-2">
-                      <div className="h-3 rounded bg-(--color-background-emphasis) mb-1.5" />
-                      <div className="grid grid-cols-4 gap-1.5">
-                        <div className="col-span-1 space-y-1">
-                          {[0, 1, 2].map((i) => (
-                            <div
-                              key={i}
-                              className="rounded h-1.5 bg-(--color-background-emphasis)"
-                            />
-                          ))}
-                          <div
-                            className="rounded h-1.5"
-                            style={{
-                              background: "var(--color-background-primary)",
-                            }}
-                          />
-                        </div>
-                        <div className="col-span-3 space-y-1">
-                          <div
-                            className="rounded p-1.5"
-                            style={{
-                              background:
-                                "color-mix(in oklch, var(--color-background-primary) 10%, transparent)",
-                            }}
-                          >
-                            <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-emphasis)" />
-                          </div>
-                          <div className="grid grid-cols-3 gap-1">
-                            {[0, 1, 2].map((i) => (
-                              <div
-                                key={i}
-                                className="rounded border border-(--color-border-default) h-6"
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* decision strip */}
-                <div className="mt-4 mx-auto max-w-205 rounded-md border border-(--color-border-default) bg-(--color-background-default) px-3 py-2 grid grid-cols-3 gap-3 text-[0.625rem]">
-                  {[
-                    {
-                      label: "Below md",
-                      desc: "Sidebar → drawer. Tabs → segmented control. Tables → cards.",
-                    },
-                    {
-                      label: "md → lg",
-                      desc: "Sidebar compact. 2-up content. Sticky filters.",
-                    },
-                    {
-                      label: "lg and up",
-                      desc: "Full sidebar. 3-up content. Inline filters.",
-                    },
-                  ].map(({ label, desc }) => (
-                    <div key={label}>
-                      <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                        {label}
-                      </span>
-                      <p className="mt-0.5 text-[0.625rem] text-(--color-foreground-muted)">
-                        {desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            }
+            preview={<ResponsivePreview />}
           />
         </div>
       </section>
@@ -1091,8 +668,9 @@ export default function PatternsPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
-              story="accessibility-patterns"
+              live
               full
+              story="accessibility-patterns"
               title="Accessibility Patterns"
               desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus indicator is driven by --color-focus-ring and --color-focus-halo, so a token change updates it everywhere.`}
               tags={[
@@ -1104,125 +682,7 @@ export default function PatternsPage() {
                 "Label",
                 "Select",
               ]}
-              preview={
-                <div className="grid md:grid-cols-3 gap-3 max-w-205 mx-auto">
-                  {/* Focus ring demo */}
-                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                      Focus management
-                    </p>
-                    <div className="mt-3 flex flex-col gap-2">
-                      <Button
-                        className="w-full h-7 text-[0.6875rem] font-semibold"
-                        style={{
-                          boxShadow:
-                            "0 0 0 2px var(--color-focus-halo), 0 0 0 4px var(--color-focus-ring)",
-                        }}
-                      >
-                        Focused button
-                      </Button>
-                      <div
-                        className="flex items-center h-7 border rounded-md px-2 text-[0.6875rem] text-(--color-foreground-faint)"
-                        style={{
-                          borderColor: "var(--color-focus-ring)",
-                          boxShadow:
-                            "0 0 0 2px var(--color-focus-halo), 0 0 0 4px var(--color-focus-ring)",
-                        }}
-                      >
-                        Focused input
-                      </div>
-                      <p className="text-[0.625rem] text-(--color-foreground-faint)">
-                        3px offset ring · OKLCH token
-                      </p>
-                    </div>
-                  </div>
-                  {/* Error announcement */}
-                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                      Error announcement
-                    </p>
-                    <div className="mt-3 space-y-2">
-                      <div>
-                        <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
-                          Email{" "}
-                          <span
-                            style={{
-                              color: "var(--color-foreground-danger-muted)",
-                            }}
-                            aria-hidden
-                          >
-                            *
-                          </span>
-                        </label>
-                        <div
-                          className="flex items-center h-7 border rounded-md px-2 text-[0.6875rem]"
-                          style={{
-                            borderColor: "var(--color-border-danger)",
-                            background:
-                              "color-mix(in oklch, var(--color-foreground-danger-muted) 6%, var(--color-background-default))",
-                          }}
-                        >
-                          <span className="text-(--color-foreground-default)">
-                            elena@wyl
-                          </span>
-                        </div>
-                        <p
-                          className="mt-1 flex items-center gap-1 text-[0.625rem]"
-                          style={{
-                            color: "var(--color-foreground-danger-muted)",
-                          }}
-                          role="alert"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            className="h-3 w-3 shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2.4}
-                          >
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 8v5M12 16h.01" />
-                          </svg>
-                          Invalid email format
-                        </p>
-                      </div>
-                      <p className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                        role=&quot;alert&quot; · aria-describedby
-                      </p>
-                    </div>
-                  </div>
-                  {/* Keyboard nav */}
-                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
-                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                      Keyboard navigation
-                    </p>
-                    <div className="mt-3 space-y-1.5">
-                      <div
-                        className="flex items-center justify-between rounded px-2 py-1.5 text-[0.6875rem]"
-                        style={{
-                          background:
-                            "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
-                          color: "var(--color-foreground-primary-muted)",
-                        }}
-                      >
-                        <span>Option one</span>
-                        <kbd className="font-mono text-[0.5625rem]">↑ ↓</kbd>
-                      </div>
-                      {["Option two", "Option three"].map((opt) => (
-                        <div
-                          key={opt}
-                          className="flex items-center justify-between rounded px-2 py-1.5 text-[0.6875rem] text-(--color-foreground-muted)"
-                        >
-                          {opt}
-                        </div>
-                      ))}
-                      <p className="font-mono text-[0.5625rem] text-(--color-foreground-faint) mt-2">
-                        roving tabIndex · Arrow keys
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<AccessibilityPreview />}
             />
           </div>
         </div>
