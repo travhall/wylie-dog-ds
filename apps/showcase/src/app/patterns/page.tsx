@@ -10,6 +10,12 @@ import {
   CardGridPreview,
   FeatureGridPreview,
 } from "./composition-previews";
+import {
+  LoginPreview,
+  RecoveryPreview,
+  ContactFormPreview,
+  ValidationPreview,
+} from "./form-previews";
 import manifest from "@wyliedog/tokens/manifest.json";
 import {
   getShowcaseMeta,
@@ -382,248 +388,21 @@ export default function PatternsPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
+              live
               story="login-registration"
               title="Login & Registration"
               desc="Simple login, login with social auth, a registration form, and a tabbed login and registration form."
               tags={["Card", "Form", "Input", "Button", "Tabs", "Checkbox"]}
-              preview={
-                <div
-                  className="mx-auto max-w-[20rem] rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-5"
-                  style={{ boxShadow: "var(--shadow-md)" }}
-                >
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="grid h-6 w-6 place-items-center rounded"
-                      style={{
-                        background: "var(--color-background-primary)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3.5 w-3.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.2}
-                        style={{
-                          color: "var(--color-foreground-inverse)",
-                        }}
-                      >
-                        <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
-                        <circle cx="12" cy="11" r="1.5" fill="currentColor" />
-                      </svg>
-                    </span>
-                    <span className="font-serif text-sm font-semibold text-(--color-foreground-default)">
-                      Wylie Dog
-                    </span>
-                  </div>
-                  <h3 className="mt-3 font-serif text-lg font-semibold leading-tight text-(--color-foreground-default)">
-                    Welcome back
-                  </h3>
-                  <p className="text-[0.6875rem] text-(--color-foreground-faint)">
-                    Sign in to continue to your workspace.
-                  </p>
-                  <div className="mt-4 space-y-2.5">
-                    <div>
-                      <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
-                        Email
-                      </label>
-                      <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-default)">
-                        elena@wyliedog.dev
-                      </div>
-                    </div>
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <label className="text-[0.625rem] font-medium text-(--color-foreground-muted)">
-                          Password
-                        </label>
-                        <a
-                          className="font-mono text-[0.5625rem]"
-                          style={{
-                            color: "var(--color-foreground-primary-muted)",
-                          }}
-                        >
-                          Forgot?
-                        </a>
-                      </div>
-                      <div className="flex items-center justify-between h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)">
-                        <span className="tracking-[0.3em] text-(--color-foreground-faint)">
-                          ••••••••
-                        </span>
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="h-3 w-3 text-(--color-foreground-faint)"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" />
-                          <circle cx="12" cy="12" r="3" />
-                        </svg>
-                      </div>
-                    </div>
-                    <Button className="w-full h-7.5 text-[0.6875rem] font-semibold">
-                      Sign in
-                    </Button>
-                  </div>
-                  <div className="mt-3 flex items-center gap-2">
-                    <span
-                      className="h-px flex-1"
-                      style={{ background: "var(--color-border-default)" }}
-                    />
-                    <span className="font-mono text-[0.5625rem] uppercase text-(--color-foreground-faint)">
-                      or continue with
-                    </span>
-                    <span
-                      className="h-px flex-1"
-                      style={{ background: "var(--color-border-default)" }}
-                    />
-                  </div>
-                  <div className="mt-3 grid grid-cols-3 gap-1.5">
-                    {["G", "GH", ""].map((label, i) => (
-                      <Button
-                        key={i}
-                        aria-label={
-                          [
-                            "Continue with Google",
-                            "Continue with GitHub",
-                            "Continue with Apple",
-                          ][i]
-                        }
-                        variant="outline"
-                        className="h-7 text-[0.6875rem] font-semibold"
-                      >
-                        {i === 0 ? (
-                          "G"
-                        ) : i === 1 ? (
-                          <svg
-                            viewBox="0 0 24 24"
-                            className="h-3 w-3"
-                            fill="currentColor"
-                          >
-                            <path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.78.84 1.24 1.9 1.24 3.22 0 4.6-2.81 5.62-5.48 5.91.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3z" />
-                          </svg>
-                        ) : (
-                          <svg
-                            viewBox="0 0 24 24"
-                            className="h-3 w-3"
-                            fill="currentColor"
-                          >
-                            <path d="M16.36 1.43c0 1.14-.42 2.21-1.27 2.97-.84.77-1.86 1.21-2.95 1.13-.02-1.14.45-2.25 1.26-3 .82-.76 1.94-1.21 2.96-1.1zM20.5 17.26c-.3.7-.65 1.34-1.07 1.93-.56.79-1.02 1.34-1.38 1.65-.55.5-1.15.76-1.79.78-.46 0-1.02-.13-1.66-.4-.65-.27-1.24-.4-1.79-.4-.57 0-1.18.13-1.84.4-.66.27-1.19.41-1.59.43-.62.03-1.23-.24-1.83-.79-.39-.34-.86-.91-1.42-1.7-.59-.85-1.08-1.83-1.46-2.96-.41-1.22-.62-2.4-.62-3.54 0-1.31.28-2.44.85-3.39.45-.76 1.04-1.36 1.79-1.8.74-.44 1.55-.66 2.42-.68.49 0 1.13.15 1.94.45.8.3 1.32.45 1.55.45.17 0 .75-.18 1.74-.53.94-.32 1.73-.46 2.38-.41 1.77.14 3.1.84 3.98 2.1-1.58.96-2.36 2.3-2.35 4.04.01 1.35.51 2.48 1.49 3.37.44.42.94.74 1.49.97-.12.34-.25.67-.39.99z" />
-                          </svg>
-                        )}
-                      </Button>
-                    ))}
-                  </div>
-                  <p className="mt-3 text-center text-[0.625rem] text-(--color-foreground-faint)">
-                    No account?{" "}
-                    <span
-                      className="font-medium"
-                      style={{
-                        color: "var(--color-foreground-primary-muted)",
-                      }}
-                    >
-                      Create one
-                    </span>
-                  </p>
-                </div>
-              }
+              preview={<LoginPreview />}
             />
 
             <PatCard
+              live
               story="password-recovery"
               title="Password Recovery"
               desc="Forgot-password email step, reset-password form, an invalid-link state, and a multi-step recovery flow."
               tags={["Card", "Form", "Input", "Alert", "Button"]}
-              preview={
-                <div className="grid grid-cols-2 gap-3 max-w-115 mx-auto">
-                  <div
-                    className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4"
-                    style={{ boxShadow: "var(--shadow-sm)" }}
-                  >
-                    <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                      step 1
-                    </span>
-                    <h4 className="mt-1 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
-                      Reset password
-                    </h4>
-                    <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
-                      We&apos;ll send a link.
-                    </p>
-                    <div className="mt-3 space-y-2">
-                      <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted)">
-                        Email
-                      </label>
-                      <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-faint)">
-                        elena@…
-                      </div>
-                      <Button className="w-full h-7 text-[0.6875rem] font-semibold">
-                        Send reset link
-                      </Button>
-                    </div>
-                  </div>
-                  <div
-                    className="rounded-lg bg-(--color-background-default) border-2 p-4"
-                    style={{
-                      borderColor: "var(--color-foreground-success-muted)",
-                      boxShadow: "var(--shadow-md)",
-                    }}
-                  >
-                    <span
-                      className="font-mono text-[0.5625rem] uppercase tracking-wider"
-                      style={{
-                        color: "var(--color-foreground-success-muted)",
-                      }}
-                    >
-                      step 2 · sent
-                    </span>
-                    <div
-                      className="mt-2 grid h-9 w-9 place-items-center rounded-full"
-                      style={{
-                        background: "var(--color-background-success-muted)",
-                        color: "var(--color-foreground-success-muted)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-5 w-5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.2}
-                      >
-                        <rect x="3" y="5" width="18" height="14" rx="2" />
-                        <path d="m3 7 9 6 9-6" />
-                      </svg>
-                    </div>
-                    <h4 className="mt-2 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
-                      Check your inbox
-                    </h4>
-                    <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5">
-                      Link valid for 15 min.
-                    </p>
-                    <div className="mt-3 flex items-center gap-1">
-                      <span className="font-mono text-[0.625rem] text-(--color-foreground-muted) truncate">
-                        e****@wyliedog.dev
-                      </span>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="mt-2 h-6 gap-1 text-[0.6875rem] text-(--color-foreground-muted)"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" />
-                      </svg>
-                      Resend in 0:42
-                    </Button>
-                  </div>
-                </div>
-              }
+              preview={<RecoveryPreview />}
             />
           </div>
         </div>
@@ -831,226 +610,21 @@ export default function PatternsPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatCard
+              live
               story="form-compositions"
               title="Form Compositions"
               desc="Contact, multi-step, preferences, project-creation, payment and settings forms built from the system's form components."
               tags={["Form", "Input", "Select", "Checkbox", "Switch", "Tabs"]}
-              preview={
-                <div
-                  className="mx-auto max-w-90 rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4"
-                  style={{ boxShadow: "var(--shadow-sm)" }}
-                >
-                  <div className="flex items-center gap-2">
-                    <p className="font-serif text-sm font-semibold text-(--color-foreground-default)">
-                      Workspace settings
-                    </p>
-                    <span className="ml-auto font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                      Step 2 of 3
-                    </span>
-                  </div>
-                  <div className="mt-3">
-                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                      General
-                    </p>
-                    <div className="mt-1.5 space-y-2 rounded-md border border-(--color-border-default) p-2.5">
-                      <div>
-                        <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
-                          Name
-                        </label>
-                        <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-default)">
-                          Helios Workspace
-                        </div>
-                      </div>
-                      <div>
-                        <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
-                          URL
-                        </label>
-                        <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)">
-                          <span className="font-mono text-(--color-foreground-faint)">
-                            wyliedog.dev/
-                          </span>
-                          <span className="font-mono text-(--color-foreground-default)">
-                            helios
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-3">
-                    <p className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                      Billing
-                    </p>
-                    <div className="mt-1.5 space-y-2 rounded-md border border-(--color-border-default) p-2.5">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
-                            Annual billing
-                          </p>
-                          <p className="text-[0.5625rem] text-(--color-foreground-faint)">
-                            Save 20%
-                          </p>
-                        </div>
-                        <span
-                          className="relative inline-flex h-4 w-7 items-center rounded-full"
-                          style={{
-                            background: "var(--color-background-accent)",
-                          }}
-                        >
-                          <span
-                            className="inline-block h-3 w-3 translate-x-3 rounded-full"
-                            style={{
-                              background: "var(--color-foreground-inverse)",
-                            }}
-                          />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-3 flex justify-between">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-7 px-2.5 text-[0.6875rem] font-semibold"
-                    >
-                      Back
-                    </Button>
-                    <Button
-                      size="sm"
-                      className="h-7 gap-1 text-[0.6875rem] font-semibold"
-                    >
-                      Continue
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="M5 12h14M13 6l6 6-6 6" />
-                      </svg>
-                    </Button>
-                  </div>
-                </div>
-              }
+              preview={<ContactFormPreview />}
             />
 
             <PatCard
-              decorative
+              live
               story="form-validation-patterns"
               title="Form Validation Patterns"
               desc="Required-field, inline, password-strength, multi-step and async validation using the Form components and controlled state, with no external validation library."
               tags={["Form", "Input", "Textarea", "Alert", "Button"]}
-              preview={
-                <div
-                  className="mx-auto max-w-90 rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4 space-y-3"
-                  style={{ boxShadow: "var(--shadow-sm)" }}
-                >
-                  <div>
-                    <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
-                      Email
-                    </label>
-                    <div
-                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[0.6875rem]"
-                      style={{
-                        borderColor: "var(--color-border-danger)",
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-danger-muted) 6%, var(--color-background-default))",
-                      }}
-                    >
-                      <span className="text-(--color-foreground-default)">
-                        elena@wyl
-                      </span>
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.4}
-                        style={{
-                          color: "var(--color-foreground-danger-muted)",
-                        }}
-                      >
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 8v5M12 16h.01" />
-                      </svg>
-                    </div>
-                    <p
-                      className="mt-1 text-[0.625rem]"
-                      style={{ color: "var(--color-foreground-danger-muted)" }}
-                    >
-                      Invalid email format. Expected name@domain.com.
-                    </p>
-                  </div>
-                  <div>
-                    <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
-                      Workspace URL
-                    </label>
-                    <div className="flex items-center justify-between h-7 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)">
-                      <span className="text-(--color-foreground-default)">
-                        acme-co
-                      </span>
-                      <span className="inline-flex items-center gap-1 font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="h-3 w-3 animate-spin"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path d="M21 12a9 9 0 1 1-9-9" />
-                        </svg>
-                        checking…
-                      </span>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-[0.625rem] font-medium text-(--color-foreground-muted) mb-1">
-                      Password
-                    </label>
-                    <div
-                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)"
-                      style={{
-                        borderColor: "var(--color-foreground-success-muted)",
-                      }}
-                    >
-                      <span className="tracking-[0.3em] text-(--color-foreground-faint)">
-                        ••••••••••••
-                      </span>
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.4}
-                        style={{
-                          color: "var(--color-foreground-success-muted)",
-                        }}
-                      >
-                        <path d="m5 12 5 5L20 7" />
-                      </svg>
-                    </div>
-                    <div className="mt-1 flex items-center gap-1">
-                      {[0, 1, 2, 3].map((i) => (
-                        <span
-                          key={i}
-                          className="h-1 w-6 rounded-full"
-                          style={{
-                            background: "var(--color-foreground-success-muted)",
-                          }}
-                        />
-                      ))}
-                      <span
-                        className="ml-1 text-[0.625rem]"
-                        style={{
-                          color: "var(--color-foreground-success-muted)",
-                        }}
-                      >
-                        Strong
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<ValidationPreview />}
             />
           </div>
         </div>
