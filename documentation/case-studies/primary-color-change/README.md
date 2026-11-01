@@ -103,7 +103,7 @@ why: the standard's formula overrates dark text on mid-tone saturated colors.
 
 APCA wants roughly 60 or more for body-size text. The project's gate is still
 WCAG 2.2 AA, so white on the original coral cannot ship; but a darker step
-passes both models. That darker coral is also the second shade in the logo.
+passes both models. That darker step is close to the darker coral in the logo, but it is its own palette step, not a copy of it.
 
 ## The fix
 
