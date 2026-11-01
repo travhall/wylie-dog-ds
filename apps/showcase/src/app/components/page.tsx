@@ -35,6 +35,19 @@ import {
   TablePreview,
   ToastPreview,
 } from "./inputs/content-previews";
+import {
+  AspectRatioPreview,
+  CollapsiblePreview,
+  ResizablePreview,
+  ScrollAreaPreview,
+  SeparatorPreview,
+  BreadcrumbPreview,
+  CommandPreview,
+  MenubarPreview,
+  NavigationMenuPreview,
+  PaginationPreview,
+  TabsPreview,
+} from "./inputs/layout-nav-previews";
 import { SectionSubnav } from "@/components/section-subnav";
 import { getShowcaseMeta, getStoryDocsUrl } from "@/lib/showcase-metadata";
 
@@ -770,163 +783,43 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
-              decorative
+              live
               name="Aspect Ratio"
               desc="Maintain a fixed ratio for media or canvases regardless of viewport."
               href="aspect-ratio"
-              preview={
-                <div className="w-full max-w-50 flex gap-1.5">
-                  <div
-                    className="aspect-video flex-1 rounded border border-(--color-border-default) flex items-center justify-center font-mono text-[0.5625rem] text-(--color-foreground-muted)"
-                    style={{ background: "var(--color-background-emphasis)" }}
-                  >
-                    16 : 9
-                  </div>
-                </div>
-              }
+              preview={<AspectRatioPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Collapsible"
               desc="A single open/closed disclosure region — the building block of Accordion."
               href="collapsible"
-              preview={
-                <div className="w-full max-w-55">
-                  <div className="flex items-center justify-between text-xs font-semibold py-1 text-(--color-foreground-default)">
-                    <span>Advanced settings</span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      style={{
-                        color: "var(--color-foreground-primary-muted)",
-                        transform: "rotate(180deg)",
-                      }}
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </div>
-                  <div
-                    className="mt-1 space-y-1.5 pl-2 border-l-2"
-                    style={{
-                      borderColor: "var(--color-border-primary)",
-                    }}
-                  >
-                    <div className="text-[0.625rem] text-(--color-foreground-muted)">
-                      → Network timeout
-                    </div>
-                    <div className="text-[0.625rem] text-(--color-foreground-muted)">
-                      → Retry strategy
-                    </div>
-                    <div className="text-[0.625rem] text-(--color-foreground-muted)">
-                      → Cache invalidation
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<CollapsiblePreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Resizable"
               desc="Split panes with drag handles — horizontal, vertical, nested."
               href="resizable"
-              preview={
-                <div className="w-full max-w-55 flex h-25 rounded-md border border-(--color-border-default) overflow-hidden bg-(--color-background-default)">
-                  <div className="flex-[0_0_38%] grid place-items-center font-mono text-[0.625rem] text-(--color-foreground-faint)">
-                    Sidebar
-                  </div>
-                  <div
-                    className="w-1 grid place-items-center cursor-col-resize"
-                    style={{ background: "var(--color-border-default)" }}
-                  >
-                    <div
-                      className="h-6 w-1 rounded-full"
-                      style={{
-                        background: "var(--color-background-primary)",
-                      }}
-                    />
-                  </div>
-                  <div
-                    className="flex-1 grid place-items-center font-mono text-[0.625rem] text-(--color-foreground-faint)"
-                    style={{ background: "var(--color-background-muted)" }}
-                  >
-                    Main
-                  </div>
-                </div>
-              }
+              preview={<ResizablePreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Scroll Area"
               desc="Custom-styled scrollbars (Radix Scroll Area)."
               href="scroll-area"
-              preview={
-                <div className="w-full max-w-50 h-27.5 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex">
-                  <div className="flex-1 p-2 text-[0.625rem] leading-relaxed text-(--color-foreground-muted) overflow-hidden">
-                    <p className="font-semibold text-(--color-foreground-default)">
-                      Changelog
-                    </p>
-                    <p>v1.4.0 — OKLCH ramps</p>
-                    <p>v1.3.2 — Toast variants</p>
-                    <p>v1.3.1 — Fix focus ring</p>
-                    <p>v1.3.0 — Calendar locales</p>
-                    <p className="text-(--color-foreground-faint)">
-                      v1.2.4 — Pagination
-                    </p>
-                  </div>
-                  <div
-                    className="w-1.5 my-1 mr-1 rounded-full relative"
-                    style={{
-                      background:
-                        "color-mix(in oklch, var(--color-border-default) 50%, transparent)",
-                    }}
-                  >
-                    <div
-                      className="absolute top-0 left-0 right-0 h-1/3 rounded-full"
-                      style={{ background: "var(--color-border-default)" }}
-                    />
-                  </div>
-                </div>
-              }
+              preview={<ScrollAreaPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Separator"
               desc="Horizontal or vertical divider, optionally purely decorative."
               href="separator"
-              preview={
-                <div className="w-full max-w-55 flex flex-col gap-2 items-center">
-                  <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
-                    Workspace
-                  </p>
-                  <div
-                    className="h-px w-full"
-                    style={{ background: "var(--color-border-default)" }}
-                  />
-                  <p className="text-[0.625rem] text-(--color-foreground-muted)">
-                    Settings · Members · Billing
-                  </p>
-                  <div className="flex items-center gap-2 w-full">
-                    <span
-                      className="flex-1 h-px"
-                      style={{ background: "var(--color-border-default)" }}
-                    />
-                    <span className="font-mono text-[0.5625rem] uppercase tracking-wider text-(--color-foreground-faint)">
-                      or
-                    </span>
-                    <span
-                      className="flex-1 h-px"
-                      style={{ background: "var(--color-border-default)" }}
-                    />
-                  </div>
-                </div>
-              }
+              preview={<SeparatorPreview />}
             />
           </div>
         </div>
@@ -948,275 +841,51 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <CompCard
+              live
               name="Breadcrumb"
               desc="Navigation trail with a customizable separator and an ellipsis item for long paths."
               href="breadcrumb"
-              preview={
-                <Breadcrumb className="text-xs">
-                  <BreadcrumbList>
-                    <BreadcrumbItem>
-                      <BreadcrumbLink href="#">Components</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                      <BreadcrumbLink href="#">Inputs</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                      <BreadcrumbPage>Select</BreadcrumbPage>
-                    </BreadcrumbItem>
-                  </BreadcrumbList>
-                </Breadcrumb>
-              }
+              preview={<BreadcrumbPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Command"
               desc="Searchable command list — input, groups, items, shortcuts and an empty state."
               href="command"
-              preview={
-                <div
-                  className="w-full max-w-65 rounded-md border border-(--color-border-default) bg-(--color-background-default)"
-                  style={{ boxShadow: "var(--shadow-md)" }}
-                >
-                  <div className="flex items-center gap-2 px-2.5 py-1.5 border-b border-(--color-border-default)">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-foreground-faint)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <circle cx="11" cy="11" r="7" />
-                      <path d="m21 21-4.3-4.3" />
-                    </svg>
-                    <span className="text-[0.6875rem] text-(--color-foreground-faint)">
-                      Type a command…
-                    </span>
-                    <span className="ml-auto font-mono text-[0.625rem] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
-                      esc
-                    </span>
-                  </div>
-                  <div className="p-1">
-                    <div
-                      className="rounded px-2 py-1 text-[0.6875rem] flex items-center gap-2"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
-                        color: "var(--color-foreground-primary-muted)",
-                      }}
-                    >
-                      Open documentation
-                    </div>
-                    <div className="px-2 py-1 text-[0.6875rem] text-(--color-foreground-muted)">
-                      New token…
-                    </div>
-                    <div className="px-2 py-1 text-[0.6875rem] text-(--color-foreground-muted)">
-                      Toggle theme
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<CommandPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Menubar"
               desc="Application-style top bar with cascading menus and keyboard shortcuts."
               href="menubar"
-              preview={
-                <div className="w-full max-w-65 flex flex-col gap-1">
-                  <div className="flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-default) px-1 py-1 text-[0.6875rem]">
-                    <span
-                      className="px-2 py-0.5 rounded font-medium text-(--color-foreground-default)"
-                      style={{
-                        background: "var(--color-background-muted)",
-                      }}
-                    >
-                      File
-                    </span>
-                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
-                      Edit
-                    </span>
-                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
-                      View
-                    </span>
-                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
-                      Help
-                    </span>
-                  </div>
-                  <div
-                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 self-start"
-                    style={{ boxShadow: "var(--shadow-md)" }}
-                  >
-                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[0.6875rem] text-(--color-foreground-default)">
-                      <span>New project</span>
-                      <span className="font-mono text-[0.625rem] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
-                        ⌘N
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[0.6875rem] text-(--color-foreground-default)">
-                      <span>Open</span>
-                      <span className="font-mono text-[0.625rem] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
-                        ⌘O
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<MenubarPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Navigation Menu"
               desc="Multi-level top nav with mega-menu panels and viewport positioning."
               href="navigation-menu"
-              preview={
-                <div className="w-full max-w-65">
-                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) flex items-center px-2 py-1 text-[0.6875rem] gap-1">
-                    <span
-                      className="px-2 py-0.5 rounded font-medium text-(--color-foreground-default)"
-                      style={{
-                        background: "var(--color-background-muted)",
-                      }}
-                    >
-                      Products
-                    </span>
-                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
-                      Solutions
-                    </span>
-                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
-                      Pricing
-                    </span>
-                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
-                      Docs
-                    </span>
-                  </div>
-                  <div
-                    className="mt-1 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 grid grid-cols-2 gap-1.5 text-[0.625rem]"
-                    style={{ boxShadow: "var(--shadow-md)", width: "86%" }}
-                  >
-                    <div
-                      className="rounded p-1.5"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
-                      }}
-                    >
-                      <p
-                        className="font-semibold"
-                        style={{
-                          color: "var(--color-foreground-primary-muted)",
-                        }}
-                      >
-                        Tokens
-                      </p>
-                      <p className="text-(--color-foreground-faint)">
-                        {meta.tokens.total} vars
-                      </p>
-                    </div>
-                    <div className="rounded p-1.5">
-                      <p className="font-semibold text-(--color-foreground-default)">
-                        Components
-                      </p>
-                      <p className="text-(--color-foreground-faint)">
-                        {meta.components.count} React
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<NavigationMenuPreview />}
             />
 
             <CompCard
+              live
               name="Pagination"
               desc="Page links with previous and next controls, an ellipsis and an active state."
               href="pagination"
-              preview={
-                <div className="flex items-center gap-1 text-[0.6875rem]">
-                  <Button
-                    aria-label="Previous"
-                    variant="outline"
-                    size="icon"
-                    className="h-7 w-7 opacity-50"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m15 18-6-6 6-6" />
-                    </svg>
-                  </Button>
-                  <Button variant="outline" size="icon" className="h-7 w-7">
-                    1
-                  </Button>
-                  <Button size="icon" className="h-7 w-7 font-semibold">
-                    2
-                  </Button>
-                  <Button variant="outline" size="icon" className="h-7 w-7">
-                    3
-                  </Button>
-                  <span className="px-1 text-(--color-foreground-faint)">
-                    …
-                  </span>
-                  <Button variant="outline" size="icon" className="h-7 w-7">
-                    12
-                  </Button>
-                  <Button
-                    aria-label="Next"
-                    variant="outline"
-                    size="icon"
-                    className="h-7 w-7"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m9 18 6-6-6-6" />
-                    </svg>
-                  </Button>
-                </div>
-              }
+              preview={<PaginationPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Tabs"
               desc="Tabbed content panels in three sizes (Radix Tabs)."
               href="tabs"
-              preview={
-                <div className="w-full max-w-57.5">
-                  <div className="flex border-b border-(--color-border-default) text-xs text-(--color-foreground-default)">
-                    <span
-                      className="-mb-px border-b-2 px-3 py-1.5 font-medium"
-                      style={{
-                        borderColor: "var(--color-background-accent)",
-                      }}
-                    >
-                      Overview
-                    </span>
-                    <span className="px-3 py-1.5 text-(--color-foreground-faint)">
-                      Activity
-                    </span>
-                    <span className="px-3 py-1.5 text-(--color-foreground-faint)">
-                      Members
-                    </span>
-                  </div>
-                  <div
-                    className="mt-2 rounded-md p-2 text-[0.625rem] text-(--color-foreground-muted)"
-                    style={{ background: "var(--color-background-muted)" }}
-                  >
-                    Migration plan, owners, and current status for v1.4.
-                  </div>
-                </div>
-              }
+              preview={<TabsPreview />}
             />
           </div>
         </div>
