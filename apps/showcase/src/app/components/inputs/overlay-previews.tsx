@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { Info } from "lucide-react";
 import {
   AlertDialog,
@@ -62,12 +63,21 @@ import {
   TooltipTrigger,
 } from "@wyliedog/ui/tooltip";
 
+function Hint({ text, children }: { text: string; children: ReactNode }) {
+  return (
+    <div className="flex flex-col items-center gap-3 text-center">
+      {children}
+      <p className="text-xs text-(--color-foreground-muted)">{text}</p>
+    </div>
+  );
+}
+
 /*
  * Overlays cannot sit open inside a card, so each preview is the real
  * trigger. Activate it to open the real overlay.
  */
 
-export function AlertDialogPreview() {
+function AlertDialogDemo() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -91,7 +101,7 @@ export function AlertDialogPreview() {
   );
 }
 
-export function ContextMenuPreview() {
+function ContextMenuDemo() {
   return (
     <ContextMenu>
       <ContextMenuTrigger
@@ -115,7 +125,7 @@ export function ContextMenuPreview() {
   );
 }
 
-export function DialogPreview() {
+function DialogDemo() {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -142,7 +152,7 @@ export function DialogPreview() {
   );
 }
 
-export function DropdownMenuPreview() {
+function DropdownMenuDemo() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -165,7 +175,7 @@ export function DropdownMenuPreview() {
   );
 }
 
-export function HoverCardPreview() {
+function HoverCardDemo() {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
@@ -183,7 +193,7 @@ export function HoverCardPreview() {
   );
 }
 
-export function PopoverPreview() {
+function PopoverDemo() {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -201,7 +211,7 @@ export function PopoverPreview() {
   );
 }
 
-export function SheetPreview() {
+function SheetDemo() {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -221,7 +231,7 @@ export function SheetPreview() {
   );
 }
 
-export function TooltipPreview() {
+function TooltipDemo() {
   return (
     <TooltipProvider>
       <Tooltip>
@@ -233,5 +243,69 @@ export function TooltipPreview() {
         <TooltipContent>Tokens are the contract</TooltipContent>
       </Tooltip>
     </TooltipProvider>
+  );
+}
+
+export function AlertDialogPreview() {
+  return (
+    <Hint text="Opens a confirmation">
+      <AlertDialogDemo />
+    </Hint>
+  );
+}
+
+export function ContextMenuPreview() {
+  return (
+    <Hint text="Also opens with Shift and F10">
+      <ContextMenuDemo />
+    </Hint>
+  );
+}
+
+export function DialogPreview() {
+  return (
+    <Hint text="Opens a modal form">
+      <DialogDemo />
+    </Hint>
+  );
+}
+
+export function DropdownMenuPreview() {
+  return (
+    <Hint text="Opens a menu of actions">
+      <DropdownMenuDemo />
+    </Hint>
+  );
+}
+
+export function HoverCardPreview() {
+  return (
+    <Hint text="Hover or focus the handle">
+      <HoverCardDemo />
+    </Hint>
+  );
+}
+
+export function PopoverPreview() {
+  return (
+    <Hint text="Opens a small panel">
+      <PopoverDemo />
+    </Hint>
+  );
+}
+
+export function SheetPreview() {
+  return (
+    <Hint text="Slides in from the right">
+      <SheetDemo />
+    </Hint>
+  );
+}
+
+export function TooltipPreview() {
+  return (
+    <Hint text="Hover or focus the icon">
+      <TooltipDemo />
+    </Hint>
   );
 }

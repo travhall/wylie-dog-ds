@@ -25,7 +25,6 @@ export default function BordersPage() {
 
   return (
     <TokensSubpageShell
-      categoryNumber="04"
       categoryLabel="Radius"
       headline={
         <>

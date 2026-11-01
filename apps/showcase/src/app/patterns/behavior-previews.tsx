@@ -66,7 +66,7 @@ export function ErrorBoundaryPreview() {
     <div className="grid w-full max-w-2xl gap-4 md:grid-cols-2">
       <Card>
         <CardHeader>
-          <CardTitle>Weekly signups</CardTitle>
+          <CardTitle role="presentation">Weekly signups</CardTitle>
           <CardDescription>This card has its own boundary.</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
@@ -111,7 +111,7 @@ export function ErrorBoundaryPreview() {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle>Everything else</CardTitle>
+          <CardTitle role="presentation">Everything else</CardTitle>
           <CardDescription>
             A failure stays inside its boundary, so this card keeps working.
           </CardDescription>
@@ -143,14 +143,14 @@ export function LayoutPreview() {
           <Card key={label}>
             <CardHeader>
               <CardDescription>{label}</CardDescription>
-              <CardTitle>{value}</CardTitle>
+              <CardTitle role="presentation">{value}</CardTitle>
             </CardHeader>
           </Card>
         ))}
       </div>
       <Card>
         <CardHeader>
-          <CardTitle>Recent activity</CardTitle>
+          <CardTitle role="presentation">Recent activity</CardTitle>
         </CardHeader>
         <CardContent>
           {people.map(([initials, name, what], i) => (
@@ -195,7 +195,7 @@ export function ResponsivePreview() {
         {["Tokens", "Components", "Patterns"].map((name) => (
           <Card key={name}>
             <CardHeader>
-              <CardTitle>{name}</CardTitle>
+              <CardTitle role="presentation">{name}</CardTitle>
               <CardDescription>Fits the space it is given.</CardDescription>
             </CardHeader>
           </Card>
@@ -213,7 +213,7 @@ export function AccessibilityPreview() {
     <div className="grid w-full max-w-4xl gap-4 md:grid-cols-3">
       <Card>
         <CardHeader>
-          <CardTitle>Focus ring</CardTitle>
+          <CardTitle role="presentation">Focus ring</CardTitle>
           <CardDescription>
             Press Tab. The ring comes from the focus tokens.
           </CardDescription>
@@ -228,7 +228,7 @@ export function AccessibilityPreview() {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle>Error announcement</CardTitle>
+          <CardTitle role="presentation">Error announcement</CardTitle>
           <CardDescription>
             The message is tied to the field and announced when it appears.
           </CardDescription>
@@ -246,7 +246,7 @@ export function AccessibilityPreview() {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle>Live region</CardTitle>
+          <CardTitle role="presentation">Live region</CardTitle>
           <CardDescription>
             A polite status message, announced without moving focus.
           </CardDescription>

@@ -28,7 +28,7 @@ export function ThemeToggle() {
       size="icon"
       aria-label="Toggle theme"
       onClick={toggle}
-      className="h-8 w-8"
+      className="h-11 w-11 md:h-8 md:w-8"
     >
       {/* Sun — shown in dark mode */}
       <svg

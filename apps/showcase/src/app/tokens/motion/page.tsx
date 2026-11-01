@@ -37,7 +37,6 @@ export default function MotionPage() {
 
   return (
     <TokensSubpageShell
-      categoryNumber="06"
       categoryLabel="Motion"
       headline={
         <>

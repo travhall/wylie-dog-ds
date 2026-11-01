@@ -25,7 +25,6 @@ export default function SpacingPage() {
 
   return (
     <TokensSubpageShell
-      categoryNumber="03"
       categoryLabel="Spacing"
       headline={
         <>

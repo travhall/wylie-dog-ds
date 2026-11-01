@@ -42,7 +42,6 @@ export default function TypographyPage() {
 
   return (
     <TokensSubpageShell
-      categoryNumber="02"
       categoryLabel="Typography"
       headline={
         <>

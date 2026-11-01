@@ -72,14 +72,14 @@ export function AspectRatioPreview() {
     <div className="flex w-full max-w-56 items-end gap-3">
       <div className="flex-1">
         <AspectRatio ratio={16 / 9}>
-          <div className="flex h-full w-full items-center justify-center rounded-md bg-(--color-background-emphasis) font-mono text-xs text-(--color-foreground-muted)">
+          <div className="flex h-full w-full items-center justify-center rounded-md bg-linear-to-br from-(--color-background-primary-muted) to-(--color-background-info-muted) font-mono text-xs text-(--color-foreground-default)">
             16 : 9
           </div>
         </AspectRatio>
       </div>
       <div className="w-14">
         <AspectRatio ratio={1}>
-          <div className="flex h-full w-full items-center justify-center rounded-md bg-(--color-background-emphasis) font-mono text-xs text-(--color-foreground-muted)">
+          <div className="flex h-full w-full items-center justify-center rounded-md bg-linear-to-br from-(--color-background-primary-muted) to-(--color-background-info-muted) font-mono text-xs text-(--color-foreground-default)">
             1 : 1
           </div>
         </AspectRatio>

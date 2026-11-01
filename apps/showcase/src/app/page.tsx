@@ -43,7 +43,7 @@ export default function ShowcasePage() {
                   }}
                 />
                 <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                  v{meta.versions.ui} · workspace-only
+                  v{meta.versions.ui} · not published to npm
                 </span>
                 <span className="text-(--color-foreground-faint)">·</span>
                 <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
@@ -149,7 +149,7 @@ export default function ShowcasePage() {
             {/* Left */}
             <div className="lg:col-span-4">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                01 · Tokens
+                Tokens
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 An OKLCH-native token system.
@@ -372,7 +372,7 @@ export default function ShowcasePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-xl">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                02 · Components
+                Components
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 {meta.components.count} typed React components.
@@ -691,7 +691,7 @@ export default function ShowcasePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-xl">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                03 · Patterns
+                Patterns
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 From components to compositions.
@@ -1012,7 +1012,7 @@ export default function ShowcasePage() {
             {/* Messaging */}
             <div className="lg:col-span-5">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                04 · Figma plugin
+                Figma plugin
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 Token Bridge keeps Figma and code{" "}

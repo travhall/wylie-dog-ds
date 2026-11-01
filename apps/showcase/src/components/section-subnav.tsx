@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 
 export interface SubnavSection {
-  n: string;
   label: string;
   id: string;
   count?: number;
@@ -66,9 +65,6 @@ export function SectionSubnav({
                   : undefined
               }
             >
-              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mr-0.5">
-                {item.n}
-              </span>
               {item.label}
               {item.count !== undefined && (
                 <span className="font-mono text-xs text-(--color-foreground-faint)">

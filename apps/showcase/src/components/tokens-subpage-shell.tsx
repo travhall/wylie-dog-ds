@@ -3,16 +3,15 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 const CATEGORIES = [
-  { n: "01", label: "Color", href: "/tokens/colors" },
-  { n: "02", label: "Typography", href: "/tokens/typography" },
-  { n: "03", label: "Spacing", href: "/tokens/spacing" },
-  { n: "04", label: "Radius", href: "/tokens/borders" },
-  { n: "05", label: "Elevation", href: "/tokens/elevation" },
-  { n: "06", label: "Motion", href: "/tokens/motion" },
+  { label: "Color", href: "/tokens/colors" },
+  { label: "Typography", href: "/tokens/typography" },
+  { label: "Spacing", href: "/tokens/spacing" },
+  { label: "Radius", href: "/tokens/borders" },
+  { label: "Elevation", href: "/tokens/elevation" },
+  { label: "Motion", href: "/tokens/motion" },
 ] as const;
 
 interface TokensSubpageShellProps {
-  categoryNumber: string;
   categoryLabel: string;
   headline: ReactNode;
   description: string;
@@ -20,7 +19,6 @@ interface TokensSubpageShellProps {
 }
 
 export function TokensSubpageShell({
-  categoryNumber,
   categoryLabel,
   headline,
   description,
@@ -38,7 +36,7 @@ export function TokensSubpageShell({
 
       <section className="max-w-2xl">
         <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-          {categoryNumber} · {categoryLabel}
+          {categoryLabel}
         </span>
         <h1 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
           {headline}
@@ -67,9 +65,6 @@ export function TokensSubpageShell({
             }
             aria-current={c.label === categoryLabel ? "page" : undefined}
           >
-            <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mr-0.5">
-              {c.n}
-            </span>
             {c.label}
           </Link>
         ))}

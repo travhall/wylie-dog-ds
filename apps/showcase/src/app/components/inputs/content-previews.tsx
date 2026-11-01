@@ -36,6 +36,7 @@ import {
 } from "@wyliedog/ui/table";
 import {
   Toast,
+  ToastAction,
   ToastClose,
   ToastDescription,
   ToastTitle,
@@ -106,7 +107,7 @@ export function CardPreview() {
   return (
     <Card className="w-full max-w-60">
       <CardHeader>
-        <CardTitle>Release 1.4</CardTitle>
+        <CardTitle role="presentation">Release 1.4</CardTitle>
         <CardDescription>68 components migrated</CardDescription>
       </CardHeader>
       <CardContent>
@@ -117,22 +118,28 @@ export function CardPreview() {
 }
 
 export function CarouselPreview() {
-  const tiles = [
-    "bg-(--color-background-primary-muted)",
-    "bg-(--color-background-info-muted)",
-    "bg-(--color-background-success-muted)",
+  const slides = [
+    ["Colors", "bg-(--color-background-primary-muted)"],
+    ["Type", "bg-(--color-background-info-muted)"],
+    ["Spacing", "bg-(--color-background-success-muted)"],
   ];
   return (
     <div className="w-full max-w-60">
       <Carousel>
         <CarouselContent>
-          {tiles.map((tile, i) => (
-            <CarouselItem key={tile} className="basis-1/2">
+          {slides.map(([label, tone], i) => (
+            <CarouselItem key={label} className="basis-1/2">
               <div
-                role="img"
-                aria-label={`Slide ${i + 1}`}
-                className={`aspect-3/4 rounded-md ${tile}`}
-              />
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${i + 1} of ${slides.length}`}
+                className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2"
+              >
+                <div className={`h-12 rounded-sm ${tone}`} />
+                <p className="mt-2 text-sm font-semibold text-(--color-foreground-default)">
+                  {label}
+                </p>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -246,6 +253,7 @@ export function ToastPreview() {
           <ToastTitle>Theme published</ToastTitle>
           <ToastDescription>v1.4.0 is live in production</ToastDescription>
         </div>
+        <ToastAction>Undo</ToastAction>
         <ToastClose srText="Dismiss" />
       </Toast>
     </div>

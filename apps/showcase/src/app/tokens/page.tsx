@@ -84,7 +84,7 @@ export default function TokensPage() {
             }}
           >
             <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-              02 · Tokens
+              Tokens
             </span>
             <span className="text-(--color-foreground-faint)">·</span>
             <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
@@ -225,12 +225,12 @@ export default function TokensPage() {
 
       <SectionSubnav
         sections={[
-          { n: "01", label: "Color", id: "color" },
-          { n: "02", label: "Typography", id: "typography" },
-          { n: "03", label: "Spacing", id: "spacing" },
-          { n: "04", label: "Radius", id: "radius" },
-          { n: "05", label: "Elevation", id: "elevation" },
-          { n: "06", label: "Motion", id: "motion" },
+          { label: "Color", id: "color" },
+          { label: "Typography", id: "typography" },
+          { label: "Spacing", id: "spacing" },
+          { label: "Radius", id: "radius" },
+          { label: "Elevation", id: "elevation" },
+          { label: "Motion", id: "motion" },
         ]}
         label="Token categories"
         meta={`${meta.tokens.total.toLocaleString()} tokens · v${meta.versions.tokens}`}
@@ -245,7 +245,7 @@ export default function TokensPage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                01 · Color
+                Color
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 OKLCH means the ramp{" "}
@@ -605,7 +605,7 @@ export default function TokensPage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                02 · Typography
+                Typography
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 A pairing that ships{" "}
@@ -781,7 +781,7 @@ export default function TokensPage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                03 · Spacing
+                Spacing
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 One scale. Three densities.{" "}
@@ -897,7 +897,7 @@ export default function TokensPage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                04 · Radius
+                Radius
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 Five corners.{" "}
@@ -1102,7 +1102,7 @@ export default function TokensPage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                05 · Elevation
+                Elevation
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 {Object.keys(manifest.semantics.shadow).length} shadow steps —{" "}
@@ -1303,7 +1303,7 @@ export default function TokensPage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                06 · Motion
+                Motion
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 {Object.keys(manifest.semantics.easing).length} curves and{" "}

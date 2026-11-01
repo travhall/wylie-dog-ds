@@ -102,7 +102,7 @@ export default function PluginPage() {
             <div className="md:col-span-7">
               <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
                 <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                  05 · Token Bridge
+                  Token Bridge
                 </span>
                 <span className="text-(--color-foreground-faint)">·</span>
                 <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">

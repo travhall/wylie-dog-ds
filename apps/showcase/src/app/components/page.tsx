@@ -89,7 +89,7 @@ function CompCard({
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
-        className="relative bg-(--color-background-muted) border-b border-(--color-border-default) min-h-48 flex items-center justify-center overflow-hidden p-4"
+        className="relative bg-(--color-background-muted) border-b border-(--color-border-default) min-h-48 flex-1 flex items-center justify-center overflow-hidden p-4"
         style={dotGrid}
       >
         <div
@@ -109,7 +109,7 @@ function CompCard({
         </p>
         <a
           href={getStoryDocsUrl(href)}
-          className="mt-2 inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
+          className="mt-2 inline-flex min-h-8 items-center gap-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
         >
           Storybook
           <svg
@@ -129,12 +129,10 @@ function CompCard({
 
 /* ─── Section header ─────────────────────────────────────────── */
 function SectionHeader({
-  num,
   title,
   desc,
   count,
 }: {
-  num: string;
   title: string;
   desc: string;
   count: number;
@@ -143,7 +141,7 @@ function SectionHeader({
     <header className="grid lg:grid-cols-12 gap-6 mb-10">
       <div className="lg:col-span-5">
         <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-          {num} · Category
+          Category
         </span>
         <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
           {title}
@@ -220,7 +218,7 @@ export default function ComponentsPage() {
             <div className="lg:col-span-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
                 <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                  03 · Components
+                  Components
                 </span>
                 <span className="text-(--color-foreground-faint)">·</span>
                 <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
@@ -229,8 +227,7 @@ export default function ComponentsPage() {
               </div>
 
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98] text-(--color-foreground-default)">
-                {meta.components.count} components.
-                <br />
+                {meta.components.count} components. <br />
                 All tokens.{" "}
                 <span
                   style={{ color: "var(--color-foreground-primary-muted)" }}
@@ -498,37 +495,31 @@ export default function ComponentsPage() {
       <SectionSubnav
         sections={[
           {
-            n: "01",
             label: "Content Display",
             id: "content-display",
             count: categoryCount("Content-Display"),
           },
           {
-            n: "02",
             label: "Feedback & Status",
             id: "feedback",
             count: categoryCount("Feedback-Status"),
           },
           {
-            n: "03",
             label: "Inputs & Controls",
             id: "inputs",
             count: categoryCount("Inputs-Controls"),
           },
           {
-            n: "04",
             label: "Layout & Structure",
             id: "layout",
             count: categoryCount("Layout-Structure"),
           },
           {
-            n: "05",
             label: "Navigation",
             id: "navigation",
             count: categoryCount("Navigation"),
           },
           {
-            n: "06",
             label: "Overlays & Popovers",
             id: "overlays",
             count: categoryCount("Overlays-Popovers"),
@@ -547,7 +538,6 @@ export default function ComponentsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
-            num="01"
             title="Content Display"
             desc="Surfaces that present information — cards, tables, calendars, carousels. Compose them; don't customize them."
             count={categoryCount("Content-Display")}
@@ -621,7 +611,6 @@ export default function ComponentsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
-            num="02"
             title="Feedback & Status"
             desc="Tell the user what's happening — is it loading, did it work, did something go wrong? All four states map to the same role tokens."
             count={categoryCount("Feedback-Status")}
@@ -671,7 +660,6 @@ export default function ComponentsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
-            num="03"
             title="Inputs & Controls"
             desc="The shape of every form. They share sizes, the focus ring and error styling, and the Form wrappers connect labels and messages to them."
             count={categoryCount("Inputs-Controls")}
@@ -786,7 +774,6 @@ export default function ComponentsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
-            num="04"
             title="Layout & Structure"
             desc="The shape of the page itself — aspect, scroll, split, collapse. Headless utilities you compose around your content."
             count={categoryCount("Layout-Structure")}
@@ -844,7 +831,6 @@ export default function ComponentsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
-            num="05"
             title="Navigation"
             desc="Way finding — from a single breadcrumb to a global command palette. They share the same focus-ring token."
             count={categoryCount("Navigation")}
@@ -910,7 +896,6 @@ export default function ComponentsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
-            num="06"
             title="Overlays & Popovers"
             desc="Anything that floats above the page — modal, sheet, popover, tooltip. All eight go through Radix's portal and share focus-trap and dismiss behavior."
             count={categoryCount("Overlays-Popovers")}

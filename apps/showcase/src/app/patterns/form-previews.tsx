@@ -82,7 +82,7 @@ export function LoginPreview() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Welcome</CardTitle>
+        <CardTitle role="presentation">Welcome</CardTitle>
         <CardDescription>Sign in or create an account.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -145,7 +145,7 @@ export function RecoveryPreview() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Reset your password</CardTitle>
+        <CardTitle role="presentation">Reset your password</CardTitle>
         <CardDescription>
           Enter your email and we will send a link.
         </CardDescription>
@@ -184,7 +184,7 @@ export function ContactFormPreview() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Contact us</CardTitle>
+        <CardTitle role="presentation">Contact us</CardTitle>
       </CardHeader>
       <CardContent>
         <Form onSubmit={stay}>
@@ -234,7 +234,7 @@ export function ValidationPreview() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Validate as you type</CardTitle>
+        <CardTitle role="presentation">Validate as you type</CardTitle>
         <CardDescription>
           Errors show once a field has been visited.
         </CardDescription>

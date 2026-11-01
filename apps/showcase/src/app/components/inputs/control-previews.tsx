@@ -151,15 +151,30 @@ export function InputPreview() {
 export function LabelPreview() {
   const id = useId();
   return (
-    <div className="flex w-full max-w-60 flex-col gap-1.5">
-      <Label htmlFor={`${id}-name`} size="sm" required>
-        Display name
-      </Label>
-      <Input id={`${id}-name`} size="sm" placeholder="e.g. Elena Mori" />
-      <Label htmlFor={`${id}-bio`} size="sm" error>
-        Bio is too long
-      </Label>
-      <Input id={`${id}-bio`} size="sm" error defaultValue="Designer" />
+    <div className="flex w-full max-w-60 flex-col gap-4">
+      <div className="flex flex-col gap-1.5">
+        <Label htmlFor={`${id}-name`} size="sm" required>
+          Display name
+        </Label>
+        <Input id={`${id}-name`} size="sm" placeholder="e.g. Elena Mori" />
+      </div>
+      <div className="flex flex-col gap-1.5">
+        <Label htmlFor={`${id}-email`} size="sm" error>
+          Email
+        </Label>
+        <Input
+          id={`${id}-email`}
+          size="sm"
+          error
+          aria-describedby={`${id}-email-error`}
+        />
+        <p
+          id={`${id}-email-error`}
+          className="text-xs text-(--color-foreground-danger-muted)"
+        >
+          Email is required.
+        </p>
+      </div>
     </div>
   );
 }

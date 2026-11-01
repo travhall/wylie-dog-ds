@@ -33,7 +33,7 @@ export default function ArchitecturePage() {
                 }}
               >
                 <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                  01 · Architecture
+                  Architecture
                 </span>
                 <span className="text-(--color-foreground-faint)">·</span>
                 <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
@@ -376,7 +376,7 @@ export default function ArchitecturePage() {
           <div className="grid lg:grid-cols-12 gap-10 mb-12">
             <div className="lg:col-span-5">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                01 · Workspaces
+                Workspaces
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 Two packages, two apps.
@@ -714,7 +714,7 @@ export default function ArchitecturePage() {
           <div className="grid lg:grid-cols-12 gap-10 mb-10">
             <div className="lg:col-span-5">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                02 · Token pipeline
+                Token pipeline
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 From JSON to{" "}
@@ -1018,7 +1018,7 @@ export default function ArchitecturePage() {
           <div className="grid lg:grid-cols-12 gap-10 mb-10">
             <div className="lg:col-span-5">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                03 · Build flow
+                Build flow
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 One command, four artifacts.
@@ -1296,7 +1296,7 @@ export default function ArchitecturePage() {
           <div className="grid lg:grid-cols-12 gap-10 mb-12">
             <div className="lg:col-span-5">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-                04 · Component layer
+                Component layer
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 Every component, the same five layers.

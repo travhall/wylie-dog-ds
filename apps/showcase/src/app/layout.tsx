@@ -5,6 +5,7 @@ import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
 import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
 import { fontVariables } from "@/lib/fonts";
 import { WylieDogLogo } from "./wyliedoglogo";
+import { MobileNav } from "./mobile-nav";
 import { NavLink } from "./nav-link";
 import { ThemeToggle } from "./theme-toggle";
 import "./globals.css";
@@ -119,7 +120,7 @@ export default function RootLayout({
                 variant="outline"
                 size="icon"
                 aria-label="Search"
-                className="h-8 w-8"
+                className="h-11 w-11 md:h-8 md:w-8"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -139,7 +140,7 @@ export default function RootLayout({
                 href="https://wyliedogstorybook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`hidden md:flex h-8 gap-1.5 ${buttonVariants({ variant: "outline", size: "sm" })}`}
+                className={`max-md:hidden h-8 gap-1.5 ${buttonVariants({ variant: "outline", size: "sm" })}`}
               >
                 Storybook
                 <svg
@@ -152,6 +153,8 @@ export default function RootLayout({
                   <path d="M7 17 17 7M9 7h8v8" />
                 </svg>
               </a>
+
+              <MobileNav links={navLinks} />
             </>
           }
         />
@@ -189,14 +192,14 @@ export default function RootLayout({
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
+                className="inline-block py-1 text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
               >
                 {link.label}
               </a>
             ) : (
               <Link
                 href={link.href}
-                className="text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
+                className="inline-block py-1 text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
               >
                 {link.label}
               </Link>

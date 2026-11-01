@@ -34,7 +34,6 @@ export default function ElevationPage() {
 
   return (
     <TokensSubpageShell
-      categoryNumber="05"
       categoryLabel="Elevation"
       headline={
         <>

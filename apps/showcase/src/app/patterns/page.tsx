@@ -87,7 +87,7 @@ function PatCard({
             href={`https://wyliedogstorybook.com/?path=${getPatternDocsPath(story) ?? "/"}`}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-xs text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
+            className="-my-1 inline-flex min-h-8 items-center font-mono text-xs text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
           >
             Storybook ↗
           </a>
@@ -112,12 +112,10 @@ function PatCard({
 
 /* ─── Category header ────────────────────────────────────────── */
 function CatHeader({
-  num,
   count,
   title,
   desc,
 }: {
-  num: string;
   count: number;
   title: string;
   desc: string;
@@ -127,7 +125,7 @@ function CatHeader({
       <div>
         <div className="flex items-center gap-3">
           <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
-            Category {num}
+            Category
           </span>
           <span className="font-mono text-xs text-(--color-foreground-faint)">
             ·
@@ -173,7 +171,7 @@ export default function PatternsPage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                04 · Patterns
+                Patterns
               </span>
               <span className="text-(--color-foreground-faint)">·</span>
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
@@ -209,7 +207,7 @@ export default function PatternsPage() {
                     Components
                   </p>
                   <p className="font-mono text-xs text-(--color-foreground-faint) mt-1">
-                    42 typed primitives
+                    {meta.components.count} typed primitives
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1">
                     {["Button", "Input", "Card"].map((c) => (
@@ -363,8 +361,8 @@ export default function PatternsPage() {
                   <dt className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     {label}
                   </dt>
-                  <dd className="mt-1 flex items-baseline gap-2">
-                    <span className="font-serif text-3xl sm:text-4xl font-semibold text-(--color-foreground-default)">
+                  <dd className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                    <span className="font-serif text-2xl sm:text-4xl font-semibold text-(--color-foreground-default)">
                       {value}
                     </span>
                     <span className="text-xs text-(--color-foreground-faint)">
@@ -387,7 +385,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="01"
             count={patternCategoryCount("Authentication Patterns")}
             title="Authentication"
             desc="Sign-in, registration and account recovery examples, with validation states, error messages and social-auth placeholders."
@@ -423,7 +420,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="02"
             count={patternCategoryCount("Data Patterns")}
             title="Data display"
             desc="Browseable grids and showcase grids. Both share the same card primitive but differ in density and what they ask the user to do next."
@@ -459,7 +455,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="03"
             count={patternCategoryCount("Feedback Patterns")}
             title="Feedback"
             desc="When something fails, the pattern catches it. Error states aren't an afterthought — they're designed as carefully as the happy path."
@@ -487,7 +482,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="04"
             count={patternCategoryCount("Form Patterns")}
             title="Forms"
             desc="Form composition and validation are the largest source of bespoke UI in any product. These patterns close the gap so teams stop reinventing field groupings, error display, and async submit states."
@@ -523,7 +517,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="05"
             count={patternCategoryCount("Layout Patterns")}
             title="Layout"
             desc="Page-level layouts built from the system's components: a dashboard, a settings page, a landing page and a user profile."
@@ -549,7 +542,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="06"
             count={patternCategoryCount("Navigation Patterns")}
             title="Navigation"
             desc="Header and footer for marketing surfaces — the bookends of every public page. Used on this site too, so they're self-eating dog food."
@@ -587,7 +579,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="07"
             count={patternCategoryCount("Page Compositions")}
             title="Page compositions"
             desc="Pre-assembled marketing surfaces — the big building blocks of a public page. Each section composes lower-order patterns; the page composition wires them together end-to-end."
@@ -635,7 +626,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="08"
             count={patternCategoryCount("Responsive")}
             title="Responsive"
             desc={`Breakpoint-aware layout decisions. Not just "shrink the desktop" — structural reflows that pick the right pattern for each surface size.`}
@@ -661,7 +651,6 @@ export default function PatternsPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
-            num="09"
             count={patternCategoryCount("Accessibility")}
             title="Accessibility"
             desc="Components are tested against WCAG 2.2 AA. These patterns show focus management, live-region announcements, a keyboard-only form, color-contrast checks and skip navigation."
@@ -715,42 +704,27 @@ export default function PatternsPage() {
             <div className="md:col-span-7 space-y-3">
               {[
                 {
-                  num: "01",
-                  color: "var(--color-foreground-primary-muted)",
                   title: "Use a pattern when the answer is already known.",
                   body: "Sign-in flows, error boundaries, responsive sidebars — these have all been designed before. Reach for the pattern; spend your novelty budget on the product, not the plumbing.",
                   tokenFlow: false,
                 },
                 {
-                  num: "02",
-                  color: "var(--color-foreground-success-muted)",
                   title:
                     "Build from scratch when the problem is genuinely new.",
                   body: "If no pattern fits, compose from components instead of bending a near-miss pattern out of shape. Then nominate the result for inclusion — that's how the catalog grows.",
                   tokenFlow: false,
                 },
                 {
-                  num: "03",
-                  color: "var(--color-foreground-warning-muted)",
                   title: "Patterns stay in sync via the token layer.",
                   body: null,
                   tokenFlow: true,
                 },
-              ].map(({ num, color, title, body, tokenFlow }) => (
+              ].map(({ title, body, tokenFlow }) => (
                 <div
-                  key={num}
+                  key={title}
                   className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6"
                 >
                   <div className="flex items-start gap-3">
-                    <span
-                      className="grid h-8 w-8 shrink-0 place-items-center rounded font-mono text-xs font-semibold"
-                      style={{
-                        background: `color-mix(in oklch, ${color} 14%, transparent)`,
-                        color,
-                      }}
-                    >
-                      {num}
-                    </span>
                     <div>
                       <h3 className="font-serif text-lg font-semibold text-(--color-foreground-default)">
                         {title}
