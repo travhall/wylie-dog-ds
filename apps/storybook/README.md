@@ -37,6 +37,8 @@ apps/storybook/
 │   ├── manager.ts         # Manager theme, follows the toolbar theme
 │   ├── theme.ts           # Light and Dark manager and docs themes
 │   ├── chrome-palette.ts  # Maps semantic tokens to the theme's colors
+│   ├── brand-image.ts     # The sidebar lockup, filled from the tokens
+│   ├── brand-art.ts       # Generated: dog art and the Besley wordmark outlines
 │   ├── font-stacks.ts     # The brand font stacks, defined once
 │   └── font-faces.ts      # Self-hosted brand fonts (@fontsource)
 ├── stories/
@@ -198,6 +200,10 @@ Storybook supports light/dark mode switching via the toolbar. The theme is synch
 ### The manager (sidebar, toolbar, panels)
 
 The manager is its own app, so it cannot read the design system's CSS variables and its theme API wants concrete colors. `.storybook/chrome-palette.ts` maps each part of the theme to the semantic token that plays it (the action is `background-primary`, links and active labels are `foreground-link`, a selected item is the accent pair, an input boundary is `border-emphasis`) and reads the Light and Dark values from `@wyliedog/tokens/color-modes.json`, which the tokens build generates. Changing a token in Figma therefore reaches the manager the next time Storybook builds, with no color named in the theme. `manager.ts` follows the toolbar's theme choice live, and the docs pages use the matching docs theme.
+
+Storybook 10 fixes some colors that the theme cannot change: the token sets it builds (`fgColor`, `bgColor`, `borderColor`), its status colors (green, orange and red for tests and a11y results), and the pale blue behind the count badges (`Controls 2`). Overrides passed through `create` are discarded when the theme is assembled, so those stay at Storybook's defaults. The manager applies only what it can: the palette variables, plus a few lines of CSS for the panel radios and the selected sidebar item (a quiet tint with default text and a link-colored bar).
+
+The sidebar brand is the showcase header lockup, built by `brand-image.ts`: the dog on an accent tile and the Besley wordmark. A brand image cannot load fonts, so the wordmark is stored as outlines in `brand-art.ts` (generated once from the self-hosted font, with the dog art copied from `public/favicon.svg`); its geometry is fixed, and the tile and the wordmark are filled from the tokens for the current mode.
 
 `chrome-palette.test.ts` runs as the `unit` Vitest project and holds the palette to the same contrast rules as the system (4.5:1 text, 3:1 control boundaries, light text on the primary fill by WCAG and APCA). It also fails if a hex literal appears in the theme source.
 

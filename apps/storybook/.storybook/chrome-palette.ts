@@ -54,14 +54,23 @@ export function chromePalette(mode: Mode) {
   };
 }
 
-/** Colors Storybook fixes or the theme API does not reach, set after the theme is built. */
+/** Colors the theme API does not reach, applied as CSS by the manager. */
 export function chromeExtras(mode: Mode) {
   return {
-    /** The sidebar's expand chevrons (Storybook's `color.ultraviolet`). */
-    chevron: hex(mode, "foreground-muted"),
-    /** Radios and checkboxes in the panels, and the selected sidebar item's fill. */
+    /** Radios and checkboxes in the panels, which use the browser's accent. */
     control: hex(mode, "background-accent"),
-    /** The mark on that fill (the selected sidebar item's text). */
-    controlText: hex(mode, "foreground-accent"),
+    /** The selected sidebar item: a quiet tint with default text and an accent bar. */
+    selectedBg: hex(mode, "background-emphasis"),
+    selectedText: hex(mode, "foreground-default"),
+    // The link token, not the accent fill: the fill is only 2.5:1 on the Dark tint.
+    selectedBar: hex(mode, "foreground-link"),
+  };
+}
+
+/** The brand image: the accent tile (as in the showcase header) and the wordmark ink. */
+export function chromeBrand(mode: Mode) {
+  return {
+    tile: hex(mode, "background-accent"),
+    ink: hex(mode, "foreground-default"),
   };
 }

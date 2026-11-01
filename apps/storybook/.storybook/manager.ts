@@ -34,9 +34,8 @@ const resolve = (choice: Choice): Mode =>
 
 /*
  * What the theme API cannot reach: radios and checkboxes in the panels use the
- * browser's accent color, and the selected sidebar item gets a background derived
- * from the secondary color that is too light for its text in Dark. Both use the
- * accent pair (the system's "selected" fill and its mark) instead.
+ * browser's accent color, and the selected sidebar item is styled as a quiet tint
+ * with an accent bar, so it is not a solid block.
  */
 function applyChromeStyles(mode: Mode) {
   const id = "wd-manager-chrome";
@@ -46,10 +45,10 @@ function applyChromeStyles(mode: Mode) {
     style.id = id;
     document.head.appendChild(style);
   }
-  const { control, controlText } = chromeExtras(mode);
+  const { control, selectedBg, selectedText, selectedBar } = chromeExtras(mode);
   style.textContent = `
     input[type="radio"], input[type="checkbox"] { accent-color: ${control}; }
-    #storybook-explorer-tree [data-selected="true"] { background: ${control} !important; color: ${controlText} !important; }
+    #storybook-explorer-tree [data-selected="true"] { background: ${selectedBg} !important; color: ${selectedText} !important; font-weight: 600; box-shadow: inset 3px 0 0 ${selectedBar}; }
   `;
 }
 

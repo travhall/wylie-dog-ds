@@ -1,7 +1,8 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { apcaContrast, contrastRatio } from "@wyliedog/tokens/color";
-import { chromeExtras, chromePalette } from "./chrome-palette";
+import { brandImage } from "./brand-image";
+import { chromeBrand, chromeExtras, chromePalette } from "./chrome-palette";
 import type { Mode } from "./chrome-palette";
 
 const modes: Mode[] = ["light", "dark"];
@@ -48,10 +49,21 @@ describe.each(modes)("manager palette, %s", (mode) => {
     }
   });
 
-  it("reads the selected sidebar item's text on the accent fill by both measures", () => {
-    const { control, controlText } = chromeExtras(mode);
-    expect(ratio(controlText, control)).toBeGreaterThanOrEqual(4.5);
-    expect(apcaContrast(controlText, control)).toBeGreaterThanOrEqual(60);
+  it("reads the selected sidebar item's text on its tint, and its bar against the tint and the sidebar", () => {
+    const { selectedBg, selectedText, selectedBar } = chromeExtras(mode);
+    expect(ratio(selectedText, selectedBg)).toBeGreaterThanOrEqual(4.5);
+    expect(ratio(selectedBar, selectedBg)).toBeGreaterThanOrEqual(3);
+    expect(ratio(selectedBar, p.appBg)).toBeGreaterThanOrEqual(3);
+  });
+
+  it("keeps the brand wordmark at 4.5:1 and the tile at 3:1 on the sidebar, and builds both from those colors", () => {
+    const { tile, ink } = chromeBrand(mode);
+    expect(ratio(ink, p.appBg)).toBeGreaterThanOrEqual(4.5);
+    expect(ratio(tile, p.appBg)).toBeGreaterThanOrEqual(3);
+    const image = decodeURIComponent(brandImage(mode));
+    expect(image).toContain(`fill="${tile}"`);
+    expect(image).toContain(`fill="${ink}"`);
+    expect(image).toMatch(/^data:image\/svg\+xml;utf8,<svg /);
   });
 
   it("keeps the checked-control accent at 3:1 against the content surface", () => {
