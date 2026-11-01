@@ -1122,7 +1122,7 @@ export default function ShowcasePage() {
                 </div>
 
                 <div
-                  className="rounded-xl border border-(--color-border-default) overflow-hidden shadow-[0_8px_40px_-12px_rgba(0,0,0,0.18)]"
+                  className="rounded-xl border border-(--color-border-default) overflow-hidden shadow-(--shadow-xl)"
                   style={{ background: "var(--color-background-default)" }}
                 >
                   {/* Title bar */}

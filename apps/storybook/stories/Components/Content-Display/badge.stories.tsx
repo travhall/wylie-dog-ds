@@ -344,7 +344,7 @@ export const InContext: Story = {
       <div className="border rounded-lg divide-y">
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-blue-50 dark:bg-blue-950 flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-coral-50 dark:bg-coral-950 flex items-center justify-center text-sm font-medium">
               JD
             </div>
             <div>

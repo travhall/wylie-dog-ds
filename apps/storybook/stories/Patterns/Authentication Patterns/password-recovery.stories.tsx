@@ -242,7 +242,7 @@ export const ResetPasswordForm: Story = {
         return {
           strength: 3,
           label: "Good",
-          color: "bg-blue-600",
+          color: "bg-coral-700",
         };
       return {
         strength: 4,
@@ -608,7 +608,7 @@ export const MultiStepPasswordRecovery: Story = {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       index <= currentStepIndex
-                        ? "bg-blue-600 text-white"
+                        ? "bg-coral-700 text-white"
                         : "bg-current/5 text-current/70"
                     }`}
                   >
@@ -621,7 +621,7 @@ export const MultiStepPasswordRecovery: Story = {
                 {index < steps.length - 1 && (
                   <div
                     className={`flex-1 h-0.5 ${
-                      index < currentStepIndex ? "bg-blue-600" : "bg-current/5"
+                      index < currentStepIndex ? "bg-coral-700" : "bg-current/5"
                     }`}
                   />
                 )}

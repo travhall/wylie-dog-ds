@@ -1241,40 +1241,35 @@ export default function TokensPage() {
               <div className="space-y-3">
                 {[
                   {
-                    level: "xs · base",
-                    shadow: "0 1px 3px rgba(0,0,0,.08)",
-                    role: "Cards, panels",
-                    token: "--shadow-base",
-                  },
-                  {
-                    level: "sm · raised",
-                    shadow: "0 2px 8px -1px rgba(0,0,0,.12)",
-                    role: "Raised elements",
+                    level: "sm",
+                    role: "Cards, tabs, feature icons",
                     token: "--shadow-sm",
                   },
                   {
-                    level: "md · popover",
-                    shadow: "0 4px 12px -2px rgba(0,0,0,.15)",
-                    role: "Menus, popovers",
+                    level: "base",
+                    role: "Raised elements",
+                    token: "--shadow-base",
+                  },
+                  {
+                    level: "md",
+                    role: "Menus, popovers, tooltips",
                     token: "--shadow-md",
                   },
                   {
-                    level: "lg · toast",
-                    shadow: "0 8px 24px -4px rgba(0,0,0,.20)",
-                    role: "Toasts, drawers",
+                    level: "lg",
+                    role: "Toasts, dialogs",
                     token: "--shadow-lg",
                   },
                   {
-                    level: "xl · modal",
-                    shadow: "0 16px 48px -8px rgba(0,0,0,.28)",
-                    role: "Modals, spotlights",
+                    level: "xl",
+                    role: "Largest floating surfaces",
                     token: "--shadow-xl",
                   },
                 ].map((e) => (
                   <div key={e.level} className="flex items-center gap-3">
                     <div
                       className="h-8 w-8 rounded-lg border border-(--color-border-default) bg-(--color-background-default) shrink-0"
-                      style={{ boxShadow: e.shadow }}
+                      style={{ boxShadow: `var(${e.token})` }}
                     />
                     <div className="flex-1 min-w-0">
                       <p className="font-mono text-xs text-(--color-foreground-default)">

@@ -52,7 +52,7 @@ export const Default: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-blue-700 dark:text-blue-400" />
+        <Heart className="h-6 w-6 text-coral-700 dark:text-coral-400" />
         <span className="text-xl font-bold">Wylie Dog</span>
       </a>
     ),
@@ -91,14 +91,14 @@ export const Transparent: Story = {
     variant: "transparent",
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-blue-700 dark:text-blue-400" />
+        <Heart className="h-6 w-6 text-coral-700 dark:text-coral-400" />
         <span className="text-xl font-bold">Wylie Dog</span>
       </a>
     ),
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-100 bg-linear-to-br from-blue-600/20 to-blue-600/10">
+    <div className="h-100 bg-linear-to-br from-coral-600/20 to-coral-600/10">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">
@@ -124,7 +124,7 @@ export const WithCustomActions: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Menu className="h-6 w-6 text-blue-700 dark:text-blue-400" />
+        <Menu className="h-6 w-6 text-coral-700 dark:text-coral-400" />
         <span className="text-xl font-bold">Custom Logo</span>
       </a>
     ),
@@ -167,7 +167,7 @@ export const MinimalNavigation: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-blue-700 dark:text-blue-400" />
+        <Heart className="h-6 w-6 text-coral-700 dark:text-coral-400" />
         <span className="text-xl font-bold">Minimal</span>
       </a>
     ),

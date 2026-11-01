@@ -50,7 +50,7 @@ export function HeroPreview() {
         Live components
       </div>
 
-      <div className="glass rounded-2xl p-5 sm:p-6 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)]">
+      <div className="glass rounded-2xl p-5 sm:p-6 shadow-(--shadow-lg)">
         {/* Project card */}
         <Card
           className="p-5 gap-0"

@@ -485,7 +485,7 @@ function MultiStepValidationComponent() {
             <span
               className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold ${
                 step === n
-                  ? "bg-blue-600 text-white"
+                  ? "bg-coral-700 text-white"
                   : step > n
                     ? "bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-400"
                     : "bg-current/5 text-current/70"
@@ -677,7 +677,7 @@ function AsyncValidationComponent() {
               aria-label="Checking availability"
             >
               <span
-                className="block h-4 w-4 animate-spin rounded-full border-2 border-blue-500 border-t-transparent"
+                className="block h-4 w-4 animate-spin rounded-full border-2 border-coral-500 border-t-transparent"
                 aria-hidden="true"
               />
             </span>

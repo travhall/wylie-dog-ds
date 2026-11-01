@@ -148,7 +148,7 @@
 
 - Links follow the primary role (button link and breadcrumb link use `color.primary.foreground.subtle`).
 - The focus fill follows the primary role (`color.primary.background.subtle`).
-- Primary is the main role and the brand tokens are retired. The primary color itself stays blue until the owner changes it through Figma as a case study.
+- Primary is the main role and the brand tokens are retired. The primary color stayed blue until 2026-10-31, when it became fiery-coral through Figma (see the case study in `documentation/case-studies/primary-color-change`).
 - The accent role is not kept; the hero gradient uses the primary tint.
 - `color.background.raised` and `color.background.overlay` keep their placeholder values and, like everything else, get a design pass later.
 - Merging `status.danger` is accepted (the required-field marker moves to red 700 / 400).

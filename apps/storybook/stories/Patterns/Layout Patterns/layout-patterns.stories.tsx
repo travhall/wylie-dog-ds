@@ -281,7 +281,7 @@ export const LandingPage: Story = {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-blue-700 dark:text-blue-400">
+              <span className="text-xl font-bold text-coral-700 dark:text-coral-400">
                 WylieDog
               </span>
             </div>
@@ -305,7 +305,7 @@ export const LandingPage: Story = {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Build Better
-            <span className="text-blue-700 dark:text-blue-400">
+            <span className="text-coral-700 dark:text-coral-400">
               {" "}
               Design Systems
             </span>
@@ -456,7 +456,7 @@ export const UserProfile: Story = {
                     status: "Planning",
                   },
                 ].map((project, index) => (
-                  <div key={index} className="border-l-4 border-blue-500 pl-4">
+                  <div key={index} className="border-l-4 border-coral-500 pl-4">
                     <h4 className="font-semibold">{project.name}</h4>
                     <p className="text-sm text-current/70 mb-1">
                       {project.description}

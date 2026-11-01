@@ -442,21 +442,21 @@ function SkipNavigationComponent() {
       >
         <a
           href="#"
-          className="text-sm font-medium hover:text-blue-700 dark:hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2 rounded px-1"
+          className="text-sm font-medium hover:text-coral-700 dark:hover:text-coral-400 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Home
         </a>
         <a
           href="#"
-          className="text-sm font-medium hover:text-blue-700 dark:hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2 rounded px-1"
+          className="text-sm font-medium hover:text-coral-700 dark:hover:text-coral-400 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           About
         </a>
         <a
           href="#"
-          className="text-sm font-medium hover:text-blue-700 dark:hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2 rounded px-1"
+          className="text-sm font-medium hover:text-coral-700 dark:hover:text-coral-400 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Contact
@@ -475,7 +475,7 @@ function SkipNavigationComponent() {
               <li key={item}>
                 <a
                   href="#"
-                  className="text-sm hover:text-blue-700 dark:hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2 rounded px-1"
+                  className="text-sm hover:text-coral-700 dark:hover:text-coral-400 focus-visible:outline-2 focus-visible:outline-current focus-visible:outline-offset-2 rounded px-1"
                   onClick={(e) => e.preventDefault()}
                 >
                   {item}

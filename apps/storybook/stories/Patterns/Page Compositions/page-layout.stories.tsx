@@ -77,7 +77,7 @@ const sampleHeader = (
   <SiteHeader
     logo={
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-blue-700 dark:text-blue-400" />
+        <Heart className="h-6 w-6 text-coral-700 dark:text-coral-400" />
         <span className="text-xl font-bold">Wylie Dog</span>
       </a>
     }
@@ -94,7 +94,7 @@ const sampleFooter = (
     variant="minimal"
     logo={
       <div className="flex items-center space-x-2">
-        <Heart className="h-5 w-5 text-blue-700 dark:text-blue-400" />
+        <Heart className="h-5 w-5 text-coral-700 dark:text-coral-400" />
         <span className="font-bold">Wylie Dog</span>
       </div>
     }

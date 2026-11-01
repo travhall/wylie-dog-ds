@@ -169,8 +169,8 @@ export const AllVariants: Story = {
             <Card key={label} className="hover:shadow-sm transition-shadow">
               <CardContent className="p-4">
                 <div className="text-center">
-                  <div className="w-8 h-8 bg-blue-600/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                    <Zap className="h-4 w-4 text-blue-700 dark:text-blue-400" />
+                  <div className="w-8 h-8 bg-coral-600/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Zap className="h-4 w-4 text-coral-700 dark:text-coral-400" />
                   </div>
                   <h4 className="font-medium text-sm">{label} Card</h4>
                 </div>
@@ -322,11 +322,11 @@ export const Interactive: Story = {
           ].map((item, index) => (
             <Card
               key={index}
-              className="group cursor-pointer border-current/10 hover:border-blue-500/30 hover:shadow-lg transition-all duration-300"
+              className="group cursor-pointer border-current/10 hover:border-coral-500/30 hover:shadow-lg transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-start justify-between">
-                  <CardTitle className="text-base group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+                  <CardTitle className="text-base group-hover:text-coral-700 dark:group-hover:text-coral-400 transition-colors">
                     {item.title}
                   </CardTitle>
                   <div className="flex items-center gap-2">
@@ -359,7 +359,7 @@ export const Interactive: Story = {
                       <Heart className="h-3 w-3" /> {item.stats.likes}
                     </span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-current/70 group-hover:text-blue-700 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="h-4 w-4 text-current/70 group-hover:text-coral-700 dark:group-hover:text-coral-400 group-hover:translate-x-1 transition-all" />
                 </div>
               </CardContent>
             </Card>
@@ -376,9 +376,9 @@ export const Interactive: Story = {
           columns={{ sm: 1, md: 2, lg: 2 }}
           className="max-w-2xl"
         >
-          <Card className="bg-linear-to-r from-blue-600/5 to-blue-600/5 border-blue-500/20">
+          <Card className="bg-linear-to-r from-coral-600/5 to-coral-600/5 border-coral-500/20">
             <CardContent className="p-8 text-center">
-              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-coral-700 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Star className="h-6 w-6 text-gray-50 dark:text-gray-950" />
               </div>
               <CardTitle className="text-xl mb-2">Featured Content</CardTitle>

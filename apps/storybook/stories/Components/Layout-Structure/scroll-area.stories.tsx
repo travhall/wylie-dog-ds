@@ -199,7 +199,7 @@ export const InCard: Story = {
         <ScrollArea className="h-75 pr-4">
           {Array.from({ length: 20 }, (_, i) => (
             <div key={i} className="flex items-center space-x-4 py-3">
-              <div className="w-2 h-2 bg-blue-600 rounded-full" />
+              <div className="w-2 h-2 bg-coral-700 rounded-full" />
               <div className="space-y-1">
                 <p className="text-sm font-medium">Notification {i + 1}</p>
                 <p className="text-sm text-current/70">
@@ -237,7 +237,7 @@ export const ChatMessages: Story = {
             >
               <div
                 className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
-                  i % 3 === 0 ? "bg-blue-600 text-white" : "bg-current/5 "
+                  i % 3 === 0 ? "bg-coral-700 text-white" : "bg-current/5 "
                 }`}
               >
                 This is message {i + 1}. Ever how the carbon in our apple pies

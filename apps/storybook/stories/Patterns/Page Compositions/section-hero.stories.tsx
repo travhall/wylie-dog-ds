@@ -96,7 +96,7 @@ export const WithImage: Story = {
       href: "#docs",
     },
     image: (
-      <div className="aspect-square rounded-lg bg-linear-to-br from-blue-600 via-blue-600/50 to-blue-50 dark:to-blue-950 p-8 flex items-center justify-center">
+      <div className="aspect-square rounded-lg bg-linear-to-br from-coral-700 via-coral-600/50 to-coral-50 dark:to-coral-950 p-8 flex items-center justify-center">
         <div className="text-white text-center">
           <Code2 className="h-24 w-24 mx-auto mb-4" />
           <p className="text-2xl font-bold">44 Components</p>
@@ -124,7 +124,7 @@ export const ImageLeft: Story = {
       href: "#docs",
     },
     image: (
-      <div className="aspect-square rounded-lg bg-linear-to-br from-blue-50 dark:from-blue-950 via-blue-600 to-blue-600/50 p-8 flex items-center justify-center">
+      <div className="aspect-square rounded-lg bg-linear-to-br from-coral-50 dark:from-coral-950 via-coral-700 to-coral-600/50 p-8 flex items-center justify-center">
         <div className="text-white text-center">
           <Sparkles className="h-24 w-24 mx-auto mb-4" />
           <p className="text-2xl font-bold">Developer DX</p>
@@ -203,7 +203,7 @@ export const CenteredWithImage: Story = {
       href: "#start",
     },
     image: (
-      <div className="w-full h-64 rounded-lg bg-linear-to-r from-blue-600/20 via-blue-600/10 to-blue-50/20 dark:to-blue-950/20 flex items-center justify-center border border-current/20">
+      <div className="w-full h-64 rounded-lg bg-linear-to-r from-coral-600/20 via-coral-600/10 to-coral-50/20 dark:to-coral-950/20 flex items-center justify-center border border-current/20">
         <p className="text-xl font-semibold text-current/70">
           Product Screenshot
         </p>

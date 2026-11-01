@@ -128,7 +128,7 @@ export default function ArchitecturePage() {
                   Dependency graph
                 </div>
 
-                <div className="glass rounded-2xl p-5 sm:p-7 shadow-(--shadow-lg,0_12px_28px_-8px_rgba(0,0,0,0.18))">
+                <div className="glass rounded-2xl p-5 sm:p-7 shadow-(--shadow-lg)">
                   {/* SVG edges */}
                   <div className="relative" style={{ height: "22.5rem" }}>
                     <svg
@@ -272,7 +272,7 @@ export default function ArchitecturePage() {
                             packages/ui
                           </p>
                           <p className="font-mono text-xs text-(--color-foreground-muted) mt-0.5">
-                            42 React components on Radix
+                            {meta.components.count} React components on Radix
                           </p>
                         </div>
                       </div>

@@ -169,9 +169,9 @@ export const CardVariations: Story = {
         </CardContent>
       </Card>
 
-      <Card className="border-blue-500">
+      <Card className="border-coral-500">
         <CardHeader>
-          <CardTitle className="text-blue-700 dark:text-blue-400">
+          <CardTitle className="text-coral-700 dark:text-coral-400">
             Highlighted Card
           </CardTitle>
         </CardHeader>

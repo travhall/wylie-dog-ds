@@ -12,6 +12,21 @@
 @import "@wyliedog/tokens/tokens.css";
 
 /*
+ * Brand accent for story chrome. Stories use palette classes with dark: pairs
+ * and never reference tokens, so the coral steps they need are exposed here,
+ * in the shell, under their own name (a Tailwind theme color cannot share the
+ * name of the token variable it reads).
+ */
+@theme inline {
+  --color-coral-50: var(--color-fiery-coral-50);
+  --color-coral-400: var(--color-fiery-coral-400);
+  --color-coral-500: var(--color-fiery-coral-500);
+  --color-coral-600: var(--color-fiery-coral-600);
+  --color-coral-700: var(--color-fiery-coral-700);
+  --color-coral-950: var(--color-fiery-coral-950);
+}
+
+/*
  * Source discovery for Storybook stories
  * Tailwind v4 requires explicit source paths to scan for utility classes
  */

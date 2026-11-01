@@ -28,7 +28,7 @@ Measured on 2026-10-20:
 - **Three names for one thing.** The button variant `default` uses component tokens named `primary`, which point at `interactive.primary`. "Primary" also means text emphasis (`text.primary`) and an unused `primary` family.
 - **Unused tokens.** 31 of the 73 semantic colors are not referenced by any component token, including all of the `primary`, `secondary`, `accent` and `neutral` families. Their own "text on base" pairs fail contrast (for example `secondary.text` on `secondary.base` is 1.00:1 in Dark).
 - **Static text on lightening fills.** `text.on-solid` (the same in both modes) sits on solid fills whose hover and active states lighten in Dark mode, so those states fail 4.5:1. Interactive badges also use a pale focus fill with that light text (1.06:1 in Light). Fixed on 2026-10-20: see "Contrast fixes" below.
-- **The primary color is split.** The unused `primary` family and the `brand` tokens are orange; every shipped primary action is blue (`interactive.primary`).
+- **The primary color is split.** The unused `primary` family and the `brand` tokens are orange; every shipped primary action is blue (`interactive.primary`). (Measured on 2026-10-20; primary has since moved to fiery-coral.)
 
 `pnpm check:contrast` guards the pairs; it found 16 failures on 2026-10-20, all fixed the same day.
 
@@ -39,7 +39,7 @@ Measured on 2026-10-20:
 3. **Intensity is a level of the value, not a separate segment.** No `solid` or `subtle` layer between the role and the part; a quieter version of a value is a level of that value.
 4. **Retire `interactive` as a color namespace.** It mixes role fills with behaviour. Roles become the namespace; hover, active, focus and disabled become states of a background.
 5. **Keep the Secondary button.** It stays as a variant; its naming is cleaned up as part of the `interactive` and `primary` clean-up.
-6. **Do not change the primary color yet.** Primary stays blue. It will be changed later, through Figma and pushed to code, as a deliberate end-to-end test (the case study below). The orange brand tokens stay as they are until then.
+6. **Do not change the primary color yet.** Primary stays blue. It will be changed later, through Figma and pushed to code, as a deliberate end-to-end test (the case study below). The orange brand tokens stay as they are until then. _Superseded on 2026-10-31: primary is now fiery-coral, see "Link and the primary pair" below._
 7. **No alpha inside color tokens.** Opacity is a separate `number` token (0 to 1). Tints and surfaces are opaque colors resolved per mode. Reasons: contrast can only be verified for opaque colors; the Figma exporter reads only the red, green and blue channels of a variable (read from `processor.ts`, not tested end to end), so alpha would not round-trip; and Figma cannot alias a color with an alpha change.
 8. **The neutral ground is not a role.** It has a text hierarchy (default, muted, faint, disabled) and an elevation ladder (default, subtle, raised, overlay, inverse) that do not pair one to one, so its contract is a matrix rather than a key.
 9. **Ground tokens are unprefixed; roles are prefixed.** The ground is written `color.background.<level>`, `color.foreground.<level>` and `color.border.<level>`; roles are `color.<role>.<part>.<level>`. Reasons: about 88 percent of the roughly 2,740 semantic token references in the UI package, the showcase and Storybook are ground tokens (text, border, background, surface), and these names appear in class strings, so the most used tokens should be the shortest; and the ground has structure roles do not. A checker enumerates the ground and the roles separately.
@@ -47,7 +47,7 @@ Measured on 2026-10-20:
 11. **The ground text hierarchy uses different words from the surface levels** (`muted`, `faint`), so `subtle` never means two things: on a role, `foreground.subtle` is the text on the subtle tint.
 12. **Inverse is a role of its own** (`color.inverse.background.default` and `color.inverse.foreground.default`), because it is a true one-to-one pair.
 13. **States are a suffix after the level** (`.hover`, `.active`, `.focus`, `.disabled`) on any background, including the ground, since hover and active are relative to the surface they sit on. The focus ring is its own group (`color.focus.ring`), and disabled is a state, not a level.
-14. **Primary is the main role.** Links and the focus fill follow it (color.primary.foreground.subtle and color.primary.background.subtle). The brand and accent tokens are retired. The primary color stays blue until the owner changes it through Figma. _Links now use `color.foreground.link`, see "Link and the primary pair" below._
+14. **Primary is the main role.** Links and the focus fill follow it (color.primary.foreground.subtle and color.primary.background.subtle). The brand and accent tokens are retired. The primary color stayed blue until 2026-10-31, when it became fiery-coral. _Links now use `color.foreground.link`, see "Link and the primary pair" below._
 15. **Placeholder values.** The values of raised and overlay, like every other value, are provisional; a design pass follows the migration.
 
 ## Proposed grammar

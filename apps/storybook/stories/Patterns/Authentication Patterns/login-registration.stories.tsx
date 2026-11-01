@@ -436,7 +436,7 @@ export const RegistrationForm: Story = {
                               : passwordStrength.strength === 2
                                 ? "bg-amber-500"
                                 : passwordStrength.strength === 3
-                                  ? "bg-blue-600"
+                                  ? "bg-coral-700"
                                   : "bg-green-600"
                             : "bg-current/5"
                         }`}

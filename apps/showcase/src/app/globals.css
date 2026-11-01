@@ -46,12 +46,10 @@
     backdrop-filter: blur(12px);
     border: 1px solid
       color-mix(in oklch, var(--color-foreground-default), transparent 90%);
-    box-shadow:
-      0 1px 3px 0 rgb(0 0 0 / 0.1),
-      0 1px 2px -1px rgb(0 0 0 / 0.1);
+    box-shadow: var(--shadow-base);
     transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
+    transition-timing-function: var(--transition-easing-default);
+    transition-duration: var(--duration-300);
   }
 
   .dark .glass {
@@ -62,9 +60,7 @@
     );
     border: 1px solid
       color-mix(in oklch, var(--color-background-default), transparent 90%);
-    box-shadow:
-      0 10px 15px -3px rgb(0 0 0 / 0.1),
-      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    box-shadow: var(--shadow-lg);
   }
 
   .glass-dark {
@@ -76,12 +72,10 @@
     backdrop-filter: blur(12px);
     border: 1px solid
       color-mix(in oklch, var(--color-foreground-default), transparent 85%);
-    box-shadow:
-      0 4px 6px -1px rgb(0 0 0 / 0.15),
-      0 2px 4px -2px rgb(0 0 0 / 0.15);
+    box-shadow: var(--shadow-md);
     transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
+    transition-timing-function: var(--transition-easing-default);
+    transition-duration: var(--duration-300);
   }
 
   .dark .glass-dark {
@@ -92,9 +86,7 @@
     );
     border: 1px solid
       color-mix(in oklch, var(--color-background-default), transparent 85%);
-    box-shadow:
-      0 10px 15px -3px rgb(0 0 0 / 0.25),
-      0 4px 6px -4px rgb(0 0 0 / 0.2);
+    box-shadow: var(--shadow-lg);
   }
 
   .kbd {

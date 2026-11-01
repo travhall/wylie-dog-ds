@@ -271,7 +271,7 @@ export const Dashboard: Story = {
       className="max-w-4xl min-h-125 rounded-lg border"
     >
       <ResizablePanel defaultSize={20}>
-        <div className="flex h-full items-center justify-center p-6 bg-blue-50 dark:bg-blue-950">
+        <div className="flex h-full items-center justify-center p-6 bg-coral-50 dark:bg-coral-950">
           <span className="font-semibold">Header & Navigation</span>
         </div>
       </ResizablePanel>
