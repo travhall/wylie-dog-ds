@@ -5,11 +5,22 @@ import { themeManager } from "./theme-sync";
 import type { ThemeChoice } from "./theme-sync";
 import type { Preview } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "storybook/viewport";
-import { docsTheme } from "./theme";
+import { DocsContainer } from "@storybook/addon-docs/blocks";
+import type { DocsContainerProps } from "@storybook/addon-docs/blocks";
+import "./font-faces";
+import { docsDarkTheme, docsLightTheme } from "./theme";
+
+/* Docs pages follow the toolbar theme, so they are dark when the canvas is. */
+function ThemedDocsContainer(props: DocsContainerProps) {
+  const dark = themeManager.getState().resolved === "dark";
+  return (
+    <DocsContainer {...props} theme={dark ? docsDarkTheme : docsLightTheme} />
+  );
+}
 
 const preview: Preview = {
   parameters: {
-    docs: { theme: docsTheme },
+    docs: { container: ThemedDocsContainer },
     viewport: {
       options: INITIAL_VIEWPORTS,
     },

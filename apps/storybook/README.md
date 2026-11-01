@@ -32,8 +32,13 @@ The Storybook will be available at [http://localhost:6006](http://localhost:6006
 ```
 apps/storybook/
 ├── .storybook/
-│   ├── main.ts          # Storybook configuration
-│   └── preview.tsx      # Theme and decorators
+│   ├── main.ts            # Storybook configuration
+│   ├── preview.tsx        # Theme and decorators
+│   ├── manager.ts         # Manager theme, follows the toolbar theme
+│   ├── theme.ts           # Light and Dark manager and docs themes
+│   ├── chrome-palette.ts  # Maps semantic tokens to the theme's colors
+│   ├── font-stacks.ts     # The brand font stacks, defined once
+│   └── font-faces.ts      # Self-hosted brand fonts (@fontsource)
 ├── stories/
 │   ├── Components/      # UI component stories
 │   │   ├── Content-Display/
@@ -189,6 +194,16 @@ Storybook supports light/dark mode switching via the toolbar. The theme is synch
 - CSS custom properties from `@wyliedog/tokens`
 - Tailwind CSS dark mode classes
 - localStorage persistence
+
+### The manager (sidebar, toolbar, panels)
+
+The manager is its own app, so it cannot read the design system's CSS variables and its theme API wants concrete colors. `.storybook/chrome-palette.ts` maps each part of the theme to the semantic token that plays it (the action is `background-primary`, links and active labels are `foreground-link`, a selected item is the accent pair, an input boundary is `border-emphasis`) and reads the Light and Dark values from `@wyliedog/tokens/color-modes.json`, which the tokens build generates. Changing a token in Figma therefore reaches the manager the next time Storybook builds, with no color named in the theme. `manager.ts` follows the toolbar's theme choice live, and the docs pages use the matching docs theme.
+
+`chrome-palette.test.ts` runs as the `unit` Vitest project and holds the palette to the same contrast rules as the system (4.5:1 text, 3:1 control boundaries, light text on the primary fill by WCAG and APCA). It also fails if a hex literal appears in the theme source.
+
+### Fonts
+
+Manrope, Besley and JetBrains Mono are self-hosted through `@fontsource` (imported in `font-faces.ts`), so nothing loads from a font CDN at runtime. The stacks live in `font-stacks.ts` and are published as the `--font-sans`, `--font-serif` and `--font-mono` variables the design system reads.
 
 ## Dependencies
 

@@ -25,6 +25,9 @@
     "react-dom": "catalog:"
   },
   "devDependencies": {
+    "@fontsource/besley": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
     "@playwright/test": "^1.64.1",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",

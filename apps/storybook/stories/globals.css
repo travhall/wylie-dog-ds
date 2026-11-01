@@ -34,17 +34,11 @@ body {
 }
 
 /*
- * Brand type and links for stories and docs. The fonts are loaded in
- * .storybook/preview-head.html. The design system reads --font-sans, --font-serif
- * and --font-mono (the Next.js app sets them with next/font), so Storybook sets
- * them here, which gives components the same typefaces they have on the site.
+ * Brand type and links for stories and docs. The fonts and the --font-sans,
+ * --font-serif and --font-mono variables the design system reads come from
+ * .storybook/font-faces.ts, which gives components the typefaces they have on the
+ * site.
  */
-:root {
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Besley", ui-serif, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-}
-
 body {
   font-family: var(--typography-font-family-sans);
 }
