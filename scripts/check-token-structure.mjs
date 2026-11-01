@@ -3,12 +3,12 @@
 //
 // Names are color.<part>.<token> with the part background, foreground, border or focus.
 // The token is a ground name or a role, with at most one modifier:
-//   ground background  default, muted, emphasis, raised, overlay, inverse
+//   ground background  default, muted, emphasis, intense, raised, overlay, inverse
 //   ground foreground  default, muted, faint, link, inverse
 //   ground border      default, muted, emphasis
 //   ground focus       ring, halo
 //   roles              primary, danger, success, warning, info, optionally
-//                      followed by -muted or -emphasis
+//                      followed by -muted, -emphasis or -intense
 //
 // The plugin turns a dotted name into a Figma path, so the shape of the names is
 // the shape of the Figma variable tree. This check keeps it flat and legible:
@@ -33,13 +33,23 @@ const names = Object.keys(variables).filter(
 );
 
 const ground = {
-  background: ["default", "muted", "emphasis", "raised", "overlay", "inverse"],
+  background: [
+    "default",
+    "muted",
+    "emphasis",
+    "intense",
+    "raised",
+    "overlay",
+    "inverse",
+  ],
   foreground: ["default", "muted", "faint", "link", "inverse"],
   border: ["default", "muted", "emphasis"],
   focus: ["ring", "halo"],
 };
 const roles = ["primary", "danger", "success", "warning", "info"];
-const roleToken = new RegExp(`^(${roles.join("|")})(-muted|-emphasis)?$`);
+const roleToken = new RegExp(
+  `^(${roles.join("|")})(-muted|-emphasis|-intense)?$`
+);
 const stateWord = /(hover|active|disabled|pressed|selected)/;
 
 const problems = [];
@@ -68,7 +78,7 @@ for (const name of names) {
   }
   if (!ground[part].includes(token) && !roleToken.test(token)) {
     problems.push(
-      `${name}: token "${token}" is neither a ground name for ${part} nor a role with an optional -muted or -emphasis`
+      `${name}: token "${token}" is neither a ground name for ${part} nor a role with an optional -muted, -emphasis or -intense`
     );
   }
   const group = `${parts[0]}.${part}`;

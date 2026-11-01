@@ -16,7 +16,7 @@ The grammar below was implemented on 2026-10-20 and **restructured on 2026-10-23
 - **Components bind only to component tokens.** The focus indicator is a centralized exception (`color.focus.ring` and `color.focus.halo`).
 - **Structure is enforced:** `pnpm check:tokens` runs `scripts/check-token-structure.mjs` (three segments, no state word, no single-variable group, no variable that is also a group name).
 - **Value changes accepted:** Dark danger text is red 400 (it was red 300); disabled text uses `foreground.faint`; pressed fills use the emphasis tone; the tinted destructive badge has no hover colour. 26 component colour values changed in all; every other component colour is identical to before.
-- **Counts:** 41 semantic colour tokens in 4 Figma groups, 91 semantic tokens in all. (42 and 92 since `foreground.link` was added on 2026-10-31.) The old-to-new table is the second mapping in [semantic-token-mapping.md](semantic-token-mapping.md).
+- **Counts:** 41 semantic colour tokens in 4 Figma groups, 91 semantic tokens in all. (42 and 92 after `foreground.link` on 2026-10-31, 47 and 97 after the `-intense` tones on 2026-11-01.) The old-to-new table is the second mapping in [semantic-token-mapping.md](semantic-token-mapping.md).
 
 ## The problem
 
@@ -129,6 +129,32 @@ The primary colour moved from blue to fiery-coral through Figma. Two things brok
 - **`foreground.primary-muted`** is coral 700 in Light and coral 300 in Dark. Coral 400 in Dark is 4.2:1 on the coral 900 tint.
 - **Light text scale** is black-bear 900, 500 and 400 (17.6, 12.0 and 6.4:1 on the page). Lightness steps are 0.128 and 0.150, against 0.214 and 0.097 for gray 900, 700 and 600, so muted and faint stop looking alike. Dark is unchanged (gray 50, 200 and 400).
 - **Still open:** the sandcastle surfaces, petrified-wood borders and a Dark surface change for the brand palettes. Each moves the contrast of the others (faint at gray 600 fails on sandcastle 100 and 200 at 4.44:1), so they belong in one design pass.
+
+## Warm neutrals and the info role (2026-11-01)
+
+The brand palettes now carry the neutral ground, so the whole UI reads as the brand and a token change re-themes it. Ten semantic variables changed and no component token did; `check:contrast` passes all 146 declared foregrounds unchanged.
+
+- **Light surfaces:** `background.muted` is sandcastle 100 and `background.emphasis` is sandcastle 200. The page and the raised surface stay gray 50, so cards still lift off the warm panels.
+- **Light borders:** petrified-wood 100, 300 and 500 for muted, default and emphasis. Step 500 is 3.83:1 on the page, enough for the 3:1 control-boundary rule.
+- **Dark surfaces:** black-bear 950 for the page, 900 for muted and raised, 700 for emphasis. Overlay is black-bear 950 in both modes; inverse is black-bear 950 in Light and sandcastle 50 in Dark.
+- **Dark borders:** petrified-wood 900, 800 and 600.
+- **Dark text:** sandcastle 50, 300 and 600 (18.4, 12.1 and 7.7:1 on the page), evenly spaced.
+- **Info:** `background.info-muted` is polar-night 50 and 950, and `foreground.info-muted` is polar-night 500 and 200. Polar-night is the cool counterpoint to the warm neutrals and the coral primary. No Alert or Toast variant uses the role yet, see the open item below.
+
+Faint text at gray 600 fails on sandcastle 100 and 200 (4.44:1), which is why the Light scale is black-bear and not gray. Surfaces, borders and text were changed together for that reason.
+
+**Still open:** Alert and Toast have no `info` variant (they have default, destructive, warning and success), so the info tokens are bound by no component. Wiring them in needs `background.info`, `foreground.info`, `background.info-emphasis` and `border.info` to make the role complete.
+
+## Pressed tones (2026-11-01)
+
+Hover and pressed were the same fill everywhere, and the destructive and outline buttons and most badges had no pressed token at all. A pressed state needs its own tone, and component tokens can only alias a semantic tone, so the vocabulary gains a third level: `intense`, the strongest tone, one step past `emphasis`. It carries no state word, so the rule that semantic names never say hover or pressed still holds; the component layer decides that `intense` means pressed.
+
+- **New tokens:** `background.intense` (sandcastle 300 in Light, black-bear 600 in Dark) and `background.primary-intense`, `danger-intense`, `success-intense` and `warning-intense`.
+- **The rule:** pressed is one ramp step further in the direction hover already moves. Fills with light text go darker (danger red 700 to 800, success green 700 to 800). Fills with dark text go lighter (primary coral 500 to 400, warning yellow 400 to 500). Each holds 4.5:1 with its foreground: coral 400 with `gray.950` is 7.21:1, red 800 with `gray.50` 8.81:1, green 800 7.70:1, yellow 500 with `gray.950` 5.38:1, and the default text on `background.intense` is 11.1:1 in Light and 12.3:1 in Dark.
+- **Rebound:** `button.primary`, `secondary` and `ghost`, `card` and `accordion` pressed fills now use the intense tone.
+- **New component tokens (7):** `button.destructive.background-active`, `button.outline.background-active`, and `badge.default`, `secondary`, `success`, `warning` and `outline` `background-active`, each with the matching `active:` class in `button.tsx` and `badge.tsx`.
+- **Not covered:** the tinted destructive badge. Its hover keeps the `danger-muted` tint and no stronger tint step exists; a pressed tone for tinted fills belongs with the role design pass.
+- **Guards:** `check-token-structure.mjs` allows the `-intense` suffix and `intense` as a ground background; the declared contrast pairs cover the foreground on each new fill.
 
 ## What exists today
 

@@ -23,11 +23,11 @@
         },
         "color.background.inverse": {
           "$type": "color",
-          "$value": "{color.gray.950}",
+          "$value": "{color.black-bear.950}",
           "$description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse.",
           "valuesByMode": {
-            "Light": "{color.gray.950}",
-            "Dark": "{color.gray.50}"
+            "Light": "{color.black-bear.950}",
+            "Dark": "{color.sandcastle.50}"
           }
         },
         "color.background.danger": {
@@ -504,7 +504,7 @@
           "$description": "Page background. The default, muted and faint foreground tokens are readable on it.",
           "valuesByMode": {
             "Light": "{color.gray.50}",
-            "Dark": "{color.gray.950}"
+            "Dark": "{color.black-bear.950}"
           }
         },
         "color.background.raised": {
@@ -513,34 +513,43 @@
           "$description": "Surface of a component that floats above the page (card, popover, dropdown, dialog, sheet, toast). The same as the page in Light, one step lighter in Dark.",
           "valuesByMode": {
             "Light": "{color.gray.50}",
-            "Dark": "{color.gray.900}"
+            "Dark": "{color.black-bear.900}"
           }
         },
         "color.background.overlay": {
           "$type": "color",
-          "$value": "{color.gray.950}",
+          "$value": "{color.black-bear.950}",
           "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque.",
           "valuesByMode": {
-            "Light": "{color.gray.950}",
-            "Dark": "{color.gray.950}"
+            "Light": "{color.black-bear.950}",
+            "Dark": "{color.black-bear.950}"
           }
         },
         "color.background.muted": {
           "$type": "color",
-          "$value": "{color.gray.100}",
+          "$value": "{color.sandcastle.100}",
           "$description": "Quiet surface for sections, panels and containers. The default, muted and faint foreground tokens are readable on it.",
           "valuesByMode": {
-            "Light": "{color.gray.100}",
-            "Dark": "{color.gray.900}"
+            "Light": "{color.sandcastle.100}",
+            "Dark": "{color.black-bear.900}"
           }
         },
         "color.background.emphasis": {
           "$type": "color",
-          "$value": "{color.gray.200}",
+          "$value": "{color.sandcastle.200}",
           "$description": "Stronger surface for nested or emphasized areas, one step more contrast than muted. The default and muted foreground tokens are readable on it.",
           "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.800}"
+            "Light": "{color.sandcastle.200}",
+            "Dark": "{color.black-bear.700}"
+          }
+        },
+        "color.background.intense": {
+          "$type": "color",
+          "$value": "{color.sandcastle.300}",
+          "$description": "Strongest surface step, one more than emphasis. Components use it for pressed fills on neutral surfaces; the default and muted foreground tokens are readable on it.",
+          "valuesByMode": {
+            "Light": "{color.sandcastle.300}",
+            "Dark": "{color.black-bear.600}"
           }
         },
         "color.background.primary-muted": {
@@ -555,10 +564,19 @@
         "color.background.primary-emphasis": {
           "$type": "color",
           "$value": "{color.fiery-coral.500}",
-          "$description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it.",
+          "$description": "Stronger tone of the solid primary fill. Components use it for hover states; foreground.primary is readable on it.",
           "valuesByMode": {
             "Light": "{color.fiery-coral.500}",
             "Dark": "{color.fiery-coral.500}"
+          }
+        },
+        "color.background.primary-intense": {
+          "$type": "color",
+          "$value": "{color.fiery-coral.400}",
+          "$description": "Strongest tone of the solid primary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.primary is readable on it.",
+          "valuesByMode": {
+            "Light": "{color.fiery-coral.400}",
+            "Dark": "{color.fiery-coral.400}"
           }
         },
         "color.background.danger-muted": {
@@ -573,10 +591,19 @@
         "color.background.danger-emphasis": {
           "$type": "color",
           "$value": "{color.red.700}",
-          "$description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it.",
+          "$description": "Stronger tone of the solid danger fill. Components use it for hover states; foreground.danger is readable on it.",
           "valuesByMode": {
             "Light": "{color.red.700}",
             "Dark": "{color.red.700}"
+          }
+        },
+        "color.background.danger-intense": {
+          "$type": "color",
+          "$value": "{color.red.800}",
+          "$description": "Strongest tone of the solid danger fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.danger is readable on it.",
+          "valuesByMode": {
+            "Light": "{color.red.800}",
+            "Dark": "{color.red.800}"
           }
         },
         "color.background.success": {
@@ -600,10 +627,19 @@
         "color.background.success-emphasis": {
           "$type": "color",
           "$value": "{color.green.700}",
-          "$description": "Stronger tone of the solid success fill. Components use it for hover and pressed states; foreground.success is readable on it.",
+          "$description": "Stronger tone of the solid success fill. Components use it for hover states; foreground.success is readable on it.",
           "valuesByMode": {
             "Light": "{color.green.700}",
             "Dark": "{color.green.700}"
+          }
+        },
+        "color.background.success-intense": {
+          "$type": "color",
+          "$value": "{color.green.800}",
+          "$description": "Strongest tone of the solid success fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.success is readable on it.",
+          "valuesByMode": {
+            "Light": "{color.green.800}",
+            "Dark": "{color.green.800}"
           }
         },
         "color.background.warning": {
@@ -627,19 +663,28 @@
         "color.background.warning-emphasis": {
           "$type": "color",
           "$value": "{color.yellow.400}",
-          "$description": "Stronger tone of the solid warning fill. Components use it for hover and pressed states; foreground.warning is readable on it.",
+          "$description": "Stronger tone of the solid warning fill. Components use it for hover states; foreground.warning is readable on it.",
           "valuesByMode": {
             "Light": "{color.yellow.400}",
             "Dark": "{color.yellow.400}"
           }
         },
+        "color.background.warning-intense": {
+          "$type": "color",
+          "$value": "{color.yellow.500}",
+          "$description": "Strongest tone of the solid warning fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.warning is readable on it.",
+          "valuesByMode": {
+            "Light": "{color.yellow.500}",
+            "Dark": "{color.yellow.500}"
+          }
+        },
         "color.background.info-muted": {
           "$type": "color",
-          "$value": "{color.blue.50}",
+          "$value": "{color.polar-night.50}",
           "$description": "Quiet informational tint for alerts and highlights. Pairs with foreground.info-muted.",
           "valuesByMode": {
-            "Light": "{color.blue.50}",
-            "Dark": "{color.blue.950}"
+            "Light": "{color.polar-night.50}",
+            "Dark": "{color.polar-night.950}"
           }
         },
         "color.foreground.default": {
@@ -648,7 +693,7 @@
           "$description": "Default text and icon colour for headings and body content. Readable on the page, muted, emphasis and raised backgrounds.",
           "valuesByMode": {
             "Light": "{color.black-bear.900}",
-            "Dark": "{color.gray.50}"
+            "Dark": "{color.sandcastle.50}"
           }
         },
         "color.foreground.muted": {
@@ -657,7 +702,7 @@
           "$description": "Quieter text for descriptions and captions. Readable on the page, muted, emphasis and raised backgrounds.",
           "valuesByMode": {
             "Light": "{color.black-bear.500}",
-            "Dark": "{color.gray.200}"
+            "Dark": "{color.sandcastle.300}"
           }
         },
         "color.foreground.faint": {
@@ -666,7 +711,7 @@
           "$description": "Faintest text for timestamps, metadata and hints. Readable on the page, muted and raised backgrounds.",
           "valuesByMode": {
             "Light": "{color.black-bear.400}",
-            "Dark": "{color.gray.400}"
+            "Dark": "{color.sandcastle.600}"
           }
         },
         "color.foreground.link": {
@@ -680,11 +725,11 @@
         },
         "color.foreground.inverse": {
           "$type": "color",
-          "$value": "{color.gray.50}",
+          "$value": "{color.sandcastle.50}",
           "$description": "Text and icons on background.inverse.",
           "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.900}"
+            "Light": "{color.sandcastle.50}",
+            "Dark": "{color.black-bear.900}"
           }
         },
         "color.foreground.primary": {
@@ -761,38 +806,38 @@
         },
         "color.foreground.info-muted": {
           "$type": "color",
-          "$value": "{color.sandcastle.800}",
+          "$value": "{color.polar-night.500}",
           "$description": "Informational text on its tint (background.info-muted) and on the page.",
           "valuesByMode": {
-            "Light": "{color.sandcastle.800}",
-            "Dark": "{color.sandcastle.300}"
+            "Light": "{color.polar-night.500}",
+            "Dark": "{color.polar-night.200}"
           }
         },
         "color.border.default": {
           "$type": "color",
-          "$value": "{color.gray.300}",
+          "$value": "{color.petrified-wood.300}",
           "$description": "Default border for cards, inputs and containers.",
           "valuesByMode": {
-            "Light": "{color.gray.300}",
-            "Dark": "{color.gray.700}"
+            "Light": "{color.petrified-wood.300}",
+            "Dark": "{color.petrified-wood.800}"
           }
         },
         "color.border.muted": {
           "$type": "color",
-          "$value": "{color.gray.200}",
+          "$value": "{color.petrified-wood.100}",
           "$description": "Quieter border for subtle dividers.",
           "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.800}"
+            "Light": "{color.petrified-wood.100}",
+            "Dark": "{color.petrified-wood.900}"
           }
         },
         "color.border.emphasis": {
           "$type": "color",
-          "$value": "{color.gray.500}",
+          "$value": "{color.petrified-wood.500}",
           "$description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches).",
           "valuesByMode": {
-            "Light": "{color.gray.500}",
-            "Dark": "{color.gray.600}"
+            "Light": "{color.petrified-wood.500}",
+            "Dark": "{color.petrified-wood.600}"
           }
         },
         "color.focus.ring": {

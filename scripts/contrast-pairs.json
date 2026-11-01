@@ -15,7 +15,8 @@
       "foreground": "badge.default.text",
       "backgrounds": [
         "badge.default.background",
-        "badge.default.background-hover"
+        "badge.default.background-hover",
+        "badge.default.background-active"
       ],
       "kind": "text"
     },
@@ -23,7 +24,8 @@
       "foreground": "badge.secondary.text",
       "backgrounds": [
         "badge.secondary.background",
-        "badge.secondary.background-hover"
+        "badge.secondary.background-hover",
+        "badge.secondary.background-active"
       ],
       "kind": "text"
     },
@@ -31,7 +33,8 @@
       "foreground": "badge.success.text",
       "backgrounds": [
         "badge.success.background",
-        "badge.success.background-hover"
+        "badge.success.background-hover",
+        "badge.success.background-active"
       ],
       "kind": "text"
     },
@@ -39,7 +42,8 @@
       "foreground": "badge.warning.text",
       "backgrounds": [
         "badge.warning.background",
-        "badge.warning.background-hover"
+        "badge.warning.background-hover",
+        "badge.warning.background-active"
       ],
       "kind": "text"
     },
@@ -55,7 +59,8 @@
       "foreground": "badge.outline.text",
       "backgrounds": [
         "badge.outline.background",
-        "badge.outline.background-hover"
+        "badge.outline.background-hover",
+        "badge.outline.background-active"
       ],
       "kind": "text"
     },
@@ -81,7 +86,8 @@
       "foreground": "button.outline.text",
       "backgrounds": [
         "button.outline.background",
-        "button.outline.background-hover"
+        "button.outline.background-hover",
+        "button.outline.background-active"
       ],
       "kind": "text"
     },
@@ -98,7 +104,8 @@
       "foreground": "button.destructive.text",
       "backgrounds": [
         "button.destructive.background",
-        "button.destructive.background-hover"
+        "button.destructive.background-hover",
+        "button.destructive.background-active"
       ],
       "kind": "text"
     },
@@ -371,7 +378,7 @@
     },
     {
       "foreground": "accordion.trigger-text-hover",
-      "backgrounds": ["accordion.trigger-hover"],
+      "backgrounds": ["accordion.trigger-hover", "accordion.trigger-pressed"],
       "kind": "text"
     },
     {
@@ -619,7 +626,8 @@
       "backgrounds": [
         "color.background.default",
         "color.background.muted",
-        "color.background.emphasis"
+        "color.background.emphasis",
+        "color.background.intense"
       ],
       "kind": "text"
     },
@@ -629,7 +637,8 @@
         "color.background.default",
         "color.background.muted",
         "color.background.emphasis",
-        "color.background.raised"
+        "color.background.raised",
+        "color.background.intense"
       ],
       "kind": "text"
     },
@@ -652,7 +661,8 @@
       "foreground": "color.foreground.primary",
       "backgrounds": [
         "color.background.primary",
-        "color.background.primary-emphasis"
+        "color.background.primary-emphasis",
+        "color.background.primary-intense"
       ],
       "kind": "text"
     },
@@ -660,7 +670,8 @@
       "foreground": "color.foreground.danger",
       "backgrounds": [
         "color.background.danger",
-        "color.background.danger-emphasis"
+        "color.background.danger-emphasis",
+        "color.background.danger-intense"
       ],
       "kind": "text"
     },
@@ -668,7 +679,8 @@
       "foreground": "color.foreground.success",
       "backgrounds": [
         "color.background.success",
-        "color.background.success-emphasis"
+        "color.background.success-emphasis",
+        "color.background.success-intense"
       ],
       "kind": "text"
     },
@@ -676,7 +688,8 @@
       "foreground": "color.foreground.warning",
       "backgrounds": [
         "color.background.warning",
-        "color.background.warning-emphasis"
+        "color.background.warning-emphasis",
+        "color.background.warning-intense"
       ],
       "kind": "text"
     },

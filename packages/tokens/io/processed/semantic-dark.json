@@ -6,7 +6,7 @@
   },
   "color.background.inverse": {
     "$type": "color",
-    "$value": "{color.gray.50}",
+    "$value": "{color.sandcastle.50}",
     "$description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
   },
   "color.background.danger": {
@@ -271,28 +271,33 @@
   },
   "color.background.default": {
     "$type": "color",
-    "$value": "{color.gray.950}",
+    "$value": "{color.black-bear.950}",
     "$description": "Page background. The default, muted and faint foreground tokens are readable on it."
   },
   "color.background.raised": {
     "$type": "color",
-    "$value": "{color.gray.900}",
+    "$value": "{color.black-bear.900}",
     "$description": "Surface of a component that floats above the page (card, popover, dropdown, dialog, sheet, toast). The same as the page in Light, one step lighter in Dark."
   },
   "color.background.overlay": {
     "$type": "color",
-    "$value": "{color.gray.950}",
+    "$value": "{color.black-bear.950}",
     "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque."
   },
   "color.background.muted": {
     "$type": "color",
-    "$value": "{color.gray.900}",
+    "$value": "{color.black-bear.900}",
     "$description": "Quiet surface for sections, panels and containers. The default, muted and faint foreground tokens are readable on it."
   },
   "color.background.emphasis": {
     "$type": "color",
-    "$value": "{color.gray.800}",
+    "$value": "{color.black-bear.700}",
     "$description": "Stronger surface for nested or emphasized areas, one step more contrast than muted. The default and muted foreground tokens are readable on it."
+  },
+  "color.background.intense": {
+    "$type": "color",
+    "$value": "{color.black-bear.600}",
+    "$description": "Strongest surface step, one more than emphasis. Components use it for pressed fills on neutral surfaces; the default and muted foreground tokens are readable on it."
   },
   "color.background.primary-muted": {
     "$type": "color",
@@ -302,7 +307,12 @@
   "color.background.primary-emphasis": {
     "$type": "color",
     "$value": "{color.fiery-coral.500}",
-    "$description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
+    "$description": "Stronger tone of the solid primary fill. Components use it for hover states; foreground.primary is readable on it."
+  },
+  "color.background.primary-intense": {
+    "$type": "color",
+    "$value": "{color.fiery-coral.400}",
+    "$description": "Strongest tone of the solid primary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.primary is readable on it."
   },
   "color.background.danger-muted": {
     "$type": "color",
@@ -312,7 +322,12 @@
   "color.background.danger-emphasis": {
     "$type": "color",
     "$value": "{color.red.700}",
-    "$description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it."
+    "$description": "Stronger tone of the solid danger fill. Components use it for hover states; foreground.danger is readable on it."
+  },
+  "color.background.danger-intense": {
+    "$type": "color",
+    "$value": "{color.red.800}",
+    "$description": "Strongest tone of the solid danger fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.danger is readable on it."
   },
   "color.background.success": {
     "$type": "color",
@@ -327,7 +342,12 @@
   "color.background.success-emphasis": {
     "$type": "color",
     "$value": "{color.green.700}",
-    "$description": "Stronger tone of the solid success fill. Components use it for hover and pressed states; foreground.success is readable on it."
+    "$description": "Stronger tone of the solid success fill. Components use it for hover states; foreground.success is readable on it."
+  },
+  "color.background.success-intense": {
+    "$type": "color",
+    "$value": "{color.green.800}",
+    "$description": "Strongest tone of the solid success fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.success is readable on it."
   },
   "color.background.warning": {
     "$type": "color",
@@ -342,26 +362,31 @@
   "color.background.warning-emphasis": {
     "$type": "color",
     "$value": "{color.yellow.400}",
-    "$description": "Stronger tone of the solid warning fill. Components use it for hover and pressed states; foreground.warning is readable on it."
+    "$description": "Stronger tone of the solid warning fill. Components use it for hover states; foreground.warning is readable on it."
+  },
+  "color.background.warning-intense": {
+    "$type": "color",
+    "$value": "{color.yellow.500}",
+    "$description": "Strongest tone of the solid warning fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.warning is readable on it."
   },
   "color.background.info-muted": {
     "$type": "color",
-    "$value": "{color.blue.950}",
+    "$value": "{color.polar-night.950}",
     "$description": "Quiet informational tint for alerts and highlights. Pairs with foreground.info-muted."
   },
   "color.foreground.default": {
     "$type": "color",
-    "$value": "{color.gray.50}",
+    "$value": "{color.sandcastle.50}",
     "$description": "Default text and icon colour for headings and body content. Readable on the page, muted, emphasis and raised backgrounds."
   },
   "color.foreground.muted": {
     "$type": "color",
-    "$value": "{color.gray.200}",
+    "$value": "{color.sandcastle.300}",
     "$description": "Quieter text for descriptions and captions. Readable on the page, muted, emphasis and raised backgrounds."
   },
   "color.foreground.faint": {
     "$type": "color",
-    "$value": "{color.gray.400}",
+    "$value": "{color.sandcastle.600}",
     "$description": "Faintest text for timestamps, metadata and hints. Readable on the page, muted and raised backgrounds."
   },
   "color.foreground.link": {
@@ -371,7 +396,7 @@
   },
   "color.foreground.inverse": {
     "$type": "color",
-    "$value": "{color.gray.900}",
+    "$value": "{color.black-bear.900}",
     "$description": "Text and icons on background.inverse."
   },
   "color.foreground.primary": {
@@ -416,22 +441,22 @@
   },
   "color.foreground.info-muted": {
     "$type": "color",
-    "$value": "{color.sandcastle.300}",
+    "$value": "{color.polar-night.200}",
     "$description": "Informational text on its tint (background.info-muted) and on the page."
   },
   "color.border.default": {
     "$type": "color",
-    "$value": "{color.gray.700}",
+    "$value": "{color.petrified-wood.800}",
     "$description": "Default border for cards, inputs and containers."
   },
   "color.border.muted": {
     "$type": "color",
-    "$value": "{color.gray.800}",
+    "$value": "{color.petrified-wood.900}",
     "$description": "Quieter border for subtle dividers."
   },
   "color.border.emphasis": {
     "$type": "color",
-    "$value": "{color.gray.600}",
+    "$value": "{color.petrified-wood.600}",
     "$description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches)."
   },
   "color.focus.ring": {

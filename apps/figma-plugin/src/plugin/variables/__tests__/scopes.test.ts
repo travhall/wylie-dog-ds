@@ -43,8 +43,8 @@ const ALL = ["ALL_SCOPES"];
 describe("inferScopes: semantic colours", () => {
   const names = colorNames("semantic");
 
-  it("covers the 42 semantic colour tokens", () => {
-    expect(names).toHaveLength(42);
+  it("covers the 47 semantic colour tokens", () => {
+    expect(names).toHaveLength(47);
   });
 
   // The grammar is color.<background|foreground|border|focus>.<token>. A new group
@@ -297,14 +297,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (276, 978 and 92 variables)", () => {
+  it("reads all three collections (276, 985 and 97 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([276, 978, 92]);
+    ]).toEqual([276, 985, 97]);
   });
 
   it("leaves ALL_SCOPES only on the named ambiguous component colours", () => {

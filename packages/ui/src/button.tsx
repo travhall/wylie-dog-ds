@@ -17,12 +17,12 @@ export const buttonVariants = cva(
         secondary:
           "bg-(--color-button-secondary-background) hover:bg-(--color-button-secondary-background-hover) active:bg-(--color-button-secondary-background-active) text-(--color-button-secondary-text) border-(--color-button-secondary-border) disabled:bg-(--color-button-secondary-background-disabled) disabled:text-(--color-button-secondary-text-disabled) disabled:border-(--color-button-secondary-border-disabled)",
         outline:
-          "border-(--color-button-outline-border) bg-(--color-button-outline-background) hover:bg-(--color-button-outline-background-hover) text-(--color-button-outline-text) disabled:text-(--color-button-outline-text-disabled) disabled:border-(--color-button-outline-border-disabled)",
+          "border-(--color-button-outline-border) bg-(--color-button-outline-background) hover:bg-(--color-button-outline-background-hover) active:bg-(--color-button-outline-background-active) text-(--color-button-outline-text) disabled:text-(--color-button-outline-text-disabled) disabled:border-(--color-button-outline-border-disabled)",
         ghost:
           "bg-(--color-button-ghost-background) hover:bg-(--color-button-ghost-background-hover) active:bg-(--color-button-ghost-background-active) text-(--color-button-ghost-text) border-transparent disabled:text-(--color-button-ghost-text-disabled)",
         link: "text-(--color-button-link-text) underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto disabled:text-(--color-button-link-text-disabled)",
         destructive:
-          "bg-(--color-button-destructive-background) hover:bg-(--color-button-destructive-background-hover) text-(--color-button-destructive-text) border-(--color-button-destructive-border) disabled:bg-(--color-button-destructive-background-disabled) disabled:text-(--color-button-destructive-text-disabled) disabled:border-(--color-button-destructive-border-disabled)",
+          "bg-(--color-button-destructive-background) hover:bg-(--color-button-destructive-background-hover) active:bg-(--color-button-destructive-background-active) text-(--color-button-destructive-text) border-(--color-button-destructive-border) disabled:bg-(--color-button-destructive-background-disabled) disabled:text-(--color-button-destructive-text-disabled) disabled:border-(--color-button-destructive-border-disabled)",
       },
       size: {
         default:

@@ -53,24 +53,30 @@ export type CssVarName =
   | "--color-avatar-fallback-text"
   | "--color-background-danger"
   | "--color-background-danger-emphasis"
+  | "--color-background-danger-intense"
   | "--color-background-danger-muted"
   | "--color-background-default"
   | "--color-background-emphasis"
   | "--color-background-info-muted"
+  | "--color-background-intense"
   | "--color-background-inverse"
   | "--color-background-muted"
   | "--color-background-overlay"
   | "--color-background-primary"
   | "--color-background-primary-emphasis"
+  | "--color-background-primary-intense"
   | "--color-background-primary-muted"
   | "--color-background-raised"
   | "--color-background-success"
   | "--color-background-success-emphasis"
+  | "--color-background-success-intense"
   | "--color-background-success-muted"
   | "--color-background-warning"
   | "--color-background-warning-emphasis"
+  | "--color-background-warning-intense"
   | "--color-background-warning-muted"
   | "--color-badge-default-background"
+  | "--color-badge-default-background-active"
   | "--color-badge-default-background-disabled"
   | "--color-badge-default-background-hover"
   | "--color-badge-default-border"
@@ -85,6 +91,7 @@ export type CssVarName =
   | "--color-badge-destructive-text"
   | "--color-badge-destructive-text-disabled"
   | "--color-badge-outline-background"
+  | "--color-badge-outline-background-active"
   | "--color-badge-outline-background-disabled"
   | "--color-badge-outline-background-hover"
   | "--color-badge-outline-border"
@@ -92,6 +99,7 @@ export type CssVarName =
   | "--color-badge-outline-text"
   | "--color-badge-outline-text-disabled"
   | "--color-badge-secondary-background"
+  | "--color-badge-secondary-background-active"
   | "--color-badge-secondary-background-disabled"
   | "--color-badge-secondary-background-hover"
   | "--color-badge-secondary-border"
@@ -99,6 +107,7 @@ export type CssVarName =
   | "--color-badge-secondary-text"
   | "--color-badge-secondary-text-disabled"
   | "--color-badge-success-background"
+  | "--color-badge-success-background-active"
   | "--color-badge-success-background-disabled"
   | "--color-badge-success-background-hover"
   | "--color-badge-success-border"
@@ -106,6 +115,7 @@ export type CssVarName =
   | "--color-badge-success-text"
   | "--color-badge-success-text-disabled"
   | "--color-badge-warning-background"
+  | "--color-badge-warning-background-active"
   | "--color-badge-warning-background-disabled"
   | "--color-badge-warning-background-hover"
   | "--color-badge-warning-border"
@@ -147,6 +157,7 @@ export type CssVarName =
   | "--color-breadcrumb-link-hover"
   | "--color-breadcrumb-text"
   | "--color-button-destructive-background"
+  | "--color-button-destructive-background-active"
   | "--color-button-destructive-background-disabled"
   | "--color-button-destructive-background-hover"
   | "--color-button-destructive-border"
@@ -161,6 +172,7 @@ export type CssVarName =
   | "--color-button-link-text"
   | "--color-button-link-text-disabled"
   | "--color-button-outline-background"
+  | "--color-button-outline-background-active"
   | "--color-button-outline-background-hover"
   | "--color-button-outline-border"
   | "--color-button-outline-border-disabled"
@@ -1403,24 +1415,30 @@ export declare const cssVars: Readonly<{
   "colorAvatarFallbackText": "--color-avatar-fallback-text";
   "colorBackgroundDanger": "--color-background-danger";
   "colorBackgroundDangerEmphasis": "--color-background-danger-emphasis";
+  "colorBackgroundDangerIntense": "--color-background-danger-intense";
   "colorBackgroundDangerMuted": "--color-background-danger-muted";
   "colorBackgroundDefault": "--color-background-default";
   "colorBackgroundEmphasis": "--color-background-emphasis";
   "colorBackgroundInfoMuted": "--color-background-info-muted";
+  "colorBackgroundIntense": "--color-background-intense";
   "colorBackgroundInverse": "--color-background-inverse";
   "colorBackgroundMuted": "--color-background-muted";
   "colorBackgroundOverlay": "--color-background-overlay";
   "colorBackgroundPrimary": "--color-background-primary";
   "colorBackgroundPrimaryEmphasis": "--color-background-primary-emphasis";
+  "colorBackgroundPrimaryIntense": "--color-background-primary-intense";
   "colorBackgroundPrimaryMuted": "--color-background-primary-muted";
   "colorBackgroundRaised": "--color-background-raised";
   "colorBackgroundSuccess": "--color-background-success";
   "colorBackgroundSuccessEmphasis": "--color-background-success-emphasis";
+  "colorBackgroundSuccessIntense": "--color-background-success-intense";
   "colorBackgroundSuccessMuted": "--color-background-success-muted";
   "colorBackgroundWarning": "--color-background-warning";
   "colorBackgroundWarningEmphasis": "--color-background-warning-emphasis";
+  "colorBackgroundWarningIntense": "--color-background-warning-intense";
   "colorBackgroundWarningMuted": "--color-background-warning-muted";
   "colorBadgeDefaultBackground": "--color-badge-default-background";
+  "colorBadgeDefaultBackgroundActive": "--color-badge-default-background-active";
   "colorBadgeDefaultBackgroundDisabled": "--color-badge-default-background-disabled";
   "colorBadgeDefaultBackgroundHover": "--color-badge-default-background-hover";
   "colorBadgeDefaultBorder": "--color-badge-default-border";
@@ -1435,6 +1453,7 @@ export declare const cssVars: Readonly<{
   "colorBadgeDestructiveText": "--color-badge-destructive-text";
   "colorBadgeDestructiveTextDisabled": "--color-badge-destructive-text-disabled";
   "colorBadgeOutlineBackground": "--color-badge-outline-background";
+  "colorBadgeOutlineBackgroundActive": "--color-badge-outline-background-active";
   "colorBadgeOutlineBackgroundDisabled": "--color-badge-outline-background-disabled";
   "colorBadgeOutlineBackgroundHover": "--color-badge-outline-background-hover";
   "colorBadgeOutlineBorder": "--color-badge-outline-border";
@@ -1442,6 +1461,7 @@ export declare const cssVars: Readonly<{
   "colorBadgeOutlineText": "--color-badge-outline-text";
   "colorBadgeOutlineTextDisabled": "--color-badge-outline-text-disabled";
   "colorBadgeSecondaryBackground": "--color-badge-secondary-background";
+  "colorBadgeSecondaryBackgroundActive": "--color-badge-secondary-background-active";
   "colorBadgeSecondaryBackgroundDisabled": "--color-badge-secondary-background-disabled";
   "colorBadgeSecondaryBackgroundHover": "--color-badge-secondary-background-hover";
   "colorBadgeSecondaryBorder": "--color-badge-secondary-border";
@@ -1449,6 +1469,7 @@ export declare const cssVars: Readonly<{
   "colorBadgeSecondaryText": "--color-badge-secondary-text";
   "colorBadgeSecondaryTextDisabled": "--color-badge-secondary-text-disabled";
   "colorBadgeSuccessBackground": "--color-badge-success-background";
+  "colorBadgeSuccessBackgroundActive": "--color-badge-success-background-active";
   "colorBadgeSuccessBackgroundDisabled": "--color-badge-success-background-disabled";
   "colorBadgeSuccessBackgroundHover": "--color-badge-success-background-hover";
   "colorBadgeSuccessBorder": "--color-badge-success-border";
@@ -1456,6 +1477,7 @@ export declare const cssVars: Readonly<{
   "colorBadgeSuccessText": "--color-badge-success-text";
   "colorBadgeSuccessTextDisabled": "--color-badge-success-text-disabled";
   "colorBadgeWarningBackground": "--color-badge-warning-background";
+  "colorBadgeWarningBackgroundActive": "--color-badge-warning-background-active";
   "colorBadgeWarningBackgroundDisabled": "--color-badge-warning-background-disabled";
   "colorBadgeWarningBackgroundHover": "--color-badge-warning-background-hover";
   "colorBadgeWarningBorder": "--color-badge-warning-border";
@@ -1497,6 +1519,7 @@ export declare const cssVars: Readonly<{
   "colorBreadcrumbLinkHover": "--color-breadcrumb-link-hover";
   "colorBreadcrumbText": "--color-breadcrumb-text";
   "colorButtonDestructiveBackground": "--color-button-destructive-background";
+  "colorButtonDestructiveBackgroundActive": "--color-button-destructive-background-active";
   "colorButtonDestructiveBackgroundDisabled": "--color-button-destructive-background-disabled";
   "colorButtonDestructiveBackgroundHover": "--color-button-destructive-background-hover";
   "colorButtonDestructiveBorder": "--color-button-destructive-border";
@@ -1511,6 +1534,7 @@ export declare const cssVars: Readonly<{
   "colorButtonLinkText": "--color-button-link-text";
   "colorButtonLinkTextDisabled": "--color-button-link-text-disabled";
   "colorButtonOutlineBackground": "--color-button-outline-background";
+  "colorButtonOutlineBackgroundActive": "--color-button-outline-background-active";
   "colorButtonOutlineBackgroundHover": "--color-button-outline-background-hover";
   "colorButtonOutlineBorder": "--color-button-outline-border";
   "colorButtonOutlineBorderDisabled": "--color-button-outline-border-disabled";

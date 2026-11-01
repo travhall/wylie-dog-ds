@@ -311,11 +311,11 @@
         },
         "button.primary.background-active": {
           "$type": "color",
-          "$value": "{color.background.primary-emphasis}",
+          "$value": "{color.background.primary-intense}",
           "$description": "Fill of the primary button while pressed.",
           "valuesByMode": {
-            "Light": "{color.background.primary-emphasis}",
-            "Dark": "{color.background.primary-emphasis}"
+            "Light": "{color.background.primary-intense}",
+            "Dark": "{color.background.primary-intense}"
           }
         },
         "button.primary.text": {
@@ -356,11 +356,11 @@
         },
         "button.secondary.background-active": {
           "$type": "color",
-          "$value": "{color.background.emphasis}",
+          "$value": "{color.background.intense}",
           "$description": "Fill of the secondary button while pressed.",
           "valuesByMode": {
-            "Light": "{color.background.emphasis}",
-            "Dark": "{color.background.emphasis}"
+            "Light": "{color.background.intense}",
+            "Dark": "{color.background.intense}"
           }
         },
         "button.secondary.text": {
@@ -410,11 +410,11 @@
         },
         "button.ghost.background-active": {
           "$type": "color",
-          "$value": "{color.background.emphasis}",
+          "$value": "{color.background.intense}",
           "$description": "Fill of the ghost button while pressed.",
           "valuesByMode": {
-            "Light": "{color.background.emphasis}",
-            "Dark": "{color.background.emphasis}"
+            "Light": "{color.background.intense}",
+            "Dark": "{color.background.intense}"
           }
         },
         "button.ghost.text": {
@@ -433,6 +433,15 @@
           "valuesByMode": {
             "Light": "{color.background.muted}",
             "Dark": "{color.background.muted}"
+          }
+        },
+        "button.outline.background-active": {
+          "$type": "color",
+          "$value": "{color.background.emphasis}",
+          "$description": "Fill of the outline button while pressed.",
+          "valuesByMode": {
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "button.outline.text": {
@@ -469,6 +478,15 @@
           "valuesByMode": {
             "Light": "{color.background.danger-emphasis}",
             "Dark": "{color.background.danger-emphasis}"
+          }
+        },
+        "button.destructive.background-active": {
+          "$type": "color",
+          "$value": "{color.background.danger-intense}",
+          "$description": "Fill of the destructive button while pressed.",
+          "valuesByMode": {
+            "Light": "{color.background.danger-intense}",
+            "Dark": "{color.background.danger-intense}"
           }
         },
         "button.destructive.text": {
@@ -1355,11 +1373,11 @@
         },
         "accordion.trigger-pressed": {
           "$type": "color",
-          "$value": "{color.background.emphasis}",
+          "$value": "{color.background.intense}",
           "$description": "Fill of the accordion trigger while pressed.",
           "valuesByMode": {
-            "Light": "{color.background.emphasis}",
-            "Dark": "{color.background.emphasis}"
+            "Light": "{color.background.intense}",
+            "Dark": "{color.background.intense}"
           }
         },
         "accordion.trigger-disabled": {
@@ -5061,6 +5079,15 @@
             "Dark": "{color.background.primary-emphasis}"
           }
         },
+        "badge.default.background-active": {
+          "$type": "color",
+          "$value": "{color.background.primary-intense}",
+          "$description": "Fill of an interactive default badge while pressed. Applies only when the badge is interactive.",
+          "valuesByMode": {
+            "Light": "{color.background.primary-intense}",
+            "Dark": "{color.background.primary-intense}"
+          }
+        },
         "badge.secondary.background-hover": {
           "$type": "color",
           "$value": "{color.background.emphasis}",
@@ -5068,6 +5095,15 @@
           "valuesByMode": {
             "Light": "{color.background.emphasis}",
             "Dark": "{color.background.emphasis}"
+          }
+        },
+        "badge.secondary.background-active": {
+          "$type": "color",
+          "$value": "{color.background.intense}",
+          "$description": "Fill of an interactive secondary badge while pressed. Applies only when the badge is interactive.",
+          "valuesByMode": {
+            "Light": "{color.background.intense}",
+            "Dark": "{color.background.intense}"
           }
         },
         "badge.success.background-hover": {
@@ -5079,6 +5115,15 @@
             "Dark": "{color.background.success-emphasis}"
           }
         },
+        "badge.success.background-active": {
+          "$type": "color",
+          "$value": "{color.background.success-intense}",
+          "$description": "Fill of an interactive success badge while pressed. Applies only when the badge is interactive.",
+          "valuesByMode": {
+            "Light": "{color.background.success-intense}",
+            "Dark": "{color.background.success-intense}"
+          }
+        },
         "badge.warning.background-hover": {
           "$type": "color",
           "$value": "{color.background.warning-emphasis}",
@@ -5086,6 +5131,15 @@
           "valuesByMode": {
             "Light": "{color.background.warning-emphasis}",
             "Dark": "{color.background.warning-emphasis}"
+          }
+        },
+        "badge.warning.background-active": {
+          "$type": "color",
+          "$value": "{color.background.warning-intense}",
+          "$description": "Fill of an interactive warning badge while pressed. Applies only when the badge is interactive.",
+          "valuesByMode": {
+            "Light": "{color.background.warning-intense}",
+            "Dark": "{color.background.warning-intense}"
           }
         },
         "badge.destructive.background-hover": {
@@ -5103,6 +5157,15 @@
           "$description": "Fill of the outline badge while hovered.",
           "valuesByMode": {
             "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
+          }
+        },
+        "badge.outline.background-active": {
+          "$type": "color",
+          "$value": "{color.background.emphasis}",
+          "$description": "Fill of an interactive outline badge while pressed. Applies only when the badge is interactive.",
+          "valuesByMode": {
+            "Light": "{color.background.emphasis}",
             "Dark": "{color.background.emphasis}"
           }
         },
@@ -5180,11 +5243,11 @@
         },
         "card.background-active": {
           "$type": "color",
-          "$value": "{color.background.emphasis}",
+          "$value": "{color.background.intense}",
           "$description": "Fill of an interactive card while pressed.",
           "valuesByMode": {
-            "Light": "{color.background.emphasis}",
-            "Dark": "{color.background.emphasis}"
+            "Light": "{color.background.intense}",
+            "Dark": "{color.background.intense}"
           }
         },
         "card.background-disabled": {

@@ -44,25 +44,25 @@ export const badgeVariants = cva(
         variant: "default",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-default-background-hover) disabled:bg-(--color-badge-default-background-disabled) disabled:text-(--color-badge-default-text-disabled) disabled:border-(--color-badge-default-border-disabled)",
+          "hover:bg-(--color-badge-default-background-hover) active:bg-(--color-badge-default-background-active) disabled:bg-(--color-badge-default-background-disabled) disabled:text-(--color-badge-default-text-disabled) disabled:border-(--color-badge-default-border-disabled)",
       },
       {
         variant: "secondary",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-secondary-background-hover) disabled:bg-(--color-badge-secondary-background-disabled) disabled:text-(--color-badge-secondary-text-disabled) disabled:border-(--color-badge-secondary-border-disabled)",
+          "hover:bg-(--color-badge-secondary-background-hover) active:bg-(--color-badge-secondary-background-active) disabled:bg-(--color-badge-secondary-background-disabled) disabled:text-(--color-badge-secondary-text-disabled) disabled:border-(--color-badge-secondary-border-disabled)",
       },
       {
         variant: "success",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-success-background-hover) disabled:bg-(--color-badge-success-background-disabled) disabled:text-(--color-badge-success-text-disabled) disabled:border-(--color-badge-success-border-disabled)",
+          "hover:bg-(--color-badge-success-background-hover) active:bg-(--color-badge-success-background-active) disabled:bg-(--color-badge-success-background-disabled) disabled:text-(--color-badge-success-text-disabled) disabled:border-(--color-badge-success-border-disabled)",
       },
       {
         variant: "warning",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-warning-background-hover) disabled:bg-(--color-badge-warning-background-disabled) disabled:text-(--color-badge-warning-text-disabled) disabled:border-(--color-badge-warning-border-disabled)",
+          "hover:bg-(--color-badge-warning-background-hover) active:bg-(--color-badge-warning-background-active) disabled:bg-(--color-badge-warning-background-disabled) disabled:text-(--color-badge-warning-text-disabled) disabled:border-(--color-badge-warning-border-disabled)",
       },
       {
         variant: "destructive",
@@ -74,7 +74,7 @@ export const badgeVariants = cva(
         variant: "outline",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-outline-background-hover) disabled:bg-(--color-badge-outline-background-disabled) disabled:text-(--color-badge-outline-text-disabled) disabled:border-(--color-badge-outline-border-disabled)",
+          "hover:bg-(--color-badge-outline-background-hover) active:bg-(--color-badge-outline-background-active) disabled:bg-(--color-badge-outline-background-disabled) disabled:text-(--color-badge-outline-text-disabled) disabled:border-(--color-badge-outline-border-disabled)",
       },
     ],
     defaultVariants: {
