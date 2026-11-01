@@ -48,6 +48,16 @@ import {
   PaginationPreview,
   TabsPreview,
 } from "./inputs/layout-nav-previews";
+import {
+  AlertDialogPreview,
+  ContextMenuPreview,
+  DialogPreview,
+  DropdownMenuPreview,
+  HoverCardPreview,
+  PopoverPreview,
+  SheetPreview,
+  TooltipPreview,
+} from "./inputs/overlay-previews";
 import { SectionSubnav } from "@/components/section-subnav";
 import { getShowcaseMeta, getStoryDocsUrl } from "@/lib/showcase-metadata";
 
@@ -907,469 +917,67 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
-              decorative
+              live
               name="Alert Dialog"
               desc="Confirmation modal for destructive actions — cannot be dismissed by overlay click."
               href="alert-dialog"
-              preview={
-                <div
-                  className="w-full max-w-57.5 rounded-md border bg-(--color-background-default) p-3"
-                  style={{
-                    borderColor: "var(--color-border-default)",
-                    boxShadow: "var(--shadow-lg)",
-                  }}
-                >
-                  <div className="flex items-start gap-2">
-                    <span
-                      className="grid h-6 w-6 place-items-center rounded-full"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-foreground-danger-muted) 18%, transparent)",
-                        color: "var(--color-foreground-danger-muted)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path d="M12 9v4M12 17h.01" />
-                        <path d="m12 4 10 16H2z" />
-                      </svg>
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs font-semibold text-(--color-foreground-default)">
-                        Delete project?
-                      </p>
-                      <p className="text-[0.625rem] text-(--color-foreground-faint) mt-0.5 leading-snug">
-                        All migrations, tickets, and tokens will be permanently
-                        removed.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-3 flex justify-end gap-1.5">
-                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-default) px-2 text-[0.625rem] font-medium text-(--color-foreground-default)">
-                      Cancel
-                    </span>
-                    <span
-                      className="inline-flex h-6 items-center rounded px-2 text-[0.625rem] font-semibold"
-                      style={{
-                        background:
-                          "var(--color-button-destructive-background)",
-                        color: "var(--color-button-destructive-text)",
-                      }}
-                    >
-                      Delete
-                    </span>
-                  </div>
-                </div>
-              }
+              preview={<AlertDialogPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Context Menu"
               desc="Right-click menu with sub-items, checkboxes, and shortcut hints."
               href="context-menu"
-              preview={
-                <div className="w-full max-w-57.5 relative h-30 rounded-md border border-(--color-border-default) bg-(--color-background-default)">
-                  <div
-                    className="absolute rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[0.6875rem]"
-                    style={{
-                      top: "1.25rem",
-                      left: "1.25rem",
-                      boxShadow: "var(--shadow-md)",
-                      width: "8.125rem",
-                    }}
-                  >
-                    <div
-                      className="flex items-center justify-between px-2 py-1 rounded"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
-                        color: "var(--color-foreground-primary-muted)",
-                      }}
-                    >
-                      <span>Copy</span>
-                      <span className="font-mono text-[0.5625rem]">⌘C</span>
-                    </div>
-                    <div className="flex items-center justify-between px-2 py-1 text-(--color-foreground-muted)">
-                      <span>Paste</span>
-                      <span className="font-mono text-[0.5625rem]">⌘V</span>
-                    </div>
-                    <div
-                      className="h-px my-1"
-                      style={{ background: "var(--color-border-default)" }}
-                    />
-                    <div
-                      className="px-2 py-1"
-                      style={{ color: "var(--color-foreground-danger-muted)" }}
-                    >
-                      Delete
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<ContextMenuPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Dialog"
               desc="Modal panel with header, footer, and overlay — the workhorse modal."
               href="dialog"
-              preview={
-                <div className="relative w-full max-w-57.5 h-30">
-                  <div
-                    className="absolute inset-0 rounded-md"
-                    style={{
-                      background:
-                        "color-mix(in oklch, var(--color-foreground-default) 35%, transparent)",
-                    }}
-                  />
-                  <div
-                    className="absolute inset-x-2 top-3 rounded-md border bg-(--color-background-default) p-3"
-                    style={{
-                      borderColor: "var(--color-border-default)",
-                      boxShadow: "var(--shadow-xl)",
-                    }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <p className="text-xs font-semibold text-(--color-foreground-default)">
-                        Invite teammates
-                      </p>
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3 text-(--color-foreground-faint)"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="M18 6 6 18M6 6l12 12" />
-                      </svg>
-                    </div>
-                    <div className="mt-2 flex items-center h-6.5 border border-(--color-border-default) rounded-md px-2 text-[0.625rem] bg-(--color-background-default) text-(--color-foreground-faint)">
-                      name@example.com
-                    </div>
-                    <div className="mt-2 flex justify-end">
-                      <span
-                        className="inline-flex h-6 items-center rounded px-2 text-[0.625rem] font-semibold"
-                        style={{
-                          background: "var(--color-background-primary)",
-                          color: "var(--color-foreground-primary)",
-                        }}
-                      >
-                        Send invite
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<DialogPreview />}
             />
 
             <CompCard
+              live
               name="Dropdown Menu"
               desc="Trigger-anchored menu with checkboxes, radios, and submenus."
               href="dropdown-menu"
-              preview={
-                <div className="flex flex-col gap-1.5 items-start">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="h-7 gap-1 text-[0.6875rem] font-semibold"
-                  >
-                    Options
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </Button>
-                  <div
-                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[0.6875rem]"
-                    style={{ boxShadow: "var(--shadow-md)", width: "9.375rem" }}
-                  >
-                    <div className="flex items-center gap-2 px-2 py-1 text-(--color-foreground-default)">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5 text-(--color-foreground-faint)"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="m18.5 2.5 3 3L12 15l-4 1 1-4z" />
-                      </svg>
-                      Edit
-                    </div>
-                    <div className="flex items-center gap-2 px-2 py-1 text-(--color-foreground-default)">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5 text-(--color-foreground-faint)"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <rect x="9" y="9" width="13" height="13" rx="2" />
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                      </svg>
-                      Duplicate
-                    </div>
-                    <div
-                      className="h-px my-0.5"
-                      style={{ background: "var(--color-border-default)" }}
-                    />
-                    <div
-                      className="flex items-center gap-2 px-2 py-1"
-                      style={{ color: "var(--color-foreground-danger-muted)" }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
-                      </svg>
-                      Delete
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<DropdownMenuPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Hover Card"
               desc="Rich preview on hover — useful for user profiles, link previews."
               href="hover-card"
-              preview={
-                <div className="flex flex-col gap-1.5 items-start">
-                  <span
-                    className="text-[0.6875rem] font-medium underline"
-                    style={{
-                      color: "var(--color-foreground-link)",
-                      textDecorationColor:
-                        "color-mix(in oklch, var(--color-foreground-link) 50%, transparent)",
-                    }}
-                  >
-                    @elena_mori
-                  </span>
-                  <div
-                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3"
-                    style={{
-                      boxShadow: "var(--shadow-md)",
-                      width: "11.875rem",
-                    }}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="inline-grid place-items-center rounded-full text-xs font-semibold"
-                        style={{
-                          background: "var(--color-background-info-muted)",
-                          color: "var(--color-foreground-info-muted)",
-                          height: "2rem",
-                          width: "2rem",
-                        }}
-                      >
-                        EM
-                      </span>
-                      <div>
-                        <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
-                          Elena Mori
-                        </p>
-                        <p className="text-[0.625rem] text-(--color-foreground-faint)">
-                          Lead, Design Systems
-                        </p>
-                      </div>
-                    </div>
-                    <p className="mt-2 text-[0.625rem] text-(--color-foreground-muted)">
-                      Building design systems that scale.
-                    </p>
-                    <div className="mt-2 flex items-center gap-3 font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                      <span>42 following</span>
-                      <span>1.2k followers</span>
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<HoverCardPreview />}
             />
 
             <CompCard
+              live
               name="Popover"
               desc="Trigger-anchored floating panel with full content and close button."
               href="popover"
-              preview={
-                <div className="flex flex-col gap-1.5 items-start">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="h-7 gap-1 text-[0.6875rem] font-semibold"
-                  >
-                    Filters
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="M4 6h16M7 12h10M10 18h4" />
-                    </svg>
-                  </Button>
-                  <div
-                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 space-y-2"
-                    style={{ boxShadow: "var(--shadow-md)", width: "11.25rem" }}
-                  >
-                    <p className="text-[0.625rem] font-semibold text-(--color-foreground-default)">
-                      Filter by status
-                    </p>
-                    {["Active", "Beta", "Deprecated"].map((s) => (
-                      <label
-                        key={s}
-                        className="flex items-center gap-2 text-[0.6875rem] text-(--color-foreground-muted)"
-                      >
-                        <span
-                          className="grid h-3.5 w-3.5 place-items-center rounded-sm"
-                          style={{
-                            background:
-                              s === "Active"
-                                ? "var(--color-background-accent)"
-                                : "transparent",
-                            border:
-                              s === "Active"
-                                ? "none"
-                                : "1px solid var(--color-border-default)",
-                            color: "var(--color-foreground-accent)",
-                          }}
-                        >
-                          {s === "Active" && (
-                            <svg
-                              viewBox="0 0 24 24"
-                              className="h-2.5 w-2.5"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth={3}
-                            >
-                              <path d="m5 12 5 5L20 7" />
-                            </svg>
-                          )}
-                        </span>
-                        {s}
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              }
+              preview={<PopoverPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Sheet"
               desc="Side drawer that slides in from any edge — with overlay and focus trap."
               href="sheet"
-              preview={
-                <div
-                  className="relative w-full max-w-57.5 h-30 rounded-md overflow-hidden border border-(--color-border-default)"
-                  style={{ background: "var(--color-background-muted)" }}
-                >
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "color-mix(in oklch, var(--color-foreground-default) 20%, transparent)",
-                    }}
-                  />
-                  <div
-                    className="absolute top-0 right-0 bottom-0 w-2/3 border-l bg-(--color-background-default) p-3"
-                    style={{
-                      borderColor: "var(--color-border-default)",
-                      boxShadow: "var(--shadow-xl)",
-                    }}
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <p className="text-[0.6875rem] font-semibold text-(--color-foreground-default)">
-                        Settings
-                      </p>
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3 text-(--color-foreground-faint)"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="M18 6 6 18M6 6l12 12" />
-                      </svg>
-                    </div>
-                    <div className="space-y-1.5">
-                      {[75, 100, 50].map((w, i) => (
-                        <div
-                          key={i}
-                          className="h-1.5 rounded-full"
-                          style={{
-                            width: `${w}%`,
-                            background: "var(--color-background-emphasis)",
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<SheetPreview />}
             />
 
             <CompCard
+              live
               name="Tooltip"
               desc="Keyboard and pointer-triggered label — never interactive content."
               href="tooltip"
-              preview={
-                <div className="flex flex-col items-center gap-2">
-                  <div className="relative">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="h-8 gap-1 text-[0.6875rem] font-semibold"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3.5 w-3.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 8v4M12 16h.01" />
-                      </svg>
-                      Info
-                    </Button>
-                    <div
-                      className="absolute -top-8 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-[0.625rem] font-medium whitespace-nowrap"
-                      style={{
-                        background: "var(--color-foreground-default)",
-                        color: "var(--color-foreground-inverse)",
-                      }}
-                    >
-                      WCAG 2.2 AA compliant
-                      <div
-                        className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent"
-                        style={{
-                          borderTopColor: "var(--color-foreground-default)",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-[0.625rem] text-(--color-foreground-faint)">
-                    <span className="font-mono">hover</span>·
-                    <span className="font-mono">focus</span>·
-                    <span className="font-mono">touch</span>
-                  </div>
-                </div>
-              }
+              preview={<TooltipPreview />}
             />
           </div>
         </div>
