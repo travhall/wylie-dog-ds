@@ -8,6 +8,20 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@wyliedog/ui/breadcrumb";
+import {
+  ButtonPreview,
+  CheckboxPreview,
+  FormPreview,
+  InputPreview,
+  LabelPreview,
+  RadioGroupPreview,
+  SelectPreview,
+  SliderPreview,
+  SwitchPreview,
+  TextareaPreview,
+  TogglePreview,
+  ToggleGroupPreview,
+} from "./inputs/control-previews";
 import { SectionSubnav } from "@/components/section-subnav";
 import { getShowcaseMeta, getStoryDocsUrl } from "@/lib/showcase-metadata";
 
@@ -18,12 +32,15 @@ function CompCard({
   href,
   preview,
   decorative = false,
+  live = false,
 }: {
   name: string;
   desc: string;
   href: string;
   preview: React.ReactNode;
   decorative?: boolean;
+  /** Real components: not a mock, so no `data-mock` and no `aria-hidden`. */
+  live?: boolean;
 }) {
   const dotGrid = {
     backgroundImage:
@@ -40,8 +57,8 @@ function CompCard({
         style={dotGrid}
       >
         <div
-          data-mock
-          aria-hidden={decorative || undefined}
+          data-mock={live ? undefined : true}
+          aria-hidden={live ? undefined : decorative || undefined}
           className="relative z-10 flex items-center justify-center w-full h-full"
         >
           {preview}
@@ -1218,673 +1235,100 @@ export default function ComponentsPage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
-              decorative
+              live
               name="Button"
               desc="Six variants (default, secondary, outline, ghost, link, destructive), sm to lg sizes plus an icon size, and a loading state."
               href="button"
-              preview={
-                <div className="flex flex-col gap-2 items-center">
-                  <div className="flex flex-wrap gap-1.5 justify-center">
-                    <span
-                      className="inline-flex h-7 items-center rounded-md px-2.5 text-[0.6875rem] font-semibold"
-                      style={{
-                        background: "var(--color-background-primary)",
-                        color: "var(--color-foreground-primary)",
-                      }}
-                    >
-                      Primary
-                    </span>
-                    <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-default) px-2.5 text-[0.6875rem] font-semibold text-(--color-foreground-default)">
-                      Outline
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 justify-center">
-                    <span className="inline-flex h-7 items-center rounded-md px-2.5 text-[0.6875rem] font-semibold text-(--color-foreground-muted)">
-                      Ghost
-                    </span>
-                    <span
-                      className="inline-flex h-7 items-center rounded-md px-2.5 text-[0.6875rem] font-semibold"
-                      style={{
-                        background:
-                          "var(--color-button-destructive-background)",
-                        color: "var(--color-button-destructive-text)",
-                      }}
-                    >
-                      Destructive
-                    </span>
-                  </div>
-                  <span
-                    className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[0.6875rem] font-semibold"
-                    style={{
-                      background: "var(--color-background-primary-emphasis)",
-                      color: "var(--color-foreground-primary)",
-                      boxShadow:
-                        "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 25%, transparent)",
-                    }}
-                  >
-                    <span
-                      className="h-2 w-2 rounded-full border-2 border-t-transparent animate-spin"
-                      style={{
-                        borderColor:
-                          "var(--color-foreground-inverse) transparent var(--color-foreground-inverse) var(--color-foreground-inverse)",
-                      }}
-                    />
-                    Loading
-                  </span>
-                </div>
-              }
+              preview={<ButtonPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Checkbox"
               desc="Checked, unchecked and indeterminate states in three sizes."
               href="checkbox"
-              preview={
-                <div className="flex flex-col gap-2.5 text-[0.6875rem] text-(--color-foreground-default)">
-                  <label className="flex items-center gap-2">
-                    <span
-                      className="grid h-4 w-4 place-items-center rounded-sm"
-                      style={{
-                        background: "var(--color-background-accent)",
-                        color: "var(--color-foreground-accent)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={3.5}
-                      >
-                        <path d="m5 12 5 5L20 7" />
-                      </svg>
-                    </span>
-                    Send weekly digest
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <span
-                      className="grid h-4 w-4 place-items-center rounded-sm"
-                      style={{
-                        background: "var(--color-background-accent)",
-                        color: "var(--color-foreground-accent)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={3.5}
-                      >
-                        <path d="M5 12h14" />
-                      </svg>
-                    </span>
-                    Notify on every release
-                  </label>
-                  <label className="flex items-center gap-2 text-(--color-foreground-muted)">
-                    <span
-                      className="grid h-4 w-4 rounded-sm border"
-                      style={{
-                        background: "var(--color-background-default)",
-                        borderColor: "var(--color-border-default)",
-                      }}
-                    />
-                    Show breaking changes only
-                  </label>
-                </div>
-              }
+              preview={<CheckboxPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Form"
               desc="Field wrappers that tie labels, descriptions and error messages to inputs with matching ids and aria attributes."
               href="form"
-              preview={
-                <div className="w-full max-w-57.5 flex flex-col gap-1.5">
-                  <label className="text-[0.625rem] font-medium text-(--color-foreground-default)">
-                    Email
-                  </label>
-                  <div className="flex items-center h-7.5 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)">
-                    <span className="text-(--color-foreground-default)">
-                      elena@wyliedog.dev
-                    </span>
-                  </div>
-                  <p
-                    className="text-[0.5625rem]"
-                    style={{ color: "var(--color-foreground-danger-muted)" }}
-                  >
-                    Must be a work email address.
-                  </p>
-                  <label className="text-[0.625rem] font-medium text-(--color-foreground-default) mt-1">
-                    Password
-                  </label>
-                  <div
-                    className="flex items-center h-7.5 border rounded-md px-2 text-[0.6875rem] bg-(--color-background-default)"
-                    style={{
-                      borderColor: "var(--color-border-danger)",
-                    }}
-                  >
-                    <span className="text-(--color-foreground-faint)">
-                      ••••••••
-                    </span>
-                  </div>
-                </div>
-              }
+              preview={<FormPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Input"
               desc="Text-style input for any native type, with sm to lg sizes and error and success states."
               href="input"
-              preview={
-                <div className="w-full max-w-57.5 flex flex-col gap-1.5">
-                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[0.625rem] px-2.5 gap-2 text-[0.75rem] bg-(--color-background-default)">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-foreground-faint)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <circle cx="11" cy="11" r="7" />
-                      <path d="m21 21-4.3-4.3" />
-                    </svg>
-                    <span className="text-(--color-foreground-faint)">
-                      Search components…
-                    </span>
-                  </div>
-                  <div
-                    className="flex items-center h-8.5 border rounded-[0.625rem] px-2.5 text-[0.75rem] bg-(--color-background-default)"
-                    style={{
-                      borderColor: "var(--color-focus-ring)",
-                      boxShadow:
-                        "0 0 0 2px var(--color-focus-halo), 0 0 0 4px var(--color-focus-ring)",
-                    }}
-                  >
-                    <span className="text-(--color-foreground-default)">
-                      elena@wyliedog.dev
-                    </span>
-                  </div>
-                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[0.625rem] px-2.5 text-[0.75rem] bg-(--color-background-default) opacity-55">
-                    <span className="text-(--color-foreground-faint)">
-                      Disabled
-                    </span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 ml-auto text-(--color-foreground-faint)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <rect x="4" y="11" width="16" height="10" rx="2" />
-                      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-                    </svg>
-                  </div>
-                </div>
-              }
+              preview={<InputPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Label"
               desc="Accessible label with a required marker, an error state and three sizes."
               href="label"
-              preview={
-                <div className="w-full max-w-55 flex flex-col gap-1.5">
-                  <div className="flex items-center gap-1">
-                    <label className="text-xs font-semibold text-(--color-foreground-default)">
-                      Display name
-                    </label>
-                    <span
-                      style={{ color: "var(--color-foreground-danger-muted)" }}
-                    >
-                      *
-                    </span>
-                  </div>
-                  <div className="flex items-center h-7.5 border border-(--color-border-default) rounded-md px-2 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-faint)">
-                    e.g. Elena Mori
-                  </div>
-                  <div className="flex items-center gap-1 mt-1">
-                    <label className="text-xs font-semibold text-(--color-foreground-default)">
-                      Bio
-                    </label>
-                    <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                      optional
-                    </span>
-                  </div>
-                  <div className="flex items-start min-h-9.5 border border-(--color-border-default) rounded-md px-2 pt-1.5 text-[0.6875rem] bg-(--color-background-default) text-(--color-foreground-faint)">
-                    Tell people who you are.
-                  </div>
-                </div>
-              }
+              preview={<LabelPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Radio Group"
               desc="Single-select cluster with horizontal or vertical orientation."
               href="radio-group"
-              preview={
-                <div className="flex flex-col gap-2 text-[0.6875rem] text-(--color-foreground-default)">
-                  <label className="flex items-center gap-2">
-                    <span
-                      className="grid h-4 w-4 place-items-center rounded-full border-2"
-                      style={{
-                        borderColor: "var(--color-background-accent)",
-                      }}
-                    >
-                      <span
-                        className="h-1.5 w-1.5 rounded-full"
-                        style={{
-                          background: "var(--color-background-accent)",
-                        }}
-                      />
-                    </span>
-                    Light theme
-                  </label>
-                  <label className="flex items-center gap-2 text-(--color-foreground-muted)">
-                    <span
-                      className="h-4 w-4 rounded-full border"
-                      style={{ borderColor: "var(--color-border-default)" }}
-                    />
-                    Dark theme
-                  </label>
-                  <label className="flex items-center gap-2 text-(--color-foreground-muted)">
-                    <span
-                      className="h-4 w-4 rounded-full border"
-                      style={{ borderColor: "var(--color-border-default)" }}
-                    />
-                    System default
-                  </label>
-                </div>
-              }
+              preview={<RadioGroupPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Select"
               desc="Dropdown with groups, separators and keyboard navigation, in three sizes."
               href="select"
-              preview={
-                <div className="w-full max-w-55 relative">
-                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[0.625rem] px-2.5 gap-2 text-[0.75rem] bg-(--color-background-default) text-(--color-foreground-default)">
-                    <span className="flex-1">Engineering</span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-foreground-faint)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </div>
-                  <div
-                    className="absolute top-full mt-1 left-0 right-0 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 z-10"
-                    style={{ boxShadow: "var(--shadow-md)" }}
-                  >
-                    <div
-                      className="flex items-center gap-2 rounded px-2 py-1 text-[0.6875rem]"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
-                        color: "var(--color-foreground-primary-muted)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                      >
-                        <path d="m5 12 5 5L20 7" />
-                      </svg>
-                      Engineering
-                    </div>
-                    <div className="px-2 py-1 text-[0.6875rem] text-(--color-foreground-muted)">
-                      Design
-                    </div>
-                    <div className="px-2 py-1 text-[0.6875rem] text-(--color-foreground-muted)">
-                      Operations
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<SelectPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Slider"
               desc="Single-value or range slider, horizontal or vertical, with optional thumb labels."
               href="slider"
-              preview={
-                <div className="w-full max-w-57.5 flex flex-col gap-3">
-                  <div>
-                    <div className="flex justify-between text-[0.625rem] mb-1.5">
-                      <span className="text-(--color-foreground-muted)">
-                        Volume
-                      </span>
-                      <span className="font-mono text-(--color-foreground-faint)">
-                        62
-                      </span>
-                    </div>
-                    <div
-                      className="relative h-1 rounded-full"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    >
-                      <div
-                        className="absolute h-1 rounded-full"
-                        style={{
-                          width: "62%",
-                          background: "var(--color-background-accent)",
-                        }}
-                      />
-                      <div
-                        className="absolute h-3 w-3 rounded-full -mt-1"
-                        style={{
-                          left: "62%",
-                          transform: "translateX(-50%)",
-                          background: "var(--color-background-default)",
-                          border: "2px solid var(--color-background-accent)",
-                          boxShadow: "var(--shadow-sm)",
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-[0.625rem] mb-1.5">
-                      <span className="text-(--color-foreground-muted)">
-                        Range
-                      </span>
-                      <span className="font-mono text-(--color-foreground-faint)">
-                        24 – 78
-                      </span>
-                    </div>
-                    <div
-                      className="relative h-1 rounded-full"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    >
-                      <div
-                        className="absolute h-1 rounded-full"
-                        style={{
-                          left: "24%",
-                          width: "54%",
-                          background: "var(--color-background-accent)",
-                        }}
-                      />
-                      <div
-                        className="absolute h-3 w-3 rounded-full -mt-1"
-                        style={{
-                          left: "24%",
-                          transform: "translateX(-50%)",
-                          background: "var(--color-background-default)",
-                          border: "2px solid var(--color-background-accent)",
-                        }}
-                      />
-                      <div
-                        className="absolute h-3 w-3 rounded-full -mt-1"
-                        style={{
-                          left: "78%",
-                          transform: "translateX(-50%)",
-                          background: "var(--color-background-default)",
-                          border: "2px solid var(--color-background-accent)",
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              }
+              preview={<SliderPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Switch"
               desc="Boolean toggle in three sizes with accessible labeling."
               href="switch"
-              preview={
-                <div className="flex flex-col gap-2.5 text-[0.6875rem] text-(--color-foreground-default)">
-                  <div className="flex items-center justify-between gap-3">
-                    <span>Auto-deploy</span>
-                    <span
-                      className="relative inline-flex h-5 w-9 items-center rounded-full"
-                      style={{
-                        background: "var(--color-background-accent)",
-                      }}
-                    >
-                      <span
-                        className="inline-block h-4 w-4 translate-x-4 rounded-full"
-                        style={{
-                          background: "var(--color-foreground-inverse)",
-                          boxShadow: "var(--shadow-sm)",
-                        }}
-                      />
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <span>Beta channel</span>
-                    <span
-                      className="relative inline-flex h-5 w-9 items-center rounded-full"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    >
-                      <span
-                        className="inline-block h-4 w-4 translate-x-0.5 rounded-full"
-                        style={{
-                          background: "var(--color-background-default)",
-                          boxShadow: "var(--shadow-sm)",
-                        }}
-                      />
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between gap-3 opacity-55">
-                    <span>
-                      Telemetry{" "}
-                      <span className="font-mono text-[0.5625rem] text-(--color-foreground-faint)">
-                        disabled
-                      </span>
-                    </span>
-                    <span
-                      className="relative inline-flex h-5 w-9 items-center rounded-full"
-                      style={{ background: "var(--color-background-emphasis)" }}
-                    >
-                      <span
-                        className="inline-block h-4 w-4 translate-x-0.5 rounded-full"
-                        style={{
-                          background: "var(--color-background-default)",
-                        }}
-                      />
-                    </span>
-                  </div>
-                </div>
-              }
+              preview={<SwitchPreview />}
             />
 
             <CompCard
-              decorative
+              live
               name="Textarea"
               desc="Multi-line input with three sizes, a resize option, and error and success states."
               href="textarea"
-              preview={
-                <div
-                  className="w-full max-w-57.5 rounded-md border bg-(--color-background-default) px-2.5 py-2 text-[0.6875rem] text-(--color-foreground-default)"
-                  style={{
-                    borderColor: "var(--color-focus-ring)",
-                    boxShadow:
-                      "0 0 0 2px var(--color-focus-halo), 0 0 0 4px var(--color-focus-ring)",
-                    height: "6.25rem",
-                  }}
-                >
-                  <p>
-                    Designers can edit tokens directly in Figma; the bridge
-                    opens a pull request with the diff.
-                  </p>
-                  <p className="text-(--color-foreground-faint) mt-1 font-mono text-[0.5625rem]">
-                    142 / 280
-                  </p>
-                </div>
-              }
+              preview={<TextareaPreview />}
             />
 
             {/* cSpell:ignore pressable */}
             <CompCard
+              live
               name="Toggle"
               desc="A two-state pressable button — the foundation for Toggle Group."
               href="toggle"
-              preview={
-                <div className="flex gap-1.5">
-                  <Button
-                    aria-label="Bold"
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8"
-                    style={{
-                      background:
-                        "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
-                      color: "var(--color-foreground-primary-muted)",
-                    }}
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                    >
-                      <path d="M6 4v16M14 6h2a4 4 0 0 1 0 8h-2zM14 14h3a4 4 0 0 1 0 8h-3z" />
-                    </svg>
-                  </Button>
-                  <Button
-                    aria-label="Italic"
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                    >
-                      <path d="M19 4h-9M14 20H5M15 4 9 20" />
-                    </svg>
-                  </Button>
-                  <Button
-                    aria-label="Text style"
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                    >
-                      <path d="M4 7V4h16M9 20h6M12 4v16" />
-                    </svg>
-                  </Button>
-                </div>
-              }
+              preview={<TogglePreview />}
             />
 
             <CompCard
+              live
               name="Toggle Group"
               desc="Single or multi-select group of toggles."
               href="toggle-group"
-              preview={
-                <div className="flex flex-col gap-2 items-center">
-                  <div
-                    className="inline-flex rounded-md border border-(--color-border-default) overflow-hidden"
-                    style={{ background: "var(--color-background-muted)" }}
-                  >
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="px-3 py-1.5 text-[0.6875rem] font-medium"
-                      style={{
-                        background: "var(--color-background-default)",
-                        boxShadow: "var(--shadow-sm)",
-                      }}
-                    >
-                      Day
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="px-3 py-1.5 text-[0.6875rem] font-medium text-(--color-foreground-muted)"
-                    >
-                      Week
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="px-3 py-1.5 text-[0.6875rem] font-medium text-(--color-foreground-muted)"
-                    >
-                      Month
-                    </Button>
-                  </div>
-                  <div className="inline-flex rounded-md border border-(--color-border-default) overflow-hidden">
-                    <Button
-                      aria-label="Justify"
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-8"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
-                        color: "var(--color-foreground-primary-muted)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path d="M21 10H3M21 6H3M21 14H3M21 18H3" />
-                      </svg>
-                    </Button>
-                    <Button
-                      aria-label="Align right"
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-8 text-(--color-foreground-muted)"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path d="M21 10H7M21 6H3M21 14H3M21 18H7" />
-                      </svg>
-                    </Button>
-                    <Button
-                      aria-label="Align right, narrow"
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-8 text-(--color-foreground-muted)"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path d="M21 10H10M21 6H3M21 14H3M21 18H10" />
-                      </svg>
-                    </Button>
-                  </div>
-                </div>
-              }
+              preview={<ToggleGroupPreview />}
             />
           </div>
         </div>
