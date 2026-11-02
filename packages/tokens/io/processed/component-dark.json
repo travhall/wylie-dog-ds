@@ -2351,8 +2351,8 @@
   },
   "alert.border-left-width": {
     "$type": "dimension",
-    "$value": "{border-width.4}",
-    "$description": "Width of the accent border on the left edge of the alert."
+    "$value": "{border-width.1}",
+    "$description": "Width of the alert's left border. The same as the other sides; raise it for a left accent."
   },
   "label.required-margin-left": {
     "$type": "spacing",
@@ -3201,8 +3201,8 @@
   },
   "switch.track.border-width": {
     "$type": "dimension",
-    "$value": "{border-width.2}",
-    "$description": "Border width of the switch track."
+    "$value": "{border-width.0}",
+    "$description": "Border width of the switch track. Zero: the thumb is as tall as the track and slides the full width, so a border would push it past the edge."
   },
   "switch.focus-ring.width": {
     "$type": "spacing",

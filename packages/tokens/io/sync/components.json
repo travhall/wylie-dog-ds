@@ -4244,11 +4244,11 @@
         },
         "alert.border-left-width": {
           "$type": "dimension",
-          "$value": "{border-width.4}",
-          "$description": "Width of the accent border on the left edge of the alert.",
+          "$value": "{border-width.1}",
+          "$description": "Width of the alert's left border. The same as the other sides; raise it for a left accent.",
           "valuesByMode": {
-            "Light": "{border-width.4}",
-            "Dark": "{border-width.4}"
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "label.required-margin-left": {
@@ -5774,11 +5774,11 @@
         },
         "switch.track.border-width": {
           "$type": "dimension",
-          "$value": "{border-width.2}",
-          "$description": "Border width of the switch track.",
+          "$value": "{border-width.0}",
+          "$description": "Border width of the switch track. Zero: the thumb is as tall as the track and slides the full width, so a border would push it past the edge.",
           "valuesByMode": {
-            "Light": "{border-width.2}",
-            "Dark": "{border-width.2}"
+            "Light": "{border-width.0}",
+            "Dark": "{border-width.0}"
           }
         },
         "switch.focus-ring.width": {

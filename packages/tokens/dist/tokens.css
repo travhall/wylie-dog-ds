@@ -867,7 +867,7 @@
   --space-alert-title-letter-spacing: -0.025em;
   --line-height-alert-description-line-height: 1.5;
   --alert-description-opacity: 1;
-  --space-alert-border-left-width: 4px;
+  --space-alert-border-left-width: 1px;
   --space-label-required-margin-left: 0.25rem;
   --space-command-item-padding-x: 0.75rem;
   --space-command-item-indicator-margin-right: 0.5rem;
@@ -1037,7 +1037,7 @@
   --color-tabs-trigger-indicator-color: oklch(0.496 0.049 219.07);
   --space-checkbox-focus-ring-width: 2px;
   --space-checkbox-focus-ring-offset: 2px;
-  --space-switch-track-border-width: 2px;
+  --space-switch-track-border-width: 0px;
   --space-switch-focus-ring-width: 2px;
   --space-switch-focus-ring-offset: 2px;
   --color-switch-track-background-checked: oklch(0.496 0.049 219.07);
@@ -1974,7 +1974,7 @@
   --space-alert-title-letter-spacing: -0.025em;
   --line-height-alert-description-line-height: 1.5;
   --alert-description-opacity: 1;
-  --space-alert-border-left-width: 4px;
+  --space-alert-border-left-width: 1px;
   --space-label-required-margin-left: 0.25rem;
   --space-command-item-padding-x: 0.75rem;
   --space-command-item-indicator-margin-right: 0.5rem;
@@ -2144,7 +2144,7 @@
   --color-tabs-trigger-indicator-color: oklch(0.496 0.049 219.07);
   --space-checkbox-focus-ring-width: 2px;
   --space-checkbox-focus-ring-offset: 2px;
-  --space-switch-track-border-width: 2px;
+  --space-switch-track-border-width: 0px;
   --space-switch-focus-ring-width: 2px;
   --space-switch-focus-ring-offset: 2px;
   --color-switch-track-background-checked: oklch(0.496 0.049 219.07);
