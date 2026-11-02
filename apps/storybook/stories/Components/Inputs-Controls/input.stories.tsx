@@ -184,15 +184,15 @@ export const AllSizes: Story = {
     <div className="space-y-6">
       <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="sm">Small Input</Label>
-        <Input size="sm" placeholder="Small input" />
+        <Input aria-label="Small input" size="sm" placeholder="Small input" />
       </div>
       <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="md">Medium Input (Default)</Label>
-        <Input size="md" placeholder="Medium input" />
+        <Input aria-label="Medium input" size="md" placeholder="Medium input" />
       </div>
       <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="lg">Large Input</Label>
-        <Input size="lg" placeholder="Large input" />
+        <Input aria-label="Large input" size="lg" placeholder="Large input" />
       </div>
     </div>
   ),
@@ -310,7 +310,18 @@ export const States: Story = {
         <Label htmlFor="error-state-input" error>
           Error State
         </Label>
-        <Input id="error-state-input" error placeholder="Input with error" />
+        <Input
+          id="error-state-input"
+          error
+          errorId="error-state-input-message"
+          placeholder="Input with error"
+        />
+        <p
+          id="error-state-input-message"
+          className="text-xs text-red-700 dark:text-red-400"
+        >
+          Enter a value to continue
+        </p>
       </div>
       <div className="space-y-2">
         <Label htmlFor="filled-input">With Content</Label>
@@ -565,7 +576,11 @@ export const DosDonts: Story = {
         <div className="space-y-6">
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">No label (inaccessible)</p>
-            <Input type="email" placeholder="Email Address" />
+            <Input
+              aria-label="Email Address"
+              type="email"
+              placeholder="Email Address"
+            />
             <p className="text-xs text-current/70">
               Screen readers can&apos;t identify this field
             </p>
@@ -596,7 +611,10 @@ export const DosDonts: Story = {
 
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Placeholder as label</p>
-            <Input placeholder="Search products..." />
+            <Input
+              aria-label="Search products"
+              placeholder="Search products..."
+            />
             <p className="text-xs text-current/70">
               Placeholders disappear when typing
             </p>

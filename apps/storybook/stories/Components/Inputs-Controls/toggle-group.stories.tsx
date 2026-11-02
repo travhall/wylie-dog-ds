@@ -425,7 +425,11 @@ export const EditorToolbar: Story = {
         </ToggleGroup>
       </div>
 
-      <Textarea className="h-32 resize-none" placeholder="Start writing..." />
+      <Textarea
+        aria-label="Start writing"
+        className="h-32 resize-none"
+        placeholder="Start writing..."
+      />
     </div>
   ),
   parameters: {

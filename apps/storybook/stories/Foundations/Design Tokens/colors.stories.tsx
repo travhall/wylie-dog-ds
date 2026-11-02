@@ -917,6 +917,7 @@ export const TokenBrowser: Story = {
         <div className="flex gap-3">
           <div className="flex-1">
             <Input
+              aria-label="Search colors"
               type="search"
               placeholder="Search (e.g., fiery-coral, gray)"
               value={searchQuery}

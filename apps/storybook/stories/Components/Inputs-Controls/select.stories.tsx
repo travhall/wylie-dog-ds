@@ -357,11 +357,11 @@ export const FormExamples: Story = {
         <div className="grid grid-cols-2 gap-2">
           <FormField required>
             <FormLabel>First name</FormLabel>
-            <Input placeholder="Jane" />
+            <Input aria-label="First name" placeholder="Jane" />
           </FormField>
           <FormField required>
             <FormLabel>Last name</FormLabel>
-            <Input placeholder="Doe" />
+            <Input aria-label="Last name" placeholder="Doe" />
           </FormField>
         </div>
         <div className="grid grid-cols-2 gap-2">

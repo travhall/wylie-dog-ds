@@ -277,8 +277,16 @@ export const FilterMenu: Story = {
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Price Range</Label>
                 <div className="grid grid-cols-2 gap-2">
-                  <Input placeholder="Min" size="sm" />
-                  <Input placeholder="Max" size="sm" />
+                  <Input
+                    aria-label="Minimum price"
+                    placeholder="Min"
+                    size="sm"
+                  />
+                  <Input
+                    aria-label="Maximum price"
+                    placeholder="Max"
+                    size="sm"
+                  />
                 </div>
               </div>
 

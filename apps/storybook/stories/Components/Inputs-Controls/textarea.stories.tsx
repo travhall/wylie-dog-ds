@@ -169,6 +169,7 @@ export const AllSizes: Story = {
       <div className="mx-auto w-full max-w-sm space-y-2">
         <Label size="sm">Small Textarea</Label>
         <Textarea
+          aria-label="Small textarea for brief comments"
           size="sm"
           placeholder="Small textarea for brief comments..."
         />
@@ -176,6 +177,7 @@ export const AllSizes: Story = {
       <div className="mx-auto w-full max-w-sm space-y-2">
         <Label size="md">Medium Textarea (Default)</Label>
         <Textarea
+          aria-label="Medium textarea for standard input"
           size="md"
           placeholder="Medium textarea for standard input..."
         />
@@ -183,6 +185,7 @@ export const AllSizes: Story = {
       <div className="mx-auto w-full max-w-sm space-y-2">
         <Label size="lg">Large Textarea</Label>
         <Textarea
+          aria-label="Large textarea for detailed descriptions"
           size="lg"
           placeholder="Large textarea for detailed descriptions..."
         />
@@ -204,11 +207,16 @@ export const ResizeOptions: Story = {
     <div className="grid grid-cols-2 gap-6">
       <div className="space-y-2">
         <Label>No Resize</Label>
-        <Textarea resize="none" placeholder="This textarea cannot be resized" />
+        <Textarea
+          aria-label="This textarea cannot be resized"
+          resize="none"
+          placeholder="This textarea cannot be resized"
+        />
       </div>
       <div className="space-y-2">
         <Label>Vertical Resize (Default)</Label>
         <Textarea
+          aria-label="This textarea can be resized vertically"
           resize="vertical"
           placeholder="This textarea can be resized vertically"
         />
@@ -216,6 +224,7 @@ export const ResizeOptions: Story = {
       <div className="space-y-2">
         <Label>Horizontal Resize</Label>
         <Textarea
+          aria-label="This textarea can be resized horizontally"
           resize="horizontal"
           placeholder="This textarea can be resized horizontally"
         />
@@ -223,6 +232,7 @@ export const ResizeOptions: Story = {
       <div className="space-y-2">
         <Label>Both Directions</Label>
         <Textarea
+          aria-label="This textarea can be resized in both directions"
           resize="both"
           placeholder="This textarea can be resized in both directions"
         />
@@ -259,7 +269,18 @@ export const States: Story = {
         <Label htmlFor="states-error" error>
           Error State
         </Label>
-        <Textarea id="states-error" error placeholder="Textarea with error" />
+        <Textarea
+          id="states-error"
+          error
+          errorId="states-error-message"
+          placeholder="Textarea with error"
+        />
+        <p
+          id="states-error-message"
+          className="text-xs text-red-700 dark:text-red-400"
+        >
+          Enter a message to continue
+        </p>
       </div>
       <div className="space-y-2">
         <Label htmlFor="states-content">With Content</Label>
@@ -348,7 +369,12 @@ export const FormExamples: Story = {
 };
 
 export const InputInteraction: Story = {
-  render: () => <Textarea placeholder="Type something here..." />,
+  render: () => (
+    <Textarea
+      aria-label="Type something here"
+      placeholder="Type something here..."
+    />
+  ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const textarea = canvas.getByRole("textbox");
@@ -372,6 +398,7 @@ export const CharacterCount: Story = {
     return (
       <div className="space-y-2">
         <Textarea
+          aria-label="Write a short bio"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           maxLength={max}
