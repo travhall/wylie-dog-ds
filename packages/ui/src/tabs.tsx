@@ -9,7 +9,7 @@ export const Tabs = TabsPrimitive.Root;
 export const tabsListVariants = cva(
   cn(
     "inline-flex items-center justify-center bg-(--color-tabs-list-background) text-(--color-tabs-list-text)",
-    "border-b-(--space-tabs-list-border-width) border-(--color-tabs-list-border-color) gap-(--space-tabs-list-gap)"
+    "border-b-(length:--space-tabs-list-border-width) border-(--color-tabs-list-border-color) gap-(--space-tabs-list-gap)"
   ),
   {
     variants: {
@@ -45,7 +45,7 @@ TabsList.displayName = TabsPrimitive.List.displayName;
 export const tabsTriggerVariants = cva(
   cn(
     "inline-flex items-center justify-center whitespace-nowrap font-(--font-weight-tabs-trigger-font-weight) transition-all",
-    "border-b-(--space-tabs-trigger-indicator-width) border-transparent",
+    "border-b-(length:--space-tabs-trigger-indicator-width) border-transparent",
     "-mb-[1px]",
     focusRingClasses,
     "disabled:pointer-events-none disabled:text-(--color-tabs-trigger-text-disabled) data-[state=active]:disabled:text-(--color-tabs-trigger-text-disabled)",

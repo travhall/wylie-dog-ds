@@ -544,7 +544,7 @@
     },
     {
       "foreground": "tabs.trigger.indicator-color",
-      "backgrounds": ["color.background.default"],
+      "backgrounds": ["color.background.default", "color.background.muted"],
       "kind": "non-text"
     },
     {
