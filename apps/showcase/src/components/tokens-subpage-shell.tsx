@@ -28,7 +28,7 @@ export function TokensSubpageShell({
     <div className="mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
       <Link
         href="/tokens"
-        className="inline-flex items-center gap-2 text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-primary-muted) transition-colors"
+        className="inline-flex min-h-6 items-center gap-2 text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-primary-muted) transition-colors max-md:min-h-11"
       >
         <ArrowLeft className="h-4 w-4" />
         All Tokens

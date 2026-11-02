@@ -103,7 +103,7 @@ export function SpacingDemo() {
               variant="ghost"
               size="sm"
               onClick={() => setIdx(i)}
-              className="rounded px-2.5 py-1 text-xs font-medium"
+              className="min-h-6 rounded px-2.5 py-1 text-xs font-medium"
               style={
                 idx === i
                   ? {

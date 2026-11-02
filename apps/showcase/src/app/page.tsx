@@ -186,7 +186,7 @@ export default function ShowcasePage() {
               </div>
               <Link
                 href="/tokens"
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold"
+                className="mt-6 inline-flex min-h-6 items-center gap-1.5 text-sm font-semibold max-md:min-h-11"
                 style={{ color: "var(--color-foreground-primary-muted)" }}
               >
                 Open the token explorer

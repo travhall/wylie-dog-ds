@@ -139,7 +139,7 @@ export function MotionPreview() {
                 key={ms}
                 onClick={() => setDur(ms)}
                 variant="ghost"
-                className="h-auto rounded-full px-2 py-0.5 font-mono text-xs font-medium transition-colors"
+                className="h-auto min-h-6 rounded-full px-2 py-0.5 font-mono text-xs font-medium transition-colors"
                 style={
                   dur === ms
                     ? {

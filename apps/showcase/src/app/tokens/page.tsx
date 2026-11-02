@@ -321,7 +321,7 @@ export default function TokensPage() {
                       key={t}
                       variant="ghost"
                       size="sm"
-                      className={`h-auto rounded px-2.5 py-1 text-xs font-medium ${
+                      className={`h-auto min-h-6 rounded px-2.5 py-1 text-xs font-medium ${
                         i === 0
                           ? "bg-(--color-background-default) text-(--color-foreground-default)"
                           : "text-(--color-foreground-faint)"
