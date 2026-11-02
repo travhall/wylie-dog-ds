@@ -56,6 +56,11 @@ describe.each(modes)("manager palette, %s", (mode) => {
     expect(ratio(selectedBar, p.appBg)).toBeGreaterThanOrEqual(3);
   });
 
+  it("keeps default text at 4.5:1 on the row hover tint, and a valid corner radius", () => {
+    expect(ratio(p.textColor, p.appHoverBg)).toBeGreaterThanOrEqual(4.5);
+    expect(chromeExtras(mode).radius).toMatch(/^[\d.]+(rem|px)$/);
+  });
+
   it("keeps the brand wordmark at 4.5:1 and the tile at 3:1 on the sidebar, and builds both from those colors", () => {
     const { tile, ink } = chromeBrand(mode);
     expect(ratio(ink, p.appBg)).toBeGreaterThanOrEqual(4.5);

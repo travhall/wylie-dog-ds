@@ -9,7 +9,8 @@
  * control is the accent, and a control's boundary is the control border.
  */
 import modes from "@wyliedog/tokens/color-modes.json";
-import { toHex } from "@wyliedog/tokens/color";
+import manifest from "@wyliedog/tokens/manifest.json";
+import { toHex, toRgb } from "@wyliedog/tokens/color";
 
 export type Mode = "light" | "dark";
 
@@ -25,6 +26,16 @@ export function tokenValue(mode: Mode, token: string): string {
 
 const hex = (mode: Mode, token: string) => toHex(tokenValue(mode, token));
 
+/** `share` of color `a` laid over color `b`, as hex (the hover tint is a tint of the link color). */
+function mix(a: string, b: string, share: number): string {
+  const [ra, rb] = [toRgb(a), toRgb(b)];
+  const channel = (i: number) =>
+    Math.round((ra[i] * share + rb[i] * (1 - share)) * 255)
+      .toString(16)
+      .padStart(2, "0");
+  return `#${channel(0)}${channel(1)}${channel(2)}`;
+}
+
 /** The Storybook theme variables that carry color. */
 export function chromePalette(mode: Mode) {
   const t = (token: string) => hex(mode, token);
@@ -34,6 +45,9 @@ export function chromePalette(mode: Mode) {
     // the link token (readable on both surfaces), not the accent fill.
     colorSecondary: t("foreground-link"),
     appBg: t("background-muted"),
+    // Rows and group headers hover alike, with a light tint of the link color: a
+    // step quieter than the selected item, and with the default blue gone.
+    appHoverBg: mix(t("foreground-link"), t("background-muted"), 0.08),
     appContentBg: t("background-default"),
     appPreviewBg: t("background-default"),
     appBorderColor: t("border-muted"),
@@ -59,8 +73,14 @@ export function chromeExtras(mode: Mode) {
   return {
     /** Radios and checkboxes in the panels, which use the browser's accent. */
     control: hex(mode, "background-accent"),
-    /** The selected sidebar item: a quiet tint with default text and an accent bar. */
-    selectedBg: hex(mode, "background-emphasis"),
+    /** The corner radius of sidebar rows, headers and the selected item (the sm radius token). */
+    radius: (
+      manifest.primitives.borderRadius as Record<string, { value: string }>
+    )["border-radius-sm"].value,
+    /** The hover tint for rows and group headers (the same value as appHoverBg). */
+    hover: chromePalette(mode).appHoverBg,
+    /** The selected sidebar item: a stronger tint than hover, default text and a bar. */
+    selectedBg: hex(mode, "background-intense"),
     selectedText: hex(mode, "foreground-default"),
     // The link token, not the accent fill: the fill is only 2.5:1 on the Dark tint.
     selectedBar: hex(mode, "foreground-link"),

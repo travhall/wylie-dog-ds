@@ -34,8 +34,10 @@ const resolve = (choice: Choice): Mode =>
 
 /*
  * What the theme API cannot reach: radios and checkboxes in the panels use the
- * browser's accent color, and the selected sidebar item is styled as a quiet tint
- * with an accent bar, so it is not a solid block.
+ * browser's accent color; sidebar rows and group headers share one small corner
+ * radius; the selected item is a quiet tint with a bar (its icon takes the text
+ * color); group headers hover with the same tint as rows; and the row's context-menu button is plain, without the filled pill and
+ * glow Storybook gives it.
  */
 function applyChromeStyles(mode: Mode) {
   const id = "wd-manager-chrome";
@@ -45,10 +47,16 @@ function applyChromeStyles(mode: Mode) {
     style.id = id;
     document.head.appendChild(style);
   }
-  const { control, selectedBg, selectedText, selectedBar } = chromeExtras(mode);
+  const { control, hover, radius, selectedBg, selectedText, selectedBar } =
+    chromeExtras(mode);
+  const tree = "#storybook-explorer-tree";
   style.textContent = `
     input[type="radio"], input[type="checkbox"] { accent-color: ${control}; }
-    #storybook-explorer-tree [data-selected="true"] { background: ${selectedBg} !important; color: ${selectedText} !important; font-weight: 600; box-shadow: inset 3px 0 0 ${selectedBar}; }
+    ${tree} .sidebar-item, ${tree} .sidebar-subheading button { border-radius: ${radius}; }
+    ${tree} .sidebar-subheading button:hover { background: ${hover} !important; }
+    ${tree} .sidebar-item[data-selected="true"] { background: ${selectedBg} !important; color: ${selectedText} !important; font-weight: 600; box-shadow: inset 3px 0 0 ${selectedBar}; }
+    ${tree} .sidebar-item[data-selected="true"] a svg { color: ${selectedText} !important; }
+    ${tree} .sidebar-item [data-testid="context-menu"] { background: transparent !important; box-shadow: none !important; }
   `;
 }
 
