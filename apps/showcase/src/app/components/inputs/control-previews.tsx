@@ -107,7 +107,7 @@ export function CheckboxPreview() {
 }
 
 function FormInput({ type }: { type: string }) {
-  const { id, errorId, descriptionId, isInvalid } = useFormField();
+  const { id, errorId, isInvalid } = useFormField();
   return (
     <Input
       id={id}
@@ -115,7 +115,6 @@ function FormInput({ type }: { type: string }) {
       size="sm"
       error={isInvalid}
       errorId={errorId}
-      aria-describedby={descriptionId}
       defaultValue={type === "email" ? "elena@example" : ""}
     />
   );
