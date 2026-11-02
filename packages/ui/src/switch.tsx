@@ -7,7 +7,7 @@ export const switchVariants = cva(
   cn(
     "peer inline-flex shrink-0 cursor-pointer items-center border-transparent",
     "rounded-(--space-switch-track-radius)",
-    "border-(--space-switch-track-border-width)",
+    "border-(length:--space-switch-track-border-width)",
     "transition-colors",
     "focus-visible:outline-solid focus-visible:outline-(length:--space-switch-focus-ring-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-switch-focus-ring-offset) focus-visible:shadow-[0_0_0_calc(var(--space-switch-focus-ring-offset)+var(--space-switch-focus-ring-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none",
     "disabled:cursor-not-allowed data-[state=checked]:disabled:bg-(--color-switch-track-background-disabled) data-[state=unchecked]:disabled:bg-(--color-switch-track-background-disabled)",

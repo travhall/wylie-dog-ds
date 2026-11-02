@@ -53,7 +53,7 @@ const TableFooter = React.forwardRef<
   <tfoot
     ref={ref}
     className={cn(
-      "border-b-(--space-table-border-width) bg-(--color-table-footer-background) font-(--font-weight-table-footer-font-weight) [&>tr]:last:border-b-0",
+      "bg-(--color-table-footer-background) font-(--font-weight-table-footer-font-weight) [&>tr]:last:border-b-0",
       "border-t border-(--color-table-border)",
       className
     )}
@@ -70,7 +70,7 @@ const TableRow = React.forwardRef<
     ref={ref}
     className={cn(
       "transition-colors hover:bg-(--color-table-row-hover) data-[state=selected]:bg-(--color-table-row-selected)",
-      "border-b border-b-(--space-table-border-width) border-(--color-table-border)",
+      "border-b border-b-(length:--space-table-border-width) border-(--color-table-border)",
       className
     )}
     {...props}

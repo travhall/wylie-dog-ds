@@ -304,7 +304,7 @@ describe("Alert", () => {
         "w-full",
         "rounded-(--space-alert-radius)",
         "border",
-        "border-l-(--space-alert-border-left-width)",
+        "border-l-(length:--space-alert-border-left-width)",
         "px-(--space-alert-padding-x)",
         "py-(--space-alert-padding-y)",
         "text-(length:--font-size-alert-description-font-size)"
