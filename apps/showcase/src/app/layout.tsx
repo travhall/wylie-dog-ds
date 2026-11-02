@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button, buttonVariants } from "@wyliedog/ui/button";
+import { buttonVariants } from "@wyliedog/ui/button";
 import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
 import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
 import "@fontsource/manrope/400.css";
@@ -20,7 +20,9 @@ import "@fontsource/jetbrains-mono/700.css";
 import { WylieDogLogo } from "./wyliedoglogo";
 import { MobileNav } from "./mobile-nav";
 import { NavLink } from "./nav-link";
+import { SiteSearch } from "./site-search";
 import { ThemeToggle } from "./theme-toggle";
+import { getSearchIndex } from "@/lib/showcase-metadata";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -88,6 +90,13 @@ const footerColumns = [
   },
 ];
 
+const searchEntries = getSearchIndex([
+  ...navLinks,
+  ...footerColumns
+    .flatMap((column) => column.links)
+    .filter((link) => link.href.startsWith("/")),
+]);
+
 export default function RootLayout({
   children,
 }: {
@@ -129,23 +138,7 @@ export default function RootLayout({
           )}
           actions={
             <>
-              <Button
-                variant="outline"
-                size="icon"
-                aria-label="Search"
-                className="h-11 w-11 md:h-8 md:w-8"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-3.5 w-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="m21 21-4.3-4.3" />
-                </svg>
-              </Button>
+              <SiteSearch entries={searchEntries} />
 
               <ThemeToggle />
 

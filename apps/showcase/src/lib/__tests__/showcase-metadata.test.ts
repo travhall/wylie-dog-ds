@@ -147,3 +147,23 @@ describe("Storybook coverage of UI components", () => {
     expect(missing).toEqual([]);
   });
 });
+
+describe("Site search index", () => {
+  it("lists the given pages first, then every component linked to its Storybook docs", async () => {
+    const { getSearchIndex, getComponentMeta } =
+      await import("../showcase-metadata");
+    const entries = getSearchIndex([{ label: "Tokens", href: "/tokens" }]);
+    expect(entries[0]).toEqual({
+      label: "Tokens",
+      href: "/tokens",
+      group: "Pages",
+      external: false,
+    });
+    const components = entries.filter((e) => e.group === "Components");
+    expect(components).toHaveLength(getComponentMeta().count);
+    expect(components.every((e) => e.external)).toBe(true);
+    expect(components.find((e) => e.label === "Alert Dialog")?.href).toBe(
+      "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-alertdialog--docs"
+    );
+  });
+});

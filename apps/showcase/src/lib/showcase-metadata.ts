@@ -446,6 +446,56 @@ export function getStoryDocsUrl(component: string): string {
 }
 
 // ---------------------------------------------------------------------------
+// Site search
+// ---------------------------------------------------------------------------
+
+export interface SearchEntry {
+  label: string;
+  href: string;
+  group: "Pages" | "Components";
+  /** Leaves the site (the component's Storybook docs). */
+  external: boolean;
+}
+
+/** "alert-dialog" -> "Alert Dialog" */
+function titleCase(file: string): string {
+  return file
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+/**
+ * What the header search looks through: the given pages, then every component
+ * in packages/ui (pattern-level compositions excluded), each linked to its
+ * Storybook docs. Built from the source files, so a new component appears
+ * without a list to update.
+ */
+export function getSearchIndex(
+  pages: Array<{ label: string; href: string }>
+): SearchEntry[] {
+  const components = fs
+    .readdirSync(UI_SRC_DIR)
+    .filter((f) => f.endsWith(".tsx") && !PATTERN_LEVEL_COMPONENTS.has(f))
+    .map((f) => f.replace(/\.tsx$/, ""))
+    .sort()
+    .map((name): SearchEntry => ({
+      label: titleCase(name),
+      href: getStoryDocsUrl(name),
+      group: "Components",
+      external: true,
+    }));
+  return [
+    ...pages.map((p): SearchEntry => ({
+      ...p,
+      group: "Pages",
+      external: false,
+    })),
+    ...components,
+  ];
+}
+
+// ---------------------------------------------------------------------------
 // Stack facts (versions and how components are built)
 // ---------------------------------------------------------------------------
 
