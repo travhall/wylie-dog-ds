@@ -11383,7 +11383,7 @@
           "size",
           "sm"
         ],
-        "value": "0.75rem",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--checkbox-size-sm)",
         "description": "Size of the small checkbox."
@@ -11395,7 +11395,7 @@
           "size",
           "md"
         ],
-        "value": "1rem",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--checkbox-size-md)",
         "description": "Width and height of the medium checkbox."
@@ -11407,7 +11407,7 @@
           "size",
           "lg"
         ],
-        "value": "1.5rem",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--checkbox-size-lg)",
         "description": "Size of the large checkbox."
@@ -11444,7 +11444,7 @@
           "size",
           "sm"
         ],
-        "value": "0.75rem",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--checkbox-icon-size-sm)",
         "description": "Size of the small checkbox icon."
@@ -11457,7 +11457,7 @@
           "size",
           "md"
         ],
-        "value": "1rem",
+        "value": "1.5rem",
         "type": "spacing",
         "variable": "var(--checkbox-icon-size-md)",
         "description": "Size of the medium checkbox icon."
@@ -11470,7 +11470,7 @@
           "size",
           "lg"
         ],
-        "value": "1.5rem",
+        "value": "2rem",
         "type": "spacing",
         "variable": "var(--checkbox-icon-size-lg)",
         "description": "Size of the large checkbox icon."

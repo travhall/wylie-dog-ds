@@ -1286,17 +1286,17 @@
   },
   "checkbox.size.sm": {
     "$type": "spacing",
-    "$value": "{space.150}",
+    "$value": "{space.200}",
     "$description": "Size of the small checkbox."
   },
   "checkbox.size.md": {
     "$type": "spacing",
-    "$value": "{space.200}",
+    "$value": "{space.300}",
     "$description": "Width and height of the medium checkbox."
   },
   "checkbox.size.lg": {
     "$type": "spacing",
-    "$value": "{space.300}",
+    "$value": "{space.400}",
     "$description": "Size of the large checkbox."
   },
   "checkbox.border.width": {
@@ -1311,17 +1311,17 @@
   },
   "checkbox.icon.size.sm": {
     "$type": "spacing",
-    "$value": "{space.150}",
+    "$value": "{space.200}",
     "$description": "Size of the small checkbox icon."
   },
   "checkbox.icon.size.md": {
     "$type": "spacing",
-    "$value": "{space.200}",
+    "$value": "{space.300}",
     "$description": "Size of the medium checkbox icon."
   },
   "checkbox.icon.size.lg": {
     "$type": "spacing",
-    "$value": "{space.300}",
+    "$value": "{space.400}",
     "$description": "Size of the large checkbox icon."
   },
   "switch.track.height.sm": {

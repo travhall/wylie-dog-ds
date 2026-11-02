@@ -2327,29 +2327,29 @@
         },
         "checkbox.size.sm": {
           "$type": "spacing",
-          "$value": "{space.150}",
-          "$description": "Size of the small checkbox.",
-          "valuesByMode": {
-            "Light": "{space.150}",
-            "Dark": "{space.150}"
-          }
-        },
-        "checkbox.size.md": {
-          "$type": "spacing",
           "$value": "{space.200}",
-          "$description": "Width and height of the medium checkbox.",
+          "$description": "Size of the small checkbox.",
           "valuesByMode": {
             "Light": "{space.200}",
             "Dark": "{space.200}"
           }
         },
-        "checkbox.size.lg": {
+        "checkbox.size.md": {
           "$type": "spacing",
           "$value": "{space.300}",
-          "$description": "Size of the large checkbox.",
+          "$description": "Width and height of the medium checkbox.",
           "valuesByMode": {
             "Light": "{space.300}",
             "Dark": "{space.300}"
+          }
+        },
+        "checkbox.size.lg": {
+          "$type": "spacing",
+          "$value": "{space.400}",
+          "$description": "Size of the large checkbox.",
+          "valuesByMode": {
+            "Light": "{space.400}",
+            "Dark": "{space.400}"
           }
         },
         "checkbox.border.width": {
@@ -2372,29 +2372,29 @@
         },
         "checkbox.icon.size.sm": {
           "$type": "spacing",
-          "$value": "{space.150}",
-          "$description": "Size of the small checkbox icon.",
-          "valuesByMode": {
-            "Light": "{space.150}",
-            "Dark": "{space.150}"
-          }
-        },
-        "checkbox.icon.size.md": {
-          "$type": "spacing",
           "$value": "{space.200}",
-          "$description": "Size of the medium checkbox icon.",
+          "$description": "Size of the small checkbox icon.",
           "valuesByMode": {
             "Light": "{space.200}",
             "Dark": "{space.200}"
           }
         },
-        "checkbox.icon.size.lg": {
+        "checkbox.icon.size.md": {
           "$type": "spacing",
           "$value": "{space.300}",
-          "$description": "Size of the large checkbox icon.",
+          "$description": "Size of the medium checkbox icon.",
           "valuesByMode": {
             "Light": "{space.300}",
             "Dark": "{space.300}"
+          }
+        },
+        "checkbox.icon.size.lg": {
+          "$type": "spacing",
+          "$value": "{space.400}",
+          "$description": "Size of the large checkbox icon.",
+          "valuesByMode": {
+            "Light": "{space.400}",
+            "Dark": "{space.400}"
           }
         },
         "switch.track.height.sm": {
