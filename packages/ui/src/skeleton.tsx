@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
 export const skeletonVariants = cva(
-  "animate-pulse bg-(--color-skeleton-background)",
+  "forced-track animate-pulse bg-(--color-skeleton-background)",
   {
     variants: {
       variant: {

@@ -33,8 +33,8 @@ const Slider = React.forwardRef<
       )}
       {...props}
     >
-      <SliderPrimitive.Track className="relative w-full grow overflow-hidden h-(--space-slider-track-height) rounded-(--space-slider-track-radius) bg-(--color-slider-track)">
-        <SliderPrimitive.Range className="absolute h-full bg-(--color-slider-range)" />
+      <SliderPrimitive.Track className="relative w-full grow overflow-hidden h-(--space-slider-track-height) rounded-(--space-slider-track-radius) bg-(--color-slider-track) forced-track">
+        <SliderPrimitive.Range className="forced-fill absolute h-full bg-(--color-slider-range)" />
       </SliderPrimitive.Track>
       {values.map((_, i) => (
         <SliderPrimitive.Thumb

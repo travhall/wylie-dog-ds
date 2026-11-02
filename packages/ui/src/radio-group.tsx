@@ -71,7 +71,7 @@ const RadioGroupItem = React.forwardRef<
     <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
       <div
         className={cn(
-          "bg-current rounded-(--space-radio-border-radius)",
+          "forced-mark bg-current rounded-(--space-radio-border-radius)",
           indicatorSizes[size ?? "md"]
         )}
       />

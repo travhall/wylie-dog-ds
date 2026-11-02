@@ -50,3 +50,54 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover,
 input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
   background-color: var(--color-input-default-text);
 }
+
+/* ==========================================================================
+   Reduced motion
+   Animations and transitions finish immediately. They are shortened, not
+   removed, so Radix still gets the animationend and transitionend events it
+   waits for before it unmounts an overlay.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Forced colors (Windows High Contrast and similar)
+   The browser drops background colors, so a control drawn only by a fill
+   disappears. These hooks give those parts system colors, which are the one
+   kind of color forced-colors mode keeps. They are not design tokens: the
+   user's own palette replaces the theme here.
+   ========================================================================== */
+
+@media (forced-colors: active) {
+  .forced-track {
+    background-color: GrayText;
+  }
+  .forced-fill {
+    background-color: Highlight;
+  }
+  .forced-mark {
+    background-color: CanvasText;
+  }
+  .forced-switch-track {
+    background-color: Canvas;
+    outline: 1px solid ButtonText;
+  }
+  .forced-switch-track[data-state="checked"] {
+    background-color: Highlight;
+  }
+  .forced-switch-thumb {
+    background-color: ButtonText;
+  }
+  .forced-switch-track[data-state="checked"] .forced-switch-thumb {
+    background-color: HighlightText;
+  }
+}

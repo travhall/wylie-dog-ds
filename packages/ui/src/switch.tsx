@@ -5,7 +5,7 @@ import { cn } from "./lib/utils";
 
 export const switchVariants = cva(
   cn(
-    "peer inline-flex shrink-0 cursor-pointer items-center border-transparent",
+    "forced-switch-track peer inline-flex shrink-0 cursor-pointer items-center border-transparent",
     "rounded-(--space-switch-track-radius)",
     "border-(length:--space-switch-track-border-width)",
     "transition-colors",
@@ -50,7 +50,7 @@ export const Switch = React.forwardRef<
   >
     <SwitchPrimitive.Thumb
       className={cn(
-        "pointer-events-none block shadow-(--shadow-switch-thumb-shadow) ring-0 transition-transform",
+        "forced-switch-thumb pointer-events-none block shadow-(--shadow-switch-thumb-shadow) ring-0 transition-transform",
         "rounded-(--space-switch-thumb-radius)",
         "bg-(--color-switch-thumb-background)",
         thumbSizes[size ?? "md"]
