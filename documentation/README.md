@@ -78,7 +78,7 @@ Case studies can originate from either direction — a bug or gap found while
 auditing code (e.g. a token that wasn't actually wired to what it claimed to
 represent), or a change that started in Figma and worked its way into code.
 
-- `a11y-tertiary/` - Before/after screenshots from a dark-mode contrast fix (write-up pending)
+- `a11y-tertiary/` - How turning on automated accessibility testing exposed a contrast failure that the docs had declared as passing, and its fix (draft; before screenshots from July, after screenshots recaptured 2026-11-03)
 - [`spacing-scale-gap/`](case-studies/spacing-scale-gap/README.md) - Missing 2px spacing token, traced through Figma → code → Figma via Token Bridge (in progress)
 
 ## Archive
