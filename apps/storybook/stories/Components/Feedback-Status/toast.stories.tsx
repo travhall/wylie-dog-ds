@@ -3,6 +3,7 @@ import { within, userEvent, expect, waitFor } from "storybook/test";
 import {
   Toast,
   ToastAction,
+  ToastClose,
   ToastDescription,
   ToastTitle,
   toast,
@@ -146,6 +147,53 @@ export const WarningToast: Story = {
         Please review your changes before continuing.
       </ToastDescription>
     </Toast>
+  ),
+};
+
+export const ControlsOnSolidToasts: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The action and close buttons on a solid toast hover and press in the role's own darker tones, so the label stays readable on the fill. Hover the buttons and the toast to see them.",
+      },
+    },
+  },
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <Toast variant="info">
+        <div>
+          <ToastTitle>New version available</ToastTitle>
+          <ToastDescription>The design tokens were updated.</ToastDescription>
+        </div>
+        <ToastAction>Reload</ToastAction>
+        <ToastClose />
+      </Toast>
+      <Toast variant="success">
+        <div>
+          <ToastTitle>Changes saved</ToastTitle>
+          <ToastDescription>Your profile is up to date.</ToastDescription>
+        </div>
+        <ToastAction>Undo</ToastAction>
+        <ToastClose />
+      </Toast>
+      <Toast variant="warning">
+        <div>
+          <ToastTitle>Storage almost full</ToastTitle>
+          <ToastDescription>You have used 92% of your plan.</ToastDescription>
+        </div>
+        <ToastAction>Upgrade</ToastAction>
+        <ToastClose />
+      </Toast>
+      <Toast variant="destructive">
+        <div>
+          <ToastTitle>Upload failed</ToastTitle>
+          <ToastDescription>The file could not be saved.</ToastDescription>
+        </div>
+        <ToastAction>Retry</ToastAction>
+        <ToastClose />
+      </Toast>
+    </div>
   ),
 };
 

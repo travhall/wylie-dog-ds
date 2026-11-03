@@ -42,6 +42,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     <div
       ref={ref}
       className={cn(toastVariants({ variant }), className)}
+      data-variant={variant ?? "default"}
       role="alert"
       aria-live="assertive"
       {...props}
@@ -49,6 +50,23 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
   )
 );
 Toast.displayName = "Toast";
+
+// A solid toast paints its own fill, so the shared neutral hover would put the
+// label on a near-white patch. Its buttons take the role's hover and pressed tones.
+// The classes are written out in full so Tailwind can see them.
+const solidControlFill = [
+  "group-data-[variant=destructive]:hover:bg-(--color-toast-destructive-control-background-hover) group-data-[variant=destructive]:active:bg-(--color-toast-destructive-control-background-active)",
+  "group-data-[variant=success]:hover:bg-(--color-toast-success-control-background-hover) group-data-[variant=success]:active:bg-(--color-toast-success-control-background-active)",
+  "group-data-[variant=warning]:hover:bg-(--color-toast-warning-control-background-hover) group-data-[variant=warning]:active:bg-(--color-toast-warning-control-background-active)",
+  "group-data-[variant=info]:hover:bg-(--color-toast-info-control-background-hover) group-data-[variant=info]:active:bg-(--color-toast-info-control-background-active)",
+].join(" ");
+
+const solidCloseColor = [
+  "group-data-[variant=destructive]:text-(--color-toast-destructive-close-icon) group-data-[variant=destructive]:hover:text-(--color-toast-destructive-close-icon)",
+  "group-data-[variant=success]:text-(--color-toast-success-close-icon) group-data-[variant=success]:hover:text-(--color-toast-success-close-icon)",
+  "group-data-[variant=warning]:text-(--color-toast-warning-close-icon) group-data-[variant=warning]:hover:text-(--color-toast-warning-close-icon)",
+  "group-data-[variant=info]:text-(--color-toast-info-close-icon) group-data-[variant=info]:hover:text-(--color-toast-info-close-icon)",
+].join(" ");
 
 type ToastActionProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -64,6 +82,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
         "px-(--space-toast-action-padding-x)",
         "text-(length:--font-size-toast-action-font-size)",
         "font-(--font-weight-toast-description-font-weight)",
+        solidControlFill,
         className
       )}
       {...props}
@@ -86,6 +105,8 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
         "group-hover:opacity-(--toast-close-button-opacity-hover)",
         "rounded-(--space-toast-close-button-radius)",
         "h-(--space-toast-close-size) w-(--space-toast-close-size)",
+        solidCloseColor,
+        solidControlFill,
         className
       )}
       aria-label={srText}

@@ -128,6 +128,17 @@ describe("Toast", () => {
       );
     });
 
+    it("should expose its variant for the buttons inside it", () => {
+      const { container, rerender } = render(<Toast>Default toast</Toast>);
+      expect((container.firstChild as HTMLElement).dataset.variant).toBe(
+        "default"
+      );
+      rerender(<Toast variant="info">Info toast</Toast>);
+      expect((container.firstChild as HTMLElement).dataset.variant).toBe(
+        "info"
+      );
+    });
+
     it("should support success variant", () => {
       const { container } = render(
         <Toast variant="success">Success toast</Toast>
@@ -264,6 +275,23 @@ describe("Toast", () => {
       expect(ref.current).toBeInstanceOf(HTMLButtonElement);
     });
 
+    it("should take the role's hover and pressed tones on a solid toast", () => {
+      render(
+        <Toast variant="info">
+          <ToastAction>Action</ToastAction>
+        </Toast>
+      );
+      const action = screen.getByRole("button");
+      expect(action).toHaveClass(
+        "group-data-[variant=info]:hover:bg-(--color-toast-info-control-background-hover)",
+        "group-data-[variant=info]:active:bg-(--color-toast-info-control-background-active)",
+        "group-data-[variant=destructive]:hover:bg-(--color-toast-destructive-control-background-hover)",
+        "group-data-[variant=success]:hover:bg-(--color-toast-success-control-background-hover)",
+        "group-data-[variant=warning]:hover:bg-(--color-toast-warning-control-background-hover)"
+      );
+      expect(action).toHaveClass("hover:bg-(--color-toast-action-hover)");
+    });
+
     it("should apply custom className", () => {
       render(
         <Toast>
@@ -332,6 +360,20 @@ describe("Toast", () => {
       );
 
       expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+    });
+
+    it("should keep the close icon on the toast's own tone on a solid toast", () => {
+      render(
+        <Toast variant="success">
+          <ToastClose />
+        </Toast>
+      );
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass(
+        "group-data-[variant=success]:text-(--color-toast-success-close-icon)",
+        "group-data-[variant=success]:hover:text-(--color-toast-success-close-icon)",
+        "group-data-[variant=success]:hover:bg-(--color-toast-success-control-background-hover)"
+      );
     });
 
     it("should apply custom className", () => {

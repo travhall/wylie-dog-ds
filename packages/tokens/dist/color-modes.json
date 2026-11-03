@@ -2179,6 +2179,18 @@
     "light": "oklch(0.546 0.215 27.29)",
     "dark": "oklch(0.546 0.215 27.29)"
   },
+  "color-toast-destructive-close-icon": {
+    "light": "oklch(0.991 0.003 264.39)",
+    "dark": "oklch(0.991 0.003 264.39)"
+  },
+  "color-toast-destructive-control-background-active": {
+    "light": "oklch(0.424 0.161 26.86)",
+    "dark": "oklch(0.424 0.161 26.86)"
+  },
+  "color-toast-destructive-control-background-hover": {
+    "light": "oklch(0.488 0.19 27.47)",
+    "dark": "oklch(0.488 0.19 27.47)"
+  },
   "color-toast-destructive-text": {
     "light": "oklch(0.991 0.003 264.39)",
     "dark": "oklch(0.991 0.003 264.39)"
@@ -2191,6 +2203,18 @@
     "light": "oklch(0.496 0.049 219.07)",
     "dark": "oklch(0.496 0.049 219.07)"
   },
+  "color-toast-info-close-icon": {
+    "light": "oklch(0.991 0.003 264.39)",
+    "dark": "oklch(0.991 0.003 264.39)"
+  },
+  "color-toast-info-control-background-active": {
+    "light": "oklch(0.34 0.054 222.07)",
+    "dark": "oklch(0.34 0.054 222.07)"
+  },
+  "color-toast-info-control-background-hover": {
+    "light": "oklch(0.361 0.058 221.82)",
+    "dark": "oklch(0.361 0.058 221.82)"
+  },
   "color-toast-info-text": {
     "light": "oklch(0.991 0.003 264.39)",
     "dark": "oklch(0.991 0.003 264.39)"
@@ -2202,6 +2226,18 @@
   "color-toast-success-border": {
     "light": "oklch(0.543 0.152 149.33)",
     "dark": "oklch(0.543 0.152 149.33)"
+  },
+  "color-toast-success-close-icon": {
+    "light": "oklch(0.991 0.003 264.39)",
+    "dark": "oklch(0.991 0.003 264.39)"
+  },
+  "color-toast-success-control-background-active": {
+    "light": "oklch(0.424 0.108 151.41)",
+    "dark": "oklch(0.424 0.108 151.41)"
+  },
+  "color-toast-success-control-background-hover": {
+    "light": "oklch(0.488 0.134 150.15)",
+    "dark": "oklch(0.488 0.134 150.15)"
   },
   "color-toast-success-text": {
     "light": "oklch(0.991 0.003 264.39)",
@@ -2218,6 +2254,18 @@
   "color-toast-warning-border": {
     "light": "oklch(0.809 0.152 86)",
     "dark": "oklch(0.809 0.152 86)"
+  },
+  "color-toast-warning-close-icon": {
+    "light": "oklch(0.149 0.012 259.74)",
+    "dark": "oklch(0.149 0.012 259.74)"
+  },
+  "color-toast-warning-control-background-active": {
+    "light": "oklch(0.623 0.125 78)",
+    "dark": "oklch(0.623 0.125 78)"
+  },
+  "color-toast-warning-control-background-hover": {
+    "light": "oklch(0.714 0.143 81)",
+    "dark": "oklch(0.714 0.143 81)"
   },
   "color-toast-warning-text": {
     "light": "oklch(0.149 0.012 259.74)",

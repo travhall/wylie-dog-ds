@@ -2179,10 +2179,40 @@
     "$value": "{color.foreground.danger}",
     "$description": "Text color on the destructive toast. Pairs with `toast.destructive.background`."
   },
+  "toast.destructive.control-background-hover": {
+    "$type": "color",
+    "$value": "{color.background.danger-emphasis}",
+    "$description": "Fill of the action button and the close button on the destructive toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.destructive.text`."
+  },
+  "toast.destructive.control-background-active": {
+    "$type": "color",
+    "$value": "{color.background.danger-intense}",
+    "$description": "Fill of the action button and the close button on the destructive toast while pressed: the role's pressed tone. Pairs with `toast.destructive.text`."
+  },
+  "toast.destructive.close-icon": {
+    "$type": "color",
+    "$value": "{color.foreground.danger}",
+    "$description": "Color of the close icon on the destructive toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.destructive.background`."
+  },
   "toast.success.text": {
     "$type": "color",
     "$value": "{color.foreground.success}",
     "$description": "Text color on the success toast. Pairs with `toast.success.background`."
+  },
+  "toast.success.control-background-hover": {
+    "$type": "color",
+    "$value": "{color.background.success-emphasis}",
+    "$description": "Fill of the action button and the close button on the success toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.success.text`."
+  },
+  "toast.success.control-background-active": {
+    "$type": "color",
+    "$value": "{color.background.success-intense}",
+    "$description": "Fill of the action button and the close button on the success toast while pressed: the role's pressed tone. Pairs with `toast.success.text`."
+  },
+  "toast.success.close-icon": {
+    "$type": "color",
+    "$value": "{color.foreground.success}",
+    "$description": "Color of the close icon on the success toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.success.background`."
   },
   "toast.info.border": {
     "$type": "color",
@@ -2199,10 +2229,40 @@
     "$value": "{color.foreground.info}",
     "$description": "Text color on the info toast. Pairs with `toast.info.background`."
   },
+  "toast.info.control-background-hover": {
+    "$type": "color",
+    "$value": "{color.background.info-emphasis}",
+    "$description": "Fill of the action button and the close button on the info toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.info.text`."
+  },
+  "toast.info.control-background-active": {
+    "$type": "color",
+    "$value": "{color.background.info-intense}",
+    "$description": "Fill of the action button and the close button on the info toast while pressed: the role's pressed tone. Pairs with `toast.info.text`."
+  },
+  "toast.info.close-icon": {
+    "$type": "color",
+    "$value": "{color.foreground.info}",
+    "$description": "Color of the close icon on the info toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.info.background`."
+  },
   "toast.warning.text": {
     "$type": "color",
     "$value": "{color.foreground.warning}",
     "$description": "Text color on the warning toast. Pairs with `toast.warning.background`."
+  },
+  "toast.warning.control-background-hover": {
+    "$type": "color",
+    "$value": "{color.background.warning-emphasis}",
+    "$description": "Fill of the action button and the close button on the warning toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.warning.text`."
+  },
+  "toast.warning.control-background-active": {
+    "$type": "color",
+    "$value": "{color.background.warning-intense}",
+    "$description": "Fill of the action button and the close button on the warning toast while pressed: the role's pressed tone. Pairs with `toast.warning.text`."
+  },
+  "toast.warning.close-icon": {
+    "$type": "color",
+    "$value": "{color.foreground.warning}",
+    "$description": "Color of the close icon on the warning toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.warning.background`."
   },
   "card-grid.gap-horizontal": {
     "$type": "spacing",

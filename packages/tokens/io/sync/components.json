@@ -3936,10 +3936,64 @@
             "Dark": "{color.foreground.danger}"
           }
         },
+        "toast.destructive.control-background-hover": {
+          "$type": "color",
+          "$value": "{color.background.danger-emphasis}",
+          "$description": "Fill of the action button and the close button on the destructive toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.destructive.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.danger-emphasis}",
+            "Dark": "{color.background.danger-emphasis}"
+          }
+        },
+        "toast.destructive.control-background-active": {
+          "$type": "color",
+          "$value": "{color.background.danger-intense}",
+          "$description": "Fill of the action button and the close button on the destructive toast while pressed: the role's pressed tone. Pairs with `toast.destructive.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.danger-intense}",
+            "Dark": "{color.background.danger-intense}"
+          }
+        },
+        "toast.destructive.close-icon": {
+          "$type": "color",
+          "$value": "{color.foreground.danger}",
+          "$description": "Color of the close icon on the destructive toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.destructive.background`.",
+          "valuesByMode": {
+            "Light": "{color.foreground.danger}",
+            "Dark": "{color.foreground.danger}"
+          }
+        },
         "toast.success.text": {
           "$type": "color",
           "$value": "{color.foreground.success}",
           "$description": "Text color on the success toast. Pairs with `toast.success.background`.",
+          "valuesByMode": {
+            "Light": "{color.foreground.success}",
+            "Dark": "{color.foreground.success}"
+          }
+        },
+        "toast.success.control-background-hover": {
+          "$type": "color",
+          "$value": "{color.background.success-emphasis}",
+          "$description": "Fill of the action button and the close button on the success toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.success.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.success-emphasis}",
+            "Dark": "{color.background.success-emphasis}"
+          }
+        },
+        "toast.success.control-background-active": {
+          "$type": "color",
+          "$value": "{color.background.success-intense}",
+          "$description": "Fill of the action button and the close button on the success toast while pressed: the role's pressed tone. Pairs with `toast.success.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.success-intense}",
+            "Dark": "{color.background.success-intense}"
+          }
+        },
+        "toast.success.close-icon": {
+          "$type": "color",
+          "$value": "{color.foreground.success}",
+          "$description": "Color of the close icon on the success toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.success.background`.",
           "valuesByMode": {
             "Light": "{color.foreground.success}",
             "Dark": "{color.foreground.success}"
@@ -3972,10 +4026,64 @@
             "Dark": "{color.foreground.info}"
           }
         },
+        "toast.info.control-background-hover": {
+          "$type": "color",
+          "$value": "{color.background.info-emphasis}",
+          "$description": "Fill of the action button and the close button on the info toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.info.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.info-emphasis}",
+            "Dark": "{color.background.info-emphasis}"
+          }
+        },
+        "toast.info.control-background-active": {
+          "$type": "color",
+          "$value": "{color.background.info-intense}",
+          "$description": "Fill of the action button and the close button on the info toast while pressed: the role's pressed tone. Pairs with `toast.info.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.info-intense}",
+            "Dark": "{color.background.info-intense}"
+          }
+        },
+        "toast.info.close-icon": {
+          "$type": "color",
+          "$value": "{color.foreground.info}",
+          "$description": "Color of the close icon on the info toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.info.background`.",
+          "valuesByMode": {
+            "Light": "{color.foreground.info}",
+            "Dark": "{color.foreground.info}"
+          }
+        },
         "toast.warning.text": {
           "$type": "color",
           "$value": "{color.foreground.warning}",
           "$description": "Text color on the warning toast. Pairs with `toast.warning.background`.",
+          "valuesByMode": {
+            "Light": "{color.foreground.warning}",
+            "Dark": "{color.foreground.warning}"
+          }
+        },
+        "toast.warning.control-background-hover": {
+          "$type": "color",
+          "$value": "{color.background.warning-emphasis}",
+          "$description": "Fill of the action button and the close button on the warning toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.warning.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.warning-emphasis}",
+            "Dark": "{color.background.warning-emphasis}"
+          }
+        },
+        "toast.warning.control-background-active": {
+          "$type": "color",
+          "$value": "{color.background.warning-intense}",
+          "$description": "Fill of the action button and the close button on the warning toast while pressed: the role's pressed tone. Pairs with `toast.warning.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.warning-intense}",
+            "Dark": "{color.background.warning-intense}"
+          }
+        },
+        "toast.warning.close-icon": {
+          "$type": "color",
+          "$value": "{color.foreground.warning}",
+          "$description": "Color of the close icon on the warning toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.warning.background`.",
           "valuesByMode": {
             "Light": "{color.foreground.warning}",
             "Dark": "{color.foreground.warning}"

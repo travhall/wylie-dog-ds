@@ -297,14 +297,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (276, 999 and 108 variables)", () => {
+  it("reads all three collections (276, 1011 and 108 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([276, 999, 108]);
+    ]).toEqual([276, 1011, 108]);
   });
 
   it("leaves ALL_SCOPES only on the named ambiguous component colors", () => {

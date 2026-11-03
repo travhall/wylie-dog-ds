@@ -10437,6 +10437,42 @@
         "variable": "var(--color-toast-destructive-text)",
         "description": "Text color on the destructive toast. Pairs with `toast.destructive.background`."
       },
+      "toast-destructive-control-background-hover": {
+        "name": "toastDestructiveControlBackgroundHover",
+        "path": [
+          "toast",
+          "destructive",
+          "control-background-hover"
+        ],
+        "value": "oklch(0.488 0.19 27.47)",
+        "type": "color",
+        "variable": "var(--color-toast-destructive-control-background-hover)",
+        "description": "Fill of the action button and the close button on the destructive toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.destructive.text`."
+      },
+      "toast-destructive-control-background-active": {
+        "name": "toastDestructiveControlBackgroundActive",
+        "path": [
+          "toast",
+          "destructive",
+          "control-background-active"
+        ],
+        "value": "oklch(0.424 0.161 26.86)",
+        "type": "color",
+        "variable": "var(--color-toast-destructive-control-background-active)",
+        "description": "Fill of the action button and the close button on the destructive toast while pressed: the role's pressed tone. Pairs with `toast.destructive.text`."
+      },
+      "toast-destructive-close-icon": {
+        "name": "toastDestructiveCloseIcon",
+        "path": [
+          "toast",
+          "destructive",
+          "close-icon"
+        ],
+        "value": "oklch(0.991 0.003 264.39)",
+        "type": "color",
+        "variable": "var(--color-toast-destructive-close-icon)",
+        "description": "Color of the close icon on the destructive toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.destructive.background`."
+      },
       "toast-success-text": {
         "name": "toastSuccessText",
         "path": [
@@ -10448,6 +10484,42 @@
         "type": "color",
         "variable": "var(--color-toast-success-text)",
         "description": "Text color on the success toast. Pairs with `toast.success.background`."
+      },
+      "toast-success-control-background-hover": {
+        "name": "toastSuccessControlBackgroundHover",
+        "path": [
+          "toast",
+          "success",
+          "control-background-hover"
+        ],
+        "value": "oklch(0.488 0.134 150.15)",
+        "type": "color",
+        "variable": "var(--color-toast-success-control-background-hover)",
+        "description": "Fill of the action button and the close button on the success toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.success.text`."
+      },
+      "toast-success-control-background-active": {
+        "name": "toastSuccessControlBackgroundActive",
+        "path": [
+          "toast",
+          "success",
+          "control-background-active"
+        ],
+        "value": "oklch(0.424 0.108 151.41)",
+        "type": "color",
+        "variable": "var(--color-toast-success-control-background-active)",
+        "description": "Fill of the action button and the close button on the success toast while pressed: the role's pressed tone. Pairs with `toast.success.text`."
+      },
+      "toast-success-close-icon": {
+        "name": "toastSuccessCloseIcon",
+        "path": [
+          "toast",
+          "success",
+          "close-icon"
+        ],
+        "value": "oklch(0.991 0.003 264.39)",
+        "type": "color",
+        "variable": "var(--color-toast-success-close-icon)",
+        "description": "Color of the close icon on the success toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.success.background`."
       },
       "toast-info-border": {
         "name": "toastInfoBorder",
@@ -10485,6 +10557,42 @@
         "variable": "var(--color-toast-info-text)",
         "description": "Text color on the info toast. Pairs with `toast.info.background`."
       },
+      "toast-info-control-background-hover": {
+        "name": "toastInfoControlBackgroundHover",
+        "path": [
+          "toast",
+          "info",
+          "control-background-hover"
+        ],
+        "value": "oklch(0.361 0.058 221.82)",
+        "type": "color",
+        "variable": "var(--color-toast-info-control-background-hover)",
+        "description": "Fill of the action button and the close button on the info toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.info.text`."
+      },
+      "toast-info-control-background-active": {
+        "name": "toastInfoControlBackgroundActive",
+        "path": [
+          "toast",
+          "info",
+          "control-background-active"
+        ],
+        "value": "oklch(0.34 0.054 222.07)",
+        "type": "color",
+        "variable": "var(--color-toast-info-control-background-active)",
+        "description": "Fill of the action button and the close button on the info toast while pressed: the role's pressed tone. Pairs with `toast.info.text`."
+      },
+      "toast-info-close-icon": {
+        "name": "toastInfoCloseIcon",
+        "path": [
+          "toast",
+          "info",
+          "close-icon"
+        ],
+        "value": "oklch(0.991 0.003 264.39)",
+        "type": "color",
+        "variable": "var(--color-toast-info-close-icon)",
+        "description": "Color of the close icon on the info toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.info.background`."
+      },
       "toast-warning-text": {
         "name": "toastWarningText",
         "path": [
@@ -10496,6 +10604,42 @@
         "type": "color",
         "variable": "var(--color-toast-warning-text)",
         "description": "Text color on the warning toast. Pairs with `toast.warning.background`."
+      },
+      "toast-warning-control-background-hover": {
+        "name": "toastWarningControlBackgroundHover",
+        "path": [
+          "toast",
+          "warning",
+          "control-background-hover"
+        ],
+        "value": "oklch(0.714 0.143 81)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-control-background-hover)",
+        "description": "Fill of the action button and the close button on the warning toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.warning.text`."
+      },
+      "toast-warning-control-background-active": {
+        "name": "toastWarningControlBackgroundActive",
+        "path": [
+          "toast",
+          "warning",
+          "control-background-active"
+        ],
+        "value": "oklch(0.623 0.125 78)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-control-background-active)",
+        "description": "Fill of the action button and the close button on the warning toast while pressed: the role's pressed tone. Pairs with `toast.warning.text`."
+      },
+      "toast-warning-close-icon": {
+        "name": "toastWarningCloseIcon",
+        "path": [
+          "toast",
+          "warning",
+          "close-icon"
+        ],
+        "value": "oklch(0.149 0.012 259.74)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-close-icon)",
+        "description": "Color of the close icon on the warning toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.warning.background`."
       },
       "toast-close-button-padding": {
         "name": "toastCloseButtonPadding",

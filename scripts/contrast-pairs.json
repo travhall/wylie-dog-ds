@@ -183,17 +183,56 @@
     },
     {
       "foreground": "toast.destructive.text",
-      "backgrounds": ["toast.destructive.background"],
+      "backgrounds": [
+        "toast.destructive.background",
+        "toast.destructive.control-background-hover",
+        "toast.destructive.control-background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.destructive.close-icon",
+      "backgrounds": [
+        "toast.destructive.background",
+        "toast.destructive.control-background-hover",
+        "toast.destructive.control-background-active"
+      ],
       "kind": "text"
     },
     {
       "foreground": "toast.success.text",
-      "backgrounds": ["toast.success.background"],
+      "backgrounds": [
+        "toast.success.background",
+        "toast.success.control-background-hover",
+        "toast.success.control-background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.success.close-icon",
+      "backgrounds": [
+        "toast.success.background",
+        "toast.success.control-background-hover",
+        "toast.success.control-background-active"
+      ],
       "kind": "text"
     },
     {
       "foreground": "toast.warning.text",
-      "backgrounds": ["toast.warning.background"],
+      "backgrounds": [
+        "toast.warning.background",
+        "toast.warning.control-background-hover",
+        "toast.warning.control-background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.warning.close-icon",
+      "backgrounds": [
+        "toast.warning.background",
+        "toast.warning.control-background-hover",
+        "toast.warning.control-background-active"
+      ],
       "kind": "text"
     },
     {
@@ -765,7 +804,20 @@
     },
     {
       "foreground": "toast.info.text",
-      "backgrounds": ["toast.info.background"],
+      "backgrounds": [
+        "toast.info.background",
+        "toast.info.control-background-hover",
+        "toast.info.control-background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.info.close-icon",
+      "backgrounds": [
+        "toast.info.background",
+        "toast.info.control-background-hover",
+        "toast.info.control-background-active"
+      ],
       "kind": "text"
     },
     {
