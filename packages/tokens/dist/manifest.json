@@ -3608,6 +3608,18 @@
         "variable": "var(--color-badge-success-background)",
         "description": "Fill of the success badge. Pairs with `badge.success.text`."
       },
+      "badge-info-background": {
+        "name": "badgeInfoBackground",
+        "path": [
+          "badge",
+          "info",
+          "background"
+        ],
+        "value": "oklch(0.496 0.049 219.07)",
+        "type": "color",
+        "variable": "var(--color-badge-info-background)",
+        "description": "Fill of the info badge. Pairs with `badge.info.text`."
+      },
       "badge-success-text": {
         "name": "badgeSuccessText",
         "path": [
@@ -3620,6 +3632,18 @@
         "variable": "var(--color-badge-success-text)",
         "description": "Label color on the success badge. Pairs with `badge.success.background`."
       },
+      "badge-info-text": {
+        "name": "badgeInfoText",
+        "path": [
+          "badge",
+          "info",
+          "text"
+        ],
+        "value": "oklch(0.991 0.003 264.39)",
+        "type": "color",
+        "variable": "var(--color-badge-info-text)",
+        "description": "Label color on the info badge. Pairs with `badge.info.background`."
+      },
       "badge-success-border": {
         "name": "badgeSuccessBorder",
         "path": [
@@ -3631,6 +3655,18 @@
         "type": "color",
         "variable": "var(--color-badge-success-border)",
         "description": "Border color of the success badge."
+      },
+      "badge-info-border": {
+        "name": "badgeInfoBorder",
+        "path": [
+          "badge",
+          "info",
+          "border"
+        ],
+        "value": "oklch(0.496 0.049 219.07)",
+        "type": "color",
+        "variable": "var(--color-badge-info-border)",
+        "description": "Border color of the info badge."
       },
       "badge-warning-background": {
         "name": "badgeWarningBackground",
@@ -3952,6 +3988,18 @@
         "variable": "var(--color-badge-success-background-hover)",
         "description": "Fill of the success badge while hovered."
       },
+      "badge-info-background-hover": {
+        "name": "badgeInfoBackgroundHover",
+        "path": [
+          "badge",
+          "info",
+          "background-hover"
+        ],
+        "value": "oklch(0.361 0.058 221.82)",
+        "type": "color",
+        "variable": "var(--color-badge-info-background-hover)",
+        "description": "Fill of the info badge while hovered."
+      },
       "badge-success-background-active": {
         "name": "badgeSuccessBackgroundActive",
         "path": [
@@ -3963,6 +4011,18 @@
         "type": "color",
         "variable": "var(--color-badge-success-background-active)",
         "description": "Fill of an interactive success badge while pressed. Applies only when the badge is interactive."
+      },
+      "badge-info-background-active": {
+        "name": "badgeInfoBackgroundActive",
+        "path": [
+          "badge",
+          "info",
+          "background-active"
+        ],
+        "value": "oklch(0.34 0.054 222.07)",
+        "type": "color",
+        "variable": "var(--color-badge-info-background-active)",
+        "description": "Fill of an interactive info badge while pressed. Applies only when the badge is interactive."
       },
       "badge-warning-background-hover": {
         "name": "badgeWarningBackgroundHover",
@@ -4060,6 +4120,18 @@
         "variable": "var(--color-badge-success-background-disabled)",
         "description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`."
       },
+      "badge-info-background-disabled": {
+        "name": "badgeInfoBackgroundDisabled",
+        "path": [
+          "badge",
+          "info",
+          "background-disabled"
+        ],
+        "value": "oklch(0.927 0.012 75.12)",
+        "type": "color",
+        "variable": "var(--color-badge-info-background-disabled)",
+        "description": "Fill of the info badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.info.text-disabled`."
+      },
       "badge-warning-background-disabled": {
         "name": "badgeWarningBackgroundDisabled",
         "path": [
@@ -4156,6 +4228,18 @@
         "variable": "var(--color-badge-success-text-disabled)",
         "description": "Text color of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
       },
+      "badge-info-text-disabled": {
+        "name": "badgeInfoTextDisabled",
+        "path": [
+          "badge",
+          "info",
+          "text-disabled"
+        ],
+        "value": "oklch(0.48 0.017 50.2)",
+        "type": "color",
+        "variable": "var(--color-badge-info-text-disabled)",
+        "description": "Text color of the info badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.info.background-disabled`."
+      },
       "badge-success-border-disabled": {
         "name": "badgeSuccessBorderDisabled",
         "path": [
@@ -4167,6 +4251,18 @@
         "type": "color",
         "variable": "var(--color-badge-success-border-disabled)",
         "description": "Border color of the success badge when disabled, in the muted border tone."
+      },
+      "badge-info-border-disabled": {
+        "name": "badgeInfoBorderDisabled",
+        "path": [
+          "badge",
+          "info",
+          "border-disabled"
+        ],
+        "value": "oklch(0.882 0.009 67.06)",
+        "type": "color",
+        "variable": "var(--color-badge-info-border-disabled)",
+        "description": "Border color of the info badge when disabled, in the muted border tone."
       },
       "badge-warning-text-disabled": {
         "name": "badgeWarningTextDisabled",

@@ -75,6 +75,15 @@
             "Dark": "{color.background.success}"
           }
         },
+        "badge.info.background": {
+          "$type": "color",
+          "$value": "{color.background.info}",
+          "$description": "Fill of the info badge. Pairs with `badge.info.text`.",
+          "valuesByMode": {
+            "Light": "{color.background.info}",
+            "Dark": "{color.background.info}"
+          }
+        },
         "badge.success.text": {
           "$type": "color",
           "$value": "{color.foreground.success}",
@@ -84,6 +93,15 @@
             "Dark": "{color.foreground.success}"
           }
         },
+        "badge.info.text": {
+          "$type": "color",
+          "$value": "{color.foreground.info}",
+          "$description": "Label color on the info badge. Pairs with `badge.info.background`.",
+          "valuesByMode": {
+            "Light": "{color.foreground.info}",
+            "Dark": "{color.foreground.info}"
+          }
+        },
         "badge.success.border": {
           "$type": "color",
           "$value": "{color.background.success}",
@@ -91,6 +109,15 @@
           "valuesByMode": {
             "Light": "{color.background.success}",
             "Dark": "{color.background.success}"
+          }
+        },
+        "badge.info.border": {
+          "$type": "color",
+          "$value": "{color.background.info}",
+          "$description": "Border color of the info badge.",
+          "valuesByMode": {
+            "Light": "{color.background.info}",
+            "Dark": "{color.background.info}"
           }
         },
         "badge.warning.background": {
@@ -5169,6 +5196,15 @@
             "Dark": "{color.background.success-emphasis}"
           }
         },
+        "badge.info.background-hover": {
+          "$type": "color",
+          "$value": "{color.background.info-emphasis}",
+          "$description": "Fill of the info badge while hovered.",
+          "valuesByMode": {
+            "Light": "{color.background.info-emphasis}",
+            "Dark": "{color.background.info-emphasis}"
+          }
+        },
         "badge.success.background-active": {
           "$type": "color",
           "$value": "{color.background.success-intense}",
@@ -5176,6 +5212,15 @@
           "valuesByMode": {
             "Light": "{color.background.success-intense}",
             "Dark": "{color.background.success-intense}"
+          }
+        },
+        "badge.info.background-active": {
+          "$type": "color",
+          "$value": "{color.background.info-intense}",
+          "$description": "Fill of an interactive info badge while pressed. Applies only when the badge is interactive.",
+          "valuesByMode": {
+            "Light": "{color.background.info-intense}",
+            "Dark": "{color.background.info-intense}"
           }
         },
         "badge.warning.background-hover": {
@@ -5263,6 +5308,15 @@
           "$type": "color",
           "$value": "{color.background.muted}",
           "$description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`.",
+          "valuesByMode": {
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
+          }
+        },
+        "badge.info.background-disabled": {
+          "$type": "color",
+          "$value": "{color.background.muted}",
+          "$description": "Fill of the info badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.info.text-disabled`.",
           "valuesByMode": {
             "Light": "{color.background.muted}",
             "Dark": "{color.background.emphasis}"
@@ -7041,10 +7095,28 @@
             "Dark": "{color.foreground.faint}"
           }
         },
+        "badge.info.text-disabled": {
+          "$type": "color",
+          "$value": "{color.foreground.faint}",
+          "$description": "Text color of the info badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.info.background-disabled`.",
+          "valuesByMode": {
+            "Light": "{color.foreground.faint}",
+            "Dark": "{color.foreground.faint}"
+          }
+        },
         "badge.success.border-disabled": {
           "$type": "color",
           "$value": "{color.border.muted}",
           "$description": "Border color of the success badge when disabled, in the muted border tone.",
+          "valuesByMode": {
+            "Light": "{color.border.muted}",
+            "Dark": "{color.border.muted}"
+          }
+        },
+        "badge.info.border-disabled": {
+          "$type": "color",
+          "$value": "{color.border.muted}",
+          "$description": "Border color of the info badge when disabled, in the muted border tone.",
           "valuesByMode": {
             "Light": "{color.border.muted}",
             "Dark": "{color.border.muted}"

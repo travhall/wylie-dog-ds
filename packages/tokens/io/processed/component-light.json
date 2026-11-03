@@ -34,15 +34,30 @@
     "$value": "{color.background.success}",
     "$description": "Fill of the success badge. Pairs with `badge.success.text`."
   },
+  "badge.info.background": {
+    "$type": "color",
+    "$value": "{color.background.info}",
+    "$description": "Fill of the info badge. Pairs with `badge.info.text`."
+  },
   "badge.success.text": {
     "$type": "color",
     "$value": "{color.foreground.success}",
     "$description": "Label color on the success badge. Pairs with `badge.success.background`."
   },
+  "badge.info.text": {
+    "$type": "color",
+    "$value": "{color.foreground.info}",
+    "$description": "Label color on the info badge. Pairs with `badge.info.background`."
+  },
   "badge.success.border": {
     "$type": "color",
     "$value": "{color.background.success}",
     "$description": "Border color of the success badge."
+  },
+  "badge.info.border": {
+    "$type": "color",
+    "$value": "{color.background.info}",
+    "$description": "Border color of the info badge."
   },
   "badge.warning.background": {
     "$type": "color",
@@ -2864,10 +2879,20 @@
     "$value": "{color.background.success-emphasis}",
     "$description": "Fill of the success badge while hovered."
   },
+  "badge.info.background-hover": {
+    "$type": "color",
+    "$value": "{color.background.info-emphasis}",
+    "$description": "Fill of the info badge while hovered."
+  },
   "badge.success.background-active": {
     "$type": "color",
     "$value": "{color.background.success-intense}",
     "$description": "Fill of an interactive success badge while pressed. Applies only when the badge is interactive."
+  },
+  "badge.info.background-active": {
+    "$type": "color",
+    "$value": "{color.background.info-intense}",
+    "$description": "Fill of an interactive info badge while pressed. Applies only when the badge is interactive."
   },
   "badge.warning.background-hover": {
     "$type": "color",
@@ -2918,6 +2943,11 @@
     "$type": "color",
     "$value": "{color.background.muted}",
     "$description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`."
+  },
+  "badge.info.background-disabled": {
+    "$type": "color",
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the info badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.info.text-disabled`."
   },
   "badge.warning.background-disabled": {
     "$type": "color",
@@ -3904,10 +3934,20 @@
     "$value": "{color.foreground.faint}",
     "$description": "Text color of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
   },
+  "badge.info.text-disabled": {
+    "$type": "color",
+    "$value": "{color.foreground.faint}",
+    "$description": "Text color of the info badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.info.background-disabled`."
+  },
   "badge.success.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
     "$description": "Border color of the success badge when disabled, in the muted border tone."
+  },
+  "badge.info.border-disabled": {
+    "$type": "color",
+    "$value": "{color.border.muted}",
+    "$description": "Border color of the info badge when disabled, in the muted border tone."
   },
   "badge.warning.text-disabled": {
     "$type": "color",

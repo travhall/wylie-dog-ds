@@ -20,6 +20,7 @@ describe("Badge", () => {
         "secondary",
         "success",
         "warning",
+        "info",
         "destructive",
         "outline",
       ] as const;
@@ -145,6 +146,15 @@ describe("Badge", () => {
       expect(badge).toHaveClass("bg-(--color-badge-warning-background)");
       expect(badge).toHaveClass("text-(--color-badge-warning-text)");
       expect(badge).toHaveClass("border-(--color-badge-warning-border)");
+    });
+
+    it("should render info variant", () => {
+      render(<Badge variant="info">Info</Badge>);
+      const badge = screen.getByText("Info");
+
+      expect(badge).toHaveClass("bg-(--color-badge-info-background)");
+      expect(badge).toHaveClass("text-(--color-badge-info-text)");
+      expect(badge).toHaveClass("border-(--color-badge-info-border)");
     });
 
     it("should render destructive variant", () => {
@@ -309,6 +319,7 @@ describe("Badge", () => {
         "secondary",
         "success",
         "warning",
+        "info",
         "destructive",
         "outline",
       ] as const;
@@ -479,6 +490,7 @@ describe("Badge", () => {
         "secondary",
         "success",
         "warning",
+        "info",
         "destructive",
         "outline",
       ] as const;
@@ -751,6 +763,7 @@ describe("Badge", () => {
         "secondary",
         "success",
         "warning",
+        "info",
         "destructive",
         "outline",
       ] as const;

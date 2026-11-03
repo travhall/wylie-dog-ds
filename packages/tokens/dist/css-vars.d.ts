@@ -100,6 +100,14 @@ export type CssVarName =
   | "--color-badge-destructive-border-disabled"
   | "--color-badge-destructive-text"
   | "--color-badge-destructive-text-disabled"
+  | "--color-badge-info-background"
+  | "--color-badge-info-background-active"
+  | "--color-badge-info-background-disabled"
+  | "--color-badge-info-background-hover"
+  | "--color-badge-info-border"
+  | "--color-badge-info-border-disabled"
+  | "--color-badge-info-text"
+  | "--color-badge-info-text-disabled"
   | "--color-badge-outline-background"
   | "--color-badge-outline-background-active"
   | "--color-badge-outline-background-disabled"
@@ -1479,6 +1487,14 @@ export declare const cssVars: Readonly<{
   "colorBadgeDestructiveBorderDisabled": "--color-badge-destructive-border-disabled";
   "colorBadgeDestructiveText": "--color-badge-destructive-text";
   "colorBadgeDestructiveTextDisabled": "--color-badge-destructive-text-disabled";
+  "colorBadgeInfoBackground": "--color-badge-info-background";
+  "colorBadgeInfoBackgroundActive": "--color-badge-info-background-active";
+  "colorBadgeInfoBackgroundDisabled": "--color-badge-info-background-disabled";
+  "colorBadgeInfoBackgroundHover": "--color-badge-info-background-hover";
+  "colorBadgeInfoBorder": "--color-badge-info-border";
+  "colorBadgeInfoBorderDisabled": "--color-badge-info-border-disabled";
+  "colorBadgeInfoText": "--color-badge-info-text";
+  "colorBadgeInfoTextDisabled": "--color-badge-info-text-disabled";
   "colorBadgeOutlineBackground": "--color-badge-outline-background";
   "colorBadgeOutlineBackgroundActive": "--color-badge-outline-background-active";
   "colorBadgeOutlineBackgroundDisabled": "--color-badge-outline-background-disabled";

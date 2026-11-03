@@ -311,6 +311,38 @@
     "light": "oklch(0.48 0.017 50.2)",
     "dark": "oklch(0.712 0.037 72.66)"
   },
+  "color-badge-info-background": {
+    "light": "oklch(0.496 0.049 219.07)",
+    "dark": "oklch(0.496 0.049 219.07)"
+  },
+  "color-badge-info-background-active": {
+    "light": "oklch(0.34 0.054 222.07)",
+    "dark": "oklch(0.34 0.054 222.07)"
+  },
+  "color-badge-info-background-disabled": {
+    "light": "oklch(0.927 0.012 75.12)",
+    "dark": "oklch(0.269 0.016 50.53)"
+  },
+  "color-badge-info-background-hover": {
+    "light": "oklch(0.361 0.058 221.82)",
+    "dark": "oklch(0.361 0.058 221.82)"
+  },
+  "color-badge-info-border": {
+    "light": "oklch(0.496 0.049 219.07)",
+    "dark": "oklch(0.496 0.049 219.07)"
+  },
+  "color-badge-info-border-disabled": {
+    "light": "oklch(0.882 0.009 67.06)",
+    "dark": "oklch(0.333 0.015 71.46)"
+  },
+  "color-badge-info-text": {
+    "light": "oklch(0.991 0.003 264.39)",
+    "dark": "oklch(0.991 0.003 264.39)"
+  },
+  "color-badge-info-text-disabled": {
+    "light": "oklch(0.48 0.017 50.2)",
+    "dark": "oklch(0.712 0.037 72.66)"
+  },
   "color-badge-outline-background": {
     "light": "oklch(0.991 0.003 264.39)",
     "dark": "oklch(0.138 0.008 60.26)"

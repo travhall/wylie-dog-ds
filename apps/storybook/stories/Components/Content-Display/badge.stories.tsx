@@ -23,6 +23,7 @@ const meta: Meta<typeof Badge> = {
         "secondary",
         "success",
         "warning",
+        "info",
         "destructive",
         "outline",
       ],
@@ -30,7 +31,7 @@ const meta: Meta<typeof Badge> = {
       table: {
         type: {
           summary:
-            '"default" | "secondary" | "success" | "warning" | "destructive" | "outline"',
+            '"default" | "secondary" | "success" | "warning" | "info" | "destructive" | "outline"',
         },
         category: "Appearance",
       },
@@ -110,6 +111,9 @@ export const SizeVariants: Story = {
           <Badge size="sm" variant="warning">
             Warning
           </Badge>
+          <Badge size="sm" variant="info">
+            Info
+          </Badge>
           <Badge size="sm" variant="destructive">
             Destructive
           </Badge>
@@ -131,6 +135,9 @@ export const SizeVariants: Story = {
           <Badge size="md" variant="warning">
             Warning
           </Badge>
+          <Badge size="md" variant="info">
+            Info
+          </Badge>
           <Badge size="md" variant="destructive">
             Destructive
           </Badge>
@@ -151,6 +158,9 @@ export const SizeVariants: Story = {
           </Badge>
           <Badge size="lg" variant="warning">
             Warning
+          </Badge>
+          <Badge size="lg" variant="info">
+            Info
           </Badge>
           <Badge size="lg" variant="destructive">
             Destructive
@@ -179,6 +189,7 @@ export const AllVariants: Story = {
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="success">Success</Badge>
       <Badge variant="warning">Warning</Badge>
+      <Badge variant="info">Info</Badge>
       <Badge variant="destructive">Destructive</Badge>
       <Badge variant="outline">Outline</Badge>
     </div>
@@ -529,6 +540,9 @@ export const InteractiveBadges: Story = {
           </Badge>
           <Badge interactive variant="warning">
             Warning
+          </Badge>
+          <Badge interactive variant="info">
+            Info
           </Badge>
           <Badge interactive variant="destructive">
             Destructive

@@ -404,8 +404,11 @@
   --color-badge-secondary-text: oklch(0.991 0.003 264.39);
   --color-badge-secondary-border: oklch(0.496 0.049 219.07);
   --color-badge-success-background: oklch(0.543 0.152 149.33);
+  --color-badge-info-background: oklch(0.496 0.049 219.07);
   --color-badge-success-text: oklch(0.991 0.003 264.39);
+  --color-badge-info-text: oklch(0.991 0.003 264.39);
   --color-badge-success-border: oklch(0.543 0.152 149.33);
+  --color-badge-info-border: oklch(0.496 0.049 219.07);
   --color-badge-warning-background: oklch(0.809 0.152 86);
   --color-badge-warning-text: oklch(0.149 0.012 259.74);
   --color-badge-warning-border: oklch(0.809 0.152 86);
@@ -970,7 +973,9 @@
   --color-badge-secondary-background-hover: oklch(0.361 0.058 221.82);
   --color-badge-secondary-background-active: oklch(0.34 0.054 222.07);
   --color-badge-success-background-hover: oklch(0.488 0.134 150.15);
+  --color-badge-info-background-hover: oklch(0.361 0.058 221.82);
   --color-badge-success-background-active: oklch(0.424 0.108 151.41);
+  --color-badge-info-background-active: oklch(0.34 0.054 222.07);
   --color-badge-warning-background-hover: oklch(0.714 0.143 81);
   --color-badge-warning-background-active: oklch(0.623 0.125 78);
   --color-badge-destructive-background-hover: oklch(0.97 0.013 16.02);
@@ -981,6 +986,7 @@
   --color-badge-default-background-disabled: oklch(0.927 0.012 75.12);
   --color-badge-secondary-background-disabled: oklch(0.927 0.012 75.12);
   --color-badge-success-background-disabled: oklch(0.927 0.012 75.12);
+  --color-badge-info-background-disabled: oklch(0.927 0.012 75.12);
   --color-badge-warning-background-disabled: oklch(0.927 0.012 75.12);
   --color-badge-destructive-background-disabled: oklch(0.927 0.012 75.12);
   --color-badge-outline-background-disabled: oklch(0.927 0.012 75.12);
@@ -1178,7 +1184,9 @@
   --color-badge-secondary-text-disabled: oklch(0.48 0.017 50.2);
   --color-badge-secondary-border-disabled: oklch(0.882 0.009 67.06);
   --color-badge-success-text-disabled: oklch(0.48 0.017 50.2);
+  --color-badge-info-text-disabled: oklch(0.48 0.017 50.2);
   --color-badge-success-border-disabled: oklch(0.882 0.009 67.06);
+  --color-badge-info-border-disabled: oklch(0.882 0.009 67.06);
   --color-badge-warning-text-disabled: oklch(0.48 0.017 50.2);
   --color-badge-warning-border-disabled: oklch(0.882 0.009 67.06);
   --color-badge-destructive-text-disabled: oklch(0.48 0.017 50.2);

@@ -20,6 +20,7 @@ export const badgeVariants = cva(
           "bg-(--color-badge-success-background) text-(--color-badge-success-text) border-(--color-badge-success-border)",
         warning:
           "bg-(--color-badge-warning-background) text-(--color-badge-warning-text) border-(--color-badge-warning-border)",
+        info: "bg-(--color-badge-info-background) text-(--color-badge-info-text) border-(--color-badge-info-border)",
         destructive:
           "bg-(--color-badge-destructive-background) text-(--color-badge-destructive-text) border-(--color-badge-destructive-border)",
         outline:
@@ -63,6 +64,12 @@ export const badgeVariants = cva(
         interactive: true,
         className:
           "hover:bg-(--color-badge-warning-background-hover) active:bg-(--color-badge-warning-background-active) disabled:bg-(--color-badge-warning-background-disabled) disabled:text-(--color-badge-warning-text-disabled) disabled:border-(--color-badge-warning-border-disabled)",
+      },
+      {
+        variant: "info",
+        interactive: true,
+        className:
+          "hover:bg-(--color-badge-info-background-hover) active:bg-(--color-badge-info-background-active) disabled:bg-(--color-badge-info-background-disabled) disabled:text-(--color-badge-info-text-disabled) disabled:border-(--color-badge-info-border-disabled)",
       },
       {
         variant: "destructive",

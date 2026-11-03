@@ -8,7 +8,13 @@ export interface FeatureItem {
   description: string;
   badge?: string;
   badgeVariant?:
-    "default" | "secondary" | "success" | "warning" | "destructive" | "outline";
+    | "default"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "info"
+    | "destructive"
+    | "outline";
 }
 
 export interface FeatureGridProps extends React.HTMLAttributes<HTMLDivElement> {

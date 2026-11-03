@@ -40,6 +40,15 @@
       "kind": "text"
     },
     {
+      "foreground": "badge.info.text",
+      "backgrounds": [
+        "badge.info.background",
+        "badge.info.background-hover",
+        "badge.info.background-active"
+      ],
+      "kind": "text"
+    },
+    {
       "foreground": "badge.warning.text",
       "backgrounds": [
         "badge.warning.background",
@@ -991,6 +1000,10 @@
     },
     {
       "token": "badge.success.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.info.text-disabled",
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     },
     {
