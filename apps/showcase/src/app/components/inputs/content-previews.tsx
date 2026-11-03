@@ -90,6 +90,7 @@ export function BadgePreview() {
       <Badge variant="outline">Outline</Badge>
       <Badge variant="success">Active</Badge>
       <Badge variant="warning">Beta</Badge>
+      <Badge variant="info">Preview</Badge>
       <Badge variant="destructive">Deprecated</Badge>
     </div>
   );

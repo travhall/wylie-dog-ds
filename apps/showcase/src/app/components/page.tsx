@@ -562,7 +562,7 @@ export default function ComponentsPage() {
             <CompCard
               live
               name="Badge"
-              desc="Small status pill — default, secondary, outline, success, warning, destructive, in three sizes."
+              desc="Small status pill — default, secondary, outline, success, warning, info, destructive, in three sizes."
               href="badge"
               preview={<BadgePreview />}
             />
