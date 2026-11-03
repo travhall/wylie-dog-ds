@@ -17,7 +17,7 @@ const meta: Meta<typeof HoverCard> = {
     docs: {
       description: {
         component:
-          "Hover-triggered content cards for displaying additional information. Built on Radix UI primitives with smooth animations and flexible positioning.",
+          "Hover-triggered content cards for displaying additional information. Built on Radix UI primitives with flexible positioning.",
       },
     },
   },

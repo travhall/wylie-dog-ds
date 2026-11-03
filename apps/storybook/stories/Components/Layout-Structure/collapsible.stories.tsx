@@ -27,7 +27,7 @@ const meta: Meta<typeof Collapsible> = {
     docs: {
       description: {
         component:
-          "Collapsible component for showing and hiding content sections. Built on Radix UI primitives with smooth animations and flexible trigger options.",
+          "Collapsible component for showing and hiding content sections. Built on Radix UI primitives with flexible trigger options. It opens and closes without animation.",
       },
     },
   },

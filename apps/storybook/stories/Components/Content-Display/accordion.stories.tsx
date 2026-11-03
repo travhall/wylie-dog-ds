@@ -19,7 +19,7 @@ const meta: Meta<typeof Accordion> = {
     docs: {
       description: {
         component:
-          "Collapsible content sections built on Radix UI primitives with full accessibility support, keyboard navigation, and smooth animations.",
+          "Collapsible content sections built on Radix UI primitives with full accessibility support, and keyboard navigation. The chevron turns as a panel opens; the panel itself opens without animation.",
       },
     },
   },
@@ -83,8 +83,8 @@ export const Default: Story = {
         <AccordionItem value="item-3">
           <AccordionTrigger>Is it animated?</AccordionTrigger>
           <AccordionContent>
-            Yes. The accordion includes smooth expand and collapse animations
-            using CSS transitions and transforms for optimal performance.
+            Only the chevron: it turns as the panel opens. The panel itself
+            opens and closes without animation; motion is not designed yet.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -143,7 +143,6 @@ export const Multiple: Story = {
             <ul className="space-y-1 list-disc list-inside">
               <li>Fully accessible with ARIA support</li>
               <li>Keyboard navigation</li>
-              <li>Smooth animations</li>
               <li>Customizable styling</li>
               <li>Single or multiple expand modes</li>
             </ul>
@@ -164,9 +163,8 @@ export const Multiple: Story = {
         <AccordionItem value="technical">
           <AccordionTrigger>Technical Details</AccordionTrigger>
           <AccordionContent>
-            Built on Radix UI Accordion primitive with TypeScript support,
-            customizable animations, and design token integration for consistent
-            theming.
+            Built on Radix UI Accordion primitive with TypeScript support and
+            design token integration for consistent theming.
           </AccordionContent>
         </AccordionItem>
       </Accordion>

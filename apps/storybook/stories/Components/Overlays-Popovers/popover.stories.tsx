@@ -31,7 +31,7 @@ const meta: Meta<typeof Popover> = {
     docs: {
       description: {
         component:
-          "Click-triggered content overlays for displaying additional information, forms, or controls. Built on Radix UI primitives with flexible positioning and smooth animations.",
+          "Click-triggered content overlays for displaying additional information, forms, or controls. Built on Radix UI primitives with flexible positioning.",
       },
     },
   },

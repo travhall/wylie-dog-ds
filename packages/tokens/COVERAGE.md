@@ -27,7 +27,7 @@ Counts are not strictly comparable: April counted each utility separately by han
 ## Open: motion
 
 - `transition*` utilities (`transition-colors`, `transition-all`, …) appear **38 times in 26 components**. They run on Tailwind's default duration and easing unless paired with a duration token.
-- `animate-in` / `animate-out` appeared 40 times in 12 components, and the related `fade-*`, `zoom-*` and `slide-*` classes about 120 more times. None generated CSS (no `tw-animate-css` plugin, no `@keyframes`), so they were removed on 2026-11-03 as the clean baseline for the motion system (Plan 137). Overlays currently appear and disappear without animation; motion is a design task still to do.
+- `animate-in` / `animate-out` appeared 40 times in 12 components, and the related `fade-*`, `zoom-*` and `slide-*` classes about 120 more times. The `animate-accordion-*` and `animate-collapsible-*` classes in accordion and collapsible were equally undefined. None generated CSS (no `tw-animate-css` plugin, no custom `@keyframes`), so they were removed on 2026-11-03 as the clean baseline for the motion system (Plan 137). Overlays currently appear and disappear without animation; motion is a design task still to do.
 - Only 9 files use a duration token at all (`duration-(--duration-*)`): accordion, alert-dialog, card-grid, dialog, feature-grid, navigation-menu, progress, sheet and the `site-header` composition.
 - **No component uses a `--transition-easing-*` token.**
 
