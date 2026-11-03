@@ -1,7 +1,7 @@
 # A design system that said it passed accessibility, until something measured it
 
 **Origin:** Code investigation — found while auditing an existing feature
-**Status:** Draft — see "Open items for this draft" at the bottom
+**Status:** Final — written 2026-11-03 about the work of 2026-07-03 to 2026-07-05
 
 > Wylie Dog is a design system: a shared library of colors, spacing, and
 > components that keeps a product's design file and its code in sync. Its
@@ -79,8 +79,11 @@ The fix was to add a different token for a different job. `text-on-solid` is
 near-white in both modes and was checked against all four fills: 5.04:1 on the
 blue, 4.89:1 on the green, 5.06:1 on the orange and 4.71:1 on the red. The
 twelve consumers were repointed to it. That alone took the dark run from 264
-failures to 205, and four more rounds the same day closed the rest, including
-two token bugs nobody had known about.
+failures to 205. The next round, an hour later, took it to 35: the test harness
+had no themed page background, so it gained one, and two more uses of the same
+borrowed token were fixed. Two more rounds that evening closed the rest,
+including seven more component tokens that pointed at a color from the wrong
+family.
 
 ## The fix
 
@@ -96,13 +99,13 @@ Two decisions shaped it:
 
 ## Proof it works
 
-|                                                      | Before                    | After                                                                               |
-| ---------------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------------- |
-| Light caption text (`text-tertiary`)                 | 3.65:1 on 35 elements     | 5.37:1                                                                              |
-| Dark link color on the page                          | 3.81:1 (panel: "serious") | 8.09:1 today (measured live); July's fix was verified by the dark suite going green |
-| Text on a blue, green, orange or red fill, dark mode | 3.42:1 to 3.67:1          | 4.71:1 to 5.06:1                                                                    |
-| Story tests failing in dark mode                     | 264 across 55 files       | 0                                                                                   |
-| Accessibility check                                  | advisory                  | blocking, in light and dark                                                         |
+|                                                      | Before                    | After                                                                                 |
+| ---------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------- |
+| Light caption text (`text-tertiary`)                 | 3.65:1 on 35 elements     | 5.37:1                                                                                |
+| Dark link color on the page                          | 3.81:1 (panel: "serious") | Passed in July (dark suite green); 8.09:1 measured today, after later palette changes |
+| Text on a blue, green, orange or red fill, dark mode | 3.42:1 to 3.67:1          | 4.71:1 to 5.06:1                                                                      |
+| Story tests failing in dark mode                     | 264 across 55 files       | 0                                                                                     |
+| Accessibility check                                  | advisory                  | blocking, in light and dark                                                           |
 
 The July numbers come from the commits and the measurements above. The
 `after/` screenshots were recaptured on 2026-11-03 from today's Storybook, so
@@ -153,10 +156,5 @@ run it in every mode, and make failing it block the build.
 
 ---
 
-## Open items for this draft (delete before finishing)
-
-- The dark-link row mixes eras: 3.81:1 is July's blue link, 8.09:1 is today's
-  polar-night link. July's post-fix ratio for the blue link was not recorded.
-  Either keep the note in the cell, or drop the row's "after" value.
-- Confirm tone and length for a portfolio reader; the investigation section is
-  the longest and could be cut (kept for now).
+_Screenshots and other artifacts for this case study live in `before/` and
+`after/` subfolders next to this file._

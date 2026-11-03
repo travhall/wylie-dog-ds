@@ -16,6 +16,9 @@
       "^--text-on-light$"
     ],
     "documentation/STYLING_ARCHITECTURE.md": ["^--color-new-token$"],
+    "documentation/case-studies/a11y-tertiary/README.md": [
+      "^--color-text-tertiary$"
+    ],
     "packages/tokens/COVERAGE.md": [
       "^--(duration-duration-200|color-border-strong|color-destructive|color-warning|shadow-xs|color-violet-500|color-button-primary-bg)$"
     ],
