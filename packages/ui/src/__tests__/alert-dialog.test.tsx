@@ -333,19 +333,6 @@ describe("AlertDialog", () => {
       });
     });
 
-    it("should have animation classes on content", async () => {
-      const user = userEvent.setup();
-      render(<TestAlertDialog />);
-
-      await user.click(screen.getByText("Delete Account"));
-
-      await waitFor(() => {
-        const dialog = screen.getByRole("alertdialog");
-        expect(dialog).toHaveClass("data-[state=open]:animate-in");
-        expect(dialog).toHaveClass("data-[state=closed]:animate-out");
-      });
-    });
-
     it("should center dialog on screen", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);

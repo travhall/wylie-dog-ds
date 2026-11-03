@@ -39,7 +39,7 @@ const ContextMenuSubContent = React.forwardRef<
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-(--context-menu-sub-content-z-index) min-w-(--space-context-menu-sub-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--space-context-menu-checkbox-padding) text-(--color-contextmenu-text) shadow-(--shadow-context-menu-sub-content-shadow) data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      "z-(--context-menu-sub-content-z-index) min-w-(--space-context-menu-sub-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--space-context-menu-checkbox-padding) text-(--color-contextmenu-text) shadow-(--shadow-context-menu-sub-content-shadow)",
       className
     )}
     {...props}
@@ -56,7 +56,6 @@ const ContextMenuContent = React.forwardRef<
       ref={ref}
       className={cn(
         "z-(--context-menu-content-z-index) min-w-(--space-context-menu-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--space-context-menu-content-padding) text-(--color-contextmenu-text) shadow-(--shadow-context-menu-content-shadow)",
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className
       )}
       {...props}

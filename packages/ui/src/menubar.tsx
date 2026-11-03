@@ -74,8 +74,6 @@ const MenubarSubContent = React.forwardRef<
     ref={ref}
     className={cn(
       "z-(--menubar-sub-content-z-index) min-w-(--space-menubar-sub-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-sub-content-shadow)",
-      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-      "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
       className
     )}
     {...props}
@@ -99,8 +97,6 @@ const MenubarContent = React.forwardRef<
         sideOffset={sideOffset}
         className={cn(
           "z-(--menubar-content-z-index) min-w-(--space-menubar-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-content-shadow)",
-          "data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           className
         )}
         {...props}

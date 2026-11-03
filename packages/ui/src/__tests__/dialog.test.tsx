@@ -450,25 +450,6 @@ describe("Dialog", () => {
       });
     });
 
-    it("should have animation classes on content", async () => {
-      const user = userEvent.setup();
-      render(<TestDialog />);
-
-      await user.click(screen.getByText("Open Dialog"));
-
-      await waitFor(() => {
-        const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass(
-          "data-[state=open]:animate-in",
-          "data-[state=closed]:animate-out",
-          "data-[state=open]:fade-in-0",
-          "data-[state=closed]:fade-out-0",
-          "data-[state=open]:zoom-in-95",
-          "data-[state=closed]:zoom-out-95"
-        );
-      });
-    });
-
     it("should center dialog on screen", async () => {
       const user = userEvent.setup();
       render(<TestDialog />);

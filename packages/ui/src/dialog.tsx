@@ -11,11 +11,8 @@ export const dialogContentVariants = cva(
     "gap-(--space-dialog-header-gap)",
     "border bg-(--color-dialog-background) shadow-(--shadow-dialog-shadow) duration-(--duration-dialog-content-duration)",
     "p-(--space-dialog-content-padding)",
-    "data-[state=open]:animate-in data-[state=closed]:animate-out",
-    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-    "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-    "data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
-    "data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
+    "/2 [48%]",
+    "/2 [48%]",
     "rounded-(--space-dialog-content-radius)",
     "border-(--color-dialog-border)"
   ),
@@ -68,8 +65,6 @@ export const DialogOverlay = React.forwardRef<
     ref={ref}
     className={cn(
       "fixed inset-0 z-(--dialog-overlay-z-index) bg-(--color-dialog-overlay) opacity-(--dialog-overlay-opacity) backdrop-blur-sm",
-      "data-[state=open]:animate-in data-[state=closed]:animate-out",
-      "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}

@@ -15,19 +15,19 @@ pnpm --filter @wyliedog/tokens report:coverage
 
 The April audit proposed four new token categories and counted the hardcoded utilities they would replace. All four categories now exist, and two of the four migrations are done.
 
-| Area    | April 2026                                      | October 2026                                                                                                                                                                                                                                |
-| ------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Z-index | 14 × hardcoded `z-50`                           | **Migrated.** Tokens `--z-index-{base,dropdown,sticky,fixed,modal-backdrop,modal,popover,tooltip,toast}` exist; overlays use them (`z-(--z-index-modal)`). One `z-1` remains in `navigation-menu`, a local stacking order for its indicator |
-| Shadow  | 18 × `shadow-sm/md/lg`                          | **Migrated.** No hardcoded `shadow-sm/md/lg/xl`; components use `shadow-(--shadow-*)`. The tokens are named `--shadow-*`, not the proposed `elevation.*`                                                                                    |
-| Opacity | 9 × `opacity-50`                                | **Migrated.** `--opacity-interactive-{hover,active,disabled}`, `--opacity-{muted,subtle,overlay,scrim}` exist. One `opacity-100` remains in `input`, a webkit spin-button reset                                                             |
-| Motion  | 21 × `transition-colors`, 19 × `animate-in/out` | **Tokens exist, migration open.** `--duration-{instant,fast,normal,slow}` and `--transition-easing-{default,in,out,in-out}` exist. See below                                                                                                |
+| Area    | April 2026                                                                 | October 2026                                                                                                                                                                                                                                |
+| ------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Z-index | 14 × hardcoded `z-50`                                                      | **Migrated.** Tokens `--z-index-{base,dropdown,sticky,fixed,modal-backdrop,modal,popover,tooltip,toast}` exist; overlays use them (`z-(--z-index-modal)`). One `z-1` remains in `navigation-menu`, a local stacking order for its indicator |
+| Shadow  | 18 × `shadow-sm/md/lg`                                                     | **Migrated.** No hardcoded `shadow-sm/md/lg/xl`; components use `shadow-(--shadow-*)`. The tokens are named `--shadow-*`, not the proposed `elevation.*`                                                                                    |
+| Opacity | 9 × `opacity-50`                                                           | **Migrated.** `--opacity-interactive-{hover,active,disabled}`, `--opacity-{muted,subtle,overlay,scrim}` exist. One `opacity-100` remains in `input`, a webkit spin-button reset                                                             |
+| Motion  | 21 × `transition-colors`, 19 × `animate-in/out` (since removed, see below) | **Tokens exist, migration open.** `--duration-{instant,fast,normal,slow}` and `--transition-easing-{default,in,out,in-out}` exist. See below                                                                                                |
 
 Counts are not strictly comparable: April counted each utility separately by hand; the script counts regex matches per file.
 
 ## Open: motion
 
 - `transition*` utilities (`transition-colors`, `transition-all`, …) appear **38 times in 26 components**. They run on Tailwind's default duration and easing unless paired with a duration token.
-- `animate-in` / `animate-out` appear **40 times in 12 components** (alert-dialog, context-menu, dialog, dropdown-menu, hover-card, menubar, navigation-menu, popover, select, sheet, toast, tooltip).
+- `animate-in` / `animate-out` appeared 40 times in 12 components, and the related `fade-*`, `zoom-*` and `slide-*` classes about 120 more times. None generated CSS (no `tw-animate-css` plugin, no `@keyframes`), so they were removed on 2026-11-03 as the clean baseline for the motion system (Plan 137). Overlays currently appear and disappear without animation; motion is a design task still to do.
 - Only 9 files use a duration token at all (`duration-(--duration-*)`): accordion, alert-dialog, card-grid, dialog, feature-grid, navigation-menu, progress, sheet and the `site-header` composition.
 - **No component uses a `--transition-easing-*` token.**
 

@@ -315,35 +315,6 @@ describe("Popover", () => {
       });
     });
 
-    it("should have animation classes", async () => {
-      const user = userEvent.setup();
-      render(<TestPopover />);
-
-      await user.click(screen.getByText("Open Popover"));
-
-      await waitFor(() => {
-        const content =
-          screen.getByText("Popover Heading").parentElement?.parentElement;
-        expect(content).toHaveClass("data-[state=open]:animate-in");
-        expect(content).toHaveClass("data-[state=closed]:animate-out");
-        expect(content).toHaveClass("data-[state=open]:fade-in-0");
-        expect(content).toHaveClass("data-[state=closed]:fade-out-0");
-      });
-    });
-
-    it("should have side-specific animation classes", async () => {
-      const user = userEvent.setup();
-      render(<TestPopover side="top" />);
-
-      await user.click(screen.getByText("Open Popover"));
-
-      await waitFor(() => {
-        const content =
-          screen.getByText("Popover Heading").parentElement?.parentElement;
-        expect(content).toHaveClass("data-[side=top]:slide-in-from-bottom-2");
-      });
-    });
-
     // TODO: Popover portal rendering needs async test infrastructure
     it.skip("should apply custom className", async () => {
       const user = userEvent.setup();
