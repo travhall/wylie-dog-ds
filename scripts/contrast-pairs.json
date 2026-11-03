@@ -61,7 +61,8 @@
       "foreground": "badge.destructive.text",
       "backgrounds": [
         "badge.destructive.background",
-        "badge.destructive.background-hover"
+        "badge.destructive.background-hover",
+        "badge.destructive.background-active"
       ],
       "kind": "text"
     },

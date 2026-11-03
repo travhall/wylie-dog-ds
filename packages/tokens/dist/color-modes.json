@@ -284,16 +284,20 @@
     "dark": "oklch(0.712 0.037 72.66)"
   },
   "color-badge-destructive-background": {
-    "light": "oklch(0.97 0.013 16.02)",
-    "dark": "oklch(0.282 0.089 26)"
+    "light": "oklch(0.546 0.215 27.29)",
+    "dark": "oklch(0.546 0.215 27.29)"
+  },
+  "color-badge-destructive-background-active": {
+    "light": "oklch(0.424 0.161 26.86)",
+    "dark": "oklch(0.424 0.161 26.86)"
   },
   "color-badge-destructive-background-disabled": {
     "light": "oklch(0.927 0.012 75.12)",
     "dark": "oklch(0.269 0.016 50.53)"
   },
   "color-badge-destructive-background-hover": {
-    "light": "oklch(0.97 0.013 16.02)",
-    "dark": "oklch(0.282 0.089 26)"
+    "light": "oklch(0.488 0.19 27.47)",
+    "dark": "oklch(0.488 0.19 27.47)"
   },
   "color-badge-destructive-border": {
     "light": "oklch(0.546 0.215 27.29)",
@@ -304,8 +308,8 @@
     "dark": "oklch(0.333 0.015 71.46)"
   },
   "color-badge-destructive-text": {
-    "light": "oklch(0.488 0.19 27.47)",
-    "dark": "oklch(0.714 0.166 22.18)"
+    "light": "oklch(0.991 0.003 264.39)",
+    "dark": "oklch(0.991 0.003 264.39)"
   },
   "color-badge-destructive-text-disabled": {
     "light": "oklch(0.48 0.017 50.2)",
@@ -376,32 +380,32 @@
     "dark": "oklch(0.712 0.037 72.66)"
   },
   "color-badge-secondary-background": {
-    "light": "oklch(0.496 0.049 219.07)",
-    "dark": "oklch(0.496 0.049 219.07)"
+    "light": "oklch(0.893 0.018 72.86)",
+    "dark": "oklch(0.269 0.016 50.53)"
   },
   "color-badge-secondary-background-active": {
-    "light": "oklch(0.34 0.054 222.07)",
-    "dark": "oklch(0.34 0.054 222.07)"
+    "light": "oklch(0.843 0.027 71.03)",
+    "dark": "oklch(0.312 0.021 51.75)"
   },
   "color-badge-secondary-background-disabled": {
     "light": "oklch(0.927 0.012 75.12)",
     "dark": "oklch(0.269 0.016 50.53)"
   },
   "color-badge-secondary-background-hover": {
-    "light": "oklch(0.361 0.058 221.82)",
-    "dark": "oklch(0.361 0.058 221.82)"
+    "light": "oklch(0.843 0.027 71.03)",
+    "dark": "oklch(0.312 0.021 51.75)"
   },
   "color-badge-secondary-border": {
-    "light": "oklch(0.496 0.049 219.07)",
-    "dark": "oklch(0.496 0.049 219.07)"
+    "light": "oklch(0.893 0.018 72.86)",
+    "dark": "oklch(0.269 0.016 50.53)"
   },
   "color-badge-secondary-border-disabled": {
     "light": "oklch(0.882 0.009 67.06)",
     "dark": "oklch(0.333 0.015 71.46)"
   },
   "color-badge-secondary-text": {
-    "light": "oklch(0.991 0.003 264.39)",
-    "dark": "oklch(0.991 0.003 264.39)"
+    "light": "oklch(0.202 0.011 47.89)",
+    "dark": "oklch(0.977 0.003 65.52)"
   },
   "color-badge-secondary-text-disabled": {
     "light": "oklch(0.48 0.017 50.2)",

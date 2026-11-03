@@ -3567,10 +3567,10 @@
           "secondary",
           "background"
         ],
-        "value": "oklch(0.496 0.049 219.07)",
+        "value": "oklch(0.893 0.018 72.86)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background)",
-        "description": "Fill of the secondary badge. Pairs with `badge.secondary.text`."
+        "description": "Fill of the secondary badge, a solid neutral. Pairs with `badge.secondary.text`."
       },
       "badge-secondary-text": {
         "name": "badgeSecondaryText",
@@ -3579,7 +3579,7 @@
           "secondary",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.39)",
+        "value": "oklch(0.202 0.011 47.89)",
         "type": "color",
         "variable": "var(--color-badge-secondary-text)",
         "description": "Text color of the secondary badge. Pairs with `badge.secondary.background`."
@@ -3591,7 +3591,7 @@
           "secondary",
           "border"
         ],
-        "value": "oklch(0.496 0.049 219.07)",
+        "value": "oklch(0.893 0.018 72.86)",
         "type": "color",
         "variable": "var(--color-badge-secondary-border)",
         "description": "Border color of the secondary badge."
@@ -3711,10 +3711,10 @@
           "destructive",
           "background"
         ],
-        "value": "oklch(0.97 0.013 16.02)",
+        "value": "oklch(0.546 0.215 27.29)",
         "type": "color",
         "variable": "var(--color-badge-destructive-background)",
-        "description": "Fill of the destructive badge, a muted danger tint rather than a solid. Pairs with `badge.destructive.text`."
+        "description": "Fill of the destructive badge, the solid danger fill. Pairs with `badge.destructive.text`."
       },
       "badge-destructive-text": {
         "name": "badgeDestructiveText",
@@ -3723,7 +3723,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.488 0.19 27.47)",
+        "value": "oklch(0.991 0.003 264.39)",
         "type": "color",
         "variable": "var(--color-badge-destructive-text)",
         "description": "Text color of the destructive badge. Pairs with `badge.destructive.background`."
@@ -3738,7 +3738,7 @@
         "value": "oklch(0.546 0.215 27.29)",
         "type": "color",
         "variable": "var(--color-badge-destructive-border)",
-        "description": "Outline of the destructive badge, in the danger border tone."
+        "description": "Border color of the destructive badge."
       },
       "badge-outline-background": {
         "name": "badgeOutlineBackground",
@@ -3959,7 +3959,7 @@
           "secondary",
           "background-hover"
         ],
-        "value": "oklch(0.361 0.058 221.82)",
+        "value": "oklch(0.843 0.027 71.03)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background-hover)",
         "description": "Fill of the secondary badge while hovered."
@@ -3971,10 +3971,10 @@
           "secondary",
           "background-active"
         ],
-        "value": "oklch(0.34 0.054 222.07)",
+        "value": "oklch(0.843 0.027 71.03)",
         "type": "color",
         "variable": "var(--color-badge-secondary-background-active)",
-        "description": "Fill of an interactive secondary badge while pressed. Applies only when the badge is interactive."
+        "description": "Fill of an interactive secondary badge while pressed. The neutral ground has no tone past `intense`, so hover and pressed share it. Applies only when the badge is interactive."
       },
       "badge-success-background-hover": {
         "name": "badgeSuccessBackgroundHover",
@@ -4055,10 +4055,22 @@
           "destructive",
           "background-hover"
         ],
-        "value": "oklch(0.97 0.013 16.02)",
+        "value": "oklch(0.488 0.19 27.47)",
         "type": "color",
         "variable": "var(--color-badge-destructive-background-hover)",
         "description": "Fill of the destructive badge while hovered."
+      },
+      "badge-destructive-background-active": {
+        "name": "badgeDestructiveBackgroundActive",
+        "path": [
+          "badge",
+          "destructive",
+          "background-active"
+        ],
+        "value": "oklch(0.424 0.161 26.86)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-background-active)",
+        "description": "Fill of an interactive destructive badge while pressed. Applies only when the badge is interactive."
       },
       "badge-outline-background-hover": {
         "name": "badgeOutlineBackgroundHover",

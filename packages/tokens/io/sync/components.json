@@ -41,29 +41,29 @@
         },
         "badge.secondary.background": {
           "$type": "color",
-          "$value": "{color.background.secondary}",
-          "$description": "Fill of the secondary badge. Pairs with `badge.secondary.text`.",
+          "$value": "{color.background.emphasis}",
+          "$description": "Fill of the secondary badge, a solid neutral. Pairs with `badge.secondary.text`.",
           "valuesByMode": {
-            "Light": "{color.background.secondary}",
-            "Dark": "{color.background.secondary}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.secondary.text": {
           "$type": "color",
-          "$value": "{color.foreground.secondary}",
+          "$value": "{color.foreground.default}",
           "$description": "Text color of the secondary badge. Pairs with `badge.secondary.background`.",
           "valuesByMode": {
-            "Light": "{color.foreground.secondary}",
-            "Dark": "{color.foreground.secondary}"
+            "Light": "{color.foreground.default}",
+            "Dark": "{color.foreground.default}"
           }
         },
         "badge.secondary.border": {
           "$type": "color",
-          "$value": "{color.background.secondary}",
+          "$value": "{color.background.emphasis}",
           "$description": "Border color of the secondary badge.",
           "valuesByMode": {
-            "Light": "{color.background.secondary}",
-            "Dark": "{color.background.secondary}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.success.background": {
@@ -149,29 +149,29 @@
         },
         "badge.destructive.background": {
           "$type": "color",
-          "$value": "{color.background.danger-muted}",
-          "$description": "Fill of the destructive badge, a muted danger tint rather than a solid. Pairs with `badge.destructive.text`.",
+          "$value": "{color.background.danger}",
+          "$description": "Fill of the destructive badge, the solid danger fill. Pairs with `badge.destructive.text`.",
           "valuesByMode": {
-            "Light": "{color.background.danger-muted}",
-            "Dark": "{color.background.danger-muted}"
+            "Light": "{color.background.danger}",
+            "Dark": "{color.background.danger}"
           }
         },
         "badge.destructive.text": {
           "$type": "color",
-          "$value": "{color.foreground.danger-muted}",
+          "$value": "{color.foreground.danger}",
           "$description": "Text color of the destructive badge. Pairs with `badge.destructive.background`.",
           "valuesByMode": {
-            "Light": "{color.foreground.danger-muted}",
-            "Dark": "{color.foreground.danger-muted}"
+            "Light": "{color.foreground.danger}",
+            "Dark": "{color.foreground.danger}"
           }
         },
         "badge.destructive.border": {
           "$type": "color",
-          "$value": "{color.border.danger}",
-          "$description": "Outline of the destructive badge, in the danger border tone.",
+          "$value": "{color.background.danger}",
+          "$description": "Border color of the destructive badge.",
           "valuesByMode": {
-            "Light": "{color.border.danger}",
-            "Dark": "{color.border.danger}"
+            "Light": "{color.background.danger}",
+            "Dark": "{color.background.danger}"
           }
         },
         "badge.outline.background": {
@@ -5279,20 +5279,20 @@
         },
         "badge.secondary.background-hover": {
           "$type": "color",
-          "$value": "{color.background.secondary-emphasis}",
+          "$value": "{color.background.intense}",
           "$description": "Fill of the secondary badge while hovered.",
           "valuesByMode": {
-            "Light": "{color.background.secondary-emphasis}",
-            "Dark": "{color.background.secondary-emphasis}"
+            "Light": "{color.background.intense}",
+            "Dark": "{color.background.intense}"
           }
         },
         "badge.secondary.background-active": {
           "$type": "color",
-          "$value": "{color.background.secondary-intense}",
-          "$description": "Fill of an interactive secondary badge while pressed. Applies only when the badge is interactive.",
+          "$value": "{color.background.intense}",
+          "$description": "Fill of an interactive secondary badge while pressed. The neutral ground has no tone past `intense`, so hover and pressed share it. Applies only when the badge is interactive.",
           "valuesByMode": {
-            "Light": "{color.background.secondary-intense}",
-            "Dark": "{color.background.secondary-intense}"
+            "Light": "{color.background.intense}",
+            "Dark": "{color.background.intense}"
           }
         },
         "badge.success.background-hover": {
@@ -5351,11 +5351,20 @@
         },
         "badge.destructive.background-hover": {
           "$type": "color",
-          "$value": "{color.background.danger-muted}",
+          "$value": "{color.background.danger-emphasis}",
           "$description": "Fill of the destructive badge while hovered.",
           "valuesByMode": {
-            "Light": "{color.background.danger-muted}",
-            "Dark": "{color.background.danger-muted}"
+            "Light": "{color.background.danger-emphasis}",
+            "Dark": "{color.background.danger-emphasis}"
+          }
+        },
+        "badge.destructive.background-active": {
+          "$type": "color",
+          "$value": "{color.background.danger-intense}",
+          "$description": "Fill of an interactive destructive badge while pressed. Applies only when the badge is interactive.",
+          "valuesByMode": {
+            "Light": "{color.background.danger-intense}",
+            "Dark": "{color.background.danger-intense}"
           }
         },
         "badge.outline.background-hover": {

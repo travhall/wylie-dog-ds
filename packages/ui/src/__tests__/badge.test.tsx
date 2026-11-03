@@ -130,6 +130,13 @@ describe("Badge", () => {
       expect(badge).toHaveClass("border-(--color-badge-secondary-border)");
     });
 
+    it("should set badge text in the mono font", () => {
+      render(<Badge>Mono</Badge>);
+      expect(screen.getByText("Mono")).toHaveClass(
+        "font-(family-name:--typography-font-family-mono)"
+      );
+    });
+
     it("should render success variant", () => {
       render(<Badge variant="success">Success</Badge>);
       const badge = screen.getByText("Success");
@@ -333,6 +340,9 @@ describe("Badge", () => {
         const badge = screen.getByText(variant);
         expect(badge).toHaveClass(
           `hover:bg-(--color-badge-${variant}-background-hover)`
+        );
+        expect(badge).toHaveClass(
+          `active:bg-(--color-badge-${variant}-background-active)`
         );
         expect(badge).toHaveClass(
           `disabled:bg-(--color-badge-${variant}-background-disabled)`

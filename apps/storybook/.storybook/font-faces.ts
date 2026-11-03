@@ -12,6 +12,7 @@ import "@fontsource/besley/600.css";
 import "@fontsource/besley/700.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/600.css";
 import { fontMono, fontSans, fontSerif } from "./font-stacks";
 
 /* The design system reads --font-sans, --font-serif and --font-mono. */

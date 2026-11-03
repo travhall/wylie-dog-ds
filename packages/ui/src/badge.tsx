@@ -6,7 +6,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const badgeVariants = cva(
   cn(
-    "inline-flex items-center border-(length:--space-badge-border-width) font-(--font-weight-badge-font-weight) leading-(--line-height-badge-line-height) transition-colors",
+    "inline-flex items-center border-(length:--space-badge-border-width) font-(family-name:--typography-font-family-mono) font-(--font-weight-badge-font-weight) leading-(--line-height-badge-line-height) transition-colors",
     "rounded-(--space-badge-radius)"
   ),
   {
@@ -75,7 +75,7 @@ export const badgeVariants = cva(
         variant: "destructive",
         interactive: true,
         className:
-          "hover:bg-(--color-badge-destructive-background-hover) disabled:bg-(--color-badge-destructive-background-disabled) disabled:text-(--color-badge-destructive-text-disabled) disabled:border-(--color-badge-destructive-border-disabled)",
+          "hover:bg-(--color-badge-destructive-background-hover) active:bg-(--color-badge-destructive-background-active) disabled:bg-(--color-badge-destructive-background-disabled) disabled:text-(--color-badge-destructive-text-disabled) disabled:border-(--color-badge-destructive-border-disabled)",
       },
       {
         variant: "outline",

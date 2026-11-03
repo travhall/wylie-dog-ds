@@ -94,6 +94,7 @@ export type CssVarName =
   | "--color-badge-default-text"
   | "--color-badge-default-text-disabled"
   | "--color-badge-destructive-background"
+  | "--color-badge-destructive-background-active"
   | "--color-badge-destructive-background-disabled"
   | "--color-badge-destructive-background-hover"
   | "--color-badge-destructive-border"
@@ -1493,6 +1494,7 @@ export declare const cssVars: Readonly<{
   "colorBadgeDefaultText": "--color-badge-default-text";
   "colorBadgeDefaultTextDisabled": "--color-badge-default-text-disabled";
   "colorBadgeDestructiveBackground": "--color-badge-destructive-background";
+  "colorBadgeDestructiveBackgroundActive": "--color-badge-destructive-background-active";
   "colorBadgeDestructiveBackgroundDisabled": "--color-badge-destructive-background-disabled";
   "colorBadgeDestructiveBackgroundHover": "--color-badge-destructive-background-hover";
   "colorBadgeDestructiveBorder": "--color-badge-destructive-border";
