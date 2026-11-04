@@ -7320,6 +7320,15 @@
             "Dark": "{color.border.muted}"
           }
         },
+        "badge.icon-gap": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "Gap between an icon and the label of the badge.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
         "card.border-disabled": {
           "$type": "color",
           "$value": "{color.border.muted}",
@@ -7741,6 +7750,15 @@
           "valuesByMode": {
             "Light": "{border-width.1}",
             "Dark": "{border-width.1}"
+          }
+        },
+        "toggle.icon-gap": {
+          "$type": "dimension",
+          "$value": "{space.100}",
+          "$description": "Gap between an icon and the label of the toggle.",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
           }
         },
         "menubar.trigger-highlighted": {

@@ -929,6 +929,7 @@ export type CssVarName =
   | "--space-avatar-size-sm"
   | "--space-avatar-size-xl"
   | "--space-badge-border-width"
+  | "--space-badge-icon-gap"
   | "--space-badge-padding-x-lg"
   | "--space-badge-padding-x-md"
   | "--space-badge-padding-x-sm"
@@ -1391,6 +1392,7 @@ export type CssVarName =
   | "--space-toggle-group-item-height"
   | "--space-toggle-group-item-padding-x"
   | "--space-toggle-group-item-radius"
+  | "--space-toggle-icon-gap"
   | "--space-toggle-radius"
   | "--space-toggle-size-default-height"
   | "--space-toggle-size-default-padding-x"
@@ -2378,6 +2380,7 @@ export declare const cssVars: Readonly<{
   "spaceAvatarSizeSm": "--space-avatar-size-sm";
   "spaceAvatarSizeXl": "--space-avatar-size-xl";
   "spaceBadgeBorderWidth": "--space-badge-border-width";
+  "spaceBadgeIconGap": "--space-badge-icon-gap";
   "spaceBadgePaddingXLg": "--space-badge-padding-x-lg";
   "spaceBadgePaddingXMd": "--space-badge-padding-x-md";
   "spaceBadgePaddingXSm": "--space-badge-padding-x-sm";
@@ -2840,6 +2843,7 @@ export declare const cssVars: Readonly<{
   "spaceToggleGroupItemHeight": "--space-toggle-group-item-height";
   "spaceToggleGroupItemPaddingX": "--space-toggle-group-item-padding-x";
   "spaceToggleGroupItemRadius": "--space-toggle-group-item-radius";
+  "spaceToggleIconGap": "--space-toggle-icon-gap";
   "spaceToggleRadius": "--space-toggle-radius";
   "spaceToggleSizeDefaultHeight": "--space-toggle-size-default-height";
   "spaceToggleSizeDefaultPaddingX": "--space-toggle-size-default-padding-x";

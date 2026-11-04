@@ -190,6 +190,23 @@ console.log(
   `\nContent properties: ${contentProps} in ${Object.keys(specs).length} sets, each matches a text layer unless listed above`
 );
 
+// Plan 217: every icon kind a builder draws must be a glyph of the Icon set, or makeIcon falls
+// back to a hand-drawn frame and the icon is not an instance of the master.
+const glyphs = new Set(Object.keys(context.ICON_SVG ?? {}));
+const kinds = new Set(
+  [...source.matchAll(/makeIcon\(\s*"([a-z-]+)"/g)].map((m) => m[1])
+);
+for (const kind of kinds) {
+  if (!glyphs.has(kind)) {
+    const message = `makeIcon draws "${kind}", which is not a glyph of the Icon set`;
+    console.log(message);
+    errors.push(message);
+  }
+}
+console.log(
+  `\nIcon glyphs: ${glyphs.size} in the Icon set; ${kinds.size} kinds drawn by the builders, all present`
+);
+
 // Names live on real nodes, which the stub cannot see: check that main() runs the
 // naming pass; scripts/figma/audit-library.js counts default names in the file.
 if (!/nameDefaultLayers\(built\)/.test(source)) {
