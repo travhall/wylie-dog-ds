@@ -170,6 +170,26 @@ for (const [kind, count] of Object.entries(raw)) {
     );
   }
 }
+// Plan 217 (J3): every content property of the builder must find a text layer. The
+// stub cannot add properties, so check that each style pattern matches a style name
+// the builders pass to makeText.
+const specs = context.CONTENT_PROPERTIES ?? {};
+const styleNames = new Set(layers.map((l) => l.styleName));
+let contentProps = 0;
+for (const [set, props] of Object.entries(specs)) {
+  for (const [prop, pattern] of props) {
+    contentProps++;
+    if (![...styleNames].some((n) => new RegExp(pattern).test(n))) {
+      const message = `content property ${set}.${prop}: no text layer matches ${pattern}`;
+      console.log(message);
+      errors.push(message);
+    }
+  }
+}
+console.log(
+  `\nContent properties: ${contentProps} in ${Object.keys(specs).length} sets, each matches a text layer unless listed above`
+);
+
 // Names live on real nodes, which the stub cannot see: check that main() runs the
 // naming pass; scripts/figma/audit-library.js counts default names in the file.
 if (!/nameDefaultLayers\(built\)/.test(source)) {
