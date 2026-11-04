@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-04T20:20:35.820Z",
+  "generatedAt": "2026-11-04T21:47:30.098Z",
   "count": 48,
   "components": [
     {
@@ -14,10 +14,18 @@
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-accordion--docs"
       ],
       "properties": {
+        "content": {
+          "type": "TEXT",
+          "default": "Accordion content text goes here."
+        },
         "state": {
           "type": "VARIANT",
           "default": "closed",
           "options": ["closed", "open"]
+        },
+        "trigger": {
+          "type": "TEXT",
+          "default": "Accordion Item"
         }
       },
       "variantCount": 2,
@@ -31,6 +39,14 @@
         "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-alert--docs"
       ],
       "properties": {
+        "description": {
+          "type": "TEXT",
+          "default": "Alert description text goes here."
+        },
+        "title": {
+          "type": "TEXT",
+          "default": "Alert Title"
+        },
         "variant": {
           "type": "VARIANT",
           "default": "default",
@@ -48,6 +64,10 @@
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-alertdialog--docs"
       ],
       "properties": {
+        "description": {
+          "type": "TEXT",
+          "default": "This action cannot be undone."
+        },
         "state": {
           "type": "VARIANT",
           "default": "default",
@@ -87,6 +107,10 @@
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-badge--docs"
       ],
       "properties": {
+        "children": {
+          "type": "TEXT",
+          "default": "Badge"
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
@@ -142,6 +166,10 @@
           "type": "VARIANT",
           "default": "false",
           "options": ["false", "true"]
+        },
+        "loading": {
+          "type": "BOOLEAN",
+          "default": false
         },
         "size": {
           "type": "VARIANT",
@@ -283,10 +311,18 @@
         "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-collapsible--docs"
       ],
       "properties": {
+        "content": {
+          "type": "TEXT",
+          "default": "Collapsible content text."
+        },
         "open": {
           "type": "VARIANT",
           "default": "false",
           "options": ["false", "true"]
+        },
+        "trigger": {
+          "type": "TEXT",
+          "default": "Collapsible Header"
         }
       },
       "variantCount": 2,
@@ -334,6 +370,14 @@
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-dialog--docs"
       ],
       "properties": {
+        "content": {
+          "type": "TEXT",
+          "default": "Dialog content goes here."
+        },
+        "description": {
+          "type": "TEXT",
+          "default": "Dialog description text goes here."
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
@@ -343,6 +387,10 @@
           "type": "VARIANT",
           "default": "default",
           "options": ["default", "with-footer"]
+        },
+        "title": {
+          "type": "TEXT",
+          "default": "Dialog Title"
         }
       },
       "variantCount": 10,
@@ -412,10 +460,18 @@
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-hovercard--docs"
       ],
       "properties": {
+        "content": {
+          "type": "TEXT",
+          "default": "Hover card content text."
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
           "options": ["md", "sm", "lg"]
+        },
+        "title": {
+          "type": "TEXT",
+          "default": "Hover Card Title"
         }
       },
       "variantCount": 3,
@@ -429,6 +485,10 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-input--docs"
       ],
       "properties": {
+        "placeholder": {
+          "type": "TEXT",
+          "default": "Placeholder text"
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
@@ -451,6 +511,10 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-label--docs"
       ],
       "properties": {
+        "children": {
+          "type": "TEXT",
+          "default": "Label"
+        },
         "error": {
           "type": "VARIANT",
           "default": "false",
@@ -551,10 +615,18 @@
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-popover--docs"
       ],
       "properties": {
+        "content": {
+          "type": "TEXT",
+          "default": "Popover description content."
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
           "options": ["md", "sm", "lg"]
+        },
+        "title": {
+          "type": "TEXT",
+          "default": "Popover Title"
         }
       },
       "variantCount": 3,
@@ -724,10 +796,18 @@
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-sheet--docs"
       ],
       "properties": {
+        "description": {
+          "type": "TEXT",
+          "default": "Sheet description text goes here."
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
           "options": ["md", "sm", "lg"]
+        },
+        "title": {
+          "type": "TEXT",
+          "default": "Sheet Title"
         }
       },
       "variantCount": 3,
@@ -880,6 +960,10 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-textarea--docs"
       ],
       "properties": {
+        "placeholder": {
+          "type": "TEXT",
+          "default": "Placeholder text"
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
@@ -902,6 +986,14 @@
         "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-toast--docs"
       ],
       "properties": {
+        "description": {
+          "type": "TEXT",
+          "default": "Toast description message."
+        },
+        "title": {
+          "type": "TEXT",
+          "default": "Toast Title"
+        },
         "variant": {
           "type": "VARIANT",
           "default": "default",
@@ -919,6 +1011,10 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-toggle--docs"
       ],
       "properties": {
+        "children": {
+          "type": "TEXT",
+          "default": "Toggle"
+        },
         "disabled": {
           "type": "VARIANT",
           "default": "false",
@@ -972,6 +1068,10 @@
           "type": "VARIANT",
           "default": "Default",
           "options": ["Default"]
+        },
+        "children": {
+          "type": "TEXT",
+          "default": "Tooltip text"
         }
       },
       "variantCount": 1,

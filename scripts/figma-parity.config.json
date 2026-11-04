@@ -365,6 +365,126 @@
       "rule": "content-property-not-in-code",
       "property": "footer",
       "reason": "CardFooter is an optional child in code, not a prop of Card; the Figma boolean shows or hides it."
+    },
+    {
+      "component": "Accordion",
+      "rule": "content-property-not-in-code",
+      "property": "content",
+      "reason": "AccordionContent is a sub-component in code, not a prop of Accordion; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Accordion",
+      "rule": "content-property-not-in-code",
+      "property": "trigger",
+      "reason": "AccordionTrigger is a sub-component in code, not a prop of Accordion; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Alert",
+      "rule": "content-property-not-in-code",
+      "property": "description",
+      "reason": "AlertDescription is a sub-component in code, not a prop of Alert; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Alert",
+      "rule": "content-property-not-in-code",
+      "property": "title",
+      "reason": "AlertTitle is a sub-component in code, not a prop of Alert; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Alert Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "description",
+      "reason": "AlertDialogDescription is a sub-component in code, not a prop of AlertDialog; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Collapsible",
+      "rule": "content-property-not-in-code",
+      "property": "content",
+      "reason": "CollapsibleContent is a sub-component in code, not a prop of Collapsible; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Collapsible",
+      "rule": "content-property-not-in-code",
+      "property": "trigger",
+      "reason": "CollapsibleTrigger is a sub-component in code, not a prop of Collapsible; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "content",
+      "reason": "DialogContent is a sub-component in code, not a prop of Dialog; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "description",
+      "reason": "DialogDescription is a sub-component in code, not a prop of Dialog; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "title",
+      "reason": "DialogTitle is a sub-component in code, not a prop of Dialog; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Hover Card",
+      "rule": "content-property-not-in-code",
+      "property": "content",
+      "reason": "HoverCardContent takes children; the Figma TEXT property edits the body text of the demo content."
+    },
+    {
+      "component": "Hover Card",
+      "rule": "content-property-not-in-code",
+      "property": "title",
+      "reason": "HoverCard has no title part in code (the content is children); the Figma TEXT property edits the heading text of the demo content."
+    },
+    {
+      "component": "Popover",
+      "rule": "content-property-not-in-code",
+      "property": "content",
+      "reason": "PopoverContent takes children; the Figma TEXT property edits the body text of the demo content."
+    },
+    {
+      "component": "Popover",
+      "rule": "content-property-not-in-code",
+      "property": "title",
+      "reason": "Popover has no title part in code (the content is children); the Figma TEXT property edits the heading text of the demo content."
+    },
+    {
+      "component": "Sheet",
+      "rule": "content-property-not-in-code",
+      "property": "description",
+      "reason": "SheetDescription is a sub-component in code, not a prop of Sheet; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Sheet",
+      "rule": "content-property-not-in-code",
+      "property": "title",
+      "reason": "SheetTitle is a sub-component in code, not a prop of Sheet; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Toast",
+      "rule": "content-property-not-in-code",
+      "property": "description",
+      "reason": "ToastDescription is a sub-component in code, not a prop of Toast; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Toast",
+      "rule": "content-property-not-in-code",
+      "property": "title",
+      "reason": "ToastTitle is a sub-component in code, not a prop of Toast; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Input",
+      "rule": "content-property-not-in-code",
+      "property": "placeholder",
+      "reason": "`placeholder` is an inherited HTML attribute of Input in code, which the docgen does not list; the Figma TEXT property edits it."
+    },
+    {
+      "component": "Textarea",
+      "rule": "content-property-not-in-code",
+      "property": "placeholder",
+      "reason": "`placeholder` is an inherited HTML attribute of Textarea in code, which the docgen does not list; the Figma TEXT property edits it."
     }
   ]
 }
