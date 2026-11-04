@@ -25,7 +25,8 @@
 // Style names are <prefix as a path>[/<size>] ("button/sm", "alert/title"), so
 // the names a later builder run uses can match them where the structure agrees.
 // Weight, line-height and tracking tokens that match no font-size token are
-// reported (`orphans`), never paired by guesswork.
+// reported (`orphans`), never paired by guesswork. A pair the owner has confirmed from
+// the code is listed in PAIRS and fills in only what its style is missing (Plan 217).
 
 import fs from "node:fs";
 import path from "node:path";
@@ -62,8 +63,24 @@ export function readSyncTokens(root = ".") {
   return tokens;
 }
 
-/** Derive the definitions from the tokens. Pure. */
-export function deriveTextStyles(tokens) {
+// Confirmed pairings: the weight, line height and tracking a part uses in the UI when
+// their names do not share the font-size token's prefix. Each entry names the style by its
+// font-size token and may add only kinds the style does not have. Nothing else uses these
+// tokens' font size, so no other style is affected (owner, 2026-11-04). The other orphans
+// share a font size with a part of a different weight (menubar trigger, label and item;
+// calendar nav and header; ...), and a style holds one weight: those layers keep their
+// weight as a node-level binding and are reported as orphans on purpose.
+export const PAIRS = [
+  {
+    fontSize: "card.header.title.font-size",
+    fontWeight: "card.title.font-weight",
+    lineHeight: "card.title.line-height",
+    letterSpacing: "card.title.letter-spacing",
+  },
+];
+
+/** Derive the definitions from the tokens. Pure. Throws on a stale pair. */
+export function deriveTextStyles(tokens, pairs = []) {
   const names = [...tokens.keys()].filter(
     (name) => tokens.get(name).file === "components.json"
   );
@@ -109,6 +126,21 @@ export function deriveTextStyles(tokens) {
     styles.push(style);
   }
 
+  for (const { fontSize, ...parts } of pairs) {
+    const style = styles.find((s) => s.fontSize === fontSize);
+    if (!style) throw new Error(`pair: no style has the font size ${fontSize}`);
+    for (const [kind, token] of Object.entries(parts)) {
+      if (!exists.has(token)) throw new Error(`pair: ${token} does not exist`);
+      if (style[kind]) {
+        throw new Error(
+          `pair: ${style.name} already has a ${kind} (${style[kind]})`
+        );
+      }
+      style[kind] = token;
+      used.add(token);
+    }
+  }
+
   styles.sort((a, b) => a.name.localeCompare(b.name));
   const orphans = names.filter((name) => PARTNER.test(name) && !used.has(name));
   return { styles, orphans };
@@ -150,7 +182,8 @@ export function checkReferences(styles, tokens) {
   const problems = [];
   const seen = new Set();
   for (const style of styles) {
-    if (seen.has(style.name)) problems.push(`${style.name}: duplicate style name`);
+    if (seen.has(style.name))
+      problems.push(`${style.name}: duplicate style name`);
     seen.add(style.name);
     for (const [key, accepts] of Object.entries(KINDS)) {
       const token = style[key];

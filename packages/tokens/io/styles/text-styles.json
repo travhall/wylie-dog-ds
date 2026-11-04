@@ -137,7 +137,10 @@
     {
       "name": "card/header/title",
       "fontFamily": "typography.font-family.sans",
-      "fontSize": "card.header.title.font-size"
+      "fontSize": "card.header.title.font-size",
+      "fontWeight": "card.title.font-weight",
+      "lineHeight": "card.title.line-height",
+      "letterSpacing": "card.title.letter-spacing"
     },
     {
       "name": "command/group-heading",
