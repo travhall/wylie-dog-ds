@@ -5024,6 +5024,11 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the dropdown menu."
   },
+  "dropdown-menu.side-offset": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "Gap between the dropdown menu trigger and its content."
+  },
   "menubar.content-z-index": {
     "$type": "number",
     "$value": "{z-index.dropdown}",
@@ -5038,6 +5043,16 @@
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the menubar."
+  },
+  "menubar.content-side-offset": {
+    "$type": "dimension",
+    "$value": "{space.100}",
+    "$description": "Gap between a menubar trigger and its menu."
+  },
+  "menubar.content-align-offset": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "How far a menubar menu is pulled back along the trigger edge, so its content lines up with the trigger text."
   },
   "navigation-menu.z-index": {
     "$type": "number",
@@ -5079,6 +5094,11 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the popover."
   },
+  "popover.side-offset": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "Gap between the popover trigger and its content."
+  },
   "hover-card.z-index": {
     "$type": "number",
     "$value": "{z-index.popover}",
@@ -5088,6 +5108,11 @@
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the hover card."
+  },
+  "hover-card.side-offset": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "Gap between the hover card trigger and its content."
   },
   "toast.viewport.z-index": {
     "$type": "number",
@@ -5113,6 +5138,11 @@
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the tooltip."
+  },
+  "tooltip.side-offset": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "Gap between the tooltip trigger and its content."
   },
   "dialog.overlay-opacity": {
     "$type": "number",

@@ -276,6 +276,13 @@ for (const file of files) {
         if (hit) add(file, n, "class", hit.kind, hit.value, bare);
       }
     }
+    // Numeric behavior props the class scan cannot see (Plan 217): a Radix offset is a
+    // gap or inset in px, so it belongs in a token applied as a margin
+    for (const m of line.matchAll(
+      /\b(sideOffset|alignOffset|collisionPadding|delayDuration|skipDelayDuration)\s*[=:]\s*(-?\d[\d.]*)/g
+    )) {
+      add(file, n, "behavior prop", m[1], m[2], `${m[1]} = ${m[2]}`);
+    }
     // Inline style numbers
     for (const style of line.matchAll(/style=\{\{([^}]*)\}\}/g)) {
       for (const prop of style[1].matchAll(

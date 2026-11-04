@@ -21,13 +21,13 @@ export interface TooltipContentProps extends React.ComponentPropsWithoutRef<
 const TooltipContent = React.forwardRef<
   React.ComponentRef<typeof TooltipPrimitive.Content>,
   TooltipContentProps
->(({ className, side = "top", sideOffset = 4, ...props }, ref) => (
+>(({ className, side = "top", ...props }, ref) => (
   <TooltipPrimitive.Portal>
     <TooltipPrimitive.Content
       ref={ref}
       side={side}
-      sideOffset={sideOffset}
       className={cn(
+        "data-[side=bottom]:mt-(--space-tooltip-side-offset) data-[side=top]:mb-(--space-tooltip-side-offset) data-[side=left]:mr-(--space-tooltip-side-offset) data-[side=right]:ml-(--space-tooltip-side-offset)",
         "z-(--tooltip-z-index) overflow-hidden border-(length:--space-tooltip-border-width) shadow-(--shadow-tooltip-shadow)",
         "rounded-(--space-tooltip-radius)",
         "bg-(--color-tooltip-background)",

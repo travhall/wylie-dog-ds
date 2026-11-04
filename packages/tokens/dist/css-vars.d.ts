@@ -1060,6 +1060,7 @@ export type CssVarName =
   | "--space-dropdown-menu-separator-margin-x"
   | "--space-dropdown-menu-separator-margin-y"
   | "--space-dropdown-menu-shortcut-letter-spacing"
+  | "--space-dropdown-menu-side-offset"
   | "--space-feature-grid-border-width"
   | "--space-feature-grid-container-gap"
   | "--space-feature-grid-icon-container-size"
@@ -1079,6 +1080,7 @@ export type CssVarName =
   | "--space-hover-card-content-width-lg"
   | "--space-hover-card-content-width-md"
   | "--space-hover-card-content-width-sm"
+  | "--space-hover-card-side-offset"
   | "--space-icon-size-lg"
   | "--space-icon-size-md"
   | "--space-icon-size-sm"
@@ -1095,7 +1097,9 @@ export type CssVarName =
   | "--space-label-required-margin-left"
   | "--space-menubar-border-width"
   | "--space-menubar-checkbox-padding"
+  | "--space-menubar-content-align-offset"
   | "--space-menubar-content-min-width"
+  | "--space-menubar-content-side-offset"
   | "--space-menubar-item-icon-size"
   | "--space-menubar-item-indicator-left"
   | "--space-menubar-item-indicator-size"
@@ -1155,6 +1159,7 @@ export type CssVarName =
   | "--space-popover-content-width-lg"
   | "--space-popover-content-width-md"
   | "--space-popover-content-width-sm"
+  | "--space-popover-side-offset"
   | "--space-progress-height"
   | "--space-progress-radius"
   | "--space-radio-border-radius"
@@ -1395,6 +1400,7 @@ export type CssVarName =
   | "--space-tooltip-padding-x"
   | "--space-tooltip-padding-y"
   | "--space-tooltip-radius"
+  | "--space-tooltip-side-offset"
   | "--space-typography-tracking-normal"
   | "--space-typography-tracking-tight"
   | "--space-typography-tracking-tighter"
@@ -2500,6 +2506,7 @@ export declare const cssVars: Readonly<{
   "spaceDropdownMenuSeparatorMarginX": "--space-dropdown-menu-separator-margin-x";
   "spaceDropdownMenuSeparatorMarginY": "--space-dropdown-menu-separator-margin-y";
   "spaceDropdownMenuShortcutLetterSpacing": "--space-dropdown-menu-shortcut-letter-spacing";
+  "spaceDropdownMenuSideOffset": "--space-dropdown-menu-side-offset";
   "spaceFeatureGridBorderWidth": "--space-feature-grid-border-width";
   "spaceFeatureGridContainerGap": "--space-feature-grid-container-gap";
   "spaceFeatureGridIconContainerSize": "--space-feature-grid-icon-container-size";
@@ -2519,6 +2526,7 @@ export declare const cssVars: Readonly<{
   "spaceHoverCardContentWidthLg": "--space-hover-card-content-width-lg";
   "spaceHoverCardContentWidthMd": "--space-hover-card-content-width-md";
   "spaceHoverCardContentWidthSm": "--space-hover-card-content-width-sm";
+  "spaceHoverCardSideOffset": "--space-hover-card-side-offset";
   "spaceIconSizeLg": "--space-icon-size-lg";
   "spaceIconSizeMd": "--space-icon-size-md";
   "spaceIconSizeSm": "--space-icon-size-sm";
@@ -2535,7 +2543,9 @@ export declare const cssVars: Readonly<{
   "spaceLabelRequiredMarginLeft": "--space-label-required-margin-left";
   "spaceMenubarBorderWidth": "--space-menubar-border-width";
   "spaceMenubarCheckboxPadding": "--space-menubar-checkbox-padding";
+  "spaceMenubarContentAlignOffset": "--space-menubar-content-align-offset";
   "spaceMenubarContentMinWidth": "--space-menubar-content-min-width";
+  "spaceMenubarContentSideOffset": "--space-menubar-content-side-offset";
   "spaceMenubarItemIconSize": "--space-menubar-item-icon-size";
   "spaceMenubarItemIndicatorLeft": "--space-menubar-item-indicator-left";
   "spaceMenubarItemIndicatorSize": "--space-menubar-item-indicator-size";
@@ -2595,6 +2605,7 @@ export declare const cssVars: Readonly<{
   "spacePopoverContentWidthLg": "--space-popover-content-width-lg";
   "spacePopoverContentWidthMd": "--space-popover-content-width-md";
   "spacePopoverContentWidthSm": "--space-popover-content-width-sm";
+  "spacePopoverSideOffset": "--space-popover-side-offset";
   "spaceProgressHeight": "--space-progress-height";
   "spaceProgressRadius": "--space-progress-radius";
   "spaceRadioBorderRadius": "--space-radio-border-radius";
@@ -2835,6 +2846,7 @@ export declare const cssVars: Readonly<{
   "spaceTooltipPaddingX": "--space-tooltip-padding-x";
   "spaceTooltipPaddingY": "--space-tooltip-padding-y";
   "spaceTooltipRadius": "--space-tooltip-radius";
+  "spaceTooltipSideOffset": "--space-tooltip-side-offset";
   "spaceTypographyTrackingNormal": "--space-typography-tracking-normal";
   "spaceTypographyTrackingTight": "--space-typography-tracking-tight";
   "spaceTypographyTrackingTighter": "--space-typography-tracking-tighter";

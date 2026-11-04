@@ -325,14 +325,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (276, 1052 and 108 variables)", () => {
+  it("reads all three collections (276, 1058 and 108 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([276, 1052, 108]);
+    ]).toEqual([276, 1058, 108]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {
@@ -425,9 +425,15 @@ describe("inferScopes: the real token files", () => {
       .map((v) => v.name);
     expect([...gapFallback].sort()).toEqual([
       "button.icon-gap",
+      "dropdown-menu.side-offset",
+      "hover-card.side-offset",
+      "menubar.content-align-offset",
+      "menubar.content-side-offset",
       "navigation-menu.trigger.icon-offset-top",
+      "popover.side-offset",
       "sheet.close-button-offset",
       "tabs.trigger.overlap",
+      "tooltip.side-offset",
     ]);
   });
 

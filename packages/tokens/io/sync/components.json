@@ -9057,6 +9057,15 @@
             "Dark": "{border-width.1}"
           }
         },
+        "dropdown-menu.side-offset": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "Gap between the dropdown menu trigger and its content.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
         "menubar.content-z-index": {
           "$type": "number",
           "$value": "{z-index.dropdown}",
@@ -9082,6 +9091,24 @@
           "valuesByMode": {
             "Light": "{border-width.1}",
             "Dark": "{border-width.1}"
+          }
+        },
+        "menubar.content-side-offset": {
+          "$type": "dimension",
+          "$value": "{space.100}",
+          "$description": "Gap between a menubar trigger and its menu.",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
+          }
+        },
+        "menubar.content-align-offset": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "How far a menubar menu is pulled back along the trigger edge, so its content lines up with the trigger text.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
           }
         },
         "navigation-menu.z-index": {
@@ -9156,6 +9183,15 @@
             "Dark": "{border-width.1}"
           }
         },
+        "popover.side-offset": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "Gap between the popover trigger and its content.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
         "hover-card.z-index": {
           "$type": "number",
           "$value": "{z-index.popover}",
@@ -9172,6 +9208,15 @@
           "valuesByMode": {
             "Light": "{border-width.1}",
             "Dark": "{border-width.1}"
+          }
+        },
+        "hover-card.side-offset": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "Gap between the hover card trigger and its content.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
           }
         },
         "toast.viewport.z-index": {
@@ -9217,6 +9262,15 @@
           "valuesByMode": {
             "Light": "{border-width.1}",
             "Dark": "{border-width.1}"
+          }
+        },
+        "tooltip.side-offset": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "Gap between the tooltip trigger and its content.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
           }
         },
         "dialog.overlay-opacity": {

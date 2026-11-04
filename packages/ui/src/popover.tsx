@@ -38,13 +38,16 @@ export interface PopoverContentProps
 const PopoverContent = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps
->(({ className, align = "center", sideOffset = 4, size, ...props }, ref) => (
+>(({ className, align = "center", size, ...props }, ref) => (
   <PopoverPrimitive.Portal>
     <PopoverPrimitive.Content
       ref={ref}
       align={align}
-      sideOffset={sideOffset}
-      className={cn(popoverContentVariants({ size }), className)}
+      className={cn(
+        popoverContentVariants({ size }),
+        "data-[side=bottom]:mt-(--space-popover-side-offset) data-[side=top]:mb-(--space-popover-side-offset) data-[side=left]:mr-(--space-popover-side-offset) data-[side=right]:ml-(--space-popover-side-offset)",
+        className
+      )}
       {...props}
     />
   </PopoverPrimitive.Portal>

@@ -6409,6 +6409,28 @@
         "type": "dimension",
         "variable": "var(--menubar-border-width)",
         "description": "Border width of the menubar."
+      },
+      "menubar-content-side-offset": {
+        "name": "menubarContentSideOffset",
+        "path": [
+          "menubar",
+          "content-side-offset"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--menubar-content-side-offset)",
+        "description": "Gap between a menubar trigger and its menu."
+      },
+      "menubar-content-align-offset": {
+        "name": "menubarContentAlignOffset",
+        "path": [
+          "menubar",
+          "content-align-offset"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--menubar-content-align-offset)",
+        "description": "How far a menubar menu is pulled back along the trigger edge, so its content lines up with the trigger text."
       }
     },
     "navigation": {
@@ -9154,6 +9176,17 @@
         "type": "dimension",
         "variable": "var(--hover-card-border-width)",
         "description": "Border width of the hover card."
+      },
+      "hover-card-side-offset": {
+        "name": "hoverCardSideOffset",
+        "path": [
+          "hover-card",
+          "side-offset"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--hover-card-side-offset)",
+        "description": "Gap between the hover card trigger and its content."
       }
     },
     "pagination": {
@@ -9478,6 +9511,17 @@
         "type": "dimension",
         "variable": "var(--popover-border-width)",
         "description": "Border width of the popover."
+      },
+      "popover-side-offset": {
+        "name": "popoverSideOffset",
+        "path": [
+          "popover",
+          "side-offset"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--popover-side-offset)",
+        "description": "Gap between the popover trigger and its content."
       }
     },
     "progress": {
@@ -11459,6 +11503,17 @@
         "type": "dimension",
         "variable": "var(--tooltip-border-width)",
         "description": "Border width of the tooltip."
+      },
+      "tooltip-side-offset": {
+        "name": "tooltipSideOffset",
+        "path": [
+          "tooltip",
+          "side-offset"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--tooltip-side-offset)",
+        "description": "Gap between the tooltip trigger and its content."
       }
     },
     "select": {
@@ -13675,6 +13730,17 @@
         "type": "dimension",
         "variable": "var(--dropdown-menu-border-width)",
         "description": "Border width of the dropdown menu."
+      },
+      "dropdown-menu-side-offset": {
+        "name": "dropdownMenuSideOffset",
+        "path": [
+          "dropdown-menu",
+          "side-offset"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--dropdown-menu-side-offset)",
+        "description": "Gap between the dropdown menu trigger and its content."
       }
     },
     "card-grid": {
