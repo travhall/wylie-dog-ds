@@ -1,0 +1,346 @@
+{
+  "$comment": "Figma parity check (Plan 216). `names` maps a Figma component name to the code name when they differ after case and spacing are ignored. `aliases` reads a code option as another option before comparing ({ component, property, from, to, reason }). `allow` lists differences that are intended: { component, rule, property?, reason }. Every entry needs a reason; an entry that matches nothing is reported.",
+  "names": {
+    "Radio": "RadioGroup",
+    "Resizable": "ResizablePanelGroup",
+    "Scrollbar": "ScrollArea"
+  },
+  "aliases": [
+    {
+      "component": "Button",
+      "property": "size",
+      "from": "default",
+      "to": "md",
+      "reason": "size=default and size=md use the same tokens in code (the Button story says so); Figma draws md only."
+    }
+  ],
+  "allow": [
+    {
+      "component": "AspectRatio",
+      "rule": "missing-in-figma",
+      "reason": "Layout wrapper with no look of its own; in Figma, aspect-lock a frame."
+    },
+    {
+      "component": "FormCompositions",
+      "rule": "missing-in-figma",
+      "reason": "Story-only pattern built on Form, not a component."
+    },
+    {
+      "component": "FormValidation",
+      "rule": "missing-in-figma",
+      "reason": "Story-only pattern built on Form, not a component."
+    },
+    {
+      "component": "Textarea",
+      "rule": "property-not-in-figma",
+      "property": "resize",
+      "reason": "Behavioural (resize handle); no look at rest."
+    },
+    {
+      "component": "Progress",
+      "rule": "property-not-in-figma",
+      "property": "size",
+      "reason": "sm, md and lg all use the same --space-progress-height, so there is nothing to draw."
+    },
+    {
+      "component": "Card",
+      "rule": "generic-property",
+      "reason": "Single-variant set: Figma needs a property name and code has no visual axis (interactive only adds hover, focus and active)."
+    },
+    {
+      "component": "Carousel",
+      "rule": "generic-property",
+      "reason": "Single-variant set: Figma needs a property name and code has no visual axis."
+    },
+    {
+      "component": "Tooltip",
+      "rule": "generic-property",
+      "reason": "Single-variant set: Figma needs a property name and code has no visual axis."
+    },
+    {
+      "component": "Skeleton",
+      "rule": "options-differ",
+      "property": "variant",
+      "reason": "rectangular has the same radius as default. Figma draws only the looks that differ at rest (builder rule, kept by the owner 2026-11-04)."
+    },
+    {
+      "component": "Skeleton",
+      "rule": "options-differ",
+      "property": "size",
+      "reason": "xl resolves to the same 40px as lg. Figma draws only the looks that differ at rest (builder rule, kept by the owner 2026-11-04)."
+    },
+    {
+      "component": "Skeleton",
+      "rule": "partial-set",
+      "reason": "text/sm is the same box as default/sm; rectangular and xl are not drawn. Figma draws only the looks that differ at rest (builder rule, kept by the owner 2026-11-04)."
+    },
+    {
+      "component": "Page Layout",
+      "rule": "options-differ",
+      "property": "variant",
+      "reason": "full-width matches default at the 960px frame (the container never reaches its max width). Figma draws only the looks that differ at rest (builder rule, kept by the owner 2026-11-04)."
+    },
+    {
+      "component": "Page Layout",
+      "rule": "partial-set",
+      "reason": "centered differs only with no sidebar; full-width is not drawn. Figma draws only the looks that differ at rest (builder rule, kept by the owner 2026-11-04)."
+    },
+    {
+      "component": "Section Features",
+      "rule": "options-differ",
+      "property": "variant",
+      "reason": "grid has the same background and layout as default. Figma draws only the looks that differ at rest (builder rule, kept by the owner 2026-11-04)."
+    },
+    {
+      "component": "Button",
+      "rule": "partial-set",
+      "reason": "disabled is drawn only where it looks different and a story shows it (default, ghost); the other variants share the muted look or have no story. Figma draws only the looks that differ at rest (builder rule, kept by the owner 2026-11-04)."
+    },
+    {
+      "component": "Checkbox",
+      "rule": "partial-set",
+      "reason": "The error border shows only unchecked and never combines with disabled in code."
+    },
+    {
+      "component": "Input",
+      "rule": "state-axis",
+      "reason": "error, success and disabled are mutually exclusive, so one state axis draws them without impossible combinations; code uses the props error, success and the HTML disabled attribute."
+    },
+    {
+      "component": "Textarea",
+      "rule": "state-axis",
+      "reason": "error, success and disabled are mutually exclusive, so one state axis draws them without impossible combinations; code uses the props error, success and the HTML disabled attribute."
+    },
+    {
+      "component": "Select",
+      "rule": "state-axis",
+      "reason": "Mixes Radix open state with disabled; drawn as one axis."
+    },
+    {
+      "component": "Accordion",
+      "rule": "state-axis",
+      "reason": "Code drives open items with value and type, not one boolean."
+    },
+    {
+      "component": "Menubar",
+      "rule": "state-axis",
+      "reason": "Radix open state, drawn as a variant."
+    },
+    {
+      "component": "Navigation Menu",
+      "rule": "state-axis",
+      "reason": "Radix open state and a data-active attribute, drawn as variants."
+    },
+    {
+      "component": "Avatar",
+      "rule": "state-axis",
+      "reason": "image and fallback are child content (AvatarImage, AvatarFallback), not props."
+    },
+    {
+      "component": "Breadcrumb",
+      "rule": "state-axis",
+      "reason": "with-ellipsis is an arrangement of children, not a prop."
+    },
+    {
+      "component": "Calendar",
+      "rule": "state-axis",
+      "reason": "with-selection is data (selected), drawn as a variant."
+    },
+    {
+      "component": "Command",
+      "rule": "state-axis",
+      "reason": "empty and with-results are content, not props."
+    },
+    {
+      "component": "Pagination",
+      "rule": "state-axis",
+      "reason": "with-many-pages is an arrangement of children, not a prop."
+    },
+    {
+      "component": "Table",
+      "rule": "state-axis",
+      "reason": "with-selection and with-footer are arrangements of children, not props."
+    },
+    {
+      "component": "Dialog",
+      "rule": "state-axis",
+      "reason": "with-footer is an arrangement of children (DialogFooter), not a prop."
+    },
+    {
+      "component": "Alert Dialog",
+      "rule": "state-axis",
+      "reason": "destructive is a Button variant inside the dialog, not a prop of the dialog."
+    },
+    {
+      "component": "Context Menu",
+      "rule": "state-axis",
+      "reason": "hover is CSS :hover in code; Figma can only draw it as a variant."
+    },
+    {
+      "component": "Dropdown Menu",
+      "rule": "state-axis",
+      "reason": "hover is CSS :hover in code; Figma can only draw it as a variant."
+    },
+    {
+      "component": "Checkbox",
+      "rule": "inherited-property",
+      "property": "checked",
+      "reason": "Radix Checkbox prop `checked` (true, false or \"indeterminate\"); Figma also folds the separate code prop `error` into this axis."
+    },
+    {
+      "component": "Checkbox",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "Radix and HTML prop `disabled`."
+    },
+    {
+      "component": "Radio",
+      "rule": "inherited-property",
+      "property": "checked",
+      "reason": "State of RadioGroupItem, driven by the RadioGroup `value` (data-state=checked)."
+    },
+    {
+      "component": "Radio",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "Radix prop `disabled` on RadioGroupItem."
+    },
+    {
+      "component": "Slider",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "Radix Slider prop `disabled`."
+    },
+    {
+      "component": "Switch",
+      "rule": "inherited-property",
+      "property": "checked",
+      "reason": "Radix Switch prop `checked`."
+    },
+    {
+      "component": "Switch",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "Radix Switch prop `disabled`."
+    },
+    {
+      "component": "Toggle",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "Radix Toggle prop `disabled`."
+    },
+    {
+      "component": "Toggle",
+      "rule": "inherited-property",
+      "property": "pressed",
+      "reason": "Radix Toggle prop `pressed`."
+    },
+    {
+      "component": "Toggle Group",
+      "rule": "inherited-property",
+      "property": "orientation",
+      "reason": "Radix ToggleGroup prop `orientation`."
+    },
+    {
+      "component": "Scrollbar",
+      "rule": "inherited-property",
+      "property": "orientation",
+      "reason": "ScrollBar prop `orientation` (packages/ui/src/scroll-area.tsx)."
+    },
+    {
+      "component": "Form",
+      "rule": "inherited-property",
+      "property": "required",
+      "reason": "FormField prop `required` (packages/ui/src/form.tsx)."
+    },
+    {
+      "component": "Form",
+      "rule": "property-not-in-figma",
+      "property": "size",
+      "reason": "FormLabel's cva size; Figma Form draws the whole field at the default size."
+    },
+    {
+      "component": "Form",
+      "rule": "property-not-in-figma",
+      "property": "invalid",
+      "reason": "FormLabel's invalid style; the field-level prop `error` is the Figma `error` property."
+    },
+    {
+      "component": "Input",
+      "rule": "property-not-in-figma",
+      "property": "inputState",
+      "reason": "Internal cva key; the public props are error and success, covered by the state axis."
+    },
+    {
+      "component": "Textarea",
+      "rule": "property-not-in-figma",
+      "property": "textareaState",
+      "reason": "Internal cva key; the public props are error and success, covered by the state axis."
+    },
+    {
+      "component": "Sheet",
+      "rule": "property-not-in-figma",
+      "property": "side",
+      "reason": "side only changes which screen edge the panel docks to; drawn on its own the left and right panels look the same (builder rule)."
+    },
+    {
+      "component": "Alert Dialog",
+      "rule": "props-unreadable",
+      "reason": "No props or cva variants in the component's source file (compound or Radix root); compared by name and variant structure only."
+    },
+    {
+      "component": "Carousel",
+      "rule": "props-unreadable",
+      "reason": "No props or cva variants in the component's source file (compound or Radix root); compared by name and variant structure only."
+    },
+    {
+      "component": "Context Menu",
+      "rule": "props-unreadable",
+      "reason": "No props or cva variants in the component's source file (compound or Radix root); compared by name and variant structure only."
+    },
+    {
+      "component": "Dropdown Menu",
+      "rule": "props-unreadable",
+      "reason": "No props or cva variants in the component's source file (compound or Radix root); compared by name and variant structure only."
+    },
+    {
+      "component": "Pagination",
+      "rule": "props-unreadable",
+      "reason": "No props or cva variants in the component's source file (compound or Radix root); compared by name and variant structure only."
+    },
+    {
+      "component": "Table",
+      "rule": "props-unreadable",
+      "reason": "No props or cva variants in the component's source file (compound or Radix root); compared by name and variant structure only."
+    },
+    {
+      "component": "Tooltip",
+      "rule": "props-unreadable",
+      "reason": "No props or cva variants in the component's source file (compound or Radix root); compared by name and variant structure only."
+    },
+    {
+      "component": "Button",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "HTML attribute `disabled` on the button element."
+    },
+    {
+      "component": "Collapsible",
+      "rule": "inherited-property",
+      "property": "open",
+      "reason": "Radix Collapsible prop `open`."
+    },
+    {
+      "component": "Form",
+      "rule": "property-not-in-code",
+      "property": "error",
+      "reason": "FormField prop `error` (packages/ui/src/form.tsx); the manifest lists no props for the Form root."
+    },
+    {
+      "component": "Select",
+      "rule": "property-not-in-figma",
+      "property": "error",
+      "reason": "Figma draws the code's `error` prop as state=error, next to open and disabled."
+    }
+  ]
+}

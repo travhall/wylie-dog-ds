@@ -1,5 +1,10 @@
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
+import {
+  TOKEN_TYPE_CONFIG,
+  cssVariableName,
+  effectiveCssType,
+} from "./lib/css-variable.js";
 
 await register(StyleDictionary);
 
@@ -102,58 +107,6 @@ StyleDictionary.registerTransformGroup({
 });
 
 /**
- * Token type → CSS variable configuration
- * Maps token types to their CSS variable prefix and any path prefixes to strip
- */
-const TOKEN_TYPE_CONFIG = {
-  color: {
-    prefix: "color",
-    stripPrefixes: ["color-"],
-  },
-  spacing: {
-    prefix: "space",
-    stripPrefixes: ["space-"],
-    // Special handling for border tokens within spacing type
-    specialCases: {
-      "border-radius-": { prefix: "border-radius" },
-      "border-width-": { prefix: "border-width" },
-    },
-  },
-  dimension: {
-    prefix: "space",
-    stripPrefixes: [],
-    specialCases: {
-      "border-radius-": { prefix: "border-radius" },
-      "border-width-": { prefix: "border-width" },
-    },
-  },
-  fontSize: {
-    prefix: "font-size",
-    stripPrefixes: ["typography-font-size-"],
-  },
-  fontWeight: {
-    prefix: "font-weight",
-    stripPrefixes: ["typography-font-weight-"],
-  },
-  lineHeight: {
-    prefix: "line-height",
-    stripPrefixes: ["typography-line-height-"],
-  },
-  duration: {
-    prefix: "duration",
-    stripPrefixes: ["transition-duration-", "duration-"],
-  },
-  shadow: {
-    prefix: "shadow",
-    stripPrefixes: ["shadow-"],
-  },
-  fontFamily: {
-    prefix: null, // Handled specially with contract pattern
-    stripPrefixes: [],
-  },
-};
-
-/**
  * Font family contract pattern values
  */
 const FONT_FAMILY_CONTRACTS = {
@@ -163,32 +116,16 @@ const FONT_FAMILY_CONTRACTS = {
 };
 
 /**
- * Generate CSS variable name and value for a token
+ * Generate CSS variable name and value for a token. The name comes from
+ * lib/css-variable.js, which scripts/generate-code-syntax.mjs also uses.
  */
 function generateCSSVariable(token, name) {
-  // 'number' type tokens whose name contains 'font-weight' follow the
-  // fontWeight naming convention. Figma Variables doesn't support the W3C
-  // 'fontWeight' type natively, so these tokens use 'number' in the sync
-  // source but must still generate --font-weight-* CSS variables.
-  const effectiveType =
-    token.$type === "number" && name.includes("font-weight")
-      ? "fontWeight"
-      : token.$type === "number" && name.includes("line-height")
-        ? "lineHeight"
-        : token.$type === "number" && name.includes("font-size")
-          ? "fontSize"
-          : token.$type;
-
-  const config = TOKEN_TYPE_CONFIG[effectiveType];
-
-  if (!config) {
-    // Unknown type - use generic naming
-    return { varName: `--${name}`, value: token.$value };
-  }
-
-  let cleanName = name;
-  let prefix = config.prefix;
+  const effectiveType = effectiveCssType(token, name);
+  const varName = cssVariableName(token, name);
   let value = token.$value;
+
+  // Unknown type: generic naming, value untouched
+  if (!TOKEN_TYPE_CONFIG[effectiveType]) return { varName, value };
 
   // number-typed line-height tokens store values as percentage integers
   // (e.g. 100 = 100%). Convert to unitless decimal for CSS (÷ 100).
@@ -207,25 +144,6 @@ function generateCSSVariable(token, name) {
     throw new Error(`Font size ${name} reached the CSS output as a bare number`);
   }
 
-  // Check for special cases first (e.g., border-radius within spacing type)
-  if (config.specialCases) {
-    for (const [pattern, override] of Object.entries(config.specialCases)) {
-      if (name.startsWith(pattern)) {
-        cleanName = name.replace(new RegExp(`^${pattern}`), "");
-        prefix = override.prefix;
-        return { varName: `--${prefix}-${cleanName}`, value };
-      }
-    }
-  }
-
-  // Strip known prefixes to avoid double-prefixing
-  for (const stripPrefix of config.stripPrefixes) {
-    if (cleanName.startsWith(stripPrefix)) {
-      cleanName = cleanName.slice(stripPrefix.length);
-      break;
-    }
-  }
-
   // Handle font family contract pattern
   if (token.$type === "fontFamily") {
     for (const [fontType, contractValue] of Object.entries(
@@ -236,10 +154,9 @@ function generateCSSVariable(token, name) {
         break;
       }
     }
-    return { varName: `--${name}`, value };
   }
 
-  return { varName: `--${prefix}-${cleanName}`, value };
+  return { varName, value };
 }
 
 // Register format for tiered token emission

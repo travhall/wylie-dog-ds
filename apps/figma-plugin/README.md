@@ -199,6 +199,14 @@ Not in this plan: **effect styles** (phase 2, its own plan; owner decision: bind
 
 Unverified until the owner runs it: Token Bridge cannot be run inside Figma from the repo, so style creation, the variable bindings and the shared plugin data are covered by unit tests with a mocked `figma` only.
 
+### Code syntax on variables
+
+Dev Mode shows a variable's **code syntax** next to it, so a designer reads `var(--space-button-padding-x-md)` instead of `button/padding-x/md`. On every Pull Token Bridge sets the WEB syntax on each variable the repo's file names.
+
+The repo holds the names: `packages/tokens/io/code-syntax/web.json`, token path to `var(--name)` (1,396 today). It is generated, never written by hand and never pushed: `pnpm generate:code-syntax` derives it from `io/sync` with the same function the Style Dictionary build uses for the CSS names (`packages/tokens/lib/css-variable.js`), and `pnpm check:tokens` fails when the file is stale or names a variable the built CSS does not declare. Token Bridge works no name out itself.
+
+On Pull the plugin reads `<token folder>/../code-syntax/web.json` from the pulled branch, best effort: a missing or unreadable file skips code syntax and never blocks or changes the review. After the import lands it sets the syntax on the matching variables, changing only those that differ, and the success message says how many it set. The review does not list code syntax changes. Behaviour inside Figma is unverified.
+
 ### Text styles follow their tokens
 
 Because a variable cannot hold a percent, a text style records which tokens drive it and Pull keeps it in line (plan 205). Decisions (owner, 2026-10-25):

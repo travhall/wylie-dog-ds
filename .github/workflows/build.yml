@@ -68,6 +68,13 @@ jobs:
       - name: Build All Packages
         run: pnpm build
 
+      # Advisory (Plan 216): compares the Figma library snapshot with the built Storybook
+      # manifest. A failure shows in the run but does not fail the build; make it blocking
+      # by removing continue-on-error once refreshing the snapshot is routine.
+      - name: Figma parity (advisory)
+        run: pnpm check:figma-parity
+        continue-on-error: true
+
       - name: Check for Build Artifacts
         run: |
           echo "Checking for build artifacts..."

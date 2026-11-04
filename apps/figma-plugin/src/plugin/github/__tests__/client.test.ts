@@ -707,3 +707,75 @@ describe("GitHubClient.fetchTextStyleDefinitions (plan 206)", () => {
     expect(await client.listFiles()).toEqual(["primitive.json"]);
   });
 });
+
+describe("GitHubClient.fetchCodeSyntax (plan 216)", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  const file = {
+    platform: "WEB",
+    syntax: { "button.padding-x.md": "var(--space-button-padding-x-md)" },
+  };
+
+  it("keeps the file next to the token folder, not inside it", () => {
+    expect(
+      makeClient({ tokenPath: "packages/tokens/io/sync" }).codeSyntaxPath()
+    ).toBe("packages/tokens/io/code-syntax/web.json");
+    expect(makeClient({ tokenPath: "tokens" }).codeSyntaxPath()).toBe(
+      "code-syntax/web.json"
+    );
+  });
+
+  it("reads and parses the file from the pulled branch", async () => {
+    const client = makeClient({ tokenPath: "packages/tokens/io/sync" });
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify(file),
+    });
+    const result = await client.fetchCodeSyntax();
+    expect(mockFetch).toHaveBeenCalledWith(
+      "https://raw.githubusercontent.com/wylie-dog/design-tokens/main/packages/tokens/io/code-syntax/web.json"
+    );
+    expect(result).toEqual({ status: "found", syntax: file.syntax });
+  });
+
+  it("treats a missing file as absent and other failures as errors", async () => {
+    const client = makeClient();
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      status: 404,
+      text: async () => "",
+    });
+    expect(await client.fetchCodeSyntax()).toEqual({ status: "absent" });
+
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      status: 500,
+      text: async () => "",
+    });
+    expect(await client.fetchCodeSyntax()).toMatchObject({
+      status: "error",
+      error: expect.stringContaining("HTTP 500"),
+    });
+
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({ platform: "ANDROID", syntax: {} }),
+    });
+    expect(await client.fetchCodeSyntax()).toMatchObject({
+      status: "error",
+      error: expect.stringContaining("not a WEB code syntax file"),
+    });
+  });
+
+  it("is never listed as a token file", async () => {
+    const client = makeClient({ tokenPath: "packages/tokens/io/sync" });
+    mockOctokit.repos.getContent.mockResolvedValue({
+      data: [{ type: "file", name: "primitive.json" }],
+    });
+    expect(await client.listFiles()).toEqual(["primitive.json"]);
+  });
+});
