@@ -12,6 +12,9 @@
 //   but Figma binds both properties as pixels, so LINE_HEIGHT would give a
 //   100px line height and LETTER_SPACING -0.05px. Figma shows them as percent
 //   text-style properties generated from the tokens (figma-gateway.md).
+// - opacity is hidden (Plan 217, owner decision): the tokens are fractions (0.7)
+//   but a bound opacity variable is read as a percent, so 0.7 would draw at
+//   0.7%. The builder sets the number instead of binding it.
 // - primitive colors (color.blue.600) are hidden: designers bind semantic and
 //   component variables, not the raw palette.
 // - z-index, duration, easing, shadow value strings and the semantic focus
@@ -236,7 +239,8 @@ function inferScopesFromName(tokenName: string): string[] | null {
   if (name.includes("tracking") || name.includes("letter-spacing")) {
     return [];
   }
-  if (name.includes("opacity")) return ["OPACITY"];
+  // Fractions (0.7), but Figma reads a bound opacity as a percent: 0.7 becomes 0.7%
+  if (name.includes("opacity")) return [];
   if (name.includes("z-index")) return [];
   // The focus indicator is sized in code, not by a layer property
   if (/^focus[./]/.test(name)) return [];

@@ -116,7 +116,7 @@ describe("importer applies scopes", () => {
     expect(scopes).toEqual({
       "typography/line-height/tight": [],
       "z-index/10": [],
-      "opacity/50": ["OPACITY"],
+      "opacity/50": [],
       "typography/font-size/base": ["FONT_SIZE"],
       "color/blue/600": [],
     });
