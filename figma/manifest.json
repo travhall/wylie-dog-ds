@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-04T17:05:00.000Z",
+  "generatedAt": "2026-11-04T20:20:35.820Z",
   "count": 48,
   "components": [
     {
@@ -68,7 +68,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg", "xl"]
+          "options": ["md", "sm", "lg", "xl"]
         },
         "state": {
           "type": "VARIANT",
@@ -90,7 +90,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         },
         "variant": {
           "type": "VARIANT",
@@ -134,6 +134,10 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-button--docs"
       ],
       "properties": {
+        "children": {
+          "type": "TEXT",
+          "default": "Button"
+        },
         "disabled": {
           "type": "VARIANT",
           "default": "false",
@@ -142,7 +146,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg", "icon"]
+          "options": ["md", "sm", "lg", "icon"]
         },
         "variant": {
           "type": "VARIANT",
@@ -189,6 +193,22 @@
           "type": "VARIANT",
           "default": "Default",
           "options": ["Default"]
+        },
+        "content": {
+          "type": "TEXT",
+          "default": "Card content goes here."
+        },
+        "description": {
+          "type": "TEXT",
+          "default": "Card description text"
+        },
+        "footer": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "title": {
+          "type": "TEXT",
+          "default": "Card Title"
         }
       },
       "variantCount": 1,
@@ -249,7 +269,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         }
       },
       "variantCount": 21,
@@ -317,7 +337,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg", "xl", "full"]
+          "options": ["md", "sm", "lg", "xl", "full"]
         },
         "state": {
           "type": "VARIANT",
@@ -395,7 +415,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         }
       },
       "variantCount": 3,
@@ -412,7 +432,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         },
         "state": {
           "type": "VARIANT",
@@ -444,7 +464,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         }
       },
       "variantCount": 12,
@@ -534,7 +554,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         }
       },
       "variantCount": 3,
@@ -578,7 +598,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         }
       },
       "variantCount": 12,
@@ -629,7 +649,7 @@
         "columns": {
           "type": "VARIANT",
           "default": "3",
-          "options": ["2", "3", "4"]
+          "options": ["3", "2", "4"]
         },
         "variant": {
           "type": "VARIANT",
@@ -668,12 +688,12 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         },
         "state": {
           "type": "VARIANT",
           "default": "closed",
-          "options": ["closed", "open", "disabled", "error"]
+          "options": ["closed", "open", "error", "disabled"]
         }
       },
       "variantCount": 12,
@@ -707,7 +727,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         }
       },
       "variantCount": 3,
@@ -812,7 +832,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         }
       },
       "variantCount": 12,
@@ -846,7 +866,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         }
       },
       "variantCount": 3,
@@ -863,7 +883,7 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["sm", "md", "lg"]
+          "options": ["md", "sm", "lg"]
         },
         "state": {
           "type": "VARIANT",
@@ -912,7 +932,7 @@
         "size": {
           "type": "VARIANT",
           "default": "default",
-          "options": ["sm", "default", "lg"]
+          "options": ["default", "sm", "lg"]
         },
         "variant": {
           "type": "VARIANT",
