@@ -2,6 +2,48 @@
 @import "tailwindcss";
 
 /*
+ * The showcase renders the design system's own scales (Plan 217, owner decision): Tailwind's
+ * named type, leading, tracking and radius scales are pointed at the token variables, so
+ * `text-sm`, `leading-tight`, `tracking-wide` and `rounded-md` read the tokens with no class
+ * edits. Weight and shadow already coincide by name (--font-weight-*, --shadow-*). Spacing
+ * and border widths stay on Tailwind's steps, which are the token scale by value. The
+ * rounded-* utilities therefore follow the system's radius scale (sm 2px, md 4px, lg 8px,
+ * xl 12px), not Tailwind's. Guarded by scripts/check-showcase-theme.mjs.
+ */
+@theme inline {
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+  --text-6xl: var(--font-size-6xl);
+
+  --leading-none: var(--line-height-none);
+  --leading-tight: var(--line-height-tight);
+  --leading-snug: var(--line-height-snug);
+  --leading-normal: var(--line-height-normal);
+  --leading-relaxed: var(--line-height-relaxed);
+  --leading-loose: var(--line-height-loose);
+
+  --tracking-tighter: var(--space-typography-tracking-tighter);
+  --tracking-tight: var(--space-typography-tracking-tight);
+  --tracking-normal: var(--space-typography-tracking-normal);
+  --tracking-wide: var(--space-typography-tracking-wide);
+  --tracking-wider: var(--space-typography-tracking-wider);
+  --tracking-widest: var(--space-typography-tracking-widest);
+
+  --radius-sm: var(--border-radius-sm);
+  --radius-md: var(--border-radius-md);
+  --radius-lg: var(--border-radius-lg);
+  --radius-xl: var(--border-radius-xl);
+  --radius-2xl: var(--border-radius-2xl);
+}
+
+/*
  * Brand fonts are self-hosted through @fontsource (imported in layout.tsx), so the
  * build never fetches from Google. The design system reads these three variables.
  */
