@@ -138,19 +138,20 @@ On every import the plugin sets `hiddenFromPublishing` from the collection name 
 
 Scopes decide which pickers (fill, text fill, stroke, font size, opacity...) list a variable. A variable left on `ALL_SCOPES` appears in every picker of its type, so every variable gets a scope. They are inferred from the token name by `src/plugin/variables/scopes.ts` and re-applied on every import, so importing or pulling updates scopes on variables that already exist.
 
-| Token                                                                                                                                | Scopes                         |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
-| `color.background.*`                                                                                                                 | `FRAME_FILL`, `SHAPE_FILL`     |
-| `color.foreground.*`                                                                                                                 | `TEXT_FILL`, `SHAPE_FILL`      |
-| `color.border.*`                                                                                                                     | `STROKE_COLOR`                 |
-| `color.focus.ring`, `color.focus.halo`                                                                                               | `STROKE_COLOR`, `EFFECT_COLOR` |
-| Component, name contains `background`, `fill`, `track`, `thumb`, `indicator` or `overlay`                                            | `FRAME_FILL`, `SHAPE_FILL`     |
-| Component, name contains `text`, `label`, `foreground`, `placeholder`, `link` or `icon`                                              | `TEXT_FILL`, `SHAPE_FILL`      |
-| Component, name contains `border`, `ring`, `outline` or `stroke`                                                                     | `STROKE_COLOR`                 |
-| Primitive colors (`color.blue.600`): bound through semantic and component variables, not directly                                    | none (hidden)                  |
-| Component name without a property word (`select.trigger-open`, a bare `color`, `ring-offset`): 49 variables, ambiguous until renamed | `ALL_SCOPES`                   |
+| Token                                                                                                                                                                                               | Scopes                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `color.background.*`                                                                                                                                                                                | `FRAME_FILL`, `SHAPE_FILL`     |
+| `color.foreground.*`                                                                                                                                                                                | `TEXT_FILL`, `SHAPE_FILL`      |
+| `color.border.*`                                                                                                                                                                                    | `STROKE_COLOR`                 |
+| `color.focus.ring`, `color.focus.halo`                                                                                                                                                              | `STROKE_COLOR`, `EFFECT_COLOR` |
+| Component, name contains `background`, `fill`, `track`, `thumb`, `indicator`, `overlay`, `range`, `separator`, `handle` or `gradient`                                                               | `FRAME_FILL`, `SHAPE_FILL`     |
+| Component, no property word, only a state word (`hover`, `pressed`, `selected`, `highlighted`, `active`, `open`, `disabled`)                                                                        | `FRAME_FILL`, `SHAPE_FILL`     |
+| Component, name contains `text`, `label`, `foreground`, `placeholder`, `link`, `icon`, `title`, `description`, `caption`, `shortcut`, `heading`, `empty`, `current`, `error`, `required` or `close` | `TEXT_FILL`, `SHAPE_FILL`      |
+| Component, name contains `border`, `ring`, `outline` or `stroke`                                                                                                                                    | `STROKE_COLOR`                 |
+| Primitive colors (`color.blue.600`): bound through semantic and component variables, not directly                                                                                                   | none (hidden)                  |
+| Component name that no rule matches (`select.trigger-focus`, `ring-offset`): none in the real tokens; `scopes.test.ts` fails if one appears                                                         | `ALL_SCOPES`                   |
 
-For component tokens the last name segment is read first (`background-hover`), then earlier ones.
+For component tokens the last name segment is read first (`background-hover`), then earlier ones. A state word counts only when no segment has a property word, so `label.disabled-color` is text and `calendar.day-hover` a fill. A bare `color` segment takes its scope from the part before it: a border is a stroke (`checkbox.border.color`), a title or content is text (`card.header.title.color`), a separator is a fill (`separator.color`).
 
 Non-color variables are scoped by the property word in the name, whatever their `$type` (font size, weight, line height, opacity and z-index are typed `number` on purpose, for Figma Variables compatibility):
 
