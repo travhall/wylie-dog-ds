@@ -107,11 +107,16 @@ export const RULES = {
       "Allow-list it when the combinations look the same or do not exist in code (for example disabled where nothing changes).",
     ],
   },
+  "content-property-not-in-code": {
+    title: "Text, boolean or swap property with no code twin",
+    ways: [
+      "Rename the Figma property to the code prop it mirrors (`children`, or a prop the component declares).",
+      "Allow-list it with a reason when code has no such prop (a compound part such as CardTitle, an icon passed as a child).",
+    ],
+  },
   "no-description": {
     title: "No component description",
-    ways: [
-      "Plan 216 Phase E fills it from the story description.",
-    ],
+    ways: ["Plan 216 Phase E fills it from the story description."],
   },
   "description-differs": {
     title: "Description differs from the story",
@@ -125,14 +130,26 @@ export const RULES = {
   },
   "doc-link-differs": {
     title: "Documentation link differs from the Storybook page",
-    ways: ["Set the Figma documentation link to the component's Storybook docs page."],
+    ways: [
+      "Set the Figma documentation link to the component's Storybook docs page.",
+    ],
   },
 };
 
 // Props the manifest does not list because components inherit them (HTML attributes, Radix).
-const INHERITED_HINT = new Set(["disabled", "checked", "pressed", "required", "orientation", "open"]);
+const INHERITED_HINT = new Set([
+  "disabled",
+  "checked",
+  "pressed",
+  "required",
+  "orientation",
+  "open",
+]);
 
-export const norm = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
+export const norm = (s) =>
+  String(s)
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
 
 const unquote = (s) => String(s).replace(/^["']|["']$/g, "");
 
@@ -154,14 +171,14 @@ export function defaultVariantsOf(source) {
   return out;
 }
 
-
 // Text between the braces that open at `open` (the index of "{"), skipping strings and comments.
 function braceBody(source, open) {
   let depth = 0;
   for (let i = open; i < source.length; i++) {
     const ch = source[i];
     if (ch === '"' || ch === "'" || ch === "`") {
-      for (i++; i < source.length && source[i] !== ch; i++) if (source[i] === "\\") i++;
+      for (i++; i < source.length && source[i] !== ch; i++)
+        if (source[i] === "\\") i++;
     } else if (ch === "/" && source[i + 1] === "/") {
       while (i < source.length && source[i] !== "\n") i++;
     } else if (ch === "/" && source[i + 1] === "*") {
@@ -190,7 +207,8 @@ function splitEntries(body) {
     for (; j < body.length; j++) {
       const ch = body[j];
       if (ch === '"' || ch === "'" || ch === "`") {
-        for (j++; j < body.length && body[j] !== ch; j++) if (body[j] === "\\") j++;
+        for (j++; j < body.length && body[j] !== ch; j++)
+          if (body[j] === "\\") j++;
       } else if ("({[".includes(ch)) nest++;
       else if (")}]".includes(ch)) nest--;
       else if (ch === "," && nest === 0) break;
@@ -250,7 +268,8 @@ export function readCodeComponents(manifest, readSource = () => "") {
 }
 
 const sameSet = (a, b) =>
-  a.length === b.length && [...a].sort().join("\u0000") === [...b].sort().join("\u0000");
+  a.length === b.length &&
+  [...a].sort().join("\u0000") === [...b].sort().join("\u0000");
 
 // An alias says a code option is the same thing as another option (Button size "default" is "md"):
 // the code option and default are read as the target before they are compared.
@@ -258,7 +277,8 @@ function applyAliases(cp, component, prop, aliases) {
   let { options, default: def } = cp;
   for (const a of aliases) {
     if (norm(a.component) !== norm(component) || a.property !== prop) continue;
-    if (options) options = [...new Set(options.map((o) => (o === a.from ? a.to : o)))];
+    if (options)
+      options = [...new Set(options.map((o) => (o === a.from ? a.to : o)))];
     if (def === a.from) def = a.to;
   }
   return { options, default: def };
@@ -307,8 +327,21 @@ export function compare(codeMap, figma, config = {}, docs = null) {
       });
     }
     for (const [prop, p] of Object.entries(fig.properties)) {
-      if (p.type !== "VARIANT") continue;
-      if (unreadable && prop !== "state" && !/^Property \d+$/.test(prop)) continue;
+      if (p.type !== "VARIANT") {
+        // Plan 217 phase J: TEXT, BOOLEAN and INSTANCE_SWAP mirror code props. `children`
+        // is every component's content prop and is never listed by the docgen.
+        if (prop === "children" || code.props[prop]) continue;
+        add({
+          rule: "content-property-not-in-code",
+          component: name,
+          property: prop,
+          figma: `${prop} (${p.type})`,
+          detail: `${p.type} property "${prop}" is not a prop in code`,
+        });
+        continue;
+      }
+      if (unreadable && prop !== "state" && !/^Property \d+$/.test(prop))
+        continue;
       if (/^Property \d+$/.test(prop)) {
         add({
           rule: "generic-property",
@@ -334,7 +367,9 @@ export function compare(codeMap, figma, config = {}, docs = null) {
       cp = cp && applyAliases(cp, name, prop, config.aliases ?? []);
       if (!cp) {
         add({
-          rule: INHERITED_HINT.has(prop) ? "inherited-property" : "property-not-in-code",
+          rule: INHERITED_HINT.has(prop)
+            ? "inherited-property"
+            : "property-not-in-code",
           component: name,
           property: prop,
           figma: p.options.join(" / "),
@@ -397,7 +432,11 @@ export function compare(codeMap, figma, config = {}, docs = null) {
     }
     const expected = docs?.get(key);
     if (!fig.description) {
-      add({ rule: "no-description", component: name, detail: "empty description" });
+      add({
+        rule: "no-description",
+        component: name,
+        detail: "empty description",
+      });
     } else if (expected && fig.description !== expected.description) {
       add({
         rule: "description-differs",
@@ -408,7 +447,11 @@ export function compare(codeMap, figma, config = {}, docs = null) {
       });
     }
     if (!fig.documentationLinks?.length) {
-      add({ rule: "no-doc-link", component: name, detail: "no documentation link" });
+      add({
+        rule: "no-doc-link",
+        component: name,
+        detail: "no documentation link",
+      });
     } else if (expected && fig.documentationLinks[0] !== expected.url) {
       add({
         rule: "doc-link-differs",
@@ -440,13 +483,21 @@ export function compare(codeMap, figma, config = {}, docs = null) {
 function lastUiChange() {
   try {
     // A shallow clone (CI) has no history to date the change by.
-    const shallow = execFileSync("git", ["rev-parse", "--is-shallow-repository"], {
-      encoding: "utf8",
-    }).trim();
+    const shallow = execFileSync(
+      "git",
+      ["rev-parse", "--is-shallow-repository"],
+      {
+        encoding: "utf8",
+      }
+    ).trim();
     if (shallow === "true") return "";
-    return execFileSync("git", ["log", "-1", "--format=%cI", "--", "packages/ui/src"], {
-      encoding: "utf8",
-    }).trim();
+    return execFileSync(
+      "git",
+      ["log", "-1", "--format=%cI", "--", "packages/ui/src"],
+      {
+        encoding: "utf8",
+      }
+    ).trim();
   } catch {
     return "";
   }
@@ -481,10 +532,15 @@ export function renderReport(result, figma, stale) {
     for (const w of RULES[rule].ways) lines.push(`- ${w}`);
     lines.push("");
     if (["no-description", "no-doc-link"].includes(rule)) {
-      lines.push(`${all.length} components: ${all.map((f) => f.component).join(", ")}.`);
+      lines.push(
+        `${all.length} components: ${all.map((f) => f.component).join(", ")}.`
+      );
       continue;
     }
-    lines.push("| Component | Property | Code | Figma | Note |", "| --- | --- | --- | --- | --- |");
+    lines.push(
+      "| Component | Property | Code | Figma | Note |",
+      "| --- | --- | --- | --- | --- |"
+    );
     for (const f of all) {
       lines.push(
         `| ${f.component} | ${f.property ?? ""} | ${f.code ?? ""} | ${f.figma ?? ""} | ${f.allowed ? `allowed: ${f.allowed}` : f.detail} |`
@@ -494,7 +550,9 @@ export function renderReport(result, figma, stale) {
   if (result.staleAllow.length) {
     lines.push("", "## Allow-list entries that match nothing", "");
     for (const a of result.staleAllow)
-      lines.push(`- ${a.component} / ${a.rule}${a.property ? ` / ${a.property}` : ""}: ${a.reason}`);
+      lines.push(
+        `- ${a.component} / ${a.rule}${a.property ? ` / ${a.property}` : ""}: ${a.reason}`
+      );
   }
   return lines.join("\n") + "\n";
 }
@@ -554,7 +612,9 @@ function main() {
       `WARNING: the Figma snapshot (${figma.generatedAt}) is older than the last change to packages/ui/src (${last}).`
     );
   for (const a of result.staleAllow)
-    console.log(`WARNING: allow-list entry matches nothing: ${a.component} / ${a.rule}`);
+    console.log(
+      `WARNING: allow-list entry matches nothing: ${a.component} / ${a.rule}`
+    );
 
   if (argv.includes("--report")) {
     fs.mkdirSync(path.dirname(DEFAULTS.report), { recursive: true });
