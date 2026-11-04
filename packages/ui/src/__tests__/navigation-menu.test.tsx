@@ -9,6 +9,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuContent,
   NavigationMenuLink,
+  navigationMenuLinkStyle,
 } from "../navigation-menu";
 
 expect.extend(toHaveNoViolations);
@@ -276,6 +277,37 @@ describe("NavigationMenu", () => {
         const content = screen.getByText("Content").parentElement;
         expect(content).toHaveClass("custom-content");
       });
+    });
+  });
+
+  describe("navigationMenuLinkStyle", () => {
+    it("pads and rounds a content link from the link tokens", () => {
+      expect(navigationMenuLinkStyle).toContain(
+        "px-(--space-navigation-menu-link-padding-x)"
+      );
+      expect(navigationMenuLinkStyle).toContain(
+        "py-(--space-navigation-menu-link-padding-y)"
+      );
+      expect(navigationMenuLinkStyle).toContain(
+        "rounded-(--space-navigation-menu-link-radius)"
+      );
+    });
+
+    it("applies to a link and keeps its hover fill", () => {
+      render(
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/x" className={navigationMenuLinkStyle}>
+                Row
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      );
+      expect(screen.getByText("Row")).toHaveClass(
+        "hover:bg-(--color-navigation-background-hover)"
+      );
     });
   });
 

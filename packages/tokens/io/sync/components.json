@@ -9453,6 +9453,33 @@
             "Dark": "{space.010}"
           }
         },
+        "navigation-menu.link-padding-x": {
+          "$type": "spacing",
+          "$value": "{space.150}",
+          "$description": "Horizontal padding of a link inside an open navigation menu.",
+          "valuesByMode": {
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
+        "navigation-menu.link-padding-y": {
+          "$type": "spacing",
+          "$value": "{space.150}",
+          "$description": "Vertical padding of a link inside an open navigation menu.",
+          "valuesByMode": {
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
+        "navigation-menu.link-radius": {
+          "$type": "dimension",
+          "$value": "{border-radius.md}",
+          "$description": "Corner radius of a link inside an open navigation menu.",
+          "valuesByMode": {
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
+          }
+        },
         "progress.indicator-duration": {
           "$type": "duration",
           "$value": "{transition.duration.slow}",

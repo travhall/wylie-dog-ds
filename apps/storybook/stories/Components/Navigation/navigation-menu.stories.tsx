@@ -9,6 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
+  navigationMenuLinkStyle,
 } from "@wyliedog/ui/navigation-menu";
 import { cn } from "@wyliedog/ui/lib/utils";
 import { Button } from "@wyliedog/ui/button";
@@ -182,10 +183,7 @@ const ListItem = React.forwardRef<
       <NavigationMenuLink asChild>
         <a
           ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-current/5 hover:text-current focus:bg-current/5 focus:text-current",
-            className
-          )}
+          className={cn("space-y-1", navigationMenuLinkStyle, className)}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>

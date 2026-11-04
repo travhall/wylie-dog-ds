@@ -1161,6 +1161,9 @@
   --duration-navigation-menu-indicator-duration: 250ms;
   --space-navigation-menu-border-width: 1px;
   --space-navigation-menu-trigger-icon-offset-top: 0.0625rem;
+  --space-navigation-menu-link-padding-x: 0.75rem;
+  --space-navigation-menu-link-padding-y: 0.75rem;
+  --space-navigation-menu-link-radius: 0.25rem;
   --duration-progress-indicator-duration: 400ms;
   --duration-sheet-content-duration-open: 500ms;
   --duration-sheet-content-duration-closed: 300ms;

@@ -495,7 +495,9 @@ export const spacing = {
   "handle-hit-size": "0.25rem",
   "handle-line-width": "1px",
   "native-icon-size": "1rem",
-  "trigger-icon-offset-top": "0.0625rem"
+  "trigger-icon-offset-top": "0.0625rem",
+  "link-padding-x": "0.75rem",
+  "link-padding-y": "0.75rem"
 };
 
 export const shadow = {

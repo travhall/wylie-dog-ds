@@ -14396,6 +14396,39 @@
         "type": "dimension",
         "variable": "var(--navigation-menu-trigger-icon-offset-top)",
         "description": "Downward nudge of the trigger chevron so it sits on the text baseline."
+      },
+      "navigation-menu-link-padding-x": {
+        "name": "navigationMenuLinkPaddingX",
+        "path": [
+          "navigation-menu",
+          "link-padding-x"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--navigation-menu-link-padding-x)",
+        "description": "Horizontal padding of a link inside an open navigation menu."
+      },
+      "navigation-menu-link-padding-y": {
+        "name": "navigationMenuLinkPaddingY",
+        "path": [
+          "navigation-menu",
+          "link-padding-y"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--navigation-menu-link-padding-y)",
+        "description": "Vertical padding of a link inside an open navigation menu."
+      },
+      "navigation-menu-link-radius": {
+        "name": "navigationMenuLinkRadius",
+        "path": [
+          "navigation-menu",
+          "link-radius"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--navigation-menu-link-radius)",
+        "description": "Corner radius of a link inside an open navigation menu."
       }
     },
     "toggle-group": {

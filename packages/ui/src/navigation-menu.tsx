@@ -47,6 +47,16 @@ const navigationMenuTriggerStyle = cn(
   "data-[active]:bg-(--color-navigation-active) data-[state=open]:bg-(--color-navigation-open)"
 );
 
+// A link inside an open menu: a padded row with the trigger's hover, highlight and
+// active fills. Opt in by class, like navigationMenuTriggerStyle for top-level links.
+const navigationMenuLinkStyle = cn(
+  "block select-none rounded-(--space-navigation-menu-link-radius) px-(--space-navigation-menu-link-padding-x) py-(--space-navigation-menu-link-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) text-(--color-navigation-content-text) no-underline transition-colors",
+  "hover:bg-(--color-navigation-background-hover) hover:text-(--color-navigation-text-hover)",
+  "focus:bg-(--color-navigation-highlighted) focus:text-(--color-navigation-text-highlighted)",
+  focusRingClasses,
+  "data-[active]:bg-(--color-navigation-active)"
+);
+
 const NavigationMenuTrigger = React.forwardRef<
   React.ComponentRef<typeof NavigationMenuPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
@@ -120,6 +130,7 @@ NavigationMenuIndicator.displayName =
 
 export {
   navigationMenuTriggerStyle,
+  navigationMenuLinkStyle,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
