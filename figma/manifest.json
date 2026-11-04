@@ -1,0 +1,1009 @@
+{
+  "schema": 1,
+  "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
+  "file": "Wylie Dog Design System",
+  "page": "Components",
+  "generatedAt": "2026-11-04T16:16:35.000Z",
+  "count": 48,
+  "components": [
+    {
+      "name": "Accordion",
+      "type": "COMPONENT_SET",
+      "id": "2230:2075",
+      "description": "Collapsible content sections built on Radix UI primitives with full accessibility support, and keyboard navigation. The chevron turns as a panel opens; the panel itself opens without animation.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-content-display-accordion--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "closed",
+          "options": ["closed", "open"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Alert",
+      "type": "COMPONENT_SET",
+      "id": "2230:1643",
+      "description": "Alert component for displaying important messages to users. Includes support for different variants (default, destructive, warning, success, info) and compound components for structured content.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-alert--docs"
+      ],
+      "properties": {
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "destructive", "warning", "success", "info"]
+        }
+      },
+      "variantCount": 5,
+      "expectedVariantCount": 5
+    },
+    {
+      "name": "Alert Dialog",
+      "type": "COMPONENT_SET",
+      "id": "2230:2719",
+      "description": "Modal confirmation dialogs for destructive or important actions. Built on Radix UI primitives with proper focus management and accessibility support.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-alertdialog--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "destructive"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Avatar",
+      "type": "COMPONENT_SET",
+      "id": "2230:1668",
+      "description": "Avatar component for displaying user profile pictures with fallback support. Includes size variants and compound components for image and fallback content.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-content-display-avatar--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg", "xl"]
+        },
+        "state": {
+          "type": "VARIANT",
+          "default": "image",
+          "options": ["image", "fallback"]
+        }
+      },
+      "variantCount": 8,
+      "expectedVariantCount": 8
+    },
+    {
+      "name": "Badge",
+      "type": "COMPONENT_SET",
+      "id": "2230:1597",
+      "description": "Compact status indicators and labels for displaying metadata, counts, or categorical information. Accessibility: Use semantic colors and consider adding visually hidden text for context when badges convey important information through color alone.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-content-display-badge--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        },
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": [
+            "default",
+            "secondary",
+            "success",
+            "info",
+            "warning",
+            "destructive",
+            "outline"
+          ]
+        }
+      },
+      "variantCount": 21,
+      "expectedVariantCount": 21
+    },
+    {
+      "name": "Breadcrumb",
+      "type": "COMPONENT_SET",
+      "id": "2230:2179",
+      "description": "Navigation breadcrumbs showing the current page location within a navigational hierarchy. Built with semantic HTML (nav, ol, li) and full accessibility support including ARIA labels and landmarks.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-navigation-breadcrumb--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "with-ellipsis"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Button",
+      "type": "COMPONENT_SET",
+      "id": "2230:1554",
+      "description": "Versatile button component for user actions. Supports multiple variants, sizes, loading states, and full keyboard accessibility.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-button--docs"
+      ],
+      "properties": {
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg", "icon"]
+        },
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": [
+            "default",
+            "secondary",
+            "outline",
+            "ghost",
+            "link",
+            "destructive"
+          ]
+        }
+      },
+      "variantCount": 31,
+      "expectedVariantCount": 48
+    },
+    {
+      "name": "Calendar",
+      "type": "COMPONENT_SET",
+      "id": "2230:2700",
+      "description": "A flexible calendar component for date selection with support for single dates, multiple dates, and date ranges.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-content-display-calendar--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "with-selection"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Card",
+      "type": "COMPONENT_SET",
+      "id": "2230:1651",
+      "description": "Flexible container component for grouping related content. Composed of Card, CardHeader, CardTitle, CardDescription, CardContent, and CardFooter.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-content-display-card--docs"
+      ],
+      "properties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "default": "Default",
+          "options": ["Default"]
+        }
+      },
+      "variantCount": 1,
+      "expectedVariantCount": 1
+    },
+    {
+      "name": "Card Grid",
+      "type": "COMPONENT_SET",
+      "id": "2230:2770",
+      "description": "Responsive grid container for laying out Card components. Supports per-breakpoint column counts, gap, centering, and visual variants (default, compact, spacious, masonry, elevated).",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-cardgrid--docs"
+      ],
+      "properties": {
+        "columns": {
+          "type": "VARIANT",
+          "default": "2",
+          "options": ["2", "3"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Carousel",
+      "type": "COMPONENT_SET",
+      "id": "2230:2729",
+      "description": "A carousel component for displaying content in a scrollable container with navigation controls. Built with Embla Carousel for smooth touch and keyboard navigation.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-content-display-carousel--docs"
+      ],
+      "properties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "default": "Default",
+          "options": ["Default"]
+        }
+      },
+      "variantCount": 1,
+      "expectedVariantCount": 1
+    },
+    {
+      "name": "Checkbox",
+      "type": "COMPONENT_SET",
+      "id": "2230:1708",
+      "description": "Checkbox component built on Radix UI primitives with full accessibility support, keyboard navigation, and customizable styling.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-checkbox--docs"
+      ],
+      "properties": {
+        "checked": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true", "indeterminate", "error"]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        }
+      },
+      "variantCount": 21,
+      "expectedVariantCount": 24
+    },
+    {
+      "name": "Collapsible",
+      "type": "COMPONENT_SET",
+      "id": "2230:2355",
+      "description": "Collapsible component for showing and hiding content sections. Built on Radix UI primitives with flexible trigger options. It opens and closes without animation.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-collapsible--docs"
+      ],
+      "properties": {
+        "open": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Command",
+      "type": "COMPONENT_SET",
+      "id": "2230:2482",
+      "description": "Command palette interface for quick actions and navigation. Features search, keyboard shortcuts, and grouped commands. Built on cmdk with full accessibility including keyboard navigation (Arrow keys, Enter, Escape) and ARIA attributes.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-navigation-command--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "empty",
+          "options": ["empty", "with-results"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Context Menu",
+      "type": "COMPONENT_SET",
+      "id": "2230:2385",
+      "description": "Right-click context menus with support for submenus, checkboxes, radio groups, and keyboard shortcuts. Built on Radix UI primitives with full accessibility support including ARIA attributes, focus management, and keyboard navigation (Arrow keys, Enter, Escape).",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-contextmenu--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "hover"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Dialog",
+      "type": "COMPONENT_SET",
+      "id": "2230:2031",
+      "description": "Modal dialog component with focus trapping and backdrop. Built on Radix UI primitives with full keyboard and screen reader support.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-dialog--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg", "xl", "full"]
+        },
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "with-footer"]
+        }
+      },
+      "variantCount": 10,
+      "expectedVariantCount": 10
+    },
+    {
+      "name": "Dropdown Menu",
+      "type": "COMPONENT_SET",
+      "id": "2230:1845",
+      "description": "Dropdown menu component for displaying a menu of actions or options. Supports checkboxes, radio groups, and keyboard navigation.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-dropdownmenu--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "hover"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Feature Grid",
+      "type": "COMPONENT_SET",
+      "id": "2230:2752",
+      "description": "Renders a responsive grid of feature items, each with an icon, title, description, and optional badge. Built for marketing and landing-page feature sections.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-featuregrid--docs"
+      ],
+      "properties": {
+        "columns": {
+          "type": "VARIANT",
+          "default": "2",
+          "options": ["2", "3"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Form",
+      "type": "COMPONENT_SET",
+      "id": "2230:2516",
+      "description": "The Form system provides composable primitives for building accessible, consistently styled forms. Each primitive reads from a shared FormField context so label wiring, error state, and description IDs are handled automatically.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-form--docs"
+      ],
+      "properties": {
+        "error": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "required": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        }
+      },
+      "variantCount": 4,
+      "expectedVariantCount": 4
+    },
+    {
+      "name": "Hover Card",
+      "type": "COMPONENT_SET",
+      "id": "2230:2346",
+      "description": "Hover-triggered content cards for displaying additional information. Built on Radix UI primitives with flexible positioning.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-hovercard--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        }
+      },
+      "variantCount": 3,
+      "expectedVariantCount": 3
+    },
+    {
+      "name": "Input",
+      "type": "COMPONENT_SET",
+      "id": "2230:1622",
+      "description": "Input component for single-line text input with support for different sizes, types, and error states. Accessibility: Always pair with Label using htmlFor and id. Use appropriate input types for better mobile keyboards.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-input--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        },
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "error", "success", "disabled"]
+        }
+      },
+      "variantCount": 12,
+      "expectedVariantCount": 12
+    },
+    {
+      "name": "Label",
+      "type": "COMPONENT_SET",
+      "id": "2230:1786",
+      "description": "Label component provides accessible labels for form controls with support for required indicators and error states.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-label--docs"
+      ],
+      "properties": {
+        "error": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "required": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        }
+      },
+      "variantCount": 12,
+      "expectedVariantCount": 12
+    },
+    {
+      "name": "Menubar",
+      "type": "COMPONENT_SET",
+      "id": "2230:2416",
+      "description": "A horizontal menu bar with dropdown menus, commonly used for application navigation and actions. Built on Radix UI primitives with full accessibility including keyboard navigation (Arrow keys, Enter, Escape) and ARIA attributes.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-navigation-menubar--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "open"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Navigation Menu",
+      "type": "COMPONENT_SET",
+      "id": "2230:2457",
+      "description": "A navigation menu component with dropdown submenus, hover interactions, and keyboard navigation support. Built on Radix UI primitives with full accessibility including ARIA attributes and focus management.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-navigation-navigationmenu--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "active", "open"]
+        }
+      },
+      "variantCount": 3,
+      "expectedVariantCount": 3
+    },
+    {
+      "name": "Page Layout",
+      "type": "COMPONENT_SET",
+      "id": "2230:2913",
+      "description": "Full-page layout composition combining header, footer, sidebar, and main content area. Supports multiple width variants and optional sidebar positioning for building complete page structures.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/patterns-page-compositions-page-layout--docs"
+      ],
+      "properties": {
+        "sidebar": {
+          "type": "VARIANT",
+          "default": "none",
+          "options": ["none", "left", "right"]
+        },
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "centered"]
+        }
+      },
+      "variantCount": 4,
+      "expectedVariantCount": 6
+    },
+    {
+      "name": "Pagination",
+      "type": "COMPONENT_SET",
+      "id": "2230:2218",
+      "description": "Navigation component for paginated content with customizable styling and accessibility support. Includes PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, and PaginationEllipsis subcomponents for building flexible pagination interfaces.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-navigation-pagination--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "with-many-pages"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Popover",
+      "type": "COMPONENT_SET",
+      "id": "2230:1922",
+      "description": "Click-triggered content overlays for displaying additional information, forms, or controls. Built on Radix UI primitives with flexible positioning.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-popover--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        }
+      },
+      "variantCount": 3,
+      "expectedVariantCount": 3
+    },
+    {
+      "name": "Progress",
+      "type": "COMPONENT_SET",
+      "id": "2230:1820",
+      "description": "Progress component for displaying completion progress with different variants and sizes. Supports linear progress bars with smooth animations.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-progress--docs"
+      ],
+      "properties": {
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "success", "warning", "destructive"]
+        }
+      },
+      "variantCount": 4,
+      "expectedVariantCount": 4
+    },
+    {
+      "name": "Radio",
+      "type": "COMPONENT_SET",
+      "id": "2230:1727",
+      "description": "Radio button group for single selection from multiple options. Built on Radix UI primitives with full accessibility support and keyboard navigation.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-radiogroup--docs"
+      ],
+      "properties": {
+        "checked": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        }
+      },
+      "variantCount": 12,
+      "expectedVariantCount": 12
+    },
+    {
+      "name": "Resizable",
+      "type": "COMPONENT_SET",
+      "id": "2230:2491",
+      "description": "Resizable panels with drag handles for creating flexible layouts like IDEs and dashboards. Built on react-resizable-panels with full accessibility including keyboard controls and ARIA attributes.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-resizable--docs"
+      ],
+      "properties": {
+        "direction": {
+          "type": "VARIANT",
+          "default": "horizontal",
+          "options": ["horizontal", "vertical"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Scrollbar",
+      "type": "COMPONENT_SET",
+      "id": "2230:2360",
+      "description": "Custom scrollable area with styled scrollbars that works consistently across platforms. Built on Radix UI ScrollArea primitive with full accessibility and native scrolling behavior.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-scrollarea--docs"
+      ],
+      "properties": {
+        "orientation": {
+          "type": "VARIANT",
+          "default": "vertical",
+          "options": ["vertical", "horizontal"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Section Features",
+      "type": "COMPONENT_SET",
+      "id": "2230:3171",
+      "description": "Real-world features section composition for showcasing product features and benefits. This Tier 2 pattern component displays features in a grid layout with optional badges, supporting multiple column configurations and style variants.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/patterns-page-compositions-features-section--docs"
+      ],
+      "properties": {
+        "columns": {
+          "type": "VARIANT",
+          "default": "3",
+          "options": ["2", "3", "4"]
+        },
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "cards"]
+        }
+      },
+      "variantCount": 6,
+      "expectedVariantCount": 6
+    },
+    {
+      "name": "Section Hero",
+      "type": "COMPONENT_SET",
+      "id": "2230:2948",
+      "description": "Real-world hero section composition for landing pages with title, description, action buttons, and optional images. Supports multiple layouts (default, gradient, centered) and image positioning for flexible page designs.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/patterns-page-compositions-hero-section--docs"
+      ],
+      "properties": {
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "gradient", "centered"]
+        }
+      },
+      "variantCount": 3,
+      "expectedVariantCount": 3
+    },
+    {
+      "name": "Select",
+      "type": "COMPONENT_SET",
+      "id": "2230:1912",
+      "description": "Select component built on Radix UI primitives with keyboard navigation, search, and full accessibility support. Includes trigger, content, items, and separator sub-components.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-select--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        },
+        "state": {
+          "type": "VARIANT",
+          "default": "closed",
+          "options": ["closed", "open", "disabled", "error"]
+        }
+      },
+      "variantCount": 12,
+      "expectedVariantCount": 12
+    },
+    {
+      "name": "Separator",
+      "type": "COMPONENT_SET",
+      "id": "2230:1755",
+      "description": "Visual divider for separating content sections. Built on Radix UI with proper ARIA role handling for decorative and semantic separators.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-separator--docs"
+      ],
+      "properties": {
+        "orientation": {
+          "type": "VARIANT",
+          "default": "horizontal",
+          "options": ["horizontal", "vertical"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Sheet",
+      "type": "COMPONENT_SET",
+      "id": "2230:2336",
+      "description": "Side drawer overlay component that slides in from any edge of the screen. Commonly used for navigation menus, settings panels, and detailed views.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-sheet--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        }
+      },
+      "variantCount": 3,
+      "expectedVariantCount": 3
+    },
+    {
+      "name": "Site Footer",
+      "type": "COMPONENT_SET",
+      "id": "2230:2876",
+      "description": "Real-world site footer composition for page footers with logo, navigation columns, social links, and copyright. Supports default and minimal variants with responsive grid layout.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/patterns-navigation-patterns-site-footer--docs"
+      ],
+      "properties": {
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "minimal"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Site Header",
+      "type": "COMPONENT_SET",
+      "id": "2230:2839",
+      "description": "Real-world site header composition with logo, navigation links, and action buttons. Production-ready with responsive design, sticky positioning, and backdrop blur. Supports default and transparent variants for different page contexts.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/patterns-navigation-patterns-site-header--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "sm"]
+        },
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "transparent"]
+        }
+      },
+      "variantCount": 4,
+      "expectedVariantCount": 4
+    },
+    {
+      "name": "Skeleton",
+      "type": "COMPONENT_SET",
+      "id": "2230:2100",
+      "description": "Skeleton component for displaying loading placeholders with different variants and sizes. Provides visual feedback while content is loading.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-skeleton--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "sm",
+          "options": ["sm", "md", "lg"]
+        },
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "text", "circular"]
+        }
+      },
+      "variantCount": 8,
+      "expectedVariantCount": 9
+    },
+    {
+      "name": "Slider",
+      "type": "COMPONENT_SET",
+      "id": "2230:2109",
+      "description": "A slider component for selecting values from a range with support for single and multiple handles.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-slider--docs"
+      ],
+      "properties": {
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Switch",
+      "type": "COMPONENT_SET",
+      "id": "2230:1752",
+      "description": "Switch component for binary choices, built on Radix UI with smooth animations and full accessibility support. Perfect for settings and feature toggles.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-switch--docs"
+      ],
+      "properties": {
+        "checked": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        }
+      },
+      "variantCount": 12,
+      "expectedVariantCount": 12
+    },
+    {
+      "name": "Table",
+      "type": "COMPONENT_SET",
+      "id": "2230:2320",
+      "description": "A responsive table component for displaying tabular data with support for sorting, selection, and actions. Built with semantic HTML elements (table, thead, tbody, tr, th, td) and fully accessible.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-content-display-table--docs"
+      ],
+      "properties": {
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "with-selection", "with-footer"]
+        }
+      },
+      "variantCount": 3,
+      "expectedVariantCount": 3
+    },
+    {
+      "name": "Tabs",
+      "type": "COMPONENT_SET",
+      "id": "2230:2062",
+      "description": "Tabbed navigation component for organizing content into switchable panels. Built on Radix UI primitives with full keyboard navigation and ARIA support.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-navigation-tabs--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        }
+      },
+      "variantCount": 3,
+      "expectedVariantCount": 3
+    },
+    {
+      "name": "Textarea",
+      "type": "COMPONENT_SET",
+      "id": "2230:1811",
+      "description": "Textarea component for multi-line text input with support for different sizes, error states, and resize behaviors.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-textarea--docs"
+      ],
+      "properties": {
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["sm", "md", "lg"]
+        },
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "error", "success", "disabled"]
+        }
+      },
+      "variantCount": 12,
+      "expectedVariantCount": 12
+    },
+    {
+      "name": "Toast",
+      "type": "COMPONENT_SET",
+      "id": "2230:2091",
+      "description": "Non-intrusive notification system for displaying temporary messages to users.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-toast--docs"
+      ],
+      "properties": {
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "success", "info", "warning", "destructive"]
+        }
+      },
+      "variantCount": 5,
+      "expectedVariantCount": 5
+    },
+    {
+      "name": "Toggle",
+      "type": "COMPONENT_SET",
+      "id": "2230:2158",
+      "description": "Boolean toggle button for on/off states. Built on Radix UI primitives with support for variants, sizes, and icons.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-toggle--docs"
+      ],
+      "properties": {
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "pressed": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "size": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["sm", "default", "lg"]
+        },
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "outline"]
+        }
+      },
+      "variantCount": 24,
+      "expectedVariantCount": 24
+    },
+    {
+      "name": "Toggle Group",
+      "type": "COMPONENT_SET",
+      "id": "2230:2531",
+      "description": "Toggle button groups for selecting one or multiple options. Built on Radix UI primitives with full accessibility support and keyboard navigation.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-togglegroup--docs"
+      ],
+      "properties": {
+        "orientation": {
+          "type": "VARIANT",
+          "default": "horizontal",
+          "options": ["horizontal", "vertical"]
+        }
+      },
+      "variantCount": 2,
+      "expectedVariantCount": 2
+    },
+    {
+      "name": "Tooltip",
+      "type": "COMPONENT_SET",
+      "id": "2230:1925",
+      "description": "Tooltip component built on Radix UI primitives for displaying contextual information. Supports different positioning and provides excellent accessibility support.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-tooltip--docs"
+      ],
+      "properties": {
+        "Property 1": {
+          "type": "VARIANT",
+          "default": "Default",
+          "options": ["Default"]
+        }
+      },
+      "variantCount": 1,
+      "expectedVariantCount": 1
+    }
+  ]
+}

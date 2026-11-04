@@ -5,6 +5,8 @@ import { Octokit } from "@octokit/rest";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
 import type { ExportData } from "../variables/processor";
 import { parseTextStyleDefinitions } from "../variables/text-style-definitions";
+import { parseCodeSyntax } from "../variables/code-syntax";
+import type { CodeSyntaxMap } from "../variables/code-syntax";
 import type { TextStyleDefinition } from "../variables/text-style-definitions";
 
 /** Duck-typed shape of the errors Octokit throws (RequestError extends Error, adds `status`). */
@@ -52,6 +54,12 @@ export interface PullResult {
 /** The text style definitions file on the pulled branch (plan 206). */
 export type TextStyleDefinitionsResult =
   | { status: "found"; definitions: TextStyleDefinition[] }
+  | { status: "absent" }
+  | { status: "error"; error: string };
+
+/** The code syntax file on the pulled branch (plan 216). */
+export type CodeSyntaxFileResult =
+  | { status: "found"; syntax: CodeSyntaxMap }
   | { status: "absent" }
   | { status: "error"; error: string };
 
@@ -264,6 +272,54 @@ export class GitHubClient {
         };
       }
       return { status: "found", definitions };
+    } catch (error) {
+      return {
+        status: "error",
+        error: `Could not read ${path}: ${error instanceof Error ? error.message : String(error)}`,
+      };
+    }
+  }
+
+  /**
+   * Where the code syntax file lives: a `code-syntax` folder next to the token
+   * folder (`packages/tokens/io/sync` gives `packages/tokens/io/code-syntax/
+   * web.json`). Like the text style definitions it is not a token file.
+   */
+  codeSyntaxPath(): string {
+    const base = this.basePath();
+    const parent = base.includes("/")
+      ? base.slice(0, base.lastIndexOf("/"))
+      : "";
+    return `${parent ? `${parent}/` : ""}code-syntax/web.json`;
+  }
+
+  /**
+   * Read the code syntax file from the pulled branch. A missing file is
+   * `absent`; anything else that goes wrong is an `error`. The caller treats
+   * both as "skip code syntax": it never blocks a Pull.
+   */
+  async fetchCodeSyntax(): Promise<CodeSyntaxFileResult> {
+    if (!this.config)
+      return { status: "error", error: "GitHub client not initialized" };
+    const path = this.codeSyntaxPath();
+    try {
+      const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${path}`;
+      const response = await fetch(url);
+      if (response.status === 404) return { status: "absent" };
+      if (!response.ok) {
+        return {
+          status: "error",
+          error: `Could not read ${path}: HTTP ${response.status}`,
+        };
+      }
+      const syntax = parseCodeSyntax(JSON.parse(await response.text()));
+      if (!syntax) {
+        return {
+          status: "error",
+          error: `${path} is not a WEB code syntax file.`,
+        };
+      }
+      return { status: "found", syntax };
     } catch (error) {
       return {
         status: "error",

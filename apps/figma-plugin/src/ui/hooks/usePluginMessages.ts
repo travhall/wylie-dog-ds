@@ -19,6 +19,8 @@ import { describeApplyResult } from "../../plugin/variables/text-style-links";
 import type { TextStyleApplyResult } from "../../plugin/variables/text-style-links";
 import { describeDefinitionResult } from "../../plugin/variables/text-style-definitions";
 import type { TextStyleDefinitionResult } from "../../plugin/variables/text-style-definitions";
+import { describeCodeSyntaxResult } from "../../plugin/variables/code-syntax";
+import type { CodeSyntaxResult } from "../../plugin/variables/code-syntax";
 import type { AdapterResultWithFilename } from "../../plugin/handlers/token-handlers";
 import type { ProgressStep } from "../components/ProgressFeedback";
 import type { Result } from "../../shared/result";
@@ -385,9 +387,12 @@ export function usePluginMessages(
               TextStyleApplyResult | undefined;
             const definitionResult = msg.textStyleDefinitionResult as
               TextStyleDefinitionResult | undefined;
+            const codeSyntaxResult = msg.codeSyntaxResult as
+              CodeSyntaxResult | undefined;
             const styleNote = [
               definitionResult && describeDefinitionResult(definitionResult),
               styleResult && describeApplyResult(styleResult),
+              codeSyntaxResult && describeCodeSyntaxResult(codeSyntaxResult),
             ]
               .filter(Boolean)
               .map((note) => ` ${note}.`)

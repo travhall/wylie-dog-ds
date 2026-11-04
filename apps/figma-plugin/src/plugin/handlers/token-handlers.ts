@@ -21,6 +21,8 @@ import type {
 } from "../variables/text-style-links";
 import { applyTextStyleDefinitions } from "../variables/text-style-definitions";
 import type { TextStyleDefinitionResult } from "../variables/text-style-definitions";
+import { applyCodeSyntax } from "../variables/code-syntax";
+import type { CodeSyntaxResult } from "../variables/code-syntax";
 import {
   importMultipleCollections,
   parseTokenFile,
@@ -339,6 +341,18 @@ export async function handleImportTokens(msg: PluginMessage): Promise<void> {
       }
     }
 
+    // Dev Mode code syntax from the repo's file (plan 216), after the import so
+    // the variables exist. Never fatal: the import already landed.
+    let codeSyntaxResult: CodeSyntaxResult | undefined;
+    if (globalResult.success && msg.codeSyntax) {
+      setLoading(true, "Setting code syntax...");
+      try {
+        codeSyntaxResult = await applyCodeSyntax(msg.codeSyntax);
+      } catch (error) {
+        console.error("Setting code syntax failed:", error);
+      }
+    }
+
     setLoading(false);
 
     // Send results back to UI including format adapter information
@@ -351,6 +365,7 @@ export async function handleImportTokens(msg: PluginMessage): Promise<void> {
       adapterResults: adapterResults, // Include format adaptation results
       textStyleResult,
       textStyleDefinitionResult,
+      codeSyntaxResult,
     });
 
     console.log("Global import completed:", globalResult);

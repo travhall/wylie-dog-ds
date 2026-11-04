@@ -39,6 +39,14 @@ const config: StorybookConfig = {
     reactDocgen: "react-docgen-typescript",
   },
 
+  features: {
+    // Writes /manifests/components.json (every component, its props, options and
+    // defaults, read from the code). The Figma parity check compares it with the
+    // Figma library (Plan 216). Preview feature: the schema is not stable, so
+    // consumers read it through a normalizer.
+    componentsManifest: true,
+  },
+
   core: {
     // Without this, a machine with no cached telemetry choice
     // (~/.config/storybook/config.json) blocks on an interactive prompt —

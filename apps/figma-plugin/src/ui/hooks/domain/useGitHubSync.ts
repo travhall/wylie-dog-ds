@@ -121,6 +121,9 @@ export function useGitHubSync(
   // The last Pull review's text style work, for the per-token (Advanced) path,
   // which imports from the conflict list instead of `performPull`.
   const lastPullStylesRef = useRef<SyncDiff["textStyles"] | null>(null);
+  // The repo's code syntax file from the last Pull review (plan 216), sent with
+  // the import. Null when the file is missing or unreadable.
+  const lastPullCodeSyntaxRef = useRef<Record<string, string> | null>(null);
 
   /**
    * Save GitHub configuration after wizard completes.
@@ -374,6 +377,10 @@ export function useGitHubSync(
             textStyleChanges: diff.textStyles.changes,
             // The styles the definitions file creates and updates (plan 206)
             textStyleDefinitions: planWork(diff.textStyles.definitions),
+            // Dev Mode code syntax from the repo's file (plan 216)
+            ...(lastPullCodeSyntaxRef.current
+              ? { codeSyntax: lastPullCodeSyntaxRef.current }
+              : {}),
           },
         },
         "*"
@@ -453,6 +460,18 @@ export function useGitHubSync(
         } catch {
           // Not announcing is the safe failure.
         }
+      }
+
+      // Code syntax (plan 216): best effort. A missing or unreadable file only
+      // skips it; it never blocks or changes the review.
+      lastPullCodeSyntaxRef.current = null;
+      try {
+        const syntaxFile = await githubClient.fetchCodeSyntax();
+        if (syntaxFile.status === "found") {
+          lastPullCodeSyntaxRef.current = syntaxFile.syntax;
+        }
+      } catch {
+        // Skipping is the safe failure.
       }
 
       const diff = buildSyncDiff({
@@ -647,6 +666,9 @@ export function useGitHubSync(
                         lastPullStylesRef.current?.definitions
                       ),
                     }
+                  : {}),
+                ...(lastPullCodeSyntaxRef.current
+                  ? { codeSyntax: lastPullCodeSyntaxRef.current }
                   : {}),
               },
             },

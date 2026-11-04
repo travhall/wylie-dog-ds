@@ -18,7 +18,8 @@ dist-ssr
 
 # Playwright MCP temp files
 .playwright-mcp/
-.claude
+.claude/*
+!.claude/skills/
 .serena
 .vscode
 *.tsbuildinfo

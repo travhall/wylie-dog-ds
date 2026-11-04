@@ -41,6 +41,11 @@ export interface PluginMessage {
    */
   textStyleDefinitions?: ResolvedTextStyle[];
   /**
+   * With `import-tokens`: token path to the WEB code syntax Dev Mode shows for
+   * the variable (plan 216), set after a successful import.
+   */
+  codeSyntax?: Record<string, string>;
+  /**
    * With `record-last-sync`: hashes of the GitHub tokens as they are after a
    * Push or Pull. Their presence makes the plugin record a sync baseline.
    */
