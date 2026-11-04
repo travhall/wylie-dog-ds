@@ -33,7 +33,7 @@ Read before running anything that writes to Figma, and never put a token or PAT 
    owner one decision at a time with the alternatives; do not accept-all.
 4. Apply Figma changes in place (rules below), then refresh the snapshot: run
    `scripts/figma/export-manifest.js` through `use_figma`, write `figma/manifest.json` as
-   `{ "schema": 1, "fileKey": "<key>", ...returned object }`, keep the returned order.
+   `{ "schema": 1, "fileKey": "<key>", ...returned object }`, keep the returned order. The manifest holds no node ids (they change on every rebuild).
 5. Re-run the check. Open findings should be 0. `node --test scripts/__tests__/*.test.mjs` must pass.
 
 CI runs the check after the build as advisory (`continue-on-error`), so a mismatch shows but does not fail.
