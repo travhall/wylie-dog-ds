@@ -160,7 +160,7 @@ Non-color variables are scoped by the property word in the name, whatever their 
 | `font-size`                                                                | `FONT_SIZE`                    |
 | `font-weight`                                                              | `FONT_WEIGHT`                  |
 | `tracking`, `letter-spacing`                                               | none (hidden), see below       |
-| `opacity`                                                                  | `OPACITY`                      |
+| `opacity`                                                                  | none (hidden), see below       |
 | `shadow.blur`, `shadow.offset`, `shadow.spread`                            | `EFFECT_FLOAT`                 |
 | `radius`                                                                   | `CORNER_RADIUS`                |
 | `border-width`                                                             | `STROKE_FLOAT`                 |
@@ -171,6 +171,8 @@ Non-color variables are scoped by the property word in the name, whatever their 
 An empty scope list (`[]`) is valid Figma: the variable still exists and aliases still resolve, but no picker lists it. The importer assigns it as is.
 
 **Line height and letter spacing are hidden on purpose.** The line-height tokens are percentages (100, 125, 137.5) and the tracking tokens are em fractions (`-0.025em`), but Figma binds a number variable to line height or letter spacing as **pixels**: tested in the Token Bridge file, `150` gave a 150px line height and `-0.05` gave -0.05px letter spacing. Figma variables cannot carry a percent, so `LINE_HEIGHT` and `LETTER_SPACING` scopes would only let a designer pick a wrong value. The 6 primitive and 14 component line-height variables and the 6 primitive and 9 component tracking and letter-spacing variables stay in the sync (they are tokens) with an empty scope list.
+
+**Opacity is hidden too.** The opacity tokens are fractions (`0.7`), but Figma reads a bound opacity variable as a **percent**, so `0.7` would draw a layer at 0.7%. The 15 primitive, 12 semantic and 17 component opacity variables stay in the sync with an empty scope list, and the component builder sets the number on the layer instead of binding it (`bindOpacity`).
 
 In Figma both properties are **percent text-style properties generated from the tokens** (decision recorded in [figma-gateway.md](../../documentation/reference/figma-gateway.md), 2026-10-25). Token Bridge writes `lineHeight` as `PERCENT` on the text styles (125% stays 125%, so 14px text gets 17.5px as in CSS), leaves it `AUTO` where the real component sets no line height, and writes `letterSpacing` as `PERCENT` (em x 100, `-0.025em` becomes -2.5%) where the component has a tracking token. It binds no variable to either property. (The component builder no longer creates styles; see [The builder uses Token Bridge's styles](#the-builder-uses-token-bridges-styles).) To change a value, edit the token and Pull: Token Bridge keeps the styles in line with their tokens (see [Text styles follow their tokens](#text-styles-follow-their-tokens)).
 

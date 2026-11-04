@@ -232,9 +232,10 @@ describe("inferScopes: non-color tokens by name", () => {
     ["lineHeight", "typography.line-height.tight", []],
     ["dimension", "typography.tracking.wide", []],
     ["dimension", "dialog.title-letter-spacing", []],
-    ["number", "opacity.50", ["OPACITY"]],
-    ["number", "opacity.scrim", ["OPACITY"]],
-    ["number", "state.opacity.disabled", ["OPACITY"]],
+    // hidden: a bound opacity is read as a percent, 0.5 would draw at 0.5%
+    ["number", "opacity.50", []],
+    ["number", "opacity.scrim", []],
+    ["number", "state.opacity.disabled", []],
     ["number", "z-index.modal", []],
     ["number", "z-index.50", []],
     ["dimension", "focus.width", []],
@@ -382,12 +383,13 @@ describe("inferScopes: the real token files", () => {
     };
     expectFamily(/font-size/, ["FONT_SIZE"]);
     expectFamily(/font-weight/, ["FONT_WEIGHT"]);
-    expectFamily(/opacity/, ["OPACITY"]);
+
     expectFamily(/^shadow\.(blur|offset|spread)/, ["EFFECT_FLOAT"]);
     // Hidden: percentages Figma would bind as pixels, and CSS-only values
     expectFamily(/line-height/, []);
     expectFamily(/tracking|letter-spacing/, []);
     expectFamily(/z-index/, []);
+    expectFamily(/opacity/, []);
     expectFamily(/^focus\./, []);
   });
 
@@ -453,15 +455,13 @@ describe("inferScopes: the real token files", () => {
       "color []": 143,
       "number FONT_SIZE": 10,
       "number FONT_WEIGHT": 8,
-      "number OPACITY": 15,
-      "number []": 18,
+      "number []": 33,
       "dimension EFFECT_FLOAT": 23,
       "dimension []": 6,
       "duration []": 9,
     });
     expect(all.semantic).toMatchObject({
-      "number OPACITY": 12,
-      "number []": 9,
+      "number []": 21,
       "shadow []": 7,
       "duration []": 4,
       "cubicBezier []": 4,
@@ -471,8 +471,7 @@ describe("inferScopes: the real token files", () => {
     expect(all.components).toMatchObject({
       "number FONT_SIZE": 78,
       "number FONT_WEIGHT": 40,
-      "number OPACITY": 17,
-      "number []": 35,
+      "number []": 52,
       "dimension []": 9,
       "shadow []": 19,
       "duration []": 11,
