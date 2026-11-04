@@ -6,7 +6,7 @@
 const page = await figma.getNodeByIdAsync("1863:2");
 await figma.setCurrentPageAsync(page);
 const sets = page.findAllWithCriteria({ types: ["COMPONENT_SET"] });
-const DEFAULT_NAME = /^(Vector|Frame \d*|Rectangle|Group|Ellipse|Line)\s*\d*$/;
+const DEFAULT_NAME = /^(Vector|Frame|Rectangle|Group|Ellipse|Line)(\s*\d+)?$/;
 const num = (v) => typeof v === "number";
 const bound = (n, field) => !!(n.boundVariables && n.boundVariables[field]);
 const result = [];

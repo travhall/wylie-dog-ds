@@ -163,6 +163,11 @@ for (const [kind, count] of Object.entries(raw)) {
     );
   }
 }
+// Names live on real nodes, which the stub cannot see: check that main() runs the
+// naming pass; scripts/figma/audit-library.js counts default names in the file.
+if (!/nameDefaultLayers\(built\)/.test(source)) {
+  errors.push("main() does not call nameDefaultLayers(built)");
+}
 if (unboundStrokes.size) {
   errors.push(
     `${unboundStrokes.size} border colour(s) with no border-width token`
