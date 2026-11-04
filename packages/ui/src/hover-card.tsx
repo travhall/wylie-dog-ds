@@ -37,12 +37,15 @@ export interface HoverCardContentProps
 const HoverCardContent = React.forwardRef<
   React.ComponentRef<typeof HoverCardPrimitive.Content>,
   HoverCardContentProps
->(({ className, align = "center", sideOffset = 4, size, ...props }, ref) => (
+>(({ className, align = "center", size, ...props }, ref) => (
   <HoverCardPrimitive.Content
     ref={ref}
     align={align}
-    sideOffset={sideOffset}
-    className={cn(hoverCardContentVariants({ size }), className)}
+    className={cn(
+      hoverCardContentVariants({ size }),
+      "data-[side=bottom]:mt-(--space-hover-card-side-offset) data-[side=top]:mb-(--space-hover-card-side-offset) data-[side=left]:mr-(--space-hover-card-side-offset) data-[side=right]:ml-(--space-hover-card-side-offset)",
+      className
+    )}
     {...props}
   />
 ));

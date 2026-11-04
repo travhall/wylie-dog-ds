@@ -84,26 +84,21 @@ MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName;
 const MenubarContent = React.forwardRef<
   React.ComponentRef<typeof MenubarPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Content>
->(
-  (
-    { className, align = "start", alignOffset = -4, sideOffset = 8, ...props },
-    ref
-  ) => (
-    <MenubarPrimitive.Portal>
-      <MenubarPrimitive.Content
-        ref={ref}
-        align={align}
-        alignOffset={alignOffset}
-        sideOffset={sideOffset}
-        className={cn(
-          "z-(--menubar-content-z-index) min-w-(--space-menubar-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-content-shadow)",
-          className
-        )}
-        {...props}
-      />
-    </MenubarPrimitive.Portal>
-  )
-);
+>(({ className, align = "start", ...props }, ref) => (
+  <MenubarPrimitive.Portal>
+    <MenubarPrimitive.Content
+      ref={ref}
+      align={align}
+      className={cn(
+        "data-[side=bottom]:mt-(--space-menubar-content-side-offset) data-[side=top]:mb-(--space-menubar-content-side-offset) data-[side=left]:mr-(--space-menubar-content-side-offset) data-[side=right]:ml-(--space-menubar-content-side-offset)",
+        "data-[side=bottom]:-ml-(--space-menubar-content-align-offset) data-[side=top]:-ml-(--space-menubar-content-align-offset) data-[side=left]:-mt-(--space-menubar-content-align-offset) data-[side=right]:-mt-(--space-menubar-content-align-offset)",
+        "z-(--menubar-content-z-index) min-w-(--space-menubar-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-content-shadow)",
+        className
+      )}
+      {...props}
+    />
+  </MenubarPrimitive.Portal>
+));
 MenubarContent.displayName = MenubarPrimitive.Content.displayName;
 
 const MenubarItem = React.forwardRef<
