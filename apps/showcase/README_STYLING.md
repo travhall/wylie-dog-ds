@@ -53,6 +53,10 @@ Use token-backed classes, not Tailwind scale colors and not hardcoded values:
 
 `text-white` is not allowed; use `text-(--color-foreground-inverse)` so it adapts to dark mode. Use `<Button>` and `buttonVariants({ variant, size })` from `@wyliedog/ui/button` instead of raw `<button>` and `<a>` styling. Token names are listed in [documentation/tokens/token-cheatsheet.md](../../documentation/tokens/token-cheatsheet.md), and `pnpm check:tokens` fails if the showcase references a token that does not exist.
 
+### Type, leading, tracking and radius read the tokens
+
+`globals.css` points Tailwind's named scales at the token variables in an `@theme inline` block: `text-xs` to `text-6xl`, `leading-*`, `tracking-*` and `rounded-sm` to `rounded-2xl`. Write them as usual (`text-sm`, `leading-tight`, `tracking-wide`, `rounded-md`); they resolve to `--font-size-*`, `--line-height-*`, `--space-typography-tracking-*` and `--border-radius-*`. This means `rounded-md` is the system's 4px, not Tailwind's 6px, and `rounded-sm` is 2px. Font weight (`--font-weight-*`) matches by name. Spacing (padding, gap, margin, size) and border widths stay on Tailwind's steps, which equal the token scale by value (`px-4` is 1rem, `--space-200`). Shadows are Tailwind's own values, which equal the shadow tokens but are not read from them. `pnpm check:showcase-theme` (in `check:tokens`) fails if a step is missing or maps to a token that is gone.
+
 ## Troubleshooting
 
 - **Utilities not applying:** confirm `@import "tailwindcss"` is in `globals.css`, `postcss.config.js` lists `@tailwindcss/postcss`, and the class appears literally (not built from string fragments) in a file under `src/`. Restart the dev server.
