@@ -39,7 +39,6 @@ const components = nodes
     const out = {
       name: n.name,
       type: n.type,
-      id: n.id,
       description: n.description || "",
       documentationLinks: n.documentationLinks.map((l) => l.uri),
       properties,
