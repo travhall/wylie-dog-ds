@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useId } from "react";
 import { SearchIcon } from "lucide-react";
+import { Icon } from "./icon";
 import { cn, focusRingInsetClasses } from "./lib/utils";
 
 // Coordinates the listbox id between CommandInput (aria-controls) and
@@ -63,7 +64,8 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
         // eslint-disable-next-line react/no-unknown-property -- cmdk's own DOM attribute selector, not a typo
         cmdk-input-wrapper=""
       >
-        <SearchIcon
+        <Icon
+          icon={SearchIcon}
           className="mr-(--space-command-item-indicator-margin-right) h-(--space-command-input-icon-size) w-(--space-command-input-icon-size) shrink-0 opacity-(--command-input-icon-opacity)"
           aria-hidden="true"
         />

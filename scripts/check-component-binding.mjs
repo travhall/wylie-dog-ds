@@ -52,6 +52,11 @@ const ALLOWLIST = [
       "Font family: text may bind the primitive directly; it is the only non-color exception (Plan 193 decision). Listed so the exception is recorded.",
   },
   {
+    name: "--space-icon-size-",
+    reason:
+      "The Icon component exists to expose the semantic icon.size scale (xs to xl); component tokens such as dialog.close-button.icon-size alias the same scale for their own icons (Plan 217).",
+  },
+  {
     name: "--radix-",
     reason:
       "Variables Radix sets at runtime (trigger and viewport sizes, swipe offsets): measurements, not design tokens.",

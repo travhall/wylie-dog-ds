@@ -1,6 +1,7 @@
 import React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+import { Icon } from "./icon";
 import { cn, focusRingInsetClasses } from "./lib/utils";
 
 const MenubarMenu: typeof MenubarPrimitive.Menu = MenubarPrimitive.Menu;
@@ -62,7 +63,10 @@ const MenubarSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRightIcon className="ml-auto h-(--space-menubar-item-icon-size) w-(--space-menubar-item-icon-size)" />
+    <Icon
+      icon={ChevronRightIcon}
+      className="ml-auto h-(--space-menubar-item-icon-size) w-(--space-menubar-item-icon-size)"
+    />
   </MenubarPrimitive.SubTrigger>
 ));
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
@@ -140,7 +144,10 @@ const MenubarCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-(--space-menubar-item-indicator-left) flex h-(--space-menubar-item-indicator-size) w-(--space-menubar-item-indicator-size) items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <CheckIcon className="h-(--space-menubar-item-icon-size) w-(--space-menubar-item-icon-size)" />
+        <Icon
+          icon={CheckIcon}
+          className="h-(--space-menubar-item-icon-size) w-(--space-menubar-item-icon-size)"
+        />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
@@ -165,7 +172,10 @@ const MenubarRadioItem = React.forwardRef<
   >
     <span className="absolute left-(--space-menubar-item-indicator-left) flex h-(--space-menubar-item-indicator-size) w-(--space-menubar-item-indicator-size) items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <CircleIcon className="h-(--space-menubar-radio-indicator-size) w-(--space-menubar-radio-indicator-size) fill-current" />
+        <Icon
+          icon={CircleIcon}
+          className="h-(--space-menubar-radio-indicator-size) w-(--space-menubar-radio-indicator-size) fill-current"
+        />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}

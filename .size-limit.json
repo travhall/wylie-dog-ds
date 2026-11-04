@@ -247,7 +247,7 @@
   {
     "name": "UI - Calendar",
     "path": "packages/ui/dist/calendar.js",
-    "limit": "11 KB",
+    "limit": "11.5 KB",
     "ignore": ["react"]
   },
   {

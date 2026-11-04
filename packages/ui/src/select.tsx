@@ -1,3 +1,5 @@
+import { ChevronDownIcon } from "lucide-react";
+import { Icon } from "./icon";
 import React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cva } from "class-variance-authority";
@@ -95,19 +97,10 @@ export const SelectTrigger = React.forwardRef<
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <svg
+        <Icon
+          icon={ChevronDownIcon}
           className="h-(--space-select-trigger-icon-size) w-(--space-select-trigger-icon-size) opacity-(--select-trigger-icon-opacity)"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="stroke-(length:--space-icon-stroke-width)"
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { ChevronRight } from "lucide-react";
+import { Icon } from "./icon";
 import { cn, focusRingInsetClasses } from "./lib/utils";
 
 // Root components
@@ -170,7 +171,10 @@ export const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="ml-auto h-(--space-dropdown-menu-item-icon-size) w-(--space-dropdown-menu-item-icon-size)" />
+    <Icon
+      icon={ChevronRight}
+      className="ml-auto h-(--space-dropdown-menu-item-icon-size) w-(--space-dropdown-menu-item-icon-size)"
+    />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =

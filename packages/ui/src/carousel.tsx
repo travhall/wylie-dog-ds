@@ -1,5 +1,6 @@
 import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { Icon } from "./icon";
 import { cn, focusRingClasses } from "./lib/utils";
 
 type CarouselProps = React.HTMLAttributes<HTMLDivElement>;
@@ -57,7 +58,10 @@ const CarouselPrevious = React.forwardRef<
     )}
     {...props}
   >
-    <ChevronLeftIcon className="h-(--space-carousel-button-icon-size) w-(--space-carousel-button-icon-size)" />
+    <Icon
+      icon={ChevronLeftIcon}
+      className="h-(--space-carousel-button-icon-size) w-(--space-carousel-button-icon-size)"
+    />
     <span className="sr-only">Previous slide</span>
   </button>
 ));
@@ -78,7 +82,10 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
       )}
       {...props}
     >
-      <ChevronRightIcon className="h-(--space-carousel-button-icon-size) w-(--space-carousel-button-icon-size)" />
+      <Icon
+        icon={ChevronRightIcon}
+        className="h-(--space-carousel-button-icon-size) w-(--space-carousel-button-icon-size)"
+      />
       <span className="sr-only">Next slide</span>
     </button>
   )

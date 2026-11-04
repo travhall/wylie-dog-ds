@@ -19,7 +19,7 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 
 - **Component tests:** 99.46% lines overall (all components fully tested except portal-based skips)
 - **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
-- **Test files:** 58 passing test files
+- **Test files:** 59 passing test files
 
 ## Skipped Tests Summary
 

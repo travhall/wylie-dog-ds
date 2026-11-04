@@ -6,6 +6,7 @@ export default defineConfig((options) => ({
     "src/lib/utils.ts",
     "src/button.tsx",
     "src/badge.tsx",
+    "src/icon.tsx",
     "src/card.tsx",
     "src/input.tsx",
     "src/label.tsx",
