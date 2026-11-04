@@ -112,6 +112,26 @@ describe("inferScopes: component colors", () => {
     ["select.border-color", STROKE],
     ["button.ring", STROKE],
     ["card.header.title.text", FOREGROUND],
+    // No property word: the part or state word decides (Plan 217)
+    ["card.header.title.color", FOREGROUND],
+    ["card.content.color", FOREGROUND],
+    ["dialog.title", FOREGROUND],
+    ["command.shortcut", FOREGROUND],
+    ["toast.close-hover", FOREGROUND],
+    ["form.required-color", FOREGROUND],
+    ["calendar.day-hover", FILL],
+    ["menubar.trigger-open", FILL],
+    ["toggle.pressed-disabled", FILL],
+    ["slider.range", FILL],
+    ["separator.color", FILL],
+    ["resizable.handle", FILL],
+    ["section-hero.gradient.from", FILL],
+    ["checkbox.border.color", STROKE],
+    ["tabs.list.border.color", STROKE],
+    // A property word beats a state word, wherever it sits
+    ["label.disabled-color", FOREGROUND],
+    ["dropdown-menu.item.text-hover", FOREGROUND],
+    ["input.border-disabled", STROKE],
   ])("%s", (name, expected) => {
     expect(inferScopes("color", name)).toEqual(expected);
   });
@@ -119,11 +139,8 @@ describe("inferScopes: component colors", () => {
   it.each([
     ["select.trigger-focus"],
     ["checkbox.checked"],
-    ["calendar.day-hover"],
     ["button.ring-offset"],
     ["unknown"],
-    ["separator.color"],
-    ["checkbox.border.color"],
     ["tabs.trigger.indicator.color"],
   ])("keeps ALL_SCOPES for the ambiguous name %s", (name) => {
     expect(inferScopes("color", name)).toEqual(ALL);
@@ -236,59 +253,61 @@ describe("inferScopes: non-color tokens by name", () => {
   });
 });
 
-// Components colors whose name has no property word. They stay ALL_SCOPES
-// until they are renamed (Plan 201); anything else on ALL_SCOPES is a bug.
-const AMBIGUOUS_COMPONENT_COLORS = [
-  "card.header.title.color",
-  "card.header.description.color",
-  "menubar.trigger-open",
-  "menubar.separator",
-  "menubar.shortcut",
-  "navigation.active",
-  "navigation.open",
-  "command.empty",
-  "command.group-heading",
-  "command.separator",
-  "command.item-selected",
-  "command.shortcut",
-  "tabs.list.border.color",
-  "calendar.nav-hover",
-  "calendar.day-hover",
-  "calendar.day-selected",
-  "accordion.trigger-hover",
-  "accordion.trigger-pressed",
-  "accordion.trigger-disabled",
-  "breadcrumb.current",
-  "carousel.nav-hover",
-  "contextmenu.item-hover",
-  "contextmenu.separator",
-  "contextmenu.shortcut",
-  "dialog.description",
-  "dialog.title",
-  "form.description",
-  "form.error",
-  "pagination.active",
-  "resizable.handle",
-  "slider.range",
-  "table.caption",
-  "table.row-hover",
-  "table.row-selected",
-  "toast.action-hover",
-  "toast.close",
-  "toast.close-hover",
-  "toggle.pressed",
-  "card.content.color",
-  "checkbox.border.color",
-  "separator.color",
-  "form.required-color",
-  "section-hero.gradient.from",
-  "section-hero.gradient.via",
-  "section-hero.gradient.to",
-  "toggle.pressed-disabled",
-  "menubar.trigger-highlighted",
-  "menubar.item-highlighted",
-  "navigation.highlighted",
-];
+// Every component color that had no property word before Plan 217, with the
+// scopes it now gets (owner decision D1: none stays on ALL_SCOPES). Text is
+// the part that carries the color, a fill covers states, separators and
+// gradient stops, a border is a stroke.
+const FORMER_AMBIGUOUS_COMPONENT_COLORS: Record<string, string[]> = {
+  "card.header.title.color": FOREGROUND,
+  "card.header.description.color": FOREGROUND,
+  "card.content.color": FOREGROUND,
+  "menubar.shortcut": FOREGROUND,
+  "command.empty": FOREGROUND,
+  "command.group-heading": FOREGROUND,
+  "command.shortcut": FOREGROUND,
+  "breadcrumb.current": FOREGROUND,
+  "contextmenu.shortcut": FOREGROUND,
+  "dialog.description": FOREGROUND,
+  "dialog.title": FOREGROUND,
+  "form.description": FOREGROUND,
+  "form.error": FOREGROUND,
+  "form.required-color": FOREGROUND,
+  "table.caption": FOREGROUND,
+  "toast.close": FOREGROUND,
+  "toast.close-hover": FOREGROUND,
+  "menubar.trigger-open": FILL,
+  "menubar.trigger-highlighted": FILL,
+  "menubar.item-highlighted": FILL,
+  "navigation.active": FILL,
+  "navigation.open": FILL,
+  "navigation.highlighted": FILL,
+  "command.item-selected": FILL,
+  "calendar.nav-hover": FILL,
+  "calendar.day-hover": FILL,
+  "calendar.day-selected": FILL,
+  "accordion.trigger-hover": FILL,
+  "accordion.trigger-pressed": FILL,
+  "accordion.trigger-disabled": FILL,
+  "carousel.nav-hover": FILL,
+  "contextmenu.item-hover": FILL,
+  "pagination.active": FILL,
+  "slider.range": FILL,
+  "table.row-hover": FILL,
+  "table.row-selected": FILL,
+  "toast.action-hover": FILL,
+  "toggle.pressed": FILL,
+  "toggle.pressed-disabled": FILL,
+  "menubar.separator": FILL,
+  "command.separator": FILL,
+  "contextmenu.separator": FILL,
+  "separator.color": FILL,
+  "resizable.handle": FILL,
+  "section-hero.gradient.from": FILL,
+  "section-hero.gradient.via": FILL,
+  "section-hero.gradient.to": FILL,
+  "tabs.list.border.color": STROKE,
+  "checkbox.border.color": STROKE,
+};
 
 describe("inferScopes: the real token files", () => {
   const variables = allVariables().map((v) => ({
@@ -307,14 +326,35 @@ describe("inferScopes: the real token files", () => {
     ]).toEqual([276, 1012, 108]);
   });
 
-  it("leaves ALL_SCOPES only on the named ambiguous component colors", () => {
+  it("leaves no variable on ALL_SCOPES", () => {
     const unrestricted = variables
       .filter((v) => v.scopes.includes("ALL_SCOPES"))
-      .map((v) => `${v.collection}:${v.type}:${v.name}`)
-      .sort();
-    expect(unrestricted).toEqual(
-      AMBIGUOUS_COMPONENT_COLORS.map((n) => `components:color:${n}`).sort()
+      .map((v) => `${v.collection}:${v.type}:${v.name}`);
+    expect(unrestricted).toEqual([]);
+  });
+
+  it("gives every color token a scope", () => {
+    const colors = variables.filter((v) => v.type === "color");
+    expect(colors.length).toBeGreaterThan(0);
+    for (const v of colors) {
+      if (v.collection === "primitive") continue;
+      expect(v.scopes.length, `${v.collection}:${v.name}`).toBeGreaterThan(0);
+      expect(v.scopes, `${v.collection}:${v.name}`).not.toContain("ALL_SCOPES");
+    }
+  });
+
+  it("scopes the 49 former ALL_SCOPES component colors by what they paint", () => {
+    expect(Object.keys(FORMER_AMBIGUOUS_COMPONENT_COLORS)).toHaveLength(49);
+    const components = new Map(
+      variables
+        .filter((v) => v.collection === "components")
+        .map((v) => [v.name, v.scopes])
     );
+    for (const [name, expected] of Object.entries(
+      FORMER_AMBIGUOUS_COMPONENT_COLORS
+    )) {
+      expect(components.get(name), name).toEqual(expected);
+    }
   });
 
   it("never combines ALL_SCOPES with another scope", () => {
@@ -407,6 +447,7 @@ describe("inferScopes: the real token files", () => {
       "cubicBezier []": 4,
       "dimension []": 3,
     });
+    expect(all.components["color ALL_SCOPES"]).toBeUndefined();
     expect(all.components).toMatchObject({
       "number FONT_SIZE": 78,
       "number FONT_WEIGHT": 40,
@@ -415,7 +456,6 @@ describe("inferScopes: the real token files", () => {
       "dimension []": 9,
       "shadow []": 19,
       "duration []": 11,
-      "color ALL_SCOPES": 49,
     });
   });
 });
