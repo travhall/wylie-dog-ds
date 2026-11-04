@@ -13,13 +13,14 @@ import {
   DEFINITIONS_FILE,
   checkReferences,
   deriveTextStyles,
+  PAIRS,
   readSyncTokens,
   serializeDefinitions,
 } from "./text-styles.mjs";
 
 const check = process.argv.includes("--check");
 const tokens = readSyncTokens();
-const { styles, orphans } = deriveTextStyles(tokens);
+const { styles, orphans } = deriveTextStyles(tokens, PAIRS);
 const expected = serializeDefinitions(styles);
 
 const report = () => {
