@@ -130,6 +130,10 @@ The repository configuration includes a sync mode:
 
 Native `EASING` and `TIMING` variables, composed colors and anything that aliases them cannot be exported yet. After an export or push, a notice lists what was skipped, grouped by collection with the reason. Details are in [docs/API.md](docs/API.md).
 
+### Hidden from publishing
+
+On every import the plugin sets `hiddenFromPublishing` from the collection name (`src/plugin/variables/publishing.ts`): `primitive` and `components` are hidden, `semantic` is published, so a file that uses the library sees only the semantic variables. The Pull success message says how many collections changed (a second Pull changes none). It is applied after the collection is found or created, so a collection someone hid or published by hand goes back to this rule on the next Pull. Not verified inside Figma: Pull once, then check Publish library lists only `semantic`.
+
 ### Variable Scopes
 
 Scopes decide which pickers (fill, text fill, stroke, font size, opacity...) list a variable. A variable left on `ALL_SCOPES` appears in every picker of its type, so every variable gets a scope. They are inferred from the token name by `src/plugin/variables/scopes.ts` and re-applied on every import, so importing or pulling updates scopes on variables that already exist.

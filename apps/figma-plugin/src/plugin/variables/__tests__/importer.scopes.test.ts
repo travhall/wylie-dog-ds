@@ -27,6 +27,7 @@ describe("importer applies scopes", () => {
       variableIds: [] as string[],
       addMode: vi.fn(),
       removeMode: vi.fn(),
+      hiddenFromPublishing: false,
     };
     vi.stubGlobal("figma", {
       variables: {
@@ -57,6 +58,36 @@ describe("importer applies scopes", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
+  });
+
+  it("hides the primitive collection from publishing and says so", async () => {
+    const data = [
+      {
+        primitive: {
+          modes: [{ modeId: "m1", name: "Value" }],
+          variables: { "opacity.50": { $type: "number", $value: 0.5 } },
+        },
+      },
+    ] as unknown as ExportData[];
+    const result = await importMultipleCollections(data, {
+      mergeStrategy: "replace",
+      createMissingModes: true,
+      preserveExistingVariables: false,
+    });
+    expect(result.collectionsPublishingChanged).toBe(1);
+    expect(result.message).toContain("hidden from publishing");
+    const collection = (
+      await (
+        figma as unknown as {
+          variables: {
+            getLocalVariableCollectionsAsync: () => Promise<
+              Array<{ hiddenFromPublishing: boolean }>
+            >;
+          };
+        }
+      ).variables.getLocalVariableCollectionsAsync()
+    )[0];
+    expect(collection.hiddenFromPublishing).toBe(true);
   });
 
   it("sets [] for line height and primitive colors, never ALL_SCOPES", async () => {
