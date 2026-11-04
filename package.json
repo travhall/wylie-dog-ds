@@ -2,6 +2,7 @@
   "name": "design-system",
   "private": true,
   "scripts": {
+    "audit:raw-values": "node scripts/audit-raw-values.mjs",
     "build": "turbo run build",
     "check:contrast": "node scripts/check-contrast.mjs",
     "check:docs": "node scripts/check-docs.mjs",
