@@ -8,6 +8,7 @@ import {
   ToastClose,
   ToastTitle,
   ToastDescription,
+  Toaster,
   toast,
   useToast,
 } from "../toast";
@@ -547,6 +548,83 @@ describe("Toast", () => {
 
       const title = screen.getByText("Bold");
       expect(title.tagName).toBe("STRONG");
+    });
+  });
+
+  describe("Toaster", () => {
+    // `memoryState` is module-level, so every toast made here is closed in-test.
+    function closeAll() {
+      act(() => {
+        screen
+          .queryAllByRole("button", { name: /close notification/i })
+          .forEach((button) => button.click());
+      });
+    }
+
+    it("renders nothing while there are no toasts", () => {
+      const { container } = render(<Toaster />);
+      expect(container).toBeEmptyDOMElement();
+    });
+
+    it("shows a toast's title, description and variant in a labelled live region", () => {
+      render(<Toaster />);
+
+      act(() => {
+        toast({
+          title: "Saved",
+          description: "Your changes are in",
+          variant: "success",
+          duration: 0,
+        });
+      });
+
+      const region = screen.getByLabelText("Notifications");
+      expect(region).toHaveAttribute("aria-live", "polite");
+      expect(screen.getByText("Saved")).toBeInTheDocument();
+      expect(screen.getByText("Your changes are in")).toBeInTheDocument();
+      expect(screen.getByRole("status")).toHaveAttribute(
+        "data-variant",
+        "success"
+      );
+
+      closeAll();
+      expect(screen.queryByText("Saved")).not.toBeInTheDocument();
+    });
+
+    it("leaves out the title and description a toast does not have", () => {
+      render(<Toaster />);
+
+      act(() => {
+        toast({ description: "Description only", duration: 0 });
+        toast({ title: "Title only", duration: 0 });
+      });
+
+      expect(screen.getByText("Description only")).toBeInTheDocument();
+      expect(screen.getByText("Title only")).toBeInTheDocument();
+      expect(screen.getAllByRole("status")).toHaveLength(2);
+
+      closeAll();
+    });
+
+    it("closes only the toast whose close button was pressed", () => {
+      render(<Toaster />);
+
+      act(() => {
+        toast({ title: "First", duration: 0 });
+        toast({ title: "Second", duration: 0 });
+      });
+
+      act(() => {
+        screen
+          .getAllByRole("button", { name: /close notification/i })[0]
+          .click();
+      });
+
+      expect(screen.queryByText("First")).not.toBeInTheDocument();
+      expect(screen.getByText("Second")).toBeInTheDocument();
+
+      closeAll();
+      expect(screen.queryByLabelText("Notifications")).not.toBeInTheDocument();
     });
   });
 

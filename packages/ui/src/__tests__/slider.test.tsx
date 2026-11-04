@@ -509,6 +509,59 @@ describe("Slider", () => {
     });
   });
 
+  describe("Thumb labels", () => {
+    it("names a single thumb 'Value' by default", () => {
+      render(<Slider defaultValue={[50]} />);
+      expect(screen.getByRole("slider", { name: "Value" })).toBeInTheDocument();
+    });
+
+    it("numbers the thumbs of a range slider by default", () => {
+      render(<Slider defaultValue={[25, 75]} />);
+      expect(
+        screen.getByRole("slider", { name: "Value 1" })
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole("slider", { name: "Value 2" })
+      ).toBeInTheDocument();
+    });
+
+    it("uses a string label as is on a single thumb", () => {
+      render(<Slider defaultValue={[50]} thumbLabels="Volume" />);
+      expect(
+        screen.getByRole("slider", { name: "Volume" })
+      ).toBeInTheDocument();
+    });
+
+    it("numbers a string label across the thumbs of a range slider", () => {
+      render(<Slider defaultValue={[25, 75]} thumbLabels="Price" />);
+      expect(
+        screen.getByRole("slider", { name: "Price 1" })
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole("slider", { name: "Price 2" })
+      ).toBeInTheDocument();
+    });
+
+    it("uses an array of labels per thumb and falls back for a missing one", () => {
+      render(
+        <Slider defaultValue={[10, 50, 90]} thumbLabels={["Min", "Max"]} />
+      );
+      expect(screen.getByRole("slider", { name: "Min" })).toBeInTheDocument();
+      expect(screen.getByRole("slider", { name: "Max" })).toBeInTheDocument();
+      expect(
+        screen.getByRole("slider", { name: "Value 3" })
+      ).toBeInTheDocument();
+    });
+
+    it("counts thumbs from the controlled value, not the default", () => {
+      render(<Slider value={[10, 90]} thumbLabels="Range" />);
+      expect(screen.getAllByRole("slider")).toHaveLength(2);
+      expect(
+        screen.getByRole("slider", { name: "Range 2" })
+      ).toBeInTheDocument();
+    });
+  });
+
   describe("Edge Cases", () => {
     it("should handle zero as minimum value", () => {
       render(

@@ -1,8 +1,8 @@
 # Testing and Coverage Status
 
-**Last Updated:** October 14, 2026
-**Overall Coverage:** 98.51% lines / 98.02% statements (exceeds 80% threshold)
-**Tests Passing:** 1,574 | **Tests Skipped:** 67
+**Last Updated:** November 3, 2026
+**Overall Coverage:** 99.46% lines / 99.21% statements (exceeds 80% threshold)
+**Tests Passing:** 1,620 | **Tests Skipped:** 62
 
 Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot. `pnpm check:docs:coverage` runs it and fails if the four percentages in the table below no longer match; plain `pnpm check:docs` does the same comparison whenever a fresh coverage run is on disk. Passing and skipped test counts are not checked.
 
@@ -10,26 +10,26 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 
 | Metric     | Current | Target | Status            |
 | ---------- | ------- | ------ | ----------------- |
-| Statements | 98.02%  | 80%    | ✅ Pass (+18.02%) |
-| Lines      | 98.51%  | 80%    | ✅ Pass (+18.51%) |
-| Functions  | 96.61%  | 80%    | ✅ Pass (+16.61%) |
-| Branches   | 83.13%  | 70%    | ✅ Pass (+13.13%) |
+| Statements | 99.21%  | 80%    | ✅ Pass (+19.21%) |
+| Lines      | 99.46%  | 80%    | ✅ Pass (+19.46%) |
+| Functions  | 98.55%  | 80%    | ✅ Pass (+18.55%) |
+| Branches   | 92.27%  | 70%    | ✅ Pass (+22.27%) |
 
 ### Component Coverage
 
-- **Component tests:** 98.51% lines overall (all components fully tested except portal-based skips)
+- **Component tests:** 99.46% lines overall (all components fully tested except portal-based skips)
 - **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
 - **Test files:** 58 passing test files
 
 ## Skipped Tests Summary
 
-### Total: 67 skipped tests
+### Total: 62 skipped tests
 
 All skipped tests are due to **Radix UI portal rendering timing issues** in jsdom test environment. These components work correctly in production (verified via Storybook/showcase apps).
 
 ### Breakdown by Component
 
-#### 1. Tooltip (36 skipped)
+#### 1. Tooltip (31 skipped)
 
 **File:** `src/__tests__/tooltip.test.tsx`
 **Coverage Impact:** Component works in production
@@ -169,19 +169,16 @@ Clicking second trigger closes first content but doesn't reliably show second co
 
 ## Lowest Branch Coverage
 
-Branch coverage (83.13%) trails line coverage because most gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-10-14 run:
+Branch coverage (92.27%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
 
 | File               | Branches | Uncovered                                 |
 | ------------------ | -------- | ----------------------------------------- |
-| `toast.tsx`        | 46.15%   | lines 187-203                             |
-| `feature-grid.tsx` | 52%      | line 65                                   |
-| `slider.tsx`       | 53.84%   | line 23                                   |
-| `card-grid.tsx`    | 57.14%   | lines 34-73                               |
-| `switch.tsx`       | 66.66%   | line 58                                   |
-| `section-hero.tsx` | 67.39%   | several branches (lines 86, 113, 150-186) |
-| `checkbox.tsx`     | 75%      | lines 69-81                               |
+| `switch.tsx`       | 66.66%   | line 56                                   |
+| `section-hero.tsx` | 68.08%   | several branches (lines 93, 120, 157-193) |
+| `checkbox.tsx`     | 75%      | lines 66-78                               |
+| `radio-group.tsx`  | 80%      | line 75                                   |
 
-`context-menu`, `dropdown-menu` and `menubar` were the lowest before `*.helpers.test.tsx` added tests for their `inset` variants, labels, shortcuts and sub-menus.
+`context-menu`, `dropdown-menu` and `menubar` were the lowest before `*.helpers.test.tsx` added tests for their `inset` variants, labels, shortcuts and sub-menus. `toast`, `feature-grid`, `slider` and `card-grid` were the lowest until 2026-11-03: tests now cover the `Toaster` render, per-thumb slider labels, grid column and gap variants, and feature badges. The one branch left in `toast.tsx` is the `idx > -1` guard in the listener cleanup, which cannot be false in practice.
 
 ---
 
