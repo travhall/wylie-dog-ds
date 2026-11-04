@@ -67,6 +67,11 @@ It is a one-time scaffold run inside Figma's plugin sandbox, not part of Token B
   code), `DEFAULT_VARIANTS` puts the code default top-left, `COMPONENT_DOCS` is a generated block
   (`node scripts/figma/component-docs.mjs --builder` rewrites it). `scripts/check-builder-coverage.mjs`
   runs every builder under a stubbed `figma` and checks text styles.
+- Values are bound, not typed: `bindStroke` derives the border width from the colour token's component
+  (`card/border` to `card/border-width`), glyph stroke weights bind to `icon-stroke-width`, gaps and padding bind
+  through `bindProp`. `scripts/check-builder-coverage.mjs` fails on a border with no width token and on raw gap,
+  padding or radius numbers beyond its budgets. `scripts/figma/audit-library.js` (read-only, one `use_figma` call)
+  lists what is still unbound in the file.
 - Owner rule: draw only the looks that differ at rest. An option or combination that looks identical is left
   out and recorded in the allow-list with the builder's reason.
 - Sandbox rules: `var` only (no `const`/`let`), no `??`, no bare `catch {}`, load async Figma data up front
