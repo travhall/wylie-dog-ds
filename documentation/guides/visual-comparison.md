@@ -26,7 +26,7 @@ Some stories differ from one load of the same build to the next: interaction sto
 pnpm visual:compare --noise /tmp/sb-base/apps/storybook/storybook-static --label base-noise
 ```
 
-`--noise` serves the one build twice and compares it with itself. Any story that differs here is noise. A story that differs between base and change and is not in this list is a real change.
+Known noisy story: `components-feedback-status-progress--loading-states` advances three bars with `Math.random()` on timers, so it differs between loads and sometimes flips between a build and itself; expect it in `--only` runs and ignore it. `--noise` serves the one build twice and compares it with itself. Any story that differs here is noise. A story that differs between base and change and is not in this list is a real change.
 
 ## Compare base with change
 
