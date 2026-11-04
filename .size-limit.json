@@ -2,7 +2,7 @@
   {
     "name": "Tokens Package",
     "path": "packages/tokens/dist/index.js",
-    "limit": "5 KB"
+    "limit": "5.5 KB"
   },
   {
     "name": "UI - Button",

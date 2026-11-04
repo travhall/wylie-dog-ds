@@ -137,10 +137,18 @@ if (unresolved.size > 0) {
   );
 }
 // Plan 217: raw numbers the builder assigns to gap, padding and corner radius stay
-// unbound. Each budget is the count when the owner decided what may stay (C1.2:
-// layout with no code counterpart); a new raw number fails the check. Corner radius
-// 9999 is the pill fallback used only when the radius variable is missing.
-const RAW_BUDGET = { gap: 9, padding: 17, radius: 3 };
+// unbound. Each budget is the count of sites the owner decided may stay (C1.2 and the
+// 2026-11-04 gap review); a new raw number fails the check. Corner radius 9999 is the
+// pill fallback used only when the radius variable is missing. Allowed sites:
+//   gap 5      Alert 12, Popover 8, Hover Card 8, Menubar outer 8, Navigation viewport 8:
+//              Figma-only layout, no code counterpart and no token to bind
+//   padding 15 Collapsible trigger and content 16/12 and Navigation viewport 16: demo
+//              content padding; Form input frame 8/16: a fallback, bound right after to
+//              input/padding-y/md and input/padding-x
+//   radius 3   Checkbox dash 1, Section Features glyph 4, icon fallback 2: drawn marks
+// Menu item stacks use a gap of 0 (code has none) and the Command input area binds
+// command/item-padding-x, so neither counts.
+const RAW_BUDGET = { gap: 5, padding: 15, radius: 3 };
 const rawCount = (pattern) => [...source.matchAll(pattern)].length;
 const raw = {
   gap: rawCount(/\.itemSpacing\s*=\s*[1-9][\d.]*\s*;/g),
