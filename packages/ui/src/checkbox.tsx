@@ -63,11 +63,13 @@ export const Checkbox = React.forwardRef<
     <CheckboxPrimitive.Indicator className={cn("flex items-start")}>
       {checked === "indeterminate" ? (
         <svg
-          className={iconSizes[size ?? "md"]}
+          className={cn(
+            iconSizes[size ?? "md"],
+            "stroke-(length:--space-checkbox-icon-stroke-width)"
+          )}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -75,11 +77,13 @@ export const Checkbox = React.forwardRef<
         </svg>
       ) : (
         <svg
-          className={iconSizes[size ?? "md"]}
+          className={cn(
+            iconSizes[size ?? "md"],
+            "stroke-(length:--space-checkbox-icon-stroke-width)"
+          )}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         >

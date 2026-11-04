@@ -9,7 +9,7 @@ export const dialogContentVariants = cva(
   cn(
     "fixed left-[50%] top-[50%] z-(--dialog-content-z-index) grid w-full translate-x-[-50%] translate-y-[-50%]",
     "gap-(--space-dialog-header-gap)",
-    "border bg-(--color-dialog-background) shadow-(--shadow-dialog-shadow) duration-(--duration-dialog-content-duration)",
+    "border-(length:--space-dialog-border-width) bg-(--color-dialog-background) shadow-(--shadow-dialog-shadow) duration-(--duration-dialog-content-duration)",
     "p-(--space-dialog-content-padding)",
     "/2 [48%]",
     "/2 [48%]",
@@ -110,7 +110,7 @@ export const DialogContent = React.forwardRef<
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              className="stroke-(length:--space-icon-stroke-width)"
               d="M6 18L18 6M6 6l12 12"
             />
           </svg>

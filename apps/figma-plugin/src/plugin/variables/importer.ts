@@ -20,6 +20,7 @@ import {
   validateTokenValue,
 } from "./validation";
 import { inferScopes } from "./scopes";
+import { applyPublishing } from "./publishing";
 import { FormatAdapterManager } from "./format-adapter-manager";
 import type { AdapterProcessResult } from "./format-adapter";
 import { converter as culoriConverter, parse as culoriParse } from "culori";
@@ -47,6 +48,8 @@ export interface GlobalImportResult {
   collectionsProcessed: number;
   totalVariablesCreated: number;
   totalReferencesResolved: number;
+  /** Collections whose hiddenFromPublishing flag this import changed (Plan 217) */
+  collectionsPublishingChanged?: number;
   errors: string[];
   unresolvedReferences: string[];
   validationReport?: ValidationReport;
@@ -521,6 +524,9 @@ export async function importMultipleCollections(
     validationReport: undefined,
   };
 
+  // Collections whose hiddenFromPublishing flag this import changed (Plan 217)
+  let publishingChanged = 0;
+
   // Track variables to delete when using "replace" strategy
   const variablesToDelete: Variable[] = [];
   // Track which variable names were imported (for deletion comparison)
@@ -574,6 +580,7 @@ export async function importMultipleCollections(
           collectionName,
           collectionInfo.data.modes || [{ modeId: "default", name: "Default" }]
         );
+        if (applyPublishing(collection)) publishingChanged++;
 
         // Read this collection's existing variables ONCE into a name→Variable
         // map. createVariableWithReferences reuses it for O(1) lookups (instead
@@ -688,6 +695,10 @@ export async function importMultipleCollections(
     if (deletedCount > 0) {
       message += `, deleted ${deletedCount} orphaned variables`;
     }
+    if (publishingChanged > 0) {
+      message += `, set ${publishingChanged} collection${publishingChanged === 1 ? "" : "s"} hidden from publishing or published`;
+    }
+    result.collectionsPublishingChanged = publishingChanged;
     result.message = result.success
       ? message
       : `Import failed with ${result.errors.length} errors`;

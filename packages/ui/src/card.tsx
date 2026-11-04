@@ -7,7 +7,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 export const cardVariants = cva(
   cn(
     "flex flex-col",
-    "border",
+    "border-(length:--space-card-border-width)",
     "bg-(--color-card-background)",
     "shadow-(--shadow-card-shadow)",
     "rounded-(--space-card-radius)",

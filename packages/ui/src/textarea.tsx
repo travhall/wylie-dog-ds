@@ -4,7 +4,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const textareaVariants = cva(
   cn(
-    "flex w-full border font-(--font-weight-textarea-font-weight) transition-colors",
+    "flex w-full border-(length:--space-textarea-border-width) font-(--font-weight-textarea-font-weight) transition-colors",
     "rounded-(--space-textarea-radius)",
     "placeholder:text-(--color-input-placeholder)",
     focusRingClasses,

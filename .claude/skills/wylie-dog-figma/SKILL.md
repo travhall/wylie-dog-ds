@@ -33,7 +33,7 @@ Read before running anything that writes to Figma, and never put a token or PAT 
    owner one decision at a time with the alternatives; do not accept-all.
 4. Apply Figma changes in place (rules below), then refresh the snapshot: run
    `scripts/figma/export-manifest.js` through `use_figma`, write `figma/manifest.json` as
-   `{ "schema": 1, "fileKey": "<key>", ...returned object }`, keep the returned order.
+   `{ "schema": 1, "fileKey": "<key>", ...returned object }`, keep the returned order. The manifest holds no node ids (they change on every rebuild).
 5. Re-run the check. Open findings should be 0. `node --test scripts/__tests__/*.test.mjs` must pass.
 
 CI runs the check after the build as advisory (`continue-on-error`), so a mismatch shows but does not fail.
@@ -67,6 +67,14 @@ It is a one-time scaffold run inside Figma's plugin sandbox, not part of Token B
   code), `DEFAULT_VARIANTS` puts the code default top-left, `COMPONENT_DOCS` is a generated block
   (`node scripts/figma/component-docs.mjs --builder` rewrites it). `scripts/check-builder-coverage.mjs`
   runs every builder under a stubbed `figma` and checks text styles.
+- Values are bound, not typed: `bindStroke` derives the border width from the colour token's component
+  (`card/border` to `card/border-width`), glyph stroke weights bind to `icon-stroke-width`, gaps and padding bind
+  through `bindProp`. `scripts/check-builder-coverage.mjs` fails on a border with no width token and on raw gap,
+  padding or radius numbers beyond its budgets. `scripts/figma/audit-library.js` (read-only, one `use_figma` call)
+  lists what is still unbound in the file.
+- Component properties (Plan 217): `addTextProperty` and `addBooleanProperty` give a set TEXT and BOOLEAN
+  properties named after the code props (`children`; Button and Card are the pilot). The parity check compares them
+  (`content-property-not-in-code`): a name with no code twin needs an allow-list reason.
 - Owner rule: draw only the looks that differ at rest. An option or combination that looks identical is left
   out and recorded in the allow-list with the builder's reason.
 - Sandbox rules: `var` only (no `const`/`let`), no `??`, no bare `catch {}`, load async Figma data up front

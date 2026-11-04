@@ -112,7 +112,7 @@ pnpm --filter @wyliedog/ui lint:a11y
 pnpm build
 pnpm size            # needs a build; compares against .size-limit.json
 pnpm check:docs      # README counts, doc links and token names
-pnpm check:tokens    # token references, binding and px literals (check:units)
+pnpm check:tokens    # token references, binding, px literals (check:units) and raw values (check:raw-values)
 ```
 
 `pnpm --filter @wyliedog/ui validate:tokens` lists token references in `packages/ui/src` that no token file defines. It ignores comments, and it exits non-zero when it finds an unknown reference.

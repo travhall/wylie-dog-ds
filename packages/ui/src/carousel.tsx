@@ -49,7 +49,7 @@ const CarouselPrevious = React.forwardRef<
   <button
     ref={ref}
     className={cn(
-      "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -left-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
+      "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border-(length:--space-carousel-border-width) border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -left-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
       "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
       focusRingClasses,
       "disabled:pointer-events-none disabled:bg-(--color-carousel-nav-background-disabled) disabled:text-(--color-carousel-nav-text-disabled) disabled:border-(--color-carousel-nav-border-disabled)",
@@ -70,7 +70,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -right-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
+        "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border-(length:--space-carousel-border-width) border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -right-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
         "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
         focusRingClasses,
         "disabled:pointer-events-none disabled:bg-(--color-carousel-nav-background-disabled) disabled:text-(--color-carousel-nav-text-disabled) disabled:border-(--color-carousel-nav-border-disabled)",

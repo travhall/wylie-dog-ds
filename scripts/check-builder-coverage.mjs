@@ -68,6 +68,17 @@ context.getVar = (name) => {
   return found;
 };
 
+// Plan 217: a border colour with no border-width token leaves the stroke weight
+// unbound. bindStroke derives the width token through borderWidthFor, so a null
+// answer is an unbound stroke weight.
+const unboundStrokes = new Set();
+const realBorderWidthFor = context.borderWidthFor;
+context.borderWidthFor = (colorVariable) => {
+  const found = realBorderWidthFor(colorVariable);
+  if (!found) unboundStrokes.add(colorVariable.name);
+  return found;
+};
+
 let current = "";
 const layers = [];
 context.makeText = (characters, styleName, fontSizeVar) => {
@@ -123,6 +134,43 @@ if (unusedDefs.length > 0) {
 if (unresolved.size > 0) {
   console.log(
     `\ngetVar names that do not resolve: ${[...unresolved].sort().join(", ")}`
+  );
+}
+// Plan 217: raw numbers the builder assigns to gap, padding and corner radius stay
+// unbound. Each budget is the count when the owner decided what may stay (C1.2:
+// layout with no code counterpart); a new raw number fails the check. Corner radius
+// 9999 is the pill fallback used only when the radius variable is missing.
+const RAW_BUDGET = { gap: 9, padding: 17, radius: 3 };
+const rawCount = (pattern) => [...source.matchAll(pattern)].length;
+const raw = {
+  gap: rawCount(/\.itemSpacing\s*=\s*[1-9][\d.]*\s*;/g),
+  padding: rawCount(
+    /\.padding(?:Left|Right|Top|Bottom)\s*=\s*[1-9][\d.]*\s*;/g
+  ),
+  radius: rawCount(/\.cornerRadius\s*=\s*(?!9999\b)[1-9][\d.]*\s*;/g),
+};
+console.log(
+  `\nUnbound values: strokes with no border-width token ${unboundStrokes.size}` +
+    (unboundStrokes.size ? ` (${[...unboundStrokes].sort().join(", ")})` : "")
+);
+for (const [kind, count] of Object.entries(raw)) {
+  console.log(
+    `  raw ${kind} assignments: ${count} (budget ${RAW_BUDGET[kind]})`
+  );
+  if (count > RAW_BUDGET[kind]) {
+    errors.push(
+      `raw ${kind} assignments ${count} exceed the budget ${RAW_BUDGET[kind]}`
+    );
+  }
+}
+// Names live on real nodes, which the stub cannot see: check that main() runs the
+// naming pass; scripts/figma/audit-library.js counts default names in the file.
+if (!/nameDefaultLayers\(built\)/.test(source)) {
+  errors.push("main() does not call nameDefaultLayers(built)");
+}
+if (unboundStrokes.size) {
+  errors.push(
+    `${unboundStrokes.size} border colour(s) with no border-width token`
   );
 }
 process.exit(errors.length > 0 ? 1 : 0);

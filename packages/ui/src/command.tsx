@@ -59,7 +59,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
 
     return (
       <div
-        className="flex items-center border-b border-(--color-command-border) px-(--space-command-item-padding-x)"
+        className="flex items-center border-b-(length:--space-command-border-width) border-(--color-command-border) px-(--space-command-item-padding-x)"
         // eslint-disable-next-line react/no-unknown-property -- cmdk's own DOM attribute selector, not a typo
         cmdk-input-wrapper=""
       >
@@ -190,7 +190,7 @@ const CommandSeparator = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "-mx-(--space-command-separator-margin-x) h-px bg-(--color-command-separator)",
+      "-mx-(--space-command-separator-margin-x) h-(--space-command-separator-height) bg-(--color-command-separator)",
       className
     )}
     role="separator"

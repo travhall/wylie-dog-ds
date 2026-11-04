@@ -341,6 +341,30 @@
       "rule": "property-not-in-figma",
       "property": "error",
       "reason": "Figma draws the code's `error` prop as state=error, next to open and disabled."
+    },
+    {
+      "component": "Card",
+      "rule": "content-property-not-in-code",
+      "property": "title",
+      "reason": "CardTitle is a sub-component in code, not a prop of Card; the Figma property edits its text."
+    },
+    {
+      "component": "Card",
+      "rule": "content-property-not-in-code",
+      "property": "description",
+      "reason": "CardDescription is a sub-component in code, not a prop of Card; the Figma property edits its text."
+    },
+    {
+      "component": "Card",
+      "rule": "content-property-not-in-code",
+      "property": "content",
+      "reason": "CardContent is a sub-component in code, not a prop of Card; the Figma property edits its text."
+    },
+    {
+      "component": "Card",
+      "rule": "content-property-not-in-code",
+      "property": "footer",
+      "reason": "CardFooter is an optional child in code, not a prop of Card; the Figma boolean shows or hides it."
     }
   ]
 }

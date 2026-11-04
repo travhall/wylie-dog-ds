@@ -13,11 +13,12 @@ export const sheetContentVariants = cva(
   {
     variants: {
       side: {
-        top: "inset-x-0 top-0 border-b",
-        bottom: "inset-x-0 bottom-0 border-t",
-        left: "inset-y-0 left-0 h-full border-r w-(--space-sheet-content-width-default) max-w-full",
+        top: "inset-x-0 top-0 border-b-(length:--space-sheet-border-width)",
+        bottom:
+          "inset-x-0 bottom-0 border-t-(length:--space-sheet-border-width)",
+        left: "inset-y-0 left-0 h-full border-r-(length:--space-sheet-border-width) w-(--space-sheet-content-width-default) max-w-full",
         right:
-          "inset-y-0 right-0 h-full border-l w-(--space-sheet-content-width-default) max-w-full",
+          "inset-y-0 right-0 h-full border-l-(length:--space-sheet-border-width) w-(--space-sheet-content-width-default) max-w-full",
       },
       size: {
         sm: "",
@@ -118,7 +119,7 @@ export const SheetContent = React.forwardRef<
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              className="stroke-(length:--space-icon-stroke-width)"
               d="M6 18L18 6M6 6l12 12"
             />
           </svg>

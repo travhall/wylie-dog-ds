@@ -2429,6 +2429,11 @@
     "$value": "{border-width.1}",
     "$description": "Width of the alert's left border. The same as the other sides; raise it for a left accent."
   },
+  "alert.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the alert."
+  },
   "label.required-margin-left": {
     "$type": "spacing",
     "$value": "{space.050}",
@@ -3579,6 +3584,11 @@
     "$value": "{space.010}",
     "$description": "Padding inside the scroll area scrollbar."
   },
+  "scrollbar.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the scroll area."
+  },
   "context-menu.label-font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.semibold}",
@@ -3603,6 +3613,11 @@
     "$type": "number",
     "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of the avatar fallback."
+  },
+  "avatar.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the avatar."
   },
   "table.footer-font-weight": {
     "$type": "number",
@@ -4049,6 +4064,11 @@
     "$value": "{color.border.muted}",
     "$description": "Border color of a disabled card, in the muted border tone."
   },
+  "card.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the card."
+  },
   "textarea.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
@@ -4058,6 +4078,11 @@
     "$type": "color",
     "$value": "{color.foreground.faint}",
     "$description": "Text color of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  },
+  "textarea.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the textarea."
   },
   "select.trigger.background-disabled": {
     "$type": "color",
@@ -4094,6 +4119,11 @@
     "$value": "{color.border.muted}",
     "$description": "Border color of the checkbox when disabled, in the muted border tone."
   },
+  "checkbox.icon-stroke-width": {
+    "$type": "dimension",
+    "$value": "3px",
+    "$description": "Stroke width of the checkbox check and indeterminate marks."
+  },
   "radio.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
@@ -4108,6 +4138,11 @@
     "$type": "color",
     "$value": "{color.foreground.faint}",
     "$description": "Color of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  },
+  "radio.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the radio button."
   },
   "switch.track.background-disabled": {
     "$type": "color",
@@ -4159,6 +4194,16 @@
     "$value": "{color.foreground.faint}",
     "$description": "Text color of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
+  "contextmenu.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the context menu."
+  },
+  "contextmenu.separator-height": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Height of the context menu separator."
+  },
   "menubar.item-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
@@ -4173,6 +4218,16 @@
     "$type": "color",
     "$value": "{color.foreground.faint}",
     "$description": "Text color of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  },
+  "command.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the command."
+  },
+  "command.separator-height": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Height of the command menu separator."
   },
   "carousel.nav-text-disabled": {
     "$type": "color",
@@ -4189,6 +4244,11 @@
     "$value": "{color.background.emphasis}",
     "$description": "Fill of the carousel nav when disabled, a quiet neutral so it reads as unavailable. Pairs with `carousel.nav-text-disabled`."
   },
+  "carousel.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the carousel."
+  },
   "calendar.nav-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
@@ -4198,6 +4258,11 @@
     "$type": "color",
     "$value": "{color.border.muted}",
     "$description": "Border color of the calendar nav when disabled, in the muted border tone."
+  },
+  "calendar.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the calendar."
   },
   "toast.action-text-disabled": {
     "$type": "color",
@@ -4223,6 +4288,11 @@
     "$type": "color",
     "$value": "{color.background.emphasis}",
     "$description": "Fill of a pressed (on) toggle when disabled, a quiet neutral so it reads as unavailable."
+  },
+  "toggle.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the toggle."
   },
   "menubar.trigger-highlighted": {
     "$type": "color",
@@ -4328,6 +4398,11 @@
     "$type": "number",
     "$value": "{z-index.modal}",
     "$description": "Stacking order of the focused skip link."
+  },
+  "page-layout.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the page layout."
   },
   "section-features.padding-y-sm": {
     "$type": "spacing",
@@ -4629,6 +4704,11 @@
     "$value": "{space.200}",
     "$description": "Gap between the social links."
   },
+  "site-footer.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the site footer."
+  },
   "site-header.container.padding-x-sm": {
     "$type": "spacing",
     "$value": "{space.200}",
@@ -4714,6 +4794,11 @@
     "$value": "{z-index.sticky}",
     "$description": "Stacking order of the sticky header."
   },
+  "site-header.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the site header."
+  },
   "button.spinner.size": {
     "$type": "spacing",
     "$value": "{icon.size.sm}",
@@ -4778,6 +4863,11 @@
     "$type": "dimension",
     "$value": "{border-width.2}",
     "$description": "Stroke width of the button loading spinner."
+  },
+  "button.icon-gap": {
+    "$type": "dimension",
+    "$value": "{space.100}",
+    "$description": "Gap between the icon, or the loading spinner, and the label of the button."
   },
   "navigation-menu.arrow-radius": {
     "$type": "dimension",
@@ -4844,6 +4934,11 @@
     "$value": "{shadow.md}",
     "$description": "Elevation shadow of the select dropdown."
   },
+  "select.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the select."
+  },
   "navigation-menu.viewport-shadow": {
     "$type": "shadow",
     "$value": "{shadow.lg}",
@@ -4863,6 +4958,11 @@
     "$type": "shadow",
     "$value": "{shadow.sm}",
     "$description": "Elevation shadow of the active tab trigger."
+  },
+  "tabs.trigger.overlap": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Overlap of the trigger underline with the border of the tabs list."
   },
   "toast.shadow": {
     "$type": "shadow",
@@ -4919,6 +5019,11 @@
     "$value": "{z-index.dropdown}",
     "$description": "Stacking order of the dropdown menu and its sub-menus."
   },
+  "dropdown-menu.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the dropdown menu."
+  },
   "menubar.content-z-index": {
     "$type": "number",
     "$value": "{z-index.dropdown}",
@@ -4928,6 +5033,11 @@
     "$type": "number",
     "$value": "{z-index.dropdown}",
     "$description": "Stacking order of a menubar sub-menu."
+  },
+  "menubar.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the menubar."
   },
   "navigation-menu.z-index": {
     "$type": "number",
@@ -4944,25 +5054,65 @@
     "$value": "{z-index.dropdown}",
     "$description": "Stacking order of the resizable handle."
   },
+  "resizable.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the resizable."
+  },
+  "resizable.handle-hit-size": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "Size of the pointer hit area that widens the resizable handle."
+  },
+  "resizable.handle-line-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Width of the thin line of the resizable handle."
+  },
   "popover.z-index": {
     "$type": "number",
     "$value": "{z-index.popover}",
     "$description": "Stacking order of the popover."
+  },
+  "popover.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the popover."
   },
   "hover-card.z-index": {
     "$type": "number",
     "$value": "{z-index.popover}",
     "$description": "Stacking order of the hover card."
   },
+  "hover-card.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the hover card."
+  },
   "toast.viewport.z-index": {
     "$type": "number",
     "$value": "{z-index.toast}",
     "$description": "Stacking order of the toast viewport."
   },
+  "toast.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the toast."
+  },
+  "toast.max-width": {
+    "$type": "dimension",
+    "$value": "420px",
+    "$description": "Maximum width of the toast viewport from the medium breakpoint up."
+  },
   "tooltip.z-index": {
     "$type": "number",
     "$value": "{z-index.tooltip}",
     "$description": "Stacking order of the tooltip."
+  },
+  "tooltip.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the tooltip."
   },
   "dialog.overlay-opacity": {
     "$type": "number",
@@ -4983,6 +5133,16 @@
     "$type": "number",
     "$value": "{opacity.100}",
     "$description": "Opacity of the native number-input spin buttons."
+  },
+  "input.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the input."
+  },
+  "input.native-icon-size": {
+    "$type": "dimension",
+    "$value": "{space.200}",
+    "$description": "Size of the browser's own search-cancel and date-picker icons inside an input."
   },
   "dialog.title-line-height": {
     "$type": "number",
@@ -5014,10 +5174,25 @@
     "$value": "{transition.duration.normal}",
     "$description": "Transition duration of the dialog content."
   },
+  "dialog.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the dialog."
+  },
   "alert-dialog.content-duration": {
     "$type": "duration",
     "$value": "{transition.duration.normal}",
     "$description": "Transition duration of the alert dialog content."
+  },
+  "alert-dialog.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the alert dialog."
+  },
+  "alert-dialog.content-max-width": {
+    "$type": "spacing",
+    "$value": "{space.1650}",
+    "$description": "Maximum width of the alert dialog content."
   },
   "accordion.trigger.icon-duration": {
     "$type": "duration",
@@ -5028,6 +5203,16 @@
     "$type": "duration",
     "$value": "{transition.duration.normal}",
     "$description": "Transition duration of the navigation menu trigger chevron."
+  },
+  "navigation-menu.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the navigation menu."
+  },
+  "navigation-menu.trigger.icon-offset-top": {
+    "$type": "dimension",
+    "$value": "{space.010}",
+    "$description": "Downward nudge of the trigger chevron so it sits on the text baseline."
   },
   "progress.indicator-duration": {
     "$type": "duration",
@@ -5044,6 +5229,11 @@
     "$value": "{duration.300}",
     "$description": "Transition duration when the sheet closes."
   },
+  "sheet.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the sheet."
+  },
   "card-grid.item-duration": {
     "$type": "duration",
     "$value": "{duration.300}",
@@ -5058,5 +5248,15 @@
     "$type": "duration",
     "$value": "{duration.500}",
     "$description": "Hover transition duration of the feature icon container."
+  },
+  "feature-grid.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}",
+    "$description": "Border width of the feature grid."
+  },
+  "icon-stroke-width": {
+    "$type": "dimension",
+    "$value": "{border-width.2}",
+    "$description": "Stroke width of the line icons drawn as inline SVG."
   }
 }

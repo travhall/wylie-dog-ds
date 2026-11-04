@@ -5,7 +5,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const toastVariants = cva(
   cn(
-    "group pointer-events-auto relative flex items-center justify-between overflow-hidden border shadow-(--shadow-toast-shadow) transition-all",
+    "group pointer-events-auto relative flex items-center justify-between overflow-hidden border-(length:--space-toast-border-width) shadow-(--shadow-toast-shadow) transition-all",
     "w-(--space-toast-width)",
     "space-x-(--space-toast-gap)",
     "rounded-(--space-toast-radius)",
@@ -16,7 +16,7 @@ export const toastVariants = cva(
     variants: {
       variant: {
         default:
-          "border bg-(--color-toast-default-background) text-(--color-toast-text)",
+          "border-(length:--space-toast-border-width) bg-(--color-toast-default-background) text-(--color-toast-text)",
         destructive:
           "border-(--color-toast-destructive-border) bg-(--color-toast-destructive-background) text-(--color-toast-destructive-text)",
         success:
@@ -75,7 +75,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
     <button
       ref={ref}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border bg-transparent transition-colors hover:bg-(--color-toast-action-hover)",
+        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border-(length:--space-toast-border-width) bg-transparent transition-colors hover:bg-(--color-toast-action-hover)",
         focusRingClasses,
         "disabled:pointer-events-none disabled:text-(--color-toast-action-text-disabled) disabled:border-(--color-toast-action-border-disabled)",
         "h-(--space-toast-action-height)",
@@ -210,7 +210,7 @@ export function Toaster() {
   if (toasts.length === 0) return null;
   return (
     <div
-      className="fixed bottom-0 right-0 z-(--toast-viewport-z-index) flex max-h-screen w-full flex-col-reverse gap-(--space-toast-viewport-gap) p-(--space-toast-viewport-padding) sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[26.25rem]"
+      className="fixed bottom-0 right-0 z-(--toast-viewport-z-index) flex max-h-screen w-full flex-col-reverse gap-(--space-toast-viewport-gap) p-(--space-toast-viewport-padding) sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-(--space-toast-max-width)"
       aria-live="polite"
       aria-label="Notifications"
     >

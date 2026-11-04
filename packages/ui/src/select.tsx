@@ -5,7 +5,7 @@ import { cn, focusRingClasses, focusRingInsetClasses } from "./lib/utils";
 
 export const selectTriggerVariants = cva(
   cn(
-    "flex w-full items-center justify-between border border-(--color-input-border) transition-colors",
+    "flex w-full items-center justify-between border-(length:--space-select-border-width) border-(--color-input-border) transition-colors",
     "rounded-(--space-select-trigger-radius)",
     "placeholder:text-(--color-input-placeholder)",
     focusRingClasses,
@@ -104,7 +104,7 @@ export const SelectTrigger = React.forwardRef<
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
+            className="stroke-(length:--space-icon-stroke-width)"
             d="M19 9l-7 7-7-7"
           />
         </svg>
@@ -123,7 +123,7 @@ export const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-(--select-content-z-index) overflow-hidden border border-(--color-input-border)",
+        "relative z-(--select-content-z-index) overflow-hidden border-(length:--space-select-border-width) border-(--color-input-border)",
         "max-h-(--space-select-content-max-height)",
         "min-w-(--space-select-content-min-width)",
         "rounded-(--space-select-content-radius)",

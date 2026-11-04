@@ -4,7 +4,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const inputVariants = cva(
   cn(
-    "flex w-full border transition-colors",
+    "flex w-full border-(length:--space-input-border-width) transition-colors",
     "rounded-(--space-input-radius)",
     "placeholder:text-(--color-input-placeholder)",
     focusRingClasses,

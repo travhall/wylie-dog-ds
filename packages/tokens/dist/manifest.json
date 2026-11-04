@@ -5002,6 +5002,17 @@
         "type": "dimension",
         "variable": "var(--button-spinner-border-width)",
         "description": "Stroke width of the button loading spinner."
+      },
+      "button-icon-gap": {
+        "name": "buttonIconGap",
+        "path": [
+          "button",
+          "icon-gap"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--button-icon-gap)",
+        "description": "Gap between the icon, or the loading spinner, and the label of the button."
       }
     },
     "card": {
@@ -5297,6 +5308,17 @@
         "type": "color",
         "variable": "var(--color-card-border-disabled)",
         "description": "Border color of a disabled card, in the muted border tone."
+      },
+      "card-border-width": {
+        "name": "cardBorderWidth",
+        "path": [
+          "card",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--card-border-width)",
+        "description": "Border width of the card."
       }
     },
     "input": {
@@ -5505,6 +5527,28 @@
         "type": "number",
         "variable": "var(--input-spin-button-opacity)",
         "description": "Opacity of the native number-input spin buttons."
+      },
+      "input-border-width": {
+        "name": "inputBorderWidth",
+        "path": [
+          "input",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--input-border-width)",
+        "description": "Border width of the input."
+      },
+      "input-native-icon-size": {
+        "name": "inputNativeIconSize",
+        "path": [
+          "input",
+          "native-icon-size"
+        ],
+        "value": "1rem",
+        "type": "dimension",
+        "variable": "var(--input-native-icon-size)",
+        "description": "Size of the browser's own search-cancel and date-picker icons inside an input."
       }
     },
     "alert": {
@@ -5825,6 +5869,17 @@
         "type": "dimension",
         "variable": "var(--alert-border-left-width)",
         "description": "Width of the alert's left border. The same as the other sides; raise it for a left accent."
+      },
+      "alert-border-width": {
+        "name": "alertBorderWidth",
+        "path": [
+          "alert",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--alert-border-width)",
+        "description": "Border width of the alert."
       }
     },
     "menubar": {
@@ -6343,6 +6398,17 @@
         "type": "number",
         "variable": "var(--menubar-sub-content-z-index)",
         "description": "Stacking order of a menubar sub-menu."
+      },
+      "menubar-border-width": {
+        "name": "menubarBorderWidth",
+        "path": [
+          "menubar",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--menubar-border-width)",
+        "description": "Border width of the menubar."
       }
     },
     "navigation": {
@@ -6828,6 +6894,28 @@
         "type": "color",
         "variable": "var(--color-command-input-text-disabled)",
         "description": "Text color of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "command-border-width": {
+        "name": "commandBorderWidth",
+        "path": [
+          "command",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--command-border-width)",
+        "description": "Border width of the command."
+      },
+      "command-separator-height": {
+        "name": "commandSeparatorHeight",
+        "path": [
+          "command",
+          "separator-height"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--command-separator-height)",
+        "description": "Height of the command menu separator."
       }
     },
     "tabs": {
@@ -7219,6 +7307,18 @@
         "type": "shadow",
         "variable": "var(--tabs-trigger-shadow)",
         "description": "Elevation shadow of the active tab trigger."
+      },
+      "tabs-trigger-overlap": {
+        "name": "tabsTriggerOverlap",
+        "path": [
+          "tabs",
+          "trigger",
+          "overlap"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--tabs-trigger-overlap)",
+        "description": "Overlap of the trigger underline with the border of the tabs list."
       }
     },
     "collapsible": {
@@ -7549,6 +7649,17 @@
         "type": "color",
         "variable": "var(--color-calendar-nav-border-disabled)",
         "description": "Border color of the calendar nav when disabled, in the muted border tone."
+      },
+      "calendar-border-width": {
+        "name": "calendarBorderWidth",
+        "path": [
+          "calendar",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--calendar-border-width)",
+        "description": "Border width of the calendar."
       }
     },
     "accordion": {
@@ -7981,6 +8092,17 @@
         "type": "number",
         "variable": "var(--avatar-fallback-font-weight)",
         "description": "Font weight of the avatar fallback."
+      },
+      "avatar-border-width": {
+        "name": "avatarBorderWidth",
+        "path": [
+          "avatar",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--avatar-border-width)",
+        "description": "Border width of the avatar."
       }
     },
     "breadcrumb": {
@@ -8263,6 +8385,17 @@
         "type": "color",
         "variable": "var(--color-carousel-nav-background-disabled)",
         "description": "Fill of the carousel nav when disabled, a quiet neutral so it reads as unavailable. Pairs with `carousel.nav-text-disabled`."
+      },
+      "carousel-border-width": {
+        "name": "carouselBorderWidth",
+        "path": [
+          "carousel",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--carousel-border-width)",
+        "description": "Border width of the carousel."
       }
     },
     "contextmenu": {
@@ -8353,6 +8486,28 @@
         "type": "color",
         "variable": "var(--color-contextmenu-item-text-disabled)",
         "description": "Text color of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "contextmenu-border-width": {
+        "name": "contextmenuBorderWidth",
+        "path": [
+          "contextmenu",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--contextmenu-border-width)",
+        "description": "Border width of the context menu."
+      },
+      "contextmenu-separator-height": {
+        "name": "contextmenuSeparatorHeight",
+        "path": [
+          "contextmenu",
+          "separator-height"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--contextmenu-separator-height)",
+        "description": "Height of the context menu separator."
       }
     },
     "dialog": {
@@ -8703,6 +8858,17 @@
         "type": "duration",
         "variable": "var(--dialog-content-duration)",
         "description": "Transition duration of the dialog content."
+      },
+      "dialog-border-width": {
+        "name": "dialogBorderWidth",
+        "path": [
+          "dialog",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--dialog-border-width)",
+        "description": "Border width of the dialog."
       }
     },
     "form": {
@@ -8977,6 +9143,17 @@
         "type": "number",
         "variable": "var(--hover-card-z-index)",
         "description": "Stacking order of the hover card."
+      },
+      "hover-card-border-width": {
+        "name": "hoverCardBorderWidth",
+        "path": [
+          "hover-card",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--hover-card-border-width)",
+        "description": "Border width of the hover card."
       }
     },
     "pagination": {
@@ -9290,6 +9467,17 @@
         "type": "number",
         "variable": "var(--popover-z-index)",
         "description": "Stacking order of the popover."
+      },
+      "popover-border-width": {
+        "name": "popoverBorderWidth",
+        "path": [
+          "popover",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--popover-border-width)",
+        "description": "Border width of the popover."
       }
     },
     "progress": {
@@ -9574,6 +9762,17 @@
         "type": "color",
         "variable": "var(--color-radio-indicator-disabled)",
         "description": "Color of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "radio-border-width": {
+        "name": "radioBorderWidth",
+        "path": [
+          "radio",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--radio-border-width)",
+        "description": "Border width of the radio button."
       }
     },
     "resizable": {
@@ -9686,6 +9885,39 @@
         "type": "number",
         "variable": "var(--resizable-handle-z-index)",
         "description": "Stacking order of the resizable handle."
+      },
+      "resizable-border-width": {
+        "name": "resizableBorderWidth",
+        "path": [
+          "resizable",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--resizable-border-width)",
+        "description": "Border width of the resizable."
+      },
+      "resizable-handle-hit-size": {
+        "name": "resizableHandleHitSize",
+        "path": [
+          "resizable",
+          "handle-hit-size"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--resizable-handle-hit-size)",
+        "description": "Size of the pointer hit area that widens the resizable handle."
+      },
+      "resizable-handle-line-width": {
+        "name": "resizableHandleLineWidth",
+        "path": [
+          "resizable",
+          "handle-line-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--resizable-handle-line-width)",
+        "description": "Width of the thin line of the resizable handle."
       }
     },
     "scrollbar": {
@@ -9754,6 +9986,17 @@
         "type": "spacing",
         "variable": "var(--scrollbar-padding)",
         "description": "Padding inside the scroll area scrollbar."
+      },
+      "scrollbar-border-width": {
+        "name": "scrollbarBorderWidth",
+        "path": [
+          "scrollbar",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--scrollbar-border-width)",
+        "description": "Border width of the scroll area."
       }
     },
     "skeleton": {
@@ -10848,6 +11091,28 @@
         "type": "number",
         "variable": "var(--toast-viewport-z-index)",
         "description": "Stacking order of the toast viewport."
+      },
+      "toast-border-width": {
+        "name": "toastBorderWidth",
+        "path": [
+          "toast",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--toast-border-width)",
+        "description": "Border width of the toast."
+      },
+      "toast-max-width": {
+        "name": "toastMaxWidth",
+        "path": [
+          "toast",
+          "max-width"
+        ],
+        "value": "420px",
+        "type": "dimension",
+        "variable": "var(--toast-max-width)",
+        "description": "Maximum width of the toast viewport from the medium breakpoint up."
       }
     },
     "toggle": {
@@ -11060,6 +11325,17 @@
         "type": "color",
         "variable": "var(--color-toggle-pressed-disabled)",
         "description": "Fill of a pressed (on) toggle when disabled, a quiet neutral so it reads as unavailable."
+      },
+      "toggle-border-width": {
+        "name": "toggleBorderWidth",
+        "path": [
+          "toggle",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--toggle-border-width)",
+        "description": "Border width of the toggle."
       }
     },
     "tooltip": {
@@ -11172,6 +11448,17 @@
         "type": "number",
         "variable": "var(--tooltip-z-index)",
         "description": "Stacking order of the tooltip."
+      },
+      "tooltip-border-width": {
+        "name": "tooltipBorderWidth",
+        "path": [
+          "tooltip",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--tooltip-border-width)",
+        "description": "Border width of the tooltip."
       }
     },
     "select": {
@@ -11625,6 +11912,17 @@
         "type": "shadow",
         "variable": "var(--select-content-shadow)",
         "description": "Elevation shadow of the select dropdown."
+      },
+      "select-border-width": {
+        "name": "selectBorderWidth",
+        "path": [
+          "select",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--select-border-width)",
+        "description": "Border width of the select."
       }
     },
     "checkbox": {
@@ -11839,6 +12137,17 @@
         "type": "color",
         "variable": "var(--color-checkbox-border-disabled)",
         "description": "Border color of the checkbox when disabled, in the muted border tone."
+      },
+      "checkbox-icon-stroke-width": {
+        "name": "checkboxIconStrokeWidth",
+        "path": [
+          "checkbox",
+          "icon-stroke-width"
+        ],
+        "value": "3px",
+        "type": "dimension",
+        "variable": "var(--checkbox-icon-stroke-width)",
+        "description": "Stroke width of the checkbox check and indeterminate marks."
       }
     },
     "switch": {
@@ -12221,6 +12530,17 @@
         "type": "color",
         "variable": "var(--color-textarea-text-disabled)",
         "description": "Text color of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "textarea-border-width": {
+        "name": "textareaBorderWidth",
+        "path": [
+          "textarea",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--textarea-border-width)",
+        "description": "Border width of the textarea."
       }
     },
     "label": {
@@ -12661,6 +12981,17 @@
         "type": "duration",
         "variable": "var(--sheet-content-duration-closed)",
         "description": "Transition duration when the sheet closes."
+      },
+      "sheet-border-width": {
+        "name": "sheetBorderWidth",
+        "path": [
+          "sheet",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--sheet-border-width)",
+        "description": "Border width of the sheet."
       }
     },
     "separator": {
@@ -13333,6 +13664,17 @@
         "type": "number",
         "variable": "var(--dropdown-menu-content-z-index)",
         "description": "Stacking order of the dropdown menu and its sub-menus."
+      },
+      "dropdown-menu-border-width": {
+        "name": "dropdownMenuBorderWidth",
+        "path": [
+          "dropdown-menu",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--dropdown-menu-border-width)",
+        "description": "Border width of the dropdown menu."
       }
     },
     "card-grid": {
@@ -13584,6 +13926,17 @@
         "type": "duration",
         "variable": "var(--feature-grid-icon-duration)",
         "description": "Hover transition duration of the feature icon container."
+      },
+      "feature-grid-border-width": {
+        "name": "featureGridBorderWidth",
+        "path": [
+          "feature-grid",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--feature-grid-border-width)",
+        "description": "Border width of the feature grid."
       }
     },
     "alert-dialog": {
@@ -13729,6 +14082,28 @@
         "type": "duration",
         "variable": "var(--alert-dialog-content-duration)",
         "description": "Transition duration of the alert dialog content."
+      },
+      "alert-dialog-border-width": {
+        "name": "alertDialogBorderWidth",
+        "path": [
+          "alert-dialog",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--alert-dialog-border-width)",
+        "description": "Border width of the alert dialog."
+      },
+      "alert-dialog-content-max-width": {
+        "name": "alertDialogContentMaxWidth",
+        "path": [
+          "alert-dialog",
+          "content-max-width"
+        ],
+        "value": "32rem",
+        "type": "spacing",
+        "variable": "var(--alert-dialog-content-max-width)",
+        "description": "Maximum width of the alert dialog content."
       }
     },
     "navigation-menu": {
@@ -13932,6 +14307,29 @@
         "type": "duration",
         "variable": "var(--navigation-menu-indicator-duration)",
         "description": "Transition duration of the navigation menu trigger chevron."
+      },
+      "navigation-menu-border-width": {
+        "name": "navigationMenuBorderWidth",
+        "path": [
+          "navigation-menu",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--navigation-menu-border-width)",
+        "description": "Border width of the navigation menu."
+      },
+      "navigation-menu-trigger-icon-offset-top": {
+        "name": "navigationMenuTriggerIconOffsetTop",
+        "path": [
+          "navigation-menu",
+          "trigger",
+          "icon-offset-top"
+        ],
+        "value": "0.0625rem",
+        "type": "dimension",
+        "variable": "var(--navigation-menu-trigger-icon-offset-top)",
+        "description": "Downward nudge of the trigger chevron so it sits on the text baseline."
       }
     },
     "toggle-group": {
@@ -14295,6 +14693,17 @@
         "type": "number",
         "variable": "var(--site-header-z-index)",
         "description": "Stacking order of the sticky header."
+      },
+      "site-header-border-width": {
+        "name": "siteHeaderBorderWidth",
+        "path": [
+          "site-header",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--site-header-border-width)",
+        "description": "Border width of the site header."
       }
     },
     "site-footer": {
@@ -14579,6 +14988,17 @@
         "type": "spacing",
         "variable": "var(--site-footer-social-gap)",
         "description": "Gap between the social links."
+      },
+      "site-footer-border-width": {
+        "name": "siteFooterBorderWidth",
+        "path": [
+          "site-footer",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--site-footer-border-width)",
+        "description": "Border width of the site footer."
       }
     },
     "section-hero": {
@@ -15370,6 +15790,29 @@
         "type": "number",
         "variable": "var(--page-layout-skip-link-z-index)",
         "description": "Stacking order of the focused skip link."
+      },
+      "page-layout-border-width": {
+        "name": "pageLayoutBorderWidth",
+        "path": [
+          "page-layout",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--page-layout-border-width)",
+        "description": "Border width of the page layout."
+      }
+    },
+    "icon-stroke-width": {
+      "icon-stroke-width": {
+        "name": "iconStrokeWidth",
+        "path": [
+          "icon-stroke-width"
+        ],
+        "value": "2px",
+        "type": "dimension",
+        "variable": "var(--icon-stroke-width)",
+        "description": "Stroke width of the line icons drawn as inline SVG."
       }
     }
   }

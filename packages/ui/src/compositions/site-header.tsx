@@ -15,8 +15,9 @@ export const siteHeaderVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-(--color-site-header-background) border-b border-(--color-site-header-border) sticky top-0 z-(--site-header-z-index) backdrop-blur supports-[backdrop-filter]:bg-(--color-site-header-background)/95",
-        transparent: "bg-transparent border-b border-transparent",
+          "bg-(--color-site-header-background) border-b-(length:--space-site-header-border-width) border-(--color-site-header-border) sticky top-0 z-(--site-header-z-index) backdrop-blur supports-[backdrop-filter]:bg-(--color-site-header-background)/95",
+        transparent:
+          "bg-transparent border-b-(length:--space-site-header-border-width) border-transparent",
       },
     },
     defaultVariants: {

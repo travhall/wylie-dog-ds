@@ -213,7 +213,10 @@ describe("Toggle", () => {
         </Toggle>
       );
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("border", "border-(--color-toggle-border)");
+      expect(toggle).toHaveClass(
+        "border-(length:--space-toggle-border-width)",
+        "border-(--color-toggle-border)"
+      );
     });
   });
 
@@ -297,7 +300,7 @@ describe("Toggle", () => {
       );
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "border",
+        "border-(length:--space-toggle-border-width)",
         "border-(--color-toggle-border)",
         "h-(--space-toggle-size-lg-height)",
         "px-(--space-toggle-size-lg-padding-x)"
@@ -409,7 +412,7 @@ describe("Toggle", () => {
       );
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "border",
+        "border-(length:--space-toggle-border-width)",
         "border-(--color-toggle-border)",
         "h-(--space-toggle-size-lg-height)",
         "px-(--space-toggle-size-lg-padding-x)",

@@ -17,8 +17,9 @@
 // - z-index, duration, easing, shadow value strings and the semantic focus
 //   dimensions are hidden: no Figma property binds them.
 // - shadow blur, offset and spread are EFFECT_FLOAT.
-// The only variables left on ALL_SCOPES are component colors whose name has
-// no property word (see inferScopesForComponentColor).
+// No real variable is left on ALL_SCOPES (Plan 217, owner decision D1). A new
+// component color whose name has no property word keeps ALL_SCOPES in this
+// function and fails scopes.test.ts, so it gets a word or a rule.
 
 // Map W3C DTCG types to Figma scopes with enhanced typography support
 const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
@@ -57,10 +58,10 @@ const STROKE_SCOPES = ["STROKE_COLOR"];
 const FOCUS_BORDER_SCOPES = ["STROKE_COLOR", "EFFECT_COLOR"];
 
 // Property words in component token names. Stroke words are checked first
-// ("border-color" is a border). A bare "color" is deliberately not a word:
-// separator.color is a fill, checkbox.border.color a stroke, card.title.color
-// text, so it is ambiguous and stays ALL_SCOPES.
+// ("border-color" is a border). A bare "color" is not a word: it takes its
+// scope from the segment before it (see inferScopesForComponentColor).
 const STROKE_WORDS = ["border", "ring", "outline", "stroke"];
+// Words for the part of the UI that carries a text color
 const FOREGROUND_WORDS = [
   "text",
   "label",
@@ -68,6 +69,29 @@ const FOREGROUND_WORDS = [
   "placeholder",
   "link",
   "icon",
+  "title",
+  "description",
+  "caption",
+  "shortcut",
+  "heading",
+  "empty",
+  "current",
+  "error",
+  "required",
+  "close",
+];
+// A state word is the last resort, after every segment has been scanned for a
+// property word (label.disabled-color is text). With none ("day-hover",
+// "trigger-open") the token is a fill: text and border states carry "text" or
+// "border" (Plan 217)
+const STATE_WORDS = [
+  "hover",
+  "pressed",
+  "selected",
+  "highlighted",
+  "active",
+  "open",
+  "disabled",
 ];
 const FILL_WORDS = [
   "background",
@@ -76,6 +100,10 @@ const FILL_WORDS = [
   "thumb",
   "indicator",
   "overlay",
+  "range",
+  "separator",
+  "handle",
+  "gradient",
 ];
 
 /**
@@ -129,13 +157,27 @@ function inferScopesForDimension(tokenName: string): string[] {
  * name the part or variant ("checkbox.checked.border"), so they are only
  * consulted when the last one has no property word. A name with no property
  * word ("select.trigger-focus") keeps ALL_SCOPES rather than being guessed.
+ * A bare "color" segment is settled by the part before it: a border is a
+ * stroke, a title or content is text, a separator is a fill. Any other part
+ * (indicator.color is a stroke, a fill elsewhere) stays ALL_SCOPES.
  */
 function inferScopesForComponentColor(segments: string[]): string[] {
   for (let i = segments.length - 1; i >= 0; i--) {
     const words = segments[i].split("-");
-    // A bare "color" names no property; the parent segment cannot settle it
-    // either (indicator.color is a stroke, separator.color a fill)
-    if (words.length === 1 && words[0] === "color") return ["ALL_SCOPES"];
+    if (words.length === 1 && words[0] === "color") {
+      const parent = (segments[i - 1] ?? "").split("-");
+      if (STROKE_WORDS.some((w) => parent.includes(w))) {
+        return [...STROKE_SCOPES];
+      }
+      if (
+        FOREGROUND_WORDS.some((w) => parent.includes(w)) ||
+        parent.includes("content")
+      ) {
+        return [...FOREGROUND_SCOPES];
+      }
+      if (parent.includes("separator")) return [...FILL_SCOPES];
+      return ["ALL_SCOPES"];
+    }
     // The offset ring color fills the gap around a ring, neither stroke nor fill
     if (words.includes("offset")) return ["ALL_SCOPES"];
     if (STROKE_WORDS.some((w) => words.includes(w))) return [...STROKE_SCOPES];
@@ -144,6 +186,8 @@ function inferScopesForComponentColor(segments: string[]): string[] {
     }
     if (FILL_WORDS.some((w) => words.includes(w))) return [...FILL_SCOPES];
   }
+  const last = segments[segments.length - 1].split("-");
+  if (STATE_WORDS.some((w) => last.includes(w))) return [...FILL_SCOPES];
   return ["ALL_SCOPES"];
 }
 
@@ -197,7 +241,9 @@ function inferScopesFromName(tokenName: string): string[] | null {
   // The focus indicator is sized in code, not by a layer property
   if (/^focus[./]/.test(name)) return [];
   if (/^shadow[./](blur|offset|spread)/.test(name)) return ["EFFECT_FLOAT"];
-  if (name.includes("border-width")) return ["STROKE_FLOAT"];
+  if (name.includes("border-width") || name.includes("stroke-width")) {
+    return ["STROKE_FLOAT"];
+  }
   return null;
 }
 

@@ -24,7 +24,8 @@ test("components are unique, sorted by name and carry the agreed fields", () => 
     [...names].sort((a, b) => a.localeCompare(b))
   );
   for (const c of manifest.components) {
-    assert.ok(c.id && c.type, `${c.name}: id and type`);
+    assert.ok(c.type, `${c.name}: type`);
+    assert.equal(c.id, undefined, `${c.name}: node ids change on every rebuild, keep them out`);
     assert.equal(typeof c.description, "string", `${c.name}: description`);
     assert.ok(Array.isArray(c.documentationLinks), `${c.name}: links`);
     assert.equal(typeof c.properties, "object", `${c.name}: properties`);

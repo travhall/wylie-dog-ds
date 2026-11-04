@@ -9,7 +9,6 @@
     {
       "name": "Accordion",
       "type": "COMPONENT_SET",
-      "id": "2243:8445",
       "description": "Collapsible content sections built on Radix UI primitives with full accessibility support, and keyboard navigation. The chevron turns as a panel opens; the panel itself opens without animation.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-accordion--docs"
@@ -27,7 +26,6 @@
     {
       "name": "Alert",
       "type": "COMPONENT_SET",
-      "id": "2243:7998",
       "description": "Alert component for displaying important messages to users. Includes support for different variants (default, destructive, warning, success, info) and compound components for structured content.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-alert--docs"
@@ -45,7 +43,6 @@
     {
       "name": "Alert Dialog",
       "type": "COMPONENT_SET",
-      "id": "2243:9089",
       "description": "Modal confirmation dialogs for destructive or important actions. Built on Radix UI primitives with proper focus management and accessibility support.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-alertdialog--docs"
@@ -63,7 +60,6 @@
     {
       "name": "Avatar",
       "type": "COMPONENT_SET",
-      "id": "2243:8023",
       "description": "Avatar component for displaying user profile pictures with fallback support. Includes size variants and compound components for image and fallback content.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-avatar--docs"
@@ -86,7 +82,6 @@
     {
       "name": "Badge",
       "type": "COMPONENT_SET",
-      "id": "2243:7952",
       "description": "Compact status indicators and labels for displaying metadata, counts, or categorical information. Accessibility: Use semantic colors and consider adding visually hidden text for context when badges convey important information through color alone.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-badge--docs"
@@ -117,7 +112,6 @@
     {
       "name": "Breadcrumb",
       "type": "COMPONENT_SET",
-      "id": "2243:8549",
       "description": "Navigation breadcrumbs showing the current page location within a navigational hierarchy. Built with semantic HTML (nav, ol, li) and full accessibility support including ARIA labels and landmarks.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-navigation-breadcrumb--docs"
@@ -135,7 +129,6 @@
     {
       "name": "Button",
       "type": "COMPONENT_SET",
-      "id": "2243:7909",
       "description": "Versatile button component for user actions. Supports multiple variants, sizes, loading states, and full keyboard accessibility.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-button--docs"
@@ -170,7 +163,6 @@
     {
       "name": "Calendar",
       "type": "COMPONENT_SET",
-      "id": "2243:9070",
       "description": "A flexible calendar component for date selection with support for single dates, multiple dates, and date ranges.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-calendar--docs"
@@ -188,7 +180,6 @@
     {
       "name": "Card",
       "type": "COMPONENT_SET",
-      "id": "2243:8006",
       "description": "Flexible container component for grouping related content. Composed of Card, CardHeader, CardTitle, CardDescription, CardContent, and CardFooter.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-card--docs"
@@ -206,7 +197,6 @@
     {
       "name": "Card Grid",
       "type": "COMPONENT_SET",
-      "id": "2243:9140",
       "description": "Responsive grid container for laying out Card components. Supports per-breakpoint column counts, gap, centering, and visual variants (default, compact, spacious, masonry, elevated).",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-cardgrid--docs"
@@ -224,7 +214,6 @@
     {
       "name": "Carousel",
       "type": "COMPONENT_SET",
-      "id": "2243:9099",
       "description": "A carousel component for displaying content in a scrollable container with navigation controls. Built with Embla Carousel for smooth touch and keyboard navigation.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-carousel--docs"
@@ -242,7 +231,6 @@
     {
       "name": "Checkbox",
       "type": "COMPONENT_SET",
-      "id": "2243:8063",
       "description": "Checkbox component built on Radix UI primitives with full accessibility support, keyboard navigation, and customizable styling.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-checkbox--docs"
@@ -270,7 +258,6 @@
     {
       "name": "Collapsible",
       "type": "COMPONENT_SET",
-      "id": "2243:8725",
       "description": "Collapsible component for showing and hiding content sections. Built on Radix UI primitives with flexible trigger options. It opens and closes without animation.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-collapsible--docs"
@@ -288,7 +275,6 @@
     {
       "name": "Command",
       "type": "COMPONENT_SET",
-      "id": "2243:8852",
       "description": "Command palette interface for quick actions and navigation. Features search, keyboard shortcuts, and grouped commands. Built on cmdk with full accessibility including keyboard navigation (Arrow keys, Enter, Escape) and ARIA attributes.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-navigation-command--docs"
@@ -306,7 +292,6 @@
     {
       "name": "Context Menu",
       "type": "COMPONENT_SET",
-      "id": "2243:8755",
       "description": "Right-click context menus with support for submenus, checkboxes, radio groups, and keyboard shortcuts. Built on Radix UI primitives with full accessibility support including ARIA attributes, focus management, and keyboard navigation (Arrow keys, Enter, Escape).",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-contextmenu--docs"
@@ -324,7 +309,6 @@
     {
       "name": "Dialog",
       "type": "COMPONENT_SET",
-      "id": "2243:8401",
       "description": "Modal dialog component with focus trapping and backdrop. Built on Radix UI primitives with full keyboard and screen reader support.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-dialog--docs"
@@ -347,7 +331,6 @@
     {
       "name": "Dropdown Menu",
       "type": "COMPONENT_SET",
-      "id": "2243:8200",
       "description": "Dropdown menu component for displaying a menu of actions or options. Supports checkboxes, radio groups, and keyboard navigation.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-dropdownmenu--docs"
@@ -365,7 +348,6 @@
     {
       "name": "Feature Grid",
       "type": "COMPONENT_SET",
-      "id": "2243:9122",
       "description": "Renders a responsive grid of feature items, each with an icon, title, description, and optional badge. Built for marketing and landing-page feature sections.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-featuregrid--docs"
@@ -383,7 +365,6 @@
     {
       "name": "Form",
       "type": "COMPONENT_SET",
-      "id": "2243:8886",
       "description": "The Form system provides composable primitives for building accessible, consistently styled forms. Each primitive reads from a shared FormField context so label wiring, error state, and description IDs are handled automatically.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-form--docs"
@@ -406,7 +387,6 @@
     {
       "name": "Hover Card",
       "type": "COMPONENT_SET",
-      "id": "2243:8716",
       "description": "Hover-triggered content cards for displaying additional information. Built on Radix UI primitives with flexible positioning.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-hovercard--docs"
@@ -424,7 +404,6 @@
     {
       "name": "Input",
       "type": "COMPONENT_SET",
-      "id": "2243:7977",
       "description": "Input component for single-line text input with support for different sizes, types, and error states. Accessibility: Always pair with Label using htmlFor and id. Use appropriate input types for better mobile keyboards.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-input--docs"
@@ -447,7 +426,6 @@
     {
       "name": "Label",
       "type": "COMPONENT_SET",
-      "id": "2243:8141",
       "description": "Label component provides accessible labels for form controls with support for required indicators and error states.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-label--docs"
@@ -475,7 +453,6 @@
     {
       "name": "Menubar",
       "type": "COMPONENT_SET",
-      "id": "2243:8786",
       "description": "A horizontal menu bar with dropdown menus, commonly used for application navigation and actions. Built on Radix UI primitives with full accessibility including keyboard navigation (Arrow keys, Enter, Escape) and ARIA attributes.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-navigation-menubar--docs"
@@ -493,7 +470,6 @@
     {
       "name": "Navigation Menu",
       "type": "COMPONENT_SET",
-      "id": "2243:8827",
       "description": "A navigation menu component with dropdown submenus, hover interactions, and keyboard navigation support. Built on Radix UI primitives with full accessibility including ARIA attributes and focus management.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-navigation-navigationmenu--docs"
@@ -511,7 +487,6 @@
     {
       "name": "Page Layout",
       "type": "COMPONENT_SET",
-      "id": "2243:9283",
       "description": "Full-page layout composition combining header, footer, sidebar, and main content area. Supports multiple width variants and optional sidebar positioning for building complete page structures.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/patterns-page-compositions-page-layout--docs"
@@ -534,7 +509,6 @@
     {
       "name": "Pagination",
       "type": "COMPONENT_SET",
-      "id": "2243:8588",
       "description": "Navigation component for paginated content with customizable styling and accessibility support. Includes PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, and PaginationEllipsis subcomponents for building flexible pagination interfaces.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-navigation-pagination--docs"
@@ -552,7 +526,6 @@
     {
       "name": "Popover",
       "type": "COMPONENT_SET",
-      "id": "2243:8292",
       "description": "Click-triggered content overlays for displaying additional information, forms, or controls. Built on Radix UI primitives with flexible positioning.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-popover--docs"
@@ -570,7 +543,6 @@
     {
       "name": "Progress",
       "type": "COMPONENT_SET",
-      "id": "2243:8175",
       "description": "Progress component for displaying completion progress with different variants and sizes. Supports linear progress bars with smooth animations.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-progress--docs"
@@ -588,7 +560,6 @@
     {
       "name": "Radio",
       "type": "COMPONENT_SET",
-      "id": "2243:8082",
       "description": "Radio button group for single selection from multiple options. Built on Radix UI primitives with full accessibility support and keyboard navigation.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-radiogroup--docs"
@@ -616,7 +587,6 @@
     {
       "name": "Resizable",
       "type": "COMPONENT_SET",
-      "id": "2243:8861",
       "description": "Resizable panels with drag handles for creating flexible layouts like IDEs and dashboards. Built on react-resizable-panels with full accessibility including keyboard controls and ARIA attributes.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-resizable--docs"
@@ -634,7 +604,6 @@
     {
       "name": "Scrollbar",
       "type": "COMPONENT_SET",
-      "id": "2243:8730",
       "description": "Custom scrollable area with styled scrollbars that works consistently across platforms. Built on Radix UI ScrollArea primitive with full accessibility and native scrolling behavior.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-scrollarea--docs"
@@ -652,7 +621,6 @@
     {
       "name": "Section Features",
       "type": "COMPONENT_SET",
-      "id": "2243:9541",
       "description": "Real-world features section composition for showcasing product features and benefits. This Tier 2 pattern component displays features in a grid layout with optional badges, supporting multiple column configurations and style variants.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/patterns-page-compositions-features-section--docs"
@@ -675,7 +643,6 @@
     {
       "name": "Section Hero",
       "type": "COMPONENT_SET",
-      "id": "2243:9318",
       "description": "Real-world hero section composition for landing pages with title, description, action buttons, and optional images. Supports multiple layouts (default, gradient, centered) and image positioning for flexible page designs.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/patterns-page-compositions-hero-section--docs"
@@ -693,7 +660,6 @@
     {
       "name": "Select",
       "type": "COMPONENT_SET",
-      "id": "2243:8282",
       "description": "Select component built on Radix UI primitives with keyboard navigation, search, and full accessibility support. Includes trigger, content, items, and separator sub-components.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-select--docs"
@@ -716,7 +682,6 @@
     {
       "name": "Separator",
       "type": "COMPONENT_SET",
-      "id": "2243:8110",
       "description": "Visual divider for separating content sections. Built on Radix UI with proper ARIA role handling for decorative and semantic separators.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-layout-structure-separator--docs"
@@ -734,7 +699,6 @@
     {
       "name": "Sheet",
       "type": "COMPONENT_SET",
-      "id": "2243:8706",
       "description": "Side drawer overlay component that slides in from any edge of the screen. Commonly used for navigation menus, settings panels, and detailed views.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-sheet--docs"
@@ -752,7 +716,6 @@
     {
       "name": "Site Footer",
       "type": "COMPONENT_SET",
-      "id": "2243:9246",
       "description": "Real-world site footer composition for page footers with logo, navigation columns, social links, and copyright. Supports default and minimal variants with responsive grid layout.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/patterns-navigation-patterns-site-footer--docs"
@@ -770,7 +733,6 @@
     {
       "name": "Site Header",
       "type": "COMPONENT_SET",
-      "id": "2243:9209",
       "description": "Real-world site header composition with logo, navigation links, and action buttons. Production-ready with responsive design, sticky positioning, and backdrop blur. Supports default and transparent variants for different page contexts.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/patterns-navigation-patterns-site-header--docs"
@@ -793,7 +755,6 @@
     {
       "name": "Skeleton",
       "type": "COMPONENT_SET",
-      "id": "2243:8470",
       "description": "Skeleton component for displaying loading placeholders with different variants and sizes. Provides visual feedback while content is loading.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-skeleton--docs"
@@ -816,7 +777,6 @@
     {
       "name": "Slider",
       "type": "COMPONENT_SET",
-      "id": "2243:8479",
       "description": "A slider component for selecting values from a range with support for single and multiple handles.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-slider--docs"
@@ -834,7 +794,6 @@
     {
       "name": "Switch",
       "type": "COMPONENT_SET",
-      "id": "2243:8107",
       "description": "Switch component for binary choices, built on Radix UI with smooth animations and full accessibility support. Perfect for settings and feature toggles.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-switch--docs"
@@ -862,7 +821,6 @@
     {
       "name": "Table",
       "type": "COMPONENT_SET",
-      "id": "2243:8690",
       "description": "A responsive table component for displaying tabular data with support for sorting, selection, and actions. Built with semantic HTML elements (table, thead, tbody, tr, th, td) and fully accessible.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-table--docs"
@@ -880,7 +838,6 @@
     {
       "name": "Tabs",
       "type": "COMPONENT_SET",
-      "id": "2243:8432",
       "description": "Tabbed navigation component for organizing content into switchable panels. Built on Radix UI primitives with full keyboard navigation and ARIA support.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-navigation-tabs--docs"
@@ -898,7 +855,6 @@
     {
       "name": "Textarea",
       "type": "COMPONENT_SET",
-      "id": "2243:8166",
       "description": "Textarea component for multi-line text input with support for different sizes, error states, and resize behaviors.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-textarea--docs"
@@ -921,7 +877,6 @@
     {
       "name": "Toast",
       "type": "COMPONENT_SET",
-      "id": "2243:8461",
       "description": "Non-intrusive notification system for displaying temporary messages to users.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-toast--docs"
@@ -939,7 +894,6 @@
     {
       "name": "Toggle",
       "type": "COMPONENT_SET",
-      "id": "2243:8528",
       "description": "Boolean toggle button for on/off states. Built on Radix UI primitives with support for variants, sizes, and icons.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-toggle--docs"
@@ -972,7 +926,6 @@
     {
       "name": "Toggle Group",
       "type": "COMPONENT_SET",
-      "id": "2243:8901",
       "description": "Toggle button groups for selecting one or multiple options. Built on Radix UI primitives with full accessibility support and keyboard navigation.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-togglegroup--docs"
@@ -990,7 +943,6 @@
     {
       "name": "Tooltip",
       "type": "COMPONENT_SET",
-      "id": "2243:8295",
       "description": "Tooltip component built on Radix UI primitives for displaying contextual information. Supports different positioning and provides excellent accessibility support.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-tooltip--docs"
