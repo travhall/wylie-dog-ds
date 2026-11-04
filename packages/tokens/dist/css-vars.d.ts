@@ -1127,6 +1127,9 @@ export type CssVarName =
   | "--space-navigation-menu-indicator-height"
   | "--space-navigation-menu-indicator-margin-left"
   | "--space-navigation-menu-indicator-margin-top"
+  | "--space-navigation-menu-link-padding-x"
+  | "--space-navigation-menu-link-padding-y"
+  | "--space-navigation-menu-link-radius"
   | "--space-navigation-menu-list-gap"
   | "--space-navigation-menu-trigger-height"
   | "--space-navigation-menu-trigger-icon-offset-top"
@@ -2573,6 +2576,9 @@ export declare const cssVars: Readonly<{
   "spaceNavigationMenuIndicatorHeight": "--space-navigation-menu-indicator-height";
   "spaceNavigationMenuIndicatorMarginLeft": "--space-navigation-menu-indicator-margin-left";
   "spaceNavigationMenuIndicatorMarginTop": "--space-navigation-menu-indicator-margin-top";
+  "spaceNavigationMenuLinkPaddingX": "--space-navigation-menu-link-padding-x";
+  "spaceNavigationMenuLinkPaddingY": "--space-navigation-menu-link-padding-y";
+  "spaceNavigationMenuLinkRadius": "--space-navigation-menu-link-radius";
   "spaceNavigationMenuListGap": "--space-navigation-menu-list-gap";
   "spaceNavigationMenuTriggerHeight": "--space-navigation-menu-trigger-height";
   "spaceNavigationMenuTriggerIconOffsetTop": "--space-navigation-menu-trigger-icon-offset-top";

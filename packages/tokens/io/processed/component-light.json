@@ -5244,6 +5244,21 @@
     "$value": "{space.010}",
     "$description": "Downward nudge of the trigger chevron so it sits on the text baseline."
   },
+  "navigation-menu.link-padding-x": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Horizontal padding of a link inside an open navigation menu."
+  },
+  "navigation-menu.link-padding-y": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Vertical padding of a link inside an open navigation menu."
+  },
+  "navigation-menu.link-radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of a link inside an open navigation menu."
+  },
   "progress.indicator-duration": {
     "$type": "duration",
     "$value": "{transition.duration.slow}",
