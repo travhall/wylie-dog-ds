@@ -68,7 +68,7 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
           {sidebar && sidebarPosition === "left" && (
             <aside
               aria-label="Sidebar"
-              className="hidden lg:block w-(--space-page-layout-sidebar-width) shrink-0 border-r border-(--color-page-layout-sidebar-border)"
+              className="hidden lg:block w-(--space-page-layout-sidebar-width) shrink-0 border-r-(length:--space-page-layout-border-width) border-(--color-page-layout-sidebar-border)"
             >
               {sidebar}
             </aside>
@@ -86,7 +86,7 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
           {sidebar && sidebarPosition === "right" && (
             <aside
               aria-label="Sidebar"
-              className="hidden lg:block w-(--space-page-layout-sidebar-width) shrink-0 border-l border-(--color-page-layout-sidebar-border)"
+              className="hidden lg:block w-(--space-page-layout-sidebar-width) shrink-0 border-l-(length:--space-page-layout-border-width) border-(--color-page-layout-sidebar-border)"
             >
               {sidebar}
             </aside>

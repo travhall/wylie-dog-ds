@@ -38,7 +38,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-(--alert-dialog-content-z-index) grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-(--space-alert-dialog-content-gap) border border-(--color-dialog-border) bg-(--color-dialog-background) p-(--space-alert-dialog-content-padding) shadow-(--shadow-alert-dialog-content-shadow) duration-(--duration-alert-dialog-content-duration)",
+        "fixed left-[50%] top-[50%] z-(--alert-dialog-content-z-index) grid w-full max-w-(--space-alert-dialog-content-max-width) translate-x-[-50%] translate-y-[-50%] gap-(--space-alert-dialog-content-gap) border-(length:--space-alert-dialog-border-width) border-(--color-dialog-border) bg-(--color-dialog-background) p-(--space-alert-dialog-content-padding) shadow-(--shadow-alert-dialog-content-shadow) duration-(--duration-alert-dialog-content-duration)",
         "/2 [48%] /2 [48%]",
         "sm:rounded-(--space-alert-dialog-content-radius)",
         className

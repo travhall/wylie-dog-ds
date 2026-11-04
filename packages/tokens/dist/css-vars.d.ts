@@ -909,7 +909,10 @@ export type CssVarName =
   | "--space-accordion-trigger-icon-size"
   | "--space-accordion-trigger-padding"
   | "--space-alert-border-left-width"
+  | "--space-alert-border-width"
+  | "--space-alert-dialog-border-width"
   | "--space-alert-dialog-content-gap"
+  | "--space-alert-dialog-content-max-width"
   | "--space-alert-dialog-content-padding"
   | "--space-alert-dialog-content-radius"
   | "--space-alert-dialog-footer-gap"
@@ -919,6 +922,7 @@ export type CssVarName =
   | "--space-alert-radius"
   | "--space-alert-title-letter-spacing"
   | "--space-alert-title-margin-bottom"
+  | "--space-avatar-border-width"
   | "--space-avatar-rounded"
   | "--space-avatar-size-lg"
   | "--space-avatar-size-md"
@@ -937,6 +941,7 @@ export type CssVarName =
   | "--space-breadcrumb-link-radius"
   | "--space-breadcrumb-list-gap"
   | "--space-breadcrumb-separator-size"
+  | "--space-button-icon-gap"
   | "--space-button-icon-size"
   | "--space-button-padding-x-lg"
   | "--space-button-padding-x-md"
@@ -948,6 +953,7 @@ export type CssVarName =
   | "--space-button-spinner-border-width"
   | "--space-button-spinner-radius"
   | "--space-button-spinner-size"
+  | "--space-calendar-border-width"
   | "--space-calendar-cell-size"
   | "--space-calendar-container-gap"
   | "--space-calendar-container-padding"
@@ -957,6 +963,7 @@ export type CssVarName =
   | "--space-calendar-nav-button-radius"
   | "--space-calendar-nav-button-size"
   | "--space-calendar-nav-icon-size"
+  | "--space-card-border-width"
   | "--space-card-footer-gap"
   | "--space-card-footer-padding-top"
   | "--space-card-gap"
@@ -967,6 +974,7 @@ export type CssVarName =
   | "--space-card-padding"
   | "--space-card-radius"
   | "--space-card-title-letter-spacing"
+  | "--space-carousel-border-width"
   | "--space-carousel-button-icon-size"
   | "--space-carousel-button-offset"
   | "--space-carousel-button-rounded-full"
@@ -980,10 +988,12 @@ export type CssVarName =
   | "--space-checkbox-icon-size-lg"
   | "--space-checkbox-icon-size-md"
   | "--space-checkbox-icon-size-sm"
+  | "--space-checkbox-icon-stroke-width"
   | "--space-checkbox-size-lg"
   | "--space-checkbox-size-md"
   | "--space-checkbox-size-sm"
   | "--space-collapsible-radius"
+  | "--space-command-border-width"
   | "--space-command-content-radius"
   | "--space-command-empty-padding-y"
   | "--space-command-group-heading-padding-x"
@@ -997,6 +1007,7 @@ export type CssVarName =
   | "--space-command-item-padding-y"
   | "--space-command-item-radius"
   | "--space-command-list-max-height"
+  | "--space-command-separator-height"
   | "--space-command-separator-margin-x"
   | "--space-command-shortcut-letter-spacing"
   | "--space-context-menu-checkbox-padding"
@@ -1015,6 +1026,9 @@ export type CssVarName =
   | "--space-context-menu-separator-margin-y"
   | "--space-context-menu-shortcut-letter-spacing"
   | "--space-context-menu-sub-content-min-width"
+  | "--space-contextmenu-border-width"
+  | "--space-contextmenu-separator-height"
+  | "--space-dialog-border-width"
   | "--space-dialog-close-button-icon-size"
   | "--space-dialog-close-button-offset"
   | "--space-dialog-close-button-radius"
@@ -1029,6 +1043,7 @@ export type CssVarName =
   | "--space-dialog-header-gap"
   | "--space-dialog-header-margin-bottom"
   | "--space-dialog-title-letter-spacing"
+  | "--space-dropdown-menu-border-width"
   | "--space-dropdown-menu-content-min-width"
   | "--space-dropdown-menu-content-padding"
   | "--space-dropdown-menu-content-radius"
@@ -1045,6 +1060,7 @@ export type CssVarName =
   | "--space-dropdown-menu-separator-margin-x"
   | "--space-dropdown-menu-separator-margin-y"
   | "--space-dropdown-menu-shortcut-letter-spacing"
+  | "--space-feature-grid-border-width"
   | "--space-feature-grid-container-gap"
   | "--space-feature-grid-icon-container-size"
   | "--space-feature-grid-icon-radius"
@@ -1057,6 +1073,7 @@ export type CssVarName =
   | "--space-form-error-margin"
   | "--space-form-item-gap"
   | "--space-form-label-gap"
+  | "--space-hover-card-border-width"
   | "--space-hover-card-content-padding"
   | "--space-hover-card-content-radius"
   | "--space-hover-card-content-width-lg"
@@ -1067,12 +1084,16 @@ export type CssVarName =
   | "--space-icon-size-sm"
   | "--space-icon-size-xl"
   | "--space-icon-size-xs"
+  | "--space-icon-stroke-width"
+  | "--space-input-border-width"
+  | "--space-input-native-icon-size"
   | "--space-input-padding-x"
   | "--space-input-padding-y-lg"
   | "--space-input-padding-y-md"
   | "--space-input-padding-y-sm"
   | "--space-input-radius"
   | "--space-label-required-margin-left"
+  | "--space-menubar-border-width"
   | "--space-menubar-checkbox-padding"
   | "--space-menubar-content-min-width"
   | "--space-menubar-item-icon-size"
@@ -1098,15 +1119,18 @@ export type CssVarName =
   | "--space-menubar-trigger-radius"
   | "--space-navigation-menu-arrow-radius"
   | "--space-navigation-menu-arrow-size"
+  | "--space-navigation-menu-border-width"
   | "--space-navigation-menu-indicator-height"
   | "--space-navigation-menu-indicator-margin-left"
   | "--space-navigation-menu-indicator-margin-top"
   | "--space-navigation-menu-list-gap"
   | "--space-navigation-menu-trigger-height"
+  | "--space-navigation-menu-trigger-icon-offset-top"
   | "--space-navigation-menu-trigger-icon-size"
   | "--space-navigation-menu-trigger-padding-x"
   | "--space-navigation-menu-trigger-padding-y"
   | "--space-navigation-menu-trigger-radius"
+  | "--space-page-layout-border-width"
   | "--space-page-layout-main-max-width-centered"
   | "--space-page-layout-main-padding-x-lg"
   | "--space-page-layout-main-padding-x-md"
@@ -1125,6 +1149,7 @@ export type CssVarName =
   | "--space-pagination-item-radius"
   | "--space-pagination-item-size"
   | "--space-pagination-list-gap"
+  | "--space-popover-border-width"
   | "--space-popover-content-padding"
   | "--space-popover-content-radius"
   | "--space-popover-content-width-lg"
@@ -1133,6 +1158,7 @@ export type CssVarName =
   | "--space-progress-height"
   | "--space-progress-radius"
   | "--space-radio-border-radius"
+  | "--space-radio-border-width"
   | "--space-radio-focus-ring-offset"
   | "--space-radio-focus-ring-width"
   | "--space-radio-group-gap"
@@ -1142,12 +1168,16 @@ export type CssVarName =
   | "--space-radio-size-lg"
   | "--space-radio-size-md"
   | "--space-radio-size-sm"
+  | "--space-resizable-border-width"
   | "--space-resizable-grip-icon-size"
   | "--space-resizable-handle-focus-ring-offset"
   | "--space-resizable-handle-focus-ring-width"
   | "--space-resizable-handle-height"
+  | "--space-resizable-handle-hit-size"
+  | "--space-resizable-handle-line-width"
   | "--space-resizable-handle-radius"
   | "--space-resizable-handle-width"
+  | "--space-scrollbar-border-width"
   | "--space-scrollbar-padding"
   | "--space-scrollbar-radius"
   | "--space-scrollbar-thumb-min-height"
@@ -1182,6 +1212,7 @@ export type CssVarName =
   | "--space-section-hero-padding-y-md"
   | "--space-section-hero-padding-y-sm"
   | "--space-section-hero-title-tracking"
+  | "--space-select-border-width"
   | "--space-select-content-max-height"
   | "--space-select-content-min-width"
   | "--space-select-content-padding"
@@ -1231,6 +1262,7 @@ export type CssVarName =
   | "--space-shadow-spread-none"
   | "--space-shadow-spread-sm"
   | "--space-shadow-spread-xl"
+  | "--space-sheet-border-width"
   | "--space-sheet-close-button-icon-size"
   | "--space-sheet-close-button-offset"
   | "--space-sheet-close-button-radius"
@@ -1243,6 +1275,7 @@ export type CssVarName =
   | "--space-sheet-footer-padding-top"
   | "--space-sheet-header-gap"
   | "--space-sheet-header-padding-bottom"
+  | "--space-site-footer-border-width"
   | "--space-site-footer-bottom-gap"
   | "--space-site-footer-column-links-gap"
   | "--space-site-footer-column-title-margin-bottom"
@@ -1256,6 +1289,7 @@ export type CssVarName =
   | "--space-site-footer-separator-margin-bottom"
   | "--space-site-footer-social-gap"
   | "--space-site-header-actions-gap"
+  | "--space-site-header-border-width"
   | "--space-site-header-container-padding-x-lg"
   | "--space-site-header-container-padding-x-md"
   | "--space-site-header-container-padding-x-sm"
@@ -1314,12 +1348,14 @@ export type CssVarName =
   | "--space-tabs-list-padding-md"
   | "--space-tabs-list-padding-sm"
   | "--space-tabs-trigger-indicator-width"
+  | "--space-tabs-trigger-overlap"
   | "--space-tabs-trigger-padding-x-lg"
   | "--space-tabs-trigger-padding-x-md"
   | "--space-tabs-trigger-padding-x-sm"
   | "--space-tabs-trigger-padding-y-lg"
   | "--space-tabs-trigger-padding-y-md"
   | "--space-tabs-trigger-padding-y-sm"
+  | "--space-textarea-border-width"
   | "--space-textarea-min-height-lg"
   | "--space-textarea-min-height-md"
   | "--space-textarea-min-height-sm"
@@ -1328,6 +1364,7 @@ export type CssVarName =
   | "--space-toast-action-height"
   | "--space-toast-action-padding-x"
   | "--space-toast-action-radius"
+  | "--space-toast-border-width"
   | "--space-toast-close-button-icon-size"
   | "--space-toast-close-button-padding"
   | "--space-toast-close-button-position"
@@ -1335,11 +1372,13 @@ export type CssVarName =
   | "--space-toast-close-size"
   | "--space-toast-content-gap"
   | "--space-toast-gap"
+  | "--space-toast-max-width"
   | "--space-toast-padding"
   | "--space-toast-radius"
   | "--space-toast-viewport-gap"
   | "--space-toast-viewport-padding"
   | "--space-toast-width"
+  | "--space-toggle-border-width"
   | "--space-toggle-group-gap"
   | "--space-toggle-group-item-height"
   | "--space-toggle-group-item-padding-x"
@@ -1351,6 +1390,7 @@ export type CssVarName =
   | "--space-toggle-size-lg-padding-x"
   | "--space-toggle-size-sm-height"
   | "--space-toggle-size-sm-padding-x"
+  | "--space-tooltip-border-width"
   | "--space-tooltip-max-width"
   | "--space-tooltip-padding-x"
   | "--space-tooltip-padding-y"
@@ -2309,7 +2349,10 @@ export declare const cssVars: Readonly<{
   "spaceAccordionTriggerIconSize": "--space-accordion-trigger-icon-size";
   "spaceAccordionTriggerPadding": "--space-accordion-trigger-padding";
   "spaceAlertBorderLeftWidth": "--space-alert-border-left-width";
+  "spaceAlertBorderWidth": "--space-alert-border-width";
+  "spaceAlertDialogBorderWidth": "--space-alert-dialog-border-width";
   "spaceAlertDialogContentGap": "--space-alert-dialog-content-gap";
+  "spaceAlertDialogContentMaxWidth": "--space-alert-dialog-content-max-width";
   "spaceAlertDialogContentPadding": "--space-alert-dialog-content-padding";
   "spaceAlertDialogContentRadius": "--space-alert-dialog-content-radius";
   "spaceAlertDialogFooterGap": "--space-alert-dialog-footer-gap";
@@ -2319,6 +2362,7 @@ export declare const cssVars: Readonly<{
   "spaceAlertRadius": "--space-alert-radius";
   "spaceAlertTitleLetterSpacing": "--space-alert-title-letter-spacing";
   "spaceAlertTitleMarginBottom": "--space-alert-title-margin-bottom";
+  "spaceAvatarBorderWidth": "--space-avatar-border-width";
   "spaceAvatarRounded": "--space-avatar-rounded";
   "spaceAvatarSizeLg": "--space-avatar-size-lg";
   "spaceAvatarSizeMd": "--space-avatar-size-md";
@@ -2337,6 +2381,7 @@ export declare const cssVars: Readonly<{
   "spaceBreadcrumbLinkRadius": "--space-breadcrumb-link-radius";
   "spaceBreadcrumbListGap": "--space-breadcrumb-list-gap";
   "spaceBreadcrumbSeparatorSize": "--space-breadcrumb-separator-size";
+  "spaceButtonIconGap": "--space-button-icon-gap";
   "spaceButtonIconSize": "--space-button-icon-size";
   "spaceButtonPaddingXLg": "--space-button-padding-x-lg";
   "spaceButtonPaddingXMd": "--space-button-padding-x-md";
@@ -2348,6 +2393,7 @@ export declare const cssVars: Readonly<{
   "spaceButtonSpinnerBorderWidth": "--space-button-spinner-border-width";
   "spaceButtonSpinnerRadius": "--space-button-spinner-radius";
   "spaceButtonSpinnerSize": "--space-button-spinner-size";
+  "spaceCalendarBorderWidth": "--space-calendar-border-width";
   "spaceCalendarCellSize": "--space-calendar-cell-size";
   "spaceCalendarContainerGap": "--space-calendar-container-gap";
   "spaceCalendarContainerPadding": "--space-calendar-container-padding";
@@ -2357,6 +2403,7 @@ export declare const cssVars: Readonly<{
   "spaceCalendarNavButtonRadius": "--space-calendar-nav-button-radius";
   "spaceCalendarNavButtonSize": "--space-calendar-nav-button-size";
   "spaceCalendarNavIconSize": "--space-calendar-nav-icon-size";
+  "spaceCardBorderWidth": "--space-card-border-width";
   "spaceCardFooterGap": "--space-card-footer-gap";
   "spaceCardFooterPaddingTop": "--space-card-footer-padding-top";
   "spaceCardGap": "--space-card-gap";
@@ -2367,6 +2414,7 @@ export declare const cssVars: Readonly<{
   "spaceCardPadding": "--space-card-padding";
   "spaceCardRadius": "--space-card-radius";
   "spaceCardTitleLetterSpacing": "--space-card-title-letter-spacing";
+  "spaceCarouselBorderWidth": "--space-carousel-border-width";
   "spaceCarouselButtonIconSize": "--space-carousel-button-icon-size";
   "spaceCarouselButtonOffset": "--space-carousel-button-offset";
   "spaceCarouselButtonRoundedFull": "--space-carousel-button-rounded-full";
@@ -2380,10 +2428,12 @@ export declare const cssVars: Readonly<{
   "spaceCheckboxIconSizeLg": "--space-checkbox-icon-size-lg";
   "spaceCheckboxIconSizeMd": "--space-checkbox-icon-size-md";
   "spaceCheckboxIconSizeSm": "--space-checkbox-icon-size-sm";
+  "spaceCheckboxIconStrokeWidth": "--space-checkbox-icon-stroke-width";
   "spaceCheckboxSizeLg": "--space-checkbox-size-lg";
   "spaceCheckboxSizeMd": "--space-checkbox-size-md";
   "spaceCheckboxSizeSm": "--space-checkbox-size-sm";
   "spaceCollapsibleRadius": "--space-collapsible-radius";
+  "spaceCommandBorderWidth": "--space-command-border-width";
   "spaceCommandContentRadius": "--space-command-content-radius";
   "spaceCommandEmptyPaddingY": "--space-command-empty-padding-y";
   "spaceCommandGroupHeadingPaddingX": "--space-command-group-heading-padding-x";
@@ -2397,6 +2447,7 @@ export declare const cssVars: Readonly<{
   "spaceCommandItemPaddingY": "--space-command-item-padding-y";
   "spaceCommandItemRadius": "--space-command-item-radius";
   "spaceCommandListMaxHeight": "--space-command-list-max-height";
+  "spaceCommandSeparatorHeight": "--space-command-separator-height";
   "spaceCommandSeparatorMarginX": "--space-command-separator-margin-x";
   "spaceCommandShortcutLetterSpacing": "--space-command-shortcut-letter-spacing";
   "spaceContextMenuCheckboxPadding": "--space-context-menu-checkbox-padding";
@@ -2415,6 +2466,9 @@ export declare const cssVars: Readonly<{
   "spaceContextMenuSeparatorMarginY": "--space-context-menu-separator-margin-y";
   "spaceContextMenuShortcutLetterSpacing": "--space-context-menu-shortcut-letter-spacing";
   "spaceContextMenuSubContentMinWidth": "--space-context-menu-sub-content-min-width";
+  "spaceContextmenuBorderWidth": "--space-contextmenu-border-width";
+  "spaceContextmenuSeparatorHeight": "--space-contextmenu-separator-height";
+  "spaceDialogBorderWidth": "--space-dialog-border-width";
   "spaceDialogCloseButtonIconSize": "--space-dialog-close-button-icon-size";
   "spaceDialogCloseButtonOffset": "--space-dialog-close-button-offset";
   "spaceDialogCloseButtonRadius": "--space-dialog-close-button-radius";
@@ -2429,6 +2483,7 @@ export declare const cssVars: Readonly<{
   "spaceDialogHeaderGap": "--space-dialog-header-gap";
   "spaceDialogHeaderMarginBottom": "--space-dialog-header-margin-bottom";
   "spaceDialogTitleLetterSpacing": "--space-dialog-title-letter-spacing";
+  "spaceDropdownMenuBorderWidth": "--space-dropdown-menu-border-width";
   "spaceDropdownMenuContentMinWidth": "--space-dropdown-menu-content-min-width";
   "spaceDropdownMenuContentPadding": "--space-dropdown-menu-content-padding";
   "spaceDropdownMenuContentRadius": "--space-dropdown-menu-content-radius";
@@ -2445,6 +2500,7 @@ export declare const cssVars: Readonly<{
   "spaceDropdownMenuSeparatorMarginX": "--space-dropdown-menu-separator-margin-x";
   "spaceDropdownMenuSeparatorMarginY": "--space-dropdown-menu-separator-margin-y";
   "spaceDropdownMenuShortcutLetterSpacing": "--space-dropdown-menu-shortcut-letter-spacing";
+  "spaceFeatureGridBorderWidth": "--space-feature-grid-border-width";
   "spaceFeatureGridContainerGap": "--space-feature-grid-container-gap";
   "spaceFeatureGridIconContainerSize": "--space-feature-grid-icon-container-size";
   "spaceFeatureGridIconRadius": "--space-feature-grid-icon-radius";
@@ -2457,6 +2513,7 @@ export declare const cssVars: Readonly<{
   "spaceFormErrorMargin": "--space-form-error-margin";
   "spaceFormItemGap": "--space-form-item-gap";
   "spaceFormLabelGap": "--space-form-label-gap";
+  "spaceHoverCardBorderWidth": "--space-hover-card-border-width";
   "spaceHoverCardContentPadding": "--space-hover-card-content-padding";
   "spaceHoverCardContentRadius": "--space-hover-card-content-radius";
   "spaceHoverCardContentWidthLg": "--space-hover-card-content-width-lg";
@@ -2467,12 +2524,16 @@ export declare const cssVars: Readonly<{
   "spaceIconSizeSm": "--space-icon-size-sm";
   "spaceIconSizeXl": "--space-icon-size-xl";
   "spaceIconSizeXs": "--space-icon-size-xs";
+  "spaceIconStrokeWidth": "--space-icon-stroke-width";
+  "spaceInputBorderWidth": "--space-input-border-width";
+  "spaceInputNativeIconSize": "--space-input-native-icon-size";
   "spaceInputPaddingX": "--space-input-padding-x";
   "spaceInputPaddingYLg": "--space-input-padding-y-lg";
   "spaceInputPaddingYMd": "--space-input-padding-y-md";
   "spaceInputPaddingYSm": "--space-input-padding-y-sm";
   "spaceInputRadius": "--space-input-radius";
   "spaceLabelRequiredMarginLeft": "--space-label-required-margin-left";
+  "spaceMenubarBorderWidth": "--space-menubar-border-width";
   "spaceMenubarCheckboxPadding": "--space-menubar-checkbox-padding";
   "spaceMenubarContentMinWidth": "--space-menubar-content-min-width";
   "spaceMenubarItemIconSize": "--space-menubar-item-icon-size";
@@ -2498,15 +2559,18 @@ export declare const cssVars: Readonly<{
   "spaceMenubarTriggerRadius": "--space-menubar-trigger-radius";
   "spaceNavigationMenuArrowRadius": "--space-navigation-menu-arrow-radius";
   "spaceNavigationMenuArrowSize": "--space-navigation-menu-arrow-size";
+  "spaceNavigationMenuBorderWidth": "--space-navigation-menu-border-width";
   "spaceNavigationMenuIndicatorHeight": "--space-navigation-menu-indicator-height";
   "spaceNavigationMenuIndicatorMarginLeft": "--space-navigation-menu-indicator-margin-left";
   "spaceNavigationMenuIndicatorMarginTop": "--space-navigation-menu-indicator-margin-top";
   "spaceNavigationMenuListGap": "--space-navigation-menu-list-gap";
   "spaceNavigationMenuTriggerHeight": "--space-navigation-menu-trigger-height";
+  "spaceNavigationMenuTriggerIconOffsetTop": "--space-navigation-menu-trigger-icon-offset-top";
   "spaceNavigationMenuTriggerIconSize": "--space-navigation-menu-trigger-icon-size";
   "spaceNavigationMenuTriggerPaddingX": "--space-navigation-menu-trigger-padding-x";
   "spaceNavigationMenuTriggerPaddingY": "--space-navigation-menu-trigger-padding-y";
   "spaceNavigationMenuTriggerRadius": "--space-navigation-menu-trigger-radius";
+  "spacePageLayoutBorderWidth": "--space-page-layout-border-width";
   "spacePageLayoutMainMaxWidthCentered": "--space-page-layout-main-max-width-centered";
   "spacePageLayoutMainPaddingXLg": "--space-page-layout-main-padding-x-lg";
   "spacePageLayoutMainPaddingXMd": "--space-page-layout-main-padding-x-md";
@@ -2525,6 +2589,7 @@ export declare const cssVars: Readonly<{
   "spacePaginationItemRadius": "--space-pagination-item-radius";
   "spacePaginationItemSize": "--space-pagination-item-size";
   "spacePaginationListGap": "--space-pagination-list-gap";
+  "spacePopoverBorderWidth": "--space-popover-border-width";
   "spacePopoverContentPadding": "--space-popover-content-padding";
   "spacePopoverContentRadius": "--space-popover-content-radius";
   "spacePopoverContentWidthLg": "--space-popover-content-width-lg";
@@ -2533,6 +2598,7 @@ export declare const cssVars: Readonly<{
   "spaceProgressHeight": "--space-progress-height";
   "spaceProgressRadius": "--space-progress-radius";
   "spaceRadioBorderRadius": "--space-radio-border-radius";
+  "spaceRadioBorderWidth": "--space-radio-border-width";
   "spaceRadioFocusRingOffset": "--space-radio-focus-ring-offset";
   "spaceRadioFocusRingWidth": "--space-radio-focus-ring-width";
   "spaceRadioGroupGap": "--space-radio-group-gap";
@@ -2542,12 +2608,16 @@ export declare const cssVars: Readonly<{
   "spaceRadioSizeLg": "--space-radio-size-lg";
   "spaceRadioSizeMd": "--space-radio-size-md";
   "spaceRadioSizeSm": "--space-radio-size-sm";
+  "spaceResizableBorderWidth": "--space-resizable-border-width";
   "spaceResizableGripIconSize": "--space-resizable-grip-icon-size";
   "spaceResizableHandleFocusRingOffset": "--space-resizable-handle-focus-ring-offset";
   "spaceResizableHandleFocusRingWidth": "--space-resizable-handle-focus-ring-width";
   "spaceResizableHandleHeight": "--space-resizable-handle-height";
+  "spaceResizableHandleHitSize": "--space-resizable-handle-hit-size";
+  "spaceResizableHandleLineWidth": "--space-resizable-handle-line-width";
   "spaceResizableHandleRadius": "--space-resizable-handle-radius";
   "spaceResizableHandleWidth": "--space-resizable-handle-width";
+  "spaceScrollbarBorderWidth": "--space-scrollbar-border-width";
   "spaceScrollbarPadding": "--space-scrollbar-padding";
   "spaceScrollbarRadius": "--space-scrollbar-radius";
   "spaceScrollbarThumbMinHeight": "--space-scrollbar-thumb-min-height";
@@ -2582,6 +2652,7 @@ export declare const cssVars: Readonly<{
   "spaceSectionHeroPaddingYMd": "--space-section-hero-padding-y-md";
   "spaceSectionHeroPaddingYSm": "--space-section-hero-padding-y-sm";
   "spaceSectionHeroTitleTracking": "--space-section-hero-title-tracking";
+  "spaceSelectBorderWidth": "--space-select-border-width";
   "spaceSelectContentMaxHeight": "--space-select-content-max-height";
   "spaceSelectContentMinWidth": "--space-select-content-min-width";
   "spaceSelectContentPadding": "--space-select-content-padding";
@@ -2631,6 +2702,7 @@ export declare const cssVars: Readonly<{
   "spaceShadowSpreadNone": "--space-shadow-spread-none";
   "spaceShadowSpreadSm": "--space-shadow-spread-sm";
   "spaceShadowSpreadXl": "--space-shadow-spread-xl";
+  "spaceSheetBorderWidth": "--space-sheet-border-width";
   "spaceSheetCloseButtonIconSize": "--space-sheet-close-button-icon-size";
   "spaceSheetCloseButtonOffset": "--space-sheet-close-button-offset";
   "spaceSheetCloseButtonRadius": "--space-sheet-close-button-radius";
@@ -2643,6 +2715,7 @@ export declare const cssVars: Readonly<{
   "spaceSheetFooterPaddingTop": "--space-sheet-footer-padding-top";
   "spaceSheetHeaderGap": "--space-sheet-header-gap";
   "spaceSheetHeaderPaddingBottom": "--space-sheet-header-padding-bottom";
+  "spaceSiteFooterBorderWidth": "--space-site-footer-border-width";
   "spaceSiteFooterBottomGap": "--space-site-footer-bottom-gap";
   "spaceSiteFooterColumnLinksGap": "--space-site-footer-column-links-gap";
   "spaceSiteFooterColumnTitleMarginBottom": "--space-site-footer-column-title-margin-bottom";
@@ -2656,6 +2729,7 @@ export declare const cssVars: Readonly<{
   "spaceSiteFooterSeparatorMarginBottom": "--space-site-footer-separator-margin-bottom";
   "spaceSiteFooterSocialGap": "--space-site-footer-social-gap";
   "spaceSiteHeaderActionsGap": "--space-site-header-actions-gap";
+  "spaceSiteHeaderBorderWidth": "--space-site-header-border-width";
   "spaceSiteHeaderContainerPaddingXLg": "--space-site-header-container-padding-x-lg";
   "spaceSiteHeaderContainerPaddingXMd": "--space-site-header-container-padding-x-md";
   "spaceSiteHeaderContainerPaddingXSm": "--space-site-header-container-padding-x-sm";
@@ -2714,12 +2788,14 @@ export declare const cssVars: Readonly<{
   "spaceTabsListPaddingMd": "--space-tabs-list-padding-md";
   "spaceTabsListPaddingSm": "--space-tabs-list-padding-sm";
   "spaceTabsTriggerIndicatorWidth": "--space-tabs-trigger-indicator-width";
+  "spaceTabsTriggerOverlap": "--space-tabs-trigger-overlap";
   "spaceTabsTriggerPaddingXLg": "--space-tabs-trigger-padding-x-lg";
   "spaceTabsTriggerPaddingXMd": "--space-tabs-trigger-padding-x-md";
   "spaceTabsTriggerPaddingXSm": "--space-tabs-trigger-padding-x-sm";
   "spaceTabsTriggerPaddingYLg": "--space-tabs-trigger-padding-y-lg";
   "spaceTabsTriggerPaddingYMd": "--space-tabs-trigger-padding-y-md";
   "spaceTabsTriggerPaddingYSm": "--space-tabs-trigger-padding-y-sm";
+  "spaceTextareaBorderWidth": "--space-textarea-border-width";
   "spaceTextareaMinHeightLg": "--space-textarea-min-height-lg";
   "spaceTextareaMinHeightMd": "--space-textarea-min-height-md";
   "spaceTextareaMinHeightSm": "--space-textarea-min-height-sm";
@@ -2728,6 +2804,7 @@ export declare const cssVars: Readonly<{
   "spaceToastActionHeight": "--space-toast-action-height";
   "spaceToastActionPaddingX": "--space-toast-action-padding-x";
   "spaceToastActionRadius": "--space-toast-action-radius";
+  "spaceToastBorderWidth": "--space-toast-border-width";
   "spaceToastCloseButtonIconSize": "--space-toast-close-button-icon-size";
   "spaceToastCloseButtonPadding": "--space-toast-close-button-padding";
   "spaceToastCloseButtonPosition": "--space-toast-close-button-position";
@@ -2735,11 +2812,13 @@ export declare const cssVars: Readonly<{
   "spaceToastCloseSize": "--space-toast-close-size";
   "spaceToastContentGap": "--space-toast-content-gap";
   "spaceToastGap": "--space-toast-gap";
+  "spaceToastMaxWidth": "--space-toast-max-width";
   "spaceToastPadding": "--space-toast-padding";
   "spaceToastRadius": "--space-toast-radius";
   "spaceToastViewportGap": "--space-toast-viewport-gap";
   "spaceToastViewportPadding": "--space-toast-viewport-padding";
   "spaceToastWidth": "--space-toast-width";
+  "spaceToggleBorderWidth": "--space-toggle-border-width";
   "spaceToggleGroupGap": "--space-toggle-group-gap";
   "spaceToggleGroupItemHeight": "--space-toggle-group-item-height";
   "spaceToggleGroupItemPaddingX": "--space-toggle-group-item-padding-x";
@@ -2751,6 +2830,7 @@ export declare const cssVars: Readonly<{
   "spaceToggleSizeLgPaddingX": "--space-toggle-size-lg-padding-x";
   "spaceToggleSizeSmHeight": "--space-toggle-size-sm-height";
   "spaceToggleSizeSmPaddingX": "--space-toggle-size-sm-padding-x";
+  "spaceTooltipBorderWidth": "--space-tooltip-border-width";
   "spaceTooltipMaxWidth": "--space-tooltip-max-width";
   "spaceTooltipPaddingX": "--space-tooltip-padding-x";
   "spaceTooltipPaddingY": "--space-tooltip-padding-y";

@@ -303,7 +303,7 @@ describe("Alert", () => {
         "relative",
         "w-full",
         "rounded-(--space-alert-radius)",
-        "border",
+        "border-(length:--space-alert-border-width)",
         "border-l-(length:--space-alert-border-left-width)",
         "px-(--space-alert-padding-x)",
         "py-(--space-alert-padding-y)",

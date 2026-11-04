@@ -58,7 +58,7 @@ const NavigationMenuTrigger = React.forwardRef<
   >
     {children}{" "}
     <ChevronDownIcon
-      className="relative top-px ml-(--space-navigation-menu-indicator-margin-left) h-(--space-navigation-menu-trigger-icon-size) w-(--space-navigation-menu-trigger-icon-size) transition duration-(--duration-navigation-menu-indicator-duration) group-data-[state=open]:rotate-180"
+      className="relative top-(--space-navigation-menu-trigger-icon-offset-top) ml-(--space-navigation-menu-indicator-margin-left) h-(--space-navigation-menu-trigger-icon-size) w-(--space-navigation-menu-trigger-icon-size) transition duration-(--duration-navigation-menu-indicator-duration) group-data-[state=open]:rotate-180"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -89,7 +89,7 @@ const NavigationMenuViewport = React.forwardRef<
   <div className={cn("absolute left-0 top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
+        "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border-(length:--space-navigation-menu-border-width) border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
         className
       )}
       ref={ref}

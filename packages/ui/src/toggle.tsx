@@ -16,7 +16,7 @@ export const toggleVariants = cva(
       variant: {
         default: "bg-transparent text-(--color-toggle-text)",
         outline:
-          "border border-(--color-toggle-border) bg-transparent text-(--color-toggle-text)",
+          "border-(length:--space-toggle-border-width) border-(--color-toggle-border) bg-transparent text-(--color-toggle-text)",
       },
       size: {
         default:

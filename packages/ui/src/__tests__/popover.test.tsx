@@ -309,7 +309,9 @@ describe("Popover", () => {
           .getByText("Popover Heading")
           .closest('[class*="rounded-(--space-popover-content-radius)"]');
         expect(content).toHaveClass("rounded-(--space-popover-content-radius)");
-        expect(content).toHaveClass("border");
+        expect(content).toHaveClass(
+          "border-(length:--space-popover-border-width)"
+        );
         expect(content).toHaveClass("bg-(--color-popover-background)");
         expect(content).toHaveClass("p-(--space-popover-content-padding)");
       });

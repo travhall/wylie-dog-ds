@@ -409,7 +409,10 @@ describe("Avatar", () => {
     it("should have border styling", () => {
       const { container } = render(<Avatar />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass("border", "border-(--color-avatar-border)");
+      expect(avatar).toHaveClass(
+        "border-(length:--space-avatar-border-width)",
+        "border-(--color-avatar-border)"
+      );
     });
 
     it("should have background color", () => {

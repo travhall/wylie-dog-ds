@@ -26,7 +26,7 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
 export const radioGroupItemVariants = cva(
   cn(
-    "aspect-square border text-(--color-radio-indicator)",
+    "aspect-square border-(length:--space-radio-border-width) text-(--color-radio-indicator)",
     "rounded-(--space-radio-border-radius)",
     "border-(--color-radio-border)",
     "focus-visible:outline-solid focus-visible:outline-(length:--space-radio-focus-ring-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-radio-focus-ring-offset) focus-visible:shadow-[0_0_0_calc(var(--space-radio-focus-ring-offset)+var(--space-radio-focus-ring-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none",

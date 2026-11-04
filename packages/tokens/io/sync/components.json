@@ -4386,6 +4386,15 @@
             "Dark": "{border-width.1}"
           }
         },
+        "alert.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the alert.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "label.required-margin-left": {
           "$type": "spacing",
           "$value": "{space.050}",
@@ -6456,6 +6465,15 @@
             "Dark": "{space.010}"
           }
         },
+        "scrollbar.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the scroll area.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "context-menu.label-font-weight": {
           "$type": "number",
           "$value": "{typography.font-weight.semibold}",
@@ -6499,6 +6517,15 @@
           "valuesByMode": {
             "Light": "{typography.font-weight.medium}",
             "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "avatar.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the avatar.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "table.footer-font-weight": {
@@ -7302,6 +7329,15 @@
             "Dark": "{color.border.muted}"
           }
         },
+        "card.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the card.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "textarea.background-disabled": {
           "$type": "color",
           "$value": "{color.background.muted}",
@@ -7318,6 +7354,15 @@
           "valuesByMode": {
             "Light": "{color.foreground.faint}",
             "Dark": "{color.foreground.faint}"
+          }
+        },
+        "textarea.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the textarea.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "select.trigger.background-disabled": {
@@ -7383,6 +7428,15 @@
             "Dark": "{color.border.muted}"
           }
         },
+        "checkbox.icon-stroke-width": {
+          "$type": "dimension",
+          "$value": "3px",
+          "$description": "Stroke width of the checkbox check and indeterminate marks.",
+          "valuesByMode": {
+            "Light": "3px",
+            "Dark": "3px"
+          }
+        },
         "radio.background-disabled": {
           "$type": "color",
           "$value": "{color.background.muted}",
@@ -7408,6 +7462,15 @@
           "valuesByMode": {
             "Light": "{color.foreground.faint}",
             "Dark": "{color.foreground.faint}"
+          }
+        },
+        "radio.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the radio button.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "switch.track.background-disabled": {
@@ -7500,6 +7563,24 @@
             "Dark": "{color.foreground.faint}"
           }
         },
+        "contextmenu.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the context menu.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
+        "contextmenu.separator-height": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Height of the context menu separator.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "menubar.item-text-disabled": {
           "$type": "color",
           "$value": "{color.foreground.faint}",
@@ -7525,6 +7606,24 @@
           "valuesByMode": {
             "Light": "{color.foreground.faint}",
             "Dark": "{color.foreground.faint}"
+          }
+        },
+        "command.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the command.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
+        "command.separator-height": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Height of the command menu separator.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "carousel.nav-text-disabled": {
@@ -7554,6 +7653,15 @@
             "Dark": "{color.background.emphasis}"
           }
         },
+        "carousel.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the carousel.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "calendar.nav-text-disabled": {
           "$type": "color",
           "$value": "{color.foreground.faint}",
@@ -7570,6 +7678,15 @@
           "valuesByMode": {
             "Light": "{color.border.muted}",
             "Dark": "{color.border.muted}"
+          }
+        },
+        "calendar.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the calendar.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "toast.action-text-disabled": {
@@ -7615,6 +7732,15 @@
           "valuesByMode": {
             "Light": "{color.background.muted}",
             "Dark": "{color.background.emphasis}"
+          }
+        },
+        "toggle.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the toggle.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "menubar.trigger-highlighted": {
@@ -7804,6 +7930,15 @@
           "valuesByMode": {
             "Light": "{z-index.modal}",
             "Dark": "{z-index.modal}"
+          }
+        },
+        "page-layout.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the page layout.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "section-features.padding-y-sm": {
@@ -8346,6 +8481,15 @@
             "Dark": "{space.200}"
           }
         },
+        "site-footer.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the site footer.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "site-header.container.padding-x-sm": {
           "$type": "spacing",
           "$value": "{space.200}",
@@ -8499,6 +8643,15 @@
             "Dark": "{z-index.sticky}"
           }
         },
+        "site-header.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the site header.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "button.spinner.size": {
           "$type": "spacing",
           "$value": "{icon.size.sm}",
@@ -8614,6 +8767,15 @@
           "valuesByMode": {
             "Light": "{border-width.2}",
             "Dark": "{border-width.2}"
+          }
+        },
+        "button.icon-gap": {
+          "$type": "dimension",
+          "$value": "{space.100}",
+          "$description": "Gap between the icon, or the loading spinner, and the label of the button.",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
           }
         },
         "navigation-menu.arrow-radius": {
@@ -8733,6 +8895,15 @@
             "Dark": "{shadow.md}"
           }
         },
+        "select.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the select.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "navigation-menu.viewport-shadow": {
           "$type": "shadow",
           "$value": "{shadow.lg}",
@@ -8767,6 +8938,15 @@
           "valuesByMode": {
             "Light": "{shadow.sm}",
             "Dark": "{shadow.sm}"
+          }
+        },
+        "tabs.trigger.overlap": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Overlap of the trigger underline with the border of the tabs list.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "toast.shadow": {
@@ -8868,6 +9048,15 @@
             "Dark": "{z-index.dropdown}"
           }
         },
+        "dropdown-menu.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the dropdown menu.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "menubar.content-z-index": {
           "$type": "number",
           "$value": "{z-index.dropdown}",
@@ -8884,6 +9073,15 @@
           "valuesByMode": {
             "Light": "{z-index.dropdown}",
             "Dark": "{z-index.dropdown}"
+          }
+        },
+        "menubar.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the menubar.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "navigation-menu.z-index": {
@@ -8913,6 +9111,33 @@
             "Dark": "{z-index.dropdown}"
           }
         },
+        "resizable.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the resizable.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
+        "resizable.handle-hit-size": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "Size of the pointer hit area that widens the resizable handle.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
+        "resizable.handle-line-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Width of the thin line of the resizable handle.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "popover.z-index": {
           "$type": "number",
           "$value": "{z-index.popover}",
@@ -8920,6 +9145,15 @@
           "valuesByMode": {
             "Light": "{z-index.popover}",
             "Dark": "{z-index.popover}"
+          }
+        },
+        "popover.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the popover.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "hover-card.z-index": {
@@ -8931,6 +9165,15 @@
             "Dark": "{z-index.popover}"
           }
         },
+        "hover-card.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the hover card.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "toast.viewport.z-index": {
           "$type": "number",
           "$value": "{z-index.toast}",
@@ -8940,6 +9183,24 @@
             "Dark": "{z-index.toast}"
           }
         },
+        "toast.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the toast.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
+        "toast.max-width": {
+          "$type": "dimension",
+          "$value": "420px",
+          "$description": "Maximum width of the toast viewport from the medium breakpoint up.",
+          "valuesByMode": {
+            "Light": "420px",
+            "Dark": "420px"
+          }
+        },
         "tooltip.z-index": {
           "$type": "number",
           "$value": "{z-index.tooltip}",
@@ -8947,6 +9208,15 @@
           "valuesByMode": {
             "Light": "{z-index.tooltip}",
             "Dark": "{z-index.tooltip}"
+          }
+        },
+        "tooltip.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the tooltip.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "dialog.overlay-opacity": {
@@ -8983,6 +9253,24 @@
           "valuesByMode": {
             "Light": "{opacity.100}",
             "Dark": "{opacity.100}"
+          }
+        },
+        "input.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the input.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
+        "input.native-icon-size": {
+          "$type": "dimension",
+          "$value": "{space.200}",
+          "$description": "Size of the browser's own search-cancel and date-picker icons inside an input.",
+          "valuesByMode": {
+            "Light": "{space.200}",
+            "Dark": "{space.200}"
           }
         },
         "dialog.title-line-height": {
@@ -9039,6 +9327,15 @@
             "Dark": "{transition.duration.normal}"
           }
         },
+        "dialog.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the dialog.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "alert-dialog.content-duration": {
           "$type": "duration",
           "$value": "{transition.duration.normal}",
@@ -9046,6 +9343,24 @@
           "valuesByMode": {
             "Light": "{transition.duration.normal}",
             "Dark": "{transition.duration.normal}"
+          }
+        },
+        "alert-dialog.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the alert dialog.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
+        "alert-dialog.content-max-width": {
+          "$type": "spacing",
+          "$value": "{space.1650}",
+          "$description": "Maximum width of the alert dialog content.",
+          "valuesByMode": {
+            "Light": "{space.1650}",
+            "Dark": "{space.1650}"
           }
         },
         "accordion.trigger.icon-duration": {
@@ -9064,6 +9379,24 @@
           "valuesByMode": {
             "Light": "{transition.duration.normal}",
             "Dark": "{transition.duration.normal}"
+          }
+        },
+        "navigation-menu.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the navigation menu.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
+        "navigation-menu.trigger.icon-offset-top": {
+          "$type": "dimension",
+          "$value": "{space.010}",
+          "$description": "Downward nudge of the trigger chevron so it sits on the text baseline.",
+          "valuesByMode": {
+            "Light": "{space.010}",
+            "Dark": "{space.010}"
           }
         },
         "progress.indicator-duration": {
@@ -9093,6 +9426,15 @@
             "Dark": "{duration.300}"
           }
         },
+        "sheet.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the sheet.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
         "card-grid.item-duration": {
           "$type": "duration",
           "$value": "{duration.300}",
@@ -9118,6 +9460,24 @@
           "valuesByMode": {
             "Light": "{duration.500}",
             "Dark": "{duration.500}"
+          }
+        },
+        "feature-grid.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Border width of the feature grid.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
+        },
+        "icon-stroke-width": {
+          "$type": "dimension",
+          "$value": "{border-width.2}",
+          "$description": "Stroke width of the line icons drawn as inline SVG.",
+          "valuesByMode": {
+            "Light": "{border-width.2}",
+            "Dark": "{border-width.2}"
           }
         }
       }

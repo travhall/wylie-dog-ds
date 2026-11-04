@@ -267,8 +267,11 @@ for (const file of files) {
     }
     // Class names in string and template literals
     for (const literal of line.matchAll(/"([^"]*)"|`([^`]*)`/g)) {
+      // An object key ("border-t": ...) names a class group, it is not a class
+      if (/^\s*:/.test(line.slice(literal.index + literal[0].length))) continue;
       for (const cls of (literal[1] ?? literal[2]).split(/\s+/)) {
-        const bare = cls.replace(/^(?:[^\s:[]+:|\[[^\]]*\]:)+/, "");
+        // Variants may hold brackets: data-[state=open]:after:h-1
+        const bare = cls.replace(/^(?:(?:[^\s:[\]]|\[[^\]]*\])+:)+/, "");
         const hit = classify(bare);
         if (hit) add(file, n, "class", hit.kind, hit.value, bare);
       }
@@ -290,33 +293,37 @@ for (const file of files) {
 }
 
 if (process.argv.includes("--json")) {
+  // No process.exit here: it can cut a large piped write short
   console.log(JSON.stringify(findings, null, 2));
-  process.exit(0);
+} else {
+  report();
 }
 
-const groups = new Map();
-for (const f of findings) {
-  const key = `${f.source} | ${f.kind} | ${f.value}`;
-  if (!groups.has(key)) groups.set(key, []);
-  groups.get(key).push(f);
-}
-const rows = [...groups.entries()].sort((a, b) =>
-  a[0].localeCompare(b[0], undefined, { numeric: true })
-);
-console.log(
-  `Raw values in ${srcDir}: ${findings.length} uses, ${groups.size} distinct (source | kind | value), ${files.length} files scanned`
-);
-let lastGroup = "";
-for (const [key, uses] of rows) {
-  const [source, kind, value] = key.split(" | ");
-  const group = `${source} | ${kind}`;
-  if (group !== lastGroup) console.log(`\n## ${group}`);
-  lastGroup = group;
-  const components = [...new Set(uses.map((u) => u.component))].sort();
-  const classes = [...new Set(uses.map((u) => u.cls).filter(Boolean))];
-  console.log(
-    `  ${value.padEnd(10)} x${String(uses.length).padStart(3)}  ${classes.join(" ")}  [${components.join(", ")}]`
+function report() {
+  const groups = new Map();
+  for (const f of findings) {
+    const key = `${f.source} | ${f.kind} | ${f.value}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(f);
+  }
+  const rows = [...groups.entries()].sort((a, b) =>
+    a[0].localeCompare(b[0], undefined, { numeric: true })
   );
-  if (process.argv.includes("--files"))
-    for (const u of uses) console.log(`      ${u.file}:${u.line}`);
+  console.log(
+    `Raw values in ${srcDir}: ${findings.length} uses, ${groups.size} distinct (source | kind | value), ${files.length} files scanned`
+  );
+  let lastGroup = "";
+  for (const [key, uses] of rows) {
+    const [source, kind, value] = key.split(" | ");
+    const group = `${source} | ${kind}`;
+    if (group !== lastGroup) console.log(`\n## ${group}`);
+    lastGroup = group;
+    const components = [...new Set(uses.map((u) => u.component))].sort();
+    const classes = [...new Set(uses.map((u) => u.cls).filter(Boolean))];
+    console.log(
+      `  ${value.padEnd(10)} x${String(uses.length).padStart(3)}  ${classes.join(" ")}  [${components.join(", ")}]`
+    );
+    if (process.argv.includes("--files"))
+      for (const u of uses) console.log(`      ${u.file}:${u.line}`);
+  }
 }

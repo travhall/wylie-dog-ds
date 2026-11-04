@@ -39,7 +39,7 @@ const ContextMenuSubContent = React.forwardRef<
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-(--context-menu-sub-content-z-index) min-w-(--space-context-menu-sub-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--space-context-menu-checkbox-padding) text-(--color-contextmenu-text) shadow-(--shadow-context-menu-sub-content-shadow)",
+      "z-(--context-menu-sub-content-z-index) min-w-(--space-context-menu-sub-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border-(length:--space-contextmenu-border-width) bg-(--color-contextmenu-background) p-(--space-context-menu-checkbox-padding) text-(--color-contextmenu-text) shadow-(--shadow-context-menu-sub-content-shadow)",
       className
     )}
     {...props}
@@ -55,7 +55,7 @@ const ContextMenuContent = React.forwardRef<
     <ContextMenuPrimitive.Content
       ref={ref}
       className={cn(
-        "z-(--context-menu-content-z-index) min-w-(--space-context-menu-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--space-context-menu-content-padding) text-(--color-contextmenu-text) shadow-(--shadow-context-menu-content-shadow)",
+        "z-(--context-menu-content-z-index) min-w-(--space-context-menu-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border-(length:--space-contextmenu-border-width) bg-(--color-contextmenu-background) p-(--space-context-menu-content-padding) text-(--color-contextmenu-text) shadow-(--shadow-context-menu-content-shadow)",
         className
       )}
       {...props}
@@ -156,7 +156,7 @@ const ContextMenuSeparator = React.forwardRef<
   <ContextMenuPrimitive.Separator
     ref={ref}
     className={cn(
-      "-mx-(--space-context-menu-separator-margin-x) my-(--space-context-menu-separator-margin-y) h-px bg-(--color-contextmenu-separator)",
+      "-mx-(--space-context-menu-separator-margin-x) my-(--space-context-menu-separator-margin-y) h-(--space-contextmenu-separator-height) bg-(--color-contextmenu-separator)",
       className
     )}
     {...props}

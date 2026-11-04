@@ -7,9 +7,9 @@ export const siteFooterVariants = cva("w-full mt-auto", {
   variants: {
     variant: {
       default:
-        "bg-(--color-site-footer-background-muted) border-t border-(--color-site-footer-border)",
+        "bg-(--color-site-footer-background-muted) border-t-(length:--space-site-footer-border-width) border-(--color-site-footer-border)",
       minimal:
-        "bg-(--color-site-footer-background) border-t border-(--color-site-footer-border)",
+        "bg-(--color-site-footer-background) border-t-(length:--space-site-footer-border-width) border-(--color-site-footer-border)",
     },
   },
   defaultVariants: {

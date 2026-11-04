@@ -197,7 +197,9 @@ function inferScopesFromName(tokenName: string): string[] | null {
   // The focus indicator is sized in code, not by a layer property
   if (/^focus[./]/.test(name)) return [];
   if (/^shadow[./](blur|offset|spread)/.test(name)) return ["EFFECT_FLOAT"];
-  if (name.includes("border-width")) return ["STROKE_FLOAT"];
+  if (name.includes("border-width") || name.includes("stroke-width")) {
+    return ["STROKE_FLOAT"];
+  }
   return null;
 }
 

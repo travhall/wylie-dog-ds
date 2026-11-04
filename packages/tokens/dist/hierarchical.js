@@ -258,7 +258,7 @@ export const spacing = {
   "footer-gap": "0.5rem",
   "padding-x": "1rem",
   "padding-y": "0.75rem",
-  "max-width": "28rem",
+  "max-width": "420px",
   "trigger-height-sm": "2rem",
   "trigger-height-md": "2.5rem",
   "trigger-height-lg": "3rem",
@@ -321,7 +321,7 @@ export const spacing = {
   "item-size": "2.5rem",
   "item-padding-x": "0.75rem",
   "item-gap": "1rem",
-  "content-max-width": "42rem",
+  "content-max-width": "32rem",
   "header-margin-bottom": "4rem",
   "footer-margin-top": "1.5rem",
   "action-height": "2rem",
@@ -438,6 +438,7 @@ export const spacing = {
   "indicator-height": "0px",
   "handle-focus-ring-width": "2px",
   "handle-focus-ring-offset": "2px",
+  "icon-stroke-width": "2px",
   "main-padding-y": "2rem",
   "main-padding-x-sm": "1rem",
   "main-padding-x-md": "1.5rem",
@@ -485,7 +486,13 @@ export const spacing = {
   "arrow-size": "0.75rem",
   "spinner-radius": "9999px",
   "spinner-border-width": "2px",
-  "arrow-radius": "0.125rem"
+  "icon-gap": "0.5rem",
+  "arrow-radius": "0.125rem",
+  "trigger-overlap": "1px",
+  "handle-hit-size": "0.25rem",
+  "handle-line-width": "1px",
+  "native-icon-size": "1rem",
+  "trigger-icon-offset-top": "0.0625rem"
 };
 
 export const shadow = {

@@ -1,0 +1,80 @@
+{
+  "$comment": "Documented exceptions for scripts/check-raw-values.mjs (Plan 217). Each entry names a file, the class or CSS value as the audit prints it, and the reason no token owns it. An entry that matches nothing fails the check.",
+  "allow": [
+    {
+      "file": "packages/ui/src/dialog.tsx",
+      "match": "left-[50%]",
+      "reason": "Centres the modal with 50% and a -50% translate: layout geometry, not a design value. Percentages cannot be Figma variables."
+    },
+    {
+      "file": "packages/ui/src/dialog.tsx",
+      "match": "top-[50%]",
+      "reason": "Centres the modal (see left-[50%])."
+    },
+    {
+      "file": "packages/ui/src/dialog.tsx",
+      "match": "translate-x-[-50%]",
+      "reason": "Centres the modal (see left-[50%])."
+    },
+    {
+      "file": "packages/ui/src/dialog.tsx",
+      "match": "translate-y-[-50%]",
+      "reason": "Centres the modal (see left-[50%])."
+    },
+    {
+      "file": "packages/ui/src/alert-dialog.tsx",
+      "match": "left-[50%]",
+      "reason": "Centres the modal (see dialog.tsx)."
+    },
+    {
+      "file": "packages/ui/src/alert-dialog.tsx",
+      "match": "top-[50%]",
+      "reason": "Centres the modal (see dialog.tsx)."
+    },
+    {
+      "file": "packages/ui/src/alert-dialog.tsx",
+      "match": "translate-x-[-50%]",
+      "reason": "Centres the modal (see dialog.tsx)."
+    },
+    {
+      "file": "packages/ui/src/alert-dialog.tsx",
+      "match": "translate-y-[-50%]",
+      "reason": "Centres the modal (see dialog.tsx)."
+    },
+    {
+      "file": "packages/ui/src/dialog.tsx",
+      "match": "max-w-[95vw]",
+      "reason": "Viewport cap of the full-size dialog. The sync contract has no vw or vh unit and a Figma variable is a plain number (95 would bind as 95px)."
+    },
+    {
+      "file": "packages/ui/src/dialog.tsx",
+      "match": "max-h-[95vh]",
+      "reason": "Viewport cap of the full-size dialog (see max-w-[95vw])."
+    },
+    {
+      "file": "packages/ui/src/navigation-menu.tsx",
+      "match": "top-[60%]",
+      "reason": "Percentage position of the viewport arrow inside its box; percentages cannot be Figma variables."
+    },
+    {
+      "file": "packages/ui/src/table.tsx",
+      "match": "border-0",
+      "reason": "Zero width removes a border; it carries no design value."
+    },
+    {
+      "file": "packages/ui/src/table.tsx",
+      "match": "border-b-0",
+      "reason": "Zero width removes a border; it carries no design value."
+    },
+    {
+      "file": "packages/ui/src/switch.tsx",
+      "match": "ring-0",
+      "reason": "Zero width removes the ring; it carries no design value."
+    },
+    {
+      "file": "packages/ui/src/styles/index.css",
+      "match": "1px solid ButtonText",
+      "reason": "Forced-colors (Windows High Contrast) outline: the system sets the colours and the mode is not designer-owned."
+    }
+  ]
+}

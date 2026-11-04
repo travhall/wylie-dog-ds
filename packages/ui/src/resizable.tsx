@@ -53,13 +53,13 @@ const ResizableHandle = ({
 }: ResizableHandleProps) => (
   <PanelResizeHandle
     className={cn(
-      "forced-track relative flex w-px items-center justify-center bg-(--color-resizable-handle) after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-solid focus-visible:outline-(length:--space-resizable-handle-focus-ring-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-resizable-handle-focus-ring-offset) focus-visible:shadow-[0_0_0_calc(var(--space-resizable-handle-focus-ring-offset)+var(--space-resizable-handle-focus-ring-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
+      "forced-track relative flex w-(--space-resizable-handle-line-width) items-center justify-center bg-(--color-resizable-handle) after:absolute after:inset-y-0 after:left-1/2 after:w-(--space-resizable-handle-hit-size) after:-translate-x-1/2 focus-visible:outline-solid focus-visible:outline-(length:--space-resizable-handle-focus-ring-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-resizable-handle-focus-ring-offset) focus-visible:shadow-[0_0_0_calc(var(--space-resizable-handle-focus-ring-offset)+var(--space-resizable-handle-focus-ring-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none data-[panel-group-direction=vertical]:h-(--space-resizable-handle-line-width) data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-(--space-resizable-handle-hit-size) data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
       className
     )}
     {...props}
   >
     {withHandle && (
-      <div className="z-(--resizable-handle-z-index) flex h-(--space-resizable-handle-height) w-(--space-resizable-handle-width) items-center justify-center rounded-(--space-resizable-handle-radius) border border-(--color-resizable-handle-border) bg-(--color-resizable-handle-background)">
+      <div className="z-(--resizable-handle-z-index) flex h-(--space-resizable-handle-height) w-(--space-resizable-handle-width) items-center justify-center rounded-(--space-resizable-handle-radius) border-(length:--space-resizable-border-width) border-(--color-resizable-handle-border) bg-(--color-resizable-handle-background)">
         <GripVerticalIcon className="h-(--space-resizable-grip-icon-size) w-(--space-resizable-grip-icon-size)" />
       </div>
     )}

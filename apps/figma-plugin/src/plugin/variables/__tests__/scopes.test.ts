@@ -194,6 +194,15 @@ describe("inferScopes: primitives and other types", () => {
 });
 
 describe("inferScopes: non-color tokens by name", () => {
+  it.each([
+    ["icon-stroke-width", ["STROKE_FLOAT"]],
+    ["checkbox.icon-stroke-width", ["STROKE_FLOAT"]],
+    ["card.border-width", ["STROKE_FLOAT"]],
+    ["resizable.handle-hit-size", ["WIDTH_HEIGHT"]],
+  ])("%s", (name, expected) => {
+    expect(inferScopes("dimension", name)).toEqual(expected);
+  });
+
   // Font size, weight, line height, opacity and z-index are typed "number" on
   // purpose, so the name decides.
   it.each([
@@ -297,14 +306,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (276, 1012 and 108 variables)", () => {
+  it("reads all three collections (276, 1052 and 108 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([276, 1012, 108]);
+    ]).toEqual([276, 1052, 108]);
   });
 
   it("leaves ALL_SCOPES only on the named ambiguous component colors", () => {
@@ -374,7 +383,12 @@ describe("inferScopes: the real token files", () => {
     const gapFallback = variables
       .filter((v) => v.type === "dimension" && key(v.scopes) === "GAP")
       .map((v) => v.name);
-    expect(gapFallback).toEqual(["sheet.close-button-offset"]);
+    expect([...gapFallback].sort()).toEqual([
+      "button.icon-gap",
+      "navigation-menu.trigger.icon-offset-top",
+      "sheet.close-button-offset",
+      "tabs.trigger.overlap",
+    ]);
   });
 
   it("matches the per-collection tally", () => {

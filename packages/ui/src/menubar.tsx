@@ -17,7 +17,7 @@ const Menubar = React.forwardRef<
   <MenubarPrimitive.Root
     ref={ref}
     className={cn(
-      "flex h-(--space-menubar-root-height) items-center space-x-(--space-menubar-list-gap) rounded-(--space-menubar-trigger-radius) border border-(--color-menubar-border) bg-(--color-menubar-background) p-(--space-menubar-root-padding)",
+      "flex h-(--space-menubar-root-height) items-center space-x-(--space-menubar-list-gap) rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-border) bg-(--color-menubar-background) p-(--space-menubar-root-padding)",
       className
     )}
     {...props}
@@ -73,7 +73,7 @@ const MenubarSubContent = React.forwardRef<
   <MenubarPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-(--menubar-sub-content-z-index) min-w-(--space-menubar-sub-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-sub-content-shadow)",
+      "z-(--menubar-sub-content-z-index) min-w-(--space-menubar-sub-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-sub-content-shadow)",
       className
     )}
     {...props}
@@ -96,7 +96,7 @@ const MenubarContent = React.forwardRef<
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-(--menubar-content-z-index) min-w-(--space-menubar-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-content-shadow)",
+          "z-(--menubar-content-z-index) min-w-(--space-menubar-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-content-shadow)",
           className
         )}
         {...props}
