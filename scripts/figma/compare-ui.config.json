@@ -141,6 +141,21 @@
         "variant": "variant",
         "size": "size"
       }
+    },
+    "Radio": {
+      "story": "components-inputs-controls-radiogroup--default",
+      "root": "#storybook-root button[role=radio][aria-checked=false]",
+      "args": {
+        "size": "size",
+        "disabled": "disabled"
+      }
+    },
+    "Toast": {
+      "story": "components-feedback-status-toast--default",
+      "root": "#storybook-root [class*=pointer-events-auto]",
+      "args": {
+        "variant": "variant"
+      }
     }
   },
   "allow": [
@@ -275,6 +290,24 @@
       "property": "lineHeight",
       "scope": "text",
       "reason": "Same as font size: the story keeps the md fallback line height."
+    },
+    {
+      "set": "Toast",
+      "property": "h",
+      "scope": "box",
+      "reason": "Open (owner decision): the story puts ToastTitle and ToastDescription side by side in the flex row (71px); Figma stacks them (106px). Decide which layout is the component's and align the other."
+    },
+    {
+      "set": "Toast",
+      "property": "gap",
+      "scope": "box",
+      "reason": "Open (owner decision): same as height; the UI spaces siblings with space-x (margin) in a row, Figma stacks with toast.gap."
+    },
+    {
+      "set": "Toast",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Open (owner decision): the default variant has a 1px border with no border-color class, so it takes currentColor (#1b1512); there is no toast default border token and Figma draws none. Add a token or drop the border in code."
     }
   ]
 }
