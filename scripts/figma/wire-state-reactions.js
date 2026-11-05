@@ -74,9 +74,19 @@ const parse = (name) => {
 
 let wired = 0;
 let underlined = 0;
+let cleared = 0;
 const log = [];
 for (const set of page.findAllWithCriteria({ types: ["COMPONENT_SET"] })) {
   if (!SET_NAMES.includes(set.name)) continue;
+  // An underline that spread to the styled labels (see below) is removed first: setting NONE on
+  // one styled label clears it on every label that shares the text property.
+  const styledLabel = set
+    .findAll((n) => n.type === "TEXT" && n.textStyleId)
+    .find((n) => n.textDecoration !== "NONE");
+  if (styledLabel) {
+    styledLabel.textDecoration = "NONE";
+    cleared++;
+  }
   // variants grouped by everything except their state
   const groups = new Map();
   for (const variant of set.children) {
@@ -119,6 +129,10 @@ for (const set of page.findAllWithCriteria({ types: ["COMPONENT_SET"] })) {
           (n) => n.type === "TEXT" && n.visible !== false
         )[0];
         if (!label) continue;
+        // Clear the label's text style, then underline it. On a label WITH a style a
+        // decoration set on one spreads to every label sharing the Button's text property
+        // (60 of 60 were underlined on the rebuilt library), so these labels carry no style.
+        await label.setTextStyleIdAsync("");
         const offset = named("button/link-underline-offset");
         label.textDecoration = "UNDERLINE";
         if (offset && typeof valueOf(offset) === "number") {
@@ -133,4 +147,4 @@ for (const set of page.findAllWithCriteria({ types: ["COMPONENT_SET"] })) {
   }
   log.push(`${set.name}: ${groups.size} variant groups`);
 }
-return { changed: wired + underlined, wired, underlined, transition, log };
+return { changed: wired + underlined, wired, underlined, cleared, transition, log };

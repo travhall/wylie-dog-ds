@@ -344,33 +344,35 @@ console.log(
   `\nState reactions: ${stateSets.length} set with a state axis, ${stateWired} transitions wired from the token duration and curve; skipped, with a reason, when the variables are not native`
 );
 
-// The link underlines on hover and press. The Token Bridge text style has no decoration, so an
-// underline set before the styles are applied is reset (found on the rebuilt library,
-// 2026-11-05): the builder must queue one per link hover and pressed label and apply them
-// after applyPendingTextStyles in main().
+// The link underlines on hover and press (code: hover:underline). The labels of a Button share
+// one text property, and on a label that carries a text style a decoration set on one spreads
+// to all of them (found on the rebuilt library, 2026-11-05: 60 of 60 labels underlined). So the
+// link's hover and pressed labels deliberately carry no text style and are underlined
+// directly; each is reported as an unstyled layer with the reason. Every other label keeps its
+// style.
 {
-  const link = (context.pendingStateSets ?? []).flatMap((s) => s.props);
-  const withLabel = link.filter(
+  const props = (context.pendingStateSets ?? []).flatMap((s) => s.props);
+  const wanted = props.filter(
     (p) =>
       p.variant === "link" &&
       p.size !== "icon" &&
       (p.state === "hover" || p.state === "pressed")
-  );
-  const queued = (context.pendingUnderlines ?? []).length;
-  if (queued !== withLabel.length) {
+  ).length;
+  const unstyled = (context.unstyledLayers ?? []).filter((u) =>
+    /link underline/.test(u.token)
+  ).length;
+  if (unstyled !== wanted) {
     errors.push(
-      `${queued} link underlines queued, expected ${withLabel.length} (one per link hover and pressed label)`
+      `${unstyled} link labels are left unstyled for the underline, expected ${wanted} (hover and pressed, every size with a label)`
     );
   }
-  const styles = source.indexOf("await applyPendingTextStyles()");
-  const underlines = source.indexOf("await applyPendingUnderlines()");
-  if (styles < 0 || underlines < styles) {
+  if (/pendingUnderlines|applyPendingUnderlines/.test(source)) {
     errors.push(
-      "main() must apply the link underlines after the text styles, which reset them"
+      "the underline must not be applied through the text styles: it would spread to every Button label"
     );
   }
   console.log(
-    `\nLink underlines: ${queued} queued (hover and pressed), applied after the text styles`
+    `\nLink underlines: ${unstyled} hover and pressed labels carry no text style so the underline stays on them`
   );
 }
 
