@@ -295,19 +295,19 @@
       "set": "Toast",
       "property": "h",
       "scope": "box",
-      "reason": "Open (owner decision): the story puts ToastTitle and ToastDescription side by side in the flex row (71px); Figma stacks them (106px). Decide which layout is the component's and align the other."
+      "reason": "Decided 2026-11-05: keep Figma stacked (title above description, toast.gap between); the UI is to be changed to stack too, then this entry goes. Until then the story lays them in a row (71px against 106px)."
     },
     {
       "set": "Toast",
       "property": "gap",
       "scope": "box",
-      "reason": "Open (owner decision): same as height; the UI spaces siblings with space-x (margin) in a row, Figma stacks with toast.gap."
+      "reason": "Decided 2026-11-05: keep Figma stacked (title above description, toast.gap between); the UI is to be changed to stack too, then this entry goes. Until then the story lays them in a row (71px against 106px)."
     },
     {
       "set": "Toast",
       "property": "stroke",
       "scope": "box",
-      "reason": "Open (owner decision): the default variant has a 1px border with no border-color class, so it takes currentColor (#1b1512); there is no toast default border token and Figma draws none. Add a token or drop the border in code."
+      "reason": "Decided 2026-11-05: add a default border token (toast.default.border) and draw it in Figma; the UI's default toast currently takes currentColor (#1b1512) with no token. Remove this entry when the token, the builder and the UI class land."
     }
   ]
 }
