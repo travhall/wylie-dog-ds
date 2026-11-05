@@ -599,6 +599,8 @@
   --alert-description-opacity: 1;
   --space-alert-border-left-width: 1px;
   --space-alert-border-width: 1px;
+  --space-alert-icon-size: 1rem;
+  --space-alert-icon-gap: 0.75rem;
   --space-label-required-margin-left: 0.25rem;
   --space-command-item-padding-x: 0.75rem;
   --space-command-item-indicator-margin-right: 0.5rem;

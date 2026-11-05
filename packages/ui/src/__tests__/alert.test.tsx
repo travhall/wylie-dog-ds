@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
+import { InfoIcon } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "../alert";
 
 expect.extend(toHaveNoViolations);
@@ -446,6 +447,56 @@ describe("Alert", () => {
         expect(screen.getByText("Description")).toBeInTheDocument();
         unmount();
       });
+    });
+  });
+
+  describe("Icon", () => {
+    it("renders no icon and no wrapper without the icon prop", () => {
+      const { container } = render(
+        <Alert>
+          <AlertTitle>Title</AlertTitle>
+        </Alert>
+      );
+      expect(container.querySelector("svg")).toBeNull();
+      expect(screen.getByRole("region")).not.toHaveClass("flex");
+    });
+
+    it("shows the icon before the content and lays the alert out as a row", () => {
+      const { container } = render(
+        <Alert icon={InfoIcon} variant="info">
+          <AlertTitle>Heads up</AlertTitle>
+          <AlertDescription>Something changed.</AlertDescription>
+        </Alert>
+      );
+      const alert = screen.getByRole("status");
+      expect(alert).toHaveClass("flex");
+      expect(alert).toHaveClass("gap-(--space-alert-icon-gap)");
+      const svg = container.querySelector("svg");
+      expect(svg).toBeInTheDocument();
+      expect(svg).toHaveClass("h-(--space-alert-icon-size)");
+      expect(svg).toHaveAttribute("aria-hidden", "true");
+      expect(alert.firstElementChild).toBe(svg);
+    });
+
+    it("keeps the title and description together in one column", () => {
+      render(
+        <Alert icon={InfoIcon}>
+          <AlertTitle>Heads up</AlertTitle>
+          <AlertDescription>Something changed.</AlertDescription>
+        </Alert>
+      );
+      const column = screen.getByText("Heads up").parentElement;
+      expect(column).toContainElement(screen.getByText("Something changed."));
+    });
+
+    it("has no accessibility violations with an icon", async () => {
+      const { container } = render(
+        <Alert icon={InfoIcon} variant="destructive">
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>It failed.</AlertDescription>
+        </Alert>
+      );
+      expect(await axe(container)).toHaveNoViolations();
     });
   });
 });

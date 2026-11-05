@@ -2,6 +2,7 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
+import { Icon } from "./icon";
 
 export const alertVariants = cva(
   "relative w-full rounded-(--space-alert-radius) border-(length:--space-alert-border-width) border-l-(length:--space-alert-border-left-width) px-(--space-alert-padding-x) py-(--space-alert-padding-y) text-(length:--font-size-alert-description-font-size)",
@@ -31,10 +32,15 @@ export interface AlertProps
     VariantProps<typeof alertVariants> {
   /** Override the ARIA role for custom urgency handling */
   role?: "alert" | "status" | "region";
+  /**
+   * An icon shown before the content, such as a lucide-react icon. With it the alert is a row
+   * (icon, then the title and description); without it the alert is unchanged.
+   */
+  icon?: React.ElementType;
 }
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant, role, ...props }, ref) => {
+  ({ className, variant, role, icon, children, ...props }, ref) => {
     // Smart urgency handling based on variant
     const getAriaRole = () => {
       if (role) return role; // Allow override
@@ -69,11 +75,28 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     return (
       <div
         ref={ref}
-        className={cn(alertVariants({ variant }), className)}
+        className={cn(
+          alertVariants({ variant }),
+          icon && "flex items-start gap-(--space-alert-icon-gap)",
+          className
+        )}
         role={getAriaRole()}
         aria-live={getAriaLive()}
         {...props}
-      />
+      >
+        {icon ? (
+          <>
+            <Icon
+              icon={icon}
+              aria-hidden="true"
+              className="h-(--space-alert-icon-size) w-(--space-alert-icon-size) shrink-0"
+            />
+            <div className="min-w-0 flex-1">{children}</div>
+          </>
+        ) : (
+          children
+        )}
+      </div>
     );
   }
 );

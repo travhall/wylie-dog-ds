@@ -51,6 +51,8 @@
     "alert.destructive.background": "var(--color-alert-destructive-background)",
     "alert.destructive.border": "var(--color-alert-destructive-border)",
     "alert.destructive.text": "var(--color-alert-destructive-text)",
+    "alert.icon-gap": "var(--space-alert-icon-gap)",
+    "alert.icon-size": "var(--space-alert-icon-size)",
     "alert.info.background": "var(--color-alert-info-background)",
     "alert.info.border": "var(--color-alert-info-border)",
     "alert.info.text": "var(--color-alert-info-text)",

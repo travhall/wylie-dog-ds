@@ -873,6 +873,8 @@ export declare const alertDescriptionLineHeight: number;
 export declare const alertDescriptionOpacity: number;
 export declare const alertBorderLeftWidth: "1px";
 export declare const alertBorderWidth: "1px";
+export declare const alertIconSize: "1rem";
+export declare const alertIconGap: "0.75rem";
 export declare const labelRequiredMarginLeft: "0.25rem";
 export declare const commandItemPaddingX: "0.75rem";
 export declare const commandItemIndicatorMarginRight: "0.5rem";

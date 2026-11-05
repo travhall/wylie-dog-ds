@@ -2434,6 +2434,16 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the alert."
   },
+  "alert.icon-size": {
+    "$type": "dimension",
+    "$value": "{icon.size.sm}",
+    "$description": "Size of the icon in an alert that has one."
+  },
+  "alert.icon-gap": {
+    "$type": "dimension",
+    "$value": "{space.150}",
+    "$description": "Gap between the icon and the text of an alert that has an icon."
+  },
   "label.required-margin-left": {
     "$type": "spacing",
     "$value": "{space.050}",
