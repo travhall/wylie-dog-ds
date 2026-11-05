@@ -344,6 +344,36 @@ console.log(
   `\nState reactions: ${stateSets.length} set with a state axis, ${stateWired} transitions wired from the token duration and curve; skipped, with a reason, when the variables are not native`
 );
 
+// The link underlines on hover and press. The Token Bridge text style has no decoration, so an
+// underline set before the styles are applied is reset (found on the rebuilt library,
+// 2026-11-05): the builder must queue one per link hover and pressed label and apply them
+// after applyPendingTextStyles in main().
+{
+  const link = (context.pendingStateSets ?? []).flatMap((s) => s.props);
+  const withLabel = link.filter(
+    (p) =>
+      p.variant === "link" &&
+      p.size !== "icon" &&
+      (p.state === "hover" || p.state === "pressed")
+  );
+  const queued = (context.pendingUnderlines ?? []).length;
+  if (queued !== withLabel.length) {
+    errors.push(
+      `${queued} link underlines queued, expected ${withLabel.length} (one per link hover and pressed label)`
+    );
+  }
+  const styles = source.indexOf("await applyPendingTextStyles()");
+  const underlines = source.indexOf("await applyPendingUnderlines()");
+  if (styles < 0 || underlines < styles) {
+    errors.push(
+      "main() must apply the link underlines after the text styles, which reset them"
+    );
+  }
+  console.log(
+    `\nLink underlines: ${queued} queued (hover and pressed), applied after the text styles`
+  );
+}
+
 // Names live on real nodes, which the stub cannot see: check that main() runs the
 // naming pass; scripts/figma/audit-library.js counts default names in the file.
 if (!/nameDefaultLayers\(built\)/.test(source)) {
@@ -353,5 +383,9 @@ if (unboundStrokes.size) {
   errors.push(
     `${unboundStrokes.size} border colour(s) with no border-width token`
   );
+}
+if (errors.length > 0) {
+  console.error(`\nFailed (${errors.length}):`);
+  for (const e of new Set(errors)) console.error(`  ${e}`);
 }
 process.exit(errors.length > 0 ? 1 : 0);
