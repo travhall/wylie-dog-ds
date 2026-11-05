@@ -16,6 +16,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { stripVariants } from "./class-variants.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const srcDir = "packages/ui/src";
@@ -270,8 +271,7 @@ for (const file of files) {
       // An object key ("border-t": ...) names a class group, it is not a class
       if (/^\s*:/.test(line.slice(literal.index + literal[0].length))) continue;
       for (const cls of (literal[1] ?? literal[2]).split(/\s+/)) {
-        // Variants may hold brackets: data-[state=open]:after:h-1
-        const bare = cls.replace(/^(?:(?:[^\s:[\]]|\[[^\]]*\])+:)+/, "");
+        const bare = stripVariants(cls);
         const hit = classify(bare);
         if (hit) add(file, n, "class", hit.kind, hit.value, bare);
       }
