@@ -264,11 +264,13 @@ for (const entry of stateSets) {
   // state) Default goes to Hover and to Pressed where those exist, and Hover to Pressed where
   // both do. A set may have only some of the states (Toggle and Input have no Pressed).
   const groupsOf = new Map();
+  // The axis is `state`, or `interaction` where `state` already names something else
   entry.props.forEach((p) => {
-    if (!p.state) return;
-    const key = context.variantNameOf({ ...p, state: "" });
+    const axis = context.interactionAxis(p);
+    if (!axis) return;
+    const key = context.variantNameOf({ ...p, [axis]: "" });
     if (!groupsOf.has(key)) groupsOf.set(key, {});
-    groupsOf.get(key)[p.state] = true;
+    groupsOf.get(key)[p[axis]] = true;
   });
   let expectedSteps = 0;
   for (const g of groupsOf.values()) {
@@ -326,11 +328,13 @@ for (const entry of stateSets) {
   for (const p of entry.props) {
     const comp = byName[context.variantNameOf(p)];
     const n = (comp.reactions ?? []).length;
-    const g = groupsOf.get(context.variantNameOf({ ...p, state: "" })) ?? {};
+    const axis = context.interactionAxis(p);
+    const g =
+      groupsOf.get(context.variantNameOf({ ...p, [axis]: "" })) ?? {};
     const want =
-      p.state === "default"
+      p[axis] === "default"
         ? (g.hover ? 1 : 0) + (g.pressed ? 1 : 0)
-        : p.state === "hover" && g.default && g.pressed
+        : p[axis] === "hover" && g.default && g.pressed
           ? 1
           : 0;
     if (n !== want) {

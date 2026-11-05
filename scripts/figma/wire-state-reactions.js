@@ -99,8 +99,10 @@ for (const set of page.findAllWithCriteria({ types: ["COMPONENT_SET"] })) {
   const groups = new Map();
   for (const variant of set.children) {
     const props = parse(variant.name);
-    if (!props.state) continue;
-    const { state, ...rest } = props;
+    // `state`, or `interaction` where `state` already names something else
+    const axis = props.state !== undefined ? "state" : "interaction";
+    if (props[axis] === undefined) continue;
+    const { [axis]: state, ...rest } = props;
     const key = JSON.stringify(rest);
     if (!groups.has(key)) groups.set(key, {});
     groups.get(key)[state] = variant;
