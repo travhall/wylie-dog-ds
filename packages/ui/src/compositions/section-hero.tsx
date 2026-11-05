@@ -105,7 +105,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
               <Heading
                 id={headingId}
                 className={cn(
-                  "text-(length:--font-size-section-hero-title-font-size-sm) md:text-(length:--font-size-section-hero-title-font-size-md) lg:text-(length:--font-size-section-hero-title-font-size-lg) font-(--font-weight-section-hero-title-font-weight) tracking-(--space-section-hero-title-tracking)",
+                  "text-(length:--font-size-section-hero-title-font-size-sm) leading-(--line-height-section-hero-title-line-height) md:text-(length:--font-size-section-hero-title-font-size-md) md:leading-(--line-height-section-hero-title-line-height) lg:text-(length:--font-size-section-hero-title-font-size-lg) lg:leading-(--line-height-section-hero-title-line-height) font-(--font-weight-section-hero-title-font-weight) tracking-(--space-section-hero-title-tracking)",
                   isCentered && "text-center"
                 )}
               >
@@ -116,7 +116,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
               {description && (
                 <p
                   className={cn(
-                    "text-(length:--font-size-section-hero-description-font-size-sm) md:text-(length:--font-size-section-hero-description-font-size-md) text-(--color-section-hero-description-text) max-w-(--space-section-hero-description-max-width)",
+                    "text-(length:--font-size-section-hero-description-font-size-sm) leading-(--line-height-section-hero-description-line-height) md:text-(length:--font-size-section-hero-description-font-size-md) md:leading-(--line-height-section-hero-description-line-height) text-(--color-section-hero-description-text) max-w-(--space-section-hero-description-max-width)",
                     isCentered && "text-center"
                   )}
                 >

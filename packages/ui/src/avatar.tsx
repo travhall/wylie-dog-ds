@@ -95,10 +95,10 @@ export interface AvatarFallbackProps extends React.HTMLAttributes<HTMLDivElement
 }
 
 const fallbackFontSizeMap = {
-  sm: "text-(length:--font-size-avatar-fallback-font-size-sm)",
-  md: "text-(length:--font-size-avatar-fallback-font-size-md)",
-  lg: "text-(length:--font-size-avatar-fallback-font-size-lg)",
-  xl: "text-(length:--font-size-avatar-fallback-font-size-xl)",
+  sm: "text-(length:--font-size-avatar-fallback-font-size-sm) leading-(--line-height-avatar-fallback-line-height)",
+  md: "text-(length:--font-size-avatar-fallback-font-size-md) leading-(--line-height-avatar-fallback-line-height)",
+  lg: "text-(length:--font-size-avatar-fallback-font-size-lg) leading-(--line-height-avatar-fallback-line-height)",
+  xl: "text-(length:--font-size-avatar-fallback-font-size-xl) leading-(--line-height-avatar-fallback-line-height)",
 };
 
 export const AvatarFallback = React.forwardRef<

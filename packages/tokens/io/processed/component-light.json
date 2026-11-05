@@ -3589,6 +3589,11 @@
     "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of the toggle group item."
   },
+  "toggle-group.item-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the toggle group item text."
+  },
   "scrollbar.padding": {
     "$type": "spacing",
     "$value": "{space.010}",
@@ -3629,10 +3634,30 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the avatar."
   },
+  "avatar.fallback-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the avatar fallback text."
+  },
   "table.footer-font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of the table footer."
+  },
+  "table.caption-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the table caption text."
+  },
+  "table.cell.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the table cell text."
+  },
+  "table.header.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the table header text."
   },
   "checkbox.background-checked": {
     "$type": "color",
@@ -3698,6 +3723,11 @@
     "$type": "number",
     "$value": "{typography.font-weight.regular}",
     "$description": "Font weight of the current page item in the breadcrumb."
+  },
+  "breadcrumb.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the breadcrumb text."
   },
   "toast.default-background": {
     "$type": "color",
@@ -4099,6 +4129,11 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the textarea."
   },
+  "textarea.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the textarea text."
+  },
   "select.trigger.background-disabled": {
     "$type": "color",
     "$value": "{color.background.muted}",
@@ -4194,6 +4229,11 @@
     "$value": "{color.foreground.faint}",
     "$description": "Text color of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
+  "pagination.item.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the pagination item text."
+  },
   "navigation.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
@@ -4244,6 +4284,16 @@
     "$value": "{border-width.1}",
     "$description": "Height of the command menu separator."
   },
+  "command.group-heading-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the command group heading text."
+  },
+  "command.item-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the command item text."
+  },
   "carousel.nav-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
@@ -4279,6 +4329,16 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the calendar."
   },
+  "calendar.day-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the calendar day text."
+  },
+  "calendar.header-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the calendar header text."
+  },
   "toast.action-text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}",
@@ -4313,6 +4373,11 @@
     "$type": "dimension",
     "$value": "{space.100}",
     "$description": "Gap between an icon and the label of the toggle."
+  },
+  "toggle.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the toggle text."
   },
   "menubar.trigger-highlighted": {
     "$type": "color",
@@ -4534,6 +4599,21 @@
     "$value": "{border-radius.lg}",
     "$description": "Corner radius of the feature icon container."
   },
+  "section-features.description-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the section features description text."
+  },
+  "section-features.item.title.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the section features item title text."
+  },
+  "section-features.title.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the section features title text."
+  },
   "section-hero.padding-y-sm": {
     "$type": "spacing",
     "$value": "{space.800}",
@@ -4634,6 +4714,16 @@
     "$value": "{space.400}",
     "$description": "Space above the image in the centered hero."
   },
+  "section-hero.description.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the section hero description text."
+  },
+  "section-hero.title.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the section hero title text."
+  },
   "site-footer.container.padding-x-sm": {
     "$type": "spacing",
     "$value": "{space.200}",
@@ -4729,6 +4819,26 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the site footer."
   },
+  "site-footer.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the site footer text."
+  },
+  "site-footer.column.title.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the site footer column title text."
+  },
+  "site-footer.link.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the site footer link text."
+  },
+  "site-footer.logo.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the site footer logo text."
+  },
   "site-header.container.padding-x-sm": {
     "$type": "spacing",
     "$value": "{space.200}",
@@ -4818,6 +4928,16 @@
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the site header."
+  },
+  "site-header.logo.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the site header logo text."
+  },
+  "site-header.nav-link.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the site header nav link text."
   },
   "button.spinner.size": {
     "$type": "spacing",
@@ -4959,6 +5079,11 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the select."
   },
+  "select.trigger.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the select trigger text."
+  },
   "navigation-menu.viewport-shadow": {
     "$type": "shadow",
     "$value": "{shadow.lg}",
@@ -4983,6 +5108,11 @@
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Overlap of the trigger underline with the border of the tabs list."
+  },
+  "tabs.trigger.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the tabs trigger text."
   },
   "toast.shadow": {
     "$type": "shadow",
@@ -5034,6 +5164,16 @@
     "$value": "{z-index.dropdown}",
     "$description": "Stacking order of a context menu sub-menu."
   },
+  "context-menu.item-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the context menu item text."
+  },
+  "context-menu.shortcut-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the context menu shortcut text."
+  },
   "dropdown-menu.content-z-index": {
     "$type": "number",
     "$value": "{z-index.dropdown}",
@@ -5048,6 +5188,16 @@
     "$type": "dimension",
     "$value": "{space.050}",
     "$description": "Gap between the dropdown menu trigger and its content."
+  },
+  "dropdown-menu.item.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the dropdown menu item text."
+  },
+  "dropdown-menu.shortcut.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the dropdown menu shortcut text."
   },
   "menubar.content-z-index": {
     "$type": "number",
@@ -5073,6 +5223,16 @@
     "$type": "dimension",
     "$value": "{space.050}",
     "$description": "How far a menubar menu is pulled back along the trigger edge, so its content lines up with the trigger text."
+  },
+  "menubar.item-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the menubar item text."
+  },
+  "menubar.shortcut-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the menubar shortcut text."
   },
   "navigation-menu.z-index": {
     "$type": "number",
@@ -5149,6 +5309,21 @@
     "$value": "420px",
     "$description": "Maximum width of the toast viewport from the medium breakpoint up."
   },
+  "toast.action.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the toast action text."
+  },
+  "toast.description.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the toast description text."
+  },
+  "toast.title.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the toast title text."
+  },
   "tooltip.z-index": {
     "$type": "number",
     "$value": "{z-index.tooltip}",
@@ -5163,6 +5338,11 @@
     "$type": "dimension",
     "$value": "{space.050}",
     "$description": "Gap between the tooltip trigger and its content."
+  },
+  "tooltip.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the tooltip text."
   },
   "dialog.overlay-opacity": {
     "$type": "number",
@@ -5194,6 +5374,11 @@
     "$value": "{space.200}",
     "$description": "Size of the browser's own search-cancel and date-picker icons inside an input."
   },
+  "input.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the input text."
+  },
   "dialog.title-line-height": {
     "$type": "number",
     "$value": "{typography.line-height.none}",
@@ -5208,6 +5393,16 @@
     "$type": "number",
     "$value": "{typography.line-height.none}",
     "$description": "Line height of the form label."
+  },
+  "form.description-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the form description text."
+  },
+  "form.error-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the form error text."
   },
   "feature-grid.title.line-height": {
     "$type": "number",
@@ -5229,6 +5424,11 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the dialog."
   },
+  "dialog.description-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the dialog description text."
+  },
   "alert-dialog.content-duration": {
     "$type": "duration",
     "$value": "{transition.duration.normal}",
@@ -5243,6 +5443,16 @@
     "$type": "spacing",
     "$value": "{space.1650}",
     "$description": "Maximum width of the alert dialog content."
+  },
+  "alert-dialog.description-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the alert dialog description text."
+  },
+  "alert-dialog.title-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the alert dialog title text."
   },
   "accordion.trigger.icon-duration": {
     "$type": "duration",
@@ -5279,6 +5489,11 @@
     "$value": "{border-radius.md}",
     "$description": "Corner radius of a link inside an open navigation menu."
   },
+  "navigation-menu.trigger-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the navigation menu trigger text."
+  },
   "progress.indicator-duration": {
     "$type": "duration",
     "$value": "{transition.duration.slow}",
@@ -5298,6 +5513,16 @@
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the sheet."
+  },
+  "sheet.description.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the sheet description text."
+  },
+  "sheet.title.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the sheet title text."
   },
   "card-grid.item-duration": {
     "$type": "duration",

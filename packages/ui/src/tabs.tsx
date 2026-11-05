@@ -55,9 +55,9 @@ export const tabsTriggerVariants = cva(
   {
     variants: {
       size: {
-        sm: "px-(--space-tabs-trigger-padding-x-sm) py-(--space-tabs-trigger-padding-y-sm) text-(length:--font-size-tabs-trigger-font-size-sm)",
-        md: "px-(--space-tabs-trigger-padding-x-md) py-(--space-tabs-trigger-padding-y-md) text-(length:--font-size-tabs-trigger-font-size-md)",
-        lg: "px-(--space-tabs-trigger-padding-x-lg) py-(--space-tabs-trigger-padding-y-lg) text-(length:--font-size-tabs-trigger-font-size-lg)",
+        sm: "px-(--space-tabs-trigger-padding-x-sm) py-(--space-tabs-trigger-padding-y-sm) text-(length:--font-size-tabs-trigger-font-size-sm) leading-(--line-height-tabs-trigger-line-height)",
+        md: "px-(--space-tabs-trigger-padding-x-md) py-(--space-tabs-trigger-padding-y-md) text-(length:--font-size-tabs-trigger-font-size-md) leading-(--line-height-tabs-trigger-line-height)",
+        lg: "px-(--space-tabs-trigger-padding-x-lg) py-(--space-tabs-trigger-padding-y-lg) text-(length:--font-size-tabs-trigger-font-size-lg) leading-(--line-height-tabs-trigger-line-height)",
       },
     },
     defaultVariants: {

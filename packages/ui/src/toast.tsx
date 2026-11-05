@@ -81,7 +81,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
         "disabled:pointer-events-none disabled:text-(--color-toast-action-text-disabled) disabled:border-(--color-toast-action-border-disabled)",
         "h-(--space-toast-action-height)",
         "px-(--space-toast-action-padding-x)",
-        "text-(length:--font-size-toast-action-font-size)",
+        "text-(length:--font-size-toast-action-font-size) leading-(--line-height-toast-action-line-height)",
         "font-(--font-weight-toast-description-font-weight)",
         solidControlFill,
         className
@@ -131,7 +131,7 @@ const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
       ref={ref}
       className={cn(
         "font-(--font-weight-toast-title-font-weight)",
-        "text-(length:--font-size-toast-title-font-size)",
+        "text-(length:--font-size-toast-title-font-size) leading-(--line-height-toast-title-line-height)",
         className
       )}
       {...props}
@@ -150,7 +150,7 @@ const ToastDescription = React.forwardRef<
     ref={ref}
     className={cn(
       "opacity-(--toast-description-opacity)",
-      "text-(length:--font-size-toast-description-font-size)",
+      "text-(length:--font-size-toast-description-font-size) leading-(--line-height-toast-description-line-height)",
       className
     )}
     {...props}

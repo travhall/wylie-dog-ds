@@ -96,7 +96,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                   href="/"
                   className="flex items-center space-x-(--space-site-header-logo-gap)"
                 >
-                  <span className="text-(length:--font-size-site-header-logo-font-size) font-(--font-weight-site-header-logo-font-weight)">
+                  <span className="text-(length:--font-size-site-header-logo-font-size) leading-(--line-height-site-header-logo-line-height) font-(--font-weight-site-header-logo-font-weight)">
                     Logo
                   </span>
                 </a>
@@ -117,7 +117,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                       ) : (
                         <NavigationMenuLink
                           href={item.href}
-                          className="group inline-flex h-(--space-site-header-nav-link-height) w-max items-center justify-center rounded-(--space-site-header-nav-link-radius) bg-(--color-site-header-nav-link-background) px-(--space-site-header-nav-link-padding-x) py-(--space-site-header-nav-link-padding-y) text-(length:--font-size-site-header-nav-link-font-size) font-(--font-weight-site-header-nav-link-font-weight) transition-colors hover:bg-(--color-site-header-nav-link-background-hover) hover:text-(--color-site-header-nav-link-text-hover) focus:bg-(--color-site-header-nav-link-background-highlighted) focus:text-(--color-site-header-nav-link-text-highlighted) focus-visible:outline-solid focus-visible:outline-(length:--space-focus-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-focus-offset) focus-visible:shadow-[0_0_0_calc(var(--space-focus-offset)+var(--space-focus-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none disabled:pointer-events-none disabled:text-(--color-site-header-nav-link-text-disabled)"
+                          className="group inline-flex h-(--space-site-header-nav-link-height) w-max items-center justify-center rounded-(--space-site-header-nav-link-radius) bg-(--color-site-header-nav-link-background) px-(--space-site-header-nav-link-padding-x) py-(--space-site-header-nav-link-padding-y) text-(length:--font-size-site-header-nav-link-font-size) leading-(--line-height-site-header-nav-link-line-height) font-(--font-weight-site-header-nav-link-font-weight) transition-colors hover:bg-(--color-site-header-nav-link-background-hover) hover:text-(--color-site-header-nav-link-text-hover) focus:bg-(--color-site-header-nav-link-background-highlighted) focus:text-(--color-site-header-nav-link-text-highlighted) focus-visible:outline-solid focus-visible:outline-(length:--space-focus-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-focus-offset) focus-visible:shadow-[0_0_0_calc(var(--space-focus-offset)+var(--space-focus-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none disabled:pointer-events-none disabled:text-(--color-site-header-nav-link-text-disabled)"
                         >
                           {item.label}
                         </NavigationMenuLink>
