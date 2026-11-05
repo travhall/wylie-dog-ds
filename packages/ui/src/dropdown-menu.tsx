@@ -22,7 +22,7 @@ export const DropdownMenuContent = React.forwardRef<
       ref={ref}
       className={cn(
         "data-[side=bottom]:mt-(--space-dropdown-menu-side-offset) data-[side=top]:mb-(--space-dropdown-menu-side-offset) data-[side=left]:mr-(--space-dropdown-menu-side-offset) data-[side=right]:ml-(--space-dropdown-menu-side-offset)",
-        "z-(--dropdown-menu-content-z-index) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border-(length:--space-dropdown-menu-border-width) border-(--color-dropdown-menu-content-border)",
+        "wd-motion-float [--wd-motion-duration:var(--duration-dropdown-menu-content-duration)] [--wd-motion-easing:var(--dropdown-menu-content-easing)] [--wd-motion-distance:var(--space-dropdown-menu-content-distance)] [--wd-motion-scale:var(--dropdown-menu-content-scale)] z-(--dropdown-menu-content-z-index) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border-(length:--space-dropdown-menu-border-width) border-(--color-dropdown-menu-content-border)",
         "bg-(--color-dropdown-menu-content-background) p-(--space-dropdown-menu-content-padding) text-(--color-dropdown-menu-content-text) shadow-(--shadow-dropdown-menu-content-shadow)",
         className
       )}
@@ -188,7 +188,7 @@ export const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-(--dropdown-menu-content-z-index) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border-(length:--space-dropdown-menu-border-width) border-(--color-dropdown-menu-content-border)",
+      "wd-motion-float [--wd-motion-duration:var(--duration-dropdown-menu-content-duration)] [--wd-motion-easing:var(--dropdown-menu-content-easing)] [--wd-motion-distance:var(--space-dropdown-menu-content-distance)] [--wd-motion-scale:var(--dropdown-menu-content-scale)] z-(--dropdown-menu-content-z-index) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border-(length:--space-dropdown-menu-border-width) border-(--color-dropdown-menu-content-border)",
       "bg-(--color-dropdown-menu-content-background) p-(--space-dropdown-menu-content-padding) text-(--color-dropdown-menu-content-text) shadow-(--shadow-dropdown-menu-content-shadow)",
       className
     )}

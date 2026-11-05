@@ -3,7 +3,10 @@
  */
 
 export type CssVarName =
+  | "--accordion-content-easing"
   | "--alert-description-opacity"
+  | "--alert-dialog-content-easing"
+  | "--alert-dialog-content-scale"
   | "--alert-dialog-content-z-index"
   | "--alert-dialog-overlay-opacity"
   | "--alert-dialog-overlay-z-index"
@@ -21,9 +24,11 @@ export type CssVarName =
   | "--border-width-4"
   | "--border-width-8"
   | "--button-border-width"
+  | "--button-spinner-easing"
   | "--calendar-nav-button-opacity"
   | "--calendar-nav-button-opacity-hover"
   | "--card-grid-item-hover-scale"
+  | "--collapsible-content-easing"
   | "--color-accordion-border"
   | "--color-accordion-content-text"
   | "--color-accordion-icon"
@@ -617,13 +622,19 @@ export type CssVarName =
   | "--color-yellow-900"
   | "--color-yellow-950"
   | "--command-input-icon-opacity"
+  | "--context-menu-content-easing"
+  | "--context-menu-content-scale"
   | "--context-menu-content-z-index"
   | "--context-menu-sub-content-z-index"
   | "--dialog-close-button-opacity"
   | "--dialog-close-button-opacity-hover"
+  | "--dialog-content-easing"
+  | "--dialog-content-scale"
   | "--dialog-content-z-index"
   | "--dialog-overlay-opacity"
   | "--dialog-overlay-z-index"
+  | "--dropdown-menu-content-easing"
+  | "--dropdown-menu-content-scale"
   | "--dropdown-menu-content-z-index"
   | "--dropdown-menu-shortcut-opacity"
   | "--duration-0"
@@ -635,22 +646,37 @@ export type CssVarName =
   | "--duration-500"
   | "--duration-700"
   | "--duration-75"
+  | "--duration-accordion-content-duration"
   | "--duration-accordion-trigger-icon-duration"
   | "--duration-alert-dialog-content-duration"
+  | "--duration-button-spinner-duration"
   | "--duration-card-grid-item-duration"
+  | "--duration-collapsible-content-duration"
+  | "--duration-context-menu-content-duration"
   | "--duration-dialog-content-duration"
+  | "--duration-dropdown-menu-content-duration"
   | "--duration-fast"
   | "--duration-feature-grid-icon-duration"
   | "--duration-feature-grid-item-duration"
+  | "--duration-hover-card-content-duration"
   | "--duration-input-native-icon-transition-duration"
   | "--duration-instant"
+  | "--duration-loop"
+  | "--duration-loop-slow"
+  | "--duration-menubar-content-duration"
   | "--duration-navigation-menu-indicator-duration"
+  | "--duration-navigation-menu-viewport-duration"
   | "--duration-normal"
+  | "--duration-popover-content-duration"
   | "--duration-progress-indicator-duration"
+  | "--duration-select-content-duration"
   | "--duration-sheet-content-duration-closed"
   | "--duration-sheet-content-duration-open"
   | "--duration-site-header-transition-duration"
+  | "--duration-skeleton-duration"
   | "--duration-slow"
+  | "--duration-toast-duration"
+  | "--duration-tooltip-content-duration"
   | "--feature-grid-icon-hover-scale"
   | "--feature-grid-item-hover-scale"
   | "--font-size-2xl"
@@ -796,6 +822,8 @@ export type CssVarName =
   | "--font-weight-toast-title-font-weight"
   | "--font-weight-toggle-font-weight"
   | "--font-weight-toggle-group-item-font-weight"
+  | "--hover-card-content-easing"
+  | "--hover-card-content-scale"
   | "--hover-card-z-index"
   | "--input-spin-button-opacity"
   | "--line-height-accordion-content-line-height"
@@ -864,9 +892,13 @@ export type CssVarName =
   | "--line-height-toggle-group-item-line-height"
   | "--line-height-toggle-line-height"
   | "--line-height-tooltip-line-height"
+  | "--menubar-content-easing"
+  | "--menubar-content-scale"
   | "--menubar-content-z-index"
   | "--menubar-sub-content-z-index"
   | "--navigation-menu-indicator-z-index"
+  | "--navigation-menu-viewport-easing"
+  | "--navigation-menu-viewport-scale"
   | "--navigation-menu-z-index"
   | "--opacity-0"
   | "--opacity-10"
@@ -891,10 +923,16 @@ export type CssVarName =
   | "--opacity-scrim"
   | "--opacity-subtle"
   | "--page-layout-skip-link-z-index"
+  | "--popover-content-easing"
+  | "--popover-content-scale"
   | "--popover-z-index"
+  | "--progress-indicator-easing"
   | "--resizable-handle-z-index"
   | "--scale-105"
   | "--scale-110"
+  | "--scale-95"
+  | "--select-content-easing"
+  | "--select-content-scale"
   | "--select-content-z-index"
   | "--select-trigger-icon-opacity"
   | "--shadow-alert-dialog-content-shadow"
@@ -925,10 +963,13 @@ export type CssVarName =
   | "--shadow-xl"
   | "--sheet-close-button-opacity"
   | "--sheet-close-button-opacity-hover"
+  | "--sheet-content-easing"
   | "--sheet-content-z-index"
   | "--sheet-overlay-opacity"
   | "--sheet-overlay-z-index"
   | "--site-header-z-index"
+  | "--skeleton-easing"
+  | "--skeleton-pulse-opacity"
   | "--space-0"
   | "--space-010"
   | "--space-025"
@@ -1070,6 +1111,7 @@ export type CssVarName =
   | "--space-command-separator-margin-x"
   | "--space-command-shortcut-letter-spacing"
   | "--space-context-menu-checkbox-padding"
+  | "--space-context-menu-content-distance"
   | "--space-context-menu-content-min-width"
   | "--space-context-menu-content-padding"
   | "--space-context-menu-content-radius"
@@ -1103,6 +1145,7 @@ export type CssVarName =
   | "--space-dialog-header-margin-bottom"
   | "--space-dialog-title-letter-spacing"
   | "--space-dropdown-menu-border-width"
+  | "--space-dropdown-menu-content-distance"
   | "--space-dropdown-menu-content-min-width"
   | "--space-dropdown-menu-content-padding"
   | "--space-dropdown-menu-content-radius"
@@ -1134,6 +1177,7 @@ export type CssVarName =
   | "--space-form-item-gap"
   | "--space-form-label-gap"
   | "--space-hover-card-border-width"
+  | "--space-hover-card-content-distance"
   | "--space-hover-card-content-padding"
   | "--space-hover-card-content-radius"
   | "--space-hover-card-content-width-lg"
@@ -1157,6 +1201,7 @@ export type CssVarName =
   | "--space-menubar-border-width"
   | "--space-menubar-checkbox-padding"
   | "--space-menubar-content-align-offset"
+  | "--space-menubar-content-distance"
   | "--space-menubar-content-min-width"
   | "--space-menubar-content-side-offset"
   | "--space-menubar-item-icon-size"
@@ -1216,6 +1261,7 @@ export type CssVarName =
   | "--space-pagination-item-size"
   | "--space-pagination-list-gap"
   | "--space-popover-border-width"
+  | "--space-popover-content-distance"
   | "--space-popover-content-padding"
   | "--space-popover-content-radius"
   | "--space-popover-content-width-lg"
@@ -1280,6 +1326,7 @@ export type CssVarName =
   | "--space-section-hero-padding-y-sm"
   | "--space-section-hero-title-tracking"
   | "--space-select-border-width"
+  | "--space-select-content-distance"
   | "--space-select-content-max-height"
   | "--space-select-content-min-width"
   | "--space-select-content-padding"
@@ -1460,11 +1507,13 @@ export type CssVarName =
   | "--space-toggle-size-sm-height"
   | "--space-toggle-size-sm-padding-x"
   | "--space-tooltip-border-width"
+  | "--space-tooltip-content-distance"
   | "--space-tooltip-max-width"
   | "--space-tooltip-padding-x"
   | "--space-tooltip-padding-y"
   | "--space-tooltip-radius"
   | "--space-tooltip-side-offset"
+  | "--space-transition-distance-default"
   | "--space-typography-tracking-normal"
   | "--space-typography-tracking-tight"
   | "--space-typography-tracking-tighter"
@@ -1479,12 +1528,17 @@ export type CssVarName =
   | "--toast-close-button-opacity"
   | "--toast-close-button-opacity-hover"
   | "--toast-description-opacity"
+  | "--toast-easing"
   | "--toast-viewport-z-index"
+  | "--tooltip-content-easing"
+  | "--tooltip-content-scale"
   | "--tooltip-z-index"
   | "--transition-easing-default"
   | "--transition-easing-in"
   | "--transition-easing-in-out"
+  | "--transition-easing-linear"
   | "--transition-easing-out"
+  | "--transition-scale-enter"
   | "--typography-font-family-mono"
   | "--typography-font-family-sans"
   | "--typography-font-family-serif"
@@ -1513,7 +1567,10 @@ export type CssVarName =
 export type CssVarKey = keyof typeof cssVars;
 
 export declare const cssVars: Readonly<{
+  "accordionContentEasing": "--accordion-content-easing";
   "alertDescriptionOpacity": "--alert-description-opacity";
+  "alertDialogContentEasing": "--alert-dialog-content-easing";
+  "alertDialogContentScale": "--alert-dialog-content-scale";
   "alertDialogContentZIndex": "--alert-dialog-content-z-index";
   "alertDialogOverlayOpacity": "--alert-dialog-overlay-opacity";
   "alertDialogOverlayZIndex": "--alert-dialog-overlay-z-index";
@@ -1531,9 +1588,11 @@ export declare const cssVars: Readonly<{
   "borderWidth4": "--border-width-4";
   "borderWidth8": "--border-width-8";
   "buttonBorderWidth": "--button-border-width";
+  "buttonSpinnerEasing": "--button-spinner-easing";
   "calendarNavButtonOpacity": "--calendar-nav-button-opacity";
   "calendarNavButtonOpacityHover": "--calendar-nav-button-opacity-hover";
   "cardGridItemHoverScale": "--card-grid-item-hover-scale";
+  "collapsibleContentEasing": "--collapsible-content-easing";
   "colorAccordionBorder": "--color-accordion-border";
   "colorAccordionContentText": "--color-accordion-content-text";
   "colorAccordionIcon": "--color-accordion-icon";
@@ -2127,13 +2186,19 @@ export declare const cssVars: Readonly<{
   "colorYellow900": "--color-yellow-900";
   "colorYellow950": "--color-yellow-950";
   "commandInputIconOpacity": "--command-input-icon-opacity";
+  "contextMenuContentEasing": "--context-menu-content-easing";
+  "contextMenuContentScale": "--context-menu-content-scale";
   "contextMenuContentZIndex": "--context-menu-content-z-index";
   "contextMenuSubContentZIndex": "--context-menu-sub-content-z-index";
   "dialogCloseButtonOpacity": "--dialog-close-button-opacity";
   "dialogCloseButtonOpacityHover": "--dialog-close-button-opacity-hover";
+  "dialogContentEasing": "--dialog-content-easing";
+  "dialogContentScale": "--dialog-content-scale";
   "dialogContentZIndex": "--dialog-content-z-index";
   "dialogOverlayOpacity": "--dialog-overlay-opacity";
   "dialogOverlayZIndex": "--dialog-overlay-z-index";
+  "dropdownMenuContentEasing": "--dropdown-menu-content-easing";
+  "dropdownMenuContentScale": "--dropdown-menu-content-scale";
   "dropdownMenuContentZIndex": "--dropdown-menu-content-z-index";
   "dropdownMenuShortcutOpacity": "--dropdown-menu-shortcut-opacity";
   "duration0": "--duration-0";
@@ -2145,22 +2210,37 @@ export declare const cssVars: Readonly<{
   "duration500": "--duration-500";
   "duration700": "--duration-700";
   "duration75": "--duration-75";
+  "durationAccordionContentDuration": "--duration-accordion-content-duration";
   "durationAccordionTriggerIconDuration": "--duration-accordion-trigger-icon-duration";
   "durationAlertDialogContentDuration": "--duration-alert-dialog-content-duration";
+  "durationButtonSpinnerDuration": "--duration-button-spinner-duration";
   "durationCardGridItemDuration": "--duration-card-grid-item-duration";
+  "durationCollapsibleContentDuration": "--duration-collapsible-content-duration";
+  "durationContextMenuContentDuration": "--duration-context-menu-content-duration";
   "durationDialogContentDuration": "--duration-dialog-content-duration";
+  "durationDropdownMenuContentDuration": "--duration-dropdown-menu-content-duration";
   "durationFast": "--duration-fast";
   "durationFeatureGridIconDuration": "--duration-feature-grid-icon-duration";
   "durationFeatureGridItemDuration": "--duration-feature-grid-item-duration";
+  "durationHoverCardContentDuration": "--duration-hover-card-content-duration";
   "durationInputNativeIconTransitionDuration": "--duration-input-native-icon-transition-duration";
   "durationInstant": "--duration-instant";
+  "durationLoop": "--duration-loop";
+  "durationLoopSlow": "--duration-loop-slow";
+  "durationMenubarContentDuration": "--duration-menubar-content-duration";
   "durationNavigationMenuIndicatorDuration": "--duration-navigation-menu-indicator-duration";
+  "durationNavigationMenuViewportDuration": "--duration-navigation-menu-viewport-duration";
   "durationNormal": "--duration-normal";
+  "durationPopoverContentDuration": "--duration-popover-content-duration";
   "durationProgressIndicatorDuration": "--duration-progress-indicator-duration";
+  "durationSelectContentDuration": "--duration-select-content-duration";
   "durationSheetContentDurationClosed": "--duration-sheet-content-duration-closed";
   "durationSheetContentDurationOpen": "--duration-sheet-content-duration-open";
   "durationSiteHeaderTransitionDuration": "--duration-site-header-transition-duration";
+  "durationSkeletonDuration": "--duration-skeleton-duration";
   "durationSlow": "--duration-slow";
+  "durationToastDuration": "--duration-toast-duration";
+  "durationTooltipContentDuration": "--duration-tooltip-content-duration";
   "featureGridIconHoverScale": "--feature-grid-icon-hover-scale";
   "featureGridItemHoverScale": "--feature-grid-item-hover-scale";
   "fontSize2xl": "--font-size-2xl";
@@ -2306,6 +2386,8 @@ export declare const cssVars: Readonly<{
   "fontWeightToastTitleFontWeight": "--font-weight-toast-title-font-weight";
   "fontWeightToggleFontWeight": "--font-weight-toggle-font-weight";
   "fontWeightToggleGroupItemFontWeight": "--font-weight-toggle-group-item-font-weight";
+  "hoverCardContentEasing": "--hover-card-content-easing";
+  "hoverCardContentScale": "--hover-card-content-scale";
   "hoverCardZIndex": "--hover-card-z-index";
   "inputSpinButtonOpacity": "--input-spin-button-opacity";
   "lineHeightAccordionContentLineHeight": "--line-height-accordion-content-line-height";
@@ -2374,9 +2456,13 @@ export declare const cssVars: Readonly<{
   "lineHeightToggleGroupItemLineHeight": "--line-height-toggle-group-item-line-height";
   "lineHeightToggleLineHeight": "--line-height-toggle-line-height";
   "lineHeightTooltipLineHeight": "--line-height-tooltip-line-height";
+  "menubarContentEasing": "--menubar-content-easing";
+  "menubarContentScale": "--menubar-content-scale";
   "menubarContentZIndex": "--menubar-content-z-index";
   "menubarSubContentZIndex": "--menubar-sub-content-z-index";
   "navigationMenuIndicatorZIndex": "--navigation-menu-indicator-z-index";
+  "navigationMenuViewportEasing": "--navigation-menu-viewport-easing";
+  "navigationMenuViewportScale": "--navigation-menu-viewport-scale";
   "navigationMenuZIndex": "--navigation-menu-z-index";
   "opacity0": "--opacity-0";
   "opacity10": "--opacity-10";
@@ -2401,10 +2487,16 @@ export declare const cssVars: Readonly<{
   "opacityScrim": "--opacity-scrim";
   "opacitySubtle": "--opacity-subtle";
   "pageLayoutSkipLinkZIndex": "--page-layout-skip-link-z-index";
+  "popoverContentEasing": "--popover-content-easing";
+  "popoverContentScale": "--popover-content-scale";
   "popoverZIndex": "--popover-z-index";
+  "progressIndicatorEasing": "--progress-indicator-easing";
   "resizableHandleZIndex": "--resizable-handle-z-index";
   "scale105": "--scale-105";
   "scale110": "--scale-110";
+  "scale95": "--scale-95";
+  "selectContentEasing": "--select-content-easing";
+  "selectContentScale": "--select-content-scale";
   "selectContentZIndex": "--select-content-z-index";
   "selectTriggerIconOpacity": "--select-trigger-icon-opacity";
   "shadowAlertDialogContentShadow": "--shadow-alert-dialog-content-shadow";
@@ -2435,10 +2527,13 @@ export declare const cssVars: Readonly<{
   "shadowXl": "--shadow-xl";
   "sheetCloseButtonOpacity": "--sheet-close-button-opacity";
   "sheetCloseButtonOpacityHover": "--sheet-close-button-opacity-hover";
+  "sheetContentEasing": "--sheet-content-easing";
   "sheetContentZIndex": "--sheet-content-z-index";
   "sheetOverlayOpacity": "--sheet-overlay-opacity";
   "sheetOverlayZIndex": "--sheet-overlay-z-index";
   "siteHeaderZIndex": "--site-header-z-index";
+  "skeletonEasing": "--skeleton-easing";
+  "skeletonPulseOpacity": "--skeleton-pulse-opacity";
   "space0": "--space-0";
   "space010": "--space-010";
   "space025": "--space-025";
@@ -2580,6 +2675,7 @@ export declare const cssVars: Readonly<{
   "spaceCommandSeparatorMarginX": "--space-command-separator-margin-x";
   "spaceCommandShortcutLetterSpacing": "--space-command-shortcut-letter-spacing";
   "spaceContextMenuCheckboxPadding": "--space-context-menu-checkbox-padding";
+  "spaceContextMenuContentDistance": "--space-context-menu-content-distance";
   "spaceContextMenuContentMinWidth": "--space-context-menu-content-min-width";
   "spaceContextMenuContentPadding": "--space-context-menu-content-padding";
   "spaceContextMenuContentRadius": "--space-context-menu-content-radius";
@@ -2613,6 +2709,7 @@ export declare const cssVars: Readonly<{
   "spaceDialogHeaderMarginBottom": "--space-dialog-header-margin-bottom";
   "spaceDialogTitleLetterSpacing": "--space-dialog-title-letter-spacing";
   "spaceDropdownMenuBorderWidth": "--space-dropdown-menu-border-width";
+  "spaceDropdownMenuContentDistance": "--space-dropdown-menu-content-distance";
   "spaceDropdownMenuContentMinWidth": "--space-dropdown-menu-content-min-width";
   "spaceDropdownMenuContentPadding": "--space-dropdown-menu-content-padding";
   "spaceDropdownMenuContentRadius": "--space-dropdown-menu-content-radius";
@@ -2644,6 +2741,7 @@ export declare const cssVars: Readonly<{
   "spaceFormItemGap": "--space-form-item-gap";
   "spaceFormLabelGap": "--space-form-label-gap";
   "spaceHoverCardBorderWidth": "--space-hover-card-border-width";
+  "spaceHoverCardContentDistance": "--space-hover-card-content-distance";
   "spaceHoverCardContentPadding": "--space-hover-card-content-padding";
   "spaceHoverCardContentRadius": "--space-hover-card-content-radius";
   "spaceHoverCardContentWidthLg": "--space-hover-card-content-width-lg";
@@ -2667,6 +2765,7 @@ export declare const cssVars: Readonly<{
   "spaceMenubarBorderWidth": "--space-menubar-border-width";
   "spaceMenubarCheckboxPadding": "--space-menubar-checkbox-padding";
   "spaceMenubarContentAlignOffset": "--space-menubar-content-align-offset";
+  "spaceMenubarContentDistance": "--space-menubar-content-distance";
   "spaceMenubarContentMinWidth": "--space-menubar-content-min-width";
   "spaceMenubarContentSideOffset": "--space-menubar-content-side-offset";
   "spaceMenubarItemIconSize": "--space-menubar-item-icon-size";
@@ -2726,6 +2825,7 @@ export declare const cssVars: Readonly<{
   "spacePaginationItemSize": "--space-pagination-item-size";
   "spacePaginationListGap": "--space-pagination-list-gap";
   "spacePopoverBorderWidth": "--space-popover-border-width";
+  "spacePopoverContentDistance": "--space-popover-content-distance";
   "spacePopoverContentPadding": "--space-popover-content-padding";
   "spacePopoverContentRadius": "--space-popover-content-radius";
   "spacePopoverContentWidthLg": "--space-popover-content-width-lg";
@@ -2790,6 +2890,7 @@ export declare const cssVars: Readonly<{
   "spaceSectionHeroPaddingYSm": "--space-section-hero-padding-y-sm";
   "spaceSectionHeroTitleTracking": "--space-section-hero-title-tracking";
   "spaceSelectBorderWidth": "--space-select-border-width";
+  "spaceSelectContentDistance": "--space-select-content-distance";
   "spaceSelectContentMaxHeight": "--space-select-content-max-height";
   "spaceSelectContentMinWidth": "--space-select-content-min-width";
   "spaceSelectContentPadding": "--space-select-content-padding";
@@ -2970,11 +3071,13 @@ export declare const cssVars: Readonly<{
   "spaceToggleSizeSmHeight": "--space-toggle-size-sm-height";
   "spaceToggleSizeSmPaddingX": "--space-toggle-size-sm-padding-x";
   "spaceTooltipBorderWidth": "--space-tooltip-border-width";
+  "spaceTooltipContentDistance": "--space-tooltip-content-distance";
   "spaceTooltipMaxWidth": "--space-tooltip-max-width";
   "spaceTooltipPaddingX": "--space-tooltip-padding-x";
   "spaceTooltipPaddingY": "--space-tooltip-padding-y";
   "spaceTooltipRadius": "--space-tooltip-radius";
   "spaceTooltipSideOffset": "--space-tooltip-side-offset";
+  "spaceTransitionDistanceDefault": "--space-transition-distance-default";
   "spaceTypographyTrackingNormal": "--space-typography-tracking-normal";
   "spaceTypographyTrackingTight": "--space-typography-tracking-tight";
   "spaceTypographyTrackingTighter": "--space-typography-tracking-tighter";
@@ -2989,12 +3092,17 @@ export declare const cssVars: Readonly<{
   "toastCloseButtonOpacity": "--toast-close-button-opacity";
   "toastCloseButtonOpacityHover": "--toast-close-button-opacity-hover";
   "toastDescriptionOpacity": "--toast-description-opacity";
+  "toastEasing": "--toast-easing";
   "toastViewportZIndex": "--toast-viewport-z-index";
+  "tooltipContentEasing": "--tooltip-content-easing";
+  "tooltipContentScale": "--tooltip-content-scale";
   "tooltipZIndex": "--tooltip-z-index";
   "transitionEasingDefault": "--transition-easing-default";
   "transitionEasingIn": "--transition-easing-in";
   "transitionEasingInOut": "--transition-easing-in-out";
+  "transitionEasingLinear": "--transition-easing-linear";
   "transitionEasingOut": "--transition-easing-out";
+  "transitionScaleEnter": "--transition-scale-enter";
   "typographyFontFamilyMono": "--typography-font-family-mono";
   "typographyFontFamilySans": "--typography-font-family-sans";
   "typographyFontFamilySerif": "--typography-font-family-serif";

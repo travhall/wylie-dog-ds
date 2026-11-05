@@ -159,7 +159,7 @@ describe("Button", () => {
   describe("Loading State", () => {
     it("should render a loading spinner", () => {
       const { container } = render(<Button loading>Submitting</Button>);
-      expect(container.querySelector(".animate-spin")).toBeInTheDocument();
+      expect(container.querySelector(".wd-motion-spin")).toBeInTheDocument();
     });
 
     it("should disable the button when loading, even without an explicit disabled prop", () => {

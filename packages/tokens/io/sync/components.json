@@ -2982,6 +2982,24 @@
             "Dark": "{border-radius.md}"
           }
         },
+        "collapsible.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.normal}",
+          "$description": "Time the collapsible content takes to open and close.",
+          "valuesByMode": {
+            "Light": "{transition.duration.normal}",
+            "Dark": "{transition.duration.normal}"
+          }
+        },
+        "collapsible.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.default}",
+          "$description": "Easing curve of the collapsible content opening and closing.",
+          "valuesByMode": {
+            "Light": "{transition.easing.default}",
+            "Dark": "{transition.easing.default}"
+          }
+        },
         "separator.margin.horizontal": {
           "$type": "spacing",
           "$value": "{space.200}",
@@ -5086,6 +5104,33 @@
           "valuesByMode": {
             "Light": "{border-radius.md}",
             "Dark": "{border-radius.md}"
+          }
+        },
+        "skeleton.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.loop-slow}",
+          "$description": "Time of one pulse of a loading skeleton.",
+          "valuesByMode": {
+            "Light": "{transition.duration.loop-slow}",
+            "Dark": "{transition.duration.loop-slow}"
+          }
+        },
+        "skeleton.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.in-out}",
+          "$description": "Easing curve of a loading skeleton's pulse.",
+          "valuesByMode": {
+            "Light": "{transition.easing.in-out}",
+            "Dark": "{transition.easing.in-out}"
+          }
+        },
+        "skeleton.pulse-opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "$description": "Opacity a loading skeleton fades to at the middle of each pulse.",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
           }
         },
         "breadcrumb.link-radius": {
@@ -8888,11 +8933,11 @@
         },
         "site-header.transition-duration": {
           "$type": "duration",
-          "$value": "{duration.200}",
+          "$value": "{transition.duration.fast}",
           "$description": "Duration of the header color transition.",
           "valuesByMode": {
-            "Light": "{duration.200}",
-            "Dark": "{duration.200}"
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
           }
         },
         "site-header.z-index": {
@@ -9354,6 +9399,42 @@
             "Dark": "{typography.line-height.normal}"
           }
         },
+        "context-menu.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Enter and exit time of the context menu and its submenus.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
+        "context-menu.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the context menu and its submenus entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "context-menu.content.distance": {
+          "$type": "dimension",
+          "$value": "{transition.distance.default}",
+          "$description": "How far the context menu and its submenus slides toward its trigger while entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.distance.default}",
+            "Dark": "{transition.distance.default}"
+          }
+        },
+        "context-menu.content.scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the context menu and its submenus grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
+          }
+        },
         "dropdown-menu.content-z-index": {
           "$type": "number",
           "$value": "{z-index.dropdown}",
@@ -9397,6 +9478,42 @@
           "valuesByMode": {
             "Light": "{typography.line-height.normal}",
             "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "dropdown-menu.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Enter and exit time of the dropdown menu and its submenus.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
+        "dropdown-menu.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the dropdown menu and its submenus entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "dropdown-menu.content.distance": {
+          "$type": "dimension",
+          "$value": "{transition.distance.default}",
+          "$description": "How far the dropdown menu and its submenus slides toward its trigger while entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.distance.default}",
+            "Dark": "{transition.distance.default}"
+          }
+        },
+        "dropdown-menu.content.scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the dropdown menu and its submenus grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
           }
         },
         "menubar.content-z-index": {
@@ -9460,6 +9577,42 @@
           "valuesByMode": {
             "Light": "{typography.line-height.normal}",
             "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "menubar.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Enter and exit time of the menubar menus and their submenus.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
+        "menubar.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the menubar menus and their submenus entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "menubar.content.distance": {
+          "$type": "dimension",
+          "$value": "{transition.distance.default}",
+          "$description": "How far the menubar menus and their submenus slides toward its trigger while entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.distance.default}",
+            "Dark": "{transition.distance.default}"
+          }
+        },
+        "menubar.content.scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the menubar menus and their submenus grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
           }
         },
         "navigation-menu.z-index": {
@@ -9543,6 +9696,42 @@
             "Dark": "{space.050}"
           }
         },
+        "popover.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Enter and exit time of the popover.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
+        "popover.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the popover entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "popover.content.distance": {
+          "$type": "dimension",
+          "$value": "{transition.distance.default}",
+          "$description": "How far the popover slides toward its trigger while entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.distance.default}",
+            "Dark": "{transition.distance.default}"
+          }
+        },
+        "popover.content.scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the popover grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
+          }
+        },
         "select.content.side-offset": {
           "$type": "dimension",
           "$value": "{space.050}",
@@ -9552,6 +9741,42 @@
             "Dark": "{space.050}"
           }
         },
+        "select.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Enter and exit time of the select list.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
+        "select.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the select list entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "select.content.distance": {
+          "$type": "dimension",
+          "$value": "{transition.distance.default}",
+          "$description": "How far the select list slides toward its trigger while entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.distance.default}",
+            "Dark": "{transition.distance.default}"
+          }
+        },
+        "select.content.scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the select list grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
+          }
+        },
         "button.link-underline-offset": {
           "$type": "dimension",
           "$value": "{space.050}",
@@ -9559,6 +9784,24 @@
           "valuesByMode": {
             "Light": "{space.050}",
             "Dark": "{space.050}"
+          }
+        },
+        "button.spinner.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.loop}",
+          "$description": "Time of one turn of the loading spinner.",
+          "valuesByMode": {
+            "Light": "{transition.duration.loop}",
+            "Dark": "{transition.duration.loop}"
+          }
+        },
+        "button.spinner.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.linear}",
+          "$description": "Easing curve of the loading spinner's turn.",
+          "valuesByMode": {
+            "Light": "{transition.easing.linear}",
+            "Dark": "{transition.easing.linear}"
           }
         },
         "input.native-icon-transition-duration": {
@@ -9595,6 +9838,42 @@
           "valuesByMode": {
             "Light": "{space.050}",
             "Dark": "{space.050}"
+          }
+        },
+        "hover-card.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Enter and exit time of the hover card.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
+        "hover-card.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the hover card entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "hover-card.content.distance": {
+          "$type": "dimension",
+          "$value": "{transition.distance.default}",
+          "$description": "How far the hover card slides toward its trigger while entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.distance.default}",
+            "Dark": "{transition.distance.default}"
+          }
+        },
+        "hover-card.content.scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the hover card grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
           }
         },
         "toast.viewport.z-index": {
@@ -9651,6 +9930,24 @@
             "Dark": "{typography.line-height.normal}"
           }
         },
+        "toast.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.normal}",
+          "$description": "Enter and exit time of a toast.",
+          "valuesByMode": {
+            "Light": "{transition.duration.normal}",
+            "Dark": "{transition.duration.normal}"
+          }
+        },
+        "toast.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of a toast entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
         "tooltip.z-index": {
           "$type": "number",
           "$value": "{z-index.tooltip}",
@@ -9685,6 +9982,42 @@
           "valuesByMode": {
             "Light": "{typography.line-height.normal}",
             "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "tooltip.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Enter and exit time of the tooltip.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
+        "tooltip.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the tooltip entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "tooltip.content.distance": {
+          "$type": "dimension",
+          "$value": "{transition.distance.default}",
+          "$description": "How far the tooltip slides toward its trigger while entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.distance.default}",
+            "Dark": "{transition.distance.default}"
+          }
+        },
+        "tooltip.content.scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the tooltip grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
           }
         },
         "dialog.overlay-opacity": {
@@ -9840,6 +10173,24 @@
             "Dark": "{typography.line-height.normal}"
           }
         },
+        "dialog.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the dialog and its backdrop entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "dialog.content.scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the dialog grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
+          }
+        },
         "alert-dialog.content-duration": {
           "$type": "duration",
           "$value": "{transition.duration.normal}",
@@ -9885,6 +10236,24 @@
             "Dark": "{typography.line-height.normal}"
           }
         },
+        "alert-dialog.content-easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the alert dialog and its backdrop entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "alert-dialog.content-scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the alert dialog grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
+          }
+        },
         "accordion.trigger.icon-duration": {
           "$type": "duration",
           "$value": "{transition.duration.normal}",
@@ -9892,6 +10261,24 @@
           "valuesByMode": {
             "Light": "{transition.duration.normal}",
             "Dark": "{transition.duration.normal}"
+          }
+        },
+        "accordion.content.duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.normal}",
+          "$description": "Time the accordion content takes to open and close.",
+          "valuesByMode": {
+            "Light": "{transition.duration.normal}",
+            "Dark": "{transition.duration.normal}"
+          }
+        },
+        "accordion.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.default}",
+          "$description": "Easing curve of the accordion content opening and closing.",
+          "valuesByMode": {
+            "Light": "{transition.easing.default}",
+            "Dark": "{transition.easing.default}"
           }
         },
         "navigation-menu.indicator-duration": {
@@ -9957,6 +10344,33 @@
             "Dark": "{typography.line-height.normal}"
           }
         },
+        "navigation-menu.viewport-duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Enter and exit time of the navigation menu viewport.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
+        "navigation-menu.viewport-easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the navigation menu viewport entering and leaving.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
+        "navigation-menu.viewport-scale": {
+          "$type": "number",
+          "$value": "{transition.scale.enter}",
+          "$description": "Scale the navigation menu viewport grows from while entering and shrinks to while leaving.",
+          "valuesByMode": {
+            "Light": "{transition.scale.enter}",
+            "Dark": "{transition.scale.enter}"
+          }
+        },
         "progress.indicator-duration": {
           "$type": "duration",
           "$value": "{transition.duration.slow}",
@@ -9966,22 +10380,31 @@
             "Dark": "{transition.duration.slow}"
           }
         },
+        "progress.indicator-easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.in-out}",
+          "$description": "Easing curve of the progress indicator moving to a new value.",
+          "valuesByMode": {
+            "Light": "{transition.easing.in-out}",
+            "Dark": "{transition.easing.in-out}"
+          }
+        },
         "sheet.content.duration-open": {
           "$type": "duration",
-          "$value": "{duration.500}",
+          "$value": "{transition.duration.slow}",
           "$description": "Transition duration when the sheet opens.",
           "valuesByMode": {
-            "Light": "{duration.500}",
-            "Dark": "{duration.500}"
+            "Light": "{transition.duration.slow}",
+            "Dark": "{transition.duration.slow}"
           }
         },
         "sheet.content.duration-closed": {
           "$type": "duration",
-          "$value": "{duration.300}",
+          "$value": "{transition.duration.normal}",
           "$description": "Transition duration when the sheet closes.",
           "valuesByMode": {
-            "Light": "{duration.300}",
-            "Dark": "{duration.300}"
+            "Light": "{transition.duration.normal}",
+            "Dark": "{transition.duration.normal}"
           }
         },
         "sheet.border-width": {
@@ -10011,13 +10434,22 @@
             "Dark": "{typography.line-height.normal}"
           }
         },
+        "sheet.content.easing": {
+          "$type": "cubicBezier",
+          "$value": "{transition.easing.out}",
+          "$description": "Easing curve of the sheet sliding in and out, and of its backdrop.",
+          "valuesByMode": {
+            "Light": "{transition.easing.out}",
+            "Dark": "{transition.easing.out}"
+          }
+        },
         "card-grid.item-duration": {
           "$type": "duration",
-          "$value": "{duration.300}",
+          "$value": "{transition.duration.normal}",
           "$description": "Hover transition duration of a card grid item.",
           "valuesByMode": {
-            "Light": "{duration.300}",
-            "Dark": "{duration.300}"
+            "Light": "{transition.duration.normal}",
+            "Dark": "{transition.duration.normal}"
           }
         },
         "card-grid.item-hover-scale": {
@@ -10040,20 +10472,20 @@
         },
         "feature-grid.item-duration": {
           "$type": "duration",
-          "$value": "{duration.500}",
+          "$value": "{transition.duration.slow}",
           "$description": "Hover transition duration of a feature grid item.",
           "valuesByMode": {
-            "Light": "{duration.500}",
-            "Dark": "{duration.500}"
+            "Light": "{transition.duration.slow}",
+            "Dark": "{transition.duration.slow}"
           }
         },
         "feature-grid.icon-duration": {
           "$type": "duration",
-          "$value": "{duration.500}",
+          "$value": "{transition.duration.slow}",
           "$description": "Hover transition duration of the feature icon container.",
           "valuesByMode": {
-            "Light": "{duration.500}",
-            "Dark": "{duration.500}"
+            "Light": "{transition.duration.slow}",
+            "Dark": "{transition.duration.slow}"
           }
         },
         "feature-grid.item-hover-scale": {

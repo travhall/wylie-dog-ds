@@ -2,6 +2,15 @@
 @import "tailwindcss";
 @import "@wyliedog/tokens/tokens.css";
 
+/* State changes (a hover colour, a pressed fill) use Tailwind's transition-*
+   utilities. Their time and curve are the semantic fast duration and default
+   easing, so they follow the tokens and the reduced-motion block like the rest
+   of the motion. */
+@theme {
+  --default-transition-duration: var(--duration-fast);
+  --default-transition-timing-function: var(--transition-easing-default);
+}
+
 /* Map typography font families for Contract Pattern */
 /* @theme {
   --font-family-sans: var(--typography-font-family-sans);
@@ -49,6 +58,171 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 input[type="date"]::-webkit-calendar-picker-indicator:hover,
 input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
   background-color: var(--color-input-default-text);
+}
+
+/* ==========================================================================
+   Motion (Plan 137)
+   The shape of each movement lives here; every number and curve is a token.
+   A component picks a kind with one class (wd-motion-float, wd-motion-pop,
+   wd-motion-fade, wd-motion-slide, wd-motion-expand, wd-motion-spin,
+   wd-motion-pulse) and feeds it from its own component tokens through these
+   properties:
+     --wd-motion-duration           required
+     --wd-motion-duration-closed    optional, defaults to the duration
+     --wd-motion-easing             required
+     --wd-motion-distance           float: how far it travels
+     --wd-motion-scale              float, pop: the scale it starts from
+     --wd-motion-x, --wd-motion-y   slide: where it starts from
+     --wd-motion-height             expand: the open height
+     --wd-motion-opacity            pulse: the opacity it fades to
+   A keyframe states only where the motion starts (enter) or ends (exit); the
+   other end is the element's own resting value, so no rest state is repeated.
+   Only the individual scale and translate properties are animated, never the
+   transform shorthand, so the dialog's centring translate is left alone.
+   Reduced motion is handled once, by the block below.
+   ========================================================================== */
+
+@keyframes wd-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes wd-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes wd-pop-in {
+  from {
+    opacity: 0;
+    scale: var(--wd-motion-scale);
+  }
+}
+@keyframes wd-pop-out {
+  to {
+    opacity: 0;
+    scale: var(--wd-motion-scale);
+  }
+}
+@keyframes wd-float-in {
+  from {
+    opacity: 0;
+    scale: var(--wd-motion-scale);
+    translate: var(--wd-motion-x, 0) var(--wd-motion-y, 0);
+  }
+}
+@keyframes wd-float-out {
+  to {
+    opacity: 0;
+    scale: var(--wd-motion-scale);
+    translate: var(--wd-motion-x, 0) var(--wd-motion-y, 0);
+  }
+}
+@keyframes wd-slide-in {
+  from {
+    translate: var(--wd-motion-x, 0) var(--wd-motion-y, 0);
+  }
+}
+@keyframes wd-slide-out {
+  to {
+    translate: var(--wd-motion-x, 0) var(--wd-motion-y, 0);
+  }
+}
+@keyframes wd-expand {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--wd-motion-height);
+  }
+}
+@keyframes wd-collapse {
+  from {
+    height: var(--wd-motion-height);
+  }
+  to {
+    height: 0;
+  }
+}
+@keyframes wd-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes wd-pulse {
+  50% {
+    opacity: var(--wd-motion-opacity);
+  }
+}
+
+@layer components {
+  .wd-motion-fade[data-state="open"] {
+    animation: wd-fade-in var(--wd-motion-duration) var(--wd-motion-easing) both;
+  }
+  .wd-motion-fade[data-state="closed"] {
+    animation: wd-fade-out
+      var(--wd-motion-duration-closed, var(--wd-motion-duration))
+      var(--wd-motion-easing) both;
+  }
+
+  .wd-motion-pop[data-state="open"] {
+    animation: wd-pop-in var(--wd-motion-duration) var(--wd-motion-easing) both;
+  }
+  .wd-motion-pop[data-state="closed"] {
+    animation: wd-pop-out
+      var(--wd-motion-duration-closed, var(--wd-motion-duration))
+      var(--wd-motion-easing) both;
+  }
+
+  /* A surface anchored to its trigger travels toward it from the side it opens on */
+  .wd-motion-float[data-side="bottom"] {
+    --wd-motion-y: calc(var(--wd-motion-distance) * -1);
+  }
+  .wd-motion-float[data-side="top"] {
+    --wd-motion-y: var(--wd-motion-distance);
+  }
+  .wd-motion-float[data-side="left"] {
+    --wd-motion-x: var(--wd-motion-distance);
+  }
+  .wd-motion-float[data-side="right"] {
+    --wd-motion-x: calc(var(--wd-motion-distance) * -1);
+  }
+  .wd-motion-float[data-state="open"] {
+    animation: wd-float-in var(--wd-motion-duration) var(--wd-motion-easing)
+      both;
+  }
+  .wd-motion-float[data-state="closed"] {
+    animation: wd-float-out
+      var(--wd-motion-duration-closed, var(--wd-motion-duration))
+      var(--wd-motion-easing) both;
+  }
+
+  .wd-motion-slide[data-state="open"] {
+    animation: wd-slide-in var(--wd-motion-duration) var(--wd-motion-easing)
+      both;
+  }
+  .wd-motion-slide[data-state="closed"] {
+    animation: wd-slide-out
+      var(--wd-motion-duration-closed, var(--wd-motion-duration))
+      var(--wd-motion-easing) both;
+  }
+
+  .wd-motion-expand[data-state="open"] {
+    animation: wd-expand var(--wd-motion-duration) var(--wd-motion-easing) both;
+  }
+  .wd-motion-expand[data-state="closed"] {
+    animation: wd-collapse var(--wd-motion-duration) var(--wd-motion-easing)
+      both;
+  }
+
+  .wd-motion-spin {
+    animation: wd-spin var(--wd-motion-duration) var(--wd-motion-easing)
+      infinite;
+  }
+  .wd-motion-pulse {
+    animation: wd-pulse var(--wd-motion-duration) var(--wd-motion-easing)
+      infinite;
+  }
 }
 
 /* ==========================================================================

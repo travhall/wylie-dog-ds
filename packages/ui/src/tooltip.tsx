@@ -28,6 +28,7 @@ const TooltipContent = React.forwardRef<
       side={side}
       className={cn(
         "data-[side=bottom]:mt-(--space-tooltip-side-offset) data-[side=top]:mb-(--space-tooltip-side-offset) data-[side=left]:mr-(--space-tooltip-side-offset) data-[side=right]:ml-(--space-tooltip-side-offset)",
+        "wd-motion-float [--wd-motion-duration:var(--duration-tooltip-content-duration)] [--wd-motion-easing:var(--tooltip-content-easing)] [--wd-motion-distance:var(--space-tooltip-content-distance)] [--wd-motion-scale:var(--tooltip-content-scale)]",
         "z-(--tooltip-z-index) overflow-hidden border-(length:--space-tooltip-border-width) shadow-(--shadow-tooltip-shadow)",
         "rounded-(--space-tooltip-radius)",
         "bg-(--color-tooltip-background)",

@@ -116,7 +116,7 @@ export const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-(--select-content-z-index) overflow-hidden border-(length:--space-select-border-width) border-(--color-input-border)",
+        "wd-motion-float [--wd-motion-duration:var(--duration-select-content-duration)] [--wd-motion-easing:var(--select-content-easing)] [--wd-motion-distance:var(--space-select-content-distance)] [--wd-motion-scale:var(--select-content-scale)] relative z-(--select-content-z-index) overflow-hidden border-(length:--space-select-border-width) border-(--color-input-border)",
         "max-h-(--space-select-content-max-height)",
         "min-w-(--space-select-content-min-width)",
         "rounded-(--space-select-content-radius)",

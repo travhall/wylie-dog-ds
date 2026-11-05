@@ -244,6 +244,8 @@ function inferScopesFromName(tokenName: string): string[] | null {
   if (name.includes("z-index")) return [];
   // A hover scale (1.05) is a transform multiplier; no Figma property binds it
   if (name.includes("scale")) return [];
+  // How far a surface travels while it enters or leaves: motion, not a gap or a size
+  if (name.includes("distance")) return [];
   // The focus indicator is sized in code, not by a layer property
   if (/^focus[./]/.test(name)) return [];
   if (/^shadow[./](blur|offset|spread)/.test(name)) return ["EFFECT_FLOAT"];

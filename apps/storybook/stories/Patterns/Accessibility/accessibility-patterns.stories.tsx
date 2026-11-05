@@ -128,8 +128,8 @@ export const FocusManagement: Story = {
     // Press Escape to close
     await userEvent.keyboard("{Escape}");
 
-    // Trigger button should regain focus
-    expect(openBtn).toHaveFocus();
+    // Trigger button should regain focus once the dialog has finished closing
+    await waitFor(() => expect(openBtn).toHaveFocus());
   },
 };
 
@@ -394,6 +394,10 @@ export const KeyboardOnlyForm: Story = {
     // Arrow down to second option and select it
     await userEvent.keyboard("{ArrowDown}");
     await userEvent.keyboard("{Enter}");
+    // The list animates out; wait for it to leave before moving on
+    await waitFor(() =>
+      expect(document.querySelector('[role="listbox"]')).toBeNull()
+    );
 
     // Tab to Submit and press Enter
     await userEvent.tab();

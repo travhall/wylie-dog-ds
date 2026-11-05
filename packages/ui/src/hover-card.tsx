@@ -8,6 +8,7 @@ const HoverCardTrigger = HoverCardPrimitive.Trigger;
 
 export const hoverCardContentVariants = cva(
   cn(
+    "wd-motion-float [--wd-motion-duration:var(--duration-hover-card-content-duration)] [--wd-motion-easing:var(--hover-card-content-easing)] [--wd-motion-distance:var(--space-hover-card-content-distance)] [--wd-motion-scale:var(--hover-card-content-scale)]",
     "z-(--hover-card-z-index) border-(length:--space-hover-card-border-width) outline-hidden shadow-(--shadow-hover-card-content-shadow)",
     "rounded-(--space-hover-card-content-radius)",
     "p-(--space-hover-card-content-padding)",

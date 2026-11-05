@@ -2,26 +2,6 @@
   "$comment": "Documented exceptions for scripts/check-design-utilities.mjs (Plan 217). Each entry names a file, the class or declaration as the guard prints it, and the reason no token owns it. An entry that matches nothing fails the check. A reason that starts with \"Open (Plan 217)\" is a design value with no token yet, waiting on an owner decision; the others are geometry or system behaviour.",
   "allow": [
     {
-      "file": "packages/ui/src/button.tsx",
-      "match": "animate-spin",
-      "reason": "Open (Plan 217): the loading spinner's rotation. A named Tailwind animation (one turn per second, linear); it waits on the parked motion system."
-    },
-    {
-      "file": "packages/ui/src/skeleton.tsx",
-      "match": "animate-pulse",
-      "reason": "Open (Plan 217): the skeleton's pulse. A named Tailwind animation (two seconds, opacity to 0.5); it waits on the parked motion system."
-    },
-    {
-      "file": "packages/ui/src/progress.tsx",
-      "match": "ease-in-out",
-      "reason": "Open (Plan 217): easing curve of the indicator's slide. It waits on the parked motion system, which has duration tokens and no easing tokens."
-    },
-    {
-      "file": "packages/ui/src/sheet.tsx",
-      "match": "ease-in-out",
-      "reason": "Open (Plan 217): easing curve of the sheet's slide (see progress.tsx)."
-    },
-    {
       "file": "packages/ui/src/progress.tsx",
       "match": "style transform",
       "reason": "The indicator's offset is the progress value itself (translateX(-(100 - value)%)): a runtime measurement, not a design value."
@@ -75,6 +55,11 @@
       "file": "packages/ui/src/styles/index.css",
       "match": "transition-duration: 0.01ms",
       "reason": "prefers-reduced-motion: see animation-duration."
+    },
+    {
+      "file": "packages/ui/src/styles/index.css",
+      "match": "rotate: 360deg",
+      "reason": "One full turn of the loading spinner: the geometry of a rotation, not a design value. Its time and curve are the button.spinner tokens."
     }
   ]
 }

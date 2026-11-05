@@ -89,6 +89,16 @@
     "$value": "400ms",
     "$description": "Slow transition for emphasized changes"
   },
+  "transition.duration.loop": {
+    "$type": "duration",
+    "$value": "1000ms",
+    "$description": "One turn of a looping indicator such as a spinner"
+  },
+  "transition.duration.loop-slow": {
+    "$type": "duration",
+    "$value": "2000ms",
+    "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse"
+  },
   "z-index.dropdown": {
     "$type": "number",
     "$value": "{z-index.10}",
@@ -183,6 +193,21 @@
     "$type": "cubicBezier",
     "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
     "$description": "Ease-in-out for symmetric transitions"
+  },
+  "transition.easing.linear": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0, 0, 1, 1)",
+    "$description": "Constant speed, for loops that should not accelerate"
+  },
+  "transition.distance.default": {
+    "$type": "dimension",
+    "$value": "{space.100}",
+    "$description": "How far a surface travels while it enters or leaves"
+  },
+  "transition.scale.enter": {
+    "$type": "number",
+    "$value": "{scale.95}",
+    "$description": "Scale a surface starts from while it enters, and ends at while it leaves"
   },
   "z-index.base": {
     "$type": "number",

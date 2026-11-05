@@ -16,6 +16,7 @@ const AlertDialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(
+      "wd-motion-fade [--wd-motion-duration:var(--duration-alert-dialog-content-duration)] [--wd-motion-easing:var(--alert-dialog-content-easing)]",
       "fixed inset-0 z-(--alert-dialog-overlay-z-index) bg-(--color-dialog-overlay) opacity-(--alert-dialog-overlay-opacity)",
       className
     )}
@@ -38,6 +39,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogPrimitive.Content
       ref={ref}
       className={cn(
+        "wd-motion-pop [--wd-motion-duration:var(--duration-alert-dialog-content-duration)] [--wd-motion-easing:var(--alert-dialog-content-easing)] [--wd-motion-scale:var(--alert-dialog-content-scale)]",
         "fixed left-[50%] top-[50%] z-(--alert-dialog-content-z-index) grid w-full max-w-(--space-alert-dialog-content-max-width) translate-x-[-50%] translate-y-[-50%] gap-(--space-alert-dialog-content-gap) border-(length:--space-alert-dialog-border-width) border-(--color-dialog-border) bg-(--color-dialog-background) p-(--space-alert-dialog-content-padding) shadow-(--shadow-alert-dialog-content-shadow) duration-(--duration-alert-dialog-content-duration)",
         "/2 [48%] /2 [48%]",
         "sm:rounded-(--space-alert-dialog-content-radius)",

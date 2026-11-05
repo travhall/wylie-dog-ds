@@ -326,14 +326,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (278, 1120 and 108 variables)", () => {
+  it("reads all three collections (279, 1168 and 113 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([278, 1120, 108]);
+    ]).toEqual([279, 1168, 113]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {
@@ -461,27 +461,28 @@ describe("inferScopes: the real token files", () => {
       "color []": 143,
       "number FONT_SIZE": 10,
       "number FONT_WEIGHT": 8,
-      "number []": 35,
+      "number []": 36,
       "dimension EFFECT_FLOAT": 23,
       "dimension []": 6,
       "duration []": 9,
     });
     expect(all.semantic).toMatchObject({
-      "number []": 21,
+      "number []": 22,
       "shadow []": 7,
-      "duration []": 4,
-      "cubicBezier []": 4,
-      "dimension []": 3,
+      "duration []": 6,
+      "cubicBezier []": 5,
+      "dimension []": 4,
     });
     expect(all.components["color ALL_SCOPES"]).toBeUndefined();
     expect(all.components).toMatchObject({
       "number FONT_SIZE": 79,
       "number FONT_WEIGHT": 40,
       "fontFamily FONT_FAMILY": 1,
-      "number []": 101,
-      "dimension []": 9,
+      "number []": 112,
+      "dimension []": 16,
       "shadow []": 19,
-      "duration []": 12,
+      "duration []": 25,
+      "cubicBezier []": 17,
     });
   });
 });

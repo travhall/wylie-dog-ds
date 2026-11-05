@@ -9,6 +9,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const dialogContentVariants = cva(
   cn(
+    "wd-motion-pop [--wd-motion-duration:var(--duration-dialog-content-duration)] [--wd-motion-easing:var(--dialog-content-easing)] [--wd-motion-scale:var(--dialog-content-scale)]",
     "fixed left-[50%] top-[50%] z-(--dialog-content-z-index) grid w-full translate-x-[-50%] translate-y-[-50%]",
     "gap-(--space-dialog-header-gap)",
     "border-(length:--space-dialog-border-width) bg-(--color-dialog-background) shadow-(--shadow-dialog-shadow) duration-(--duration-dialog-content-duration)",
@@ -66,6 +67,7 @@ export const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
+      "wd-motion-fade [--wd-motion-duration:var(--duration-dialog-content-duration)] [--wd-motion-easing:var(--dialog-content-easing)]",
       "fixed inset-0 z-(--dialog-overlay-z-index) bg-(--color-dialog-overlay) opacity-(--dialog-overlay-opacity) backdrop-blur-sm",
       className
     )}
