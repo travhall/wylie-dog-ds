@@ -181,7 +181,7 @@
   .hero-gradient {
     background-image: radial-gradient(
       at 50% 0%,
-      color-mix(in oklch, var(--color-background-primary), transparent 80%),
+      color-mix(in oklch, var(--color-sandcastle-500), transparent 80%),
       var(--color-background-default),
       var(--color-background-default)
     );
