@@ -100,6 +100,47 @@
       "args": {
         "variant": "variant"
       }
+    },
+    "Select": {
+      "story": "components-inputs-controls-select--default",
+      "root": "#storybook-root button[role=combobox]",
+      "args": {
+        "size": "size"
+      },
+      "state": "state",
+      "stateArgs": {
+        "closed": "disabled:!false",
+        "disabled": "disabled:!true"
+      }
+    },
+    "Avatar": {
+      "story": "components-content-display-avatar--default",
+      "root": "#storybook-root [role=img]",
+      "args": {
+        "size": "size"
+      }
+    },
+    "Label": {
+      "story": "components-inputs-controls-label--default",
+      "root": "#storybook-root label",
+      "args": {
+        "size": "size"
+      }
+    },
+    "Separator": {
+      "story": "components-layout-structure-separator--horizontal",
+      "root": "#storybook-root [role=separator], #storybook-root [data-orientation]",
+      "args": {
+        "orientation": "orientation"
+      }
+    },
+    "Skeleton": {
+      "story": "components-feedback-status-skeleton--default",
+      "root": "#storybook-root [role=status]",
+      "args": {
+        "variant": "variant",
+        "size": "size"
+      }
     }
   },
   "allow": [
@@ -156,6 +197,84 @@
       "property": "radius",
       "scope": "box",
       "reason": "Follows from the 0px width in the story: the radius is clamped to half the width. The token (4px) matches Figma."
+    },
+    {
+      "set": "Label",
+      "property": "w",
+      "scope": "box",
+      "reason": "The UI label is an inline element holding the story copy (\"Email Address\"); Figma draws the word Label. Width follows the copy."
+    },
+    {
+      "set": "Label",
+      "property": "h",
+      "scope": "box",
+      "reason": "An inline label measures its font content area (22px at md), not its line height; the text layer line height matches."
+    },
+    {
+      "set": "Label",
+      "property": "gap",
+      "scope": "box",
+      "reason": "Figma gap 4 sits between the label and the optional required indicator, which is hidden here; the UI label is inline text."
+    },
+    {
+      "set": "Select",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed 200px trigger; in code the trigger is w-full and takes its container (320px in the story)."
+    },
+    {
+      "set": "Separator",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed 240px line; in code the separator is w-full."
+    },
+    {
+      "set": "Separator",
+      "property": "h",
+      "scope": "box",
+      "reason": "The Separator story renders horizontally only, so the vertical variant is not rendered by this run and measures 0."
+    },
+    {
+      "set": "Skeleton",
+      "property": "w",
+      "scope": "box",
+      "reason": "The story forces className w-48 h-4, so the size and variant axes are overridden; Figma draws the token sizes."
+    },
+    {
+      "set": "Skeleton",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story forces className w-48 h-4, so the size and variant axes are overridden; Figma draws the token sizes."
+    },
+    {
+      "set": "Skeleton",
+      "property": "radius",
+      "scope": "box",
+      "reason": "Follows from the story forcing w-48 h-4: the radius is clamped to half the 16px height. The Figma radius is the token."
+    },
+    {
+      "set": "Skeleton",
+      "property": "opacity",
+      "scope": "box",
+      "reason": "The UI pulses; the measurement catches a frame mid-animation (0.86 to 0.88). Figma draws the resting 1."
+    },
+    {
+      "set": "Avatar",
+      "property": "fill",
+      "scope": "box",
+      "reason": "Figma fills the avatar root with the fallback background; the UI root has avatar.background under a full-size fallback of the same size, so the visible result is the fallback color."
+    },
+    {
+      "set": "Avatar",
+      "property": "size",
+      "scope": "text",
+      "reason": "The story gives AvatarFallback no size, so its text stays at md (14px); the component scales it when size is passed (avatar.fallback font-size tokens), which is what Figma draws."
+    },
+    {
+      "set": "Avatar",
+      "property": "lineHeight",
+      "scope": "text",
+      "reason": "Same as font size: the story keeps the md fallback line height."
     }
   ]
 }
