@@ -424,7 +424,7 @@
   --space-badge-padding-y-sm: 0.25rem;
   --space-badge-padding-y-md: 0.25rem;
   --space-badge-padding-y-lg: 0.5rem;
-  --font-weight-badge-font-weight: 600;
+  --font-weight-badge-font-weight: 500;
   --badge-font-family: var(--typography-font-family-mono);
   --line-height-badge-line-height: 1;
   --space-badge-radius: 9999px;

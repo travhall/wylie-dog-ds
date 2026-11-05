@@ -3854,7 +3854,7 @@
           "badge",
           "font-weight"
         ],
-        "value": 600,
+        "value": 500,
         "type": "number",
         "variable": "var(--badge-font-weight)",
         "description": "Font weight of badge labels."
