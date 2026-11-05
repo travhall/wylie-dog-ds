@@ -25,6 +25,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { stripVariants } from "./class-variants.mjs";
 
 const tokenFile = "packages/tokens/io/sync/components.json";
 const srcDir = "packages/ui/src";
@@ -176,7 +177,7 @@ for (const file of files) {
     if (!isComposition(file)) return;
     for (const literal of line.matchAll(/"([^"]*)"|`([^`]*)`/g)) {
       for (const cls of (literal[1] ?? literal[2]).split(/\s+/)) {
-        const bare = cls.replace(/^(?:[^\s:[]+:|\[[^\]]*\]:)+/, "");
+        const bare = stripVariants(cls);
         if (!bare || /^[a-z-]*[(\[]/.test(bare) || bare.includes("/")) continue;
         const prop = SCALE_PROPERTY.exec(bare);
         const isLiteral =
