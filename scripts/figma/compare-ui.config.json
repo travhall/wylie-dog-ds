@@ -57,5 +57,24 @@
       "state": "interaction"
     }
   },
-  "allow": []
+  "allow": [
+    {
+      "set": "Input",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed 240px frame; in code the input is w-full and takes its container (320px in the story). Width is layout, not look."
+    },
+    {
+      "set": "Input",
+      "property": "layer",
+      "scope": "text",
+      "reason": "Code shows the placeholder attribute, which is not a text node; Figma draws a text layer so the placeholder can be edited and styled."
+    },
+    {
+      "set": "Card",
+      "property": "h",
+      "scope": "box",
+      "reason": "Both hug their content now (padding, gap and type match). The story card holds different copy than the Figma placeholder content, so its height differs."
+    }
+  ]
 }
