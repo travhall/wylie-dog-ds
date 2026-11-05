@@ -163,6 +163,40 @@ test("an allow entry moves a finding aside, and one that matches nothing is stal
   );
 });
 
+test("the harvester turns a Figma variant into story args, and a prop-backed state into its arg", async () => {
+  const { argsParam, parseVariant, storyUrl } = await import(
+    "../figma/harvest-ui.mjs"
+  );
+  assert.deepEqual(parseVariant("variant=link, size=md, state=hover"), {
+    variant: "link",
+    size: "md",
+    state: "hover",
+  });
+  const button = {
+    story: "components-inputs-controls-button--default",
+    args: { variant: "variant", size: "size", disabled: "disabled" },
+    state: "state",
+  };
+  assert.equal(
+    argsParam(parseVariant("variant=ghost, size=lg, disabled=true, state=hover"), button),
+    "variant:ghost;size:lg;disabled:!true"
+  );
+  const input = {
+    story: "components-inputs-controls-input--default",
+    args: { size: "size" },
+    state: "state",
+    stateArgs: { error: "error:!true" },
+  };
+  assert.match(
+    storyUrl("http://x", input, parseVariant("size=md, state=error"), "dark"),
+    /id=components-inputs-controls-input--default.*globals=theme:dark.*args=size:md;error:!true$/
+  );
+  assert.match(
+    storyUrl("http://x", input, parseVariant("size=md, state=default"), "light"),
+    /args=size:md$/
+  );
+});
+
 test("the tolerance is the documented one", () => {
   assert.equal(TOLERANCE.px, 1);
   assert.equal(TOLERANCE.colorChannel, 3);
