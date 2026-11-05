@@ -6,10 +6,13 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const toastVariants = cva(
   cn(
-    "group pointer-events-auto relative flex items-center justify-between overflow-hidden border-(length:--space-toast-border-width) shadow-(--shadow-toast-shadow) transition-all",
+    // A two-column grid: title and description stack in the first column, the close button and
+    // the action stack in the second, right-aligned (ToastTitle, ToastDescription, ToastClose and
+    // ToastAction place themselves, so they sit directly inside the Toast).
+    "group pointer-events-auto relative grid grid-cols-[1fr_auto] items-start overflow-hidden border-(length:--space-toast-border-width) shadow-(--shadow-toast-shadow) transition-all",
     "wd-motion-slide [--wd-motion-duration:var(--duration-toast-duration)] [--wd-motion-easing:var(--toast-easing)] [--wd-motion-y:100%]",
     "w-(--space-toast-width)",
-    "space-x-(--space-toast-gap)",
+    "gap-x-(--space-toast-gap) gap-y-(--space-toast-content-gap)",
     "rounded-(--space-toast-radius)",
     "p-(--space-toast-padding)",
     "data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-(--radix-toast-swipe-end-x) data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x) data-[swipe=move]:transition-none"
@@ -18,7 +21,7 @@ export const toastVariants = cva(
     variants: {
       variant: {
         default:
-          "border-(length:--space-toast-border-width) bg-(--color-toast-default-background) text-(--color-toast-text)",
+          "border-(--color-toast-default-border) bg-(--color-toast-default-background) text-(--color-toast-text)",
         destructive:
           "border-(--color-toast-destructive-border) bg-(--color-toast-destructive-background) text-(--color-toast-destructive-text)",
         success:
@@ -77,7 +80,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
     <button
       ref={ref}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border-(length:--space-toast-border-width) bg-transparent transition-colors hover:bg-(--color-toast-action-hover)",
+        "col-start-2 row-start-2 justify-self-end inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border-(length:--space-toast-border-width) bg-transparent transition-colors hover:bg-(--color-toast-action-hover)",
         focusRingClasses,
         "disabled:pointer-events-none disabled:text-(--color-toast-action-text-disabled) disabled:border-(--color-toast-action-border-disabled)",
         "h-(--space-toast-action-height)",
@@ -102,7 +105,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute right-(--space-toast-close-button-position) top-(--space-toast-close-button-position) p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover)",
+        "col-start-2 row-start-1 justify-self-end inline-flex shrink-0 items-center justify-center p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover)",
         focusRingClasses,
         "group-hover:opacity-(--toast-close-button-opacity-hover)",
         "rounded-(--space-toast-close-button-radius)",
@@ -116,7 +119,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     >
       <Icon
         icon={XIcon}
-        className="h-(--space-toast-close-button-icon-size) w-(--space-toast-close-button-icon-size)"
+        className="h-(--space-toast-close-button-icon-size) w-(--space-toast-close-button-icon-size) shrink-0"
       />
       <span className="sr-only">{srText}</span>
     </button>
@@ -131,6 +134,7 @@ const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
     <div
       ref={ref}
       className={cn(
+        "col-start-1",
         "font-(--font-weight-toast-title-font-weight)",
         "text-(length:--font-size-toast-title-font-size) leading-(--line-height-toast-title-line-height)",
         className
@@ -150,6 +154,7 @@ const ToastDescription = React.forwardRef<
   <div
     ref={ref}
     className={cn(
+      "col-start-1",
       "opacity-(--toast-description-opacity)",
       "text-(length:--font-size-toast-description-font-size) leading-(--line-height-toast-description-line-height)",
       className
@@ -221,12 +226,10 @@ export function Toaster() {
     >
       {toasts.map((t) => (
         <Toast key={t.id} variant={t.variant} role="status" aria-atomic="true">
-          <div className="grid gap-(--space-toast-content-gap)">
-            {t.title && <ToastTitle>{t.title}</ToastTitle>}
-            {t.description && (
-              <ToastDescription>{t.description}</ToastDescription>
-            )}
-          </div>
+          {t.title && <ToastTitle>{t.title}</ToastTitle>}
+          {t.description && (
+            <ToastDescription>{t.description}</ToastDescription>
+          )}
           <ToastClose onClick={() => dismiss(t.id)} />
         </Toast>
       ))}

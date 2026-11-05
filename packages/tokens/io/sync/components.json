@@ -5720,11 +5720,11 @@
         },
         "toast.close-button.opacity": {
           "$type": "number",
-          "$value": "{opacity.0}",
-          "$description": "Resting opacity of the close button. It is hidden (0) until the toast is hovered.",
+          "$value": "{opacity.100}",
+          "$description": "Resting opacity of the close button. Fully visible (100); it stays visible without hover so it can be found and reached by touch.",
           "valuesByMode": {
-            "Light": "{opacity.0}",
-            "Dark": "{opacity.0}"
+            "Light": "{opacity.100}",
+            "Dark": "{opacity.100}"
           }
         },
         "toast.close-button.opacity-hover": {
@@ -6778,6 +6778,15 @@
           "valuesByMode": {
             "Light": "{typography.line-height.normal}",
             "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "toast.default-border": {
+          "$type": "color",
+          "$value": "{color.border.default}",
+          "$description": "Border color of the default toast. Pairs with `toast.default-background`; the role toasts use their own border.",
+          "valuesByMode": {
+            "Light": "{color.border.default}",
+            "Dark": "{color.border.default}"
           }
         },
         "toast.default-background": {
@@ -9005,11 +9014,11 @@
         },
         "toast.close-button.icon-size": {
           "$type": "spacing",
-          "$value": "{icon.size.md}",
-          "$description": "Size of the close icon in a toast.",
+          "$value": "{icon.size.sm}",
+          "$description": "Size of the close icon in a toast. Small (16px): it sits in the 24px close button with its padding, so a larger icon overflowed and was squeezed off-center.",
           "valuesByMode": {
-            "Light": "{icon.size.md}",
-            "Dark": "{icon.size.md}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "select.trigger.icon-size": {

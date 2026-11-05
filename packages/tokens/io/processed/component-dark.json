@@ -3171,8 +3171,8 @@
   },
   "toast.close-button.opacity": {
     "$type": "number",
-    "$value": "{opacity.0}",
-    "$description": "Resting opacity of the close button. It is hidden (0) until the toast is hovered."
+    "$value": "{opacity.100}",
+    "$description": "Resting opacity of the close button. Fully visible (100); it stays visible without hover so it can be found and reached by touch."
   },
   "toast.close-button.opacity-hover": {
     "$type": "number",
@@ -3758,6 +3758,11 @@
     "$type": "number",
     "$value": "{typography.line-height.normal}",
     "$description": "Line height of the breadcrumb text."
+  },
+  "toast.default-border": {
+    "$type": "color",
+    "$value": "{color.border.default}",
+    "$description": "Border color of the default toast. Pairs with `toast.default-background`; the role toasts use their own border."
   },
   "toast.default-background": {
     "$type": "color",
@@ -4996,8 +5001,8 @@
   },
   "toast.close-button.icon-size": {
     "$type": "spacing",
-    "$value": "{icon.size.md}",
-    "$description": "Size of the close icon in a toast."
+    "$value": "{icon.size.sm}",
+    "$description": "Size of the close icon in a toast. Small (16px): it sits in the 24px close button with its padding, so a larger icon overflowed and was squeezed off-center."
   },
   "select.trigger.icon-size": {
     "$type": "spacing",

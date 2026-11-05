@@ -250,12 +250,10 @@ export function ToastPreview() {
         aria-label="Theme published"
         className="w-full"
       >
-        <div className="flex flex-col gap-1 pr-6">
-          <ToastTitle>Theme published</ToastTitle>
-          <ToastDescription>v1.4.0 is live in production</ToastDescription>
-        </div>
-        <ToastAction>Undo</ToastAction>
+        <ToastTitle>Theme published</ToastTitle>
+        <ToastDescription>v1.4.0 is live in production</ToastDescription>
         <ToastClose srText="Dismiss" />
+        <ToastAction>Undo</ToastAction>
       </Toast>
     </div>
   );

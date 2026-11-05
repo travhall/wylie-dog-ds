@@ -11604,10 +11604,10 @@
           "close-button",
           "opacity"
         ],
-        "value": 0,
+        "value": 1,
         "type": "number",
         "variable": "var(--toast-close-button-opacity)",
-        "description": "Resting opacity of the close button. It is hidden (0) until the toast is hovered."
+        "description": "Resting opacity of the close button. Fully visible (100); it stays visible without hover so it can be found and reached by touch."
       },
       "toast-close-button-opacity-hover": {
         "name": "toastCloseButtonOpacityHover",
@@ -11655,6 +11655,17 @@
         "type": "spacing",
         "variable": "var(--toast-close-size)",
         "description": "Width and height of the toast close button."
+      },
+      "toast-default-border": {
+        "name": "toastDefaultBorder",
+        "path": [
+          "toast",
+          "default-border"
+        ],
+        "value": "oklch(0.74 0.019 70)",
+        "type": "color",
+        "variable": "var(--color-toast-default-border)",
+        "description": "Border color of the default toast. Pairs with `toast.default-background`; the role toasts use their own border."
       },
       "toast-default-background": {
         "name": "toastDefaultBackground",
@@ -11707,10 +11718,10 @@
           "close-button",
           "icon-size"
         ],
-        "value": "1.5rem",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--toast-close-button-icon-size)",
-        "description": "Size of the close icon in a toast."
+        "description": "Size of the close icon in a toast. Small (16px): it sits in the 24px close button with its padding, so a larger icon overflowed and was squeezed off-center."
       },
       "toast-shadow": {
         "name": "toastShadow",

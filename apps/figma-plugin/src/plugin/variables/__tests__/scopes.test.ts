@@ -326,14 +326,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (279, 1168 and 113 variables)", () => {
+  it("reads all three collections (279, 1169 and 113 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([279, 1168, 113]);
+    ]).toEqual([279, 1169, 113]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {

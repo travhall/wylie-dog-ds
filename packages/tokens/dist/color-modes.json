@@ -2175,6 +2175,10 @@
     "light": "oklch(0.991 0.003 264.39)",
     "dark": "oklch(0.202 0.011 47.89)"
   },
+  "color-toast-default-border": {
+    "light": "oklch(0.74 0.019 70)",
+    "dark": "oklch(0.397 0.018 63.81)"
+  },
   "color-toast-destructive-background": {
     "light": "oklch(0.546 0.215 27.29)",
     "dark": "oklch(0.546 0.215 27.29)"
