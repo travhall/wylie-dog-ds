@@ -18,6 +18,7 @@
     "check:tokens": "node scripts/check-token-refs.mjs && node scripts/check-token-structure.mjs && node scripts/check-component-binding.mjs && node scripts/check-units.mjs && node scripts/check-raw-values.mjs && node scripts/check-design-utilities.mjs && node scripts/check-motion.mjs && node scripts/check-tailwind-hints.mjs && node scripts/check-story-token-bindings.mjs && node scripts/check-showcase-palette.mjs && node scripts/check-showcase-theme.mjs && node scripts/generate-text-styles.mjs --check && node scripts/generate-code-syntax.mjs --check",
     "check:units": "node scripts/check-units.mjs",
     "clean": "turbo run clean && rm -rf node_modules",
+    "compare:ui": "node scripts/figma/compare-ui.mjs",
     "dev": "turbo run dev",
     "dev:figma": "turbo run dev --filter=figma-plugin",
     "dev:showcase": "turbo run dev --filter=showcase",
