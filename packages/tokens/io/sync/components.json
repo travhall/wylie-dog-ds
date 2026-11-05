@@ -6474,6 +6474,15 @@
             "Dark": "{typography.font-weight.medium}"
           }
         },
+        "toggle-group.item-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the toggle group item text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "scrollbar.padding": {
           "$type": "spacing",
           "$value": "{space.010}",
@@ -6546,6 +6555,15 @@
             "Dark": "{border-width.1}"
           }
         },
+        "avatar.fallback-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the avatar fallback text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "table.footer-font-weight": {
           "$type": "number",
           "$value": "{typography.font-weight.medium}",
@@ -6553,6 +6571,33 @@
           "valuesByMode": {
             "Light": "{typography.font-weight.medium}",
             "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "table.caption-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the table caption text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "table.cell.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the table cell text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "table.header.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the table header text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "checkbox.background-checked": {
@@ -6670,6 +6715,15 @@
           "valuesByMode": {
             "Light": "{typography.font-weight.regular}",
             "Dark": "{typography.font-weight.regular}"
+          }
+        },
+        "breadcrumb.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the breadcrumb text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "toast.default-background": {
@@ -7392,6 +7446,15 @@
             "Dark": "{border-width.1}"
           }
         },
+        "textarea.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the textarea text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "select.trigger.background-disabled": {
           "$type": "color",
           "$value": "{color.background.muted}",
@@ -7563,6 +7626,15 @@
             "Dark": "{color.foreground.faint}"
           }
         },
+        "pagination.item.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the pagination item text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "navigation.text-disabled": {
           "$type": "color",
           "$value": "{color.foreground.faint}",
@@ -7653,6 +7725,24 @@
             "Dark": "{border-width.1}"
           }
         },
+        "command.group-heading-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the command group heading text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "command.item-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the command item text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "carousel.nav-text-disabled": {
           "$type": "color",
           "$value": "{color.foreground.faint}",
@@ -7716,6 +7806,24 @@
             "Dark": "{border-width.1}"
           }
         },
+        "calendar.day-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the calendar day text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "calendar.header-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the calendar header text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "toast.action-text-disabled": {
           "$type": "color",
           "$value": "{color.foreground.faint}",
@@ -7777,6 +7885,15 @@
           "valuesByMode": {
             "Light": "{space.100}",
             "Dark": "{space.100}"
+          }
+        },
+        "toggle.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the toggle text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "menubar.trigger-highlighted": {
@@ -8175,6 +8292,33 @@
             "Dark": "{border-radius.lg}"
           }
         },
+        "section-features.description-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the section features description text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "section-features.item.title.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the section features item title text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "section-features.title.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the section features title text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "section-hero.padding-y-sm": {
           "$type": "spacing",
           "$value": "{space.800}",
@@ -8355,6 +8499,24 @@
             "Dark": "{space.400}"
           }
         },
+        "section-hero.description.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the section hero description text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "section-hero.title.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the section hero title text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "site-footer.container.padding-x-sm": {
           "$type": "spacing",
           "$value": "{space.200}",
@@ -8526,6 +8688,42 @@
             "Dark": "{border-width.1}"
           }
         },
+        "site-footer.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the site footer text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "site-footer.column.title.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the site footer column title text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "site-footer.link.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the site footer link text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "site-footer.logo.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the site footer logo text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "site-header.container.padding-x-sm": {
           "$type": "spacing",
           "$value": "{space.200}",
@@ -8686,6 +8884,24 @@
           "valuesByMode": {
             "Light": "{border-width.1}",
             "Dark": "{border-width.1}"
+          }
+        },
+        "site-header.logo.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the site header logo text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "site-header.nav-link.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the site header nav link text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "button.spinner.size": {
@@ -8940,6 +9156,15 @@
             "Dark": "{border-width.1}"
           }
         },
+        "select.trigger.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the select trigger text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "navigation-menu.viewport-shadow": {
           "$type": "shadow",
           "$value": "{shadow.lg}",
@@ -8983,6 +9208,15 @@
           "valuesByMode": {
             "Light": "{border-width.1}",
             "Dark": "{border-width.1}"
+          }
+        },
+        "tabs.trigger.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the tabs trigger text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "toast.shadow": {
@@ -9075,6 +9309,24 @@
             "Dark": "{z-index.dropdown}"
           }
         },
+        "context-menu.item-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the context menu item text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "context-menu.shortcut-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the context menu shortcut text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "dropdown-menu.content-z-index": {
           "$type": "number",
           "$value": "{z-index.dropdown}",
@@ -9100,6 +9352,24 @@
           "valuesByMode": {
             "Light": "{space.050}",
             "Dark": "{space.050}"
+          }
+        },
+        "dropdown-menu.item.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the dropdown menu item text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "dropdown-menu.shortcut.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the dropdown menu shortcut text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "menubar.content-z-index": {
@@ -9145,6 +9415,24 @@
           "valuesByMode": {
             "Light": "{space.050}",
             "Dark": "{space.050}"
+          }
+        },
+        "menubar.item-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the menubar item text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "menubar.shortcut-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the menubar shortcut text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "navigation-menu.z-index": {
@@ -9282,6 +9570,33 @@
             "Dark": "420px"
           }
         },
+        "toast.action.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the toast action text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "toast.description.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the toast description text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "toast.title.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the toast title text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "tooltip.z-index": {
           "$type": "number",
           "$value": "{z-index.tooltip}",
@@ -9307,6 +9622,15 @@
           "valuesByMode": {
             "Light": "{space.050}",
             "Dark": "{space.050}"
+          }
+        },
+        "tooltip.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the tooltip text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "dialog.overlay-opacity": {
@@ -9363,6 +9687,15 @@
             "Dark": "{space.200}"
           }
         },
+        "input.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the input text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "dialog.title-line-height": {
           "$type": "number",
           "$value": "{typography.line-height.none}",
@@ -9388,6 +9721,24 @@
           "valuesByMode": {
             "Light": "{typography.line-height.none}",
             "Dark": "{typography.line-height.none}"
+          }
+        },
+        "form.description-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the form description text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "form.error-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the form error text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "feature-grid.title.line-height": {
@@ -9426,6 +9777,15 @@
             "Dark": "{border-width.1}"
           }
         },
+        "dialog.description-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the dialog description text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "alert-dialog.content-duration": {
           "$type": "duration",
           "$value": "{transition.duration.normal}",
@@ -9451,6 +9811,24 @@
           "valuesByMode": {
             "Light": "{space.1650}",
             "Dark": "{space.1650}"
+          }
+        },
+        "alert-dialog.description-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the alert dialog description text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "alert-dialog.title-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the alert dialog title text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "accordion.trigger.icon-duration": {
@@ -9516,6 +9894,15 @@
             "Dark": "{border-radius.md}"
           }
         },
+        "navigation-menu.trigger-line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the navigation menu trigger text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "progress.indicator-duration": {
           "$type": "duration",
           "$value": "{transition.duration.slow}",
@@ -9550,6 +9937,24 @@
           "valuesByMode": {
             "Light": "{border-width.1}",
             "Dark": "{border-width.1}"
+          }
+        },
+        "sheet.description.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the sheet description text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "sheet.title.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "$description": "Line height of the sheet title text.",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
           }
         },
         "card-grid.item-duration": {

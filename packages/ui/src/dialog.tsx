@@ -176,7 +176,7 @@ export const DialogDescription = React.forwardRef<
   <DialogPrimitive.Description
     ref={ref}
     className={cn(
-      "text-(length:--font-size-dialog-description-font-size)",
+      "text-(length:--font-size-dialog-description-font-size) leading-(--line-height-dialog-description-line-height)",
       "text-(--color-dialog-description)",
       className
     )}

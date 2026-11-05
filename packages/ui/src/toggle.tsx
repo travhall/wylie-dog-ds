@@ -5,7 +5,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const toggleVariants = cva(
   cn(
-    "inline-flex items-center justify-center gap-(--space-toggle-icon-gap) rounded-(--space-toggle-radius) text-(length:--font-size-toggle-font-size) font-(--font-weight-toggle-font-weight) transition-colors",
+    "inline-flex items-center justify-center gap-(--space-toggle-icon-gap) rounded-(--space-toggle-radius) text-(length:--font-size-toggle-font-size) leading-(--line-height-toggle-line-height) font-(--font-weight-toggle-font-weight) transition-colors",
     "hover:bg-(--color-toggle-background-hover) hover:text-(--color-toggle-text-hover)",
     focusRingClasses,
     "disabled:pointer-events-none disabled:text-(--color-toggle-text-disabled) disabled:border-(--color-toggle-border-disabled) data-[state=on]:disabled:text-(--color-toggle-text-disabled) data-[state=on]:disabled:bg-(--color-toggle-pressed-disabled)",

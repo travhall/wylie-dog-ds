@@ -92,16 +92,16 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                 <div className="max-md:col-span-2">
                   {logo || (
                     <div className="mb-(--space-site-footer-logo-margin-bottom)">
-                      <span className="text-(length:--font-size-site-footer-logo-font-size) font-(--font-weight-site-footer-logo-font-weight)">
+                      <span className="text-(length:--font-size-site-footer-logo-font-size) leading-(--line-height-site-footer-logo-line-height) font-(--font-weight-site-footer-logo-font-weight)">
                         Logo
                       </span>
-                      <p className="text-(length:--font-size-site-footer-font-size) text-(--color-site-footer-text)">
+                      <p className="text-(length:--font-size-site-footer-font-size) leading-(--line-height-site-footer-line-height) text-(--color-site-footer-text)">
                         Building amazing experiences with modern design systems.
                       </p>
                     </div>
                   )}
                   {description && (
-                    <p className="text-(length:--font-size-site-footer-font-size) text-(--color-site-footer-text)">
+                    <p className="text-(length:--font-size-site-footer-font-size) leading-(--line-height-site-footer-line-height) text-(--color-site-footer-text)">
                       {description}
                     </p>
                   )}
@@ -110,7 +110,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                 {/* Footer Columns — each is a named nav landmark for screen reader navigation */}
                 {columns.map((column, index) => (
                   <nav key={index} aria-label={column.title}>
-                    <h3 className="font-(--font-weight-site-footer-column-title-font-weight) text-(length:--font-size-site-footer-column-title-font-size) mb-(--space-site-footer-column-title-margin-bottom)">
+                    <h3 className="font-(--font-weight-site-footer-column-title-font-weight) text-(length:--font-size-site-footer-column-title-font-size) leading-(--line-height-site-footer-column-title-line-height) mb-(--space-site-footer-column-title-margin-bottom)">
                       {column.title}
                     </h3>
                     <ul className="space-y-(--space-site-footer-column-links-gap)">
@@ -121,7 +121,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                           ) : (
                             <a
                               href={link.href}
-                              className="text-(length:--font-size-site-footer-link-font-size) text-(--color-site-footer-link-text) hover:text-(--color-site-footer-link-text-hover) transition-colors"
+                              className="text-(length:--font-size-site-footer-link-font-size) leading-(--line-height-site-footer-link-line-height) text-(--color-site-footer-link-text) hover:text-(--color-site-footer-link-text-hover) transition-colors"
                             >
                               {link.label}
                             </a>
@@ -139,7 +139,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
 
           {/* Bottom Bar */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-(--space-site-footer-bottom-gap)">
-            <p className="text-(length:--font-size-site-footer-font-size) text-(--color-site-footer-text)">
+            <p className="text-(length:--font-size-site-footer-font-size) leading-(--line-height-site-footer-line-height) text-(--color-site-footer-text)">
               {copyrightText}
             </p>
 

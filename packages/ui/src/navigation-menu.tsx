@@ -40,7 +40,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cn(
-  "group inline-flex h-(--space-navigation-menu-trigger-height) w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) font-(--font-weight-navigation-menu-trigger-font-weight) transition-colors",
+  "group inline-flex h-(--space-navigation-menu-trigger-height) w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) leading-(--line-height-navigation-menu-trigger-line-height) font-(--font-weight-navigation-menu-trigger-font-weight) transition-colors",
   "hover:bg-(--color-navigation-background-hover) hover:text-(--color-navigation-text-hover)",
   "focus:bg-(--color-navigation-highlighted) focus:text-(--color-navigation-text-highlighted)",
   focusRingClasses,
@@ -51,7 +51,7 @@ const navigationMenuTriggerStyle = cn(
 // A link inside an open menu: a padded row with the trigger's hover, highlight and
 // active fills. Opt in by class, like navigationMenuTriggerStyle for top-level links.
 const navigationMenuLinkStyle = cn(
-  "block select-none rounded-(--space-navigation-menu-link-radius) px-(--space-navigation-menu-link-padding-x) py-(--space-navigation-menu-link-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) text-(--color-navigation-content-text) no-underline transition-colors",
+  "block select-none rounded-(--space-navigation-menu-link-radius) px-(--space-navigation-menu-link-padding-x) py-(--space-navigation-menu-link-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) leading-(--line-height-navigation-menu-trigger-line-height) text-(--color-navigation-content-text) no-underline transition-colors",
   "hover:bg-(--color-navigation-background-hover) hover:text-(--color-navigation-text-hover)",
   "focus:bg-(--color-navigation-highlighted) focus:text-(--color-navigation-text-highlighted)",
   focusRingClasses,

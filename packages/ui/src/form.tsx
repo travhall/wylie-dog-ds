@@ -166,7 +166,7 @@ const FormDescription = React.forwardRef<
       ref={ref}
       id={descriptionId}
       className={cn(
-        "text-(length:--font-size-form-description-font-size) text-(--color-form-description)",
+        "text-(length:--font-size-form-description-font-size) leading-(--line-height-form-description-line-height) text-(--color-form-description)",
         className
       )}
       {...props}
@@ -191,7 +191,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
         role="alert"
         aria-live="polite"
         className={cn(
-          "text-(length:--font-size-form-error-font-size) font-(--font-weight-form-message-font-weight) text-(--color-form-error)",
+          "text-(length:--font-size-form-error-font-size) leading-(--line-height-form-error-line-height) font-(--font-weight-form-message-font-weight) text-(--color-form-error)",
           className
         )}
         {...props}

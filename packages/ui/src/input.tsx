@@ -14,9 +14,9 @@ export const inputVariants = cva(
   {
     variants: {
       size: {
-        sm: "py-(--space-input-padding-y-sm) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-sm)",
-        md: "py-(--space-input-padding-y-md) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-md)",
-        lg: "py-(--space-input-padding-y-lg) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-lg)",
+        sm: "py-(--space-input-padding-y-sm) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-sm) leading-(--line-height-input-line-height)",
+        md: "py-(--space-input-padding-y-md) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-md) leading-(--line-height-input-line-height)",
+        lg: "py-(--space-input-padding-y-lg) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-lg) leading-(--line-height-input-line-height)",
       },
       inputState: {
         default:

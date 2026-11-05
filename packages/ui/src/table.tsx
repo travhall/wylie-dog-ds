@@ -10,7 +10,7 @@ const Table = React.forwardRef<
       ref={ref}
       className={cn(
         "w-full caption-bottom",
-        "text-(length:--font-size-table-cell-font-size)",
+        "text-(length:--font-size-table-cell-font-size) leading-(--line-height-table-cell-line-height)",
         className
       )}
       {...props}
@@ -87,7 +87,7 @@ const TableHead = React.forwardRef<
     className={cn(
       "h-(--space-table-header-height) text-left align-middle font-(--font-weight-table-header-font-weight) [&:has([role=checkbox])]:pr-(--space-table-header-padding-right)",
       "px-(--space-table-cell-padding-x)",
-      "text-(length:--font-size-table-header-font-size)",
+      "text-(length:--font-size-table-header-font-size) leading-(--line-height-table-header-line-height)",
       "text-(--color-table-header-text)",
       className
     )}
@@ -119,7 +119,7 @@ const TableCaption = React.forwardRef<
     ref={ref}
     className={cn(
       "text-(--color-table-caption)",
-      "text-(length:--font-size-table-caption-font-size)",
+      "text-(length:--font-size-table-caption-font-size) leading-(--line-height-table-caption-line-height)",
       "mt-(--space-table-caption-margin-top)",
       className
     )}

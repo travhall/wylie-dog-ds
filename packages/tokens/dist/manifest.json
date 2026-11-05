@@ -5560,6 +5560,17 @@
         "type": "dimension",
         "variable": "var(--input-native-icon-size)",
         "description": "Size of the browser's own search-cancel and date-picker icons inside an input."
+      },
+      "input-line-height": {
+        "name": "inputLineHeight",
+        "path": [
+          "input",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--input-line-height)",
+        "description": "Line height of the input text."
       }
     },
     "alert": {
@@ -6464,6 +6475,28 @@
         "type": "dimension",
         "variable": "var(--menubar-content-align-offset)",
         "description": "How far a menubar menu is pulled back along the trigger edge, so its content lines up with the trigger text."
+      },
+      "menubar-item-line-height": {
+        "name": "menubarItemLineHeight",
+        "path": [
+          "menubar",
+          "item-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--menubar-item-line-height)",
+        "description": "Line height of the menubar item text."
+      },
+      "menubar-shortcut-line-height": {
+        "name": "menubarShortcutLineHeight",
+        "path": [
+          "menubar",
+          "shortcut-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--menubar-shortcut-line-height)",
+        "description": "Line height of the menubar shortcut text."
       }
     },
     "navigation": {
@@ -6971,6 +7004,28 @@
         "type": "dimension",
         "variable": "var(--command-separator-height)",
         "description": "Height of the command menu separator."
+      },
+      "command-group-heading-line-height": {
+        "name": "commandGroupHeadingLineHeight",
+        "path": [
+          "command",
+          "group-heading-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--command-group-heading-line-height)",
+        "description": "Line height of the command group heading text."
+      },
+      "command-item-line-height": {
+        "name": "commandItemLineHeight",
+        "path": [
+          "command",
+          "item-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--command-item-line-height)",
+        "description": "Line height of the command item text."
       }
     },
     "tabs": {
@@ -7374,6 +7429,18 @@
         "type": "dimension",
         "variable": "var(--tabs-trigger-overlap)",
         "description": "Overlap of the trigger underline with the border of the tabs list."
+      },
+      "tabs-trigger-line-height": {
+        "name": "tabsTriggerLineHeight",
+        "path": [
+          "tabs",
+          "trigger",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--tabs-trigger-line-height)",
+        "description": "Line height of the tabs trigger text."
       }
     },
     "collapsible": {
@@ -7715,6 +7782,28 @@
         "type": "dimension",
         "variable": "var(--calendar-border-width)",
         "description": "Border width of the calendar."
+      },
+      "calendar-day-line-height": {
+        "name": "calendarDayLineHeight",
+        "path": [
+          "calendar",
+          "day-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--calendar-day-line-height)",
+        "description": "Line height of the calendar day text."
+      },
+      "calendar-header-line-height": {
+        "name": "calendarHeaderLineHeight",
+        "path": [
+          "calendar",
+          "header-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--calendar-header-line-height)",
+        "description": "Line height of the calendar header text."
       }
     },
     "accordion": {
@@ -8158,6 +8247,17 @@
         "type": "dimension",
         "variable": "var(--avatar-border-width)",
         "description": "Border width of the avatar."
+      },
+      "avatar-fallback-line-height": {
+        "name": "avatarFallbackLineHeight",
+        "path": [
+          "avatar",
+          "fallback-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--avatar-fallback-line-height)",
+        "description": "Line height of the avatar fallback text."
       }
     },
     "breadcrumb": {
@@ -8292,6 +8392,17 @@
         "type": "number",
         "variable": "var(--breadcrumb-page-font-weight)",
         "description": "Font weight of the current page item in the breadcrumb."
+      },
+      "breadcrumb-line-height": {
+        "name": "breadcrumbLineHeight",
+        "path": [
+          "breadcrumb",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--breadcrumb-line-height)",
+        "description": "Line height of the breadcrumb text."
       }
     },
     "carousel": {
@@ -8924,6 +9035,17 @@
         "type": "dimension",
         "variable": "var(--dialog-border-width)",
         "description": "Border width of the dialog."
+      },
+      "dialog-description-line-height": {
+        "name": "dialogDescriptionLineHeight",
+        "path": [
+          "dialog",
+          "description-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--dialog-description-line-height)",
+        "description": "Line height of the dialog description text."
       }
     },
     "form": {
@@ -9080,6 +9202,28 @@
         "type": "number",
         "variable": "var(--form-label-line-height)",
         "description": "Line height of the form label."
+      },
+      "form-description-line-height": {
+        "name": "formDescriptionLineHeight",
+        "path": [
+          "form",
+          "description-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--form-description-line-height)",
+        "description": "Line height of the form description text."
+      },
+      "form-error-line-height": {
+        "name": "formErrorLineHeight",
+        "path": [
+          "form",
+          "error-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--form-error-line-height)",
+        "description": "Line height of the form error text."
       }
     },
     "hover-card": {
@@ -9415,6 +9559,18 @@
         "type": "color",
         "variable": "var(--color-pagination-text-disabled)",
         "description": "Text color of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+      },
+      "pagination-item-line-height": {
+        "name": "paginationItemLineHeight",
+        "path": [
+          "pagination",
+          "item",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--pagination-item-line-height)",
+        "description": "Line height of the pagination item text."
       }
     },
     "popover": {
@@ -10510,6 +10666,41 @@
         "type": "number",
         "variable": "var(--table-footer-font-weight)",
         "description": "Font weight of the table footer."
+      },
+      "table-caption-line-height": {
+        "name": "tableCaptionLineHeight",
+        "path": [
+          "table",
+          "caption-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--table-caption-line-height)",
+        "description": "Line height of the table caption text."
+      },
+      "table-cell-line-height": {
+        "name": "tableCellLineHeight",
+        "path": [
+          "table",
+          "cell",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--table-cell-line-height)",
+        "description": "Line height of the table cell text."
+      },
+      "table-header-line-height": {
+        "name": "tableHeaderLineHeight",
+        "path": [
+          "table",
+          "header",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--table-header-line-height)",
+        "description": "Line height of the table header text."
       }
     },
     "toast": {
@@ -11190,6 +11381,42 @@
         "type": "dimension",
         "variable": "var(--toast-max-width)",
         "description": "Maximum width of the toast viewport from the medium breakpoint up."
+      },
+      "toast-action-line-height": {
+        "name": "toastActionLineHeight",
+        "path": [
+          "toast",
+          "action",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--toast-action-line-height)",
+        "description": "Line height of the toast action text."
+      },
+      "toast-description-line-height": {
+        "name": "toastDescriptionLineHeight",
+        "path": [
+          "toast",
+          "description",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--toast-description-line-height)",
+        "description": "Line height of the toast description text."
+      },
+      "toast-title-line-height": {
+        "name": "toastTitleLineHeight",
+        "path": [
+          "toast",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--toast-title-line-height)",
+        "description": "Line height of the toast title text."
       }
     },
     "toggle": {
@@ -11424,6 +11651,17 @@
         "type": "dimension",
         "variable": "var(--toggle-icon-gap)",
         "description": "Gap between an icon and the label of the toggle."
+      },
+      "toggle-line-height": {
+        "name": "toggleLineHeight",
+        "path": [
+          "toggle",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--toggle-line-height)",
+        "description": "Line height of the toggle text."
       }
     },
     "tooltip": {
@@ -11558,6 +11796,17 @@
         "type": "dimension",
         "variable": "var(--tooltip-side-offset)",
         "description": "Gap between the tooltip trigger and its content."
+      },
+      "tooltip-line-height": {
+        "name": "tooltipLineHeight",
+        "path": [
+          "tooltip",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--tooltip-line-height)",
+        "description": "Line height of the tooltip text."
       }
     },
     "select": {
@@ -12022,6 +12271,18 @@
         "type": "dimension",
         "variable": "var(--select-border-width)",
         "description": "Border width of the select."
+      },
+      "select-trigger-line-height": {
+        "name": "selectTriggerLineHeight",
+        "path": [
+          "select",
+          "trigger",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--select-trigger-line-height)",
+        "description": "Line height of the select trigger text."
       }
     },
     "checkbox": {
@@ -12640,6 +12901,17 @@
         "type": "dimension",
         "variable": "var(--textarea-border-width)",
         "description": "Border width of the textarea."
+      },
+      "textarea-line-height": {
+        "name": "textareaLineHeight",
+        "path": [
+          "textarea",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--textarea-line-height)",
+        "description": "Line height of the textarea text."
       }
     },
     "label": {
@@ -13091,6 +13363,30 @@
         "type": "dimension",
         "variable": "var(--sheet-border-width)",
         "description": "Border width of the sheet."
+      },
+      "sheet-description-line-height": {
+        "name": "sheetDescriptionLineHeight",
+        "path": [
+          "sheet",
+          "description",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--sheet-description-line-height)",
+        "description": "Line height of the sheet description text."
+      },
+      "sheet-title-line-height": {
+        "name": "sheetTitleLineHeight",
+        "path": [
+          "sheet",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--sheet-title-line-height)",
+        "description": "Line height of the sheet title text."
       }
     },
     "separator": {
@@ -13416,6 +13712,28 @@
         "type": "number",
         "variable": "var(--context-menu-sub-content-z-index)",
         "description": "Stacking order of a context menu sub-menu."
+      },
+      "context-menu-item-line-height": {
+        "name": "contextMenuItemLineHeight",
+        "path": [
+          "context-menu",
+          "item-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--context-menu-item-line-height)",
+        "description": "Line height of the context menu item text."
+      },
+      "context-menu-shortcut-line-height": {
+        "name": "contextMenuShortcutLineHeight",
+        "path": [
+          "context-menu",
+          "shortcut-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--context-menu-shortcut-line-height)",
+        "description": "Line height of the context menu shortcut text."
       }
     },
     "dropdown-menu": {
@@ -13785,6 +14103,30 @@
         "type": "dimension",
         "variable": "var(--dropdown-menu-side-offset)",
         "description": "Gap between the dropdown menu trigger and its content."
+      },
+      "dropdown-menu-item-line-height": {
+        "name": "dropdownMenuItemLineHeight",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--dropdown-menu-item-line-height)",
+        "description": "Line height of the dropdown menu item text."
+      },
+      "dropdown-menu-shortcut-line-height": {
+        "name": "dropdownMenuShortcutLineHeight",
+        "path": [
+          "dropdown-menu",
+          "shortcut",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--dropdown-menu-shortcut-line-height)",
+        "description": "Line height of the dropdown menu shortcut text."
       }
     },
     "card-grid": {
@@ -14214,6 +14556,28 @@
         "type": "spacing",
         "variable": "var(--alert-dialog-content-max-width)",
         "description": "Maximum width of the alert dialog content."
+      },
+      "alert-dialog-description-line-height": {
+        "name": "alertDialogDescriptionLineHeight",
+        "path": [
+          "alert-dialog",
+          "description-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--alert-dialog-description-line-height)",
+        "description": "Line height of the alert dialog description text."
+      },
+      "alert-dialog-title-line-height": {
+        "name": "alertDialogTitleLineHeight",
+        "path": [
+          "alert-dialog",
+          "title-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--alert-dialog-title-line-height)",
+        "description": "Line height of the alert dialog title text."
       }
     },
     "navigation-menu": {
@@ -14473,6 +14837,17 @@
         "type": "dimension",
         "variable": "var(--navigation-menu-link-radius)",
         "description": "Corner radius of a link inside an open navigation menu."
+      },
+      "navigation-menu-trigger-line-height": {
+        "name": "navigationMenuTriggerLineHeight",
+        "path": [
+          "navigation-menu",
+          "trigger-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--navigation-menu-trigger-line-height)",
+        "description": "Line height of the navigation menu trigger text."
       }
     },
     "toggle-group": {
@@ -14541,6 +14916,17 @@
         "type": "number",
         "variable": "var(--toggle-group-item-font-weight)",
         "description": "Font weight of the toggle group item."
+      },
+      "toggle-group-item-line-height": {
+        "name": "toggleGroupItemLineHeight",
+        "path": [
+          "toggle-group",
+          "item-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--toggle-group-item-line-height)",
+        "description": "Line height of the toggle group item text."
       }
     },
     "site-header": {
@@ -14847,6 +15233,30 @@
         "type": "dimension",
         "variable": "var(--site-header-border-width)",
         "description": "Border width of the site header."
+      },
+      "site-header-logo-line-height": {
+        "name": "siteHeaderLogoLineHeight",
+        "path": [
+          "site-header",
+          "logo",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-header-logo-line-height)",
+        "description": "Line height of the site header logo text."
+      },
+      "site-header-nav-link-line-height": {
+        "name": "siteHeaderNavLinkLineHeight",
+        "path": [
+          "site-header",
+          "nav-link",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-header-nav-link-line-height)",
+        "description": "Line height of the site header nav link text."
       }
     },
     "site-footer": {
@@ -15142,6 +15552,54 @@
         "type": "dimension",
         "variable": "var(--site-footer-border-width)",
         "description": "Border width of the site footer."
+      },
+      "site-footer-line-height": {
+        "name": "siteFooterLineHeight",
+        "path": [
+          "site-footer",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-footer-line-height)",
+        "description": "Line height of the site footer text."
+      },
+      "site-footer-column-title-line-height": {
+        "name": "siteFooterColumnTitleLineHeight",
+        "path": [
+          "site-footer",
+          "column",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-footer-column-title-line-height)",
+        "description": "Line height of the site footer column title text."
+      },
+      "site-footer-link-line-height": {
+        "name": "siteFooterLinkLineHeight",
+        "path": [
+          "site-footer",
+          "link",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-footer-link-line-height)",
+        "description": "Line height of the site footer link text."
+      },
+      "site-footer-logo-line-height": {
+        "name": "siteFooterLogoLineHeight",
+        "path": [
+          "site-footer",
+          "logo",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-footer-logo-line-height)",
+        "description": "Line height of the site footer logo text."
       }
     },
     "section-hero": {
@@ -15438,6 +15896,30 @@
         "type": "spacing",
         "variable": "var(--section-hero-image-margin-top)",
         "description": "Space above the image in the centered hero."
+      },
+      "section-hero-description-line-height": {
+        "name": "sectionHeroDescriptionLineHeight",
+        "path": [
+          "section-hero",
+          "description",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-hero-description-line-height)",
+        "description": "Line height of the section hero description text."
+      },
+      "section-hero-title-line-height": {
+        "name": "sectionHeroTitleLineHeight",
+        "path": [
+          "section-hero",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-hero-title-line-height)",
+        "description": "Line height of the section hero title text."
       }
     },
     "section-features": {
@@ -15767,6 +16249,42 @@
         "type": "dimension",
         "variable": "var(--section-features-icon-radius)",
         "description": "Corner radius of the feature icon container."
+      },
+      "section-features-description-line-height": {
+        "name": "sectionFeaturesDescriptionLineHeight",
+        "path": [
+          "section-features",
+          "description-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-features-description-line-height)",
+        "description": "Line height of the section features description text."
+      },
+      "section-features-item-title-line-height": {
+        "name": "sectionFeaturesItemTitleLineHeight",
+        "path": [
+          "section-features",
+          "item",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-features-item-title-line-height)",
+        "description": "Line height of the section features item title text."
+      },
+      "section-features-title-line-height": {
+        "name": "sectionFeaturesTitleLineHeight",
+        "path": [
+          "section-features",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-features-title-line-height)",
+        "description": "Line height of the section features title text."
       }
     },
     "page-layout": {

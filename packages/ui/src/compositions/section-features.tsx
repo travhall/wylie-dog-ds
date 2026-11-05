@@ -67,13 +67,13 @@ export const SectionFeatures = React.forwardRef<
               {title && (
                 <h2
                   id={headingId}
-                  className="text-(length:--font-size-section-features-title-font-size-sm) md:text-(length:--font-size-section-features-title-font-size-md) lg:text-(length:--font-size-section-features-title-font-size-lg) font-(--font-weight-section-features-title-font-weight) tracking-(--space-section-features-title-tracking) mb-(--space-section-features-title-margin-bottom)"
+                  className="text-(length:--font-size-section-features-title-font-size-sm) leading-(--line-height-section-features-title-line-height) md:text-(length:--font-size-section-features-title-font-size-md) md:leading-(--line-height-section-features-title-line-height) lg:text-(length:--font-size-section-features-title-font-size-lg) lg:leading-(--line-height-section-features-title-line-height) font-(--font-weight-section-features-title-font-weight) tracking-(--space-section-features-title-tracking) mb-(--space-section-features-title-margin-bottom)"
                 >
                   {title}
                 </h2>
               )}
               {description && (
-                <p className="text-(length:--font-size-section-features-description-font-size) text-(--color-section-features-description-text)">
+                <p className="text-(length:--font-size-section-features-description-font-size) leading-(--line-height-section-features-description-line-height) text-(--color-section-features-description-text)">
                   {description}
                 </p>
               )}
@@ -105,7 +105,7 @@ export const SectionFeatures = React.forwardRef<
                           <Badge variant="secondary">{feature.badge}</Badge>
                         )}
                       </div>
-                      <CardTitle className="text-(length:--font-size-section-features-item-title-font-size)">
+                      <CardTitle className="text-(length:--font-size-section-features-item-title-font-size) leading-(--line-height-section-features-item-title-line-height)">
                         {feature.title}
                       </CardTitle>
                     </CardHeader>
@@ -137,7 +137,7 @@ export const SectionFeatures = React.forwardRef<
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-(length:--font-size-section-features-item-title-font-size) font-(--font-weight-section-features-item-title-font-weight)">
+                    <h3 className="text-(length:--font-size-section-features-item-title-font-size) leading-(--line-height-section-features-item-title-line-height) font-(--font-weight-section-features-item-title-font-weight)">
                       {feature.title}
                     </h3>
 

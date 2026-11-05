@@ -14,9 +14,9 @@ export const textareaVariants = cva(
   {
     variants: {
       size: {
-        sm: "min-h-(--space-textarea-min-height-sm) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size)",
-        md: "min-h-(--space-textarea-min-height-md) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size)",
-        lg: "min-h-(--space-textarea-min-height-lg) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size)",
+        sm: "min-h-(--space-textarea-min-height-sm) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size) leading-(--line-height-textarea-line-height)",
+        md: "min-h-(--space-textarea-min-height-md) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size) leading-(--line-height-textarea-line-height)",
+        lg: "min-h-(--space-textarea-min-height-lg) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size) leading-(--line-height-textarea-line-height)",
       },
       resize: {
         none: "resize-none",

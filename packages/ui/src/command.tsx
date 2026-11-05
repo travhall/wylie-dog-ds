@@ -72,7 +72,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
         <input
           ref={ref}
           className={cn(
-            "flex h-(--space-command-input-height) w-full rounded-(--space-command-content-radius) bg-transparent py-(--space-command-input-padding-y) text-(length:--font-size-command-item-font-size) outline-hidden placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:text-(--color-command-input-text-disabled)",
+            "flex h-(--space-command-input-height) w-full rounded-(--space-command-content-radius) bg-transparent py-(--space-command-input-padding-y) text-(length:--font-size-command-item-font-size) leading-(--line-height-command-item-line-height) outline-hidden placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:text-(--color-command-input-text-disabled)",
             focusRingInsetClasses,
             className
           )}
@@ -140,7 +140,7 @@ const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
     <div
       ref={ref}
       className={cn(
-        "py-(--space-command-empty-padding-y) text-center text-(length:--font-size-command-item-font-size) text-(--color-command-empty)",
+        "py-(--space-command-empty-padding-y) text-center text-(length:--font-size-command-item-font-size) leading-(--line-height-command-item-line-height) text-(--color-command-empty)",
         className
       )}
       role="status"
@@ -161,7 +161,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
     <div
       ref={ref}
       className={cn(
-        "overflow-hidden p-(--space-command-group-padding) text-(--color-command-text) **:[[cmdk-group-heading]]:px-(--space-command-group-heading-padding-x) **:[[cmdk-group-heading]]:py-(--space-command-group-heading-padding-y) **:[[cmdk-group-heading]]:text-(length:--font-size-command-group-heading-font-size) **:[[cmdk-group-heading]]:font-(--font-weight-command-group-heading-font-weight) **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
+        "overflow-hidden p-(--space-command-group-padding) text-(--color-command-text) **:[[cmdk-group-heading]]:px-(--space-command-group-heading-padding-x) **:[[cmdk-group-heading]]:py-(--space-command-group-heading-padding-y) **:[[cmdk-group-heading]]:text-(length:--font-size-command-group-heading-font-size) **:[[cmdk-group-heading]]:leading-(--line-height-command-group-heading-line-height) **:[[cmdk-group-heading]]:font-(--font-weight-command-group-heading-font-weight) **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
         className
       )}
       role="group"
@@ -172,7 +172,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
         <div
           // eslint-disable-next-line react/no-unknown-property -- cmdk's own DOM attribute selector, not a typo
           cmdk-group-heading=""
-          className="px-(--space-command-group-heading-padding-x) py-(--space-command-group-heading-padding-y) text-(length:--font-size-command-group-heading-font-size) font-(--font-weight-command-group-heading-font-weight) text-(--color-command-group-heading)"
+          className="px-(--space-command-group-heading-padding-x) py-(--space-command-group-heading-padding-y) text-(length:--font-size-command-group-heading-font-size) leading-(--line-height-command-group-heading-line-height) font-(--font-weight-command-group-heading-font-weight) text-(--color-command-group-heading)"
         >
           {heading}
         </div>
@@ -214,7 +214,7 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
     <div
       ref={ref}
       className={cn(
-        "relative flex cursor-default select-none items-center rounded-(--space-command-item-radius) px-(--space-command-item-padding-x) py-(--space-command-item-padding-y) text-(length:--font-size-command-item-font-size) outline-hidden aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:text-(--color-command-item-text-disabled)",
+        "relative flex cursor-default select-none items-center rounded-(--space-command-item-radius) px-(--space-command-item-padding-x) py-(--space-command-item-padding-y) text-(length:--font-size-command-item-font-size) leading-(--line-height-command-item-line-height) outline-hidden aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:text-(--color-command-item-text-disabled)",
         focusRingInsetClasses,
         className
       )}
@@ -237,7 +237,7 @@ const CommandShortcut = React.forwardRef<HTMLSpanElement, CommandShortcutProps>(
       <span
         ref={ref}
         className={cn(
-          "ml-auto text-(length:--font-size-command-group-heading-font-size) tracking-(--space-command-shortcut-letter-spacing) text-(--color-command-shortcut)",
+          "ml-auto text-(length:--font-size-command-group-heading-font-size) leading-(--line-height-command-group-heading-line-height) tracking-(--space-command-shortcut-letter-spacing) text-(--color-command-shortcut)",
           className
         )}
         aria-label="Keyboard shortcut"
