@@ -104,12 +104,15 @@ function measureInPage(rootSelector) {
       const nums =
         layer.replace(color ? color[0] : "", "").match(/-?[\d.]+px/g) ?? [];
       const [x, y, blur, spread] = nums.map(px);
+      const layerColor = hex(color ? color[0] : "#000");
+      // Tailwind composes a shadow with fully transparent layers; they draw nothing
+      if (!layerColor) continue;
       shadows.push({
         x: x ?? 0,
         y: y ?? 0,
         blur: blur ?? 0,
         spread: spread ?? 0,
-        color: hex(color ? color[0] : "#000"),
+        color: layerColor,
       });
     }
   }

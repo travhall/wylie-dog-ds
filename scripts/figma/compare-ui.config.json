@@ -5,7 +5,11 @@
     "Button": {
       "story": "components-inputs-controls-button--default",
       "root": "#storybook-root button",
-      "args": { "variant": "variant", "size": "size", "disabled": "disabled" },
+      "args": {
+        "variant": "variant",
+        "size": "size",
+        "disabled": "disabled"
+      },
       "state": "state"
     },
     "Toggle": {
@@ -22,7 +26,9 @@
     "Input": {
       "story": "components-inputs-controls-input--default",
       "root": "#storybook-root input",
-      "args": { "size": "size" },
+      "args": {
+        "size": "size"
+      },
       "state": "state",
       "stateArgs": {
         "error": "error:!true",
@@ -33,7 +39,22 @@
     "Badge": {
       "story": "components-content-display-badge--default",
       "root": "#storybook-root [class*=inline-flex]",
-      "args": { "variant": "variant", "size": "size" }
+      "args": {
+        "variant": "variant",
+        "size": "size"
+      },
+      "state": "interaction",
+      "stateArgs": {
+        "default": "interactive:!true",
+        "hover": "interactive:!true",
+        "pressed": "interactive:!true"
+      }
+    },
+    "Card": {
+      "story": "components-content-display-card--interactive-card",
+      "root": "#storybook-root [role=button]",
+      "args": {},
+      "state": "interaction"
     }
   },
   "allow": []
