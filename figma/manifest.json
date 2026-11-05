@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-05T01:07:17.182Z",
+  "generatedAt": "2026-11-05T01:32:59.277Z",
   "count": 49,
   "components": [
     {
@@ -496,8 +496,10 @@
     {
       "name": "Icon",
       "type": "COMPONENT_SET",
-      "description": "",
-      "documentationLinks": [],
+      "description": "Renders any icon component at a token size with the token stroke weight. The glyph comes from the icon library you already use (lucide-react here); the system owns size and stroke, so changing the icon size or stroke tokens changes every icon at once.",
+      "documentationLinks": [
+        "https://wyliedogstorybook.com/?path=/docs/components-content-display-icon--docs"
+      ],
       "properties": {
         "icon": {
           "type": "VARIANT",
