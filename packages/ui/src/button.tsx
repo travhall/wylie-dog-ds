@@ -5,7 +5,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const buttonVariants = cva(
   cn(
-    "inline-flex items-center justify-center font-(--font-weight-button-font-weight) leading-(--line-height-button-line-height) border-(length:--button-border-width) transition-colors",
+    "inline-flex items-center justify-center gap-(--space-button-icon-gap) font-(--font-weight-button-font-weight) leading-(--line-height-button-line-height) border-(length:--button-border-width) transition-colors",
     focusRingClasses,
     "disabled:pointer-events-none"
   ),
@@ -33,6 +33,15 @@ export const buttonVariants = cva(
         icon: "h-(--space-button-icon-size) w-(--space-button-icon-size) rounded-(--space-button-radius)",
       },
     },
+    compoundVariants: [
+      {
+        // A link is plain underlined text: the size padding must not apply to it. Compound
+        // classes come after the size classes, so these win where `p-0` on the variant lost.
+        variant: "link",
+        size: ["default", "sm", "md", "lg"],
+        className: "px-0 py-0 h-auto",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",
@@ -68,10 +77,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading && (
           <span
-            className={cn(
-              "inline-block w-(--space-button-spinner-size) h-(--space-button-spinner-size) border-(length:--space-button-spinner-border-width) border-current border-t-transparent rounded-(--space-button-spinner-radius) animate-spin",
-              size !== "icon" && "mr-(--space-button-icon-gap)"
-            )}
+            className="inline-block w-(--space-button-spinner-size) h-(--space-button-spinner-size) border-(length:--space-button-spinner-border-width) border-current border-t-transparent rounded-(--space-button-spinner-radius) animate-spin"
             aria-hidden="true"
           />
         )}

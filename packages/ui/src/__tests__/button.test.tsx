@@ -240,4 +240,56 @@ describe("Button", () => {
       expect(classes).toContain("px-(--space-button-padding-x-md)");
     });
   });
+
+  describe("Icon gap", () => {
+    it("spaces an icon and its label with the icon gap token", () => {
+      render(
+        <Button>
+          <svg data-testid="icon" />
+          Add item
+        </Button>
+      );
+      expect(screen.getByRole("button")).toHaveClass(
+        "gap-(--space-button-icon-gap)"
+      );
+    });
+
+    it("spaces the loading spinner and the label with the same gap, not a margin", () => {
+      const { container } = render(<Button loading>Save</Button>);
+      const spinner = container.querySelector("span[aria-hidden='true']");
+      expect(spinner).toBeInTheDocument();
+      expect(spinner?.getAttribute("class")).not.toMatch(/\bmr-/);
+      expect(screen.getByRole("button")).toHaveClass(
+        "gap-(--space-button-icon-gap)"
+      );
+    });
+  });
+
+  describe("Link variant", () => {
+    it.each(["default", "sm", "md", "lg"] as const)(
+      "renders with no padding at size %s",
+      (size) => {
+        render(
+          <Button variant="link" size={size}>
+            Read more
+          </Button>
+        );
+        const button = screen.getByRole("button");
+        expect(button).toHaveClass("px-0", "py-0", "h-auto");
+        expect(button.getAttribute("class")).not.toContain(
+          "px-(--space-button-padding-x"
+        );
+        expect(button.getAttribute("class")).not.toContain(
+          "py-(--space-button-padding-y"
+        );
+      }
+    );
+
+    it("keeps its padding for other variants", () => {
+      render(<Button size="md">Save</Button>);
+      const button = screen.getByRole("button");
+      expect(button).toHaveClass("px-(--space-button-padding-x-md)");
+      expect(button).not.toHaveClass("px-0");
+    });
+  });
 });
