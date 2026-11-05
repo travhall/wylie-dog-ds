@@ -136,7 +136,7 @@
   },
   "badge.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}",
+    "$value": "{typography.font-weight.medium}",
     "$description": "Font weight of badge labels."
   },
   "badge.font-family": {

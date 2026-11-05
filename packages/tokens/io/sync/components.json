@@ -257,11 +257,11 @@
         },
         "badge.font-weight": {
           "$type": "number",
-          "$value": "{typography.font-weight.semibold}",
+          "$value": "{typography.font-weight.medium}",
           "$description": "Font weight of badge labels.",
           "valuesByMode": {
-            "Light": "{typography.font-weight.semibold}",
-            "Dark": "{typography.font-weight.semibold}"
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
           }
         },
         "badge.font-family": {
