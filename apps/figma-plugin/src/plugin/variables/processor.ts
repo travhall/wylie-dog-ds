@@ -755,6 +755,9 @@ function processVariable(
   return token;
 }
 
+/** Variables the component builder adds for Figma only (not tokens, never exported). */
+export const FIGMA_ONLY_PREFIX = "_figma/";
+
 /**
  * Create a clean token name from Figma variable name
  */
@@ -782,6 +785,9 @@ export async function processCollection(
 
   for (const variable of collection.variables) {
     if (skipVariableIds?.has(variable.id)) continue;
+    // Figma-only helpers the component builder adds (shadow colours that follow the mode);
+    // they are not tokens and must not be exported
+    if (variable.name.startsWith(FIGMA_ONLY_PREFIX)) continue;
     try {
       const tokenName = createTokenName(variable.name);
       const processedToken = processVariable(variable, collection.modes);
