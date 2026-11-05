@@ -3469,6 +3469,30 @@
         "type": "duration",
         "variable": "var(--transition-duration-slow)",
         "description": "Slow transition for emphasized changes"
+      },
+      "transition-duration-loop": {
+        "name": "transitionDurationLoop",
+        "path": [
+          "transition",
+          "duration",
+          "loop"
+        ],
+        "value": "1000ms",
+        "type": "duration",
+        "variable": "var(--transition-duration-loop)",
+        "description": "One turn of a looping indicator such as a spinner"
+      },
+      "transition-duration-loop-slow": {
+        "name": "transitionDurationLoopSlow",
+        "path": [
+          "transition",
+          "duration",
+          "loop-slow"
+        ],
+        "value": "2000ms",
+        "type": "duration",
+        "variable": "var(--transition-duration-loop-slow)",
+        "description": "One cycle of a slow ambient loop such as a loading skeleton's pulse"
       }
     },
     "easing": {
@@ -3519,6 +3543,18 @@
         "type": "cubicBezier",
         "variable": "var(--transition-easing-in-out)",
         "description": "Ease-in-out for symmetric transitions"
+      },
+      "transition-easing-linear": {
+        "name": "transitionEasingLinear",
+        "path": [
+          "transition",
+          "easing",
+          "linear"
+        ],
+        "value": "cubic-bezier(0, 0, 1, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--transition-easing-linear)",
+        "description": "Constant speed, for loops that should not accelerate"
       }
     }
   },
@@ -5046,6 +5082,30 @@
         "type": "dimension",
         "variable": "var(--button-link-underline-offset)",
         "description": "Distance of the link-style button's underline from its text."
+      },
+      "button-spinner-duration": {
+        "name": "buttonSpinnerDuration",
+        "path": [
+          "button",
+          "spinner",
+          "duration"
+        ],
+        "value": "1000ms",
+        "type": "duration",
+        "variable": "var(--button-spinner-duration)",
+        "description": "Time of one turn of the loading spinner."
+      },
+      "button-spinner-easing": {
+        "name": "buttonSpinnerEasing",
+        "path": [
+          "button",
+          "spinner",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 1, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--button-spinner-easing)",
+        "description": "Easing curve of the loading spinner's turn."
       }
     },
     "card": {
@@ -6530,6 +6590,54 @@
         "type": "number",
         "variable": "var(--menubar-shortcut-line-height)",
         "description": "Line height of the menubar shortcut text."
+      },
+      "menubar-content-duration": {
+        "name": "menubarContentDuration",
+        "path": [
+          "menubar",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--menubar-content-duration)",
+        "description": "Enter and exit time of the menubar menus and their submenus."
+      },
+      "menubar-content-easing": {
+        "name": "menubarContentEasing",
+        "path": [
+          "menubar",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--menubar-content-easing)",
+        "description": "Easing curve of the menubar menus and their submenus entering and leaving."
+      },
+      "menubar-content-distance": {
+        "name": "menubarContentDistance",
+        "path": [
+          "menubar",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--menubar-content-distance)",
+        "description": "How far the menubar menus and their submenus slides toward its trigger while entering and leaving."
+      },
+      "menubar-content-scale": {
+        "name": "menubarContentScale",
+        "path": [
+          "menubar",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--menubar-content-scale)",
+        "description": "Scale the menubar menus and their submenus grows from while entering and shrinks to while leaving."
       }
     },
     "navigation": {
@@ -7520,6 +7628,30 @@
         "type": "dimension",
         "variable": "var(--collapsible-radius)",
         "description": "Corner radius of the collapsible."
+      },
+      "collapsible-content-duration": {
+        "name": "collapsibleContentDuration",
+        "path": [
+          "collapsible",
+          "content",
+          "duration"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--collapsible-content-duration)",
+        "description": "Time the collapsible content takes to open and close."
+      },
+      "collapsible-content-easing": {
+        "name": "collapsibleContentEasing",
+        "path": [
+          "collapsible",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--collapsible-content-easing)",
+        "description": "Easing curve of the collapsible content opening and closing."
       }
     },
     "calendar": {
@@ -8123,6 +8255,30 @@
         "type": "duration",
         "variable": "var(--accordion-trigger-icon-duration)",
         "description": "Transition duration of the accordion chevron rotation."
+      },
+      "accordion-content-duration": {
+        "name": "accordionContentDuration",
+        "path": [
+          "accordion",
+          "content",
+          "duration"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--accordion-content-duration)",
+        "description": "Time the accordion content takes to open and close."
+      },
+      "accordion-content-easing": {
+        "name": "accordionContentEasing",
+        "path": [
+          "accordion",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--accordion-content-easing)",
+        "description": "Easing curve of the accordion content opening and closing."
       }
     },
     "avatar": {
@@ -9101,6 +9257,30 @@
         "type": "number",
         "variable": "var(--dialog-description-line-height)",
         "description": "Line height of the dialog description text."
+      },
+      "dialog-content-easing": {
+        "name": "dialogContentEasing",
+        "path": [
+          "dialog",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--dialog-content-easing)",
+        "description": "Easing curve of the dialog and its backdrop entering and leaving."
+      },
+      "dialog-content-scale": {
+        "name": "dialogContentScale",
+        "path": [
+          "dialog",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--dialog-content-scale)",
+        "description": "Scale the dialog grows from while entering and shrinks to while leaving."
       }
     },
     "form": {
@@ -9419,6 +9599,54 @@
         "type": "dimension",
         "variable": "var(--hover-card-side-offset)",
         "description": "Gap between the hover card trigger and its content."
+      },
+      "hover-card-content-duration": {
+        "name": "hoverCardContentDuration",
+        "path": [
+          "hover-card",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--hover-card-content-duration)",
+        "description": "Enter and exit time of the hover card."
+      },
+      "hover-card-content-easing": {
+        "name": "hoverCardContentEasing",
+        "path": [
+          "hover-card",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--hover-card-content-easing)",
+        "description": "Easing curve of the hover card entering and leaving."
+      },
+      "hover-card-content-distance": {
+        "name": "hoverCardContentDistance",
+        "path": [
+          "hover-card",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--hover-card-content-distance)",
+        "description": "How far the hover card slides toward its trigger while entering and leaving."
+      },
+      "hover-card-content-scale": {
+        "name": "hoverCardContentScale",
+        "path": [
+          "hover-card",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--hover-card-content-scale)",
+        "description": "Scale the hover card grows from while entering and shrinks to while leaving."
       }
     },
     "pagination": {
@@ -9766,6 +9994,54 @@
         "type": "dimension",
         "variable": "var(--popover-side-offset)",
         "description": "Gap between the popover trigger and its content."
+      },
+      "popover-content-duration": {
+        "name": "popoverContentDuration",
+        "path": [
+          "popover",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--popover-content-duration)",
+        "description": "Enter and exit time of the popover."
+      },
+      "popover-content-easing": {
+        "name": "popoverContentEasing",
+        "path": [
+          "popover",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--popover-content-easing)",
+        "description": "Easing curve of the popover entering and leaving."
+      },
+      "popover-content-distance": {
+        "name": "popoverContentDistance",
+        "path": [
+          "popover",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--popover-content-distance)",
+        "description": "How far the popover slides toward its trigger while entering and leaving."
+      },
+      "popover-content-scale": {
+        "name": "popoverContentScale",
+        "path": [
+          "popover",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--popover-content-scale)",
+        "description": "Scale the popover grows from while entering and shrinks to while leaving."
       }
     },
     "progress": {
@@ -9856,6 +10132,17 @@
         "type": "duration",
         "variable": "var(--progress-indicator-duration)",
         "description": "Transition duration of the progress indicator."
+      },
+      "progress-indicator-easing": {
+        "name": "progressIndicatorEasing",
+        "path": [
+          "progress",
+          "indicator-easing"
+        ],
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--progress-indicator-easing)",
+        "description": "Easing curve of the progress indicator moving to a new value."
       }
     },
     "radio": {
@@ -10379,6 +10666,39 @@
         "type": "spacing",
         "variable": "var(--skeleton-rounded-sm)",
         "description": "Corner radius for skeletons with slightly rounded corners."
+      },
+      "skeleton-duration": {
+        "name": "skeletonDuration",
+        "path": [
+          "skeleton",
+          "duration"
+        ],
+        "value": "2000ms",
+        "type": "duration",
+        "variable": "var(--skeleton-duration)",
+        "description": "Time of one pulse of a loading skeleton."
+      },
+      "skeleton-easing": {
+        "name": "skeletonEasing",
+        "path": [
+          "skeleton",
+          "easing"
+        ],
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--skeleton-easing)",
+        "description": "Easing curve of a loading skeleton's pulse."
+      },
+      "skeleton-pulse-opacity": {
+        "name": "skeletonPulseOpacity",
+        "path": [
+          "skeleton",
+          "pulse-opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--skeleton-pulse-opacity)",
+        "description": "Opacity a loading skeleton fades to at the middle of each pulse."
       }
     },
     "slider": {
@@ -11472,6 +11792,28 @@
         "type": "number",
         "variable": "var(--toast-title-line-height)",
         "description": "Line height of the toast title text."
+      },
+      "toast-duration": {
+        "name": "toastDuration",
+        "path": [
+          "toast",
+          "duration"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--toast-duration)",
+        "description": "Enter and exit time of a toast."
+      },
+      "toast-easing": {
+        "name": "toastEasing",
+        "path": [
+          "toast",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--toast-easing)",
+        "description": "Easing curve of a toast entering and leaving."
       }
     },
     "toggle": {
@@ -11862,6 +12204,54 @@
         "type": "number",
         "variable": "var(--tooltip-line-height)",
         "description": "Line height of the tooltip text."
+      },
+      "tooltip-content-duration": {
+        "name": "tooltipContentDuration",
+        "path": [
+          "tooltip",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--tooltip-content-duration)",
+        "description": "Enter and exit time of the tooltip."
+      },
+      "tooltip-content-easing": {
+        "name": "tooltipContentEasing",
+        "path": [
+          "tooltip",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--tooltip-content-easing)",
+        "description": "Easing curve of the tooltip entering and leaving."
+      },
+      "tooltip-content-distance": {
+        "name": "tooltipContentDistance",
+        "path": [
+          "tooltip",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--tooltip-content-distance)",
+        "description": "How far the tooltip slides toward its trigger while entering and leaving."
+      },
+      "tooltip-content-scale": {
+        "name": "tooltipContentScale",
+        "path": [
+          "tooltip",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--tooltip-content-scale)",
+        "description": "Scale the tooltip grows from while entering and shrinks to while leaving."
       }
     },
     "select": {
@@ -12350,6 +12740,54 @@
         "type": "dimension",
         "variable": "var(--select-content-side-offset)",
         "description": "Gap between the select trigger and its content when the content is positioned as a popper."
+      },
+      "select-content-duration": {
+        "name": "selectContentDuration",
+        "path": [
+          "select",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--select-content-duration)",
+        "description": "Enter and exit time of the select list."
+      },
+      "select-content-easing": {
+        "name": "selectContentEasing",
+        "path": [
+          "select",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--select-content-easing)",
+        "description": "Easing curve of the select list entering and leaving."
+      },
+      "select-content-distance": {
+        "name": "selectContentDistance",
+        "path": [
+          "select",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--select-content-distance)",
+        "description": "How far the select list slides toward its trigger while entering and leaving."
+      },
+      "select-content-scale": {
+        "name": "selectContentScale",
+        "path": [
+          "select",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--select-content-scale)",
+        "description": "Scale the select list grows from while entering and shrinks to while leaving."
       }
     },
     "checkbox": {
@@ -13403,7 +13841,7 @@
           "content",
           "duration-open"
         ],
-        "value": "500ms",
+        "value": "400ms",
         "type": "duration",
         "variable": "var(--sheet-content-duration-open)",
         "description": "Transition duration when the sheet opens."
@@ -13415,7 +13853,7 @@
           "content",
           "duration-closed"
         ],
-        "value": "300ms",
+        "value": "250ms",
         "type": "duration",
         "variable": "var(--sheet-content-duration-closed)",
         "description": "Transition duration when the sheet closes."
@@ -13454,6 +13892,18 @@
         "type": "number",
         "variable": "var(--sheet-title-line-height)",
         "description": "Line height of the sheet title text."
+      },
+      "sheet-content-easing": {
+        "name": "sheetContentEasing",
+        "path": [
+          "sheet",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--sheet-content-easing)",
+        "description": "Easing curve of the sheet sliding in and out, and of its backdrop."
       }
     },
     "separator": {
@@ -13801,6 +14251,54 @@
         "type": "number",
         "variable": "var(--context-menu-shortcut-line-height)",
         "description": "Line height of the context menu shortcut text."
+      },
+      "context-menu-content-duration": {
+        "name": "contextMenuContentDuration",
+        "path": [
+          "context-menu",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--context-menu-content-duration)",
+        "description": "Enter and exit time of the context menu and its submenus."
+      },
+      "context-menu-content-easing": {
+        "name": "contextMenuContentEasing",
+        "path": [
+          "context-menu",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--context-menu-content-easing)",
+        "description": "Easing curve of the context menu and its submenus entering and leaving."
+      },
+      "context-menu-content-distance": {
+        "name": "contextMenuContentDistance",
+        "path": [
+          "context-menu",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--context-menu-content-distance)",
+        "description": "How far the context menu and its submenus slides toward its trigger while entering and leaving."
+      },
+      "context-menu-content-scale": {
+        "name": "contextMenuContentScale",
+        "path": [
+          "context-menu",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--context-menu-content-scale)",
+        "description": "Scale the context menu and its submenus grows from while entering and shrinks to while leaving."
       }
     },
     "dropdown-menu": {
@@ -14194,6 +14692,54 @@
         "type": "number",
         "variable": "var(--dropdown-menu-shortcut-line-height)",
         "description": "Line height of the dropdown menu shortcut text."
+      },
+      "dropdown-menu-content-duration": {
+        "name": "dropdownMenuContentDuration",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--dropdown-menu-content-duration)",
+        "description": "Enter and exit time of the dropdown menu and its submenus."
+      },
+      "dropdown-menu-content-easing": {
+        "name": "dropdownMenuContentEasing",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--dropdown-menu-content-easing)",
+        "description": "Easing curve of the dropdown menu and its submenus entering and leaving."
+      },
+      "dropdown-menu-content-distance": {
+        "name": "dropdownMenuContentDistance",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--dropdown-menu-content-distance)",
+        "description": "How far the dropdown menu and its submenus slides toward its trigger while entering and leaving."
+      },
+      "dropdown-menu-content-scale": {
+        "name": "dropdownMenuContentScale",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--dropdown-menu-content-scale)",
+        "description": "Scale the dropdown menu and its submenus grows from while entering and shrinks to while leaving."
       }
     },
     "card-grid": {
@@ -14236,7 +14782,7 @@
           "card-grid",
           "item-duration"
         ],
-        "value": "300ms",
+        "value": "250ms",
         "type": "duration",
         "variable": "var(--card-grid-item-duration)",
         "description": "Hover transition duration of a card grid item."
@@ -14452,7 +14998,7 @@
           "feature-grid",
           "item-duration"
         ],
-        "value": "500ms",
+        "value": "400ms",
         "type": "duration",
         "variable": "var(--feature-grid-item-duration)",
         "description": "Hover transition duration of a feature grid item."
@@ -14463,7 +15009,7 @@
           "feature-grid",
           "icon-duration"
         ],
-        "value": "500ms",
+        "value": "400ms",
         "type": "duration",
         "variable": "var(--feature-grid-icon-duration)",
         "description": "Hover transition duration of the feature icon container."
@@ -14689,6 +15235,28 @@
         "type": "number",
         "variable": "var(--alert-dialog-title-line-height)",
         "description": "Line height of the alert dialog title text."
+      },
+      "alert-dialog-content-easing": {
+        "name": "alertDialogContentEasing",
+        "path": [
+          "alert-dialog",
+          "content-easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--alert-dialog-content-easing)",
+        "description": "Easing curve of the alert dialog and its backdrop entering and leaving."
+      },
+      "alert-dialog-content-scale": {
+        "name": "alertDialogContentScale",
+        "path": [
+          "alert-dialog",
+          "content-scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--alert-dialog-content-scale)",
+        "description": "Scale the alert dialog grows from while entering and shrinks to while leaving."
       }
     },
     "navigation-menu": {
@@ -14959,6 +15527,39 @@
         "type": "number",
         "variable": "var(--navigation-menu-trigger-line-height)",
         "description": "Line height of the navigation menu trigger text."
+      },
+      "navigation-menu-viewport-duration": {
+        "name": "navigationMenuViewportDuration",
+        "path": [
+          "navigation-menu",
+          "viewport-duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--navigation-menu-viewport-duration)",
+        "description": "Enter and exit time of the navigation menu viewport."
+      },
+      "navigation-menu-viewport-easing": {
+        "name": "navigationMenuViewportEasing",
+        "path": [
+          "navigation-menu",
+          "viewport-easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--navigation-menu-viewport-easing)",
+        "description": "Easing curve of the navigation menu viewport entering and leaving."
+      },
+      "navigation-menu-viewport-scale": {
+        "name": "navigationMenuViewportScale",
+        "path": [
+          "navigation-menu",
+          "viewport-scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--navigation-menu-viewport-scale)",
+        "description": "Scale the navigation menu viewport grows from while entering and shrinks to while leaving."
       }
     },
     "toggle-group": {
@@ -15318,7 +15919,7 @@
           "site-header",
           "transition-duration"
         ],
-        "value": "200ms",
+        "value": "150ms",
         "type": "duration",
         "variable": "var(--site-header-transition-duration)",
         "description": "Duration of the header color transition."

@@ -127,7 +127,7 @@
   {
     "name": "UI - Accordion",
     "path": "packages/ui/dist/accordion.js",
-    "limit": "11 KB",
+    "limit": "11.5 KB",
     "ignore": ["react", "@radix-ui/react-accordion"]
   },
   {

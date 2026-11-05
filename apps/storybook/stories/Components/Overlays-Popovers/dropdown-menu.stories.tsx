@@ -382,6 +382,10 @@ export const WithSubMenuNavigation: Story = {
     // at test end trips aria-hidden-focus on the still-tabbable trigger.
     await userEvent.keyboard("{Escape}");
     await userEvent.keyboard("{Escape}");
+    // The menus animate out; Radix releases aria-hidden once they have gone
+    await waitFor(() =>
+      expect(document.querySelector('[role="menu"]')).toBeNull()
+    );
   },
   parameters: {
     docs: {

@@ -7,6 +7,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 export const toastVariants = cva(
   cn(
     "group pointer-events-auto relative flex items-center justify-between overflow-hidden border-(length:--space-toast-border-width) shadow-(--shadow-toast-shadow) transition-all",
+    "wd-motion-slide [--wd-motion-duration:var(--duration-toast-duration)] [--wd-motion-easing:var(--toast-easing)] [--wd-motion-y:100%]",
     "w-(--space-toast-width)",
     "space-x-(--space-toast-gap)",
     "rounded-(--space-toast-radius)",

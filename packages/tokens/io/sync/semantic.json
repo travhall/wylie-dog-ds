@@ -174,6 +174,24 @@
             "Dark": "400ms"
           }
         },
+        "transition.duration.loop": {
+          "$type": "duration",
+          "$value": "1000ms",
+          "$description": "One turn of a looping indicator such as a spinner",
+          "valuesByMode": {
+            "Light": "1000ms",
+            "Dark": "1000ms"
+          }
+        },
+        "transition.duration.loop-slow": {
+          "$type": "duration",
+          "$value": "2000ms",
+          "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse",
+          "valuesByMode": {
+            "Light": "2000ms",
+            "Dark": "2000ms"
+          }
+        },
         "z-index.dropdown": {
           "$type": "number",
           "$value": "{z-index.10}",
@@ -343,6 +361,33 @@
           "valuesByMode": {
             "Light": "cubic-bezier(0.4, 0, 0.2, 1)",
             "Dark": "cubic-bezier(0.4, 0, 0.2, 1)"
+          }
+        },
+        "transition.easing.linear": {
+          "$type": "cubicBezier",
+          "$value": "cubic-bezier(0, 0, 1, 1)",
+          "$description": "Constant speed, for loops that should not accelerate",
+          "valuesByMode": {
+            "Light": "cubic-bezier(0, 0, 1, 1)",
+            "Dark": "cubic-bezier(0, 0, 1, 1)"
+          }
+        },
+        "transition.distance.default": {
+          "$type": "dimension",
+          "$value": "{space.100}",
+          "$description": "How far a surface travels while it enters or leaves",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
+          }
+        },
+        "transition.scale.enter": {
+          "$type": "number",
+          "$value": "{scale.95}",
+          "$description": "Scale a surface starts from while it enters, and ends at while it leaves",
+          "valuesByMode": {
+            "Light": "{scale.95}",
+            "Dark": "{scale.95}"
           }
         },
         "z-index.base": {

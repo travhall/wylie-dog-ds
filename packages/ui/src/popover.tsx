@@ -9,6 +9,7 @@ const PopoverAnchor = PopoverPrimitive.Anchor;
 
 export const popoverContentVariants = cva(
   cn(
+    "wd-motion-float [--wd-motion-duration:var(--duration-popover-content-duration)] [--wd-motion-easing:var(--popover-content-easing)] [--wd-motion-distance:var(--space-popover-content-distance)] [--wd-motion-scale:var(--popover-content-scale)]",
     "z-(--popover-z-index) border-(length:--space-popover-border-width) outline-hidden shadow-(--shadow-popover-content-shadow)",
     "rounded-(--space-popover-content-radius)",
     "p-(--space-popover-content-padding)",

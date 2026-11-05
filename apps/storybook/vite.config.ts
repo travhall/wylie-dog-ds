@@ -82,15 +82,26 @@ export default defineConfig({
             // instance sets Playwright's colorScheme to drive
             // prefers-color-scheme the same way theme-sync.ts listens to it.
             instances: [
+              // Both run with reduced motion on, so every animation in the UI
+              // package finishes in a frame and the suite exercises the
+              // reduced-motion path. An overlay still unmounts a frame after it
+              // closes (Radix waits for animationend), so a story that closes
+              // one waits for it to leave before it asserts focus or runs axe.
               {
                 browser: "chromium",
                 name: "light",
+                provider: playwright({
+                  contextOptions: { reducedMotion: "reduce" },
+                }),
               },
               {
                 browser: "chromium",
                 name: "dark",
                 provider: playwright({
-                  contextOptions: { colorScheme: "dark" },
+                  contextOptions: {
+                    colorScheme: "dark",
+                    reducedMotion: "reduce",
+                  },
                 }),
               },
             ],

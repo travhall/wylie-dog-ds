@@ -79,7 +79,7 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-(length:--font-size-accordion-content-font-size) leading-(--line-height-accordion-content-line-height)"
+    className="wd-motion-expand [--wd-motion-duration:var(--duration-accordion-content-duration)] [--wd-motion-easing:var(--accordion-content-easing)] [--wd-motion-height:var(--radix-accordion-content-height)] overflow-hidden text-(length:--font-size-accordion-content-font-size) leading-(--line-height-accordion-content-line-height)"
     {...props}
   >
     <div

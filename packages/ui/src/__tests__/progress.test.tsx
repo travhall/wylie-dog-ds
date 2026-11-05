@@ -358,7 +358,7 @@ describe("Progress", () => {
       expect(innerDiv).toHaveClass(
         "duration-(--duration-progress-indicator-duration)"
       );
-      expect(innerDiv).toHaveClass("ease-in-out");
+      expect(innerDiv).toHaveClass("ease-(--progress-indicator-easing)");
     });
 
     it("should accept custom className", () => {
@@ -599,7 +599,7 @@ describe("Progress", () => {
       expect(innerDiv).toHaveClass(
         "duration-(--duration-progress-indicator-duration)"
       );
-      expect(innerDiv).toHaveClass("ease-in-out");
+      expect(innerDiv).toHaveClass("ease-(--progress-indicator-easing)");
     });
 
     it("should maintain animation timing", () => {
@@ -610,7 +610,7 @@ describe("Progress", () => {
       expect(innerDiv).toHaveClass(
         "duration-(--duration-progress-indicator-duration)"
       );
-      expect(innerDiv).toHaveClass("ease-in-out");
+      expect(innerDiv).toHaveClass("ease-(--progress-indicator-easing)");
     });
   });
 });

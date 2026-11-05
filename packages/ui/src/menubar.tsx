@@ -77,7 +77,7 @@ const MenubarSubContent = React.forwardRef<
   <MenubarPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-(--menubar-sub-content-z-index) min-w-(--space-menubar-sub-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-sub-content-shadow)",
+      "wd-motion-float [--wd-motion-duration:var(--duration-menubar-content-duration)] [--wd-motion-easing:var(--menubar-content-easing)] [--wd-motion-distance:var(--space-menubar-content-distance)] [--wd-motion-scale:var(--menubar-content-scale)] z-(--menubar-sub-content-z-index) min-w-(--space-menubar-sub-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-sub-content-shadow)",
       className
     )}
     {...props}
@@ -96,7 +96,7 @@ const MenubarContent = React.forwardRef<
       className={cn(
         "data-[side=bottom]:mt-(--space-menubar-content-side-offset) data-[side=top]:mb-(--space-menubar-content-side-offset) data-[side=left]:mr-(--space-menubar-content-side-offset) data-[side=right]:ml-(--space-menubar-content-side-offset)",
         "data-[side=bottom]:-ml-(--space-menubar-content-align-offset) data-[side=top]:-ml-(--space-menubar-content-align-offset) data-[side=left]:-mt-(--space-menubar-content-align-offset) data-[side=right]:-mt-(--space-menubar-content-align-offset)",
-        "z-(--menubar-content-z-index) min-w-(--space-menubar-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-content-shadow)",
+        "wd-motion-float [--wd-motion-duration:var(--duration-menubar-content-duration)] [--wd-motion-easing:var(--menubar-content-easing)] [--wd-motion-distance:var(--space-menubar-content-distance)] [--wd-motion-scale:var(--menubar-content-scale)] z-(--menubar-content-z-index) min-w-(--space-menubar-content-min-width) overflow-hidden rounded-(--space-menubar-trigger-radius) border-(length:--space-menubar-border-width) border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--space-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-(--shadow-menubar-content-shadow)",
         className
       )}
       {...props}

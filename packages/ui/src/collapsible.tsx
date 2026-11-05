@@ -16,6 +16,7 @@ const CollapsibleContent = React.forwardRef<
   <CollapsiblePrimitive.Content
     ref={ref}
     className={cn(
+      "wd-motion-expand [--wd-motion-duration:var(--duration-collapsible-content-duration)] [--wd-motion-easing:var(--collapsible-content-easing)] [--wd-motion-height:var(--radix-collapsible-content-height)]",
       "overflow-hidden",
       "rounded-(--space-collapsible-radius) bg-(--color-collapsible-background)"
     )}

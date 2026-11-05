@@ -77,7 +77,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading && (
           <span
-            className="inline-block w-(--space-button-spinner-size) h-(--space-button-spinner-size) border-(length:--space-button-spinner-border-width) border-current border-t-transparent rounded-(--space-button-spinner-radius) animate-spin"
+            className="inline-block w-(--space-button-spinner-size) h-(--space-button-spinner-size) border-(length:--space-button-spinner-border-width) border-current border-t-transparent rounded-(--space-button-spinner-radius) wd-motion-spin [--wd-motion-duration:var(--duration-button-spinner-duration)] [--wd-motion-easing:var(--button-spinner-easing)]"
             aria-hidden="true"
           />
         )}

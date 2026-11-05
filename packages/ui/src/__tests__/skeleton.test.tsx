@@ -128,7 +128,7 @@ describe("Skeleton", () => {
     it("should have base animation class", () => {
       render(<Skeleton />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("animate-pulse");
+      expect(skeleton).toHaveClass("wd-motion-pulse");
     });
 
     it("should have background color", () => {
@@ -225,7 +225,7 @@ describe("Skeleton", () => {
       render(<Skeleton />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).toBeInTheDocument();
-      expect(skeleton).toHaveClass("animate-pulse");
+      expect(skeleton).toHaveClass("wd-motion-pulse");
     });
   });
 });

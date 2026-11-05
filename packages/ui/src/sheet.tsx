@@ -7,20 +7,20 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const sheetContentVariants = cva(
   cn(
-    "fixed z-(--sheet-content-z-index) bg-(--color-sheet-content-background) shadow-(--shadow-sheet-content-shadow) transition ease-in-out",
+    "fixed z-(--sheet-content-z-index) bg-(--color-sheet-content-background) shadow-(--shadow-sheet-content-shadow)",
+    "wd-motion-slide [--wd-motion-duration:var(--duration-sheet-content-duration-open)] [--wd-motion-duration-closed:var(--duration-sheet-content-duration-closed)] [--wd-motion-easing:var(--sheet-content-easing)]",
     "gap-(--space-sheet-header-gap)",
-    "p-(--space-sheet-content-padding)",
-    "data-[state=closed]:duration-(--duration-sheet-content-duration-closed) data-[state=open]:duration-(--duration-sheet-content-duration-open)"
+    "p-(--space-sheet-content-padding)"
   ),
   {
     variants: {
       side: {
-        top: "inset-x-0 top-0 border-b-(length:--space-sheet-border-width)",
+        top: "inset-x-0 top-0 border-b-(length:--space-sheet-border-width) [--wd-motion-y:-100%]",
         bottom:
-          "inset-x-0 bottom-0 border-t-(length:--space-sheet-border-width)",
-        left: "inset-y-0 left-0 h-full border-r-(length:--space-sheet-border-width) w-(--space-sheet-content-width-default) max-w-full",
+          "inset-x-0 bottom-0 border-t-(length:--space-sheet-border-width) [--wd-motion-y:100%]",
+        left: "inset-y-0 left-0 h-full border-r-(length:--space-sheet-border-width) w-(--space-sheet-content-width-default) max-w-full [--wd-motion-x:-100%]",
         right:
-          "inset-y-0 right-0 h-full border-l-(length:--space-sheet-border-width) w-(--space-sheet-content-width-default) max-w-full",
+          "inset-y-0 right-0 h-full border-l-(length:--space-sheet-border-width) w-(--space-sheet-content-width-default) max-w-full [--wd-motion-x:100%]",
       },
       size: {
         sm: "",
@@ -80,6 +80,7 @@ export const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     className={cn(
+      "wd-motion-fade [--wd-motion-duration:var(--duration-sheet-content-duration-open)] [--wd-motion-duration-closed:var(--duration-sheet-content-duration-closed)] [--wd-motion-easing:var(--sheet-content-easing)]",
       "fixed inset-0 z-(--sheet-overlay-z-index) backdrop-blur-sm",
       "bg-(--color-sheet-overlay-background) opacity-(--sheet-overlay-opacity)",
       className
