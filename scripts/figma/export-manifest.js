@@ -21,35 +21,44 @@ const page = await figma.getNodeByIdAsync(PAGE_ID);
 await figma.setCurrentPageAsync(page);
 const nodes = page
   .findAllWithCriteria({ types: ["COMPONENT_SET", "COMPONENT"] })
-  .filter((n) => n.type === "COMPONENT_SET" || n.parent.type !== "COMPONENT_SET");
-const components = nodes
-  .map((n) => {
-    const defs = n.componentPropertyDefinitions;
-    const properties = {};
-    let expected = 1;
-    for (const key of Object.keys(defs).sort()) {
-      const d = defs[key];
-      const p = { type: d.type, default: d.defaultValue };
-      if (d.variantOptions) {
-        p.options = d.variantOptions.slice();
-        expected *= d.variantOptions.length;
-      }
-      properties[key.replace(/#\d+:\d+$/, "")] = p;
+  .filter(
+    (n) => n.type === "COMPONENT_SET" || n.parent.type !== "COMPONENT_SET"
+  );
+const components = [];
+for (const n of nodes) {
+  const defs = n.componentPropertyDefinitions;
+  const properties = {};
+  let expected = 1;
+  for (const key of Object.keys(defs).sort()) {
+    const d = defs[key];
+    let value = d.defaultValue;
+    // An instance swap defaults to a node id, which changes on every rebuild: record the
+    // component's name instead
+    if (d.type === "INSTANCE_SWAP") {
+      const target = await figma.getNodeByIdAsync(value);
+      value = target ? target.name : value;
     }
-    const out = {
-      name: n.name,
-      type: n.type,
-      description: n.description || "",
-      documentationLinks: n.documentationLinks.map((l) => l.uri),
-      properties,
-    };
-    if (n.type === "COMPONENT_SET") {
-      out.variantCount = n.children.length;
-      out.expectedVariantCount = expected;
+    const p = { type: d.type, default: value };
+    if (d.variantOptions) {
+      p.options = d.variantOptions.slice();
+      expected *= d.variantOptions.length;
     }
-    return out;
-  })
-  .sort((a, b) => a.name.localeCompare(b.name));
+    properties[key.replace(/#\d+:\d+$/, "")] = p;
+  }
+  const out = {
+    name: n.name,
+    type: n.type,
+    description: n.description || "",
+    documentationLinks: n.documentationLinks.map((l) => l.uri),
+    properties,
+  };
+  if (n.type === "COMPONENT_SET") {
+    out.variantCount = n.children.length;
+    out.expectedVariantCount = expected;
+  }
+  components.push(out);
+}
+components.sort((a, b) => a.name.localeCompare(b.name));
 return {
   file: figma.root.name,
   page: page.name,
