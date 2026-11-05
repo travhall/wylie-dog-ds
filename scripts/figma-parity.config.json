@@ -521,6 +521,12 @@
       "rule": "content-property-not-in-code",
       "property": "icon",
       "reason": "Icons are children of Toggle in code, not a prop; the Figma instance swap chooses the glyph from the Icon set."
+    },
+    {
+      "component": "Alert",
+      "rule": "content-property-not-in-code",
+      "property": "showIcon",
+      "reason": "In code an alert shows its icon when the `icon` prop is given; the Figma boolean shows or hides the optional icon slot."
     }
   ]
 }
