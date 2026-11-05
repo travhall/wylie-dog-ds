@@ -386,6 +386,13 @@ console.log(
       "the underline must not be applied through the text styles: it would spread to every Button label"
     );
   }
+  // an unstyled label falls back to AUTO line height (24 against 16 at md), so the button
+  // would grow on hover; the builder sets button.line-height on it directly
+  if (!/label\.lineHeight\s*=\s*\{\s*unit:\s*"PERCENT"/.test(source)) {
+    errors.push(
+      "the unstyled link hover and pressed labels must set lineHeight themselves, or the button grows on hover"
+    );
+  }
   console.log(
     `\nLink underlines: ${unstyled} hover and pressed labels carry no text style so the underline stays on them`
   );

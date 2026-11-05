@@ -146,6 +146,13 @@ for (const set of page.findAllWithCriteria({ types: ["COMPONENT_SET"] })) {
         await label.setTextStyleIdAsync("");
         const offset = named("button/link-underline-offset");
         label.textDecoration = "UNDERLINE";
+        // Unstyled, the line height falls back to AUTO and the button grows on hover; copy the
+        // default variant's (the style's 100%)
+        const restLabel = g.default
+          .findAll((n) => n.type === "TEXT" && n.visible !== false)[0];
+        if (restLabel && restLabel.lineHeight !== figma.mixed) {
+          label.lineHeight = restLabel.lineHeight;
+        }
         if (offset && typeof valueOf(offset) === "number") {
           label.textDecorationOffset = {
             unit: "PIXELS",
