@@ -1,6 +1,6 @@
 # Wylie Dog Design System
 
-A monorepo design system with 44 components, OKLCH-based design tokens, and full Storybook documentation.
+A monorepo design system with 45 components, OKLCH-based design tokens, and full Storybook documentation.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue?style=flat-square)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.3-blue?style=flat-square)](https://tailwindcss.com/)
@@ -14,7 +14,7 @@ Wylie Dog is a component library and design token system built with React 19, Ta
 
 The repo includes:
 
-- **`@wyliedog/ui`** — 44 React components with TypeScript, tree-shakeable individual exports
+- **`@wyliedog/ui`** — 45 React components with TypeScript, tree-shakeable individual exports
 - **`@wyliedog/tokens`** — OKLCH design tokens built with Style Dictionary, output as CSS variables and TypeScript
 - **Storybook** — interactive documentation for all components and foundations, deployed to Netlify
 - **Showcase** — Next.js app demonstrating real-world usage patterns
@@ -94,7 +94,7 @@ import { Button, Card, Badge } from "@wyliedog/ui";
 
 ## Components
 
-44 components across six categories. Each has a named export, TypeScript types, and a Storybook story.
+45 components across six categories. Each has a named export, TypeScript types, and a Storybook story.
 
 ### Inputs & Controls
 
@@ -110,7 +110,7 @@ import { Button, Card, Badge } from "@wyliedog/ui";
 
 ### Content Display
 
-`Accordion` `Avatar` `Badge` `Calendar` `Carousel` `Table`
+`Accordion` `Avatar` `Badge` `Calendar` `Carousel` `Icon` `Table`
 
 ### Overlays & Popovers
 
@@ -197,7 +197,7 @@ Storybook is deployed to Netlify from `apps/storybook/storybook-static`.
 Stories are organized into:
 
 - **Foundations** — Design Tokens, Design Principles, Accessibility Guidelines
-- **Components** — all 44 components, grouped by category
+- **Components** — all 45 components, grouped by category
 - **Patterns** — Form Patterns, Navigation Patterns, Layout Patterns, Data Patterns, Feedback Patterns, Authentication Patterns, Page Compositions, Responsive, Overview
 - **Showcase** — real-world usage examples
 

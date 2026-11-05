@@ -1,5 +1,7 @@
 "use client";
 
+import { XIcon } from "lucide-react";
+import { Icon } from "./icon";
 import React, { useRef } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -101,19 +103,10 @@ export const DialogContent = React.forwardRef<
           ref={closeButtonRef}
           className={`absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--dialog-close-button-opacity) transition-opacity hover:opacity-(--dialog-close-button-opacity-hover) ${focusRingClasses} disabled:pointer-events-none`}
         >
-          <svg
+          <Icon
+            icon={XIcon}
             className="h-(--space-dialog-close-button-icon-size) w-(--space-dialog-close-button-icon-size)"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="stroke-(length:--space-icon-stroke-width)"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>

@@ -1,5 +1,6 @@
 import React from "react";
 import { GripVerticalIcon } from "lucide-react";
+import { Icon } from "./icon";
 import {
   Panel,
   PanelGroup,
@@ -60,7 +61,10 @@ const ResizableHandle = ({
   >
     {withHandle && (
       <div className="z-(--resizable-handle-z-index) flex h-(--space-resizable-handle-height) w-(--space-resizable-handle-width) items-center justify-center rounded-(--space-resizable-handle-radius) border-(length:--space-resizable-border-width) border-(--color-resizable-handle-border) bg-(--color-resizable-handle-background)">
-        <GripVerticalIcon className="h-(--space-resizable-grip-icon-size) w-(--space-resizable-grip-icon-size)" />
+        <Icon
+          icon={GripVerticalIcon}
+          className="h-(--space-resizable-grip-icon-size) w-(--space-resizable-grip-icon-size)"
+        />
       </div>
     )}
   </PanelResizeHandle>

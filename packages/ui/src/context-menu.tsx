@@ -1,6 +1,7 @@
 import React from "react";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+import { Icon } from "./icon";
 import { cn, focusRingInsetClasses } from "./lib/utils";
 
 const ContextMenu = ContextMenuPrimitive.Root;
@@ -27,7 +28,10 @@ const ContextMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRightIcon className="ml-auto h-(--space-context-menu-item-sub-trigger-icon-size) w-(--space-context-menu-item-sub-trigger-icon-size)" />
+    <Icon
+      icon={ChevronRightIcon}
+      className="ml-auto h-(--space-context-menu-item-sub-trigger-icon-size) w-(--space-context-menu-item-sub-trigger-icon-size)"
+    />
   </ContextMenuPrimitive.SubTrigger>
 ));
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName;
@@ -99,7 +103,10 @@ const ContextMenuCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-(--space-context-menu-item-indicator-left) flex h-(--space-context-menu-item-indicator-size) w-(--space-context-menu-item-indicator-size) items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <CheckIcon className="h-(--space-context-menu-item-icon-size) w-(--space-context-menu-item-icon-size)" />
+        <Icon
+          icon={CheckIcon}
+          className="h-(--space-context-menu-item-icon-size) w-(--space-context-menu-item-icon-size)"
+        />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -123,7 +130,10 @@ const ContextMenuRadioItem = React.forwardRef<
   >
     <span className="absolute left-(--space-context-menu-item-indicator-left) flex h-(--space-context-menu-item-indicator-size) w-(--space-context-menu-item-indicator-size) items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <CircleIcon className="h-(--space-context-menu-item-icon-size) w-(--space-context-menu-item-icon-size) fill-current" />
+        <Icon
+          icon={CircleIcon}
+          className="h-(--space-context-menu-item-icon-size) w-(--space-context-menu-item-icon-size) fill-current"
+        />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}

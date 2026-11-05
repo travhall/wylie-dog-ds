@@ -6,7 +6,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const badgeVariants = cva(
   cn(
-    "inline-flex items-center border-(length:--space-badge-border-width) font-(family-name:--typography-font-family-mono) font-(--font-weight-badge-font-weight) leading-(--line-height-badge-line-height) transition-colors",
+    "inline-flex items-center gap-(--space-badge-icon-gap) border-(length:--space-badge-border-width) font-(family-name:--typography-font-family-mono) font-(--font-weight-badge-font-weight) leading-(--line-height-badge-line-height) transition-colors",
     "rounded-(--space-badge-radius)"
   ),
   {

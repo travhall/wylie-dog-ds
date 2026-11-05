@@ -924,6 +924,7 @@
   --color-badge-destructive-border-disabled: oklch(0.333 0.015 71.46);
   --color-badge-outline-text-disabled: oklch(0.712 0.037 72.66);
   --color-badge-outline-border-disabled: oklch(0.333 0.015 71.46);
+  --space-badge-icon-gap: 0.25rem;
   --color-card-border-disabled: oklch(0.333 0.015 71.46);
   --space-card-border-width: 1px;
   --color-textarea-background-disabled: oklch(0.269 0.016 50.53);
@@ -971,6 +972,7 @@
   --color-form-label-text-disabled: oklch(0.712 0.037 72.66);
   --color-toggle-pressed-disabled: oklch(0.269 0.016 50.53);
   --space-toggle-border-width: 1px;
+  --space-toggle-icon-gap: 0.5rem;
   --color-menubar-trigger-highlighted: oklch(0.269 0.016 50.53);
   --color-menubar-trigger-text-highlighted: oklch(0.977 0.003 65.52);
   --color-menubar-item-highlighted: oklch(0.269 0.016 50.53);

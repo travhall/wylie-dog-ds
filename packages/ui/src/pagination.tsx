@@ -4,6 +4,7 @@ import {
   ChevronRightIcon,
   MoreHorizontalIcon,
 } from "lucide-react";
+import { Icon } from "./icon";
 import { cn, focusRingClasses } from "./lib/utils";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
@@ -81,7 +82,10 @@ const PaginationPrevious = ({
     )}
     {...props}
   >
-    <ChevronLeftIcon className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)" />
+    <Icon
+      icon={ChevronLeftIcon}
+      className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)"
+    />
     <span>Previous</span>
   </PaginationLink>
 );
@@ -100,7 +104,10 @@ const PaginationNext = ({
     {...props}
   >
     <span>Next</span>
-    <ChevronRightIcon className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)" />
+    <Icon
+      icon={ChevronRightIcon}
+      className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)"
+    />
   </PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
@@ -117,7 +124,10 @@ const PaginationEllipsis = ({
     )}
     {...props}
   >
-    <MoreHorizontalIcon className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)" />
+    <Icon
+      icon={MoreHorizontalIcon}
+      className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)"
+    />
     <span className="sr-only">More pages</span>
   </span>
 );

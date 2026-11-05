@@ -28,6 +28,11 @@
       "import": "./dist/badge.js",
       "require": "./dist/badge.cjs"
     },
+    "./icon": {
+      "types": "./dist/icon.d.ts",
+      "import": "./dist/icon.js",
+      "require": "./dist/icon.cjs"
+    },
     "./card": {
       "types": "./dist/card.d.ts",
       "import": "./dist/card.js",

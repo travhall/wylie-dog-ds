@@ -4347,6 +4347,17 @@
         "type": "color",
         "variable": "var(--color-badge-outline-border-disabled)",
         "description": "Border color of the outline badge when disabled, in the muted border tone."
+      },
+      "badge-icon-gap": {
+        "name": "badgeIconGap",
+        "path": [
+          "badge",
+          "icon-gap"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--badge-icon-gap)",
+        "description": "Gap between an icon and the label of the badge."
       }
     },
     "button": {
@@ -11380,6 +11391,17 @@
         "type": "dimension",
         "variable": "var(--toggle-border-width)",
         "description": "Border width of the toggle."
+      },
+      "toggle-icon-gap": {
+        "name": "toggleIconGap",
+        "path": [
+          "toggle",
+          "icon-gap"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--toggle-icon-gap)",
+        "description": "Gap between an icon and the label of the toggle."
       }
     },
     "tooltip": {

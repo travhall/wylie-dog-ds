@@ -23,6 +23,7 @@ export * from "./dropdown-menu";
 export * from "./feature-grid";
 export * from "./form";
 export * from "./hover-card";
+export * from "./icon";
 export * from "./input";
 export * from "./label";
 export * from "./menubar";

@@ -1,5 +1,6 @@
 import React from "react";
 import { XIcon } from "lucide-react";
+import { Icon } from "./icon";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn, focusRingClasses } from "./lib/utils";
 
@@ -112,7 +113,10 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
       aria-label={srText}
       {...props}
     >
-      <XIcon className="h-(--space-toast-close-button-icon-size) w-(--space-toast-close-button-icon-size)" />
+      <Icon
+        icon={XIcon}
+        className="h-(--space-toast-close-button-icon-size) w-(--space-toast-close-button-icon-size)"
+      />
       <span className="sr-only">{srText}</span>
     </button>
   )

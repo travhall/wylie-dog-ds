@@ -4059,6 +4059,11 @@
     "$value": "{color.border.muted}",
     "$description": "Border color of the outline badge when disabled, in the muted border tone."
   },
+  "badge.icon-gap": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "Gap between an icon and the label of the badge."
+  },
   "card.border-disabled": {
     "$type": "color",
     "$value": "{color.border.muted}",
@@ -4293,6 +4298,11 @@
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the toggle."
+  },
+  "toggle.icon-gap": {
+    "$type": "dimension",
+    "$value": "{space.100}",
+    "$description": "Gap between an icon and the label of the toggle."
   },
   "menubar.trigger-highlighted": {
     "$type": "color",

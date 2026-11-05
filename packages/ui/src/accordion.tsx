@@ -1,6 +1,7 @@
 import React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "lucide-react";
+import { Icon } from "./icon";
 import { cn, focusRingClasses } from "./lib/utils";
 
 const Accordion = React.forwardRef<
@@ -59,7 +60,10 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronDownIcon className="h-(--space-accordion-trigger-icon-size) w-(--space-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-(--duration-accordion-trigger-icon-duration) group-hover:text-(--color-accordion-icon-hover) group-data-[state=open]:text-(--color-accordion-icon-open) group-disabled:text-(--color-accordion-icon-disabled)" />
+      <Icon
+        icon={ChevronDownIcon}
+        className="h-(--space-accordion-trigger-icon-size) w-(--space-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-(--duration-accordion-trigger-icon-duration) group-hover:text-(--color-accordion-icon-hover) group-data-[state=open]:text-(--color-accordion-icon-open) group-disabled:text-(--color-accordion-icon-disabled)"
+      />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));

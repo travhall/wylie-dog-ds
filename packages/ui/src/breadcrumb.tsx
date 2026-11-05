@@ -1,5 +1,6 @@
 import React from "react";
 import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
+import { Icon } from "./icon";
 import { cn, focusRingClasses } from "./lib/utils";
 
 export interface BreadcrumbProps extends React.ComponentPropsWithoutRef<"nav"> {
@@ -102,7 +103,7 @@ const BreadcrumbSeparator = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? <ChevronRightIcon />}
+    {children ?? <Icon icon={ChevronRightIcon} />}
   </li>
 ));
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
@@ -123,7 +124,10 @@ const BreadcrumbEllipsis = React.forwardRef<
     )}
     {...props}
   >
-    <MoreHorizontalIcon className="h-(--space-breadcrumb-separator-size) w-(--space-breadcrumb-separator-size)" />
+    <Icon
+      icon={MoreHorizontalIcon}
+      className="h-(--space-breadcrumb-separator-size) w-(--space-breadcrumb-separator-size)"
+    />
     <span className="sr-only">More</span>
   </span>
 ));
