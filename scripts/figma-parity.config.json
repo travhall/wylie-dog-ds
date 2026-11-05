@@ -485,6 +485,42 @@
       "rule": "content-property-not-in-code",
       "property": "placeholder",
       "reason": "`placeholder` is an inherited HTML attribute of Textarea in code, which the docgen does not list; the Figma TEXT property edits it."
+    },
+    {
+      "component": "Button",
+      "rule": "content-property-not-in-code",
+      "property": "showIcon",
+      "reason": "Icons are children of Button in code, not a prop; the Figma boolean shows or hides the optional icon slot."
+    },
+    {
+      "component": "Button",
+      "rule": "content-property-not-in-code",
+      "property": "icon",
+      "reason": "Icons are children of Button in code, not a prop; the Figma instance swap chooses the glyph from the Icon set."
+    },
+    {
+      "component": "Badge",
+      "rule": "content-property-not-in-code",
+      "property": "showIcon",
+      "reason": "Icons are children of Badge in code, not a prop; the Figma boolean shows or hides the optional icon slot."
+    },
+    {
+      "component": "Badge",
+      "rule": "content-property-not-in-code",
+      "property": "icon",
+      "reason": "Icons are children of Badge in code, not a prop; the Figma instance swap chooses the glyph from the Icon set."
+    },
+    {
+      "component": "Toggle",
+      "rule": "content-property-not-in-code",
+      "property": "showIcon",
+      "reason": "Icons are children of Toggle in code, not a prop; the Figma boolean shows or hides the optional icon slot."
+    },
+    {
+      "component": "Toggle",
+      "rule": "content-property-not-in-code",
+      "property": "icon",
+      "reason": "Icons are children of Toggle in code, not a prop; the Figma instance swap chooses the glyph from the Icon set."
     }
   ]
 }

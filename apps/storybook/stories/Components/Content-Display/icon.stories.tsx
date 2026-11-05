@@ -18,7 +18,7 @@ const meta: Meta<typeof Icon> = {
     docs: {
       description: {
         component:
-          "Renders any icon component at a token size with the token stroke weight. The glyph comes from the icon library you already use (lucide-react here); the system owns size and stroke, so changing `icon.size.*` or `icon.stroke-width` changes every icon at once. Without `size` the icon keeps the size its caller gives it through `className`, which is how the system's own components size theirs.",
+          "Renders any icon component at a token size with the token stroke weight. The glyph comes from the icon library you already use (lucide-react here); the system owns size and stroke, so changing the icon size or stroke tokens changes every icon at once. Without `size` the icon keeps the size its caller gives it through `className`, which is how the system's own components size theirs.",
       },
     },
   },
