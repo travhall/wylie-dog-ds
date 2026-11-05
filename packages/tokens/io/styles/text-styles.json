@@ -71,21 +71,21 @@
     },
     {
       "name": "badge/lg",
-      "fontFamily": "typography.font-family.sans",
+      "fontFamily": "badge.font-family",
       "fontSize": "badge.font-size.lg",
       "fontWeight": "badge.font-weight",
       "lineHeight": "badge.line-height"
     },
     {
       "name": "badge/md",
-      "fontFamily": "typography.font-family.sans",
+      "fontFamily": "badge.font-family",
       "fontSize": "badge.font-size.md",
       "fontWeight": "badge.font-weight",
       "lineHeight": "badge.line-height"
     },
     {
       "name": "badge/sm",
-      "fontFamily": "typography.font-family.sans",
+      "fontFamily": "badge.font-family",
       "fontSize": "badge.font-size.sm",
       "fontWeight": "badge.font-weight",
       "lineHeight": "badge.line-height"
@@ -162,6 +162,13 @@
       "fontFamily": "typography.font-family.sans",
       "fontSize": "command.item-font-size",
       "lineHeight": "command.item-line-height"
+    },
+    {
+      "name": "command/shortcut",
+      "fontFamily": "typography.font-family.sans",
+      "fontSize": "command.shortcut-font-size",
+      "lineHeight": "command.shortcut-line-height",
+      "letterSpacing": "command.shortcut-letter-spacing"
     },
     {
       "name": "context-menu/item",

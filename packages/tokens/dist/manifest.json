@@ -3859,6 +3859,17 @@
         "variable": "var(--badge-font-weight)",
         "description": "Font weight of badge labels."
       },
+      "badge-font-family": {
+        "name": "badgeFontFamily",
+        "path": [
+          "badge",
+          "font-family"
+        ],
+        "value": "'JetBrains Mono'",
+        "type": "fontFamily",
+        "variable": "var(--badge-font-family)",
+        "description": "Font family of badge labels."
+      },
       "badge-line-height": {
         "name": "badgeLineHeight",
         "path": [
@@ -6960,6 +6971,28 @@
         "type": "dimension",
         "variable": "var(--command-shortcut-letter-spacing)",
         "description": "Letter spacing of the command menu shortcut."
+      },
+      "command-shortcut-font-size": {
+        "name": "commandShortcutFontSize",
+        "path": [
+          "command",
+          "shortcut-font-size"
+        ],
+        "value": "0.75rem",
+        "type": "number",
+        "variable": "var(--command-shortcut-font-size)",
+        "description": "Font size of the command menu shortcut."
+      },
+      "command-shortcut-line-height": {
+        "name": "commandShortcutLineHeight",
+        "path": [
+          "command",
+          "shortcut-line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--command-shortcut-line-height)",
+        "description": "Line height of the command menu shortcut."
       },
       "command-item-text-disabled": {
         "name": "commandItemTextDisabled",

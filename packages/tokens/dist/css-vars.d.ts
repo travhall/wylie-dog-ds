@@ -7,6 +7,7 @@ export type CssVarName =
   | "--alert-dialog-content-z-index"
   | "--alert-dialog-overlay-opacity"
   | "--alert-dialog-overlay-z-index"
+  | "--badge-font-family"
   | "--border-radius-2xl"
   | "--border-radius-full"
   | "--border-radius-lg"
@@ -678,6 +679,7 @@ export type CssVarName =
   | "--font-size-card-header-title-font-size"
   | "--font-size-command-group-heading-font-size"
   | "--font-size-command-item-font-size"
+  | "--font-size-command-shortcut-font-size"
   | "--font-size-context-menu-item-font-size"
   | "--font-size-context-menu-shortcut-font-size"
   | "--font-size-dialog-description-font-size"
@@ -809,6 +811,7 @@ export type CssVarName =
   | "--line-height-card-title-line-height"
   | "--line-height-command-group-heading-line-height"
   | "--line-height-command-item-line-height"
+  | "--line-height-command-shortcut-line-height"
   | "--line-height-context-menu-item-line-height"
   | "--line-height-context-menu-shortcut-line-height"
   | "--line-height-dialog-description-line-height"
@@ -1505,6 +1508,7 @@ export declare const cssVars: Readonly<{
   "alertDialogContentZIndex": "--alert-dialog-content-z-index";
   "alertDialogOverlayOpacity": "--alert-dialog-overlay-opacity";
   "alertDialogOverlayZIndex": "--alert-dialog-overlay-z-index";
+  "badgeFontFamily": "--badge-font-family";
   "borderRadius2xl": "--border-radius-2xl";
   "borderRadiusFull": "--border-radius-full";
   "borderRadiusLg": "--border-radius-lg";
@@ -2176,6 +2180,7 @@ export declare const cssVars: Readonly<{
   "fontSizeCardHeaderTitleFontSize": "--font-size-card-header-title-font-size";
   "fontSizeCommandGroupHeadingFontSize": "--font-size-command-group-heading-font-size";
   "fontSizeCommandItemFontSize": "--font-size-command-item-font-size";
+  "fontSizeCommandShortcutFontSize": "--font-size-command-shortcut-font-size";
   "fontSizeContextMenuItemFontSize": "--font-size-context-menu-item-font-size";
   "fontSizeContextMenuShortcutFontSize": "--font-size-context-menu-shortcut-font-size";
   "fontSizeDialogDescriptionFontSize": "--font-size-dialog-description-font-size";
@@ -2307,6 +2312,7 @@ export declare const cssVars: Readonly<{
   "lineHeightCardTitleLineHeight": "--line-height-card-title-line-height";
   "lineHeightCommandGroupHeadingLineHeight": "--line-height-command-group-heading-line-height";
   "lineHeightCommandItemLineHeight": "--line-height-command-item-line-height";
+  "lineHeightCommandShortcutLineHeight": "--line-height-command-shortcut-line-height";
   "lineHeightContextMenuItemLineHeight": "--line-height-context-menu-item-line-height";
   "lineHeightContextMenuShortcutLineHeight": "--line-height-context-menu-shortcut-line-height";
   "lineHeightDialogDescriptionLineHeight": "--line-height-dialog-description-line-height";

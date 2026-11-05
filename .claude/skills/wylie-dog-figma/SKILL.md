@@ -83,6 +83,11 @@ It is a one-time scaffold run inside Figma's plugin sandbox, not part of Token B
   `combineAsVariants` adds a 5px corner radius, set it to 0; call `resize()` before adding children; bind a
   variable before any hardcoded fallback (a later hardcoded value overwrites the binding); apply text styles
   with `setTextStyleIdAsync` (the sync setter fails under `documentAccess: "dynamic-page"`).
+- Text properties come from the layer's text style, not from constants: the builder binds each layer's font
+  family to the variable its style binds (sans, or a component token such as `badge/font-family`). Any
+  typography the UI sets beyond size and weight (a family, tracking, a shadow, an opacity) needs its own
+  component token, or Figma cannot see it. A font family used in `packages/ui/src` that is not a component
+  token fails `check:tokens` (Plan 217, after the Badge mono gap).
 
 ## Token Bridge and code syntax
 

@@ -19,8 +19,8 @@
 // Its weight, line height and letter spacing (or tracking) tokens are the ones
 // with the same prefix (a size-specific token wins over an unsized one). Only
 // the font size is required: a part without a weight gets Regular, without a
-// line height AUTO, without a tracking 0%. The font family is always the
-// primitive sans family (component tokens carry none).
+// line height AUTO, without a tracking 0%. The font family is the primitive sans
+// family unless the part has a font-family token of its own (badge.font-family, Plan 217).
 //
 // Style names are <prefix as a path>[/<size>] ("button/sm", "alert/title"), so
 // the names a later builder run uses can match them where the structure agrees.
@@ -37,7 +37,7 @@ export const FONT_FAMILY_TOKEN = "typography.font-family.sans";
 
 const SIZES = "sm|md|lg|xl";
 const FONT_SIZE = new RegExp(`^(.*?)[.-]font-size(?:[.-](${SIZES}))?$`);
-const PARTNER = /[.-](font-weight|line-height|letter-spacing|tracking)$/;
+const PARTNER = /[.-](font-family|font-weight|line-height|letter-spacing|tracking)$/;
 
 const DESCRIPTION =
   "Figma text styles Token Bridge creates and keeps in line with the tokens. " +
@@ -109,9 +109,10 @@ export function deriveTextStyles(tokens, pairs = []) {
       return undefined;
     };
 
+    const family = find("font-family");
     const style = {
       name: prefix.replaceAll(".", "/") + (size ? `/${size}` : ""),
-      fontFamily: FONT_FAMILY_TOKEN,
+      fontFamily: family ?? FONT_FAMILY_TOKEN,
       fontSize: name,
     };
     const weight = find("font-weight");
@@ -120,7 +121,7 @@ export function deriveTextStyles(tokens, pairs = []) {
     if (weight) style.fontWeight = weight;
     if (lineHeight) style.lineHeight = lineHeight;
     if (letterSpacing) style.letterSpacing = letterSpacing;
-    for (const token of [name, weight, lineHeight, letterSpacing]) {
+    for (const token of [name, family, weight, lineHeight, letterSpacing]) {
       if (token) used.add(token);
     }
     styles.push(style);

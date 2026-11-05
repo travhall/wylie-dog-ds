@@ -425,6 +425,7 @@
   --space-badge-padding-y-md: 0.25rem;
   --space-badge-padding-y-lg: 0.5rem;
   --font-weight-badge-font-weight: 600;
+  --badge-font-family: var(--typography-font-family-mono);
   --line-height-badge-line-height: 1;
   --space-badge-radius: 9999px;
   --space-badge-border-width: 1px;
@@ -1148,6 +1149,8 @@
   --space-context-menu-sub-content-min-width: 7rem;
   --font-weight-command-group-heading-font-weight: 500;
   --space-command-shortcut-letter-spacing: 0.1em;
+  --font-size-command-shortcut-font-size: 0.75rem;
+  --line-height-command-shortcut-line-height: 1.5;
   --space-toast-content-gap: 0.25rem;
   --space-resizable-handle-height: 1rem;
   --space-resizable-handle-width: 0.75rem;

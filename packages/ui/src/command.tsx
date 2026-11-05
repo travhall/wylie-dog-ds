@@ -237,7 +237,7 @@ const CommandShortcut = React.forwardRef<HTMLSpanElement, CommandShortcutProps>(
       <span
         ref={ref}
         className={cn(
-          "ml-auto text-(length:--font-size-command-group-heading-font-size) leading-(--line-height-command-group-heading-line-height) tracking-(--space-command-shortcut-letter-spacing) text-(--color-command-shortcut)",
+          "ml-auto text-(length:--font-size-command-shortcut-font-size) leading-(--line-height-command-shortcut-line-height) tracking-(--space-command-shortcut-letter-spacing) text-(--color-command-shortcut)",
           className
         )}
         aria-label="Keyboard shortcut"

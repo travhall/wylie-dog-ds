@@ -210,7 +210,7 @@ test("a stale pair fails loudly: missing style, missing token or a kind already 
   );
 });
 
-test("the real pairs apply to the real tokens, and the remaining orphans are the known 13", () => {
+test("the real pairs apply to the real tokens, and the remaining orphans are the known 12", () => {
   const { styles, orphans } = deriveTextStyles(readSyncTokens(root), PAIRS);
   const card = styles.find((s) => s.name === "card/header/title");
   assert.equal(card.fontWeight, "card.title.font-weight");
@@ -222,7 +222,6 @@ test("the real pairs apply to the real tokens, and the remaining orphans are the
     "calendar.day-header-font-weight",
     "calendar.nav-button.font-weight",
     "command.group.heading-font-weight",
-    "command.shortcut-letter-spacing",
     "context-menu.label-font-weight",
     "dropdown-menu.label-font-weight",
     "form.label-font-weight",
