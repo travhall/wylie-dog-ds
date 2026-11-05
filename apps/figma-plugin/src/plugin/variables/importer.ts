@@ -20,6 +20,7 @@ import {
   validateTokenValue,
 } from "./validation";
 import { inferScopes } from "./scopes";
+import { durationToSeconds, parseCubicBezier } from "./motion-values";
 import { applyPublishing } from "./publishing";
 import { FormatAdapterManager } from "./format-adapter-manager";
 import type { AdapterProcessResult } from "./format-adapter";
@@ -70,6 +71,9 @@ const W3C_TO_FIGMA_TYPE_MAP: Record<string, string> = {
   dimension: "FLOAT",
   shadow: "STRING",
   boolean: "BOOLEAN",
+  // Native motion variables (Plan 137): seconds and a bezier object
+  duration: "TIMING",
+  cubicBezier: "EASING",
   // Add fallbacks for common token types
   number: "FLOAT",
   string: "STRING",
@@ -198,6 +202,17 @@ function convertTokenValueToFigma(
       return parseNumericValue(value);
     }
 
+    case "TIMING": {
+      // A duration token is "150ms"; a TIMING variable is seconds
+      return (durationToSeconds(value) ?? 0) as unknown as VariableValue;
+    }
+
+    case "EASING": {
+      return (parseCubicBezier(value) ?? {
+        type: "LINEAR",
+      }) as unknown as VariableValue;
+    }
+
     case "STRING":
     case "BOOLEAN":
     default:
@@ -278,6 +293,14 @@ async function createVariableWithReferences(
     // large imports (~1,200 vars) take minutes.
     let variable = existingByName.get(figmaName);
 
+    // A variable cannot change type. A duration or easing that an earlier import
+    // made as a STRING is replaced by a TIMING or EASING one; nothing binds them.
+    if (variable && variable.resolvedType !== figmaType) {
+      variable.remove();
+      existingByName.delete(figmaName);
+      variable = undefined;
+    }
+
     if (!variable) {
       variable = figma.variables.createVariable(
         figmaName,
@@ -289,7 +312,10 @@ async function createVariableWithReferences(
 
     // Always sync scopes — this corrects variables that were created before
     // a scope fix landed and ensures re-imports stay accurate.
-    variable.scopes = scopes as VariableScope[];
+    // TIMING and EASING variables have no scopes ("Cannot set scopes on this variable type")
+    if (figmaType !== "TIMING" && figmaType !== "EASING") {
+      variable.scopes = scopes as VariableScope[];
+    }
 
     // Update description for both new and existing variables
     if (token.$description) {

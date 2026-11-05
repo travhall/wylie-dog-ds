@@ -8,8 +8,10 @@ import type { ExportData } from "../processor";
 type FakeVariable = {
   id: string;
   name: string;
+  resolvedType: string;
   scopes: string[];
   description: string;
+  remove: ReturnType<typeof vi.fn>;
   setValueForMode: ReturnType<typeof vi.fn>;
   setPluginData: ReturnType<typeof vi.fn>;
 };
@@ -35,13 +37,17 @@ describe("importer applies scopes", () => {
         createVariableCollection: () => collection,
         getVariableByIdAsync: async (id: string) =>
           variables.find((v) => v.id === id) ?? null,
-        createVariable: (name: string) => {
+        createVariable: (name: string, _collection: unknown, type: string) => {
           const v: FakeVariable = {
             id: `v${variables.length}`,
             name,
+            resolvedType: type,
             // Figma creates variables unrestricted
             scopes: ["ALL_SCOPES"],
             description: "",
+            remove: vi.fn(() => {
+              variables.splice(variables.indexOf(v), 1);
+            }),
             setValueForMode: vi.fn(),
             setPluginData: vi.fn(),
           };
@@ -140,5 +146,58 @@ describe("importer applies scopes", () => {
 
     expect(variables).toHaveLength(1);
     expect(variables[0].scopes).toEqual([]);
+  });
+
+  describe("native motion variables (Plan 137)", () => {
+    const motion = (tokens: Record<string, unknown>) =>
+      [
+        {
+          primitive: {
+            modes: [{ modeId: "m1", name: "Value" }],
+            variables: tokens,
+          },
+        },
+      ] as unknown as ExportData[];
+
+    it("creates a duration as TIMING in seconds and an easing as EASING, without setting scopes", async () => {
+      await importMultipleCollections(
+        motion({
+          "transition.duration.fast": { $type: "duration", $value: "150ms" },
+          "transition.easing.out": {
+            $type: "cubicBezier",
+            $value: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        })
+      );
+      const byName = Object.fromEntries(variables.map((v) => [v.name, v]));
+      const fast = byName["transition/duration/fast"];
+      const out = byName["transition/easing/out"];
+      expect(fast.resolvedType).toBe("TIMING");
+      expect(fast.setValueForMode).toHaveBeenCalledWith("m1", 0.15);
+      expect(out.resolvedType).toBe("EASING");
+      expect(out.setValueForMode).toHaveBeenCalledWith("m1", {
+        type: "CUSTOM_CUBIC_BEZIER",
+        easingFunctionCubicBezier: { x1: 0, y1: 0, x2: 0.2, y2: 1 },
+      });
+      // Figma refuses scopes on these types, so the default is left alone
+      expect(fast.scopes).toEqual(["ALL_SCOPES"]);
+      expect(out.scopes).toEqual(["ALL_SCOPES"]);
+    });
+
+    it("replaces a duration an earlier import left as a STRING", async () => {
+      await importMultipleCollections(
+        motion({ "transition.duration.fast": { $type: "string", $value: "x" } })
+      );
+      expect(variables[0].resolvedType).toBe("STRING");
+      const old = variables[0];
+      await importMultipleCollections(
+        motion({
+          "transition.duration.fast": { $type: "duration", $value: "150ms" },
+        })
+      );
+      expect(old.remove).toHaveBeenCalled();
+      expect(variables).toHaveLength(1);
+      expect(variables[0].resolvedType).toBe("TIMING");
+    });
   });
 });

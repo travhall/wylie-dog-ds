@@ -5,6 +5,8 @@
  * Handles multiple collections, multiple modes, and all variable types
  */
 
+import { formatCubicBezier, secondsToDuration } from "./motion-values";
+
 export interface VariableDetectionResult {
   hasVariables: boolean;
   totalVariables: number;
@@ -17,7 +19,14 @@ export interface VariableDetectionResult {
 }
 
 interface DTCGToken {
-  $type: "color" | "dimension" | "string" | "number" | "boolean";
+  $type:
+    | "color"
+    | "dimension"
+    | "string"
+    | "number"
+    | "boolean"
+    | "duration"
+    | "cubicBezier";
   $value: string | number | boolean;
   $description?: string;
 }
@@ -248,6 +257,26 @@ export class FigmaVariableImporter {
           $description: variable.description || undefined,
         };
 
+      case "TIMING":
+        return {
+          $type: "duration",
+          $value: secondsToDuration(value as number),
+          $description: variable.description || undefined,
+        };
+
+      case "EASING": {
+        const curve = formatCubicBezier(
+          value as unknown as Parameters<typeof formatCubicBezier>[0]
+        );
+        // A spring has no cubic-bezier form, so it is not imported as a token
+        if (!curve) return null;
+        return {
+          $type: "cubicBezier",
+          $value: curve,
+          $description: variable.description || undefined,
+        };
+      }
+
       default:
         console.warn(`Unknown variable type: ${variable.resolvedType}`);
         return null;
@@ -259,10 +288,14 @@ export class FigmaVariableImporter {
    */
   private static mapVariableType(
     type: VariableResolvedDataType
-  ): "color" | "dimension" | "string" | "number" | "boolean" {
+  ): DTCGToken["$type"] {
     switch (type) {
       case "COLOR":
         return "color";
+      case "TIMING":
+        return "duration";
+      case "EASING":
+        return "cubicBezier";
       case "FLOAT":
         return "number";
       case "STRING":

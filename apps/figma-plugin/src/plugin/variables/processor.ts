@@ -1,5 +1,11 @@
 // Token processing utilities for Figma Variables to W3C DTCG format conversion
 
+import {
+  formatCubicBezier,
+  isSpringEasing,
+  secondsToDuration,
+} from "./motion-values";
+
 export interface ProcessedToken {
   $type: string;
   $value: unknown;
@@ -39,6 +45,14 @@ interface FigmaObjectValue {
   a?: number;
   color?: unknown;
   opacity?: unknown;
+  // An EASING variable's value (Plan 137)
+  easingFunctionCubicBezier?: {
+    x1: number;
+    y1: number;
+    x2: number;
+    y2: number;
+  };
+  easingFunctionSpring?: unknown;
 }
 type FigmaVariableValue = string | number | boolean | FigmaObjectValue;
 
@@ -92,6 +106,9 @@ const SUPPORTED_RESOLVED_TYPES = new Set([
   "FLOAT",
   "STRING",
   "BOOLEAN",
+  // Native motion variables (Plan 137): a duration and a cubic-bezier easing
+  "TIMING",
+  "EASING",
 ]);
 
 function isAliasValue(
@@ -117,10 +134,19 @@ function isComposedColor(value: FigmaVariableValue | undefined): boolean {
 
 function unsupportedReason(variable: FigmaVariableLike): string | null {
   if (!SUPPORTED_RESOLVED_TYPES.has(variable.resolvedType)) {
-    return variable.resolvedType === "EASING" ||
-      variable.resolvedType === "TIMING"
-      ? `native ${variable.resolvedType} variables are not exported yet`
-      : `variables of type ${variable.resolvedType} are not exported`;
+    return `variables of type ${variable.resolvedType} are not exported`;
+  }
+  if (
+    variable.resolvedType === "EASING" &&
+    Object.values(variable.valuesByMode ?? {}).some(
+      (value) =>
+        typeof value === "object" &&
+        value !== null &&
+        !isAliasValue(value) &&
+        isSpringEasing(value as FigmaObjectValue as never)
+    )
+  ) {
+    return "spring easings cannot be written as a cubic-bezier";
   }
   if (
     variable.resolvedType === "COLOR" &&
@@ -367,6 +393,12 @@ function getW3CTokenType(
   switch (figmaType) {
     case "COLOR":
       return "color";
+
+    case "TIMING":
+      return "duration";
+
+    case "EASING":
+      return "cubicBezier";
 
     case "FLOAT":
       // CRITICAL: Check for unitless number types FIRST
@@ -686,6 +718,15 @@ function processVariable(
             tokenType,
             variable.name
           );
+          break;
+        case "TIMING":
+          // Seconds in Figma, "150ms" in the repo
+          processedValue =
+            typeof value === "number" ? secondsToDuration(value) : undefined;
+          break;
+        case "EASING":
+          processedValue =
+            formatCubicBezier(value as FigmaObjectValue as never) ?? undefined;
           break;
         case "STRING":
         case "BOOLEAN":

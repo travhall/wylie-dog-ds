@@ -447,7 +447,11 @@ describe("collections", () => {
 
   it("omits a collection whose variables are all skipped", async () => {
     const data = await processCollectionsForExport(
-      [collection([variable("v1", "motion/easing", "EASING", {})])],
+      [
+        collection([
+          variable("v1", "motion/easing", "EASING", { type: "BOUNCY" }),
+        ]),
+      ],
       ["c1"]
     );
     expect(data).toEqual([]);
