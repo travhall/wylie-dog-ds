@@ -8,6 +8,28 @@
       "args": { "variant": "variant", "size": "size", "disabled": "disabled" },
       "state": "state"
     },
+    "Toggle": {
+      "story": "components-inputs-controls-toggle--default",
+      "root": "#storybook-root button",
+      "args": {
+        "variant": "variant",
+        "size": "size",
+        "pressed": "pressed",
+        "disabled": "disabled"
+      },
+      "state": "state"
+    },
+    "Input": {
+      "story": "components-inputs-controls-input--default",
+      "root": "#storybook-root input",
+      "args": { "size": "size" },
+      "state": "state",
+      "stateArgs": {
+        "error": "error:!true",
+        "success": "success:!true",
+        "disabled": "disabled:!true"
+      }
+    },
     "Badge": {
       "story": "components-content-display-badge--default",
       "root": "#storybook-root [class*=inline-flex]",

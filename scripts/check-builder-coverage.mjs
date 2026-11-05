@@ -260,13 +260,25 @@ const fakeSet = (props) => ({
 });
 for (const entry of stateSets) {
   const plan = context.stateReactionPlan(entry.props);
-  const enabled = entry.props.filter((p) => p.disabled !== "true");
-  const groups = new Set(
-    enabled.map((p) => context.variantNameOf({ ...p, state: "" }))
-  );
-  if (plan.length !== groups.size * 3) {
+  // What to expect comes from the set's own variants: within each group (every property but
+  // state) Default goes to Hover and to Pressed where those exist, and Hover to Pressed where
+  // both do. A set may have only some of the states (Toggle and Input have no Pressed).
+  const groupsOf = new Map();
+  entry.props.forEach((p) => {
+    if (!p.state) return;
+    const key = context.variantNameOf({ ...p, state: "" });
+    if (!groupsOf.has(key)) groupsOf.set(key, {});
+    groupsOf.get(key)[p.state] = true;
+  });
+  let expectedSteps = 0;
+  for (const g of groupsOf.values()) {
+    if (!g.default) continue;
+    expectedSteps +=
+      (g.hover ? 1 : 0) + (g.pressed ? 1 : 0) + (g.hover && g.pressed ? 1 : 0);
+  }
+  if (plan.length !== expectedSteps) {
     errors.push(
-      `state plan has ${plan.length} steps for ${groups.size} enabled variants, expected ${groups.size * 3}`
+      `state plan has ${plan.length} steps, expected ${expectedSteps} from the variants' own states`
     );
   }
   for (const step of plan) {
@@ -314,14 +326,13 @@ for (const entry of stateSets) {
   for (const p of entry.props) {
     const comp = byName[context.variantNameOf(p)];
     const n = (comp.reactions ?? []).length;
+    const g = groupsOf.get(context.variantNameOf({ ...p, state: "" })) ?? {};
     const want =
-      p.disabled === "true"
-        ? 0
-        : p.state === "default"
-          ? 2
-          : p.state === "hover"
-            ? 1
-            : 0;
+      p.state === "default"
+        ? (g.hover ? 1 : 0) + (g.pressed ? 1 : 0)
+        : p.state === "hover" && g.default && g.pressed
+          ? 1
+          : 0;
     if (n !== want) {
       errors.push(`${comp.name} has ${n} reactions, expected ${want}`);
     }

@@ -41,7 +41,12 @@ export function argsParam(figmaProps, component) {
 }
 
 export function storyUrl(base, component, figmaProps, mode) {
-  const args = argsParam(figmaProps, component);
+  // A state that is a prop in code (Input's error, success and disabled) is rendered through
+  // `stateArgs`, e.g. { "error": "error:!true" }
+  const stateArg = component.stateArgs?.[figmaProps[component.state]];
+  const args = [argsParam(figmaProps, component), stateArg]
+    .filter(Boolean)
+    .join(";");
   return (
     `${base}/iframe.html?id=${component.story}&viewMode=story` +
     `&globals=theme:${mode ?? "light"}` +
@@ -201,7 +206,11 @@ async function main() {
     }
     const props = parseVariant(item.variant);
     const state = component.state ? props[component.state] : undefined;
-    if (state && !["default", "hover", "pressed"].includes(state)) {
+    if (
+      state &&
+      !["default", "hover", "pressed"].includes(state) &&
+      !component.stateArgs?.[state]
+    ) {
       skipped.push(
         `${item.set} ${item.variant}: state ${state} is not hover or pressed`
       );
