@@ -1401,6 +1401,7 @@
     "toast.close-size": "var(--space-toast-close-size)",
     "toast.content-gap": "var(--space-toast-content-gap)",
     "toast.default-background": "var(--color-toast-default-background)",
+    "toast.default-border": "var(--color-toast-default-border)",
     "toast.description.font-size": "var(--font-size-toast-description-font-size)",
     "toast.description.font-weight": "var(--font-weight-toast-description-font-weight)",
     "toast.description.line-height": "var(--line-height-toast-description-line-height)",

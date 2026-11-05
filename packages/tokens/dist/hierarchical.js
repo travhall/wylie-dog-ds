@@ -482,7 +482,7 @@ export const spacing = {
   "nav-link-padding-y": "0.5rem",
   "nav-link-radius": "0.25rem",
   "spinner-size": "1rem",
-  "close-button-icon-size": "1.5rem",
+  "close-button-icon-size": "1rem",
   "item-sub-trigger-icon-size": "1.5rem",
   "item-radio-indicator-size": "0.75rem",
   "arrow-size": "0.75rem",

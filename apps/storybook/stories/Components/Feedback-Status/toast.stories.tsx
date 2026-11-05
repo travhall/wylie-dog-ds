@@ -155,41 +155,33 @@ export const ControlsOnSolidToasts: Story = {
     docs: {
       description: {
         story:
-          "The action and close buttons on a solid toast hover and press in the role's own darker tones, so the label stays readable on the fill. Hover the buttons and the toast to see them.",
+          "The title and description stack on the left; the close button and the action stack on the right. On a solid toast both hover and press in the role's own darker tones, so the label stays readable on the fill.",
       },
     },
   },
   render: () => (
     <div className="flex flex-col gap-4">
       <Toast variant="info">
-        <div>
-          <ToastTitle>New version available</ToastTitle>
-          <ToastDescription>The design tokens were updated.</ToastDescription>
-        </div>
+        <ToastTitle>New version available</ToastTitle>
+        <ToastDescription>The design tokens were updated.</ToastDescription>
         <ToastAction>Reload</ToastAction>
         <ToastClose />
       </Toast>
       <Toast variant="success">
-        <div>
-          <ToastTitle>Changes saved</ToastTitle>
-          <ToastDescription>Your profile is up to date.</ToastDescription>
-        </div>
+        <ToastTitle>Changes saved</ToastTitle>
+        <ToastDescription>Your profile is up to date.</ToastDescription>
         <ToastAction>Undo</ToastAction>
         <ToastClose />
       </Toast>
       <Toast variant="warning">
-        <div>
-          <ToastTitle>Storage almost full</ToastTitle>
-          <ToastDescription>You have used 92% of your plan.</ToastDescription>
-        </div>
+        <ToastTitle>Storage almost full</ToastTitle>
+        <ToastDescription>You have used 92% of your plan.</ToastDescription>
         <ToastAction>Upgrade</ToastAction>
         <ToastClose />
       </Toast>
       <Toast variant="destructive">
-        <div>
-          <ToastTitle>Upload failed</ToastTitle>
-          <ToastDescription>The file could not be saved.</ToastDescription>
-        </div>
+        <ToastTitle>Upload failed</ToastTitle>
+        <ToastDescription>The file could not be saved.</ToastDescription>
         <ToastAction>Retry</ToastAction>
         <ToastClose />
       </Toast>

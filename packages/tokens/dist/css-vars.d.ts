@@ -573,6 +573,7 @@ export type CssVarName =
   | "--color-toast-close"
   | "--color-toast-close-hover"
   | "--color-toast-default-background"
+  | "--color-toast-default-border"
   | "--color-toast-destructive-background"
   | "--color-toast-destructive-border"
   | "--color-toast-destructive-close-icon"
@@ -2137,6 +2138,7 @@ export declare const cssVars: Readonly<{
   "colorToastClose": "--color-toast-close";
   "colorToastCloseHover": "--color-toast-close-hover";
   "colorToastDefaultBackground": "--color-toast-default-background";
+  "colorToastDefaultBorder": "--color-toast-default-border";
   "colorToastDestructiveBackground": "--color-toast-destructive-background";
   "colorToastDestructiveBorder": "--color-toast-destructive-border";
   "colorToastDestructiveCloseIcon": "--color-toast-destructive-close-icon";

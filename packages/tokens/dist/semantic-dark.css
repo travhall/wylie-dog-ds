@@ -751,7 +751,7 @@
   --command-input-icon-opacity: 0.5;
   --space-toast-viewport-padding: 1rem;
   --space-toast-viewport-gap: 0.5rem;
-  --toast-close-button-opacity: 0;
+  --toast-close-button-opacity: 1;
   --toast-close-button-opacity-hover: 1;
   --space-resizable-grip-icon-size: 0.75rem;
   --space-feature-grid-icon-container-size: 3rem;
@@ -869,6 +869,7 @@
   --font-weight-calendar-day-header-font-weight: 400;
   --font-weight-breadcrumb-page-font-weight: 400;
   --line-height-breadcrumb-line-height: 1.5;
+  --color-toast-default-border: oklch(0.397 0.018 63.81);
   --color-toast-default-background: oklch(0.202 0.011 47.89);
   --color-label-default-color: oklch(0.843 0.027 71.03);
   --space-context-menu-sub-content-min-width: 7rem;
@@ -1116,7 +1117,7 @@
   --space-button-spinner-size: 1rem;
   --space-dialog-close-button-icon-size: 1.5rem;
   --space-sheet-close-button-icon-size: 1.5rem;
-  --space-toast-close-button-icon-size: 1.5rem;
+  --space-toast-close-button-icon-size: 1rem;
   --space-select-trigger-icon-size: 1.5rem;
   --space-select-item-icon-size: 1.5rem;
   --space-select-item-indicator-size: 1rem;
