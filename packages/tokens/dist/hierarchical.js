@@ -490,14 +490,16 @@ export const spacing = {
   "arrow-radius": "0.125rem",
   "trigger-overlap": "1px",
   "side-offset": "0.25rem",
-  "content-side-offset": "0.5rem",
+  "content-side-offset": "0.25rem",
   "content-align-offset": "0.25rem",
   "handle-hit-size": "0.25rem",
   "handle-line-width": "1px",
+  "link-underline-offset": "0.25rem",
   "native-icon-size": "1rem",
   "trigger-icon-offset-top": "0.0625rem",
   "link-padding-x": "0.75rem",
-  "link-padding-y": "0.75rem"
+  "link-padding-y": "0.75rem",
+  "item-hover-lift": "0.25rem"
 };
 
 export const shadow = {
@@ -685,6 +687,7 @@ export const duration = {
   "duration-normal": "250ms",
   "duration-slow": "400ms",
   "transition-duration": "200ms",
+  "native-icon-transition-duration": "150ms",
   "content-duration": "250ms",
   "trigger-icon-duration": "250ms",
   "indicator-duration": "400ms",

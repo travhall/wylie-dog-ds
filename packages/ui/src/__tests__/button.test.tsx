@@ -64,6 +64,9 @@ describe("Button", () => {
       render(<Button variant="link">Link</Button>);
       const button = screen.getByRole("button");
       expect(button).toHaveClass("text-(--color-button-link-text)");
+      expect(button).toHaveClass(
+        "underline-offset-(--space-button-link-underline-offset)"
+      );
       expect(button).toHaveClass("bg-transparent");
       expect(button).toHaveClass("border-transparent");
     });

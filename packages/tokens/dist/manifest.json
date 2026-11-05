@@ -5035,6 +5035,17 @@
         "type": "dimension",
         "variable": "var(--button-icon-gap)",
         "description": "Gap between the icon, or the loading spinner, and the label of the button."
+      },
+      "button-link-underline-offset": {
+        "name": "buttonLinkUnderlineOffset",
+        "path": [
+          "button",
+          "link-underline-offset"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--button-link-underline-offset)",
+        "description": "Distance of the link-style button's underline from its text."
       }
     },
     "card": {
@@ -5538,6 +5549,17 @@
         "type": "color",
         "variable": "var(--color-input-border-success)",
         "description": "Border color of the input in the success state."
+      },
+      "input-native-icon-transition-duration": {
+        "name": "inputNativeIconTransitionDuration",
+        "path": [
+          "input",
+          "native-icon-transition-duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--input-native-icon-transition-duration)",
+        "description": "Hover fade of the browser's own search-cancel and date-picker icons inside an input."
       },
       "input-spin-button-opacity": {
         "name": "inputSpinButtonOpacity",
@@ -12316,6 +12338,18 @@
         "type": "number",
         "variable": "var(--select-trigger-line-height)",
         "description": "Line height of the select trigger text."
+      },
+      "select-content-side-offset": {
+        "name": "selectContentSideOffset",
+        "path": [
+          "select",
+          "content",
+          "side-offset"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--select-content-side-offset)",
+        "description": "Gap between the select trigger and its content when the content is positioned as a popper."
       }
     },
     "checkbox": {
@@ -14206,6 +14240,28 @@
         "type": "duration",
         "variable": "var(--card-grid-item-duration)",
         "description": "Hover transition duration of a card grid item."
+      },
+      "card-grid-item-hover-scale": {
+        "name": "cardGridItemHoverScale",
+        "path": [
+          "card-grid",
+          "item-hover-scale"
+        ],
+        "value": 1.05,
+        "type": "number",
+        "variable": "var(--card-grid-item-hover-scale)",
+        "description": "Scale of a card grid item while hovered."
+      },
+      "card-grid-item-hover-lift": {
+        "name": "cardGridItemHoverLift",
+        "path": [
+          "card-grid",
+          "item-hover-lift"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--card-grid-item-hover-lift)",
+        "description": "How far a card grid item rises while hovered."
       }
     },
     "feature-grid": {
@@ -14411,6 +14467,28 @@
         "type": "duration",
         "variable": "var(--feature-grid-icon-duration)",
         "description": "Hover transition duration of the feature icon container."
+      },
+      "feature-grid-item-hover-scale": {
+        "name": "featureGridItemHoverScale",
+        "path": [
+          "feature-grid",
+          "item-hover-scale"
+        ],
+        "value": 1.05,
+        "type": "number",
+        "variable": "var(--feature-grid-item-hover-scale)",
+        "description": "Scale of a feature grid item while hovered."
+      },
+      "feature-grid-icon-hover-scale": {
+        "name": "featureGridIconHoverScale",
+        "path": [
+          "feature-grid",
+          "icon-hover-scale"
+        ],
+        "value": 1.1,
+        "type": "number",
+        "variable": "var(--feature-grid-icon-hover-scale)",
+        "description": "Scale of the feature icon container while its item is hovered."
       },
       "feature-grid-border-width": {
         "name": "featureGridBorderWidth",

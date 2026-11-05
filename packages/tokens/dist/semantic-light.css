@@ -227,6 +227,8 @@
   --opacity-90: 0.9;
   --opacity-95: 0.95;
   --opacity-100: 1;
+  --scale-105: 1.05;
+  --scale-110: 1.1;
   --space-shadow-offset-none: 0px;
   --space-shadow-offset-sm: 2px;
   --space-shadow-offset-md: 4px;
@@ -1456,6 +1458,9 @@
   --popover-z-index: 60;
   --space-popover-border-width: 1px;
   --space-popover-side-offset: 0.25rem;
+  --space-select-content-side-offset: 0.25rem;
+  --space-button-link-underline-offset: 0.25rem;
+  --duration-input-native-icon-transition-duration: 150ms;
   --hover-card-z-index: 60;
   --space-hover-card-border-width: 1px;
   --space-hover-card-side-offset: 0.25rem;
@@ -1506,8 +1511,12 @@
   --line-height-sheet-description-line-height: 1.5;
   --line-height-sheet-title-line-height: 1.5;
   --duration-card-grid-item-duration: 300ms;
+  --card-grid-item-hover-scale: 1.05;
+  --space-card-grid-item-hover-lift: 0.25rem;
   --duration-feature-grid-item-duration: 500ms;
   --duration-feature-grid-icon-duration: 500ms;
+  --feature-grid-item-hover-scale: 1.05;
+  --feature-grid-icon-hover-scale: 1.1;
   --space-feature-grid-border-width: 1px;
   --space-icon-stroke-width: 2px;
 }

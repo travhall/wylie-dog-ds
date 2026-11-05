@@ -326,14 +326,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (276, 1113 and 108 variables)", () => {
+  it("reads all three collections (278, 1120 and 108 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([276, 1113, 108]);
+    ]).toEqual([278, 1120, 108]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {
@@ -429,12 +429,15 @@ describe("inferScopes: the real token files", () => {
       "alert.icon-gap",
       "badge.icon-gap",
       "button.icon-gap",
+      "button.link-underline-offset",
+      "card-grid.item-hover-lift",
       "dropdown-menu.side-offset",
       "hover-card.side-offset",
       "menubar.content-align-offset",
       "menubar.content-side-offset",
       "navigation-menu.trigger.icon-offset-top",
       "popover.side-offset",
+      "select.content.side-offset",
       "sheet.close-button-offset",
       "tabs.trigger.overlap",
       "toggle.icon-gap",
@@ -458,7 +461,7 @@ describe("inferScopes: the real token files", () => {
       "color []": 143,
       "number FONT_SIZE": 10,
       "number FONT_WEIGHT": 8,
-      "number []": 33,
+      "number []": 35,
       "dimension EFFECT_FLOAT": 23,
       "dimension []": 6,
       "duration []": 9,
@@ -475,10 +478,10 @@ describe("inferScopes: the real token files", () => {
       "number FONT_SIZE": 79,
       "number FONT_WEIGHT": 40,
       "fontFamily FONT_FAMILY": 1,
-      "number []": 98,
+      "number []": 101,
       "dimension []": 9,
       "shadow []": 19,
-      "duration []": 11,
+      "duration []": 12,
     });
   });
 });
