@@ -388,7 +388,7 @@ console.log(
   }
   // an unstyled label falls back to AUTO line height (24 against 16 at md), so the button
   // would grow on hover; the builder sets button.line-height on it directly
-  if (!/label\.lineHeight\s*=\s*\{\s*unit:\s*"PERCENT"/.test(source)) {
+  if (!/label\.lineHeight\s*=\s*\{\s*unit:\s*"PERCENT",\s*value:\s*linkLineHeight\s*\}/.test(source)) {
     errors.push(
       "the unstyled link hover and pressed labels must set lineHeight themselves, or the button grows on hover"
     );
