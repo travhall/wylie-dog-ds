@@ -155,8 +155,8 @@ describe("CardGrid", () => {
     it("lifts its children on hover when interactive", () => {
       render(<CardGrid aria-label="Test card-grid" interactive />);
       expect(screen.getByLabelText("Test card-grid")).toHaveClass(
-        "[&>*]:hover:scale-105",
-        "[&>*]:hover:-translate-y-1",
+        "[&>*]:hover:scale-(--card-grid-item-hover-scale)",
+        "[&>*]:hover:-translate-y-(--space-card-grid-item-hover-lift)",
         "[&>*]:duration-(--duration-card-grid-item-duration)"
       );
     });

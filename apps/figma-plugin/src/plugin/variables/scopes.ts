@@ -17,7 +17,7 @@
 //   0.7%. The builder sets the number instead of binding it.
 // - primitive colors (color.blue.600) are hidden: designers bind semantic and
 //   component variables, not the raw palette.
-// - z-index, duration, easing, shadow value strings and the semantic focus
+// - z-index, duration, easing, scale, shadow value strings and the semantic focus
 //   dimensions are hidden: no Figma property binds them.
 // - shadow blur, offset and spread are EFFECT_FLOAT.
 // No real variable is left on ALL_SCOPES (Plan 217, owner decision D1). A new
@@ -242,6 +242,8 @@ function inferScopesFromName(tokenName: string): string[] | null {
   // Fractions (0.7), but Figma reads a bound opacity as a percent: 0.7 becomes 0.7%
   if (name.includes("opacity")) return [];
   if (name.includes("z-index")) return [];
+  // A hover scale (1.05) is a transform multiplier; no Figma property binds it
+  if (name.includes("scale")) return [];
   // The focus indicator is sized in code, not by a layer property
   if (/^focus[./]/.test(name)) return [];
   if (/^shadow[./](blur|offset|spread)/.test(name)) return ["EFFECT_FLOAT"];

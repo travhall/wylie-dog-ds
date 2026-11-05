@@ -122,7 +122,7 @@ export const SelectContent = React.forwardRef<
         "rounded-(--space-select-content-radius)",
         "bg-(--color-select-content-background) text-(--color-select-content-text) shadow-(--shadow-select-content-shadow)",
         position === "popper" &&
-          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+          "data-[side=bottom]:mt-(--space-select-content-side-offset) data-[side=top]:mb-(--space-select-content-side-offset) data-[side=left]:mr-(--space-select-content-side-offset) data-[side=right]:ml-(--space-select-content-side-offset)",
         className
       )}
       position={position}

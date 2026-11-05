@@ -9543,6 +9543,33 @@
             "Dark": "{space.050}"
           }
         },
+        "select.content.side-offset": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "Gap between the select trigger and its content when the content is positioned as a popper.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
+        "button.link-underline-offset": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "Distance of the link-style button's underline from its text.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
+        "input.native-icon-transition-duration": {
+          "$type": "duration",
+          "$value": "{transition.duration.fast}",
+          "$description": "Hover fade of the browser's own search-cancel and date-picker icons inside an input.",
+          "valuesByMode": {
+            "Light": "{transition.duration.fast}",
+            "Dark": "{transition.duration.fast}"
+          }
+        },
         "hover-card.z-index": {
           "$type": "number",
           "$value": "{z-index.popover}",
@@ -9993,6 +10020,24 @@
             "Dark": "{duration.300}"
           }
         },
+        "card-grid.item-hover-scale": {
+          "$type": "number",
+          "$value": "{scale.105}",
+          "$description": "Scale of a card grid item while hovered.",
+          "valuesByMode": {
+            "Light": "{scale.105}",
+            "Dark": "{scale.105}"
+          }
+        },
+        "card-grid.item-hover-lift": {
+          "$type": "dimension",
+          "$value": "{space.050}",
+          "$description": "How far a card grid item rises while hovered.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
         "feature-grid.item-duration": {
           "$type": "duration",
           "$value": "{duration.500}",
@@ -10009,6 +10054,24 @@
           "valuesByMode": {
             "Light": "{duration.500}",
             "Dark": "{duration.500}"
+          }
+        },
+        "feature-grid.item-hover-scale": {
+          "$type": "number",
+          "$value": "{scale.105}",
+          "$description": "Scale of a feature grid item while hovered.",
+          "valuesByMode": {
+            "Light": "{scale.105}",
+            "Dark": "{scale.105}"
+          }
+        },
+        "feature-grid.icon-hover-scale": {
+          "$type": "number",
+          "$value": "{scale.110}",
+          "$description": "Scale of the feature icon container while its item is hovered.",
+          "valuesByMode": {
+            "Light": "{scale.110}",
+            "Dark": "{scale.110}"
           }
         },
         "feature-grid.border-width": {

@@ -47,6 +47,23 @@ describe("FeatureGrid", () => {
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 
+  it("zooms the item and its icon on hover from tokens, with no tilt", () => {
+    const { container } = render(
+      <FeatureGrid aria-label="Test feature-grid" features={features} />
+    );
+    expect(
+      container.querySelector(
+        ".hover\\:scale-\\(--feature-grid-item-hover-scale\\)"
+      )
+    ).not.toBeNull();
+    expect(
+      container.querySelector(
+        ".group-hover\\:scale-\\(--feature-grid-icon-hover-scale\\)"
+      )
+    ).not.toBeNull();
+    expect(container.innerHTML).not.toMatch(/rotate/);
+  });
+
   it("passes accessibility audit", async () => {
     const { container } = render(
       <FeatureGrid aria-label="Test feature-grid" features={features} />

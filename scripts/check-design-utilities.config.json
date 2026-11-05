@@ -3,11 +3,6 @@
   "allow": [
     {
       "file": "packages/ui/src/button.tsx",
-      "match": "underline-offset-4",
-      "reason": "Open (Plan 217): distance of the link variant's underline from the text. Needs a component token (button.link.underline-offset) or a decision to keep the Tailwind value."
-    },
-    {
-      "file": "packages/ui/src/button.tsx",
       "match": "animate-spin",
       "reason": "Open (Plan 217): the loading spinner's rotation. A named Tailwind animation (one turn per second, linear); it waits on the parked motion system."
     },
@@ -32,44 +27,9 @@
       "reason": "The indicator's offset is the progress value itself (translateX(-(100 - value)%)): a runtime measurement, not a design value."
     },
     {
-      "file": "packages/ui/src/card-grid.tsx",
-      "match": "scale-105",
-      "reason": "Open (Plan 217): hover zoom of a grid item. Needs a component token or a decision to drop the effect."
-    },
-    {
-      "file": "packages/ui/src/card-grid.tsx",
-      "match": "translate-y-1",
-      "reason": "Open (Plan 217): hover lift of a grid item (see scale-105)."
-    },
-    {
-      "file": "packages/ui/src/feature-grid.tsx",
-      "match": "scale-105",
-      "reason": "Open (Plan 217): hover zoom of a feature item. Needs a component token or a decision to drop the effect."
-    },
-    {
-      "file": "packages/ui/src/feature-grid.tsx",
-      "match": "scale-110",
-      "reason": "Open (Plan 217): hover zoom of the feature icon container (see scale-105)."
-    },
-    {
-      "file": "packages/ui/src/feature-grid.tsx",
-      "match": "rotate-3",
-      "reason": "Open (Plan 217): hover tilt of the feature icon container (see scale-105)."
-    },
-    {
       "file": "packages/ui/src/select.tsx",
       "match": "line-clamp-1",
       "reason": "Open (Plan 217): the selected value truncates to one line. A behaviour count; needs a token only if the line count is meant to change."
-    },
-    {
-      "file": "packages/ui/src/select.tsx",
-      "match": "translate-y-1",
-      "reason": "Open (Plan 217): the popper's 0.25rem nudge away from the trigger on the top and bottom sides. Needs a component token (select.content.offset) or sideOffset."
-    },
-    {
-      "file": "packages/ui/src/select.tsx",
-      "match": "translate-x-1",
-      "reason": "Open (Plan 217): the popper's 0.25rem nudge on the left and right sides (see translate-y-1)."
     },
     {
       "file": "packages/ui/src/dialog.tsx",
@@ -105,11 +65,6 @@
       "file": "packages/ui/src/resizable.tsx",
       "match": "rotate-90",
       "reason": "Turns the handle grip upright in a vertical group: orientation geometry, not a design value."
-    },
-    {
-      "file": "packages/ui/src/styles/index.css",
-      "match": "background-color 0.15s",
-      "reason": "Open (Plan 217): hover fade of the native search-clear and date-picker icons, 150ms. Needs a component token (input.native-icon.transition-duration)."
     },
     {
       "file": "packages/ui/src/styles/index.css",

@@ -5294,6 +5294,21 @@
     "$value": "{space.050}",
     "$description": "Gap between the popover trigger and its content."
   },
+  "select.content.side-offset": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "Gap between the select trigger and its content when the content is positioned as a popper."
+  },
+  "button.link-underline-offset": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "Distance of the link-style button's underline from its text."
+  },
+  "input.native-icon-transition-duration": {
+    "$type": "duration",
+    "$value": "{transition.duration.fast}",
+    "$description": "Hover fade of the browser's own search-cancel and date-picker icons inside an input."
+  },
   "hover-card.z-index": {
     "$type": "number",
     "$value": "{z-index.popover}",
@@ -5544,6 +5559,16 @@
     "$value": "{duration.300}",
     "$description": "Hover transition duration of a card grid item."
   },
+  "card-grid.item-hover-scale": {
+    "$type": "number",
+    "$value": "{scale.105}",
+    "$description": "Scale of a card grid item while hovered."
+  },
+  "card-grid.item-hover-lift": {
+    "$type": "dimension",
+    "$value": "{space.050}",
+    "$description": "How far a card grid item rises while hovered."
+  },
   "feature-grid.item-duration": {
     "$type": "duration",
     "$value": "{duration.500}",
@@ -5553,6 +5578,16 @@
     "$type": "duration",
     "$value": "{duration.500}",
     "$description": "Hover transition duration of the feature icon container."
+  },
+  "feature-grid.item-hover-scale": {
+    "$type": "number",
+    "$value": "{scale.105}",
+    "$description": "Scale of a feature grid item while hovered."
+  },
+  "feature-grid.icon-hover-scale": {
+    "$type": "number",
+    "$value": "{scale.110}",
+    "$description": "Scale of the feature icon container while its item is hovered."
   },
   "feature-grid.border-width": {
     "$type": "dimension",
