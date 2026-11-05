@@ -10,8 +10,9 @@
 // packages/ui/src (tests excluded): a variable reference to a token that is not in
 // the components collection (a semantic or primitive such as --space-icon-size-md,
 // --shadow-md, --z-index-modal, --duration-normal, --border-radius-md,
-// --line-height-none) is a violation. The exceptions are the focus indicator, the
-// font family and the variables Radix sets at runtime.
+// --line-height-none) is a violation. The exceptions are the focus indicator and
+// the variables Radix sets at runtime. A font family is a component token too (Plan 217:
+// the Badge's mono family was a primitive reference that Figma never saw).
 //
 // Compositions are components too (Plan 196): the files in
 // packages/ui/src/compositions and the pattern-level compositions card-grid.tsx and
@@ -47,11 +48,6 @@ const ALLOWLIST = [
       "Focus indicator halo: the second tone of the same centralized indicator (Plan 197).",
   },
   {
-    name: "--typography-font-family-",
-    reason:
-      "Font family: text may bind the primitive directly; it is the only non-color exception (Plan 193 decision). Listed so the exception is recorded.",
-  },
-  {
     name: "--space-icon-size-",
     reason:
       "The Icon component exists to expose the semantic icon.size scale (xs to xl); component tokens such as dialog.close-button.icon-size alias the same scale for their own icons (Plan 217).",
@@ -60,11 +56,6 @@ const ALLOWLIST = [
     name: "--radix-",
     reason:
       "Variables Radix sets at runtime (trigger and viewport sizes, swipe offsets): measurements, not design tokens.",
-  },
-  {
-    name: "--font-family-",
-    reason:
-      "Font family: the Tailwind theme alias of the primitive (same exception).",
   },
 ];
 

@@ -139,6 +139,11 @@
     "$value": "{typography.font-weight.semibold}",
     "$description": "Font weight of badge labels."
   },
+  "badge.font-family": {
+    "$type": "fontFamily",
+    "$value": "{typography.font-family.mono}",
+    "$description": "Font family of badge labels."
+  },
   "badge.line-height": {
     "$type": "number",
     "$value": "{typography.line-height.none}",
@@ -3753,6 +3758,16 @@
     "$type": "dimension",
     "$value": "{typography.tracking.widest}",
     "$description": "Letter spacing of the command menu shortcut."
+  },
+  "command.shortcut-font-size": {
+    "$type": "number",
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the command menu shortcut."
+  },
+  "command.shortcut-line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the command menu shortcut."
   },
   "toast.content-gap": {
     "$type": "spacing",

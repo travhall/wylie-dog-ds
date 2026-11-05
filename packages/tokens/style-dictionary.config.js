@@ -146,6 +146,12 @@ function generateCSSVariable(token, name) {
 
   // Handle font family contract pattern
   if (token.$type === "fontFamily") {
+    // A component token that aliases a family primitive points at that primitive's
+    // variable, so the font stack and the app's font loader variable stay in one place.
+    const alias = /^\{typography\.font-family\.(sans|serif|mono)\}$/.exec(
+      typeof token.original?.$value === "string" ? token.original.$value : ""
+    );
+    if (alias) return { varName, value: `var(--typography-font-family-${alias[1]})` };
     for (const [fontType, contractValue] of Object.entries(
       FONT_FAMILY_CONTRACTS
     )) {

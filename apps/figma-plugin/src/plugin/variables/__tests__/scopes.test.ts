@@ -326,14 +326,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (276, 1110 and 108 variables)", () => {
+  it("reads all three collections (276, 1113 and 108 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([276, 1110, 108]);
+    ]).toEqual([276, 1113, 108]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {
@@ -472,9 +472,10 @@ describe("inferScopes: the real token files", () => {
     });
     expect(all.components["color ALL_SCOPES"]).toBeUndefined();
     expect(all.components).toMatchObject({
-      "number FONT_SIZE": 78,
+      "number FONT_SIZE": 79,
       "number FONT_WEIGHT": 40,
-      "number []": 97,
+      "fontFamily FONT_FAMILY": 1,
+      "number []": 98,
       "dimension []": 9,
       "shadow []": 19,
       "duration []": 11,

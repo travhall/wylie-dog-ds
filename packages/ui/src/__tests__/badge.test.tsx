@@ -133,7 +133,7 @@ describe("Badge", () => {
     it("should set badge text in the mono font", () => {
       render(<Badge>Mono</Badge>);
       expect(screen.getByText("Mono")).toHaveClass(
-        "font-(family-name:--typography-font-family-mono)"
+        "font-(family-name:--badge-font-family)"
       );
     });
 
