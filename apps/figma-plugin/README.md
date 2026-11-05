@@ -128,7 +128,7 @@ The repository configuration includes a sync mode:
 
 ### Skipped Variables
 
-Native `EASING` and `TIMING` variables, composed colors and anything that aliases them cannot be exported yet. After an export or push, a notice lists what was skipped, grouped by collection with the reason. Details are in [docs/API.md](docs/API.md).
+Spring easings (which have no cubic-bezier form), composed colors and anything that aliases them cannot be exported yet. Durations are native `TIMING` variables (seconds in Figma, `150ms` in the repo) and cubic-bezier easings are native `EASING` variables, in both directions. After an export or push, a notice lists what was skipped, grouped by collection with the reason. Details are in [docs/API.md](docs/API.md).
 
 ### Hidden from publishing
 
@@ -155,18 +155,19 @@ For component tokens the last name segment is read first (`background-hover`), t
 
 Non-color variables are scoped by the property word in the name, whatever their `$type` (font size, weight, line height, opacity and z-index are typed `number` on purpose, for Figma Variables compatibility):
 
-| Name contains                                                              | Scopes                         |
-| -------------------------------------------------------------------------- | ------------------------------ |
-| `font-size`                                                                | `FONT_SIZE`                    |
-| `font-weight`                                                              | `FONT_WEIGHT`                  |
-| `tracking`, `letter-spacing`                                               | none (hidden), see below       |
-| `opacity`                                                                  | none (hidden), see below       |
-| `shadow.blur`, `shadow.offset`, `shadow.spread`                            | `EFFECT_FLOAT`                 |
-| `radius`                                                                   | `CORNER_RADIUS`                |
-| `border-width`                                                             | `STROKE_FLOAT`                 |
-| size, width, height, space, gap, padding (spacing and dimension variables) | `WIDTH_HEIGHT` and/or `GAP`    |
-| `line-height`                                                              | none (hidden), see below       |
-| `z-index`, durations, easings, shadow value strings, `focus.*` dimensions  | none (hidden): CSS-only values |
+| Name contains                                                              | Scopes                                    |
+| -------------------------------------------------------------------------- | ----------------------------------------- |
+| `font-size`                                                                | `FONT_SIZE`                               |
+| `font-weight`                                                              | `FONT_WEIGHT`                             |
+| `tracking`, `letter-spacing`                                               | none (hidden), see below                  |
+| `opacity`                                                                  | none (hidden), see below                  |
+| `shadow.blur`, `shadow.offset`, `shadow.spread`                            | `EFFECT_FLOAT`                            |
+| `radius`                                                                   | `CORNER_RADIUS`                           |
+| `border-width`                                                             | `STROKE_FLOAT`                            |
+| size, width, height, space, gap, padding (spacing and dimension variables) | `WIDTH_HEIGHT` and/or `GAP`               |
+| `line-height`                                                              | none (hidden), see below                  |
+| `z-index`, `scale`, motion `distance`, shadow value strings, `focus.*`     | none (hidden): CSS-only values            |
+| durations (`TIMING`) and easings (`EASING`)                                | none: Figma has no scopes for these types |
 
 An empty scope list (`[]`) is valid Figma: the variable still exists and aliases still resolve, but no picker lists it. The importer assigns it as is.
 
