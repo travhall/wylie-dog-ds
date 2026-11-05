@@ -55,6 +55,51 @@
       "root": "#storybook-root [role=button]",
       "args": {},
       "state": "interaction"
+    },
+    "Switch": {
+      "story": "components-inputs-controls-switch--default",
+      "root": "#storybook-root button[role=switch]",
+      "args": {
+        "size": "size",
+        "checked": "checked",
+        "disabled": "disabled"
+      }
+    },
+    "Checkbox": {
+      "story": "components-inputs-controls-checkbox--default",
+      "root": "#storybook-root button[role=checkbox]",
+      "args": {
+        "size": "size",
+        "checked": "checked",
+        "disabled": "disabled"
+      }
+    },
+    "Textarea": {
+      "story": "components-inputs-controls-textarea--default",
+      "root": "#storybook-root textarea",
+      "args": {
+        "size": "size"
+      },
+      "state": "state",
+      "stateArgs": {
+        "error": "error:!true",
+        "success": "success:!true",
+        "disabled": "disabled:!true"
+      }
+    },
+    "Alert": {
+      "story": "components-feedback-status-alert--default",
+      "root": "#storybook-root [aria-live]",
+      "args": {
+        "variant": "variant"
+      }
+    },
+    "Progress": {
+      "story": "components-feedback-status-progress--default",
+      "root": "#storybook-root [role=progressbar]",
+      "args": {
+        "variant": "variant"
+      }
     }
   },
   "allow": [
@@ -75,6 +120,42 @@
       "property": "h",
       "scope": "box",
       "reason": "Both hug their content now (padding, gap and type match). The story card holds different copy than the Figma placeholder content, so its height differs."
+    },
+    {
+      "set": "Textarea",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed 240px frame; in code the textarea is w-full and takes its container (384px in the story). Width is layout, not look."
+    },
+    {
+      "set": "Textarea",
+      "property": "layer",
+      "scope": "text",
+      "reason": "Code shows the placeholder attribute, which is not a text node; Figma draws a text layer so the placeholder can be edited and styled."
+    },
+    {
+      "set": "Alert",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed 400px frame; in code the alert is w-full and takes its container."
+    },
+    {
+      "set": "Alert",
+      "property": "gap",
+      "scope": "box",
+      "reason": "Code positions the icon absolutely beside the text (no flex gap); Figma uses an auto-layout gap of alert.gap to place the icon, the result looks the same."
+    },
+    {
+      "set": "Progress",
+      "property": "w",
+      "scope": "box",
+      "reason": "The story wraps the bar in a shrink-wrapped box, so w-full measures 0; Figma draws a 240px track."
+    },
+    {
+      "set": "Progress",
+      "property": "radius",
+      "scope": "box",
+      "reason": "Follows from the 0px width in the story: the radius is clamped to half the width. The token (4px) matches Figma."
     }
   ]
 }

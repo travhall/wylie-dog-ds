@@ -221,7 +221,11 @@ async function main() {
     }
     await page.goto(storyUrl(base, component, props, mode));
     try {
-      await page.waitForSelector(component.root, { timeout: 8000 });
+      // attached, not visible: a w-full element in a shrink-wrapped story (Progress) has no width
+      await page.waitForSelector(component.root, {
+        timeout: 8000,
+        state: "attached",
+      });
     } catch {
       skipped.push(
         `${item.set} ${item.variant}: nothing matched ${component.root}`
