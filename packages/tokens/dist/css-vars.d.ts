@@ -917,6 +917,8 @@ export type CssVarName =
   | "--space-alert-dialog-content-radius"
   | "--space-alert-dialog-footer-gap"
   | "--space-alert-dialog-header-gap"
+  | "--space-alert-icon-gap"
+  | "--space-alert-icon-size"
   | "--space-alert-padding-x"
   | "--space-alert-padding-y"
   | "--space-alert-radius"
@@ -2368,6 +2370,8 @@ export declare const cssVars: Readonly<{
   "spaceAlertDialogContentRadius": "--space-alert-dialog-content-radius";
   "spaceAlertDialogFooterGap": "--space-alert-dialog-footer-gap";
   "spaceAlertDialogHeaderGap": "--space-alert-dialog-header-gap";
+  "spaceAlertIconGap": "--space-alert-icon-gap";
+  "spaceAlertIconSize": "--space-alert-icon-size";
   "spaceAlertPaddingX": "--space-alert-padding-x";
   "spaceAlertPaddingY": "--space-alert-padding-y";
   "spaceAlertRadius": "--space-alert-radius";

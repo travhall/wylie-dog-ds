@@ -4395,6 +4395,24 @@
             "Dark": "{border-width.1}"
           }
         },
+        "alert.icon-size": {
+          "$type": "dimension",
+          "$value": "{icon.size.sm}",
+          "$description": "Size of the icon in an alert that has one.",
+          "valuesByMode": {
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
+          }
+        },
+        "alert.icon-gap": {
+          "$type": "dimension",
+          "$value": "{space.150}",
+          "$description": "Gap between the icon and the text of an alert that has an icon.",
+          "valuesByMode": {
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
         "label.required-margin-left": {
           "$type": "spacing",
           "$value": "{space.050}",

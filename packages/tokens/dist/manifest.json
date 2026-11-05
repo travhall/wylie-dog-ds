@@ -5891,6 +5891,28 @@
         "type": "dimension",
         "variable": "var(--alert-border-width)",
         "description": "Border width of the alert."
+      },
+      "alert-icon-size": {
+        "name": "alertIconSize",
+        "path": [
+          "alert",
+          "icon-size"
+        ],
+        "value": "1rem",
+        "type": "dimension",
+        "variable": "var(--alert-icon-size)",
+        "description": "Size of the icon in an alert that has one."
+      },
+      "alert-icon-gap": {
+        "name": "alertIconGap",
+        "path": [
+          "alert",
+          "icon-gap"
+        ],
+        "value": "0.75rem",
+        "type": "dimension",
+        "variable": "var(--alert-icon-gap)",
+        "description": "Gap between the icon and the text of an alert that has an icon."
       }
     },
     "menubar": {

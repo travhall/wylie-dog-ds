@@ -1,4 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import {
+  AlertTriangleIcon,
+  CheckCircle2Icon,
+  InfoIcon,
+  XCircleIcon,
+} from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@wyliedog/ui/alert";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
@@ -134,6 +140,37 @@ export const WithoutTitle: Story = {
         <AlertDescription>
           Warning message without a title - just the description.
         </AlertDescription>
+      </Alert>
+    </div>
+  ),
+};
+
+export const WithIcon: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Pass any icon component as `icon` and the alert becomes a row: the icon, then the title and description in one column. The icon takes its size and gap from the alert icon tokens and the alert's text color.",
+      },
+    },
+  },
+  render: () => (
+    <div className="w-125 space-y-4">
+      <Alert icon={InfoIcon} variant="info">
+        <AlertTitle>Heads up</AlertTitle>
+        <AlertDescription>A new version is available.</AlertDescription>
+      </Alert>
+      <Alert icon={CheckCircle2Icon} variant="success">
+        <AlertTitle>Saved</AlertTitle>
+        <AlertDescription>Your changes were saved.</AlertDescription>
+      </Alert>
+      <Alert icon={AlertTriangleIcon} variant="warning">
+        <AlertTitle>Careful</AlertTitle>
+        <AlertDescription>This will affect all members.</AlertDescription>
+      </Alert>
+      <Alert icon={XCircleIcon} variant="destructive">
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>The request failed.</AlertDescription>
       </Alert>
     </div>
   ),
