@@ -3,8 +3,8 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-04T21:47:30.098Z",
-  "count": 48,
+  "generatedAt": "2026-11-05T01:07:17.182Z",
+  "count": 49,
   "components": [
     {
       "name": "Accordion",
@@ -111,6 +111,14 @@
           "type": "TEXT",
           "default": "Badge"
         },
+        "icon": {
+          "type": "INSTANCE_SWAP",
+          "default": "icon=plus, size=xs"
+        },
+        "showIcon": {
+          "type": "BOOLEAN",
+          "default": false
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
@@ -167,7 +175,15 @@
           "default": "false",
           "options": ["false", "true"]
         },
+        "icon": {
+          "type": "INSTANCE_SWAP",
+          "default": "icon=plus, size=sm"
+        },
         "loading": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "showIcon": {
           "type": "BOOLEAN",
           "default": false
         },
@@ -476,6 +492,51 @@
       },
       "variantCount": 3,
       "expectedVariantCount": 3
+    },
+    {
+      "name": "Icon",
+      "type": "COMPONENT_SET",
+      "description": "",
+      "documentationLinks": [],
+      "properties": {
+        "icon": {
+          "type": "VARIANT",
+          "default": "heart",
+          "options": [
+            "heart",
+            "chevron-down",
+            "chevron-left",
+            "chevron-right",
+            "x",
+            "check",
+            "circle",
+            "search",
+            "ellipsis",
+            "grip-vertical",
+            "minus",
+            "arrow-right",
+            "plus",
+            "user",
+            "settings",
+            "bell",
+            "calendar",
+            "house",
+            "link",
+            "folder",
+            "file",
+            "map-pin",
+            "bold",
+            "italic"
+          ]
+        },
+        "size": {
+          "type": "VARIANT",
+          "default": "md",
+          "options": ["md", "xs", "sm", "lg", "xl"]
+        }
+      },
+      "variantCount": 120,
+      "expectedVariantCount": 120
     },
     {
       "name": "Input",
@@ -1020,10 +1081,18 @@
           "default": "false",
           "options": ["false", "true"]
         },
+        "icon": {
+          "type": "INSTANCE_SWAP",
+          "default": "icon=plus, size=sm"
+        },
         "pressed": {
           "type": "VARIANT",
           "default": "false",
           "options": ["false", "true"]
+        },
+        "showIcon": {
+          "type": "BOOLEAN",
+          "default": false
         },
         "size": {
           "type": "VARIANT",
