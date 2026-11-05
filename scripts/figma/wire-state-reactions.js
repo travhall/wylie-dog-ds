@@ -63,6 +63,13 @@ const transition = {
   duration: seconds,
 };
 
+// A text node's font must be loaded before it is edited (Figma throws otherwise).
+const loadFontsOf = async (node) => {
+  for (const seg of node.getStyledTextSegments(["fontName"])) {
+    await figma.loadFontAsync(seg.fontName);
+  }
+};
+
 const parse = (name) => {
   const props = {};
   for (const part of name.split(",")) {
@@ -84,6 +91,7 @@ for (const set of page.findAllWithCriteria({ types: ["COMPONENT_SET"] })) {
     .findAll((n) => n.type === "TEXT" && n.textStyleId)
     .find((n) => n.textDecoration !== "NONE");
   if (styledLabel) {
+    await loadFontsOf(styledLabel);
     styledLabel.textDecoration = "NONE";
     cleared++;
   }
@@ -132,6 +140,7 @@ for (const set of page.findAllWithCriteria({ types: ["COMPONENT_SET"] })) {
         // Clear the label's text style, then underline it. On a label WITH a style a
         // decoration set on one spreads to every label sharing the Button's text property
         // (60 of 60 were underlined on the rebuilt library), so these labels carry no style.
+        await loadFontsOf(label);
         await label.setTextStyleIdAsync("");
         const offset = named("button/link-underline-offset");
         label.textDecoration = "UNDERLINE";
