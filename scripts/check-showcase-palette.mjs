@@ -49,13 +49,21 @@ const files = execSync("git ls-files -z", {
       !EXEMPT.some((e) => f.startsWith(e))
   );
 
+// A deliberate exception: a comment `palette-guard: allow <reason>` on the line above (or at
+// the end of the same line) skips that one line. For decorative color no semantic token names,
+// such as the hero gradient's sandcastle tint.
+const ALLOW = "palette-guard: allow";
+
 const violations = [];
 for (const file of files) {
   let block = false;
+  let allowNext = false;
   fs.readFileSync(file, "utf8")
     .split("\n")
     .forEach((line, i) => {
       const trimmed = line.trim();
+      const allowed = allowNext || line.includes(ALLOW);
+      allowNext = line.includes(ALLOW);
       if (block) {
         if (trimmed.includes("*/")) block = false;
         return;
@@ -65,6 +73,7 @@ for (const file of files) {
         return;
       }
       if (trimmed.startsWith("//") || trimmed.startsWith("*")) return;
+      if (allowed) return;
       for (const rule of rules) {
         const m = line.match(rule.re);
         if (m) violations.push(`${file}:${i + 1}: ${rule.name} ${m[0]}`);
