@@ -473,3 +473,18 @@ describe("findUnsupportedVariables", () => {
     ]);
   });
 });
+
+describe("figma-only variables", () => {
+  it("leaves out variables the builder adds for Figma only", async () => {
+    const tokens = await exportTokens([
+      variable("v1", "color/sample", "COLOR", { r: 1, g: 0, b: 0 }),
+      variable("v2", "_figma/shadow/subtle", "COLOR", {
+        r: 0,
+        g: 0,
+        b: 0,
+        a: 0.05,
+      }),
+    ]);
+    expect(Object.keys(tokens)).toEqual(["color.sample"]);
+  });
+});
