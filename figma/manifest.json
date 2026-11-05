@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-05T03:14:10.501Z",
+  "generatedAt": "2026-11-05T15:03:38.292Z",
   "count": 49,
   "components": [
     {
@@ -123,6 +123,11 @@
           "type": "INSTANCE_SWAP",
           "default": "icon=plus, size=xs"
         },
+        "interaction": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "hover", "pressed"]
+        },
         "showIcon": {
           "type": "BOOLEAN",
           "default": false
@@ -146,8 +151,8 @@
           ]
         }
       },
-      "variantCount": 21,
-      "expectedVariantCount": 21
+      "variantCount": 63,
+      "expectedVariantCount": 63
     },
     {
       "name": "Breadcrumb",
@@ -200,6 +205,11 @@
           "default": "md",
           "options": ["md", "sm", "lg", "icon"]
         },
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "hover", "pressed"]
+        },
         "variant": {
           "type": "VARIANT",
           "default": "default",
@@ -213,8 +223,8 @@
           ]
         }
       },
-      "variantCount": 31,
-      "expectedVariantCount": 48
+      "variantCount": 79,
+      "expectedVariantCount": 144
     },
     {
       "name": "Calendar",
@@ -241,11 +251,6 @@
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-card--docs"
       ],
       "properties": {
-        "Property 1": {
-          "type": "VARIANT",
-          "default": "Default",
-          "options": ["Default"]
-        },
         "content": {
           "type": "TEXT",
           "default": "Card content goes here."
@@ -258,13 +263,18 @@
           "type": "BOOLEAN",
           "default": true
         },
+        "interaction": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "hover", "pressed"]
+        },
         "title": {
           "type": "TEXT",
           "default": "Card Title"
         }
       },
-      "variantCount": 1,
-      "expectedVariantCount": 1
+      "variantCount": 3,
+      "expectedVariantCount": 3
     },
     {
       "name": "Card Grid",
@@ -572,11 +582,11 @@
         "state": {
           "type": "VARIANT",
           "default": "default",
-          "options": ["default", "error", "success", "disabled"]
+          "options": ["default", "hover", "error", "success", "disabled"]
         }
       },
-      "variantCount": 12,
-      "expectedVariantCount": 12
+      "variantCount": 15,
+      "expectedVariantCount": 15
     },
     {
       "name": "Label",
@@ -1113,14 +1123,19 @@
           "default": "default",
           "options": ["default", "sm", "lg"]
         },
+        "state": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default", "hover"]
+        },
         "variant": {
           "type": "VARIANT",
           "default": "default",
           "options": ["default", "outline"]
         }
       },
-      "variantCount": 24,
-      "expectedVariantCount": 24
+      "variantCount": 30,
+      "expectedVariantCount": 48
     },
     {
       "name": "Toggle Group",
