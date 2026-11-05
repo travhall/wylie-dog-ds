@@ -207,6 +207,143 @@ console.log(
   `\nIcon glyphs: ${glyphs.size} in the Icon set; ${kinds.size} kinds drawn by the builders, all present`
 );
 
+// Plan 137: hover and press. A set with a state axis is queued, and after the sets exist
+// the builder connects Default to Hover and Pressed, and Hover to Pressed, with Smart
+// Animate. Check the plan on the real Button configuration, then run the wiring against
+// fake variables carrying the real token values (the stub cannot make real nodes).
+const stateSets = context.pendingStateSets ?? [];
+let stateWired = 0;
+if (stateSets.length === 0) {
+  errors.push("no component set queued for hover and press reactions");
+}
+const tokenSeconds = (path) => parseFloat(tokens.get(path)?.$value) / 1000;
+const tokenBezier = (path) => {
+  const m = /cubic-bezier\(([^)]*)\)/.exec(tokens.get(path)?.$value ?? "");
+  const [x1, y1, x2, y2] = (m ? m[1] : "0,0,0,0").split(",").map(parseFloat);
+  return { x1, y1, x2, y2 };
+};
+const fakeVariables = (durationType, easingType) => ({
+  "transition/duration/fast": {
+    resolvedType: durationType,
+    valuesByMode: {
+      m:
+        durationType === "TIMING"
+          ? tokenSeconds("transition.duration.fast")
+          : "150ms",
+    },
+  },
+  "transition/easing/default": {
+    resolvedType: easingType,
+    valuesByMode: {
+      m:
+        easingType === "EASING"
+          ? {
+              type: "CUSTOM_CUBIC_BEZIER",
+              easingFunctionCubicBezier: tokenBezier(
+                "transition.easing.default"
+              ),
+            }
+          : "cubic-bezier(0.4, 0, 0.2, 1)",
+    },
+  },
+});
+const fakeSet = (props) => ({
+  children: props.map((p, i) => ({
+    name: context.variantNameOf(p),
+    id: `variant-${i}`,
+    reactions: null,
+    setReactionsAsync(r) {
+      this.reactions = r;
+      return Promise.resolve();
+    },
+  })),
+});
+for (const entry of stateSets) {
+  const plan = context.stateReactionPlan(entry.props);
+  const enabled = entry.props.filter((p) => p.disabled !== "true");
+  const groups = new Set(
+    enabled.map((p) => context.variantNameOf({ ...p, state: "" }))
+  );
+  if (plan.length !== groups.size * 3) {
+    errors.push(
+      `state plan has ${plan.length} steps for ${groups.size} enabled variants, expected ${groups.size * 3}`
+    );
+  }
+  for (const step of plan) {
+    const from = entry.props[step.from];
+    const to = entry.props[step.to];
+    if (from.disabled === "true" || to.disabled === "true") {
+      errors.push("a disabled variant is wired to a state");
+    }
+  }
+  // the wiring itself, against fake variables with the real values
+  const real = context.getVar;
+  const realPending = context.pendingStateSets;
+  context.getVar = (n) => fakeVariables("TIMING", "EASING")[n] ?? null;
+  const set = fakeSet(entry.props);
+  context.pendingStateSets = [{ set, props: entry.props }];
+  const result = await context.applyStateReactions();
+  stateWired += result.wired;
+  if (result.wired !== plan.length || result.skipped) {
+    errors.push(
+      `state wiring wired ${result.wired} of ${plan.length}${result.skipped ? `, skipped: ${result.skipped}` : ""}`
+    );
+  }
+  const wantSeconds = tokenSeconds("transition.duration.fast");
+  const wantCurve = tokenBezier("transition.easing.default");
+  for (const comp of set.children) {
+    for (const r of comp.reactions ?? []) {
+      const t = r.actions[0].transition;
+      const c = t.easing.easingFunctionCubicBezier;
+      if (
+        r.actions[0].navigation !== "CHANGE_TO" ||
+        t.type !== "SMART_ANIMATE" ||
+        t.duration !== wantSeconds ||
+        c.x1 !== wantCurve.x1 ||
+        c.y1 !== wantCurve.y1 ||
+        c.x2 !== wantCurve.x2 ||
+        c.y2 !== wantCurve.y2
+      ) {
+        errors.push(
+          `${comp.name}: a state reaction does not use the token duration and curve`
+        );
+      }
+    }
+  }
+  const byName = Object.fromEntries(set.children.map((c) => [c.name, c]));
+  for (const p of entry.props) {
+    const comp = byName[context.variantNameOf(p)];
+    const n = (comp.reactions ?? []).length;
+    const want =
+      p.disabled === "true"
+        ? 0
+        : p.state === "default"
+          ? 2
+          : p.state === "hover"
+            ? 1
+            : 0;
+    if (n !== want) {
+      errors.push(`${comp.name} has ${n} reactions, expected ${want}`);
+    }
+  }
+  // not native yet: no guessing, and nothing is wired
+  context.getVar = (n) => fakeVariables("STRING", "STRING")[n] ?? null;
+  context.pendingStateSets = [
+    { set: fakeSet(entry.props), props: entry.props },
+  ];
+  const skippedRun = await context.applyStateReactions();
+  if (skippedRun.wired !== 0 || !skippedRun.skipped.includes("TIMING")) {
+    errors.push(
+      "state wiring did not skip when the motion variables are not native"
+    );
+  }
+  context.getVar = real;
+  context.pendingStateSets = realPending;
+}
+console.log(
+  `\nState reactions: ${stateSets.length} set with a state axis, ${stateWired} transitions wired from the token duration and curve; skipped, with a reason, when the variables are not native`
+);
+
 // Names live on real nodes, which the stub cannot see: check that main() runs the
 // naming pass; scripts/figma/audit-library.js counts default names in the file.
 if (!/nameDefaultLayers\(built\)/.test(source)) {
