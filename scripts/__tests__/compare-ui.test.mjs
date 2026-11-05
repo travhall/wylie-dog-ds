@@ -1,0 +1,169 @@
+// Plan 217: the code-vs-Figma comparison. Run with: pnpm test:scripts
+import assert from "node:assert/strict";
+import { test } from "node:test";
+import {
+  TOLERANCE,
+  applyAllow,
+  compareMetrics,
+  parseHex,
+  sameColor,
+  weightOf,
+} from "../figma/compare-ui.mjs";
+
+const box = (over = {}) => ({
+  w: 80,
+  h: 40,
+  pad: [8, 16, 8, 16],
+  gap: 8,
+  radius: 6,
+  border: 1,
+  stroke: "#112233",
+  fill: "#445566",
+  opacity: 1,
+  shadow: [],
+  ...over,
+});
+const text = (over = {}) => ({
+  characters: "Button",
+  family: "Manrope",
+  size: 14,
+  weight: 500,
+  lineHeight: 20,
+  tracking: 0,
+  decoration: "none",
+  color: "#ffffff",
+  ...over,
+});
+const item = (over = {}) => ({
+  set: "Button",
+  variant: "variant=default, size=md",
+  box: box(),
+  texts: [text()],
+  ...over,
+});
+const files = (f, c) => compareMetrics({ items: [f] }, { items: [c] });
+
+test("identical measurements have no findings", () => {
+  const r = files(item(), item());
+  assert.deepEqual(r.findings, []);
+  assert.deepEqual(r.missing, []);
+});
+
+test("sizes and spacing allow one pixel and no more", () => {
+  assert.deepEqual(files(item(), item({ box: box({ w: 81 }) })).findings, []);
+  const r = files(item(), item({ box: box({ w: 82, pad: [8, 16, 8, 14] }) }));
+  assert.deepEqual(r.findings.map((f) => f.property).sort(), ["pad", "w"]);
+});
+
+test("a colour allows a small channel difference and not a different colour", () => {
+  assert.equal(sameColor("#445566", "#475766"), true);
+  assert.equal(sameColor("#445566", "#4a5566"), false);
+  assert.equal(sameColor("#44556680", "#445566"), false);
+  assert.equal(sameColor(null, "#00000000"), true, "no fill equals a clear one");
+  assert.equal(sameColor("#ffffff00", "#00000000"), true, "clear is clear");
+  assert.deepEqual(
+    parseHex("#ff000080").map((n) => Math.round(n * 100) / 100),
+    [255, 0, 0, 0.5]
+  );
+  assert.equal(parseHex("red"), null);
+});
+
+test("the gaps the manual audit missed are now caught: family, tracking, shadow, opacity, weight", () => {
+  const f = item({
+    box: box({
+      opacity: 0.5,
+      shadow: [{ x: 0, y: 1, blur: 3, spread: 0, color: "#00000033" }],
+    }),
+    texts: [text({ family: "JetBrains Mono", tracking: 1, weight: "Medium" })],
+  });
+  const c = item({
+    box: box({ opacity: 1, shadow: [] }),
+    texts: [text({ family: "Manrope", tracking: 0, weight: 600 })],
+  });
+  const props = files(f, c)
+    .findings.map((x) => `${x.scope}:${x.property}`)
+    .sort();
+  assert.deepEqual(props, [
+    "box:opacity",
+    "box:shadow",
+    "text:family",
+    "text:tracking",
+    "text:weight",
+  ]);
+});
+
+test("a family list compares by its first family, a weight name by its number", () => {
+  const r = files(
+    item({ texts: [text({ family: "JetBrains Mono", weight: "Medium" })] }),
+    item({
+      texts: [
+        text({
+          family: '"JetBrains Mono", ui-monospace, monospace',
+          weight: 500,
+        }),
+      ],
+    })
+  );
+  assert.deepEqual(r.findings, []);
+  assert.equal(weightOf("SemiBold"), 600);
+  assert.equal(weightOf("Semi Bold"), 600);
+  assert.equal(weightOf("700"), 700);
+  assert.equal(weightOf("nonsense"), null);
+});
+
+test("a missing text layer and a variant with no UI measurement are reported", () => {
+  const r = files(item(), item({ texts: [] }));
+  assert.equal(r.findings[0].property, "layer");
+  const gone = compareMetrics(
+    { items: [item()] },
+    { items: [item({ variant: "variant=other" })] }
+  );
+  assert.deepEqual(gone.missing, ["Button variant=default, size=md"]);
+  assert.deepEqual(gone.extra, ["Button variant=other"]);
+});
+
+test("shadows compare layer by layer", () => {
+  const s = { x: 0, y: 4, blur: 6, spread: -1, color: "#0000001a" };
+  const same = files(
+    item({ box: box({ shadow: [s] }) }),
+    item({ box: box({ shadow: [{ ...s, blur: 6.4 }] }) })
+  );
+  assert.deepEqual(same.findings, []);
+  const diff = files(
+    item({ box: box({ shadow: [s] }) }),
+    item({ box: box({ shadow: [{ ...s, y: 8 }] }) })
+  );
+  assert.equal(diff.findings[0].property, "shadow");
+});
+
+test("an allow entry moves a finding aside, and one that matches nothing is stale", () => {
+  const { findings } = files(item(), item({ box: box({ radius: 12 }) }));
+  const r = applyAllow(findings, [
+    { set: "Button", property: "radius", reason: "pill look agreed" },
+    { set: "Badge", property: "fill", reason: "unused" },
+  ]);
+  assert.equal(r.open.length, 0);
+  assert.equal(r.allowed[0].reason, "pill look agreed");
+  assert.deepEqual(
+    r.stale.map((a) => a.set),
+    ["Badge"]
+  );
+  const scoped = applyAllow(findings, [
+    {
+      set: "Button",
+      property: "radius",
+      variant: "variant=ghost",
+      reason: "x",
+    },
+  ]);
+  assert.equal(
+    scoped.open.length,
+    1,
+    "a variant-scoped entry does not cover other variants"
+  );
+});
+
+test("the tolerance is the documented one", () => {
+  assert.equal(TOLERANCE.px, 1);
+  assert.equal(TOLERANCE.colorChannel, 3);
+});

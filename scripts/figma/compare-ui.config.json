@@ -1,0 +1,18 @@
+{
+  "$comment": "Configuration for scripts/figma/compare-ui.mjs and harvest-ui.mjs (Plan 217). `components` says how to render each Figma set in Storybook: the story, the element to measure, and how a Figma variant's properties become story args (`args`: Figma property to arg name; `values`: Figma value to arg value, where they differ) and interactions (`state`: hover and pressed are made by the harvester). `allow` lists differences the owner accepted, each with a reason; an entry that matches nothing fails the run.",
+  "tolerance": {},
+  "components": {
+    "Button": {
+      "story": "components-inputs-controls-button--default",
+      "root": "#storybook-root button",
+      "args": { "variant": "variant", "size": "size", "disabled": "disabled" },
+      "state": "state"
+    },
+    "Badge": {
+      "story": "components-content-display-badge--default",
+      "root": "#storybook-root [class*=inline-flex]",
+      "args": { "variant": "variant", "size": "size" }
+    }
+  },
+  "allow": []
+}
