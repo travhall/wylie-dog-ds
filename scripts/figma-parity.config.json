@@ -43,11 +43,6 @@
       "reason": "sm, md and lg all use the same --space-progress-height, so there is nothing to draw."
     },
     {
-      "component": "Card",
-      "rule": "generic-property",
-      "reason": "Single-variant set: Figma needs a property name and code has no visual axis (interactive only adds hover, focus and active)."
-    },
-    {
       "component": "Carousel",
       "rule": "generic-property",
       "reason": "Single-variant set: Figma needs a property name and code has no visual axis."
@@ -527,6 +522,33 @@
       "rule": "content-property-not-in-code",
       "property": "showIcon",
       "reason": "In code an alert shows its icon when the `icon` prop is given; the Figma boolean shows or hides the optional icon slot."
+    },
+    {
+      "component": "Button",
+      "rule": "state-axis",
+      "reason": "Hover and press are drawn as variants so the prototype can react (Plan 137); code has CSS pseudo-classes, not a prop."
+    },
+    {
+      "component": "Toggle",
+      "rule": "state-axis",
+      "reason": "Hover and press are drawn as variants so the prototype can react (Plan 137); code has CSS pseudo-classes, not a prop."
+    },
+    {
+      "component": "Badge",
+      "rule": "property-not-in-code",
+      "property": "interaction",
+      "reason": "Hover and press are drawn as variants so the prototype can react (Plan 137); code has CSS pseudo-classes, not a prop. Named interaction on Badge and Card; their stories drive it with the interactive prop or a role."
+    },
+    {
+      "component": "Card",
+      "rule": "property-not-in-code",
+      "property": "interaction",
+      "reason": "Hover and press are drawn as variants so the prototype can react (Plan 137); code has CSS pseudo-classes, not a prop. Named interaction on Badge and Card; their stories drive it with the interactive prop or a role."
+    },
+    {
+      "component": "Toggle",
+      "rule": "partial-set",
+      "reason": "Hover is drawn only on the enabled, unpressed look (the one that reacts); disabled and pressed keep one look at rest. Figma draws only the looks that differ at rest (builder rule)."
     }
   ]
 }
