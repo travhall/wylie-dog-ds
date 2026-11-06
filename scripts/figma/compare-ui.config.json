@@ -619,21 +619,21 @@
       "property": "radius",
       "scope": "box",
       "variant": "state=empty",
-      "reason": "Open (owner decision): Figma draws the palette with a 4px radius; the UI uses 8px."
+      "reason": "The story passes className=\"rounded-lg\" (8px), which tailwind-merge lets replace the component's own radius (--space-command-content-radius, border-radius.md = 4px, the value Figma draws)."
     },
     {
       "set": "Command",
       "property": "stroke",
       "scope": "box",
       "variant": "state=empty",
-      "reason": "Open (owner decision): the UI palette has a 1px border (measured #f9f7f5 on the top edge) that Figma does not draw; the search row's bottom border is not read by the harvester (it measures the top edge), so its stroke shows as missing."
+      "reason": "The story passes className=\"border\", a 1px border the component's root does not have (the component draws only the search row's bottom rule, which the harvester does not read: it measures the top edge). Figma draws none on the root, like the component."
     },
     {
       "set": "Command",
       "property": "shadow",
       "scope": "box",
       "variant": "state=empty",
-      "reason": "Open (owner decision): Figma draws the palette shadow at 40% black (#00000066); the UI uses 10% (#0000001a)."
+      "reason": "The story passes className=\"shadow-md\", Tailwind's 10% black shadow; the component's root has no shadow of its own (it sits inside a popover or dialog). Figma draws shadow/md on its overlay surface, which is 40% black in dark. The two shadows are not meant to match."
     },
     {
       "set": "Pagination",
