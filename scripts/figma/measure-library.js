@@ -80,7 +80,8 @@ function measureBox(node) {
     radius: r2(Math.min(radius || 0, w / 2, h / 2)),
     border: r2(border),
     stroke: strokes.length ? firstPaint(strokes) : null,
-    fill: firstPaint(node.fills),
+    // a text node's fill is its text colour, which the text layer already carries
+    fill: node.type === "TEXT" ? null : firstPaint(node.fills),
     opacity: r2(node.opacity ?? 1),
     shadow,
   };
@@ -143,7 +144,11 @@ for (const set of sets) {
       texts,
     });
     for (const part of PARTS[set.name] ?? []) {
-      const node = variant.findOne((n) => n.name === part);
+      // "name#1" is the second descendant called "name" (layers repeat: tabs-row-row)
+      const [partName, partIndex] = part.split("#");
+      const node = variant.findAll((n) => n.name === partName)[
+        Number(partIndex ?? 0)
+      ];
       if (!node) continue;
       const partTexts =
         node.type === "TEXT"

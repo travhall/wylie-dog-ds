@@ -74,7 +74,9 @@
         "disabled": "disabled"
       },
       "valueArgs": {
-        "checked": { "error": "error:!true;checked:!false" }
+        "checked": {
+          "error": "error:!true;checked:!false"
+        }
       }
     },
     "Textarea": {
@@ -123,10 +125,119 @@
         "size": "size"
       }
     },
+    "Tabs": {
+      "story": "components-navigation-tabs--default",
+      "root": "#storybook-root > div",
+      "args": {},
+      "parts": {
+        "tabs-row": "#storybook-root [role=tablist]",
+        "tabs-row-row": "#storybook-root [role=tab][data-state=active]",
+        "tabs-row-row#1": "#storybook-root [role=tab][data-state=inactive]",
+        "tabs-stack": "#storybook-root [role=tabpanel][data-state=active]"
+      }
+    },
+    "Breadcrumb": {
+      "story": "components-navigation-breadcrumb--default",
+      "root": "#storybook-root nav",
+      "args": {},
+      "valueStories": {
+        "state": {
+          "with-ellipsis": "components-navigation-breadcrumb--with-ellipsis"
+        }
+      },
+      "parts": {
+        "Home": "#storybook-root nav ol li:first-child a",
+        "Current": "#storybook-root nav [role=link]"
+      }
+    },
+    "Pagination": {
+      "story": "components-navigation-pagination--default",
+      "root": "#storybook-root nav",
+      "args": {},
+      "parts": {
+        "pagination-row": "#storybook-root nav ul li:nth-child(1) a",
+        "pagination-row#1": "#storybook-root nav ul li:nth-child(2) a",
+        "pagination-row#2": "#storybook-root nav ul li:nth-child(3) a"
+      }
+    },
+    "Collapsible": {
+      "story": "components-layout-structure-collapsible--default",
+      "root": "#storybook-root > div",
+      "args": {},
+      "parts": {
+        "collapsible-row": "#storybook-root div:has(> h4)",
+        "trigger": "#storybook-root h4"
+      }
+    },
+    "Accordion": {
+      "story": "components-content-display-accordion--default",
+      "root": "#storybook-root [data-state=closed]",
+      "args": {},
+      "parts": {
+        "accordion-row": "#storybook-root h3",
+        "trigger": "#storybook-root h3 button"
+      }
+    },
+    "Toggle Group": {
+      "story": "components-inputs-controls-togglegroup--default",
+      "root": "#storybook-root [role=radiogroup]",
+      "args": {},
+      "valueStories": {
+        "orientation": {
+          "vertical": "components-inputs-controls-togglegroup--vertical"
+        }
+      },
+      "parts": {
+        "toggle-group-row": "#storybook-root button[data-state=on]",
+        "toggle-group-row#1": "#storybook-root button[data-state=off]"
+      }
+    },
+    "Scrollbar": {
+      "story": "components-layout-structure-scrollarea--default",
+      "root": "#storybook-root [data-orientation={orientation}]",
+      "args": {
+        "orientation": "orientation"
+      },
+      "valueArgs": {
+        "orientation": {
+          "vertical": "type:always",
+          "horizontal": "type:always"
+        }
+      },
+      "valueStories": {
+        "orientation": {
+          "horizontal": "components-layout-structure-scrollarea--horizontal"
+        }
+      },
+      "parts": {
+        "scrollbar-box": "#storybook-root [data-orientation={orientation}] > div"
+      }
+    },
+    "Form": {
+      "story": "components-inputs-controls-form--default",
+      "root": "#storybook-root form > div:first-child",
+      "args": {},
+      "parts": {
+        "Field Label": "#storybook-root form label",
+        "form-row": "#storybook-root form input",
+        "Helper text goes here.": "#storybook-root form p"
+      }
+    },
+    "Command": {
+      "story": "components-navigation-command--default",
+      "root": "#storybook-root > div",
+      "args": {},
+      "parts": {
+        "command-row": "#storybook-root div:has(> input[role=combobox])",
+        "No results found.": "#storybook-root [role=status]"
+      }
+    },
     "Slider": {
       "story": "components-inputs-controls-slider--default",
       "root": "#storybook-root span[data-orientation]",
-      "args": { "disabled": "disabled" },
+      "args": {
+        "disabled": "disabled"
+      },
       "parts": {
         "track": "#storybook-root span[data-orientation] > span[data-orientation]",
         "range": "#storybook-root span[data-orientation] > span[data-orientation] > span[data-orientation]",
@@ -333,6 +444,288 @@
       "property": "lineHeight",
       "scope": "text",
       "reason": "Same as font size: the story keeps the md fallback line height."
+    },
+    {
+      "set": "Form",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a 280px field; in code the form is w-full (512px in the story)."
+    },
+    {
+      "set": "Form",
+      "property": "gap",
+      "scope": "box",
+      "reason": "The UI separates label, input and helper with margins on the field wrapper, not a flex gap; Figma uses an auto-layout gap of 8."
+    },
+    {
+      "set": "Form",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: Field Label",
+      "reason": "An inline label measures its font content area (22px), not its 16px line height; same as the Label set."
+    },
+    {
+      "set": "Form",
+      "property": "layer",
+      "scope": "text",
+      "variant": ":: form-row",
+      "reason": "Code shows the placeholder attribute, which is not a text node; Figma draws a text layer."
+    },
+    {
+      "set": "Toggle Group",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma items hug a letter (28 to 34px); the UI items are fixed 40px squares holding an icon, so the group is wider."
+    },
+    {
+      "set": "Toggle Group",
+      "property": "h",
+      "scope": "box",
+      "variant": "orientation=vertical",
+      "reason": "The vertical story draws more items than the Figma placeholder (three 40px rows)."
+    },
+    {
+      "set": "Toggle Group",
+      "property": "layer",
+      "scope": "text",
+      "reason": "Figma draws the letters B, I and U; the story draws icons (svg), which are not text nodes."
+    },
+    {
+      "set": "Toggle Group",
+      "property": "color",
+      "scope": "text",
+      "variant": "orientation=vertical",
+      "reason": "The vertical story has no pressed item first, so its first text is the unpressed colour; Figma's first row is the pressed one."
+    },
+    {
+      "set": "Collapsible",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed or hugging width; in code the element takes its container or the story copy, so width is layout, not look."
+    },
+    {
+      "set": "Collapsible",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma draws only the header row (21px); the UI root includes the header, a bordered item and the content area."
+    },
+    {
+      "set": "Collapsible",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: collapsible-row",
+      "reason": "The UI header row is story-authored with 16px side padding; Figma has none."
+    },
+    {
+      "set": "Collapsible",
+      "property": "radius",
+      "scope": "box",
+      "variant": "open=false",
+      "reason": "Open (owner decision): Figma draws the collapsible root with a 4px radius and a #0b0806 fill; the UI Collapsible renders no box of its own (the story header is story-authored)."
+    },
+    {
+      "set": "Collapsible",
+      "property": "fill",
+      "scope": "box",
+      "variant": "open=false",
+      "reason": "Open (owner decision): see the radius entry; the UI Collapsible has no root fill."
+    },
+    {
+      "set": "Collapsible",
+      "property": "weight",
+      "scope": "text",
+      "reason": "Open (owner decision): Figma draws the header Regular; the story's header is a 600 weight h4, authored in the story, not the component."
+    },
+    {
+      "set": "Scrollbar",
+      "property": "h",
+      "scope": "box",
+      "reason": "The UI scrollbar spans the 286px viewport and the thumb is proportional to the content (76px); Figma draws a 200px bar with a 40px thumb."
+    },
+    {
+      "set": "Scrollbar",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: scrollbar-box",
+      "reason": "Open (owner decision): the UI thumb is 5px wide (a 10px track with 2.5px inset); Figma draws an 8px thumb in an 8px track."
+    },
+    {
+      "set": "Scrollbar",
+      "property": "radius",
+      "scope": "box",
+      "variant": "orientation=vertical",
+      "reason": "Open (owner decision): the UI track is rounded (4px) and the thumb radius follows its 5px width (2.5px); Figma has an unrounded track and a 4px thumb radius."
+    },
+    {
+      "set": "Breadcrumb",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed or hugging width; in code the element takes its container or the story copy, so width is layout, not look."
+    },
+    {
+      "set": "Breadcrumb",
+      "property": "gap",
+      "scope": "box",
+      "reason": "The UI nav wraps the ol (the flex row); Figma's root is the row, so its gap of 4 has no counterpart on the nav element."
+    },
+    {
+      "set": "Breadcrumb",
+      "property": "radius",
+      "scope": "box",
+      "variant": ":: Home",
+      "reason": "The UI link carries a 4px radius for its focus ring; Figma draws it square."
+    },
+    {
+      "set": "Breadcrumb",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: Current",
+      "reason": "Open (owner decision, probable UI bug): BreadcrumbPage sets aria-disabled=\"true\", so its aria-disabled:text-(--color-breadcrumb-link-disabled) class wins over --color-breadcrumb-current and the current page renders #b19f89 instead of Figma's #f9f7f5."
+    },
+    {
+      "set": "Command",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed or hugging width; in code the element takes its container or the story copy, so width is layout, not look."
+    },
+    {
+      "set": "Command",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma draws the empty state (109px: search row and the empty message); the UI root is the whole command palette with its list (326px), and the empty message carries 24px padding."
+    },
+    {
+      "set": "Command",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: No results found.",
+      "reason": "The UI empty message has 24px vertical padding; Figma sets the height on the frame instead."
+    },
+    {
+      "set": "Command",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: command-row",
+      "reason": "The UI search row is not a flex container (the icon has its own margin); Figma uses a gap of 8."
+    },
+    {
+      "set": "Command",
+      "property": "layer",
+      "scope": "text",
+      "reason": "Code shows the placeholder attribute, which is not a text node; Figma draws a text layer."
+    },
+    {
+      "set": "Command",
+      "property": "radius",
+      "scope": "box",
+      "variant": "state=empty",
+      "reason": "The story passes className=\"rounded-lg\" (8px), which tailwind-merge lets replace the component's own radius (--space-command-content-radius, border-radius.md = 4px, the value Figma draws)."
+    },
+    {
+      "set": "Command",
+      "property": "stroke",
+      "scope": "box",
+      "variant": "state=empty",
+      "reason": "The story passes className=\"border\", a 1px border the component's root does not have (the component draws only the search row's bottom rule, which the harvester does not read: it measures the top edge). Figma draws none on the root, like the component."
+    },
+    {
+      "set": "Command",
+      "property": "shadow",
+      "scope": "box",
+      "variant": "state=empty",
+      "reason": "The story passes className=\"shadow-md\", Tailwind's 10% black shadow; the component's root has no shadow of its own (it sits inside a popover or dialog). Figma draws shadow/md on its overlay surface, which is 40% black in dark. The two shadows are not meant to match."
+    },
+    {
+      "set": "Pagination",
+      "property": "w",
+      "scope": "box",
+      "reason": "Open (owner decision): the UI Previous link is 100.81px (8px left padding), Figma 109px (16px); the row is 356px in the UI, 328px in Figma."
+    },
+    {
+      "set": "Pagination",
+      "property": "gap",
+      "scope": "box",
+      "reason": "The UI nav wraps the ul (the flex row); Figma's root is the row, so its gap of 4 has no counterpart on the nav element."
+    },
+    {
+      "set": "Pagination",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: pagination-row",
+      "reason": "Open (owner decision): the UI Previous link is padded 8px on the icon side where Figma has 16px; the page links are fixed 40px squares with 16px padding in the UI and none in Figma (the box is the same size)."
+    },
+    {
+      "set": "Tabs",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed or hugging width; in code the element takes its container or the story copy, so width is layout, not look."
+    },
+    {
+      "set": "Tabs",
+      "property": "gap",
+      "scope": "box",
+      "variant": "size=md",
+      "reason": "The UI list and panel are spaced by margin on the panel, not a flex gap; Figma uses a gap of 16."
+    },
+    {
+      "set": "Tabs",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: tabs-row",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI list is p-(tabs.list.padding) on all four sides (4px); the builder padded left and right only."
+    },
+    {
+      "set": "Tabs",
+      "property": "stroke",
+      "scope": "box",
+      "variant": ":: tabs-row",
+      "reason": "Harvester limit: the list's border and the active tab's indicator are bottom-edge borders in code (border-b), and the harvester reads the top edge, so the UI stroke shows as missing. Figma draws both as bottom strokes, matching the tokens (tabs.list.border.color, tabs.trigger.indicator-color)."
+    },
+    {
+      "set": "Tabs",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: tabs-row-row#1",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): in code every trigger has border-b-4 border-transparent, so the inactive tab is as tall as the active one (33px); the builder drew the inactive tab without the 4px bottom stroke (29px)."
+    },
+    {
+      "set": "Tabs",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma draws the tab list and one line of content (160px); the UI root is the story's whole form (260px), and the panel holds story fields."
+    },
+    {
+      "set": "Tabs",
+      "property": "size",
+      "scope": "text",
+      "variant": ":: tabs-stack",
+      "reason": "The story's tab panel starts with a 16px label; Figma's panel text is 14px."
+    },
+    {
+      "set": "Tabs",
+      "property": "lineHeight",
+      "scope": "text",
+      "variant": ":: tabs-stack",
+      "reason": "The story's tab panel starts with a 16px label; Figma's panel text has a 21px line height."
+    },
+    {
+      "set": "Accordion",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed or hugging width; in code the element takes its container or the story copy, so width is layout, not look."
+    },
+    {
+      "set": "Accordion",
+      "property": "h",
+      "scope": "box",
+      "reason": "Open (owner decision): the closed Figma accordion is 56px (a 40px row plus 16px); the UI item is 42px (40px trigger plus borders). The Figma trigger is the 16px text where the UI trigger is the 40px button."
+    },
+    {
+      "set": "Accordion",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Padding sits on the row in Figma (12px) and on the trigger button in the UI."
     }
   ]
 }

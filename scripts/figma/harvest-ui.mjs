@@ -270,7 +270,10 @@ async function main() {
     // Named inner layers (Slider's track, range and thumb): each is measured on its own and
     // compared against the Figma descendant of the same name ("<variant> :: <part>").
     for (const [part, selector] of Object.entries(component.parts ?? {})) {
-      const inner = await page.evaluate(measureInPage, selector);
+      const inner = await page.evaluate(
+        measureInPage,
+        selector.replace(/\{(\w+)\}/g, (_, k) => props[k] ?? "")
+      );
       if (!inner) {
         skipped.push(`${item.set} ${item.variant} :: ${part}: no element for ${selector}`);
         continue;
