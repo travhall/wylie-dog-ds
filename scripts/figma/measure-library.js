@@ -8,6 +8,10 @@
 const PAGE_NAME = "Components"; // the page to read
 const SET_NAMES = []; // [] measures every component set on the page; or e.g. ["Button", "Badge"]
 const MODE = "light"; // "light" or "dark": the label the comparison checks against the UI run
+// Inner layers to measure on their own, by set: { Slider: ["track", "range", "thumb"] }. Each is
+// emitted as an extra item named "<variant> :: <part>" (the first descendant with that name), which
+// harvest-ui.mjs matches through the config's `parts`. Use it for a set whose root is a wrapper.
+const PARTS = {};
 
 const page = figma.root.children.find((p) => p.name === PAGE_NAME);
 if (!page) throw new Error(`No page named ${PAGE_NAME}`);
@@ -138,6 +142,25 @@ for (const set of sets) {
       box: measureBox(variant),
       texts,
     });
+    for (const part of PARTS[set.name] ?? []) {
+      const node = variant.findOne((n) => n.name === part);
+      if (!node) continue;
+      const partTexts =
+        node.type === "TEXT"
+          ? [measureText(node)]
+          : "findAll" in node
+            ? node
+                .findAll((n) => n.type === "TEXT" && n.visible !== false)
+                .slice(0, 1)
+                .map(measureText)
+            : [];
+      items.push({
+        set: set.name,
+        variant: `${variant.name} :: ${part}`,
+        box: measureBox(node),
+        texts: partTexts,
+      });
+    }
   }
 }
 return { mode: MODE, page: PAGE_NAME, count: items.length, items };

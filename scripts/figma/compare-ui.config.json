@@ -123,6 +123,16 @@
         "size": "size"
       }
     },
+    "Slider": {
+      "story": "components-inputs-controls-slider--default",
+      "root": "#storybook-root span[data-orientation]",
+      "args": { "disabled": "disabled" },
+      "parts": {
+        "track": "#storybook-root span[data-orientation] > span[data-orientation]",
+        "range": "#storybook-root span[data-orientation] > span[data-orientation] > span[data-orientation]",
+        "thumb": "#storybook-root span[role=slider]"
+      }
+    },
     "Label": {
       "story": "components-inputs-controls-label--default",
       "root": "#storybook-root label",
@@ -219,6 +229,25 @@
       "property": "radius",
       "scope": "box",
       "reason": "Follows from the 0px width in the story: the radius is clamped to half the width. The token (4px) matches Figma."
+    },
+    {
+      "set": "Slider",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed 240px slider (the range is half of it, 120px); in code the slider is w-full and takes its container (300px in the story, the range 150px). The 50% proportion matches."
+    },
+    {
+      "set": "Slider",
+      "property": "h",
+      "scope": "box",
+      "reason": "The Figma root is a 24px wrapper sized to the thumb; the UI root is the 8px track row and the 24px thumb overflows it. Track, range and thumb sizes each match."
+    },
+    {
+      "set": "Slider",
+      "property": "radius",
+      "scope": "box",
+      "variant": ":: range",
+      "reason": "Open (owner decision): Figma rounds the range to 4px, so its trailing end is rounded; in code the range has no radius and only the track's overflow clips it, so the end at the thumb is square (hidden behind the thumb)."
     },
     {
       "set": "Toast",
