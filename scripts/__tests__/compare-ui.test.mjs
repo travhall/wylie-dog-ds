@@ -197,6 +197,38 @@ test("the harvester turns a Figma variant into story args, and a prop-backed sta
   );
 });
 
+test("one Figma value can be several story args, or live in another story", async () => {
+  const { argsParam, parseVariant, storyUrl } = await import(
+    "../figma/harvest-ui.mjs"
+  );
+  const checkbox = {
+    story: "components-inputs-controls-checkbox--default",
+    args: { size: "size", checked: "checked" },
+    valueArgs: { checked: { error: "error:!true;checked:!false" } },
+  };
+  assert.equal(
+    argsParam(parseVariant("size=md, checked=error, disabled=false"), checkbox),
+    "size:md;error:!true;checked:!false"
+  );
+  assert.equal(
+    argsParam(parseVariant("size=md, checked=true, disabled=false"), checkbox),
+    "size:md;checked:!true"
+  );
+  const toast = {
+    story: "components-feedback-status-toast--controls-on-solid-toasts",
+    args: {},
+    valueStories: { variant: { default: "components-feedback-status-toast--with-action" } },
+  };
+  assert.match(
+    storyUrl("http://x", toast, parseVariant("variant=default"), "dark"),
+    /id=components-feedback-status-toast--with-action&/
+  );
+  assert.match(
+    storyUrl("http://x", toast, parseVariant("variant=info"), "dark"),
+    /id=components-feedback-status-toast--controls-on-solid-toasts&/
+  );
+});
+
 test("the tolerance is the documented one", () => {
   assert.equal(TOLERANCE.px, 1);
   assert.equal(TOLERANCE.colorChannel, 3);

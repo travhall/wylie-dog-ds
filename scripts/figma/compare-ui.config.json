@@ -72,6 +72,9 @@
         "size": "size",
         "checked": "checked",
         "disabled": "disabled"
+      },
+      "valueArgs": {
+        "checked": { "error": "error:!true;checked:!false" }
       }
     },
     "Textarea": {
@@ -124,7 +127,8 @@
       "story": "components-inputs-controls-label--default",
       "root": "#storybook-root label",
       "args": {
-        "size": "size"
+        "size": "size",
+        "error": "error"
       }
     },
     "Separator": {
@@ -153,7 +157,12 @@
     "Toast": {
       "story": "components-feedback-status-toast--controls-on-solid-toasts",
       "root": "#storybook-root [data-variant={variant}]",
-      "args": {}
+      "args": {},
+      "valueStories": {
+        "variant": {
+          "default": "components-feedback-status-toast--with-action"
+        }
+      }
     }
   },
   "allow": [
@@ -210,6 +219,13 @@
       "property": "radius",
       "scope": "box",
       "reason": "Follows from the 0px width in the story: the radius is clamped to half the width. The token (4px) matches Figma."
+    },
+    {
+      "set": "Toast",
+      "property": "h",
+      "scope": "box",
+      "variant": "variant=default",
+      "reason": "The only default-variant story with an action (toast--with-action) renders a title, description and action but no close button; Figma draws all of them, so the height differs by 3px. Recheck if a default story with a close is added."
     },
     {
       "set": "Label",
