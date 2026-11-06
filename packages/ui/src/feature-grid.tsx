@@ -69,9 +69,9 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
       <div className={gridClasses} ref={ref} role="region" {...props}>
         {features.map((feature, index) => (
           <div key={index} className="group relative">
-            <div className="bg-(--color-card-background) border-(length:--space-feature-grid-border-width) border-(--color-feature-grid-item-border-color)/10 rounded-(--space-feature-grid-item-radius) p-(--space-feature-grid-item-padding) transition-all duration-(--duration-feature-grid-item-duration) hover:border-(--color-feature-grid-item-border-color-hover)/20 hover:scale-(--feature-grid-item-hover-scale)">
+            <div className="bg-(--color-card-background) border-(length:--space-feature-grid-border-width) border-(--color-feature-grid-item-border-color) rounded-(--space-feature-grid-item-radius) p-(--space-feature-grid-item-padding) transition-all duration-(--duration-feature-grid-item-duration) hover:border-(--color-feature-grid-item-border-color-hover) hover:scale-(--feature-grid-item-hover-scale)">
               {/* Icon */}
-              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-(--space-feature-grid-icon-container-size) h-(--space-feature-grid-icon-container-size) rounded-(--space-feature-grid-icon-radius) bg-(--color-card-background) border-(--color-feature-grid-item-border-color)/5 shadow-(--shadow-feature-grid-icon-shadow) group-hover:scale-(--feature-grid-icon-hover-scale) transition-transform duration-(--duration-feature-grid-icon-duration)">
+              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-(--space-feature-grid-icon-container-size) h-(--space-feature-grid-icon-container-size) rounded-(--space-feature-grid-icon-radius) bg-(--color-card-background) shadow-(--shadow-feature-grid-icon-shadow) group-hover:scale-(--feature-grid-icon-hover-scale) transition-transform duration-(--duration-feature-grid-icon-duration)">
                 {feature.icon}
               </div>
 

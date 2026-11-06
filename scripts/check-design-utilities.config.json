@@ -22,11 +22,6 @@
       "reason": "Open (Plan 217): blur behind the sheet overlay (see dialog.tsx)."
     },
     {
-      "file": "packages/ui/src/compositions/site-header.tsx",
-      "match": "backdrop-blur",
-      "reason": "Open (Plan 217): blur behind the sticky header (see dialog.tsx). Tailwind's default is 8px."
-    },
-    {
       "file": "packages/ui/src/accordion.tsx",
       "match": "rotate-180",
       "reason": "Flips the chevron when the item opens: orientation geometry, not a design value."
