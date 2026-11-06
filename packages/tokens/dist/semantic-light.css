@@ -1165,6 +1165,7 @@
   --space-command-shortcut-letter-spacing: 0.1em;
   --font-size-command-shortcut-font-size: 0.75rem;
   --line-height-command-shortcut-line-height: 1.5;
+  --space-toast-controls-gap: 0.75rem;
   --space-toast-content-gap: 0.25rem;
   --space-resizable-handle-height: 1rem;
   --space-resizable-handle-width: 0.75rem;

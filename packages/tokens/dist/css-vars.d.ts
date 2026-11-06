@@ -1487,6 +1487,7 @@ export type CssVarName =
   | "--space-toast-close-button-radius"
   | "--space-toast-close-size"
   | "--space-toast-content-gap"
+  | "--space-toast-controls-gap"
   | "--space-toast-gap"
   | "--space-toast-max-width"
   | "--space-toast-padding"
@@ -3052,6 +3053,7 @@ export declare const cssVars: Readonly<{
   "spaceToastCloseButtonRadius": "--space-toast-close-button-radius";
   "spaceToastCloseSize": "--space-toast-close-size";
   "spaceToastContentGap": "--space-toast-content-gap";
+  "spaceToastControlsGap": "--space-toast-controls-gap";
   "spaceToastGap": "--space-toast-gap";
   "spaceToastMaxWidth": "--space-toast-max-width";
   "spaceToastPadding": "--space-toast-padding";

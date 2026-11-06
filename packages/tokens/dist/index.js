@@ -1159,6 +1159,7 @@ export const commandGroupHeadingFontWeight = 500; // Font weight of the command 
 export const commandShortcutLetterSpacing = "0.1em"; // Letter spacing of the command menu shortcut.
 export const commandShortcutFontSize = "0.75rem"; // Font size of the command menu shortcut.
 export const commandShortcutLineHeight = 150; // Line height of the command menu shortcut.
+export const toastControlsGap = "0.75rem"; // Space between the close button and the action in a toast.
 export const toastContentGap = "0.25rem"; // Gap between the items inside the toast content.
 export const resizableHandleHeight = "1rem"; // Height of the resizable handle.
 export const resizableHandleWidth = "0.75rem"; // Width of the resizable handle.

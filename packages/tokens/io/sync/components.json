@@ -6852,6 +6852,15 @@
             "Dark": "{typography.line-height.normal}"
           }
         },
+        "toast.controls-gap": {
+          "$type": "spacing",
+          "$value": "{space.150}",
+          "$description": "Space between the close button and the action in a toast.",
+          "valuesByMode": {
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
         "toast.content-gap": {
           "$type": "spacing",
           "$value": "{space.050}",

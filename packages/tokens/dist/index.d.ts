@@ -1154,6 +1154,7 @@ export declare const commandGroupHeadingFontWeight: number;
 export declare const commandShortcutLetterSpacing: "0.1em";
 export declare const commandShortcutFontSize: "0.75rem";
 export declare const commandShortcutLineHeight: number;
+export declare const toastControlsGap: "0.75rem";
 export declare const toastContentGap: "0.25rem";
 export declare const resizableHandleHeight: "1rem";
 export declare const resizableHandleWidth: "0.75rem";
