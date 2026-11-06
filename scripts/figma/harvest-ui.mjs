@@ -215,6 +215,8 @@ async function main() {
   const skipped = [];
   const page = await browser.newPage({ viewport: { width: 900, height: 900 } });
   for (const item of figma.items ?? []) {
+    // a part ("<variant> :: <part>") is harvested with its parent variant, through `parts`
+    if (item.variant.includes(" :: ")) continue;
     const component = config.components[item.set];
     if (!component) {
       skipped.push(`${item.set}: not in compare-ui.config.json`);
@@ -265,6 +267,16 @@ async function main() {
       continue;
     }
     items.push({ set: item.set, variant: item.variant, ...measured });
+    // Named inner layers (Slider's track, range and thumb): each is measured on its own and
+    // compared against the Figma descendant of the same name ("<variant> :: <part>").
+    for (const [part, selector] of Object.entries(component.parts ?? {})) {
+      const inner = await page.evaluate(measureInPage, selector);
+      if (!inner) {
+        skipped.push(`${item.set} ${item.variant} :: ${part}: no element for ${selector}`);
+        continue;
+      }
+      items.push({ set: item.set, variant: `${item.variant} :: ${part}`, ...inner });
+    }
   }
   await browser.close();
   for (const s of skipped) console.error(`skipped: ${s}`);
