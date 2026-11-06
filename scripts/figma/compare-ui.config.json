@@ -307,6 +307,73 @@
         "dialog-body": "[role=dialog] > div:nth-child(2)",
         "dialog-footer": "[role=dialog] > div:nth-child(3)"
       }
+    },
+    "Alert Dialog": {
+      "story": "components-overlays-popovers-alertdialog--default",
+      "root": "[role=alertdialog]",
+      "args": {},
+      "valueStories": {
+        "state": {
+          "destructive": "components-overlays-popovers-alertdialog--destructive-action"
+        }
+      },
+      "open": {
+        "click": "#storybook-root button"
+      },
+      "parts": {
+        "alert-dialog-stack": "[role=alertdialog] > div:nth-child(1)",
+        "alert-dialog-row": "[role=alertdialog] > div:nth-child(2)"
+      }
+    },
+    "Sheet": {
+      "story": "components-overlays-popovers-sheet--default",
+      "root": "[role=dialog]",
+      "args": {},
+      "open": {
+        "click": "#storybook-root button"
+      },
+      "parts": {
+        "title": "[role=dialog] h2",
+        "description": "[role=dialog] p",
+        "close-button": "[role=dialog] > button"
+      }
+    },
+    "Popover": {
+      "story": "components-overlays-popovers-popover--default",
+      "root": "[role=dialog]",
+      "args": {},
+      "open": {
+        "click": "#storybook-root button"
+      },
+      "parts": {
+        "title": "[role=dialog] h4",
+        "content": "[role=dialog] p"
+      }
+    },
+    "Hover Card": {
+      "story": "components-overlays-popovers-hovercard--default",
+      "root": "[data-radix-popper-content-wrapper] > [data-state=open]",
+      "args": {},
+      "open": {
+        "hover": "#storybook-root button",
+        "wait": 900
+      },
+      "parts": {
+        "title": "[data-radix-popper-content-wrapper] h4",
+        "content": "[data-radix-popper-content-wrapper] p"
+      }
+    },
+    "Tooltip": {
+      "story": "components-overlays-popovers-tooltip--default",
+      "root": "[role=tooltip]",
+      "args": {},
+      "open": {
+        "hover": "#storybook-root button",
+        "wait": 900
+      },
+      "parts": {
+        "children": "[role=tooltip] p"
+      }
     }
   },
   "allow": [
@@ -777,6 +844,221 @@
       "property": "h",
       "scope": "box",
       "reason": "Figma draws one placeholder line of body copy; the story's dialog holds a header, a paragraph and a footer, so the root height follows the copy."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: alert-dialog",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container, so width is layout, not look."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: alert-dialog",
+      "reason": "The UI header and action row space their children with margin; Figma uses an auto-layout gap."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: alert-dialog",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: alert-dialog-stack",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the destructive state is the action button in code; the title keeps the dialog title colour. The builder coloured the title destructive."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "color",
+      "scope": "text",
+      "variant": "state=destructive",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): see the stack entry: the destructive title colour."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI dialog is w-full capped by alert-dialog.content-max-width (512px); the builder hardcoded 448px."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Hover Card",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container, so width is layout, not look."
+    },
+    {
+      "set": "Hover Card",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Hover Card",
+      "property": "weight",
+      "scope": "text",
+      "variant": ":: title",
+      "reason": "The story's heading is a semibold h4 authored in the story; the component sets no heading."
+    },
+    {
+      "set": "Hover Card",
+      "property": "w",
+      "scope": "box",
+      "reason": "The story sets the card to w-80 (320px) over the md size's 384px; width is the story's."
+    },
+    {
+      "set": "Hover Card",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Hover Card",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The first text in the UI card is the story's bold avatar initial, not the component's text."
+    },
+    {
+      "set": "Hover Card",
+      "property": "color",
+      "scope": "text",
+      "reason": "The first text in the UI card is the story's white avatar initial, not the component's text."
+    },
+    {
+      "set": "Popover",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container, so width is layout, not look."
+    },
+    {
+      "set": "Popover",
+      "property": "size",
+      "scope": "text",
+      "variant": ":: title",
+      "reason": "The story's heading is an h4 authored in the story (font-medium, leading-none); the component sets no heading."
+    },
+    {
+      "set": "Popover",
+      "property": "weight",
+      "scope": "text",
+      "variant": ":: title",
+      "reason": "The story's heading is authored in the story."
+    },
+    {
+      "set": "Popover",
+      "property": "lineHeight",
+      "scope": "text",
+      "variant": ":: title",
+      "reason": "The story's heading is leading-none, authored in the story."
+    },
+    {
+      "set": "Popover",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Popover",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: content",
+      "reason": "The story's description is text-current/70, authored in the story."
+    },
+    {
+      "set": "Popover",
+      "property": "w",
+      "scope": "box",
+      "reason": "The story sets the popover to w-80 (320px) over the md size's 384px; width is the story's."
+    },
+    {
+      "set": "Popover",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Popover",
+      "property": "size",
+      "scope": "text",
+      "reason": "The first text in the UI popover is the story's own 16px heading."
+    },
+    {
+      "set": "Popover",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The first text in the UI popover is the story's own heading."
+    },
+    {
+      "set": "Popover",
+      "property": "lineHeight",
+      "scope": "text",
+      "reason": "The first text in the UI popover is the story's own heading."
+    },
+    {
+      "set": "Sheet",
+      "property": "radius",
+      "scope": "box",
+      "variant": ":: close-button",
+      "reason": "Figma draws the \u00d7 glyph with no button box, so sheet.close-button-radius has nothing to round; in the UI it only shapes the focus ring."
+    },
+    {
+      "set": "Sheet",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container, so width is layout, not look."
+    },
+    {
+      "set": "Sheet",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: description",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Sheet",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Open (owner decision): the UI draws the sheet's edge border (sheet.border-width) with no colour token, so it falls back to currentColor (the page text colour); Figma draws no border. Sheet needs a sheet.border colour token (dialog uses dialog.border) in the UI, tokens and Figma."
+    },
+    {
+      "set": "Sheet",
+      "property": "w",
+      "scope": "box",
+      "reason": "The UI sheet is sheet.content.width.default (448px at this viewport) capped by the size's max width (512px for md); Figma draws the md max."
+    },
+    {
+      "set": "Sheet",
+      "property": "h",
+      "scope": "box",
+      "reason": "A sheet is the full viewport height in code; Figma draws a 400px frame."
+    },
+    {
+      "set": "Sheet",
+      "property": "gap",
+      "scope": "box",
+      "reason": "The UI sheet spaces its header, body and footer with the story's own layout and margins; Figma uses an auto-layout gap of 8."
+    },
+    {
+      "set": "Tooltip",
+      "property": "w",
+      "scope": "box",
+      "reason": "The tooltip hugs its copy; the story's text is longer than Figma's placeholder."
     }
   ]
 }
