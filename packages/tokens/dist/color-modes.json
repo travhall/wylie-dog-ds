@@ -963,6 +963,10 @@
     "light": "oklch(0.991 0.003 264.39)",
     "dark": "oklch(0.202 0.011 47.89)"
   },
+  "color-contextmenu-border": {
+    "light": "oklch(0.74 0.019 70)",
+    "dark": "oklch(0.397 0.018 63.81)"
+  },
   "color-contextmenu-item-hover": {
     "light": "oklch(0.927 0.012 75.12)",
     "dark": "oklch(0.269 0.016 50.53)"
@@ -1970,6 +1974,10 @@
   "color-sheet-content-background": {
     "light": "oklch(0.991 0.003 264.39)",
     "dark": "oklch(0.202 0.011 47.89)"
+  },
+  "color-sheet-content-border": {
+    "light": "oklch(0.74 0.019 70)",
+    "dark": "oklch(0.397 0.018 63.81)"
   },
   "color-sheet-description-text": {
     "light": "oklch(0.33 0.024 47.83)",

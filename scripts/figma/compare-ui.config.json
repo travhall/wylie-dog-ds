@@ -1078,7 +1078,7 @@
       "set": "Sheet",
       "property": "stroke",
       "scope": "box",
-      "reason": "Open (owner decision): the UI draws the sheet's edge border (sheet.border-width) with no colour token, so it falls back to currentColor (the page text colour); Figma draws no border. Sheet needs a sheet.border colour token (dialog uses dialog.border) in the UI, tokens and Figma."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI sheet draws its edge border in sheet.content.border; the builder drew no border. The edge colour now has a token in the UI, tokens and builder."
     },
     {
       "set": "Sheet",
@@ -1228,12 +1228,6 @@
       "scope": "box",
       "variant": ":: ",
       "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
-    },
-    {
-      "set": "Context Menu",
-      "property": "stroke",
-      "scope": "box",
-      "reason": "Open (owner decision): the UI context menu draws its edge border (contextmenu.border-width) with no colour token or class, so it falls back to currentColor (the page text colour); Figma uses the border colour. It needs a context-menu border colour token like dropdown-menu.content.border, in the UI, tokens and Figma."
     },
     {
       "set": "Context Menu",

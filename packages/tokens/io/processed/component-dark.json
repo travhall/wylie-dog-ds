@@ -884,6 +884,11 @@
     "$value": "{color.background.raised}",
     "$description": "Fill of the context menu. Pairs with `contextmenu.text`."
   },
+  "contextmenu.border": {
+    "$type": "color",
+    "$value": "{color.border.default}",
+    "$description": "Border color of the context menu and its submenus."
+  },
   "contextmenu.item-hover": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
@@ -3248,6 +3253,11 @@
     "$type": "color",
     "$value": "{color.background.raised}",
     "$description": "Fill of the sheet panel. Also the color of the gap between the close button and its focus ring."
+  },
+  "sheet.content.border": {
+    "$type": "color",
+    "$value": "{color.border.default}",
+    "$description": "Border color of the sheet's edge."
   },
   "sheet.close-button.opacity": {
     "$type": "number",

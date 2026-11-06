@@ -270,6 +270,7 @@ export type CssVarName =
   | "--color-command-shortcut"
   | "--color-command-text"
   | "--color-contextmenu-background"
+  | "--color-contextmenu-border"
   | "--color-contextmenu-item-hover"
   | "--color-contextmenu-item-text-disabled"
   | "--color-contextmenu-item-text-hover"
@@ -522,6 +523,7 @@ export type CssVarName =
   | "--color-select-trigger-text-disabled"
   | "--color-separator-color"
   | "--color-sheet-content-background"
+  | "--color-sheet-content-border"
   | "--color-sheet-description-text"
   | "--color-sheet-overlay-background"
   | "--color-sheet-title-text"
@@ -1836,6 +1838,7 @@ export declare const cssVars: Readonly<{
   "colorCommandShortcut": "--color-command-shortcut";
   "colorCommandText": "--color-command-text";
   "colorContextmenuBackground": "--color-contextmenu-background";
+  "colorContextmenuBorder": "--color-contextmenu-border";
   "colorContextmenuItemHover": "--color-contextmenu-item-hover";
   "colorContextmenuItemTextDisabled": "--color-contextmenu-item-text-disabled";
   "colorContextmenuItemTextHover": "--color-contextmenu-item-text-hover";
@@ -2088,6 +2091,7 @@ export declare const cssVars: Readonly<{
   "colorSelectTriggerTextDisabled": "--color-select-trigger-text-disabled";
   "colorSeparatorColor": "--color-separator-color";
   "colorSheetContentBackground": "--color-sheet-content-background";
+  "colorSheetContentBorder": "--color-sheet-content-border";
   "colorSheetDescriptionText": "--color-sheet-description-text";
   "colorSheetOverlayBackground": "--color-sheet-overlay-background";
   "colorSheetTitleText": "--color-sheet-title-text";

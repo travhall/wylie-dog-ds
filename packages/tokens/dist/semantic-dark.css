@@ -294,6 +294,7 @@
   --color-carousel-nav-hover: oklch(0.269 0.016 50.53);
   --color-carousel-nav-text-hover: oklch(0.977 0.003 65.52);
   --color-contextmenu-background: oklch(0.202 0.011 47.89);
+  --color-contextmenu-border: oklch(0.397 0.018 63.81);
   --color-contextmenu-item-hover: oklch(0.269 0.016 50.53);
   --color-contextmenu-item-text-hover: oklch(0.977 0.003 65.52);
   --color-contextmenu-label: oklch(0.843 0.027 71.03);
@@ -767,6 +768,7 @@
   --font-weight-label-font-weight: 500;
   --color-separator-color: oklch(0.397 0.018 63.81);
   --color-sheet-content-background: oklch(0.202 0.011 47.89);
+  --color-sheet-content-border: oklch(0.397 0.018 63.81);
   --sheet-close-button-opacity: 0.7;
   --color-sheet-title-text: oklch(0.977 0.003 65.52);
   --color-sheet-description-text: oklch(0.843 0.027 71.03);
