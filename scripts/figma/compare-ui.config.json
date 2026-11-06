@@ -433,8 +433,8 @@
       "root": "[role=region]",
       "args": {},
       "parts": {
-        "feature-grid-stack": "[role=region] > div:nth-child(1)",
-        "feature-grid-stack#1": "[role=region] > div:nth-child(2)"
+        "feature-grid-stack": "[role=region] > div:nth-child(1) > div",
+        "feature-grid-stack#1": "[role=region] > div:nth-child(2) > div"
       }
     },
     "Resizable": {
@@ -622,13 +622,6 @@
       "property": "h",
       "scope": "box",
       "reason": "The Figma root is a 24px wrapper sized to the thumb; the UI root is the 8px track row and the 24px thumb overflows it. Track, range and thumb sizes each match."
-    },
-    {
-      "set": "Slider",
-      "property": "radius",
-      "scope": "box",
-      "variant": ":: range",
-      "reason": "Open (owner decision): Figma rounds the range to 4px, so its trailing end is rounded; in code the range has no radius and only the track's overflow clips it, so the end at the thumb is square (hidden behind the thumb)."
     },
     {
       "set": "Toast",
@@ -1226,7 +1219,7 @@
       "property": "weight",
       "scope": "text",
       "variant": ":: bar",
-      "reason": "Open (owner decision): the UI trigger is medium (menubar.trigger.font-weight, 500) but Figma draws it Regular: the text style set on the trigger overrides the bound weight."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): a text layer's bound weight did not move once its text style was applied (a menu label is semibold, its text style is the regular item style); the builder now sets the face after the style and binds the weight variable again."
     },
     {
       "set": "Menubar",
@@ -1342,7 +1335,7 @@
       "property": "weight",
       "scope": "text",
       "variant": ":: menu-label",
-      "reason": "Open (owner decision): the UI label is semibold (dropdown-menu.label-font-weight, 600) but Figma draws it Regular: the builder gives the label the item text style, which sets Regular over the bound weight. The menu labels need their own text style."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): a text layer's bound weight did not move once its text style was applied (a menu label is semibold, its text style is the regular item style); the builder now sets the face after the style and binds the weight variable again."
     },
     {
       "set": "Dropdown Menu",
@@ -1376,7 +1369,7 @@
       "set": "Dropdown Menu",
       "property": "weight",
       "scope": "text",
-      "reason": "Open (owner decision): the UI label is semibold (dropdown-menu.label-font-weight, 600) but Figma draws it Regular: the builder gives the label the item text style, which sets Regular over the bound weight. The menu labels need their own text style."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): a text layer's bound weight did not move once its text style was applied (a menu label is semibold, its text style is the regular item style); the builder now sets the face after the style and binds the weight variable again."
     },
     {
       "set": "Dropdown Menu",
@@ -1406,25 +1399,25 @@
       "set": "Card Grid",
       "property": "pad",
       "scope": "box",
-      "reason": "Open (owner decision): Figma draws simplified placeholder cards (16px padding, no shadow, 20px title); the UI grid holds Card components (32px padding, shadow, 18px title). The Figma Card Grid should hold Card instances."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the grid holds Card components in code; the builder drew placeholder cards and now places Card instances."
     },
     {
       "set": "Card Grid",
       "property": "shadow",
       "scope": "box",
-      "reason": "Open (owner decision): Figma draws simplified placeholder cards (16px padding, no shadow, 20px title); the UI grid holds Card components (32px padding, shadow, 18px title). The Figma Card Grid should hold Card instances."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the grid holds Card components in code; the builder drew placeholder cards and now places Card instances."
     },
     {
       "set": "Card Grid",
       "property": "size",
       "scope": "text",
-      "reason": "Open (owner decision): Figma draws simplified placeholder cards (16px padding, no shadow, 20px title); the UI grid holds Card components (32px padding, shadow, 18px title). The Figma Card Grid should hold Card instances."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the grid holds Card components in code; the builder drew placeholder cards and now places Card instances."
     },
     {
       "set": "Card Grid",
       "property": "lineHeight",
       "scope": "text",
-      "reason": "Open (owner decision): Figma draws simplified placeholder cards (16px padding, no shadow, 20px title); the UI grid holds Card components (32px padding, shadow, 18px title). The Figma Card Grid should hold Card instances."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the grid holds Card components in code; the builder drew placeholder cards and now places Card instances."
     },
     {
       "set": "Feature Grid",
@@ -1437,48 +1430,6 @@
       "property": "h",
       "scope": "box",
       "reason": "Figma draws a fixed, placeholder-sized frame; in code the element fills its container or the story's content, so size is layout, not look."
-    },
-    {
-      "set": "Feature Grid",
-      "property": "pad",
-      "scope": "box",
-      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
-    },
-    {
-      "set": "Feature Grid",
-      "property": "gap",
-      "scope": "box",
-      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
-    },
-    {
-      "set": "Feature Grid",
-      "property": "radius",
-      "scope": "box",
-      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
-    },
-    {
-      "set": "Feature Grid",
-      "property": "stroke",
-      "scope": "box",
-      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
-    },
-    {
-      "set": "Feature Grid",
-      "property": "fill",
-      "scope": "box",
-      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
-    },
-    {
-      "set": "Feature Grid",
-      "property": "size",
-      "scope": "text",
-      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
-    },
-    {
-      "set": "Feature Grid",
-      "property": "weight",
-      "scope": "text",
-      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
     },
     {
       "set": "Resizable",
@@ -1592,19 +1543,19 @@
       "set": "Table",
       "property": "h",
       "scope": "box",
-      "reason": "Open (owner decision): Figma sets every row to the 48px header height; the UI body row is cell padding plus line height plus the rule (54px), its body cells are medium weight, and the last body row keeps its rule when a footer follows. The builder's table rows need to hug their cells."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): body and footer rows hug their cells in code (cell padding plus line height plus the rule, 54px); the builder fixed every row at the 48px header height."
     },
     {
       "set": "Table",
       "property": "weight",
       "scope": "text",
-      "reason": "Open (owner decision): Figma sets every row to the 48px header height; the UI body row is cell padding plus line height plus the rule (54px), its body cells are medium weight, and the last body row keeps its rule when a footer follows. The builder's table rows need to hug their cells."
+      "reason": "The story's first column is font-medium, authored in the story; TableCell sets no weight. The footer weight is table.footer-font-weight, which Figma now draws after the text-style fix."
     },
     {
       "set": "Table",
       "property": "stroke",
       "scope": "box",
-      "reason": "Open (owner decision): Figma sets every row to the 48px header height; the UI body row is cell padding plus line height plus the rule (54px), its body cells are medium weight, and the last body row keeps its rule when a footer follows. The builder's table rows need to hug their cells."
+      "reason": "The story lists more rows than Figma's two, so its second body row is not the last and keeps its rule."
     },
     {
       "set": "Table",
@@ -1832,15 +1783,27 @@
     },
     {
       "set": "Site Header",
-      "property": "fill",
-      "scope": "box",
-      "reason": "Open (owner decision): the UI default header fills at 95% opacity over a backdrop blur (bg/95, supports-backdrop-filter); Figma draws it opaque. The semantic model has no alpha tokens, so decide whether Figma should draw the translucent fill."
-    },
-    {
-      "set": "Site Header",
       "property": "lineHeight",
       "scope": "text",
       "reason": "The story's logo is text-xl (28px line); Figma's logo has a 30px line."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "gap",
+      "scope": "box",
+      "reason": "The UI card spaces its icon, title and description with margins (space-y); Figma uses an auto-layout gap of 16."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "size",
+      "scope": "text",
+      "reason": "The first text in the UI card is the story's icon glyph, not the title; Figma's first text is the 20px title (feature-grid.title-font-size)."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The first text in the UI card is the story's icon glyph, not the title; Figma's first text is the bold title (feature-grid.title.font-weight)."
     }
   ]
 }
