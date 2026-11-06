@@ -12,7 +12,7 @@ export const toastVariants = cva(
     "group pointer-events-auto relative grid grid-cols-[1fr_auto] items-start overflow-hidden border-(length:--space-toast-border-width) shadow-(--shadow-toast-shadow) transition-all",
     "wd-motion-slide [--wd-motion-duration:var(--duration-toast-duration)] [--wd-motion-easing:var(--toast-easing)] [--wd-motion-y:100%]",
     "w-(--space-toast-width)",
-    "gap-x-(--space-toast-gap) gap-y-(--space-toast-content-gap)",
+    "gap-x-(--space-toast-gap)",
     "rounded-(--space-toast-radius)",
     "p-(--space-toast-padding)",
     "data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-(--radix-toast-swipe-end-x) data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x) data-[swipe=move]:transition-none"
@@ -80,7 +80,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
     <button
       ref={ref}
       className={cn(
-        "col-start-2 row-start-2 justify-self-end inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border-(length:--space-toast-border-width) bg-transparent transition-colors hover:bg-(--color-toast-action-hover)",
+        "col-start-2 row-start-2 mt-(--space-toast-controls-gap) self-end justify-self-end inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border-(length:--space-toast-border-width) bg-transparent transition-colors hover:bg-(--color-toast-action-hover)",
         focusRingClasses,
         "disabled:pointer-events-none disabled:text-(--color-toast-action-text-disabled) disabled:border-(--color-toast-action-border-disabled)",
         "h-(--space-toast-action-height)",
@@ -105,7 +105,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     <button
       ref={ref}
       className={cn(
-        "col-start-2 row-start-1 justify-self-end inline-flex shrink-0 items-center justify-center p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover)",
+        "col-start-2 row-start-1 self-start justify-self-end inline-flex shrink-0 items-center justify-center p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover)",
         focusRingClasses,
         "group-hover:opacity-(--toast-close-button-opacity-hover)",
         "rounded-(--space-toast-close-button-radius)",
@@ -154,7 +154,7 @@ const ToastDescription = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "col-start-1",
+      "col-start-1 not-first:mt-(--space-toast-content-gap)",
       "opacity-(--toast-description-opacity)",
       "text-(length:--font-size-toast-description-font-size) leading-(--line-height-toast-description-line-height)",
       className

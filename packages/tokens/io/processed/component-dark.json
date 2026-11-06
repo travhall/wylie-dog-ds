@@ -3799,6 +3799,11 @@
     "$value": "{typography.line-height.normal}",
     "$description": "Line height of the command menu shortcut."
   },
+  "toast.controls-gap": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Space between the close button and the action in a toast."
+  },
   "toast.content-gap": {
     "$type": "spacing",
     "$value": "{space.050}",

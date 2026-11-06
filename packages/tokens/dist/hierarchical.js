@@ -434,6 +434,7 @@ export const spacing = {
   "sub-content-min-width": "7rem",
   "group-gap": "0.5rem",
   "item-radio-indicator-radius": "9999px",
+  "controls-gap": "0.75rem",
   "handle-height": "1rem",
   "handle-width": "0.75rem",
   "radio-indicator-size": "0.5rem",

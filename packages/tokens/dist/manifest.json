@@ -11678,6 +11678,17 @@
         "variable": "var(--color-toast-default-background)",
         "description": "Fill of the default toast, a raised surface. Pairs with `toast.text`."
       },
+      "toast-controls-gap": {
+        "name": "toastControlsGap",
+        "path": [
+          "toast",
+          "controls-gap"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--toast-controls-gap)",
+        "description": "Space between the close button and the action in a toast."
+      },
       "toast-content-gap": {
         "name": "toastContentGap",
         "path": [
