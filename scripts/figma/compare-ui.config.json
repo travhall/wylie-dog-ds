@@ -1509,12 +1509,6 @@
     },
     {
       "set": "Table",
-      "property": "h",
-      "scope": "box",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): body and footer rows hug their cells in code (cell padding plus line height plus the rule, 54px); the builder fixed every row at the 48px header height."
-    },
-    {
-      "set": "Table",
       "property": "weight",
       "scope": "text",
       "reason": "The story's first column is font-medium, authored in the story; TableCell sets no weight. The footer weight is table.footer-font-weight, which Figma now draws after the text-style fix."
@@ -1778,6 +1772,19 @@
       "property": "weight",
       "scope": "text",
       "reason": "The first text in the Figma menu is its semibold \"My Account\" label; the story's menu opens on a regular item."
+    },
+    {
+      "set": "Table",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: table-caption",
+      "reason": "Figma's caption frame includes its 16px top padding; in code the same space is the caption's margin-top, outside the 21px caption."
+    },
+    {
+      "set": "Table",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story lists more rows than Figma's two body rows, so the table is taller; the rows themselves match (54px)."
     }
   ]
 }
