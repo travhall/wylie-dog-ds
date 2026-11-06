@@ -215,6 +215,24 @@ describe("Breadcrumb", () => {
       expect(page).toHaveAttribute("aria-current", "page");
     });
 
+    it("should use the current-page colour, not the disabled one, though it is aria-disabled", () => {
+      render(
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbPage>Current</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      );
+      const page = screen.getByText("Current");
+      // aria-disabled is always "true" on the page, so a disabled colour class
+      // (aria-disabled:text-...) would override the current-page colour for good
+      expect(page).toHaveAttribute("aria-disabled", "true");
+      expect(page.className).toContain("text-(--color-breadcrumb-current)");
+      expect(page.className).not.toContain("link-disabled");
+    });
+
     it("should forward ref correctly", () => {
       const ref = React.createRef<HTMLSpanElement>();
       render(
