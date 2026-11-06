@@ -23,7 +23,11 @@ The harvester takes the theme from the `mode` in the Figma file, so both sides a
 
 ## Adding a component
 
-`scripts/figma/compare-ui.config.json` says how a Figma set is rendered: the story, the element to measure (`root`), how Figma variant properties become story args (`args`, with `values` where the names differ) and which property is the interaction state (`state`: `default`, `hover` or `pressed`). Button and Badge are mapped; add a set by naming its story and root. A set with no entry is skipped and listed.
+`scripts/figma/compare-ui.config.json` says how a Figma set is rendered: the story, the element to measure (`root`), how Figma variant properties become story args (`args`, with `values` where the names differ) and which property is the interaction state (`state`: `default`, `hover` or `pressed`). The config maps 17 sets so far (see the file for the list); add a set by naming its story and root. A set with no entry is skipped and listed.
+
+Two optional keys cover a Figma value that does not map to one story arg. `valueArgs` gives the whole args string for one value (Checkbox's `checked=error` is an unchecked box with `error` on: `"valueArgs": { "checked": { "error": "error:!true;checked:!false" } }`). `valueStories` points one value at another story when the main story does not render it (Toast's default variant).
+
+A `use_figma` call returns at most 48,000 bytes and cannot write a file, so a large measurement goes out in chunks of compact rows (`[set, variant, w, h, [pad x4], gap, radius, border, stroke, fill, opacity, [[x, y, blur, spread, color]], [chars, family, size, weight, lineHeight, tracking, decoration, color] or null]`). Save them as a JSON array and turn them into the metrics file with `node scripts/figma/rows-to-metrics.mjs rows.json figma-metrics.json dark` (or `light`).
 
 ## Tolerances and accepted differences
 

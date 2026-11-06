@@ -31,6 +31,13 @@ export function argsParam(figmaProps, component) {
   const parts = [];
   for (const [prop, arg] of Object.entries(component.args ?? {})) {
     if (figmaProps[prop] === undefined) continue;
+    // One Figma value that is several story args (Checkbox's `checked=error` is an unchecked,
+    // errored box): `valueArgs` gives the whole args string for that value.
+    const whole = component.valueArgs?.[prop]?.[figmaProps[prop]];
+    if (whole) {
+      parts.push(whole);
+      continue;
+    }
     const value =
       component.values?.[prop]?.[figmaProps[prop]] ?? figmaProps[prop];
     parts.push(
@@ -47,8 +54,14 @@ export function storyUrl(base, component, figmaProps, mode) {
   const args = [argsParam(figmaProps, component), stateArg]
     .filter(Boolean)
     .join(";");
+  // A Figma value whose variant lives in another story (Toast's default is not in the solid
+  // toasts story): `valueStories` maps property to value to story id.
+  let story = component.story;
+  for (const [prop, byValue] of Object.entries(component.valueStories ?? {})) {
+    story = byValue[figmaProps[prop]] ?? story;
+  }
   return (
-    `${base}/iframe.html?id=${component.story}&viewMode=story` +
+    `${base}/iframe.html?id=${story}&viewMode=story` +
     `&globals=theme:${mode ?? "light"}` +
     (args ? `&args=${args}` : "")
   );
