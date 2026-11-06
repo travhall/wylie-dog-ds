@@ -529,20 +529,6 @@
       "reason": "The UI scrollbar spans the 286px viewport and the thumb is proportional to the content (76px); Figma draws a 200px bar with a 40px thumb."
     },
     {
-      "set": "Scrollbar",
-      "property": "w",
-      "scope": "box",
-      "variant": ":: scrollbar-box",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI track is scrollbar.width (8px) with scrollbar.padding (1px) and a 1px transparent leading border, so the thumb is 5px wide; the builder drew the thumb the full 8px."
-    },
-    {
-      "set": "Scrollbar",
-      "property": "radius",
-      "scope": "box",
-      "variant": "orientation=vertical",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI track is rounded (scrollbar.radius, full) and the thumb radius follows its 5px width (2.5px); the builder drew an unrounded track and a 4px thumb radius."
-    },
-    {
       "set": "Breadcrumb",
       "property": "w",
       "scope": "box",
