@@ -518,20 +518,6 @@
     },
     {
       "set": "Collapsible",
-      "property": "radius",
-      "scope": "box",
-      "variant": "open=false",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): collapsible.radius and collapsible.background belong to CollapsibleContent (drawn when open), not the root; the builder put them on the root, so the closed Figma collapsible had a fill and a radius the UI does not."
-    },
-    {
-      "set": "Collapsible",
-      "property": "fill",
-      "scope": "box",
-      "variant": "open=false",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): see the radius entry; the closed UI collapsible has no fill."
-    },
-    {
-      "set": "Collapsible",
       "property": "weight",
       "scope": "text",
       "reason": "The story's header is a 600 weight h4 authored in the story (the component has no header); Figma draws the placeholder header Regular. Not a component property."
@@ -630,22 +616,22 @@
     },
     {
       "set": "Pagination",
-      "property": "w",
-      "scope": "box",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): Previous is pl-(pagination.ellipsis-padding-left) and Next pr-(pagination.ellipsis-padding-right) in code (8px on the icon side; the tokens are named for the ellipsis), so the link is 100.81px wide; the builder padded both sides 16px (109px). The row is 356px in the UI story, 328px in Figma."
-    },
-    {
-      "set": "Pagination",
       "property": "gap",
       "scope": "box",
       "reason": "The UI nav wraps the ul (the flex row); Figma's root is the row, so its gap of 4 has no counterpart on the nav element."
     },
     {
       "set": "Pagination",
+      "property": "w",
+      "scope": "box",
+      "reason": "The UI story row has more page links (356px) than the Figma default variant (312px), so the row width is layout. The Previous link itself matches (101px against 100.81px) since the rebuild."
+    },
+    {
+      "set": "Pagination",
       "property": "pad",
       "scope": "box",
-      "variant": ":: pagination-row",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the icon-side padding is the ellipsis token (8px), not padding-x (16px). The page links are fixed 40px squares with 16px padding in the UI and none in Figma (the box is the same size)."
+      "variant": ":: pagination-row#",
+      "reason": "The UI page links are fixed 40px squares with 16px side padding; Figma draws the same 40px box with no padding and the number centred. Same size, same look."
     },
     {
       "set": "Tabs",
@@ -659,20 +645,6 @@
       "scope": "box",
       "variant": "size=md",
       "reason": "The UI list and panel are spaced by margin on the panel, not a flex gap; Figma uses a gap of 16."
-    },
-    {
-      "set": "Tabs",
-      "property": "pad",
-      "scope": "box",
-      "variant": ":: tabs-row",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI list is p-(tabs.list.padding) on all four sides (4px); the builder padded left and right only."
-    },
-    {
-      "set": "Tabs",
-      "property": "h",
-      "scope": "box",
-      "variant": ":: tabs-row-row#1",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): in code every trigger has border-b-4 border-transparent, so the inactive tab is as tall as the active one (33px); the builder drew the inactive tab without the 4px bottom stroke (29px)."
     },
     {
       "set": "Tabs",
@@ -702,16 +674,17 @@
     },
     {
       "set": "Accordion",
-      "property": "h",
-      "scope": "box",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the item hugs its trigger in code (the closed item is 41px: a 40px trigger and a 1px bottom rule); the builder drew a fixed 56px frame. The Figma trigger is the 16px text where the UI trigger is the 40px button. The UI also drew a box border on every side until the item class was fixed to a bottom rule only."
-    },
-    {
-      "set": "Accordion",
       "property": "pad",
       "scope": "box",
       "variant": ":: ",
       "reason": "Padding sits on the row in Figma (12px) and on the trigger button in the UI."
+    },
+    {
+      "set": "Accordion",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: trigger",
+      "reason": "The Figma trigger is the 16px label (its padding sits on the row); the UI trigger is the 40px button that holds the label and the chevron. The 41px item matches since the rebuild."
     }
   ]
 }
