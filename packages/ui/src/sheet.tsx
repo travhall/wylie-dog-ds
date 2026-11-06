@@ -7,7 +7,7 @@ import { cn, focusRingClasses } from "./lib/utils";
 
 export const sheetContentVariants = cva(
   cn(
-    "fixed z-(--sheet-content-z-index) bg-(--color-sheet-content-background) shadow-(--shadow-sheet-content-shadow)",
+    "fixed z-(--sheet-content-z-index) border-(--color-sheet-content-border) bg-(--color-sheet-content-background) shadow-(--shadow-sheet-content-shadow)",
     "wd-motion-slide [--wd-motion-duration:var(--duration-sheet-content-duration-open)] [--wd-motion-duration-closed:var(--duration-sheet-content-duration-closed)] [--wd-motion-easing:var(--sheet-content-easing)]",
     "gap-(--space-sheet-header-gap)",
     "p-(--space-sheet-content-padding)"

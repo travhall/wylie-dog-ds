@@ -8787,6 +8787,17 @@
         "variable": "var(--color-contextmenu-background)",
         "description": "Fill of the context menu. Pairs with `contextmenu.text`."
       },
+      "contextmenu-border": {
+        "name": "contextmenuBorder",
+        "path": [
+          "contextmenu",
+          "border"
+        ],
+        "value": "oklch(0.74 0.019 70)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-border)",
+        "description": "Border color of the context menu and its submenus."
+      },
       "contextmenu-item-hover": {
         "name": "contextmenuItemHover",
         "path": [
@@ -13750,6 +13761,18 @@
         "type": "color",
         "variable": "var(--color-sheet-content-background)",
         "description": "Fill of the sheet panel. Also the color of the gap between the close button and its focus ring."
+      },
+      "sheet-content-border": {
+        "name": "sheetContentBorder",
+        "path": [
+          "sheet",
+          "content",
+          "border"
+        ],
+        "value": "oklch(0.74 0.019 70)",
+        "type": "color",
+        "variable": "var(--color-sheet-content-border)",
+        "description": "Border color of the sheet's edge."
       },
       "sheet-close-button-opacity": {
         "name": "sheetCloseButtonOpacity",

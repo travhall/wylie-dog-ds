@@ -1605,6 +1605,15 @@
             "Dark": "{color.background.raised}"
           }
         },
+        "contextmenu.border": {
+          "$type": "color",
+          "$value": "{color.border.default}",
+          "$description": "Border color of the context menu and its submenus.",
+          "valuesByMode": {
+            "Light": "{color.border.default}",
+            "Dark": "{color.border.default}"
+          }
+        },
         "contextmenu.item-hover": {
           "$type": "color",
           "$value": "{color.background.muted}",
@@ -5860,6 +5869,15 @@
           "valuesByMode": {
             "Light": "{color.background.raised}",
             "Dark": "{color.background.raised}"
+          }
+        },
+        "sheet.content.border": {
+          "$type": "color",
+          "$value": "{color.border.default}",
+          "$description": "Border color of the sheet's edge.",
+          "valuesByMode": {
+            "Light": "{color.border.default}",
+            "Dark": "{color.border.default}"
           }
         },
         "sheet.close-button.opacity": {
