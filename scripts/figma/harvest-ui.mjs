@@ -249,7 +249,11 @@ async function main() {
       reducedMotion: component.open ? "reduce" : "no-preference",
     });
     await page.goto(storyUrl(base, component, props, mode));
-    if (component.open) {
+    // `when` limits the step to some Figma values, e.g. { "state": "open" } (Menubar's closed bar)
+    const opens =
+      component.open &&
+      Object.entries(component.open.when ?? {}).every(([k, v]) => props[k] === v);
+    if (opens) {
       const { click, hover, contextmenu, wait } = component.open;
       // a placeholder is a Figma value, mapped to the story's wording through `values`
       const trigger = (click ?? hover ?? contextmenu).replace(

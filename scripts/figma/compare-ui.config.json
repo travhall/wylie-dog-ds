@@ -374,6 +374,50 @@
       "parts": {
         "children": "[role=tooltip] p"
       }
+    },
+    "Dropdown Menu": {
+      "story": "components-overlays-popovers-dropdownmenu--default",
+      "root": "[role=menu]",
+      "args": {},
+      "open": {
+        "click": "#storybook-root button"
+      },
+      "parts": {
+        "menu-label": "[role=menu] > div:nth-child(1)",
+        "menu-item": "[role=menu] > [role=menuitem]:nth-child(3)",
+        "menu-item#1": "[role=menu] > [role=menuitem]:nth-child(4)",
+        "menu-item#2": "[role=menu] > [role=menuitem]:nth-child(5)",
+        "menu-separator": "[role=menu] > [role=separator]"
+      }
+    },
+    "Context Menu": {
+      "story": "components-overlays-popovers-contextmenu--default",
+      "root": "[role=menu]",
+      "args": {},
+      "open": {
+        "contextmenu": "#storybook-root span"
+      },
+      "parts": {
+        "context-menu-row": "[role=menu] > [role=menuitem]:nth-child(1)",
+        "context-menu-row#1": "[role=menu] > [role=menuitem]:nth-child(2)",
+        "context-menu-row#2": "[role=menu] > [role=menuitem]:nth-child(3)",
+        "menu-separator": "[role=menu] > [role=separator]"
+      }
+    },
+    "Menubar": {
+      "story": "components-navigation-menubar--default",
+      "root": "[role=menubar]",
+      "args": {},
+      "open": {
+        "click": "#storybook-root [role=menuitem]",
+        "when": {
+          "state": "open"
+        }
+      },
+      "parts": {
+        "bar": "[role=menubar]",
+        "content": "[role=menu]"
+      }
     }
   },
   "allow": [
@@ -1059,6 +1103,202 @@
       "property": "w",
       "scope": "box",
       "reason": "The tooltip hugs its copy; the story's text is longer than Figma's placeholder."
+    },
+    {
+      "set": "Menubar",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: bar",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI bar is p-(menubar.root.padding) on all four sides; the builder padded left and right only."
+    },
+    {
+      "set": "Menubar",
+      "property": "radius",
+      "scope": "box",
+      "variant": ":: bar",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI bar is rounded like a trigger (menubar.trigger-radius); the builder drew a square bar."
+    },
+    {
+      "set": "Menubar",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: bar",
+      "reason": "The UI spaces triggers with margin (space-x); Figma uses an auto-layout gap of 4."
+    },
+    {
+      "set": "Menubar",
+      "property": "weight",
+      "scope": "text",
+      "variant": ":: bar",
+      "reason": "Open (owner decision): the UI trigger is medium (menubar.trigger.font-weight, 500) but Figma draws it Regular: the text style set on the trigger overrides the bound weight."
+    },
+    {
+      "set": "Menubar",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: content",
+      "reason": "The first text in the Figma menu is its \"Actions\" label (muted); the story's menu opens on an item."
+    },
+    {
+      "set": "Menubar",
+      "property": "pad",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "gap",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "radius",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "fill",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The first text is the trigger; see the :: bar entry."
+    },
+    {
+      "set": "Context Menu",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: context-menu-row",
+      "reason": "The story's items are inset (pl-8, room for a check or icon) and Figma's are not."
+    },
+    {
+      "set": "Context Menu",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: context-menu-row#1",
+      "reason": "The story's second item is disabled; Figma's row is enabled."
+    },
+    {
+      "set": "Context Menu",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Context Menu",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Context Menu",
+      "property": "fill",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Context Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
+    },
+    {
+      "set": "Context Menu",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Open (owner decision): the UI context menu draws its edge border (contextmenu.border-width) with no colour token or class, so it falls back to currentColor (the page text colour); Figma uses the border colour. It needs a context-menu border colour token like dropdown-menu.content.border, in the UI, tokens and Figma."
+    },
+    {
+      "set": "Context Menu",
+      "property": "color",
+      "scope": "text",
+      "reason": "The first text in the Figma menu is its \"My Account\" label (muted); the story's menu opens on an item."
+    },
+    {
+      "set": "Context Menu",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "weight",
+      "scope": "text",
+      "variant": ":: menu-label",
+      "reason": "Open (owner decision): the UI label is semibold (dropdown-menu.label-font-weight, 600) but Figma draws it Regular: the builder gives the label the item text style, which sets Regular over the bound weight. The menu labels need their own text style."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "fill",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "weight",
+      "scope": "text",
+      "reason": "Open (owner decision): the UI label is semibold (dropdown-menu.label-font-weight, 600) but Figma draws it Regular: the builder gives the label the item text style, which sets Regular over the bound weight. The menu labels need their own text style."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's menu lists more items than Figma's three."
     }
   ]
 }
