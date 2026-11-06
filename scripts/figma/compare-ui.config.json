@@ -284,6 +284,140 @@
           "default": "components-feedback-status-toast--with-action"
         }
       }
+    },
+    "Dialog": {
+      "story": "components-overlays-popovers-dialog--size-variants",
+      "root": "[role=dialog]",
+      "args": {},
+      "values": {
+        "size": {
+          "sm": "Small",
+          "md": "Medium",
+          "lg": "Large",
+          "xl": "Extra Large",
+          "full": "Full"
+        }
+      },
+      "open": {
+        "click": "button:text-is('{size}')"
+      },
+      "parts": {
+        "close-button": "[role=dialog] > button",
+        "dialog-stack": "[role=dialog] > div:nth-child(1)",
+        "dialog-body": "[role=dialog] > div:nth-child(2)",
+        "dialog-footer": "[role=dialog] > div:nth-child(3)"
+      }
+    },
+    "Alert Dialog": {
+      "story": "components-overlays-popovers-alertdialog--default",
+      "root": "[role=alertdialog]",
+      "args": {},
+      "valueStories": {
+        "state": {
+          "destructive": "components-overlays-popovers-alertdialog--destructive-action"
+        }
+      },
+      "open": {
+        "click": "#storybook-root button"
+      },
+      "parts": {
+        "alert-dialog-stack": "[role=alertdialog] > div:nth-child(1)",
+        "alert-dialog-row": "[role=alertdialog] > div:nth-child(2)"
+      }
+    },
+    "Sheet": {
+      "story": "components-overlays-popovers-sheet--default",
+      "root": "[role=dialog]",
+      "args": {},
+      "open": {
+        "click": "#storybook-root button"
+      },
+      "parts": {
+        "title": "[role=dialog] h2",
+        "description": "[role=dialog] p",
+        "close-button": "[role=dialog] > button"
+      }
+    },
+    "Popover": {
+      "story": "components-overlays-popovers-popover--default",
+      "root": "[role=dialog]",
+      "args": {},
+      "open": {
+        "click": "#storybook-root button"
+      },
+      "parts": {
+        "title": "[role=dialog] h4",
+        "content": "[role=dialog] p"
+      }
+    },
+    "Hover Card": {
+      "story": "components-overlays-popovers-hovercard--default",
+      "root": "[data-radix-popper-content-wrapper] > [data-state=open]",
+      "args": {},
+      "open": {
+        "hover": "#storybook-root button",
+        "wait": 900
+      },
+      "parts": {
+        "title": "[data-radix-popper-content-wrapper] h4",
+        "content": "[data-radix-popper-content-wrapper] p"
+      }
+    },
+    "Tooltip": {
+      "story": "components-overlays-popovers-tooltip--default",
+      "root": "[role=tooltip]",
+      "args": {},
+      "open": {
+        "hover": "#storybook-root button",
+        "wait": 900
+      },
+      "parts": {
+        "children": "[role=tooltip] p"
+      }
+    },
+    "Dropdown Menu": {
+      "story": "components-overlays-popovers-dropdownmenu--default",
+      "root": "[role=menu]",
+      "args": {},
+      "open": {
+        "click": "#storybook-root button"
+      },
+      "parts": {
+        "menu-label": "[role=menu] > div:nth-child(1)",
+        "menu-item": "[role=menu] > [role=menuitem]:nth-child(3)",
+        "menu-item#1": "[role=menu] > [role=menuitem]:nth-child(4)",
+        "menu-item#2": "[role=menu] > [role=menuitem]:nth-child(5)",
+        "menu-separator": "[role=menu] > [role=separator]"
+      }
+    },
+    "Context Menu": {
+      "story": "components-overlays-popovers-contextmenu--default",
+      "root": "[role=menu]",
+      "args": {},
+      "open": {
+        "contextmenu": "#storybook-root span"
+      },
+      "parts": {
+        "context-menu-row": "[role=menu] > [role=menuitem]:nth-child(1)",
+        "context-menu-row#1": "[role=menu] > [role=menuitem]:nth-child(2)",
+        "context-menu-row#2": "[role=menu] > [role=menuitem]:nth-child(3)",
+        "menu-separator": "[role=menu] > [role=separator]"
+      }
+    },
+    "Menubar": {
+      "story": "components-navigation-menubar--default",
+      "root": "[role=menubar]",
+      "args": {},
+      "open": {
+        "click": "#storybook-root [role=menuitem]",
+        "when": {
+          "state": "open"
+        }
+      },
+      "parts": {
+        "bar": "[role=menubar]",
+        "content": "[role=menu]"
+      }
     }
   },
   "allow": [
@@ -671,6 +805,500 @@
       "scope": "box",
       "variant": ":: trigger",
       "reason": "The Figma trigger is the 16px label (its padding sits on the row); the UI trigger is the 40px button that holds the label and the chevron. The 41px item matches since the rebuild."
+    },
+    {
+      "set": "Dialog",
+      "property": "radius",
+      "scope": "box",
+      "variant": ":: close-button",
+      "reason": "Figma draws the \u00d7 glyph with no button box, so dialog.close-button-radius has nothing to round; in the UI it only shapes the focus ring."
+    },
+    {
+      "set": "Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: dialog-stack",
+      "reason": "Figma hugs its placeholder copy; in code the element fills the dialog's content width, so width is layout, not look."
+    },
+    {
+      "set": "Dialog",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: dialog-stack",
+      "reason": "The UI header spaces its title and description with margin (space-y), Figma with an auto-layout gap of 8."
+    },
+    {
+      "set": "Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: dialog-body",
+      "reason": "Figma hugs its placeholder copy; in code the element fills the dialog's content width, so width is layout, not look."
+    },
+    {
+      "set": "Dialog",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: dialog-body",
+      "reason": "The story's body is a paragraph of several lines; Figma draws one placeholder line."
+    },
+    {
+      "set": "Dialog",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: dialog-body",
+      "reason": "The story wraps its body in py-4; the component has no body padding."
+    },
+    {
+      "set": "Dialog",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: dialog-body",
+      "reason": "The story's body paragraph is text-current/70, authored in the story; Figma's placeholder uses the muted text colour."
+    },
+    {
+      "set": "Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: dialog-footer",
+      "reason": "Figma hugs its placeholder copy; in code the element fills the dialog's content width, so width is layout, not look."
+    },
+    {
+      "set": "Dialog",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: dialog-footer",
+      "reason": "Figma's footer frame includes the 24px top spacing as padding; in code the same space is the footer's margin-top, outside the 42px button row."
+    },
+    {
+      "set": "Dialog",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: dialog-footer",
+      "reason": "Figma pads the footer 24px on top; in code the footer has margin-top (dialog.footer-margin-top) instead."
+    },
+    {
+      "set": "Dialog",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: dialog-footer",
+      "reason": "The UI spaces footer buttons with margin (space-x); Figma uses an auto-layout gap of 8."
+    },
+    {
+      "set": "Dialog",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma draws one placeholder line of body copy; the story's dialog holds a header, a paragraph and a footer, so the root height follows the copy."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: alert-dialog",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container, so width is layout, not look."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: alert-dialog",
+      "reason": "The UI header and action row space their children with margin; Figma uses an auto-layout gap."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: alert-dialog",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: alert-dialog-stack",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the destructive state is the action button in code; the title keeps the dialog title colour. The builder coloured the title destructive."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "color",
+      "scope": "text",
+      "variant": "state=destructive",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): see the stack entry: the destructive title colour."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI dialog is w-full capped by alert-dialog.content-max-width (512px); the builder hardcoded 448px."
+    },
+    {
+      "set": "Alert Dialog",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Hover Card",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container, so width is layout, not look."
+    },
+    {
+      "set": "Hover Card",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Hover Card",
+      "property": "weight",
+      "scope": "text",
+      "variant": ":: title",
+      "reason": "The story's heading is a semibold h4 authored in the story; the component sets no heading."
+    },
+    {
+      "set": "Hover Card",
+      "property": "w",
+      "scope": "box",
+      "reason": "The story sets the card to w-80 (320px) over the md size's 384px; width is the story's."
+    },
+    {
+      "set": "Hover Card",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Hover Card",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The first text in the UI card is the story's bold avatar initial, not the component's text."
+    },
+    {
+      "set": "Hover Card",
+      "property": "color",
+      "scope": "text",
+      "reason": "The first text in the UI card is the story's white avatar initial, not the component's text."
+    },
+    {
+      "set": "Popover",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container, so width is layout, not look."
+    },
+    {
+      "set": "Popover",
+      "property": "size",
+      "scope": "text",
+      "variant": ":: title",
+      "reason": "The story's heading is an h4 authored in the story (font-medium, leading-none); the component sets no heading."
+    },
+    {
+      "set": "Popover",
+      "property": "weight",
+      "scope": "text",
+      "variant": ":: title",
+      "reason": "The story's heading is authored in the story."
+    },
+    {
+      "set": "Popover",
+      "property": "lineHeight",
+      "scope": "text",
+      "variant": ":: title",
+      "reason": "The story's heading is leading-none, authored in the story."
+    },
+    {
+      "set": "Popover",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Popover",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: content",
+      "reason": "The story's description is text-current/70, authored in the story."
+    },
+    {
+      "set": "Popover",
+      "property": "w",
+      "scope": "box",
+      "reason": "The story sets the popover to w-80 (320px) over the md size's 384px; width is the story's."
+    },
+    {
+      "set": "Popover",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Popover",
+      "property": "size",
+      "scope": "text",
+      "reason": "The first text in the UI popover is the story's own 16px heading."
+    },
+    {
+      "set": "Popover",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The first text in the UI popover is the story's own heading."
+    },
+    {
+      "set": "Popover",
+      "property": "lineHeight",
+      "scope": "text",
+      "reason": "The first text in the UI popover is the story's own heading."
+    },
+    {
+      "set": "Sheet",
+      "property": "radius",
+      "scope": "box",
+      "variant": ":: close-button",
+      "reason": "Figma draws the \u00d7 glyph with no button box, so sheet.close-button-radius has nothing to round; in the UI it only shapes the focus ring."
+    },
+    {
+      "set": "Sheet",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container, so width is layout, not look."
+    },
+    {
+      "set": "Sheet",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: description",
+      "reason": "The story's own copy and layout drive this; the component has no content of its own."
+    },
+    {
+      "set": "Sheet",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Open (owner decision): the UI draws the sheet's edge border (sheet.border-width) with no colour token, so it falls back to currentColor (the page text colour); Figma draws no border. Sheet needs a sheet.border colour token (dialog uses dialog.border) in the UI, tokens and Figma."
+    },
+    {
+      "set": "Sheet",
+      "property": "w",
+      "scope": "box",
+      "reason": "The UI sheet is sheet.content.width.default (448px at this viewport) capped by the size's max width (512px for md); Figma draws the md max."
+    },
+    {
+      "set": "Sheet",
+      "property": "h",
+      "scope": "box",
+      "reason": "A sheet is the full viewport height in code; Figma draws a 400px frame."
+    },
+    {
+      "set": "Sheet",
+      "property": "gap",
+      "scope": "box",
+      "reason": "The UI sheet spaces its header, body and footer with the story's own layout and margins; Figma uses an auto-layout gap of 8."
+    },
+    {
+      "set": "Tooltip",
+      "property": "w",
+      "scope": "box",
+      "reason": "The tooltip hugs its copy; the story's text is longer than Figma's placeholder."
+    },
+    {
+      "set": "Menubar",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: bar",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI bar is p-(menubar.root.padding) on all four sides; the builder padded left and right only."
+    },
+    {
+      "set": "Menubar",
+      "property": "radius",
+      "scope": "box",
+      "variant": ":: bar",
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI bar is rounded like a trigger (menubar.trigger-radius); the builder drew a square bar."
+    },
+    {
+      "set": "Menubar",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: bar",
+      "reason": "The UI spaces triggers with margin (space-x); Figma uses an auto-layout gap of 4."
+    },
+    {
+      "set": "Menubar",
+      "property": "weight",
+      "scope": "text",
+      "variant": ":: bar",
+      "reason": "Open (owner decision): the UI trigger is medium (menubar.trigger.font-weight, 500) but Figma draws it Regular: the text style set on the trigger overrides the bound weight."
+    },
+    {
+      "set": "Menubar",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: content",
+      "reason": "The first text in the Figma menu is its \"Actions\" label (muted); the story's menu opens on an item."
+    },
+    {
+      "set": "Menubar",
+      "property": "pad",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "gap",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "radius",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "fill",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma's root is a wrapper frame around the bar and, when open, the menu; the UI root is the bar itself."
+    },
+    {
+      "set": "Menubar",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The first text is the trigger; see the :: bar entry."
+    },
+    {
+      "set": "Context Menu",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: context-menu-row",
+      "reason": "The story's items are inset (pl-8, room for a check or icon) and Figma's are not."
+    },
+    {
+      "set": "Context Menu",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: context-menu-row#1",
+      "reason": "The story's second item is disabled; Figma's row is enabled."
+    },
+    {
+      "set": "Context Menu",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Context Menu",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Context Menu",
+      "property": "fill",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Context Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
+    },
+    {
+      "set": "Context Menu",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Open (owner decision): the UI context menu draws its edge border (contextmenu.border-width) with no colour token or class, so it falls back to currentColor (the page text colour); Figma uses the border colour. It needs a context-menu border colour token like dropdown-menu.content.border, in the UI, tokens and Figma."
+    },
+    {
+      "set": "Context Menu",
+      "property": "color",
+      "scope": "text",
+      "reason": "The first text in the Figma menu is its \"My Account\" label (muted); the story's menu opens on an item."
+    },
+    {
+      "set": "Context Menu",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "weight",
+      "scope": "text",
+      "variant": ":: menu-label",
+      "reason": "Open (owner decision): the UI label is semibold (dropdown-menu.label-font-weight, 600) but Figma draws it Regular: the builder gives the label the item text style, which sets Regular over the bound weight. The menu labels need their own text style."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "fill",
+      "scope": "box",
+      "variant": ":: menu-separator",
+      "reason": "The UI separator is a 1px line with vertical margin; Figma draws a 9px frame (4px padding) with the line inside."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: ",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "weight",
+      "scope": "text",
+      "reason": "Open (owner decision): the UI label is semibold (dropdown-menu.label-font-weight, 600) but Figma draws it Regular: the builder gives the label the item text style, which sets Regular over the bound weight. The menu labels need their own text style."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
+    },
+    {
+      "set": "Dropdown Menu",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's menu lists more items than Figma's three."
     }
   ]
 }
