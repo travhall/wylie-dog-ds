@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-05T15:03:38.292Z",
+  "generatedAt": "2026-11-06T02:46:25.421Z",
   "count": 49,
   "components": [
     {
@@ -1074,6 +1074,14 @@
         "description": {
           "type": "TEXT",
           "default": "Toast description message."
+        },
+        "showAction": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "showClose": {
+          "type": "BOOLEAN",
+          "default": true
         },
         "title": {
           "type": "TEXT",

@@ -549,6 +549,18 @@
       "component": "Toggle",
       "rule": "partial-set",
       "reason": "Hover is drawn only on the enabled, unpressed look (the one that reacts); disabled and pressed keep one look at rest. Figma draws only the looks that differ at rest (builder rule)."
+    },
+    {
+      "component": "Toast",
+      "rule": "content-property-not-in-code",
+      "property": "showAction",
+      "reason": "ToastAction is an optional child in code, not a prop of Toast; the Figma boolean shows or hides it."
+    },
+    {
+      "component": "Toast",
+      "rule": "content-property-not-in-code",
+      "property": "showClose",
+      "reason": "ToastClose is an optional child in code, not a prop of Toast; the Figma boolean shows or hides it."
     }
   ]
 }
