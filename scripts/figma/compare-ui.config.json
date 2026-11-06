@@ -665,21 +665,21 @@
       "property": "pad",
       "scope": "box",
       "variant": ":: tabs-row",
-      "reason": "Open (owner decision): the UI tab list is padded 4px on all sides; Figma has 4px left and right only."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI list is p-(tabs.list.padding) on all four sides (4px); the builder padded left and right only."
     },
     {
       "set": "Tabs",
       "property": "stroke",
       "scope": "box",
       "variant": ":: tabs-row",
-      "reason": "Open (owner decision): Figma strokes the active tab (#416975) and the list (#4e453d); the UI active tab has no border colour and the list border is on the bottom edge only, which the harvester does not read."
+      "reason": "Harvester limit: the list's border and the active tab's indicator are bottom-edge borders in code (border-b), and the harvester reads the top edge, so the UI stroke shows as missing. Figma draws both as bottom strokes, matching the tokens (tabs.list.border.color, tabs.trigger.indicator-color)."
     },
     {
       "set": "Tabs",
       "property": "h",
       "scope": "box",
       "variant": ":: tabs-row-row#1",
-      "reason": "Open (owner decision): the UI inactive tab is 33px tall (like the active one); Figma draws it 29px."
+      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): in code every trigger has border-b-4 border-transparent, so the inactive tab is as tall as the active one (33px); the builder drew the inactive tab without the 4px bottom stroke (29px)."
     },
     {
       "set": "Tabs",
