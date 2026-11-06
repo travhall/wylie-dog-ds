@@ -912,26 +912,6 @@
     },
     {
       "set": "Alert Dialog",
-      "property": "color",
-      "scope": "text",
-      "variant": ":: alert-dialog-stack",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the destructive state is the action button in code; the title keeps the dialog title colour. The builder coloured the title destructive."
-    },
-    {
-      "set": "Alert Dialog",
-      "property": "color",
-      "scope": "text",
-      "variant": "state=destructive",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): see the stack entry: the destructive title colour."
-    },
-    {
-      "set": "Alert Dialog",
-      "property": "w",
-      "scope": "box",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI dialog is w-full capped by alert-dialog.content-max-width (512px); the builder hardcoded 448px."
-    },
-    {
-      "set": "Alert Dialog",
       "property": "h",
       "scope": "box",
       "reason": "The story's own copy and layout drive this; the component has no content of its own."
@@ -1076,12 +1056,6 @@
     },
     {
       "set": "Sheet",
-      "property": "stroke",
-      "scope": "box",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI sheet draws its edge border in sheet.content.border; the builder drew no border. The edge colour now has a token in the UI, tokens and builder."
-    },
-    {
-      "set": "Sheet",
       "property": "w",
       "scope": "box",
       "reason": "The UI sheet is sheet.content.width.default (448px at this viewport) capped by the size's max width (512px for md); Figma draws the md max."
@@ -1103,20 +1077,6 @@
       "property": "w",
       "scope": "box",
       "reason": "The tooltip hugs its copy; the story's text is longer than Figma's placeholder."
-    },
-    {
-      "set": "Menubar",
-      "property": "pad",
-      "scope": "box",
-      "variant": ":: bar",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI bar is p-(menubar.root.padding) on all four sides; the builder padded left and right only."
-    },
-    {
-      "set": "Menubar",
-      "property": "radius",
-      "scope": "box",
-      "variant": ":: bar",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI bar is rounded like a trigger (menubar.trigger-radius); the builder drew a square bar."
     },
     {
       "set": "Menubar",
