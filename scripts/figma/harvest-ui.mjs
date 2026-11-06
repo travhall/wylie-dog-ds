@@ -219,32 +219,35 @@ async function main() {
       );
       continue;
     }
+    // a root may name a Figma property in braces, e.g. [data-variant={variant}], for a story that
+    // draws every variant side by side
+    const root = component.root.replace(/\{(\w+)\}/g, (_, k) => props[k] ?? "");
     await page.goto(storyUrl(base, component, props, mode));
     try {
       // attached, not visible: a w-full element in a shrink-wrapped story (Progress) has no width
-      await page.waitForSelector(component.root, {
+      await page.waitForSelector(root, {
         timeout: 8000,
         state: "attached",
       });
     } catch {
       skipped.push(
-        `${item.set} ${item.variant}: nothing matched ${component.root}`
+        `${item.set} ${item.variant}: nothing matched ${root}`
       );
       continue;
     }
     await page.waitForTimeout(250);
     if (state === "hover" || state === "pressed") {
-      await page.hover(component.root);
+      await page.hover(root);
       if (state === "pressed") await page.mouse.down();
       // longer than the transition (150ms) so the settled style is measured
       await page.waitForTimeout(450);
     }
-    const measured = await page.evaluate(measureInPage, component.root);
+    const measured = await page.evaluate(measureInPage, root);
     if (state === "pressed") await page.mouse.up();
     await page.mouse.move(0, 0);
     if (!measured) {
       skipped.push(
-        `${item.set} ${item.variant}: no element for ${component.root}`
+        `${item.set} ${item.variant}: no element for ${root}`
       );
       continue;
     }

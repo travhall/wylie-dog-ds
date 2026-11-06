@@ -151,11 +151,9 @@
       }
     },
     "Toast": {
-      "story": "components-feedback-status-toast--default",
-      "root": "#storybook-root [class*=pointer-events-auto]",
-      "args": {
-        "variant": "variant"
-      }
+      "story": "components-feedback-status-toast--controls-on-solid-toasts",
+      "root": "#storybook-root [data-variant={variant}]",
+      "args": {}
     }
   },
   "allow": [
@@ -290,24 +288,6 @@
       "property": "lineHeight",
       "scope": "text",
       "reason": "Same as font size: the story keeps the md fallback line height."
-    },
-    {
-      "set": "Toast",
-      "property": "h",
-      "scope": "box",
-      "reason": "Decided 2026-11-05: keep Figma stacked (title above description, toast.gap between); the UI is to be changed to stack too, then this entry goes. Until then the story lays them in a row (71px against 106px)."
-    },
-    {
-      "set": "Toast",
-      "property": "gap",
-      "scope": "box",
-      "reason": "Decided 2026-11-05: keep Figma stacked (title above description, toast.gap between); the UI is to be changed to stack too, then this entry goes. Until then the story lays them in a row (71px against 106px)."
-    },
-    {
-      "set": "Toast",
-      "property": "stroke",
-      "scope": "box",
-      "reason": "Decided 2026-11-05: add a default border token (toast.default.border) and draw it in Figma; the UI's default toast currently takes currentColor (#1b1512) with no token. Remove this entry when the token, the builder and the UI class land."
     }
   ]
 }
