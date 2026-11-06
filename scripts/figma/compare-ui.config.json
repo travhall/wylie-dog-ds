@@ -418,6 +418,75 @@
         "bar": "[role=menubar]",
         "content": "[role=menu]"
       }
+    },
+    "Card Grid": {
+      "story": "patterns-data-patterns-card-grid--default",
+      "root": "[role=region]",
+      "args": {},
+      "parts": {
+        "card": "[role=region] > div:nth-child(1)",
+        "card#1": "[role=region] > div:nth-child(2)"
+      }
+    },
+    "Feature Grid": {
+      "story": "patterns-data-patterns-feature-grid--default",
+      "root": "[role=region]",
+      "args": {},
+      "parts": {
+        "feature-grid-stack": "[role=region] > div:nth-child(1)",
+        "feature-grid-stack#1": "[role=region] > div:nth-child(2)"
+      }
+    },
+    "Resizable": {
+      "story": "components-layout-structure-resizable--horizontal",
+      "root": "[data-panel-group]",
+      "args": {},
+      "valueStories": {
+        "direction": {
+          "vertical": "components-layout-structure-resizable--vertical"
+        }
+      },
+      "parts": {
+        "resizable-stack": "[data-panel-group] > [data-panel]:first-child",
+        "resizable-row": "[data-panel-group] > [role=separator]",
+        "resizable-stack#1": "[data-panel-group] > [data-panel]:last-child"
+      }
+    },
+    "Calendar": {
+      "story": "components-content-display-calendar--default",
+      "root": "#storybook-root > div",
+      "args": {},
+      "parts": {
+        "calendar-row": "#storybook-root > div > div > div:nth-child(1)",
+        "calendar-row#1": "#storybook-root > div > div > div:nth-child(2) > div:nth-child(1)"
+      }
+    },
+    "Carousel": {
+      "story": "components-content-display-carousel--default",
+      "root": "#storybook-root > div",
+      "args": {},
+      "parts": {
+        "previous": "#storybook-root > div > button:nth-of-type(1)",
+        "next": "#storybook-root > div > button:nth-of-type(2)",
+        "carousel-row": "#storybook-root > div > div"
+      }
+    },
+    "Table": {
+      "story": "components-content-display-table--default",
+      "root": "#storybook-root table",
+      "args": {},
+      "valueStories": {
+        "state": {
+          "with-footer": "components-content-display-table--with-footer"
+        }
+      },
+      "parts": {
+        "table-row": "#storybook-root thead tr",
+        "table-row#1": "#storybook-root tbody tr:nth-child(1)",
+        "table-row#2": "#storybook-root tbody tr:nth-child(2)",
+        "table-footer": "#storybook-root tfoot",
+        "table-caption": "#storybook-root caption"
+      }
     }
   },
   "allow": [
@@ -1253,6 +1322,235 @@
       "property": "h",
       "scope": "box",
       "reason": "The story's menu lists more items than Figma's three."
+    },
+    {
+      "set": "Card Grid",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed, placeholder-sized frame; in code the element fills its container or the story's content, so size is layout, not look."
+    },
+    {
+      "set": "Card Grid",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma draws a fixed, placeholder-sized frame; in code the element fills its container or the story's content, so size is layout, not look."
+    },
+    {
+      "set": "Card Grid",
+      "property": "pad",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma draws simplified placeholder cards (16px padding, no shadow, 20px title); the UI grid holds Card components (32px padding, shadow, 18px title). The Figma Card Grid should hold Card instances."
+    },
+    {
+      "set": "Card Grid",
+      "property": "shadow",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma draws simplified placeholder cards (16px padding, no shadow, 20px title); the UI grid holds Card components (32px padding, shadow, 18px title). The Figma Card Grid should hold Card instances."
+    },
+    {
+      "set": "Card Grid",
+      "property": "size",
+      "scope": "text",
+      "reason": "Open (owner decision): Figma draws simplified placeholder cards (16px padding, no shadow, 20px title); the UI grid holds Card components (32px padding, shadow, 18px title). The Figma Card Grid should hold Card instances."
+    },
+    {
+      "set": "Card Grid",
+      "property": "lineHeight",
+      "scope": "text",
+      "reason": "Open (owner decision): Figma draws simplified placeholder cards (16px padding, no shadow, 20px title); the UI grid holds Card components (32px padding, shadow, 18px title). The Figma Card Grid should hold Card instances."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed, placeholder-sized frame; in code the element fills its container or the story's content, so size is layout, not look."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma draws a fixed, placeholder-sized frame; in code the element fills its container or the story's content, so size is layout, not look."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "pad",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "gap",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "radius",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "fill",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "size",
+      "scope": "text",
+      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
+    },
+    {
+      "set": "Feature Grid",
+      "property": "weight",
+      "scope": "text",
+      "reason": "Open (owner decision): Figma draws each feature as a bordered card (24px padding, 16px radius, fill, 20px bold title); the UI default variant is a plain column with a 16px regular title. Decide whether the Figma grid should draw the plain variant."
+    },
+    {
+      "set": "Resizable",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed, placeholder-sized frame; in code the element fills its container or the story's content, so size is layout, not look. The handle is a 1px line in code against a 12 to 16px hit area in Figma."
+    },
+    {
+      "set": "Resizable",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma draws a fixed, placeholder-sized frame; in code the element fills its container or the story's content, so size is layout, not look. The handle is a 1px line in code against a 12 to 16px hit area in Figma."
+    },
+    {
+      "set": "Resizable",
+      "property": "radius",
+      "scope": "box",
+      "reason": "The story wraps the group in its own rounded, bordered container (rounded-lg border, currentColor), and the handle is a 1px line in code against a 12 to 16px hit area in Figma."
+    },
+    {
+      "set": "Resizable",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "The story wraps the group in its own rounded, bordered container (rounded-lg border, currentColor), and the handle is a 1px line in code against a 12 to 16px hit area in Figma."
+    },
+    {
+      "set": "Calendar",
+      "property": "w",
+      "scope": "box",
+      "reason": "The story wraps the calendar in its own rounded, bordered container, wider than Figma's 248px frame; spacing between the header and the grid is margin in code and a gap of 16 in Figma."
+    },
+    {
+      "set": "Calendar",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story wraps the calendar in its own rounded, bordered container, wider than Figma's 248px frame; spacing between the header and the grid is margin in code and a gap of 16 in Figma."
+    },
+    {
+      "set": "Calendar",
+      "property": "gap",
+      "scope": "box",
+      "reason": "The story wraps the calendar in its own rounded, bordered container, wider than Figma's 248px frame; spacing between the header and the grid is margin in code and a gap of 16 in Figma."
+    },
+    {
+      "set": "Calendar",
+      "property": "radius",
+      "scope": "box",
+      "reason": "The story wraps the calendar in its own rounded, bordered container, wider than Figma's 248px frame; spacing between the header and the grid is margin in code and a gap of 16 in Figma."
+    },
+    {
+      "set": "Calendar",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "The story wraps the calendar in its own rounded, bordered container, wider than Figma's 248px frame; spacing between the header and the grid is margin in code and a gap of 16 in Figma."
+    },
+    {
+      "set": "Calendar",
+      "property": "color",
+      "scope": "text",
+      "reason": "The first text in the UI calendar is the month label in the foreground colour; Figma draws it muted."
+    },
+    {
+      "set": "Carousel",
+      "property": "w",
+      "scope": "box",
+      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
+    },
+    {
+      "set": "Carousel",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
+    },
+    {
+      "set": "Carousel",
+      "property": "gap",
+      "scope": "box",
+      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
+    },
+    {
+      "set": "Carousel",
+      "property": "fill",
+      "scope": "box",
+      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
+    },
+    {
+      "set": "Carousel",
+      "property": "size",
+      "scope": "text",
+      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
+    },
+    {
+      "set": "Carousel",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
+    },
+    {
+      "set": "Carousel",
+      "property": "lineHeight",
+      "scope": "text",
+      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
+    },
+    {
+      "set": "Table",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed, placeholder-sized frame; in code the element fills its container or the story's content, so size is layout, not look."
+    },
+    {
+      "set": "Table",
+      "property": "h",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma sets every row to the 48px header height; the UI body row is cell padding plus line height plus the rule (54px), its body cells are medium weight, and the last body row keeps its rule when a footer follows. The builder's table rows need to hug their cells."
+    },
+    {
+      "set": "Table",
+      "property": "weight",
+      "scope": "text",
+      "reason": "Open (owner decision): Figma sets every row to the 48px header height; the UI body row is cell padding plus line height plus the rule (54px), its body cells are medium weight, and the last body row keeps its rule when a footer follows. The builder's table rows need to hug their cells."
+    },
+    {
+      "set": "Table",
+      "property": "stroke",
+      "scope": "box",
+      "reason": "Open (owner decision): Figma sets every row to the 48px header height; the UI body row is cell padding plus line height plus the rule (54px), its body cells are medium weight, and the last body row keeps its rule when a footer follows. The builder's table rows need to hug their cells."
+    },
+    {
+      "set": "Table",
+      "property": "color",
+      "scope": "text",
+      "reason": "The first text in the UI table is its caption, muted; Figma's first text is the header cell."
+    },
+    {
+      "set": "Table",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: table-caption",
+      "reason": "The UI caption is spaced from the table by margin-top; Figma pads the caption frame 16px on top."
     }
   ]
 }
