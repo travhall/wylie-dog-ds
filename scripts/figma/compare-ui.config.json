@@ -576,13 +576,6 @@
       "reason": "The UI link carries a 4px radius for its focus ring; Figma draws it square."
     },
     {
-      "set": "Breadcrumb",
-      "property": "color",
-      "scope": "text",
-      "variant": ":: Current",
-      "reason": "Open (owner decision, probable UI bug): BreadcrumbPage sets aria-disabled=\"true\", so its aria-disabled:text-(--color-breadcrumb-link-disabled) class wins over --color-breadcrumb-current and the current page renders #b19f89 instead of Figma's #f9f7f5."
-    },
-    {
       "set": "Command",
       "property": "w",
       "scope": "box",
