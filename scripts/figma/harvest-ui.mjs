@@ -243,7 +243,31 @@ async function main() {
     // a root may name a Figma property in braces, e.g. [data-variant={variant}], for a story that
     // draws every variant side by side
     const root = component.root.replace(/\{(\w+)\}/g, (_, k) => props[k] ?? "");
+    // An overlay is closed until something opens it. Motion is reduced for the run so the
+    // settled style is measured rather than a frame of the enter animation.
+    await page.emulateMedia({
+      reducedMotion: component.open ? "reduce" : "no-preference",
+    });
     await page.goto(storyUrl(base, component, props, mode));
+    if (component.open) {
+      const { click, hover, contextmenu, wait } = component.open;
+      // a placeholder is a Figma value, mapped to the story's wording through `values`
+      const trigger = (click ?? hover ?? contextmenu).replace(
+        /\{(\w+)\}/g,
+        (_, k) => component.values?.[k]?.[props[k]] ?? props[k] ?? ""
+      );
+      try {
+        await page.waitForSelector(trigger, { timeout: 8000 });
+        if (click) await page.click(trigger);
+        else if (hover) await page.hover(trigger);
+        else await page.click(trigger, { button: "right" });
+        // hover cards and tooltips open after a delay
+        await page.waitForTimeout(wait ?? 300);
+      } catch {
+        skipped.push(`${item.set} ${item.variant}: could not open with ${trigger}`);
+        continue;
+      }
+    }
     try {
       // attached, not visible: a w-full element in a shrink-wrapped story (Progress) has no width
       await page.waitForSelector(root, {

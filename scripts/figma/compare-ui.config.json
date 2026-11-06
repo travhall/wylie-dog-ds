@@ -284,6 +284,29 @@
           "default": "components-feedback-status-toast--with-action"
         }
       }
+    },
+    "Dialog": {
+      "story": "components-overlays-popovers-dialog--size-variants",
+      "root": "[role=dialog]",
+      "args": {},
+      "values": {
+        "size": {
+          "sm": "Small",
+          "md": "Medium",
+          "lg": "Large",
+          "xl": "Extra Large",
+          "full": "Full"
+        }
+      },
+      "open": {
+        "click": "button:text-is('{size}')"
+      },
+      "parts": {
+        "close-button": "[role=dialog] > button",
+        "dialog-stack": "[role=dialog] > div:nth-child(1)",
+        "dialog-body": "[role=dialog] > div:nth-child(2)",
+        "dialog-footer": "[role=dialog] > div:nth-child(3)"
+      }
     }
   },
   "allow": [
@@ -671,6 +694,89 @@
       "scope": "box",
       "variant": ":: trigger",
       "reason": "The Figma trigger is the 16px label (its padding sits on the row); the UI trigger is the 40px button that holds the label and the chevron. The 41px item matches since the rebuild."
+    },
+    {
+      "set": "Dialog",
+      "property": "radius",
+      "scope": "box",
+      "variant": ":: close-button",
+      "reason": "Figma draws the \u00d7 glyph with no button box, so dialog.close-button-radius has nothing to round; in the UI it only shapes the focus ring."
+    },
+    {
+      "set": "Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: dialog-stack",
+      "reason": "Figma hugs its placeholder copy; in code the element fills the dialog's content width, so width is layout, not look."
+    },
+    {
+      "set": "Dialog",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: dialog-stack",
+      "reason": "The UI header spaces its title and description with margin (space-y), Figma with an auto-layout gap of 8."
+    },
+    {
+      "set": "Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: dialog-body",
+      "reason": "Figma hugs its placeholder copy; in code the element fills the dialog's content width, so width is layout, not look."
+    },
+    {
+      "set": "Dialog",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: dialog-body",
+      "reason": "The story's body is a paragraph of several lines; Figma draws one placeholder line."
+    },
+    {
+      "set": "Dialog",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: dialog-body",
+      "reason": "The story wraps its body in py-4; the component has no body padding."
+    },
+    {
+      "set": "Dialog",
+      "property": "color",
+      "scope": "text",
+      "variant": ":: dialog-body",
+      "reason": "The story's body paragraph is text-current/70, authored in the story; Figma's placeholder uses the muted text colour."
+    },
+    {
+      "set": "Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: dialog-footer",
+      "reason": "Figma hugs its placeholder copy; in code the element fills the dialog's content width, so width is layout, not look."
+    },
+    {
+      "set": "Dialog",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: dialog-footer",
+      "reason": "Figma's footer frame includes the 24px top spacing as padding; in code the same space is the footer's margin-top, outside the 42px button row."
+    },
+    {
+      "set": "Dialog",
+      "property": "pad",
+      "scope": "box",
+      "variant": ":: dialog-footer",
+      "reason": "Figma pads the footer 24px on top; in code the footer has margin-top (dialog.footer-margin-top) instead."
+    },
+    {
+      "set": "Dialog",
+      "property": "gap",
+      "scope": "box",
+      "variant": ":: dialog-footer",
+      "reason": "The UI spaces footer buttons with margin (space-x); Figma uses an auto-layout gap of 8."
+    },
+    {
+      "set": "Dialog",
+      "property": "h",
+      "scope": "box",
+      "reason": "Figma draws one placeholder line of body copy; the story's dialog holds a header, a paragraph and a footer, so the root height follows the copy."
     }
   ]
 }
