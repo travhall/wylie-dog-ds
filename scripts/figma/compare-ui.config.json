@@ -518,43 +518,15 @@
     },
     {
       "set": "Collapsible",
-      "property": "radius",
-      "scope": "box",
-      "variant": "open=false",
-      "reason": "Open (owner decision): Figma draws the collapsible root with a 4px radius and a #0b0806 fill; the UI Collapsible renders no box of its own (the story header is story-authored)."
-    },
-    {
-      "set": "Collapsible",
-      "property": "fill",
-      "scope": "box",
-      "variant": "open=false",
-      "reason": "Open (owner decision): see the radius entry; the UI Collapsible has no root fill."
-    },
-    {
-      "set": "Collapsible",
       "property": "weight",
       "scope": "text",
-      "reason": "Open (owner decision): Figma draws the header Regular; the story's header is a 600 weight h4, authored in the story, not the component."
+      "reason": "The story's header is a 600 weight h4 authored in the story (the component has no header); Figma draws the placeholder header Regular. Not a component property."
     },
     {
       "set": "Scrollbar",
       "property": "h",
       "scope": "box",
       "reason": "The UI scrollbar spans the 286px viewport and the thumb is proportional to the content (76px); Figma draws a 200px bar with a 40px thumb."
-    },
-    {
-      "set": "Scrollbar",
-      "property": "w",
-      "scope": "box",
-      "variant": ":: scrollbar-box",
-      "reason": "Open (owner decision): the UI thumb is 5px wide (a 10px track with 2.5px inset); Figma draws an 8px thumb in an 8px track."
-    },
-    {
-      "set": "Scrollbar",
-      "property": "radius",
-      "scope": "box",
-      "variant": "orientation=vertical",
-      "reason": "Open (owner decision): the UI track is rounded (4px) and the thumb radius follows its 5px width (2.5px); Figma has an unrounded track and a 4px thumb radius."
     },
     {
       "set": "Breadcrumb",
@@ -619,7 +591,7 @@
       "property": "stroke",
       "scope": "box",
       "variant": "state=empty",
-      "reason": "The story passes className=\"border\", a 1px border the component's root does not have (the component draws only the search row's bottom rule, which the harvester does not read: it measures the top edge). Figma draws none on the root, like the component."
+      "reason": "The story passes className=\"border\", a 1px border the component's root does not have. Figma draws none on the root, like the component."
     },
     {
       "set": "Command",
@@ -630,22 +602,22 @@
     },
     {
       "set": "Pagination",
-      "property": "w",
-      "scope": "box",
-      "reason": "Open (owner decision): the UI Previous link is 100.81px (8px left padding), Figma 109px (16px); the row is 356px in the UI, 328px in Figma."
-    },
-    {
-      "set": "Pagination",
       "property": "gap",
       "scope": "box",
       "reason": "The UI nav wraps the ul (the flex row); Figma's root is the row, so its gap of 4 has no counterpart on the nav element."
     },
     {
       "set": "Pagination",
+      "property": "w",
+      "scope": "box",
+      "reason": "The UI story row has more page links (356px) than the Figma default variant (312px), so the row width is layout. The Previous link itself matches (101px against 100.81px) since the rebuild."
+    },
+    {
+      "set": "Pagination",
       "property": "pad",
       "scope": "box",
-      "variant": ":: pagination-row",
-      "reason": "Open (owner decision): the UI Previous link is padded 8px on the icon side where Figma has 16px; the page links are fixed 40px squares with 16px padding in the UI and none in Figma (the box is the same size)."
+      "variant": ":: pagination-row#",
+      "reason": "The UI page links are fixed 40px squares with 16px side padding; Figma draws the same 40px box with no padding and the number centred. Same size, same look."
     },
     {
       "set": "Tabs",
@@ -659,27 +631,6 @@
       "scope": "box",
       "variant": "size=md",
       "reason": "The UI list and panel are spaced by margin on the panel, not a flex gap; Figma uses a gap of 16."
-    },
-    {
-      "set": "Tabs",
-      "property": "pad",
-      "scope": "box",
-      "variant": ":: tabs-row",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the UI list is p-(tabs.list.padding) on all four sides (4px); the builder padded left and right only."
-    },
-    {
-      "set": "Tabs",
-      "property": "stroke",
-      "scope": "box",
-      "variant": ":: tabs-row",
-      "reason": "Harvester limit: the list's border and the active tab's indicator are bottom-edge borders in code (border-b), and the harvester reads the top edge, so the UI stroke shows as missing. Figma draws both as bottom strokes, matching the tokens (tabs.list.border.color, tabs.trigger.indicator-color)."
-    },
-    {
-      "set": "Tabs",
-      "property": "h",
-      "scope": "box",
-      "variant": ":: tabs-row-row#1",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): in code every trigger has border-b-4 border-transparent, so the inactive tab is as tall as the active one (33px); the builder drew the inactive tab without the 4px bottom stroke (29px)."
     },
     {
       "set": "Tabs",
@@ -709,16 +660,17 @@
     },
     {
       "set": "Accordion",
-      "property": "h",
-      "scope": "box",
-      "reason": "Open (owner decision): the closed Figma accordion is 56px (a 40px row plus 16px); the UI item is 42px (40px trigger plus borders). The Figma trigger is the 16px text where the UI trigger is the 40px button."
-    },
-    {
-      "set": "Accordion",
       "property": "pad",
       "scope": "box",
       "variant": ":: ",
       "reason": "Padding sits on the row in Figma (12px) and on the trigger button in the UI."
+    },
+    {
+      "set": "Accordion",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: trigger",
+      "reason": "The Figma trigger is the 16px label (its padding sits on the row); the UI trigger is the 40px button that holds the label and the chevron. The 41px item matches since the rebuild."
     }
   ]
 }

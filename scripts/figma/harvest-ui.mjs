@@ -146,7 +146,13 @@ function measureInPage(rootSelector) {
         : 0,
     radius: Math.round(clamp(px(cs.borderTopLeftRadius)) * 100) / 100,
     border: bw,
-    stroke: bw > 0 ? hex(cs.borderTopColor) : null,
+    // the colour of the first side that has a border (a bottom rule, border-b, has no top edge)
+    stroke: (() => {
+      for (const side of ["Top", "Bottom", "Left", "Right"]) {
+        if (px(cs[`border${side}Width`]) > 0) return hex(cs[`border${side}Color`]);
+      }
+      return null;
+    })(),
     fill: hex(cs.backgroundColor),
     opacity: px(cs.opacity),
     shadow: shadows,
