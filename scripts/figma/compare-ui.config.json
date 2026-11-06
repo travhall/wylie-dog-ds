@@ -1216,13 +1216,6 @@
     },
     {
       "set": "Menubar",
-      "property": "weight",
-      "scope": "text",
-      "variant": ":: bar",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): a text layer's bound weight did not move once its text style was applied (a menu label is semibold, its text style is the regular item style); the builder now sets the face after the style and binds the weight variable again."
-    },
-    {
-      "set": "Menubar",
       "property": "color",
       "scope": "text",
       "variant": ":: content",
@@ -1332,13 +1325,6 @@
     },
     {
       "set": "Dropdown Menu",
-      "property": "weight",
-      "scope": "text",
-      "variant": ":: menu-label",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): a text layer's bound weight did not move once its text style was applied (a menu label is semibold, its text style is the regular item style); the builder now sets the face after the style and binds the weight variable again."
-    },
-    {
-      "set": "Dropdown Menu",
       "property": "h",
       "scope": "box",
       "variant": ":: menu-separator",
@@ -1367,12 +1353,6 @@
     },
     {
       "set": "Dropdown Menu",
-      "property": "weight",
-      "scope": "text",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): a text layer's bound weight did not move once its text style was applied (a menu label is semibold, its text style is the regular item style); the builder now sets the face after the style and binds the weight variable again."
-    },
-    {
-      "set": "Dropdown Menu",
       "property": "w",
       "scope": "box",
       "reason": "Figma hugs its placeholder copy; in code the element fills its container or is sized by the story's menu, so width is layout, not look."
@@ -1397,27 +1377,15 @@
     },
     {
       "set": "Card Grid",
-      "property": "pad",
-      "scope": "box",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the grid holds Card components in code; the builder drew placeholder cards and now places Card instances."
-    },
-    {
-      "set": "Card Grid",
-      "property": "shadow",
-      "scope": "box",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the grid holds Card components in code; the builder drew placeholder cards and now places Card instances."
-    },
-    {
-      "set": "Card Grid",
       "property": "size",
       "scope": "text",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the grid holds Card components in code; the builder drew placeholder cards and now places Card instances."
+      "reason": "The story sets its card titles to text-lg (18px) over CardTitle's size; Figma draws the Card component's title."
     },
     {
       "set": "Card Grid",
       "property": "lineHeight",
       "scope": "text",
-      "reason": "Figma builder drift, patched and awaiting a rebuild (remove this entry once rebuilt): the grid holds Card components in code; the builder drew placeholder cards and now places Card instances."
+      "reason": "The story sets its card titles to text-lg (18px) over CardTitle's size; Figma draws the Card component's title."
     },
     {
       "set": "Feature Grid",
@@ -1804,6 +1772,12 @@
       "property": "weight",
       "scope": "text",
       "reason": "The first text in the UI card is the story's icon glyph, not the title; Figma's first text is the bold title (feature-grid.title.font-weight)."
+    },
+    {
+      "set": "Context Menu",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The first text in the Figma menu is its semibold \"My Account\" label; the story's menu opens on a regular item."
     }
   ]
 }
