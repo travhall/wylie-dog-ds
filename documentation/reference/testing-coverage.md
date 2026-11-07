@@ -1,7 +1,7 @@
 # Testing and Coverage Status
 
 **Last Updated:** November 3, 2026
-**Overall Coverage:** 99.46% lines / 99.21% statements (exceeds 80% threshold)
+**Overall Coverage:** 99.49% lines / 99.02% statements (exceeds 80% threshold)
 **Tests Passing:** 1,620 | **Tests Skipped:** 62
 
 Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot. `pnpm check:docs:coverage` runs it and fails if the four percentages in the table below no longer match; plain `pnpm check:docs` does the same comparison whenever a fresh coverage run is on disk. Passing and skipped test counts are not checked.
@@ -10,14 +10,14 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 
 | Metric     | Current | Target | Status            |
 | ---------- | ------- | ------ | ----------------- |
-| Statements | 99.21%  | 80%    | ✅ Pass (+19.21%) |
-| Lines      | 99.46%  | 80%    | ✅ Pass (+19.46%) |
-| Functions  | 98.55%  | 80%    | ✅ Pass (+18.55%) |
-| Branches   | 92.19%  | 70%    | ✅ Pass (+22.19%) |
+| Statements | 99.02%  | 80%    | ✅ Pass (+19.02%) |
+| Lines      | 99.49%  | 80%    | ✅ Pass (+19.49%) |
+| Functions  | 98.63%  | 80%    | ✅ Pass (+18.63%) |
+| Branches   | 92.2%   | 70%    | ✅ Pass (+22.2%)  |
 
 ### Component Coverage
 
-- **Component tests:** 99.46% lines overall (all components fully tested except portal-based skips)
+- **Component tests:** 99.49% lines overall (all components fully tested except portal-based skips)
 - **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
 - **Test files:** 59 passing test files
 
@@ -169,7 +169,7 @@ Clicking second trigger closes first content but doesn't reliably show second co
 
 ## Lowest Branch Coverage
 
-Branch coverage (92.19%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
+Branch coverage (92.2%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
 
 | File               | Branches | Uncovered                                 |
 | ------------------ | -------- | ----------------------------------------- |

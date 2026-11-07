@@ -137,8 +137,10 @@ export default [
   // Viewport, which the rule doesn't flag only because it isn't a raw <div>).
   // `no-noninteractive-tabindex` has no exception for scrollable regions, so
   // it's disabled just for this file.
+  // CarouselContent is a horizontally scrolling track: it needs tabIndex=0 so keyboard users can
+  // focus it and use the arrow keys (and so axe's scrollable-region-focusable passes).
   {
-    files: ['src/command.tsx'],
+    files: ['src/command.tsx', 'src/carousel.tsx'],
     rules: {
       'jsx-a11y/no-noninteractive-tabindex': 'off',
     },

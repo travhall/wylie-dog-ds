@@ -663,6 +663,102 @@ describe("Carousel scrolling", () => {
     );
   });
 
+  it("passes the track to a callback ref and an object ref", () => {
+    const callback = vi.fn();
+    const object = React.createRef<HTMLDivElement>();
+    const { rerender } = render(
+      <Carousel>
+        <CarouselContent ref={callback}>
+          <CarouselItem>Slide 1</CarouselItem>
+        </CarouselContent>
+      </Carousel>
+    );
+    expect(callback).toHaveBeenCalledWith(expect.any(HTMLDivElement));
+    rerender(
+      <Carousel>
+        <CarouselContent ref={object}>
+          <CarouselItem>Slide 1</CarouselItem>
+        </CarouselContent>
+      </Carousel>
+    );
+    expect(object.current).toBeInstanceOf(HTMLDivElement);
+  });
+
+  it("runs the consumer's scroll and key handlers too", () => {
+    const onScroll = vi.fn();
+    const onKeyDown = vi.fn();
+    const { container } = render(
+      <Carousel>
+        <CarouselContent onScroll={onScroll} onKeyDown={onKeyDown}>
+          <CarouselItem>Slide 1</CarouselItem>
+        </CarouselContent>
+      </Carousel>
+    );
+    fireEvent.scroll(viewport(container));
+    fireEvent.keyDown(viewport(container), { key: "Home" });
+    expect(onScroll).toHaveBeenCalledTimes(1);
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(scrollBy).not.toHaveBeenCalled();
+  });
+
+  it("leaves arrow keys alone when they come from inside a slide", () => {
+    render(<TestCarousel />);
+    fireEvent.keyDown(screen.getByText("Slide 1"), { key: "ArrowRight" });
+    expect(scrollBy).not.toHaveBeenCalled();
+  });
+
+  it("does not scroll when a button's own click handler prevents it", () => {
+    render(
+      <Carousel>
+        <CarouselContent>
+          <CarouselItem>Slide 1</CarouselItem>
+          <CarouselItem>Slide 2</CarouselItem>
+        </CarouselContent>
+        <CarouselNext onClick={(event) => event.preventDefault()} />
+      </Carousel>
+    );
+    fireEvent.click(screen.getByRole("button", { name: /next slide/i }));
+    expect(scrollBy).not.toHaveBeenCalled();
+  });
+
+  it("re-measures when the track is resized", () => {
+    const observers: Array<{ callback: () => void; disconnect: () => void }> =
+      [];
+    class FakeResizeObserver {
+      callback: () => void;
+      disconnect = vi.fn();
+      constructor(callback: () => void) {
+        this.callback = callback;
+        observers.push(this);
+      }
+      observe() {}
+      unobserve() {}
+    }
+    vi.stubGlobal("ResizeObserver", FakeResizeObserver);
+    const { unmount } = render(<TestCarousel />);
+    expect(screen.getByRole("button", { name: /next slide/i })).toBeEnabled();
+    define("scrollWidth", { get: () => 320 });
+    act(() => observers[0].callback());
+    expect(screen.getByRole("button", { name: /next slide/i })).toBeDisabled();
+    unmount();
+    expect(observers[0].disconnect).toHaveBeenCalled();
+    vi.unstubAllGlobals();
+  });
+
+  it("keeps the buttons usable outside a Carousel", () => {
+    render(
+      <>
+        <CarouselPrevious />
+        <CarouselNext />
+      </>
+    );
+    expect(
+      screen.getByRole("button", { name: /previous slide/i })
+    ).toBeEnabled();
+    fireEvent.click(screen.getByRole("button", { name: /next slide/i }));
+    expect(scrollBy).not.toHaveBeenCalled();
+  });
+
   it("keeps a button disabled when the disabled prop is set", () => {
     render(
       <Carousel>
