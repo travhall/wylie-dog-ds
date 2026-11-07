@@ -23,11 +23,15 @@ The harvester takes the theme from the `mode` in the Figma file, so both sides a
 
 ## Adding a component
 
-`scripts/figma/compare-ui.config.json` says how a Figma set is rendered: the story, the element to measure (`root`), how Figma variant properties become story args (`args`, with `values` where the names differ) and which property is the interaction state (`state`: `default`, `hover` or `pressed`). The config maps 27 sets so far (see the file for the list); add a set by naming its story and root. A set with no entry is skipped and listed.
+`scripts/figma/compare-ui.config.json` says how a Figma set is rendered: the story, the element to measure (`root`), how Figma variant properties become story args (`args`, with `values` where the names differ) and which property is the interaction state (`state`: `default`, `hover` or `pressed`). The config maps 47 of the 49 sets (Icon is a glyph set and Aspect Ratio has no Figma set; Navigation Menu is not mapped, see the limits below) (see the file for the list); add a set by naming its story and root. A set with no entry is skipped and listed.
 
 Two optional keys cover a Figma value that does not map to one story arg. `valueArgs` gives the whole args string for one value (Checkbox's `checked=error` is an unchecked box with `error` on: `"valueArgs": { "checked": { "error": "error:!true;checked:!false" } }`). `valueStories` points one value at another story when the main story does not render it (Toast's default variant).
 
 A set whose Figma root is a wrapper and whose look sits in inner layers (Slider: track, range, thumb) uses `parts`: a map from a Figma layer name to an absolute CSS selector. Set the same layer names in `PARTS` in `measure-library.js` (`{ Slider: ["track", "range", "thumb"] }`). Each part is compared as its own item named `<variant> :: <part>`; the harvester measures it with its parent variant and skips part items when it walks the Figma file. A layer name that repeats (Tabs' `tabs-row-row`) takes an index, `tabs-row-row#1` for the second one, in both `PARTS` and `parts`. A part selector can name a Figma property in braces, like `root` (`[data-orientation={orientation}]`). A text layer's fill is its text colour, so the measurer leaves a text part's box fill empty. Only send the Figma variants the story can render (a variant with an axis the story cannot reach would be compared against the default and report false drift).
+
+Overlays and menus (Dialog, Alert Dialog, Sheet, Popover, Hover Card, Tooltip, Dropdown Menu, Context Menu, Menubar) are closed by default, so a set's `open` key says how the story opens them before measuring: `{ "click": "<selector>" }`, `{ "hover": "<selector>" }` or `{ "contextmenu": "<selector>" }`, with an optional `wait` in milliseconds and `when`. Reduced motion is emulated, so nothing animates. The `root` is then the portal content (`[role=dialog]`, `[role=menu]`).
+
+Four more optional keys keep a story's limits out of the findings. `unrenderable` maps a Figma property to the values its story cannot draw (`"Tabs": { "size": ["sm", "lg"] }`, Form `error`, Command `with-results`, Pagination `with-many-pages`, Accordion `open`, Radio `checked: true`); the harvester skips them and the report lists them as having no UI measurement, so they never show up as false drift. `stateTarget` is an element to hover or press instead of the root (a menu's first item, so Dropdown Menu and Context Menu hover states reach the item). Parts are read while the mouse is still on the target, so a hover or pressed state reaches them too. `ONLY_PARTS` in `measure-library.js` (`["Select"]` with `PARTS = { Select: ["trigger"] }`) emits only a set's parts, for a set whose root is a bare wrapper; the harvester then drives the story from a parts-only work item for the parent variant.
 
 A `use_figma` call returns at most 48,000 bytes and cannot write a file, so a large measurement goes out in chunks of compact rows (`[set, variant, w, h, [pad x4], gap, radius, border, stroke, fill, opacity, [[x, y, blur, spread, color]], [chars, family, size, weight, lineHeight, tracking, decoration, color] or null]`). Save them as a JSON array and turn them into the metrics file with `node scripts/figma/rows-to-metrics.mjs rows.json figma-metrics.json dark` (or `light`).
 
@@ -43,6 +47,20 @@ Button has a `state` axis (`default`, `hover`, `pressed`), and the builder wires
 
 It refuses unless those two variables are native TIMING and EASING (Pull the tokens with the current Token Bridge first), says why, and changes nothing. Running it twice is safe: each variant's reactions are replaced.
 
-## What it does not see yet
+## Full pass of 2026-11-06 (plan 218)
 
-Layers after the first text (a second label, an icon), hover and pressed states of components whose variants have no `state` axis (Button is the first), the focus ring, and Radix content that exists only when open (menus, dialogs). Each needs its own measuring rule and is added with its component.
+After the last rebuild of the library, every mapped set was measured in dark (600 variants, 48 sets) and in light (298 variants, sizes `md` and `default` only, since a size does not change a colour), and compared with the UI: 0 open findings in both, every allow entry carries a reason, and no entry is stale. The `Open (owner decision)` entries are the owner's open calls, listed by `grep "Open (owner" scripts/figma/compare-ui.config.json`. Alpha modifiers on token colours stay as they are (the Section Hero gradient and the Section Features icon tiles, 10% each): Figma reproduces them as 10% paint opacity on token-bound fills.
+
+To repeat the run: set the sections' variable modes (the `components` and `semantic` collections) to Dark or Light, preload every font on the page plus Roboto, Besley and Noto Sans Symbols2, measure in chunks of about 150 rows, convert with `rows-to-metrics.mjs`, harvest against a running Storybook on :6006, then `pnpm compare:ui`. The component builder (`apps/figma-plugin/wylie-dog-figma-builder/code.js`, owner-run, gitignored) is **frozen after the final rebuild**: it duplicates components if it is run again, so later fixes in Figma are made by hand or through Token Bridge, and then re-measured.
+
+## Known limits
+
+Not measured, and why:
+
+- **Navigation Menu** is not mapped. The story's open content is a bespoke grid with story-only gradient classes, so there is no comparable element; the closed list differs in width by structure.
+- **Dialog `size=full`**: the story sizes it to the viewport (855px at the 900px harvest viewport) while Figma draws 1200px (allow entries).
+- **Site Header `size=sm`**: the story ignores the `size` URL arg, so the sm rows compare against the default size (allow entries).
+- **Variants a story cannot render** (`unrenderable`): Scrollbar horizontal, Form error, Command with results, Pagination many pages, Accordion open, Tabs sm and lg, Radio checked, Toggle Group vertical pressed. Select error is measured at `md` only, because its error story renders one size.
+- **Table selected row**: the table story renders no selected row.
+- **Hover and pressed inside overlays**: Dropdown Menu and Context Menu hover (first item) are measured with `stateTarget`; pressed and the Menubar items are not.
+- The focus ring, a second text layer or icon, and the Input and Textarea placeholder colour (an attribute in the UI, a text layer in Figma) are not compared.

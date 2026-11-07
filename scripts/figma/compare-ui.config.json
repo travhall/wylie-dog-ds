@@ -115,7 +115,17 @@
       "state": "state",
       "stateArgs": {
         "closed": "disabled:!false",
-        "disabled": "disabled:!true"
+        "disabled": "disabled:!true",
+        "open": "disabled:!false",
+        "error": "disabled:!false"
+      },
+      "parts": {
+        "trigger": "#storybook-root button[role=combobox]"
+      },
+      "valueStories": {
+        "state": {
+          "error": "components-inputs-controls-select--with-error"
+        }
       }
     },
     "Avatar": {
@@ -134,6 +144,9 @@
         "tabs-row-row": "#storybook-root [role=tab][data-state=active]",
         "tabs-row-row#1": "#storybook-root [role=tab][data-state=inactive]",
         "tabs-stack": "#storybook-root [role=tabpanel][data-state=active]"
+      },
+      "unrenderable": {
+        "size": ["sm", "lg"]
       }
     },
     "Breadcrumb": {
@@ -158,6 +171,9 @@
         "pagination-row": "#storybook-root nav ul li:nth-child(1) a",
         "pagination-row#1": "#storybook-root nav ul li:nth-child(2) a",
         "pagination-row#2": "#storybook-root nav ul li:nth-child(3) a"
+      },
+      "unrenderable": {
+        "state": ["with-many-pages"]
       }
     },
     "Collapsible": {
@@ -176,6 +192,9 @@
       "parts": {
         "accordion-row": "#storybook-root h3",
         "trigger": "#storybook-root h3 button"
+      },
+      "unrenderable": {
+        "state": ["open"]
       }
     },
     "Toggle Group": {
@@ -221,6 +240,9 @@
         "Field Label": "#storybook-root form label",
         "form-row": "#storybook-root form input",
         "Helper text goes here.": "#storybook-root form p"
+      },
+      "unrenderable": {
+        "error": ["true"]
       }
     },
     "Command": {
@@ -230,6 +252,9 @@
       "parts": {
         "command-row": "#storybook-root div:has(> input[role=combobox])",
         "No results found.": "#storybook-root [role=status]"
+      },
+      "unrenderable": {
+        "state": ["with-results"]
       }
     },
     "Slider": {
@@ -273,6 +298,9 @@
       "args": {
         "size": "size",
         "disabled": "disabled"
+      },
+      "unrenderable": {
+        "checked": ["true"]
       }
     },
     "Toast": {
@@ -388,7 +416,9 @@
         "menu-item#1": "[role=menu] > [role=menuitem]:nth-child(4)",
         "menu-item#2": "[role=menu] > [role=menuitem]:nth-child(5)",
         "menu-separator": "[role=menu] > [role=separator]"
-      }
+      },
+      "stateTarget": "[role=menu] > [role=menuitem]:nth-child(3)",
+      "state": "state"
     },
     "Context Menu": {
       "story": "components-overlays-popovers-contextmenu--default",
@@ -402,7 +432,9 @@
         "context-menu-row#1": "[role=menu] > [role=menuitem]:nth-child(2)",
         "context-menu-row#2": "[role=menu] > [role=menuitem]:nth-child(3)",
         "menu-separator": "[role=menu] > [role=separator]"
-      }
+      },
+      "stateTarget": "[role=menu] > [role=menuitem]:nth-child(1)",
+      "state": "state"
     },
     "Menubar": {
       "story": "components-navigation-menubar--default",
@@ -647,12 +679,6 @@
       "property": "gap",
       "scope": "box",
       "reason": "Figma gap 4 sits between the label and the optional required indicator, which is hidden here; the UI label is inline text."
-    },
-    {
-      "set": "Select",
-      "property": "w",
-      "scope": "box",
-      "reason": "Figma draws a fixed 200px trigger; in code the trigger is w-full and takes its container (320px in the story)."
     },
     {
       "set": "Separator",
@@ -940,7 +966,7 @@
       "property": "radius",
       "scope": "box",
       "variant": ":: close-button",
-      "reason": "Figma draws the \u00d7 glyph with no button box, so dialog.close-button-radius has nothing to round; in the UI it only shapes the focus ring."
+      "reason": "Figma draws the × glyph with no button box, so dialog.close-button-radius has nothing to round; in the UI it only shapes the focus ring."
     },
     {
       "set": "Dialog",
@@ -1106,13 +1132,6 @@
     },
     {
       "set": "Popover",
-      "property": "weight",
-      "scope": "text",
-      "variant": ":: title",
-      "reason": "The story's heading is authored in the story."
-    },
-    {
-      "set": "Popover",
       "property": "lineHeight",
       "scope": "text",
       "variant": ":: title",
@@ -1152,12 +1171,6 @@
     },
     {
       "set": "Popover",
-      "property": "weight",
-      "scope": "text",
-      "reason": "The first text in the UI popover is the story's own heading."
-    },
-    {
-      "set": "Popover",
       "property": "lineHeight",
       "scope": "text",
       "reason": "The first text in the UI popover is the story's own heading."
@@ -1167,7 +1180,7 @@
       "property": "radius",
       "scope": "box",
       "variant": ":: close-button",
-      "reason": "Figma draws the \u00d7 glyph with no button box, so sheet.close-button-radius has nothing to round; in the UI it only shapes the focus ring."
+      "reason": "Figma draws the × glyph with no button box, so sheet.close-button-radius has nothing to round; in the UI it only shapes the focus ring."
     },
     {
       "set": "Sheet",
@@ -1785,6 +1798,82 @@
       "property": "h",
       "scope": "box",
       "reason": "The story lists more rows than Figma's two body rows, so the table is taller; the rows themselves match (54px)."
+    },
+    {
+      "set": "Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": "size=full, state=default",
+      "reason": "The story sizes the full dialog to the viewport (the harvest viewport is 900px, so 855px with its margins); Figma draws it 1200px wide. Height, padding, fill and text still compare."
+    },
+    {
+      "set": "Dialog",
+      "property": "w",
+      "scope": "box",
+      "variant": "size=full, state=with-footer",
+      "reason": "The story sizes the full dialog to the viewport (the harvest viewport is 900px, so 855px with its margins); Figma draws it 1200px wide. Height, padding, fill and text still compare."
+    },
+    {
+      "set": "Table",
+      "property": "fill",
+      "scope": "box",
+      "variant": "state=with-selection :: table-row#1",
+      "reason": "The table story renders no selected row, so the selected row fill (Figma draws it on Alice) has no UI counterpart to measure. The selected-row background is the table row selected token."
+    },
+    {
+      "set": "Select",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma draws a fixed 200px trigger; in code the trigger is w-full and takes its container (320px in the story)."
+    },
+    {
+      "set": "Select",
+      "property": "h",
+      "scope": "box",
+      "variant": "size=sm, state=error :: trigger",
+      "reason": "The only error story (select--with-error) renders the md trigger, so the sm and lg error triggers are compared against md; their size, height, padding and text size are covered by the sm and lg default rows."
+    },
+    {
+      "set": "Select",
+      "property": "size",
+      "scope": "text",
+      "variant": "size=sm, state=error :: trigger",
+      "reason": "The only error story (select--with-error) renders the md trigger, so the sm and lg error triggers are compared against md; their size, height, padding and text size are covered by the sm and lg default rows."
+    },
+    {
+      "set": "Select",
+      "property": "lineHeight",
+      "scope": "text",
+      "variant": "size=sm, state=error :: trigger",
+      "reason": "The only error story (select--with-error) renders the md trigger, so the sm and lg error triggers are compared against md; their size, height, padding and text size are covered by the sm and lg default rows."
+    },
+    {
+      "set": "Select",
+      "property": "h",
+      "scope": "box",
+      "variant": "size=lg, state=error :: trigger",
+      "reason": "The only error story (select--with-error) renders the md trigger, so the sm and lg error triggers are compared against md; their size, height, padding and text size are covered by the sm and lg default rows."
+    },
+    {
+      "set": "Select",
+      "property": "pad",
+      "scope": "box",
+      "variant": "size=lg, state=error :: trigger",
+      "reason": "The only error story (select--with-error) renders the md trigger, so the sm and lg error triggers are compared against md; their size, height, padding and text size are covered by the sm and lg default rows."
+    },
+    {
+      "set": "Select",
+      "property": "size",
+      "scope": "text",
+      "variant": "size=lg, state=error :: trigger",
+      "reason": "The only error story (select--with-error) renders the md trigger, so the sm and lg error triggers are compared against md; their size, height, padding and text size are covered by the sm and lg default rows."
+    },
+    {
+      "set": "Select",
+      "property": "lineHeight",
+      "scope": "text",
+      "variant": "size=lg, state=error :: trigger",
+      "reason": "The only error story (select--with-error) renders the md trigger, so the sm and lg error triggers are compared against md; their size, height, padding and text size are covered by the sm and lg default rows."
     }
   ]
 }

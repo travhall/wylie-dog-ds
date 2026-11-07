@@ -220,15 +220,44 @@ async function main() {
   const items = [];
   const skipped = [];
   const page = await browser.newPage({ viewport: { width: 900, height: 900 } });
+  // A part ("<variant> :: <part>") is harvested with its parent variant, through `parts`. A set
+  // whose root is a bare wrapper (Select, measured with ONLY_PARTS) sends parts and no root row:
+  // drive its story through a parts-only work item for the parent variant.
+  const work = [];
+  const seenRoots = new Set(
+    (figma.items ?? [])
+      .filter((i) => !i.variant.includes(" :: "))
+      .map((i) => `${i.set}|${i.variant}`)
+  );
   for (const item of figma.items ?? []) {
-    // a part ("<variant> :: <part>") is harvested with its parent variant, through `parts`
-    if (item.variant.includes(" :: ")) continue;
+    if (!item.variant.includes(" :: ")) {
+      work.push(item);
+      continue;
+    }
+    const parent = item.variant.split(" :: ")[0];
+    if (!seenRoots.has(`${item.set}|${parent}`)) {
+      seenRoots.add(`${item.set}|${parent}`);
+      work.push({ set: item.set, variant: parent, partsOnly: true });
+    }
+  }
+  for (const item of work) {
     const component = config.components[item.set];
     if (!component) {
       skipped.push(`${item.set}: not in compare-ui.config.json`);
       continue;
     }
     const props = parseVariant(item.variant);
+    // `unrenderable`: Figma property to the values its story cannot draw (Tabs size sm, Form
+    // error). Comparing them against the default render would report false drift.
+    const blocked = Object.entries(component.unrenderable ?? {}).find(
+      ([prop, values]) => values.includes(props[prop])
+    );
+    if (blocked) {
+      skipped.push(
+        `${item.set} ${item.variant}: story cannot render ${blocked[0]}=${props[blocked[0]]}`
+      );
+      continue;
+    }
     const state = component.state ? props[component.state] : undefined;
     if (
       state &&
@@ -286,12 +315,24 @@ async function main() {
     }
     await page.waitForTimeout(250);
     if (state === "hover" || state === "pressed") {
-      await page.hover(root);
+      // `stateTarget`: hover or press this element instead of the root (a menu's first item)
+      await page.hover(component.stateTarget ?? root);
       if (state === "pressed") await page.mouse.down();
       // longer than the transition (150ms) so the settled style is measured
       await page.waitForTimeout(450);
     }
     const measured = await page.evaluate(measureInPage, root);
+    // Named inner layers (Slider's track, range and thumb): each is measured on its own and
+    // compared against the Figma descendant of the same name ("<variant> :: <part>"). They are
+    // read while the mouse is still on the target, so a hover or pressed state reaches them too.
+    const innerParts = [];
+    for (const [part, selector] of Object.entries(component.parts ?? {})) {
+      const inner = await page.evaluate(
+        measureInPage,
+        selector.replace(/\{(\w+)\}/g, (_, k) => props[k] ?? "")
+      );
+      innerParts.push([part, selector, inner]);
+    }
     if (state === "pressed") await page.mouse.up();
     await page.mouse.move(0, 0);
     if (!measured) {
@@ -300,14 +341,8 @@ async function main() {
       );
       continue;
     }
-    items.push({ set: item.set, variant: item.variant, ...measured });
-    // Named inner layers (Slider's track, range and thumb): each is measured on its own and
-    // compared against the Figma descendant of the same name ("<variant> :: <part>").
-    for (const [part, selector] of Object.entries(component.parts ?? {})) {
-      const inner = await page.evaluate(
-        measureInPage,
-        selector.replace(/\{(\w+)\}/g, (_, k) => props[k] ?? "")
-      );
+    if (!item.partsOnly) items.push({ set: item.set, variant: item.variant, ...measured });
+    for (const [part, selector, inner] of innerParts) {
       if (!inner) {
         skipped.push(`${item.set} ${item.variant} :: ${part}: no element for ${selector}`);
         continue;
