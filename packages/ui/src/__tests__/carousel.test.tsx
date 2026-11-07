@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { vi } from "vitest";
 import {
@@ -122,14 +122,15 @@ describe("Carousel", () => {
       expect(content).toBeInTheDocument();
     });
 
-    it("should have overflow hidden", () => {
+    it("should scroll horizontally and snap", () => {
       const { container } = render(
         <Carousel>
           <CarouselContent>Content</CarouselContent>
         </Carousel>
       );
-      const content = container.querySelector(".overflow-hidden");
+      const content = container.querySelector(".overflow-x-auto");
       expect(content).toBeInTheDocument();
+      expect(content).toHaveClass("snap-x", "snap-mandatory");
     });
 
     it("applies extra props to a single element, not both wrapper divs", () => {
@@ -507,8 +508,8 @@ describe("Carousel", () => {
           <CarouselContent>
             <CarouselItem>Item</CarouselItem>
           </CarouselContent>
-          <CarouselPrevious onClick={handlePrev} />
-          <CarouselNext onClick={handleNext} />
+          <CarouselPrevious disabled={false} onClick={handlePrev} />
+          <CarouselNext disabled={false} onClick={handleNext} />
         </Carousel>
       );
 
@@ -518,5 +519,160 @@ describe("Carousel", () => {
       screen.getByRole("button", { name: /next slide/i }).click();
       expect(handleNext).toHaveBeenCalledTimes(1);
     });
+  });
+});
+
+describe("Carousel scrolling", () => {
+  let scrollLeft = 0;
+  let scrollBy: ReturnType<typeof vi.fn>;
+  const restore: Array<() => void> = [];
+
+  const define = (name: string, descriptor: PropertyDescriptor) => {
+    const original = Object.getOwnPropertyDescriptor(
+      HTMLElement.prototype,
+      name
+    );
+    Object.defineProperty(HTMLElement.prototype, name, {
+      configurable: true,
+      ...descriptor,
+    });
+    restore.push(() => {
+      if (original)
+        Object.defineProperty(HTMLElement.prototype, name, original);
+      else
+        delete (HTMLElement.prototype as unknown as Record<string, unknown>)[
+          name
+        ];
+    });
+  };
+
+  beforeEach(() => {
+    scrollLeft = 0;
+    scrollBy = vi.fn();
+    // 3 slides of 320px in a 320px viewport: 960px of content
+    define("scrollWidth", { get: () => 960 });
+    define("clientWidth", { get: () => 320 });
+    define("offsetWidth", { get: () => 320 });
+    define("scrollLeft", {
+      get: () => scrollLeft,
+      set: (v: number) => {
+        scrollLeft = v;
+      },
+    });
+    define("scrollBy", { value: scrollBy, writable: true });
+  });
+
+  afterEach(() => {
+    while (restore.length) restore.pop()!();
+  });
+
+  const viewport = (container: HTMLElement) =>
+    container.querySelector(".overflow-x-auto") as HTMLElement;
+
+  it("starts with previous disabled and next enabled", () => {
+    render(<TestCarousel />);
+    expect(
+      screen.getByRole("button", { name: /previous slide/i })
+    ).toBeDisabled();
+    expect(screen.getByRole("button", { name: /next slide/i })).toBeEnabled();
+  });
+
+  it("scrolls forward by one slide when next is clicked", () => {
+    render(<TestCarousel />);
+    fireEvent.click(screen.getByRole("button", { name: /next slide/i }));
+    expect(scrollBy).toHaveBeenCalledWith({ left: 320 });
+  });
+
+  it("scrolls back by one slide when previous is clicked", () => {
+    const { container } = render(<TestCarousel />);
+    scrollLeft = 320;
+    act(() => {
+      fireEvent.scroll(viewport(container));
+    });
+    fireEvent.click(screen.getByRole("button", { name: /previous slide/i }));
+    expect(scrollBy).toHaveBeenCalledWith({ left: -320 });
+  });
+
+  it("disables next at the end and enables previous", () => {
+    const { container } = render(<TestCarousel />);
+    scrollLeft = 640;
+    act(() => {
+      fireEvent.scroll(viewport(container));
+    });
+    expect(screen.getByRole("button", { name: /next slide/i })).toBeDisabled();
+    expect(
+      screen.getByRole("button", { name: /previous slide/i })
+    ).toBeEnabled();
+  });
+
+  it("disables both buttons when every slide already fits", () => {
+    define("scrollWidth", { get: () => 320 });
+    render(<TestCarousel />);
+    expect(
+      screen.getByRole("button", { name: /previous slide/i })
+    ).toBeDisabled();
+    expect(screen.getByRole("button", { name: /next slide/i })).toBeDisabled();
+  });
+
+  it("scrolls with the arrow keys", () => {
+    const { container } = render(<TestCarousel />);
+    fireEvent.keyDown(viewport(container), { key: "ArrowRight" });
+    expect(scrollBy).toHaveBeenCalledWith({ left: 320 });
+    scrollLeft = 320;
+    act(() => {
+      fireEvent.scroll(viewport(container));
+    });
+    fireEvent.keyDown(viewport(container), { key: "ArrowLeft" });
+    expect(scrollBy).toHaveBeenCalledWith({ left: -320 });
+  });
+
+  it("makes the scroll area keyboard focusable", () => {
+    const { container } = render(<TestCarousel />);
+    expect(viewport(container)).toHaveAttribute("tabindex", "0");
+  });
+
+  it("describes itself as a carousel of slides", () => {
+    const { container } = render(<TestCarousel />);
+    expect(container.firstChild).toHaveAttribute(
+      "aria-roledescription",
+      "carousel"
+    );
+    expect(screen.getByText("Slide 1")).toHaveAttribute(
+      "aria-roledescription",
+      "slide"
+    );
+  });
+
+  it("spaces slides with the item-spacing token only", () => {
+    const { container } = render(<TestCarousel />);
+    const track = viewport(container).firstElementChild as HTMLElement;
+    expect(track).toHaveClass("-ml-(--space-carousel-item-spacing)");
+    expect(track.className).not.toMatch(/\bgap-/);
+    expect(screen.getByText("Slide 1")).toHaveClass(
+      "pl-(--space-carousel-item-spacing)",
+      "snap-start"
+    );
+  });
+
+  it("centres the chevron in the button", () => {
+    render(<TestCarousel />);
+    expect(screen.getByRole("button", { name: /next slide/i })).toHaveClass(
+      "inline-flex",
+      "items-center",
+      "justify-center"
+    );
+  });
+
+  it("keeps a button disabled when the disabled prop is set", () => {
+    render(
+      <Carousel>
+        <CarouselContent>
+          <CarouselItem>Slide 1</CarouselItem>
+          <CarouselItem>Slide 2</CarouselItem>
+        </CarouselContent>
+        <CarouselNext disabled />
+      </Carousel>
+    );
+    expect(screen.getByRole("button", { name: /next slide/i })).toBeDisabled();
   });
 });

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, waitFor } from "storybook/test";
 import {
   Carousel,
   CarouselContent,
@@ -9,8 +9,6 @@ import {
 } from "@wyliedog/ui/carousel";
 import { Card, CardContent } from "@wyliedog/ui/card";
 
-// Use bare Meta to document props from sub-components (e.g. orientation)
-// that don't exist on the root Carousel element.
 const meta: Meta = {
   title: "Components/Content Display/Carousel",
   component: Carousel,
@@ -19,31 +17,11 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          "A carousel component for displaying content in a scrollable container with navigation controls. Built with Embla Carousel for smooth touch and keyboard navigation.",
+          "A scroll-snap carousel: the slides sit in a horizontally scrolling track that snaps to each slide. Swipe, use the arrow keys when the track is focused, or use the previous and next buttons, which disable at either end. Slide spacing comes from the `carousel.item-spacing` token.",
       },
     },
   },
   tags: ["autodocs"],
-  argTypes: {
-    orientation: {
-      control: "radio",
-      options: ["horizontal", "vertical"],
-      description: "The orientation of the carousel",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "horizontal" },
-        category: "Behavior",
-      },
-    },
-    opts: {
-      description:
-        "Embla Carousel options for advanced configuration (loop, align, etc.)",
-      table: {
-        type: { summary: "EmblaOptionsType" },
-        category: "Behavior",
-      },
-    },
-  },
 };
 
 export default meta;
@@ -147,9 +125,9 @@ export const MultipleItems: Story = {
   },
   render: () => (
     <Carousel className="w-full max-w-4xl mx-auto">
-      <CarouselContent className="-ml-1">
+      <CarouselContent>
         {Array.from({ length: 10 }, (_, index) => (
-          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-square items-center justify-center p-6">
@@ -275,17 +253,21 @@ export const NavigationInteraction: Story = {
     const canvas = within(canvasElement);
     const nextBtn = canvas.getByRole("button", { name: /next/i });
     const prevBtn = canvas.getByRole("button", { name: /previous/i });
-    expect(nextBtn).toBeInTheDocument();
-    expect(prevBtn).toBeInTheDocument();
-    // Navigate forward then back
+    // On the first slide the previous button is disabled
+    await expect(prevBtn).toBeDisabled();
+    await expect(nextBtn).toBeEnabled();
+    // Forward one slide: previous turns on
     await userEvent.click(nextBtn);
+    await waitFor(() => expect(prevBtn).toBeEnabled());
+    // Back to the start: previous turns off again
     await userEvent.click(prevBtn);
+    await waitFor(() => expect(prevBtn).toBeDisabled());
   },
   parameters: {
     docs: {
       description: {
         story:
-          "Previous button is disabled on first slide. Navigation enables/disables buttons correctly.",
+          "Previous is disabled on the first slide, and each button disables at its end of the track.",
       },
     },
   },
