@@ -12,6 +12,9 @@ const MODE = "light"; // "light" or "dark": the label the comparison checks agai
 // emitted as an extra item named "<variant> :: <part>" (the first descendant with that name), which
 // harvest-ui.mjs matches through the config's `parts`. Use it for a set whose root is a wrapper.
 const PARTS = {};
+// Sets whose root is a bare wrapper with no look of its own (Select): emit only their parts, not
+// the root, so the wrapper is not compared against the UI's inner element.
+const ONLY_PARTS = []; // e.g. ["Select"] with PARTS = { Select: ["trigger"] }
 
 const page = figma.root.children.find((p) => p.name === PAGE_NAME);
 if (!page) throw new Error(`No page named ${PAGE_NAME}`);
@@ -137,12 +140,13 @@ for (const set of sets) {
         return true;
       })
       .map(measureText);
-    items.push({
-      set: set.name,
-      variant: variant.name,
-      box: measureBox(variant),
-      texts,
-    });
+    if (!ONLY_PARTS.includes(set.name))
+      items.push({
+        set: set.name,
+        variant: variant.name,
+        box: measureBox(variant),
+        texts,
+      });
     for (const part of PARTS[set.name] ?? []) {
       // "name#1" is the second descendant called "name" (layers repeat: tabs-row-row)
       const [partName, partIndex] = part.split("#");
