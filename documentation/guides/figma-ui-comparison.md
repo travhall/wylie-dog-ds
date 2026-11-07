@@ -31,6 +31,8 @@ A set whose Figma root is a wrapper and whose look sits in inner layers (Slider:
 
 Overlays and menus (Dialog, Alert Dialog, Sheet, Popover, Hover Card, Tooltip, Dropdown Menu, Context Menu, Menubar) are closed by default, so a set's `open` key says how the story opens them before measuring: `{ "click": "<selector>" }`, `{ "hover": "<selector>" }` or `{ "contextmenu": "<selector>" }`, with an optional `wait` in milliseconds and `when`. Reduced motion is emulated, so nothing animates. The `root` is then the portal content (`[role=dialog]`, `[role=menu]`).
 
+`open` can also be a list of steps, each with its own `when`, a `repeat` count and `leave` (move the mouse off the control so its hover style is not measured): the Carousel reaches its middle state with one click on Next and its end state with four.
+
 Four more optional keys keep a story's limits out of the findings. `unrenderable` maps a Figma property to the values its story cannot draw (`"Tabs": { "size": ["sm", "lg"] }`, Form `error`, Command `with-results`, Pagination `with-many-pages`, Accordion `open`, Radio `checked: true`); the harvester skips them and the report lists them as having no UI measurement, so they never show up as false drift. `stateTarget` is an element to hover or press instead of the root (a menu's first item, so Dropdown Menu and Context Menu hover states reach the item). Parts are read while the mouse is still on the target, so a hover or pressed state reaches them too. `ONLY_PARTS` in `measure-library.js` (`["Select"]` with `PARTS = { Select: ["trigger"] }`) emits only a set's parts, for a set whose root is a bare wrapper; the harvester then drives the story from a parts-only work item for the parent variant.
 
 A `use_figma` call returns at most 48,000 bytes and cannot write a file, so a large measurement goes out in chunks of compact rows (`[set, variant, w, h, [pad x4], gap, radius, border, stroke, fill, opacity, [[x, y, blur, spread, color]], [chars, family, size, weight, lineHeight, tracking, decoration, color] or null]`). Save them as a JSON array and turn them into the metrics file with `node scripts/figma/rows-to-metrics.mjs rows.json figma-metrics.json dark` (or `light`).
@@ -64,3 +66,7 @@ Not measured, and why:
 - **Table selected row**: the table story renders no selected row.
 - **Hover and pressed inside overlays**: Dropdown Menu and Context Menu hover (first item) are measured with `stateTarget`; pressed and the Menubar items are not.
 - The focus ring, a second text layer or icon, and the Input and Textarea placeholder colour (an attribute in the UI, a text layer in Figma) are not compared.
+
+## After a rebuild: the icon tint
+
+A bound colour carries no alpha, so the 10% tint on the Section Features icon tiles (`bg-(--color-section-features-icon-background)/10` in code) is paint opacity on a bound fill. Setting a variable mode on a section resets that opacity to 1, and the builder cannot reliably set it on the Card instances in the `cards` variants. After every rebuild, run `scripts/figma/apply-alpha-fills.js` through `use_figma` (it writes paint opacity on those tiles only and is safe to run twice), then check that every `icon` tile in the set reads 0.1.

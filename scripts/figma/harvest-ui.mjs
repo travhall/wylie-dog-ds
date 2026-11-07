@@ -278,12 +278,17 @@ async function main() {
       reducedMotion: component.open ? "reduce" : "no-preference",
     });
     await page.goto(storyUrl(base, component, props, mode));
-    // `when` limits the step to some Figma values, e.g. { "state": "open" } (Menubar's closed bar)
-    const opens =
-      component.open &&
-      Object.entries(component.open.when ?? {}).every(([k, v]) => props[k] === v);
-    if (opens) {
-      const { click, hover, contextmenu, wait } = component.open;
+    // `open` is one step or a list of steps. `when` limits a step to some Figma values, e.g.
+    // { "state": "open" } (Menubar's closed bar), and `repeat` runs a click more than once (the
+    // Carousel's end state is the next button clicked to the last slide).
+    const steps = [component.open ?? []].flat();
+    let openFailed = false;
+    for (const step of steps) {
+      const matches = Object.entries(step.when ?? {}).every(
+        ([k, v]) => props[k] === v
+      );
+      if (!matches) continue;
+      const { click, hover, contextmenu, wait, repeat } = step;
       // a placeholder is a Figma value, mapped to the story's wording through `values`
       const trigger = (click ?? hover ?? contextmenu).replace(
         /\{(\w+)\}/g,
@@ -291,16 +296,27 @@ async function main() {
       );
       try {
         await page.waitForSelector(trigger, { timeout: 8000 });
-        if (click) await page.click(trigger);
-        else if (hover) await page.hover(trigger);
-        else await page.click(trigger, { button: "right" });
-        // hover cards and tooltips open after a delay
-        await page.waitForTimeout(wait ?? 300);
+        for (let i = 0; i < (repeat ?? 1); i += 1) {
+          if (click) await page.click(trigger);
+          else if (hover) await page.hover(trigger);
+          else await page.click(trigger, { button: "right" });
+          // hover cards and tooltips open after a delay; a repeated click waits for the scroll
+          await page.waitForTimeout(wait ?? 300);
+        }
+        // `leave`: move the mouse off the control so its hover style is not measured
+        if (step.leave) {
+          await page.mouse.move(0, 0);
+          await page.waitForTimeout(450);
+        }
       } catch {
-        skipped.push(`${item.set} ${item.variant}: could not open with ${trigger}`);
-        continue;
+        skipped.push(
+          `${item.set} ${item.variant}: could not open with ${trigger}`
+        );
+        openFailed = true;
+        break;
       }
     }
+    if (openFailed) continue;
     try {
       // attached, not visible: a w-full element in a shrink-wrapped story (Progress) has no width
       await page.waitForSelector(root, {

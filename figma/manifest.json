@@ -296,19 +296,19 @@
     {
       "name": "Carousel",
       "type": "COMPONENT_SET",
-      "description": "A carousel component for displaying content in a scrollable container with navigation controls. Built with Embla Carousel for smooth touch and keyboard navigation.",
+      "description": "A scroll-snap carousel: the slides sit in a horizontally scrolling track that snaps to each slide. Swipe, use the arrow keys when the track is focused, or use the previous and next buttons, which disable at either end. Slide spacing comes from the carousel.item-spacing token.",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-carousel--docs"
       ],
       "properties": {
-        "Property 1": {
+        "state": {
           "type": "VARIANT",
-          "default": "Default",
-          "options": ["Default"]
+          "default": "default",
+          "options": ["default", "start", "end"]
         }
       },
-      "variantCount": 1,
-      "expectedVariantCount": 1
+      "variantCount": 3,
+      "expectedVariantCount": 3
     },
     {
       "name": "Checkbox",

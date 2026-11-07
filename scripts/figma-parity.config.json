@@ -43,11 +43,6 @@
       "reason": "sm, md and lg all use the same --space-progress-height, so there is nothing to draw."
     },
     {
-      "component": "Carousel",
-      "rule": "generic-property",
-      "reason": "Single-variant set: Figma needs a property name and code has no visual axis."
-    },
-    {
       "component": "Tooltip",
       "rule": "generic-property",
       "reason": "Single-variant set: Figma needs a property name and code has no visual axis."
@@ -564,8 +559,8 @@
     },
     {
       "component": "Carousel",
-      "rule": "description-differs",
-      "reason": "The Carousel is now a scroll-snap carousel (no Embla), and its description changed. The Figma library still carries the old text until the builder description is updated and the library is rebuilt; remove this entry then."
+      "rule": "state-axis",
+      "reason": "The Figma set draws the scroll position: default (a middle slide), start (previous disabled) and end (next disabled). In code these are derived from the scroll position, not a prop."
     }
   ]
 }

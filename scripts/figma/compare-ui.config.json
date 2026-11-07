@@ -497,10 +497,28 @@
       "story": "components-content-display-carousel--default",
       "root": "#storybook-root > div",
       "args": {},
+      "open": [
+        {
+          "click": "#storybook-root button:nth-of-type(2)",
+          "when": {
+            "state": "default"
+          },
+          "leave": true
+        },
+        {
+          "click": "#storybook-root button:nth-of-type(2)",
+          "when": {
+            "state": "end"
+          },
+          "repeat": 4,
+          "leave": true
+        }
+      ],
       "parts": {
         "previous": "#storybook-root > div > button:nth-of-type(1)",
         "next": "#storybook-root > div > button:nth-of-type(2)",
-        "carousel-row": "#storybook-root > div > div"
+        "carousel-row": "#storybook-root > div > div",
+        "slide": "#storybook-root [data-carousel-item] > div > div"
       }
     },
     "Table": {
@@ -1473,48 +1491,6 @@
       "reason": "The first text in the UI calendar is the month label in the foreground colour; Figma draws it muted."
     },
     {
-      "set": "Carousel",
-      "property": "w",
-      "scope": "box",
-      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
-    },
-    {
-      "set": "Carousel",
-      "property": "h",
-      "scope": "box",
-      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
-    },
-    {
-      "set": "Carousel",
-      "property": "gap",
-      "scope": "box",
-      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
-    },
-    {
-      "set": "Carousel",
-      "property": "fill",
-      "scope": "box",
-      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
-    },
-    {
-      "set": "Carousel",
-      "property": "size",
-      "scope": "text",
-      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
-    },
-    {
-      "set": "Carousel",
-      "property": "weight",
-      "scope": "text",
-      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
-    },
-    {
-      "set": "Carousel",
-      "property": "lineHeight",
-      "scope": "text",
-      "reason": "The story's slide is 320px square with a 36px semibold number authored in the story; Figma's slide is a 200px frame with 14px placeholder text and a light fill."
-    },
-    {
       "set": "Table",
       "property": "w",
       "scope": "box",
@@ -1874,6 +1850,42 @@
       "scope": "text",
       "variant": "size=lg, state=error :: trigger",
       "reason": "The only error story (select--with-error) renders the md trigger, so the sm and lg error triggers are compared against md; their size, height, padding and text size are covered by the sm and lg default rows."
+    },
+    {
+      "set": "Carousel",
+      "property": "w",
+      "scope": "box",
+      "reason": "Figma lays the previous and next buttons in the same row as the slide (416px wide); in the UI they are absolutely positioned outside the 320px carousel. The slide is 320px in Figma and 312px in the UI, where the story wraps each Card in a p-1 div."
+    },
+    {
+      "set": "Carousel",
+      "property": "h",
+      "scope": "box",
+      "reason": "The story draws each slide as an aspect-square Card (320px tall, a slide authored in the story); Figma draws the slide as a hugging Card with one line of content."
+    },
+    {
+      "set": "Carousel",
+      "property": "gap",
+      "scope": "box",
+      "reason": "Figma sets the row gap to carousel.item-spacing between the buttons and the slide; the UI spaces slides with item-spacing as padding, so its row has no gap."
+    },
+    {
+      "set": "Carousel",
+      "property": "size",
+      "scope": "text",
+      "reason": "The story draws a 36px semibold slide number (text-4xl font-semibold, story-authored); Figma shows the Card content text at its token size."
+    },
+    {
+      "set": "Carousel",
+      "property": "weight",
+      "scope": "text",
+      "reason": "The story draws a 36px semibold slide number (text-4xl font-semibold, story-authored); Figma shows the Card content text at its token size."
+    },
+    {
+      "set": "Carousel",
+      "property": "lineHeight",
+      "scope": "text",
+      "reason": "The story draws a 36px semibold slide number (text-4xl font-semibold, story-authored); Figma shows the Card content text at its token size."
     }
   ]
 }
