@@ -129,13 +129,12 @@ export function CarouselPreview() {
       <Carousel>
         <CarouselContent>
           {slides.map(([label, tone], i) => (
-            <CarouselItem key={label} className="basis-1/2">
-              <div
-                role="group"
-                aria-roledescription="slide"
-                aria-label={`${i + 1} of ${slides.length}`}
-                className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2"
-              >
+            <CarouselItem
+              key={label}
+              className="basis-1/2"
+              aria-label={`${i + 1} of ${slides.length}`}
+            >
+              <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2">
                 <div className={`h-12 rounded-sm ${tone}`} />
                 <p className="mt-2 text-sm font-semibold text-(--color-foreground-default)">
                   {label}

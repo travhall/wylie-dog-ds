@@ -561,6 +561,11 @@
       "rule": "content-property-not-in-code",
       "property": "showClose",
       "reason": "ToastClose is an optional child in code, not a prop of Toast; the Figma boolean shows or hides it."
+    },
+    {
+      "component": "Carousel",
+      "rule": "description-differs",
+      "reason": "The Carousel is now a scroll-snap carousel (no Embla), and its description changed. The Figma library still carries the old text until the builder description is updated and the library is rebuilt; remove this entry then."
     }
   ]
 }

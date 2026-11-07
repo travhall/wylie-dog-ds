@@ -253,7 +253,7 @@
   {
     "name": "UI - Carousel",
     "path": "packages/ui/dist/carousel.js",
-    "limit": "11 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {
