@@ -1311,7 +1311,7 @@
   --space-page-layout-skip-link-padding-x: 1rem;
   --space-page-layout-skip-link-padding-y: 0.5rem;
   --space-page-layout-skip-link-radius: 0.25rem;
-  --page-layout-skip-link-z-index: 50;
+  --page-layout-skip-link-z-index: 30;
   --space-page-layout-border-width: 1px;
   --space-section-features-padding-y-sm: 5rem;
   --space-section-features-padding-y-md: 8rem;
@@ -1476,7 +1476,7 @@
   --menubar-content-scale: 0.95;
   --navigation-menu-z-index: 10;
   --navigation-menu-indicator-z-index: 1;
-  --resizable-handle-z-index: 10;
+  --resizable-handle-z-index: 1;
   --space-resizable-border-width: 1px;
   --space-resizable-handle-hit-size: 0.25rem;
   --space-resizable-handle-line-width: 1px;
@@ -2595,7 +2595,7 @@
   --space-page-layout-skip-link-padding-x: 1rem;
   --space-page-layout-skip-link-padding-y: 0.5rem;
   --space-page-layout-skip-link-radius: 0.25rem;
-  --page-layout-skip-link-z-index: 50;
+  --page-layout-skip-link-z-index: 30;
   --space-page-layout-border-width: 1px;
   --space-section-features-padding-y-sm: 5rem;
   --space-section-features-padding-y-md: 8rem;
@@ -2760,7 +2760,7 @@
   --menubar-content-scale: 0.95;
   --navigation-menu-z-index: 10;
   --navigation-menu-indicator-z-index: 1;
-  --resizable-handle-z-index: 10;
+  --resizable-handle-z-index: 1;
   --space-resizable-border-width: 1px;
   --space-resizable-handle-hit-size: 0.25rem;
   --space-resizable-handle-line-width: 1px;
