@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Button } from "@wyliedog/ui/button";
 import { Label } from "@wyliedog/ui/label";
 import { Switch } from "@wyliedog/ui/switch";
@@ -186,7 +186,34 @@ function CurvePlot({ easing }: { easing: string }) {
 }
 
 /**
- * Controls that stay in view while the page scrolls, so the demos can be
+ * A bounded region that scrolls on its own, holding the controls and the demos.
+ * Storybook's Docs page wraps every story in containers that set their own
+ * overflow but never scroll (the whole page does), so `position: sticky` on the
+ * page never engages there. A region that scrolls itself keeps the controls
+ * pinned in Docs, Canvas and the standalone iframe alike. It is focusable so the
+ * rows can be scrolled from the keyboard.
+ */
+function DemoRegion({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      role="region"
+      aria-label={label}
+      tabIndex={0}
+      className="max-h-[75vh] overflow-y-auto rounded-md border border-(--color-border-default)"
+    >
+      {children}
+    </div>
+  );
+}
+
+/**
+ * Controls that stay in view while the demos scroll, so the demos can be
  * started, slowed and looped from wherever the tracks are on screen.
  */
 function PlaybackBar({
@@ -198,7 +225,7 @@ function PlaybackBar({
 }) {
   const { speed, setSpeed, loop, setLoop, playing, play, stop } = playback;
   return (
-    <div className="sticky top-0 z-10 -mx-2 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-(--color-border-default) bg-(--color-background-default) px-2 py-3">
+    <div className="sticky top-0 z-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-(--color-border-default) bg-(--color-background-default) px-4 py-3">
       <Button
         type="button"
         variant={playing ? "outline" : "default"}
@@ -259,53 +286,57 @@ function DurationsPage() {
           never typed into the demo.
         </p>
       </PageIntro>
-      <PlaybackBar playback={playback} reduced={reduced} />
-      <Section title="Duration scale">
-        <TokenTable
-          caption="Duration scale tokens"
-          rows={durationScale}
-          specimenLabel="Timeline"
-          specimen={(row) => (
-            <div className="space-y-2">
-              <div
-                aria-hidden="true"
-                className="h-2 rounded-full bg-(--color-background-primary)"
-                style={{
-                  width: `${(durationMs(row.value) / longestScaleMs) * 100}%`,
-                }}
-              />
-              <MotionTrack
-                moved={moved}
-                reduced={reduced}
-                duration={scaled(row.value, speed)}
-                easing={defaultEasing}
-              />
-              {caption(row.value)}
-            </div>
-          )}
-        />
-      </Section>
-      <Section
-        title="Duration roles"
-        description="Components use the named roles, which alias the scale."
-      >
-        <TokenTable
-          caption="Duration role tokens"
-          rows={durationRoles}
-          specimenLabel="Demo"
-          specimen={(row) => (
-            <div className="space-y-2">
-              <MotionTrack
-                moved={moved}
-                reduced={reduced}
-                duration={scaled(row.value, speed)}
-                easing={defaultEasing}
-              />
-              {caption(row.value)}
-            </div>
-          )}
-        />
-      </Section>
+      <DemoRegion label="Duration demos">
+        <PlaybackBar playback={playback} reduced={reduced} />
+        <div className="space-y-8 p-4">
+          <Section title="Duration scale">
+            <TokenTable
+              caption="Duration scale tokens"
+              rows={durationScale}
+              specimenLabel="Timeline"
+              specimen={(row) => (
+                <div className="space-y-2">
+                  <div
+                    aria-hidden="true"
+                    className="h-2 rounded-full bg-(--color-background-primary)"
+                    style={{
+                      width: `${(durationMs(row.value) / longestScaleMs) * 100}%`,
+                    }}
+                  />
+                  <MotionTrack
+                    moved={moved}
+                    reduced={reduced}
+                    duration={scaled(row.value, speed)}
+                    easing={defaultEasing}
+                  />
+                  {caption(row.value)}
+                </div>
+              )}
+            />
+          </Section>
+          <Section
+            title="Duration roles"
+            description="Components use the named roles, which alias the scale."
+          >
+            <TokenTable
+              caption="Duration role tokens"
+              rows={durationRoles}
+              specimenLabel="Demo"
+              specimen={(row) => (
+                <div className="space-y-2">
+                  <MotionTrack
+                    moved={moved}
+                    reduced={reduced}
+                    duration={scaled(row.value, speed)}
+                    easing={defaultEasing}
+                  />
+                  {caption(row.value)}
+                </div>
+              )}
+            />
+          </Section>
+        </div>
+      </DemoRegion>
     </div>
   );
 }
@@ -315,31 +346,33 @@ function EasingsPage() {
   const playback = usePlayback(durationMs(demoDuration));
   const { speed, moved } = playback;
   return (
-    <div className="space-y-8">
+    <DemoRegion label="Easing demos">
       <PlaybackBar playback={playback} reduced={reduced} />
-      <Section
-        title="Easing curves"
-        description="Each curve is drawn against the straight diagonal (linear). Every demo uses the slow duration so the shape is visible."
-      >
-        <TokenTable
-          caption="Easing tokens"
-          rows={easings}
-          specimenLabel="Demo"
-          specimen={(row) => (
-            <div className="flex items-center gap-4">
-              <CurvePlot easing={row.value} />
-              <MotionTrack
-                moved={moved}
-                reduced={reduced}
-                duration={scaled(demoDuration, speed)}
-                easing={row.value}
-              />
-            </div>
-          )}
-          renderValue={(row) => <span className="text-xs">{row.value}</span>}
-        />
-      </Section>
-    </div>
+      <div className="p-4">
+        <Section
+          title="Easing curves"
+          description="Each curve is drawn against the straight diagonal (linear). Every demo uses the slow duration so the shape is visible."
+        >
+          <TokenTable
+            caption="Easing tokens"
+            rows={easings}
+            specimenLabel="Demo"
+            specimen={(row) => (
+              <div className="flex items-center gap-4">
+                <CurvePlot easing={row.value} />
+                <MotionTrack
+                  moved={moved}
+                  reduced={reduced}
+                  duration={scaled(demoDuration, speed)}
+                  easing={row.value}
+                />
+              </div>
+            )}
+            renderValue={(row) => <span className="text-xs">{row.value}</span>}
+          />
+        </Section>
+      </div>
+    </DemoRegion>
   );
 }
 
