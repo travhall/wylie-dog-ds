@@ -707,11 +707,11 @@
         },
         "card.header.title.font-size": {
           "$type": "number",
-          "$value": "{typography.font-size.xl}",
+          "$value": "{typography.font-size.heading.sm}",
           "$description": "Font size of the card header title.",
           "valuesByMode": {
-            "Light": "{typography.font-size.xl}",
-            "Dark": "{typography.font-size.xl}"
+            "Light": "{typography.font-size.heading.sm}",
+            "Dark": "{typography.font-size.heading.sm}"
           }
         },
         "card.header.title.color": {
@@ -2417,29 +2417,29 @@
         },
         "checkbox.icon.size.sm": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the small checkbox icon.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "checkbox.icon.size.md": {
           "$type": "spacing",
-          "$value": "{space.300}",
+          "$value": "{icon.size.md}",
           "$description": "Size of the medium checkbox icon.",
           "valuesByMode": {
-            "Light": "{space.300}",
-            "Dark": "{space.300}"
+            "Light": "{icon.size.md}",
+            "Dark": "{icon.size.md}"
           }
         },
         "checkbox.icon.size.lg": {
           "$type": "spacing",
-          "$value": "{space.400}",
+          "$value": "{icon.size.lg}",
           "$description": "Size of the large checkbox icon.",
           "valuesByMode": {
-            "Light": "{space.400}",
-            "Dark": "{space.400}"
+            "Light": "{icon.size.lg}",
+            "Dark": "{icon.size.lg}"
           }
         },
         "switch.track.height.sm": {
@@ -2750,11 +2750,11 @@
         },
         "sheet.title.font-size": {
           "$type": "number",
-          "$value": "{typography.font-size.xl}",
+          "$value": "{typography.font-size.heading.sm}",
           "$description": "Font size of the sheet title.",
           "valuesByMode": {
-            "Light": "{typography.font-size.xl}",
-            "Dark": "{typography.font-size.xl}"
+            "Light": "{typography.font-size.heading.sm}",
+            "Dark": "{typography.font-size.heading.sm}"
           }
         },
         "sheet.title.font-weight": {
@@ -3452,11 +3452,11 @@
         },
         "command.input.icon.size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the search icon in the command menu input.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "command.group.padding": {
@@ -3542,11 +3542,11 @@
         },
         "carousel.button.icon-size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the carousel button icon.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "carousel.gap": {
@@ -3605,11 +3605,11 @@
         },
         "context-menu.item.indicator.size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the context menu item indicator.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "dropdown-menu.content.min-width": {
@@ -3704,11 +3704,11 @@
         },
         "dropdown-menu.item.indicator.size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the dropdown menu item indicator.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "accordion.trigger.padding": {
@@ -3893,20 +3893,20 @@
         },
         "menubar.item.indicator-size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the menubar item indicator.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "menubar.item.icon-size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the menubar item icon.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "toast.destructive.border": {
@@ -4199,11 +4199,11 @@
         },
         "feature-grid.title-font-size": {
           "$type": "number",
-          "$value": "{typography.font-size.xl}",
+          "$value": "{typography.font-size.heading.sm}",
           "$description": "Font size of the feature grid title.",
           "valuesByMode": {
-            "Light": "{typography.font-size.xl}",
-            "Dark": "{typography.font-size.xl}"
+            "Light": "{typography.font-size.heading.sm}",
+            "Dark": "{typography.font-size.heading.sm}"
           }
         },
         "feature-grid.description-font-size": {
@@ -6242,20 +6242,20 @@
         },
         "pagination.icon-size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the pagination icon.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "dialog.title-font-size": {
           "$type": "number",
-          "$value": "{typography.font-size.xl}",
+          "$value": "{typography.font-size.heading.sm}",
           "$description": "Font size of the dialog title.",
           "valuesByMode": {
-            "Light": "{typography.font-size.xl}",
-            "Dark": "{typography.font-size.xl}"
+            "Light": "{typography.font-size.heading.sm}",
+            "Dark": "{typography.font-size.heading.sm}"
           }
         },
         "dialog.description-font-size": {
@@ -6368,11 +6368,11 @@
         },
         "calendar.nav.icon-size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the calendar nav icon.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "calendar.cell-size": {
@@ -6431,20 +6431,20 @@
         },
         "context-menu.item.icon-size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the context menu item icon.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "dropdown-menu.item.icon-size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the dropdown menu item icon.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "accordion.item-border-width": {
@@ -6458,11 +6458,11 @@
         },
         "accordion.trigger.icon-size": {
           "$type": "spacing",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the accordion trigger icon.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "menubar.content-min-width": {
@@ -9662,11 +9662,11 @@
         },
         "navigation-menu.indicator-z-index": {
           "$type": "number",
-          "$value": "{z-index.01}",
+          "$value": "{layer.local}",
           "$description": "Stacking order of the navigation menu indicator inside the menu.",
           "valuesByMode": {
-            "Light": "{z-index.01}",
-            "Dark": "{z-index.01}"
+            "Light": "{layer.local}",
+            "Dark": "{layer.local}"
           }
         },
         "resizable.handle-z-index": {
@@ -10103,11 +10103,11 @@
         },
         "input.native-icon-size": {
           "$type": "dimension",
-          "$value": "{space.200}",
+          "$value": "{icon.size.sm}",
           "$description": "Size of the browser's own search-cancel and date-picker icons inside an input.",
           "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "input.line-height": {
@@ -10490,11 +10490,11 @@
         },
         "card-grid.item-hover-scale": {
           "$type": "number",
-          "$value": "{scale.105}",
+          "$value": "{transition.scale.hover}",
           "$description": "Scale of a card grid item while hovered.",
           "valuesByMode": {
-            "Light": "{scale.105}",
-            "Dark": "{scale.105}"
+            "Light": "{transition.scale.hover}",
+            "Dark": "{transition.scale.hover}"
           }
         },
         "card-grid.item-hover-lift": {
@@ -10526,20 +10526,20 @@
         },
         "feature-grid.item-hover-scale": {
           "$type": "number",
-          "$value": "{scale.105}",
+          "$value": "{transition.scale.hover}",
           "$description": "Scale of a feature grid item while hovered.",
           "valuesByMode": {
-            "Light": "{scale.105}",
-            "Dark": "{scale.105}"
+            "Light": "{transition.scale.hover}",
+            "Dark": "{transition.scale.hover}"
           }
         },
         "feature-grid.icon-hover-scale": {
           "$type": "number",
-          "$value": "{scale.110}",
+          "$value": "{transition.scale.hover-strong}",
           "$description": "Scale of the feature icon container while its item is hovered.",
           "valuesByMode": {
-            "Light": "{scale.110}",
-            "Dark": "{scale.110}"
+            "Light": "{transition.scale.hover-strong}",
+            "Dark": "{transition.scale.hover-strong}"
           }
         },
         "feature-grid.border-width": {

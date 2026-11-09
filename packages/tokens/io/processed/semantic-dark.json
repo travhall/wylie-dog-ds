@@ -184,10 +184,25 @@
     "$value": "{scale.95}",
     "$description": "Scale a surface starts from while it enters, and ends at while it leaves"
   },
+  "transition.scale.hover": {
+    "$type": "number",
+    "$value": "{scale.105}",
+    "$description": "Scale a card or tile grows to on hover"
+  },
+  "transition.scale.hover-strong": {
+    "$type": "number",
+    "$value": "{scale.110}",
+    "$description": "Scale an icon grows to on hover, a stronger emphasis than a card or tile"
+  },
   "layer.base": {
     "$type": "number",
     "$value": "{z-index.0}",
     "$description": "Default stacking context"
+  },
+  "layer.local": {
+    "$type": "number",
+    "$value": "{z-index.01}",
+    "$description": "Stacking above siblings inside one component, below every shared layer"
   },
   "layer.fixed": {
     "$type": "number",
