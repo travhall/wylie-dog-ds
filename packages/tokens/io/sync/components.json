@@ -10058,29 +10058,29 @@
         },
         "dialog.overlay-opacity": {
           "$type": "number",
-          "$value": "{opacity.scrim}",
+          "$value": "{opacity.90}",
           "$description": "Opacity of the dialog overlay (scrim).",
           "valuesByMode": {
-            "Light": "{opacity.scrim}",
-            "Dark": "{opacity.scrim}"
+            "Light": "{opacity.90}",
+            "Dark": "{opacity.90}"
           }
         },
         "alert-dialog.overlay-opacity": {
           "$type": "number",
-          "$value": "{opacity.scrim}",
+          "$value": "{opacity.90}",
           "$description": "Opacity of the alert dialog overlay (scrim).",
           "valuesByMode": {
-            "Light": "{opacity.scrim}",
-            "Dark": "{opacity.scrim}"
+            "Light": "{opacity.90}",
+            "Dark": "{opacity.90}"
           }
         },
         "sheet.overlay-opacity": {
           "$type": "number",
-          "$value": "{opacity.scrim}",
+          "$value": "{opacity.90}",
           "$description": "Opacity of the sheet overlay (scrim).",
           "valuesByMode": {
-            "Light": "{opacity.scrim}",
-            "Dark": "{opacity.scrim}"
+            "Light": "{opacity.90}",
+            "Dark": "{opacity.90}"
           }
         },
         "input.spin-button-opacity": {

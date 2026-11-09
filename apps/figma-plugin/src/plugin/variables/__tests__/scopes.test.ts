@@ -234,8 +234,8 @@ describe("inferScopes: non-color tokens by name", () => {
     ["dimension", "dialog.title-letter-spacing", []],
     // hidden: a bound opacity is read as a percent, 0.5 would draw at 0.5%
     ["number", "opacity.50", []],
-    ["number", "opacity.scrim", []],
-    ["number", "state.opacity.disabled", []],
+    ["number", "opacity.90", []],
+    ["number", "dialog.overlay-opacity", []],
     ["number", "z-index.modal", []],
     ["number", "z-index.50", []],
     ["dimension", "focus.width", []],
@@ -326,14 +326,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (279, 1172 and 113 variables)", () => {
+  it("reads all three collections (279, 1172 and 101 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([279, 1172, 113]);
+    ]).toEqual([279, 1172, 101]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {
@@ -467,7 +467,7 @@ describe("inferScopes: the real token files", () => {
       "duration []": 9,
     });
     expect(all.semantic).toMatchObject({
-      "number []": 22,
+      "number []": 10,
       "shadow []": 7,
       "duration []": 6,
       "cubicBezier []": 5,

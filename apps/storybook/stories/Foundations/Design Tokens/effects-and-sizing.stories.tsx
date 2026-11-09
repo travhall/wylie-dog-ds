@@ -23,10 +23,6 @@ type Story = StoryObj;
 const isStep = (row: { key: string }) => /^\d+$/.test(row.key);
 
 const opacityScale = tokensByPrefix("--opacity-").filter(isStep);
-const opacityRoles = [
-  ...tokensByPrefix("--opacity-").filter((row) => !isStep(row)),
-  ...tokensByPrefix("--state-opacity-"),
-];
 
 const zScale = tokensByPrefix("--z-index-").filter(isStep);
 const zLayers = tokensByPrefix("--z-index-")
@@ -64,7 +60,7 @@ export const Opacity: Story = {
     docs: {
       description: {
         story:
-          "The opacity scale and the roles that alias it. Each swatch is the primary background drawn at the token opacity over the page background.",
+          "The opacity scale. Each swatch is the primary background drawn at the token opacity over the page background.",
       },
     },
   },
@@ -80,17 +76,6 @@ export const Opacity: Story = {
         <TokenTable
           caption="Opacity scale tokens"
           rows={opacityScale}
-          specimen={(row) => <OpacitySwatch value={row.value} />}
-          renderValue={opacityValue}
-        />
-      </Section>
-      <Section
-        title="Opacity roles"
-        description="Named for what they express: interactive states, muted and subtle content, overlays and scrims."
-      >
-        <TokenTable
-          caption="Opacity role tokens"
-          rows={opacityRoles}
           specimen={(row) => <OpacitySwatch value={row.value} />}
           renderValue={opacityValue}
         />
