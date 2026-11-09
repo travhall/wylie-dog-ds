@@ -205,7 +205,10 @@ function DemoRegion({
       role="region"
       aria-label={label}
       tabIndex={0}
-      className="max-h-[75vh] overflow-y-auto rounded-md border border-(--color-border-default)"
+      // Inline, not utility classes: this is what keeps the controls pinned, so
+      // it must not depend on the generated stylesheet being current
+      style={{ maxHeight: "75vh", overflowY: "auto" }}
+      className="rounded-md border border-(--color-border-default)"
     >
       {children}
     </div>
@@ -225,10 +228,15 @@ function PlaybackBar({
 }) {
   const { speed, setSpeed, loop, setLoop, playing, play, stop } = playback;
   return (
-    <div className="sticky top-0 z-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-(--color-border-default) bg-(--color-background-default) px-4 py-3">
+    <div
+      style={{ position: "sticky", top: 0, zIndex: 10 }}
+      className="flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-(--color-border-default) bg-(--color-background-default) px-4 py-3"
+    >
       <Button
         type="button"
         variant={playing ? "outline" : "default"}
+        // Play and Stop share one width so the controls beside it never shift
+        style={{ minWidth: "6rem" }}
         onClick={playing ? stop : play}
       >
         {playing ? "Stop" : "Play"}
@@ -255,12 +263,20 @@ function PlaybackBar({
         <Switch id="motion-loop" checked={loop} onCheckedChange={setLoop} />
         <Label htmlFor="motion-loop">Loop</Label>
       </div>
-      <p role="status" className="text-sm text-(--color-foreground-muted)">
+      <p
+        role="status"
+        // A fixed slot and short messages, so the bar keeps one height and the
+        // page below does not jump when playback starts or stops
+        style={
+          reduced ? undefined : { minWidth: "13rem", whiteSpace: "nowrap" }
+        }
+        className="text-sm text-(--color-foreground-muted)"
+      >
         {reduced
           ? "Reduced motion is on: the dots jump to the end without animating."
           : playing
             ? `Playing at ${speed}× speed`
-            : "Press Play. Each dot runs forward and back; the token values below are the real ones."}
+            : "Ready"}
       </p>
     </div>
   );
@@ -284,6 +300,11 @@ function DurationsPage() {
           {durationScale.length} duration steps, {durationRoles.length} named
           roles and {easings.length} easing curves. Timing is the token value,
           never typed into the demo.
+        </p>
+        <p>
+          Play runs every dot forward and back. Speed only slows the demo and
+          Loop repeats it; the token values shown are always the real ones. The
+          controls stay pinned while you scroll the demos.
         </p>
       </PageIntro>
       <DemoRegion label="Duration demos">
@@ -351,7 +372,7 @@ function EasingsPage() {
       <div className="p-4">
         <Section
           title="Easing curves"
-          description="Each curve is drawn against the straight diagonal (linear). Every demo uses the slow duration so the shape is visible."
+          description="Each curve is drawn against the straight diagonal (linear). Every demo uses the slow duration so the shape is visible. Play runs every dot forward and back."
         >
           <TokenTable
             caption="Easing tokens"
