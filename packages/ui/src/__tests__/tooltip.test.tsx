@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe, toHaveNoViolations } from "jest-axe";
 import {
@@ -32,6 +32,20 @@ const TestTooltip = ({
     </Tooltip>
   </TooltipProvider>
 );
+
+/**
+ * Moves the pointer off the trigger and well away from it. Radix keeps a tooltip
+ * open while the pointer is inside the hover "grace area" around the trigger and
+ * content, and jsdom has no layout (every rect is 0,0), so `user.unhover` alone
+ * leaves the pointer inside it. A pointer move far outside closes the tooltip.
+ */
+async function leave(
+  user: ReturnType<typeof userEvent.setup>,
+  trigger: HTMLElement
+) {
+  await user.unhover(trigger);
+  fireEvent.pointerMove(document.body, { clientX: 500, clientY: 500 });
+}
 
 describe("Tooltip", () => {
   describe("Accessibility", () => {
@@ -110,7 +124,7 @@ describe("Tooltip", () => {
     });
 
     // TODO: Tooltip portal rendering needs async test infrastructure
-    it.skip("should show tooltip on hover", async () => {
+    it("should show tooltip on hover", async () => {
       const user = userEvent.setup();
       render(<TestTooltip content="Help text" />);
 
@@ -124,7 +138,7 @@ describe("Tooltip", () => {
     });
 
     // TODO: Tooltip portal rendering needs async test infrastructure cSpell:ignore unhover
-    it.skip("should hide tooltip on unhover", async () => {
+    it("should hide tooltip on unhover", async () => {
       const user = userEvent.setup();
       render(<TestTooltip />);
 
@@ -135,7 +149,7 @@ describe("Tooltip", () => {
         expect(screen.getByRole("tooltip")).toBeInTheDocument();
       });
 
-      await user.unhover(trigger);
+      await leave(user, trigger);
 
       await waitFor(() => {
         expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
@@ -143,7 +157,7 @@ describe("Tooltip", () => {
     });
 
     // TODO: Tooltip portal rendering needs async test infrastructure
-    it.skip("should show tooltip on focus", async () => {
+    it("should show tooltip on focus", async () => {
       render(<TestTooltip content="Focus help" />);
 
       const trigger = screen.getByText("Hover me");
@@ -156,7 +170,7 @@ describe("Tooltip", () => {
     });
 
     // TODO: Tooltip portal rendering needs async test infrastructure
-    it.skip("should hide tooltip on blur", async () => {
+    it("should hide tooltip on blur", async () => {
       render(<TestTooltip />);
 
       const trigger = screen.getByText("Hover me");
@@ -174,7 +188,7 @@ describe("Tooltip", () => {
     });
 
     // TODO: Tooltip portal rendering needs async test infrastructure
-    it.skip("should hide tooltip on Escape key", async () => {
+    it("should hide tooltip on Escape key", async () => {
       const user = userEvent.setup();
       render(<TestTooltip />);
 
@@ -193,7 +207,7 @@ describe("Tooltip", () => {
     });
 
     // TODO: Tooltip portal rendering needs async test infrastructure
-    it.skip("should work with custom delay duration", async () => {
+    it("should work with custom delay duration", async () => {
       const user = userEvent.setup();
       render(<TestTooltip delayDuration={200} />);
 
@@ -213,7 +227,7 @@ describe("Tooltip", () => {
     });
 
     // TODO: Tooltip portal rendering needs async test infrastructure
-    it.skip("should support controlled open state", async () => {
+    it("should support controlled open state", async () => {
       const ControlledTooltip = ({ open }: { open: boolean }) => (
         <TooltipProvider>
           <Tooltip open={open}>
@@ -241,7 +255,7 @@ describe("Tooltip", () => {
   });
 
   // TODO: Tooltip portal positioning tests need async test infrastructure
-  describe.skip("Positioning", () => {
+  describe("Positioning", () => {
     it("should position tooltip on top by default", async () => {
       const user = userEvent.setup();
       render(<TestTooltip side="top" />);
@@ -310,7 +324,7 @@ describe("Tooltip", () => {
   });
 
   // TODO: Tooltip portal styling tests need async test infrastructure
-  describe.skip("Styling", () => {
+  describe("Styling", () => {
     it("should have default tooltip styling", async () => {
       const user = userEvent.setup();
       render(<TestTooltip />);
@@ -320,13 +334,14 @@ describe("Tooltip", () => {
 
       await waitFor(() => {
         const tooltip = screen.getByRole("tooltip");
+        // The component binds every value to a component token
         expect(tooltip).toHaveClass(
-          "rounded-md",
+          "rounded-(--space-tooltip-radius)",
           "bg-(--color-tooltip-background)",
           "text-(--color-tooltip-text)",
-          "px-3",
-          "py-1.5",
-          "text-xs"
+          "px-(--space-tooltip-padding-x)",
+          "py-(--space-tooltip-padding-y)",
+          "text-(length:--font-size-tooltip-font-size)"
         );
       });
     });
@@ -377,7 +392,7 @@ describe("Tooltip", () => {
       await waitFor(() => {
         const tooltip = screen.getByRole("tooltip");
         expect(tooltip).toHaveClass(
-          "border",
+          "border-(length:--space-tooltip-border-width)",
           "border-(--color-tooltip-border)"
         );
       });
@@ -385,7 +400,7 @@ describe("Tooltip", () => {
   });
 
   // TODO: Tooltip portal integration tests need async test infrastructure
-  describe.skip("Integration", () => {
+  describe("Integration", () => {
     it("should forward ref to TooltipContent", async () => {
       const user = userEvent.setup();
       const ref = React.createRef<HTMLDivElement>();
@@ -511,7 +526,7 @@ describe("Tooltip", () => {
       });
 
       // Unhover first
-      await user.unhover(screen.getByText("First"));
+      await leave(user, screen.getByText("First"));
       await waitFor(() => {
         expect(screen.queryByText("First tooltip")).not.toBeInTheDocument();
       });
@@ -553,7 +568,7 @@ describe("Tooltip", () => {
   });
 
   // TODO: Tooltip portal edge case tests need async test infrastructure
-  describe.skip("Edge Cases", () => {
+  describe("Edge Cases", () => {
     it("should handle empty tooltip content", async () => {
       const user = userEvent.setup();
 
@@ -674,7 +689,7 @@ describe("Tooltip", () => {
         expect(handleOpenChange).toHaveBeenCalledWith(true);
       });
 
-      await user.unhover(trigger);
+      await leave(user, trigger);
 
       await waitFor(() => {
         expect(handleOpenChange).toHaveBeenCalledWith(false);
