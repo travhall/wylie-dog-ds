@@ -256,6 +256,18 @@ function inferScopesFromName(tokenName: string): string[] | null {
 }
 
 /**
+ * Token types Figma stores as TIMING and EASING variables. Figma refuses to set
+ * scopes on these ("Cannot set scopes on this variable type") and reports
+ * ALL_SCOPES when read, so their scopes can never match the rules and must be
+ * left out of scope comparison. The importer skips them for the same reason.
+ */
+const SCOPELESS_TYPES = new Set(["duration", "cubicBezier"]);
+
+export function canHaveScopes(type: string): boolean {
+  return !SCOPELESS_TYPES.has(type);
+}
+
+/**
  * Figma scopes for a token of the given W3C type and name.
  */
 export function inferScopes(type: string, tokenName: string): string[] {
