@@ -436,6 +436,7 @@ StyleDictionary.registerFormat({
           lineHeight: {},
         },
         duration: {},
+        easing: {},
       },
       semantics: {
         // Color groups are the three parts of a semantic color name.
@@ -501,6 +502,8 @@ StyleDictionary.registerFormat({
             manifest.primitives.typography.lineHeight[name] = tokenEntry;
         } else if (token.$type === "duration") {
           manifest.primitives.duration[name] = tokenEntry;
+        } else if (token.$type === "cubicBezier") {
+          manifest.primitives.easing[name] = tokenEntry;
         }
       } else if (isSemantic) {
         if (token.$type === "color") {

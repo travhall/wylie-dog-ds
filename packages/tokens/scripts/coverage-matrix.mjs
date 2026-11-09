@@ -42,7 +42,7 @@ const categories = [
   ["Radius", /^--border-radius-|^--space-[a-z0-9-]*radius/],
   ["Type", /^--(font-size|font-weight|line-height|font-family)-/],
   ["Shadow", /^--shadow-/],
-  ["Motion", /^--(duration|transition-)/],
+  ["Motion", /^--(duration|easing|transition-)/],
   ["Z", /^--(z-index|layer)-/],
   ["Opacity", /^--opacity-/],
 ];

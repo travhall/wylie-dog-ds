@@ -140,56 +140,56 @@
         },
         "transition.duration.instant": {
           "$type": "duration",
-          "$value": "0ms",
+          "$value": "{duration.0}",
           "$description": "Instant transition (no animation)",
           "valuesByMode": {
-            "Light": "0ms",
-            "Dark": "0ms"
+            "Light": "{duration.0}",
+            "Dark": "{duration.0}"
           }
         },
         "transition.duration.fast": {
           "$type": "duration",
-          "$value": "150ms",
+          "$value": "{duration.150}",
           "$description": "Fast transition for micro-interactions",
           "valuesByMode": {
-            "Light": "150ms",
-            "Dark": "150ms"
+            "Light": "{duration.150}",
+            "Dark": "{duration.150}"
           }
         },
         "transition.duration.normal": {
           "$type": "duration",
-          "$value": "250ms",
+          "$value": "{duration.250}",
           "$description": "Normal transition duration",
           "valuesByMode": {
-            "Light": "250ms",
-            "Dark": "250ms"
+            "Light": "{duration.250}",
+            "Dark": "{duration.250}"
           }
         },
         "transition.duration.slow": {
           "$type": "duration",
-          "$value": "400ms",
+          "$value": "{duration.400}",
           "$description": "Slow transition for emphasized changes",
           "valuesByMode": {
-            "Light": "400ms",
-            "Dark": "400ms"
+            "Light": "{duration.400}",
+            "Dark": "{duration.400}"
           }
         },
         "transition.duration.loop": {
           "$type": "duration",
-          "$value": "1000ms",
+          "$value": "{duration.1000}",
           "$description": "One turn of a looping indicator such as a spinner",
           "valuesByMode": {
-            "Light": "1000ms",
-            "Dark": "1000ms"
+            "Light": "{duration.1000}",
+            "Dark": "{duration.1000}"
           }
         },
         "transition.duration.loop-slow": {
           "$type": "duration",
-          "$value": "2000ms",
+          "$value": "{duration.2000}",
           "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse",
           "valuesByMode": {
-            "Light": "2000ms",
-            "Dark": "2000ms"
+            "Light": "{duration.2000}",
+            "Dark": "{duration.2000}"
           }
         },
         "layer.dropdown": {
@@ -284,47 +284,47 @@
         },
         "transition.easing.default": {
           "$type": "cubicBezier",
-          "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "$value": "{easing.in-out}",
           "$description": "Default easing for most transitions",
           "valuesByMode": {
-            "Light": "cubic-bezier(0.4, 0, 0.2, 1)",
-            "Dark": "cubic-bezier(0.4, 0, 0.2, 1)"
+            "Light": "{easing.in-out}",
+            "Dark": "{easing.in-out}"
           }
         },
         "transition.easing.in": {
           "$type": "cubicBezier",
-          "$value": "cubic-bezier(0.4, 0, 1, 1)",
+          "$value": "{easing.in}",
           "$description": "Ease-in (accelerating) curve, for elements leaving",
           "valuesByMode": {
-            "Light": "cubic-bezier(0.4, 0, 1, 1)",
-            "Dark": "cubic-bezier(0.4, 0, 1, 1)"
+            "Light": "{easing.in}",
+            "Dark": "{easing.in}"
           }
         },
         "transition.easing.out": {
           "$type": "cubicBezier",
-          "$value": "cubic-bezier(0, 0, 0.2, 1)",
+          "$value": "{easing.out}",
           "$description": "Ease-out (decelerating) curve, for elements entering",
           "valuesByMode": {
-            "Light": "cubic-bezier(0, 0, 0.2, 1)",
-            "Dark": "cubic-bezier(0, 0, 0.2, 1)"
+            "Light": "{easing.out}",
+            "Dark": "{easing.out}"
           }
         },
         "transition.easing.in-out": {
           "$type": "cubicBezier",
-          "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "$value": "{easing.in-out}",
           "$description": "Ease-in-out for symmetric transitions",
           "valuesByMode": {
-            "Light": "cubic-bezier(0.4, 0, 0.2, 1)",
-            "Dark": "cubic-bezier(0.4, 0, 0.2, 1)"
+            "Light": "{easing.in-out}",
+            "Dark": "{easing.in-out}"
           }
         },
         "transition.easing.linear": {
           "$type": "cubicBezier",
-          "$value": "cubic-bezier(0, 0, 1, 1)",
+          "$value": "{easing.linear}",
           "$description": "Constant speed, for loops that should not accelerate",
           "valuesByMode": {
-            "Light": "cubic-bezier(0, 0, 1, 1)",
-            "Dark": "cubic-bezier(0, 0, 1, 1)"
+            "Light": "{easing.linear}",
+            "Dark": "{easing.linear}"
           }
         },
         "transition.distance.default": {

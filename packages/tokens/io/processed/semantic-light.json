@@ -71,32 +71,32 @@
   },
   "transition.duration.instant": {
     "$type": "duration",
-    "$value": "0ms",
+    "$value": "{duration.0}",
     "$description": "Instant transition (no animation)"
   },
   "transition.duration.fast": {
     "$type": "duration",
-    "$value": "150ms",
+    "$value": "{duration.150}",
     "$description": "Fast transition for micro-interactions"
   },
   "transition.duration.normal": {
     "$type": "duration",
-    "$value": "250ms",
+    "$value": "{duration.250}",
     "$description": "Normal transition duration"
   },
   "transition.duration.slow": {
     "$type": "duration",
-    "$value": "400ms",
+    "$value": "{duration.400}",
     "$description": "Slow transition for emphasized changes"
   },
   "transition.duration.loop": {
     "$type": "duration",
-    "$value": "1000ms",
+    "$value": "{duration.1000}",
     "$description": "One turn of a looping indicator such as a spinner"
   },
   "transition.duration.loop-slow": {
     "$type": "duration",
-    "$value": "2000ms",
+    "$value": "{duration.2000}",
     "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse"
   },
   "layer.dropdown": {
@@ -151,27 +151,27 @@
   },
   "transition.easing.default": {
     "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "$value": "{easing.in-out}",
     "$description": "Default easing for most transitions"
   },
   "transition.easing.in": {
     "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 1, 1)",
+    "$value": "{easing.in}",
     "$description": "Ease-in (accelerating) curve, for elements leaving"
   },
   "transition.easing.out": {
     "$type": "cubicBezier",
-    "$value": "cubic-bezier(0, 0, 0.2, 1)",
+    "$value": "{easing.out}",
     "$description": "Ease-out (decelerating) curve, for elements entering"
   },
   "transition.easing.in-out": {
     "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "$value": "{easing.in-out}",
     "$description": "Ease-in-out for symmetric transitions"
   },
   "transition.easing.linear": {
     "$type": "cubicBezier",
-    "$value": "cubic-bezier(0, 0, 1, 1)",
+    "$value": "{easing.linear}",
     "$description": "Constant speed, for loops that should not accelerate"
   },
   "transition.distance.default": {
