@@ -56,7 +56,7 @@
 import type { ExportData, ProcessedToken } from "../variables/processor";
 import { ConflictDetector } from "./conflict-detector";
 import type { SyncChangeItem, SyncChangeSummary } from "./change-summary";
-import { inferScopes } from "../variables/scopes";
+import { canHaveScopes, inferScopes } from "../variables/scopes";
 import {
   EMPTY_TEXT_STYLE_DIFF,
   computeTextStyleChanges,
@@ -286,6 +286,9 @@ function diffScopes(
     const [collection, name] = key.split(SEP);
     const current = localScopes[collection]?.[name];
     if (!current) continue;
+    // TIMING and EASING variables can't take scopes, so Pull could never
+    // clear a difference here.
+    if (!canHaveScopes(String(token.$type))) continue;
     const expected = inferScopes(String(token.$type), name);
     if (sameScopes(current, expected)) continue;
     const from = [...current].sort();

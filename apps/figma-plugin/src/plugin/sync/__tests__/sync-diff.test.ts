@@ -477,6 +477,30 @@ describe("buildSyncDiff: picker scopes (plan 202)", () => {
     expect(none.settingsCount).toBe(0);
   });
 
+  it("ignores duration and easing tokens: Figma TIMING and EASING variables cannot take scopes", () => {
+    const motion = [
+      col("primitive", {
+        "motion.duration.fast": typed("duration", "150ms"),
+        "motion.easing.standard": typed("cubicBezier", [0.2, 0, 0, 1]),
+      }),
+    ];
+    const d = buildSyncDiff({
+      direction: "pull",
+      baseline: agreed(motion),
+      localTokens: motion,
+      remoteTokens: motion,
+      // Figma reports ALL_SCOPES for these and never accepts a change
+      localScopes: {
+        primitive: {
+          "motion.duration.fast": ALL,
+          "motion.easing.standard": ALL,
+        },
+      },
+    });
+    expect(d.settings).toEqual([]);
+    expect(d.settingsCount).toBe(0);
+  });
+
   it("includes scopes in the overview", () => {
     expect(diff(stale, "overview").settingsCount).toBe(4);
   });
