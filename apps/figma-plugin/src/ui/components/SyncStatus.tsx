@@ -18,6 +18,12 @@ interface SyncStatusProps {
   githubClient: ConflictAwareGitHubClient;
   githubConfigured: boolean;
   onRefresh?: () => void;
+  /**
+   * Check the status by itself, once, as soon as this is true: on mount, or
+   * after a push or pull that was running at mount has finished. Until a check
+   * has run the card says "Not checked yet" and never "Up to date".
+   */
+  autoCheck?: boolean;
   /** Sync tab "Text styles" is ticked: the status also looks at the definitions. */
   includeTextStyles?: boolean;
   /**
@@ -49,13 +55,20 @@ interface SyncStatusData {
   lastSync?: string;
   checking?: boolean;
   checked?: boolean;
+  /** When the last successful check finished (ms since the epoch). */
+  checkedAt?: number;
   error?: string;
 }
+
+/** Clock time, so the label cannot go stale the way "just now" would. */
+const formatCheckedAt = (ms: number) =>
+  new Date(ms).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
 export function SyncStatus({
   githubClient,
   githubConfigured,
   onRefresh,
+  autoCheck = false,
   includeTextStyles = false,
   onTextStylesAvailability,
 }: SyncStatusProps) {
@@ -73,8 +86,12 @@ export function SyncStatus({
 
   const [showReview, setShowReview] = useState(false);
 
+  // One check at a time: an automatic check and a Refresh click must not race.
+  const checkingRef = useRef(false);
+
   const checkSyncStatus = async () => {
-    if (!githubConfigured) return;
+    if (!githubConfigured || checkingRef.current) return;
+    checkingRef.current = true;
 
     setStatus((prev) => ({ ...prev, checking: true, error: undefined }));
 
@@ -103,6 +120,7 @@ export function SyncStatus({
         lastSync: prev.lastSync,
         checking: false,
         checked: true,
+        checkedAt: Date.now(),
       }));
     } catch (error) {
       console.error("Failed to check sync status:", error);
@@ -114,8 +132,25 @@ export function SyncStatus({
             ? error.message
             : "Failed to check sync status",
       }));
+    } finally {
+      checkingRef.current = false;
     }
   };
+
+  // The first check runs by itself. It waits for `autoCheck` (the tab is idle:
+  // no push or pull running), and runs once per repository. The plugin raises
+  // its loading flag during its own Figma export, so a later flip of `autoCheck`
+  // must not start another check; Refresh covers the rest.
+  const autoChecked = useRef(false);
+  useEffect(() => {
+    if (!githubConfigured) {
+      autoChecked.current = false;
+      return;
+    }
+    if (!autoCheck || autoChecked.current) return;
+    autoChecked.current = true;
+    checkSyncStatus();
+  }, [githubConfigured, autoCheck]);
 
   // Ticking or unticking Text styles after a Refresh (or the first-run default
   // ticking it) changes what the status compares, so it reads again. Before the
@@ -196,16 +231,20 @@ export function SyncStatus({
     ? 0
     : (status.textStylesAvailable ?? 0);
 
+  // Before the first check nothing is known: the card must not look finished.
+  const unchecked = !status.checked && !status.checking && !status.error;
+
   const getStatusColor = () => {
     if (status.error) return "var(--error)";
     if (status.checking) return "var(--warning)";
+    if (unchecked) return "var(--text-secondary)";
     if (!status.upToDate) return "var(--warning)";
     return "var(--success)";
   };
 
   const getStatusIconName = () => {
     if (status.error) return "close" as const;
-    if (status.checking) return "sync" as const;
+    if (status.checking || unchecked) return "sync" as const;
     if (!status.upToDate) return "warning" as const;
     return "check" as const;
   };
@@ -213,6 +252,7 @@ export function SyncStatus({
   const getStatusText = () => {
     if (status.error) return "Error checking status";
     if (status.checking) return "Checking sync status…";
+    if (unchecked) return "Not checked yet";
     if (!status.upToDate) {
       return status.hasBaseline ? "Changes detected" : "Differences found";
     }
@@ -302,6 +342,11 @@ export function SyncStatus({
       ) : (
         <div style={{ color: "var(--text-secondary)" }}>
           <div>Last sync: {formatLastSync(status.lastSync)}</div>
+          {status.checked && status.checkedAt !== undefined && (
+            <div style={{ color: "var(--text-tertiary)" }}>
+              Checked {formatCheckedAt(status.checkedAt)}
+            </div>
+          )}
           {!status.upToDate &&
             !status.hasBaseline &&
             status.differences > 0 && (
