@@ -12,8 +12,8 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 | ---------- | ------- | ------ | ----------------- |
 | Statements | 99.15%  | 80%    | ✅ Pass (+19.15%) |
 | Lines      | 99.62%  | 80%    | ✅ Pass (+19.62%) |
-| Functions  | 99.08%  | 80%    | ✅ Pass (+19.08%) |
-| Branches   | 92.2%   | 70%    | ✅ Pass (+22.2%)  |
+| Functions  | 99.09%  | 80%    | ✅ Pass (+19.09%) |
+| Branches   | 92.25%  | 70%    | ✅ Pass (+22.25%) |
 
 ### Component Coverage
 
@@ -33,7 +33,7 @@ Keep it at zero: fix a failing test or delete it; do not skip it.
 
 ## Lowest Branch Coverage
 
-Branch coverage (92.2%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
+Branch coverage (92.25%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
 
 | File               | Branches | Uncovered                                 |
 | ------------------ | -------- | ----------------------------------------- |
@@ -173,7 +173,7 @@ TEST_PATTERN="Accessibility" pnpm test
 | Dec 17, 2025 | 95.41%                             | +15.78%     | Added resizable.test.tsx + excluded docs files                                                                   |
 | Jul 5, 2026  | 95.06%                             | -0.35%      | Fixed CommandEmpty role=status regression, enabling test:coverage to complete; refreshed stale Dec 2025 snapshot |
 | Oct 14, 2026 | 98.02% statements, 82.93% branches | +1.3 / +3.3 | Added helper-component tests for context-menu, dropdown-menu and menubar (branches were 79.62%)                  |
-| Nov 9, 2026  | 99.15% statements, 92.2% branches  | +0.13 / 0   | Un-skipped the last 62 tests (tooltip, select, sheet, popover, navigation-menu); none are skipped now            |
+| Nov 9, 2026  | 99.15% statements, 92.25% branches | +0.13 / 0   | Un-skipped the last 62 tests (tooltip, select, sheet, popover, navigation-menu); none are skipped now            |
 
 ---
 

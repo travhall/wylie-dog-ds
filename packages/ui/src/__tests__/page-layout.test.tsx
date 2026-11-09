@@ -5,7 +5,7 @@ import {
   commonA11yTests,
   expectToPassA11yAudit,
 } from "../lib/test-utils";
-import { PageLayout } from "../compositions/page-layout";
+import { PageLayout, SkipLink } from "../compositions/page-layout";
 
 describe("PageLayout", () => {
   it("renders without crashing", () => {
@@ -23,6 +23,11 @@ describe("PageLayout", () => {
     const skipLink = screen.getByText("Skip to main content");
     expect(skipLink).toHaveAttribute("href", "#main-content");
     expect(screen.getByRole("main")).toHaveAttribute("id", "main-content");
+  });
+
+  it("main content can receive programmatic focus from the skip link", () => {
+    render(<PageLayout>Content</PageLayout>);
+    expect(screen.getByRole("main")).toHaveAttribute("tabindex", "-1");
   });
 
   it("renders header slot", () => {
@@ -85,5 +90,30 @@ describeA11y("PageLayout", () => {
       </PageLayout>
     );
     await expectToPassA11yAudit(container);
+  });
+});
+
+describe("SkipLink", () => {
+  it("defaults to the main content target and label", () => {
+    render(<SkipLink />);
+    const link = screen.getByRole("link", { name: "Skip to main content" });
+    expect(link).toHaveAttribute("href", "#main-content");
+  });
+
+  it("accepts a custom target and label", () => {
+    render(<SkipLink href="#results">Skip to results</SkipLink>);
+    expect(
+      screen.getByRole("link", { name: "Skip to results" })
+    ).toHaveAttribute("href", "#results");
+  });
+
+  it("is hidden until focused, then stacks on the fixed layer", () => {
+    render(<SkipLink />);
+    const link = screen.getByRole("link");
+    expect(link).toHaveClass("sr-only");
+    expect(link.className).toContain("focus:not-sr-only");
+    expect(link.className).toContain(
+      "focus:z-(--page-layout-skip-link-z-index)"
+    );
   });
 });
