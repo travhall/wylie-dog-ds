@@ -10546,7 +10546,7 @@
           "resizable",
           "handle-z-index"
         ],
-        "value": 10,
+        "value": 1,
         "type": "number",
         "variable": "var(--resizable-handle-z-index)",
         "description": "Stacking order of the resizable handle."
@@ -17283,7 +17283,7 @@
           "skip-link",
           "z-index"
         ],
-        "value": 50,
+        "value": 30,
         "type": "number",
         "variable": "var(--page-layout-skip-link-z-index)",
         "description": "Stacking order of the focused skip link."

@@ -4541,7 +4541,7 @@
   },
   "page-layout.skip-link.z-index": {
     "$type": "number",
-    "$value": "{layer.modal}",
+    "$value": "{layer.fixed}",
     "$description": "Stacking order of the focused skip link."
   },
   "page-layout.border-width": {
@@ -5366,7 +5366,7 @@
   },
   "resizable.handle-z-index": {
     "$type": "number",
-    "$value": "{layer.dropdown}",
+    "$value": "{layer.local}",
     "$description": "Stacking order of the resizable handle."
   },
   "resizable.border-width": {

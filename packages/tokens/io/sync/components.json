@@ -8186,11 +8186,11 @@
         },
         "page-layout.skip-link.z-index": {
           "$type": "number",
-          "$value": "{layer.modal}",
+          "$value": "{layer.fixed}",
           "$description": "Stacking order of the focused skip link.",
           "valuesByMode": {
-            "Light": "{layer.modal}",
-            "Dark": "{layer.modal}"
+            "Light": "{layer.fixed}",
+            "Dark": "{layer.fixed}"
           }
         },
         "page-layout.border-width": {
@@ -9671,11 +9671,11 @@
         },
         "resizable.handle-z-index": {
           "$type": "number",
-          "$value": "{layer.dropdown}",
+          "$value": "{layer.local}",
           "$description": "Stacking order of the resizable handle.",
           "valuesByMode": {
-            "Light": "{layer.dropdown}",
-            "Dark": "{layer.dropdown}"
+            "Light": "{layer.local}",
+            "Dark": "{layer.local}"
           }
         },
         "resizable.border-width": {
