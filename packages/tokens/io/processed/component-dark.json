@@ -3136,7 +3136,7 @@
   },
   "select.content.z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}",
+    "$value": "{layer.dropdown}",
     "$description": "Stacking order of the select content."
   },
   "select.item.indicator-left": {
@@ -4541,7 +4541,7 @@
   },
   "page-layout.skip-link.z-index": {
     "$type": "number",
-    "$value": "{z-index.modal}",
+    "$value": "{layer.modal}",
     "$description": "Stacking order of the focused skip link."
   },
   "page-layout.border-width": {
@@ -4981,7 +4981,7 @@
   },
   "site-header.z-index": {
     "$type": "number",
-    "$value": "{z-index.sticky}",
+    "$value": "{layer.sticky}",
     "$description": "Stacking order of the sticky header."
   },
   "site-header.border-width": {
@@ -5186,42 +5186,42 @@
   },
   "dialog.content.z-index": {
     "$type": "number",
-    "$value": "{z-index.modal}",
+    "$value": "{layer.modal}",
     "$description": "Stacking order of the dialog content."
   },
   "dialog.overlay-z-index": {
     "$type": "number",
-    "$value": "{z-index.modal-backdrop}",
+    "$value": "{layer.modal-backdrop}",
     "$description": "Stacking order of the dialog overlay."
   },
   "alert-dialog.content-z-index": {
     "$type": "number",
-    "$value": "{z-index.modal}",
+    "$value": "{layer.modal}",
     "$description": "Stacking order of the alert dialog content."
   },
   "alert-dialog.overlay-z-index": {
     "$type": "number",
-    "$value": "{z-index.modal-backdrop}",
+    "$value": "{layer.modal-backdrop}",
     "$description": "Stacking order of the alert dialog overlay."
   },
   "sheet.content.z-index": {
     "$type": "number",
-    "$value": "{z-index.modal}",
+    "$value": "{layer.modal}",
     "$description": "Stacking order of the sheet content."
   },
   "sheet.overlay-z-index": {
     "$type": "number",
-    "$value": "{z-index.modal-backdrop}",
+    "$value": "{layer.modal-backdrop}",
     "$description": "Stacking order of the sheet overlay."
   },
   "context-menu.content-z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}",
+    "$value": "{layer.dropdown}",
     "$description": "Stacking order of the context menu."
   },
   "context-menu.sub-content-z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}",
+    "$value": "{layer.dropdown}",
     "$description": "Stacking order of a context menu sub-menu."
   },
   "context-menu.item-line-height": {
@@ -5256,7 +5256,7 @@
   },
   "dropdown-menu.content-z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}",
+    "$value": "{layer.dropdown}",
     "$description": "Stacking order of the dropdown menu and its sub-menus."
   },
   "dropdown-menu.border-width": {
@@ -5301,12 +5301,12 @@
   },
   "menubar.content-z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}",
+    "$value": "{layer.dropdown}",
     "$description": "Stacking order of a menubar menu."
   },
   "menubar.sub-content-z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}",
+    "$value": "{layer.dropdown}",
     "$description": "Stacking order of a menubar sub-menu."
   },
   "menubar.border-width": {
@@ -5356,7 +5356,7 @@
   },
   "navigation-menu.z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}",
+    "$value": "{layer.dropdown}",
     "$description": "Stacking order of the navigation menu."
   },
   "navigation-menu.indicator-z-index": {
@@ -5366,7 +5366,7 @@
   },
   "resizable.handle-z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}",
+    "$value": "{layer.dropdown}",
     "$description": "Stacking order of the resizable handle."
   },
   "resizable.border-width": {
@@ -5386,7 +5386,7 @@
   },
   "popover.z-index": {
     "$type": "number",
-    "$value": "{z-index.popover}",
+    "$value": "{layer.popover}",
     "$description": "Stacking order of the popover."
   },
   "popover.border-width": {
@@ -5466,7 +5466,7 @@
   },
   "hover-card.z-index": {
     "$type": "number",
-    "$value": "{z-index.popover}",
+    "$value": "{layer.popover}",
     "$description": "Stacking order of the hover card."
   },
   "hover-card.border-width": {
@@ -5501,7 +5501,7 @@
   },
   "toast.viewport.z-index": {
     "$type": "number",
-    "$value": "{z-index.toast}",
+    "$value": "{layer.toast}",
     "$description": "Stacking order of the toast viewport."
   },
   "toast.border-width": {
@@ -5541,7 +5541,7 @@
   },
   "tooltip.z-index": {
     "$type": "number",
-    "$value": "{z-index.tooltip}",
+    "$value": "{layer.tooltip}",
     "$description": "Stacking order of the tooltip."
   },
   "tooltip.border-width": {

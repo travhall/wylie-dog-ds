@@ -43,7 +43,7 @@ const categories = [
   ["Type", /^--(font-size|font-weight|line-height|font-family)-/],
   ["Shadow", /^--shadow-/],
   ["Motion", /^--(duration|transition-)/],
-  ["Z", /^--z-index-/],
+  ["Z", /^--(z-index|layer)-/],
   ["Opacity", /^--opacity-/],
 ];
 

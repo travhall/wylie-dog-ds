@@ -25,9 +25,9 @@ const isStep = (row: { key: string }) => /^\d+$/.test(row.key);
 const opacityScale = tokensByPrefix("--opacity-").filter(isStep);
 
 const zScale = tokensByPrefix("--z-index-").filter(isStep);
-const zLayers = tokensByPrefix("--z-index-")
-  .filter((row) => !isStep(row))
-  .sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
+const zLayers = tokensByPrefix("--layer-").sort(
+  (a, b) => parseFloat(a.value) - parseFloat(b.value)
+);
 
 const iconSizes = tokensByPrefix("--space-icon-size-");
 

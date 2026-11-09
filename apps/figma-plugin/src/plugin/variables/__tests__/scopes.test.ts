@@ -236,7 +236,8 @@ describe("inferScopes: non-color tokens by name", () => {
     ["number", "opacity.50", []],
     ["number", "opacity.90", []],
     ["number", "dialog.overlay-opacity", []],
-    ["number", "z-index.modal", []],
+    ["number", "layer.modal", []],
+    ["number", "layer.modal-backdrop", []],
     ["number", "z-index.50", []],
     ["dimension", "focus.width", []],
     ["dimension", "focus.offset", []],
@@ -389,6 +390,7 @@ describe("inferScopes: the real token files", () => {
     expectFamily(/line-height/, []);
     expectFamily(/tracking|letter-spacing/, []);
     expectFamily(/z-index/, []);
+    expectFamily(/^layer\./, []);
     expectFamily(/opacity/, []);
     expectFamily(/^focus\./, []);
   });

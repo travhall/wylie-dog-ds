@@ -417,6 +417,8 @@ function getW3CTokenType(
       if (
         variableName.toLowerCase().includes("z-index") ||
         variableName.toLowerCase().includes("zindex") ||
+        // Semantic stacking roles: layer/modal, layer/tooltip
+        /^layer[/.]/.test(variableName.toLowerCase()) ||
         (variableName.toLowerCase().includes("z.") &&
           (variableName.toLowerCase().includes("index") ||
             variableName.toLowerCase().includes("layer")))

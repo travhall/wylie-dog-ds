@@ -829,6 +829,15 @@ export type CssVarName =
   | "--hover-card-content-scale"
   | "--hover-card-z-index"
   | "--input-spin-button-opacity"
+  | "--layer-base"
+  | "--layer-dropdown"
+  | "--layer-fixed"
+  | "--layer-modal"
+  | "--layer-modal-backdrop"
+  | "--layer-popover"
+  | "--layer-sticky"
+  | "--layer-toast"
+  | "--layer-tooltip"
   | "--line-height-accordion-content-line-height"
   | "--line-height-accordion-trigger-line-height"
   | "--line-height-alert-description-line-height"
@@ -1545,16 +1554,7 @@ export type CssVarName =
   | "--z-index-60"
   | "--z-index-70"
   | "--z-index-80"
-  | "--z-index-90"
-  | "--z-index-base"
-  | "--z-index-dropdown"
-  | "--z-index-fixed"
-  | "--z-index-modal"
-  | "--z-index-modal-backdrop"
-  | "--z-index-popover"
-  | "--z-index-sticky"
-  | "--z-index-toast"
-  | "--z-index-tooltip";
+  | "--z-index-90";
 
 export type CssVarKey = keyof typeof cssVars;
 
@@ -2385,6 +2385,15 @@ export declare const cssVars: Readonly<{
   "hoverCardContentScale": "--hover-card-content-scale";
   "hoverCardZIndex": "--hover-card-z-index";
   "inputSpinButtonOpacity": "--input-spin-button-opacity";
+  "layerBase": "--layer-base";
+  "layerDropdown": "--layer-dropdown";
+  "layerFixed": "--layer-fixed";
+  "layerModal": "--layer-modal";
+  "layerModalBackdrop": "--layer-modal-backdrop";
+  "layerPopover": "--layer-popover";
+  "layerSticky": "--layer-sticky";
+  "layerToast": "--layer-toast";
+  "layerTooltip": "--layer-tooltip";
   "lineHeightAccordionContentLineHeight": "--line-height-accordion-content-line-height";
   "lineHeightAccordionTriggerLineHeight": "--line-height-accordion-trigger-line-height";
   "lineHeightAlertDescriptionLineHeight": "--line-height-alert-description-line-height";
@@ -3102,15 +3111,6 @@ export declare const cssVars: Readonly<{
   "zIndex70": "--z-index-70";
   "zIndex80": "--z-index-80";
   "zIndex90": "--z-index-90";
-  "zIndexBase": "--z-index-base";
-  "zIndexDropdown": "--z-index-dropdown";
-  "zIndexFixed": "--z-index-fixed";
-  "zIndexModal": "--z-index-modal";
-  "zIndexModalBackdrop": "--z-index-modal-backdrop";
-  "zIndexPopover": "--z-index-popover";
-  "zIndexSticky": "--z-index-sticky";
-  "zIndexToast": "--z-index-toast";
-  "zIndexTooltip": "--z-index-tooltip";
 }>;
 
 export declare const cssVarNames: ReadonlyArray<CssVarName>;

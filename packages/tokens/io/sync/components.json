@@ -5657,11 +5657,11 @@
         },
         "select.content.z-index": {
           "$type": "number",
-          "$value": "{z-index.dropdown}",
+          "$value": "{layer.dropdown}",
           "$description": "Stacking order of the select content.",
           "valuesByMode": {
-            "Light": "{z-index.dropdown}",
-            "Dark": "{z-index.dropdown}"
+            "Light": "{layer.dropdown}",
+            "Dark": "{layer.dropdown}"
           }
         },
         "select.item.indicator-left": {
@@ -8186,11 +8186,11 @@
         },
         "page-layout.skip-link.z-index": {
           "$type": "number",
-          "$value": "{z-index.modal}",
+          "$value": "{layer.modal}",
           "$description": "Stacking order of the focused skip link.",
           "valuesByMode": {
-            "Light": "{z-index.modal}",
-            "Dark": "{z-index.modal}"
+            "Light": "{layer.modal}",
+            "Dark": "{layer.modal}"
           }
         },
         "page-layout.border-width": {
@@ -8978,11 +8978,11 @@
         },
         "site-header.z-index": {
           "$type": "number",
-          "$value": "{z-index.sticky}",
+          "$value": "{layer.sticky}",
           "$description": "Stacking order of the sticky header.",
           "valuesByMode": {
-            "Light": "{z-index.sticky}",
-            "Dark": "{z-index.sticky}"
+            "Light": "{layer.sticky}",
+            "Dark": "{layer.sticky}"
           }
         },
         "site-header.border-width": {
@@ -9347,74 +9347,74 @@
         },
         "dialog.content.z-index": {
           "$type": "number",
-          "$value": "{z-index.modal}",
+          "$value": "{layer.modal}",
           "$description": "Stacking order of the dialog content.",
           "valuesByMode": {
-            "Light": "{z-index.modal}",
-            "Dark": "{z-index.modal}"
+            "Light": "{layer.modal}",
+            "Dark": "{layer.modal}"
           }
         },
         "dialog.overlay-z-index": {
           "$type": "number",
-          "$value": "{z-index.modal-backdrop}",
+          "$value": "{layer.modal-backdrop}",
           "$description": "Stacking order of the dialog overlay.",
           "valuesByMode": {
-            "Light": "{z-index.modal-backdrop}",
-            "Dark": "{z-index.modal-backdrop}"
+            "Light": "{layer.modal-backdrop}",
+            "Dark": "{layer.modal-backdrop}"
           }
         },
         "alert-dialog.content-z-index": {
           "$type": "number",
-          "$value": "{z-index.modal}",
+          "$value": "{layer.modal}",
           "$description": "Stacking order of the alert dialog content.",
           "valuesByMode": {
-            "Light": "{z-index.modal}",
-            "Dark": "{z-index.modal}"
+            "Light": "{layer.modal}",
+            "Dark": "{layer.modal}"
           }
         },
         "alert-dialog.overlay-z-index": {
           "$type": "number",
-          "$value": "{z-index.modal-backdrop}",
+          "$value": "{layer.modal-backdrop}",
           "$description": "Stacking order of the alert dialog overlay.",
           "valuesByMode": {
-            "Light": "{z-index.modal-backdrop}",
-            "Dark": "{z-index.modal-backdrop}"
+            "Light": "{layer.modal-backdrop}",
+            "Dark": "{layer.modal-backdrop}"
           }
         },
         "sheet.content.z-index": {
           "$type": "number",
-          "$value": "{z-index.modal}",
+          "$value": "{layer.modal}",
           "$description": "Stacking order of the sheet content.",
           "valuesByMode": {
-            "Light": "{z-index.modal}",
-            "Dark": "{z-index.modal}"
+            "Light": "{layer.modal}",
+            "Dark": "{layer.modal}"
           }
         },
         "sheet.overlay-z-index": {
           "$type": "number",
-          "$value": "{z-index.modal-backdrop}",
+          "$value": "{layer.modal-backdrop}",
           "$description": "Stacking order of the sheet overlay.",
           "valuesByMode": {
-            "Light": "{z-index.modal-backdrop}",
-            "Dark": "{z-index.modal-backdrop}"
+            "Light": "{layer.modal-backdrop}",
+            "Dark": "{layer.modal-backdrop}"
           }
         },
         "context-menu.content-z-index": {
           "$type": "number",
-          "$value": "{z-index.dropdown}",
+          "$value": "{layer.dropdown}",
           "$description": "Stacking order of the context menu.",
           "valuesByMode": {
-            "Light": "{z-index.dropdown}",
-            "Dark": "{z-index.dropdown}"
+            "Light": "{layer.dropdown}",
+            "Dark": "{layer.dropdown}"
           }
         },
         "context-menu.sub-content-z-index": {
           "$type": "number",
-          "$value": "{z-index.dropdown}",
+          "$value": "{layer.dropdown}",
           "$description": "Stacking order of a context menu sub-menu.",
           "valuesByMode": {
-            "Light": "{z-index.dropdown}",
-            "Dark": "{z-index.dropdown}"
+            "Light": "{layer.dropdown}",
+            "Dark": "{layer.dropdown}"
           }
         },
         "context-menu.item-line-height": {
@@ -9473,11 +9473,11 @@
         },
         "dropdown-menu.content-z-index": {
           "$type": "number",
-          "$value": "{z-index.dropdown}",
+          "$value": "{layer.dropdown}",
           "$description": "Stacking order of the dropdown menu and its sub-menus.",
           "valuesByMode": {
-            "Light": "{z-index.dropdown}",
-            "Dark": "{z-index.dropdown}"
+            "Light": "{layer.dropdown}",
+            "Dark": "{layer.dropdown}"
           }
         },
         "dropdown-menu.border-width": {
@@ -9554,20 +9554,20 @@
         },
         "menubar.content-z-index": {
           "$type": "number",
-          "$value": "{z-index.dropdown}",
+          "$value": "{layer.dropdown}",
           "$description": "Stacking order of a menubar menu.",
           "valuesByMode": {
-            "Light": "{z-index.dropdown}",
-            "Dark": "{z-index.dropdown}"
+            "Light": "{layer.dropdown}",
+            "Dark": "{layer.dropdown}"
           }
         },
         "menubar.sub-content-z-index": {
           "$type": "number",
-          "$value": "{z-index.dropdown}",
+          "$value": "{layer.dropdown}",
           "$description": "Stacking order of a menubar sub-menu.",
           "valuesByMode": {
-            "Light": "{z-index.dropdown}",
-            "Dark": "{z-index.dropdown}"
+            "Light": "{layer.dropdown}",
+            "Dark": "{layer.dropdown}"
           }
         },
         "menubar.border-width": {
@@ -9653,11 +9653,11 @@
         },
         "navigation-menu.z-index": {
           "$type": "number",
-          "$value": "{z-index.dropdown}",
+          "$value": "{layer.dropdown}",
           "$description": "Stacking order of the navigation menu.",
           "valuesByMode": {
-            "Light": "{z-index.dropdown}",
-            "Dark": "{z-index.dropdown}"
+            "Light": "{layer.dropdown}",
+            "Dark": "{layer.dropdown}"
           }
         },
         "navigation-menu.indicator-z-index": {
@@ -9671,11 +9671,11 @@
         },
         "resizable.handle-z-index": {
           "$type": "number",
-          "$value": "{z-index.dropdown}",
+          "$value": "{layer.dropdown}",
           "$description": "Stacking order of the resizable handle.",
           "valuesByMode": {
-            "Light": "{z-index.dropdown}",
-            "Dark": "{z-index.dropdown}"
+            "Light": "{layer.dropdown}",
+            "Dark": "{layer.dropdown}"
           }
         },
         "resizable.border-width": {
@@ -9707,11 +9707,11 @@
         },
         "popover.z-index": {
           "$type": "number",
-          "$value": "{z-index.popover}",
+          "$value": "{layer.popover}",
           "$description": "Stacking order of the popover.",
           "valuesByMode": {
-            "Light": "{z-index.popover}",
-            "Dark": "{z-index.popover}"
+            "Light": "{layer.popover}",
+            "Dark": "{layer.popover}"
           }
         },
         "popover.border-width": {
@@ -9851,11 +9851,11 @@
         },
         "hover-card.z-index": {
           "$type": "number",
-          "$value": "{z-index.popover}",
+          "$value": "{layer.popover}",
           "$description": "Stacking order of the hover card.",
           "valuesByMode": {
-            "Light": "{z-index.popover}",
-            "Dark": "{z-index.popover}"
+            "Light": "{layer.popover}",
+            "Dark": "{layer.popover}"
           }
         },
         "hover-card.border-width": {
@@ -9914,11 +9914,11 @@
         },
         "toast.viewport.z-index": {
           "$type": "number",
-          "$value": "{z-index.toast}",
+          "$value": "{layer.toast}",
           "$description": "Stacking order of the toast viewport.",
           "valuesByMode": {
-            "Light": "{z-index.toast}",
-            "Dark": "{z-index.toast}"
+            "Light": "{layer.toast}",
+            "Dark": "{layer.toast}"
           }
         },
         "toast.border-width": {
@@ -9986,11 +9986,11 @@
         },
         "tooltip.z-index": {
           "$type": "number",
-          "$value": "{z-index.tooltip}",
+          "$value": "{layer.tooltip}",
           "$description": "Stacking order of the tooltip.",
           "valuesByMode": {
-            "Light": "{z-index.tooltip}",
-            "Dark": "{z-index.tooltip}"
+            "Light": "{layer.tooltip}",
+            "Dark": "{layer.tooltip}"
           }
         },
         "tooltip.border-width": {
