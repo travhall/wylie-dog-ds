@@ -41,7 +41,10 @@
   --transition-easing-linear: cubic-bezier(0, 0, 1, 1);
   --space-transition-distance-default: 0.5rem;
   --transition-scale-enter: 0.95;
+  --transition-scale-hover: 1.05;
+  --transition-scale-hover-strong: 1.1;
   --layer-base: 0;
+  --layer-local: 1;
   --layer-fixed: 30;
   --layer-modal-backdrop: 40;
   --layer-popover: 60;

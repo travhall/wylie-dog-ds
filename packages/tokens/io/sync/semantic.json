@@ -345,6 +345,24 @@
             "Dark": "{scale.95}"
           }
         },
+        "transition.scale.hover": {
+          "$type": "number",
+          "$value": "{scale.105}",
+          "$description": "Scale a card or tile grows to on hover",
+          "valuesByMode": {
+            "Light": "{scale.105}",
+            "Dark": "{scale.105}"
+          }
+        },
+        "transition.scale.hover-strong": {
+          "$type": "number",
+          "$value": "{scale.110}",
+          "$description": "Scale an icon grows to on hover, a stronger emphasis than a card or tile",
+          "valuesByMode": {
+            "Light": "{scale.110}",
+            "Dark": "{scale.110}"
+          }
+        },
         "layer.base": {
           "$type": "number",
           "$value": "{z-index.0}",
@@ -352,6 +370,15 @@
           "valuesByMode": {
             "Light": "{z-index.0}",
             "Dark": "{z-index.0}"
+          }
+        },
+        "layer.local": {
+          "$type": "number",
+          "$value": "{z-index.01}",
+          "$description": "Stacking above siblings inside one component, below every shared layer",
+          "valuesByMode": {
+            "Light": "{z-index.01}",
+            "Dark": "{z-index.01}"
           }
         },
         "layer.fixed": {

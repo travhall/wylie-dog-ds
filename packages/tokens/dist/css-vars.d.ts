@@ -839,6 +839,7 @@ export type CssVarName =
   | "--layer-base"
   | "--layer-dropdown"
   | "--layer-fixed"
+  | "--layer-local"
   | "--layer-modal"
   | "--layer-modal-backdrop"
   | "--layer-popover"
@@ -1547,6 +1548,8 @@ export type CssVarName =
   | "--transition-easing-linear"
   | "--transition-easing-out"
   | "--transition-scale-enter"
+  | "--transition-scale-hover"
+  | "--transition-scale-hover-strong"
   | "--typography-font-family-mono"
   | "--typography-font-family-sans"
   | "--typography-font-family-serif"
@@ -2402,6 +2405,7 @@ export declare const cssVars: Readonly<{
   "layerBase": "--layer-base";
   "layerDropdown": "--layer-dropdown";
   "layerFixed": "--layer-fixed";
+  "layerLocal": "--layer-local";
   "layerModal": "--layer-modal";
   "layerModalBackdrop": "--layer-modal-backdrop";
   "layerPopover": "--layer-popover";
@@ -3110,6 +3114,8 @@ export declare const cssVars: Readonly<{
   "transitionEasingLinear": "--transition-easing-linear";
   "transitionEasingOut": "--transition-easing-out";
   "transitionScaleEnter": "--transition-scale-enter";
+  "transitionScaleHover": "--transition-scale-hover";
+  "transitionScaleHoverStrong": "--transition-scale-hover-strong";
   "typographyFontFamilyMono": "--typography-font-family-mono";
   "typographyFontFamilySans": "--typography-font-family-sans";
   "typographyFontFamilySerif": "--typography-font-family-serif";
