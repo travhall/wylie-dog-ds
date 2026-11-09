@@ -11,8 +11,8 @@ export type { SiteHeaderProps } from "./site-header";
 export { SiteFooter } from "./site-footer";
 export type { SiteFooterProps, FooterColumn } from "./site-footer";
 
-export { PageLayout } from "./page-layout";
-export type { PageLayoutProps } from "./page-layout";
+export { PageLayout, SkipLink } from "./page-layout";
+export type { PageLayoutProps, SkipLinkProps } from "./page-layout";
 
 export { SectionHero } from "./section-hero";
 export type { SectionHeroProps } from "./section-hero";

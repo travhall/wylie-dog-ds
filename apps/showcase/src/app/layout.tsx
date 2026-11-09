@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@wyliedog/ui/button";
 import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
+import { SkipLink } from "@wyliedog/ui/compositions/page-layout";
 import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
 import "@fontsource/manrope/400.css";
 import "@fontsource/manrope/500.css";
@@ -114,6 +115,7 @@ export default function RootLayout({
       <body
         className={`font-sans min-h-screen antialiased bg-(--color-background-default) text-(--color-foreground-default)`}
       >
+        <SkipLink />
         <SiteHeader
           size="sm"
           containerClassName="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -166,7 +168,13 @@ export default function RootLayout({
         />
 
         {/* ── Page content — full width; each page manages its own containers ── */}
-        <main className="min-h-screen">{children}</main>
+        <main
+          id="main-content"
+          tabIndex={-1}
+          className="min-h-screen focus:outline-none"
+        >
+          {children}
+        </main>
 
         <SiteFooter
           containerClassName="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
+import { SkipLink } from "@wyliedog/ui/compositions/page-layout";
 import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
 import { SectionHero } from "@wyliedog/ui/compositions/section-hero";
 import { SectionFeatures } from "@wyliedog/ui/compositions/section-features";
@@ -131,9 +132,14 @@ const coreFeatures = [
  */
 export const Default: Story = {
   render: () => (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col">
+      <SkipLink />
       <SiteHeader navigation={navigation} />
-      <main className="flex-1">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="flex-1 focus:outline-none"
+      >
         <SectionHero
           badge="v1.0 — Now Available"
           title="The design system that ships with you"
@@ -162,9 +168,14 @@ export const Default: Story = {
  */
 export const GradientHero: Story = {
   render: () => (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col">
+      <SkipLink />
       <SiteHeader variant="transparent" navigation={navigation} />
-      <main className="flex-1">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="flex-1 focus:outline-none"
+      >
         <SectionHero
           variant="gradient"
           badge="New"
@@ -194,9 +205,14 @@ export const GradientHero: Story = {
  */
 export const CenteredHero: Story = {
   render: () => (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col">
+      <SkipLink />
       <SiteHeader navigation={navigation} />
-      <main className="flex-1">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="flex-1 focus:outline-none"
+      >
         <SectionHero
           variant="centered"
           badge="Launching Today"

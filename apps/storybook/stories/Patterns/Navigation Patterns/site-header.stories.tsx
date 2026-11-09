@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
+import { SkipLink } from "@wyliedog/ui/compositions/page-layout";
 import { Button } from "@wyliedog/ui/button";
 import { Heart, Menu } from "lucide-react";
 
@@ -11,7 +12,7 @@ const meta: Meta<typeof SiteHeader> = {
     docs: {
       description: {
         component:
-          "Real-world site header composition with logo, navigation links, and action buttons. Production-ready with responsive design, sticky positioning, and backdrop blur. Supports default and transparent variants for different page contexts.",
+          'Real-world site header composition with logo, navigation links, and action buttons. Production-ready with responsive design, sticky positioning, and backdrop blur. Supports default and transparent variants for different page contexts. Each story pairs the header with a skip link: click the canvas, then press Tab to reveal "Skip to main content" above the header.',
       },
     },
     // Override global a11y config here if needed, e.g. to disable a rule or set a specific ARIA config.
@@ -59,14 +60,19 @@ export const Default: Story = {
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-100 bg-current/[0.015]">
+    <div className="relative h-100 bg-current/[0.015]">
+      <SkipLink />
       <SiteHeader {...args} />
-      <div className="container mx-auto px-4 py-16">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="container mx-auto px-4 py-16 focus:outline-none"
+      >
         <h1 className="text-3xl font-bold">Page Content Below Header</h1>
         <p className="mt-4 text-current/70">
           The header is sticky and will stay at the top when scrolling.
         </p>
-      </div>
+      </main>
     </div>
   ),
 };
@@ -98,16 +104,21 @@ export const Transparent: Story = {
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-100 bg-linear-to-br from-coral-600/20 to-coral-600/10">
+    <div className="relative h-100 bg-linear-to-br from-coral-600/20 to-coral-600/10">
+      <SkipLink />
       <SiteHeader {...args} />
-      <div className="container mx-auto px-4 py-16">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="container mx-auto px-4 py-16 focus:outline-none"
+      >
         <h1 className="text-3xl font-bold">
           Transparent Header Over Background
         </h1>
         <p className="mt-4 text-current/70">
           Perfect for hero sections and landing pages.
         </p>
-      </div>
+      </main>
     </div>
   ),
   parameters: {
@@ -143,14 +154,19 @@ export const WithCustomActions: Story = {
     ),
   },
   render: (args) => (
-    <div className="h-100 bg-current/[0.015]">
+    <div className="relative h-100 bg-current/[0.015]">
+      <SkipLink />
       <SiteHeader {...args} />
-      <div className="container mx-auto px-4 py-16">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="container mx-auto px-4 py-16 focus:outline-none"
+      >
         <h1 className="text-3xl font-bold">Custom Actions Example</h1>
         <p className="mt-4 text-current/70">
           Customize the action buttons to match your brand and use case.
         </p>
-      </div>
+      </main>
     </div>
   ),
   parameters: {
@@ -177,14 +193,19 @@ export const MinimalNavigation: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-75 bg-current/[0.015]">
+    <div className="relative h-75 bg-current/[0.015]">
+      <SkipLink />
       <SiteHeader {...args} />
-      <div className="container mx-auto px-4 py-16">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="container mx-auto px-4 py-16 focus:outline-none"
+      >
         <h1 className="text-3xl font-bold">Minimal Navigation</h1>
         <p className="mt-4 text-current/70">
           Clean header with fewer navigation items.
         </p>
-      </div>
+      </main>
     </div>
   ),
   parameters: {
