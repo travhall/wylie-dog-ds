@@ -10,7 +10,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          "Opacity, stacking order and icon sizes, read from the built tokens. Each family has a shared scale and, where it applies, named roles that alias it.",
+          "Opacity, stacking order and icon sizes, read from the built tokens. Opacity is a shared scale; stacking order adds named layers on top of its scale.",
       },
     },
   },
@@ -97,7 +97,7 @@ export const ZIndex: Story = {
     <div>
       <Section
         title="Stacking order"
-        description="Named layers from lowest to highest. Each card is drawn with the token z-index."
+        description="Named layers from lowest to highest. Each card is drawn at the layer token's z-index."
       >
         <div
           aria-hidden="true"
@@ -118,7 +118,7 @@ export const ZIndex: Story = {
           ))}
         </div>
         <TokenTable
-          caption="Named z-index layers"
+          caption="Named layer tokens"
           rows={zLayers}
           specimenLabel="Layer"
           specimen={(row) => (
