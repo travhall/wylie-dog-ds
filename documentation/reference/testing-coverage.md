@@ -1,8 +1,8 @@
 # Testing and Coverage Status
 
-**Last Updated:** November 3, 2026
-**Overall Coverage:** 99.49% lines / 99.02% statements (exceeds 80% threshold)
-**Tests Passing:** 1,620 | **Tests Skipped:** 62
+**Last Updated:** November 9, 2026
+**Overall Coverage:** 99.62% lines / 99.15% statements (exceeds 80% threshold)
+**Tests Passing:** 1,727 | **Tests Skipped:** 0
 
 Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot. `pnpm check:docs:coverage` runs it and fails if the four percentages in the table below no longer match; plain `pnpm check:docs` does the same comparison whenever a fresh coverage run is on disk. Passing and skipped test counts are not checked.
 
@@ -10,160 +10,24 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 
 | Metric     | Current | Target | Status            |
 | ---------- | ------- | ------ | ----------------- |
-| Statements | 99.02%  | 80%    | ✅ Pass (+19.02%) |
-| Lines      | 99.49%  | 80%    | ✅ Pass (+19.49%) |
-| Functions  | 98.63%  | 80%    | ✅ Pass (+18.63%) |
+| Statements | 99.15%  | 80%    | ✅ Pass (+19.15%) |
+| Lines      | 99.62%  | 80%    | ✅ Pass (+19.62%) |
+| Functions  | 99.08%  | 80%    | ✅ Pass (+19.08%) |
 | Branches   | 92.2%   | 70%    | ✅ Pass (+22.2%)  |
 
 ### Component Coverage
 
-- **Component tests:** 99.49% lines overall (all components fully tested except portal-based skips)
+- **Component tests:** 99.62% lines overall (every component is tested; no test is skipped)
 - **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
 - **Test files:** 59 passing test files
 
-## Skipped Tests Summary
+## Skipped Tests
 
-### Total: 62 skipped tests
+None. The UI suite runs 1,727 tests and skips 0.
 
-All skipped tests are due to **Radix UI portal rendering timing issues** in jsdom test environment. These components work correctly in production (verified via Storybook/showcase apps).
+Until 2026-11-09, 62 tests were skipped (tooltip 31, select 15, sheet 9, popover 6, navigation-menu 1) with the note "portal rendering needs async test infrastructure". That reason did not hold: Radix portals render fine under jsdom with `user-event` and `waitFor`, and the accessibility tests next to the skips had always passed with the same pattern. The skips were removed in PRs 78 and 79. Of the 62, 46 passed as soon as the skips came off, and 16 were ordinary test bugs, not component bugs (see "Testing Radix Portals in jsdom" below).
 
-### Breakdown by Component
-
-#### 1. Tooltip (31 skipped)
-
-**File:** `src/__tests__/tooltip.test.tsx`
-**Coverage Impact:** Component works in production
-
-**Skipped test groups:**
-
-- Hover interactions (show/hide on hover/unhover)
-- Focus interactions
-- Positioning tests (top, right, bottom, left, sideOffset, alignOffset)
-- Delay timing tests
-- Styling tests
-- Integration tests (complex content, multiple tooltips)
-- Edge cases (disabled triggers, long content)
-
-**Why skipped:**
-
-```
-TODO: Tooltip portal rendering needs async test infrastructure
-```
-
-Portal content renders asynchronously in document.body, requiring special timing/cleanup infrastructure.
-
----
-
-#### 2. Select (15 skipped)
-
-**File:** `src/__tests__/select.test.tsx`
-**Coverage Impact:** Component works in production
-
-**Skipped test groups:**
-
-- Functionality (open dropdown, select items)
-- Keyboard navigation (arrow keys, Enter, Escape)
-- SelectGroup and SelectSeparator rendering
-- Form integration
-
-**Why skipped:**
-
-```
-TODO: Select dropdown portal rendering needs async test infrastructure
-```
-
-Dropdown menu renders in portal, making it difficult to test option selection and keyboard navigation.
-
----
-
-#### 3. Sheet (9 skipped)
-
-**File:** `src/__tests__/sheet.test.tsx`
-**Coverage Impact:** Component works in production
-
-**Skipped tests:**
-
-- Main Sheet component interactions
-- SheetFooter rendering
-- Accessible close button
-- Full composition test
-
-**Why skipped:**
-
-```
-TODO: Sheet dialog portal rendering needs async test infrastructure
-```
-
-Dialog renders in portal with animations, causing timing issues in tests.
-
----
-
-#### 4. Popover (6 skipped)
-
-**File:** `src/__tests__/popover.test.tsx`
-**Coverage Impact:** Component works in production
-
-**Skipped tests:**
-
-- Positioning tests (top, right, bottom, left)
-- Custom className application
-
-**Why skipped:**
-
-```
-TODO: Popover portal positioning needs async test infrastructure
-```
-
-Portal positioning and animation timing issues.
-
----
-
-#### 5. Navigation-Menu (1 skipped)
-
-**File:** `src/__tests__/navigation-menu.test.tsx`
-**Coverage Impact:** Component works in production
-
-**Skipped test:**
-
-- Multiple menu items with content swapping
-
-**Why skipped:**
-
-```
-TODO: Radix NavigationMenu portal content swapping between triggers needs special handling
-```
-
-Clicking second trigger closes first content but doesn't reliably show second content due to portal repositioning timing.
-
----
-
-#### 6. Context-Menu (0 skipped) ✅
-
-**File:** `src/__tests__/context-menu.test.tsx`
-**Status:** All tests passing
-
-**Fixed on:** December 17, 2025
-**Solution:** Query `document.body` for portal-rendered separators instead of container
-
----
-
-#### 7. Menubar (0 skipped) ✅
-
-**File:** `src/__tests__/menubar.test.tsx`
-**Status:** All tests passing
-
-**Fixed on:** December 17, 2025
-**Solution:** Query `document.body` for portal-rendered separators instead of container
-
----
-
-#### 8. Command (0 skipped) ✅
-
-**File:** `src/__tests__/command.test.tsx`
-**Status:** All tests passing
-
-**Fixed on:** December 17, 2025
-**Solution:** `CommandEmpty` renders as a sibling of the `role="listbox"` element (not a child), so `role="status"` on it does not violate ARIA listbox-children constraints.
+Keep it at zero: fix a failing test or delete it; do not skip it.
 
 ---
 
@@ -208,72 +72,17 @@ exclude: [
 
 ---
 
-## Technical Root Cause: Portal Rendering
+## Testing Radix Portals in jsdom
 
-### What is a Portal?
+Radix renders Tooltip, Select, Sheet, Popover and similar content in a portal appended to `document.body`. Query it with `screen`, not the render container: open it with `user.click` or `user.hover`, then `await waitFor(...)`. The gotchas that had hidden behind the old skips:
 
-Radix UI components like Tooltip, Select, Sheet, Popover render their content in a React portal:
-
-```tsx
-<Portal>
-  <Content>...</Content>
-</Portal>
-```
-
-Portals render DOM outside the normal component tree, typically appended to `document.body`.
-
-### Why This Breaks Tests
-
-1. **Timing:** Portal content renders asynchronously after component mount
-2. **Location:** Content is in `document.body`, not in RTL's `container`
-3. **Cleanup:** Portal content persists between tests without proper cleanup
-4. **Animations:** Radix uses CSS animations for enter/exit, adding timing complexity
-
-### Current Test Approach
-
-```tsx
-// ❌ Doesn't work - queries container
-const { container } = render(<Tooltip>...</Tooltip>);
-const tooltip = container.querySelector('[role="tooltip"]');
-expect(tooltip).toBeInTheDocument(); // null - it's in document.body!
-
-// ✅ Works - queries document.body
-const { container } = render(<Tooltip>...</Tooltip>);
-await waitFor(() => {
-  const tooltip = document.body.querySelector('[role="tooltip"]');
-  expect(tooltip).toBeInTheDocument();
-});
-```
-
----
-
-## Future Solutions
-
-### Option 1: Accept Current State (Recommended)
-
-- **Pros:** 95% coverage is excellent, all critical paths tested
-- **Cons:** Portal component internals not unit tested
-- **Mitigation:** Portal components are integration-tested via Storybook
-
-### Option 2: Build Portal Test Infrastructure
-
-- **LOE:** High (2-3 days)
-- **Requirements:**
-  - Custom render wrapper that handles portal cleanup
-  - Utility functions for waiting on portal content
-  - Consistent timing/animation mocking
-  - Document.body query helpers
-
-### Option 3: E2E Tests (Playwright/Cypress)
-
-- **Pros:** Handles portals naturally in real browser
-- **Cons:** Slower, more complex setup
-- **Use case:** Integration/E2E testing, not unit tests
-
-### Option 4: Increase Timeout/Polling
-
-- **Tried:** Added 3000ms timeouts with waitFor
-- **Result:** Still flaky due to animation timing and portal positioning
+- **Closing a tooltip.** Radix keeps a tooltip open while the pointer is inside its hover grace area, and jsdom has no layout (every rect is 0,0), so `user.unhover` alone never leaves it. Follow it with `fireEvent.pointerMove(document.body, { clientX: 500, clientY: 500 })` (the `leave()` helper in `tooltip.test.tsx`).
+- **Duplicate accessible names.** A Select trigger shows the selected value, so `getByText("Apple")` matches the trigger and the option: use `getByRole("option", { name: "Apple" })`. Sheet and Dialog have a built-in X button named "Close", so do not name your own control "Close".
+- **Separators.** Radix Select's separator has no `role="separator"`: give it a `data-testid`.
+- **Keyboard selection.** Opening a Select focuses the first item, so one ArrowDown then Enter selects the second.
+- **Navigation menu.** With one item open, hover the next one to switch; a click on top of the hover appears to toggle it closed again.
+- **Wrapper elements.** `getByText(...)` returns the element that directly contains the text, not its parent.
+- **Class assertions.** Components bind every value to a component token, so assert the `...-(--token)` classes the component renders, not Tailwind scale classes.
 
 ---
 
@@ -300,15 +109,15 @@ await waitFor(() => {
 - hover-card.tsx
 - input.tsx
 - label.tsx
-- navigation-menu.tsx (except 1 skipped test)
+- navigation-menu.tsx
 - pagination.tsx
-- popover.tsx (basic tests pass, positioning skipped)
+- popover.tsx
 - progress.tsx
 - radio-group.tsx
 - resizable.tsx ✅ (added Dec 17, 2025)
 - scroll-area.tsx
 - separator.tsx
-- sheet.tsx (basic tests pass, dialog interactions skipped)
+- sheet.tsx
 - skeleton.tsx
 - slider.tsx
 - switch.tsx
@@ -318,7 +127,7 @@ await waitFor(() => {
 - toast.tsx
 - toggle-group.tsx
 - toggle.tsx
-- tooltip.tsx (basic tests pass, portal interactions skipped)
+- tooltip.tsx
 
 ### Utility Files (100% coverage)
 
@@ -364,36 +173,28 @@ TEST_PATTERN="Accessibility" pnpm test
 | Dec 17, 2025 | 95.41%                             | +15.78%     | Added resizable.test.tsx + excluded docs files                                                                   |
 | Jul 5, 2026  | 95.06%                             | -0.35%      | Fixed CommandEmpty role=status regression, enabling test:coverage to complete; refreshed stale Dec 2025 snapshot |
 | Oct 14, 2026 | 98.02% statements, 82.93% branches | +1.3 / +3.3 | Added helper-component tests for context-menu, dropdown-menu and menubar (branches were 79.62%)                  |
+| Nov 9, 2026  | 99.15% statements, 92.2% branches  | +0.13 / 0   | Un-skipped the last 62 tests (tooltip, select, sheet, popover, navigation-menu); none are skipped now            |
 
 ---
 
 ## Recommendations
 
-### Short Term (Current Approach)
+### Current Approach
 
-1. ✅ Keep 67 portal tests skipped with TODO comments
-2. ✅ Maintain 95%+ coverage through utility and component tests
-3. ✅ Verify portal components work via Storybook manual testing
-4. ✅ Document skipped tests (this file)
+1. Keep zero skipped tests: fix a failing test or delete it, do not skip it.
+2. Keep 95%+ coverage; `pnpm check:docs:coverage` fails when the figures above drift from a real run.
+3. Test portal components with the patterns in "Testing Radix Portals in jsdom". Storybook is still the place to check how they look and feel.
 
-### Medium Term (If Time Permits)
+### If Time Permits
 
-1. Build portal test infrastructure for 1-2 components as proof of concept
-2. Create reusable `renderWithPortal()` helper
-3. Document portal testing patterns for team
-
-### Long Term (Future Work)
-
-1. Consider E2E tests with Playwright for critical user flows involving portals
-2. Evaluate if portal testing is worth LOE vs current manual verification
-3. Keep monitoring Radix UI and React Testing Library for portal testing improvements
+1. Consider E2E tests with Playwright for critical user flows that involve portals and real layout (hover grace areas, positioning).
 
 ---
 
 ## Questions?
 
-For questions about test coverage or skipped tests, reference this document or check:
+For questions about test coverage, reference this document or check:
 
-- Individual test files for TODO comments
+- Individual test files for the patterns used
 - `vitest.config.ts` for coverage configuration
 - Storybook for visual verification of portal components
