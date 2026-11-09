@@ -2591,6 +2591,17 @@
         "variable": "var(--duration-200)",
         "description": ""
       },
+      "duration-250": {
+        "name": "duration250",
+        "path": [
+          "duration",
+          "250"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--duration-250)",
+        "description": ""
+      },
       "duration-300": {
         "name": "duration300",
         "path": [
@@ -2600,6 +2611,17 @@
         "value": "300ms",
         "type": "duration",
         "variable": "var(--duration-300)",
+        "description": ""
+      },
+      "duration-400": {
+        "name": "duration400",
+        "path": [
+          "duration",
+          "400"
+        ],
+        "value": "400ms",
+        "type": "duration",
+        "variable": "var(--duration-400)",
         "description": ""
       },
       "duration-500": {
@@ -2634,6 +2656,63 @@
         "type": "duration",
         "variable": "var(--duration-1000)",
         "description": ""
+      },
+      "duration-2000": {
+        "name": "duration2000",
+        "path": [
+          "duration",
+          "2000"
+        ],
+        "value": "2000ms",
+        "type": "duration",
+        "variable": "var(--duration-2000)",
+        "description": ""
+      }
+    },
+    "easing": {
+      "easing-in": {
+        "name": "easingIn",
+        "path": [
+          "easing",
+          "in"
+        ],
+        "value": "cubic-bezier(0.4, 0, 1, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--easing-in)",
+        "description": "Ease-in curve: starts slowly, ends fast"
+      },
+      "easing-out": {
+        "name": "easingOut",
+        "path": [
+          "easing",
+          "out"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--easing-out)",
+        "description": "Ease-out curve: starts fast, ends slowly"
+      },
+      "easing-in-out": {
+        "name": "easingInOut",
+        "path": [
+          "easing",
+          "in-out"
+        ],
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--easing-in-out)",
+        "description": "Ease-in-out curve: slow at both ends"
+      },
+      "easing-linear": {
+        "name": "easingLinear",
+        "path": [
+          "easing",
+          "linear"
+        ],
+        "value": "cubic-bezier(0, 0, 1, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--easing-linear)",
+        "description": "Linear curve: constant speed"
       }
     }
   },

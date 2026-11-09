@@ -59,6 +59,7 @@ Component spacing tokens follow `--space-<component>-*`.
 | Font weight | `--font-weight-*`     | component tokens, per element           |
 | Line height | `--line-height-*`     | CSS only; not synced to Figma Variables |
 | Duration    | `--duration-<ms>`     | `--duration-200`                        |
+| Easing      | `--easing-<curve>`    | `--easing-in-out`                       |
 | Opacity     | `--opacity-<percent>` | `--opacity-50`                          |
 | Z-index     | `--z-index-*`         | `--z-index-100`                         |
 | Layer       | `--layer-*`           | `--layer-modal`                         |

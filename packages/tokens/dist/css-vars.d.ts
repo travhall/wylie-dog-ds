@@ -645,7 +645,10 @@ export type CssVarName =
   | "--duration-1000"
   | "--duration-150"
   | "--duration-200"
+  | "--duration-2000"
+  | "--duration-250"
   | "--duration-300"
+  | "--duration-400"
   | "--duration-500"
   | "--duration-700"
   | "--duration-75"
@@ -680,6 +683,10 @@ export type CssVarName =
   | "--duration-slow"
   | "--duration-toast-duration"
   | "--duration-tooltip-content-duration"
+  | "--easing-in"
+  | "--easing-in-out"
+  | "--easing-linear"
+  | "--easing-out"
   | "--feature-grid-icon-hover-scale"
   | "--feature-grid-item-hover-scale"
   | "--font-size-2xl"
@@ -2201,7 +2208,10 @@ export declare const cssVars: Readonly<{
   "duration1000": "--duration-1000";
   "duration150": "--duration-150";
   "duration200": "--duration-200";
+  "duration2000": "--duration-2000";
+  "duration250": "--duration-250";
   "duration300": "--duration-300";
+  "duration400": "--duration-400";
   "duration500": "--duration-500";
   "duration700": "--duration-700";
   "duration75": "--duration-75";
@@ -2236,6 +2246,10 @@ export declare const cssVars: Readonly<{
   "durationSlow": "--duration-slow";
   "durationToastDuration": "--duration-toast-duration";
   "durationTooltipContentDuration": "--duration-tooltip-content-duration";
+  "easingIn": "--easing-in";
+  "easingInOut": "--easing-in-out";
+  "easingLinear": "--easing-linear";
+  "easingOut": "--easing-out";
   "featureGridIconHoverScale": "--feature-grid-icon-hover-scale";
   "featureGridItemHoverScale": "--feature-grid-item-hover-scale";
   "fontSize2xl": "--font-size-2xl";
