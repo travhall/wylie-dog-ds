@@ -66,7 +66,7 @@ export const Default: Story = {
       <main
         id="main-content"
         tabIndex={-1}
-        className="container mx-auto px-4 py-16 focus:outline-none"
+        className="container mx-auto px-4 py-16 focus:outline-hidden"
       >
         <h1 className="text-3xl font-bold">Page Content Below Header</h1>
         <p className="mt-4 text-current/70">
@@ -110,7 +110,7 @@ export const Transparent: Story = {
       <main
         id="main-content"
         tabIndex={-1}
-        className="container mx-auto px-4 py-16 focus:outline-none"
+        className="container mx-auto px-4 py-16 focus:outline-hidden"
       >
         <h1 className="text-3xl font-bold">
           Transparent Header Over Background
@@ -160,7 +160,7 @@ export const WithCustomActions: Story = {
       <main
         id="main-content"
         tabIndex={-1}
-        className="container mx-auto px-4 py-16 focus:outline-none"
+        className="container mx-auto px-4 py-16 focus:outline-hidden"
       >
         <h1 className="text-3xl font-bold">Custom Actions Example</h1>
         <p className="mt-4 text-current/70">
@@ -199,7 +199,7 @@ export const MinimalNavigation: Story = {
       <main
         id="main-content"
         tabIndex={-1}
-        className="container mx-auto px-4 py-16 focus:outline-none"
+        className="container mx-auto px-4 py-16 focus:outline-hidden"
       >
         <h1 className="text-3xl font-bold">Minimal Navigation</h1>
         <p className="mt-4 text-current/70">

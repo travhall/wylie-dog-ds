@@ -138,7 +138,7 @@ export const Default: Story = {
       <main
         id="main-content"
         tabIndex={-1}
-        className="flex-1 focus:outline-none"
+        className="flex-1 focus:outline-hidden"
       >
         <SectionHero
           badge="v1.0 — Now Available"
@@ -174,7 +174,7 @@ export const GradientHero: Story = {
       <main
         id="main-content"
         tabIndex={-1}
-        className="flex-1 focus:outline-none"
+        className="flex-1 focus:outline-hidden"
       >
         <SectionHero
           variant="gradient"
@@ -211,7 +211,7 @@ export const CenteredHero: Story = {
       <main
         id="main-content"
         tabIndex={-1}
-        className="flex-1 focus:outline-none"
+        className="flex-1 focus:outline-hidden"
       >
         <SectionHero
           variant="centered"

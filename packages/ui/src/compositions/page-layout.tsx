@@ -107,7 +107,7 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
             tabIndex={-1}
             className={cn(
               pageLayoutMainVariants({ variant }),
-              "focus:outline-none"
+              "focus:outline-hidden"
             )}
           >
             {children}

@@ -171,7 +171,7 @@ export default function RootLayout({
         <main
           id="main-content"
           tabIndex={-1}
-          className="min-h-screen focus:outline-none"
+          className="min-h-screen focus:outline-hidden"
         >
           {children}
         </main>
