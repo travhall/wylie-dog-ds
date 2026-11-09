@@ -99,27 +99,27 @@
     "$value": "2000ms",
     "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse"
   },
-  "z-index.dropdown": {
+  "layer.dropdown": {
     "$type": "number",
     "$value": "{z-index.10}",
     "$description": "Dropdown menus and select panels"
   },
-  "z-index.sticky": {
+  "layer.sticky": {
     "$type": "number",
     "$value": "{z-index.20}",
     "$description": "Sticky positioned elements (sticky headers, etc.)"
   },
-  "z-index.modal": {
+  "layer.modal": {
     "$type": "number",
     "$value": "{z-index.50}",
     "$description": "Modal dialogs, sheets, and similar blocking overlays"
   },
-  "z-index.toast": {
+  "layer.toast": {
     "$type": "number",
     "$value": "{z-index.80}",
     "$description": "Toast notifications — above all UI"
   },
-  "z-index.tooltip": {
+  "layer.tooltip": {
     "$type": "number",
     "$value": "{z-index.70}",
     "$description": "Tooltips — highest priority for transient hints"
@@ -184,22 +184,22 @@
     "$value": "{scale.95}",
     "$description": "Scale a surface starts from while it enters, and ends at while it leaves"
   },
-  "z-index.base": {
+  "layer.base": {
     "$type": "number",
     "$value": "{z-index.0}",
     "$description": "Default stacking context"
   },
-  "z-index.fixed": {
+  "layer.fixed": {
     "$type": "number",
     "$value": "{z-index.30}",
     "$description": "Fixed positioned elements (app shell)"
   },
-  "z-index.modal-backdrop": {
+  "layer.modal-backdrop": {
     "$type": "number",
     "$value": "{z-index.40}",
     "$description": "Modal/dialog backdrop overlay"
   },
-  "z-index.popover": {
+  "layer.popover": {
     "$type": "number",
     "$value": "{z-index.60}",
     "$description": "Popovers, hover cards, and floating panels"

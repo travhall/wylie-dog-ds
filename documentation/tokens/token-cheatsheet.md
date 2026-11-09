@@ -61,6 +61,7 @@ Component spacing tokens follow `--space-<component>-*`.
 | Duration    | `--duration-<ms>`     | `--duration-200`                        |
 | Opacity     | `--opacity-<percent>` | `--opacity-50`                          |
 | Z-index     | `--z-index-*`         | `--z-index-100`                         |
+| Layer       | `--layer-*`           | `--layer-modal`                         |
 
 ## Dark mode
 

@@ -9,7 +9,7 @@
 // Everything that is not a color is covered too (Plan 198), in every file of
 // packages/ui/src (tests excluded): a variable reference to a token that is not in
 // the components collection (a semantic or primitive such as --space-icon-size-md,
-// --shadow-md, --z-index-modal, --duration-normal, --border-radius-md,
+// --shadow-md, --layer-modal, --duration-normal, --border-radius-md,
 // --line-height-none) is a violation. The exceptions are the focus indicator and
 // the variables Radix sets at runtime. A font family is a component token too (Plan 217:
 // the Badge's mono family was a primitive reference that Figma never saw).

@@ -121,6 +121,8 @@ describe("number type inference", () => {
     ["border/weight", [], "dimension", "4.5px"],
     ["layer/z-index", [], "number", 4.5],
     ["layer/zindex", [], "number", 4.5],
+    ["layer/modal", [], "number", 4.5],
+    ["layer/modal-backdrop", [], "number", 4.5],
     ["z.layer/modal", [], "number", 4.5],
     ["z.index/modal", [], "number", 4.5],
     ["effect/opacity/50", [], "number", 4.5],

@@ -798,6 +798,15 @@
     "label.line-height": "var(--line-height-label-line-height)",
     "label.required-margin-left": "var(--space-label-required-margin-left)",
     "label.required-text": "var(--color-label-required-text)",
+    "layer.base": "var(--layer-base)",
+    "layer.dropdown": "var(--layer-dropdown)",
+    "layer.fixed": "var(--layer-fixed)",
+    "layer.modal": "var(--layer-modal)",
+    "layer.modal-backdrop": "var(--layer-modal-backdrop)",
+    "layer.popover": "var(--layer-popover)",
+    "layer.sticky": "var(--layer-sticky)",
+    "layer.toast": "var(--layer-toast)",
+    "layer.tooltip": "var(--layer-tooltip)",
     "menubar.background": "var(--color-menubar-background)",
     "menubar.border": "var(--color-menubar-border)",
     "menubar.border-width": "var(--space-menubar-border-width)",
@@ -1544,15 +1553,6 @@
     "z-index.60": "var(--z-index-60)",
     "z-index.70": "var(--z-index-70)",
     "z-index.80": "var(--z-index-80)",
-    "z-index.90": "var(--z-index-90)",
-    "z-index.base": "var(--z-index-base)",
-    "z-index.dropdown": "var(--z-index-dropdown)",
-    "z-index.fixed": "var(--z-index-fixed)",
-    "z-index.modal": "var(--z-index-modal)",
-    "z-index.modal-backdrop": "var(--z-index-modal-backdrop)",
-    "z-index.popover": "var(--z-index-popover)",
-    "z-index.sticky": "var(--z-index-sticky)",
-    "z-index.toast": "var(--z-index-toast)",
-    "z-index.tooltip": "var(--z-index-tooltip)"
+    "z-index.90": "var(--z-index-90)"
   }
 }
