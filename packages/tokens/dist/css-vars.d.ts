@@ -918,13 +918,6 @@ export type CssVarName =
   | "--opacity-80"
   | "--opacity-90"
   | "--opacity-95"
-  | "--opacity-interactive-active"
-  | "--opacity-interactive-disabled"
-  | "--opacity-interactive-hover"
-  | "--opacity-muted"
-  | "--opacity-overlay"
-  | "--opacity-scrim"
-  | "--opacity-subtle"
   | "--page-layout-skip-link-z-index"
   | "--popover-content-easing"
   | "--popover-content-scale"
@@ -1524,11 +1517,6 @@ export type CssVarName =
   | "--space-typography-tracking-wide"
   | "--space-typography-tracking-wider"
   | "--space-typography-tracking-widest"
-  | "--state-opacity-disabled"
-  | "--state-opacity-hover"
-  | "--state-opacity-muted"
-  | "--state-opacity-overlay"
-  | "--state-opacity-subtle"
   | "--toast-close-button-opacity"
   | "--toast-close-button-opacity-hover"
   | "--toast-description-opacity"
@@ -2486,13 +2474,6 @@ export declare const cssVars: Readonly<{
   "opacity80": "--opacity-80";
   "opacity90": "--opacity-90";
   "opacity95": "--opacity-95";
-  "opacityInteractiveActive": "--opacity-interactive-active";
-  "opacityInteractiveDisabled": "--opacity-interactive-disabled";
-  "opacityInteractiveHover": "--opacity-interactive-hover";
-  "opacityMuted": "--opacity-muted";
-  "opacityOverlay": "--opacity-overlay";
-  "opacityScrim": "--opacity-scrim";
-  "opacitySubtle": "--opacity-subtle";
   "pageLayoutSkipLinkZIndex": "--page-layout-skip-link-z-index";
   "popoverContentEasing": "--popover-content-easing";
   "popoverContentScale": "--popover-content-scale";
@@ -3092,11 +3073,6 @@ export declare const cssVars: Readonly<{
   "spaceTypographyTrackingWide": "--space-typography-tracking-wide";
   "spaceTypographyTrackingWider": "--space-typography-tracking-wider";
   "spaceTypographyTrackingWidest": "--space-typography-tracking-widest";
-  "stateOpacityDisabled": "--state-opacity-disabled";
-  "stateOpacityHover": "--state-opacity-hover";
-  "stateOpacityMuted": "--state-opacity-muted";
-  "stateOpacityOverlay": "--state-opacity-overlay";
-  "stateOpacitySubtle": "--state-opacity-subtle";
   "toastCloseButtonOpacity": "--toast-close-button-opacity";
   "toastCloseButtonOpacityHover": "--toast-close-button-opacity-hover";
   "toastDescriptionOpacity": "--toast-description-opacity";

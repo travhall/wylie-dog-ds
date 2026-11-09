@@ -124,31 +124,6 @@
     "$value": "{z-index.70}",
     "$description": "Tooltips — highest priority for transient hints"
   },
-  "state.opacity.disabled": {
-    "$type": "number",
-    "$value": "{opacity.50}",
-    "$description": "Opacity for disabled elements"
-  },
-  "state.opacity.muted": {
-    "$type": "number",
-    "$value": "{opacity.70}",
-    "$description": "Opacity for muted/secondary elements"
-  },
-  "state.opacity.subtle": {
-    "$type": "number",
-    "$value": "{opacity.90}",
-    "$description": "Opacity for subtle elements"
-  },
-  "state.opacity.hover": {
-    "$type": "number",
-    "$value": "{opacity.100}",
-    "$description": "Opacity for hover state (full visibility)"
-  },
-  "state.opacity.overlay": {
-    "$type": "number",
-    "$value": "{opacity.80}",
-    "$description": "Opacity for overlay backgrounds"
-  },
   "icon.size.xs": {
     "$type": "dimension",
     "$value": "{space.150}",
@@ -229,41 +204,6 @@
     "$value": "{z-index.60}",
     "$description": "Popovers, hover cards, and floating panels"
   },
-  "opacity.interactive.hover": {
-    "$type": "number",
-    "$value": "{opacity.80}",
-    "$description": "Hover-state opacity for interactive elements"
-  },
-  "opacity.interactive.active": {
-    "$type": "number",
-    "$value": "{opacity.90}",
-    "$description": "Active/pressed-state opacity for interactive elements"
-  },
-  "opacity.interactive.disabled": {
-    "$type": "number",
-    "$value": "{opacity.50}",
-    "$description": "Disabled-state opacity for interactive elements"
-  },
-  "opacity.muted": {
-    "$type": "number",
-    "$value": "{opacity.70}",
-    "$description": "Muted/secondary content opacity"
-  },
-  "opacity.subtle": {
-    "$type": "number",
-    "$value": "{opacity.60}",
-    "$description": "Subtle/tertiary content opacity"
-  },
-  "opacity.overlay": {
-    "$type": "number",
-    "$value": "{opacity.40}",
-    "$description": "Overlay/scrim opacity for partial backdrops"
-  },
-  "opacity.scrim": {
-    "$type": "number",
-    "$value": "{opacity.90}",
-    "$description": "Heavy scrim opacity for modal backdrops"
-  },
   "typography.font-size.display.lg": {
     "$type": "fontSize",
     "$value": "{typography.font-size.6xl}",
@@ -307,7 +247,7 @@
   "color.background.overlay": {
     "$type": "color",
     "$value": "{color.black-bear.950}",
-    "$description": "Scrim color behind a modal or sheet; applied at opacity.scrim, never opaque."
+    "$description": "Scrim color behind a modal or sheet. The dialog, alert dialog and sheet apply it at 90% through their overlay-opacity tokens, so it is never opaque."
   },
   "color.background.muted": {
     "$type": "color",

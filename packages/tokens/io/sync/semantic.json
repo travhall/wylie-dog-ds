@@ -237,51 +237,6 @@
             "Dark": "{z-index.70}"
           }
         },
-        "state.opacity.disabled": {
-          "$type": "number",
-          "$value": "{opacity.50}",
-          "$description": "Opacity for disabled elements",
-          "valuesByMode": {
-            "Light": "{opacity.50}",
-            "Dark": "{opacity.50}"
-          }
-        },
-        "state.opacity.muted": {
-          "$type": "number",
-          "$value": "{opacity.70}",
-          "$description": "Opacity for muted/secondary elements",
-          "valuesByMode": {
-            "Light": "{opacity.70}",
-            "Dark": "{opacity.70}"
-          }
-        },
-        "state.opacity.subtle": {
-          "$type": "number",
-          "$value": "{opacity.90}",
-          "$description": "Opacity for subtle elements",
-          "valuesByMode": {
-            "Light": "{opacity.90}",
-            "Dark": "{opacity.90}"
-          }
-        },
-        "state.opacity.hover": {
-          "$type": "number",
-          "$value": "{opacity.100}",
-          "$description": "Opacity for hover state (full visibility)",
-          "valuesByMode": {
-            "Light": "{opacity.100}",
-            "Dark": "{opacity.100}"
-          }
-        },
-        "state.opacity.overlay": {
-          "$type": "number",
-          "$value": "{opacity.80}",
-          "$description": "Opacity for overlay backgrounds",
-          "valuesByMode": {
-            "Light": "{opacity.80}",
-            "Dark": "{opacity.80}"
-          }
-        },
         "icon.size.xs": {
           "$type": "dimension",
           "$value": "{space.150}",
@@ -426,69 +381,6 @@
             "Dark": "{z-index.60}"
           }
         },
-        "opacity.interactive.hover": {
-          "$type": "number",
-          "$value": "{opacity.80}",
-          "$description": "Hover-state opacity for interactive elements",
-          "valuesByMode": {
-            "Light": "{opacity.80}",
-            "Dark": "{opacity.80}"
-          }
-        },
-        "opacity.interactive.active": {
-          "$type": "number",
-          "$value": "{opacity.90}",
-          "$description": "Active/pressed-state opacity for interactive elements",
-          "valuesByMode": {
-            "Light": "{opacity.90}",
-            "Dark": "{opacity.90}"
-          }
-        },
-        "opacity.interactive.disabled": {
-          "$type": "number",
-          "$value": "{opacity.50}",
-          "$description": "Disabled-state opacity for interactive elements",
-          "valuesByMode": {
-            "Light": "{opacity.50}",
-            "Dark": "{opacity.50}"
-          }
-        },
-        "opacity.muted": {
-          "$type": "number",
-          "$value": "{opacity.70}",
-          "$description": "Muted/secondary content opacity",
-          "valuesByMode": {
-            "Light": "{opacity.70}",
-            "Dark": "{opacity.70}"
-          }
-        },
-        "opacity.subtle": {
-          "$type": "number",
-          "$value": "{opacity.60}",
-          "$description": "Subtle/tertiary content opacity",
-          "valuesByMode": {
-            "Light": "{opacity.60}",
-            "Dark": "{opacity.60}"
-          }
-        },
-        "opacity.overlay": {
-          "$type": "number",
-          "$value": "{opacity.40}",
-          "$description": "Overlay/scrim opacity for partial backdrops",
-          "valuesByMode": {
-            "Light": "{opacity.40}",
-            "Dark": "{opacity.40}"
-          }
-        },
-        "opacity.scrim": {
-          "$type": "number",
-          "$value": "{opacity.90}",
-          "$description": "Heavy scrim opacity for modal backdrops",
-          "valuesByMode": {
-            "Light": "{opacity.90}",
-            "Dark": "{opacity.90}"
-          }
-        },
         "typography.font-size.display.lg": {
           "$type": "fontSize",
           "$value": "{typography.font-size.6xl}",
@@ -564,7 +456,7 @@
         "color.background.overlay": {
           "$type": "color",
           "$value": "{color.black-bear.950}",
-          "$description": "Scrim color behind a modal or sheet; applied at opacity.scrim, never opaque.",
+          "$description": "Scrim color behind a modal or sheet. The dialog, alert dialog and sheet apply it at 90% through their overlay-opacity tokens, so it is never opaque.",
           "valuesByMode": {
             "Light": "{color.black-bear.950}",
             "Dark": "{color.black-bear.950}"

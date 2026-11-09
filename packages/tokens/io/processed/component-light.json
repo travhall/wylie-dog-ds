@@ -5581,17 +5581,17 @@
   },
   "dialog.overlay-opacity": {
     "$type": "number",
-    "$value": "{opacity.scrim}",
+    "$value": "{opacity.90}",
     "$description": "Opacity of the dialog overlay (scrim)."
   },
   "alert-dialog.overlay-opacity": {
     "$type": "number",
-    "$value": "{opacity.scrim}",
+    "$value": "{opacity.90}",
     "$description": "Opacity of the alert dialog overlay (scrim)."
   },
   "sheet.overlay-opacity": {
     "$type": "number",
-    "$value": "{opacity.scrim}",
+    "$value": "{opacity.90}",
     "$description": "Opacity of the sheet overlay (scrim)."
   },
   "input.spin-button-opacity": {

@@ -2709,7 +2709,7 @@
         "value": "oklch(0.138 0.008 60.26)",
         "type": "color",
         "variable": "var(--color-background-overlay)",
-        "description": "Scrim color behind a modal or sheet; applied at opacity.scrim, never opaque."
+        "description": "Scrim color behind a modal or sheet. The dialog, alert dialog and sheet apply it at 90% through their overlay-opacity tokens, so it is never opaque."
       },
       "color-background-muted": {
         "name": "colorBackgroundMuted",
