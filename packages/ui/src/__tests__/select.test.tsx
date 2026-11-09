@@ -113,7 +113,7 @@ describe("Select", () => {
   });
 
   // TODO: Select dropdown portal rendering needs async test infrastructure
-  describe.skip("Functionality", () => {
+  describe("Functionality", () => {
     it("should render with placeholder", () => {
       render(<TestSelect />);
 
@@ -203,17 +203,15 @@ describe("Select", () => {
       await user.click(screen.getByRole("combobox"));
 
       await waitFor(() => {
-        const appleOption = screen.getByText("Apple");
-        expect(appleOption.closest('[role="option"]')).toHaveAttribute(
-          "aria-selected",
-          "true"
-        );
+        // The trigger also shows "Apple", so find the option by its role
+        const appleOption = screen.getByRole("option", { name: "Apple" });
+        expect(appleOption).toHaveAttribute("aria-selected", "true");
       });
     });
   });
 
   // TODO: Select dropdown portal rendering needs async test infrastructure
-  describe.skip("Keyboard Navigation", () => {
+  describe("Keyboard Navigation", () => {
     it("should open on Enter key", async () => {
       const user = userEvent.setup();
       render(<TestSelect />);
@@ -273,10 +271,11 @@ describe("Select", () => {
         expect(screen.getByRole("listbox")).toBeInTheDocument();
       });
 
+      // Opening focuses the first item (Apple), so one ArrowDown lands on Banana
       await user.keyboard("{ArrowDown}");
       await user.keyboard("{Enter}");
 
-      expect(handleChange).toHaveBeenCalledWith("apple");
+      expect(handleChange).toHaveBeenCalledWith("banana");
     });
 
     it("should close on Escape key", async () => {
@@ -475,7 +474,7 @@ describe("Select", () => {
   });
 
   // TODO: Select dropdown portal rendering needs async test infrastructure
-  describe.skip("SelectGroup and SelectSeparator", () => {
+  describe("SelectGroup and SelectSeparator", () => {
     it("should render groups with separators", async () => {
       const user = userEvent.setup();
       render(
@@ -488,7 +487,7 @@ describe("Select", () => {
               <SelectItem value="apple">Apple</SelectItem>
               <SelectItem value="banana">Banana</SelectItem>
             </SelectGroup>
-            <SelectSeparator />
+            <SelectSeparator data-testid="separator" />
             <SelectGroup>
               <SelectItem value="carrot">Carrot</SelectItem>
               <SelectItem value="potato">Potato</SelectItem>
@@ -503,8 +502,7 @@ describe("Select", () => {
         expect(screen.getByText("Apple")).toBeInTheDocument();
         expect(screen.getByText("Carrot")).toBeInTheDocument();
 
-        const separator = document.querySelector('[role="separator"]');
-        expect(separator).toBeInTheDocument();
+        expect(screen.getByTestId("separator")).toBeInTheDocument();
       });
     });
 
@@ -517,7 +515,10 @@ describe("Select", () => {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="1">Option 1</SelectItem>
-            <SelectSeparator className="custom-separator" />
+            <SelectSeparator
+              className="custom-separator"
+              data-testid="separator"
+            />
             <SelectItem value="2">Option 2</SelectItem>
           </SelectContent>
         </Select>
@@ -526,8 +527,7 @@ describe("Select", () => {
       await user.click(screen.getByRole("combobox"));
 
       await waitFor(() => {
-        const separator = document.querySelector('[role="separator"]');
-        expect(separator).toHaveClass("custom-separator");
+        expect(screen.getByTestId("separator")).toHaveClass("custom-separator");
       });
     });
   });
@@ -551,7 +551,7 @@ describe("Select", () => {
     });
 
     // TODO: Select dropdown portal rendering needs async test infrastructure
-    it.skip("should work with form integration", async () => {
+    it("should work with form integration", async () => {
       const user = userEvent.setup();
       const handleSubmit = vi.fn((e) => e.preventDefault());
 
@@ -565,10 +565,12 @@ describe("Select", () => {
       await user.click(screen.getByRole("combobox"));
 
       await waitFor(() => {
-        expect(screen.getByText("Apple")).toBeInTheDocument();
+        expect(
+          screen.getByRole("option", { name: "Apple" })
+        ).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText("Apple"));
+      await user.click(screen.getByRole("option", { name: "Apple" }));
       await user.click(screen.getByText("Submit"));
 
       expect(handleSubmit).toHaveBeenCalled();

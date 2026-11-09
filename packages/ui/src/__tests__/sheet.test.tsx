@@ -31,7 +31,7 @@ const TestSheet = ({
       </SheetHeader>
       <div>Sheet content goes here</div>
       <SheetFooter>
-        <SheetClose>Close</SheetClose>
+        <SheetClose>Done</SheetClose>
       </SheetFooter>
     </SheetContent>
   </Sheet>
@@ -84,7 +84,7 @@ describe("Sheet", () => {
     });
 
     // TODO: Sheet dialog portal rendering needs async test infrastructure
-    it.skip("should have accessible close button", async () => {
+    it("should have accessible close button", async () => {
       const user = userEvent.setup();
       render(<TestSheet />);
 
@@ -98,7 +98,7 @@ describe("Sheet", () => {
   });
 
   // TODO: Sheet dialog portal rendering needs async test infrastructure
-  describe.skip("Sheet Component", () => {
+  describe("Sheet Component", () => {
     it("should render trigger button", () => {
       render(<TestSheet />);
       expect(screen.getByText("Open Sheet")).toBeInTheDocument();
@@ -152,7 +152,7 @@ describe("Sheet", () => {
         expect(screen.getByRole("dialog")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText("Close"));
+      await user.click(screen.getByText("Done"));
 
       await waitFor(() => {
         expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
@@ -370,7 +370,7 @@ describe("Sheet", () => {
   });
 
   // TODO: Sheet dialog portal rendering needs async test infrastructure
-  describe.skip("SheetFooter Component", () => {
+  describe("SheetFooter Component", () => {
     it("should render footer", async () => {
       const user = userEvent.setup();
       render(<TestSheet />);
@@ -378,7 +378,7 @@ describe("Sheet", () => {
       await user.click(screen.getByText("Open Sheet"));
 
       await waitFor(() => {
-        expect(screen.getByText("Close")).toBeInTheDocument();
+        expect(screen.getByText("Done")).toBeInTheDocument();
       });
     });
 
@@ -408,7 +408,7 @@ describe("Sheet", () => {
 
   describe("Integration", () => {
     // TODO: Sheet dialog portal rendering needs async test infrastructure
-    it.skip("should compose all sub-components correctly", async () => {
+    it("should compose all sub-components correctly", async () => {
       const user = userEvent.setup();
       render(<TestSheet />);
 
@@ -418,7 +418,7 @@ describe("Sheet", () => {
         expect(screen.getByText("Sheet Title")).toBeInTheDocument();
         expect(screen.getByText(TEST_DESCRIPTION)).toBeInTheDocument();
         expect(screen.getByText("Sheet content goes here")).toBeInTheDocument();
-        expect(screen.getByText("Close")).toBeInTheDocument();
+        expect(screen.getByText("Done")).toBeInTheDocument();
       });
     });
 
