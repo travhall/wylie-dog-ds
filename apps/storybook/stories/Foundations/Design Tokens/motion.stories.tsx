@@ -186,37 +186,32 @@ function CurvePlot({ easing }: { easing: string }) {
 }
 
 /**
- * A bounded region that scrolls on its own, holding the controls and the demos.
- * Storybook's Docs page wraps every story in containers that set their own
- * overflow but never scroll (the whole page does), so `position: sticky` on the
- * page never engages there. A region that scrolls itself keeps the controls
- * pinned in Docs, Canvas and the standalone iframe alike. It is focusable so the
- * rows can be scrolled from the keyboard.
+ * Wraps the controls and the demos so `position: sticky` works on the control bar.
+ * Storybook's Docs page puts every story inside two containers (`.docs-story`
+ * and `.sbdocs-preview`) that clip their overflow but never scroll themselves,
+ * because the whole page does. A sticky element sticks to its nearest clipping
+ * ancestor, so the bar would never stick there. The rule below lets those two
+ * containers overflow, but only when they hold a Motion demo, so the bar sticks
+ * to the page scroll with no scroll box of its own. If Storybook renames the
+ * classes, the bar simply stops sticking in the Docs view; it still works.
  */
-function DemoRegion({
-  label,
-  children,
-}: {
-  label: string;
-  children: ReactNode;
-}) {
+const STICKY_DOCS_RULE = `
+.sbdocs-preview:has([data-motion-demo]),
+.docs-story:has([data-motion-demo]) {
+  overflow: visible !important;
+}`;
+
+function DemoSurface({ children }: { children: ReactNode }) {
   return (
-    <div
-      role="region"
-      aria-label={label}
-      tabIndex={0}
-      // Inline, not utility classes: this is what keeps the controls pinned, so
-      // it must not depend on the generated stylesheet being current
-      style={{ maxHeight: "75vh", overflowY: "auto" }}
-      className="rounded-md border border-(--color-border-default)"
-    >
+    <div data-motion-demo="">
+      <style>{STICKY_DOCS_RULE}</style>
       {children}
     </div>
   );
 }
 
 /**
- * Controls that stay in view while the demos scroll, so the demos can be
+ * Controls that stay pinned to the top of the page while the demos scroll, so they can be
  * started, slowed and looped from wherever the tracks are on screen.
  */
 function PlaybackBar({
@@ -307,7 +302,7 @@ function DurationsPage() {
           controls stay pinned while you scroll the demos.
         </p>
       </PageIntro>
-      <DemoRegion label="Duration demos">
+      <DemoSurface>
         <PlaybackBar playback={playback} reduced={reduced} />
         <div className="space-y-8 p-4">
           <Section title="Duration scale">
@@ -357,7 +352,7 @@ function DurationsPage() {
             />
           </Section>
         </div>
-      </DemoRegion>
+      </DemoSurface>
     </div>
   );
 }
@@ -367,7 +362,7 @@ function EasingsPage() {
   const playback = usePlayback(durationMs(demoDuration));
   const { speed, moved } = playback;
   return (
-    <DemoRegion label="Easing demos">
+    <DemoSurface>
       <PlaybackBar playback={playback} reduced={reduced} />
       <div className="p-4">
         <Section
@@ -393,7 +388,7 @@ function EasingsPage() {
           />
         </Section>
       </div>
-    </DemoRegion>
+    </DemoSurface>
   );
 }
 
