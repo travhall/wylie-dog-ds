@@ -90,14 +90,94 @@ describe("SyncStatus", () => {
   describe("with a repository", () => {
     const upToDate = { upToDate: true, hasBaseline: true };
 
-    it("asks the plugin for the last sync time and starts as up to date", () => {
+    it("asks the plugin for the last sync time and does not claim anything before a check", () => {
       const { client, getSyncStatus } = makeClient(async () => upToDate);
       render(<SyncStatus githubClient={client} githubConfigured />);
       expect(posted("get-last-sync")).toBe(true);
-      expect(screen.getByText("Up to date")).toBeInTheDocument();
+      // Never "Up to date" until a check has actually run.
+      expect(screen.getByText("Not checked yet")).toBeInTheDocument();
+      expect(screen.queryByText(/Up to date/)).not.toBeInTheDocument();
       expect(screen.getByText("Last sync: Never")).toBeInTheDocument();
-      // Opening the tab must not start a GitHub diff.
+      // Without autoCheck, opening the card does not start a GitHub diff.
       expect(getSyncStatus).not.toHaveBeenCalled();
+    });
+
+    describe("automatic check (autoCheck)", () => {
+      it("starts a check on mount instead of waiting for Refresh", async () => {
+        const { client, getSyncStatus } = makeClient(async () => ({
+          upToDate: false,
+          hasBaseline: true,
+          toPush: 0,
+          toPull: 29,
+          conflicts: 0,
+        }));
+        render(<SyncStatus githubClient={client} githubConfigured autoCheck />);
+        // Checking, never a premature "Up to date".
+        expect(screen.getByText("Checking sync status…")).toBeInTheDocument();
+        expect(screen.queryByText(/Up to date/)).not.toBeInTheDocument();
+        expect(posted("get-local-tokens")).toBe(true);
+        pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+        await waitFor(() =>
+          expect(screen.getByText("Changes detected")).toBeInTheDocument()
+        );
+        expect(getSyncStatus).toHaveBeenCalledTimes(1);
+        expect(screen.getByText(/29 to pull/)).toBeInTheDocument();
+      });
+
+      it("says when the status was checked", async () => {
+        const { client } = makeClient(async () => upToDate);
+        render(<SyncStatus githubClient={client} githubConfigured autoCheck />);
+        pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+        await screen.findByText("Up to date");
+        expect(screen.getByText(/^Checked \d/)).toBeInTheDocument();
+      });
+
+      it("waits while a push or pull is running, then checks once", async () => {
+        const { client, getSyncStatus } = makeClient(async () => upToDate);
+        const view = render(
+          <SyncStatus
+            githubClient={client}
+            githubConfigured
+            autoCheck={false}
+          />
+        );
+        expect(posted("get-local-tokens")).toBe(false);
+        expect(screen.getByText("Not checked yet")).toBeInTheDocument();
+
+        view.rerender(
+          <SyncStatus githubClient={client} githubConfigured autoCheck />
+        );
+        expect(posted("get-local-tokens")).toBe(true);
+        pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+        await screen.findByText("Up to date");
+
+        // The plugin raises the loading flag during its own export, so the
+        // flag toggling must never start another check.
+        view.rerender(
+          <SyncStatus
+            githubClient={client}
+            githubConfigured
+            autoCheck={false}
+          />
+        );
+        view.rerender(
+          <SyncStatus githubClient={client} githubConfigured autoCheck />
+        );
+        await Promise.resolve();
+        expect(getSyncStatus).toHaveBeenCalledTimes(1);
+      });
+
+      it("does nothing without a repository", () => {
+        const { client } = makeClient(async () => upToDate);
+        render(
+          <SyncStatus
+            githubClient={client}
+            githubConfigured={false}
+            autoCheck
+          />
+        );
+        expect(posted("get-local-tokens")).toBe(false);
+      });
     });
 
     it.each([

@@ -406,6 +406,7 @@ export function SyncTab({
         <SyncStatus
           githubClient={githubClient}
           githubConfigured={githubConfigured}
+          autoCheck={!loading}
           includeTextStyles={uiState.includeTextStyles}
           onTextStylesAvailability={handleTextStylesAvailability}
         />
