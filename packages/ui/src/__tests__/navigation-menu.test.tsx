@@ -373,7 +373,7 @@ describe("NavigationMenu", () => {
     // TODO: Radix NavigationMenu portal content swapping between triggers needs special handling
     // The issue is that clicking the second trigger closes the first content but doesn't reliably
     // show the second content in test environment due to timing/animation of portal repositioning
-    it.skip("should work with multiple menu items", async () => {
+    it("should work with multiple menu items", async () => {
       const user = userEvent.setup();
       render(
         <NavigationMenu>
@@ -402,7 +402,9 @@ describe("NavigationMenu", () => {
         { timeout: 3000 }
       );
 
-      await user.click(screen.getByText("Menu 2"));
+      // With one item open, hovering the next opens it straight away; a click
+      // on top of that hover would toggle it closed again
+      await user.hover(screen.getByText("Menu 2"));
       await waitFor(
         () => {
           expect(screen.getByText("Content 2")).toBeInTheDocument();

@@ -225,7 +225,7 @@ describe("Popover", () => {
   });
 
   // TODO: Popover portal positioning needs async test infrastructure
-  describe.skip("Positioning", () => {
+  describe("Positioning", () => {
     it("should position popover on bottom by default", async () => {
       const user = userEvent.setup();
       render(<TestPopover side="bottom" />);
@@ -318,7 +318,7 @@ describe("Popover", () => {
     });
 
     // TODO: Popover portal rendering needs async test infrastructure
-    it.skip("should apply custom className", async () => {
+    it("should apply custom className", async () => {
       const user = userEvent.setup();
 
       render(
@@ -334,7 +334,8 @@ describe("Popover", () => {
 
       await waitFor(
         () => {
-          const content = screen.getByText("Custom content").parentElement;
+          // The text sits directly inside the content element
+          const content = screen.getByText("Custom content");
           expect(content).toHaveClass("custom-popover-class");
         },
         { timeout: 3000 }
