@@ -12,6 +12,15 @@
         }
       ],
       "variables": {
+        "color.background.default": {
+          "$type": "color",
+          "$value": "{color.gray.50}",
+          "$description": "Page background. The default, muted and faint foreground tokens are readable on it.",
+          "valuesByMode": {
+            "Light": "{color.gray.50}",
+            "Dark": "{color.black-bear.950}"
+          }
+        },
         "color.background.primary": {
           "$type": "color",
           "$value": "{color.fiery-coral.700}",
@@ -192,51 +201,6 @@
             "Dark": "{duration.2000}"
           }
         },
-        "layer.dropdown": {
-          "$type": "number",
-          "$value": "{z-index.10}",
-          "$description": "Dropdown menus and select panels",
-          "valuesByMode": {
-            "Light": "{z-index.10}",
-            "Dark": "{z-index.10}"
-          }
-        },
-        "layer.sticky": {
-          "$type": "number",
-          "$value": "{z-index.20}",
-          "$description": "Sticky positioned elements (sticky headers, etc.)",
-          "valuesByMode": {
-            "Light": "{z-index.20}",
-            "Dark": "{z-index.20}"
-          }
-        },
-        "layer.modal": {
-          "$type": "number",
-          "$value": "{z-index.50}",
-          "$description": "Modal dialogs, sheets, and similar blocking overlays",
-          "valuesByMode": {
-            "Light": "{z-index.50}",
-            "Dark": "{z-index.50}"
-          }
-        },
-        "layer.toast": {
-          "$type": "number",
-          "$value": "{z-index.80}",
-          "$description": "Toast notifications — above all UI",
-          "valuesByMode": {
-            "Light": "{z-index.80}",
-            "Dark": "{z-index.80}"
-          }
-        },
-        "layer.tooltip": {
-          "$type": "number",
-          "$value": "{z-index.70}",
-          "$description": "Tooltips — highest priority for transient hints",
-          "valuesByMode": {
-            "Light": "{z-index.70}",
-            "Dark": "{z-index.70}"
-          }
-        },
         "icon.size.xs": {
           "$type": "dimension",
           "$value": "{space.150}",
@@ -345,69 +309,6 @@
             "Dark": "{scale.95}"
           }
         },
-        "transition.scale.hover": {
-          "$type": "number",
-          "$value": "{scale.105}",
-          "$description": "Scale a card or tile grows to on hover",
-          "valuesByMode": {
-            "Light": "{scale.105}",
-            "Dark": "{scale.105}"
-          }
-        },
-        "transition.scale.hover-strong": {
-          "$type": "number",
-          "$value": "{scale.110}",
-          "$description": "Scale an icon grows to on hover, a stronger emphasis than a card or tile",
-          "valuesByMode": {
-            "Light": "{scale.110}",
-            "Dark": "{scale.110}"
-          }
-        },
-        "layer.base": {
-          "$type": "number",
-          "$value": "{z-index.0}",
-          "$description": "Default stacking context",
-          "valuesByMode": {
-            "Light": "{z-index.0}",
-            "Dark": "{z-index.0}"
-          }
-        },
-        "layer.local": {
-          "$type": "number",
-          "$value": "{z-index.01}",
-          "$description": "Stacking above siblings inside one component, below every shared layer",
-          "valuesByMode": {
-            "Light": "{z-index.01}",
-            "Dark": "{z-index.01}"
-          }
-        },
-        "layer.fixed": {
-          "$type": "number",
-          "$value": "{z-index.30}",
-          "$description": "Fixed positioned elements (app shell)",
-          "valuesByMode": {
-            "Light": "{z-index.30}",
-            "Dark": "{z-index.30}"
-          }
-        },
-        "layer.modal-backdrop": {
-          "$type": "number",
-          "$value": "{z-index.40}",
-          "$description": "Modal/dialog backdrop overlay",
-          "valuesByMode": {
-            "Light": "{z-index.40}",
-            "Dark": "{z-index.40}"
-          }
-        },
-        "layer.popover": {
-          "$type": "number",
-          "$value": "{z-index.60}",
-          "$description": "Popovers, hover cards, and floating panels",
-          "valuesByMode": {
-            "Light": "{z-index.60}",
-            "Dark": "{z-index.60}"
-          }
-        },
         "typography.font-size.display.lg": {
           "$type": "fontSize",
           "$value": "{typography.font-size.6xl}",
@@ -460,15 +361,6 @@
           "valuesByMode": {
             "Light": "{typography.font-size.xl}",
             "Dark": "{typography.font-size.xl}"
-          }
-        },
-        "color.background.default": {
-          "$type": "color",
-          "$value": "{color.gray.50}",
-          "$description": "Page background. The default, muted and faint foreground tokens are readable on it.",
-          "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.black-bear.950}"
           }
         },
         "color.background.raised": {
@@ -541,6 +433,33 @@
           "valuesByMode": {
             "Light": "{color.fiery-coral.900}",
             "Dark": "{color.fiery-coral.900}"
+          }
+        },
+        "color.background.secondary": {
+          "$type": "color",
+          "$value": "{color.polar-night.400}",
+          "$description": "Solid fill of the secondary action (the Secondary button and badge). Pairs with foreground.secondary.",
+          "valuesByMode": {
+            "Light": "{color.polar-night.400}",
+            "Dark": "{color.polar-night.400}"
+          }
+        },
+        "color.background.secondary-emphasis": {
+          "$type": "color",
+          "$value": "{color.polar-night.500}",
+          "$description": "Stronger tone of the solid secondary fill. Components use it for hover states; foreground.secondary is readable on it.",
+          "valuesByMode": {
+            "Light": "{color.polar-night.500}",
+            "Dark": "{color.polar-night.500}"
+          }
+        },
+        "color.background.secondary-intense": {
+          "$type": "color",
+          "$value": "{color.polar-night.600}",
+          "$description": "Strongest tone of the solid secondary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.secondary is readable on it.",
+          "valuesByMode": {
+            "Light": "{color.polar-night.600}",
+            "Dark": "{color.polar-night.600}"
           }
         },
         "color.background.danger-muted": {
@@ -673,33 +592,6 @@
           "$type": "color",
           "$value": "{color.polar-night.600}",
           "$description": "Strongest tone of the solid info fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.info is readable on it.",
-          "valuesByMode": {
-            "Light": "{color.polar-night.600}",
-            "Dark": "{color.polar-night.600}"
-          }
-        },
-        "color.background.secondary": {
-          "$type": "color",
-          "$value": "{color.polar-night.400}",
-          "$description": "Solid fill of the secondary action (the Secondary button and badge). Pairs with foreground.secondary.",
-          "valuesByMode": {
-            "Light": "{color.polar-night.400}",
-            "Dark": "{color.polar-night.400}"
-          }
-        },
-        "color.background.secondary-emphasis": {
-          "$type": "color",
-          "$value": "{color.polar-night.500}",
-          "$description": "Stronger tone of the solid secondary fill. Components use it for hover states; foreground.secondary is readable on it.",
-          "valuesByMode": {
-            "Light": "{color.polar-night.500}",
-            "Dark": "{color.polar-night.500}"
-          }
-        },
-        "color.background.secondary-intense": {
-          "$type": "color",
-          "$value": "{color.polar-night.600}",
-          "$description": "Strongest tone of the solid secondary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.secondary is readable on it.",
           "valuesByMode": {
             "Light": "{color.polar-night.600}",
             "Dark": "{color.polar-night.600}"
@@ -946,6 +838,114 @@
           "valuesByMode": {
             "Light": "{border-width.2}",
             "Dark": "{border-width.2}"
+          }
+        },
+        "layer.base": {
+          "$type": "number",
+          "$value": "{z-index.0}",
+          "$description": "Default stacking context",
+          "valuesByMode": {
+            "Light": "{z-index.0}",
+            "Dark": "{z-index.0}"
+          }
+        },
+        "layer.local": {
+          "$type": "number",
+          "$value": "{z-index.01}",
+          "$description": "Stacking above siblings inside one component, below every shared layer",
+          "valuesByMode": {
+            "Light": "{z-index.01}",
+            "Dark": "{z-index.01}"
+          }
+        },
+        "layer.dropdown": {
+          "$type": "number",
+          "$value": "{z-index.10}",
+          "$description": "Dropdown menus and select panels",
+          "valuesByMode": {
+            "Light": "{z-index.10}",
+            "Dark": "{z-index.10}"
+          }
+        },
+        "layer.sticky": {
+          "$type": "number",
+          "$value": "{z-index.20}",
+          "$description": "Sticky positioned elements (sticky headers, etc.)",
+          "valuesByMode": {
+            "Light": "{z-index.20}",
+            "Dark": "{z-index.20}"
+          }
+        },
+        "layer.fixed": {
+          "$type": "number",
+          "$value": "{z-index.30}",
+          "$description": "Fixed positioned elements (app shell)",
+          "valuesByMode": {
+            "Light": "{z-index.30}",
+            "Dark": "{z-index.30}"
+          }
+        },
+        "layer.modal-backdrop": {
+          "$type": "number",
+          "$value": "{z-index.40}",
+          "$description": "Modal/dialog backdrop overlay",
+          "valuesByMode": {
+            "Light": "{z-index.40}",
+            "Dark": "{z-index.40}"
+          }
+        },
+        "layer.modal": {
+          "$type": "number",
+          "$value": "{z-index.50}",
+          "$description": "Modal dialogs, sheets, and similar blocking overlays",
+          "valuesByMode": {
+            "Light": "{z-index.50}",
+            "Dark": "{z-index.50}"
+          }
+        },
+        "layer.popover": {
+          "$type": "number",
+          "$value": "{z-index.60}",
+          "$description": "Popovers, hover cards, and floating panels",
+          "valuesByMode": {
+            "Light": "{z-index.60}",
+            "Dark": "{z-index.60}"
+          }
+        },
+        "layer.tooltip": {
+          "$type": "number",
+          "$value": "{z-index.70}",
+          "$description": "Tooltips — highest priority for transient hints",
+          "valuesByMode": {
+            "Light": "{z-index.70}",
+            "Dark": "{z-index.70}"
+          }
+        },
+        "layer.toast": {
+          "$type": "number",
+          "$value": "{z-index.80}",
+          "$description": "Toast notifications — above all UI",
+          "valuesByMode": {
+            "Light": "{z-index.80}",
+            "Dark": "{z-index.80}"
+          }
+        },
+        "transition.scale.hover": {
+          "$type": "number",
+          "$value": "{scale.105}",
+          "$description": "Scale a card or tile grows to on hover",
+          "valuesByMode": {
+            "Light": "{scale.105}",
+            "Dark": "{scale.105}"
+          }
+        },
+        "transition.scale.hover-strong": {
+          "$type": "number",
+          "$value": "{scale.110}",
+          "$description": "Scale an icon grows to on hover, a stronger emphasis than a card or tile",
+          "valuesByMode": {
+            "Light": "{scale.110}",
+            "Dark": "{scale.110}"
           }
         }
       }
