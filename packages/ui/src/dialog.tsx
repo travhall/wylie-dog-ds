@@ -14,8 +14,6 @@ export const dialogContentVariants = cva(
     "gap-(--space-dialog-header-gap)",
     "border-(length:--space-dialog-border-width) bg-(--color-dialog-background) shadow-(--shadow-dialog-shadow) duration-(--duration-dialog-content-duration)",
     "p-(--space-dialog-content-padding)",
-    "/2 [48%]",
-    "/2 [48%]",
     "rounded-(--space-dialog-content-radius)",
     "border-(--color-dialog-border)"
   ),
@@ -144,7 +142,7 @@ export const DialogFooter = React.forwardRef<
     ref={ref}
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end",
-      "sm:space-x-(--space-dialog-footer-gap)",
+      "gap-(--space-dialog-footer-gap)",
       "mt-(--space-dialog-footer-margin-top)",
       className
     )}

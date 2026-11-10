@@ -568,7 +568,7 @@ describe("Dialog", () => {
         expect(footer).toBeInTheDocument();
         expect(footer).toHaveClass("sm:flex-row");
         expect(footer).toHaveClass("sm:justify-end");
-        expect(footer).toHaveClass("sm:space-x-(--space-dialog-footer-gap)");
+        expect(footer).toHaveClass("gap-(--space-dialog-footer-gap)");
       });
     });
 
