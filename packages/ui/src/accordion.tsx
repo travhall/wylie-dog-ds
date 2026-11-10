@@ -27,7 +27,7 @@ const AccordionItem = React.forwardRef<
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(
-      "border-b-(length:--space-accordion-item-border-width) border-(--color-accordion-border) w-full relative",
+      "border-b-(length:--space-accordion-item-border-width) border-(--color-accordion-border) bg-(--color-accordion-background) w-full relative",
       className
     )}
     {...props}
@@ -47,7 +47,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "group flex flex-1 items-center justify-between bg-(--color-accordion-background) p-(--space-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-(--font-weight-accordion-trigger-font-weight) leading-(--line-height-accordion-trigger-line-height) transition-all",
+        "group flex flex-1 items-center justify-between p-(--space-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-(--font-weight-accordion-trigger-font-weight) leading-(--line-height-accordion-trigger-line-height) transition-all",
         "text-(--color-accordion-trigger-text)",
         "hover:bg-(--color-accordion-trigger-hover) hover:text-(--color-accordion-trigger-text-hover)",
         "active:bg-(--color-accordion-trigger-pressed)",
@@ -84,7 +84,7 @@ const AccordionContent = React.forwardRef<
   >
     <div
       className={cn(
-        "p-(--space-accordion-content-padding) bg-(--color-accordion-background) text-(length:--font-size-accordion-content-font-size) text-(--color-accordion-content-text)",
+        "p-(--space-accordion-content-padding) text-(length:--font-size-accordion-content-font-size) text-(--color-accordion-content-text)",
         className
       )}
     >
