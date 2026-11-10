@@ -76,14 +76,34 @@
           "type": "TEXT",
           "default": "This action cannot be undone."
         },
+        "showActionButton": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "showCancelButton": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "showDescription": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "showExtraButton": {
+          "type": "BOOLEAN",
+          "default": false
+        },
         "state": {
           "type": "VARIANT",
           "default": "default",
-          "options": ["default", "destructive"]
+          "options": ["default"]
+        },
+        "title": {
+          "type": "TEXT",
+          "default": "Are you sure?"
         }
       },
-      "variantCount": 2,
-      "expectedVariantCount": 2
+      "variantCount": 1,
+      "expectedVariantCount": 1
     },
     {
       "name": "Avatar",
@@ -405,14 +425,29 @@
       ],
       "properties": {
         "content": {
-          "type": "TEXT",
-          "default": "Dialog content goes here."
+          "type": "SLOT"
         },
         "description": {
           "type": "TEXT",
           "default": "Dialog description text goes here."
         },
-        "footer": {
+        "showActionButton": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "showCancelButton": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "showDescription": {
+          "type": "BOOLEAN",
+          "default": true
+        },
+        "showExtraButton": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "showFooter": {
           "type": "BOOLEAN",
           "default": false
         },
