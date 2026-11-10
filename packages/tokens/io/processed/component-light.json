@@ -759,6 +759,11 @@
     "$value": "{color.border.default}",
     "$description": "Border color of the accordion."
   },
+  "accordion.background": {
+    "$type": "color",
+    "$value": "{color.background.default}",
+    "$description": "Border color of the accordion."
+  },
   "accordion.content-text": {
     "$type": "color",
     "$value": "{color.foreground.default}",

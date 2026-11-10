@@ -29,6 +29,7 @@ export type CssVarName =
   | "--calendar-nav-button-opacity-hover"
   | "--card-grid-item-hover-scale"
   | "--collapsible-content-easing"
+  | "--color-accordion-background"
   | "--color-accordion-border"
   | "--color-accordion-content-text"
   | "--color-accordion-icon"
@@ -1595,6 +1596,7 @@ export declare const cssVars: Readonly<{
   "calendarNavButtonOpacityHover": "--calendar-nav-button-opacity-hover";
   "cardGridItemHoverScale": "--card-grid-item-hover-scale";
   "collapsibleContentEasing": "--collapsible-content-easing";
+  "colorAccordionBackground": "--color-accordion-background";
   "colorAccordionBorder": "--color-accordion-border";
   "colorAccordionContentText": "--color-accordion-content-text";
   "colorAccordionIcon": "--color-accordion-icon";

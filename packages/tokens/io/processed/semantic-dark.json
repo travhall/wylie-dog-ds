@@ -1,4 +1,9 @@
 {
+  "color.background.default": {
+    "$type": "color",
+    "$value": "{color.black-bear.950}",
+    "$description": "Page background. The default, muted and faint foreground tokens are readable on it."
+  },
   "color.background.primary": {
     "$type": "color",
     "$value": "{color.fiery-coral.700}",
@@ -99,31 +104,6 @@
     "$value": "{duration.2000}",
     "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse"
   },
-  "layer.dropdown": {
-    "$type": "number",
-    "$value": "{z-index.10}",
-    "$description": "Dropdown menus and select panels"
-  },
-  "layer.sticky": {
-    "$type": "number",
-    "$value": "{z-index.20}",
-    "$description": "Sticky positioned elements (sticky headers, etc.)"
-  },
-  "layer.modal": {
-    "$type": "number",
-    "$value": "{z-index.50}",
-    "$description": "Modal dialogs, sheets, and similar blocking overlays"
-  },
-  "layer.toast": {
-    "$type": "number",
-    "$value": "{z-index.80}",
-    "$description": "Toast notifications — above all UI"
-  },
-  "layer.tooltip": {
-    "$type": "number",
-    "$value": "{z-index.70}",
-    "$description": "Tooltips — highest priority for transient hints"
-  },
   "icon.size.xs": {
     "$type": "dimension",
     "$value": "{space.150}",
@@ -184,41 +164,6 @@
     "$value": "{scale.95}",
     "$description": "Scale a surface starts from while it enters, and ends at while it leaves"
   },
-  "transition.scale.hover": {
-    "$type": "number",
-    "$value": "{scale.105}",
-    "$description": "Scale a card or tile grows to on hover"
-  },
-  "transition.scale.hover-strong": {
-    "$type": "number",
-    "$value": "{scale.110}",
-    "$description": "Scale an icon grows to on hover, a stronger emphasis than a card or tile"
-  },
-  "layer.base": {
-    "$type": "number",
-    "$value": "{z-index.0}",
-    "$description": "Default stacking context"
-  },
-  "layer.local": {
-    "$type": "number",
-    "$value": "{z-index.01}",
-    "$description": "Stacking above siblings inside one component, below every shared layer"
-  },
-  "layer.fixed": {
-    "$type": "number",
-    "$value": "{z-index.30}",
-    "$description": "Fixed positioned elements (app shell)"
-  },
-  "layer.modal-backdrop": {
-    "$type": "number",
-    "$value": "{z-index.40}",
-    "$description": "Modal/dialog backdrop overlay"
-  },
-  "layer.popover": {
-    "$type": "number",
-    "$value": "{z-index.60}",
-    "$description": "Popovers, hover cards, and floating panels"
-  },
   "typography.font-size.display.lg": {
     "$type": "fontSize",
     "$value": "{typography.font-size.6xl}",
@@ -248,11 +193,6 @@
     "$type": "fontSize",
     "$value": "{typography.font-size.xl}",
     "$description": "Heading Small — card titles and feature item headings (20px)"
-  },
-  "color.background.default": {
-    "$type": "color",
-    "$value": "{color.black-bear.950}",
-    "$description": "Page background. The default, muted and faint foreground tokens are readable on it."
   },
   "color.background.raised": {
     "$type": "color",
@@ -293,6 +233,21 @@
     "$type": "color",
     "$value": "{color.fiery-coral.900}",
     "$description": "Strongest tone of the solid primary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.primary is readable on it."
+  },
+  "color.background.secondary": {
+    "$type": "color",
+    "$value": "{color.polar-night.400}",
+    "$description": "Solid fill of the secondary action (the Secondary button and badge). Pairs with foreground.secondary."
+  },
+  "color.background.secondary-emphasis": {
+    "$type": "color",
+    "$value": "{color.polar-night.500}",
+    "$description": "Stronger tone of the solid secondary fill. Components use it for hover states; foreground.secondary is readable on it."
+  },
+  "color.background.secondary-intense": {
+    "$type": "color",
+    "$value": "{color.polar-night.600}",
+    "$description": "Strongest tone of the solid secondary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.secondary is readable on it."
   },
   "color.background.danger-muted": {
     "$type": "color",
@@ -368,21 +323,6 @@
     "$type": "color",
     "$value": "{color.polar-night.600}",
     "$description": "Strongest tone of the solid info fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.info is readable on it."
-  },
-  "color.background.secondary": {
-    "$type": "color",
-    "$value": "{color.polar-night.400}",
-    "$description": "Solid fill of the secondary action (the Secondary button and badge). Pairs with foreground.secondary."
-  },
-  "color.background.secondary-emphasis": {
-    "$type": "color",
-    "$value": "{color.polar-night.500}",
-    "$description": "Stronger tone of the solid secondary fill. Components use it for hover states; foreground.secondary is readable on it."
-  },
-  "color.background.secondary-intense": {
-    "$type": "color",
-    "$value": "{color.polar-night.600}",
-    "$description": "Strongest tone of the solid secondary fill, one step beyond emphasis in the direction hover moves. Components use it for pressed states; foreground.secondary is readable on it."
   },
   "color.background.accent": {
     "$type": "color",
@@ -518,5 +458,65 @@
     "$type": "dimension",
     "$value": "{border-width.2}",
     "$description": "Width of the halo band outside the focus outline."
+  },
+  "layer.base": {
+    "$type": "number",
+    "$value": "{z-index.0}",
+    "$description": "Default stacking context"
+  },
+  "layer.local": {
+    "$type": "number",
+    "$value": "{z-index.01}",
+    "$description": "Stacking above siblings inside one component, below every shared layer"
+  },
+  "layer.dropdown": {
+    "$type": "number",
+    "$value": "{z-index.10}",
+    "$description": "Dropdown menus and select panels"
+  },
+  "layer.sticky": {
+    "$type": "number",
+    "$value": "{z-index.20}",
+    "$description": "Sticky positioned elements (sticky headers, etc.)"
+  },
+  "layer.fixed": {
+    "$type": "number",
+    "$value": "{z-index.30}",
+    "$description": "Fixed positioned elements (app shell)"
+  },
+  "layer.modal-backdrop": {
+    "$type": "number",
+    "$value": "{z-index.40}",
+    "$description": "Modal/dialog backdrop overlay"
+  },
+  "layer.modal": {
+    "$type": "number",
+    "$value": "{z-index.50}",
+    "$description": "Modal dialogs, sheets, and similar blocking overlays"
+  },
+  "layer.popover": {
+    "$type": "number",
+    "$value": "{z-index.60}",
+    "$description": "Popovers, hover cards, and floating panels"
+  },
+  "layer.tooltip": {
+    "$type": "number",
+    "$value": "{z-index.70}",
+    "$description": "Tooltips — highest priority for transient hints"
+  },
+  "layer.toast": {
+    "$type": "number",
+    "$value": "{z-index.80}",
+    "$description": "Toast notifications — above all UI"
+  },
+  "transition.scale.hover": {
+    "$type": "number",
+    "$value": "{scale.105}",
+    "$description": "Scale a card or tile grows to on hover"
+  },
+  "transition.scale.hover-strong": {
+    "$type": "number",
+    "$value": "{scale.110}",
+    "$description": "Scale an icon grows to on hover, a stronger emphasis than a card or tile"
   }
 }
