@@ -1383,7 +1383,7 @@
         "accordion.background": {
           "$type": "color",
           "$value": "{color.background.default}",
-          "$description": "Border color of the accordion.",
+          "$description": "Fill behind the accordion item, trigger and content.",
           "valuesByMode": {
             "Light": "{color.background.default}",
             "Dark": "{color.background.default}"
