@@ -41,7 +41,6 @@ const AlertDialogContent = React.forwardRef<
       className={cn(
         "wd-motion-pop [--wd-motion-duration:var(--duration-alert-dialog-content-duration)] [--wd-motion-easing:var(--alert-dialog-content-easing)] [--wd-motion-scale:var(--alert-dialog-content-scale)]",
         "fixed left-[50%] top-[50%] z-(--alert-dialog-content-z-index) grid w-full max-w-(--space-alert-dialog-content-max-width) translate-x-[-50%] translate-y-[-50%] gap-(--space-alert-dialog-content-gap) border-(length:--space-alert-dialog-border-width) border-(--color-dialog-border) bg-(--color-dialog-background) p-(--space-alert-dialog-content-padding) shadow-(--shadow-alert-dialog-content-shadow) duration-(--duration-alert-dialog-content-duration)",
-        "/2 [48%] /2 [48%]",
         "sm:rounded-(--space-alert-dialog-content-radius)",
         className
       )}
@@ -69,7 +68,7 @@ export type AlertDialogFooterProps = React.HTMLAttributes<HTMLDivElement>;
 const AlertDialogFooter = ({ className, ...props }: AlertDialogFooterProps) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-(--space-alert-dialog-footer-gap)",
+      "flex flex-col-reverse sm:flex-row sm:justify-end gap-(--space-alert-dialog-footer-gap)",
       className
     )}
     {...props}
