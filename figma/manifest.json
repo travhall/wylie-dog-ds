@@ -424,7 +424,11 @@
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-dialog--docs"
       ],
       "properties": {
-        "content": {
+        "body": {
+          "type": "TEXT",
+          "default": "Dialog content goes here."
+        },
+        "customBody": {
           "type": "SLOT"
         },
         "description": {
@@ -435,9 +439,17 @@
           "type": "BOOLEAN",
           "default": true
         },
+        "showBody": {
+          "type": "BOOLEAN",
+          "default": true
+        },
         "showCancelButton": {
           "type": "BOOLEAN",
           "default": true
+        },
+        "showCustomBody": {
+          "type": "BOOLEAN",
+          "default": false
         },
         "showDescription": {
           "type": "BOOLEAN",
