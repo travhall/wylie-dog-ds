@@ -412,23 +412,22 @@
           "type": "TEXT",
           "default": "Dialog description text goes here."
         },
+        "footer": {
+          "type": "BOOLEAN",
+          "default": false
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["md", "sm", "lg", "xl", "full"]
-        },
-        "state": {
-          "type": "VARIANT",
-          "default": "default",
-          "options": ["default", "with-footer"]
+          "options": ["md", "sm", "lg"]
         },
         "title": {
           "type": "TEXT",
           "default": "Dialog Title"
         }
       },
-      "variantCount": 10,
-      "expectedVariantCount": 10
+      "variantCount": 3,
+      "expectedVariantCount": 3
     },
     {
       "name": "Dropdown Menu",

@@ -153,8 +153,9 @@
     },
     {
       "component": "Dialog",
-      "rule": "state-axis",
-      "reason": "with-footer is an arrangement of children (DialogFooter), not a prop."
+      "rule": "options-differ",
+      "property": "size",
+      "reason": "xl and full are not drawn. Every size is a max-width cap in code (w-full max-w-*), so a wider dialog resizes the instance, and full is 95vw by 95vh with no fixed width. Figma keeps sm, md and lg like Sheet, Popover and Hover Card (owner decision 2026-11-10)."
     },
     {
       "component": "Alert Dialog",
@@ -409,6 +410,12 @@
       "rule": "content-property-not-in-code",
       "property": "description",
       "reason": "DialogDescription is a sub-component in code, not a prop of Dialog; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "footer",
+      "reason": "DialogFooter is an optional child in code, not a prop of Dialog; the Figma boolean shows or hides it."
     },
     {
       "component": "Dialog",
