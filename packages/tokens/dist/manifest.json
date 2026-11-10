@@ -8093,7 +8093,7 @@
         "value": "oklch(0.991 0.003 264.36)",
         "type": "color",
         "variable": "var(--color-accordion-background)",
-        "description": "Border color of the accordion."
+        "description": "Fill behind the accordion item, trigger and content."
       },
       "accordion-content-text": {
         "name": "accordionContentText",
