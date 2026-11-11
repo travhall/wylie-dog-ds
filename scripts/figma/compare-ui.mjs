@@ -194,6 +194,9 @@ export function compareMetrics(figma, code, tolerance = TOLERANCE) {
 
 /** Split findings by the allow list; report entries that matched nothing. */
 export function applyAllow(findings, allow = []) {
+  // an entry's `variant` is written the code's way ("state=with-selection"); the Figma name is
+  // Title Case ("State=With Selection"), so both sides are compared lower-cased with hyphens
+  const norm = (s) => String(s).toLowerCase().replace(/\s+/g, "-");
   const used = new Set();
   const open = [];
   const allowed = [];
@@ -203,7 +206,7 @@ export function applyAllow(findings, allow = []) {
         a.set === f.set &&
         a.property === f.property &&
         (!a.scope || a.scope === f.scope) &&
-        (!a.variant || f.variant.includes(a.variant))
+        (!a.variant || norm(f.variant).includes(norm(a.variant)))
     );
     if (index >= 0) {
       used.add(index);

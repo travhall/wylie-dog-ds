@@ -19,7 +19,7 @@ node scripts/figma/harvest-ui.mjs figma-metrics.json > code-metrics.json
 pnpm compare:ui figma-metrics.json code-metrics.json
 ```
 
-The harvester lower-cases variant names and values, because the library is Title Case (`Variant=Default`; see [naming in Figma](figma-naming.md)) and the config and stories use the code's names. It takes the theme from the `mode` in the Figma file, so both sides are measured in the same one. The report groups what differs by component and variant, with both values. It exits 1 on any open finding.
+The harvester lower-cases variant names and values and turns spaces into hyphens (`State=With Ellipsis` becomes `state=with-ellipsis`), because the library is Title Case (`Variant=Default`; see [naming in Figma](figma-naming.md)) and the config and stories use the code's names. An `allow` entry's `variant` text is matched the same way, so write it the code's way (`state=with-selection`). It takes the theme from the `mode` in the Figma file, so both sides are measured in the same one. The report groups what differs by component and variant, with both values. It exits 1 on any open finding.
 
 ## Adding a component
 

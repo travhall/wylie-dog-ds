@@ -1296,10 +1296,10 @@
     },
     {
       "set": "Context Menu",
-      "property": "color",
-      "scope": "text",
+      "property": "opacity",
+      "scope": "box",
       "variant": ":: context-menu-row#1",
-      "reason": "The story's second item is disabled; Figma's row is enabled."
+      "reason": "The story's second item is disabled (dimmed to 60% by the menu's opacity-disabled token); Figma's row is enabled."
     },
     {
       "set": "Context Menu",
