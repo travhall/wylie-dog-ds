@@ -5137,10 +5137,10 @@
           "input",
           "placeholder"
         ],
-        "value": "oklch(0.33 0.024 47.79)",
+        "value": "oklch(0.48 0.017 50.13)",
         "type": "color",
         "variable": "var(--color-input-placeholder)",
-        "description": "Color of placeholder text, muted so it reads as a hint rather than a value."
+        "description": "Color of placeholder text, fainter than the input text so a hint never reads as a value."
       },
       "input-padding-x": {
         "name": "inputPaddingX",
@@ -6486,10 +6486,10 @@
           "command",
           "placeholder"
         ],
-        "value": "oklch(0.33 0.024 47.79)",
+        "value": "oklch(0.48 0.017 50.13)",
         "type": "color",
         "variable": "var(--color-command-placeholder)",
-        "description": "Color of placeholder text in the command menu, muted so it reads as a hint rather than a value."
+        "description": "Color of placeholder text in the command menu, fainter than the typed text so a hint never reads as a value."
       },
       "command-empty": {
         "name": "commandEmpty",

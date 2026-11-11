@@ -159,7 +159,7 @@
     },
     {
       "foreground": "input.placeholder",
-      "backgrounds": ["input.default.background"],
+      "backgrounds": ["input.default.background", "input.background-hover"],
       "kind": "text"
     },
     {

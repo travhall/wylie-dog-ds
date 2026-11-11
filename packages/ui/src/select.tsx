@@ -9,7 +9,9 @@ export const selectTriggerVariants = cva(
   cn(
     "flex w-full items-center justify-between border-(length:--space-select-border-width) border-(--color-input-border) transition-colors",
     "rounded-(--space-select-trigger-radius)",
-    "placeholder:text-(--color-input-placeholder)",
+    // Radix marks an empty trigger with data-placeholder; the placeholder: variant only
+    // matches the ::placeholder pseudo-element of an input, never a button
+    "data-[placeholder]:text-(--color-input-placeholder)",
     focusRingClasses,
     "disabled:cursor-not-allowed disabled:opacity-(--select-opacity-disabled)",
     "[&>span]:line-clamp-1",
