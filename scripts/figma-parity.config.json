@@ -153,13 +153,14 @@
     },
     {
       "component": "Dialog",
-      "rule": "state-axis",
-      "reason": "with-footer is an arrangement of children (DialogFooter), not a prop."
+      "rule": "options-differ",
+      "property": "size",
+      "reason": "xl and full are not drawn. Every size is a max-width cap in code (w-full max-w-*), so a wider dialog resizes the instance, and full is 95vw by 95vh with no fixed width. Figma keeps sm, md and lg like Sheet, Popover and Hover Card (owner decision 2026-11-10)."
     },
     {
       "component": "Alert Dialog",
       "rule": "state-axis",
-      "reason": "destructive is a Button variant inside the dialog, not a prop of the dialog."
+      "reason": "Alert Dialog has no variant props in code. Figma keeps one State option (Default) because the Plugin API rejects setProperties on a set with no variant axis. The action button's variant (default, destructive) is chosen through the exposed Button instance."
     },
     {
       "component": "Context Menu",
@@ -401,12 +402,6 @@
     {
       "component": "Dialog",
       "rule": "content-property-not-in-code",
-      "property": "content",
-      "reason": "DialogContent is a sub-component in code, not a prop of Dialog; the Figma TEXT property edits its text."
-    },
-    {
-      "component": "Dialog",
-      "rule": "content-property-not-in-code",
       "property": "description",
       "reason": "DialogDescription is a sub-component in code, not a prop of Dialog; the Figma TEXT property edits its text."
     },
@@ -561,6 +556,90 @@
       "component": "Carousel",
       "rule": "state-axis",
       "reason": "The Figma set draws the scroll position: default (a middle slide), start (previous disabled) and end (next disabled). In code these are derived from the scroll position, not a prop."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showFooter",
+      "reason": "DialogFooter is an optional child in code, not a prop of Dialog; the Figma boolean shows or hides it."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showDescription",
+      "reason": "DialogDescription is an optional child in code, not a prop of Dialog; the Figma boolean shows or hides it."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showCancelButton",
+      "reason": "A footer button is a child of DialogFooter in code, not a prop of Dialog; the Figma boolean shows or hides it. The button's label and variant are edited through the exposed Button instance."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showActionButton",
+      "reason": "A footer button is a child of DialogFooter in code, not a prop of Dialog; the Figma boolean shows or hides it. The button's label and variant are edited through the exposed Button instance."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showExtraButton",
+      "reason": "A footer button is a child of DialogFooter in code, not a prop of Dialog; the Figma boolean shows or hides it (hidden by default). The button's label and variant are edited through the exposed Button instance."
+    },
+    {
+      "component": "Alert Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showCancelButton",
+      "reason": "A footer button is a child of AlertDialogFooter in code, not a prop of Alert Dialog; the Figma boolean shows or hides it. The button's label and variant are edited through the exposed Button instance."
+    },
+    {
+      "component": "Alert Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showActionButton",
+      "reason": "A footer button is a child of AlertDialogFooter in code, not a prop of Alert Dialog; the Figma boolean shows or hides it. The button's label and variant are edited through the exposed Button instance."
+    },
+    {
+      "component": "Alert Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showExtraButton",
+      "reason": "A footer button is a child of AlertDialogFooter in code, not a prop of Alert Dialog; the Figma boolean shows or hides it (hidden by default). The button's label and variant are edited through the exposed Button instance."
+    },
+    {
+      "component": "Alert Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "title",
+      "reason": "AlertDialogTitle is a sub-component in code, not a prop of Alert Dialog; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Alert Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showDescription",
+      "reason": "AlertDialogDescription is an optional child in code, not a prop of Alert Dialog; the Figma boolean shows or hides it."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "body",
+      "reason": "The body is whatever is placed between DialogHeader and DialogFooter in code, not a prop of Dialog; the Figma TEXT property edits its text."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showBody",
+      "reason": "The body is optional children in code, not a prop of Dialog; the Figma boolean shows or hides the text body."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "customBody",
+      "reason": "Any content can be placed in DialogContent in code, not a prop of Dialog; the Figma SLOT takes a form, a list or other content."
+    },
+    {
+      "component": "Dialog",
+      "rule": "content-property-not-in-code",
+      "property": "showCustomBody",
+      "reason": "The custom body is optional children in code, not a prop of Dialog; the Figma boolean shows or hides the slot (hidden by default)."
     }
   ]
 }
