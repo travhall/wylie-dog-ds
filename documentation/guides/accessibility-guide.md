@@ -2,7 +2,7 @@
 
 ## Current State
 
-**Status**: WCAG 2.2 AA is the current target — actively audited and maintained. See `plans/storybook-a11y-backlog.md` in the repo root for the most recent remediation pass.
+**Status**: WCAG 2.2 AA is the current target — actively audited and maintained.
 
 ### Completed Improvements (Dec 2025)
 

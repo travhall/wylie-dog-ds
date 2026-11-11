@@ -7,7 +7,7 @@ description: Use when checking or changing the Wylie Dog Figma library against t
 
 Code wins. The Figma library mirrors `packages/ui`; where they differ, Figma is wrong unless the
 difference is listed, with a reason, in `scripts/figma-parity.config.json`. Plan 216
-(`plans/216-figma-code-parity.md`, gitignored, owner's checkout) holds the decisions and why.
+(the maintainer's notes, kept outside the repo) holds the decisions and why.
 
 This skill is instructions only. It ships no scripts; every command below is already in the repo.
 Read before running anything that writes to Figma, and never put a token or PAT in a prompt or file.

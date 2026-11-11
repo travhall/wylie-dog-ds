@@ -3,7 +3,7 @@
 // A `duration` token is a string in the repo ("150ms") and a TIMING variable in Figma,
 // a number of SECONDS (0.15). A `cubicBezier` token is "cubic-bezier(0, 0, 0.2, 1)" in
 // the repo and an EASING variable in Figma, an object with the four control points.
-// Both were verified against a live Figma file on 2026-11-05 (plans/137). Figma stores
+// Both were verified against a live Figma file on 2026-11-05 (Plan 137). Figma stores
 // numbers as float32, so 0.15 reads back as 0.15000000596 and is rounded on the way out.
 
 export interface FigmaEasing {

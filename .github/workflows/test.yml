@@ -61,7 +61,7 @@ jobs:
       - name: Install Playwright Chromium
         run: pnpm --filter storybook exec playwright install chromium --with-deps
 
-      # Consolidated per plans/078-deduplicate-test-workflow-runs.md: `test`,
+      # Consolidated per Plan 078 (deduplicate the test workflow runs): `test`,
       # `test:a11y`, and `test:coverage` all ran the same Vitest file set
       # sequentially (test:a11y's a11y specs are already matched by the
       # default `include` globs, and test:coverage is `test` + `--coverage`).
