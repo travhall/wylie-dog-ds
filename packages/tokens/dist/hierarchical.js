@@ -610,7 +610,7 @@ export const fontWeight = {
   "menu-label-font-weight": 600,
   "fallback-font-weight": 500,
   "footer-font-weight": 500,
-  "message-font-weight": 500,
+  "error-font-weight": 500,
   "day-header-font-weight": 400,
   "page-font-weight": 400,
   "group-heading-font-weight": 500,

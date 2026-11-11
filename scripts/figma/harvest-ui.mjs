@@ -39,7 +39,14 @@ export function parseVariant(name) {
 /** Storybook's URL syntax for args: booleans are !true and !false, the rest are plain. */
 export function argsParam(figmaProps, component) {
   const parts = [];
-  for (const [prop, arg] of Object.entries(component.args ?? {})) {
+  // a property with only `valueArgs` (Input's `filled`, which is the arg `defaultValue` set to some
+  // text, and nothing at all when it is false) has no entry in `args`
+  const props = new Set([
+    ...Object.keys(component.args ?? {}),
+    ...Object.keys(component.valueArgs ?? {}),
+  ]);
+  for (const prop of props) {
+    const arg = component.args?.[prop];
     if (figmaProps[prop] === undefined) continue;
     // One Figma value that is several story args (Checkbox's `checked=error` is an unchecked,
     // errored box): `valueArgs` gives the whole args string for that value.
@@ -48,6 +55,7 @@ export function argsParam(figmaProps, component) {
       parts.push(whole);
       continue;
     }
+    if (arg === undefined) continue;
     const value =
       component.values?.[prop]?.[figmaProps[prop]] ?? figmaProps[prop];
     parts.push(

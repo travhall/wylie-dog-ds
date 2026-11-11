@@ -17,7 +17,6 @@ import {
   FormField,
   FormLabel,
   FormMessage,
-  useFormField,
 } from "@wyliedog/ui/form";
 import { Input, type InputProps } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
@@ -40,26 +39,6 @@ import { Textarea } from "@wyliedog/ui/textarea";
 
 const stay = (e: FormEvent) => e.preventDefault();
 
-/*
- * An Input wired to the surrounding FormField for id, error and description.
- * Input builds aria-describedby from `descriptionId` and `errorId`, so those are
- * passed instead of an explicit aria-describedby, which would replace them. The
- * description id is only passed when a description is rendered.
- */
-function FieldInput({ hasHint, ...props }: InputProps & { hasHint?: boolean }) {
-  const { id, errorId, descriptionId, isInvalid } = useFormField();
-  return (
-    <Input
-      id={id}
-      size="sm"
-      error={isInvalid}
-      errorId={errorId}
-      descriptionId={hasHint ? descriptionId : undefined}
-      {...props}
-    />
-  );
-}
-
 export function Field({
   label,
   required,
@@ -76,7 +55,7 @@ export function Field({
   return (
     <FormField error={error} required={required}>
       <FormLabel size="sm">{label}</FormLabel>
-      <FieldInput hasHint={Boolean(hint)} {...input} />
+      <Input size="sm" {...input} />
       {hint ? <FormDescription>{hint}</FormDescription> : null}
       <FormMessage>{message}</FormMessage>
     </FormField>

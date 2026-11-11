@@ -17,7 +17,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const root = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../.."
+);
 
 export const TOLERANCE = {
   px: 1, // sizes, padding, gap, radius, border width, font size, line height, shadow offsets
@@ -197,6 +200,12 @@ export function applyAllow(findings, allow = []) {
   // an entry's `variant` is written the code's way ("state=with-selection"); the Figma name is
   // Title Case ("State=With Selection"), so both sides are compared lower-cased with hyphens
   const norm = (s) => String(s).toLowerCase().replace(/\s+/g, "-");
+  // a `variant` ending in "$" must match the end of the variant name, so an entry for a part
+  // ("... :: select-stack$") does not also cover the parts whose names start with it
+  const variantMatches = (f, variant) =>
+    variant.endsWith("$")
+      ? norm(f.variant).endsWith(norm(variant.slice(0, -1)))
+      : norm(f.variant).includes(norm(variant));
   const used = new Set();
   const open = [];
   const allowed = [];
@@ -206,7 +215,7 @@ export function applyAllow(findings, allow = []) {
         a.set === f.set &&
         a.property === f.property &&
         (!a.scope || a.scope === f.scope) &&
-        (!a.variant || norm(f.variant).includes(norm(a.variant)))
+        (!a.variant || variantMatches(f, a.variant))
     );
     if (index >= 0) {
       used.add(index);

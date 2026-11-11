@@ -4,28 +4,7 @@ import { within, userEvent, expect } from "storybook/test";
 import { Textarea } from "@wyliedog/ui/textarea";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
-import {
-  Form,
-  FormField,
-  FormLabel,
-  FormMessage,
-  useFormField,
-} from "@wyliedog/ui/form";
-
-function FieldTextarea(props: React.ComponentProps<typeof Textarea>) {
-  const { id, isInvalid, errorId, descriptionId } = useFormField();
-  return (
-    <Textarea
-      id={id}
-      error={isInvalid}
-      aria-invalid={isInvalid || undefined}
-      aria-describedby={
-        [errorId, descriptionId].filter(Boolean).join(" ") || undefined
-      }
-      {...props}
-    />
-  );
-}
+import { Form, FormField, FormLabel, FormMessage } from "@wyliedog/ui/form";
 
 const meta: Meta<typeof Textarea> = {
   title: "Components/Inputs & Controls/Textarea",
@@ -95,6 +74,15 @@ const meta: Meta<typeof Textarea> = {
         category: "Content",
       },
     },
+    defaultValue: {
+      control: "text",
+      description:
+        "Initial text (uncontrolled), shown instead of the placeholder",
+      table: {
+        type: { summary: "string" },
+        category: "Content",
+      },
+    },
   },
   args: {
     size: "md",
@@ -146,7 +134,7 @@ export const WithError: Story = {
     <Form className="mx-auto w-full max-w-sm">
       <FormField error={args.error} required>
         <FormLabel>Description</FormLabel>
-        <FieldTextarea placeholder={args.placeholder} />
+        <Textarea placeholder={args.placeholder} />
         <FormMessage>
           This field is required and must be at least 10 characters
         </FormMessage>

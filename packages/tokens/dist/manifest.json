@@ -8942,16 +8942,16 @@
         "variable": "var(--form-description-font-size)",
         "description": "Font size of the form description."
       },
-      "form-message-font-weight": {
-        "name": "formMessageFontWeight",
+      "form-error-font-weight": {
+        "name": "formErrorFontWeight",
         "path": [
           "form",
-          "message-font-weight"
+          "error-font-weight"
         ],
         "value": 500,
         "type": "number",
-        "variable": "var(--form-message-font-weight)",
-        "description": "Font weight of the form message."
+        "variable": "var(--form-error-font-weight)",
+        "description": "Font weight of form error messages."
       },
       "form-error-font-size": {
         "name": "formErrorFontSize",
