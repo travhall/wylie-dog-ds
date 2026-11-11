@@ -1,7 +1,7 @@
 # Testing and Coverage Status
 
 **Last Updated:** November 9, 2026
-**Overall Coverage:** 99.62% lines / 99.15% statements (exceeds 80% threshold)
+**Overall Coverage:** 99.63% lines / 99.16% statements (exceeds 80% threshold)
 **Tests Passing:** 1,771 | **Tests Skipped:** 0
 
 Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot. `pnpm check:docs:coverage` runs it and fails if the four percentages in the table below no longer match; plain `pnpm check:docs` does the same comparison whenever a fresh coverage run is on disk. Passing and skipped test counts are not checked.
@@ -10,14 +10,14 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 
 | Metric     | Current | Target | Status            |
 | ---------- | ------- | ------ | ----------------- |
-| Statements | 99.15%  | 80%    | ✅ Pass (+19.15%) |
-| Lines      | 99.62%  | 80%    | ✅ Pass (+19.62%) |
+| Statements | 99.16%  | 80%    | ✅ Pass (+19.16%) |
+| Lines      | 99.63%  | 80%    | ✅ Pass (+19.63%) |
 | Functions  | 99.09%  | 80%    | ✅ Pass (+19.09%) |
-| Branches   | 92.25%  | 70%    | ✅ Pass (+22.25%) |
+| Branches   | 92.52%  | 70%    | ✅ Pass (+22.52%) |
 
 ### Component Coverage
 
-- **Component tests:** 99.62% lines overall (every component is tested; no test is skipped)
+- **Component tests:** 99.63% lines overall (every component is tested; no test is skipped)
 - **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
 - **Test files:** 61 passing test files
 
@@ -33,7 +33,7 @@ Keep it at zero: fix a failing test or delete it; do not skip it.
 
 ## Lowest Branch Coverage
 
-Branch coverage (92.25%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
+Branch coverage (92.52%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
 
 | File               | Branches | Uncovered                                 |
 | ------------------ | -------- | ----------------------------------------- |
