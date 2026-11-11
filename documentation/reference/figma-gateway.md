@@ -8,7 +8,7 @@
 
 ## Decision (2026-10-25, Plan 204): percent text styles, no variable binding
 
-Line height and letter spacing are **not bound to Figma variables**. In Figma they are **percent properties on text styles**, generated from the tokens by the component builder (`apps/figma-plugin/wylie-dog-figma-builder`, owner-run, gitignored). A percent value matches CSS exactly (125% of 14px is 17.5px) and scales with the font size. The line-height and tracking variables stay in the sync, because they are tokens and the repo is the source, but their scope is `[]`, so no Figma picker lists them. Changing a token updates the styles on the next Pull (Plan 205, below); the builder is a one-time scaffold.
+Line height and letter spacing are **not bound to Figma variables**. In Figma they are **percent properties on text styles**, generated from the tokens by the component builder (`apps/figma-plugin/wylie-dog-figma-builder`, owner-run, in git). A percent value matches CSS exactly (125% of 14px is 17.5px) and scales with the font size. The line-height and tracking variables stay in the sync, because they are tokens and the repo is the source, but their scope is `[]`, so no Figma picker lists them. Changing a token updates the styles on the next Pull (Plan 205, below); the builder is a one-time scaffold.
 
 ### Follow-up (2026-10-25, Plan 205): Token Bridge keeps the styles in line
 

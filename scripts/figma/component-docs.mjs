@@ -10,7 +10,7 @@
 //   node scripts/figma/component-docs.mjs --json
 //       prints { "<Figma set name>": { description, url } } for the Figma MCP pass
 //   node scripts/figma/component-docs.mjs --builder [path/to/code.js]
-//       rewrites the generated COMPONENT_DOCS block in the (gitignored) Figma builder
+//       rewrites the generated COMPONENT_DOCS block in the Figma builder
 // Both need a Storybook build (`pnpm --filter storybook build`) and read figma/manifest.json
 // for the Figma set names.
 

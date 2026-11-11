@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Hand-run check of the component builder against the text style definitions
-// (Plan 208). Not part of CI: the builder is gitignored and only exists in the
-// owner's checkout, so with no file this prints a note and exits 0.
+// (Plan 208). Not part of CI (it is hand-run after a builder change); with no file at the
+// given path this prints a note and exits 0.
 //
 //   node scripts/check-builder-coverage.mjs [path/to/code.js]
 //
