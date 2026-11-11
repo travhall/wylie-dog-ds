@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-06T02:46:25.421Z",
+  "generatedAt": "2026-11-11T06:42:51.000Z",
   "count": 49,
   "components": [
     {
@@ -424,7 +424,7 @@
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-dialog--docs"
       ],
       "properties": {
-        "body": {
+        "bodyText": {
           "type": "TEXT",
           "default": "Dialog content goes here."
         },
@@ -439,7 +439,7 @@
           "type": "BOOLEAN",
           "default": true
         },
-        "showBody": {
+        "showBodyText": {
           "type": "BOOLEAN",
           "default": true
         },
@@ -1216,14 +1216,14 @@
         "https://wyliedogstorybook.com/?path=/docs/components-overlays-popovers-tooltip--docs"
       ],
       "properties": {
-        "Property 1": {
-          "type": "VARIANT",
-          "default": "Default",
-          "options": ["Default"]
-        },
-        "children": {
+        "message": {
           "type": "TEXT",
           "default": "Tooltip text"
+        },
+        "variant": {
+          "type": "VARIANT",
+          "default": "default",
+          "options": ["default"]
         }
       },
       "variantCount": 1,
