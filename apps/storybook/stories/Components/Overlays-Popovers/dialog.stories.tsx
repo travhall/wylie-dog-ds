@@ -104,7 +104,7 @@ export const Default: Story = {
             Make changes to your profile here. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name
@@ -209,7 +209,7 @@ export const WithInteractions: Story = {
             This dialog demonstrates focus trapping and keyboard navigation.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="test-input" className="text-right">
               Input
@@ -351,7 +351,7 @@ export const WithForm: Story = {
                 before submitting.
               </DialogDescription>
             </DialogHeader>
-            <div className="py-4">
+            <div>
               <FormField error={!!errors.title} required>
                 <FormLabel>Title</FormLabel>
                 <FormInput
@@ -508,7 +508,7 @@ export const SizeVariants: Story = {
                 </DialogTitle>
                 <DialogDescription>{description}</DialogDescription>
               </DialogHeader>
-              <div className="py-4">
+              <div>
                 <p className="text-sm text-current/70">
                   This dialog uses{" "}
                   <code className="font-mono bg-current/5 px-1 rounded">
@@ -561,7 +561,7 @@ export const NonClosable: Story = {
               choose an option to continue.
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-3 py-4">
+          <div className="space-y-3">
             {["Personal account", "Team account", "Enterprise account"].map(
               (option) => (
                 <Button

@@ -1037,20 +1037,6 @@
     },
     {
       "set": "Dialog",
-      "property": "h",
-      "scope": "box",
-      "variant": ":: dialog-footer",
-      "reason": "Figma's footer frame includes the 24px top spacing as padding; in code the same space is the footer's margin-top, outside the 42px button row."
-    },
-    {
-      "set": "Dialog",
-      "property": "pad",
-      "scope": "box",
-      "variant": ":: dialog-footer",
-      "reason": "Figma pads the footer 24px on top; in code the footer has margin-top (dialog.footer-margin-top) instead."
-    },
-    {
-      "set": "Dialog",
       "property": "gap",
       "scope": "box",
       "variant": ":: dialog-footer",

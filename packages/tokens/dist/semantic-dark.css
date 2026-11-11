@@ -455,9 +455,8 @@
   --space-dialog-content-max-width: 42rem;
   --space-dialog-content-padding: 2rem;
   --space-dialog-content-radius: 0.5rem;
+  --space-dialog-content-gap: 1.5rem;
   --space-dialog-header-gap: 0.5rem;
-  --space-dialog-header-margin-bottom: 1.5rem;
-  --space-dialog-footer-margin-top: 1.5rem;
   --space-dialog-footer-gap: 0.5rem;
   --space-popover-content-width-sm: 20rem;
   --space-popover-content-width-md: 24rem;

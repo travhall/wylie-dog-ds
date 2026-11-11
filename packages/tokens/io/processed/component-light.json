@@ -1734,22 +1734,17 @@
     "$value": "{border-radius.lg}",
     "$description": "Corner radius of the dialog content."
   },
-  "dialog.header.gap": {
+  "dialog.content.gap": {
+    "$type": "spacing",
+    "$value": "{space.300}",
+    "$description": "Gap between the header, body and footer of the dialog. One value, so a dialog with no body is spaced like one with a body."
+  },
+  "dialog.header-gap": {
     "$type": "spacing",
     "$value": "{space.100}",
     "$description": "Gap between the items inside the dialog header."
   },
-  "dialog.header.margin-bottom": {
-    "$type": "spacing",
-    "$value": "{space.300}",
-    "$description": "Bottom margin of the dialog header."
-  },
-  "dialog.footer.margin-top": {
-    "$type": "spacing",
-    "$value": "{space.300}",
-    "$description": "Top margin of the dialog footer."
-  },
-  "dialog.footer.gap": {
+  "dialog.footer-gap": {
     "$type": "spacing",
     "$value": "{space.100}",
     "$description": "Gap between the items inside the dialog footer."

@@ -1147,6 +1147,7 @@ export type CssVarName =
   | "--space-dialog-close-button-icon-size"
   | "--space-dialog-close-button-offset"
   | "--space-dialog-close-button-radius"
+  | "--space-dialog-content-gap"
   | "--space-dialog-content-max-width"
   | "--space-dialog-content-padding"
   | "--space-dialog-content-radius"
@@ -1154,9 +1155,7 @@ export type CssVarName =
   | "--space-dialog-content-width-md"
   | "--space-dialog-content-width-sm"
   | "--space-dialog-footer-gap"
-  | "--space-dialog-footer-margin-top"
   | "--space-dialog-header-gap"
-  | "--space-dialog-header-margin-bottom"
   | "--space-dialog-title-letter-spacing"
   | "--space-dropdown-menu-border-width"
   | "--space-dropdown-menu-content-distance"
@@ -2714,6 +2713,7 @@ export declare const cssVars: Readonly<{
   "spaceDialogCloseButtonIconSize": "--space-dialog-close-button-icon-size";
   "spaceDialogCloseButtonOffset": "--space-dialog-close-button-offset";
   "spaceDialogCloseButtonRadius": "--space-dialog-close-button-radius";
+  "spaceDialogContentGap": "--space-dialog-content-gap";
   "spaceDialogContentMaxWidth": "--space-dialog-content-max-width";
   "spaceDialogContentPadding": "--space-dialog-content-padding";
   "spaceDialogContentRadius": "--space-dialog-content-radius";
@@ -2721,9 +2721,7 @@ export declare const cssVars: Readonly<{
   "spaceDialogContentWidthMd": "--space-dialog-content-width-md";
   "spaceDialogContentWidthSm": "--space-dialog-content-width-sm";
   "spaceDialogFooterGap": "--space-dialog-footer-gap";
-  "spaceDialogFooterMarginTop": "--space-dialog-footer-margin-top";
   "spaceDialogHeaderGap": "--space-dialog-header-gap";
-  "spaceDialogHeaderMarginBottom": "--space-dialog-header-margin-bottom";
   "spaceDialogTitleLetterSpacing": "--space-dialog-title-letter-spacing";
   "spaceDropdownMenuBorderWidth": "--space-dropdown-menu-border-width";
   "spaceDropdownMenuContentDistance": "--space-dropdown-menu-content-distance";
