@@ -20,7 +20,7 @@ Read before running anything that writes to Figma, and never put a token or PAT 
 | Script that produces the snapshot       | `scripts/figma/export-manifest.js` (the body of one `use_figma` call, read-only)                                                   |
 | Parity check, config, report            | `scripts/check-figma-parity.mjs`, `scripts/figma-parity.config.json`, `documentation/reference/figma-parity-report.md` (generated) |
 | Descriptions and Storybook links        | `scripts/figma/component-docs.mjs` (from each story's `docs.description.component`)                                                |
-| Component builder (create-only)         | `apps/figma-plugin/wylie-dog-figma-builder/code.js`, gitignored, owner's machine only                                              |
+| Component builder (create-only)         | `apps/figma-plugin/wylie-dog-figma-builder/code.js`, in git, owner-run                                                             |
 | Token Bridge (sync plugin)              | `apps/figma-plugin/`                                                                                                               |
 | Code syntax names                       | `packages/tokens/io/code-syntax/web.json` (generated), naming in `packages/tokens/lib/css-variable.js`                             |
 | Figma file                              | key `tnVqOsygeKwyDH3BzWB1Yg`, page "Components" (`1863:2`), 48 component sets                                                      |

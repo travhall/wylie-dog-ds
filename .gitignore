@@ -32,7 +32,10 @@ debug-storybook.log
 apps/figma-plugin/coverage
 apps/storybook/coverage
 packages/ui/coverage
-apps/figma-plugin/wylie-dog-figma-builder
+# The component builder (code.js, manifest.json) is tracked; its hand-made backups are not,
+# since git history replaces them.
+apps/figma-plugin/wylie-dog-figma-builder/*.bak-*
+apps/figma-plugin/wylie-dog-figma-builder/*.tar.gz
 plans
 apps/showcase/CLAUDE.md
 apps/showcase/AGENTS.md
