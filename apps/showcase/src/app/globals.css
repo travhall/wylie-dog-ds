@@ -78,7 +78,7 @@
 @layer utilities {
   /*
    * `.glass` usage rule (showcase-local, not a packages/ui variant — see
-   * plans/092-findings.md and plans/093-standardize-showcase-glass-usage.md):
+   * Plans 092 and 093, standardize showcase glass usage):
    * 1. Page-level wrapper/container elements (demo-preview cards, hero
    *    panels, component-showcase preview slots) get `.glass`.
    * 2. Nested component instances demonstrated inside such a wrapper do

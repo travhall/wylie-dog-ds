@@ -9,9 +9,8 @@ import "eslint-plugin-only-warn";
  *
  * Hand-composed replacement for the old @vercel/style-guide-based config:
  * @vercel/style-guide is incompatible with ESLint 10 (its @rushstack/eslint-patch
- * dependency hard-throws above ESLint 9). See
- * plans/062-migrate-eslint-config-off-vercel-style-guide.md for the full
- * investigation.
+ * dependency hard-throws above ESLint 9). See Plan 062 (migrate the ESLint config off the Vercel style guide) for
+ * the full investigation.
  *
  * react-hooks rules are hand-picked (rather than spreading the plugin's own
  * "recommended" preset) to match what the old config actually enforced --
@@ -40,7 +39,7 @@ export default [
       // TypeScript-only and has no PropTypes usage anywhere (confirmed via
       // repo-wide grep) -- prop validation already happens at compile time
       // via typescript-eslint. See
-      // plans/064-fix-post-migration-lint-violation-backlog.md Step 6.
+      // Plan 064 (post-migration lint backlog), Step 6.
       "react/prop-types": "off",
     },
   },

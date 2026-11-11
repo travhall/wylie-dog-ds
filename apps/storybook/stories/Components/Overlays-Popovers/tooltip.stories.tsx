@@ -17,7 +17,7 @@ import { Checkbox } from "@wyliedog/ui/checkbox";
 // Meta<typeof Tooltip> doesn't type-check against this argTypes shape. Needs
 // its own fix (likely restructuring which component this story documents
 // against, or a composed prop type) -- flagged during
-// plans/064-fix-post-migration-lint-violation-backlog.md, not fixed there.
+// Plan 064 (the post-migration lint backlog), not fixed there.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const meta: Meta<any> = {
   title: "Components/Overlays & Popovers/Tooltip",

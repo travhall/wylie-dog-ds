@@ -7,9 +7,8 @@ import "eslint-plugin-only-warn";
  *
  * Hand-composed replacement for the old @vercel/style-guide-based config:
  * @vercel/style-guide is incompatible with ESLint 10 (its @rushstack/eslint-patch
- * dependency hard-throws above ESLint 9). See
- * plans/062-migrate-eslint-config-off-vercel-style-guide.md for the full
- * investigation.
+ * dependency hard-throws above ESLint 9). See Plan 062 (migrate the ESLint config off the Vercel style guide) for
+ * the full investigation.
  */
 export default [
   ...tseslint.configs.recommended,

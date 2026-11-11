@@ -240,7 +240,7 @@ export const globalTypes: Preview["globalTypes"] = {
       showName: true,
       dynamicTitle: true,
       // `showName` isn't part of Storybook's ToolbarConfig type (verified
-      // during plans/064-fix-post-migration-lint-violation-backlog.md) but
+      // during Plan 064, the post-migration lint backlog) but
       // is a real, working runtime option -- the cast stays until Storybook
       // ships an updated type.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

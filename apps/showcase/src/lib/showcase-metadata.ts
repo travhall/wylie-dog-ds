@@ -572,7 +572,7 @@ export interface ShowcaseMeta {
 // this package's vitest config (`environment: "node"`, no `react-server`
 // condition), where `cache()` resolves to a plain pass-through stub. That
 // mismatch means no unit test in this repo can assert memoization directly;
-// see Plan 079 in plans/README.md for the investigation.
+// see Plan 079 for the investigation.
 export const getShowcaseMeta = cache((): ShowcaseMeta => {
   return {
     tokens: getTokenMeta(),

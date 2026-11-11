@@ -1,4 +1,4 @@
-// Converts compact Figma rows (see plans/218) into the metrics file compare-ui.mjs reads.
+// Converts compact Figma rows (Plan 218) into the metrics file compare-ui.mjs reads.
 // usage: node rows-to-metrics.mjs rows.json out.json dark|light
 import fs from "node:fs";
 const [, , input, output, mode] = process.argv;
