@@ -2190,31 +2190,31 @@
             "Dark": "{space.1600}"
           }
         },
-        "select.trigger.height.sm": {
+        "select.trigger.padding-y.sm": {
           "$type": "spacing",
-          "$value": "{space.400}",
-          "$description": "Height of the small select trigger.",
+          "$value": "{space.050}",
+          "$description": "Vertical padding of the small select trigger, the same as the small input.",
           "valuesByMode": {
-            "Light": "{space.400}",
-            "Dark": "{space.400}"
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
           }
         },
-        "select.trigger.height.md": {
+        "select.trigger.padding-y.md": {
           "$type": "spacing",
-          "$value": "{space.500}",
-          "$description": "Height of the medium select trigger.",
+          "$value": "{space.100}",
+          "$description": "Vertical padding of the medium select trigger, the same as the medium input.",
           "valuesByMode": {
-            "Light": "{space.500}",
-            "Dark": "{space.500}"
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
           }
         },
-        "select.trigger.height.lg": {
+        "select.trigger.padding-y.lg": {
           "$type": "spacing",
-          "$value": "{space.600}",
-          "$description": "Height of the large select trigger.",
+          "$value": "{space.150}",
+          "$description": "Vertical padding of the large select trigger, the same as the large input.",
           "valuesByMode": {
-            "Light": "{space.600}",
-            "Dark": "{space.600}"
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
           }
         },
         "select.trigger.padding-x.sm": {
@@ -2255,29 +2255,29 @@
         },
         "select.trigger.font-size.sm": {
           "$type": "number",
-          "$value": "{typography.font-size.xs}",
-          "$description": "Font size of the small select trigger.",
-          "valuesByMode": {
-            "Light": "{typography.font-size.xs}",
-            "Dark": "{typography.font-size.xs}"
-          }
-        },
-        "select.trigger.font-size.md": {
-          "$type": "number",
           "$value": "{typography.font-size.sm}",
-          "$description": "Font size of the medium select trigger.",
+          "$description": "Font size of the small select trigger, the same as the small input.",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
             "Dark": "{typography.font-size.sm}"
           }
         },
-        "select.trigger.font-size.lg": {
+        "select.trigger.font-size.md": {
           "$type": "number",
           "$value": "{typography.font-size.base}",
-          "$description": "Font size of the large select trigger.",
+          "$description": "Font size of the medium select trigger, the same as the medium input.",
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
             "Dark": "{typography.font-size.base}"
+          }
+        },
+        "select.trigger.font-size.lg": {
+          "$type": "number",
+          "$value": "{typography.font-size.lg}",
+          "$description": "Font size of the large select trigger, the same as the large input.",
+          "valuesByMode": {
+            "Light": "{typography.font-size.lg}",
+            "Dark": "{typography.font-size.lg}"
           }
         },
         "select.content.radius": {
@@ -2649,13 +2649,31 @@
             "Dark": "{typography.font-size.sm}"
           }
         },
-        "textarea.font-size": {
+        "textarea.font-size.sm": {
           "$type": "number",
           "$value": "{typography.font-size.sm}",
-          "$description": "Font size of the textarea.",
+          "$description": "Font size of the small textarea, the same as the small input.",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
             "Dark": "{typography.font-size.sm}"
+          }
+        },
+        "textarea.font-size.md": {
+          "$type": "number",
+          "$value": "{typography.font-size.base}",
+          "$description": "Font size of the medium textarea, the same as the medium input.",
+          "valuesByMode": {
+            "Light": "{typography.font-size.base}",
+            "Dark": "{typography.font-size.base}"
+          }
+        },
+        "textarea.font-size.lg": {
+          "$type": "number",
+          "$value": "{typography.font-size.lg}",
+          "$description": "Font size of the large textarea, the same as the large input.",
+          "valuesByMode": {
+            "Light": "{typography.font-size.lg}",
+            "Dark": "{typography.font-size.lg}"
           }
         },
         "label.font-size.md": {
@@ -3765,13 +3783,58 @@
             "Dark": "{space.600}"
           }
         },
-        "toggle.size.default.height": {
+        "toggle.size.default.padding-y": {
           "$type": "spacing",
-          "$value": "{space.500}",
-          "$description": "Height of the default-size toggle.",
+          "$value": "{space.150}",
+          "$description": "Vertical padding of the default (medium)-size toggle, the same as the medium button.",
           "valuesByMode": {
-            "Light": "{space.500}",
-            "Dark": "{space.500}"
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
+        "toggle.font-size.md": {
+          "$type": "number",
+          "$value": "{typography.font-size.base}",
+          "$description": "Font size of the default (medium)-size toggle, the same as the medium button.",
+          "valuesByMode": {
+            "Light": "{typography.font-size.base}",
+            "Dark": "{typography.font-size.base}"
+          }
+        },
+        "toggle.size.sm.padding-y": {
+          "$type": "spacing",
+          "$value": "{space.100}",
+          "$description": "Vertical padding of the small-size toggle, the same as the small button.",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
+          }
+        },
+        "toggle.font-size.sm": {
+          "$type": "number",
+          "$value": "{typography.font-size.sm}",
+          "$description": "Font size of the small-size toggle, the same as the small button.",
+          "valuesByMode": {
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
+          }
+        },
+        "toggle.size.lg.padding-y": {
+          "$type": "spacing",
+          "$value": "{space.200}",
+          "$description": "Vertical padding of the large-size toggle, the same as the large button.",
+          "valuesByMode": {
+            "Light": "{space.200}",
+            "Dark": "{space.200}"
+          }
+        },
+        "toggle.font-size.lg": {
+          "$type": "number",
+          "$value": "{typography.font-size.lg}",
+          "$description": "Font size of the large-size toggle, the same as the large button.",
+          "valuesByMode": {
+            "Light": "{typography.font-size.lg}",
+            "Dark": "{typography.font-size.lg}"
           }
         },
         "toggle.size.default.padding-x": {
@@ -3783,15 +3846,6 @@
             "Dark": "{space.150}"
           }
         },
-        "toggle.size.sm.height": {
-          "$type": "spacing",
-          "$value": "{space.400}",
-          "$description": "Height of the small toggle size.",
-          "valuesByMode": {
-            "Light": "{space.400}",
-            "Dark": "{space.400}"
-          }
-        },
         "toggle.size.sm.padding-x": {
           "$type": "spacing",
           "$value": "{space.100}",
@@ -3799,15 +3853,6 @@
           "valuesByMode": {
             "Light": "{space.100}",
             "Dark": "{space.100}"
-          }
-        },
-        "toggle.size.lg.height": {
-          "$type": "spacing",
-          "$value": "{space.500}",
-          "$description": "Height of the large toggle size.",
-          "valuesByMode": {
-            "Light": "{space.500}",
-            "Dark": "{space.500}"
           }
         },
         "toggle.size.lg.padding-x": {
@@ -4622,20 +4667,29 @@
         },
         "toggle-group.item-font-size": {
           "$type": "number",
-          "$value": "{typography.font-size.sm}",
-          "$description": "Font size of the toggle group item.",
+          "$value": "{typography.font-size.base}",
+          "$description": "Font size of the toggle group item, the same as the default toggle.",
           "valuesByMode": {
-            "Light": "{typography.font-size.sm}",
-            "Dark": "{typography.font-size.sm}"
+            "Light": "{typography.font-size.base}",
+            "Dark": "{typography.font-size.base}"
           }
         },
-        "toggle-group.item-height": {
+        "toggle-group.item-padding-y": {
           "$type": "spacing",
-          "$value": "{space.500}",
-          "$description": "Height of toggle group items (40px, matches default toggle height).",
+          "$value": "{space.150}",
+          "$description": "Vertical padding of toggle group items, the same as the default toggle.",
           "valuesByMode": {
-            "Light": "{space.500}",
-            "Dark": "{space.500}"
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
+        "toggle-group.item-border-width": {
+          "$type": "spacing",
+          "$value": "{border-width.1}",
+          "$description": "Border width of toggle group items (transparent until styled), so their height matches the default toggle.",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "calendar.container-gap": {
@@ -5176,15 +5230,6 @@
           "valuesByMode": {
             "Light": "{space.050}",
             "Dark": "{space.050}"
-          }
-        },
-        "toggle.font-size": {
-          "$type": "number",
-          "$value": "{typography.font-size.sm}",
-          "$description": "Font size of the toggle.",
-          "valuesByMode": {
-            "Light": "{typography.font-size.sm}",
-            "Dark": "{typography.font-size.sm}"
           }
         },
         "toggle.font-weight": {
@@ -5864,29 +5909,29 @@
         },
         "input.padding-y.sm": {
           "$type": "spacing",
+          "$value": "{space.050}",
+          "$description": "Vertical padding of the small input. With the 150% line height and a 1px border it gives a 31px height, one pixel under the small button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height.",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
+        "input.padding-y.md": {
+          "$type": "spacing",
           "$value": "{space.100}",
-          "$description": "Vertical padding of the small input. `space.100` (8px) plus `font-size.sm` (14px) gives a 30px height.",
+          "$description": "Vertical padding of the medium input. With the 150% line height and a 1px border it gives a 42px height, equal to the medium button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height.",
           "valuesByMode": {
             "Light": "{space.100}",
             "Dark": "{space.100}"
           }
         },
-        "input.padding-y.md": {
+        "input.padding-y.lg": {
           "$type": "spacing",
           "$value": "{space.150}",
-          "$description": "Vertical padding of the medium input. `space.150` (12px) plus `font-size.base` (16px) gives a 40px height.",
+          "$description": "Vertical padding of the large input. With the 150% line height and a 1px border it gives a 53px height, one pixel over the large button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height.",
           "valuesByMode": {
             "Light": "{space.150}",
             "Dark": "{space.150}"
-          }
-        },
-        "input.padding-y.lg": {
-          "$type": "spacing",
-          "$value": "{space.200}",
-          "$description": "Vertical padding of the large input. `space.200` (16px) plus `font-size.lg` (18px) gives a 50px height.",
-          "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
           }
         },
         "button.icon-size": {
@@ -6458,11 +6503,11 @@
         },
         "toggle-group.item-line-height": {
           "$type": "number",
-          "$value": "{typography.line-height.normal}",
-          "$description": "Line height of the toggle group item text.",
+          "$value": "{typography.line-height.none}",
+          "$description": "Line height of the toggle group item text, 100% like the default toggle.",
           "valuesByMode": {
-            "Light": "{typography.line-height.normal}",
-            "Dark": "{typography.line-height.normal}"
+            "Light": "{typography.line-height.none}",
+            "Dark": "{typography.line-height.none}"
           }
         },
         "scrollbar.padding": {
@@ -6728,11 +6773,11 @@
         },
         "label.default-color": {
           "$type": "color",
-          "$value": "{color.foreground.muted}",
-          "$description": "Default text color of labels.",
+          "$value": "{color.foreground.default}",
+          "$description": "Default text color of labels, the same as the form label.",
           "valuesByMode": {
-            "Light": "{color.foreground.muted}",
-            "Dark": "{color.foreground.muted}"
+            "Light": "{color.foreground.default}",
+            "Dark": "{color.foreground.default}"
           }
         },
         "context-menu.sub-content-min-width": {
@@ -7520,11 +7565,11 @@
         },
         "toggle.line-height": {
           "$type": "number",
-          "$value": "{typography.line-height.normal}",
-          "$description": "Line height of the toggle text.",
+          "$value": "{typography.line-height.none}",
+          "$description": "Line height of the toggle text, 100% like the button, so padding, font size and border set the height.",
           "valuesByMode": {
-            "Light": "{typography.line-height.normal}",
-            "Dark": "{typography.line-height.normal}"
+            "Light": "{typography.line-height.none}",
+            "Dark": "{typography.line-height.none}"
           }
         },
         "menubar.trigger-highlighted": {
@@ -8573,11 +8618,11 @@
         },
         "select.trigger.icon-size": {
           "$type": "spacing",
-          "$value": "{icon.size.md}",
-          "$description": "Size of the chevron in the select trigger.",
+          "$value": "{icon.size.sm}",
+          "$description": "Size of the chevron in the select trigger. It stays under the line height so it never sets the trigger height.",
           "valuesByMode": {
-            "Light": "{icon.size.md}",
-            "Dark": "{icon.size.md}"
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "select.item.icon-size": {

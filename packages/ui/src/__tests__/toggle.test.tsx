@@ -225,7 +225,7 @@ describe("Toggle", () => {
       render(<Toggle aria-label="Toggle">Toggle</Toggle>);
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "h-(--space-toggle-size-default-height)",
+        "py-(--space-toggle-size-default-padding-y)",
         "px-(--space-toggle-size-default-padding-x)"
       );
     });
@@ -238,8 +238,24 @@ describe("Toggle", () => {
       );
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "h-(--space-toggle-size-default-height)",
+        "py-(--space-toggle-size-default-padding-y)",
         "px-(--space-toggle-size-default-padding-x)"
+      );
+    });
+
+    it("gives every variant the same 1px border box as a button, transparent unless outlined", () => {
+      const { rerender } = render(<Toggle aria-label="Test" />);
+      expect(screen.getByRole("button", { name: "Test" })).toHaveClass(
+        "border-(length:--space-toggle-border-width)",
+        "border-transparent",
+        "leading-(--line-height-toggle-line-height)"
+      );
+      rerender(<Toggle aria-label="Test" variant="outline" />);
+      expect(screen.getByRole("button", { name: "Test" })).toHaveClass(
+        "border-(--color-toggle-border)"
+      );
+      expect(screen.getByRole("button", { name: "Test" })).not.toHaveClass(
+        "border-transparent"
       );
     });
 
@@ -251,7 +267,7 @@ describe("Toggle", () => {
       );
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "h-(--space-toggle-size-sm-height)",
+        "py-(--space-toggle-size-sm-padding-y)",
         "px-(--space-toggle-size-sm-padding-x)"
       );
     });
@@ -264,7 +280,7 @@ describe("Toggle", () => {
       );
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "h-(--space-toggle-size-lg-height)",
+        "py-(--space-toggle-size-lg-padding-y)",
         "px-(--space-toggle-size-lg-padding-x)"
       );
     });
@@ -302,7 +318,7 @@ describe("Toggle", () => {
       expect(toggle).toHaveClass(
         "border-(length:--space-toggle-border-width)",
         "border-(--color-toggle-border)",
-        "h-(--space-toggle-size-lg-height)",
+        "py-(--space-toggle-size-lg-padding-y)",
         "px-(--space-toggle-size-lg-padding-x)"
       );
     });
@@ -414,7 +430,7 @@ describe("Toggle", () => {
       expect(toggle).toHaveClass(
         "border-(length:--space-toggle-border-width)",
         "border-(--color-toggle-border)",
-        "h-(--space-toggle-size-lg-height)",
+        "py-(--space-toggle-size-lg-padding-y)",
         "px-(--space-toggle-size-lg-padding-x)",
         "custom"
       );

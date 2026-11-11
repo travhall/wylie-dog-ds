@@ -1124,8 +1124,8 @@
     "dark": "oklch(0.712 0.037 72.65)"
   },
   "color-label-default-color": {
-    "light": "oklch(0.33 0.024 47.79)",
-    "dark": "oklch(0.843 0.027 71)"
+    "light": "oklch(0.202 0.011 47.84)",
+    "dark": "oklch(0.977 0.003 65.02)"
   },
   "color-label-error-text": {
     "light": "oklch(0.488 0.19 27.46)",

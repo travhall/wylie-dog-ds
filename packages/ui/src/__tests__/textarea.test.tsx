@@ -216,21 +216,21 @@ describe("Textarea", () => {
       let textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
         "min-h-(--space-textarea-min-height-sm)",
-        "text-(length:--font-size-textarea-font-size)"
+        "text-(length:--font-size-textarea-font-size-sm)"
       );
 
       rerender(<Textarea aria-label="Test" size="md" />);
       textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
         "min-h-(--space-textarea-min-height-md)",
-        "text-(length:--font-size-textarea-font-size)"
+        "text-(length:--font-size-textarea-font-size-md)"
       );
 
       rerender(<Textarea aria-label="Test" size="lg" />);
       textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
         "min-h-(--space-textarea-min-height-lg)",
-        "text-(length:--font-size-textarea-font-size)"
+        "text-(length:--font-size-textarea-font-size-lg)"
       );
     });
 
@@ -276,7 +276,7 @@ describe("Textarea", () => {
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
         "min-h-(--space-textarea-min-height-md)",
-        "text-(length:--font-size-textarea-font-size)"
+        "text-(length:--font-size-textarea-font-size-md)"
       );
     });
 

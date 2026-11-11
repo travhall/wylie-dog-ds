@@ -32,7 +32,7 @@ const ToggleGroupItem = React.forwardRef<
       focusRingClasses,
       "disabled:cursor-not-allowed disabled:opacity-(--toggle-opacity-disabled)",
       "data-[state=on]:bg-(--color-toggle-pressed) data-[state=on]:text-(--color-toggle-text-pressed)",
-      "h-(--space-toggle-group-item-height) px-(--space-toggle-group-item-padding-x) bg-transparent text-(--color-toggle-text)",
+      "py-(--space-toggle-group-item-padding-y) px-(--space-toggle-group-item-padding-x) border-(length:--space-toggle-group-item-border-width) border-transparent bg-transparent text-(--color-toggle-text)",
       className
     )}
     {...props}

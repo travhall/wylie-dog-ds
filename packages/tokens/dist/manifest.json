@@ -5231,10 +5231,10 @@
           "padding-y",
           "sm"
         ],
-        "value": "0.5rem",
+        "value": "0.25rem",
         "type": "spacing",
         "variable": "var(--input-padding-y-sm)",
-        "description": "Vertical padding of the small input. `space.100` (8px) plus `font-size.sm` (14px) gives a 30px height."
+        "description": "Vertical padding of the small input. With the 150% line height and a 1px border it gives a 31px height, one pixel under the small button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height."
       },
       "input-padding-y-md": {
         "name": "inputPaddingYMd",
@@ -5243,10 +5243,10 @@
           "padding-y",
           "md"
         ],
-        "value": "0.75rem",
+        "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--input-padding-y-md)",
-        "description": "Vertical padding of the medium input. `space.150` (12px) plus `font-size.base` (16px) gives a 40px height."
+        "description": "Vertical padding of the medium input. With the 150% line height and a 1px border it gives a 42px height, equal to the medium button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height."
       },
       "input-padding-y-lg": {
         "name": "inputPaddingYLg",
@@ -5255,10 +5255,10 @@
           "padding-y",
           "lg"
         ],
-        "value": "1rem",
+        "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--input-padding-y-lg)",
-        "description": "Vertical padding of the large input. `space.200` (16px) plus `font-size.lg` (18px) gives a 50px height."
+        "description": "Vertical padding of the large input. With the 150% line height and a 1px border it gives a 53px height, one pixel over the large button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height."
       },
       "input-opacity-disabled": {
         "name": "inputOpacityDisabled",
@@ -11453,18 +11453,80 @@
         "variable": "var(--color-toggle-text-pressed)",
         "description": "Text color of the toggle when pressed (on). Pairs with `toggle.pressed`."
       },
-      "toggle-size-default-height": {
-        "name": "toggleSizeDefaultHeight",
+      "toggle-size-default-padding-y": {
+        "name": "toggleSizeDefaultPaddingY",
         "path": [
           "toggle",
           "size",
           "default",
-          "height"
+          "padding-y"
         ],
-        "value": "2.5rem",
+        "value": "0.75rem",
         "type": "spacing",
-        "variable": "var(--toggle-size-default-height)",
-        "description": "Height of the default-size toggle."
+        "variable": "var(--toggle-size-default-padding-y)",
+        "description": "Vertical padding of the default (medium)-size toggle, the same as the medium button."
+      },
+      "toggle-font-size-md": {
+        "name": "toggleFontSizeMd",
+        "path": [
+          "toggle",
+          "font-size",
+          "md"
+        ],
+        "value": "1rem",
+        "type": "number",
+        "variable": "var(--toggle-font-size-md)",
+        "description": "Font size of the default (medium)-size toggle, the same as the medium button."
+      },
+      "toggle-size-sm-padding-y": {
+        "name": "toggleSizeSmPaddingY",
+        "path": [
+          "toggle",
+          "size",
+          "sm",
+          "padding-y"
+        ],
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--toggle-size-sm-padding-y)",
+        "description": "Vertical padding of the small-size toggle, the same as the small button."
+      },
+      "toggle-font-size-sm": {
+        "name": "toggleFontSizeSm",
+        "path": [
+          "toggle",
+          "font-size",
+          "sm"
+        ],
+        "value": "0.875rem",
+        "type": "number",
+        "variable": "var(--toggle-font-size-sm)",
+        "description": "Font size of the small-size toggle, the same as the small button."
+      },
+      "toggle-size-lg-padding-y": {
+        "name": "toggleSizeLgPaddingY",
+        "path": [
+          "toggle",
+          "size",
+          "lg",
+          "padding-y"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--toggle-size-lg-padding-y)",
+        "description": "Vertical padding of the large-size toggle, the same as the large button."
+      },
+      "toggle-font-size-lg": {
+        "name": "toggleFontSizeLg",
+        "path": [
+          "toggle",
+          "font-size",
+          "lg"
+        ],
+        "value": "1.125rem",
+        "type": "number",
+        "variable": "var(--toggle-font-size-lg)",
+        "description": "Font size of the large-size toggle, the same as the large button."
       },
       "toggle-size-default-padding-x": {
         "name": "toggleSizeDefaultPaddingX",
@@ -11479,19 +11541,6 @@
         "variable": "var(--toggle-size-default-padding-x)",
         "description": "Horizontal padding of the default-size toggle."
       },
-      "toggle-size-sm-height": {
-        "name": "toggleSizeSmHeight",
-        "path": [
-          "toggle",
-          "size",
-          "sm",
-          "height"
-        ],
-        "value": "2rem",
-        "type": "spacing",
-        "variable": "var(--toggle-size-sm-height)",
-        "description": "Height of the small toggle size."
-      },
       "toggle-size-sm-padding-x": {
         "name": "toggleSizeSmPaddingX",
         "path": [
@@ -11504,19 +11553,6 @@
         "type": "spacing",
         "variable": "var(--toggle-size-sm-padding-x)",
         "description": "Horizontal padding of the small toggle size."
-      },
-      "toggle-size-lg-height": {
-        "name": "toggleSizeLgHeight",
-        "path": [
-          "toggle",
-          "size",
-          "lg",
-          "height"
-        ],
-        "value": "2.5rem",
-        "type": "spacing",
-        "variable": "var(--toggle-size-lg-height)",
-        "description": "Height of the large toggle size."
       },
       "toggle-size-lg-padding-x": {
         "name": "toggleSizeLgPaddingX",
@@ -11541,17 +11577,6 @@
         "type": "dimension",
         "variable": "var(--toggle-radius)",
         "description": "Corner radius of the toggle."
-      },
-      "toggle-font-size": {
-        "name": "toggleFontSize",
-        "path": [
-          "toggle",
-          "font-size"
-        ],
-        "value": "0.875rem",
-        "type": "number",
-        "variable": "var(--toggle-font-size)",
-        "description": "Font size of the toggle."
       },
       "toggle-font-weight": {
         "name": "toggleFontWeight",
@@ -11614,10 +11639,10 @@
           "toggle",
           "line-height"
         ],
-        "value": 150,
+        "value": 100,
         "type": "number",
         "variable": "var(--toggle-line-height)",
-        "description": "Line height of the toggle text."
+        "description": "Line height of the toggle text, 100% like the button, so padding, font size and border set the height."
       }
     },
     "tooltip": {
@@ -11814,44 +11839,44 @@
       }
     },
     "select": {
-      "select-trigger-height-sm": {
-        "name": "selectTriggerHeightSm",
+      "select-trigger-padding-y-sm": {
+        "name": "selectTriggerPaddingYSm",
         "path": [
           "select",
           "trigger",
-          "height",
+          "padding-y",
           "sm"
         ],
-        "value": "2rem",
+        "value": "0.25rem",
         "type": "spacing",
-        "variable": "var(--select-trigger-height-sm)",
-        "description": "Height of the small select trigger."
+        "variable": "var(--select-trigger-padding-y-sm)",
+        "description": "Vertical padding of the small select trigger, the same as the small input."
       },
-      "select-trigger-height-md": {
-        "name": "selectTriggerHeightMd",
+      "select-trigger-padding-y-md": {
+        "name": "selectTriggerPaddingYMd",
         "path": [
           "select",
           "trigger",
-          "height",
+          "padding-y",
           "md"
         ],
-        "value": "2.5rem",
+        "value": "0.5rem",
         "type": "spacing",
-        "variable": "var(--select-trigger-height-md)",
-        "description": "Height of the medium select trigger."
+        "variable": "var(--select-trigger-padding-y-md)",
+        "description": "Vertical padding of the medium select trigger, the same as the medium input."
       },
-      "select-trigger-height-lg": {
-        "name": "selectTriggerHeightLg",
+      "select-trigger-padding-y-lg": {
+        "name": "selectTriggerPaddingYLg",
         "path": [
           "select",
           "trigger",
-          "height",
+          "padding-y",
           "lg"
         ],
-        "value": "3rem",
+        "value": "0.75rem",
         "type": "spacing",
-        "variable": "var(--select-trigger-height-lg)",
-        "description": "Height of the large select trigger."
+        "variable": "var(--select-trigger-padding-y-lg)",
+        "description": "Vertical padding of the large select trigger, the same as the large input."
       },
       "select-trigger-padding-x-sm": {
         "name": "selectTriggerPaddingXSm",
@@ -11912,10 +11937,10 @@
           "font-size",
           "sm"
         ],
-        "value": "0.75rem",
+        "value": "0.875rem",
         "type": "number",
         "variable": "var(--select-trigger-font-size-sm)",
-        "description": "Font size of the small select trigger."
+        "description": "Font size of the small select trigger, the same as the small input."
       },
       "select-trigger-font-size-md": {
         "name": "selectTriggerFontSizeMd",
@@ -11925,10 +11950,10 @@
           "font-size",
           "md"
         ],
-        "value": "0.875rem",
+        "value": "1rem",
         "type": "number",
         "variable": "var(--select-trigger-font-size-md)",
-        "description": "Font size of the medium select trigger."
+        "description": "Font size of the medium select trigger, the same as the medium input."
       },
       "select-trigger-font-size-lg": {
         "name": "selectTriggerFontSizeLg",
@@ -11938,10 +11963,10 @@
           "font-size",
           "lg"
         ],
-        "value": "1rem",
+        "value": "1.125rem",
         "type": "number",
         "variable": "var(--select-trigger-font-size-lg)",
-        "description": "Font size of the large select trigger."
+        "description": "Font size of the large select trigger, the same as the large input."
       },
       "select-content-radius": {
         "name": "selectContentRadius",
@@ -12187,10 +12212,10 @@
           "trigger",
           "icon-size"
         ],
-        "value": "1.5rem",
+        "value": "1rem",
         "type": "spacing",
         "variable": "var(--select-trigger-icon-size)",
-        "description": "Size of the chevron in the select trigger."
+        "description": "Size of the chevron in the select trigger. It stays under the line height so it never sets the trigger height."
       },
       "select-item-icon-size": {
         "name": "selectItemIconSize",
@@ -12852,16 +12877,41 @@
         "variable": "var(--textarea-radius)",
         "description": "Corner radius of the textarea."
       },
-      "textarea-font-size": {
-        "name": "textareaFontSize",
+      "textarea-font-size-sm": {
+        "name": "textareaFontSizeSm",
         "path": [
           "textarea",
-          "font-size"
+          "font-size",
+          "sm"
         ],
         "value": "0.875rem",
         "type": "number",
-        "variable": "var(--textarea-font-size)",
-        "description": "Font size of the textarea."
+        "variable": "var(--textarea-font-size-sm)",
+        "description": "Font size of the small textarea, the same as the small input."
+      },
+      "textarea-font-size-md": {
+        "name": "textareaFontSizeMd",
+        "path": [
+          "textarea",
+          "font-size",
+          "md"
+        ],
+        "value": "1rem",
+        "type": "number",
+        "variable": "var(--textarea-font-size-md)",
+        "description": "Font size of the medium textarea, the same as the medium input."
+      },
+      "textarea-font-size-lg": {
+        "name": "textareaFontSizeLg",
+        "path": [
+          "textarea",
+          "font-size",
+          "lg"
+        ],
+        "value": "1.125rem",
+        "type": "number",
+        "variable": "var(--textarea-font-size-lg)",
+        "description": "Font size of the large textarea, the same as the large input."
       },
       "textarea-font-weight": {
         "name": "textareaFontWeight",
@@ -12984,10 +13034,10 @@
           "label",
           "default-color"
         ],
-        "value": "oklch(0.33 0.024 47.79)",
+        "value": "oklch(0.202 0.011 47.84)",
         "type": "color",
         "variable": "var(--color-label-default-color)",
-        "description": "Default text color of labels."
+        "description": "Default text color of labels, the same as the form label."
       },
       "label-error-text": {
         "name": "labelErrorText",
@@ -15102,21 +15152,32 @@
           "toggle-group",
           "item-font-size"
         ],
-        "value": "0.875rem",
+        "value": "1rem",
         "type": "number",
         "variable": "var(--toggle-group-item-font-size)",
-        "description": "Font size of the toggle group item."
+        "description": "Font size of the toggle group item, the same as the default toggle."
       },
-      "toggle-group-item-height": {
-        "name": "toggleGroupItemHeight",
+      "toggle-group-item-padding-y": {
+        "name": "toggleGroupItemPaddingY",
         "path": [
           "toggle-group",
-          "item-height"
+          "item-padding-y"
         ],
-        "value": "2.5rem",
+        "value": "0.75rem",
         "type": "spacing",
-        "variable": "var(--toggle-group-item-height)",
-        "description": "Height of toggle group items (40px, matches default toggle height)."
+        "variable": "var(--toggle-group-item-padding-y)",
+        "description": "Vertical padding of toggle group items, the same as the default toggle."
+      },
+      "toggle-group-item-border-width": {
+        "name": "toggleGroupItemBorderWidth",
+        "path": [
+          "toggle-group",
+          "item-border-width"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--toggle-group-item-border-width)",
+        "description": "Border width of toggle group items (transparent until styled), so their height matches the default toggle."
       },
       "toggle-group-item-font-weight": {
         "name": "toggleGroupItemFontWeight",
@@ -15135,10 +15196,10 @@
           "toggle-group",
           "item-line-height"
         ],
-        "value": 150,
+        "value": 100,
         "type": "number",
         "variable": "var(--toggle-group-item-line-height)",
-        "description": "Line height of the toggle group item text."
+        "description": "Line height of the toggle group item text, 100% like the default toggle."
       }
     },
     "site-header": {
