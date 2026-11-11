@@ -117,6 +117,7 @@ See [focus states](../tokens/focus-states.md) for the tokens and the decision re
 **Focus**: Clear visible focus indicator (see [focus states](../tokens/focus-states.md))
 **Keyboard**: Enter and Space activation
 **Screen Reader**: Descriptive labels
+**Disabled**: a disabled control keeps its colours and dims (60%) with the `not-allowed` cursor; a loading Button is disabled and not clickable. Disabled controls are exempt from contrast (WCAG 2.2, 1.4.3). Enabled buttons show the pointer cursor, which is a convention and not a WCAG requirement. See [disabled states](../tokens/component-token-grammar.md#disabled-states-dim).
 
 ### Form Components
 

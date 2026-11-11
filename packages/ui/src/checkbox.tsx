@@ -9,7 +9,7 @@ export const checkboxVariants = cva(
     "rounded-(--space-checkbox-border-radius)",
     "border-(length:--space-checkbox-border-width)",
     "focus-visible:outline-solid focus-visible:outline-(length:--space-checkbox-focus-ring-width) focus-visible:outline-(color:--color-focus-ring) focus-visible:outline-offset-(length:--space-checkbox-focus-ring-offset) focus-visible:shadow-[0_0_0_calc(var(--space-checkbox-focus-ring-offset)+var(--space-checkbox-focus-ring-width)+var(--space-focus-halo-width))_var(--color-focus-halo)] focus-visible:transition-none",
-    "disabled:cursor-not-allowed disabled:bg-(--color-checkbox-background-disabled) disabled:border-(--color-checkbox-border-disabled) disabled:text-(--color-checkbox-text-disabled) data-[state=checked]:disabled:bg-(--color-checkbox-background-disabled) data-[state=checked]:disabled:border-(--color-checkbox-border-disabled) data-[state=checked]:disabled:text-(--color-checkbox-text-disabled) data-[state=indeterminate]:disabled:bg-(--color-checkbox-background-disabled) data-[state=indeterminate]:disabled:border-(--color-checkbox-border-disabled) data-[state=indeterminate]:disabled:text-(--color-checkbox-text-disabled)",
+    "disabled:cursor-not-allowed disabled:opacity-(--checkbox-opacity-disabled)",
     "data-[state=checked]:bg-(--color-checkbox-background-checked) data-[state=checked]:text-(--color-checkbox-text-checked)",
     "data-[state=checked]:border-(--color-checkbox-border-checked)",
     "data-[state=indeterminate]:bg-(--color-checkbox-background-checked) data-[state=indeterminate]:text-(--color-checkbox-text-checked)",

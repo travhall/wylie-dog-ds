@@ -20,12 +20,11 @@ export const cardVariants = cva(
       interactive: {
         true: cn(
           "cursor-pointer transition-colors",
-          "hover:bg-(--color-card-background-hover)",
-          "hover:border-(--color-card-border-hover)",
+          "not-disabled:hover:bg-(--color-card-background-hover)",
+          "not-disabled:hover:border-(--color-card-border-hover)",
           focusRingClasses,
-          "active:bg-(--color-card-background-active)",
-          "disabled:bg-(--color-card-background-disabled)",
-          "disabled:cursor-not-allowed disabled:border-(--color-card-border-disabled)"
+          "not-disabled:active:bg-(--color-card-background-active)",
+          "disabled:cursor-not-allowed disabled:opacity-(--card-opacity-disabled)"
         ),
         false: "",
       },

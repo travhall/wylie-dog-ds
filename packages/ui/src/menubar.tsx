@@ -117,7 +117,7 @@ const MenubarItem = React.forwardRef<
       "relative flex cursor-default select-none items-center rounded-(--space-menubar-item-radius) px-(--space-menubar-item-padding-x) py-(--space-menubar-item-padding-y) text-(length:--font-size-menubar-item-font-size) leading-(--line-height-menubar-item-line-height) outline-hidden",
       focusRingInsetClasses,
       "focus:bg-(--color-menubar-item-highlighted) focus:text-(--color-menubar-item-text-highlighted)",
-      "data-disabled:pointer-events-none data-disabled:text-(--color-menubar-item-text-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--menubar-item-opacity-disabled)",
       inset && "pl-(--space-menubar-item-inset)",
       className
     )}
@@ -136,7 +136,7 @@ const MenubarCheckboxItem = React.forwardRef<
       "relative flex cursor-default select-none items-center rounded-(--space-menubar-item-radius) py-(--space-menubar-item-padding-y) pl-(--space-menubar-subitem-padding-left) pr-(--space-menubar-subitem-padding-right) text-(length:--font-size-menubar-item-font-size) leading-(--line-height-menubar-item-line-height) outline-hidden",
       focusRingInsetClasses,
       "focus:bg-(--color-menubar-item-highlighted) focus:text-(--color-menubar-item-text-highlighted)",
-      "data-disabled:pointer-events-none data-disabled:text-(--color-menubar-item-text-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--menubar-item-opacity-disabled)",
       className
     )}
     checked={checked}
@@ -165,7 +165,7 @@ const MenubarRadioItem = React.forwardRef<
       "relative flex cursor-default select-none items-center rounded-(--space-menubar-item-radius) py-(--space-menubar-item-padding-y) pl-(--space-menubar-subitem-padding-left) pr-(--space-menubar-subitem-padding-right) text-(length:--font-size-menubar-item-font-size) leading-(--line-height-menubar-item-line-height) outline-hidden",
       focusRingInsetClasses,
       "focus:bg-(--color-menubar-item-highlighted) focus:text-(--color-menubar-item-text-highlighted)",
-      "data-disabled:pointer-events-none data-disabled:text-(--color-menubar-item-text-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--menubar-item-opacity-disabled)",
       className
     )}
     {...props}

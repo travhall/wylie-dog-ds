@@ -298,7 +298,6 @@ const FORMER_AMBIGUOUS_COMPONENT_COLORS: Record<string, string[]> = {
   "calendar.day-selected": FILL,
   "accordion.trigger-hover": FILL,
   "accordion.trigger-pressed": FILL,
-  "accordion.trigger-disabled": FILL,
   "carousel.nav-hover": FILL,
   "contextmenu.item-hover": FILL,
   "pagination.active": FILL,
@@ -307,7 +306,6 @@ const FORMER_AMBIGUOUS_COMPONENT_COLORS: Record<string, string[]> = {
   "table.row-selected": FILL,
   "toast.action-hover": FILL,
   "toggle.pressed": FILL,
-  "toggle.pressed-disabled": FILL,
   "menubar.separator": FILL,
   "command.separator": FILL,
   "contextmenu.separator": FILL,
@@ -327,14 +325,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (286, 1172 and 104 variables)", () => {
+  it("reads all three collections (286, 1119 and 104 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([286, 1172, 104]);
+    ]).toEqual([286, 1119, 104]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {
@@ -354,8 +352,8 @@ describe("inferScopes: the real token files", () => {
     }
   });
 
-  it("scopes the 49 former ALL_SCOPES component colors by what they paint", () => {
-    expect(Object.keys(FORMER_AMBIGUOUS_COMPONENT_COLORS)).toHaveLength(49);
+  it("scopes the 47 former ALL_SCOPES component colors by what they paint", () => {
+    expect(Object.keys(FORMER_AMBIGUOUS_COMPONENT_COLORS)).toHaveLength(47);
     const components = new Map(
       variables
         .filter((v) => v.collection === "components")
@@ -481,7 +479,7 @@ describe("inferScopes: the real token files", () => {
       "number FONT_SIZE": 79,
       "number FONT_WEIGHT": 40,
       "fontFamily FONT_FAMILY": 1,
-      "number []": 112,
+      "number []": 137,
       "dimension []": 16,
       "shadow []": 19,
       "duration []": 25,

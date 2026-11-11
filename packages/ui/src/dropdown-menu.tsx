@@ -45,7 +45,7 @@ export const DropdownMenuItem = React.forwardRef<
       "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) px-(--space-dropdown-menu-item-padding-x) py-(--space-dropdown-menu-item-padding-y) text-(length:--font-size-dropdown-menu-item-font-size) leading-(--line-height-dropdown-menu-item-line-height) outline-hidden transition-colors",
       focusRingInsetClasses,
       "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
-      "data-disabled:pointer-events-none data-disabled:text-(--color-dropdown-menu-item-text-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-opacity-disabled)",
       inset && "pl-(--space-dropdown-menu-item-inset)",
       className
     )}
@@ -65,7 +65,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
       "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) py-(--space-dropdown-menu-item-padding-y) pl-(--space-dropdown-menu-item-inset) pr-(--space-dropdown-menu-item-padding-x) text-(length:--font-size-dropdown-menu-item-font-size) leading-(--line-height-dropdown-menu-item-line-height) outline-hidden transition-colors",
       focusRingInsetClasses,
       "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
-      "data-disabled:pointer-events-none data-disabled:text-(--color-dropdown-menu-item-text-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-opacity-disabled)",
       className
     )}
     checked={checked}
@@ -100,7 +100,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
       "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) py-(--space-dropdown-menu-item-padding-y) pl-(--space-dropdown-menu-item-inset) pr-(--space-dropdown-menu-item-padding-x) text-(length:--font-size-dropdown-menu-item-font-size) leading-(--line-height-dropdown-menu-item-line-height) outline-hidden transition-colors",
       focusRingInsetClasses,
       "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
-      "data-disabled:pointer-events-none data-disabled:text-(--color-dropdown-menu-item-text-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-opacity-disabled)",
       className
     )}
     {...props}
@@ -164,7 +164,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
       focusRingInsetClasses,
       "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
       "data-[state=open]:bg-(--color-dropdown-menu-item-background-hover)",
-      "data-disabled:pointer-events-none data-disabled:text-(--color-dropdown-menu-item-text-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-opacity-disabled)",
       inset && "pl-(--space-dropdown-menu-item-inset)",
       className
     )}

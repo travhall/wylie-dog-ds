@@ -77,7 +77,7 @@ const ContextMenuItem = React.forwardRef<
   <ContextMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) px-(--space-context-menu-item-padding-x) py-(--space-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) leading-(--line-height-context-menu-item-line-height) outline-hidden focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:text-(--color-contextmenu-item-text-disabled)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) px-(--space-context-menu-item-padding-x) py-(--space-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) leading-(--line-height-context-menu-item-line-height) outline-hidden focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--contextmenu-item-opacity-disabled)",
       focusRingInsetClasses,
       inset && "pl-(--space-context-menu-item-inset)",
       className
@@ -94,7 +94,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
   <ContextMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) leading-(--line-height-context-menu-item-line-height) outline-hidden focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:text-(--color-contextmenu-item-text-disabled)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) leading-(--line-height-context-menu-item-line-height) outline-hidden focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--contextmenu-item-opacity-disabled)",
       focusRingInsetClasses,
       className
     )}
@@ -122,7 +122,7 @@ const ContextMenuRadioItem = React.forwardRef<
   <ContextMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) leading-(--line-height-context-menu-item-line-height) outline-hidden focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:text-(--color-contextmenu-item-text-disabled)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) leading-(--line-height-context-menu-item-line-height) outline-hidden focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--contextmenu-item-opacity-disabled)",
       focusRingInsetClasses,
       className
     )}

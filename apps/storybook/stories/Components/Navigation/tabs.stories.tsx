@@ -350,3 +350,27 @@ export const Sizes: Story = {
     </div>
   ),
 };
+
+export const Disabled: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A disabled tab keeps its colours and dims, and shows the not-allowed cursor.",
+      },
+    },
+  },
+  render: () => (
+    <Tabs defaultValue="tab1" className="w-[425px]">
+      <TabsList className="grid w-full grid-cols-3">
+        <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+        <TabsTrigger value="tab2" disabled>
+          Tab 2
+        </TabsTrigger>
+        <TabsTrigger value="tab3">Tab 3</TabsTrigger>
+      </TabsList>
+      <TabsContent value="tab1">Content for Tab 1</TabsContent>
+      <TabsContent value="tab3">Content for Tab 3</TabsContent>
+    </Tabs>
+  ),
+};

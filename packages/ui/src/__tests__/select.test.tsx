@@ -352,7 +352,7 @@ describe("Select", () => {
       const trigger = screen.getByRole("combobox");
       expect(trigger).toHaveClass(
         "disabled:cursor-not-allowed",
-        "disabled:text-(--color-select-trigger-text-disabled)"
+        "disabled:opacity-(--select-opacity-disabled)"
       );
     });
 

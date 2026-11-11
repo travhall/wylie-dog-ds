@@ -19,6 +19,30 @@
 } */
 
 /* ==========================================================================
+   Cursors
+   Tailwind 4 draws buttons with the default arrow, as browsers do. Clickable
+   controls here show the pointer when they can be used and not-allowed when
+   they are disabled, so a disabled control keeps receiving pointer events
+   (that is what lets the cursor show) while its hover and press styles are
+   scoped to not-disabled controls in each component. Only buttons and
+   role="button" are covered: menu items keep the arrow as native menus do,
+   and text inputs keep the text cursor. Remove this block to go back to the
+   arrow everywhere; nothing else depends on it.
+   ========================================================================== */
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role="button"][aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+/* ==========================================================================
    Input type-aware styling
    ========================================================================== */
 

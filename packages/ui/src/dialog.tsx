@@ -101,7 +101,7 @@ export const DialogContent = React.forwardRef<
         {children}
         <DialogPrimitive.Close
           ref={closeButtonRef}
-          className={`absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--dialog-close-button-opacity) transition-opacity hover:opacity-(--dialog-close-button-opacity-hover) ${focusRingClasses} disabled:pointer-events-none`}
+          className={`absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--dialog-close-button-opacity) transition-opacity hover:opacity-(--dialog-close-button-opacity-hover) ${focusRingClasses}`}
         >
           <Icon
             icon={XIcon}

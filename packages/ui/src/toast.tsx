@@ -60,17 +60,17 @@ Toast.displayName = "Toast";
 // label on a near-white patch. Its buttons take the role's hover and pressed tones.
 // The classes are written out in full so Tailwind can see them.
 const solidControlFill = [
-  "group-data-[variant=destructive]:hover:bg-(--color-toast-destructive-control-background-hover) group-data-[variant=destructive]:active:bg-(--color-toast-destructive-control-background-active)",
-  "group-data-[variant=success]:hover:bg-(--color-toast-success-control-background-hover) group-data-[variant=success]:active:bg-(--color-toast-success-control-background-active)",
-  "group-data-[variant=warning]:hover:bg-(--color-toast-warning-control-background-hover) group-data-[variant=warning]:active:bg-(--color-toast-warning-control-background-active)",
-  "group-data-[variant=info]:hover:bg-(--color-toast-info-control-background-hover) group-data-[variant=info]:active:bg-(--color-toast-info-control-background-active)",
+  "group-data-[variant=destructive]:not-disabled:hover:bg-(--color-toast-destructive-control-background-hover) group-data-[variant=destructive]:not-disabled:active:bg-(--color-toast-destructive-control-background-active)",
+  "group-data-[variant=success]:not-disabled:hover:bg-(--color-toast-success-control-background-hover) group-data-[variant=success]:not-disabled:active:bg-(--color-toast-success-control-background-active)",
+  "group-data-[variant=warning]:not-disabled:hover:bg-(--color-toast-warning-control-background-hover) group-data-[variant=warning]:not-disabled:active:bg-(--color-toast-warning-control-background-active)",
+  "group-data-[variant=info]:not-disabled:hover:bg-(--color-toast-info-control-background-hover) group-data-[variant=info]:not-disabled:active:bg-(--color-toast-info-control-background-active)",
 ].join(" ");
 
 const solidCloseColor = [
-  "group-data-[variant=destructive]:text-(--color-toast-destructive-close-icon) group-data-[variant=destructive]:hover:text-(--color-toast-destructive-close-icon)",
-  "group-data-[variant=success]:text-(--color-toast-success-close-icon) group-data-[variant=success]:hover:text-(--color-toast-success-close-icon)",
-  "group-data-[variant=warning]:text-(--color-toast-warning-close-icon) group-data-[variant=warning]:hover:text-(--color-toast-warning-close-icon)",
-  "group-data-[variant=info]:text-(--color-toast-info-close-icon) group-data-[variant=info]:hover:text-(--color-toast-info-close-icon)",
+  "group-data-[variant=destructive]:text-(--color-toast-destructive-close-icon) group-data-[variant=destructive]:not-disabled:hover:text-(--color-toast-destructive-close-icon)",
+  "group-data-[variant=success]:text-(--color-toast-success-close-icon) group-data-[variant=success]:not-disabled:hover:text-(--color-toast-success-close-icon)",
+  "group-data-[variant=warning]:text-(--color-toast-warning-close-icon) group-data-[variant=warning]:not-disabled:hover:text-(--color-toast-warning-close-icon)",
+  "group-data-[variant=info]:text-(--color-toast-info-close-icon) group-data-[variant=info]:not-disabled:hover:text-(--color-toast-info-close-icon)",
 ].join(" ");
 
 type ToastActionProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -80,9 +80,9 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
     <button
       ref={ref}
       className={cn(
-        "col-start-2 row-start-2 mt-(--space-toast-controls-gap) self-end justify-self-end inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border-(length:--space-toast-border-width) bg-transparent transition-colors hover:bg-(--color-toast-action-hover)",
+        "col-start-2 row-start-2 mt-(--space-toast-controls-gap) self-end justify-self-end inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border-(length:--space-toast-border-width) bg-transparent transition-colors not-disabled:hover:bg-(--color-toast-action-hover)",
         focusRingClasses,
-        "disabled:pointer-events-none disabled:text-(--color-toast-action-text-disabled) disabled:border-(--color-toast-action-border-disabled)",
+        "disabled:cursor-not-allowed disabled:opacity-(--toast-action-opacity-disabled)",
         "h-(--space-toast-action-height)",
         "px-(--space-toast-action-padding-x)",
         "text-(length:--font-size-toast-action-font-size) leading-(--line-height-toast-action-line-height)",
@@ -105,7 +105,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     <button
       ref={ref}
       className={cn(
-        "col-start-2 row-start-1 self-start justify-self-end inline-flex shrink-0 items-center justify-center p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover)",
+        "col-start-2 row-start-1 self-start justify-self-end inline-flex shrink-0 items-center justify-center p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity not-disabled:hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover)",
         focusRingClasses,
         "group-hover:opacity-(--toast-close-button-opacity-hover)",
         "rounded-(--space-toast-close-button-radius)",

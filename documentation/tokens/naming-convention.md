@@ -277,11 +277,11 @@ className="
 "
 ```
 
-**Disabled States:**
+**Disabled States:** components dim with their own `opacity-disabled` token and show the not-allowed cursor (see [Disabled states dim](component-token-grammar.md)). For a custom element in application code, reuse the nearest component's token:
 
 ```tsx
 className="
-  text-(--color-foreground-faint)
+  opacity-(--button-opacity-disabled)
   cursor-not-allowed
 "
 ```

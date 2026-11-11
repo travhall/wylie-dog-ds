@@ -18,7 +18,8 @@ const meta: Meta<typeof Button> = {
 
 - One \`default\` (primary) button per view. Pair it with \`secondary\` or \`outline\` for the other actions.
 - Use \`destructive\` only for actions that remove something, and confirm them with an Alert Dialog.
-- Use \`loading\` while an action runs; the button is disabled until it finishes.
+- Use \`loading\` while an action runs; the button is disabled (not clickable) until it finishes, so it takes the same dimmed look as a disabled button, with the spinner shown.
+- A disabled button keeps its colours and dims to 60% with a \`not-allowed\` cursor. Say why it is disabled when that is not obvious.
 - An icon-only button (\`size="icon"\`) needs an \`aria-label\`.
 - \`size="md"\` is the same as \`size="default"\`.
 
