@@ -4,28 +4,7 @@ import { Label } from "@wyliedog/ui/label";
 import { Input } from "@wyliedog/ui/input";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Switch } from "@wyliedog/ui/switch";
-import {
-  Form,
-  FormField,
-  FormLabel,
-  FormMessage,
-  useFormField,
-} from "@wyliedog/ui/form";
-
-function FieldInput(props: React.ComponentProps<typeof Input>) {
-  const { id, isInvalid, errorId, descriptionId } = useFormField();
-  return (
-    <Input
-      id={id}
-      error={isInvalid}
-      aria-invalid={isInvalid || undefined}
-      aria-describedby={
-        [errorId, descriptionId].filter(Boolean).join(" ") || undefined
-      }
-      {...props}
-    />
-  );
-}
+import { Form, FormField, FormLabel, FormMessage } from "@wyliedog/ui/form";
 
 const meta: Meta<typeof Label> = {
   title: "Components/Inputs & Controls/Label",
@@ -156,7 +135,7 @@ export const WithError: Story = {
     <Form className="mx-auto w-full max-w-xs">
       <FormField error={args.error} required={args.required}>
         <FormLabel size={args.size}>{args.children}</FormLabel>
-        <FieldInput placeholder="Username is required" />
+        <Input placeholder="Username is required" />
         <FormMessage>This field is required</FormMessage>
       </FormField>
     </Form>
@@ -291,17 +270,17 @@ export const FormExamples: Story = {
     <Form className="mx-auto w-full max-w-md">
       <FormField required>
         <FormLabel>Full Name</FormLabel>
-        <FieldInput placeholder="John Doe" />
+        <Input placeholder="John Doe" />
       </FormField>
 
       <FormField required>
         <FormLabel>Email Address</FormLabel>
-        <FieldInput type="email" placeholder="john@example.com" />
+        <Input type="email" placeholder="john@example.com" />
       </FormField>
 
       <FormField>
         <FormLabel>Phone Number</FormLabel>
-        <FieldInput type="tel" placeholder="+1 (555) 123-4567" />
+        <Input type="tel" placeholder="+1 (555) 123-4567" />
       </FormField>
 
       <div className="flex items-center space-x-2">

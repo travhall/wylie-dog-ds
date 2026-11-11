@@ -1,36 +1,9 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
-import {
-  Form,
-  FormField,
-  FormLabel,
-  FormMessage,
-  useFormField,
-} from "@wyliedog/ui/form";
-
-function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
-  const { id } = useFormField();
-  return <Input id={id} {...props} />;
-}
-
-function FieldInput(props: React.ComponentProps<typeof Input>) {
-  const { id, isInvalid, errorId, descriptionId } = useFormField();
-  return (
-    <Input
-      id={id}
-      error={isInvalid}
-      aria-invalid={isInvalid || undefined}
-      aria-describedby={
-        [errorId, descriptionId].filter(Boolean).join(" ") || undefined
-      }
-      {...props}
-    />
-  );
-}
+import { Form, FormField, FormLabel, FormMessage } from "@wyliedog/ui/form";
 
 const meta: Meta<typeof Input> = {
   title: "Components/Inputs & Controls/Input",
@@ -112,6 +85,15 @@ const meta: Meta<typeof Input> = {
         category: "Content",
       },
     },
+    defaultValue: {
+      control: "text",
+      description:
+        "Initial text (uncontrolled), shown instead of the placeholder",
+      table: {
+        type: { summary: "string" },
+        category: "Content",
+      },
+    },
   },
   args: {
     size: "md",
@@ -164,7 +146,7 @@ export const WithError: Story = {
     <Form className="mx-auto w-full max-w-xs">
       <FormField error={args.error} required>
         <FormLabel>Username</FormLabel>
-        <FieldInput placeholder={args.placeholder} />
+        <Input placeholder={args.placeholder} />
         <FormMessage>Username must be at least 3 characters long</FormMessage>
       </FormField>
     </Form>
@@ -345,37 +327,37 @@ export const FormExample: Story = {
       <div className="grid grid-cols-2 gap-4">
         <FormField required>
           <FormLabel>First Name</FormLabel>
-          <FieldInput placeholder="John" />
+          <Input placeholder="John" />
         </FormField>
         <FormField required>
           <FormLabel>Last Name</FormLabel>
-          <FieldInput placeholder="Doe" />
+          <Input placeholder="Doe" />
         </FormField>
       </div>
 
       <FormField required>
         <FormLabel>Email Address</FormLabel>
-        <FieldInput type="email" placeholder="john@example.com" />
+        <Input type="email" placeholder="john@example.com" />
       </FormField>
 
       <FormField>
         <FormLabel>Phone Number</FormLabel>
-        <FieldInput type="tel" placeholder="+1 (555) 123-4567" />
+        <Input type="tel" placeholder="+1 (555) 123-4567" />
       </FormField>
 
       <FormField>
         <FormLabel>Company</FormLabel>
-        <FieldInput placeholder="Acme Corp" />
+        <Input placeholder="Acme Corp" />
       </FormField>
 
       <FormField required>
         <FormLabel>Password</FormLabel>
-        <FieldInput type="password" placeholder="••••••••" />
+        <Input type="password" placeholder="••••••••" />
       </FormField>
 
       <FormField required>
         <FormLabel>Confirm Password</FormLabel>
-        <FieldInput type="password" placeholder="••••••••" />
+        <Input type="password" placeholder="••••••••" />
       </FormField>
 
       <div className="flex gap-3 pt-4">
@@ -541,7 +523,7 @@ export const DosDonts: Story = {
             </p>
             <FormField error required>
               <FormLabel>Username</FormLabel>
-              <FormInput error />
+              <Input error />
               <FormMessage>Username is required</FormMessage>
             </FormField>
           </div>

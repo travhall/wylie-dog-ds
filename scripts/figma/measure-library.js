@@ -150,9 +150,15 @@ for (const set of sets) {
     for (const part of PARTS[set.name] ?? []) {
       // "name#1" is the second descendant called "name" (layers repeat: tabs-row-row)
       const [partName, partIndex] = part.split("#");
-      const node = variant.findAll((n) => n.name === partName)[
-        Number(partIndex ?? 0)
-      ];
+      // a part hidden in this variant (Form's message layer outside the error variants) is not drawn
+      const visible = (n) => {
+        for (let p = n; p && p !== variant; p = p.parent)
+          if (p.visible === false) return false;
+        return true;
+      };
+      const node = variant
+        .findAll((n) => n.name === partName)
+        .filter(visible)[Number(partIndex ?? 0)];
       if (!node) continue;
       const partTexts =
         node.type === "TEXT"

@@ -12,22 +12,8 @@ import {
 } from "@wyliedog/ui/sheet";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
-import { Form, FormField, FormLabel, useFormField } from "@wyliedog/ui/form";
+import { Form, FormField, FormLabel } from "@wyliedog/ui/form";
 import { Separator } from "@wyliedog/ui/separator";
-
-// Connects Input to the nearest FormField context
-function FieldInput(props: React.ComponentProps<typeof Input>) {
-  const { id, errorId, descriptionId, isInvalid } = useFormField();
-  return (
-    <Input
-      id={id}
-      error={isInvalid}
-      errorId={errorId}
-      descriptionId={descriptionId}
-      {...props}
-    />
-  );
-}
 
 // Use bare Meta to document props from sub-components (e.g. SheetContent.side)
 // that don't exist on the root Sheet (DialogPrimitive.Root) element.
@@ -89,11 +75,11 @@ export const Default: Story = {
         <Form className="py-4">
           <FormField>
             <FormLabel>Name</FormLabel>
-            <FieldInput defaultValue="Pedro Duarte" />
+            <Input defaultValue="Pedro Duarte" />
           </FormField>
           <FormField>
             <FormLabel>Username</FormLabel>
-            <FieldInput defaultValue="@peduarte" />
+            <Input defaultValue="@peduarte" />
           </FormField>
         </Form>
         <SheetFooter>
@@ -242,7 +228,7 @@ export const WithInteractions: Story = {
         <Form className="py-4">
           <FormField>
             <FormLabel>Name</FormLabel>
-            <FieldInput defaultValue="Pedro Duarte" />
+            <Input defaultValue="Pedro Duarte" />
           </FormField>
         </Form>
         <SheetFooter>

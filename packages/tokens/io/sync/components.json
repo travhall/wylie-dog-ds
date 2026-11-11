@@ -6663,10 +6663,10 @@
             "Dark": "{typography.tracking.tight}"
           }
         },
-        "form.message-font-weight": {
+        "form.error-font-weight": {
           "$type": "number",
           "$value": "{typography.font-weight.medium}",
-          "$description": "Font weight of the form message.",
+          "$description": "Font weight of form error messages.",
           "valuesByMode": {
             "Light": "{typography.font-weight.medium}",
             "Dark": "{typography.font-weight.medium}"

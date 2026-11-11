@@ -739,7 +739,7 @@ export type CssVarName =
   | "--font-weight-extrabold"
   | "--font-weight-extralight"
   | "--font-weight-feature-grid-title-font-weight"
-  | "--font-weight-form-message-font-weight"
+  | "--font-weight-form-error-font-weight"
   | "--font-weight-label-font-weight"
   | "--font-weight-light"
   | "--font-weight-medium"
@@ -2250,7 +2250,7 @@ export declare const cssVars: Readonly<{
   "fontWeightExtrabold": "--font-weight-extrabold";
   "fontWeightExtralight": "--font-weight-extralight";
   "fontWeightFeatureGridTitleFontWeight": "--font-weight-feature-grid-title-font-weight";
-  "fontWeightFormMessageFontWeight": "--font-weight-form-message-font-weight";
+  "fontWeightFormErrorFontWeight": "--font-weight-form-error-font-weight";
   "fontWeightLabelFontWeight": "--font-weight-label-font-weight";
   "fontWeightLight": "--font-weight-light";
   "fontWeightMedium": "--font-weight-medium";

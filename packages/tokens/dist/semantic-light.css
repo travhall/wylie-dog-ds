@@ -1142,7 +1142,7 @@
   --color-checkbox-error-border: oklch(0.546 0.215 27.28);
   --font-weight-dialog-title-font-weight: 600;
   --space-dialog-title-letter-spacing: -0.025em;
-  --font-weight-form-message-font-weight: 500;
+  --font-weight-form-error-font-weight: 500;
   --font-size-form-error-font-size: 0.75rem;
   --font-weight-calendar-header-font-weight: 500;
   --font-weight-calendar-day-header-font-weight: 400;

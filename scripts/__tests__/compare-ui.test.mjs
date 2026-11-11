@@ -167,6 +167,31 @@ test("an allow entry moves a finding aside, and one that matches nothing is stal
   );
 });
 
+test("an allow entry whose variant ends in $ matches only the end of the variant name", () => {
+  const { findings } = files(
+    item({ variant: "Size=md :: select-stack" }),
+    item({ variant: "Size=md :: select-stack", box: box({ radius: 12 }) })
+  );
+  const rows = files(
+    item({ variant: "Size=md :: select-stack-row" }),
+    item({ variant: "Size=md :: select-stack-row", box: box({ radius: 12 }) })
+  ).findings;
+  const allow = [
+    {
+      set: "Button",
+      property: "radius",
+      variant: ":: select-stack$",
+      reason: "x",
+    },
+  ];
+  assert.equal(applyAllow(findings, allow).open.length, 0);
+  assert.equal(
+    applyAllow(rows, allow).open.length,
+    1,
+    "the row is not the stack"
+  );
+});
+
 test("an allow entry's variant is written the code's way and still matches the Title Case Figma name", () => {
   const { findings } = files(
     item({ variant: "State=With Selection :: table-row#1" }),
@@ -272,6 +297,19 @@ test("one Figma value can be several story args, or live in another story", asyn
     storyUrl("http://x", toast, parseVariant("variant=info"), "dark"),
     /id=components-feedback-status-toast--controls-on-solid-toasts&/
   );
+});
+
+test("a property that only has valueArgs still turns into story args", async () => {
+  const { argsParam } = await import("../figma/harvest-ui.mjs");
+  const input = {
+    args: { size: "size" },
+    valueArgs: { filled: { true: "defaultValue:Input text" } },
+  };
+  assert.equal(
+    argsParam({ size: "md", filled: "true" }, input),
+    "size:md;defaultValue:Input text"
+  );
+  assert.equal(argsParam({ size: "md", filled: "false" }, input), "size:md");
 });
 
 test("the tolerance is the documented one", () => {

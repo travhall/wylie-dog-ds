@@ -233,6 +233,7 @@
       "name": "form/error",
       "fontFamily": "typography.font-family.sans",
       "fontSize": "form.error-font-size",
+      "fontWeight": "form.error-font-weight",
       "lineHeight": "form.error-line-height"
     },
     {

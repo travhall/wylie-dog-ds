@@ -154,7 +154,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
         role="alert"
         aria-live="polite"
         className={cn(
-          "text-(length:--font-size-form-error-font-size) leading-(--line-height-form-error-line-height) font-(--font-weight-form-message-font-weight) text-(--color-form-error)",
+          "text-(length:--font-size-form-error-font-size) leading-(--line-height-form-error-line-height) font-(--font-weight-form-error-font-weight) text-(--color-form-error)",
           className
         )}
         {...props}

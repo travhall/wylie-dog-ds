@@ -36,8 +36,10 @@
         "error": "error:!true",
         "success": "success:!true"
       },
-      "unrenderable": {
-        "filled": ["true"]
+      "valueArgs": {
+        "filled": {
+          "true": "defaultValue:Input text"
+        }
       }
     },
     "Badge": {
@@ -95,8 +97,10 @@
         "error": "error:!true",
         "success": "success:!true"
       },
-      "unrenderable": {
-        "filled": ["true"]
+      "valueArgs": {
+        "filled": {
+          "true": "defaultValue:Input text"
+        }
       }
     },
     "Alert": {
@@ -122,15 +126,28 @@
       },
       "state": "state",
       "parts": {
-        "trigger": "#storybook-root button[role=combobox]"
+        "trigger": "#storybook-root button[role=combobox]",
+        "select-stack": "[role=listbox]",
+        "select-stack-row": "[role=listbox] [role=option]:nth-child(1)",
+        "select-stack-row#1": "[role=listbox] [role=option]:nth-child(2)",
+        "select-stack-row#2": "[role=listbox] [role=option]:nth-child(3)"
       },
-      "valueStories": {
-        "state": {
-          "error": "components-inputs-controls-select--with-error"
+      "stateArgs": {
+        "closed": "error:!false",
+        "open": "error:!false",
+        "error": "error:!true"
+      },
+      "valueArgs": {
+        "filled": {
+          "true": "defaultValue:ca"
         }
       },
-      "unrenderable": {
-        "filled": ["true"]
+      "open": {
+        "click": "#storybook-root button[role=combobox]",
+        "wait": 150,
+        "when": {
+          "state": "open"
+        }
       }
     },
     "Avatar": {
@@ -240,14 +257,15 @@
     "Form": {
       "story": "components-inputs-controls-form--default",
       "root": "#storybook-root form > div:first-child",
-      "args": {},
+      "args": {
+        "error": "error",
+        "required": "required"
+      },
       "parts": {
         "label": "#storybook-root form label",
         "input": "#storybook-root form input",
-        "description": "#storybook-root form p"
-      },
-      "unrenderable": {
-        "error": ["true"]
+        "description": "#storybook-root form p",
+        "message": "#storybook-root form [role=alert]"
       }
     },
     "Command": {
@@ -1877,6 +1895,41 @@
       "property": "lineHeight",
       "scope": "text",
       "reason": "The story draws a 36px semibold slide number (text-4xl font-semibold, story-authored); Figma shows the Card content text at its token size."
+    },
+    {
+      "set": "Select",
+      "property": "h",
+      "variant": ":: select-stack$",
+      "scope": "box",
+      "reason": "The story lists five items; the Figma menu draws three, so the menu is shorter."
+    },
+    {
+      "set": "Select",
+      "property": "pad",
+      "variant": ":: select-stack$",
+      "scope": "box",
+      "reason": "In code the 4px padding sits on the viewport inside the bordered content; Figma puts it on the menu frame itself. The item rows land in the same place."
+    },
+    {
+      "set": "Select",
+      "property": "fill",
+      "variant": ":: select-stack-row",
+      "scope": "box",
+      "reason": "Figma draws the first item highlighted to show the hover look; in the UI the highlight follows the pointer or keyboard focus, so it lands on whichever item is under the pointer."
+    },
+    {
+      "set": "Select",
+      "property": "size",
+      "variant": ":: select-stack$",
+      "scope": "text",
+      "reason": "The measurer reads the first text under the menu, which in the UI is the default-size text, not the item text; the item rows carry the real per-size measurement."
+    },
+    {
+      "set": "Select",
+      "property": "lineHeight",
+      "variant": ":: select-stack$",
+      "scope": "text",
+      "reason": "The measurer reads the first text under the menu, which in the UI is the default-size text, not the item text; the item rows carry the real per-size measurement."
     }
   ]
 }

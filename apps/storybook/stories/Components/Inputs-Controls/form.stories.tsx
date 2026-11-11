@@ -86,6 +86,23 @@ type Story = StoryObj<typeof meta>;
 // Default — canonical FormField pattern
 // ---------------------------------------------------------------------------
 
+type DefaultArgs = { error?: boolean; required?: boolean };
+
+// the Form story's props are the <form> element's, so these two controls are typed loosely
+const defaultArgTypes = {
+  error: {
+    control: "boolean",
+    description:
+      "Puts the first field in its error state, so its label, input and message show the error",
+    table: { category: "State" },
+  },
+  required: {
+    control: "boolean",
+    description: "Marks the first field required",
+    table: { category: "State" },
+  },
+} as unknown as Meta<typeof Form>["argTypes"];
+
 export const Default: Story = {
   parameters: {
     docs: {
@@ -95,12 +112,18 @@ export const Default: Story = {
       },
     },
   },
-  render: () => (
+  args: { error: false, required: false } as Record<string, unknown>,
+  argTypes: defaultArgTypes,
+  render: (args) => (
     <Form className="mx-auto w-full max-w-lg">
-      <FormField>
+      <FormField
+        error={(args as DefaultArgs).error}
+        required={(args as DefaultArgs).required}
+      >
         <FormLabel>Name</FormLabel>
         <Input placeholder="Jane Doe" />
         <FormDescription>How you&apos;d like to be addressed.</FormDescription>
+        <FormMessage>This field is required.</FormMessage>
       </FormField>
 
       <FormField>

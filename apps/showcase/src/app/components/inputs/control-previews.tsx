@@ -4,12 +4,7 @@ import { useId, useState } from "react";
 import { AlignCenter, AlignLeft, AlignRight, Bold, Italic } from "lucide-react";
 import { Button } from "@wyliedog/ui/button";
 import { Checkbox } from "@wyliedog/ui/checkbox";
-import {
-  FormField,
-  FormLabel,
-  FormMessage,
-  useFormField,
-} from "@wyliedog/ui/form";
+import { FormField, FormLabel, FormMessage } from "@wyliedog/ui/form";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
@@ -107,14 +102,10 @@ export function CheckboxPreview() {
 }
 
 function FormInput({ type }: { type: string }) {
-  const { id, errorId, isInvalid } = useFormField();
   return (
     <Input
-      id={id}
       type={type}
       size="sm"
-      error={isInvalid}
-      errorId={errorId}
       defaultValue={type === "email" ? "elena@example" : ""}
     />
   );

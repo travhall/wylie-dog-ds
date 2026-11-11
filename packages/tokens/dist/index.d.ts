@@ -1131,7 +1131,7 @@ export declare const checkboxBorderChecked: "oklch(0.496 0.049 219.11)";
 export declare const checkboxErrorBorder: "oklch(0.546 0.215 27.28)";
 export declare const dialogTitleFontWeight: number;
 export declare const dialogTitleLetterSpacing: "-0.025em";
-export declare const formMessageFontWeight: number;
+export declare const formErrorFontWeight: number;
 export declare const formErrorFontSize: "0.75rem";
 export declare const calendarHeaderFontWeight: number;
 export declare const calendarDayHeaderFontWeight: number;

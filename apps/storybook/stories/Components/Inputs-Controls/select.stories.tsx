@@ -10,13 +10,7 @@ import {
 } from "@wyliedog/ui/select";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
-import {
-  Form,
-  FormField,
-  FormLabel,
-  FormMessage,
-  useFormField,
-} from "@wyliedog/ui/form";
+import { Form, FormField, FormLabel, FormMessage } from "@wyliedog/ui/form";
 import { Separator } from "@wyliedog/ui/separator";
 
 // Using bare Meta because `size` lives on SelectTrigger, not the Select root
@@ -61,6 +55,16 @@ const meta: Meta = {
         defaultValue: { summary: "false" },
       },
     },
+    defaultValue: {
+      control: "select",
+      options: [undefined, "us", "ca", "uk", "de", "fr"],
+      description:
+        "The selected item (uncontrolled), shown instead of the placeholder",
+      table: {
+        type: { summary: "string" },
+        category: "Content",
+      },
+    },
   },
   args: {
     size: "md",
@@ -74,17 +78,9 @@ type Story = StoryObj<typeof meta>;
 type SelectStoryArgs = {
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
+  error?: boolean;
+  defaultValue?: string;
 };
-
-// Reads the generated id/isInvalid from the nearest <FormField> and forwards
-// them to SelectTrigger, mirroring the FieldInput/FieldTextarea pattern in
-// form.stories.tsx — without this, FormLabel's htmlFor points at an id no
-// element has, leaving the combobox (which doesn't support name-from-content
-// per the ARIA spec) with no accessible name.
-function FieldSelectTrigger(props: React.ComponentProps<typeof SelectTrigger>) {
-  const { id, isInvalid } = useFormField();
-  return <SelectTrigger id={id} error={isInvalid} {...props} />;
-}
 
 export const Default: Story = {
   parameters: {
@@ -96,14 +92,14 @@ export const Default: Story = {
     },
   },
   render: (args) => {
-    const { size, disabled } = args as SelectStoryArgs;
+    const { size, disabled, error, defaultValue } = args as SelectStoryArgs;
     return (
       <div className="mx-auto w-full max-w-xs space-y-2">
         <Label htmlFor="default-select" size={size}>
           Choose a country
         </Label>
-        <Select disabled={disabled} size={size}>
-          <SelectTrigger id="default-select">
+        <Select disabled={disabled} size={size} defaultValue={defaultValue}>
+          <SelectTrigger id="default-select" error={error}>
             <SelectValue placeholder="Select a country" />
           </SelectTrigger>
           <SelectContent>
@@ -141,9 +137,9 @@ export const WithError: Story = {
       <FormField error required>
         <FormLabel>Category</FormLabel>
         <Select>
-          <FieldSelectTrigger>
+          <SelectTrigger>
             <SelectValue placeholder="This field is required" />
-          </FieldSelectTrigger>
+          </SelectTrigger>
           <SelectContent>
             <SelectItem value="tech">Technology</SelectItem>
             <SelectItem value="design">Design</SelectItem>

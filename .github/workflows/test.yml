@@ -59,7 +59,16 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright Chromium
-        run: pnpm --filter storybook exec playwright install chromium --with-deps
+        # The apt mirrors fail now and then ("Failed to fetch ... Temporary failure"), which used to
+        # fail the whole job, so try three times, refreshing the package lists in between.
+        run: |
+          for attempt in 1 2 3; do
+            pnpm --filter storybook exec playwright install chromium --with-deps && exit 0
+            echo "Playwright install failed (attempt $attempt), retrying in 20s"
+            sudo apt-get update || true
+            sleep 20
+          done
+          exit 1
 
       # Consolidated per Plan 078 (deduplicate the test workflow runs): `test`,
       # `test:a11y`, and `test:coverage` all ran the same Vitest file set
