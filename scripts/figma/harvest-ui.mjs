@@ -14,14 +14,23 @@ import path from "node:path";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const root = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../.."
+);
 
 /** "variant=default, size=md" to { variant: "default", size: "md" }. */
 export function parseVariant(name) {
   const props = {};
   for (const part of String(name).split(",")) {
     const i = part.indexOf("=");
-    if (i > 0) props[part.slice(0, i).trim()] = part.slice(i + 1).trim();
+    // lower-cased: the library is moving to Title Case names ("Variant=Default") while the
+    // config and the stories use the code's lower-case ones
+    if (i > 0)
+      props[part.slice(0, i).trim().toLowerCase()] = part
+        .slice(i + 1)
+        .trim()
+        .toLowerCase();
   }
   return props;
 }
@@ -149,7 +158,8 @@ function measureInPage(rootSelector) {
     // the colour of the first side that has a border (a bottom rule, border-b, has no top edge)
     stroke: (() => {
       for (const side of ["Top", "Bottom", "Left", "Right"]) {
-        if (px(cs[`border${side}Width`]) > 0) return hex(cs[`border${side}Color`]);
+        if (px(cs[`border${side}Width`]) > 0)
+          return hex(cs[`border${side}Color`]);
       }
       return null;
     })(),
@@ -209,7 +219,10 @@ async function main() {
     process.exit(2);
   }
   const config = JSON.parse(
-    fs.readFileSync(path.join(root, "scripts/figma/compare-ui.config.json"), "utf8")
+    fs.readFileSync(
+      path.join(root, "scripts/figma/compare-ui.config.json"),
+      "utf8"
+    )
   );
   const figma = JSON.parse(fs.readFileSync(file, "utf8"));
   const mode = figma.mode ?? "light";
@@ -324,9 +337,7 @@ async function main() {
         state: "attached",
       });
     } catch {
-      skipped.push(
-        `${item.set} ${item.variant}: nothing matched ${root}`
-      );
+      skipped.push(`${item.set} ${item.variant}: nothing matched ${root}`);
       continue;
     }
     await page.waitForTimeout(250);
@@ -352,18 +363,23 @@ async function main() {
     if (state === "pressed") await page.mouse.up();
     await page.mouse.move(0, 0);
     if (!measured) {
-      skipped.push(
-        `${item.set} ${item.variant}: no element for ${root}`
-      );
+      skipped.push(`${item.set} ${item.variant}: no element for ${root}`);
       continue;
     }
-    if (!item.partsOnly) items.push({ set: item.set, variant: item.variant, ...measured });
+    if (!item.partsOnly)
+      items.push({ set: item.set, variant: item.variant, ...measured });
     for (const [part, selector, inner] of innerParts) {
       if (!inner) {
-        skipped.push(`${item.set} ${item.variant} :: ${part}: no element for ${selector}`);
+        skipped.push(
+          `${item.set} ${item.variant} :: ${part}: no element for ${selector}`
+        );
         continue;
       }
-      items.push({ set: item.set, variant: `${item.variant} :: ${part}`, ...inner });
+      items.push({
+        set: item.set,
+        variant: `${item.variant} :: ${part}`,
+        ...inner,
+      });
     }
   }
   await browser.close();
