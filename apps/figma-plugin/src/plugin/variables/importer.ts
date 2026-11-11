@@ -21,6 +21,7 @@ import {
   validateTokenValue,
 } from "./validation";
 import { inferScopes } from "./scopes";
+import { setValueIfChanged } from "./variable-values";
 import { durationToSeconds, parseCubicBezier } from "./motion-values";
 import { applyPublishing } from "./publishing";
 import { FormatAdapterManager } from "./format-adapter-manager";
@@ -379,7 +380,7 @@ async function createVariableWithReferences(
           );
 
           try {
-            variable.setValueForMode(mode.modeId, figmaValue);
+            setValueIfChanged(variable, mode.modeId, figmaValue);
           } catch (error) {
             console.error(
               `Failed to set value for ${tokenName} mode ${mode.name}:`,
@@ -430,7 +431,7 @@ async function createVariableWithReferences(
 
         for (const mode of targetModes) {
           try {
-            variable.setValueForMode(mode.modeId, figmaValue);
+            setValueIfChanged(variable, mode.modeId, figmaValue);
           } catch (error) {
             console.error(
               `Failed to set value for ${tokenName} mode ${mode.name}:`,

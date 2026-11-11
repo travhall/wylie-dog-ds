@@ -11,6 +11,7 @@ type FakeVariable = {
   resolvedType: string;
   scopes: string[];
   description: string;
+  valuesByMode: Record<string, unknown>;
   remove: ReturnType<typeof vi.fn>;
   setValueForMode: ReturnType<typeof vi.fn>;
   setPluginData: ReturnType<typeof vi.fn>;
@@ -48,7 +49,10 @@ describe("importer applies scopes", () => {
             remove: vi.fn(() => {
               variables.splice(variables.indexOf(v), 1);
             }),
-            setValueForMode: vi.fn(),
+            valuesByMode: {} as Record<string, unknown>,
+            setValueForMode: vi.fn((modeId: string, value: unknown) => {
+              v.valuesByMode[modeId] = value;
+            }),
             setPluginData: vi.fn(),
           };
           variables.push(v);
@@ -146,6 +150,36 @@ describe("importer applies scopes", () => {
 
     expect(variables).toHaveLength(1);
     expect(variables[0].scopes).toEqual([]);
+  });
+
+  it("a second Pull of unchanged tokens writes no value, so bound paints keep their opacity", async () => {
+    const data = [
+      {
+        primitive: {
+          modes: [{ modeId: "m1", name: "Value" }],
+          variables: {
+            "opacity.50": { $type: "number", $value: 0.5 },
+            "z-index.10": { $type: "number", $value: 10 },
+          },
+        },
+      },
+    ] as unknown as ExportData[];
+    const options = {
+      mergeStrategy: "replace" as const,
+      createMissingModes: true,
+      preserveExistingVariables: false,
+    };
+    await importMultipleCollections(data, options);
+    const written = variables.reduce(
+      (n, v) => n + v.setValueForMode.mock.calls.length,
+      0
+    );
+    expect(written).toBeGreaterThan(0);
+    variables.forEach((v) => v.setValueForMode.mockClear());
+    await importMultipleCollections(data, options);
+    expect(
+      variables.reduce((n, v) => n + v.setValueForMode.mock.calls.length, 0)
+    ).toBe(0);
   });
 
   it("replace deletes a variable the token files no longer have, and keeps the Figma-only helpers", async () => {
