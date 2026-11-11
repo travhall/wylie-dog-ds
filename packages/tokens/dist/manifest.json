@@ -9119,48 +9119,34 @@
         "variable": "var(--dialog-content-radius)",
         "description": "Corner radius of the dialog content."
       },
+      "dialog-content-gap": {
+        "name": "dialogContentGap",
+        "path": [
+          "dialog",
+          "content",
+          "gap"
+        ],
+        "value": "1.5rem",
+        "type": "spacing",
+        "variable": "var(--dialog-content-gap)",
+        "description": "Gap between the header, body and footer of the dialog. One value, so a dialog with no body is spaced like one with a body."
+      },
       "dialog-header-gap": {
         "name": "dialogHeaderGap",
         "path": [
           "dialog",
-          "header",
-          "gap"
+          "header-gap"
         ],
         "value": "0.5rem",
         "type": "spacing",
         "variable": "var(--dialog-header-gap)",
         "description": "Gap between the items inside the dialog header."
       },
-      "dialog-header-margin-bottom": {
-        "name": "dialogHeaderMarginBottom",
-        "path": [
-          "dialog",
-          "header",
-          "margin-bottom"
-        ],
-        "value": "1.5rem",
-        "type": "spacing",
-        "variable": "var(--dialog-header-margin-bottom)",
-        "description": "Bottom margin of the dialog header."
-      },
-      "dialog-footer-margin-top": {
-        "name": "dialogFooterMarginTop",
-        "path": [
-          "dialog",
-          "footer",
-          "margin-top"
-        ],
-        "value": "1.5rem",
-        "type": "spacing",
-        "variable": "var(--dialog-footer-margin-top)",
-        "description": "Top margin of the dialog footer."
-      },
       "dialog-footer-gap": {
         "name": "dialogFooterGap",
         "path": [
           "dialog",
-          "footer",
-          "gap"
+          "footer-gap"
         ],
         "value": "0.5rem",
         "type": "spacing",

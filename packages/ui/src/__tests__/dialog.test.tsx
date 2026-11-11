@@ -572,6 +572,27 @@ describe("Dialog", () => {
       });
     });
 
+    it("spaces header, body and footer with one section gap and no extra margins", async () => {
+      const user = userEvent.setup();
+      render(<TestDialog />);
+
+      await user.click(screen.getByText("Open Dialog"));
+
+      await waitFor(() => {
+        const dialog = screen.getByRole("dialog");
+        expect(dialog).toHaveClass("gap-(--space-dialog-content-gap)");
+        const header = screen
+          .getByText("Dialog Title")
+          .closest(".flex.flex-col");
+        const footer = screen
+          .getByText("Cancel")
+          .closest(".flex.flex-col-reverse");
+        // margins on top of the grid gap are what made a description-only dialog 56px apart
+        expect(header?.className).not.toMatch(/(^|\s)mb-/);
+        expect(footer?.className).not.toMatch(/(^|\s)mt-/);
+      });
+    });
+
     it("should render close icon button", async () => {
       const user = userEvent.setup();
       render(<TestDialog />);

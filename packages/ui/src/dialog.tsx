@@ -11,7 +11,7 @@ export const dialogContentVariants = cva(
   cn(
     "wd-motion-pop [--wd-motion-duration:var(--duration-dialog-content-duration)] [--wd-motion-easing:var(--dialog-content-easing)] [--wd-motion-scale:var(--dialog-content-scale)]",
     "fixed left-[50%] top-[50%] z-(--dialog-content-z-index) grid w-full translate-x-[-50%] translate-y-[-50%]",
-    "gap-(--space-dialog-header-gap)",
+    "gap-(--space-dialog-content-gap)",
     "border-(length:--space-dialog-border-width) bg-(--color-dialog-background) shadow-(--shadow-dialog-shadow) duration-(--duration-dialog-content-duration)",
     "p-(--space-dialog-content-padding)",
     "rounded-(--space-dialog-content-radius)",
@@ -125,7 +125,6 @@ export const DialogHeader = React.forwardRef<
     className={cn(
       "flex flex-col text-center sm:text-left",
       "space-y-(--space-dialog-header-gap)",
-      "mb-(--space-dialog-header-margin-bottom)",
       className
     )}
     {...props}
@@ -143,7 +142,6 @@ export const DialogFooter = React.forwardRef<
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end",
       "gap-(--space-dialog-footer-gap)",
-      "mt-(--space-dialog-footer-margin-top)",
       className
     )}
     {...props}

@@ -3135,7 +3135,16 @@
             "Dark": "{border-radius.lg}"
           }
         },
-        "dialog.header.gap": {
+        "dialog.content.gap": {
+          "$type": "spacing",
+          "$value": "{space.300}",
+          "$description": "Gap between the header, body and footer of the dialog. One value, so a dialog with no body is spaced like one with a body.",
+          "valuesByMode": {
+            "Light": "{space.300}",
+            "Dark": "{space.300}"
+          }
+        },
+        "dialog.header-gap": {
           "$type": "spacing",
           "$value": "{space.100}",
           "$description": "Gap between the items inside the dialog header.",
@@ -3144,25 +3153,7 @@
             "Dark": "{space.100}"
           }
         },
-        "dialog.header.margin-bottom": {
-          "$type": "spacing",
-          "$value": "{space.300}",
-          "$description": "Bottom margin of the dialog header.",
-          "valuesByMode": {
-            "Light": "{space.300}",
-            "Dark": "{space.300}"
-          }
-        },
-        "dialog.footer.margin-top": {
-          "$type": "spacing",
-          "$value": "{space.300}",
-          "$description": "Top margin of the dialog footer.",
-          "valuesByMode": {
-            "Light": "{space.300}",
-            "Dark": "{space.300}"
-          }
-        },
-        "dialog.footer.gap": {
+        "dialog.footer-gap": {
           "$type": "spacing",
           "$value": "{space.100}",
           "$description": "Gap between the items inside the dialog footer.",
