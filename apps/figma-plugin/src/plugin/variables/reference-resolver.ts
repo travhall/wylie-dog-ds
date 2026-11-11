@@ -1,5 +1,7 @@
 // Variable reference resolution system for Token Bridge
 
+import { setValueIfChanged } from "./variable-values";
+
 export interface TokenReference {
   originalValue: string; // "{color.gray.50}"
   referencePath: string; // "color.gray.50"
@@ -82,7 +84,7 @@ export class VariableRegistry {
         if (referencedVariableId) {
           try {
             // Create Figma variable alias
-            item.variable.setValueForMode(modeId, {
+            setValueIfChanged(item.variable, modeId, {
               type: "VARIABLE_ALIAS",
               id: referencedVariableId,
             });

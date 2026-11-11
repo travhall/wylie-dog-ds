@@ -70,3 +70,5 @@ Not measured, and why:
 ## After a rebuild: the icon tint
 
 A bound colour carries no alpha, so the 10% tint on the Section Features icon tiles (`bg-(--color-section-features-icon-background)/10` in code) is paint opacity on a bound fill. Setting a variable mode on a section resets that opacity to 1, and the builder cannot reliably set it on the Card instances in the `cards` variants. After every rebuild, run `scripts/figma/apply-alpha-fills.js` through `use_figma` (it writes paint opacity on those tiles only and is safe to run twice), then check that every `icon` tile in the set reads 0.1.
+
+A Token Bridge Pull used to reset the tint too: it wrote every variable value and alias, changed or not, and any write to a variable resets the opacity of the paints bound to it (measured: rewriting an alias with the same value reset 18 of the 36 tiles). The importer now skips a write that would leave the value as it is (`variable-values.ts`), so a Pull of unchanged tokens should leave the tint alone. If the tiles read full opacity after a Pull anyway, run the script again.
