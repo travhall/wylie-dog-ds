@@ -120,6 +120,23 @@ describe("Select", () => {
       expect(screen.getByText("Select a fruit")).toBeInTheDocument();
     });
 
+    it("marks an empty trigger so the placeholder colour reaches it, and not a filled one", () => {
+      const { unmount } = render(<TestSelect />);
+      const empty = screen.getByRole("combobox");
+      // the ::placeholder variant never matches a button; Radix sets data-placeholder instead
+      expect(empty).toHaveAttribute("data-placeholder");
+      expect(empty.className).toContain(
+        "data-[placeholder]:text-(--color-input-placeholder)"
+      );
+      expect(empty.className).not.toContain("placeholder:text-");
+      unmount();
+
+      render(<TestSelect defaultValue="apple" />);
+      expect(screen.getByRole("combobox")).not.toHaveAttribute(
+        "data-placeholder"
+      );
+    });
+
     it("should open dropdown on trigger click", async () => {
       const user = userEvent.setup();
       render(<TestSelect />);

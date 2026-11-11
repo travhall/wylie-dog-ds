@@ -194,7 +194,7 @@
   --color-input-background-hover: oklch(0.202 0.011 47.84);
   --color-input-border: oklch(0.563 0.028 71.1);
   --color-input-border-error: oklch(0.546 0.215 27.28);
-  --color-input-placeholder: oklch(0.843 0.027 71);
+  --color-input-placeholder: oklch(0.712 0.037 72.65);
   --space-input-padding-x: 1rem;
   --font-size-input-font-size-sm: 0.875rem;
   --space-input-radius: 0.25rem;
@@ -236,7 +236,7 @@
   --color-command-background: oklch(0.202 0.011 47.84);
   --color-command-text: oklch(0.977 0.003 65.02);
   --color-command-border: oklch(0.397 0.018 63.78);
-  --color-command-placeholder: oklch(0.843 0.027 71);
+  --color-command-placeholder: oklch(0.712 0.037 72.65);
   --color-command-empty: oklch(0.843 0.027 71);
   --color-command-group-heading: oklch(0.843 0.027 71);
   --color-command-separator: oklch(0.397 0.018 63.78);

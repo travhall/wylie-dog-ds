@@ -748,8 +748,8 @@
     "dark": "oklch(0.977 0.003 65.02)"
   },
   "color-command-placeholder": {
-    "light": "oklch(0.33 0.024 47.79)",
-    "dark": "oklch(0.843 0.027 71)"
+    "light": "oklch(0.48 0.017 50.13)",
+    "dark": "oklch(0.712 0.037 72.65)"
   },
   "color-command-separator": {
     "light": "oklch(0.74 0.019 69.96)",
@@ -1120,8 +1120,8 @@
     "dark": "oklch(0.977 0.003 65.02)"
   },
   "color-input-placeholder": {
-    "light": "oklch(0.33 0.024 47.79)",
-    "dark": "oklch(0.843 0.027 71)"
+    "light": "oklch(0.48 0.017 50.13)",
+    "dark": "oklch(0.712 0.037 72.65)"
   },
   "color-label-default-color": {
     "light": "oklch(0.33 0.024 47.79)",

@@ -431,8 +431,8 @@
   },
   "input.placeholder": {
     "$type": "color",
-    "$value": "{color.foreground.muted}",
-    "$description": "Color of placeholder text, muted so it reads as a hint rather than a value."
+    "$value": "{color.foreground.faint}",
+    "$description": "Color of placeholder text, fainter than the input text so a hint never reads as a value."
   },
   "input.padding-x": {
     "$type": "spacing",
@@ -641,8 +641,8 @@
   },
   "command.placeholder": {
     "$type": "color",
-    "$value": "{color.foreground.muted}",
-    "$description": "Color of placeholder text in the command menu, muted so it reads as a hint rather than a value."
+    "$value": "{color.foreground.faint}",
+    "$description": "Color of placeholder text in the command menu, fainter than the typed text so a hint never reads as a value."
   },
   "command.empty": {
     "$type": "color",
