@@ -204,10 +204,6 @@
           "default": "false",
           "options": ["false", "true"]
         },
-        "icon": {
-          "type": "INSTANCE_SWAP",
-          "default": "icon=plus, size=sm"
-        },
         "label": {
           "type": "TEXT",
           "default": "Button"

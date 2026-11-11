@@ -4,7 +4,7 @@
 
 Compares the Storybook components manifest with the Figma snapshot `figma/manifest.json` (file `tnVqOsygeKwyDH3BzWB1Yg`, snapshot 2026-11-11T06:42:51.000Z). Code wins: every finding is against Figma unless it is allow-listed in `scripts/figma-parity.config.json`. The check looks at structure only: names, properties, options, defaults and variant counts. Plan 216 describes the workflow.
 
-**0 open** and 111 allow-listed findings.
+**0 open** and 110 allow-listed findings.
 
 | Rule                                                      | Open | Allowed |
 | --------------------------------------------------------- | ---: | ------: |
@@ -16,7 +16,7 @@ Compares the Storybook components manifest with the Figma snapshot `figma/manife
 | Code option property not in Figma                         |    0 |       8 |
 | Options differ                                            |    0 |       5 |
 | Variant set is incomplete                                 |    0 |       5 |
-| Text, boolean or swap property with no code twin          |    0 |      48 |
+| Text, boolean or swap property with no code twin          |    0 |      47 |
 
 ## In code, not in Figma
 
@@ -183,9 +183,8 @@ Ways to address it:
 | Alert Dialog | title            |      | title (TEXT)               | allowed: AlertDialogTitle is a sub-component in code, not a prop of Alert Dialog; the Figma TEXT property edits its text.                                                                                                             |
 | Badge        | icon             |      | icon (INSTANCE_SWAP)       | allowed: Icons are children of Badge in code, not a prop; the Figma instance swap chooses the glyph from the Icon set.                                                                                                                |
 | Badge        | showIcon         |      | showIcon (BOOLEAN)         | allowed: Icons are children of Badge in code, not a prop; the Figma boolean shows or hides the optional icon slot.                                                                                                                    |
-| Button       | icon             |      | icon (INSTANCE_SWAP)       | allowed: Icons are children of Button in code, not a prop; the Figma instance swap chooses the glyph from the Icon set.                                                                                                               |
 | Button       | label            |      | label (TEXT)               | allowed: The label is the children of Button in code; the Figma TEXT property edits it (named Label for designers).                                                                                                                   |
-| Button       | showIcon         |      | showIcon (BOOLEAN)         | allowed: Icons are children of Button in code, not a prop; the Figma boolean shows or hides the optional icon slot.                                                                                                                   |
+| Button       | showIcon         |      | showIcon (BOOLEAN)         | allowed: Icons are children of Button in code, not a prop; the Figma boolean shows or hides the optional icon. The icon itself is the nested Icon instance, exposed so its icon and size dropdowns show on the Button.                |
 | Card         | content          |      | content (TEXT)             | allowed: CardContent is a sub-component in code, not a prop of Card; the Figma property edits its text.                                                                                                                               |
 | Card         | description      |      | description (TEXT)         | allowed: CardDescription is a sub-component in code, not a prop of Card; the Figma property edits its text.                                                                                                                           |
 | Card         | footer           |      | footer (BOOLEAN)           | allowed: CardFooter is an optional child in code, not a prop of Card; the Figma boolean shows or hides it.                                                                                                                            |

@@ -470,13 +470,7 @@
       "component": "Button",
       "rule": "content-property-not-in-code",
       "property": "showIcon",
-      "reason": "Icons are children of Button in code, not a prop; the Figma boolean shows or hides the optional icon slot."
-    },
-    {
-      "component": "Button",
-      "rule": "content-property-not-in-code",
-      "property": "icon",
-      "reason": "Icons are children of Button in code, not a prop; the Figma instance swap chooses the glyph from the Icon set."
+      "reason": "Icons are children of Button in code, not a prop; the Figma boolean shows or hides the optional icon. The icon itself is the nested Icon instance, exposed so its icon and size dropdowns show on the Button."
     },
     {
       "component": "Badge",
