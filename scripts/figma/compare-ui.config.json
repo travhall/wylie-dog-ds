@@ -28,13 +28,16 @@
       "story": "components-inputs-controls-input--default",
       "root": "#storybook-root input",
       "args": {
-        "size": "size"
+        "size": "size",
+        "disabled": "disabled"
       },
       "state": "state",
       "stateArgs": {
         "error": "error:!true",
-        "success": "success:!true",
-        "disabled": "disabled:!true"
+        "success": "success:!true"
+      },
+      "unrenderable": {
+        "filled": ["true"]
       }
     },
     "Badge": {
@@ -84,13 +87,16 @@
       "story": "components-inputs-controls-textarea--default",
       "root": "#storybook-root textarea",
       "args": {
-        "size": "size"
+        "size": "size",
+        "disabled": "disabled"
       },
       "state": "state",
       "stateArgs": {
         "error": "error:!true",
-        "success": "success:!true",
-        "disabled": "disabled:!true"
+        "success": "success:!true"
+      },
+      "unrenderable": {
+        "filled": ["true"]
       }
     },
     "Alert": {
@@ -111,15 +117,10 @@
       "story": "components-inputs-controls-select--default",
       "root": "#storybook-root button[role=combobox]",
       "args": {
-        "size": "size"
+        "size": "size",
+        "disabled": "disabled"
       },
       "state": "state",
-      "stateArgs": {
-        "closed": "disabled:!false",
-        "disabled": "disabled:!true",
-        "open": "disabled:!false",
-        "error": "disabled:!false"
-      },
       "parts": {
         "trigger": "#storybook-root button[role=combobox]"
       },
@@ -127,6 +128,9 @@
         "state": {
           "error": "components-inputs-controls-select--with-error"
         }
+      },
+      "unrenderable": {
+        "filled": ["true"]
       }
     },
     "Avatar": {
@@ -238,9 +242,9 @@
       "root": "#storybook-root form > div:first-child",
       "args": {},
       "parts": {
-        "Field Label": "#storybook-root form label",
-        "form-row": "#storybook-root form input",
-        "Helper text goes here.": "#storybook-root form p"
+        "label": "#storybook-root form label",
+        "input": "#storybook-root form input",
+        "description": "#storybook-root form p"
       },
       "unrenderable": {
         "error": ["true"]
@@ -769,14 +773,14 @@
       "set": "Form",
       "property": "h",
       "scope": "box",
-      "variant": ":: Field Label",
+      "variant": ":: label",
       "reason": "An inline label measures its font content area (22px), not its 16px line height; same as the Label set."
     },
     {
       "set": "Form",
       "property": "layer",
       "scope": "text",
-      "variant": ":: form-row",
+      "variant": ":: input",
       "reason": "Code shows the placeholder attribute, which is not a text node; Figma draws a text layer."
     },
     {

@@ -89,17 +89,17 @@
     {
       "component": "Input",
       "rule": "state-axis",
-      "reason": "error, success and disabled are mutually exclusive, so one state axis draws them without impossible combinations; code uses the props error, success and the HTML disabled attribute."
+      "reason": "Hover, error and success are mutually exclusive looks, drawn as one axis; code uses the props error and success and CSS :hover."
     },
     {
       "component": "Textarea",
       "rule": "state-axis",
-      "reason": "error, success and disabled are mutually exclusive, so one state axis draws them without impossible combinations; code uses the props error, success and the HTML disabled attribute."
+      "reason": "Error and success are mutually exclusive looks, drawn as one axis; code uses the props error and success."
     },
     {
       "component": "Select",
       "rule": "state-axis",
-      "reason": "Mixes Radix open state with disabled; drawn as one axis."
+      "reason": "Mixes Radix open state with the error look; drawn as one axis."
     },
     {
       "component": "Accordion",
@@ -326,7 +326,7 @@
       "component": "Select",
       "rule": "property-not-in-figma",
       "property": "error",
-      "reason": "Figma draws the code's `error` prop as state=error, next to open and disabled."
+      "reason": "Figma draws the code's `error` prop as state=error, next to closed and open."
     },
     {
       "component": "Card",
@@ -623,6 +623,93 @@
       "rule": "content-property-not-in-code",
       "property": "message",
       "reason": "The tooltip text is the children of TooltipContent in code, not a prop of Tooltip; the Figma TEXT property edits it."
+    },
+    {
+      "component": "Input",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "The HTML `disabled` attribute."
+    },
+    {
+      "component": "Input",
+      "rule": "property-not-in-code",
+      "property": "filled",
+      "reason": "Content, not a prop: a filled field has a value. Figma draws it as a variant so the typed-text colour shows next to the placeholder colour."
+    },
+    {
+      "component": "Input",
+      "rule": "partial-set",
+      "reason": "Disabled is drawn only on the default state; every other combination keeps one look at rest. Figma draws only the looks that differ at rest (builder rule)."
+    },
+    {
+      "component": "Select",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "Radix Select prop `disabled` on the root (and the trigger)."
+    },
+    {
+      "component": "Select",
+      "rule": "property-not-in-code",
+      "property": "filled",
+      "reason": "Content, not a prop: a filled field has a value. Figma draws it as a variant so the typed-text colour shows next to the placeholder colour."
+    },
+    {
+      "component": "Select",
+      "rule": "partial-set",
+      "reason": "Disabled is drawn only in the closed state: Figma draws only the looks that differ at rest (builder rule)."
+    },
+    {
+      "component": "Textarea",
+      "rule": "inherited-property",
+      "property": "disabled",
+      "reason": "The HTML `disabled` attribute."
+    },
+    {
+      "component": "Textarea",
+      "rule": "property-not-in-code",
+      "property": "filled",
+      "reason": "Content, not a prop: a filled field has a value. Figma draws it as a variant so the typed-text colour shows next to the placeholder colour."
+    },
+    {
+      "component": "Textarea",
+      "rule": "partial-set",
+      "reason": "Disabled is drawn only on the default state; every other combination keeps one look at rest. Figma draws only the looks that differ at rest (builder rule)."
+    },
+    {
+      "component": "Input",
+      "rule": "content-property-not-in-code",
+      "property": "value",
+      "reason": "`value` is an inherited HTML attribute of Input in code, which the docgen does not list; the Figma TEXT property edits the typed text shown when Filled."
+    },
+    {
+      "component": "Textarea",
+      "rule": "content-property-not-in-code",
+      "property": "value",
+      "reason": "`value` is an inherited HTML attribute of Textarea in code, which the docgen does not list; the Figma TEXT property edits the typed text shown when Filled."
+    },
+    {
+      "component": "Select",
+      "rule": "content-property-not-in-code",
+      "property": "placeholder",
+      "reason": "The placeholder is the `placeholder` prop of SelectValue (a child of the trigger), not of Select; the Figma TEXT property edits it."
+    },
+    {
+      "component": "Form",
+      "rule": "content-property-not-in-code",
+      "property": "description",
+      "reason": "FormDescription children (packages/ui/src/form.tsx); the Figma TEXT property edits them."
+    },
+    {
+      "component": "Form",
+      "rule": "content-property-not-in-code",
+      "property": "message",
+      "reason": "FormMessage children (packages/ui/src/form.tsx), shown only when the field is invalid; the Figma TEXT property edits them."
+    },
+    {
+      "component": "Form",
+      "rule": "content-property-not-in-code",
+      "property": "showDescription",
+      "reason": "FormDescription is an optional child in code, not a prop; the Figma boolean shows or hides it."
     }
   ]
 }
