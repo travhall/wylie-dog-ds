@@ -38,12 +38,30 @@ for (const n of nodes) {
       const target = await figma.getNodeByIdAsync(value);
       value = target ? target.name : value;
     }
-    const p = { type: d.type, default: value };
+    // The library names are Title Case ("Show Icon", "With Ellipsis"); the manifest keeps the
+    // code's names ("showIcon", "with-ellipsis") so it compares with the stories without a
+    // mapping (documentation/guides/figma-naming.md).
+    const asValue = (v) => String(v).trim().toLowerCase().replace(/\s+/g, "-");
+    const p = {
+      type: d.type,
+      default: d.type === "VARIANT" ? asValue(value) : value,
+    };
     if (d.variantOptions) {
-      p.options = d.variantOptions.slice();
+      p.options = d.variantOptions.map(asValue);
       expected *= d.variantOptions.length;
     }
-    properties[key.replace(/#\d+:\d+$/, "")] = p;
+    const words = key
+      .replace(/#\d+:\d+$/, "")
+      .split(/[\s\-_]+/)
+      .filter(Boolean);
+    const codeKey = words
+      .map((w, i) =>
+        i === 0
+          ? w.charAt(0).toLowerCase() + w.slice(1)
+          : w.charAt(0).toUpperCase() + w.slice(1)
+      )
+      .join("");
+    properties[codeKey] = p;
   }
   const out = {
     name: n.name,

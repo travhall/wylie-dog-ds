@@ -306,6 +306,12 @@ test("text, boolean and swap properties must mirror a code prop, or be allow-lis
     ).findings,
     []
   );
+  // Figma names the content prop `Label` (manifest key `label`): also no finding
+  assert.deepEqual(
+    compare(code, withContent({ label: { type: "TEXT", default: "Button" } }))
+      .findings,
+    []
+  );
   // `loading` is not readable from this fixture's props: a finding
   const found = compare(
     code,

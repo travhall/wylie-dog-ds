@@ -57,14 +57,20 @@ CI runs the check after the build as advisory (`continue-on-error`), so a mismat
 - Descriptions and the Storybook link: `set.description` and `set.documentationLinks = [{ uri }]`, values from
   `node scripts/figma/component-docs.mjs --json`.
 
+## Naming
+
+Property names, variant names and values are Title Case; size values stay the code's lower-case tokens; the main text is `Label`; optional parts are `Show` booleans. Full rule, the two mapping functions the tools use and how to rename in place: `documentation/guides/figma-naming.md`. The manifest keeps code-style names (`showIcon`, `with-ellipsis`); `scripts/figma/export-manifest.js` converts.
+
+**Code Connect** (Figma Dev Mode shows a component's real code snippet, mapped by a `.figma.ts` template that refers to Figma property names) is not used. It needs a Dev or Full seat on a paid plan and published components; revisit if the library is published or handed to other developers. The naming rule keeps names stable for it.
+
 ## The component builder (`code.js`)
 
 It is a one-time scaffold run inside Figma's plugin sandbox, not part of Token Bridge.
 
 - It only **creates**: a rerun adds a second copy of every set. Run it only in a fresh file, never over the
   library file. After a change to the builder, apply the same change in place to the library.
-- Keep it in step with the library: `variantProps` names and values are the Figma property names (match
-  code), `DEFAULT_VARIANTS` puts the code default top-left, `COMPONENT_DOCS` is a generated block
+- Keep it in step with the library: `variantProps` names and values are the code's (lower case); the library
+  itself is Title Case (see Naming below), so a fresh build must be renamed by the rule. `DEFAULT_VARIANTS` puts the code default top-left, `COMPONENT_DOCS` is a generated block
   (`node scripts/figma/component-docs.mjs --builder` rewrites it). `scripts/check-builder-coverage.mjs`
   runs every builder under a stubbed `figma` and checks text styles.
 - Values are bound, not typed: `bindStroke` derives the border width from the colour token's component
@@ -73,7 +79,7 @@ It is a one-time scaffold run inside Figma's plugin sandbox, not part of Token B
   padding or radius numbers beyond its budgets. `scripts/figma/audit-library.js` (read-only, one `use_figma` call)
   lists what is still unbound in the file.
 - Component properties (Plan 217): `addTextProperty` and `addBooleanProperty` give a set TEXT and BOOLEAN
-  properties named after the code props (`children`; Button and Card are the pilot). The parity check compares them
+  properties named by the Figma naming rule (the main text is `Label`, which is `children` in code). The parity check compares them
   (`content-property-not-in-code`): a name with no code twin needs an allow-list reason.
 - Owner rule: draw only the looks that differ at rest. An option or combination that looks identical is left
   out and recorded in the allow-list with the builder's reason.

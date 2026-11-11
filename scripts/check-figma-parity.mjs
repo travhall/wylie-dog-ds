@@ -329,8 +329,10 @@ export function compare(codeMap, figma, config = {}, docs = null) {
     for (const [prop, p] of Object.entries(fig.properties)) {
       if (p.type !== "VARIANT") {
         // Plan 217 phase J: TEXT, BOOLEAN and INSTANCE_SWAP mirror code props. `children`
-        // is every component's content prop and is never listed by the docgen.
-        if (prop === "children" || code.props[prop]) continue;
+        // is every component's content prop and is never listed by the docgen. Figma names
+        // it "Label" (the manifest key is `label`), so both are the content prop.
+        if (prop === "children" || prop === "label" || code.props[prop])
+          continue;
         add({
           rule: "content-property-not-in-code",
           component: name,
