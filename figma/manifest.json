@@ -199,10 +199,6 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-button--docs"
       ],
       "properties": {
-        "children": {
-          "type": "TEXT",
-          "default": "Button"
-        },
         "disabled": {
           "type": "VARIANT",
           "default": "false",
@@ -212,9 +208,14 @@
           "type": "INSTANCE_SWAP",
           "default": "icon=plus, size=sm"
         },
+        "label": {
+          "type": "TEXT",
+          "default": "Button"
+        },
         "loading": {
-          "type": "BOOLEAN",
-          "default": false
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
         },
         "showIcon": {
           "type": "BOOLEAN",
@@ -243,8 +244,8 @@
           ]
         }
       },
-      "variantCount": 96,
-      "expectedVariantCount": 144
+      "variantCount": 120,
+      "expectedVariantCount": 288
     },
     {
       "name": "Calendar",

@@ -8,7 +8,8 @@
       "args": {
         "variant": "variant",
         "size": "size",
-        "disabled": "disabled"
+        "disabled": "disabled",
+        "loading": "loading"
       },
       "state": "state"
     },

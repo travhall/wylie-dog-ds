@@ -79,7 +79,7 @@
     {
       "component": "Button",
       "rule": "partial-set",
-      "reason": "disabled is drawn at rest for every variant and size (it keeps the variant's colours at 60% opacity, Plan 223). Hover and pressed are not drawn for disabled: a disabled button ignores hover and press styles, so it has one look at rest. 96 of 144."
+      "reason": "disabled and loading are drawn at rest only (state=default): both are disabled in code, so a button ignores hover and press, and each keeps the variant's colours at 60% opacity (Plan 223). Loading is a variant here, not a boolean, so it can dim the whole button like the code; disabled plus loading is not drawn because it looks the same as loading. 120 of 288."
     },
     {
       "component": "Checkbox",
@@ -641,6 +641,12 @@
       "rule": "content-property-not-in-code",
       "property": "message",
       "reason": "The tooltip text is the children of TooltipContent in code, not a prop of Tooltip; the Figma TEXT property edits it."
+    },
+    {
+      "component": "Button",
+      "rule": "content-property-not-in-code",
+      "property": "label",
+      "reason": "The label is the children of Button in code; the Figma TEXT property edits it (named Label for designers)."
     }
   ]
 }

@@ -59,7 +59,11 @@ test("a colour allows a small channel difference and not a different colour", ()
   assert.equal(sameColor("#445566", "#475766"), true);
   assert.equal(sameColor("#445566", "#4a5566"), false);
   assert.equal(sameColor("#44556680", "#445566"), false);
-  assert.equal(sameColor(null, "#00000000"), true, "no fill equals a clear one");
+  assert.equal(
+    sameColor(null, "#00000000"),
+    true,
+    "no fill equals a clear one"
+  );
   assert.equal(sameColor("#ffffff00", "#00000000"), true, "clear is clear");
   assert.deepEqual(
     parseHex("#ff000080").map((n) => Math.round(n * 100) / 100),
@@ -164,21 +168,32 @@ test("an allow entry moves a finding aside, and one that matches nothing is stal
 });
 
 test("the harvester turns a Figma variant into story args, and a prop-backed state into its arg", async () => {
-  const { argsParam, parseVariant, storyUrl } = await import(
-    "../figma/harvest-ui.mjs"
-  );
+  const { argsParam, parseVariant, storyUrl } =
+    await import("../figma/harvest-ui.mjs");
   assert.deepEqual(parseVariant("variant=link, size=md, state=hover"), {
     variant: "link",
     size: "md",
     state: "hover",
   });
+  assert.deepEqual(
+    parseVariant("Variant=Link, Size=md, State=Hover, Loading=False"),
+    {
+      variant: "link",
+      size: "md",
+      state: "hover",
+      loading: "false",
+    }
+  );
   const button = {
     story: "components-inputs-controls-button--default",
     args: { variant: "variant", size: "size", disabled: "disabled" },
     state: "state",
   };
   assert.equal(
-    argsParam(parseVariant("variant=ghost, size=lg, disabled=true, state=hover"), button),
+    argsParam(
+      parseVariant("variant=ghost, size=lg, disabled=true, state=hover"),
+      button
+    ),
     "variant:ghost;size:lg;disabled:!true"
   );
   const input = {
@@ -192,15 +207,19 @@ test("the harvester turns a Figma variant into story args, and a prop-backed sta
     /id=components-inputs-controls-input--default.*globals=theme:dark.*args=size:md;error:!true$/
   );
   assert.match(
-    storyUrl("http://x", input, parseVariant("size=md, state=default"), "light"),
+    storyUrl(
+      "http://x",
+      input,
+      parseVariant("size=md, state=default"),
+      "light"
+    ),
     /args=size:md$/
   );
 });
 
 test("one Figma value can be several story args, or live in another story", async () => {
-  const { argsParam, parseVariant, storyUrl } = await import(
-    "../figma/harvest-ui.mjs"
-  );
+  const { argsParam, parseVariant, storyUrl } =
+    await import("../figma/harvest-ui.mjs");
   const checkbox = {
     story: "components-inputs-controls-checkbox--default",
     args: { size: "size", checked: "checked" },
@@ -217,7 +236,9 @@ test("one Figma value can be several story args, or live in another story", asyn
   const toast = {
     story: "components-feedback-status-toast--controls-on-solid-toasts",
     args: {},
-    valueStories: { variant: { default: "components-feedback-status-toast--with-action" } },
+    valueStories: {
+      variant: { default: "components-feedback-status-toast--with-action" },
+    },
   };
   assert.match(
     storyUrl("http://x", toast, parseVariant("variant=default"), "dark"),
