@@ -507,15 +507,31 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-form--docs"
       ],
       "properties": {
+        "description": {
+          "type": "TEXT",
+          "default": "Helper text goes here."
+        },
         "error": {
           "type": "VARIANT",
           "default": "false",
           "options": ["false", "true"]
         },
+        "label": {
+          "type": "TEXT",
+          "default": "Field Label"
+        },
+        "message": {
+          "type": "TEXT",
+          "default": "This field is required."
+        },
         "required": {
           "type": "VARIANT",
           "default": "false",
           "options": ["false", "true"]
+        },
+        "showDescription": {
+          "type": "BOOLEAN",
+          "default": true
         }
       },
       "variantCount": 4,
@@ -605,6 +621,16 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-input--docs"
       ],
       "properties": {
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "filled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
         "placeholder": {
           "type": "TEXT",
           "default": "Placeholder text"
@@ -617,11 +643,15 @@
         "state": {
           "type": "VARIANT",
           "default": "default",
-          "options": ["default", "hover", "error", "success", "disabled"]
+          "options": ["default", "hover", "error", "success"]
+        },
+        "value": {
+          "type": "TEXT",
+          "default": "Input text"
         }
       },
-      "variantCount": 15,
-      "expectedVariantCount": 15
+      "variantCount": 30,
+      "expectedVariantCount": 48
     },
     {
       "name": "Label",
@@ -877,6 +907,20 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-select--docs"
       ],
       "properties": {
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "filled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "placeholder": {
+          "type": "TEXT",
+          "default": "Select option..."
+        },
         "size": {
           "type": "VARIANT",
           "default": "md",
@@ -885,11 +929,15 @@
         "state": {
           "type": "VARIANT",
           "default": "closed",
-          "options": ["closed", "open", "error", "disabled"]
+          "options": ["closed", "open", "error"]
+        },
+        "value": {
+          "type": "TEXT",
+          "default": "Selected option"
         }
       },
-      "variantCount": 12,
-      "expectedVariantCount": 12
+      "variantCount": 24,
+      "expectedVariantCount": 36
     },
     {
       "name": "Separator",
@@ -1080,6 +1128,16 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-textarea--docs"
       ],
       "properties": {
+        "disabled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
+        "filled": {
+          "type": "VARIANT",
+          "default": "false",
+          "options": ["false", "true"]
+        },
         "placeholder": {
           "type": "TEXT",
           "default": "Placeholder text"
@@ -1092,11 +1150,15 @@
         "state": {
           "type": "VARIANT",
           "default": "default",
-          "options": ["default", "error", "success", "disabled"]
+          "options": ["default", "error", "success"]
+        },
+        "value": {
+          "type": "TEXT",
+          "default": "Input text"
         }
       },
-      "variantCount": 12,
-      "expectedVariantCount": 12
+      "variantCount": 24,
+      "expectedVariantCount": 36
     },
     {
       "name": "Toast",
