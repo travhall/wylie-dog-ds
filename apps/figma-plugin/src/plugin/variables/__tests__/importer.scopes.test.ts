@@ -148,6 +148,41 @@ describe("importer applies scopes", () => {
     expect(variables[0].scopes).toEqual([]);
   });
 
+  it("replace deletes a variable the token files no longer have, and keeps the Figma-only helpers", async () => {
+    const fig = figma as unknown as {
+      variables: {
+        createVariable: (n: string, c: unknown, t: string) => FakeVariable;
+        getLocalVariableCollectionsAsync: () => Promise<unknown[]>;
+      };
+    };
+    const [collection] = await fig.variables.getLocalVariableCollectionsAsync();
+    const removed = fig.variables.createVariable(
+      "color.removed",
+      collection,
+      "COLOR"
+    );
+    const helper = fig.variables.createVariable(
+      "_figma/shadow/sm",
+      collection,
+      "COLOR"
+    );
+    const data = [
+      {
+        primitive: {
+          modes: [{ modeId: "m1", name: "Value" }],
+          variables: { "opacity.50": { $type: "number", $value: 0.5 } },
+        },
+      },
+    ] as unknown as ExportData[];
+    await importMultipleCollections(data, {
+      mergeStrategy: "replace",
+      createMissingModes: true,
+      preserveExistingVariables: false,
+    });
+    expect(removed.remove).toHaveBeenCalled();
+    expect(helper.remove).not.toHaveBeenCalled();
+  });
+
   describe("native motion variables (Plan 137)", () => {
     const motion = (tokens: Record<string, unknown>) =>
       [

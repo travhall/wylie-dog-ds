@@ -6,6 +6,7 @@ import type {
   ProcessedToken,
   ExportData,
 } from "./processor";
+import { FIGMA_ONLY_PREFIX } from "./processor";
 import {
   VariableRegistry,
   parseTokenReference,
@@ -649,6 +650,10 @@ export async function importMultipleCollections(
         // For "replace" strategy: identify variables to delete
         if (options.mergeStrategy === "replace") {
           for (const existingVar of existingVariablesInCollection) {
+            // Figma-only helpers (the builder's `_figma/shadow/*` colours) are never in the token
+            // files, by design: export skips them, and a Pull must not delete them either, or the
+            // dark-mode shadows lose their binding
+            if (existingVar.name.startsWith(FIGMA_ONLY_PREFIX)) continue;
             if (!importedNamesSet.has(existingVar.name)) {
               variablesToDelete.push(existingVar);
               console.log(
