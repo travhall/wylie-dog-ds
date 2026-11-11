@@ -167,6 +167,26 @@ test("an allow entry moves a finding aside, and one that matches nothing is stal
   );
 });
 
+test("an allow entry's variant is written the code's way and still matches the Title Case Figma name", () => {
+  const { findings } = files(
+    item({ variant: "State=With Selection :: table-row#1" }),
+    item({
+      variant: "State=With Selection :: table-row#1",
+      box: box({ radius: 12 }),
+    })
+  );
+  const r = applyAllow(findings, [
+    {
+      set: "Button",
+      property: "radius",
+      variant: "state=with-selection :: table-row#1",
+      reason: "x",
+    },
+  ]);
+  assert.equal(r.open.length, 0);
+  assert.equal(r.stale.length, 0);
+});
+
 test("the harvester turns a Figma variant into story args, and a prop-backed state into its arg", async () => {
   const { argsParam, parseVariant, storyUrl } =
     await import("../figma/harvest-ui.mjs");
@@ -184,6 +204,10 @@ test("the harvester turns a Figma variant into story args, and a prop-backed sta
       loading: "false",
     }
   );
+  assert.deepEqual(parseVariant("State=With Many Pages, Size=md"), {
+    state: "with-many-pages",
+    size: "md",
+  });
   const button = {
     story: "components-inputs-controls-button--default",
     args: { variant: "variant", size: "size", disabled: "disabled" },
