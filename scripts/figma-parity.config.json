@@ -479,22 +479,10 @@
       "reason": "Icons are children of Badge in code, not a prop; the Figma boolean shows or hides the optional icon slot."
     },
     {
-      "component": "Badge",
-      "rule": "content-property-not-in-code",
-      "property": "icon",
-      "reason": "Icons are children of Badge in code, not a prop; the Figma instance swap chooses the glyph from the Icon set."
-    },
-    {
       "component": "Toggle",
       "rule": "content-property-not-in-code",
       "property": "showIcon",
       "reason": "Icons are children of Toggle in code, not a prop; the Figma boolean shows or hides the optional icon slot."
-    },
-    {
-      "component": "Toggle",
-      "rule": "content-property-not-in-code",
-      "property": "icon",
-      "reason": "Icons are children of Toggle in code, not a prop; the Figma instance swap chooses the glyph from the Icon set."
     },
     {
       "component": "Alert",
@@ -635,12 +623,6 @@
       "rule": "content-property-not-in-code",
       "property": "message",
       "reason": "The tooltip text is the children of TooltipContent in code, not a prop of Tooltip; the Figma TEXT property edits it."
-    },
-    {
-      "component": "Button",
-      "rule": "content-property-not-in-code",
-      "property": "label",
-      "reason": "The label is the children of Button in code; the Figma TEXT property edits it (named Label for designers)."
     }
   ]
 }

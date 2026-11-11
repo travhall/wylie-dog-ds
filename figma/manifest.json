@@ -43,10 +43,6 @@
           "type": "TEXT",
           "default": "Alert description text goes here."
         },
-        "icon": {
-          "type": "INSTANCE_SWAP",
-          "default": "icon=info, size=sm"
-        },
         "showIcon": {
           "type": "BOOLEAN",
           "default": false
@@ -135,18 +131,14 @@
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-badge--docs"
       ],
       "properties": {
-        "children": {
-          "type": "TEXT",
-          "default": "Badge"
-        },
-        "icon": {
-          "type": "INSTANCE_SWAP",
-          "default": "icon=plus, size=xs"
-        },
         "interaction": {
           "type": "VARIANT",
           "default": "default",
           "options": ["default", "hover", "pressed"]
+        },
+        "label": {
+          "type": "TEXT",
+          "default": "Badge"
         },
         "showIcon": {
           "type": "BOOLEAN",
@@ -639,14 +631,14 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-label--docs"
       ],
       "properties": {
-        "children": {
-          "type": "TEXT",
-          "default": "Label"
-        },
         "error": {
           "type": "VARIANT",
           "default": "false",
           "options": ["false", "true"]
+        },
+        "label": {
+          "type": "TEXT",
+          "default": "Label"
         },
         "required": {
           "type": "VARIANT",
@@ -1147,18 +1139,14 @@
         "https://wyliedogstorybook.com/?path=/docs/components-inputs-controls-toggle--docs"
       ],
       "properties": {
-        "children": {
-          "type": "TEXT",
-          "default": "Toggle"
-        },
         "disabled": {
           "type": "VARIANT",
           "default": "false",
           "options": ["false", "true"]
         },
-        "icon": {
-          "type": "INSTANCE_SWAP",
-          "default": "icon=plus, size=sm"
+        "label": {
+          "type": "TEXT",
+          "default": "Toggle"
         },
         "pressed": {
           "type": "VARIANT",
