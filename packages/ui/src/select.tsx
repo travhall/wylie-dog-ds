@@ -20,9 +20,9 @@ export const selectTriggerVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-(--space-select-trigger-height-sm) px-(--space-select-trigger-padding-x-sm) text-(length:--font-size-select-trigger-font-size-sm) leading-(--line-height-select-trigger-line-height)",
-        md: "h-(--space-select-trigger-height-md) px-(--space-select-trigger-padding-x-md) text-(length:--font-size-select-trigger-font-size-md) leading-(--line-height-select-trigger-line-height)",
-        lg: "h-(--space-select-trigger-height-lg) px-(--space-select-trigger-padding-x-lg) text-(length:--font-size-select-trigger-font-size-lg) leading-(--line-height-select-trigger-line-height)",
+        sm: "py-(--space-select-trigger-padding-y-sm) px-(--space-select-trigger-padding-x-sm) text-(length:--font-size-select-trigger-font-size-sm) leading-(--line-height-select-trigger-line-height)",
+        md: "py-(--space-select-trigger-padding-y-md) px-(--space-select-trigger-padding-x-md) text-(length:--font-size-select-trigger-font-size-md) leading-(--line-height-select-trigger-line-height)",
+        lg: "py-(--space-select-trigger-padding-y-lg) px-(--space-select-trigger-padding-x-lg) text-(length:--font-size-select-trigger-font-size-lg) leading-(--line-height-select-trigger-line-height)",
       },
       error: {
         true: "border-(--color-input-border-error) bg-(--color-input-default-background)",

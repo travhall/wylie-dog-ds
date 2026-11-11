@@ -486,9 +486,23 @@
       "lineHeight": "tabs.trigger.line-height"
     },
     {
-      "name": "textarea",
+      "name": "textarea/lg",
       "fontFamily": "typography.font-family.sans",
-      "fontSize": "textarea.font-size",
+      "fontSize": "textarea.font-size.lg",
+      "fontWeight": "textarea.font-weight",
+      "lineHeight": "textarea.line-height"
+    },
+    {
+      "name": "textarea/md",
+      "fontFamily": "typography.font-family.sans",
+      "fontSize": "textarea.font-size.md",
+      "fontWeight": "textarea.font-weight",
+      "lineHeight": "textarea.line-height"
+    },
+    {
+      "name": "textarea/sm",
+      "fontFamily": "typography.font-family.sans",
+      "fontSize": "textarea.font-size.sm",
       "fontWeight": "textarea.font-weight",
       "lineHeight": "textarea.line-height"
     },
@@ -513,18 +527,32 @@
       "lineHeight": "toast.title.line-height"
     },
     {
-      "name": "toggle",
-      "fontFamily": "typography.font-family.sans",
-      "fontSize": "toggle.font-size",
-      "fontWeight": "toggle.font-weight",
-      "lineHeight": "toggle.line-height"
-    },
-    {
       "name": "toggle-group/item",
       "fontFamily": "typography.font-family.sans",
       "fontSize": "toggle-group.item-font-size",
       "fontWeight": "toggle-group.item-font-weight",
       "lineHeight": "toggle-group.item-line-height"
+    },
+    {
+      "name": "toggle/lg",
+      "fontFamily": "typography.font-family.sans",
+      "fontSize": "toggle.font-size.lg",
+      "fontWeight": "toggle.font-weight",
+      "lineHeight": "toggle.line-height"
+    },
+    {
+      "name": "toggle/md",
+      "fontFamily": "typography.font-family.sans",
+      "fontSize": "toggle.font-size.md",
+      "fontWeight": "toggle.font-weight",
+      "lineHeight": "toggle.line-height"
+    },
+    {
+      "name": "toggle/sm",
+      "fontFamily": "typography.font-family.sans",
+      "fontSize": "toggle.font-size.sm",
+      "fontWeight": "toggle.font-weight",
+      "lineHeight": "toggle.line-height"
     },
     {
       "name": "tooltip",

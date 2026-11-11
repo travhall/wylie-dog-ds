@@ -87,6 +87,18 @@ A disabled control keeps its normal colours and dims. Each component that can be
 
 This replaces the earlier rule that a disabled control changes colour and does not fade (Plan 188, 2026-10-23). The owner changed it on 2026-11-10 because the muted tones looked like another variant of the control (see Plan 223).
 
+## Control sizes line up
+
+Single-line controls share one size scale so a button, toggle, input and select of the same size sit level in a row (owner decision, 2026-11-11). Button is the baseline, and no control sets a fixed height: the box model does.
+
+| Size | Font | Padding-y | Button / Toggle (line height 100%) | Input / Select (line height 150%) |
+| ---- | ---- | --------- | ---------------------------------- | --------------------------------- |
+| sm   | 14   | 8 / 4     | 32                                 | 31                                |
+| md   | 16   | 12 / 8    | 42                                 | 42                                |
+| lg   | 18   | 16 / 12   | 52                                 | 53                                |
+
+Height is 2 x padding-y + font size x line height + 2 x 1px border. Toggle (and a toggle group item) use the Button tokens' values and a transparent border when not outlined. A native input never goes below its font's normal line height (measured in Chromium: line-height 100% gave 37, 48 and 58), so Input, Select and Textarea keep 150% and trim the padding; md is exact and sm and lg land a pixel off because 4.5px and 11.5px are not on the spacing scale. Select and Textarea take their padding and font size from the input's for the same size, and a select chevron stays under the line height. `scripts/__tests__/control-heights.test.mjs` computes these heights from the tokens and fails when they drift.
+
 ## Unreferenced tokens
 
 A component token exists only if code or a Figma component binds to it, or it is listed as specification-only. Specification-only tokens describe a state or part that Figma shows and the code does not use yet; they are reviewed per component before anything is deleted.

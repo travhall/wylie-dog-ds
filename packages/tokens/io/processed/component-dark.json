@@ -1209,20 +1209,20 @@
     "$value": "{space.1600}",
     "$description": "Maximum width of the tooltip."
   },
-  "select.trigger.height.sm": {
+  "select.trigger.padding-y.sm": {
     "$type": "spacing",
-    "$value": "{space.400}",
-    "$description": "Height of the small select trigger."
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the small select trigger, the same as the small input."
   },
-  "select.trigger.height.md": {
+  "select.trigger.padding-y.md": {
     "$type": "spacing",
-    "$value": "{space.500}",
-    "$description": "Height of the medium select trigger."
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the medium select trigger, the same as the medium input."
   },
-  "select.trigger.height.lg": {
+  "select.trigger.padding-y.lg": {
     "$type": "spacing",
-    "$value": "{space.600}",
-    "$description": "Height of the large select trigger."
+    "$value": "{space.150}",
+    "$description": "Vertical padding of the large select trigger, the same as the large input."
   },
   "select.trigger.padding-x.sm": {
     "$type": "spacing",
@@ -1246,18 +1246,18 @@
   },
   "select.trigger.font-size.sm": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}",
-    "$description": "Font size of the small select trigger."
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the small select trigger, the same as the small input."
   },
   "select.trigger.font-size.md": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}",
-    "$description": "Font size of the medium select trigger."
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the medium select trigger, the same as the medium input."
   },
   "select.trigger.font-size.lg": {
     "$type": "number",
-    "$value": "{typography.font-size.base}",
-    "$description": "Font size of the large select trigger."
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the large select trigger, the same as the large input."
   },
   "select.content.radius": {
     "$type": "dimension",
@@ -1464,10 +1464,20 @@
     "$value": "{typography.font-size.sm}",
     "$description": "Font size of the small label."
   },
-  "textarea.font-size": {
+  "textarea.font-size.sm": {
     "$type": "number",
     "$value": "{typography.font-size.sm}",
-    "$description": "Font size of the textarea."
+    "$description": "Font size of the small textarea, the same as the small input."
+  },
+  "textarea.font-size.md": {
+    "$type": "number",
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the medium textarea, the same as the medium input."
+  },
+  "textarea.font-size.lg": {
+    "$type": "number",
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the large textarea, the same as the large input."
   },
   "label.font-size.md": {
     "$type": "number",
@@ -2084,30 +2094,45 @@
     "$value": "{space.600}",
     "$description": "Height of the table header."
   },
-  "toggle.size.default.height": {
+  "toggle.size.default.padding-y": {
     "$type": "spacing",
-    "$value": "{space.500}",
-    "$description": "Height of the default-size toggle."
+    "$value": "{space.150}",
+    "$description": "Vertical padding of the default (medium)-size toggle, the same as the medium button."
+  },
+  "toggle.font-size.md": {
+    "$type": "number",
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the default (medium)-size toggle, the same as the medium button."
+  },
+  "toggle.size.sm.padding-y": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the small-size toggle, the same as the small button."
+  },
+  "toggle.font-size.sm": {
+    "$type": "number",
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the small-size toggle, the same as the small button."
+  },
+  "toggle.size.lg.padding-y": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Vertical padding of the large-size toggle, the same as the large button."
+  },
+  "toggle.font-size.lg": {
+    "$type": "number",
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the large-size toggle, the same as the large button."
   },
   "toggle.size.default.padding-x": {
     "$type": "spacing",
     "$value": "{space.150}",
     "$description": "Horizontal padding of the default-size toggle."
   },
-  "toggle.size.sm.height": {
-    "$type": "spacing",
-    "$value": "{space.400}",
-    "$description": "Height of the small toggle size."
-  },
   "toggle.size.sm.padding-x": {
     "$type": "spacing",
     "$value": "{space.100}",
     "$description": "Horizontal padding of the small toggle size."
-  },
-  "toggle.size.lg.height": {
-    "$type": "spacing",
-    "$value": "{space.500}",
-    "$description": "Height of the large toggle size."
   },
   "toggle.size.lg.padding-x": {
     "$type": "spacing",
@@ -2561,13 +2586,18 @@
   },
   "toggle-group.item-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}",
-    "$description": "Font size of the toggle group item."
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the toggle group item, the same as the default toggle."
   },
-  "toggle-group.item-height": {
+  "toggle-group.item-padding-y": {
     "$type": "spacing",
-    "$value": "{space.500}",
-    "$description": "Height of toggle group items (40px, matches default toggle height)."
+    "$value": "{space.150}",
+    "$description": "Vertical padding of toggle group items, the same as the default toggle."
+  },
+  "toggle-group.item-border-width": {
+    "$type": "spacing",
+    "$value": "{border-width.1}",
+    "$description": "Border width of toggle group items (transparent until styled), so their height matches the default toggle."
   },
   "calendar.container-gap": {
     "$type": "spacing",
@@ -2868,11 +2898,6 @@
     "$type": "spacing",
     "$value": "{space.050}",
     "$description": "Vertical margin of the select separator."
-  },
-  "toggle.font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.sm}",
-    "$description": "Font size of the toggle."
   },
   "toggle.font-weight": {
     "$type": "number",
@@ -3251,18 +3276,18 @@
   },
   "input.padding-y.sm": {
     "$type": "spacing",
-    "$value": "{space.100}",
-    "$description": "Vertical padding of the small input. `space.100` (8px) plus `font-size.sm` (14px) gives a 30px height."
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the small input. With the 150% line height and a 1px border it gives a 31px height, one pixel under the small button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height."
   },
   "input.padding-y.md": {
     "$type": "spacing",
-    "$value": "{space.150}",
-    "$description": "Vertical padding of the medium input. `space.150` (12px) plus `font-size.base` (16px) gives a 40px height."
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the medium input. With the 150% line height and a 1px border it gives a 42px height, equal to the medium button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height."
   },
   "input.padding-y.lg": {
     "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Vertical padding of the large input. `space.200` (16px) plus `font-size.lg` (18px) gives a 50px height."
+    "$value": "{space.150}",
+    "$description": "Vertical padding of the large input. With the 150% line height and a 1px border it gives a 53px height, one pixel over the large button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height."
   },
   "button.icon-size": {
     "$type": "spacing",
@@ -3581,8 +3606,8 @@
   },
   "toggle-group.item-line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.normal}",
-    "$description": "Line height of the toggle group item text."
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height of the toggle group item text, 100% like the default toggle."
   },
   "scrollbar.padding": {
     "$type": "spacing",
@@ -3731,8 +3756,8 @@
   },
   "label.default-color": {
     "$type": "color",
-    "$value": "{color.foreground.muted}",
-    "$description": "Default text color of labels."
+    "$value": "{color.foreground.default}",
+    "$description": "Default text color of labels, the same as the form label."
   },
   "context-menu.sub-content-min-width": {
     "$type": "spacing",
@@ -4171,8 +4196,8 @@
   },
   "toggle.line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.normal}",
-    "$description": "Line height of the toggle text."
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height of the toggle text, 100% like the button, so padding, font size and border set the height."
   },
   "menubar.trigger-highlighted": {
     "$type": "color",
@@ -4756,8 +4781,8 @@
   },
   "select.trigger.icon-size": {
     "$type": "spacing",
-    "$value": "{icon.size.md}",
-    "$description": "Size of the chevron in the select trigger."
+    "$value": "{icon.size.sm}",
+    "$description": "Size of the chevron in the select trigger. It stays under the line height so it never sets the trigger height."
   },
   "select.item.icon-size": {
     "$type": "spacing",
