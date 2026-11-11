@@ -43,11 +43,6 @@
       "reason": "sm, md and lg all use the same --space-progress-height, so there is nothing to draw."
     },
     {
-      "component": "Tooltip",
-      "rule": "generic-property",
-      "reason": "Single-variant set: Figma needs a property name and code has no visual axis."
-    },
-    {
       "component": "Skeleton",
       "rule": "options-differ",
       "property": "variant",
@@ -620,13 +615,13 @@
     {
       "component": "Dialog",
       "rule": "content-property-not-in-code",
-      "property": "body",
+      "property": "bodyText",
       "reason": "The body is whatever is placed between DialogHeader and DialogFooter in code, not a prop of Dialog; the Figma TEXT property edits its text."
     },
     {
       "component": "Dialog",
       "rule": "content-property-not-in-code",
-      "property": "showBody",
+      "property": "showBodyText",
       "reason": "The body is optional children in code, not a prop of Dialog; the Figma boolean shows or hides the text body."
     },
     {
@@ -640,6 +635,12 @@
       "rule": "content-property-not-in-code",
       "property": "showCustomBody",
       "reason": "The custom body is optional children in code, not a prop of Dialog; the Figma boolean shows or hides the slot (hidden by default)."
+    },
+    {
+      "component": "Tooltip",
+      "rule": "content-property-not-in-code",
+      "property": "message",
+      "reason": "The tooltip text is the children of TooltipContent in code, not a prop of Tooltip; the Figma TEXT property edits it."
     }
   ]
 }
