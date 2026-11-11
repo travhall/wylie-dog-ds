@@ -8909,17 +8909,6 @@
         "variable": "var(--color-form-error)",
         "description": "Text color of form error messages."
       },
-      "form-label": {
-        "name": "formLabel",
-        "path": [
-          "form",
-          "label"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-form-label)",
-        "description": "Text color of form labels."
-      },
       "form-item-gap": {
         "name": "formItemGap",
         "path": [
@@ -8942,17 +8931,6 @@
         "variable": "var(--form-label-gap)",
         "description": "Gap between a form label and its control."
       },
-      "form-error-margin": {
-        "name": "formErrorMargin",
-        "path": [
-          "form",
-          "error-margin"
-        ],
-        "value": "0.25rem",
-        "type": "spacing",
-        "variable": "var(--form-error-margin)",
-        "description": "Left margin of the form error message."
-      },
       "form-description-font-size": {
         "name": "formDescriptionFontSize",
         "path": [
@@ -8963,17 +8941,6 @@
         "type": "number",
         "variable": "var(--form-description-font-size)",
         "description": "Font size of the form description."
-      },
-      "form-label-font-weight": {
-        "name": "formLabelFontWeight",
-        "path": [
-          "form",
-          "label-font-weight"
-        ],
-        "value": 500,
-        "type": "number",
-        "variable": "var(--form-label-font-weight)",
-        "description": "Font weight of the form label."
       },
       "form-message-font-weight": {
         "name": "formMessageFontWeight",
@@ -8996,50 +8963,6 @@
         "type": "number",
         "variable": "var(--form-error-font-size)",
         "description": "Font size of form error messages."
-      },
-      "form-required-color": {
-        "name": "formRequiredColor",
-        "path": [
-          "form",
-          "required-color"
-        ],
-        "value": "oklch(0.488 0.19 27.46)",
-        "type": "color",
-        "variable": "var(--color-form-required-color)",
-        "description": "Color of the required-field marker on form labels."
-      },
-      "form-label-error-text": {
-        "name": "formLabelErrorText",
-        "path": [
-          "form",
-          "label-error-text"
-        ],
-        "value": "oklch(0.488 0.19 27.46)",
-        "type": "color",
-        "variable": "var(--color-form-label-error-text)",
-        "description": "Text color of a form label when its field has an error."
-      },
-      "form-label-opacity-disabled": {
-        "name": "formLabelOpacityDisabled",
-        "path": [
-          "form",
-          "label-opacity-disabled"
-        ],
-        "value": 0.6,
-        "type": "number",
-        "variable": "var(--form-label-opacity-disabled)",
-        "description": "Opacity of a form label whose control is disabled."
-      },
-      "form-label-line-height": {
-        "name": "formLabelLineHeight",
-        "path": [
-          "form",
-          "label-line-height"
-        ],
-        "value": 100,
-        "type": "number",
-        "variable": "var(--form-label-line-height)",
-        "description": "Line height of the form label."
       },
       "form-description-line-height": {
         "name": "formDescriptionLineHeight",

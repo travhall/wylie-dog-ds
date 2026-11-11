@@ -983,18 +983,6 @@
     "light": "oklch(0.488 0.19 27.46)",
     "dark": "oklch(0.714 0.166 22.17)"
   },
-  "color-form-label": {
-    "light": "oklch(0.202 0.011 47.84)",
-    "dark": "oklch(0.977 0.003 65.02)"
-  },
-  "color-form-label-error-text": {
-    "light": "oklch(0.488 0.19 27.46)",
-    "dark": "oklch(0.714 0.166 22.17)"
-  },
-  "color-form-required-color": {
-    "light": "oklch(0.488 0.19 27.46)",
-    "dark": "oklch(0.714 0.166 22.17)"
-  },
   "color-gray-100": {
     "light": "oklch(0.952 0.003 264.39)",
     "dark": "oklch(0.952 0.003 264.39)"

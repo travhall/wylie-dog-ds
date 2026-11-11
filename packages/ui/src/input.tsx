@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn, focusRingClasses } from "./lib/utils";
+import { useOptionalFormField } from "./form-field-context";
 
 export const inputVariants = cva(
   cn(
@@ -40,13 +43,13 @@ export interface InputProps
   extends
     Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
     Omit<InputVariantProps, "inputState"> {
-  /** Whether the input has an error */
+  /** Whether the input has an error. Inside a `FormField` it follows the field's `error`. */
   error?: boolean;
   /** Whether the input has a success/valid state */
   success?: boolean;
-  /** ID of error message element for aria-describedby */
+  /** ID of error message element for aria-describedby (inside a `FormField`, the field's) */
   errorId?: string;
-  /** ID of description element for aria-describedby */
+  /** ID of description element for aria-describedby (inside a `FormField`, the field's) */
   descriptionId?: string;
 }
 
@@ -54,17 +57,22 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
-      error = false,
+      error,
       success = false,
       size,
       type = "text",
+      id,
       errorId,
       descriptionId,
       ...props
     },
     ref
   ) => {
-    const inputState = error ? "error" : success ? "success" : "default";
+    // Inside a FormField the input takes its id, error state, description and required state from
+    // the field, so the label points at it without a wrapper; any prop set here wins.
+    const field = useOptionalFormField();
+    const isError = error ?? field?.isInvalid ?? false;
+    const inputState = isError ? "error" : success ? "success" : "default";
 
     const typeStyles: Partial<Record<string, string>> = {
       number: [
@@ -77,14 +85,21 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     // Build aria-describedby from provided IDs
-    const describedBy = [descriptionId, errorId].filter(Boolean).join(" ");
+    const describedBy = [
+      descriptionId ?? field?.descriptionId,
+      errorId ?? field?.errorId,
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     return (
       <input
         ref={ref}
         type={type}
-        aria-invalid={error}
+        id={id ?? field?.id}
+        aria-invalid={isError}
         aria-describedby={describedBy || undefined}
+        aria-required={field?.isRequired || undefined}
         className={cn(
           inputVariants({ size, inputState }),
           typeStyles[type],

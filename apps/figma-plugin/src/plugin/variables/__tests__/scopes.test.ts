@@ -102,7 +102,6 @@ describe("inferScopes: component colors", () => {
     ["button.primary.text", FOREGROUND],
     ["dropdown-menu.item.text-hover", FOREGROUND],
     ["input.placeholder", FOREGROUND],
-    ["form.label", FOREGROUND],
     ["tabs.link-hover", FOREGROUND],
     ["alert.icon", FOREGROUND],
     ["input.border", STROKE],
@@ -118,7 +117,6 @@ describe("inferScopes: component colors", () => {
     ["dialog.title", FOREGROUND],
     ["command.shortcut", FOREGROUND],
     ["toast.close-hover", FOREGROUND],
-    ["form.required-color", FOREGROUND],
     ["calendar.day-hover", FILL],
     ["menubar.trigger-open", FILL],
     ["toggle.pressed-disabled", FILL],
@@ -282,7 +280,6 @@ const FORMER_AMBIGUOUS_COMPONENT_COLORS: Record<string, string[]> = {
   "dialog.title": FOREGROUND,
   "form.description": FOREGROUND,
   "form.error": FOREGROUND,
-  "form.required-color": FOREGROUND,
   "table.caption": FOREGROUND,
   "toast.close": FOREGROUND,
   "toast.close-hover": FOREGROUND,
@@ -325,14 +322,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (286, 1124 and 104 variables)", () => {
+  it("reads all three collections (286, 1117 and 104 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([286, 1124, 104]);
+    ]).toEqual([286, 1117, 104]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {
@@ -352,8 +349,8 @@ describe("inferScopes: the real token files", () => {
     }
   });
 
-  it("scopes the 47 former ALL_SCOPES component colors by what they paint", () => {
-    expect(Object.keys(FORMER_AMBIGUOUS_COMPONENT_COLORS)).toHaveLength(47);
+  it("scopes the 46 former ALL_SCOPES component colors by what they paint", () => {
+    expect(Object.keys(FORMER_AMBIGUOUS_COMPONENT_COLORS)).toHaveLength(46);
     const components = new Map(
       variables
         .filter((v) => v.collection === "components")
@@ -477,9 +474,9 @@ describe("inferScopes: the real token files", () => {
     expect(all.components["color ALL_SCOPES"]).toBeUndefined();
     expect(all.components).toMatchObject({
       "number FONT_SIZE": 83,
-      "number FONT_WEIGHT": 40,
+      "number FONT_WEIGHT": 39,
       "fontFamily FONT_FAMILY": 1,
-      "number []": 137,
+      "number []": 135,
       "dimension []": 16,
       "shadow []": 19,
       "duration []": 25,

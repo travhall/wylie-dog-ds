@@ -1722,15 +1722,6 @@
             "Dark": "{color.foreground.danger-muted}"
           }
         },
-        "form.label": {
-          "$type": "color",
-          "$value": "{color.foreground.default}",
-          "$description": "Text color of form labels.",
-          "valuesByMode": {
-            "Light": "{color.foreground.default}",
-            "Dark": "{color.foreground.default}"
-          }
-        },
         "hover-card.background": {
           "$type": "color",
           "$value": "{color.background.raised}",
@@ -4260,15 +4251,6 @@
             "Dark": "{space.100}"
           }
         },
-        "form.error-margin": {
-          "$type": "spacing",
-          "$value": "{space.050}",
-          "$description": "Left margin of the form error message.",
-          "valuesByMode": {
-            "Light": "{space.050}",
-            "Dark": "{space.050}"
-          }
-        },
         "form.description-font-size": {
           "$type": "number",
           "$value": "{typography.font-size.xs}",
@@ -6681,15 +6663,6 @@
             "Dark": "{typography.tracking.tight}"
           }
         },
-        "form.label-font-weight": {
-          "$type": "number",
-          "$value": "{typography.font-weight.medium}",
-          "$description": "Font weight of the form label.",
-          "valuesByMode": {
-            "Light": "{typography.font-weight.medium}",
-            "Dark": "{typography.font-weight.medium}"
-          }
-        },
         "form.message-font-weight": {
           "$type": "number",
           "$value": "{typography.font-weight.medium}",
@@ -6706,15 +6679,6 @@
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
             "Dark": "{typography.font-size.xs}"
-          }
-        },
-        "form.required-color": {
-          "$type": "color",
-          "$value": "{color.foreground.danger-muted}",
-          "$description": "Color of the required-field marker on form labels.",
-          "valuesByMode": {
-            "Light": "{color.foreground.danger-muted}",
-            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "calendar.header-font-weight": {
@@ -6958,15 +6922,6 @@
           "valuesByMode": {
             "Light": "{focus.offset}",
             "Dark": "{focus.offset}"
-          }
-        },
-        "form.label-error-text": {
-          "$type": "color",
-          "$value": "{color.foreground.danger-muted}",
-          "$description": "Text color of a form label when its field has an error.",
-          "valuesByMode": {
-            "Light": "{color.foreground.danger-muted}",
-            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "site-header.background": {
@@ -7531,15 +7486,6 @@
           "$type": "number",
           "$value": "{opacity.60}",
           "$description": "Opacity of a disabled site header navigation link.",
-          "valuesByMode": {
-            "Light": "{opacity.60}",
-            "Dark": "{opacity.60}"
-          }
-        },
-        "form.label-opacity-disabled": {
-          "$type": "number",
-          "$value": "{opacity.60}",
-          "$description": "Opacity of a form label whose control is disabled.",
           "valuesByMode": {
             "Light": "{opacity.60}",
             "Dark": "{opacity.60}"
@@ -9700,15 +9646,6 @@
           "$type": "number",
           "$value": "{typography.line-height.none}",
           "$description": "Line height of the label.",
-          "valuesByMode": {
-            "Light": "{typography.line-height.none}",
-            "Dark": "{typography.line-height.none}"
-          }
-        },
-        "form.label-line-height": {
-          "$type": "number",
-          "$value": "{typography.line-height.none}",
-          "$description": "Line height of the form label.",
           "valuesByMode": {
             "Light": "{typography.line-height.none}",
             "Dark": "{typography.line-height.none}"

@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn, focusRingClasses } from "./lib/utils";
+import { useOptionalFormField } from "./form-field-context";
 
 export const textareaVariants = cva(
   cn(
@@ -47,13 +50,13 @@ export interface TextareaProps
   extends
     Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "size">,
     Omit<TextareaVariantProps, "textareaState"> {
-  /** Whether the textarea has an error */
+  /** Whether the textarea has an error. Inside a `FormField` it follows the field's `error`. */
   error?: boolean;
   /** Whether the textarea has a success/valid state */
   success?: boolean;
-  /** ID of error message element for aria-describedby */
+  /** ID of error message element for aria-describedby (inside a `FormField`, the field's) */
   errorId?: string;
-  /** ID of description element for aria-describedby */
+  /** ID of description element for aria-describedby (inside a `FormField`, the field's) */
   descriptionId?: string;
 }
 
@@ -61,20 +64,30 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       className,
-      error = false,
+      error,
       success = false,
       size,
       resize,
+      id,
       errorId,
       descriptionId,
       ...props
     },
     ref
   ) => {
-    const textareaState = error ? "error" : success ? "success" : "default";
+    // Inside a FormField the textarea takes its id, error state, description and required state
+    // from the field, so the label points at it without a wrapper; any prop set here wins.
+    const field = useOptionalFormField();
+    const isError = error ?? field?.isInvalid ?? false;
+    const textareaState = isError ? "error" : success ? "success" : "default";
 
     // Build aria-describedby from provided IDs
-    const describedBy = [descriptionId, errorId].filter(Boolean).join(" ");
+    const describedBy = [
+      descriptionId ?? field?.descriptionId,
+      errorId ?? field?.errorId,
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     return (
       <textarea
@@ -83,8 +96,10 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           className
         )}
         ref={ref}
-        aria-invalid={error}
+        id={id ?? field?.id}
+        aria-invalid={isError}
         aria-describedby={describedBy || undefined}
+        aria-required={field?.isRequired || undefined}
         {...props}
       />
     );

@@ -1,40 +1,15 @@
 "use client";
 
-import React, { createContext, useContext, useId } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import React, { useContext, useId } from "react";
 import { cn } from "./lib/utils";
+import { FormFieldContext } from "./form-field-context";
+import { Label, labelVariants, type LabelProps } from "./label";
 
-export const formLabelVariants = cva(
-  "font-(--font-weight-form-label-font-weight) leading-(--line-height-form-label-line-height) peer-disabled:cursor-not-allowed peer-disabled:opacity-(--form-label-opacity-disabled)",
-  {
-    variants: {
-      size: {
-        sm: "text-(length:--font-size-label-font-size-sm)",
-        md: "text-(length:--font-size-label-font-size-md)",
-        lg: "text-(length:--font-size-label-font-size-lg)",
-      },
-      invalid: {
-        true: "text-(--color-form-label-error-text)",
-        false: "text-(--color-form-label)",
-      },
-    },
-    defaultVariants: {
-      size: "md",
-      invalid: false,
-    },
-  }
-);
-
-// Form Field Context for accessibility
-interface FormFieldContextValue {
-  id: string;
-  errorId?: string;
-  descriptionId?: string;
-  isInvalid?: boolean;
-  isRequired?: boolean;
-}
-
-const FormFieldContext = createContext<FormFieldContextValue | null>(null);
+/**
+ * @deprecated A form label is a Label, with the same tokens. Use `labelVariants` from
+ * `@wyliedog/ui/label`; this alias stays so existing imports keep working.
+ */
+export const formLabelVariants = labelVariants;
 
 export const useFormField = () => {
   const context = useContext(FormFieldContext);
@@ -107,36 +82,24 @@ const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
 );
 FormItem.displayName = "FormItem";
 
-// Enhanced FormLabel with automatic accessibility features
-interface FormLabelProps
-  extends
-    React.LabelHTMLAttributes<HTMLLabelElement>,
-    Omit<VariantProps<typeof formLabelVariants>, "invalid"> {}
+// FormLabel is a Label wired to the nearest FormField: it points at the field's control and takes
+// the field's error and required state. The look (and its tokens) is the Label's.
+type FormLabelProps = Omit<LabelProps, "error" | "required">;
 
 const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
-  ({ className, size, children, ...props }, ref) => {
+  ({ children, ...props }, ref) => {
     const { id, isRequired, isInvalid } = useFormField();
 
     return (
-      <label
+      <Label
         ref={ref}
         htmlFor={id}
-        className={cn(
-          formLabelVariants({ size, invalid: isInvalid }),
-          className
-        )}
+        error={isInvalid}
+        required={isRequired}
         {...props}
       >
         {children}
-        {isRequired && (
-          <span
-            className="text-(--color-form-required-color) ml-(--space-form-error-margin)"
-            aria-hidden="true"
-          >
-            *
-          </span>
-        )}
-      </label>
+      </Label>
     );
   }
 );

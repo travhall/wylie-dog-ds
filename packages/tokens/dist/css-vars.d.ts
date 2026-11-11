@@ -282,9 +282,6 @@ export type CssVarName =
   | "--color-foreground-warning-muted"
   | "--color-form-description"
   | "--color-form-error"
-  | "--color-form-label"
-  | "--color-form-label-error-text"
-  | "--color-form-required-color"
   | "--color-gray-100"
   | "--color-gray-200"
   | "--color-gray-300"
@@ -742,7 +739,6 @@ export type CssVarName =
   | "--font-weight-extrabold"
   | "--font-weight-extralight"
   | "--font-weight-feature-grid-title-font-weight"
-  | "--font-weight-form-label-font-weight"
   | "--font-weight-form-message-font-weight"
   | "--font-weight-label-font-weight"
   | "--font-weight-light"
@@ -769,7 +765,6 @@ export type CssVarName =
   | "--font-weight-toast-title-font-weight"
   | "--font-weight-toggle-font-weight"
   | "--font-weight-toggle-group-item-font-weight"
-  | "--form-label-opacity-disabled"
   | "--hover-card-content-easing"
   | "--hover-card-content-scale"
   | "--hover-card-z-index"
@@ -814,7 +809,6 @@ export type CssVarName =
   | "--line-height-feature-grid-title-line-height"
   | "--line-height-form-description-line-height"
   | "--line-height-form-error-line-height"
-  | "--line-height-form-label-line-height"
   | "--line-height-input-line-height"
   | "--line-height-label-line-height"
   | "--line-height-loose"
@@ -1132,7 +1126,6 @@ export type CssVarName =
   | "--space-focus-halo-width"
   | "--space-focus-offset"
   | "--space-focus-width"
-  | "--space-form-error-margin"
   | "--space-form-item-gap"
   | "--space-form-label-gap"
   | "--space-hover-card-border-width"
@@ -1800,9 +1793,6 @@ export declare const cssVars: Readonly<{
   "colorForegroundWarningMuted": "--color-foreground-warning-muted";
   "colorFormDescription": "--color-form-description";
   "colorFormError": "--color-form-error";
-  "colorFormLabel": "--color-form-label";
-  "colorFormLabelErrorText": "--color-form-label-error-text";
-  "colorFormRequiredColor": "--color-form-required-color";
   "colorGray100": "--color-gray-100";
   "colorGray200": "--color-gray-200";
   "colorGray300": "--color-gray-300";
@@ -2260,7 +2250,6 @@ export declare const cssVars: Readonly<{
   "fontWeightExtrabold": "--font-weight-extrabold";
   "fontWeightExtralight": "--font-weight-extralight";
   "fontWeightFeatureGridTitleFontWeight": "--font-weight-feature-grid-title-font-weight";
-  "fontWeightFormLabelFontWeight": "--font-weight-form-label-font-weight";
   "fontWeightFormMessageFontWeight": "--font-weight-form-message-font-weight";
   "fontWeightLabelFontWeight": "--font-weight-label-font-weight";
   "fontWeightLight": "--font-weight-light";
@@ -2287,7 +2276,6 @@ export declare const cssVars: Readonly<{
   "fontWeightToastTitleFontWeight": "--font-weight-toast-title-font-weight";
   "fontWeightToggleFontWeight": "--font-weight-toggle-font-weight";
   "fontWeightToggleGroupItemFontWeight": "--font-weight-toggle-group-item-font-weight";
-  "formLabelOpacityDisabled": "--form-label-opacity-disabled";
   "hoverCardContentEasing": "--hover-card-content-easing";
   "hoverCardContentScale": "--hover-card-content-scale";
   "hoverCardZIndex": "--hover-card-z-index";
@@ -2332,7 +2320,6 @@ export declare const cssVars: Readonly<{
   "lineHeightFeatureGridTitleLineHeight": "--line-height-feature-grid-title-line-height";
   "lineHeightFormDescriptionLineHeight": "--line-height-form-description-line-height";
   "lineHeightFormErrorLineHeight": "--line-height-form-error-line-height";
-  "lineHeightFormLabelLineHeight": "--line-height-form-label-line-height";
   "lineHeightInputLineHeight": "--line-height-input-line-height";
   "lineHeightLabelLineHeight": "--line-height-label-line-height";
   "lineHeightLoose": "--line-height-loose";
@@ -2650,7 +2637,6 @@ export declare const cssVars: Readonly<{
   "spaceFocusHaloWidth": "--space-focus-halo-width";
   "spaceFocusOffset": "--space-focus-offset";
   "spaceFocusWidth": "--space-focus-width";
-  "spaceFormErrorMargin": "--space-form-error-margin";
   "spaceFormItemGap": "--space-form-item-gap";
   "spaceFormLabelGap": "--space-form-label-gap";
   "spaceHoverCardBorderWidth": "--space-hover-card-border-width";

@@ -6,7 +6,6 @@ import {
   FormLabel,
   FormDescription,
   FormMessage,
-  useFormField,
 } from "@wyliedog/ui/form";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
@@ -36,42 +35,6 @@ import { Badge } from "@wyliedog/ui/badge";
 import { useState } from "react";
 
 // ---------------------------------------------------------------------------
-// Context-aware field helpers
-//
-// These thin wrappers call `useFormField()` to read the generated id,
-// errorId, descriptionId, and isInvalid from the nearest <FormField>.
-// They then forward those values to the component's own typed props
-// (Input.error, Input.errorId, Input.descriptionId) so the token-backed
-// error variant fires automatically.
-// ---------------------------------------------------------------------------
-
-function FieldInput(props: React.ComponentProps<typeof Input>) {
-  const { id, errorId, descriptionId, isInvalid } = useFormField();
-  return (
-    <Input
-      id={id}
-      error={isInvalid}
-      errorId={errorId}
-      descriptionId={descriptionId}
-      {...props}
-    />
-  );
-}
-
-function FieldTextarea(props: React.ComponentProps<typeof Textarea>) {
-  const { id, errorId, descriptionId, isInvalid } = useFormField();
-  return (
-    <Textarea
-      id={id}
-      error={isInvalid}
-      errorId={errorId}
-      descriptionId={descriptionId}
-      {...props}
-    />
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Meta
 // ---------------------------------------------------------------------------
 
@@ -95,26 +58,20 @@ The Form system provides composable primitives for building accessible, consiste
 | \`<FormDescription>\` | Helper text. Auto-assigned an \`id\` used by \`aria-describedby\`. |
 | \`<FormMessage>\` | Error text. Only mounts when \`error={true}\` on the parent \`FormField\`. Has \`role="alert"\` and \`aria-live="polite"\` built in. |
 
-**Connecting inputs to context**
+**Controls read the field**
 
-Use the \`useFormField()\` hook to read \`{ id, errorId, descriptionId, isInvalid }\` and pass them to an input's own typed props:
+\`Input\`, \`Textarea\` and the \`SelectTrigger\` inside a \`FormField\` take their \`id\` (so the label points at them), their error state, \`aria-describedby\` (the description, plus the message when invalid) and \`aria-required\` from the field. No wrapper is needed:
 
 \`\`\`tsx
-function FieldInput(props: React.ComponentProps<typeof Input>) {
-  const { id, errorId, descriptionId, isInvalid } = useFormField();
-  return (
-    <Input
-      id={id}
-      error={isInvalid}       // activates Input's token-backed error variant
-      errorId={errorId}       // wires aria-errormessage
-      descriptionId={descriptionId} // wires aria-describedby
-      {...props}
-    />
-  );
-}
+<FormField required error={hasError}>
+  <FormLabel>Email</FormLabel>
+  <Input type="email" />
+  <FormDescription>We never share it.</FormDescription>
+  <FormMessage>Enter a valid email</FormMessage>
+</FormField>
 \`\`\`
 
-This pattern is used throughout these stories as \`<FieldInput>\` and \`<FieldTextarea>\`.
+A prop set on the control wins over the field's (\`id\`, \`error\`, \`errorId\`, \`descriptionId\`, \`aria-describedby\`), and the controls work unchanged outside a \`FormField\`. Use \`useFormField()\` for a custom control that needs \`{ id, errorId, descriptionId, isInvalid, isRequired }\`.
         `,
       },
     },
@@ -134,7 +91,7 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          "Minimal contact form showing the canonical `FormField → FormLabel → FieldInput → FormDescription` pattern. `FormLabel` sets `htmlFor` automatically from context — no manual id coordination needed.",
+          "Minimal contact form showing the canonical `FormField → FormLabel → Input → FormDescription` pattern. `FormLabel` sets `htmlFor` automatically from context — no manual id coordination needed.",
       },
     },
   },
@@ -142,19 +99,19 @@ export const Default: Story = {
     <Form className="mx-auto w-full max-w-lg">
       <FormField>
         <FormLabel>Name</FormLabel>
-        <FieldInput placeholder="Jane Doe" />
+        <Input placeholder="Jane Doe" />
         <FormDescription>How you&apos;d like to be addressed.</FormDescription>
       </FormField>
 
       <FormField>
         <FormLabel>Email</FormLabel>
-        <FieldInput type="email" placeholder="jane@example.com" />
+        <Input type="email" placeholder="jane@example.com" />
         <FormDescription>We&apos;ll never share your email.</FormDescription>
       </FormField>
 
       <FormField>
         <FormLabel>Message</FormLabel>
-        <FieldTextarea placeholder="Tell us how we can help…" rows={4} />
+        <Textarea placeholder="Tell us how we can help…" rows={4} />
       </FormField>
 
       <Button type="submit" className="w-full">
@@ -173,7 +130,7 @@ export const WithValidation: Story = {
     docs: {
       description: {
         story:
-          'Set `error={true}` on `<FormField>` to activate all error styling in one place: `FormLabel` switches to the error text color, `FieldInput` applies the token-backed error border, and `FormMessage` mounts with `role="alert"`. No custom error class names needed.',
+          'Set `error={true}` on `<FormField>` to activate all error styling in one place: `FormLabel` switches to the error text color, `Input` applies the token-backed error border, and `FormMessage` mounts with `role="alert"`. No custom error class names needed.',
       },
     },
   },
@@ -210,17 +167,13 @@ export const WithValidation: Story = {
 
         <FormField error={!!errors.name}>
           <FormLabel>Name</FormLabel>
-          <FieldInput name="name" placeholder="Jane Doe" />
+          <Input name="name" placeholder="Jane Doe" />
           <FormMessage>{errors.name}</FormMessage>
         </FormField>
 
         <FormField error={!!errors.email}>
           <FormLabel>Email</FormLabel>
-          <FieldInput
-            name="email"
-            type="email"
-            placeholder="jane@example.com"
-          />
+          <Input name="email" type="email" placeholder="jane@example.com" />
           <FormMessage>{errors.email}</FormMessage>
         </FormField>
 
@@ -249,18 +202,18 @@ export const RequiredFields: Story = {
     <Form className="mx-auto w-full max-w-lg">
       <FormField required>
         <FormLabel>Full name</FormLabel>
-        <FieldInput required placeholder="Jane Doe" />
+        <Input required placeholder="Jane Doe" />
         <FormDescription>Required. Used on your account.</FormDescription>
       </FormField>
 
       <FormField required>
         <FormLabel>Email</FormLabel>
-        <FieldInput required type="email" placeholder="jane@example.com" />
+        <Input required type="email" placeholder="jane@example.com" />
       </FormField>
 
       <FormField>
         <FormLabel>Company</FormLabel>
-        <FieldInput placeholder="Acme Inc. (optional)" />
+        <Input placeholder="Acme Inc. (optional)" />
       </FormField>
 
       <p className="text-xs text-current/70">Fields marked * are required.</p>
@@ -281,7 +234,7 @@ export const AllFieldTypes: Story = {
     docs: {
       description: {
         story:
-          "Every input component available in the design system. `FieldInput` and `FieldTextarea` use `useFormField()` inside `<FormField>`. Components that manage their own id (Select, RadioGroup, Checkbox, Switch, Slider) are paired with `<Label>` directly using a consistent `space-y-2` wrapper.",
+          "Every input component available in the design system. `Input`, `Textarea` and `SelectTrigger` read the surrounding `<FormField>`. Components that manage their own id (RadioGroup, Checkbox, Switch, Slider) are paired with `<Label>` directly using a consistent `space-y-2` wrapper.",
       },
     },
   },
@@ -298,27 +251,27 @@ export const AllFieldTypes: Story = {
           <Form className="grid grid-cols-2 gap-2">
             <FormField>
               <FormLabel>Text</FormLabel>
-              <FieldInput type="text" placeholder="Plain text" />
+              <Input type="text" placeholder="Plain text" />
               <FormDescription>Single-line text.</FormDescription>
             </FormField>
             <FormField>
               <FormLabel>Email</FormLabel>
-              <FieldInput type="email" placeholder="jane@example.com" />
+              <Input type="email" placeholder="jane@example.com" />
             </FormField>
             <FormField>
               <FormLabel>Password</FormLabel>
-              <FieldInput type="password" placeholder="••••••••" />
+              <Input type="password" placeholder="••••••••" />
               <FormDescription>Min 8 characters.</FormDescription>
             </FormField>
             <FormField>
               <FormLabel>Number</FormLabel>
-              <FieldInput type="number" placeholder="0" min={0} />
+              <Input type="number" placeholder="0" min={0} />
             </FormField>
           </Form>
           <Form>
             <FormField>
               <FormLabel>Textarea</FormLabel>
-              <FieldTextarea placeholder="Multi-line text…" rows={3} />
+              <Textarea placeholder="Multi-line text…" rows={3} />
               <FormDescription>Up to 500 characters.</FormDescription>
             </FormField>
           </Form>
@@ -439,22 +392,22 @@ export const MultiSection: Story = {
       <div className="grid grid-cols-2 gap-4">
         <FormField required>
           <FormLabel>First name</FormLabel>
-          <FieldInput required placeholder="Jane" />
+          <Input required placeholder="Jane" />
         </FormField>
         <FormField required>
           <FormLabel>Last name</FormLabel>
-          <FieldInput required placeholder="Doe" />
+          <Input required placeholder="Doe" />
         </FormField>
       </div>
 
       <FormField required>
         <FormLabel>Email</FormLabel>
-        <FieldInput required type="email" placeholder="jane@example.com" />
+        <Input required type="email" placeholder="jane@example.com" />
       </FormField>
 
       <FormField>
         <FormLabel>Phone</FormLabel>
-        <FieldInput type="tel" placeholder="+1 (555) 000-0000" />
+        <Input type="tel" placeholder="+1 (555) 000-0000" />
         <FormDescription>Optional. For account recovery only.</FormDescription>
       </FormField>
 
@@ -469,7 +422,7 @@ export const MultiSection: Story = {
 
       <FormField required>
         <FormLabel>Username</FormLabel>
-        <FieldInput required placeholder="janedoe" />
+        <Input required placeholder="janedoe" />
         <FormDescription>
           3–20 characters. Letters, numbers, and underscores only.
         </FormDescription>
@@ -477,13 +430,13 @@ export const MultiSection: Story = {
 
       <FormField required>
         <FormLabel>Password</FormLabel>
-        <FieldInput required type="password" placeholder="••••••••" />
+        <Input required type="password" placeholder="••••••••" />
         <FormDescription>Minimum 8 characters.</FormDescription>
       </FormField>
 
       <FormField required>
         <FormLabel>Confirm password</FormLabel>
-        <FieldInput required type="password" placeholder="••••••••" />
+        <Input required type="password" placeholder="••••••••" />
       </FormField>
 
       <Separator />
@@ -564,7 +517,7 @@ export const ConditionalFields: Story = {
       <Form className="mx-auto w-full max-w-lg">
         <FormField required>
           <FormLabel>Full name</FormLabel>
-          <FieldInput required placeholder="Jane Doe" />
+          <Input required placeholder="Jane Doe" />
         </FormField>
 
         <div className="flex items-center gap-2">
@@ -581,7 +534,7 @@ export const ConditionalFields: Story = {
         {includeCompany && (
           <FormField required>
             <FormLabel>Organization name</FormLabel>
-            <FieldInput required placeholder="Acme Inc." />
+            <Input required placeholder="Acme Inc." />
             <FormDescription>
               This will appear on invoices and reports.
             </FormDescription>
@@ -611,14 +564,14 @@ export const ConditionalFields: Story = {
         {contactMethod === "email" && (
           <FormField required>
             <FormLabel>Email address</FormLabel>
-            <FieldInput required type="email" placeholder="jane@example.com" />
+            <Input required type="email" placeholder="jane@example.com" />
           </FormField>
         )}
 
         {contactMethod === "phone" && (
           <FormField required>
             <FormLabel>Phone number</FormLabel>
-            <FieldInput required type="tel" placeholder="+1 (555) 000-0000" />
+            <Input required type="tel" placeholder="+1 (555) 000-0000" />
             <FormDescription>Include country code.</FormDescription>
           </FormField>
         )}
@@ -669,18 +622,18 @@ export const DisabledState: Story = {
 
       <FormField>
         <FormLabel>Display name</FormLabel>
-        <FieldInput disabled defaultValue="Jane Doe" />
+        <Input disabled defaultValue="Jane Doe" />
       </FormField>
 
       <FormField>
         <FormLabel>Email</FormLabel>
-        <FieldInput disabled type="email" defaultValue="jane@example.com" />
+        <Input disabled type="email" defaultValue="jane@example.com" />
         <FormDescription>Contact support to change your email.</FormDescription>
       </FormField>
 
       <FormField>
         <FormLabel>Role</FormLabel>
-        <FieldInput disabled defaultValue="Administrator" />
+        <Input disabled defaultValue="Administrator" />
       </FormField>
 
       <div className="flex items-center justify-between opacity-50">
@@ -721,12 +674,12 @@ export const Login: Story = {
         <Form>
           <FormField required>
             <FormLabel>Email</FormLabel>
-            <FieldInput required type="email" placeholder="jane@example.com" />
+            <Input required type="email" placeholder="jane@example.com" />
           </FormField>
 
           <FormField required>
             <FormLabel>Password</FormLabel>
-            <FieldInput required type="password" placeholder="••••••••" />
+            <Input required type="password" placeholder="••••••••" />
           </FormField>
 
           <div className="flex items-center justify-between">
@@ -781,22 +734,22 @@ export const Registration: Story = {
           <div className="grid grid-cols-2 gap-4">
             <FormField required>
               <FormLabel>First name</FormLabel>
-              <FieldInput required placeholder="Jane" />
+              <Input required placeholder="Jane" />
             </FormField>
             <FormField required>
               <FormLabel>Last name</FormLabel>
-              <FieldInput required placeholder="Doe" />
+              <Input required placeholder="Doe" />
             </FormField>
           </div>
 
           <FormField required>
             <FormLabel>Email</FormLabel>
-            <FieldInput required type="email" placeholder="jane@example.com" />
+            <Input required type="email" placeholder="jane@example.com" />
           </FormField>
 
           <FormField required>
             <FormLabel>Password</FormLabel>
-            <FieldInput required type="password" placeholder="••••••••" />
+            <Input required type="password" placeholder="••••••••" />
             <FormDescription>At least 8 characters.</FormDescription>
           </FormField>
 
@@ -896,17 +849,13 @@ export const WithInteractions: Story = {
 
         <FormField error={!!errors.name}>
           <FormLabel>Name</FormLabel>
-          <FieldInput name="wi-name" placeholder="Jane Doe" />
+          <Input name="wi-name" placeholder="Jane Doe" />
           <FormMessage>{errors.name}</FormMessage>
         </FormField>
 
         <FormField error={!!errors.email}>
           <FormLabel>Email</FormLabel>
-          <FieldInput
-            name="wi-email"
-            type="email"
-            placeholder="jane@example.com"
-          />
+          <Input name="wi-email" type="email" placeholder="jane@example.com" />
           <FormMessage>{errors.email}</FormMessage>
         </FormField>
 
