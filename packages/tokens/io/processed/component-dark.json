@@ -949,11 +949,6 @@
     "$value": "{color.foreground.danger-muted}",
     "$description": "Text color of form error messages."
   },
-  "form.label": {
-    "$type": "color",
-    "$value": "{color.foreground.default}",
-    "$description": "Text color of form labels."
-  },
   "hover-card.background": {
     "$type": "color",
     "$value": "{color.background.raised}",
@@ -2359,11 +2354,6 @@
     "$value": "{space.100}",
     "$description": "Gap between a form label and its control."
   },
-  "form.error-margin": {
-    "$type": "spacing",
-    "$value": "{space.050}",
-    "$description": "Left margin of the form error message."
-  },
   "form.description-font-size": {
     "$type": "number",
     "$value": "{typography.font-size.xs}",
@@ -3704,11 +3694,6 @@
     "$value": "{typography.tracking.tight}",
     "$description": "Letter spacing of the dialog title."
   },
-  "form.label-font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight of the form label."
-  },
   "form.message-font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}",
@@ -3718,11 +3703,6 @@
     "$type": "number",
     "$value": "{typography.font-size.xs}",
     "$description": "Font size of form error messages."
-  },
-  "form.required-color": {
-    "$type": "color",
-    "$value": "{color.foreground.danger-muted}",
-    "$description": "Color of the required-field marker on form labels."
   },
   "calendar.header-font-weight": {
     "$type": "number",
@@ -3858,11 +3838,6 @@
     "$type": "spacing",
     "$value": "{focus.offset}",
     "$description": "Gap between the resizable handle and its focus ring."
-  },
-  "form.label-error-text": {
-    "$type": "color",
-    "$value": "{color.foreground.danger-muted}",
-    "$description": "Text color of a form label when its field has an error."
   },
   "site-header.background": {
     "$type": "color",
@@ -4178,11 +4153,6 @@
     "$type": "number",
     "$value": "{opacity.60}",
     "$description": "Opacity of a disabled site header navigation link."
-  },
-  "form.label-opacity-disabled": {
-    "$type": "number",
-    "$value": "{opacity.60}",
-    "$description": "Opacity of a form label whose control is disabled."
   },
   "toggle.border-width": {
     "$type": "dimension",
@@ -5383,11 +5353,6 @@
     "$type": "number",
     "$value": "{typography.line-height.none}",
     "$description": "Line height of the label."
-  },
-  "form.label-line-height": {
-    "$type": "number",
-    "$value": "{typography.line-height.none}",
-    "$description": "Line height of the form label."
   },
   "form.description-line-height": {
     "$type": "number",

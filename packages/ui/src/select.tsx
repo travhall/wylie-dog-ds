@@ -1,9 +1,12 @@
+"use client";
+
 import { ChevronDownIcon } from "lucide-react";
 import { Icon } from "./icon";
 import React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cva } from "class-variance-authority";
 import { cn, focusRingClasses, focusRingInsetClasses } from "./lib/utils";
+import { useOptionalFormField } from "./form-field-context";
 
 export const selectTriggerVariants = cva(
   cn(
@@ -86,15 +89,32 @@ export interface SelectTriggerProps extends React.ComponentPropsWithoutRef<
 export const SelectTrigger = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Trigger>,
   SelectTriggerProps
->(({ className, size: propSize, error = false, children, ...props }, ref) => {
+>(({ className, size: propSize, error, children, ...props }, ref) => {
   const context = useSelectContext();
+  const field = useOptionalFormField();
   // Fallback to propSize for backward compatibility, otherwise use context
   const size = propSize || context.size;
+  // Inside a FormField the trigger takes its id, error state, description and required state
+  // from the field, so the label points at it without a wrapper; any prop set here wins. Only
+  // what the field provides is passed, so Radix keeps its own aria-required from the root.
+  const isError = error ?? field?.isInvalid ?? false;
+  const describedBy = field
+    ? [field.descriptionId, field.errorId].filter(Boolean).join(" ")
+    : "";
+  const fieldProps = field
+    ? {
+        id: field.id,
+        "aria-describedby": describedBy || undefined,
+        ...(field.isRequired ? { "aria-required": true } : {}),
+      }
+    : {};
 
   return (
     <SelectPrimitive.Trigger
       ref={ref}
-      className={cn(selectTriggerVariants({ size, error }), className)}
+      className={cn(selectTriggerVariants({ size, error: isError }), className)}
+      aria-invalid={isError || undefined}
+      {...fieldProps}
       {...props}
     >
       {children}

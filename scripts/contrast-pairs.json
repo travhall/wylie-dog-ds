@@ -522,11 +522,6 @@
       "kind": "text"
     },
     {
-      "foreground": "form.label",
-      "backgrounds": ["color.background.default"],
-      "kind": "text"
-    },
-    {
       "foreground": "table.caption",
       "backgrounds": ["color.background.default"],
       "kind": "text"
@@ -849,11 +844,6 @@
       "kind": "text"
     },
     {
-      "foreground": "form.required-color",
-      "backgrounds": ["color.background.default"],
-      "kind": "text"
-    },
-    {
       "foreground": "color.gray.50",
       "backgrounds": [
         "color.blue.600",
@@ -891,11 +881,6 @@
       "foreground": "accordion.icon-open",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
-    },
-    {
-      "foreground": "form.label-error-text",
-      "backgrounds": ["color.background.default", "color.background.raised"],
-      "kind": "text"
     },
     {
       "foreground": "site-header.nav-link.text-hover",

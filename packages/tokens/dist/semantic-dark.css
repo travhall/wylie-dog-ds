@@ -298,7 +298,6 @@
   --color-dialog-title: oklch(0.977 0.003 65.02);
   --color-form-description: oklch(0.843 0.027 71);
   --color-form-error: oklch(0.714 0.166 22.17);
-  --color-form-label: oklch(0.977 0.003 65.02);
   --color-hover-card-background: oklch(0.202 0.011 47.84);
   --color-hover-card-border: oklch(0.397 0.018 63.78);
   --color-hover-card-text: oklch(0.977 0.003 65.02);
@@ -580,7 +579,6 @@
   --font-size-feature-grid-description-font-size: 0.875rem;
   --space-form-item-gap: 1.5rem;
   --space-form-label-gap: 0.5rem;
-  --space-form-error-margin: 0.25rem;
   --font-size-form-description-font-size: 0.75rem;
   --space-alert-dialog-content-gap: 1rem;
   --space-alert-dialog-content-padding: 1.5rem;
@@ -849,10 +847,8 @@
   --color-checkbox-error-border: oklch(0.546 0.215 27.28);
   --font-weight-dialog-title-font-weight: 600;
   --space-dialog-title-letter-spacing: -0.025em;
-  --font-weight-form-label-font-weight: 500;
   --font-weight-form-message-font-weight: 500;
   --font-size-form-error-font-size: 0.75rem;
-  --color-form-required-color: oklch(0.714 0.166 22.17);
   --font-weight-calendar-header-font-weight: 500;
   --font-weight-calendar-day-header-font-weight: 400;
   --font-weight-breadcrumb-page-font-weight: 400;
@@ -880,7 +876,6 @@
   --color-label-required-text: oklch(0.714 0.166 22.17);
   --space-resizable-handle-focus-ring-width: 2px;
   --space-resizable-handle-focus-ring-offset: 2px;
-  --color-form-label-error-text: oklch(0.714 0.166 22.17);
   --color-site-header-background: oklch(0.138 0.008 60.23);
   --color-site-header-border: oklch(0.397 0.018 63.78);
   --color-site-header-nav-link-background: oklch(0.138 0.008 60.23);
@@ -944,7 +939,6 @@
   --line-height-calendar-header-line-height: 1.5;
   --toast-action-opacity-disabled: 0.6;
   --site-header-nav-link-opacity-disabled: 0.6;
-  --form-label-opacity-disabled: 0.6;
   --space-toggle-border-width: 1px;
   --space-toggle-icon-gap: 0.5rem;
   --line-height-toggle-line-height: 1;
@@ -1185,7 +1179,6 @@
   --line-height-input-line-height: 1.5;
   --line-height-dialog-title-line-height: 1;
   --line-height-label-line-height: 1;
-  --line-height-form-label-line-height: 1;
   --line-height-form-description-line-height: 1.5;
   --line-height-form-error-line-height: 1.5;
   --line-height-feature-grid-title-line-height: 1.25;
