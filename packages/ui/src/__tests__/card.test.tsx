@@ -397,7 +397,9 @@ describe("Card", () => {
     it("should apply hover state token class when interactive", () => {
       const { container } = render(<Card interactive>Content</Card>);
       const card = container.firstChild as HTMLElement;
-      expect(card).toHaveClass("hover:bg-(--color-card-background-hover)");
+      expect(card).toHaveClass(
+        "not-disabled:hover:bg-(--color-card-background-hover)"
+      );
     });
 
     it("should apply focus state token classes when interactive", () => {
@@ -413,10 +415,10 @@ describe("Card", () => {
     it("should apply active and disabled state token classes when interactive", () => {
       const { container } = render(<Card interactive>Content</Card>);
       const card = container.firstChild as HTMLElement;
-      expect(card).toHaveClass("active:bg-(--color-card-background-active)");
       expect(card).toHaveClass(
-        "disabled:bg-(--color-card-background-disabled)"
+        "not-disabled:active:bg-(--color-card-background-active)"
       );
+      expect(card).toHaveClass("disabled:opacity-(--card-opacity-disabled)");
     });
 
     it("should auto-inject role=button and tabIndex=0 when interactive without asChild", () => {
@@ -437,7 +439,9 @@ describe("Card", () => {
       const { container } = render(<Card>Content</Card>);
       const card = container.firstChild as HTMLElement;
       expect(card).not.toHaveClass("cursor-pointer");
-      expect(card).not.toHaveClass("hover:bg-(--color-card-background-hover)");
+      expect(card).not.toHaveClass(
+        "not-disabled:hover:bg-(--color-card-background-hover)"
+      );
     });
 
     it("should handle click events when interactive", () => {
@@ -516,7 +520,9 @@ describe("Card", () => {
       const el = container.firstChild as HTMLElement;
       expect(el.tagName).toBe("BUTTON");
       expect(el).toHaveClass("cursor-pointer");
-      expect(el).toHaveClass("hover:bg-(--color-card-background-hover)");
+      expect(el).toHaveClass(
+        "not-disabled:hover:bg-(--color-card-background-hover)"
+      );
     });
 
     it("should not inject role or tabIndex when asChild is true", () => {
@@ -575,20 +581,24 @@ describe("Card", () => {
       const classes = cardVariants({ interactive: true });
       expect(classes).toContain("cursor-pointer");
       expect(classes).toContain("transition-colors");
-      expect(classes).toContain("hover:bg-(--color-card-background-hover)");
+      expect(classes).toContain(
+        "not-disabled:hover:bg-(--color-card-background-hover)"
+      );
       expect(classes).toContain(
         "focus-visible:outline-(color:--color-focus-ring)"
       );
-      expect(classes).toContain("active:bg-(--color-card-background-active)");
       expect(classes).toContain(
-        "disabled:bg-(--color-card-background-disabled)"
+        "not-disabled:active:bg-(--color-card-background-active)"
       );
+      expect(classes).toContain("disabled:opacity-(--card-opacity-disabled)");
     });
 
     it("should not return interactive classes when interactive is false", () => {
       const classes = cardVariants({ interactive: false });
       expect(classes).not.toContain("cursor-pointer");
-      expect(classes).not.toContain("hover:bg-(--color-card-background-hover)");
+      expect(classes).not.toContain(
+        "not-disabled:hover:bg-(--color-card-background-hover)"
+      );
     });
 
     it("should return same base classes regardless of interactive value", () => {

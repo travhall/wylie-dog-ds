@@ -73,19 +73,19 @@ Structure rules, which keep the Figma variable tree flat and legible (the plugin
 
 The focus ring parts follow the same shape: `checkbox.focus-ring.width` and `checkbox.focus-ring.offset`.
 
-## Disabled states use color
+## Disabled states dim
 
-A disabled control changes color; it does not fade. Opacity tokens for disabled states were removed. The tones are the same everywhere, so a disabled control looks consistent across the system:
+A disabled control keeps its normal colours and dims. Each component that can be disabled has one number token, `<component>.<part>.opacity-disabled` (for example `button.opacity-disabled`, `tabs.trigger.opacity-disabled`), that aliases a primitive opacity (`{opacity.60}`). The class is `disabled:opacity-(--button-opacity-disabled)`, or the matching `data-disabled:`, `aria-disabled:` or `peer-disabled:` form where a Radix attribute or a sibling control drives the state. Because the control keeps its own colours, a disabled Primary is still recognisably the Primary button, only switched off, and one value re-tunes every control.
 
-| Part       | Aliases                                                                |
-| ---------- | ---------------------------------------------------------------------- |
-| Text, icon | `color.foreground.faint`                                               |
-| Background | `color.background.muted` in Light, `color.background.emphasis` in Dark |
-| Border     | `color.border.muted`                                                   |
+- There are no disabled colour tokens (`*-disabled` colours) and no `disabled:` colour classes. `scripts/check-disabled-states.mjs` (part of `check:tokens`) fails if either comes back.
+- Opacity is a separate number token, never an alpha channel on a colour token. Opacity tokens are hidden from Figma because a bound opacity variable is read as a percent, so the builder sets the node opacity to the resolved value.
+- Dim the element that is disabled, not a wrapper, and never both a parent and a child (a disabled card holding a disabled button would compound). A menu item or label dims only itself.
+- A component can pick its own value when its resting look needs it: `calendar.nav-opacity-disabled` is 30% because the resting navigation button is already 50%.
+- A loading Button is disabled (not clickable) and takes the same dimmed look, with the spinner shown.
+- Disabled controls are exempt from contrast under WCAG 2.2 (criterion 1.4.3); 60% keeps them readable by choice, not by rule.
+- Cursor: enabled buttons and `role="button"` show the pointer and disabled ones `not-allowed` (one base rule in `packages/ui/src/styles/index.css`). A disabled control must not switch pointer events off, or its cursor cannot show; scope hover and press styles to `not-disabled:` instead. Menu items keep the arrow and text inputs the text cursor.
 
-Each component defines the parts it has (`button.primary.background-disabled`, `button.primary.text-disabled`, `button.primary.border-disabled`). Disabled text is exempt from contrast under WCAG 2.2 (criterion 1.4.3), so `scripts/contrast-pairs.json` lists these tokens as exempt with that reason.
-
-A Radix state attribute can outrank the `disabled:` variant, so classes for a disabled checked control use the stacked form, for example `data-[state=checked]:disabled:bg-(--color-checkbox-background-disabled)`.
+This replaces the earlier rule that a disabled control changes colour and does not fade (Plan 188, 2026-10-23). The owner changed it on 2026-11-10 because the muted tones looked like another variant of the control (see Plan 223).
 
 ## Unreferenced tokens
 

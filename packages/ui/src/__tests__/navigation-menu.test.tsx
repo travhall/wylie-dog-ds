@@ -306,7 +306,7 @@ describe("NavigationMenu", () => {
         </NavigationMenu>
       );
       expect(screen.getByText("Row")).toHaveClass(
-        "hover:bg-(--color-navigation-background-hover)"
+        "not-disabled:hover:bg-(--color-navigation-background-hover)"
       );
     });
   });

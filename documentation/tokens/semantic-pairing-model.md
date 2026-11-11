@@ -16,6 +16,7 @@ The grammar below was implemented on 2026-10-20 and **restructured on 2026-10-23
 - **Components bind only to component tokens.** The focus indicator is a centralized exception (`color.focus.ring` and `color.focus.halo`).
 - **Structure is enforced:** `pnpm check:tokens` runs `scripts/check-token-structure.mjs` (three segments, no state word, no single-variable group, no variable that is also a group name).
 - **Value changes accepted:** Dark danger text is red 400 (it was red 300); disabled text uses `foreground.faint`; pressed fills use the emphasis tone; the tinted destructive badge has no hover color. 26 component color values changed in all; every other component color is identical to before.
+- **Superseded 2026-11-10 (disabled).** Disabled text no longer uses `foreground.faint` and no component has disabled colour tokens: a disabled control keeps its colours and dims with one `opacity-disabled` token per component ([component token grammar](component-token-grammar.md#disabled-states-dim)).
 - **Counts:** 41 semantic color tokens in 4 Figma groups, 91 semantic tokens in all. (42 and 92 after `foreground.link` on 2026-10-31, 47 and 97 after the `-intense` tones on 2026-11-01.) The old-to-new table is the second mapping in [semantic-token-mapping.md](semantic-token-mapping.md).
 
 ## The problem

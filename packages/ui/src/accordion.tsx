@@ -49,10 +49,10 @@ const AccordionTrigger = React.forwardRef<
       className={cn(
         "group flex flex-1 items-center justify-between p-(--space-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-(--font-weight-accordion-trigger-font-weight) leading-(--line-height-accordion-trigger-line-height) transition-all",
         "text-(--color-accordion-trigger-text)",
-        "hover:bg-(--color-accordion-trigger-hover) hover:text-(--color-accordion-trigger-text-hover)",
-        "active:bg-(--color-accordion-trigger-pressed)",
+        "not-disabled:hover:bg-(--color-accordion-trigger-hover) not-disabled:hover:text-(--color-accordion-trigger-text-hover)",
+        "not-disabled:active:bg-(--color-accordion-trigger-pressed)",
         focusRingClasses,
-        "disabled:bg-(--color-accordion-trigger-disabled) disabled:text-(--color-accordion-trigger-text-disabled) disabled:cursor-not-allowed",
+        "disabled:cursor-not-allowed disabled:opacity-(--accordion-trigger-opacity-disabled)",
         "data-[state=open]:text-(--color-accordion-trigger-text-open)",
         "[&[data-state=open]>svg]:rotate-180",
         className
@@ -62,7 +62,7 @@ const AccordionTrigger = React.forwardRef<
       {children}
       <Icon
         icon={ChevronDownIcon}
-        className="h-(--space-accordion-trigger-icon-size) w-(--space-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-(--duration-accordion-trigger-icon-duration) group-hover:text-(--color-accordion-icon-hover) group-data-[state=open]:text-(--color-accordion-icon-open) group-disabled:text-(--color-accordion-icon-disabled)"
+        className="h-(--space-accordion-trigger-icon-size) w-(--space-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-(--duration-accordion-trigger-icon-duration) group-hover:text-(--color-accordion-icon-hover) group-data-[state=open]:text-(--color-accordion-icon-open)"
       />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>

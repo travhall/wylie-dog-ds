@@ -48,9 +48,9 @@ export const tabsTriggerVariants = cva(
     "border-b-(length:--space-tabs-trigger-indicator-width) border-transparent",
     "-mb-(--space-tabs-trigger-overlap)",
     focusRingClasses,
-    "disabled:pointer-events-none disabled:text-(--color-tabs-trigger-text-disabled) data-[state=active]:disabled:text-(--color-tabs-trigger-text-disabled)",
+    "disabled:cursor-not-allowed disabled:opacity-(--tabs-trigger-opacity-disabled)",
     "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-(--shadow-tabs-trigger-shadow) data-[state=active]:border-(--color-tabs-trigger-indicator-color)",
-    "hover:bg-(--color-tabs-trigger-background-hover) hover:text-(--color-tabs-trigger-text-hover)"
+    "not-disabled:hover:bg-(--color-tabs-trigger-background-hover) not-disabled:hover:text-(--color-tabs-trigger-text-hover)"
   ),
   {
     variants: {

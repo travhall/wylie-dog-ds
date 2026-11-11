@@ -280,9 +280,7 @@ describe("Badge", () => {
     it("should apply disabled state classes when interactive", () => {
       render(<Badge interactive>Badge</Badge>);
       const badge = screen.getByText("Badge");
-      expect(badge).toHaveClass(
-        "disabled:text-(--color-badge-default-text-disabled)"
-      );
+      expect(badge).toHaveClass("disabled:opacity-(--badge-opacity-disabled)");
       expect(badge).toHaveClass("disabled:cursor-not-allowed");
     });
 
@@ -313,11 +311,9 @@ describe("Badge", () => {
       );
       const badge = screen.getByText("Badge");
       expect(badge).toHaveClass(
-        "hover:bg-(--color-badge-default-background-hover)"
+        "not-disabled:hover:bg-(--color-badge-default-background-hover)"
       );
-      expect(badge).toHaveClass(
-        "disabled:bg-(--color-badge-default-background-disabled)"
-      );
+      expect(badge).toHaveClass("disabled:opacity-(--badge-opacity-disabled)");
     });
 
     it("should apply compound classes for all variants when interactive", () => {
@@ -339,13 +335,13 @@ describe("Badge", () => {
         );
         const badge = screen.getByText(variant);
         expect(badge).toHaveClass(
-          `hover:bg-(--color-badge-${variant}-background-hover)`
+          `not-disabled:hover:bg-(--color-badge-${variant}-background-hover)`
         );
         expect(badge).toHaveClass(
-          `active:bg-(--color-badge-${variant}-background-active)`
+          `not-disabled:active:bg-(--color-badge-${variant}-background-active)`
         );
         expect(badge).toHaveClass(
-          `disabled:bg-(--color-badge-${variant}-background-disabled)`
+          "disabled:opacity-(--badge-opacity-disabled)"
         );
         unmount();
       }
@@ -441,7 +437,7 @@ describe("Badge", () => {
       expect(el.tagName).toBe("A");
       expect(el).toHaveClass("cursor-pointer");
       expect(el).toHaveClass(
-        "hover:bg-(--color-badge-destructive-background-hover)"
+        "not-disabled:hover:bg-(--color-badge-destructive-background-hover)"
       );
     });
 
@@ -526,11 +522,9 @@ describe("Badge", () => {
         interactive: true,
       });
       expect(classes).toContain(
-        "hover:bg-(--color-badge-destructive-background-hover)"
+        "not-disabled:hover:bg-(--color-badge-destructive-background-hover)"
       );
-      expect(classes).toContain(
-        "disabled:bg-(--color-badge-destructive-background-disabled)"
-      );
+      expect(classes).toContain("disabled:opacity-(--badge-opacity-disabled)");
     });
 
     it("should not include interactive classes when interactive is false", () => {

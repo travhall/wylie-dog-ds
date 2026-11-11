@@ -608,3 +608,26 @@ export const WithInteractions: Story = {
     },
   },
 };
+
+export const Disabled: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A disabled item keeps its colours and dims, and shows the not-allowed cursor.",
+      },
+    },
+  },
+  render: () => (
+    <Accordion type="single" collapsible className="w-[425px]">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Available section</AccordionTrigger>
+        <AccordionContent>This section can be opened.</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2" disabled>
+        <AccordionTrigger>Disabled section</AccordionTrigger>
+        <AccordionContent>This section cannot be opened.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+};

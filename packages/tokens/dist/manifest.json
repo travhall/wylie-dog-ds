@@ -4222,257 +4222,16 @@
         "variable": "var(--color-badge-outline-background-active)",
         "description": "Fill of an interactive outline badge while pressed. Applies only when the badge is interactive."
       },
-      "badge-default-background-disabled": {
-        "name": "badgeDefaultBackgroundDisabled",
+      "badge-opacity-disabled": {
+        "name": "badgeOpacityDisabled",
         "path": [
           "badge",
-          "default",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-badge-default-background-disabled)",
-        "description": "Fill of the default badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.default.text-disabled`."
-      },
-      "badge-secondary-background-disabled": {
-        "name": "badgeSecondaryBackgroundDisabled",
-        "path": [
-          "badge",
-          "secondary",
-          "background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-background-disabled)",
-        "description": "Fill of the secondary badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.secondary.text-disabled`."
-      },
-      "badge-success-background-disabled": {
-        "name": "badgeSuccessBackgroundDisabled",
-        "path": [
-          "badge",
-          "success",
-          "background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-badge-success-background-disabled)",
-        "description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`."
-      },
-      "badge-info-background-disabled": {
-        "name": "badgeInfoBackgroundDisabled",
-        "path": [
-          "badge",
-          "info",
-          "background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-badge-info-background-disabled)",
-        "description": "Fill of the info badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.info.text-disabled`."
-      },
-      "badge-warning-background-disabled": {
-        "name": "badgeWarningBackgroundDisabled",
-        "path": [
-          "badge",
-          "warning",
-          "background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-background-disabled)",
-        "description": "Fill of the warning badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.warning.text-disabled`."
-      },
-      "badge-destructive-background-disabled": {
-        "name": "badgeDestructiveBackgroundDisabled",
-        "path": [
-          "badge",
-          "destructive",
-          "background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-background-disabled)",
-        "description": "Fill of the destructive badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.destructive.text-disabled`."
-      },
-      "badge-outline-background-disabled": {
-        "name": "badgeOutlineBackgroundDisabled",
-        "path": [
-          "badge",
-          "outline",
-          "background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-background-disabled)",
-        "description": "Fill of the outline badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.outline.text-disabled`."
-      },
-      "badge-default-text-disabled": {
-        "name": "badgeDefaultTextDisabled",
-        "path": [
-          "badge",
-          "default",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-badge-default-text-disabled)",
-        "description": "Text color of the default badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.default.background-disabled`."
-      },
-      "badge-default-border-disabled": {
-        "name": "badgeDefaultBorderDisabled",
-        "path": [
-          "badge",
-          "default",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-badge-default-border-disabled)",
-        "description": "Border color of the default badge when disabled, in the muted border tone."
-      },
-      "badge-secondary-text-disabled": {
-        "name": "badgeSecondaryTextDisabled",
-        "path": [
-          "badge",
-          "secondary",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-text-disabled)",
-        "description": "Text color of the secondary badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.secondary.background-disabled`."
-      },
-      "badge-secondary-border-disabled": {
-        "name": "badgeSecondaryBorderDisabled",
-        "path": [
-          "badge",
-          "secondary",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-border-disabled)",
-        "description": "Border color of the secondary badge when disabled, in the muted border tone."
-      },
-      "badge-success-text-disabled": {
-        "name": "badgeSuccessTextDisabled",
-        "path": [
-          "badge",
-          "success",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-badge-success-text-disabled)",
-        "description": "Text color of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
-      },
-      "badge-info-text-disabled": {
-        "name": "badgeInfoTextDisabled",
-        "path": [
-          "badge",
-          "info",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-badge-info-text-disabled)",
-        "description": "Text color of the info badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.info.background-disabled`."
-      },
-      "badge-success-border-disabled": {
-        "name": "badgeSuccessBorderDisabled",
-        "path": [
-          "badge",
-          "success",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-badge-success-border-disabled)",
-        "description": "Border color of the success badge when disabled, in the muted border tone."
-      },
-      "badge-info-border-disabled": {
-        "name": "badgeInfoBorderDisabled",
-        "path": [
-          "badge",
-          "info",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-badge-info-border-disabled)",
-        "description": "Border color of the info badge when disabled, in the muted border tone."
-      },
-      "badge-warning-text-disabled": {
-        "name": "badgeWarningTextDisabled",
-        "path": [
-          "badge",
-          "warning",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-text-disabled)",
-        "description": "Text color of the warning badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.warning.background-disabled`."
-      },
-      "badge-warning-border-disabled": {
-        "name": "badgeWarningBorderDisabled",
-        "path": [
-          "badge",
-          "warning",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-border-disabled)",
-        "description": "Border color of the warning badge when disabled, in the muted border tone."
-      },
-      "badge-destructive-text-disabled": {
-        "name": "badgeDestructiveTextDisabled",
-        "path": [
-          "badge",
-          "destructive",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-text-disabled)",
-        "description": "Text color of the destructive badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.destructive.background-disabled`."
-      },
-      "badge-destructive-border-disabled": {
-        "name": "badgeDestructiveBorderDisabled",
-        "path": [
-          "badge",
-          "destructive",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-border-disabled)",
-        "description": "Border color of the destructive badge when disabled, in the muted border tone."
-      },
-      "badge-outline-text-disabled": {
-        "name": "badgeOutlineTextDisabled",
-        "path": [
-          "badge",
-          "outline",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-text-disabled)",
-        "description": "Text color of the outline badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.outline.background-disabled`."
-      },
-      "badge-outline-border-disabled": {
-        "name": "badgeOutlineBorderDisabled",
-        "path": [
-          "badge",
-          "outline",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-border-disabled)",
-        "description": "Border color of the outline badge when disabled, in the muted border tone."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--badge-opacity-disabled)",
+        "description": "Opacity of a disabled badge."
       },
       "badge-icon-gap": {
         "name": "badgeIconGap",
@@ -4949,160 +4708,16 @@
         "variable": "var(--color-button-link-text)",
         "description": "Label color of the link-style button, which has no fill or border."
       },
-      "button-primary-background-disabled": {
-        "name": "buttonPrimaryBackgroundDisabled",
+      "button-opacity-disabled": {
+        "name": "buttonOpacityDisabled",
         "path": [
           "button",
-          "primary",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-button-primary-background-disabled)",
-        "description": "Primary button fill when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.primary.text-disabled`."
-      },
-      "button-primary-text-disabled": {
-        "name": "buttonPrimaryTextDisabled",
-        "path": [
-          "button",
-          "primary",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-button-primary-text-disabled)",
-        "description": "Text color of the primary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.primary.background-disabled`."
-      },
-      "button-primary-border-disabled": {
-        "name": "buttonPrimaryBorderDisabled",
-        "path": [
-          "button",
-          "primary",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-button-primary-border-disabled)",
-        "description": "Border color of the primary button when disabled, in the muted border tone."
-      },
-      "button-secondary-background-disabled": {
-        "name": "buttonSecondaryBackgroundDisabled",
-        "path": [
-          "button",
-          "secondary",
-          "background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-button-secondary-background-disabled)",
-        "description": "Fill of the secondary button when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.secondary.text-disabled`."
-      },
-      "button-secondary-text-disabled": {
-        "name": "buttonSecondaryTextDisabled",
-        "path": [
-          "button",
-          "secondary",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-button-secondary-text-disabled)",
-        "description": "Text color of the secondary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.secondary.background-disabled`."
-      },
-      "button-secondary-border-disabled": {
-        "name": "buttonSecondaryBorderDisabled",
-        "path": [
-          "button",
-          "secondary",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-button-secondary-border-disabled)",
-        "description": "Border color of the secondary button when disabled, in the muted border tone."
-      },
-      "button-destructive-background-disabled": {
-        "name": "buttonDestructiveBackgroundDisabled",
-        "path": [
-          "button",
-          "destructive",
-          "background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-button-destructive-background-disabled)",
-        "description": "Fill of the destructive button when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.destructive.text-disabled`."
-      },
-      "button-destructive-text-disabled": {
-        "name": "buttonDestructiveTextDisabled",
-        "path": [
-          "button",
-          "destructive",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-button-destructive-text-disabled)",
-        "description": "Text color of the destructive button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.destructive.background-disabled`."
-      },
-      "button-destructive-border-disabled": {
-        "name": "buttonDestructiveBorderDisabled",
-        "path": [
-          "button",
-          "destructive",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-button-destructive-border-disabled)",
-        "description": "Border color of the destructive button when disabled, in the muted border tone."
-      },
-      "button-outline-text-disabled": {
-        "name": "buttonOutlineTextDisabled",
-        "path": [
-          "button",
-          "outline",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-button-outline-text-disabled)",
-        "description": "Label color of a disabled outline button. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-      },
-      "button-outline-border-disabled": {
-        "name": "buttonOutlineBorderDisabled",
-        "path": [
-          "button",
-          "outline",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-button-outline-border-disabled)",
-        "description": "Border color of the outline button when disabled, in the muted border tone."
-      },
-      "button-ghost-text-disabled": {
-        "name": "buttonGhostTextDisabled",
-        "path": [
-          "button",
-          "ghost",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-button-ghost-text-disabled)",
-        "description": "Text color of the ghost button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-      },
-      "button-link-text-disabled": {
-        "name": "buttonLinkTextDisabled",
-        "path": [
-          "button",
-          "link-text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-button-link-text-disabled)",
-        "description": "Text color of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--button-opacity-disabled)",
+        "description": "Opacity of a disabled button. A loading button is disabled, so it takes this too."
       },
       "button-spinner-size": {
         "name": "buttonSpinnerSize",
@@ -5448,16 +5063,16 @@
         "variable": "var(--color-card-background-active)",
         "description": "Fill of an interactive card while pressed."
       },
-      "card-background-disabled": {
-        "name": "cardBackgroundDisabled",
+      "card-opacity-disabled": {
+        "name": "cardOpacityDisabled",
         "path": [
           "card",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-card-background-disabled)",
-        "description": "Fill of a disabled card, a quiet neutral so it reads as unavailable."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--card-opacity-disabled)",
+        "description": "Opacity of a disabled interactive card."
       },
       "card-header-gap": {
         "name": "cardHeaderGap",
@@ -5469,17 +5084,6 @@
         "type": "spacing",
         "variable": "var(--card-header-gap)",
         "description": "Gap between the title and description in the card header."
-      },
-      "card-border-disabled": {
-        "name": "cardBorderDisabled",
-        "path": [
-          "card",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-card-border-disabled)",
-        "description": "Border color of a disabled card, in the muted border tone."
       },
       "card-border-width": {
         "name": "cardBorderWidth",
@@ -5656,27 +5260,16 @@
         "variable": "var(--input-padding-y-lg)",
         "description": "Vertical padding of the large input. `space.200` (16px) plus `font-size.lg` (18px) gives a 50px height."
       },
-      "input-background-disabled": {
-        "name": "inputBackgroundDisabled",
+      "input-opacity-disabled": {
+        "name": "inputOpacityDisabled",
         "path": [
           "input",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.893 0.018 72.82)",
-        "type": "color",
-        "variable": "var(--color-input-background-disabled)",
-        "description": "Fill of the input when disabled, a quiet neutral so it reads as unavailable. Pairs with `input.text-disabled`."
-      },
-      "input-text-disabled": {
-        "name": "inputTextDisabled",
-        "path": [
-          "input",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-input-text-disabled)",
-        "description": "Text color of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--input-opacity-disabled)",
+        "description": "Opacity of a disabled input."
       },
       "input-border-success": {
         "name": "inputBorderSuccess",
@@ -6516,16 +6109,16 @@
         "variable": "var(--menubar-shortcut-letter-spacing)",
         "description": "Letter spacing of the menubar shortcut."
       },
-      "menubar-item-text-disabled": {
-        "name": "menubarItemTextDisabled",
+      "menubar-item-opacity-disabled": {
+        "name": "menubarItemOpacityDisabled",
         "path": [
           "menubar",
-          "item-text-disabled"
+          "item-opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-menubar-item-text-disabled)",
-        "description": "Text color of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--menubar-item-opacity-disabled)",
+        "description": "Opacity of a disabled menubar item."
       },
       "menubar-trigger-highlighted": {
         "name": "menubarTriggerHighlighted",
@@ -6819,16 +6412,16 @@
         "variable": "var(--color-navigation-background-hover)",
         "description": "Fill of the navigation menu while hovered. Pairs with `navigation.text-hover`."
       },
-      "navigation-text-disabled": {
-        "name": "navigationTextDisabled",
+      "navigation-opacity-disabled": {
+        "name": "navigationOpacityDisabled",
         "path": [
           "navigation",
-          "text-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-navigation-text-disabled)",
-        "description": "Text color of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--navigation-opacity-disabled)",
+        "description": "Opacity of a disabled navigation menu link."
       },
       "navigation-highlighted": {
         "name": "navigationHighlighted",
@@ -7203,27 +6796,16 @@
         "variable": "var(--command-shortcut-line-height)",
         "description": "Line height of the command menu shortcut."
       },
-      "command-item-text-disabled": {
-        "name": "commandItemTextDisabled",
+      "command-opacity-disabled": {
+        "name": "commandOpacityDisabled",
         "path": [
           "command",
-          "item-text-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-command-item-text-disabled)",
-        "description": "Text color of the command menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-      },
-      "command-input-text-disabled": {
-        "name": "commandInputTextDisabled",
-        "path": [
-          "command",
-          "input-text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-command-input-text-disabled)",
-        "description": "Text color of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--command-opacity-disabled)",
+        "description": "Opacity of a disabled command input or item."
       },
       "command-border-width": {
         "name": "commandBorderWidth",
@@ -7636,17 +7218,17 @@
         "variable": "var(--color-tabs-trigger-indicator-color)",
         "description": "Color of the underline that marks the selected tab."
       },
-      "tabs-trigger-text-disabled": {
-        "name": "tabsTriggerTextDisabled",
+      "tabs-trigger-opacity-disabled": {
+        "name": "tabsTriggerOpacityDisabled",
         "path": [
           "tabs",
           "trigger",
-          "text-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-tabs-trigger-text-disabled)",
-        "description": "Text color of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--tabs-trigger-opacity-disabled)",
+        "description": "Opacity of a disabled tab trigger."
       },
       "tabs-trigger-shadow": {
         "name": "tabsTriggerShadow",
@@ -8016,27 +7598,16 @@
         "variable": "var(--calendar-day-header-font-weight)",
         "description": "Font weight of the calendar day header."
       },
-      "calendar-nav-text-disabled": {
-        "name": "calendarNavTextDisabled",
+      "calendar-nav-opacity-disabled": {
+        "name": "calendarNavOpacityDisabled",
         "path": [
           "calendar",
-          "nav-text-disabled"
+          "nav-opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-text-disabled)",
-        "description": "Text color of the calendar nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-      },
-      "calendar-nav-border-disabled": {
-        "name": "calendarNavBorderDisabled",
-        "path": [
-          "calendar",
-          "nav-border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-border-disabled)",
-        "description": "Border color of the calendar nav when disabled, in the muted border tone."
+        "value": 0.3,
+        "type": "number",
+        "variable": "var(--calendar-nav-opacity-disabled)",
+        "description": "Opacity of a disabled calendar navigation button. Lower than the resting nav button opacity (calendar.nav-button.opacity, 50%) so a disabled button reads as off."
       },
       "calendar-border-width": {
         "name": "calendarBorderWidth",
@@ -8172,27 +7743,16 @@
         "variable": "var(--color-accordion-trigger-pressed)",
         "description": "Fill of the accordion trigger while pressed."
       },
-      "accordion-trigger-disabled": {
-        "name": "accordionTriggerDisabled",
+      "accordion-trigger-opacity-disabled": {
+        "name": "accordionTriggerOpacityDisabled",
         "path": [
           "accordion",
-          "trigger-disabled"
+          "trigger-opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-accordion-trigger-disabled)",
-        "description": "Fill of the accordion trigger when disabled, a quiet neutral so it reads as unavailable. Pairs with `accordion.trigger-text-disabled`."
-      },
-      "accordion-trigger-text-disabled": {
-        "name": "accordionTriggerTextDisabled",
-        "path": [
-          "accordion",
-          "trigger-text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-accordion-trigger-text-disabled)",
-        "description": "Text color of the accordion trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `accordion.trigger-disabled`."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--accordion-trigger-opacity-disabled)",
+        "description": "Opacity of a disabled accordion trigger, its text and icon."
       },
       "accordion-icon-hover": {
         "name": "accordionIconHover",
@@ -8215,17 +7775,6 @@
         "type": "color",
         "variable": "var(--color-accordion-icon-open)",
         "description": "Color of the accordion icon when open."
-      },
-      "accordion-icon-disabled": {
-        "name": "accordionIconDisabled",
-        "path": [
-          "accordion",
-          "icon-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-accordion-icon-disabled)",
-        "description": "Color of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
       },
       "accordion-trigger-padding": {
         "name": "accordionTriggerPadding",
@@ -8628,17 +8177,6 @@
         "variable": "var(--breadcrumb-link-radius)",
         "description": "Corner radius of the breadcrumb link."
       },
-      "breadcrumb-link-disabled": {
-        "name": "breadcrumbLinkDisabled",
-        "path": [
-          "breadcrumb",
-          "link-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-breadcrumb-link-disabled)",
-        "description": "Text color of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-      },
       "breadcrumb-list-gap": {
         "name": "breadcrumbListGap",
         "path": [
@@ -8820,38 +8358,16 @@
         "variable": "var(--carousel-item-spacing)",
         "description": "Spacing between carousel slides."
       },
-      "carousel-nav-text-disabled": {
-        "name": "carouselNavTextDisabled",
+      "carousel-nav-opacity-disabled": {
+        "name": "carouselNavOpacityDisabled",
         "path": [
           "carousel",
-          "nav-text-disabled"
+          "nav-opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-carousel-nav-text-disabled)",
-        "description": "Text color of the carousel nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `carousel.nav-background-disabled`."
-      },
-      "carousel-nav-border-disabled": {
-        "name": "carouselNavBorderDisabled",
-        "path": [
-          "carousel",
-          "nav-border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-carousel-nav-border-disabled)",
-        "description": "Border color of the carousel nav when disabled, in the muted border tone."
-      },
-      "carousel-nav-background-disabled": {
-        "name": "carouselNavBackgroundDisabled",
-        "path": [
-          "carousel",
-          "nav-background-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-carousel-nav-background-disabled)",
-        "description": "Fill of the carousel nav when disabled, a quiet neutral so it reads as unavailable. Pairs with `carousel.nav-text-disabled`."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--carousel-nav-opacity-disabled)",
+        "description": "Opacity of a disabled carousel navigation button."
       },
       "carousel-border-width": {
         "name": "carouselBorderWidth",
@@ -8954,16 +8470,16 @@
         "variable": "var(--color-contextmenu-text)",
         "description": "Text color of the context menu. Pairs with `contextmenu.background`."
       },
-      "contextmenu-item-text-disabled": {
-        "name": "contextmenuItemTextDisabled",
+      "contextmenu-item-opacity-disabled": {
+        "name": "contextmenuItemOpacityDisabled",
         "path": [
           "contextmenu",
-          "item-text-disabled"
+          "item-opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-contextmenu-item-text-disabled)",
-        "description": "Text color of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--contextmenu-item-opacity-disabled)",
+        "description": "Opacity of a disabled context menu item."
       },
       "contextmenu-border-width": {
         "name": "contextmenuBorderWidth",
@@ -9503,16 +9019,16 @@
         "variable": "var(--color-form-label-error-text)",
         "description": "Text color of a form label when its field has an error."
       },
-      "form-label-text-disabled": {
-        "name": "formLabelTextDisabled",
+      "form-label-opacity-disabled": {
+        "name": "formLabelOpacityDisabled",
         "path": [
           "form",
-          "label-text-disabled"
+          "label-opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-form-label-text-disabled)",
-        "description": "Text color of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--form-label-opacity-disabled)",
+        "description": "Opacity of a form label whose control is disabled."
       },
       "form-label-line-height": {
         "name": "formLabelLineHeight",
@@ -9919,16 +9435,16 @@
         "variable": "var(--color-pagination-ellipsis-text)",
         "description": "Text color of the ellipsis that stands in for skipped pages."
       },
-      "pagination-text-disabled": {
-        "name": "paginationTextDisabled",
+      "pagination-opacity-disabled": {
+        "name": "paginationOpacityDisabled",
         "path": [
           "pagination",
-          "text-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-pagination-text-disabled)",
-        "description": "Text color of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--pagination-opacity-disabled)",
+        "description": "Opacity of a disabled pagination control."
       },
       "pagination-item-line-height": {
         "name": "paginationItemLineHeight",
@@ -10392,38 +9908,16 @@
         "variable": "var(--radio-group-gap)",
         "description": "Gap between radios in a radio group."
       },
-      "radio-background-disabled": {
-        "name": "radioBackgroundDisabled",
+      "radio-opacity-disabled": {
+        "name": "radioOpacityDisabled",
         "path": [
           "radio",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-radio-background-disabled)",
-        "description": "Fill of the radio when disabled, a quiet neutral so it reads as unavailable."
-      },
-      "radio-border-disabled": {
-        "name": "radioBorderDisabled",
-        "path": [
-          "radio",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-radio-border-disabled)",
-        "description": "Border color of the radio when disabled, in the muted border tone."
-      },
-      "radio-indicator-disabled": {
-        "name": "radioIndicatorDisabled",
-        "path": [
-          "radio",
-          "indicator-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-radio-indicator-disabled)",
-        "description": "Color of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--radio-opacity-disabled)",
+        "description": "Opacity of a disabled radio."
       },
       "radio-border-width": {
         "name": "radioBorderWidth",
@@ -10912,27 +10406,16 @@
         "variable": "var(--slider-focus-ring-offset)",
         "description": "Gap between the slider and its focus ring."
       },
-      "slider-thumb-background-disabled": {
-        "name": "sliderThumbBackgroundDisabled",
+      "slider-opacity-disabled": {
+        "name": "sliderOpacityDisabled",
         "path": [
           "slider",
-          "thumb-background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-slider-thumb-background-disabled)",
-        "description": "Fill of the slider thumb when disabled, a quiet neutral so it reads as unavailable."
-      },
-      "slider-thumb-border-disabled": {
-        "name": "sliderThumbBorderDisabled",
-        "path": [
-          "slider",
-          "thumb-border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-slider-thumb-border-disabled)",
-        "description": "Border color of the slider thumb when disabled, in the muted border tone."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--slider-opacity-disabled)",
+        "description": "Opacity of a disabled slider."
       }
     },
     "table": {
@@ -11787,27 +11270,16 @@
         "variable": "var(--toast-content-gap)",
         "description": "Gap between the items inside the toast content."
       },
-      "toast-action-text-disabled": {
-        "name": "toastActionTextDisabled",
+      "toast-action-opacity-disabled": {
+        "name": "toastActionOpacityDisabled",
         "path": [
           "toast",
-          "action-text-disabled"
+          "action-opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-toast-action-text-disabled)",
-        "description": "Text color of the toast action when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-      },
-      "toast-action-border-disabled": {
-        "name": "toastActionBorderDisabled",
-        "path": [
-          "toast",
-          "action-border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-toast-action-border-disabled)",
-        "description": "Border color of the toast action when disabled, in the muted border tone."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--toast-action-opacity-disabled)",
+        "description": "Opacity of a disabled toast action."
       },
       "toast-close-button-icon-size": {
         "name": "toastCloseButtonIconSize",
@@ -12103,38 +11575,16 @@
         "variable": "var(--color-toggle-background-hover)",
         "description": "Fill of the toggle while hovered. Pairs with `toggle.text-hover`."
       },
-      "toggle-text-disabled": {
-        "name": "toggleTextDisabled",
+      "toggle-opacity-disabled": {
+        "name": "toggleOpacityDisabled",
         "path": [
           "toggle",
-          "text-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-toggle-text-disabled)",
-        "description": "Text color of the toggle when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-      },
-      "toggle-border-disabled": {
-        "name": "toggleBorderDisabled",
-        "path": [
-          "toggle",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-toggle-border-disabled)",
-        "description": "Border color of the toggle when disabled, in the muted border tone."
-      },
-      "toggle-pressed-disabled": {
-        "name": "togglePressedDisabled",
-        "path": [
-          "toggle",
-          "pressed-disabled"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-toggle-pressed-disabled)",
-        "description": "Fill of a pressed (on) toggle when disabled, a quiet neutral so it reads as unavailable."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--toggle-opacity-disabled)",
+        "description": "Opacity of a disabled toggle or toggle group item."
       },
       "toggle-border-width": {
         "name": "toggleBorderWidth",
@@ -12695,53 +12145,16 @@
         "variable": "var(--select-trigger-icon-opacity)",
         "description": "Opacity of the select trigger icon."
       },
-      "select-trigger-background-disabled": {
-        "name": "selectTriggerBackgroundDisabled",
+      "select-opacity-disabled": {
+        "name": "selectOpacityDisabled",
         "path": [
           "select",
-          "trigger",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-select-trigger-background-disabled)",
-        "description": "Fill of the select trigger when disabled, a quiet neutral so it reads as unavailable. Pairs with `select.trigger.text-disabled`."
-      },
-      "select-trigger-text-disabled": {
-        "name": "selectTriggerTextDisabled",
-        "path": [
-          "select",
-          "trigger",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-select-trigger-text-disabled)",
-        "description": "Text color of the select trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `select.trigger.background-disabled`."
-      },
-      "select-trigger-border-disabled": {
-        "name": "selectTriggerBorderDisabled",
-        "path": [
-          "select",
-          "trigger",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-select-trigger-border-disabled)",
-        "description": "Border color of the select trigger when disabled, in the muted border tone."
-      },
-      "select-item-text-disabled": {
-        "name": "selectItemTextDisabled",
-        "path": [
-          "select",
-          "item",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-select-item-text-disabled)",
-        "description": "Text color of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--select-opacity-disabled)",
+        "description": "Opacity of a disabled select trigger or item."
       },
       "select-item-background-highlighted": {
         "name": "selectItemBackgroundHighlighted",
@@ -13079,38 +12492,16 @@
         "variable": "var(--color-checkbox-error-border)",
         "description": "Border of a checkbox marked invalid."
       },
-      "checkbox-background-disabled": {
-        "name": "checkboxBackgroundDisabled",
+      "checkbox-opacity-disabled": {
+        "name": "checkboxOpacityDisabled",
         "path": [
           "checkbox",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-checkbox-background-disabled)",
-        "description": "Fill of the checkbox when disabled, a quiet neutral so it reads as unavailable. Pairs with `checkbox.text-disabled`."
-      },
-      "checkbox-text-disabled": {
-        "name": "checkboxTextDisabled",
-        "path": [
-          "checkbox",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-checkbox-text-disabled)",
-        "description": "Text color of the checkbox when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `checkbox.background-disabled`."
-      },
-      "checkbox-border-disabled": {
-        "name": "checkboxBorderDisabled",
-        "path": [
-          "checkbox",
-          "border-disabled"
-        ],
-        "value": "oklch(0.882 0.009 66.93)",
-        "type": "color",
-        "variable": "var(--color-checkbox-border-disabled)",
-        "description": "Border color of the checkbox when disabled, in the muted border tone."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--checkbox-opacity-disabled)",
+        "description": "Opacity of a disabled checkbox."
       },
       "checkbox-icon-stroke-width": {
         "name": "checkboxIconStrokeWidth",
@@ -13377,17 +12768,17 @@
         "variable": "var(--color-switch-track-background-unchecked)",
         "description": "Track fill when the switch is off, in the emphasis border tone."
       },
-      "switch-track-background-disabled": {
-        "name": "switchTrackBackgroundDisabled",
+      "switch-track-opacity-disabled": {
+        "name": "switchTrackOpacityDisabled",
         "path": [
           "switch",
           "track",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-switch-track-background-disabled)",
-        "description": "Track fill when disabled, in either state. A quiet neutral, not a fade."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--switch-track-opacity-disabled)",
+        "description": "Opacity of a disabled switch."
       },
       "switch-thumb-shadow": {
         "name": "switchThumbShadow",
@@ -13483,27 +12874,16 @@
         "variable": "var(--textarea-font-weight)",
         "description": "Font weight of the textarea."
       },
-      "textarea-background-disabled": {
-        "name": "textareaBackgroundDisabled",
+      "textarea-opacity-disabled": {
+        "name": "textareaOpacityDisabled",
         "path": [
           "textarea",
-          "background-disabled"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-textarea-background-disabled)",
-        "description": "Fill of the textarea when disabled, a quiet neutral so it reads as unavailable. Pairs with `textarea.text-disabled`."
-      },
-      "textarea-text-disabled": {
-        "name": "textareaTextDisabled",
-        "path": [
-          "textarea",
-          "text-disabled"
-        ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-textarea-text-disabled)",
-        "description": "Text color of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--textarea-opacity-disabled)",
+        "description": "Opacity of a disabled textarea."
       },
       "textarea-border-width": {
         "name": "textareaBorderWidth",
@@ -13587,16 +12967,16 @@
         "variable": "var(--label-font-weight)",
         "description": "Font weight of the label."
       },
-      "label-disabled-color": {
-        "name": "labelDisabledColor",
+      "label-opacity-disabled": {
+        "name": "labelOpacityDisabled",
         "path": [
           "label",
-          "disabled-color"
+          "opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-label-disabled-color)",
-        "description": "Text color of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--label-opacity-disabled)",
+        "description": "Opacity of a label whose control is disabled."
       },
       "label-default-color": {
         "name": "labelDefaultColor",
@@ -14722,17 +14102,16 @@
         "variable": "var(--dropdown-menu-item-radio-indicator-radius)",
         "description": "Corner radius of the dropdown menu item radio indicator."
       },
-      "dropdown-menu-item-text-disabled": {
-        "name": "dropdownMenuItemTextDisabled",
+      "dropdown-menu-item-opacity-disabled": {
+        "name": "dropdownMenuItemOpacityDisabled",
         "path": [
           "dropdown-menu",
-          "item",
-          "text-disabled"
+          "item-opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-dropdown-menu-item-text-disabled)",
-        "description": "Text color of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--dropdown-menu-item-opacity-disabled)",
+        "description": "Opacity of a disabled dropdown menu item."
       },
       "dropdown-menu-item-radio-indicator-size": {
         "name": "dropdownMenuItemRadioIndicatorSize",
@@ -15821,17 +15200,16 @@
         "variable": "var(--color-site-header-nav-link-text-hover)",
         "description": "Text color of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
       },
-      "site-header-nav-link-text-disabled": {
-        "name": "siteHeaderNavLinkTextDisabled",
+      "site-header-nav-link-opacity-disabled": {
+        "name": "siteHeaderNavLinkOpacityDisabled",
         "path": [
           "site-header",
-          "nav-link",
-          "text-disabled"
+          "nav-link-opacity-disabled"
         ],
-        "value": "oklch(0.48 0.017 50.13)",
-        "type": "color",
-        "variable": "var(--color-site-header-nav-link-text-disabled)",
-        "description": "Text color of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--site-header-nav-link-opacity-disabled)",
+        "description": "Opacity of a disabled site header navigation link."
       },
       "site-header-nav-link-background-highlighted": {
         "name": "siteHeaderNavLinkBackgroundHighlighted",

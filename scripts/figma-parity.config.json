@@ -84,7 +84,7 @@
     {
       "component": "Button",
       "rule": "partial-set",
-      "reason": "disabled is drawn only where it looks different and a story shows it (default, ghost); the other variants share the muted look or have no story. Figma draws only the looks that differ at rest (builder rule, kept by the owner 2026-11-04)."
+      "reason": "disabled is drawn at rest for every variant and size (it keeps the variant's colours at 60% opacity, Plan 223). Hover and pressed are not drawn for disabled: a disabled button ignores hover and press styles, so it has one look at rest. 96 of 144."
     },
     {
       "component": "Checkbox",

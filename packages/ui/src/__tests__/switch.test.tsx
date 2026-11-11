@@ -329,7 +329,7 @@ describe("Switch", () => {
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass("disabled:cursor-not-allowed");
       expect(switchElement).toHaveClass(
-        "data-[state=unchecked]:disabled:bg-(--color-switch-track-background-disabled)"
+        "disabled:opacity-(--switch-track-opacity-disabled)"
       );
     });
 

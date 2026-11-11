@@ -8,7 +8,7 @@ export const textareaVariants = cva(
     "rounded-(--space-textarea-radius)",
     "placeholder:text-(--color-input-placeholder)",
     focusRingClasses,
-    "disabled:cursor-not-allowed disabled:bg-(--color-textarea-background-disabled) disabled:text-(--color-textarea-text-disabled)",
+    "disabled:cursor-not-allowed disabled:opacity-(--textarea-opacity-disabled)",
     "text-(--color-input-default-text)"
   ),
   {

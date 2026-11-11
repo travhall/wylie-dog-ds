@@ -799,15 +799,10 @@
     "$value": "{color.background.intense}",
     "$description": "Fill of the accordion trigger while pressed."
   },
-  "accordion.trigger-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the accordion trigger when disabled, a quiet neutral so it reads as unavailable. Pairs with `accordion.trigger-text-disabled`."
-  },
-  "accordion.trigger-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the accordion trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `accordion.trigger-disabled`."
+  "accordion.trigger-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled accordion trigger, its text and icon."
   },
   "accordion.icon-hover": {
     "$type": "color",
@@ -818,11 +813,6 @@
     "$type": "color",
     "$value": "{color.foreground.default}",
     "$description": "Color of the accordion icon when open."
-  },
-  "accordion.icon-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Color of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "avatar.background": {
     "$type": "color",
@@ -3044,50 +3034,20 @@
     "$value": "{color.border.primary}",
     "$description": "Border color of an interactive card while hovered."
   },
-  "badge.default.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the default badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.default.text-disabled`."
-  },
-  "badge.secondary.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the secondary badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.secondary.text-disabled`."
-  },
-  "badge.success.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`."
-  },
-  "badge.info.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the info badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.info.text-disabled`."
-  },
-  "badge.warning.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the warning badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.warning.text-disabled`."
-  },
-  "badge.destructive.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the destructive badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.destructive.text-disabled`."
-  },
-  "badge.outline.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the outline badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.outline.text-disabled`."
+  "badge.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled badge."
   },
   "card.background-active": {
     "$type": "color",
     "$value": "{color.background.intense}",
     "$description": "Fill of an interactive card while pressed."
   },
-  "card.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of a disabled card, a quiet neutral so it reads as unavailable."
+  "card.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled interactive card."
   },
   "navigation.background-hover": {
     "$type": "color",
@@ -3113,11 +3073,6 @@
     "$type": "number",
     "$value": "{typography.font-weight.regular}",
     "$description": "Font weight of the calendar day."
-  },
-  "breadcrumb.link-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "pagination.background-hover": {
     "$type": "color",
@@ -3324,15 +3279,10 @@
     "$value": "{space.100}",
     "$description": "Gap between the title and description in the card header."
   },
-  "input.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.emphasis}",
-    "$description": "Fill of the input when disabled, a quiet neutral so it reads as unavailable. Pairs with `input.text-disabled`."
-  },
-  "input.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
+  "input.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled input."
   },
   "tabs.trigger.indicator-color": {
     "$type": "color",
@@ -3439,10 +3389,10 @@
     "$value": "{focus.offset}",
     "$description": "Gap between the slider and its focus ring."
   },
-  "label.disabled-color": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "label.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a label whose control is disabled."
   },
   "sheet.overlay-background": {
     "$type": "color",
@@ -4024,165 +3974,25 @@
     "$value": "{color.foreground.muted}",
     "$description": "Text color of the ellipsis that stands in for skipped pages."
   },
-  "button.primary.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Primary button fill when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.primary.text-disabled`."
-  },
-  "button.primary.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the primary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.primary.background-disabled`."
-  },
-  "button.primary.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the primary button when disabled, in the muted border tone."
-  },
-  "button.secondary.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the secondary button when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.secondary.text-disabled`."
-  },
-  "button.secondary.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the secondary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.secondary.background-disabled`."
-  },
-  "button.secondary.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the secondary button when disabled, in the muted border tone."
-  },
-  "button.destructive.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the destructive button when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.destructive.text-disabled`."
-  },
-  "button.destructive.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the destructive button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.destructive.background-disabled`."
-  },
-  "button.destructive.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the destructive button when disabled, in the muted border tone."
-  },
-  "button.outline.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Label color of a disabled outline button. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "button.outline.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the outline button when disabled, in the muted border tone."
-  },
-  "button.ghost.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the ghost button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "button.link-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "badge.default.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the default badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.default.background-disabled`."
-  },
-  "badge.default.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the default badge when disabled, in the muted border tone."
-  },
-  "badge.secondary.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the secondary badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.secondary.background-disabled`."
-  },
-  "badge.secondary.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the secondary badge when disabled, in the muted border tone."
-  },
-  "badge.success.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
-  },
-  "badge.info.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the info badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.info.background-disabled`."
-  },
-  "badge.success.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the success badge when disabled, in the muted border tone."
-  },
-  "badge.info.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the info badge when disabled, in the muted border tone."
-  },
-  "badge.warning.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the warning badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.warning.background-disabled`."
-  },
-  "badge.warning.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the warning badge when disabled, in the muted border tone."
-  },
-  "badge.destructive.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the destructive badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.destructive.background-disabled`."
-  },
-  "badge.destructive.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the destructive badge when disabled, in the muted border tone."
-  },
-  "badge.outline.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the outline badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.outline.background-disabled`."
-  },
-  "badge.outline.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the outline badge when disabled, in the muted border tone."
+  "button.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled button. A loading button is disabled, so it takes this too."
   },
   "badge.icon-gap": {
     "$type": "dimension",
     "$value": "{space.050}",
     "$description": "Gap between an icon and the label of the badge."
   },
-  "card.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of a disabled card, in the muted border tone."
-  },
   "card.border-width": {
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the card."
   },
-  "textarea.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the textarea when disabled, a quiet neutral so it reads as unavailable. Pairs with `textarea.text-disabled`."
-  },
-  "textarea.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "textarea.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled textarea."
   },
   "textarea.border-width": {
     "$type": "dimension",
@@ -4194,120 +4004,75 @@
     "$value": "{typography.line-height.normal}",
     "$description": "Line height of the textarea text."
   },
-  "select.trigger.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the select trigger when disabled, a quiet neutral so it reads as unavailable. Pairs with `select.trigger.text-disabled`."
+  "select.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled select trigger or item."
   },
-  "select.trigger.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the select trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `select.trigger.background-disabled`."
-  },
-  "select.trigger.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the select trigger when disabled, in the muted border tone."
-  },
-  "select.item.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "checkbox.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the checkbox when disabled, a quiet neutral so it reads as unavailable. Pairs with `checkbox.text-disabled`."
-  },
-  "checkbox.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the checkbox when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `checkbox.background-disabled`."
-  },
-  "checkbox.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the checkbox when disabled, in the muted border tone."
+  "checkbox.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled checkbox."
   },
   "checkbox.icon-stroke-width": {
     "$type": "dimension",
     "$value": "3px",
     "$description": "Stroke width of the checkbox check and indeterminate marks."
   },
-  "radio.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the radio when disabled, a quiet neutral so it reads as unavailable."
-  },
-  "radio.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the radio when disabled, in the muted border tone."
-  },
-  "radio.indicator-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Color of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "radio.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled radio."
   },
   "radio.border-width": {
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the radio button."
   },
-  "switch.track.background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Track fill when disabled, in either state. A quiet neutral, not a fade."
+  "switch.track.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled switch."
   },
-  "slider.thumb-background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the slider thumb when disabled, a quiet neutral so it reads as unavailable."
+  "slider.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled slider."
   },
-  "slider.thumb-border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the slider thumb when disabled, in the muted border tone."
+  "toggle.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled toggle or toggle group item."
   },
-  "toggle.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the toggle when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "tabs.trigger.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled tab trigger."
   },
-  "toggle.border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the toggle when disabled, in the muted border tone."
-  },
-  "tabs.trigger.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "pagination.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "pagination.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled pagination control."
   },
   "pagination.item.line-height": {
     "$type": "number",
     "$value": "{typography.line-height.normal}",
     "$description": "Line height of the pagination item text."
   },
-  "navigation.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "navigation.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled navigation menu link."
   },
-  "dropdown-menu.item.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "dropdown-menu.item-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled dropdown menu item."
   },
-  "contextmenu.item-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "contextmenu.item-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled context menu item."
   },
   "contextmenu.border-width": {
     "$type": "dimension",
@@ -4319,20 +4084,15 @@
     "$value": "{border-width.1}",
     "$description": "Height of the context menu separator."
   },
-  "menubar.item-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "menubar.item-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled menubar item."
   },
-  "command.item-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the command menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "command.input-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "command.opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled command input or item."
   },
   "command.border-width": {
     "$type": "dimension",
@@ -4354,35 +4114,20 @@
     "$value": "{typography.line-height.normal}",
     "$description": "Line height of the command item text."
   },
-  "carousel.nav-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the carousel nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `carousel.nav-background-disabled`."
-  },
-  "carousel.nav-border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the carousel nav when disabled, in the muted border tone."
-  },
-  "carousel.nav-background-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of the carousel nav when disabled, a quiet neutral so it reads as unavailable. Pairs with `carousel.nav-text-disabled`."
+  "carousel.nav-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled carousel navigation button."
   },
   "carousel.border-width": {
     "$type": "dimension",
     "$value": "{border-width.1}",
     "$description": "Border width of the carousel."
   },
-  "calendar.nav-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the calendar nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "calendar.nav-border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the calendar nav when disabled, in the muted border tone."
+  "calendar.nav-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.30}",
+    "$description": "Opacity of a disabled calendar navigation button. Lower than the resting nav button opacity (calendar.nav-button.opacity, 50%) so a disabled button reads as off."
   },
   "calendar.border-width": {
     "$type": "dimension",
@@ -4399,30 +4144,20 @@
     "$value": "{typography.line-height.normal}",
     "$description": "Line height of the calendar header text."
   },
-  "toast.action-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the toast action when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
+  "toast.action-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled toast action."
   },
-  "toast.action-border-disabled": {
-    "$type": "color",
-    "$value": "{color.border.muted}",
-    "$description": "Border color of the toast action when disabled, in the muted border tone."
+  "site-header.nav-link-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a disabled site header navigation link."
   },
-  "site-header.nav-link.text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "form.label-text-disabled": {
-    "$type": "color",
-    "$value": "{color.foreground.faint}",
-    "$description": "Text color of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
-  },
-  "toggle.pressed-disabled": {
-    "$type": "color",
-    "$value": "{color.background.muted}",
-    "$description": "Fill of a pressed (on) toggle when disabled, a quiet neutral so it reads as unavailable."
+  "form.label-opacity-disabled": {
+    "$type": "number",
+    "$value": "{opacity.60}",
+    "$description": "Opacity of a form label whose control is disabled."
   },
   "toggle.border-width": {
     "$type": "dimension",

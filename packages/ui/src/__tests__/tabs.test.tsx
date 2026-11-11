@@ -445,8 +445,8 @@ describe("Tabs", () => {
 
       const tab = screen.getByRole("tab", { name: "Tab 2" });
       expect(tab).toHaveClass(
-        "hover:bg-(--color-tabs-trigger-background-hover)",
-        "hover:text-(--color-tabs-trigger-text-hover)"
+        "not-disabled:hover:bg-(--color-tabs-trigger-background-hover)",
+        "not-disabled:hover:text-(--color-tabs-trigger-text-hover)"
       );
     });
 
@@ -475,8 +475,8 @@ describe("Tabs", () => {
 
       const tab = screen.getByRole("tab");
       expect(tab).toHaveClass(
-        "disabled:pointer-events-none",
-        "disabled:text-(--color-tabs-trigger-text-disabled)"
+        "disabled:cursor-not-allowed",
+        "disabled:opacity-(--tabs-trigger-opacity-disabled)"
       );
     });
 

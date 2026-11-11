@@ -152,7 +152,7 @@ Scopes decide which pickers (fill, text fill, stroke, font size, opacity...) lis
 | Primitive colors (`color.blue.600`): bound through semantic and component variables, not directly                                                                                                   | none (hidden)                  |
 | Component name that no rule matches (`select.trigger-focus`, `ring-offset`): none in the real tokens; `scopes.test.ts` fails if one appears                                                         | `ALL_SCOPES`                   |
 
-For component tokens the last name segment is read first (`background-hover`), then earlier ones. A state word counts only when no segment has a property word, so `label.disabled-color` is text and `calendar.day-hover` a fill. A bare `color` segment takes its scope from the part before it: a border is a stroke (`checkbox.border.color`), a title or content is text (`card.header.title.color`), a separator is a fill (`separator.color`).
+For component tokens the last name segment is read first (`background-hover`), then earlier ones. A state word counts only when no segment has a property word, so `tabs.trigger.text-hover` is text and `calendar.day-hover` a fill. A bare `color` segment takes its scope from the part before it: a border is a stroke (`checkbox.border.color`), a title or content is text (`card.header.title.color`), a separator is a fill (`separator.color`).
 
 Non-color variables are scoped by the property word in the name, whatever their `$type` (font size, weight, line height, opacity and z-index are typed `number` on purpose, for Figma Variables compatibility):
 

@@ -84,7 +84,7 @@ const FOREGROUND_WORDS = [
   "close",
 ];
 // A state word is the last resort, after every segment has been scanned for a
-// property word (label.disabled-color is text). With none ("day-hover",
+// property word (tabs.trigger.text-hover is text). With none ("day-hover",
 // "trigger-open") the token is a fill: text and border states carry "text" or
 // "border" (Plan 217)
 const STATE_WORDS = [

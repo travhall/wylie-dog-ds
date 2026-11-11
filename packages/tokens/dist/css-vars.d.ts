@@ -4,6 +4,7 @@
 
 export type CssVarName =
   | "--accordion-content-easing"
+  | "--accordion-trigger-opacity-disabled"
   | "--alert-description-opacity"
   | "--alert-dialog-content-easing"
   | "--alert-dialog-content-scale"
@@ -11,6 +12,7 @@ export type CssVarName =
   | "--alert-dialog-overlay-opacity"
   | "--alert-dialog-overlay-z-index"
   | "--badge-font-family"
+  | "--badge-opacity-disabled"
   | "--border-radius-2xl"
   | "--border-radius-full"
   | "--border-radius-lg"
@@ -24,23 +26,25 @@ export type CssVarName =
   | "--border-width-4"
   | "--border-width-8"
   | "--button-border-width"
+  | "--button-opacity-disabled"
   | "--button-spinner-easing"
   | "--calendar-nav-button-opacity"
   | "--calendar-nav-button-opacity-hover"
+  | "--calendar-nav-opacity-disabled"
   | "--card-grid-item-hover-scale"
+  | "--card-opacity-disabled"
+  | "--carousel-nav-opacity-disabled"
+  | "--checkbox-opacity-disabled"
   | "--collapsible-content-easing"
   | "--color-accordion-background"
   | "--color-accordion-border"
   | "--color-accordion-content-text"
   | "--color-accordion-icon"
-  | "--color-accordion-icon-disabled"
   | "--color-accordion-icon-hover"
   | "--color-accordion-icon-open"
-  | "--color-accordion-trigger-disabled"
   | "--color-accordion-trigger-hover"
   | "--color-accordion-trigger-pressed"
   | "--color-accordion-trigger-text"
-  | "--color-accordion-trigger-text-disabled"
   | "--color-accordion-trigger-text-hover"
   | "--color-accordion-trigger-text-open"
   | "--color-alert-default-background"
@@ -95,60 +99,39 @@ export type CssVarName =
   | "--color-background-warning-muted"
   | "--color-badge-default-background"
   | "--color-badge-default-background-active"
-  | "--color-badge-default-background-disabled"
   | "--color-badge-default-background-hover"
   | "--color-badge-default-border"
-  | "--color-badge-default-border-disabled"
   | "--color-badge-default-text"
-  | "--color-badge-default-text-disabled"
   | "--color-badge-destructive-background"
   | "--color-badge-destructive-background-active"
-  | "--color-badge-destructive-background-disabled"
   | "--color-badge-destructive-background-hover"
   | "--color-badge-destructive-border"
-  | "--color-badge-destructive-border-disabled"
   | "--color-badge-destructive-text"
-  | "--color-badge-destructive-text-disabled"
   | "--color-badge-info-background"
   | "--color-badge-info-background-active"
-  | "--color-badge-info-background-disabled"
   | "--color-badge-info-background-hover"
   | "--color-badge-info-border"
-  | "--color-badge-info-border-disabled"
   | "--color-badge-info-text"
-  | "--color-badge-info-text-disabled"
   | "--color-badge-outline-background"
   | "--color-badge-outline-background-active"
-  | "--color-badge-outline-background-disabled"
   | "--color-badge-outline-background-hover"
   | "--color-badge-outline-border"
-  | "--color-badge-outline-border-disabled"
   | "--color-badge-outline-text"
-  | "--color-badge-outline-text-disabled"
   | "--color-badge-secondary-background"
   | "--color-badge-secondary-background-active"
-  | "--color-badge-secondary-background-disabled"
   | "--color-badge-secondary-background-hover"
   | "--color-badge-secondary-border"
-  | "--color-badge-secondary-border-disabled"
   | "--color-badge-secondary-text"
-  | "--color-badge-secondary-text-disabled"
   | "--color-badge-success-background"
   | "--color-badge-success-background-active"
-  | "--color-badge-success-background-disabled"
   | "--color-badge-success-background-hover"
   | "--color-badge-success-border"
-  | "--color-badge-success-border-disabled"
   | "--color-badge-success-text"
-  | "--color-badge-success-text-disabled"
   | "--color-badge-warning-background"
   | "--color-badge-warning-background-active"
-  | "--color-badge-warning-background-disabled"
   | "--color-badge-warning-background-hover"
   | "--color-badge-warning-border"
-  | "--color-badge-warning-border-disabled"
   | "--color-badge-warning-text"
-  | "--color-badge-warning-text-disabled"
   | "--color-black-bear-100"
   | "--color-black-bear-200"
   | "--color-black-bear-300"
@@ -181,90 +164,64 @@ export type CssVarName =
   | "--color-border-warning"
   | "--color-breadcrumb-current"
   | "--color-breadcrumb-link"
-  | "--color-breadcrumb-link-disabled"
   | "--color-breadcrumb-link-hover"
   | "--color-breadcrumb-text"
   | "--color-button-destructive-background"
   | "--color-button-destructive-background-active"
-  | "--color-button-destructive-background-disabled"
   | "--color-button-destructive-background-hover"
   | "--color-button-destructive-border"
-  | "--color-button-destructive-border-disabled"
   | "--color-button-destructive-text"
-  | "--color-button-destructive-text-disabled"
   | "--color-button-ghost-background"
   | "--color-button-ghost-background-active"
   | "--color-button-ghost-background-hover"
   | "--color-button-ghost-text"
-  | "--color-button-ghost-text-disabled"
   | "--color-button-link-text"
-  | "--color-button-link-text-disabled"
   | "--color-button-outline-background"
   | "--color-button-outline-background-active"
   | "--color-button-outline-background-hover"
   | "--color-button-outline-border"
-  | "--color-button-outline-border-disabled"
   | "--color-button-outline-text"
-  | "--color-button-outline-text-disabled"
   | "--color-button-primary-background"
   | "--color-button-primary-background-active"
-  | "--color-button-primary-background-disabled"
   | "--color-button-primary-background-hover"
   | "--color-button-primary-border"
-  | "--color-button-primary-border-disabled"
   | "--color-button-primary-text"
-  | "--color-button-primary-text-disabled"
   | "--color-button-secondary-background"
   | "--color-button-secondary-background-active"
-  | "--color-button-secondary-background-disabled"
   | "--color-button-secondary-background-hover"
   | "--color-button-secondary-border"
-  | "--color-button-secondary-border-disabled"
   | "--color-button-secondary-text"
-  | "--color-button-secondary-text-disabled"
   | "--color-calendar-day-hover"
   | "--color-calendar-day-selected"
   | "--color-calendar-day-text-hover"
   | "--color-calendar-day-text-selected"
   | "--color-calendar-header-text"
   | "--color-calendar-nav-border"
-  | "--color-calendar-nav-border-disabled"
   | "--color-calendar-nav-hover"
-  | "--color-calendar-nav-text-disabled"
   | "--color-calendar-nav-text-hover"
   | "--color-card-background"
   | "--color-card-background-active"
-  | "--color-card-background-disabled"
   | "--color-card-background-hover"
   | "--color-card-border"
-  | "--color-card-border-disabled"
   | "--color-card-border-hover"
   | "--color-card-content-color"
   | "--color-card-header-description-color"
   | "--color-card-header-title-color"
   | "--color-carousel-nav-background"
-  | "--color-carousel-nav-background-disabled"
   | "--color-carousel-nav-border"
-  | "--color-carousel-nav-border-disabled"
   | "--color-carousel-nav-hover"
-  | "--color-carousel-nav-text-disabled"
   | "--color-carousel-nav-text-hover"
   | "--color-checkbox-background-checked"
-  | "--color-checkbox-background-disabled"
   | "--color-checkbox-border-checked"
   | "--color-checkbox-border-color"
-  | "--color-checkbox-border-disabled"
   | "--color-checkbox-error-border"
   | "--color-checkbox-text-checked"
-  | "--color-checkbox-text-disabled"
   | "--color-collapsible-background"
   | "--color-command-background"
   | "--color-command-border"
   | "--color-command-empty"
   | "--color-command-group-heading"
-  | "--color-command-input-text-disabled"
   | "--color-command-item-selected"
-  | "--color-command-item-text-disabled"
   | "--color-command-item-text-selected"
   | "--color-command-placeholder"
   | "--color-command-separator"
@@ -273,7 +230,6 @@ export type CssVarName =
   | "--color-contextmenu-background"
   | "--color-contextmenu-border"
   | "--color-contextmenu-item-hover"
-  | "--color-contextmenu-item-text-disabled"
   | "--color-contextmenu-item-text-hover"
   | "--color-contextmenu-label"
   | "--color-contextmenu-separator"
@@ -288,7 +244,6 @@ export type CssVarName =
   | "--color-dropdown-menu-content-border"
   | "--color-dropdown-menu-content-text"
   | "--color-dropdown-menu-item-background-hover"
-  | "--color-dropdown-menu-item-text-disabled"
   | "--color-dropdown-menu-item-text-hover"
   | "--color-dropdown-menu-separator-background"
   | "--color-feature-grid-description-text"
@@ -329,7 +284,6 @@ export type CssVarName =
   | "--color-form-error"
   | "--color-form-label"
   | "--color-form-label-error-text"
-  | "--color-form-label-text-disabled"
   | "--color-form-required-color"
   | "--color-gray-100"
   | "--color-gray-200"
@@ -356,7 +310,6 @@ export type CssVarName =
   | "--color-hover-card-background"
   | "--color-hover-card-border"
   | "--color-hover-card-text"
-  | "--color-input-background-disabled"
   | "--color-input-background-hover"
   | "--color-input-border"
   | "--color-input-border-error"
@@ -364,9 +317,7 @@ export type CssVarName =
   | "--color-input-default-background"
   | "--color-input-default-text"
   | "--color-input-placeholder"
-  | "--color-input-text-disabled"
   | "--color-label-default-color"
-  | "--color-label-disabled-color"
   | "--color-label-error-text"
   | "--color-label-required-text"
   | "--color-menubar-background"
@@ -375,7 +326,6 @@ export type CssVarName =
   | "--color-menubar-content-border"
   | "--color-menubar-content-text"
   | "--color-menubar-item-highlighted"
-  | "--color-menubar-item-text-disabled"
   | "--color-menubar-item-text-highlighted"
   | "--color-menubar-label"
   | "--color-menubar-separator"
@@ -393,7 +343,6 @@ export type CssVarName =
   | "--color-navigation-highlighted"
   | "--color-navigation-indicator"
   | "--color-navigation-open"
-  | "--color-navigation-text-disabled"
   | "--color-navigation-text-highlighted"
   | "--color-navigation-text-hover"
   | "--color-orange-100"
@@ -415,7 +364,6 @@ export type CssVarName =
   | "--color-pagination-ellipsis-text"
   | "--color-pagination-text"
   | "--color-pagination-text-active"
-  | "--color-pagination-text-disabled"
   | "--color-pagination-text-hover"
   | "--color-petrified-wood-100"
   | "--color-petrified-wood-200"
@@ -470,12 +418,9 @@ export type CssVarName =
   | "--color-purple-900"
   | "--color-purple-950"
   | "--color-radio-background-checked"
-  | "--color-radio-background-disabled"
   | "--color-radio-border"
   | "--color-radio-border-checked"
-  | "--color-radio-border-disabled"
   | "--color-radio-indicator"
-  | "--color-radio-indicator-disabled"
   | "--color-red-100"
   | "--color-red-200"
   | "--color-red-300"
@@ -516,12 +461,8 @@ export type CssVarName =
   | "--color-select-content-background"
   | "--color-select-content-text"
   | "--color-select-item-background-highlighted"
-  | "--color-select-item-text-disabled"
   | "--color-select-item-text-highlighted"
   | "--color-select-separator-background"
-  | "--color-select-trigger-background-disabled"
-  | "--color-select-trigger-border-disabled"
-  | "--color-select-trigger-text-disabled"
   | "--color-separator-color"
   | "--color-sheet-content-background"
   | "--color-sheet-content-border"
@@ -539,19 +480,15 @@ export type CssVarName =
   | "--color-site-header-nav-link-background"
   | "--color-site-header-nav-link-background-highlighted"
   | "--color-site-header-nav-link-background-hover"
-  | "--color-site-header-nav-link-text-disabled"
   | "--color-site-header-nav-link-text-highlighted"
   | "--color-site-header-nav-link-text-hover"
   | "--color-skeleton-background"
   | "--color-slider-range"
   | "--color-slider-thumb"
-  | "--color-slider-thumb-background-disabled"
   | "--color-slider-thumb-border"
-  | "--color-slider-thumb-border-disabled"
   | "--color-slider-track"
   | "--color-switch-thumb-background"
   | "--color-switch-track-background-checked"
-  | "--color-switch-track-background-disabled"
   | "--color-switch-track-background-unchecked"
   | "--color-table-border"
   | "--color-table-caption"
@@ -566,13 +503,8 @@ export type CssVarName =
   | "--color-tabs-trigger-background-hover"
   | "--color-tabs-trigger-indicator-color"
   | "--color-tabs-trigger-text-active"
-  | "--color-tabs-trigger-text-disabled"
   | "--color-tabs-trigger-text-hover"
-  | "--color-textarea-background-disabled"
-  | "--color-textarea-text-disabled"
-  | "--color-toast-action-border-disabled"
   | "--color-toast-action-hover"
-  | "--color-toast-action-text-disabled"
   | "--color-toast-close"
   | "--color-toast-close-hover"
   | "--color-toast-default-background"
@@ -604,11 +536,8 @@ export type CssVarName =
   | "--color-toast-warning-text"
   | "--color-toggle-background-hover"
   | "--color-toggle-border"
-  | "--color-toggle-border-disabled"
   | "--color-toggle-pressed"
-  | "--color-toggle-pressed-disabled"
   | "--color-toggle-text"
-  | "--color-toggle-text-disabled"
   | "--color-toggle-text-hover"
   | "--color-toggle-text-pressed"
   | "--color-tooltip-background"
@@ -626,10 +555,12 @@ export type CssVarName =
   | "--color-yellow-900"
   | "--color-yellow-950"
   | "--command-input-icon-opacity"
+  | "--command-opacity-disabled"
   | "--context-menu-content-easing"
   | "--context-menu-content-scale"
   | "--context-menu-content-z-index"
   | "--context-menu-sub-content-z-index"
+  | "--contextmenu-item-opacity-disabled"
   | "--dialog-close-button-opacity"
   | "--dialog-close-button-opacity-hover"
   | "--dialog-content-easing"
@@ -640,6 +571,7 @@ export type CssVarName =
   | "--dropdown-menu-content-easing"
   | "--dropdown-menu-content-scale"
   | "--dropdown-menu-content-z-index"
+  | "--dropdown-menu-item-opacity-disabled"
   | "--dropdown-menu-shortcut-opacity"
   | "--duration-0"
   | "--duration-100"
@@ -833,10 +765,13 @@ export type CssVarName =
   | "--font-weight-toast-title-font-weight"
   | "--font-weight-toggle-font-weight"
   | "--font-weight-toggle-group-item-font-weight"
+  | "--form-label-opacity-disabled"
   | "--hover-card-content-easing"
   | "--hover-card-content-scale"
   | "--hover-card-z-index"
+  | "--input-opacity-disabled"
   | "--input-spin-button-opacity"
+  | "--label-opacity-disabled"
   | "--layer-base"
   | "--layer-dropdown"
   | "--layer-fixed"
@@ -916,11 +851,13 @@ export type CssVarName =
   | "--menubar-content-easing"
   | "--menubar-content-scale"
   | "--menubar-content-z-index"
+  | "--menubar-item-opacity-disabled"
   | "--menubar-sub-content-z-index"
   | "--navigation-menu-indicator-z-index"
   | "--navigation-menu-viewport-easing"
   | "--navigation-menu-viewport-scale"
   | "--navigation-menu-z-index"
+  | "--navigation-opacity-disabled"
   | "--opacity-0"
   | "--opacity-10"
   | "--opacity-100"
@@ -937,10 +874,12 @@ export type CssVarName =
   | "--opacity-90"
   | "--opacity-95"
   | "--page-layout-skip-link-z-index"
+  | "--pagination-opacity-disabled"
   | "--popover-content-easing"
   | "--popover-content-scale"
   | "--popover-z-index"
   | "--progress-indicator-easing"
+  | "--radio-opacity-disabled"
   | "--resizable-handle-z-index"
   | "--scale-105"
   | "--scale-110"
@@ -948,6 +887,7 @@ export type CssVarName =
   | "--select-content-easing"
   | "--select-content-scale"
   | "--select-content-z-index"
+  | "--select-opacity-disabled"
   | "--select-trigger-icon-opacity"
   | "--shadow-alert-dialog-content-shadow"
   | "--shadow-base"
@@ -981,9 +921,11 @@ export type CssVarName =
   | "--sheet-content-z-index"
   | "--sheet-overlay-opacity"
   | "--sheet-overlay-z-index"
+  | "--site-header-nav-link-opacity-disabled"
   | "--site-header-z-index"
   | "--skeleton-easing"
   | "--skeleton-pulse-opacity"
+  | "--slider-opacity-disabled"
   | "--space-0"
   | "--space-010"
   | "--space-025"
@@ -1534,11 +1476,16 @@ export type CssVarName =
   | "--space-typography-tracking-wide"
   | "--space-typography-tracking-wider"
   | "--space-typography-tracking-widest"
+  | "--switch-track-opacity-disabled"
+  | "--tabs-trigger-opacity-disabled"
+  | "--textarea-opacity-disabled"
+  | "--toast-action-opacity-disabled"
   | "--toast-close-button-opacity"
   | "--toast-close-button-opacity-hover"
   | "--toast-description-opacity"
   | "--toast-easing"
   | "--toast-viewport-z-index"
+  | "--toggle-opacity-disabled"
   | "--tooltip-content-easing"
   | "--tooltip-content-scale"
   | "--tooltip-z-index"
@@ -1570,6 +1517,7 @@ export type CssVarKey = keyof typeof cssVars;
 
 export declare const cssVars: Readonly<{
   "accordionContentEasing": "--accordion-content-easing";
+  "accordionTriggerOpacityDisabled": "--accordion-trigger-opacity-disabled";
   "alertDescriptionOpacity": "--alert-description-opacity";
   "alertDialogContentEasing": "--alert-dialog-content-easing";
   "alertDialogContentScale": "--alert-dialog-content-scale";
@@ -1577,6 +1525,7 @@ export declare const cssVars: Readonly<{
   "alertDialogOverlayOpacity": "--alert-dialog-overlay-opacity";
   "alertDialogOverlayZIndex": "--alert-dialog-overlay-z-index";
   "badgeFontFamily": "--badge-font-family";
+  "badgeOpacityDisabled": "--badge-opacity-disabled";
   "borderRadius2xl": "--border-radius-2xl";
   "borderRadiusFull": "--border-radius-full";
   "borderRadiusLg": "--border-radius-lg";
@@ -1590,23 +1539,25 @@ export declare const cssVars: Readonly<{
   "borderWidth4": "--border-width-4";
   "borderWidth8": "--border-width-8";
   "buttonBorderWidth": "--button-border-width";
+  "buttonOpacityDisabled": "--button-opacity-disabled";
   "buttonSpinnerEasing": "--button-spinner-easing";
   "calendarNavButtonOpacity": "--calendar-nav-button-opacity";
   "calendarNavButtonOpacityHover": "--calendar-nav-button-opacity-hover";
+  "calendarNavOpacityDisabled": "--calendar-nav-opacity-disabled";
   "cardGridItemHoverScale": "--card-grid-item-hover-scale";
+  "cardOpacityDisabled": "--card-opacity-disabled";
+  "carouselNavOpacityDisabled": "--carousel-nav-opacity-disabled";
+  "checkboxOpacityDisabled": "--checkbox-opacity-disabled";
   "collapsibleContentEasing": "--collapsible-content-easing";
   "colorAccordionBackground": "--color-accordion-background";
   "colorAccordionBorder": "--color-accordion-border";
   "colorAccordionContentText": "--color-accordion-content-text";
   "colorAccordionIcon": "--color-accordion-icon";
-  "colorAccordionIconDisabled": "--color-accordion-icon-disabled";
   "colorAccordionIconHover": "--color-accordion-icon-hover";
   "colorAccordionIconOpen": "--color-accordion-icon-open";
-  "colorAccordionTriggerDisabled": "--color-accordion-trigger-disabled";
   "colorAccordionTriggerHover": "--color-accordion-trigger-hover";
   "colorAccordionTriggerPressed": "--color-accordion-trigger-pressed";
   "colorAccordionTriggerText": "--color-accordion-trigger-text";
-  "colorAccordionTriggerTextDisabled": "--color-accordion-trigger-text-disabled";
   "colorAccordionTriggerTextHover": "--color-accordion-trigger-text-hover";
   "colorAccordionTriggerTextOpen": "--color-accordion-trigger-text-open";
   "colorAlertDefaultBackground": "--color-alert-default-background";
@@ -1661,60 +1612,39 @@ export declare const cssVars: Readonly<{
   "colorBackgroundWarningMuted": "--color-background-warning-muted";
   "colorBadgeDefaultBackground": "--color-badge-default-background";
   "colorBadgeDefaultBackgroundActive": "--color-badge-default-background-active";
-  "colorBadgeDefaultBackgroundDisabled": "--color-badge-default-background-disabled";
   "colorBadgeDefaultBackgroundHover": "--color-badge-default-background-hover";
   "colorBadgeDefaultBorder": "--color-badge-default-border";
-  "colorBadgeDefaultBorderDisabled": "--color-badge-default-border-disabled";
   "colorBadgeDefaultText": "--color-badge-default-text";
-  "colorBadgeDefaultTextDisabled": "--color-badge-default-text-disabled";
   "colorBadgeDestructiveBackground": "--color-badge-destructive-background";
   "colorBadgeDestructiveBackgroundActive": "--color-badge-destructive-background-active";
-  "colorBadgeDestructiveBackgroundDisabled": "--color-badge-destructive-background-disabled";
   "colorBadgeDestructiveBackgroundHover": "--color-badge-destructive-background-hover";
   "colorBadgeDestructiveBorder": "--color-badge-destructive-border";
-  "colorBadgeDestructiveBorderDisabled": "--color-badge-destructive-border-disabled";
   "colorBadgeDestructiveText": "--color-badge-destructive-text";
-  "colorBadgeDestructiveTextDisabled": "--color-badge-destructive-text-disabled";
   "colorBadgeInfoBackground": "--color-badge-info-background";
   "colorBadgeInfoBackgroundActive": "--color-badge-info-background-active";
-  "colorBadgeInfoBackgroundDisabled": "--color-badge-info-background-disabled";
   "colorBadgeInfoBackgroundHover": "--color-badge-info-background-hover";
   "colorBadgeInfoBorder": "--color-badge-info-border";
-  "colorBadgeInfoBorderDisabled": "--color-badge-info-border-disabled";
   "colorBadgeInfoText": "--color-badge-info-text";
-  "colorBadgeInfoTextDisabled": "--color-badge-info-text-disabled";
   "colorBadgeOutlineBackground": "--color-badge-outline-background";
   "colorBadgeOutlineBackgroundActive": "--color-badge-outline-background-active";
-  "colorBadgeOutlineBackgroundDisabled": "--color-badge-outline-background-disabled";
   "colorBadgeOutlineBackgroundHover": "--color-badge-outline-background-hover";
   "colorBadgeOutlineBorder": "--color-badge-outline-border";
-  "colorBadgeOutlineBorderDisabled": "--color-badge-outline-border-disabled";
   "colorBadgeOutlineText": "--color-badge-outline-text";
-  "colorBadgeOutlineTextDisabled": "--color-badge-outline-text-disabled";
   "colorBadgeSecondaryBackground": "--color-badge-secondary-background";
   "colorBadgeSecondaryBackgroundActive": "--color-badge-secondary-background-active";
-  "colorBadgeSecondaryBackgroundDisabled": "--color-badge-secondary-background-disabled";
   "colorBadgeSecondaryBackgroundHover": "--color-badge-secondary-background-hover";
   "colorBadgeSecondaryBorder": "--color-badge-secondary-border";
-  "colorBadgeSecondaryBorderDisabled": "--color-badge-secondary-border-disabled";
   "colorBadgeSecondaryText": "--color-badge-secondary-text";
-  "colorBadgeSecondaryTextDisabled": "--color-badge-secondary-text-disabled";
   "colorBadgeSuccessBackground": "--color-badge-success-background";
   "colorBadgeSuccessBackgroundActive": "--color-badge-success-background-active";
-  "colorBadgeSuccessBackgroundDisabled": "--color-badge-success-background-disabled";
   "colorBadgeSuccessBackgroundHover": "--color-badge-success-background-hover";
   "colorBadgeSuccessBorder": "--color-badge-success-border";
-  "colorBadgeSuccessBorderDisabled": "--color-badge-success-border-disabled";
   "colorBadgeSuccessText": "--color-badge-success-text";
-  "colorBadgeSuccessTextDisabled": "--color-badge-success-text-disabled";
   "colorBadgeWarningBackground": "--color-badge-warning-background";
   "colorBadgeWarningBackgroundActive": "--color-badge-warning-background-active";
-  "colorBadgeWarningBackgroundDisabled": "--color-badge-warning-background-disabled";
   "colorBadgeWarningBackgroundHover": "--color-badge-warning-background-hover";
   "colorBadgeWarningBorder": "--color-badge-warning-border";
-  "colorBadgeWarningBorderDisabled": "--color-badge-warning-border-disabled";
   "colorBadgeWarningText": "--color-badge-warning-text";
-  "colorBadgeWarningTextDisabled": "--color-badge-warning-text-disabled";
   "colorBlackBear100": "--color-black-bear-100";
   "colorBlackBear200": "--color-black-bear-200";
   "colorBlackBear300": "--color-black-bear-300";
@@ -1747,90 +1677,64 @@ export declare const cssVars: Readonly<{
   "colorBorderWarning": "--color-border-warning";
   "colorBreadcrumbCurrent": "--color-breadcrumb-current";
   "colorBreadcrumbLink": "--color-breadcrumb-link";
-  "colorBreadcrumbLinkDisabled": "--color-breadcrumb-link-disabled";
   "colorBreadcrumbLinkHover": "--color-breadcrumb-link-hover";
   "colorBreadcrumbText": "--color-breadcrumb-text";
   "colorButtonDestructiveBackground": "--color-button-destructive-background";
   "colorButtonDestructiveBackgroundActive": "--color-button-destructive-background-active";
-  "colorButtonDestructiveBackgroundDisabled": "--color-button-destructive-background-disabled";
   "colorButtonDestructiveBackgroundHover": "--color-button-destructive-background-hover";
   "colorButtonDestructiveBorder": "--color-button-destructive-border";
-  "colorButtonDestructiveBorderDisabled": "--color-button-destructive-border-disabled";
   "colorButtonDestructiveText": "--color-button-destructive-text";
-  "colorButtonDestructiveTextDisabled": "--color-button-destructive-text-disabled";
   "colorButtonGhostBackground": "--color-button-ghost-background";
   "colorButtonGhostBackgroundActive": "--color-button-ghost-background-active";
   "colorButtonGhostBackgroundHover": "--color-button-ghost-background-hover";
   "colorButtonGhostText": "--color-button-ghost-text";
-  "colorButtonGhostTextDisabled": "--color-button-ghost-text-disabled";
   "colorButtonLinkText": "--color-button-link-text";
-  "colorButtonLinkTextDisabled": "--color-button-link-text-disabled";
   "colorButtonOutlineBackground": "--color-button-outline-background";
   "colorButtonOutlineBackgroundActive": "--color-button-outline-background-active";
   "colorButtonOutlineBackgroundHover": "--color-button-outline-background-hover";
   "colorButtonOutlineBorder": "--color-button-outline-border";
-  "colorButtonOutlineBorderDisabled": "--color-button-outline-border-disabled";
   "colorButtonOutlineText": "--color-button-outline-text";
-  "colorButtonOutlineTextDisabled": "--color-button-outline-text-disabled";
   "colorButtonPrimaryBackground": "--color-button-primary-background";
   "colorButtonPrimaryBackgroundActive": "--color-button-primary-background-active";
-  "colorButtonPrimaryBackgroundDisabled": "--color-button-primary-background-disabled";
   "colorButtonPrimaryBackgroundHover": "--color-button-primary-background-hover";
   "colorButtonPrimaryBorder": "--color-button-primary-border";
-  "colorButtonPrimaryBorderDisabled": "--color-button-primary-border-disabled";
   "colorButtonPrimaryText": "--color-button-primary-text";
-  "colorButtonPrimaryTextDisabled": "--color-button-primary-text-disabled";
   "colorButtonSecondaryBackground": "--color-button-secondary-background";
   "colorButtonSecondaryBackgroundActive": "--color-button-secondary-background-active";
-  "colorButtonSecondaryBackgroundDisabled": "--color-button-secondary-background-disabled";
   "colorButtonSecondaryBackgroundHover": "--color-button-secondary-background-hover";
   "colorButtonSecondaryBorder": "--color-button-secondary-border";
-  "colorButtonSecondaryBorderDisabled": "--color-button-secondary-border-disabled";
   "colorButtonSecondaryText": "--color-button-secondary-text";
-  "colorButtonSecondaryTextDisabled": "--color-button-secondary-text-disabled";
   "colorCalendarDayHover": "--color-calendar-day-hover";
   "colorCalendarDaySelected": "--color-calendar-day-selected";
   "colorCalendarDayTextHover": "--color-calendar-day-text-hover";
   "colorCalendarDayTextSelected": "--color-calendar-day-text-selected";
   "colorCalendarHeaderText": "--color-calendar-header-text";
   "colorCalendarNavBorder": "--color-calendar-nav-border";
-  "colorCalendarNavBorderDisabled": "--color-calendar-nav-border-disabled";
   "colorCalendarNavHover": "--color-calendar-nav-hover";
-  "colorCalendarNavTextDisabled": "--color-calendar-nav-text-disabled";
   "colorCalendarNavTextHover": "--color-calendar-nav-text-hover";
   "colorCardBackground": "--color-card-background";
   "colorCardBackgroundActive": "--color-card-background-active";
-  "colorCardBackgroundDisabled": "--color-card-background-disabled";
   "colorCardBackgroundHover": "--color-card-background-hover";
   "colorCardBorder": "--color-card-border";
-  "colorCardBorderDisabled": "--color-card-border-disabled";
   "colorCardBorderHover": "--color-card-border-hover";
   "colorCardContentColor": "--color-card-content-color";
   "colorCardHeaderDescriptionColor": "--color-card-header-description-color";
   "colorCardHeaderTitleColor": "--color-card-header-title-color";
   "colorCarouselNavBackground": "--color-carousel-nav-background";
-  "colorCarouselNavBackgroundDisabled": "--color-carousel-nav-background-disabled";
   "colorCarouselNavBorder": "--color-carousel-nav-border";
-  "colorCarouselNavBorderDisabled": "--color-carousel-nav-border-disabled";
   "colorCarouselNavHover": "--color-carousel-nav-hover";
-  "colorCarouselNavTextDisabled": "--color-carousel-nav-text-disabled";
   "colorCarouselNavTextHover": "--color-carousel-nav-text-hover";
   "colorCheckboxBackgroundChecked": "--color-checkbox-background-checked";
-  "colorCheckboxBackgroundDisabled": "--color-checkbox-background-disabled";
   "colorCheckboxBorderChecked": "--color-checkbox-border-checked";
   "colorCheckboxBorderColor": "--color-checkbox-border-color";
-  "colorCheckboxBorderDisabled": "--color-checkbox-border-disabled";
   "colorCheckboxErrorBorder": "--color-checkbox-error-border";
   "colorCheckboxTextChecked": "--color-checkbox-text-checked";
-  "colorCheckboxTextDisabled": "--color-checkbox-text-disabled";
   "colorCollapsibleBackground": "--color-collapsible-background";
   "colorCommandBackground": "--color-command-background";
   "colorCommandBorder": "--color-command-border";
   "colorCommandEmpty": "--color-command-empty";
   "colorCommandGroupHeading": "--color-command-group-heading";
-  "colorCommandInputTextDisabled": "--color-command-input-text-disabled";
   "colorCommandItemSelected": "--color-command-item-selected";
-  "colorCommandItemTextDisabled": "--color-command-item-text-disabled";
   "colorCommandItemTextSelected": "--color-command-item-text-selected";
   "colorCommandPlaceholder": "--color-command-placeholder";
   "colorCommandSeparator": "--color-command-separator";
@@ -1839,7 +1743,6 @@ export declare const cssVars: Readonly<{
   "colorContextmenuBackground": "--color-contextmenu-background";
   "colorContextmenuBorder": "--color-contextmenu-border";
   "colorContextmenuItemHover": "--color-contextmenu-item-hover";
-  "colorContextmenuItemTextDisabled": "--color-contextmenu-item-text-disabled";
   "colorContextmenuItemTextHover": "--color-contextmenu-item-text-hover";
   "colorContextmenuLabel": "--color-contextmenu-label";
   "colorContextmenuSeparator": "--color-contextmenu-separator";
@@ -1854,7 +1757,6 @@ export declare const cssVars: Readonly<{
   "colorDropdownMenuContentBorder": "--color-dropdown-menu-content-border";
   "colorDropdownMenuContentText": "--color-dropdown-menu-content-text";
   "colorDropdownMenuItemBackgroundHover": "--color-dropdown-menu-item-background-hover";
-  "colorDropdownMenuItemTextDisabled": "--color-dropdown-menu-item-text-disabled";
   "colorDropdownMenuItemTextHover": "--color-dropdown-menu-item-text-hover";
   "colorDropdownMenuSeparatorBackground": "--color-dropdown-menu-separator-background";
   "colorFeatureGridDescriptionText": "--color-feature-grid-description-text";
@@ -1895,7 +1797,6 @@ export declare const cssVars: Readonly<{
   "colorFormError": "--color-form-error";
   "colorFormLabel": "--color-form-label";
   "colorFormLabelErrorText": "--color-form-label-error-text";
-  "colorFormLabelTextDisabled": "--color-form-label-text-disabled";
   "colorFormRequiredColor": "--color-form-required-color";
   "colorGray100": "--color-gray-100";
   "colorGray200": "--color-gray-200";
@@ -1922,7 +1823,6 @@ export declare const cssVars: Readonly<{
   "colorHoverCardBackground": "--color-hover-card-background";
   "colorHoverCardBorder": "--color-hover-card-border";
   "colorHoverCardText": "--color-hover-card-text";
-  "colorInputBackgroundDisabled": "--color-input-background-disabled";
   "colorInputBackgroundHover": "--color-input-background-hover";
   "colorInputBorder": "--color-input-border";
   "colorInputBorderError": "--color-input-border-error";
@@ -1930,9 +1830,7 @@ export declare const cssVars: Readonly<{
   "colorInputDefaultBackground": "--color-input-default-background";
   "colorInputDefaultText": "--color-input-default-text";
   "colorInputPlaceholder": "--color-input-placeholder";
-  "colorInputTextDisabled": "--color-input-text-disabled";
   "colorLabelDefaultColor": "--color-label-default-color";
-  "colorLabelDisabledColor": "--color-label-disabled-color";
   "colorLabelErrorText": "--color-label-error-text";
   "colorLabelRequiredText": "--color-label-required-text";
   "colorMenubarBackground": "--color-menubar-background";
@@ -1941,7 +1839,6 @@ export declare const cssVars: Readonly<{
   "colorMenubarContentBorder": "--color-menubar-content-border";
   "colorMenubarContentText": "--color-menubar-content-text";
   "colorMenubarItemHighlighted": "--color-menubar-item-highlighted";
-  "colorMenubarItemTextDisabled": "--color-menubar-item-text-disabled";
   "colorMenubarItemTextHighlighted": "--color-menubar-item-text-highlighted";
   "colorMenubarLabel": "--color-menubar-label";
   "colorMenubarSeparator": "--color-menubar-separator";
@@ -1959,7 +1856,6 @@ export declare const cssVars: Readonly<{
   "colorNavigationHighlighted": "--color-navigation-highlighted";
   "colorNavigationIndicator": "--color-navigation-indicator";
   "colorNavigationOpen": "--color-navigation-open";
-  "colorNavigationTextDisabled": "--color-navigation-text-disabled";
   "colorNavigationTextHighlighted": "--color-navigation-text-highlighted";
   "colorNavigationTextHover": "--color-navigation-text-hover";
   "colorOrange100": "--color-orange-100";
@@ -1981,7 +1877,6 @@ export declare const cssVars: Readonly<{
   "colorPaginationEllipsisText": "--color-pagination-ellipsis-text";
   "colorPaginationText": "--color-pagination-text";
   "colorPaginationTextActive": "--color-pagination-text-active";
-  "colorPaginationTextDisabled": "--color-pagination-text-disabled";
   "colorPaginationTextHover": "--color-pagination-text-hover";
   "colorPetrifiedWood100": "--color-petrified-wood-100";
   "colorPetrifiedWood200": "--color-petrified-wood-200";
@@ -2036,12 +1931,9 @@ export declare const cssVars: Readonly<{
   "colorPurple900": "--color-purple-900";
   "colorPurple950": "--color-purple-950";
   "colorRadioBackgroundChecked": "--color-radio-background-checked";
-  "colorRadioBackgroundDisabled": "--color-radio-background-disabled";
   "colorRadioBorder": "--color-radio-border";
   "colorRadioBorderChecked": "--color-radio-border-checked";
-  "colorRadioBorderDisabled": "--color-radio-border-disabled";
   "colorRadioIndicator": "--color-radio-indicator";
-  "colorRadioIndicatorDisabled": "--color-radio-indicator-disabled";
   "colorRed100": "--color-red-100";
   "colorRed200": "--color-red-200";
   "colorRed300": "--color-red-300";
@@ -2082,12 +1974,8 @@ export declare const cssVars: Readonly<{
   "colorSelectContentBackground": "--color-select-content-background";
   "colorSelectContentText": "--color-select-content-text";
   "colorSelectItemBackgroundHighlighted": "--color-select-item-background-highlighted";
-  "colorSelectItemTextDisabled": "--color-select-item-text-disabled";
   "colorSelectItemTextHighlighted": "--color-select-item-text-highlighted";
   "colorSelectSeparatorBackground": "--color-select-separator-background";
-  "colorSelectTriggerBackgroundDisabled": "--color-select-trigger-background-disabled";
-  "colorSelectTriggerBorderDisabled": "--color-select-trigger-border-disabled";
-  "colorSelectTriggerTextDisabled": "--color-select-trigger-text-disabled";
   "colorSeparatorColor": "--color-separator-color";
   "colorSheetContentBackground": "--color-sheet-content-background";
   "colorSheetContentBorder": "--color-sheet-content-border";
@@ -2105,19 +1993,15 @@ export declare const cssVars: Readonly<{
   "colorSiteHeaderNavLinkBackground": "--color-site-header-nav-link-background";
   "colorSiteHeaderNavLinkBackgroundHighlighted": "--color-site-header-nav-link-background-highlighted";
   "colorSiteHeaderNavLinkBackgroundHover": "--color-site-header-nav-link-background-hover";
-  "colorSiteHeaderNavLinkTextDisabled": "--color-site-header-nav-link-text-disabled";
   "colorSiteHeaderNavLinkTextHighlighted": "--color-site-header-nav-link-text-highlighted";
   "colorSiteHeaderNavLinkTextHover": "--color-site-header-nav-link-text-hover";
   "colorSkeletonBackground": "--color-skeleton-background";
   "colorSliderRange": "--color-slider-range";
   "colorSliderThumb": "--color-slider-thumb";
-  "colorSliderThumbBackgroundDisabled": "--color-slider-thumb-background-disabled";
   "colorSliderThumbBorder": "--color-slider-thumb-border";
-  "colorSliderThumbBorderDisabled": "--color-slider-thumb-border-disabled";
   "colorSliderTrack": "--color-slider-track";
   "colorSwitchThumbBackground": "--color-switch-thumb-background";
   "colorSwitchTrackBackgroundChecked": "--color-switch-track-background-checked";
-  "colorSwitchTrackBackgroundDisabled": "--color-switch-track-background-disabled";
   "colorSwitchTrackBackgroundUnchecked": "--color-switch-track-background-unchecked";
   "colorTableBorder": "--color-table-border";
   "colorTableCaption": "--color-table-caption";
@@ -2132,13 +2016,8 @@ export declare const cssVars: Readonly<{
   "colorTabsTriggerBackgroundHover": "--color-tabs-trigger-background-hover";
   "colorTabsTriggerIndicatorColor": "--color-tabs-trigger-indicator-color";
   "colorTabsTriggerTextActive": "--color-tabs-trigger-text-active";
-  "colorTabsTriggerTextDisabled": "--color-tabs-trigger-text-disabled";
   "colorTabsTriggerTextHover": "--color-tabs-trigger-text-hover";
-  "colorTextareaBackgroundDisabled": "--color-textarea-background-disabled";
-  "colorTextareaTextDisabled": "--color-textarea-text-disabled";
-  "colorToastActionBorderDisabled": "--color-toast-action-border-disabled";
   "colorToastActionHover": "--color-toast-action-hover";
-  "colorToastActionTextDisabled": "--color-toast-action-text-disabled";
   "colorToastClose": "--color-toast-close";
   "colorToastCloseHover": "--color-toast-close-hover";
   "colorToastDefaultBackground": "--color-toast-default-background";
@@ -2170,11 +2049,8 @@ export declare const cssVars: Readonly<{
   "colorToastWarningText": "--color-toast-warning-text";
   "colorToggleBackgroundHover": "--color-toggle-background-hover";
   "colorToggleBorder": "--color-toggle-border";
-  "colorToggleBorderDisabled": "--color-toggle-border-disabled";
   "colorTogglePressed": "--color-toggle-pressed";
-  "colorTogglePressedDisabled": "--color-toggle-pressed-disabled";
   "colorToggleText": "--color-toggle-text";
-  "colorToggleTextDisabled": "--color-toggle-text-disabled";
   "colorToggleTextHover": "--color-toggle-text-hover";
   "colorToggleTextPressed": "--color-toggle-text-pressed";
   "colorTooltipBackground": "--color-tooltip-background";
@@ -2192,10 +2068,12 @@ export declare const cssVars: Readonly<{
   "colorYellow900": "--color-yellow-900";
   "colorYellow950": "--color-yellow-950";
   "commandInputIconOpacity": "--command-input-icon-opacity";
+  "commandOpacityDisabled": "--command-opacity-disabled";
   "contextMenuContentEasing": "--context-menu-content-easing";
   "contextMenuContentScale": "--context-menu-content-scale";
   "contextMenuContentZIndex": "--context-menu-content-z-index";
   "contextMenuSubContentZIndex": "--context-menu-sub-content-z-index";
+  "contextmenuItemOpacityDisabled": "--contextmenu-item-opacity-disabled";
   "dialogCloseButtonOpacity": "--dialog-close-button-opacity";
   "dialogCloseButtonOpacityHover": "--dialog-close-button-opacity-hover";
   "dialogContentEasing": "--dialog-content-easing";
@@ -2206,6 +2084,7 @@ export declare const cssVars: Readonly<{
   "dropdownMenuContentEasing": "--dropdown-menu-content-easing";
   "dropdownMenuContentScale": "--dropdown-menu-content-scale";
   "dropdownMenuContentZIndex": "--dropdown-menu-content-z-index";
+  "dropdownMenuItemOpacityDisabled": "--dropdown-menu-item-opacity-disabled";
   "dropdownMenuShortcutOpacity": "--dropdown-menu-shortcut-opacity";
   "duration0": "--duration-0";
   "duration100": "--duration-100";
@@ -2399,10 +2278,13 @@ export declare const cssVars: Readonly<{
   "fontWeightToastTitleFontWeight": "--font-weight-toast-title-font-weight";
   "fontWeightToggleFontWeight": "--font-weight-toggle-font-weight";
   "fontWeightToggleGroupItemFontWeight": "--font-weight-toggle-group-item-font-weight";
+  "formLabelOpacityDisabled": "--form-label-opacity-disabled";
   "hoverCardContentEasing": "--hover-card-content-easing";
   "hoverCardContentScale": "--hover-card-content-scale";
   "hoverCardZIndex": "--hover-card-z-index";
+  "inputOpacityDisabled": "--input-opacity-disabled";
   "inputSpinButtonOpacity": "--input-spin-button-opacity";
+  "labelOpacityDisabled": "--label-opacity-disabled";
   "layerBase": "--layer-base";
   "layerDropdown": "--layer-dropdown";
   "layerFixed": "--layer-fixed";
@@ -2482,11 +2364,13 @@ export declare const cssVars: Readonly<{
   "menubarContentEasing": "--menubar-content-easing";
   "menubarContentScale": "--menubar-content-scale";
   "menubarContentZIndex": "--menubar-content-z-index";
+  "menubarItemOpacityDisabled": "--menubar-item-opacity-disabled";
   "menubarSubContentZIndex": "--menubar-sub-content-z-index";
   "navigationMenuIndicatorZIndex": "--navigation-menu-indicator-z-index";
   "navigationMenuViewportEasing": "--navigation-menu-viewport-easing";
   "navigationMenuViewportScale": "--navigation-menu-viewport-scale";
   "navigationMenuZIndex": "--navigation-menu-z-index";
+  "navigationOpacityDisabled": "--navigation-opacity-disabled";
   "opacity0": "--opacity-0";
   "opacity10": "--opacity-10";
   "opacity100": "--opacity-100";
@@ -2503,10 +2387,12 @@ export declare const cssVars: Readonly<{
   "opacity90": "--opacity-90";
   "opacity95": "--opacity-95";
   "pageLayoutSkipLinkZIndex": "--page-layout-skip-link-z-index";
+  "paginationOpacityDisabled": "--pagination-opacity-disabled";
   "popoverContentEasing": "--popover-content-easing";
   "popoverContentScale": "--popover-content-scale";
   "popoverZIndex": "--popover-z-index";
   "progressIndicatorEasing": "--progress-indicator-easing";
+  "radioOpacityDisabled": "--radio-opacity-disabled";
   "resizableHandleZIndex": "--resizable-handle-z-index";
   "scale105": "--scale-105";
   "scale110": "--scale-110";
@@ -2514,6 +2400,7 @@ export declare const cssVars: Readonly<{
   "selectContentEasing": "--select-content-easing";
   "selectContentScale": "--select-content-scale";
   "selectContentZIndex": "--select-content-z-index";
+  "selectOpacityDisabled": "--select-opacity-disabled";
   "selectTriggerIconOpacity": "--select-trigger-icon-opacity";
   "shadowAlertDialogContentShadow": "--shadow-alert-dialog-content-shadow";
   "shadowBase": "--shadow-base";
@@ -2547,9 +2434,11 @@ export declare const cssVars: Readonly<{
   "sheetContentZIndex": "--sheet-content-z-index";
   "sheetOverlayOpacity": "--sheet-overlay-opacity";
   "sheetOverlayZIndex": "--sheet-overlay-z-index";
+  "siteHeaderNavLinkOpacityDisabled": "--site-header-nav-link-opacity-disabled";
   "siteHeaderZIndex": "--site-header-z-index";
   "skeletonEasing": "--skeleton-easing";
   "skeletonPulseOpacity": "--skeleton-pulse-opacity";
+  "sliderOpacityDisabled": "--slider-opacity-disabled";
   "space0": "--space-0";
   "space010": "--space-010";
   "space025": "--space-025";
@@ -3100,11 +2989,16 @@ export declare const cssVars: Readonly<{
   "spaceTypographyTrackingWide": "--space-typography-tracking-wide";
   "spaceTypographyTrackingWider": "--space-typography-tracking-wider";
   "spaceTypographyTrackingWidest": "--space-typography-tracking-widest";
+  "switchTrackOpacityDisabled": "--switch-track-opacity-disabled";
+  "tabsTriggerOpacityDisabled": "--tabs-trigger-opacity-disabled";
+  "textareaOpacityDisabled": "--textarea-opacity-disabled";
+  "toastActionOpacityDisabled": "--toast-action-opacity-disabled";
   "toastCloseButtonOpacity": "--toast-close-button-opacity";
   "toastCloseButtonOpacityHover": "--toast-close-button-opacity-hover";
   "toastDescriptionOpacity": "--toast-description-opacity";
   "toastEasing": "--toast-easing";
   "toastViewportZIndex": "--toast-viewport-z-index";
+  "toggleOpacityDisabled": "--toggle-opacity-disabled";
   "tooltipContentEasing": "--tooltip-content-easing";
   "tooltipContentScale": "--tooltip-content-scale";
   "tooltipZIndex": "--tooltip-z-index";

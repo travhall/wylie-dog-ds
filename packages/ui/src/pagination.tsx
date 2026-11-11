@@ -57,9 +57,9 @@ const PaginationLink = ({
       "h-(--space-pagination-item-size) min-w-(--space-pagination-item-size) px-(--space-pagination-item-padding-x)",
       "rounded-(--space-pagination-item-radius)",
       "text-(length:--font-size-pagination-item-font-size) leading-(--line-height-pagination-item-line-height)",
-      "hover:bg-(--color-pagination-background-hover) hover:text-(--color-pagination-text-hover)",
+      "not-disabled:hover:bg-(--color-pagination-background-hover) not-disabled:hover:text-(--color-pagination-text-hover)",
       focusRingClasses,
-      "disabled:pointer-events-none disabled:text-(--color-pagination-text-disabled)",
+      "disabled:cursor-not-allowed disabled:opacity-(--pagination-opacity-disabled)",
       isActive
         ? "bg-(--color-pagination-active) text-(--color-pagination-text-active)"
         : "text-(--color-pagination-text)",

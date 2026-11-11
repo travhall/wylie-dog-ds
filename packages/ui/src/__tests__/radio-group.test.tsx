@@ -410,7 +410,7 @@ describe("RadioGroup", () => {
       const radio = screen.getByRole("radio");
       expect(radio).toHaveClass(
         "disabled:cursor-not-allowed",
-        "disabled:bg-(--color-radio-background-disabled)"
+        "disabled:opacity-(--radio-opacity-disabled)"
       );
     });
 
