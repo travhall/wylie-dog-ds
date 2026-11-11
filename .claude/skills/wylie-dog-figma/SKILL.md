@@ -56,6 +56,14 @@ CI runs the check after the build as advisory (`continue-on-error`), so a mismat
   the set size is unchanged and nothing overlaps.
 - Descriptions and the Storybook link: `set.description` and `set.documentationLinks = [{ uri }]`, values from
   `node scripts/figma/component-docs.mjs --json`.
+- **Icon glyphs are one vector each.** A nested Icon instance takes its colour from an override on its child node
+  (Button, Toggle, Badge, Alert, Dialog, Toast and others bind the glyph stroke to their text colour). An override
+  belongs to one child, so an icon built from several `icon-glyph` vectors only recolours one of them (2026-11-11:
+  Circle X had a white ring and a black X). Every icon variant in the Icon set is flattened (`figma.flatten`) to a
+  single `icon-glyph` vector with its stroke colour and `icon-stroke-width` bound; after flattening, re-bind the
+  stroke colour override on each nested instance (the old child ids are gone). Keep the glyph `strokeAlign` CENTER:
+  an INSIDE override hides open paths when an icon is swapped. The frozen builder still draws multi-vector icons,
+  so flatten the result of any rebuild.
 
 ## Naming
 
