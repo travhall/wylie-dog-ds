@@ -594,6 +594,11 @@
     "$value": "{color.foreground.default}",
     "$description": "Text color of the navigation menu while hovered. Pairs with `navigation.background-hover`."
   },
+  "navigation.text": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of a navigation menu trigger or top-level link at rest. The trigger's chevron takes the same colour."
+  },
   "navigation.active": {
     "$type": "color",
     "$value": "{color.background.muted}",
@@ -729,6 +734,11 @@
     "$value": "{color.foreground.default}",
     "$description": "Text color of the calendar nav while hovered. Pairs with `calendar.nav-hover`."
   },
+  "calendar.nav-text": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Colour of the calendar's previous and next buttons at rest. The chevron takes the same colour."
+  },
   "calendar.header-text": {
     "$type": "color",
     "$value": "{color.foreground.muted}",
@@ -769,11 +779,6 @@
     "$value": "{color.foreground.default}",
     "$description": "Text color of the accordion content."
   },
-  "accordion.icon": {
-    "$type": "color",
-    "$value": "{color.foreground.muted}",
-    "$description": "Color of the accordion chevron icon."
-  },
   "accordion.trigger-hover": {
     "$type": "color",
     "$value": "{color.background.emphasis}",
@@ -803,16 +808,6 @@
     "$type": "number",
     "$value": "{opacity.60}",
     "$description": "Opacity of a disabled accordion trigger, its text and icon."
-  },
-  "accordion.icon-hover": {
-    "$type": "color",
-    "$value": "{color.foreground.default}",
-    "$description": "Color of the accordion icon while hovered."
-  },
-  "accordion.icon-open": {
-    "$type": "color",
-    "$value": "{color.foreground.default}",
-    "$description": "Color of the accordion icon when open."
   },
   "avatar.background": {
     "$type": "color",
@@ -873,6 +868,11 @@
     "$type": "color",
     "$value": "{color.foreground.default}",
     "$description": "Text color of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
+  },
+  "carousel.nav-text": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Colour of the carousel's previous and next buttons at rest. The chevron takes the same colour."
   },
   "contextmenu.background": {
     "$type": "color",
@@ -3814,11 +3814,6 @@
     "$value": "0px",
     "$description": "Height of the navigation menu indicator."
   },
-  "select.trigger.icon": {
-    "$type": "color",
-    "$value": "{color.foreground.muted}",
-    "$description": "Color of the select trigger chevron, the same as the accordion chevron."
-  },
   "label.error-text": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}",
@@ -4749,10 +4744,20 @@
     "$value": "{icon.size.md}",
     "$description": "Size of the close icon in a dialog."
   },
+  "dialog.close-button.text": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Colour of the dialog's close button (its X) at rest."
+  },
   "sheet.close-button.icon-size": {
     "$type": "spacing",
     "$value": "{icon.size.md}",
     "$description": "Size of the close icon in a sheet."
+  },
+  "sheet.close-button.text": {
+    "$type": "color",
+    "$value": "{color.foreground.default}",
+    "$description": "Colour of the sheet's close button (its X) at rest."
   },
   "toast.close-button.icon-size": {
     "$type": "spacing",

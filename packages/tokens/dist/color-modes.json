@@ -11,18 +11,6 @@
     "light": "oklch(0.202 0.011 47.84)",
     "dark": "oklch(0.977 0.003 65.02)"
   },
-  "color-accordion-icon": {
-    "light": "oklch(0.33 0.024 47.79)",
-    "dark": "oklch(0.843 0.027 71)"
-  },
-  "color-accordion-icon-hover": {
-    "light": "oklch(0.202 0.011 47.84)",
-    "dark": "oklch(0.977 0.003 65.02)"
-  },
-  "color-accordion-icon-open": {
-    "light": "oklch(0.202 0.011 47.84)",
-    "dark": "oklch(0.977 0.003 65.02)"
-  },
   "color-accordion-trigger-hover": {
     "light": "oklch(0.927 0.012 75.07)",
     "dark": "oklch(0.269 0.016 50.49)"
@@ -647,6 +635,10 @@
     "light": "oklch(0.927 0.012 75.07)",
     "dark": "oklch(0.269 0.016 50.49)"
   },
+  "color-calendar-nav-text": {
+    "light": "oklch(0.202 0.011 47.84)",
+    "dark": "oklch(0.977 0.003 65.02)"
+  },
   "color-calendar-nav-text-hover": {
     "light": "oklch(0.202 0.011 47.84)",
     "dark": "oklch(0.977 0.003 65.02)"
@@ -694,6 +686,10 @@
   "color-carousel-nav-hover": {
     "light": "oklch(0.927 0.012 75.07)",
     "dark": "oklch(0.269 0.016 50.49)"
+  },
+  "color-carousel-nav-text": {
+    "light": "oklch(0.202 0.011 47.84)",
+    "dark": "oklch(0.977 0.003 65.02)"
   },
   "color-carousel-nav-text-hover": {
     "light": "oklch(0.202 0.011 47.84)",
@@ -802,6 +798,10 @@
   "color-dialog-border": {
     "light": "oklch(0.74 0.019 69.96)",
     "dark": "oklch(0.397 0.018 63.78)"
+  },
+  "color-dialog-close-button-text": {
+    "light": "oklch(0.202 0.011 47.84)",
+    "dark": "oklch(0.977 0.003 65.02)"
   },
   "color-dialog-description": {
     "light": "oklch(0.33 0.024 47.79)",
@@ -1214,6 +1214,10 @@
   "color-navigation-open": {
     "light": "oklch(0.927 0.012 75.07)",
     "dark": "oklch(0.202 0.011 47.84)"
+  },
+  "color-navigation-text": {
+    "light": "oklch(0.202 0.011 47.84)",
+    "dark": "oklch(0.977 0.003 65.02)"
   },
   "color-navigation-text-highlighted": {
     "light": "oklch(0.202 0.011 47.84)",
@@ -1695,13 +1699,13 @@
     "light": "oklch(0.74 0.019 69.96)",
     "dark": "oklch(0.397 0.018 63.78)"
   },
-  "color-select-trigger-icon": {
-    "light": "oklch(0.33 0.024 47.79)",
-    "dark": "oklch(0.843 0.027 71)"
-  },
   "color-separator-color": {
     "light": "oklch(0.74 0.019 69.96)",
     "dark": "oklch(0.397 0.018 63.78)"
+  },
+  "color-sheet-close-button-text": {
+    "light": "oklch(0.202 0.011 47.84)",
+    "dark": "oklch(0.977 0.003 65.02)"
   },
   "color-sheet-content-background": {
     "light": "oklch(0.991 0.003 264.36)",

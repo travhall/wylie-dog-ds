@@ -442,16 +442,6 @@
       "kind": "text"
     },
     {
-      "foreground": "accordion.icon",
-      "backgrounds": ["color.background.default"],
-      "kind": "non-text"
-    },
-    {
-      "foreground": "select.trigger.icon",
-      "backgrounds": ["input.default.background", "input.background-hover"],
-      "kind": "non-text"
-    },
-    {
       "foreground": "popover.text",
       "backgrounds": ["popover.background"],
       "kind": "text"
@@ -878,16 +868,6 @@
       "kind": "text"
     },
     {
-      "foreground": "accordion.icon-hover",
-      "backgrounds": ["accordion.trigger-hover"],
-      "kind": "non-text"
-    },
-    {
-      "foreground": "accordion.icon-open",
-      "backgrounds": ["color.background.default"],
-      "kind": "non-text"
-    },
-    {
       "foreground": "site-header.nav-link.text-hover",
       "backgrounds": ["site-header.nav-link.background-hover"],
       "kind": "text"
@@ -976,6 +956,31 @@
       "backgrounds": ["select.item.background-highlighted"],
       "kind": "non-text",
       "note": "The inset indicator on a highlighted item sits on the item surface."
+    },
+    {
+      "foreground": "navigation.text",
+      "backgrounds": ["navigation.background", "navigation.background-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "calendar.nav-text",
+      "backgrounds": ["color.background.default", "calendar.nav-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "carousel.nav-text",
+      "backgrounds": ["carousel.nav-background", "carousel.nav-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "dialog.close-button.text",
+      "backgrounds": ["dialog.background"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "sheet.close-button.text",
+      "backgrounds": ["sheet.content.background"],
+      "kind": "non-text"
     }
   ],
   "knownFailures": [],
