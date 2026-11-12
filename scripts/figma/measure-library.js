@@ -125,6 +125,29 @@ function measureText(node) {
   };
 }
 
+// The first visible stroked vector under a node: the stroke width an icon draws. { icon: { stroke } }
+// to spread into an item, or nothing when the node has no stroked vector (compared only when both
+// sides have an icon).
+function measureIcon(node) {
+  if (!("findAll" in node)) return {};
+  const visible = (n) => {
+    for (let p = n; p && p !== node.parent; p = p.parent)
+      if (p.visible === false) return false;
+    return true;
+  };
+  const vector = node
+    .findAll(
+      (n) =>
+        n.type === "VECTOR" &&
+        Array.isArray(n.strokes) &&
+        n.strokes.some((s) => s.visible !== false) &&
+        !mixed(n.strokeWeight) &&
+        n.strokeWeight > 0
+    )
+    .find(visible);
+  return vector ? { icon: { stroke: r2(vector.strokeWeight) } } : {};
+}
+
 const items = [];
 const sets = page.findAllWithCriteria({ types: ["COMPONENT_SET"] });
 for (const set of sets) {
@@ -146,6 +169,7 @@ for (const set of sets) {
         variant: variant.name,
         box: measureBox(variant),
         texts,
+        ...measureIcon(variant),
       });
     for (const part of PARTS[set.name] ?? []) {
       // "name#1" is the second descendant called "name" (layers repeat: tabs-row-row)
@@ -156,9 +180,9 @@ for (const set of sets) {
           if (p.visible === false) return false;
         return true;
       };
-      const node = variant
-        .findAll((n) => n.name === partName)
-        .filter(visible)[Number(partIndex ?? 0)];
+      const node = variant.findAll((n) => n.name === partName).filter(visible)[
+        Number(partIndex ?? 0)
+      ];
       if (!node) continue;
       const partTexts =
         node.type === "TEXT"
@@ -174,6 +198,7 @@ for (const set of sets) {
         variant: `${variant.name} :: ${part}`,
         box: measureBox(node),
         texts: partTexts,
+        ...measureIcon(node),
       });
     }
   }

@@ -17,6 +17,14 @@ describe("Icon", () => {
     );
   });
 
+  it("draws the stroke at its token width at every size, not scaled by the glyph's grid", () => {
+    // `icon.stroke-width` must mean the pixels drawn, as the Figma stroke bound to it does
+    const { container } = render(<Icon icon={PlusIcon} size="sm" />);
+    expect(container.querySelector("svg")).toHaveClass(
+      "[&_*]:[vector-effect:non-scaling-stroke]"
+    );
+  });
+
   it.each(["xs", "sm", "md", "lg", "xl"] as const)(
     "sets the %s size from the icon size token",
     (size) => {

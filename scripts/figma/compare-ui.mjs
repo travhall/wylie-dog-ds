@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Compares what the Figma library draws with what the UI renders, variant by variant
 // (Plan 217). check-figma-parity compares the PROPERTIES; this compares the drawn VALUES:
-// size, padding, gap, radius, border, fill, shadow, opacity, and for the first text layer the
-// family, size, weight, line height, tracking, decoration and colour.
+// size, padding, gap, radius, border, fill, shadow, opacity, for the first text layer the
+// family, size, weight, line height, tracking, decoration and colour, and for the first icon the
+// drawn stroke width (one `icon.stroke-width` token must draw one line in Figma and in the UI).
 //
 //   1. Measure Figma:  run scripts/figma/measure-library.js through use_figma and save the
 //      result as figma-metrics.json (see the header of that file).
@@ -10,7 +11,8 @@
 //      (Storybook must be running; the harvester renders each Figma variant by URL args).
 //   3. Compare:        node scripts/figma/compare-ui.mjs figma-metrics.json code-metrics.json
 //
-// Both files have the shape { mode, items: [{ set, variant, box, texts }] }. A finding is
+// Both files have the shape { mode, items: [{ set, variant, box, texts, icon? }] }, where `icon`
+// is { stroke } in drawn pixels. A finding is
 // "allowed" when scripts/figma/compare-ui.config.json lists it with a reason, and the run
 // fails on any open finding or any allow entry that matches nothing.
 import fs from "node:fs";
@@ -28,6 +30,7 @@ export const TOLERANCE = {
   alpha: 0.02,
   opacity: 0.02,
   tracking: 0.1, // px
+  stroke: 0.1, // px, an icon's drawn stroke width (a 2px and a 1.33px stroke must not pass)
 };
 
 const FONT_WEIGHTS = {
@@ -188,6 +191,22 @@ export function compareMetrics(figma, code, tolerance = TOLERANCE) {
         }
       }
     }
+    // The first icon's drawn stroke width: one token (`icon.stroke-width`) must draw the same
+    // line in Figma and in the UI. Only compared when both sides have an icon (an unchecked box
+    // or a hidden slot has none).
+    const ia = item.icon;
+    const ib = other.icon;
+    if (ia && ib && !near(ia.stroke, ib.stroke, tolerance.stroke)) {
+      findings.push({
+        set: item.set,
+        variant: item.variant,
+        scope: "icon",
+        property: "stroke",
+        label: "icon stroke width",
+        figma: ia.stroke,
+        code: ib.stroke,
+      });
+    }
   }
   const extra = [...codeBy.keys()]
     .filter((k) => !figmaBy.has(k))
@@ -269,7 +288,7 @@ function main() {
     console.log(`\n${k}`);
     for (const f of list) {
       console.log(
-        `  ${f.label}${f.scope === "text" ? " (text layer)" : ""}: Figma ${show(f.figma)}, UI ${show(f.code)}`
+        `  ${f.label}${f.scope === "text" ? " (text layer)" : f.scope === "icon" ? " (first icon)" : ""}: Figma ${show(f.figma)}, UI ${show(f.code)}`
       );
     }
   }
