@@ -129,6 +129,8 @@ export const SelectTrigger = React.forwardRef<
       }
     : {};
 
+  const triggerIcon = triggerIcons[size ?? "md"];
+
   return (
     <SelectPrimitive.Trigger
       ref={ref}
@@ -141,9 +143,9 @@ export const SelectTrigger = React.forwardRef<
       <SelectPrimitive.Icon asChild>
         <Icon
           icon={ChevronDownIcon}
-          size={triggerIcons[size ?? "md"].size}
+          size={triggerIcon.size}
           className={cn(
-            triggerIcons[size ?? "md"].className,
+            triggerIcon.className,
             "text-(--color-select-trigger-icon)"
           )}
         />
