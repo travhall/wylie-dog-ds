@@ -96,7 +96,7 @@ export const SectionFeatures = React.forwardRef<
                         {feature.icon && (
                           <div
                             aria-hidden="true"
-                            className="flex h-(--space-section-features-icon-size) w-(--space-section-features-icon-size) items-center justify-center rounded-(--space-section-features-icon-radius) bg-(--color-section-features-icon-background)/10 text-(--color-section-features-icon-text) mb-(--space-section-features-card-icon-margin-bottom)"
+                            className="flex h-(--space-section-features-icon-size) w-(--space-section-features-icon-size) items-center justify-center rounded-(--space-section-features-icon-radius) bg-(--color-section-features-icon-background) text-(--color-section-features-icon-text) mb-(--space-section-features-card-icon-margin-bottom)"
                           >
                             {feature.icon}
                           </div>
@@ -126,7 +126,7 @@ export const SectionFeatures = React.forwardRef<
                       {feature.icon && (
                         <div
                           aria-hidden="true"
-                          className="flex h-(--space-section-features-icon-size) w-(--space-section-features-icon-size) items-center justify-center rounded-(--space-section-features-icon-radius) bg-(--color-section-features-icon-background)/10 text-(--color-section-features-icon-text)"
+                          className="flex h-(--space-section-features-icon-size) w-(--space-section-features-icon-size) items-center justify-center rounded-(--space-section-features-icon-radius) bg-(--color-section-features-icon-background) text-(--color-section-features-icon-text)"
                         >
                           {feature.icon}
                         </div>

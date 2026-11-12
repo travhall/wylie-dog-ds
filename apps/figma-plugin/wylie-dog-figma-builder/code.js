@@ -276,49 +276,6 @@ function bindStroke(node, colorVariable, widthVariable) {
   }
 }
 
-// A bound colour carries no alpha, so alpha on a bound fill (bg-(--token)/10) is paint opacity. Moving
-// a node under a section with explicit variable modes re-resolves its bound paints and resets that
-// opacity to 1, so each alpha fill is recorded and applied again once everything is arranged.
-var alphaFills = [];
-function setFillAlpha(node, alpha) {
-  try {
-    var f = node.fills;
-    if (f && f[0]) {
-      var c = JSON.parse(JSON.stringify(f[0]));
-      c.opacity = alpha;
-      node.fills = [c];
-    }
-  } catch (e) {
-    console.warn("fill alpha: " + e.message);
-  }
-}
-function applyFillAlpha(node, alpha) {
-  alphaFills.push({ node: node, alpha: alpha });
-  setFillAlpha(node, alpha);
-}
-function reapplyFillAlphas() {
-  for (var i = 0; i < alphaFills.length; i++) {
-    if (!alphaFills[i].node.removed) setFillAlpha(alphaFills[i].node, alphaFills[i].alpha);
-  }
-}
-
-// Changing the Card's own tile refreshes the layers of its instances, so a reference taken earlier
-// to an instance tile goes stale. The Section Features card tiles are found again here, after
-// every master alpha is in place, and get the 10% tint as an override of their own.
-function reapplyCardInstanceTileAlphas() {
-  var set = builtSetNodes["Section Features"];
-  if (!set) return;
-  var cards = set.findAll(function (n) {
-    return n.type === "INSTANCE" && n.name === "card";
-  });
-  for (var i = 0; i < cards.length; i++) {
-    var t = cards[i].findOne(function (n) {
-      return n.name === "icon" && n.type === "FRAME";
-    });
-    if (t) setFillAlpha(t, 0.1);
-  }
-}
-
 // Real CSS uses border-(--color-x)/10 style alpha, but a bound colour carries
 // no alpha: keep the stroke bound and put the alpha on the paint instead.
 function setStrokeOpacity(node, alpha) {
@@ -8047,7 +8004,7 @@ function buildSectionHero(x, y) {
 }
 
 // ---- SECTION FEATURES: variant (default, cards, grid) × columns (2, 3, 4) ----
-// The Section Features icon tile: icon-background at 10%, rounded, icon-text glyph. Used by the
+// The Section Features icon tile: icon-background fill, rounded, icon-text glyph. Used by the
 // feature columns and, hidden, by the Card (an instance cannot take new children, so the Card
 // carries the icon row and a Section Features card turns it on).
 function makeFeatureIconTile() {
@@ -8064,7 +8021,6 @@ function makeFeatureIconTile() {
   bindSize(tile, iconSizeVar, iconSizeVar);
   bindCornerRadius(tile, getVar("section-features/icon.radius"));
   bindFill(tile, getVar("section-features/icon-background"));
-  applyFillAlpha(tile, 0.1); // bg-(--color-section-features-icon-background)/10
   var glyph = figma.createFrame();
   glyph.name = "icon-glyph";
   resizeKeep(glyph, Math.round(iconSize / 2), Math.round(iconSize / 2));
@@ -8594,8 +8550,6 @@ async function main() {
     figma.notify("Wiring hover and press transitions...");
     var stateResult = await applyStateReactions();
     fitSetsAndSections(built, sections);
-    reapplyFillAlphas();
-    reapplyCardInstanceTileAlphas();
 
     figma.viewport.scrollAndZoomIntoView(built);
 

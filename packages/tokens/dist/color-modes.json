@@ -1644,8 +1644,8 @@
     "dark": "oklch(0.843 0.027 71)"
   },
   "color-section-features-icon-background": {
-    "light": "oklch(0.508 0.139 37.8)",
-    "dark": "oklch(0.508 0.139 37.8)"
+    "light": "oklch(0.962 0.017 39.66)",
+    "dark": "oklch(0.354 0.091 38.03)"
   },
   "color-section-features-icon-text": {
     "light": "oklch(0.508 0.139 37.8)",
