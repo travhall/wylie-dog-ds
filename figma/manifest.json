@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-12T17:41:14.918Z",
+  "generatedAt": "2026-11-12T18:20:00.000Z",
   "count": 49,
   "components": [
     {
@@ -709,14 +709,19 @@
         "https://wyliedogstorybook.com/?path=/docs/components-navigation-navigationmenu--docs"
       ],
       "properties": {
+        "orientation": {
+          "type": "VARIANT",
+          "default": "horizontal",
+          "options": ["horizontal", "vertical"]
+        },
         "state": {
           "type": "VARIANT",
           "default": "default",
           "options": ["default", "active", "open"]
         }
       },
-      "variantCount": 3,
-      "expectedVariantCount": 3
+      "variantCount": 6,
+      "expectedVariantCount": 6
     },
     {
       "name": "Page Layout",
