@@ -434,7 +434,9 @@ export const spacing = {
   "indicator-height": "0px",
   "handle-focus-ring-width": "2px",
   "handle-focus-ring-offset": "2px",
-  "icon-stroke-width": "2px",
+  "icon-stroke-width-sm": "1.5px",
+  "icon-stroke-width-md": "2.5px",
+  "icon-stroke-width-lg": "3.5px",
   "main-padding-y": "2rem",
   "main-padding-x-sm": "1rem",
   "main-padding-x-md": "1.5rem",
@@ -496,7 +498,8 @@ export const spacing = {
   "trigger-icon-offset-top": "0.0625rem",
   "link-padding-x": "0.75rem",
   "link-padding-y": "0.75rem",
-  "item-hover-lift": "0.25rem"
+  "item-hover-lift": "0.25rem",
+  "icon-stroke-width": "2px"
 };
 
 export const shadow = {

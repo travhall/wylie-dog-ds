@@ -1042,7 +1042,9 @@ export type CssVarName =
   | "--space-checkbox-icon-size-lg"
   | "--space-checkbox-icon-size-md"
   | "--space-checkbox-icon-size-sm"
-  | "--space-checkbox-icon-stroke-width"
+  | "--space-checkbox-icon-stroke-width-lg"
+  | "--space-checkbox-icon-stroke-width-md"
+  | "--space-checkbox-icon-stroke-width-sm"
   | "--space-checkbox-size-lg"
   | "--space-checkbox-size-md"
   | "--space-checkbox-size-sm"
@@ -2553,7 +2555,9 @@ export declare const cssVars: Readonly<{
   "spaceCheckboxIconSizeLg": "--space-checkbox-icon-size-lg";
   "spaceCheckboxIconSizeMd": "--space-checkbox-icon-size-md";
   "spaceCheckboxIconSizeSm": "--space-checkbox-icon-size-sm";
-  "spaceCheckboxIconStrokeWidth": "--space-checkbox-icon-stroke-width";
+  "spaceCheckboxIconStrokeWidthLg": "--space-checkbox-icon-stroke-width-lg";
+  "spaceCheckboxIconStrokeWidthMd": "--space-checkbox-icon-stroke-width-md";
+  "spaceCheckboxIconStrokeWidthSm": "--space-checkbox-icon-stroke-width-sm";
   "spaceCheckboxSizeLg": "--space-checkbox-size-lg";
   "spaceCheckboxSizeMd": "--space-checkbox-size-md";
   "spaceCheckboxSizeSm": "--space-checkbox-size-sm";

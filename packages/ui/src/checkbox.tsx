@@ -34,10 +34,13 @@ export const checkboxVariants = cva(
   }
 );
 
+// Size and stroke per checkbox size, each from its own token. The stroke is non-scaling, so the
+// token is the width drawn (1.5, 2.5, 3.5px), the same number a Figma stroke bound to it draws,
+// instead of a width in the glyph's 24 unit grid that the browser scales invisibly.
 const iconSizes = {
-  sm: "h-(--space-checkbox-icon-size-sm) w-(--space-checkbox-icon-size-sm)",
-  md: "h-(--space-checkbox-icon-size-md) w-(--space-checkbox-icon-size-md)",
-  lg: "h-(--space-checkbox-icon-size-lg) w-(--space-checkbox-icon-size-lg)",
+  sm: "h-(--space-checkbox-icon-size-sm) w-(--space-checkbox-icon-size-sm) stroke-(length:--space-checkbox-icon-stroke-width-sm) [&_*]:[vector-effect:non-scaling-stroke]",
+  md: "h-(--space-checkbox-icon-size-md) w-(--space-checkbox-icon-size-md) stroke-(length:--space-checkbox-icon-stroke-width-md) [&_*]:[vector-effect:non-scaling-stroke]",
+  lg: "h-(--space-checkbox-icon-size-lg) w-(--space-checkbox-icon-size-lg) stroke-(length:--space-checkbox-icon-stroke-width-lg) [&_*]:[vector-effect:non-scaling-stroke]",
 } as const;
 
 type CheckboxVariantProps = VariantProps<typeof checkboxVariants>;
@@ -63,10 +66,7 @@ export const Checkbox = React.forwardRef<
     <CheckboxPrimitive.Indicator className={cn("flex items-start")}>
       {checked === "indeterminate" ? (
         <svg
-          className={cn(
-            iconSizes[size ?? "md"],
-            "stroke-(length:--space-checkbox-icon-stroke-width)"
-          )}
+          className={iconSizes[size ?? "md"]}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -77,10 +77,7 @@ export const Checkbox = React.forwardRef<
         </svg>
       ) : (
         <svg
-          className={cn(
-            iconSizes[size ?? "md"],
-            "stroke-(length:--space-checkbox-icon-stroke-width)"
-          )}
+          className={iconSizes[size ?? "md"]}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

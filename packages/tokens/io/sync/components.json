@@ -7239,13 +7239,31 @@
             "Dark": "{opacity.60}"
           }
         },
-        "checkbox.icon-stroke-width": {
+        "checkbox.icon-stroke-width.sm": {
           "$type": "dimension",
-          "$value": "3px",
-          "$description": "Stroke width of the checkbox check and indeterminate marks.",
+          "$value": "1.5px",
+          "$description": "Stroke width of the check and indeterminate marks in the small checkbox, drawn at this width (not scaled with the icon).",
           "valuesByMode": {
-            "Light": "3px",
-            "Dark": "3px"
+            "Light": "1.5px",
+            "Dark": "1.5px"
+          }
+        },
+        "checkbox.icon-stroke-width.md": {
+          "$type": "dimension",
+          "$value": "2.5px",
+          "$description": "Stroke width of the check and indeterminate marks in the medium checkbox, drawn at this width (not scaled with the icon).",
+          "valuesByMode": {
+            "Light": "2.5px",
+            "Dark": "2.5px"
+          }
+        },
+        "checkbox.icon-stroke-width.lg": {
+          "$type": "dimension",
+          "$value": "3.5px",
+          "$description": "Stroke width of the check and indeterminate marks in the large checkbox, drawn at this width (not scaled with the icon).",
+          "valuesByMode": {
+            "Light": "3.5px",
+            "Dark": "3.5px"
           }
         },
         "radio.opacity-disabled": {

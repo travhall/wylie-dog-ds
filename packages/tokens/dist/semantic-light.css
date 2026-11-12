@@ -1206,7 +1206,9 @@
   --line-height-textarea-line-height: 1.5;
   --select-opacity-disabled: 0.6;
   --checkbox-opacity-disabled: 0.6;
-  --space-checkbox-icon-stroke-width: 3px;
+  --space-checkbox-icon-stroke-width-sm: 1.5px;
+  --space-checkbox-icon-stroke-width-md: 2.5px;
+  --space-checkbox-icon-stroke-width-lg: 3.5px;
   --radio-opacity-disabled: 0.6;
   --space-radio-border-width: 1px;
   --switch-track-opacity-disabled: 0.6;
