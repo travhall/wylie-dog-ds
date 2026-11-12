@@ -211,7 +211,25 @@ function measureInPage(rootSelector) {
       color: hex(t.color),
     });
   }
-  return { box: boxMetrics, texts };
+  // the first icon: the stroke width it DRAWS. A stroke in the svg's own grid (viewBox) scales with
+  // the icon (2 in a 24 grid is 1.33px at 16px); a non-scaling stroke is drawn as it is written.
+  let icon;
+  const svg = el.matches("svg") ? el : el.querySelector("svg");
+  const shape = svg?.querySelector(
+    "path, circle, line, polyline, polygon, rect"
+  );
+  if (svg && shape) {
+    const s = getComputedStyle(shape);
+    const width = px(s.strokeWidth);
+    if (s.stroke !== "none" && width > 0) {
+      const scale =
+        s.vectorEffect === "non-scaling-stroke"
+          ? 1
+          : (shape.getScreenCTM()?.a ?? 1);
+      icon = { stroke: Math.round(width * scale * 100) / 100 };
+    }
+  }
+  return icon ? { box: boxMetrics, texts, icon } : { box: boxMetrics, texts };
 }
 
 async function main() {

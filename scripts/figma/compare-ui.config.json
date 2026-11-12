@@ -474,6 +474,27 @@
         "content": "[role=menu]"
       }
     },
+    "Navigation Menu": {
+      "story": "components-navigation-navigationmenu--default",
+      "root": "#storybook-root nav",
+      "args": {},
+      "open": {
+        "click": "#storybook-root button",
+        "when": {
+          "state": "open"
+        }
+      },
+      "unrenderable": {
+        "state": ["active"]
+      },
+      "parts": {
+        "list": "#storybook-root nav ul",
+        "list-row": "#storybook-root nav ul > li:nth-child(1) > a",
+        "list-row#2": "#storybook-root nav ul > li:nth-child(2) > button",
+        "list-row#3": "#storybook-root nav ul > li:nth-child(4) > a",
+        "viewport": "#storybook-root nav > div > div[data-state=open]"
+      }
+    },
     "Card Grid": {
       "story": "patterns-data-patterns-card-grid--default",
       "root": "[role=region]",
@@ -1930,6 +1951,74 @@
       "variant": ":: select-stack$",
       "scope": "text",
       "reason": "The measurer reads the first text under the menu, which in the UI is the default-size text, not the item text; the item rows carry the real per-size measurement."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": "state=default$",
+      "reason": "The story's own labels (Home, Products, Company, Contact) set the width; Figma draws placeholder labels (Home, About, Products, Contact)."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": "state=open$",
+      "reason": "The story's own labels (Home, Products, Company, Contact) set the width; Figma draws placeholder labels (Home, About, Products, Contact)."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: list$",
+      "reason": "The story's own labels (Home, Products, Company, Contact) set the width; Figma draws placeholder labels (Home, About, Products, Contact)."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": ":: viewport$",
+      "reason": "The story's open content is a bespoke grid with its own width (w-100 plus padding); Figma draws a plain 280px list of links."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "h",
+      "scope": "box",
+      "variant": "state=open$",
+      "reason": "In code the open viewport is absolutely positioned under the bar, so the root stays one row tall; Figma draws the viewport inside the variant."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "h",
+      "scope": "box",
+      "variant": ":: viewport$",
+      "reason": "The story's open content is a bespoke grid of title and description links; Figma draws three plain links."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "gap",
+      "scope": "box",
+      "reason": "Code spaces the list and the trigger icon with margins (space-x, ml), which read as 0 gap; Figma draws the same 4px as an auto-layout gap."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "size",
+      "scope": "text",
+      "variant": ":: viewport$",
+      "reason": "The first text in the story's open viewport is a featured-link heading (18px); Figma's first viewport text is a plain 14px link."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "lineHeight",
+      "scope": "text",
+      "variant": ":: viewport$",
+      "reason": "The first text in the story's open viewport is a featured-link heading (28px line height); Figma's is a plain 14px link."
+    },
+    {
+      "set": "Checkbox",
+      "property": "stroke",
+      "scope": "icon",
+      "reason": "Open decision (2026-11-11): code draws checkbox.icon-stroke-width (3px) in the check's 24 unit grid, so 1.5, 2.5 and 3.5px at sm, md and lg; Figma binds the generic icon-stroke-width and draws a flat 2px. To close it, make the check non-scaling like the Icon, bind Figma to checkbox/icon-stroke-width, and drop this entry."
     }
   ]
 }

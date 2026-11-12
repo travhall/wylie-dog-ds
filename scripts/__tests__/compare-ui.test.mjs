@@ -126,6 +126,28 @@ test("a missing text layer and a variant with no UI measurement are reported", (
   assert.deepEqual(gone.extra, ["Button variant=other"]);
 });
 
+test("an icon's drawn stroke must match to a tenth of a pixel", () => {
+  // the same 2px token drawn flat in Figma and scaled by the viewBox in the UI (1.33px at 16px)
+  const r = files(
+    item({ icon: { stroke: 2 } }),
+    item({ icon: { stroke: 1.33 } })
+  );
+  assert.deepEqual(
+    r.findings.map((f) => [f.scope, f.property, f.figma, f.code]),
+    [["icon", "stroke", 2, 1.33]]
+  );
+  assert.deepEqual(
+    files(item({ icon: { stroke: 2 } }), item({ icon: { stroke: 2.04 } }))
+      .findings,
+    []
+  );
+});
+
+test("an icon is compared only when both sides have one", () => {
+  assert.deepEqual(files(item({ icon: { stroke: 2 } }), item()).findings, []);
+  assert.deepEqual(files(item(), item({ icon: { stroke: 2 } })).findings, []);
+});
+
 test("shadows compare layer by layer", () => {
   const s = { x: 0, y: 4, blur: 6, spread: -1, color: "#0000001a" };
   const same = files(

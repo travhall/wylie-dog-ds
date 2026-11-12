@@ -1,6 +1,6 @@
 # Comparing the Figma library with the UI
 
-`pnpm check:figma-parity` compares a component's _properties_ (is there a `size` axis, does it match the code). This comparison checks what is _drawn_: for every variant in the Figma library it renders the same variant in Storybook and compares size, padding, gap, radius, border, fill, opacity and shadow, and for the first text layer the font family, size, weight, line height, letter spacing, decoration and colour. A hover or pressed variant is measured with the mouse hovering or pressed, so the states are compared too.
+`pnpm check:figma-parity` compares a component's _properties_ (is there a `size` axis, does it match the code). This comparison checks what is _drawn_: for every variant in the Figma library it renders the same variant in Storybook and compares size, padding, gap, radius, border, fill, opacity and shadow, and for the first text layer the font family, size, weight, line height, letter spacing, decoration and colour, and for the first icon the stroke width it draws. A hover or pressed variant is measured with the mouse hovering or pressed, so the states are compared too.
 
 It exists because earlier audits compared sizes, colours and spacing by hand and missed the Badge's font family, the Command shortcut's tracking, the Tabs shadow and the Calendar's button opacity. Every one of those is a column in this report.
 
@@ -39,7 +39,7 @@ A `use_figma` call returns at most 48,000 bytes and cannot write a file, so a la
 
 ## Tolerances and accepted differences
 
-A size, padding, gap, radius, border width, font size, line height or shadow offset may differ by 1px; a colour by 3 of 255 per channel; opacity by 0.02; letter spacing by 0.1px. A radius is capped at half the smaller side on both sides, so a pill compares equal whether it is drawn as 9999 or as half the height.
+A size, padding, gap, radius, border width, font size, line height or shadow offset may differ by 1px; a colour by 3 of 255 per channel; opacity by 0.02; letter spacing by 0.1px; an icon stroke by 0.1px (a flat 2px and a 1.33px stroke must not pass). A radius is capped at half the smaller side on both sides, so a pill compares equal whether it is drawn as 9999 or as half the height.
 
 A difference the owner accepts goes in the `allow` list with a reason (`set`, `property`, and optionally `scope` or a `variant` substring). A `variant` ending in `$` must match the end of the name (`":: select-stack$"` covers the menu and not `:: select-stack-row`). An entry that matches nothing fails the run, so the list cannot rot.
 
@@ -59,10 +59,11 @@ To repeat the run: set the sections' variable modes (the `components` and `seman
 
 Not measured, and why:
 
-- **Navigation Menu** is not mapped. The story's open content is a bespoke grid with story-only gradient classes, so there is no comparable element; the closed list differs in width by structure.
+- **Navigation Menu** is mapped by its parts: the list, three rows (a link, a trigger with the chevron, a link) and the open viewport box (border, radius, shadow, fill). The story's open content is a bespoke grid with story-only gradient classes, so the viewport's size and first text are allowed, as are the list width (the story's own labels) and the gap (the code spaces with margins). `State=Active` is not rendered by the story (`unrenderable`).
 - **Dialog `size=full`**: the story sizes it to the viewport (855px at the 900px harvest viewport) while Figma draws 1200px (allow entries).
 - **Site Header `size=sm`**: the story ignores the `size` URL arg, so the sm rows compare against the default size (allow entries).
 - **Variants a story cannot render** (`unrenderable`): Scrollbar horizontal, Command with results, Pagination many pages, Accordion open, Tabs sm and lg, Radio checked, Toggle Group vertical pressed.
 - **Table selected row**: the table story renders no selected row.
 - **Hover and pressed inside overlays**: Dropdown Menu and Context Menu hover (first item) are measured with `stateTarget`; pressed and the Menubar items are not.
-- The focus ring, a second text layer or icon, and the Input and Textarea placeholder colour (an attribute in the UI, a text layer in Figma) are not compared.
+- **Icon stroke** is compared for the first stroked icon only, and only when both sides have one. The UI side is the width actually drawn: `icon.stroke-width` is non-scaling in the `Icon` (`vector-effect: non-scaling-stroke`), so it draws the same pixels in Figma and in code. A component that draws its own svg (Checkbox) must do the same; Checkbox is an allowed, open decision. The `Icon` set itself is not mapped.
+- The focus ring, a second text layer or icon (beyond the stroke), and the Input and Textarea placeholder colour (an attribute in the UI, a text layer in Figma) are not compared.
