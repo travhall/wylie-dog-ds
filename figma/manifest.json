@@ -607,11 +607,11 @@
         "size": {
           "type": "VARIANT",
           "default": "md",
-          "options": ["md", "xs", "sm", "lg", "xl"]
+          "options": ["md", "sm", "lg"]
         }
       },
-      "variantCount": 140,
-      "expectedVariantCount": 140
+      "variantCount": 84,
+      "expectedVariantCount": 84
     },
     {
       "name": "Input",
