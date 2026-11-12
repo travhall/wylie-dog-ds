@@ -5589,9 +5589,19 @@
     "$value": "{border-width.1}",
     "$description": "Border width of the feature grid."
   },
-  "icon-stroke-width": {
+  "icon.stroke-width.sm": {
+    "$type": "dimension",
+    "$value": "1.5px",
+    "$description": "Stroke width of a small (16px) line icon, drawn at this width (not scaled with the icon)."
+  },
+  "icon.stroke-width.md": {
     "$type": "dimension",
     "$value": "{border-width.2}",
-    "$description": "Stroke width of the line icons drawn as inline SVG."
+    "$description": "Stroke width of a medium (24px) line icon, drawn at this width (not scaled with the icon). Also the stroke of an icon with no size."
+  },
+  "icon.stroke-width.lg": {
+    "$type": "dimension",
+    "$value": "2.5px",
+    "$description": "Stroke width of a large (32px) line icon, drawn at this width (not scaled with the icon)."
   }
 }

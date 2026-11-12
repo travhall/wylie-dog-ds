@@ -115,6 +115,7 @@ export const SheetContent = React.forwardRef<
         >
           <Icon
             icon={XIcon}
+            size="md"
             className="h-(--space-sheet-close-button-icon-size) w-(--space-sheet-close-button-icon-size)"
           />
           <span className="sr-only">Close</span>

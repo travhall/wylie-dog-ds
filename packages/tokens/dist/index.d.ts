@@ -1508,4 +1508,6 @@ export declare const featureGridIconDuration: "400ms";
 export declare const featureGridItemHoverScale: number;
 export declare const featureGridIconHoverScale: number;
 export declare const featureGridBorderWidth: "1px";
-export declare const iconStrokeWidth: "2px";
+export declare const iconStrokeWidthSm: "1.5px";
+export declare const iconStrokeWidthMd: "2px";
+export declare const iconStrokeWidthLg: "2.5px";

@@ -119,6 +119,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     >
       <Icon
         icon={XIcon}
+        size="sm"
         className="h-(--space-toast-close-button-icon-size) w-(--space-toast-close-button-icon-size) shrink-0"
       />
       <span className="sr-only">{srText}</span>

@@ -88,6 +88,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
           <>
             <Icon
               icon={icon}
+              size="sm"
               aria-hidden="true"
               className="h-(--space-alert-icon-size) w-(--space-alert-icon-size) shrink-0"
             />

@@ -10,12 +10,29 @@ describe("Icon", () => {
     expect(container.querySelector("svg")).toBeInTheDocument();
   });
 
-  it("applies the token stroke weight to every glyph", () => {
+  it("draws the md stroke when it has no size", () => {
     const { container } = render(<Icon icon={PlusIcon} />);
     expect(container.querySelector("svg")).toHaveClass(
-      "stroke-(length:--space-icon-stroke-width)"
+      "stroke-(length:--space-icon-stroke-width-md)"
     );
   });
+
+  it.each(["sm", "md", "lg"] as const)(
+    "takes its %s stroke from the stroke token for that size",
+    (size) => {
+      const { container } = render(<Icon icon={PlusIcon} size={size} />);
+      const svg = container.querySelector("svg");
+      expect(svg).toHaveClass(
+        `stroke-(length:--space-icon-stroke-width-${size})`
+      );
+      // the size's own token is the one that applies, not the md base
+      if (size !== "md") {
+        expect(svg).not.toHaveClass(
+          "stroke-(length:--space-icon-stroke-width-md)"
+        );
+      }
+    }
+  );
 
   it("draws the stroke at its token width at every size, not scaled by the glyph's grid", () => {
     // `icon.stroke-width` must mean the pixels drawn, as the Figma stroke bound to it does

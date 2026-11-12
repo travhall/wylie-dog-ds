@@ -210,7 +210,9 @@ describe("inferScopes: primitives and other types", () => {
 
 describe("inferScopes: non-color tokens by name", () => {
   it.each([
-    ["icon-stroke-width", ["STROKE_FLOAT"]],
+    ["icon.stroke-width.sm", ["STROKE_FLOAT"]],
+    ["icon.stroke-width.md", ["STROKE_FLOAT"]],
+    ["icon.stroke-width.lg", ["STROKE_FLOAT"]],
     ["checkbox.icon-stroke-width.sm", ["STROKE_FLOAT"]],
     ["checkbox.icon-stroke-width.md", ["STROKE_FLOAT"]],
     ["checkbox.icon-stroke-width.lg", ["STROKE_FLOAT"]],
@@ -324,14 +326,14 @@ describe("inferScopes: the real token files", () => {
   }));
   const key = (scopes: string[]) => (scopes.length ? scopes.join("+") : "[]");
 
-  it("reads all three collections (286, 1119 and 102 variables)", () => {
+  it("reads all three collections (286, 1121 and 102 variables)", () => {
     const count = (c: string) =>
       variables.filter((v) => v.collection === c).length;
     expect([
       count("primitive"),
       count("components"),
       count("semantic"),
-    ]).toEqual([286, 1119, 102]);
+    ]).toEqual([286, 1121, 102]);
   });
 
   it("leaves no variable on ALL_SCOPES", () => {

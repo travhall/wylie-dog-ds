@@ -60,7 +60,7 @@ CI runs the check after the build as advisory (`continue-on-error`), so a mismat
   (Button, Toggle, Badge, Alert, Dialog, Toast and others bind the glyph stroke to their text colour). An override
   belongs to one child, so an icon built from several `icon-glyph` vectors only recolours one of them (2026-11-11:
   Circle X had a white ring and a black X). Every icon variant in the Icon set is flattened (`figma.flatten`) to a
-  single `icon-glyph` vector with its stroke colour and `icon-stroke-width` bound; after flattening, re-bind the
+  single `icon-glyph` vector with its stroke colour and its size's `icon/stroke-width/*` bound; after flattening, re-bind the
   stroke colour override on each nested instance (the old child ids are gone). Keep the glyph `strokeAlign` CENTER:
   an INSIDE override hides open paths when an icon is swapped. The frozen builder still draws multi-vector icons,
   so flatten the result of any rebuild.
@@ -82,7 +82,7 @@ It is a one-time scaffold run inside Figma's plugin sandbox, not part of Token B
   (`node scripts/figma/component-docs.mjs --builder` rewrites it). `scripts/check-builder-coverage.mjs`
   runs every builder under a stubbed `figma` and checks text styles.
 - Values are bound, not typed: `bindStroke` derives the border width from the colour token's component
-  (`card/border` to `card/border-width`), glyph stroke weights bind to `icon-stroke-width`, gaps and padding bind
+  (`card/border` to `card/border-width`), glyph stroke weights bind to `icon/stroke-width/sm|md|lg` by the icon's size, gaps and padding bind
   through `bindProp`. `scripts/check-builder-coverage.mjs` fails on a border with no width token and on raw gap,
   padding or radius numbers beyond its budgets. `scripts/figma/audit-library.js` (read-only, one `use_figma` call)
   lists what is still unbound in the file.

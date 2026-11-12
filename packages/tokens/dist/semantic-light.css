@@ -1519,5 +1519,7 @@
   --feature-grid-item-hover-scale: 1.05;
   --feature-grid-icon-hover-scale: 1.1;
   --space-feature-grid-border-width: 1px;
-  --space-icon-stroke-width: 2px;
+  --space-icon-stroke-width-sm: 1.5px;
+  --space-icon-stroke-width-md: 2px;
+  --space-icon-stroke-width-lg: 2.5px;
 }

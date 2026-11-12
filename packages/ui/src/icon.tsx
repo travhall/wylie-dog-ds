@@ -8,18 +8,22 @@ import { cn } from "./lib/utils";
 // glyph), so adopters keep their icon library and the system keeps control of size and
 // stroke weight: `icon.size.*` and `icon.stroke-width` change every icon at once.
 //
-// The stroke is non-scaling: `icon.stroke-width` is the width drawn on screen at every size, not
-// a width in the glyph's 24 unit grid (which would draw 1.33px at 16px). That is what a Figma
-// stroke bound to the same variable draws, so one token means one thing in design and code.
-// `vector-effect` is not inherited, so it goes on every shape inside the svg.
+// The stroke is non-scaling: `icon.stroke-width.*` is the width drawn on screen, not a width in the
+// glyph's 24 unit grid (which would draw 1.33px at 16px). That is what a Figma stroke bound to the
+// same variable draws, so one token means one thing in design and code. `vector-effect` is not
+// inherited, so it goes on every shape inside the svg.
+//
+// Each size has its own stroke token (the Checkbox pattern), because one weight cannot look right at
+// 16px and 32px. An icon with no size draws the md stroke. The system's own components pass the
+// size that matches their size token, so the stroke follows the size everywhere (a test enforces it).
 export const iconVariants = cva(
-  "stroke-(length:--space-icon-stroke-width) [&_*]:[vector-effect:non-scaling-stroke]",
+  "stroke-(length:--space-icon-stroke-width-md) [&_*]:[vector-effect:non-scaling-stroke]",
   {
     variants: {
       size: {
-        sm: "h-(--space-icon-size-sm) w-(--space-icon-size-sm)",
-        md: "h-(--space-icon-size-md) w-(--space-icon-size-md)",
-        lg: "h-(--space-icon-size-lg) w-(--space-icon-size-lg)",
+        sm: "h-(--space-icon-size-sm) w-(--space-icon-size-sm) stroke-(length:--space-icon-stroke-width-sm)",
+        md: "h-(--space-icon-size-md) w-(--space-icon-size-md) stroke-(length:--space-icon-stroke-width-md)",
+        lg: "h-(--space-icon-size-lg) w-(--space-icon-size-lg) stroke-(length:--space-icon-stroke-width-lg)",
       },
     },
   }

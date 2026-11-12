@@ -498,7 +498,9 @@ export const spacing = {
   "link-padding-x": "0.75rem",
   "link-padding-y": "0.75rem",
   "item-hover-lift": "0.25rem",
-  "icon-stroke-width": "2px"
+  "stroke-width-sm": "1.5px",
+  "stroke-width-md": "2px",
+  "stroke-width-lg": "2.5px"
 };
 
 export const shadow = {

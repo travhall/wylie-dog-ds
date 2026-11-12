@@ -16684,16 +16684,42 @@
         "description": "Border width of the page layout."
       }
     },
-    "icon-stroke-width": {
-      "icon-stroke-width": {
-        "name": "iconStrokeWidth",
+    "icon": {
+      "icon-stroke-width-sm": {
+        "name": "iconStrokeWidthSm",
         "path": [
-          "icon-stroke-width"
+          "icon",
+          "stroke-width",
+          "sm"
+        ],
+        "value": "1.5px",
+        "type": "dimension",
+        "variable": "var(--icon-stroke-width-sm)",
+        "description": "Stroke width of a small (16px) line icon, drawn at this width (not scaled with the icon)."
+      },
+      "icon-stroke-width-md": {
+        "name": "iconStrokeWidthMd",
+        "path": [
+          "icon",
+          "stroke-width",
+          "md"
         ],
         "value": "2px",
         "type": "dimension",
-        "variable": "var(--icon-stroke-width)",
-        "description": "Stroke width of the line icons drawn as inline SVG."
+        "variable": "var(--icon-stroke-width-md)",
+        "description": "Stroke width of a medium (24px) line icon, drawn at this width (not scaled with the icon). Also the stroke of an icon with no size."
+      },
+      "icon-stroke-width-lg": {
+        "name": "iconStrokeWidthLg",
+        "path": [
+          "icon",
+          "stroke-width",
+          "lg"
+        ],
+        "value": "2.5px",
+        "type": "dimension",
+        "variable": "var(--icon-stroke-width-lg)",
+        "description": "Stroke width of a large (32px) line icon, drawn at this width (not scaled with the icon)."
       }
     }
   }

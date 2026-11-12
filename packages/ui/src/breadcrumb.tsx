@@ -103,7 +103,7 @@ const BreadcrumbSeparator = React.forwardRef<
     )}
     {...props}
   >
-    {children ?? <Icon icon={ChevronRightIcon} />}
+    {children ?? <Icon icon={ChevronRightIcon} size="md" />}
   </li>
 ));
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
@@ -126,6 +126,7 @@ const BreadcrumbEllipsis = React.forwardRef<
   >
     <Icon
       icon={MoreHorizontalIcon}
+      size="sm"
       className="h-(--space-breadcrumb-separator-size) w-(--space-breadcrumb-separator-size)"
     />
     <span className="sr-only">More</span>

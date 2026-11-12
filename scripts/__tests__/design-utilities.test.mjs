@@ -100,7 +100,7 @@ test("classify passes a token reference, a reset, a centring fraction and struct
     "invert",
     "outline-solid",
     "outline-hidden",
-    "stroke-(length:--space-icon-stroke-width)",
+    "stroke-(length:--space-icon-stroke-width-md)",
     "decoration-(--color-x)",
     "",
   ]) {

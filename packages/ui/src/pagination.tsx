@@ -84,6 +84,7 @@ const PaginationPrevious = ({
   >
     <Icon
       icon={ChevronLeftIcon}
+      size="sm"
       className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)"
     />
     <span>Previous</span>
@@ -106,6 +107,7 @@ const PaginationNext = ({
     <span>Next</span>
     <Icon
       icon={ChevronRightIcon}
+      size="sm"
       className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)"
     />
   </PaginationLink>
@@ -126,6 +128,7 @@ const PaginationEllipsis = ({
   >
     <Icon
       icon={MoreHorizontalIcon}
+      size="sm"
       className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)"
     />
     <span className="sr-only">More pages</span>

@@ -30,6 +30,7 @@ const ContextMenuSubTrigger = React.forwardRef<
     {children}
     <Icon
       icon={ChevronRightIcon}
+      size="md"
       className="ml-auto h-(--space-context-menu-item-sub-trigger-icon-size) w-(--space-context-menu-item-sub-trigger-icon-size)"
     />
   </ContextMenuPrimitive.SubTrigger>
@@ -105,6 +106,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
       <ContextMenuPrimitive.ItemIndicator>
         <Icon
           icon={CheckIcon}
+          size="sm"
           className="h-(--space-context-menu-item-icon-size) w-(--space-context-menu-item-icon-size)"
         />
       </ContextMenuPrimitive.ItemIndicator>
@@ -132,6 +134,7 @@ const ContextMenuRadioItem = React.forwardRef<
       <ContextMenuPrimitive.ItemIndicator>
         <Icon
           icon={CircleIcon}
+          size="sm"
           className="h-(--space-context-menu-item-icon-size) w-(--space-context-menu-item-icon-size) fill-current"
         />
       </ContextMenuPrimitive.ItemIndicator>

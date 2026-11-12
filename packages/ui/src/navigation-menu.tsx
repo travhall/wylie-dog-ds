@@ -70,6 +70,7 @@ const NavigationMenuTrigger = React.forwardRef<
     {children}{" "}
     <Icon
       icon={ChevronDownIcon}
+      size="sm"
       className="relative top-(--space-navigation-menu-trigger-icon-offset-top) ml-(--space-navigation-menu-indicator-margin-left) h-(--space-navigation-menu-trigger-icon-size) w-(--space-navigation-menu-trigger-icon-size) transition duration-(--duration-navigation-menu-indicator-duration) group-data-[state=open]:rotate-180"
       aria-hidden="true"
     />
