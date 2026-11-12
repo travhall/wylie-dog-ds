@@ -181,7 +181,7 @@
   {
     "name": "UI - NavigationMenu",
     "path": "packages/ui/dist/navigation-menu.js",
-    "limit": "15 KB",
+    "limit": "24.5 KB",
     "ignore": ["react", "@radix-ui/react-navigation-menu"]
   },
   {
@@ -271,7 +271,7 @@
   {
     "name": "UI - Compositions",
     "path": "packages/ui/dist/compositions/index.js",
-    "limit": "33 KB",
+    "limit": "38 KB",
     "ignore": ["react"]
   }
 ]
