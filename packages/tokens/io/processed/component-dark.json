@@ -3989,6 +3989,11 @@
     "$value": "{space.150}",
     "$description": "Size of an icon in the medium badge (12px, under the 14px label's line height). The icon draws the sm stroke."
   },
+  "badge.dismiss-size": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Width and height of the round dismiss button in a dismissible badge (16px, in every badge size). The X inside takes the badge's icon size."
+  },
   "badge.icon-size.lg": {
     "$type": "spacing",
     "$value": "{icon.size.sm}",

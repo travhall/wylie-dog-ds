@@ -1193,6 +1193,7 @@ export const buttonOpacityDisabled = 0.6; // Opacity of a disabled button. A loa
 export const badgeIconGap = "0.25rem"; // Gap between an icon and the label of the badge.
 export const badgeIconSizeSm = "0.75rem"; // Size of an icon in the small badge (12px, not on the icon scale, like the other 12px indicators). The icon draws the sm stroke.
 export const badgeIconSizeMd = "0.75rem"; // Size of an icon in the medium badge (12px, under the 14px label's line height). The icon draws the sm stroke.
+export const badgeDismissSize = "1rem"; // Width and height of the round dismiss button in a dismissible badge (16px, in every badge size). The X inside takes the badge's icon size.
 export const badgeIconSizeLg = "1rem"; // Size of an icon in the large badge (16px, the sm icon size, beside the 16px label).
 export const cardBorderWidth = "1px"; // Border width of the card.
 export const textareaOpacityDisabled = 0.6; // Opacity of a disabled textarea.

@@ -99,6 +99,7 @@
     "badge.destructive.background-hover": "var(--color-badge-destructive-background-hover)",
     "badge.destructive.border": "var(--color-badge-destructive-border)",
     "badge.destructive.text": "var(--color-badge-destructive-text)",
+    "badge.dismiss-size": "var(--space-badge-dismiss-size)",
     "badge.font-family": "var(--badge-font-family)",
     "badge.font-size.lg": "var(--font-size-badge-font-size-lg)",
     "badge.font-size.md": "var(--font-size-badge-font-size-md)",

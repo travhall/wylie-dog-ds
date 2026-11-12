@@ -7194,6 +7194,15 @@
             "Dark": "{space.150}"
           }
         },
+        "badge.dismiss-size": {
+          "$type": "spacing",
+          "$value": "{space.200}",
+          "$description": "Width and height of the round dismiss button in a dismissible badge (16px, in every badge size). The X inside takes the badge's icon size.",
+          "valuesByMode": {
+            "Light": "{space.200}",
+            "Dark": "{space.200}"
+          }
+        },
         "badge.icon-size.lg": {
           "$type": "spacing",
           "$value": "{icon.size.sm}",

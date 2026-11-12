@@ -981,6 +981,7 @@ export type CssVarName =
   | "--space-avatar-size-sm"
   | "--space-avatar-size-xl"
   | "--space-badge-border-width"
+  | "--space-badge-dismiss-size"
   | "--space-badge-icon-gap"
   | "--space-badge-icon-size-lg"
   | "--space-badge-icon-size-md"
@@ -2500,6 +2501,7 @@ export declare const cssVars: Readonly<{
   "spaceAvatarSizeSm": "--space-avatar-size-sm";
   "spaceAvatarSizeXl": "--space-avatar-size-xl";
   "spaceBadgeBorderWidth": "--space-badge-border-width";
+  "spaceBadgeDismissSize": "--space-badge-dismiss-size";
   "spaceBadgeIconGap": "--space-badge-icon-gap";
   "spaceBadgeIconSizeLg": "--space-badge-icon-size-lg";
   "spaceBadgeIconSizeMd": "--space-badge-icon-size-md";

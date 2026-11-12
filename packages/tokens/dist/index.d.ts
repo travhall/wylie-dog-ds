@@ -1188,6 +1188,7 @@ export declare const buttonOpacityDisabled: number;
 export declare const badgeIconGap: "0.25rem";
 export declare const badgeIconSizeSm: "0.75rem";
 export declare const badgeIconSizeMd: "0.75rem";
+export declare const badgeDismissSize: "1rem";
 export declare const badgeIconSizeLg: "1rem";
 export declare const cardBorderWidth: "1px";
 export declare const textareaOpacityDisabled: number;

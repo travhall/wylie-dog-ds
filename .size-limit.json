@@ -271,7 +271,7 @@
   {
     "name": "UI - Compositions",
     "path": "packages/ui/dist/compositions/index.js",
-    "limit": "38 KB",
+    "limit": "39 KB",
     "ignore": ["react"]
   }
 ]

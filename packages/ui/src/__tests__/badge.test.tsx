@@ -48,9 +48,9 @@ describe("Badge", () => {
         render(<Badge size={size}>Label</Badge>);
         const badge = screen.getByText("Label");
         expect(badge).toHaveClass(
-          `[&>svg]:h-(--space-badge-icon-size-${size})`,
-          `[&>svg]:w-(--space-badge-icon-size-${size})`,
-          "[&>svg]:stroke-(length:--space-icon-stroke-width-sm)",
+          `[&_svg]:h-(--space-badge-icon-size-${size})`,
+          `[&_svg]:w-(--space-badge-icon-size-${size})`,
+          "[&_svg]:stroke-(length:--space-icon-stroke-width-sm)",
           "gap-(--space-badge-icon-gap)"
         );
       }
@@ -76,6 +76,120 @@ describe("Badge", () => {
 
       expect(badge).toHaveAttribute("aria-describedby", "badge-description");
       expect(description).toBeInTheDocument();
+    });
+  });
+
+  describe("Icon and dismiss", () => {
+    const Glyph = (props: React.SVGProps<SVGSVGElement>) => (
+      <svg data-testid="glyph" viewBox="0 0 24 24" {...props}>
+        <path d="M4 12h16" />
+      </svg>
+    );
+
+    it("renders the icon prop before the label, hidden from assistive technology", () => {
+      render(<Badge icon={Glyph}>Verified</Badge>);
+      const badge = screen.getByText("Verified");
+      const svg = screen.getByTestId("glyph");
+      expect(badge.firstElementChild).toBe(svg);
+      expect(svg).toHaveAttribute("aria-hidden", "true");
+    });
+
+    it("draws no icon, and no dismiss button, by default", () => {
+      render(<Badge>Plain</Badge>);
+      const badge = screen.getByText("Plain");
+      expect(badge.querySelector("svg")).toBeNull();
+      expect(screen.queryByRole("button")).toBeNull();
+    });
+
+    it("shows a dismiss button that calls onDismiss and is named for what it removes", () => {
+      const onDismiss = vi.fn();
+      render(
+        <Badge onDismiss={onDismiss} dismissLabel="Remove React">
+          React
+        </Badge>
+      );
+      const button = screen.getByRole("button", { name: "Remove React" });
+      expect(button.querySelector("svg")).toHaveAttribute(
+        "aria-hidden",
+        "true"
+      );
+      fireEvent.click(button);
+      expect(onDismiss).toHaveBeenCalledTimes(1);
+    });
+
+    it("names the dismiss button 'Dismiss' when no label is given", () => {
+      render(<Badge onDismiss={() => {}}>Tag</Badge>);
+      expect(screen.getByRole("button", { name: "Dismiss" })).toBeVisible();
+    });
+
+    it("keeps the badge itself out of the tab order when it is dismissible", () => {
+      render(
+        <Badge interactive onDismiss={() => {}}>
+          Tag
+        </Badge>
+      );
+      const badge = screen.getByText("Tag");
+      expect(badge).not.toHaveAttribute("role");
+      expect(badge).not.toHaveAttribute("tabindex");
+      expect(screen.getAllByRole("button")).toHaveLength(1);
+    });
+
+    it("leaves the icon and dismiss button to the child when asChild is used", () => {
+      render(
+        <Badge asChild icon={Glyph} onDismiss={() => {}}>
+          <a href="/x">Link</a>
+        </Badge>
+      );
+      expect(screen.queryByTestId("glyph")).toBeNull();
+      expect(screen.queryByRole("button")).toBeNull();
+      expect(screen.getByRole("link", { name: "Link" })).toBeVisible();
+    });
+
+    it("has no accessibility violations with an icon and a dismiss button", async () => {
+      const { container } = render(
+        <Badge icon={Glyph} onDismiss={() => {}} dismissLabel="Remove tag">
+          Tag
+        </Badge>
+      );
+      expect(await axe(container)).toHaveNoViolations();
+    });
+  });
+
+  describe("aria-disabled", () => {
+    it("dims an aria-disabled interactive badge with the disabled token", () => {
+      render(
+        <Badge interactive aria-disabled="true">
+          Off
+        </Badge>
+      );
+      expect(screen.getByRole("button")).toHaveClass(
+        "aria-disabled:opacity-(--badge-opacity-disabled)"
+      );
+    });
+
+    it("ignores clicks and keys while aria-disabled", () => {
+      const onClick = vi.fn();
+      render(
+        <Badge interactive aria-disabled="true" onClick={onClick}>
+          Off
+        </Badge>
+      );
+      const badge = screen.getByRole("button");
+      fireEvent.click(badge);
+      fireEvent.keyDown(badge, { key: "Enter" });
+      fireEvent.keyDown(badge, { key: " " });
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it("still fires onClick when it is not disabled", () => {
+      const onClick = vi.fn();
+      render(
+        <Badge interactive onClick={onClick}>
+          On
+        </Badge>
+      );
+      fireEvent.click(screen.getByRole("button"));
+      expect(onClick).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -325,7 +439,7 @@ describe("Badge", () => {
       );
       const badge = screen.getByText("Badge");
       expect(badge).toHaveClass(
-        "not-disabled:hover:bg-(--color-badge-default-background-hover)"
+        "not-disabled:not-aria-disabled:hover:bg-(--color-badge-default-background-hover)"
       );
       expect(badge).toHaveClass("disabled:opacity-(--badge-opacity-disabled)");
     });
@@ -349,10 +463,10 @@ describe("Badge", () => {
         );
         const badge = screen.getByText(variant);
         expect(badge).toHaveClass(
-          `not-disabled:hover:bg-(--color-badge-${variant}-background-hover)`
+          `not-disabled:not-aria-disabled:hover:bg-(--color-badge-${variant}-background-hover)`
         );
         expect(badge).toHaveClass(
-          `not-disabled:active:bg-(--color-badge-${variant}-background-active)`
+          `not-disabled:not-aria-disabled:active:bg-(--color-badge-${variant}-background-active)`
         );
         expect(badge).toHaveClass(
           "disabled:opacity-(--badge-opacity-disabled)"
@@ -451,7 +565,7 @@ describe("Badge", () => {
       expect(el.tagName).toBe("A");
       expect(el).toHaveClass("cursor-pointer");
       expect(el).toHaveClass(
-        "not-disabled:hover:bg-(--color-badge-destructive-background-hover)"
+        "not-disabled:not-aria-disabled:hover:bg-(--color-badge-destructive-background-hover)"
       );
     });
 
@@ -536,7 +650,7 @@ describe("Badge", () => {
         interactive: true,
       });
       expect(classes).toContain(
-        "not-disabled:hover:bg-(--color-badge-destructive-background-hover)"
+        "not-disabled:not-aria-disabled:hover:bg-(--color-badge-destructive-background-hover)"
       );
       expect(classes).toContain("disabled:opacity-(--badge-opacity-disabled)");
     });

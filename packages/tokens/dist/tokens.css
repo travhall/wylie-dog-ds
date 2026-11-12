@@ -1199,6 +1199,7 @@
   --space-badge-icon-gap: 0.25rem;
   --space-badge-icon-size-sm: 0.75rem;
   --space-badge-icon-size-md: 0.75rem;
+  --space-badge-dismiss-size: 1rem;
   --space-badge-icon-size-lg: 1rem;
   --space-card-border-width: 1px;
   --textarea-opacity-disabled: 0.6;
@@ -2436,6 +2437,7 @@
   --space-badge-icon-gap: 0.25rem;
   --space-badge-icon-size-sm: 0.75rem;
   --space-badge-icon-size-md: 0.75rem;
+  --space-badge-dismiss-size: 1rem;
   --space-badge-icon-size-lg: 1rem;
   --space-card-border-width: 1px;
   --textarea-opacity-disabled: 0.6;
