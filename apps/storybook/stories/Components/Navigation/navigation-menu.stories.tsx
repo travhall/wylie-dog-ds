@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, waitFor } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -82,27 +82,12 @@ const meta: Meta<typeof NavigationMenu> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// An open panel is absolutely positioned below its trigger (or beside it, when vertical), so it
-// sits outside the menu's own box. These give a story's canvas room for it: without them the
-// docs page clips the panel or scrolls the canvas while it is open.
-const room = (Story: React.ComponentType) => (
-  <div className="flex min-h-120 w-full items-start justify-center">
-    <Story />
-  </div>
-);
-const roomBeside = (Story: React.ComponentType) => (
-  <div className="flex min-h-96 w-full items-start justify-center">
-    <Story />
-  </div>
-);
-
 export const Default: Story = {
   args: {
     orientation: "horizontal",
     delayDuration: 200,
     skipDelayDuration: 300,
   },
-  decorators: [room],
   parameters: {
     docs: {
       description: {
@@ -255,7 +240,6 @@ export const Vertical: Story = {
     delayDuration: 200,
     skipDelayDuration: 300,
   },
-  decorators: [roomBeside],
   parameters: {
     docs: {
       description: {
@@ -319,7 +303,6 @@ export const Vertical: Story = {
 };
 
 export const WithSubmenu: Story = {
-  decorators: [room],
   parameters: {
     docs: {
       description: {
@@ -375,7 +358,6 @@ export const WithSubmenu: Story = {
 };
 
 export const WithCallToAction: Story = {
-  decorators: [room],
   parameters: {
     docs: {
       description: {
@@ -440,7 +422,6 @@ export const WithCallToAction: Story = {
 };
 
 export const WithInteractions: Story = {
-  decorators: [room],
   parameters: {
     docs: {
       description: {
@@ -482,7 +463,8 @@ export const WithInteractions: Story = {
     const canvas = within(canvasElement);
 
     // Test 1: Dropdown content is not visible initially
-    expect(canvas.queryByText("Analytics")).not.toBeInTheDocument();
+    // The panel is portalled to the body, so its content is found on the screen, not in the canvas
+    expect(screen.queryByText("Analytics")).not.toBeInTheDocument();
 
     // Test 2: Clicking the "Products" trigger opens the dropdown
     const productsTrigger = canvas.getByRole("button", { name: /products/i });
@@ -490,9 +472,9 @@ export const WithInteractions: Story = {
 
     // Test 3: Dropdown content is now visible
     await waitFor(() =>
-      expect(canvas.getByText("Analytics")).toBeInTheDocument()
+      expect(screen.getByText("Analytics")).toBeInTheDocument()
     );
-    expect(canvas.getByText("Automation")).toBeInTheDocument();
+    expect(screen.getByText("Automation")).toBeInTheDocument();
 
     // Test 4: The trigger has aria-expanded="true"
     expect(productsTrigger).toHaveAttribute("aria-expanded", "true");

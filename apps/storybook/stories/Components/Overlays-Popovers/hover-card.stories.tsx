@@ -588,8 +588,9 @@ export const WithInteractions: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
+    // The card is portalled to the body, so its content is found on the screen, not in the canvas
     // Test 1: Hover card is initially closed
-    let cardContent = canvas.queryByText(/this is a test hover card/i);
+    let cardContent = screen.queryByText(/this is a test hover card/i);
     expect(cardContent).not.toBeInTheDocument();
 
     // Test 2: Find and hover over the trigger
@@ -598,15 +599,15 @@ export const WithInteractions: Story = {
     await userEvent.hover(triggerButton);
 
     // Test 3: Hover card content is visible after hover
-    cardContent = await canvas.findByText(/this is a test hover card/i);
+    cardContent = await screen.findByText(/this is a test hover card/i);
     expect(cardContent).toBeInTheDocument();
 
     // Test 4: Verify heading is visible
-    const heading = canvas.getByRole("heading", { name: /test card/i });
+    const heading = screen.getByRole("heading", { name: /test card/i });
     expect(heading).toBeInTheDocument();
 
     // Test 5: Verify calendar icon and date are visible
-    const dateText = canvas.getByText(/created january 2026/i);
+    const dateText = screen.getByText(/created january 2026/i);
     expect(dateText).toBeInTheDocument();
 
     // Test 6: Unhover to close the card
@@ -615,7 +616,7 @@ export const WithInteractions: Story = {
     // Test 7: Hover card content should be hidden after unhover
     await waitFor(() =>
       expect(
-        canvas.queryByText(/this is a test hover card/i)
+        screen.queryByText(/this is a test hover card/i)
       ).not.toBeInTheDocument()
     );
 
@@ -623,7 +624,7 @@ export const WithInteractions: Story = {
     await userEvent.hover(triggerButton);
 
     // Content should be visible again
-    cardContent = await canvas.findByText(/this is a test hover card/i);
+    cardContent = await screen.findByText(/this is a test hover card/i);
     expect(cardContent).toBeInTheDocument();
 
     // Test 9: Unhover one more time to verify consistent behavior
@@ -632,7 +633,7 @@ export const WithInteractions: Story = {
     // Verify closed state
     await waitFor(() =>
       expect(
-        canvas.queryByText(/this is a test hover card/i)
+        screen.queryByText(/this is a test hover card/i)
       ).not.toBeInTheDocument()
     );
   },

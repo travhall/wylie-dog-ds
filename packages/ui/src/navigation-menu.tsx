@@ -1,5 +1,6 @@
 import React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { createPortal } from "react-dom";
 import { ChevronDownIcon } from "lucide-react";
 import { Icon } from "./icon";
 import { cn, focusRingClasses } from "./lib/utils";
@@ -75,7 +76,7 @@ const NavigationMenuTrigger = React.forwardRef<
     <Icon
       icon={ChevronDownIcon}
       size="sm"
-      className="relative top-(--space-navigation-menu-trigger-icon-offset-top) ml-(--space-navigation-menu-indicator-margin-left) h-(--space-navigation-menu-trigger-icon-size) w-(--space-navigation-menu-trigger-icon-size) transition duration-(--duration-navigation-menu-indicator-duration) group-data-[state=open]:rotate-180"
+      className="relative top-(--space-navigation-menu-trigger-icon-offset-top) ml-(--space-navigation-menu-indicator-margin-left) h-(--space-navigation-menu-trigger-icon-size) w-(--space-navigation-menu-trigger-icon-size) transition duration-(--duration-navigation-menu-indicator-duration) group-data-[state=open]:rotate-180 group-data-[orientation=vertical]:-rotate-90 group-data-[orientation=vertical]:group-data-[state=open]:-rotate-90"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -102,21 +103,70 @@ const NavigationMenuLink = NavigationMenuPrimitive.Link;
 const NavigationMenuViewport = React.forwardRef<
   React.ComponentRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
->(({ className, ...props }, ref) => (
-  // vertical: the panel opens to the right of the list, not below it
-  <div className="absolute left-0 top-full flex justify-center has-[[data-orientation=vertical]]:left-full has-[[data-orientation=vertical]]:top-0">
-    <NavigationMenuPrimitive.Viewport
-      className={cn(
-        "wd-motion-pop [--wd-motion-duration:var(--duration-navigation-menu-viewport-duration)] [--wd-motion-easing:var(--navigation-menu-viewport-easing)] [--wd-motion-scale:var(--navigation-menu-viewport-scale)]",
-        "data-[orientation=vertical]:mt-0 data-[orientation=vertical]:ml-(--space-navigation-menu-indicator-margin-top)",
-        "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border-(length:--space-navigation-menu-border-width) border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
-        className
-      )}
-      ref={ref}
-      {...props}
-    />
-  </div>
-));
+>(({ className, ...props }, ref) => {
+  const anchorRef = React.useRef<HTMLSpanElement>(null);
+  const [box, setBox] = React.useState<{ top: number; left: number } | null>(
+    null
+  );
+
+  // Like the popover, dropdown menu and hover card, the panel is portalled to the body, so an
+  // ancestor with overflow, a transform or its own stacking context (a docs canvas, a header)
+  // cannot clip it or put it under something else. It is placed from the menu's own box: below
+  // it, or beside it when the menu is vertical. The anchor span marks where the menu is.
+  React.useLayoutEffect(() => {
+    const root = anchorRef.current?.parentElement;
+    if (!root) return;
+    const measure = () => {
+      const rect = root.getBoundingClientRect();
+      const next =
+        root.getAttribute("data-orientation") === "vertical"
+          ? { top: rect.top, left: rect.right }
+          : { top: rect.bottom, left: rect.left };
+      setBox((prev) =>
+        prev && prev.top === next.top && prev.left === next.left ? prev : next
+      );
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    window.addEventListener("scroll", measure, true);
+    const observer =
+      typeof ResizeObserver === "undefined"
+        ? undefined
+        : new ResizeObserver(measure);
+    observer?.observe(root);
+    observer?.observe(document.body);
+    return () => {
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", measure, true);
+      observer?.disconnect();
+    };
+  }, []);
+
+  return (
+    <>
+      <span ref={anchorRef} hidden />
+      {box &&
+        createPortal(
+          <div
+            className="fixed z-(--navigation-menu-z-index) flex justify-center"
+            style={{ top: box.top, left: box.left }}
+          >
+            <NavigationMenuPrimitive.Viewport
+              className={cn(
+                "wd-motion-pop [--wd-motion-duration:var(--duration-navigation-menu-viewport-duration)] [--wd-motion-easing:var(--navigation-menu-viewport-easing)] [--wd-motion-scale:var(--navigation-menu-viewport-scale)]",
+                "data-[orientation=vertical]:mt-0 data-[orientation=vertical]:ml-(--space-navigation-menu-indicator-margin-top)",
+                "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border-(length:--space-navigation-menu-border-width) border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
+                className
+              )}
+              ref={ref}
+              {...props}
+            />
+          </div>,
+          document.body
+        )}
+    </>
+  );
+});
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName;
 

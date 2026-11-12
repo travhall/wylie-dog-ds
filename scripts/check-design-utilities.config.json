@@ -33,6 +33,11 @@
     },
     {
       "file": "packages/ui/src/navigation-menu.tsx",
+      "match": "-rotate-90",
+      "reason": "Turns the chevron to point at the panel in a vertical menu (it opens to the right): orientation geometry, not a design value."
+    },
+    {
+      "file": "packages/ui/src/navigation-menu.tsx",
       "match": "rotate-45",
       "reason": "Turns the arrow's square into a diamond: shape geometry, not a design value."
     },

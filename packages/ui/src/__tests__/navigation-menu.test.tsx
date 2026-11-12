@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe, toHaveNoViolations } from "jest-axe";
 import {
@@ -72,7 +72,7 @@ describe("NavigationMenu", () => {
   });
 
   describe("NavigationMenu Component", () => {
-    it("stacks its items and opens panels beside the list when vertical", () => {
+    it("stacks its items when vertical", () => {
       const { container } = render(
         <NavigationMenu orientation="vertical">
           <NavigationMenuList>
@@ -89,11 +89,107 @@ describe("NavigationMenu", () => {
         "data-[orientation=vertical]:flex-col",
         "data-[orientation=vertical]:space-y-(--space-navigation-menu-list-gap)"
       );
-      // the viewport's wrapper moves beside the list, not below it
+      // the panel's wrapper sits in the body, not in the menu
+      expect(container.querySelector(".fixed")).toBeNull();
+    });
+
+    describe("viewport placement", () => {
+      const rect = (over: Partial<DOMRect>) =>
+        ({
+          top: 10,
+          bottom: 50,
+          left: 20,
+          right: 220,
+          width: 200,
+          height: 40,
+          x: 20,
+          y: 10,
+          toJSON: () => ({}),
+          ...over,
+        }) as DOMRect;
+      const wrapperStyle = () => {
+        const wrapper =
+          document.body.querySelector<HTMLElement>(":scope > .fixed");
+        return [wrapper?.style.top, wrapper?.style.left];
+      };
+
+      afterEach(() => {
+        vi.restoreAllMocks();
+        vi.unstubAllGlobals();
+      });
+
+      it("opens panels below the menu, from its left edge", () => {
+        vi.spyOn(
+          HTMLElement.prototype,
+          "getBoundingClientRect"
+        ).mockReturnValue(rect({}));
+        render(<TestNavigationMenu />);
+
+        expect(wrapperStyle()).toEqual(["50px", "20px"]);
+      });
+
+      it("opens panels beside a vertical menu, from its top edge", () => {
+        vi.spyOn(
+          HTMLElement.prototype,
+          "getBoundingClientRect"
+        ).mockReturnValue(rect({}));
+        render(
+          <NavigationMenu orientation="vertical">
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink href="/a">A</NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        );
+
+        expect(wrapperStyle()).toEqual(["10px", "220px"]);
+      });
+
+      it("follows the menu when the page scrolls or resizes, and stops when it unmounts", () => {
+        const observe = vi.fn();
+        const disconnect = vi.fn();
+        vi.stubGlobal(
+          "ResizeObserver",
+          class {
+            observe = observe;
+            disconnect = disconnect;
+          }
+        );
+        const spy = vi
+          .spyOn(HTMLElement.prototype, "getBoundingClientRect")
+          .mockReturnValue(rect({}));
+        const { unmount } = render(<TestNavigationMenu />);
+        expect(observe).toHaveBeenCalledTimes(2);
+
+        spy.mockReturnValue(rect({ bottom: 80, left: 30 }));
+        act(() => {
+          window.dispatchEvent(new Event("scroll"));
+        });
+        expect(wrapperStyle()).toEqual(["80px", "30px"]);
+
+        // a resize that leaves the menu where it is changes nothing
+        act(() => {
+          window.dispatchEvent(new Event("resize"));
+        });
+        expect(wrapperStyle()).toEqual(["80px", "30px"]);
+
+        unmount();
+        expect(disconnect).toHaveBeenCalled();
+      });
+    });
+
+    it("portals the viewport to the body so no ancestor can clip it", () => {
+      const { container } = render(
+        <div style={{ overflow: "hidden" }}>
+          <TestNavigationMenu />
+        </div>
+      );
+
+      // not inside the menu's own tree, where an overflow or stacking context would clip it
+      expect(container.querySelector(".fixed")).toBeNull();
       expect(
-        container.querySelector(
-          ".has-\\[\\[data-orientation\\=vertical\\]\\]\\:left-full"
-        )
+        document.body.querySelector(":scope > .fixed")
       ).toBeInTheDocument();
     });
 
