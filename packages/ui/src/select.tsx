@@ -86,6 +86,26 @@ export interface SelectTriggerProps extends React.ComponentPropsWithoutRef<
   error?: boolean;
 }
 
+// The chevron scales with the trigger: its own size token per trigger size, and the icon size
+// (so the stroke token) that matches what it draws (12px and 16px are sm, 24px is md).
+const triggerIcons = {
+  sm: {
+    size: "sm",
+    className:
+      "h-(--space-select-trigger-icon-size-sm) w-(--space-select-trigger-icon-size-sm)",
+  },
+  md: {
+    size: "sm",
+    className:
+      "h-(--space-select-trigger-icon-size-md) w-(--space-select-trigger-icon-size-md)",
+  },
+  lg: {
+    size: "md",
+    className:
+      "h-(--space-select-trigger-icon-size-lg) w-(--space-select-trigger-icon-size-lg)",
+  },
+} as const;
+
 export const SelectTrigger = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Trigger>,
   SelectTriggerProps
@@ -121,8 +141,11 @@ export const SelectTrigger = React.forwardRef<
       <SelectPrimitive.Icon asChild>
         <Icon
           icon={ChevronDownIcon}
-          size="sm"
-          className="h-(--space-select-trigger-icon-size) w-(--space-select-trigger-icon-size) opacity-(--select-trigger-icon-opacity)"
+          size={triggerIcons[size ?? "md"].size}
+          className={cn(
+            triggerIcons[size ?? "md"].className,
+            "text-(--color-select-trigger-icon)"
+          )}
         />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>

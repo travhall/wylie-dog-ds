@@ -46,9 +46,27 @@ test("finds the icons the system renders", () => {
   );
 });
 
+// One icon: the size it passes against the size token it draws.
+const checkSize = (where, size, sizeVar, problems) => {
+  // no size token means the glyph keeps the 24px it is drawn at, the md tier
+  const px = sizeVar ? pxOfSpaceVar(sizeVar) : 24;
+  if (px === undefined) {
+    problems.push(`${where}  ${sizeVar} is not a size token`);
+    return;
+  }
+  const expected = tierForPx(px);
+  if (size !== expected) {
+    problems.push(
+      `${where}  size="${size}" but ${sizeVar ?? "the default"} draws ${px}px, which is ${expected}`
+    );
+  }
+};
+
 test("every <Icon> passes the size whose stroke matches the size it draws", () => {
   const problems = [];
   for (const { where, text } of elements) {
+    // a size that depends on the component's own size comes from a map, checked below
+    if (/\ssize=\{/.test(text)) continue;
     const size = /\ssize="(sm|md|lg)"/.exec(text)?.[1];
     if (!size) {
       problems.push(
@@ -56,20 +74,40 @@ test("every <Icon> passes the size whose stroke matches the size it draws", () =
       );
       continue;
     }
-    const sizeVar = /\bh-\((--space-[a-z0-9-]+)\)/.exec(text)?.[1];
-    // no size token means the glyph keeps the 24px it is drawn at, the md tier
-    const px = sizeVar ? pxOfSpaceVar(sizeVar) : 24;
-    if (px === undefined) {
-      problems.push(`${where}  ${sizeVar} is not a size token`);
-      continue;
-    }
-    const expected = tierForPx(px);
-    if (size !== expected) {
-      problems.push(
-        `${where}  size="${size}" but ${sizeVar ?? "the default"} draws ${px}px, which is ${expected}`
+    checkSize(
+      where,
+      size,
+      /\bh-\((--space-[a-z0-9-]+)\)/.exec(text)?.[1],
+      problems
+    );
+  }
+  assert.deepEqual(problems, []);
+});
+
+test("an icon whose size depends on its component's size takes its stroke from a map that matches", () => {
+  const problems = [];
+  let pairs = 0;
+  for (const file of files) {
+    const src = fs.readFileSync(file, "utf8");
+    // { size: "sm", className: "h-(--space-select-trigger-icon-size-sm) ..." }
+    for (const match of src.matchAll(
+      /size:\s*"(sm|md|lg)",\s*className:\s*"([^"]*)"/g
+    )) {
+      pairs++;
+      const line = src.slice(0, match.index).split("\n").length;
+      checkSize(
+        `${file}:${line}`,
+        match[1],
+        /\bh-\((--space-[a-z0-9-]+)\)/.exec(match[2])?.[1],
+        problems
       );
     }
   }
+  const dynamic = elements.filter(({ text }) => /\ssize=\{/.test(text));
+  assert.ok(
+    pairs >= dynamic.length * 3,
+    `${dynamic.length} <Icon> with a mapped size, but only ${pairs} size and className pairs`
+  );
   assert.deepEqual(problems, []);
 });
 

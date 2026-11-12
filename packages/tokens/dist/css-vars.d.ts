@@ -460,6 +460,7 @@ export type CssVarName =
   | "--color-select-item-background-highlighted"
   | "--color-select-item-text-highlighted"
   | "--color-select-separator-background"
+  | "--color-select-trigger-icon"
   | "--color-separator-color"
   | "--color-sheet-content-background"
   | "--color-sheet-content-border"
@@ -886,7 +887,6 @@ export type CssVarName =
   | "--select-content-scale"
   | "--select-content-z-index"
   | "--select-opacity-disabled"
-  | "--select-trigger-icon-opacity"
   | "--shadow-alert-dialog-content-shadow"
   | "--shadow-base"
   | "--shadow-card-shadow"
@@ -1296,7 +1296,9 @@ export type CssVarName =
   | "--space-select-separator-height"
   | "--space-select-separator-margin-x"
   | "--space-select-separator-margin-y"
-  | "--space-select-trigger-icon-size"
+  | "--space-select-trigger-icon-size-lg"
+  | "--space-select-trigger-icon-size-md"
+  | "--space-select-trigger-icon-size-sm"
   | "--space-select-trigger-padding-x-lg"
   | "--space-select-trigger-padding-x-md"
   | "--space-select-trigger-padding-x-sm"
@@ -1973,6 +1975,7 @@ export declare const cssVars: Readonly<{
   "colorSelectItemBackgroundHighlighted": "--color-select-item-background-highlighted";
   "colorSelectItemTextHighlighted": "--color-select-item-text-highlighted";
   "colorSelectSeparatorBackground": "--color-select-separator-background";
+  "colorSelectTriggerIcon": "--color-select-trigger-icon";
   "colorSeparatorColor": "--color-separator-color";
   "colorSheetContentBackground": "--color-sheet-content-background";
   "colorSheetContentBorder": "--color-sheet-content-border";
@@ -2399,7 +2402,6 @@ export declare const cssVars: Readonly<{
   "selectContentScale": "--select-content-scale";
   "selectContentZIndex": "--select-content-z-index";
   "selectOpacityDisabled": "--select-opacity-disabled";
-  "selectTriggerIconOpacity": "--select-trigger-icon-opacity";
   "shadowAlertDialogContentShadow": "--shadow-alert-dialog-content-shadow";
   "shadowBase": "--shadow-base";
   "shadowCardShadow": "--shadow-card-shadow";
@@ -2809,7 +2811,9 @@ export declare const cssVars: Readonly<{
   "spaceSelectSeparatorHeight": "--space-select-separator-height";
   "spaceSelectSeparatorMarginX": "--space-select-separator-margin-x";
   "spaceSelectSeparatorMarginY": "--space-select-separator-margin-y";
-  "spaceSelectTriggerIconSize": "--space-select-trigger-icon-size";
+  "spaceSelectTriggerIconSizeLg": "--space-select-trigger-icon-size-lg";
+  "spaceSelectTriggerIconSizeMd": "--space-select-trigger-icon-size-md";
+  "spaceSelectTriggerIconSizeSm": "--space-select-trigger-icon-size-sm";
   "spaceSelectTriggerPaddingXLg": "--space-select-trigger-padding-x-lg";
   "spaceSelectTriggerPaddingXMd": "--space-select-trigger-padding-x-md";
   "spaceSelectTriggerPaddingXSm": "--space-select-trigger-padding-x-sm";

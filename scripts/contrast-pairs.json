@@ -447,6 +447,11 @@
       "kind": "non-text"
     },
     {
+      "foreground": "select.trigger.icon",
+      "backgrounds": ["input.default.background", "input.background-hover"],
+      "kind": "non-text"
+    },
+    {
       "foreground": "popover.text",
       "backgrounds": ["popover.background"],
       "kind": "text"

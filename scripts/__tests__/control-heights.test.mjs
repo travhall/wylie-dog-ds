@@ -111,7 +111,7 @@ test("a select chevron stays under the line height so it never sets the trigger 
       px(`select.trigger.font-size.${size}`) *
       pct("select.trigger.line-height");
     assert.ok(
-      px("select.trigger.icon-size") <= line,
+      px(`select.trigger.icon-size.${size}`) <= line,
       `chevron fits the ${size} line`
     );
   }
