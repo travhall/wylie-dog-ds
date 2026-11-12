@@ -72,6 +72,31 @@ describe("NavigationMenu", () => {
   });
 
   describe("NavigationMenu Component", () => {
+    it("stacks its items and opens panels beside the list when vertical", () => {
+      const { container } = render(
+        <NavigationMenu orientation="vertical">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/a">A</NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      );
+
+      const list = screen.getByRole("list");
+      expect(list).toHaveAttribute("data-orientation", "vertical");
+      expect(list).toHaveClass(
+        "data-[orientation=vertical]:flex-col",
+        "data-[orientation=vertical]:space-y-(--space-navigation-menu-list-gap)"
+      );
+      // the viewport's wrapper moves beside the list, not below it
+      expect(
+        container.querySelector(
+          ".has-\\[\\[data-orientation\\=vertical\\]\\]\\:left-full"
+        )
+      ).toBeInTheDocument();
+    });
+
     it("should render with children", () => {
       render(
         <NavigationMenu>

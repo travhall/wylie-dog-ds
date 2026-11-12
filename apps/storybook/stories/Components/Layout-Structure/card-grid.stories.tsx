@@ -4,7 +4,8 @@ import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
 
 const meta: Meta<typeof CardGrid> = {
-  title: "Components/Layout & Structure/CardGrid",
+  title: "Components/Layout & Structure/Card Grid",
+  id: "components-layout-structure-cardgrid",
   component: CardGrid,
   parameters: {
     layout: "padded",

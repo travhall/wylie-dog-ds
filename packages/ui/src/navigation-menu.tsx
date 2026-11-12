@@ -11,7 +11,7 @@ const NavigationMenu = React.forwardRef<
   <NavigationMenuPrimitive.Root
     ref={ref}
     className={cn(
-      "relative z-(--navigation-menu-z-index) flex max-w-max flex-1 items-center justify-center",
+      "relative z-(--navigation-menu-z-index) flex max-w-max flex-1 items-center justify-center data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start",
       className
     )}
     {...props}
@@ -30,6 +30,8 @@ const NavigationMenuList = React.forwardRef<
     ref={ref}
     className={cn(
       "group flex flex-1 list-none items-center justify-center space-x-(--space-navigation-menu-list-gap)",
+      // vertical: the items stack, spaced by the same gap
+      "data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch data-[orientation=vertical]:justify-start data-[orientation=vertical]:space-x-0 data-[orientation=vertical]:space-y-(--space-navigation-menu-list-gap)",
       className
     )}
     {...props}
@@ -45,7 +47,9 @@ const navigationMenuTriggerStyle = cn(
   "focus:bg-(--color-navigation-highlighted) focus:text-(--color-navigation-text-highlighted)",
   focusRingClasses,
   "disabled:cursor-not-allowed disabled:opacity-(--navigation-opacity-disabled)",
-  "data-[active]:bg-(--color-navigation-active) data-[state=open]:bg-(--color-navigation-open)"
+  "data-[active]:bg-(--color-navigation-active) data-[state=open]:bg-(--color-navigation-open)",
+  // in a vertical list each item fills the row, its label first and its chevron last
+  "group-data-[orientation=vertical]:w-full group-data-[orientation=vertical]:justify-between"
 );
 
 // A link inside an open menu: a padded row with the trigger's hover, highlight and
@@ -85,7 +89,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "left-0 top-0 w-full data-[motion^ data-[motion^ data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out md:absolute md:w-auto",
+      "left-0 top-0 w-full data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out md:absolute md:w-auto",
       className
     )}
     {...props}
@@ -99,10 +103,12 @@ const NavigationMenuViewport = React.forwardRef<
   React.ComponentRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex justify-center")}>
+  // vertical: the panel opens to the right of the list, not below it
+  <div className="absolute left-0 top-full flex justify-center has-[[data-orientation=vertical]]:left-full has-[[data-orientation=vertical]]:top-0">
     <NavigationMenuPrimitive.Viewport
       className={cn(
         "wd-motion-pop [--wd-motion-duration:var(--duration-navigation-menu-viewport-duration)] [--wd-motion-easing:var(--navigation-menu-viewport-easing)] [--wd-motion-scale:var(--navigation-menu-viewport-scale)]",
+        "data-[orientation=vertical]:mt-0 data-[orientation=vertical]:ml-(--space-navigation-menu-indicator-margin-top)",
         "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border-(length:--space-navigation-menu-border-width) border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
         className
       )}

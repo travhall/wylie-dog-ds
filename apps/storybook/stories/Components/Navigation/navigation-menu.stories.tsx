@@ -15,7 +15,8 @@ import { cn } from "@wyliedog/ui/lib/utils";
 import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof NavigationMenu> = {
-  title: "Components/Navigation/NavigationMenu",
+  title: "Components/Navigation/Navigation Menu",
+  id: "components-navigation-navigationmenu",
   component: NavigationMenu,
   parameters: {
     layout: "centered",
@@ -81,12 +82,27 @@ const meta: Meta<typeof NavigationMenu> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// An open panel is absolutely positioned below its trigger (or beside it, when vertical), so it
+// sits outside the menu's own box. These give a story's canvas room for it: without them the
+// docs page clips the panel or scrolls the canvas while it is open.
+const room = (Story: React.ComponentType) => (
+  <div className="flex min-h-120 w-full items-start justify-center">
+    <Story />
+  </div>
+);
+const roomBeside = (Story: React.ComponentType) => (
+  <div className="flex min-h-96 w-full items-start justify-center">
+    <Story />
+  </div>
+);
+
 export const Default: Story = {
   args: {
     orientation: "horizontal",
     delayDuration: 200,
     skipDelayDuration: 300,
   },
+  decorators: [room],
   parameters: {
     docs: {
       description: {
@@ -233,7 +249,77 @@ export const Simple: Story = {
   ),
 };
 
+export const Vertical: Story = {
+  args: {
+    orientation: "vertical",
+    delayDuration: 200,
+    skipDelayDuration: 300,
+  },
+  decorators: [roomBeside],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The same menu stacked top to bottom with `orientation="vertical"`. Each item fills the row and its panel opens to the right of the list.',
+      },
+    },
+  },
+  render: (args) => (
+    <NavigationMenu
+      orientation={args.orientation}
+      delayDuration={args.delayDuration}
+      skipDelayDuration={args.skipDelayDuration}
+    >
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle}>
+            Home
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-80 gap-3 p-4">
+              <ListItem href="#" title="Web Apps">
+                Build powerful web applications with our platform.
+              </ListItem>
+              <ListItem href="#" title="Mobile Apps">
+                Create native mobile experiences.
+              </ListItem>
+              <ListItem href="#" title="Desktop Tools">
+                Professional desktop software solutions.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Company</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-80 gap-3 p-4">
+              <ListItem href="#" title="About">
+                Learn about our company and mission.
+              </ListItem>
+              <ListItem href="#" title="Team">
+                Meet the people behind our products.
+              </ListItem>
+              <ListItem href="#" title="Careers">
+                Join our growing team.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle}>
+            Contact
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  ),
+};
+
 export const WithSubmenu: Story = {
+  decorators: [room],
   parameters: {
     docs: {
       description: {
@@ -289,6 +375,7 @@ export const WithSubmenu: Story = {
 };
 
 export const WithCallToAction: Story = {
+  decorators: [room],
   parameters: {
     docs: {
       description: {
@@ -353,6 +440,7 @@ export const WithCallToAction: Story = {
 };
 
 export const WithInteractions: Story = {
+  decorators: [room],
   parameters: {
     docs: {
       description: {
