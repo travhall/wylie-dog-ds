@@ -20,7 +20,8 @@ import { Checkbox } from "@wyliedog/ui/checkbox";
 // Use bare Meta to document props from sub-components (e.g. AlertDialogContent.className)
 // that don't exist on the root AlertDialog element.
 const meta: Meta = {
-  title: "Components/Overlays & Popovers/AlertDialog",
+  title: "Components/Overlays & Popovers/Alert Dialog",
+  id: "components-overlays-popovers-alertdialog",
   component: AlertDialog,
   parameters: {
     layout: "centered",

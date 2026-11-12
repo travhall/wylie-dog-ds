@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, waitFor } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,7 +15,8 @@ import { cn } from "@wyliedog/ui/lib/utils";
 import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof NavigationMenu> = {
-  title: "Components/Navigation/NavigationMenu",
+  title: "Components/Navigation/Navigation Menu",
+  id: "components-navigation-navigationmenu",
   component: NavigationMenu,
   parameters: {
     layout: "centered",
@@ -233,6 +234,74 @@ export const Simple: Story = {
   ),
 };
 
+export const Vertical: Story = {
+  args: {
+    orientation: "vertical",
+    delayDuration: 200,
+    skipDelayDuration: 300,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The same menu stacked top to bottom with `orientation="vertical"`. Each item fills the row and its panel opens to the right of the list.',
+      },
+    },
+  },
+  render: (args) => (
+    <NavigationMenu
+      orientation={args.orientation}
+      delayDuration={args.delayDuration}
+      skipDelayDuration={args.skipDelayDuration}
+    >
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle}>
+            Home
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-80 gap-3 p-4">
+              <ListItem href="#" title="Web Apps">
+                Build powerful web applications with our platform.
+              </ListItem>
+              <ListItem href="#" title="Mobile Apps">
+                Create native mobile experiences.
+              </ListItem>
+              <ListItem href="#" title="Desktop Tools">
+                Professional desktop software solutions.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Company</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-80 gap-3 p-4">
+              <ListItem href="#" title="About">
+                Learn about our company and mission.
+              </ListItem>
+              <ListItem href="#" title="Team">
+                Meet the people behind our products.
+              </ListItem>
+              <ListItem href="#" title="Careers">
+                Join our growing team.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle}>
+            Contact
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  ),
+};
+
 export const WithSubmenu: Story = {
   parameters: {
     docs: {
@@ -394,7 +463,8 @@ export const WithInteractions: Story = {
     const canvas = within(canvasElement);
 
     // Test 1: Dropdown content is not visible initially
-    expect(canvas.queryByText("Analytics")).not.toBeInTheDocument();
+    // The panel is portalled to the body, so its content is found on the screen, not in the canvas
+    expect(screen.queryByText("Analytics")).not.toBeInTheDocument();
 
     // Test 2: Clicking the "Products" trigger opens the dropdown
     const productsTrigger = canvas.getByRole("button", { name: /products/i });
@@ -402,9 +472,9 @@ export const WithInteractions: Story = {
 
     // Test 3: Dropdown content is now visible
     await waitFor(() =>
-      expect(canvas.getByText("Analytics")).toBeInTheDocument()
+      expect(screen.getByText("Analytics")).toBeInTheDocument()
     );
-    expect(canvas.getByText("Automation")).toBeInTheDocument();
+    expect(screen.getByText("Automation")).toBeInTheDocument();
 
     // Test 4: The trigger has aria-expanded="true"
     expect(productsTrigger).toHaveAttribute("aria-expanded", "true");

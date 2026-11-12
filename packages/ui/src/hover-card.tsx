@@ -39,16 +39,20 @@ const HoverCardContent = React.forwardRef<
   React.ComponentRef<typeof HoverCardPrimitive.Content>,
   HoverCardContentProps
 >(({ className, align = "center", size, ...props }, ref) => (
-  <HoverCardPrimitive.Content
-    ref={ref}
-    align={align}
-    className={cn(
-      hoverCardContentVariants({ size }),
-      "data-[side=bottom]:mt-(--space-hover-card-side-offset) data-[side=top]:mb-(--space-hover-card-side-offset) data-[side=left]:mr-(--space-hover-card-side-offset) data-[side=right]:ml-(--space-hover-card-side-offset)",
-      className
-    )}
-    {...props}
-  />
+  // Portalled like the popover, dropdown menu and context menu, so an ancestor with overflow or
+  // its own stacking context cannot clip the card or put it under something else.
+  <HoverCardPrimitive.Portal>
+    <HoverCardPrimitive.Content
+      ref={ref}
+      align={align}
+      className={cn(
+        hoverCardContentVariants({ size }),
+        "data-[side=bottom]:mt-(--space-hover-card-side-offset) data-[side=top]:mb-(--space-hover-card-side-offset) data-[side=left]:mr-(--space-hover-card-side-offset) data-[side=right]:ml-(--space-hover-card-side-offset)",
+        className
+      )}
+      {...props}
+    />
+  </HoverCardPrimitive.Portal>
 ));
 HoverCardContent.displayName = HoverCardPrimitive.Content.displayName;
 

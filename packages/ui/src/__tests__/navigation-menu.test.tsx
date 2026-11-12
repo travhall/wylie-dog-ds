@@ -72,6 +72,56 @@ describe("NavigationMenu", () => {
   });
 
   describe("NavigationMenu Component", () => {
+    it("stacks its items when vertical, and opens panels beside the list", () => {
+      render(
+        <NavigationMenu orientation="vertical">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/a">A</NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      );
+
+      const list = screen.getByRole("list");
+      expect(list).toHaveAttribute("data-orientation", "vertical");
+      expect(list).toHaveClass(
+        "data-[orientation=vertical]:flex-col",
+        "data-[orientation=vertical]:space-y-(--space-navigation-menu-list-gap)"
+      );
+      expect(
+        document.body.querySelector(
+          "[data-radix-popper-content-wrapper] [data-side]"
+        )
+      ).toHaveAttribute("data-side", "right");
+    });
+
+    it("opens panels below a horizontal menu", () => {
+      render(<TestNavigationMenu />);
+
+      expect(
+        document.body.querySelector(
+          "[data-radix-popper-content-wrapper] [data-side]"
+        )
+      ).toHaveAttribute("data-side", "bottom");
+    });
+
+    it("portals the panel to the body so no ancestor can clip it", () => {
+      const { container } = render(
+        <div style={{ overflow: "hidden" }}>
+          <TestNavigationMenu />
+        </div>
+      );
+
+      // not inside the menu's own tree, where an overflow or stacking context would clip it
+      expect(
+        container.querySelector("[data-radix-popper-content-wrapper]")
+      ).toBeNull();
+      expect(
+        document.body.querySelector("[data-radix-popper-content-wrapper]")
+      ).toBeInTheDocument();
+    });
+
     it("should render with children", () => {
       render(
         <NavigationMenu>

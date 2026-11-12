@@ -6,7 +6,8 @@ import { Label } from "@wyliedog/ui/label";
 // Use bare Meta to include RadioGroupItem props (e.g. size)
 // that don't exist on the root RadioGroup element.
 const meta: Meta = {
-  title: "Components/Inputs & Controls/RadioGroup",
+  title: "Components/Inputs & Controls/Radio Group",
+  id: "components-inputs-controls-radiogroup",
   component: RadioGroup,
   parameters: {
     layout: "centered",

@@ -1,5 +1,7 @@
 import React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import * as PopperPrimitive from "@radix-ui/react-popper";
+import { Portal } from "@radix-ui/react-portal";
 import { ChevronDownIcon } from "lucide-react";
 import { Icon } from "./icon";
 import { cn, focusRingClasses } from "./lib/utils";
@@ -8,17 +10,22 @@ const NavigationMenu = React.forwardRef<
   React.ComponentRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
-  <NavigationMenuPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative z-(--navigation-menu-z-index) flex max-w-max flex-1 items-center justify-center",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <NavigationMenuViewport />
-  </NavigationMenuPrimitive.Root>
+  // The menu is the anchor the panel is placed from (see NavigationMenuViewport).
+  <PopperPrimitive.Root>
+    <PopperPrimitive.Anchor asChild>
+      <NavigationMenuPrimitive.Root
+        ref={ref}
+        className={cn(
+          "relative z-(--navigation-menu-z-index) flex max-w-max flex-1 items-center justify-center data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        <NavigationMenuViewport orientation={props.orientation} />
+      </NavigationMenuPrimitive.Root>
+    </PopperPrimitive.Anchor>
+  </PopperPrimitive.Root>
 ));
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
 
@@ -30,6 +37,8 @@ const NavigationMenuList = React.forwardRef<
     ref={ref}
     className={cn(
       "group flex flex-1 list-none items-center justify-center space-x-(--space-navigation-menu-list-gap)",
+      // vertical: the items stack, spaced by the same gap
+      "data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch data-[orientation=vertical]:justify-start data-[orientation=vertical]:space-x-0 data-[orientation=vertical]:space-y-(--space-navigation-menu-list-gap)",
       className
     )}
     {...props}
@@ -45,7 +54,9 @@ const navigationMenuTriggerStyle = cn(
   "focus:bg-(--color-navigation-highlighted) focus:text-(--color-navigation-text-highlighted)",
   focusRingClasses,
   "disabled:cursor-not-allowed disabled:opacity-(--navigation-opacity-disabled)",
-  "data-[active]:bg-(--color-navigation-active) data-[state=open]:bg-(--color-navigation-open)"
+  "data-[active]:bg-(--color-navigation-active) data-[state=open]:bg-(--color-navigation-open)",
+  // in a vertical list each item fills the row, its label first and its chevron last
+  "group-data-[orientation=vertical]:w-full group-data-[orientation=vertical]:justify-between"
 );
 
 // A link inside an open menu: a padded row with the trigger's hover, highlight and
@@ -71,7 +82,7 @@ const NavigationMenuTrigger = React.forwardRef<
     <Icon
       icon={ChevronDownIcon}
       size="sm"
-      className="relative top-(--space-navigation-menu-trigger-icon-offset-top) ml-(--space-navigation-menu-indicator-margin-left) h-(--space-navigation-menu-trigger-icon-size) w-(--space-navigation-menu-trigger-icon-size) transition duration-(--duration-navigation-menu-indicator-duration) group-data-[state=open]:rotate-180"
+      className="relative top-(--space-navigation-menu-trigger-icon-offset-top) ml-(--space-navigation-menu-indicator-margin-left) h-(--space-navigation-menu-trigger-icon-size) w-(--space-navigation-menu-trigger-icon-size) transition duration-(--duration-navigation-menu-indicator-duration) group-data-[state=open]:rotate-180 group-data-[orientation=vertical]:-rotate-90 group-data-[orientation=vertical]:group-data-[state=open]:-rotate-90"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -85,7 +96,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "left-0 top-0 w-full data-[motion^ data-[motion^ data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out md:absolute md:w-auto",
+      "left-0 top-0 w-full data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out md:absolute md:w-auto",
       className
     )}
     {...props}
@@ -95,21 +106,40 @@ NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;
 
 const NavigationMenuLink = NavigationMenuPrimitive.Link;
 
+export interface NavigationMenuViewportProps extends React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Viewport
+> {
+  /** Where the panel opens: below the menu, or beside it when the menu is vertical. */
+  orientation?: "horizontal" | "vertical";
+}
+
+// Like the popover, dropdown menu and hover card, the panel is portalled to the body, so an
+// ancestor with overflow, a transform or its own stacking context (a docs canvas, a header)
+// cannot clip it or put it under something else. Radix Popper places it from the menu (the
+// anchor above), keeps it on screen, and follows scroll and resize. Both are Radix client
+// components, so this works from a server component (the site header) with no hooks here.
 const NavigationMenuViewport = React.forwardRef<
   React.ComponentRef<typeof NavigationMenuPrimitive.Viewport>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
->(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex justify-center")}>
-    <NavigationMenuPrimitive.Viewport
-      className={cn(
-        "wd-motion-pop [--wd-motion-duration:var(--duration-navigation-menu-viewport-duration)] [--wd-motion-easing:var(--navigation-menu-viewport-easing)] [--wd-motion-scale:var(--navigation-menu-viewport-scale)]",
-        "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border-(length:--space-navigation-menu-border-width) border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
-        className
-      )}
-      ref={ref}
-      {...props}
-    />
-  </div>
+  NavigationMenuViewportProps
+>(({ className, orientation = "horizontal", ...props }, ref) => (
+  <Portal>
+    <PopperPrimitive.Content
+      side={orientation === "vertical" ? "right" : "bottom"}
+      align="start"
+      className="z-(--navigation-menu-z-index)"
+    >
+      <NavigationMenuPrimitive.Viewport
+        className={cn(
+          "wd-motion-pop [--wd-motion-duration:var(--duration-navigation-menu-viewport-duration)] [--wd-motion-easing:var(--navigation-menu-viewport-easing)] [--wd-motion-scale:var(--navigation-menu-viewport-scale)]",
+          "data-[orientation=vertical]:mt-0 data-[orientation=vertical]:ml-(--space-navigation-menu-indicator-margin-top)",
+          "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border-(length:--space-navigation-menu-border-width) border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    </PopperPrimitive.Content>
+  </Portal>
 ));
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName;

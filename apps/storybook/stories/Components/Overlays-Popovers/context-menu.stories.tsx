@@ -25,7 +25,8 @@ import {
 } from "@wyliedog/ui/context-menu";
 
 const meta: Meta<typeof ContextMenu> = {
-  title: "Components/Overlays & Popovers/ContextMenu",
+  title: "Components/Overlays & Popovers/Context Menu",
+  id: "components-overlays-popovers-contextmenu",
   component: ContextMenu,
   parameters: {
     layout: "centered",
