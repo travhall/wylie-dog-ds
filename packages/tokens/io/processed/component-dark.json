@@ -3156,8 +3156,8 @@
   },
   "resizable.grip-icon-size": {
     "$type": "spacing",
-    "$value": "{icon.size.xs}",
-    "$description": "Size of the grip icon inside the resizable handle (xs icon, 12px)."
+    "$value": "{space.150}",
+    "$description": "Size of the grip icon inside the resizable handle (12px, the handle is 12px wide; indicator geometry, not on the icon scale)."
   },
   "feature-grid.icon-container-size": {
     "$type": "spacing",
@@ -4781,7 +4781,7 @@
   },
   "dropdown-menu.item.radio-indicator-size": {
     "$type": "spacing",
-    "$value": "{icon.size.xs}",
+    "$value": "{space.150}",
     "$description": "Size of the dot in a selected dropdown menu radio item."
   },
   "navigation-menu.trigger.icon-size": {
@@ -4791,7 +4791,7 @@
   },
   "navigation-menu.arrow-size": {
     "$type": "spacing",
-    "$value": "{icon.size.xs}",
+    "$value": "{space.150}",
     "$description": "Size of the arrow on the navigation menu indicator."
   },
   "button.spinner.radius": {

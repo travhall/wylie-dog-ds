@@ -25,7 +25,7 @@ describe("Icon", () => {
     );
   });
 
-  it.each(["xs", "sm", "md", "lg", "xl"] as const)(
+  it.each(["sm", "md", "lg"] as const)(
     "sets the %s size from the icon size token",
     (size) => {
       const { container } = render(<Icon icon={PlusIcon} size={size} />);

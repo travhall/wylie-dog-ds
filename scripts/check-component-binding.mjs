@@ -51,7 +51,7 @@ const ALLOWLIST = [
   {
     name: "--space-icon-size-",
     reason:
-      "The Icon component exists to expose the semantic icon.size scale (xs to xl); component tokens such as dialog.close-button.icon-size alias the same scale for their own icons (Plan 217).",
+      "The Icon component exists to expose the semantic icon.size scale (sm to lg); component tokens such as dialog.close-button.icon-size alias the same scale for their own icons (Plan 217).",
   },
   {
     name: "--radix-",

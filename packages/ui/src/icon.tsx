@@ -17,11 +17,9 @@ export const iconVariants = cva(
   {
     variants: {
       size: {
-        xs: "h-(--space-icon-size-xs) w-(--space-icon-size-xs)",
         sm: "h-(--space-icon-size-sm) w-(--space-icon-size-sm)",
         md: "h-(--space-icon-size-md) w-(--space-icon-size-md)",
         lg: "h-(--space-icon-size-lg) w-(--space-icon-size-lg)",
-        xl: "h-(--space-icon-size-xl) w-(--space-icon-size-xl)",
       },
     },
   }

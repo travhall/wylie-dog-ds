@@ -201,15 +201,6 @@
             "Dark": "{duration.2000}"
           }
         },
-        "icon.size.xs": {
-          "$type": "dimension",
-          "$value": "{space.150}",
-          "$description": "Extra small icon size (12px)",
-          "valuesByMode": {
-            "Light": "{space.150}",
-            "Dark": "{space.150}"
-          }
-        },
         "icon.size.sm": {
           "$type": "dimension",
           "$value": "{space.200}",
@@ -235,15 +226,6 @@
           "valuesByMode": {
             "Light": "{space.400}",
             "Dark": "{space.400}"
-          }
-        },
-        "icon.size.xl": {
-          "$type": "dimension",
-          "$value": "{space.500}",
-          "$description": "Extra large icon size (40px)",
-          "valuesByMode": {
-            "Light": "{space.500}",
-            "Dark": "{space.500}"
           }
         },
         "transition.easing.default": {
