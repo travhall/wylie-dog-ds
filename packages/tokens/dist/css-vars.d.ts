@@ -39,9 +39,6 @@ export type CssVarName =
   | "--color-accordion-background"
   | "--color-accordion-border"
   | "--color-accordion-content-text"
-  | "--color-accordion-icon"
-  | "--color-accordion-icon-hover"
-  | "--color-accordion-icon-open"
   | "--color-accordion-trigger-hover"
   | "--color-accordion-trigger-pressed"
   | "--color-accordion-trigger-text"
@@ -198,6 +195,7 @@ export type CssVarName =
   | "--color-calendar-header-text"
   | "--color-calendar-nav-border"
   | "--color-calendar-nav-hover"
+  | "--color-calendar-nav-text"
   | "--color-calendar-nav-text-hover"
   | "--color-card-background"
   | "--color-card-background-active"
@@ -210,6 +208,7 @@ export type CssVarName =
   | "--color-carousel-nav-background"
   | "--color-carousel-nav-border"
   | "--color-carousel-nav-hover"
+  | "--color-carousel-nav-text"
   | "--color-carousel-nav-text-hover"
   | "--color-checkbox-background-checked"
   | "--color-checkbox-border-checked"
@@ -237,6 +236,7 @@ export type CssVarName =
   | "--color-contextmenu-text"
   | "--color-dialog-background"
   | "--color-dialog-border"
+  | "--color-dialog-close-button-text"
   | "--color-dialog-description"
   | "--color-dialog-overlay"
   | "--color-dialog-title"
@@ -340,6 +340,7 @@ export type CssVarName =
   | "--color-navigation-highlighted"
   | "--color-navigation-indicator"
   | "--color-navigation-open"
+  | "--color-navigation-text"
   | "--color-navigation-text-highlighted"
   | "--color-navigation-text-hover"
   | "--color-orange-100"
@@ -460,8 +461,8 @@ export type CssVarName =
   | "--color-select-item-background-highlighted"
   | "--color-select-item-text-highlighted"
   | "--color-select-separator-background"
-  | "--color-select-trigger-icon"
   | "--color-separator-color"
+  | "--color-sheet-close-button-text"
   | "--color-sheet-content-background"
   | "--color-sheet-content-border"
   | "--color-sheet-description-text"
@@ -1554,9 +1555,6 @@ export declare const cssVars: Readonly<{
   "colorAccordionBackground": "--color-accordion-background";
   "colorAccordionBorder": "--color-accordion-border";
   "colorAccordionContentText": "--color-accordion-content-text";
-  "colorAccordionIcon": "--color-accordion-icon";
-  "colorAccordionIconHover": "--color-accordion-icon-hover";
-  "colorAccordionIconOpen": "--color-accordion-icon-open";
   "colorAccordionTriggerHover": "--color-accordion-trigger-hover";
   "colorAccordionTriggerPressed": "--color-accordion-trigger-pressed";
   "colorAccordionTriggerText": "--color-accordion-trigger-text";
@@ -1713,6 +1711,7 @@ export declare const cssVars: Readonly<{
   "colorCalendarHeaderText": "--color-calendar-header-text";
   "colorCalendarNavBorder": "--color-calendar-nav-border";
   "colorCalendarNavHover": "--color-calendar-nav-hover";
+  "colorCalendarNavText": "--color-calendar-nav-text";
   "colorCalendarNavTextHover": "--color-calendar-nav-text-hover";
   "colorCardBackground": "--color-card-background";
   "colorCardBackgroundActive": "--color-card-background-active";
@@ -1725,6 +1724,7 @@ export declare const cssVars: Readonly<{
   "colorCarouselNavBackground": "--color-carousel-nav-background";
   "colorCarouselNavBorder": "--color-carousel-nav-border";
   "colorCarouselNavHover": "--color-carousel-nav-hover";
+  "colorCarouselNavText": "--color-carousel-nav-text";
   "colorCarouselNavTextHover": "--color-carousel-nav-text-hover";
   "colorCheckboxBackgroundChecked": "--color-checkbox-background-checked";
   "colorCheckboxBorderChecked": "--color-checkbox-border-checked";
@@ -1752,6 +1752,7 @@ export declare const cssVars: Readonly<{
   "colorContextmenuText": "--color-contextmenu-text";
   "colorDialogBackground": "--color-dialog-background";
   "colorDialogBorder": "--color-dialog-border";
+  "colorDialogCloseButtonText": "--color-dialog-close-button-text";
   "colorDialogDescription": "--color-dialog-description";
   "colorDialogOverlay": "--color-dialog-overlay";
   "colorDialogTitle": "--color-dialog-title";
@@ -1855,6 +1856,7 @@ export declare const cssVars: Readonly<{
   "colorNavigationHighlighted": "--color-navigation-highlighted";
   "colorNavigationIndicator": "--color-navigation-indicator";
   "colorNavigationOpen": "--color-navigation-open";
+  "colorNavigationText": "--color-navigation-text";
   "colorNavigationTextHighlighted": "--color-navigation-text-highlighted";
   "colorNavigationTextHover": "--color-navigation-text-hover";
   "colorOrange100": "--color-orange-100";
@@ -1975,8 +1977,8 @@ export declare const cssVars: Readonly<{
   "colorSelectItemBackgroundHighlighted": "--color-select-item-background-highlighted";
   "colorSelectItemTextHighlighted": "--color-select-item-text-highlighted";
   "colorSelectSeparatorBackground": "--color-select-separator-background";
-  "colorSelectTriggerIcon": "--color-select-trigger-icon";
   "colorSeparatorColor": "--color-separator-color";
+  "colorSheetCloseButtonText": "--color-sheet-close-button-text";
   "colorSheetContentBackground": "--color-sheet-content-background";
   "colorSheetContentBorder": "--color-sheet-content-border";
   "colorSheetDescriptionText": "--color-sheet-description-text";

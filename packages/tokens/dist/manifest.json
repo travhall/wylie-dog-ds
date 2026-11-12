@@ -6335,6 +6335,17 @@
         "variable": "var(--color-navigation-text-hover)",
         "description": "Text color of the navigation menu while hovered. Pairs with `navigation.background-hover`."
       },
+      "navigation-text": {
+        "name": "navigationText",
+        "path": [
+          "navigation",
+          "text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-navigation-text)",
+        "description": "Text colour of a navigation menu trigger or top-level link at rest. The trigger's chevron takes the same colour."
+      },
       "navigation-active": {
         "name": "navigationActive",
         "path": [
@@ -7349,6 +7360,17 @@
         "variable": "var(--color-calendar-nav-text-hover)",
         "description": "Text color of the calendar nav while hovered. Pairs with `calendar.nav-hover`."
       },
+      "calendar-nav-text": {
+        "name": "calendarNavText",
+        "path": [
+          "calendar",
+          "nav-text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-text)",
+        "description": "Colour of the calendar's previous and next buttons at rest. The chevron takes the same colour."
+      },
       "calendar-header-text": {
         "name": "calendarHeaderText",
         "path": [
@@ -7677,17 +7699,6 @@
         "variable": "var(--color-accordion-content-text)",
         "description": "Text color of the accordion content."
       },
-      "accordion-icon": {
-        "name": "accordionIcon",
-        "path": [
-          "accordion",
-          "icon"
-        ],
-        "value": "oklch(0.33 0.024 47.79)",
-        "type": "color",
-        "variable": "var(--color-accordion-icon)",
-        "description": "Color of the accordion chevron icon."
-      },
       "accordion-trigger-hover": {
         "name": "accordionTriggerHover",
         "path": [
@@ -7753,28 +7764,6 @@
         "type": "number",
         "variable": "var(--accordion-trigger-opacity-disabled)",
         "description": "Opacity of a disabled accordion trigger, its text and icon."
-      },
-      "accordion-icon-hover": {
-        "name": "accordionIconHover",
-        "path": [
-          "accordion",
-          "icon-hover"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-accordion-icon-hover)",
-        "description": "Color of the accordion icon while hovered."
-      },
-      "accordion-icon-open": {
-        "name": "accordionIconOpen",
-        "path": [
-          "accordion",
-          "icon-open"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-accordion-icon-open)",
-        "description": "Color of the accordion icon when open."
       },
       "accordion-trigger-padding": {
         "name": "accordionTriggerPadding",
@@ -8289,6 +8278,17 @@
         "variable": "var(--color-carousel-nav-text-hover)",
         "description": "Text color of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
       },
+      "carousel-nav-text": {
+        "name": "carouselNavText",
+        "path": [
+          "carousel",
+          "nav-text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-text)",
+        "description": "Colour of the carousel's previous and next buttons at rest. The chevron takes the same colour."
+      },
       "carousel-button-size": {
         "name": "carouselButtonSize",
         "path": [
@@ -8770,6 +8770,18 @@
         "type": "spacing",
         "variable": "var(--dialog-close-button-icon-size)",
         "description": "Size of the close icon in a dialog."
+      },
+      "dialog-close-button-text": {
+        "name": "dialogCloseButtonText",
+        "path": [
+          "dialog",
+          "close-button",
+          "text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-dialog-close-button-text)",
+        "description": "Colour of the dialog's close button (its X) at rest."
       },
       "dialog-shadow": {
         "name": "dialogShadow",
@@ -12081,18 +12093,6 @@
         "variable": "var(--color-select-separator-background)",
         "description": "Fill of the select separator."
       },
-      "select-trigger-icon": {
-        "name": "selectTriggerIcon",
-        "path": [
-          "select",
-          "trigger",
-          "icon"
-        ],
-        "value": "oklch(0.33 0.024 47.79)",
-        "type": "color",
-        "variable": "var(--color-select-trigger-icon)",
-        "description": "Color of the select trigger chevron, the same as the accordion chevron."
-      },
       "select-opacity-disabled": {
         "name": "selectOpacityDisabled",
         "path": [
@@ -13313,6 +13313,18 @@
         "type": "spacing",
         "variable": "var(--sheet-close-button-icon-size)",
         "description": "Size of the close icon in a sheet."
+      },
+      "sheet-close-button-text": {
+        "name": "sheetCloseButtonText",
+        "path": [
+          "sheet",
+          "close-button",
+          "text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-sheet-close-button-text)",
+        "description": "Colour of the sheet's close button (its X) at rest."
       },
       "sheet-content-shadow": {
         "name": "sheetContentShadow",

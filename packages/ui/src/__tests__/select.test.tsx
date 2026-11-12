@@ -362,7 +362,6 @@ describe("Select", () => {
         expect(chevron).toHaveClass(
           `h-(--space-select-trigger-icon-size-${tokenSize})`,
           `w-(--space-select-trigger-icon-size-${tokenSize})`,
-          "text-(--color-select-trigger-icon)",
           `stroke-(length:--space-icon-stroke-width-${iconSize})`
         );
         expect(chevron?.getAttribute("class")).not.toMatch(/opacity/);

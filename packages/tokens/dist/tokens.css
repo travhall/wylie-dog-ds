@@ -520,6 +520,7 @@
   --color-menubar-shortcut: oklch(0.33 0.024 47.79);
   --color-navigation-background: oklch(0.991 0.003 264.36);
   --color-navigation-text-hover: oklch(0.202 0.011 47.84);
+  --color-navigation-text: oklch(0.202 0.011 47.84);
   --color-navigation-active: oklch(0.927 0.012 75.07);
   --color-navigation-open: oklch(0.927 0.012 75.07);
   --color-navigation-content-border: oklch(0.74 0.019 69.96);
@@ -547,6 +548,7 @@
   --color-calendar-nav-border: oklch(0.74 0.019 69.96);
   --color-calendar-nav-hover: oklch(0.927 0.012 75.07);
   --color-calendar-nav-text-hover: oklch(0.202 0.011 47.84);
+  --color-calendar-nav-text: oklch(0.202 0.011 47.84);
   --color-calendar-header-text: oklch(0.33 0.024 47.79);
   --color-calendar-day-hover: oklch(0.927 0.012 75.07);
   --color-calendar-day-text-hover: oklch(0.202 0.011 47.84);
@@ -555,15 +557,12 @@
   --color-accordion-border: oklch(0.74 0.019 69.96);
   --color-accordion-background: oklch(0.991 0.003 264.36);
   --color-accordion-content-text: oklch(0.202 0.011 47.84);
-  --color-accordion-icon: oklch(0.33 0.024 47.79);
   --color-accordion-trigger-hover: oklch(0.927 0.012 75.07);
   --color-accordion-trigger-text: oklch(0.202 0.011 47.84);
   --color-accordion-trigger-text-hover: oklch(0.202 0.011 47.84);
   --color-accordion-trigger-text-open: oklch(0.202 0.011 47.84);
   --color-accordion-trigger-pressed: oklch(0.843 0.027 71);
   --accordion-trigger-opacity-disabled: 0.6;
-  --color-accordion-icon-hover: oklch(0.202 0.011 47.84);
-  --color-accordion-icon-open: oklch(0.202 0.011 47.84);
   --color-avatar-background: oklch(0.927 0.012 75.07);
   --color-avatar-border: oklch(0.74 0.019 69.96);
   --color-avatar-fallback-background: oklch(0.893 0.018 72.82);
@@ -576,6 +575,7 @@
   --color-carousel-nav-border: oklch(0.74 0.019 69.96);
   --color-carousel-nav-hover: oklch(0.927 0.012 75.07);
   --color-carousel-nav-text-hover: oklch(0.202 0.011 47.84);
+  --color-carousel-nav-text: oklch(0.202 0.011 47.84);
   --color-contextmenu-background: oklch(0.991 0.003 264.36);
   --color-contextmenu-border: oklch(0.74 0.019 69.96);
   --color-contextmenu-item-hover: oklch(0.927 0.012 75.07);
@@ -1164,7 +1164,6 @@
   --space-menubar-item-indicator-left: 0.5rem;
   --space-menubar-shortcut-letter-spacing: 0.1em;
   --space-navigation-menu-indicator-height: 0px;
-  --color-select-trigger-icon: oklch(0.33 0.024 47.79);
   --color-label-error-text: oklch(0.488 0.19 27.46);
   --color-label-required-text: oklch(0.488 0.19 27.46);
   --space-resizable-handle-focus-ring-width: 2px;
@@ -1351,7 +1350,9 @@
   --line-height-site-header-nav-link-line-height: 1.5;
   --space-button-spinner-size: 1rem;
   --space-dialog-close-button-icon-size: 1.5rem;
+  --color-dialog-close-button-text: oklch(0.202 0.011 47.84);
   --space-sheet-close-button-icon-size: 1.5rem;
+  --color-sheet-close-button-text: oklch(0.202 0.011 47.84);
   --space-toast-close-button-icon-size: 1rem;
   --space-select-trigger-icon-size-sm: 0.75rem;
   --space-select-trigger-icon-size-md: 1rem;
@@ -1753,6 +1754,7 @@
   --color-menubar-shortcut: oklch(0.843 0.027 71);
   --color-navigation-background: oklch(0.138 0.008 60.23);
   --color-navigation-text-hover: oklch(0.977 0.003 65.02);
+  --color-navigation-text: oklch(0.977 0.003 65.02);
   --color-navigation-active: oklch(0.202 0.011 47.84);
   --color-navigation-open: oklch(0.202 0.011 47.84);
   --color-navigation-content-border: oklch(0.397 0.018 63.78);
@@ -1780,6 +1782,7 @@
   --color-calendar-nav-border: oklch(0.397 0.018 63.78);
   --color-calendar-nav-hover: oklch(0.269 0.016 50.49);
   --color-calendar-nav-text-hover: oklch(0.977 0.003 65.02);
+  --color-calendar-nav-text: oklch(0.977 0.003 65.02);
   --color-calendar-header-text: oklch(0.843 0.027 71);
   --color-calendar-day-hover: oklch(0.269 0.016 50.49);
   --color-calendar-day-text-hover: oklch(0.977 0.003 65.02);
@@ -1788,15 +1791,12 @@
   --color-accordion-border: oklch(0.397 0.018 63.78);
   --color-accordion-background: oklch(0.138 0.008 60.23);
   --color-accordion-content-text: oklch(0.977 0.003 65.02);
-  --color-accordion-icon: oklch(0.843 0.027 71);
   --color-accordion-trigger-hover: oklch(0.269 0.016 50.49);
   --color-accordion-trigger-text: oklch(0.977 0.003 65.02);
   --color-accordion-trigger-text-hover: oklch(0.977 0.003 65.02);
   --color-accordion-trigger-text-open: oklch(0.977 0.003 65.02);
   --color-accordion-trigger-pressed: oklch(0.312 0.021 51.72);
   --accordion-trigger-opacity-disabled: 0.6;
-  --color-accordion-icon-hover: oklch(0.977 0.003 65.02);
-  --color-accordion-icon-open: oklch(0.977 0.003 65.02);
   --color-avatar-background: oklch(0.202 0.011 47.84);
   --color-avatar-border: oklch(0.397 0.018 63.78);
   --color-avatar-fallback-background: oklch(0.269 0.016 50.49);
@@ -1809,6 +1809,7 @@
   --color-carousel-nav-border: oklch(0.397 0.018 63.78);
   --color-carousel-nav-hover: oklch(0.269 0.016 50.49);
   --color-carousel-nav-text-hover: oklch(0.977 0.003 65.02);
+  --color-carousel-nav-text: oklch(0.977 0.003 65.02);
   --color-contextmenu-background: oklch(0.202 0.011 47.84);
   --color-contextmenu-border: oklch(0.397 0.018 63.78);
   --color-contextmenu-item-hover: oklch(0.269 0.016 50.49);
@@ -2397,7 +2398,6 @@
   --space-menubar-item-indicator-left: 0.5rem;
   --space-menubar-shortcut-letter-spacing: 0.1em;
   --space-navigation-menu-indicator-height: 0px;
-  --color-select-trigger-icon: oklch(0.843 0.027 71);
   --color-label-error-text: oklch(0.714 0.166 22.17);
   --color-label-required-text: oklch(0.714 0.166 22.17);
   --space-resizable-handle-focus-ring-width: 2px;
@@ -2584,7 +2584,9 @@
   --line-height-site-header-nav-link-line-height: 1.5;
   --space-button-spinner-size: 1rem;
   --space-dialog-close-button-icon-size: 1.5rem;
+  --color-dialog-close-button-text: oklch(0.977 0.003 65.02);
   --space-sheet-close-button-icon-size: 1.5rem;
+  --color-sheet-close-button-text: oklch(0.977 0.003 65.02);
   --space-toast-close-button-icon-size: 1rem;
   --space-select-trigger-icon-size-sm: 0.75rem;
   --space-select-trigger-icon-size-md: 1rem;

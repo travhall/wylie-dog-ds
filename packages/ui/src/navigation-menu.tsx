@@ -49,7 +49,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cn(
-  "group inline-flex h-(--space-navigation-menu-trigger-height) w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) leading-(--line-height-navigation-menu-trigger-line-height) font-(--font-weight-navigation-menu-trigger-font-weight) transition-colors",
+  "group inline-flex h-(--space-navigation-menu-trigger-height) w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) text-(--color-navigation-text) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) leading-(--line-height-navigation-menu-trigger-line-height) font-(--font-weight-navigation-menu-trigger-font-weight) transition-colors",
   "not-disabled:hover:bg-(--color-navigation-background-hover) not-disabled:hover:text-(--color-navigation-text-hover)",
   "focus:bg-(--color-navigation-highlighted) focus:text-(--color-navigation-text-highlighted)",
   focusRingClasses,

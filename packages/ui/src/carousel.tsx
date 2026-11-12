@@ -156,7 +156,7 @@ const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
 CarouselItem.displayName = "CarouselItem";
 
 const navButtonClasses =
-  "absolute inline-flex items-center justify-center h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border-(length:--space-carousel-border-width) border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) top-1/2 -translate-y-1/2 not-disabled:hover:bg-(--color-carousel-nav-hover) not-disabled:hover:text-(--color-carousel-nav-text-hover) disabled:cursor-not-allowed disabled:opacity-(--carousel-nav-opacity-disabled)";
+  "absolute inline-flex items-center justify-center h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border-(length:--space-carousel-border-width) border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) top-1/2 -translate-y-1/2 not-disabled:hover:bg-(--color-carousel-nav-hover) text-(--color-carousel-nav-text) not-disabled:hover:text-(--color-carousel-nav-text-hover) disabled:cursor-not-allowed disabled:opacity-(--carousel-nav-opacity-disabled)";
 
 type CarouselPreviousProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
