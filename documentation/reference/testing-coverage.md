@@ -2,7 +2,7 @@
 
 **Last Updated:** November 9, 2026
 **Overall Coverage:** 99.63% lines / 99.17% statements (exceeds 80% threshold)
-**Tests Passing:** 1,780 | **Tests Skipped:** 0
+**Tests Passing:** 1,783 | **Tests Skipped:** 0
 
 Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot. `pnpm check:docs:coverage` runs it and fails if the four percentages in the table below no longer match; plain `pnpm check:docs` does the same comparison whenever a fresh coverage run is on disk. Passing and skipped test counts are not checked.
 
@@ -23,7 +23,7 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 
 ## Skipped Tests
 
-None. The UI suite runs 1,780 tests and skips 0.
+None. The UI suite runs 1,783 tests and skips 0.
 
 Until 2026-11-09, 62 tests were skipped (tooltip 31, select 15, sheet 9, popover 6, navigation-menu 1) with the note "portal rendering needs async test infrastructure". That reason did not hold: Radix portals render fine under jsdom with `user-event` and `waitFor`, and the accessibility tests next to the skips had always passed with the same pattern. The skips were removed in PRs 78 and 79. Of the 62, 46 passed as soon as the skips came off, and 16 were ordinary test bugs, not component bugs (see "Testing Radix Portals in jsdom" below).
 

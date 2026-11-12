@@ -1197,6 +1197,9 @@
   --color-pagination-ellipsis-text: oklch(0.33 0.024 47.79);
   --button-opacity-disabled: 0.6;
   --space-badge-icon-gap: 0.25rem;
+  --space-badge-icon-size-sm: 0.75rem;
+  --space-badge-icon-size-md: 0.75rem;
+  --space-badge-icon-size-lg: 1rem;
   --space-card-border-width: 1px;
   --textarea-opacity-disabled: 0.6;
   --space-textarea-border-width: 1px;
@@ -2431,6 +2434,9 @@
   --color-pagination-ellipsis-text: oklch(0.843 0.027 71);
   --button-opacity-disabled: 0.6;
   --space-badge-icon-gap: 0.25rem;
+  --space-badge-icon-size-sm: 0.75rem;
+  --space-badge-icon-size-md: 0.75rem;
+  --space-badge-icon-size-lg: 1rem;
   --space-card-border-width: 1px;
   --textarea-opacity-disabled: 0.6;
   --space-textarea-border-width: 1px;

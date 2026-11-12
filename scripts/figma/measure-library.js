@@ -15,6 +15,12 @@ const PARTS = {};
 // Sets whose root is a bare wrapper with no look of its own (Select): emit only their parts, not
 // the root, so the wrapper is not compared against the UI's inner element.
 const ONLY_PARTS = []; // e.g. ["Select"] with PARTS = { Select: ["trigger"] }
+// Sets with an optional icon behind a `Show Icon` boolean (hidden in every variant). For each
+// resting variant (no Hover or Pressed) a temporary instance is created, Show Icon is turned on, it
+// is measured as "<variant>, Show Icon=True" with the icon's size, and the instance is deleted, so
+// the library file is left as it was. Harvest-ui.mjs renders that row through the config's
+// `valueStories` (`show-icon`).
+const SHOW_ICON = []; // e.g. ["Badge"]
 
 const page = figma.root.children.find((p) => p.name === PAGE_NAME);
 if (!page) throw new Error(`No page named ${PAGE_NAME}`);
@@ -128,7 +134,7 @@ function measureText(node) {
 // The first visible stroked vector under a node: the stroke width an icon draws. { icon: { stroke } }
 // to spread into an item, or nothing when the node has no stroked vector (compared only when both
 // sides have an icon).
-function measureIcon(node) {
+function measureIcon(node, withSize = false) {
   if (!("findAll" in node)) return {};
   const visible = (n) => {
     for (let p = n; p && p !== node.parent; p = p.parent)
@@ -145,7 +151,12 @@ function measureIcon(node) {
         n.strokeWeight > 0
     )
     .find(visible);
-  return vector ? { icon: { stroke: r2(vector.strokeWeight) } } : {};
+  if (!vector) return {};
+  const icon = { stroke: r2(vector.strokeWeight) };
+  // the size the icon is drawn at: its holder (the nested Icon instance), or the vector itself
+  if (withSize)
+    icon.size = r2((vector.parent !== node ? vector.parent : vector).width);
+  return { icon };
 }
 
 const items = [];
@@ -171,6 +182,26 @@ for (const set of sets) {
         texts,
         ...measureIcon(variant),
       });
+    if (SHOW_ICON.includes(set.name) && !/hover|pressed/i.test(variant.name)) {
+      const inst = variant.createInstance();
+      const key = Object.keys(inst.componentProperties).find((k) =>
+        k.startsWith("Show Icon")
+      );
+      if (key) {
+        inst.setProperties({ [key]: true });
+        const iconTexts = inst
+          .findAll((n) => n.type === "TEXT" && n.visible !== false)
+          .map(measureText);
+        items.push({
+          set: set.name,
+          variant: `${variant.name}, Show Icon=True`,
+          box: measureBox(inst),
+          texts: iconTexts,
+          ...measureIcon(inst, true),
+        });
+      }
+      inst.remove();
+    }
     for (const part of PARTS[set.name] ?? []) {
       // "name#1" is the second descendant called "name" (layers repeat: tabs-row-row)
       const [partName, partIndex] = part.split("#");

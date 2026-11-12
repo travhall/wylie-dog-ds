@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "@wyliedog/ui/badge";
-import { Check, X, AlertCircle, Info } from "lucide-react";
+import { Icon } from "@wyliedog/ui/icon";
+import {
+  CheckIcon,
+  CircleXIcon,
+  InfoIcon,
+  TriangleAlertIcon,
+} from "lucide-react";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Content Display/Badge",
@@ -200,29 +206,48 @@ export const WithIcons: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Badges can include icons for additional visual context.",
+        story:
+          "A badge can hold an icon before its label. The badge sizes the icon (12px in sm and md, 16px in lg), draws it with the sm stroke and gives it the label's colour; the gap is the badge's own. Pair the icon with the semantic variant that carries the same meaning, and hide it from assistive technology when the label says the same thing.",
       },
     },
   },
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Badge>
-        <Check className="mr-1 h-3 w-3" />
+      <Badge variant="success">
+        <Icon icon={CheckIcon} size="sm" aria-hidden="true" />
         Verified
       </Badge>
-      <Badge variant="secondary">
-        <Info className="mr-1 h-3 w-3" />
+      <Badge variant="info">
+        <Icon icon={InfoIcon} size="sm" aria-hidden="true" />
         Info
       </Badge>
-      <Badge variant="destructive">
-        <X className="mr-1 h-3 w-3" />
-        Error
-      </Badge>
-      <Badge variant="outline">
-        <AlertCircle className="mr-1 h-3 w-3" />
+      <Badge variant="warning">
+        <Icon icon={TriangleAlertIcon} size="sm" aria-hidden="true" />
         Warning
       </Badge>
+      <Badge variant="destructive">
+        <Icon icon={CircleXIcon} size="sm" aria-hidden="true" />
+        Error
+      </Badge>
     </div>
+  ),
+};
+
+export const WithIcon: Story = {
+  args: { children: undefined },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "One badge with an icon, driven by the variant and size controls. The Figma comparison renders the library's Show Icon state from this story.",
+      },
+    },
+  },
+  render: (args) => (
+    <Badge {...args}>
+      <Icon icon={CheckIcon} size="sm" aria-hidden="true" />
+      Badge
+    </Badge>
   ),
 };
 
@@ -457,8 +482,8 @@ export const DosDonts: Story = {
 
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Add icons for clarity</p>
-            <Badge>
-              <Check className="mr-1 h-3 w-3" />
+            <Badge variant="success">
+              <Icon icon={CheckIcon} size="sm" aria-hidden="true" />
               Verified
             </Badge>
           </div>
