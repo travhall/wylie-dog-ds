@@ -308,6 +308,18 @@ export const Dismissible: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: { children: "Badge", interactive: true, "aria-disabled": "true" },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "One disabled interactive badge, driven by the variant and size controls: `aria-disabled` dims it with the disabled token and it ignores its own clicks and keys. The Figma comparison renders the library's Disabled interaction from this story.",
+      },
+    },
+  },
+};
+
 const TAGS = ["React", "TypeScript", "Design tokens", "Storybook"] as const;
 
 export const DismissibleTags: Story = {

@@ -24,6 +24,7 @@ const items = rows.map(
     opacity,
     shadow,
     tx,
+    icon,
   ]) => ({
     set,
     variant,
@@ -59,6 +60,8 @@ const items = rows.map(
           },
         ]
       : [],
+    // an optional 14th element: [stroke, size] of the first icon (measure-library.js `SHOW` rows)
+    ...(icon ? { icon: { stroke: icon[0], size: icon[1] } } : {}),
   })
 );
 fs.writeFileSync(

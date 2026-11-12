@@ -24,10 +24,11 @@ export function parseVariant(name) {
   const props = {};
   for (const part of String(name).split(",")) {
     const i = part.indexOf("=");
-    // lower-cased, spaces to hyphens: the library uses Title Case names ("Variant=With Ellipsis")
+    // lower-cased, spaces to hyphens, property names too ("Show Icon=True" is { "show-icon": "true" }):
+    // the library uses Title Case names ("Variant=With Ellipsis")
     // while the config and the stories use the code's ("with-ellipsis"), see figma-naming.md
     if (i > 0)
-      props[part.slice(0, i).trim().toLowerCase()] = part
+      props[part.slice(0, i).trim().toLowerCase().replace(/\s+/g, "-")] = part
         .slice(i + 1)
         .trim()
         .toLowerCase()

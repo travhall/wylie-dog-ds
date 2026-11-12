@@ -53,9 +53,13 @@
       "stateArgs": {
         "default": "interactive:!true",
         "hover": "interactive:!true",
-        "pressed": "interactive:!true"
+        "pressed": "interactive:!true",
+        "disabled": "interactive:!true"
       },
       "valueStories": {
+        "interaction": {
+          "disabled": "components-content-display-badge--disabled"
+        },
         "show-icon": {
           "true": "components-content-display-badge--with-icon"
         },

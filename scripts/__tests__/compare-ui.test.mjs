@@ -277,6 +277,17 @@ test("the harvester turns a Figma variant into story args, and a prop-backed sta
       loading: "false",
     }
   );
+  assert.deepEqual(
+    parseVariant(
+      "Variant=Default, Size=md, Interaction=Default, Show Icon=True"
+    ),
+    {
+      variant: "default",
+      size: "md",
+      interaction: "default",
+      "show-icon": "true",
+    }
+  );
   assert.deepEqual(parseVariant("State=With Many Pages, Size=md"), {
     state: "with-many-pages",
     size: "md",
