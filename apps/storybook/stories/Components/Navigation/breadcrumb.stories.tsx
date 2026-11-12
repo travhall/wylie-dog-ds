@@ -9,6 +9,7 @@ import {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 } from "@wyliedog/ui/breadcrumb";
+import { Icon } from "@wyliedog/ui/icon";
 import { SlashIcon, HomeIcon } from "lucide-react";
 
 const meta: Meta<typeof Breadcrumb> = {
@@ -91,7 +92,7 @@ export const WithIcons: Story = {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/" className="flex items-center gap-2">
-            <HomeIcon className="h-4 w-4" />
+            <Icon icon={HomeIcon} size="sm" />
             Home
           </BreadcrumbLink>
         </BreadcrumbItem>
@@ -131,13 +132,13 @@ export const CustomSeparator: Story = {
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <SlashIcon className="h-4 w-4" />
+              <Icon icon={SlashIcon} size="sm" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <SlashIcon className="h-4 w-4" />
+              <Icon icon={SlashIcon} size="sm" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbPage>Article Title</BreadcrumbPage>
@@ -226,7 +227,7 @@ export const LongPath: Story = {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/" aria-label="Home">
-              <HomeIcon className="h-4 w-4" />
+              <Icon icon={HomeIcon} size="sm" />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -282,7 +283,7 @@ export const TruncatedPath: Story = {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/" aria-label="Home">
-              <HomeIcon className="h-4 w-4" />
+              <Icon icon={HomeIcon} size="sm" />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -396,7 +397,7 @@ export const ApplicationExamples: Story = {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/docs" className="flex items-center gap-2">
-                <HomeIcon className="h-4 w-4" />
+                <Icon icon={HomeIcon} size="sm" />
                 Docs
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -455,13 +456,13 @@ export const ApplicationExamples: Story = {
               <BreadcrumbLink href="/files">My Files</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <SlashIcon className="h-4 w-4" />
+              <Icon icon={SlashIcon} size="sm" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink href="/files/documents">Documents</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <SlashIcon className="h-4 w-4" />
+              <Icon icon={SlashIcon} size="sm" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink href="/files/documents/projects">
@@ -469,7 +470,7 @@ export const ApplicationExamples: Story = {
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <SlashIcon className="h-4 w-4" />
+              <Icon icon={SlashIcon} size="sm" />
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbPage>Q4 Planning.pdf</BreadcrumbPage>
@@ -509,7 +510,7 @@ export const Accessibility: Story = {
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/" aria-label="Go to homepage">
-                  <HomeIcon className="h-4 w-4" />
+                  <Icon icon={HomeIcon} size="sm" />
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />

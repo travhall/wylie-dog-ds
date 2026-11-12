@@ -274,6 +274,20 @@ describe("Breadcrumb", () => {
       expect(separator).toHaveAttribute("aria-hidden", "true");
     });
 
+    it("draws the default chevron with the sm stroke, as Figma does at 16px", () => {
+      const { container } = render(
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbSeparator />
+          </BreadcrumbList>
+        </Breadcrumb>
+      );
+      const svg = container.querySelector('li[role="presentation"] svg');
+      expect(svg?.getAttribute("class")).toContain(
+        "stroke-(length:--space-icon-stroke-width-sm)"
+      );
+    });
+
     it("should render default chevron icon", () => {
       const { container } = render(
         <Breadcrumb>

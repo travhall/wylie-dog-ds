@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-12T18:20:00.000Z",
+  "generatedAt": "2026-11-12T19:42:17.000Z",
   "count": 49,
   "components": [
     {
@@ -601,7 +601,15 @@
             "info",
             "circle-check",
             "triangle-alert",
-            "circle-x"
+            "circle-x",
+            "slash",
+            "chevrons-up-down",
+            "arrow-left",
+            "menu",
+            "align-left",
+            "align-center",
+            "align-right",
+            "circle-alert"
           ]
         },
         "size": {
@@ -610,8 +618,8 @@
           "options": ["md", "sm", "lg"]
         }
       },
-      "variantCount": 84,
-      "expectedVariantCount": 84
+      "variantCount": 108,
+      "expectedVariantCount": 108
     },
     {
       "name": "Input",
