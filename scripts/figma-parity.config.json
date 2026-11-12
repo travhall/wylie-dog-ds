@@ -240,24 +240,6 @@
       "reason": "ScrollBar prop `orientation` (packages/ui/src/scroll-area.tsx)."
     },
     {
-      "component": "Form",
-      "rule": "inherited-property",
-      "property": "required",
-      "reason": "FormField prop `required` (packages/ui/src/form.tsx)."
-    },
-    {
-      "component": "Form",
-      "rule": "property-not-in-figma",
-      "property": "size",
-      "reason": "FormLabel's cva size; Figma Form draws the whole field at the default size."
-    },
-    {
-      "component": "Form",
-      "rule": "property-not-in-figma",
-      "property": "invalid",
-      "reason": "FormLabel's invalid style; the field-level prop `error` is the Figma `error` property."
-    },
-    {
       "component": "Input",
       "rule": "property-not-in-figma",
       "property": "inputState",
@@ -311,6 +293,11 @@
       "reason": "No props or cva variants in the component's source file (compound or Radix root); compared by name and variant structure only."
     },
     {
+      "component": "Form",
+      "rule": "props-unreadable",
+      "reason": "The Form root is a compound field (FormField, FormLabel, FormDescription, FormMessage in packages/ui/src/form.tsx) and the manifest lists no props for it; its Figma properties (error, required, label, message, showDescription) are compared by name and variant structure only."
+    },
+    {
       "component": "Button",
       "rule": "inherited-property",
       "property": "disabled",
@@ -321,12 +308,6 @@
       "rule": "inherited-property",
       "property": "open",
       "reason": "Radix Collapsible prop `open`."
-    },
-    {
-      "component": "Form",
-      "rule": "property-not-in-code",
-      "property": "error",
-      "reason": "FormField prop `error` (packages/ui/src/form.tsx); the manifest lists no props for the Form root."
     },
     {
       "component": "Select",
