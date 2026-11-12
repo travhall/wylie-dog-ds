@@ -1,6 +1,10 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
+  AlignCenterIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  ArrowLeftIcon,
   ArrowRightIcon,
   BellIcon,
   BoldIcon,
@@ -9,6 +13,8 @@ import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  ChevronsUpDownIcon,
+  CircleAlertIcon,
   CircleCheckIcon,
   CircleIcon,
   CircleXIcon,
@@ -22,10 +28,12 @@ import {
   ItalicIcon,
   LinkIcon,
   MapPinIcon,
+  MenuIcon,
   MinusIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
+  SlashIcon,
   TriangleAlertIcon,
   UserIcon,
   XIcon,
@@ -65,6 +73,14 @@ const GLYPHS = {
   "Circle Check": CircleCheckIcon,
   "Triangle Alert": TriangleAlertIcon,
   "Circle X": CircleXIcon,
+  Slash: SlashIcon,
+  "Chevrons Up Down": ChevronsUpDownIcon,
+  "Arrow Left": ArrowLeftIcon,
+  Menu: MenuIcon,
+  "Align Left": AlignLeftIcon,
+  "Align Center": AlignCenterIcon,
+  "Align Right": AlignRightIcon,
+  "Circle Alert": CircleAlertIcon,
 } as const;
 
 const meta: Meta<typeof Icon> = {
