@@ -1051,7 +1051,11 @@ export const featureGridItemBorderColorHover = "oklch(0.61 0.169 37.68)"; // Bor
 export const inputPaddingYSm = "0.25rem"; // Vertical padding of the small input. With the 150% line height and a 1px border it gives a 31px height, one pixel under the small button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height.
 export const inputPaddingYMd = "0.5rem"; // Vertical padding of the medium input. With the 150% line height and a 1px border it gives a 42px height, equal to the medium button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height.
 export const inputPaddingYLg = "0.75rem"; // Vertical padding of the large input. With the 150% line height and a 1px border it gives a 53px height, one pixel over the large button. A native input never goes below its font's normal line height, so the padding is trimmed instead of the line height.
-export const buttonIconSize = "2.5rem"; // Width and height of the icon-only button.
+export const buttonIconOnlySize = "2.5rem"; // Width and height of the icon-only button (size="icon"). Was button.icon-size, which read as a glyph size.
+export const buttonIconOnlyIconSize = "1.5rem"; // Size of the icon inside the icon-only button (24px). It draws the md stroke.
+export const buttonIconSizeSm = "0.75rem"; // Size of an icon beside the label of the small button (12px, not on the icon scale, like the other 12px indicators: a 16px icon would be taller than the 14px label's line and grow the button). It draws the sm stroke.
+export const buttonIconSizeMd = "1rem"; // Size of an icon beside the label of the medium button (16px). It draws the sm stroke.
+export const buttonIconSizeLg = "1rem"; // Size of an icon beside the label of the large button (16px). It draws the sm stroke.
 export const buttonLinkText = "oklch(0.496 0.049 219.11)"; // Label color of the link-style button, which has no fill or border.
 export const cardHeaderGap = "0.5rem"; // Gap between the title and description in the card header.
 export const inputOpacityDisabled = 0.6; // Opacity of a disabled input.

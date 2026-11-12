@@ -21,7 +21,11 @@ const ONLY_PARTS = []; // e.g. ["Select"] with PARTS = { Select: ["trigger"] }
 // the boolean is turned on, the instance is measured as "<variant>, <Boolean>=True" with the
 // icon's size, and the instance is deleted, so the library file is left as it was. Harvest-ui.mjs
 // renders that row through the config's `valueStories` (`show-icon`, `show-dismiss`).
-const SHOW = {}; // e.g. { Badge: ["Show Icon", "Show Dismiss"] }
+const SHOW = {}; // e.g. { Badge: ["Show Icon", "Show Dismiss"], Button: ["Show Icon"] }
+// A variant that is not a resting one is skipped: hovered, pressed, disabled or loading, and the
+// icon-only button (its glyph is the whole content, there is no Show Icon state to draw).
+const RESTING_SKIP =
+  /State=(Hover|Pressed)|Interaction=(Hover|Pressed|Disabled)|Disabled=True|Loading=True|Size=icon/i;
 
 const page = figma.root.children.find((p) => p.name === PAGE_NAME);
 if (!page) throw new Error(`No page named ${PAGE_NAME}`);
@@ -183,7 +187,7 @@ for (const set of sets) {
         texts,
         ...measureIcon(variant),
       });
-    if (SHOW[set.name] && !/hover|pressed|disabled/i.test(variant.name)) {
+    if (SHOW[set.name] && !RESTING_SKIP.test(variant.name)) {
       for (const flag of SHOW[set.name]) {
         const inst = variant.createInstance();
         const key = Object.keys(inst.componentProperties).find((k) =>

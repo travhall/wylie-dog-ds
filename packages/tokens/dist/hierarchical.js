@@ -400,6 +400,8 @@ export const spacing = {
   "icon-container-size": "3rem",
   "trigger-height": "2.5rem",
   "close-button-position": "0.5rem",
+  "icon-only-size": "2.5rem",
+  "icon-only-icon-size": "1.5rem",
   "focus-ring-width": "2px",
   "focus-ring-offset": "2px",
   "track-border-width": "0px",

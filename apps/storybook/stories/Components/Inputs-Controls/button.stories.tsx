@@ -1,9 +1,27 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
-import { Button } from "@wyliedog/ui/button";
+import { Button, buttonVariants } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
-import { Heart } from "lucide-react";
+import {
+  ArrowRightIcon,
+  CheckIcon,
+  HeartIcon,
+  PlusIcon,
+  Trash2Icon,
+} from "lucide-react";
+
+// The icon control: a glyph by name, turned into the component by `mapping`. Any lucide-react icon
+// (or any component that renders an SVG) works as the `icon` prop; this is the short list.
+const ICONS = {
+  None: undefined,
+  Plus: PlusIcon,
+  Heart: HeartIcon,
+  Check: CheckIcon,
+  "Arrow Right": ArrowRightIcon,
+  Trash: Trash2Icon,
+};
 
 const meta: Meta<typeof Button> = {
   title: "Components/Inputs & Controls/Button",
@@ -20,7 +38,9 @@ const meta: Meta<typeof Button> = {
 - Use \`destructive\` only for actions that remove something, and confirm them with an Alert Dialog.
 - Use \`loading\` while an action runs; the button is disabled (not clickable) until it finishes, so it takes the same dimmed look as a disabled button, with the spinner shown.
 - A disabled button keeps its colours and dims to 60% with a \`not-allowed\` cursor. Say why it is disabled when that is not obvious.
+- Add an icon before the label with \`icon\`. The button sizes it (12px in sm, 16px in md and lg, 24px in the icon-only button), draws its stroke and hides it from assistive technology. While \`loading\` the spinner takes its place.
 - An icon-only button (\`size="icon"\`) needs an \`aria-label\`.
+- \`type\` defaults to \`"button"\`, so a button in a form does not submit it; set \`type="submit"\` on the one that should. \`loading\` also sets \`aria-busy\`.
 - \`size="md"\` is the same as \`size="default"\`.
 
 **Don't** use a button to move to another page, or stack several primary buttons side by side.`,
@@ -59,6 +79,14 @@ const meta: Meta<typeof Button> = {
         category: "Appearance",
       },
     },
+    icon: {
+      control: "select",
+      options: Object.keys(ICONS),
+      mapping: ICONS,
+      description:
+        "An icon before the label: a lucide-react icon or any component that renders an SVG. The button sizes it (12px in sm, 16px in md and lg, 24px in the icon-only button), draws its stroke and hides it from assistive technology; the spinner takes its place while loading. The control lists a short set of glyphs.",
+      table: { type: { summary: "React.ElementType" }, category: "Content" },
+    },
     disabled: {
       control: "boolean",
       description: "Whether the button is disabled",
@@ -91,9 +119,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: ({ children, ...args }) => (
-    <Button {...args}>{args.size === "icon" ? <Heart /> : children}</Button>
-  ),
+  // an icon-only button has no label: give it a glyph and a name when none is chosen
+  render: ({ children, ...args }) =>
+    args.size === "icon" ? (
+      <Button icon={HeartIcon} aria-label="Favourite" {...args}>
+        {null}
+      </Button>
+    ) : (
+      <Button {...args}>{children}</Button>
+    ),
   parameters: {
     docs: {
       description: {
@@ -130,12 +164,88 @@ export const AllSizes: Story = {
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
+      <Button size="icon" icon={HeartIcon} aria-label="Favourite" />
     </div>
   ),
   parameters: {
     docs: {
       description: {
         story: "Size variants for different interface densities and use cases.",
+      },
+    },
+  },
+};
+
+export const WithIcon: Story = {
+  args: { children: "Button", icon: "Plus" as unknown as React.ElementType },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "An icon before the label with the `icon` prop, driven by the variant, size and icon controls. The Figma comparison renders the library's Show Icon state from this story.",
+      },
+    },
+  },
+};
+
+export const IconOnly: Story = {
+  args: {
+    size: "icon",
+    icon: "Heart" as unknown as React.ElementType,
+    "aria-label": "Favourite",
+    children: undefined,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '`size="icon"` is a square button with a 24px icon that draws the md stroke. It has no label, so it needs an `aria-label`.',
+      },
+    },
+  },
+};
+
+export const IconSizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Button size="sm" icon={PlusIcon}>
+        Small
+      </Button>
+      <Button size="md" icon={PlusIcon}>
+        Medium
+      </Button>
+      <Button size="lg" icon={PlusIcon}>
+        Large
+      </Button>
+      <Button size="icon" icon={PlusIcon} aria-label="Add" />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The icon is 12px in sm, 16px in md and lg beside a label, and 24px in the icon-only button; each size has its own glyph token (`button.icon-size.*`, `button.icon-only.icon-size`).",
+      },
+    },
+  },
+};
+
+export const AsLink: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <a href="#docs" className={buttonVariants()}>
+        Read the docs
+      </a>
+      <a href="#docs" className={buttonVariants({ variant: "outline" })}>
+        Changelog
+      </a>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Button always renders a `<button>`. To move to another page, put `buttonVariants` on a real link so you keep link semantics and the same look. Icons inside it are sized by the same rules.",
       },
     },
   },
@@ -270,13 +380,16 @@ export const Loading: Story = {
       <Button variant="secondary" loading>
         Processing...
       </Button>
+      <Button icon={PlusIcon} loading>
+        Adding...
+      </Button>
     </div>
   ),
   parameters: {
     docs: {
       description: {
         story:
-          "Loading state with spinner and auto-disabled to prevent multiple submissions.",
+          "Loading state with spinner, auto-disabled to prevent multiple submissions and marked `aria-busy`. The spinner takes the icon's place when there is one.",
       },
     },
   },

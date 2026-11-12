@@ -4733,16 +4733,65 @@
         "variable": "var(--button-border-width)",
         "description": "Border thickness shared by every button variant."
       },
-      "button-icon-size": {
-        "name": "buttonIconSize",
+      "button-icon-only-size": {
+        "name": "buttonIconOnlySize",
         "path": [
           "button",
-          "icon-size"
+          "icon-only",
+          "size"
         ],
         "value": "2.5rem",
         "type": "spacing",
-        "variable": "var(--button-icon-size)",
-        "description": "Width and height of the icon-only button."
+        "variable": "var(--button-icon-only-size)",
+        "description": "Width and height of the icon-only button (size=\"icon\"). Was button.icon-size, which read as a glyph size."
+      },
+      "button-icon-only-icon-size": {
+        "name": "buttonIconOnlyIconSize",
+        "path": [
+          "button",
+          "icon-only",
+          "icon-size"
+        ],
+        "value": "1.5rem",
+        "type": "spacing",
+        "variable": "var(--button-icon-only-icon-size)",
+        "description": "Size of the icon inside the icon-only button (24px). It draws the md stroke."
+      },
+      "button-icon-size-sm": {
+        "name": "buttonIconSizeSm",
+        "path": [
+          "button",
+          "icon-size",
+          "sm"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--button-icon-size-sm)",
+        "description": "Size of an icon beside the label of the small button (12px, not on the icon scale, like the other 12px indicators: a 16px icon would be taller than the 14px label's line and grow the button). It draws the sm stroke."
+      },
+      "button-icon-size-md": {
+        "name": "buttonIconSizeMd",
+        "path": [
+          "button",
+          "icon-size",
+          "md"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--button-icon-size-md)",
+        "description": "Size of an icon beside the label of the medium button (16px). It draws the sm stroke."
+      },
+      "button-icon-size-lg": {
+        "name": "buttonIconSizeLg",
+        "path": [
+          "button",
+          "icon-size",
+          "lg"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--button-icon-size-lg)",
+        "description": "Size of an icon beside the label of the large button (16px). It draws the sm stroke."
       },
       "button-link-text": {
         "name": "buttonLinkText",
