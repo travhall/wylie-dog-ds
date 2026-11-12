@@ -65,6 +65,7 @@ const MenubarSubTrigger = React.forwardRef<
     {children}
     <Icon
       icon={ChevronRightIcon}
+      size="sm"
       className="ml-auto h-(--space-menubar-item-icon-size) w-(--space-menubar-item-icon-size)"
     />
   </MenubarPrimitive.SubTrigger>
@@ -146,6 +147,7 @@ const MenubarCheckboxItem = React.forwardRef<
       <MenubarPrimitive.ItemIndicator>
         <Icon
           icon={CheckIcon}
+          size="sm"
           className="h-(--space-menubar-item-icon-size) w-(--space-menubar-item-icon-size)"
         />
       </MenubarPrimitive.ItemIndicator>
@@ -174,6 +176,7 @@ const MenubarRadioItem = React.forwardRef<
       <MenubarPrimitive.ItemIndicator>
         <Icon
           icon={CircleIcon}
+          size="sm"
           className="h-(--space-menubar-radio-indicator-size) w-(--space-menubar-radio-indicator-size) fill-current"
         />
       </MenubarPrimitive.ItemIndicator>

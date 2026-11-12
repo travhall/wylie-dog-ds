@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDownIcon } from "lucide-react";
+import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import { Icon } from "./icon";
 import React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
@@ -121,6 +121,7 @@ export const SelectTrigger = React.forwardRef<
       <SelectPrimitive.Icon asChild>
         <Icon
           icon={ChevronDownIcon}
+          size="sm"
           className="h-(--space-select-trigger-icon-size) w-(--space-select-trigger-icon-size) opacity-(--select-trigger-icon-opacity)"
         />
       </SelectPrimitive.Icon>
@@ -190,14 +191,11 @@ export const SelectItem = React.forwardRef<
     >
       <span className="absolute left-(--space-select-item-indicator-left) flex h-(--space-select-item-indicator-size) w-(--space-select-item-indicator-size) items-center justify-center">
         <SelectPrimitive.ItemIndicator>
-          <svg
+          <Icon
+            icon={CheckIcon}
+            size="md"
             className="h-(--space-select-item-icon-size) w-(--space-select-item-icon-size)"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <polyline points="20,6 9,17 4,12" />
-          </svg>
+          />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>

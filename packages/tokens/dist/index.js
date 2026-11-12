@@ -1530,4 +1530,6 @@ export const featureGridIconDuration = "400ms"; // Hover transition duration of 
 export const featureGridItemHoverScale = 1.05; // Scale of a feature grid item while hovered.
 export const featureGridIconHoverScale = 1.1; // Scale of the feature icon container while its item is hovered.
 export const featureGridBorderWidth = "1px"; // Border width of the feature grid.
-export const iconStrokeWidth = "2px"; // Stroke width of the line icons drawn as inline SVG.
+export const iconStrokeWidthSm = "1.5px"; // Stroke width of a small (16px) line icon, drawn at this width (not scaled with the icon).
+export const iconStrokeWidthMd = "2px"; // Stroke width of a medium (24px) line icon, drawn at this width (not scaled with the icon). Also the stroke of an icon with no size.
+export const iconStrokeWidthLg = "2.5px"; // Stroke width of a large (32px) line icon, drawn at this width (not scaled with the icon).

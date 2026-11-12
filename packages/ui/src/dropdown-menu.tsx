@@ -1,6 +1,6 @@
 import React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { ChevronRight } from "lucide-react";
+import { CheckIcon, ChevronRight } from "lucide-react";
 import { Icon } from "./icon";
 import { cn, focusRingInsetClasses } from "./lib/utils";
 
@@ -73,14 +73,11 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-(--space-dropdown-menu-item-indicator-left) flex h-(--space-dropdown-menu-item-indicator-size) w-(--space-dropdown-menu-item-indicator-size) items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <svg
+        <Icon
+          icon={CheckIcon}
+          size="sm"
           className="h-(--space-dropdown-menu-item-icon-size) w-(--space-dropdown-menu-item-icon-size)"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <polyline points="20,6 9,17 4,12" />
-        </svg>
+        />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -173,6 +170,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
     {children}
     <Icon
       icon={ChevronRight}
+      size="sm"
       className="ml-auto h-(--space-dropdown-menu-item-icon-size) w-(--space-dropdown-menu-item-icon-size)"
     />
   </DropdownMenuPrimitive.SubTrigger>

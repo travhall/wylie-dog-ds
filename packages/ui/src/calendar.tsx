@@ -40,6 +40,7 @@ const CalendarHeader = () => (
     >
       <Icon
         icon={ChevronLeftIcon}
+        size="sm"
         className="h-(--space-calendar-nav-icon-size) w-(--space-calendar-nav-icon-size)"
       />
     </button>
@@ -52,6 +53,7 @@ const CalendarHeader = () => (
     >
       <Icon
         icon={ChevronRightIcon}
+        size="sm"
         className="h-(--space-calendar-nav-icon-size) w-(--space-calendar-nav-icon-size)"
       />
     </button>

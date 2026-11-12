@@ -63,6 +63,7 @@ const ResizableHandle = ({
       <div className="z-(--resizable-handle-z-index) flex h-(--space-resizable-handle-height) w-(--space-resizable-handle-width) items-center justify-center rounded-(--space-resizable-handle-radius) border-(length:--space-resizable-border-width) border-(--color-resizable-handle-border) bg-(--color-resizable-handle-background)">
         <Icon
           icon={GripVerticalIcon}
+          size="sm"
           className="h-(--space-resizable-grip-icon-size) w-(--space-resizable-grip-icon-size)"
         />
       </div>

@@ -185,6 +185,7 @@ const CarouselPrevious = React.forwardRef<
     >
       <Icon
         icon={ChevronLeftIcon}
+        size="sm"
         className="h-(--space-carousel-button-icon-size) w-(--space-carousel-button-icon-size)"
       />
       <span className="sr-only">Previous slide</span>
@@ -218,6 +219,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
       >
         <Icon
           icon={ChevronRightIcon}
+          size="sm"
           className="h-(--space-carousel-button-icon-size) w-(--space-carousel-button-icon-size)"
         />
         <span className="sr-only">Next slide</span>

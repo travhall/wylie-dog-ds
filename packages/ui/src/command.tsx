@@ -66,6 +66,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
       >
         <Icon
           icon={SearchIcon}
+          size="sm"
           className="mr-(--space-command-item-indicator-margin-right) h-(--space-command-input-icon-size) w-(--space-command-input-icon-size) shrink-0 opacity-(--command-input-icon-opacity)"
           aria-hidden="true"
         />
