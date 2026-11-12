@@ -95,9 +95,12 @@ const meta: Meta<typeof Badge> = {
       },
     },
     onDismiss: {
-      control: false,
+      // a handler cannot be typed into a control, so the control is a switch: on passes a no-op
+      // handler (see the stories for real ones)
+      control: "boolean",
+      mapping: { true: () => {}, false: undefined },
       description:
-        "Shows a dismiss button after the label and calls this when it is pressed. A dismissible badge is not interactive itself and ignores `interactive` and `asChild`.",
+        "Shows a dismiss button after the label and calls this when it is pressed. A dismissible badge is not interactive itself and ignores `interactive` and `asChild`. The control is a switch that passes a no-op handler.",
       table: {
         type: { summary: "MouseEventHandler<HTMLButtonElement>" },
         category: "Behavior",
@@ -295,7 +298,7 @@ export const WithIcon: Story = {
 export const Dismissible: Story = {
   args: {
     children: "Badge",
-    onDismiss: () => {},
+    onDismiss: true as unknown as React.MouseEventHandler<HTMLButtonElement>,
     dismissLabel: "Remove Badge",
   },
   parameters: {
