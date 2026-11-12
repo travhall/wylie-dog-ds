@@ -482,7 +482,7 @@
       "component": "Badge",
       "rule": "content-property-not-in-code",
       "property": "showIcon",
-      "reason": "Icons are children of Badge in code, not a prop; the Figma boolean shows or hides the optional icon slot."
+      "reason": "In code a badge shows its icon when the `icon` prop is given; the Figma boolean shows or hides the optional icon slot, a nested Icon instance exposed so its icon dropdown shows on the Badge."
     },
     {
       "component": "Toggle",

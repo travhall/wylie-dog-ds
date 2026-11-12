@@ -4268,6 +4268,17 @@
         "variable": "var(--badge-icon-size-md)",
         "description": "Size of an icon in the medium badge (12px, under the 14px label's line height). The icon draws the sm stroke."
       },
+      "badge-dismiss-size": {
+        "name": "badgeDismissSize",
+        "path": [
+          "badge",
+          "dismiss-size"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--badge-dismiss-size)",
+        "description": "Width and height of the round dismiss button in a dismissible badge (16px, in every badge size). The X inside takes the badge's icon size."
+      },
       "badge-icon-size-lg": {
         "name": "badgeIconSizeLg",
         "path": [

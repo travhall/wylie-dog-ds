@@ -58,6 +58,9 @@
       "valueStories": {
         "show-icon": {
           "true": "components-content-display-badge--with-icon"
+        },
+        "show-dismiss": {
+          "true": "components-content-display-badge--dismissible"
         }
       }
     },

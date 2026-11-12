@@ -1,12 +1,33 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "@wyliedog/ui/badge";
 import { Icon } from "@wyliedog/ui/icon";
 import {
+  ArrowUpRightIcon,
   CheckIcon,
+  CircleCheckIcon,
   CircleXIcon,
+  HeartIcon,
   InfoIcon,
+  PlusIcon,
+  StarIcon,
   TriangleAlertIcon,
+  XIcon,
 } from "lucide-react";
+
+// The icon control: a glyph by name, turned into the component by `mapping`. Any lucide-react
+// icon (or any component that renders an SVG) works as the `icon` prop; this is the short list.
+const ICONS = {
+  None: undefined,
+  Check: CheckIcon,
+  "Circle Check": CircleCheckIcon,
+  Info: InfoIcon,
+  "Triangle Alert": TriangleAlertIcon,
+  "Circle X": CircleXIcon,
+  Plus: PlusIcon,
+  Heart: HeartIcon,
+  Star: StarIcon,
+};
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Content Display/Badge",
@@ -16,7 +37,7 @@ const meta: Meta<typeof Badge> = {
     docs: {
       description: {
         component:
-          "Compact status indicators and labels for displaying metadata, counts, or categorical information. **Accessibility:** Use semantic colors and consider adding visually hidden text for context when badges convey important information through color alone.",
+          "Compact status indicators and labels for displaying metadata, counts, or categorical information. A badge can carry an icon before its label (`icon`) and a dismiss button after it (`onDismiss`). **Accessibility:** Use semantic colors and consider adding visually hidden text for context when badges convey important information through color alone.",
       },
     },
   },
@@ -59,6 +80,36 @@ const meta: Meta<typeof Badge> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: "Behavior",
+      },
+    },
+    icon: {
+      control: "select",
+      options: Object.keys(ICONS),
+      mapping: ICONS,
+      description:
+        "An icon before the label: a lucide-react icon or any component that renders an SVG. The badge sizes it (12px in sm and md, 16px in lg), draws it with the sm stroke, gives it the label's colour and hides it from assistive technology. The control lists a short set of glyphs. Not used with `asChild`.",
+      table: {
+        type: { summary: "React.ElementType" },
+        category: "Content",
+      },
+    },
+    onDismiss: {
+      control: false,
+      description:
+        "Shows a dismiss button after the label and calls this when it is pressed. A dismissible badge is not interactive itself and ignores `interactive` and `asChild`.",
+      table: {
+        type: { summary: "MouseEventHandler<HTMLButtonElement>" },
+        category: "Behavior",
+      },
+    },
+    dismissLabel: {
+      control: "text",
+      description:
+        'The dismiss button\'s accessible name. Name what goes away, such as "Remove React".',
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: '"Dismiss"' },
         category: "Behavior",
       },
     },
@@ -207,26 +258,22 @@ export const WithIcons: Story = {
     docs: {
       description: {
         story:
-          "A badge can hold an icon before its label. The badge sizes the icon (12px in sm and md, 16px in lg), draws it with the sm stroke and gives it the label's colour; the gap is the badge's own. Pair the icon with the semantic variant that carries the same meaning, and hide it from assistive technology when the label says the same thing.",
+          "A badge can hold an icon before its label with the `icon` prop. The badge sizes the icon (12px in sm and md, 16px in lg), draws it with the sm stroke, gives it the label's colour and hides it from assistive technology, so the label has to say the same thing. Pair the icon with the semantic variant that carries the same meaning; these are the glyphs Alert uses for the same four meanings.",
       },
     },
   },
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Badge variant="success">
-        <Icon icon={CheckIcon} size="sm" aria-hidden="true" />
+      <Badge variant="success" icon={CircleCheckIcon}>
         Verified
       </Badge>
-      <Badge variant="info">
-        <Icon icon={InfoIcon} size="sm" aria-hidden="true" />
+      <Badge variant="info" icon={InfoIcon}>
         Info
       </Badge>
-      <Badge variant="warning">
-        <Icon icon={TriangleAlertIcon} size="sm" aria-hidden="true" />
+      <Badge variant="warning" icon={TriangleAlertIcon}>
         Warning
       </Badge>
-      <Badge variant="destructive">
-        <Icon icon={CircleXIcon} size="sm" aria-hidden="true" />
+      <Badge variant="destructive" icon={CircleXIcon}>
         Error
       </Badge>
     </div>
@@ -234,20 +281,112 @@ export const WithIcons: Story = {
 };
 
 export const WithIcon: Story = {
-  args: { children: undefined },
+  args: { children: "Badge", icon: "Check" as unknown as React.ElementType },
   parameters: {
     docs: {
       description: {
         story:
-          "One badge with an icon, driven by the variant and size controls. The Figma comparison renders the library's Show Icon state from this story.",
+          "One badge with an icon, driven by the variant, size and icon controls. The Figma comparison renders the library's Show Icon state from this story.",
       },
     },
   },
-  render: (args) => (
-    <Badge {...args}>
-      <Icon icon={CheckIcon} size="sm" aria-hidden="true" />
-      Badge
-    </Badge>
+};
+
+export const Dismissible: Story = {
+  args: {
+    children: "Badge",
+    onDismiss: () => {},
+    dismissLabel: "Remove Badge",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '`onDismiss` adds a round dismiss button after the label. The button is the only control: the badge itself is not interactive, so there is no button inside a button. Name what goes away with `dismissLabel` ("Remove React"). The X is a plain X so it cannot be mistaken for the Circle X that marks an error. The Figma comparison renders the library\'s Show Dismiss state from this story.',
+      },
+    },
+  },
+};
+
+const TAGS = ["React", "TypeScript", "Design tokens", "Storybook"] as const;
+
+export const DismissibleTags: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A removable list: each tag leaves the list when its dismiss button is pressed. Use every size and variant the same way, and move focus somewhere sensible when the last one goes.",
+      },
+    },
+  },
+  render: () => {
+    const Demo = () => {
+      const [tags, setTags] = React.useState<string[]>([...TAGS]);
+      return (
+        <div className="space-y-3">
+          <div className="flex min-h-8 flex-wrap gap-2">
+            {tags.map((tag) => (
+              <Badge
+                key={tag}
+                variant="secondary"
+                icon={HeartIcon}
+                onDismiss={() => setTags((t) => t.filter((x) => x !== tag))}
+                dismissLabel={`Remove ${tag}`}
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="text-sm underline"
+            onClick={() => setTags([...TAGS])}
+          >
+            Reset
+          </button>
+        </div>
+      );
+    };
+    return <Demo />;
+  },
+};
+
+export const DismissibleSizesAndVariants: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Every variant and size with a dismiss button.",
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-3">
+      {(["sm", "md", "lg"] as const).map((size) => (
+        <div key={size} className="flex flex-wrap items-center gap-2">
+          {(
+            [
+              "default",
+              "secondary",
+              "success",
+              "warning",
+              "info",
+              "destructive",
+              "outline",
+            ] as const
+          ).map((variant) => (
+            <Badge
+              key={variant}
+              size={size}
+              variant={variant}
+              onDismiss={() => {}}
+              dismissLabel={`Remove ${variant}`}
+            >
+              {variant}
+            </Badge>
+          ))}
+        </div>
+      ))}
+    </div>
   ),
 };
 
@@ -265,8 +404,8 @@ export const StatusIndicators: Story = {
       <div>
         <h4 className="text-sm font-medium mb-2">Account Status</h4>
         <div className="flex flex-wrap gap-2">
-          <Badge>Active</Badge>
-          <Badge variant="secondary">Pending</Badge>
+          <Badge variant="success">Active</Badge>
+          <Badge variant="warning">Pending</Badge>
           <Badge variant="outline">Inactive</Badge>
           <Badge variant="destructive">Suspended</Badge>
         </div>
@@ -275,9 +414,9 @@ export const StatusIndicators: Story = {
       <div>
         <h4 className="text-sm font-medium mb-2">Order Status</h4>
         <div className="flex flex-wrap gap-2">
-          <Badge>Processing</Badge>
+          <Badge variant="info">Processing</Badge>
           <Badge variant="secondary">Shipped</Badge>
-          <Badge>Delivered</Badge>
+          <Badge variant="success">Delivered</Badge>
           <Badge variant="destructive">Cancelled</Badge>
         </div>
       </div>
@@ -286,7 +425,7 @@ export const StatusIndicators: Story = {
         <h4 className="text-sm font-medium mb-2">Priority Levels</h4>
         <div className="flex flex-wrap gap-2">
           <Badge variant="destructive">Critical</Badge>
-          <Badge>High</Badge>
+          <Badge variant="warning">High</Badge>
           <Badge variant="secondary">Medium</Badge>
           <Badge variant="outline">Low</Badge>
         </div>
@@ -454,7 +593,7 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Use semantic variants</p>
             <div className="flex gap-2">
-              <Badge>Active</Badge>
+              <Badge variant="success">Active</Badge>
               <Badge variant="destructive">Error</Badge>
             </div>
             <p className="text-xs text-current/70">Match variant to meaning</p>
@@ -482,8 +621,7 @@ export const DosDonts: Story = {
 
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Add icons for clarity</p>
-            <Badge variant="success">
-              <Icon icon={CheckIcon} size="sm" aria-hidden="true" />
+            <Badge variant="success" icon={CircleCheckIcon}>
               Verified
             </Badge>
           </div>
@@ -581,26 +719,17 @@ export const InteractiveBadges: Story = {
       <div>
         <h4 className="text-sm font-medium mb-3">Disabled state</h4>
         <div className="flex flex-wrap gap-2">
-          <Badge
-            interactive
-            aria-disabled="true"
-            className="pointer-events-none opacity-50"
-          >
+          <Badge interactive aria-disabled="true">
             Default
           </Badge>
-          <Badge
-            interactive
-            variant="destructive"
-            aria-disabled="true"
-            className="pointer-events-none opacity-50"
-          >
+          <Badge interactive variant="destructive" aria-disabled="true">
             Destructive
           </Badge>
         </div>
         <p className="text-xs text-current/70 mt-2">
-          Badges are not form elements so use <code>aria-disabled</code> +{" "}
-          <code>pointer-events-none</code> rather than the HTML{" "}
-          <code>disabled</code> attribute.
+          Badges are not form elements, so set <code>aria-disabled</code> rather
+          than the HTML <code>disabled</code> attribute: the badge dims with the
+          disabled token and ignores its own clicks and keys.
         </p>
       </div>
     </div>
@@ -633,7 +762,8 @@ export const InteractiveAsChild: Story = {
           </Badge>
           <Badge interactive asChild variant="outline">
             <a href="#" onClick={(e) => e.preventDefault()}>
-              GitHub ↗
+              GitHub
+              <Icon icon={ArrowUpRightIcon} size="sm" aria-hidden="true" />
             </a>
           </Badge>
         </div>
@@ -644,12 +774,14 @@ export const InteractiveAsChild: Story = {
         <div className="flex flex-wrap gap-2">
           <Badge interactive asChild variant="success">
             <button type="button" onClick={() => alert("Approved!")}>
-              ✓ Approve
+              <Icon icon={CheckIcon} size="sm" aria-hidden="true" />
+              Approve
             </button>
           </Badge>
           <Badge interactive asChild variant="destructive">
             <button type="button" onClick={() => alert("Rejected!")}>
-              ✕ Reject
+              <Icon icon={XIcon} size="sm" aria-hidden="true" />
+              Reject
             </button>
           </Badge>
         </div>

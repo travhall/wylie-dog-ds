@@ -15,12 +15,13 @@ const PARTS = {};
 // Sets whose root is a bare wrapper with no look of its own (Select): emit only their parts, not
 // the root, so the wrapper is not compared against the UI's inner element.
 const ONLY_PARTS = []; // e.g. ["Select"] with PARTS = { Select: ["trigger"] }
-// Sets with an optional icon behind a `Show Icon` boolean (hidden in every variant). For each
-// resting variant (no Hover or Pressed) a temporary instance is created, Show Icon is turned on, it
-// is measured as "<variant>, Show Icon=True" with the icon's size, and the instance is deleted, so
-// the library file is left as it was. Harvest-ui.mjs renders that row through the config's
-// `valueStories` (`show-icon`).
-const SHOW_ICON = []; // e.g. ["Badge"]
+// Optional parts that sit behind a boolean property and are hidden in every variant (a badge's
+// icon and dismiss button), by set: { Badge: ["Show Icon", "Show Dismiss"] }. For each resting
+// variant (no Hover, Pressed or Disabled) and each listed boolean, a temporary instance is created,
+// the boolean is turned on, the instance is measured as "<variant>, <Boolean>=True" with the
+// icon's size, and the instance is deleted, so the library file is left as it was. Harvest-ui.mjs
+// renders that row through the config's `valueStories` (`show-icon`, `show-dismiss`).
+const SHOW = {}; // e.g. { Badge: ["Show Icon", "Show Dismiss"] }
 
 const page = figma.root.children.find((p) => p.name === PAGE_NAME);
 if (!page) throw new Error(`No page named ${PAGE_NAME}`);
@@ -182,25 +183,27 @@ for (const set of sets) {
         texts,
         ...measureIcon(variant),
       });
-    if (SHOW_ICON.includes(set.name) && !/hover|pressed/i.test(variant.name)) {
-      const inst = variant.createInstance();
-      const key = Object.keys(inst.componentProperties).find((k) =>
-        k.startsWith("Show Icon")
-      );
-      if (key) {
-        inst.setProperties({ [key]: true });
-        const iconTexts = inst
-          .findAll((n) => n.type === "TEXT" && n.visible !== false)
-          .map(measureText);
-        items.push({
-          set: set.name,
-          variant: `${variant.name}, Show Icon=True`,
-          box: measureBox(inst),
-          texts: iconTexts,
-          ...measureIcon(inst, true),
-        });
+    if (SHOW[set.name] && !/hover|pressed|disabled/i.test(variant.name)) {
+      for (const flag of SHOW[set.name]) {
+        const inst = variant.createInstance();
+        const key = Object.keys(inst.componentProperties).find((k) =>
+          k.startsWith(flag)
+        );
+        if (key) {
+          inst.setProperties({ [key]: true });
+          const shownTexts = inst
+            .findAll((n) => n.type === "TEXT" && n.visible !== false)
+            .map(measureText);
+          items.push({
+            set: set.name,
+            variant: `${variant.name}, ${flag}=True`,
+            box: measureBox(inst),
+            texts: shownTexts,
+            ...measureIcon(inst, true),
+          });
+        }
+        inst.remove();
       }
-      inst.remove();
     }
     for (const part of PARTS[set.name] ?? []) {
       // "name#1" is the second descendant called "name" (layers repeat: tabs-row-row)

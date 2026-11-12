@@ -433,6 +433,7 @@ export const spacing = {
   "indicator-height": "0px",
   "handle-focus-ring-width": "2px",
   "handle-focus-ring-offset": "2px",
+  "dismiss-size": "1rem",
   "icon-stroke-width-sm": "1.5px",
   "icon-stroke-width-md": "2.5px",
   "icon-stroke-width-lg": "3.5px",
