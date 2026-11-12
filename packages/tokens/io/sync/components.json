@@ -5916,13 +5916,49 @@
             "Dark": "{space.150}"
           }
         },
-        "button.icon-size": {
+        "button.icon-only.size": {
           "$type": "spacing",
           "$value": "{space.500}",
-          "$description": "Width and height of the icon-only button.",
+          "$description": "Width and height of the icon-only button (size=\"icon\"). Was button.icon-size, which read as a glyph size.",
           "valuesByMode": {
             "Light": "{space.500}",
             "Dark": "{space.500}"
+          }
+        },
+        "button.icon-only.icon-size": {
+          "$type": "spacing",
+          "$value": "{icon.size.md}",
+          "$description": "Size of the icon inside the icon-only button (24px). It draws the md stroke.",
+          "valuesByMode": {
+            "Light": "{icon.size.md}",
+            "Dark": "{icon.size.md}"
+          }
+        },
+        "button.icon-size.sm": {
+          "$type": "spacing",
+          "$value": "{space.150}",
+          "$description": "Size of an icon beside the label of the small button (12px, not on the icon scale, like the other 12px indicators: a 16px icon would be taller than the 14px label's line and grow the button). It draws the sm stroke.",
+          "valuesByMode": {
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
+        "button.icon-size.md": {
+          "$type": "spacing",
+          "$value": "{icon.size.sm}",
+          "$description": "Size of an icon beside the label of the medium button (16px). It draws the sm stroke.",
+          "valuesByMode": {
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
+          }
+        },
+        "button.icon-size.lg": {
+          "$type": "spacing",
+          "$value": "{icon.size.sm}",
+          "$description": "Size of an icon beside the label of the large button (16px). It draws the sm stroke.",
+          "valuesByMode": {
+            "Light": "{icon.size.sm}",
+            "Dark": "{icon.size.sm}"
           }
         },
         "button.link-text": {

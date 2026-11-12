@@ -11,7 +11,12 @@
         "disabled": "disabled",
         "loading": "loading"
       },
-      "state": "state"
+      "state": "state",
+      "valueStories": {
+        "show-icon": {
+          "true": "components-inputs-controls-button--with-icon"
+        }
+      }
     },
     "Toggle": {
       "story": "components-inputs-controls-toggle--default",

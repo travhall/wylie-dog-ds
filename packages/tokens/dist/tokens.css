@@ -1057,7 +1057,11 @@
   --space-input-padding-y-sm: 0.25rem;
   --space-input-padding-y-md: 0.5rem;
   --space-input-padding-y-lg: 0.75rem;
-  --space-button-icon-size: 2.5rem;
+  --space-button-icon-only-size: 2.5rem;
+  --space-button-icon-only-icon-size: 1.5rem;
+  --space-button-icon-size-sm: 0.75rem;
+  --space-button-icon-size-md: 1rem;
+  --space-button-icon-size-lg: 1rem;
   --color-button-link-text: oklch(0.496 0.049 219.11);
   --space-card-header-gap: 0.5rem;
   --input-opacity-disabled: 0.6;
@@ -2295,7 +2299,11 @@
   --space-input-padding-y-sm: 0.25rem;
   --space-input-padding-y-md: 0.5rem;
   --space-input-padding-y-lg: 0.75rem;
-  --space-button-icon-size: 2.5rem;
+  --space-button-icon-only-size: 2.5rem;
+  --space-button-icon-only-icon-size: 1.5rem;
+  --space-button-icon-size-sm: 0.75rem;
+  --space-button-icon-size-md: 1rem;
+  --space-button-icon-size-lg: 1rem;
   --color-button-link-text: oklch(0.719 0.028 218.5);
   --space-card-header-gap: 0.5rem;
   --input-opacity-disabled: 0.6;

@@ -999,7 +999,11 @@ export type CssVarName =
   | "--space-breadcrumb-list-gap"
   | "--space-breadcrumb-separator-size"
   | "--space-button-icon-gap"
-  | "--space-button-icon-size"
+  | "--space-button-icon-only-icon-size"
+  | "--space-button-icon-only-size"
+  | "--space-button-icon-size-lg"
+  | "--space-button-icon-size-md"
+  | "--space-button-icon-size-sm"
   | "--space-button-link-underline-offset"
   | "--space-button-padding-x-lg"
   | "--space-button-padding-x-md"
@@ -2519,7 +2523,11 @@ export declare const cssVars: Readonly<{
   "spaceBreadcrumbListGap": "--space-breadcrumb-list-gap";
   "spaceBreadcrumbSeparatorSize": "--space-breadcrumb-separator-size";
   "spaceButtonIconGap": "--space-button-icon-gap";
-  "spaceButtonIconSize": "--space-button-icon-size";
+  "spaceButtonIconOnlyIconSize": "--space-button-icon-only-icon-size";
+  "spaceButtonIconOnlySize": "--space-button-icon-only-size";
+  "spaceButtonIconSizeLg": "--space-button-icon-size-lg";
+  "spaceButtonIconSizeMd": "--space-button-icon-size-md";
+  "spaceButtonIconSizeSm": "--space-button-icon-size-sm";
   "spaceButtonLinkUnderlineOffset": "--space-button-link-underline-offset";
   "spaceButtonPaddingXLg": "--space-button-padding-x-lg";
   "spaceButtonPaddingXMd": "--space-button-padding-x-md";

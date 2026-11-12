@@ -130,8 +130,8 @@ describe("Button", () => {
     it("should render icon size with expected classes", () => {
       render(<Button size="icon" aria-label="Icon button" />);
       const button = screen.getByRole("button");
-      expect(button).toHaveClass("h-(--space-button-icon-size)");
-      expect(button).toHaveClass("w-(--space-button-icon-size)");
+      expect(button).toHaveClass("h-(--space-button-icon-only-size)");
+      expect(button).toHaveClass("w-(--space-button-icon-only-size)");
       expect(button).toHaveClass("rounded-(--space-button-radius)");
     });
   });
@@ -241,6 +241,93 @@ describe("Button", () => {
       const classes = buttonVariants({});
       expect(classes).toContain("bg-(--color-button-primary-background)");
       expect(classes).toContain("px-(--space-button-padding-x-md)");
+    });
+  });
+
+  describe("Icon, type and busy state", () => {
+    const Glyph = (props: React.SVGProps<SVGSVGElement>) => (
+      <svg data-testid="glyph" viewBox="0 0 24 24" {...props}>
+        <path d="M4 12h16" />
+      </svg>
+    );
+
+    it("renders the icon prop before the label, hidden from assistive technology", () => {
+      render(<Button icon={Glyph}>Save</Button>);
+      const button = screen.getByRole("button", { name: "Save" });
+      const svg = screen.getByTestId("glyph");
+      expect(button.firstElementChild).toBe(svg);
+      expect(svg).toHaveAttribute("aria-hidden", "true");
+    });
+
+    it.each([
+      ["sm", "sm"],
+      ["md", "md"],
+      ["default", "md"],
+      ["lg", "lg"],
+    ] as const)(
+      "sizes an icon in a %s button from the %s button icon-size token with the sm stroke",
+      (size, token) => {
+        render(
+          <Button size={size} icon={Glyph}>
+            Go
+          </Button>
+        );
+        const button = screen.getByRole("button", { name: "Go" });
+        expect(button).toHaveClass(
+          `[&_svg]:h-(--space-button-icon-size-${token})`,
+          `[&_svg]:w-(--space-button-icon-size-${token})`,
+          "[&_svg]:stroke-(length:--space-icon-stroke-width-sm)"
+        );
+        expect(screen.getByTestId("glyph")).toHaveClass(
+          `h-(--space-button-icon-size-${token})`
+        );
+      }
+    );
+
+    it("sizes the icon-only button's icon from its own token with the md stroke", () => {
+      render(<Button size="icon" icon={Glyph} aria-label="Like" />);
+      const button = screen.getByRole("button", { name: "Like" });
+      expect(button).toHaveClass(
+        "[&_svg]:h-(--space-button-icon-only-icon-size)",
+        "[&_svg]:stroke-(length:--space-icon-stroke-width-md)"
+      );
+      expect(screen.getByTestId("glyph")).toHaveClass(
+        "h-(--space-button-icon-only-icon-size)"
+      );
+    });
+
+    it("lets the spinner take the icon's place while loading", () => {
+      render(
+        <Button loading icon={Glyph}>
+          Saving
+        </Button>
+      );
+      expect(screen.queryByTestId("glyph")).toBeNull();
+    });
+
+    it("defaults type to button so it does not submit a form, and lets it be overridden", () => {
+      const onSubmit = vi.fn((e: React.FormEvent) => e.preventDefault());
+      render(
+        <form onSubmit={onSubmit}>
+          <Button>Plain</Button>
+          <Button type="submit">Send</Button>
+        </form>
+      );
+      expect(screen.getByRole("button", { name: "Plain" })).toHaveAttribute(
+        "type",
+        "button"
+      );
+      fireEvent.click(screen.getByRole("button", { name: "Plain" }));
+      expect(onSubmit).not.toHaveBeenCalled();
+      fireEvent.click(screen.getByRole("button", { name: "Send" }));
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+    });
+
+    it("sets aria-busy only while loading", () => {
+      const { rerender } = render(<Button>Go</Button>);
+      expect(screen.getByRole("button")).not.toHaveAttribute("aria-busy");
+      rerender(<Button loading>Go</Button>);
+      expect(screen.getByRole("button")).toHaveAttribute("aria-busy", "true");
     });
   });
 
