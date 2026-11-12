@@ -9908,7 +9908,7 @@
         "value": "0.75rem",
         "type": "spacing",
         "variable": "var(--resizable-grip-icon-size)",
-        "description": "Size of the grip icon inside the resizable handle (xs icon, 12px)."
+        "description": "Size of the grip icon inside the resizable handle (12px, the handle is 12px wide; indicator geometry, not on the icon scale)."
       },
       "resizable-handle-height": {
         "name": "resizableHandleHeight",

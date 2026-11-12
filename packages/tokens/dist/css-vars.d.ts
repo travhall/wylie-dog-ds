@@ -1141,8 +1141,6 @@ export type CssVarName =
   | "--space-icon-size-lg"
   | "--space-icon-size-md"
   | "--space-icon-size-sm"
-  | "--space-icon-size-xl"
-  | "--space-icon-size-xs"
   | "--space-icon-stroke-width"
   | "--space-input-border-width"
   | "--space-input-native-icon-size"
@@ -2654,8 +2652,6 @@ export declare const cssVars: Readonly<{
   "spaceIconSizeLg": "--space-icon-size-lg";
   "spaceIconSizeMd": "--space-icon-size-md";
   "spaceIconSizeSm": "--space-icon-size-sm";
-  "spaceIconSizeXl": "--space-icon-size-xl";
-  "spaceIconSizeXs": "--space-icon-size-xs";
   "spaceIconStrokeWidth": "--space-icon-stroke-width";
   "spaceInputBorderWidth": "--space-input-border-width";
   "spaceInputNativeIconSize": "--space-input-native-icon-size";

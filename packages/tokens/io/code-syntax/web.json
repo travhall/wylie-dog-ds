@@ -724,8 +724,6 @@
     "icon.size.lg": "var(--space-icon-size-lg)",
     "icon.size.md": "var(--space-icon-size-md)",
     "icon.size.sm": "var(--space-icon-size-sm)",
-    "icon.size.xl": "var(--space-icon-size-xl)",
-    "icon.size.xs": "var(--space-icon-size-xs)",
     "input.background-hover": "var(--color-input-background-hover)",
     "input.border": "var(--color-input-border)",
     "input.border-error": "var(--color-input-border-error)",

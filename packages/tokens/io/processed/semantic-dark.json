@@ -104,11 +104,6 @@
     "$value": "{duration.2000}",
     "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse"
   },
-  "icon.size.xs": {
-    "$type": "dimension",
-    "$value": "{space.150}",
-    "$description": "Extra small icon size (12px)"
-  },
   "icon.size.sm": {
     "$type": "dimension",
     "$value": "{space.200}",
@@ -123,11 +118,6 @@
     "$type": "dimension",
     "$value": "{space.400}",
     "$description": "Large icon size (32px)"
-  },
-  "icon.size.xl": {
-    "$type": "dimension",
-    "$value": "{space.500}",
-    "$description": "Extra large icon size (40px)"
   },
   "transition.easing.default": {
     "$type": "cubicBezier",

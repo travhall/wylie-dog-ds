@@ -1,14 +1,71 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
+  ArrowRightIcon,
   BellIcon,
+  BoldIcon,
+  CalendarIcon,
   CheckIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  CircleCheckIcon,
+  CircleIcon,
+  CircleXIcon,
+  EllipsisIcon,
+  FileIcon,
+  FolderIcon,
+  GripVerticalIcon,
   HeartIcon,
+  HouseIcon,
+  InfoIcon,
+  ItalicIcon,
+  LinkIcon,
+  MapPinIcon,
+  MinusIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
+  TriangleAlertIcon,
+  UserIcon,
+  XIcon,
 } from "lucide-react";
 import { Icon } from "@wyliedog/ui/icon";
 import { Button } from "@wyliedog/ui/button";
+
+// The glyphs the Figma Icon set draws, by the name Figma gives them. The Icon component takes ANY
+// glyph; this list is what the library shows (the picker below and the Glyphs story) and it must
+// match the Figma set's `icon` options, which scripts/__tests__/icon-glyphs.test.mjs checks.
+const GLYPHS = {
+  Heart: HeartIcon,
+  "Chevron Down": ChevronDownIcon,
+  "Chevron Left": ChevronLeftIcon,
+  "Chevron Right": ChevronRightIcon,
+  X: XIcon,
+  Check: CheckIcon,
+  Circle: CircleIcon,
+  Search: SearchIcon,
+  Ellipsis: EllipsisIcon,
+  "Grip Vertical": GripVerticalIcon,
+  Minus: MinusIcon,
+  "Arrow Right": ArrowRightIcon,
+  Plus: PlusIcon,
+  User: UserIcon,
+  Settings: SettingsIcon,
+  Bell: BellIcon,
+  Calendar: CalendarIcon,
+  House: HouseIcon,
+  Link: LinkIcon,
+  Folder: FolderIcon,
+  File: FileIcon,
+  "Map Pin": MapPinIcon,
+  Bold: BoldIcon,
+  Italic: ItalicIcon,
+  Info: InfoIcon,
+  "Circle Check": CircleCheckIcon,
+  "Triangle Alert": TriangleAlertIcon,
+  "Circle X": CircleXIcon,
+} as const;
 
 const meta: Meta<typeof Icon> = {
   title: "Components/Content Display/Icon",
@@ -16,6 +73,15 @@ const meta: Meta<typeof Icon> = {
   parameters: {
     layout: "centered",
     docs: {
+      // the code shows the glyph the way you import it: icon="Map Pin" becomes icon={MapPinIcon}
+      source: {
+        transform: (code: string) =>
+          code.replace(
+            /icon="([^"]+)"/,
+            (_: string, name: string) =>
+              `icon={${name.replace(/\s+/g, "")}Icon}`
+          ),
+      },
       description: {
         component:
           "Renders any icon component at a token size with the token stroke weight. The glyph comes from the icon library you already use (lucide-react here); the system owns size and stroke, so changing the icon size or stroke tokens changes every icon at once. Without `size` the icon keeps the size its caller gives it through `className`, which is how the system's own components size theirs.",
@@ -25,20 +91,27 @@ const meta: Meta<typeof Icon> = {
   tags: ["autodocs"],
   argTypes: {
     icon: {
-      control: false,
+      control: "select",
+      options: Object.keys(GLYPHS),
       description:
-        "The glyph: a component that renders an SVG and accepts className, such as a lucide-react icon.",
+        "The glyph: a component that renders an SVG and accepts className, such as a lucide-react icon. The control lists the glyphs the Figma Icon set draws by name; any other glyph works in code.",
       table: { type: { summary: "React.ElementType" }, category: "Content" },
     },
     size: {
       control: "radio",
-      options: ["xs", "sm", "md", "lg", "xl"],
+      options: ["sm", "md", "lg"],
       description:
-        "Icon size from the icon.size tokens: xs 12px, sm 16px, md 24px, lg 32px, xl 40px. Omit it to size the icon through className.",
+        "Icon size from the icon.size tokens: sm 16px, md 24px, lg 32px. Omit it to size the icon through className.",
       table: { type: { summary: "string" }, category: "Appearance" },
     },
   },
-  args: { icon: HeartIcon, size: "md" },
+  // the picker works with the glyph's name; the story turns it into the component
+  args: { icon: "Heart" as unknown as React.ElementType, size: "md" },
+  render: ({ icon, ...args }) => {
+    const Glyph =
+      typeof icon === "string" ? GLYPHS[icon as keyof typeof GLYPHS] : icon;
+    return <Icon icon={Glyph} {...args} />;
+  },
 };
 
 export default meta;
@@ -50,13 +123,13 @@ export const Sizes: Story = {
   parameters: {
     docs: {
       description: {
-        story: "The five token sizes, all with the same stroke weight.",
+        story: "The three token sizes, all with the same stroke weight.",
       },
     },
   },
   render: () => (
     <div className="flex items-end gap-6">
-      {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
+      {(["sm", "md", "lg"] as const).map((size) => (
         <div key={size} className="flex flex-col items-center gap-2">
           <Icon icon={HeartIcon} size={size} />
           <span className="text-xs">{size}</span>
@@ -68,21 +141,23 @@ export const Sizes: Story = {
 
 export const Glyphs: Story = {
   parameters: {
+    layout: "padded",
     docs: {
       description: {
         story:
-          "Any glyph from the library works; the stroke weight is the same for all of them.",
+          "The glyphs the Figma Icon set draws, at the same names. Any glyph from your icon library works the same way; the stroke weight is the same for all of them.",
       },
     },
   },
   render: () => (
-    <div className="flex gap-6">
-      {[BellIcon, CheckIcon, HeartIcon, PlusIcon, SearchIcon, SettingsIcon].map(
-        (Glyph, index) => (
-          <Icon key={index} icon={Glyph} size="lg" />
-        )
-      )}
-    </div>
+    <ul className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(7rem,1fr))] gap-6 p-0">
+      {Object.entries(GLYPHS).map(([name, Glyph]) => (
+        <li key={name} className="flex flex-col items-center gap-2">
+          <Icon icon={Glyph} size="lg" aria-hidden="true" />
+          <span className="text-center text-xs">{name}</span>
+        </li>
+      ))}
+    </ul>
   ),
 };
 
