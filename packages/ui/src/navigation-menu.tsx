@@ -1,6 +1,7 @@
 import React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { createPortal } from "react-dom";
+import * as PopperPrimitive from "@radix-ui/react-popper";
+import { Portal } from "@radix-ui/react-portal";
 import { ChevronDownIcon } from "lucide-react";
 import { Icon } from "./icon";
 import { cn, focusRingClasses } from "./lib/utils";
@@ -9,17 +10,22 @@ const NavigationMenu = React.forwardRef<
   React.ComponentRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
-  <NavigationMenuPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative z-(--navigation-menu-z-index) flex max-w-max flex-1 items-center justify-center data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <NavigationMenuViewport />
-  </NavigationMenuPrimitive.Root>
+  // The menu is the anchor the panel is placed from (see NavigationMenuViewport).
+  <PopperPrimitive.Root>
+    <PopperPrimitive.Anchor asChild>
+      <NavigationMenuPrimitive.Root
+        ref={ref}
+        className={cn(
+          "relative z-(--navigation-menu-z-index) flex max-w-max flex-1 items-center justify-center data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        <NavigationMenuViewport orientation={props.orientation} />
+      </NavigationMenuPrimitive.Root>
+    </PopperPrimitive.Anchor>
+  </PopperPrimitive.Root>
 ));
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
 
@@ -100,73 +106,41 @@ NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;
 
 const NavigationMenuLink = NavigationMenuPrimitive.Link;
 
+export interface NavigationMenuViewportProps extends React.ComponentPropsWithoutRef<
+  typeof NavigationMenuPrimitive.Viewport
+> {
+  /** Where the panel opens: below the menu, or beside it when the menu is vertical. */
+  orientation?: "horizontal" | "vertical";
+}
+
+// Like the popover, dropdown menu and hover card, the panel is portalled to the body, so an
+// ancestor with overflow, a transform or its own stacking context (a docs canvas, a header)
+// cannot clip it or put it under something else. Radix Popper places it from the menu (the
+// anchor above), keeps it on screen, and follows scroll and resize. Both are Radix client
+// components, so this works from a server component (the site header) with no hooks here.
 const NavigationMenuViewport = React.forwardRef<
   React.ComponentRef<typeof NavigationMenuPrimitive.Viewport>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
->(({ className, ...props }, ref) => {
-  const anchorRef = React.useRef<HTMLSpanElement>(null);
-  const [box, setBox] = React.useState<{ top: number; left: number } | null>(
-    null
-  );
-
-  // Like the popover, dropdown menu and hover card, the panel is portalled to the body, so an
-  // ancestor with overflow, a transform or its own stacking context (a docs canvas, a header)
-  // cannot clip it or put it under something else. It is placed from the menu's own box: below
-  // it, or beside it when the menu is vertical. The anchor span marks where the menu is.
-  React.useLayoutEffect(() => {
-    const root = anchorRef.current?.parentElement;
-    if (!root) return;
-    const measure = () => {
-      const rect = root.getBoundingClientRect();
-      const next =
-        root.getAttribute("data-orientation") === "vertical"
-          ? { top: rect.top, left: rect.right }
-          : { top: rect.bottom, left: rect.left };
-      setBox((prev) =>
-        prev && prev.top === next.top && prev.left === next.left ? prev : next
-      );
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    window.addEventListener("scroll", measure, true);
-    const observer =
-      typeof ResizeObserver === "undefined"
-        ? undefined
-        : new ResizeObserver(measure);
-    observer?.observe(root);
-    observer?.observe(document.body);
-    return () => {
-      window.removeEventListener("resize", measure);
-      window.removeEventListener("scroll", measure, true);
-      observer?.disconnect();
-    };
-  }, []);
-
-  return (
-    <>
-      <span ref={anchorRef} hidden />
-      {box &&
-        createPortal(
-          <div
-            className="fixed z-(--navigation-menu-z-index) flex justify-center"
-            style={{ top: box.top, left: box.left }}
-          >
-            <NavigationMenuPrimitive.Viewport
-              className={cn(
-                "wd-motion-pop [--wd-motion-duration:var(--duration-navigation-menu-viewport-duration)] [--wd-motion-easing:var(--navigation-menu-viewport-easing)] [--wd-motion-scale:var(--navigation-menu-viewport-scale)]",
-                "data-[orientation=vertical]:mt-0 data-[orientation=vertical]:ml-(--space-navigation-menu-indicator-margin-top)",
-                "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border-(length:--space-navigation-menu-border-width) border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
-                className
-              )}
-              ref={ref}
-              {...props}
-            />
-          </div>,
-          document.body
+  NavigationMenuViewportProps
+>(({ className, orientation = "horizontal", ...props }, ref) => (
+  <Portal>
+    <PopperPrimitive.Content
+      side={orientation === "vertical" ? "right" : "bottom"}
+      align="start"
+      className="z-(--navigation-menu-z-index)"
+    >
+      <NavigationMenuPrimitive.Viewport
+        className={cn(
+          "wd-motion-pop [--wd-motion-duration:var(--duration-navigation-menu-viewport-duration)] [--wd-motion-easing:var(--navigation-menu-viewport-easing)] [--wd-motion-scale:var(--navigation-menu-viewport-scale)]",
+          "data-[orientation=vertical]:mt-0 data-[orientation=vertical]:ml-(--space-navigation-menu-indicator-margin-top)",
+          "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border-(length:--space-navigation-menu-border-width) border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-navigation-menu-viewport-shadow) md:w-(--radix-navigation-menu-viewport-width)",
+          className
         )}
-    </>
-  );
-});
+        ref={ref}
+        {...props}
+      />
+    </PopperPrimitive.Content>
+  </Portal>
+));
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName;
 
