@@ -12081,17 +12081,17 @@
         "variable": "var(--color-select-separator-background)",
         "description": "Fill of the select separator."
       },
-      "select-trigger-icon-opacity": {
-        "name": "selectTriggerIconOpacity",
+      "select-trigger-icon": {
+        "name": "selectTriggerIcon",
         "path": [
           "select",
           "trigger",
-          "icon-opacity"
+          "icon"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--select-trigger-icon-opacity)",
-        "description": "Opacity of the select trigger icon."
+        "value": "oklch(0.33 0.024 47.79)",
+        "type": "color",
+        "variable": "var(--color-select-trigger-icon)",
+        "description": "Color of the select trigger chevron, the same as the accordion chevron."
       },
       "select-opacity-disabled": {
         "name": "selectOpacityDisabled",
@@ -12128,17 +12128,44 @@
         "variable": "var(--color-select-item-text-highlighted)",
         "description": "Text color of the select item while highlighted. Pairs with `select.item.background-highlighted`."
       },
-      "select-trigger-icon-size": {
-        "name": "selectTriggerIconSize",
+      "select-trigger-icon-size-sm": {
+        "name": "selectTriggerIconSizeSm",
         "path": [
           "select",
           "trigger",
-          "icon-size"
+          "icon-size",
+          "sm"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--select-trigger-icon-size-sm)",
+        "description": "Size of the chevron in the small select trigger (12px, not on the icon scale, like the other 12px indicators). Each trigger chevron stays under its line height so it never sets the trigger height."
+      },
+      "select-trigger-icon-size-md": {
+        "name": "selectTriggerIconSizeMd",
+        "path": [
+          "select",
+          "trigger",
+          "icon-size",
+          "md"
         ],
         "value": "1rem",
         "type": "spacing",
-        "variable": "var(--select-trigger-icon-size)",
-        "description": "Size of the chevron in the select trigger. It stays under the line height so it never sets the trigger height."
+        "variable": "var(--select-trigger-icon-size-md)",
+        "description": "Size of the chevron in the medium select trigger, the same as the accordion chevron."
+      },
+      "select-trigger-icon-size-lg": {
+        "name": "selectTriggerIconSizeLg",
+        "path": [
+          "select",
+          "trigger",
+          "icon-size",
+          "lg"
+        ],
+        "value": "1.5rem",
+        "type": "spacing",
+        "variable": "var(--select-trigger-icon-size-lg)",
+        "description": "Size of the chevron in the large select trigger."
       },
       "select-item-icon-size": {
         "name": "selectItemIconSize",

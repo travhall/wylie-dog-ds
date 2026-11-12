@@ -1695,6 +1695,10 @@
     "light": "oklch(0.74 0.019 69.96)",
     "dark": "oklch(0.397 0.018 63.78)"
   },
+  "color-select-trigger-icon": {
+    "light": "oklch(0.33 0.024 47.79)",
+    "dark": "oklch(0.843 0.027 71)"
+  },
   "color-separator-color": {
     "light": "oklch(0.74 0.019 69.96)",
     "dark": "oklch(0.397 0.018 63.78)"

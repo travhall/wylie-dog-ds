@@ -349,6 +349,26 @@ describe("Select", () => {
       );
     });
 
+    it.each([
+      ["sm", "sm", "sm"],
+      ["md", "md", "sm"],
+      ["lg", "lg", "md"],
+    ] as const)(
+      "scales the chevron with the %s trigger (size token %s)",
+      (size, tokenSize, iconSize) => {
+        render(<TestSelect size={size} />);
+
+        const chevron = screen.getByRole("combobox").querySelector("svg");
+        expect(chevron).toHaveClass(
+          `h-(--space-select-trigger-icon-size-${tokenSize})`,
+          `w-(--space-select-trigger-icon-size-${tokenSize})`,
+          "text-(--color-select-trigger-icon)",
+          `stroke-(length:--space-icon-stroke-width-${iconSize})`
+        );
+        expect(chevron?.getAttribute("class")).not.toMatch(/opacity/);
+      }
+    );
+
     it("should apply error styling", () => {
       render(<TestSelect error />);
 

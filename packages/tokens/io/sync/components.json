@@ -6879,13 +6879,13 @@
             "Dark": "0px"
           }
         },
-        "select.trigger.icon-opacity": {
-          "$type": "number",
-          "$value": "{opacity.50}",
-          "$description": "Opacity of the select trigger icon.",
+        "select.trigger.icon": {
+          "$type": "color",
+          "$value": "{color.foreground.muted}",
+          "$description": "Color of the select trigger chevron, the same as the accordion chevron.",
           "valuesByMode": {
-            "Light": "{opacity.50}",
-            "Dark": "{opacity.50}"
+            "Light": "{color.foreground.muted}",
+            "Dark": "{color.foreground.muted}"
           }
         },
         "label.error-text": {
@@ -8580,13 +8580,31 @@
             "Dark": "{icon.size.sm}"
           }
         },
-        "select.trigger.icon-size": {
+        "select.trigger.icon-size.sm": {
+          "$type": "spacing",
+          "$value": "{space.150}",
+          "$description": "Size of the chevron in the small select trigger (12px, not on the icon scale, like the other 12px indicators). Each trigger chevron stays under its line height so it never sets the trigger height.",
+          "valuesByMode": {
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
+        "select.trigger.icon-size.md": {
           "$type": "spacing",
           "$value": "{icon.size.sm}",
-          "$description": "Size of the chevron in the select trigger. It stays under the line height so it never sets the trigger height.",
+          "$description": "Size of the chevron in the medium select trigger, the same as the accordion chevron.",
           "valuesByMode": {
             "Light": "{icon.size.sm}",
             "Dark": "{icon.size.sm}"
+          }
+        },
+        "select.trigger.icon-size.lg": {
+          "$type": "spacing",
+          "$value": "{icon.size.md}",
+          "$description": "Size of the chevron in the large select trigger.",
+          "valuesByMode": {
+            "Light": "{icon.size.md}",
+            "Dark": "{icon.size.md}"
           }
         },
         "select.item.icon-size": {
