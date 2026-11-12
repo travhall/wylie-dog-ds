@@ -79,6 +79,8 @@ const meta: Meta<typeof NavigationMenu> = {
   },
 };
 
+// cSpell:ignore navigationmenu
+
 export default meta;
 type Story = StoryObj<typeof meta>;
 
@@ -115,7 +117,7 @@ export const Default: Story = {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-gray-100 dark:from-gray-900 to-gray-200 dark:to-gray-800 p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-gray-100 dark:from-gray-900 to-gray-200 dark:to-gray-800 p-6 no-underline outline-none focus:shadow-md"
                     href="#"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
@@ -381,6 +383,7 @@ export const WithCallToAction: Story = {
               <div className="flex flex-col gap-3">
                 <ListItem href="#" title="For Startups">
                   Launch fast with our starter templates and toolkits.
+                  {/* cSpell:ignore toolkits */}
                 </ListItem>
                 <ListItem href="#" title="For Enterprise">
                   Scalable infrastructure for large teams.
