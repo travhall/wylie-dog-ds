@@ -3979,6 +3979,21 @@
     "$value": "{space.050}",
     "$description": "Gap between an icon and the label of the badge."
   },
+  "badge.icon-size.sm": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Size of an icon in the small badge (12px, not on the icon scale, like the other 12px indicators). The icon draws the sm stroke."
+  },
+  "badge.icon-size.md": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Size of an icon in the medium badge (12px, under the 14px label's line height). The icon draws the sm stroke."
+  },
+  "badge.icon-size.lg": {
+    "$type": "spacing",
+    "$value": "{icon.size.sm}",
+    "$description": "Size of an icon in the large badge (16px, the sm icon size, beside the 16px label)."
+  },
   "card.border-width": {
     "$type": "dimension",
     "$value": "{border-width.1}",

@@ -207,6 +207,25 @@ export function compareMetrics(figma, code, tolerance = TOLERANCE) {
         code: ib.stroke,
       });
     }
+    // The icon's drawn size, when the Figma row carries one (only the Show Icon rows do): a badge's
+    // `icon-size` token must draw the same box in both.
+    if (
+      ia &&
+      ib &&
+      typeof ia.size === "number" &&
+      typeof ib.size === "number" &&
+      !near(ia.size, ib.size, tolerance.px)
+    ) {
+      findings.push({
+        set: item.set,
+        variant: item.variant,
+        scope: "icon",
+        property: "size",
+        label: "icon size",
+        figma: ia.size,
+        code: ib.size,
+      });
+    }
   }
   const extra = [...codeBy.keys()]
     .filter((k) => !figmaBy.has(k))

@@ -4243,6 +4243,42 @@
         "type": "dimension",
         "variable": "var(--badge-icon-gap)",
         "description": "Gap between an icon and the label of the badge."
+      },
+      "badge-icon-size-sm": {
+        "name": "badgeIconSizeSm",
+        "path": [
+          "badge",
+          "icon-size",
+          "sm"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--badge-icon-size-sm)",
+        "description": "Size of an icon in the small badge (12px, not on the icon scale, like the other 12px indicators). The icon draws the sm stroke."
+      },
+      "badge-icon-size-md": {
+        "name": "badgeIconSizeMd",
+        "path": [
+          "badge",
+          "icon-size",
+          "md"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--badge-icon-size-md)",
+        "description": "Size of an icon in the medium badge (12px, under the 14px label's line height). The icon draws the sm stroke."
+      },
+      "badge-icon-size-lg": {
+        "name": "badgeIconSizeLg",
+        "path": [
+          "badge",
+          "icon-size",
+          "lg"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--badge-icon-size-lg)",
+        "description": "Size of an icon in the large badge (16px, the sm icon size, beside the 16px label)."
       }
     },
     "button": {

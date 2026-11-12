@@ -143,6 +143,32 @@ test("an icon's drawn stroke must match to a tenth of a pixel", () => {
   );
 });
 
+test("an icon's drawn size is compared when both sides carry one", () => {
+  const r = files(
+    item({ icon: { stroke: 1.5, size: 12 } }),
+    item({ icon: { stroke: 1.5, size: 16 } })
+  );
+  assert.deepEqual(
+    r.findings.map((f) => [f.scope, f.property, f.figma, f.code]),
+    [["icon", "size", 12, 16]]
+  );
+  assert.deepEqual(
+    files(
+      item({ icon: { stroke: 1.5, size: 12 } }),
+      item({ icon: { stroke: 1.5, size: 12.5 } })
+    ).findings,
+    []
+  );
+  // a Figma row measured before sizes existed carries none: only the stroke is compared
+  assert.deepEqual(
+    files(
+      item({ icon: { stroke: 1.5 } }),
+      item({ icon: { stroke: 1.5, size: 16 } })
+    ).findings,
+    []
+  );
+});
+
 test("an icon is compared only when both sides have one", () => {
   assert.deepEqual(files(item({ icon: { stroke: 2 } }), item()).findings, []);
   assert.deepEqual(files(item(), item({ icon: { stroke: 2 } })).findings, []);

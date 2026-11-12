@@ -226,7 +226,11 @@ function measureInPage(rootSelector) {
         s.vectorEffect === "non-scaling-stroke"
           ? 1
           : (shape.getScreenCTM()?.a ?? 1);
-      icon = { stroke: Math.round(width * scale * 100) / 100 };
+      // the size it is drawn at, compared only when the Figma row also carries one (Show Icon rows)
+      icon = {
+        stroke: Math.round(width * scale * 100) / 100,
+        size: Math.round(svg.getBoundingClientRect().width * 100) / 100,
+      };
     }
   }
   return icon ? { box: boxMetrics, texts, icon } : { box: boxMetrics, texts };

@@ -42,6 +42,20 @@ describe("Badge", () => {
       expect(badge.tagName).toBe("DIV");
     });
 
+    it.each(["sm", "md", "lg"] as const)(
+      "sizes an icon child from the %s badge icon-size token and draws the sm stroke",
+      (size) => {
+        render(<Badge size={size}>Label</Badge>);
+        const badge = screen.getByText("Label");
+        expect(badge).toHaveClass(
+          `[&>svg]:h-(--space-badge-icon-size-${size})`,
+          `[&>svg]:w-(--space-badge-icon-size-${size})`,
+          "[&>svg]:stroke-(length:--space-icon-stroke-width-sm)",
+          "gap-(--space-badge-icon-gap)"
+        );
+      }
+    );
+
     it("should support aria-label for icon badges", () => {
       render(<Badge aria-label="New item indicator">🆕</Badge>);
 

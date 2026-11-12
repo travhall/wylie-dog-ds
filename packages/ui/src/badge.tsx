@@ -7,7 +7,11 @@ import { cn, focusRingClasses } from "./lib/utils";
 export const badgeVariants = cva(
   cn(
     "inline-flex items-center gap-(--space-badge-icon-gap) border-(length:--space-badge-border-width) font-(family-name:--badge-font-family) font-(--font-weight-badge-font-weight) leading-(--line-height-badge-line-height) transition-colors",
-    "rounded-(--space-badge-radius)"
+    "rounded-(--space-badge-radius)",
+    // An icon child (an `Icon`, or any svg) takes the badge's icon size and the sm stroke (every
+    // badge icon is 16px or less), whatever size it was given, and the label's colour through
+    // currentColor. The stroke is non-scaling so it draws as written, like the Icon component's.
+    "[&>svg]:shrink-0 [&>svg]:stroke-(length:--space-icon-stroke-width-sm) [&>svg_*]:[vector-effect:non-scaling-stroke]"
   ),
   {
     variants: {
@@ -27,9 +31,9 @@ export const badgeVariants = cva(
           "bg-(--color-badge-outline-background) text-(--color-badge-outline-text) border-(--color-badge-outline-border)",
       },
       size: {
-        sm: "px-(--space-badge-padding-x-sm) py-(--space-badge-padding-y-sm) text-(length:--font-size-badge-font-size-sm)",
-        md: "px-(--space-badge-padding-x-md) py-(--space-badge-padding-y-md) text-(length:--font-size-badge-font-size-md)",
-        lg: "px-(--space-badge-padding-x-lg) py-(--space-badge-padding-y-lg) text-(length:--font-size-badge-font-size-lg)",
+        sm: "px-(--space-badge-padding-x-sm) py-(--space-badge-padding-y-sm) text-(length:--font-size-badge-font-size-sm) [&>svg]:h-(--space-badge-icon-size-sm) [&>svg]:w-(--space-badge-icon-size-sm)",
+        md: "px-(--space-badge-padding-x-md) py-(--space-badge-padding-y-md) text-(length:--font-size-badge-font-size-md) [&>svg]:h-(--space-badge-icon-size-md) [&>svg]:w-(--space-badge-icon-size-md)",
+        lg: "px-(--space-badge-padding-x-lg) py-(--space-badge-padding-y-lg) text-(length:--font-size-badge-font-size-lg) [&>svg]:h-(--space-badge-icon-size-lg) [&>svg]:w-(--space-badge-icon-size-lg)",
       },
       interactive: {
         true: cn(

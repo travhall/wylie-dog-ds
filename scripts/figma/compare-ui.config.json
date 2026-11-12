@@ -54,6 +54,11 @@
         "default": "interactive:!true",
         "hover": "interactive:!true",
         "pressed": "interactive:!true"
+      },
+      "valueStories": {
+        "show-icon": {
+          "true": "components-content-display-badge--with-icon"
+        }
       }
     },
     "Card": {
