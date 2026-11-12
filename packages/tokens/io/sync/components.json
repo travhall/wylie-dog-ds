@@ -7106,11 +7106,11 @@
         },
         "section-features.icon-background": {
           "$type": "color",
-          "$value": "{color.background.primary}",
-          "$description": "Fill of the features section icon. Pairs with `section-features.icon-text`.",
+          "$value": "{color.background.primary-muted}",
+          "$description": "Fill of the features section icon tile. Pairs with `section-features.icon-text`.",
           "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "section-features.icon-text": {

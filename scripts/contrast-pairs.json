@@ -932,7 +932,8 @@
       "foreground": "section-features.icon-text",
       "backgrounds": [
         "section-features.background",
-        "section-features.background-muted"
+        "section-features.background-muted",
+        "section-features.icon-background"
       ],
       "kind": "non-text"
     },

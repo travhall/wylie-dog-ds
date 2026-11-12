@@ -3941,8 +3941,8 @@
   },
   "section-features.icon-background": {
     "$type": "color",
-    "$value": "{color.background.primary}",
-    "$description": "Fill of the features section icon. Pairs with `section-features.icon-text`."
+    "$value": "{color.background.primary-muted}",
+    "$description": "Fill of the features section icon tile. Pairs with `section-features.icon-text`."
   },
   "section-features.icon-text": {
     "$type": "color",

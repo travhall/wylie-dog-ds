@@ -16168,10 +16168,10 @@
           "section-features",
           "icon-background"
         ],
-        "value": "oklch(0.508 0.139 37.8)",
+        "value": "oklch(0.962 0.017 39.66)",
         "type": "color",
         "variable": "var(--color-section-features-icon-background)",
-        "description": "Fill of the features section icon. Pairs with `section-features.icon-text`."
+        "description": "Fill of the features section icon tile. Pairs with `section-features.icon-text`."
       },
       "section-features-icon-text": {
         "name": "sectionFeaturesIconText",

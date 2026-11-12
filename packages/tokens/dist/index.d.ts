@@ -1180,7 +1180,7 @@ export declare const sectionFeaturesBackground: "oklch(0.991 0.003 264.36)";
 export declare const sectionFeaturesBackgroundMuted: "oklch(0.927 0.012 75.07)";
 export declare const sectionFeaturesDescriptionText: "oklch(0.33 0.024 47.79)";
 export declare const sectionFeaturesItemText: "oklch(0.33 0.024 47.79)";
-export declare const sectionFeaturesIconBackground: "oklch(0.508 0.139 37.8)";
+export declare const sectionFeaturesIconBackground: "oklch(0.962 0.017 39.66)";
 export declare const sectionFeaturesIconText: "oklch(0.508 0.139 37.8)";
 export declare const pageLayoutSkipLinkBackground: "oklch(0.991 0.003 264.36)";
 export declare const pageLayoutSkipLinkText: "oklch(0.202 0.011 47.84)";
