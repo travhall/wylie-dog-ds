@@ -12451,16 +12451,41 @@
         "variable": "var(--checkbox-opacity-disabled)",
         "description": "Opacity of a disabled checkbox."
       },
-      "checkbox-icon-stroke-width": {
-        "name": "checkboxIconStrokeWidth",
+      "checkbox-icon-stroke-width-sm": {
+        "name": "checkboxIconStrokeWidthSm",
         "path": [
           "checkbox",
-          "icon-stroke-width"
+          "icon-stroke-width",
+          "sm"
         ],
-        "value": "3px",
+        "value": "1.5px",
         "type": "dimension",
-        "variable": "var(--checkbox-icon-stroke-width)",
-        "description": "Stroke width of the checkbox check and indeterminate marks."
+        "variable": "var(--checkbox-icon-stroke-width-sm)",
+        "description": "Stroke width of the check and indeterminate marks in the small checkbox, drawn at this width (not scaled with the icon)."
+      },
+      "checkbox-icon-stroke-width-md": {
+        "name": "checkboxIconStrokeWidthMd",
+        "path": [
+          "checkbox",
+          "icon-stroke-width",
+          "md"
+        ],
+        "value": "2.5px",
+        "type": "dimension",
+        "variable": "var(--checkbox-icon-stroke-width-md)",
+        "description": "Stroke width of the check and indeterminate marks in the medium checkbox, drawn at this width (not scaled with the icon)."
+      },
+      "checkbox-icon-stroke-width-lg": {
+        "name": "checkboxIconStrokeWidthLg",
+        "path": [
+          "checkbox",
+          "icon-stroke-width",
+          "lg"
+        ],
+        "value": "3.5px",
+        "type": "dimension",
+        "variable": "var(--checkbox-icon-stroke-width-lg)",
+        "description": "Stroke width of the check and indeterminate marks in the large checkbox, drawn at this width (not scaled with the icon)."
       }
     },
     "switch": {

@@ -2013,12 +2013,6 @@
       "scope": "text",
       "variant": ":: viewport$",
       "reason": "The first text in the story's open viewport is a featured-link heading (28px line height); Figma's is a plain 14px link."
-    },
-    {
-      "set": "Checkbox",
-      "property": "stroke",
-      "scope": "icon",
-      "reason": "Open decision (2026-11-11): code draws checkbox.icon-stroke-width (3px) in the check's 24 unit grid, so 1.5, 2.5 and 3.5px at sm, md and lg; Figma binds the generic icon-stroke-width and draws a flat 2px. To close it, make the check non-scaling like the Icon, bind Figma to checkbox/icon-stroke-width, and drop this entry."
     }
   ]
 }
