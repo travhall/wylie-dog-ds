@@ -3,7 +3,7 @@
   "fileKey": "tnVqOsygeKwyDH3BzWB1Yg",
   "file": "Wylie Dog Design System",
   "page": "Components",
-  "generatedAt": "2026-11-12T19:42:17.000Z",
+  "generatedAt": "2026-11-12T21:06:06.000Z",
   "count": 49,
   "components": [
     {
@@ -126,7 +126,7 @@
     {
       "name": "Badge",
       "type": "COMPONENT_SET",
-      "description": "Compact status indicators and labels for displaying metadata, counts, or categorical information. Accessibility: Use semantic colors and consider adding visually hidden text for context when badges convey important information through color alone.",
+      "description": "Compact status indicators and labels for displaying metadata, counts, or categorical information. A badge can carry an icon before its label (icon) and a dismiss button after it (onDismiss).",
       "documentationLinks": [
         "https://wyliedogstorybook.com/?path=/docs/components-content-display-badge--docs"
       ],
@@ -134,11 +134,15 @@
         "interaction": {
           "type": "VARIANT",
           "default": "default",
-          "options": ["default", "hover", "pressed"]
+          "options": ["default", "hover", "pressed", "disabled"]
         },
         "label": {
           "type": "TEXT",
           "default": "Badge"
+        },
+        "showDismiss": {
+          "type": "BOOLEAN",
+          "default": false
         },
         "showIcon": {
           "type": "BOOLEAN",
@@ -163,8 +167,8 @@
           ]
         }
       },
-      "variantCount": 63,
-      "expectedVariantCount": 63
+      "variantCount": 84,
+      "expectedVariantCount": 84
     },
     {
       "name": "Breadcrumb",
