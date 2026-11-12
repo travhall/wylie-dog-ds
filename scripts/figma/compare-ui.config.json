@@ -477,7 +477,9 @@
     "Navigation Menu": {
       "story": "components-navigation-navigationmenu--default",
       "root": "#storybook-root nav",
-      "args": {},
+      "args": {
+        "orientation": "orientation"
+      },
       "open": {
         "click": "#storybook-root button",
         "when": {
@@ -492,7 +494,7 @@
         "list-row": "#storybook-root nav ul > li:nth-child(1) > a",
         "list-row#2": "#storybook-root nav ul > li:nth-child(2) > button",
         "list-row#3": "#storybook-root nav ul > li:nth-child(4) > a",
-        "viewport": "#storybook-root nav > div > div[data-state=open]"
+        "viewport": "[data-radix-popper-content-wrapper] div[data-state=open][data-orientation]"
       }
     },
     "Card Grid": {

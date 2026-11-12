@@ -228,6 +228,12 @@
       "reason": "Radix ToggleGroup prop `orientation`."
     },
     {
+      "component": "Navigation Menu",
+      "rule": "inherited-property",
+      "property": "orientation",
+      "reason": "Radix NavigationMenu prop `orientation` (packages/ui/src/navigation-menu.tsx forwards it; vertical stacks the list and opens the panel to the right)."
+    },
+    {
       "component": "Scrollbar",
       "rule": "inherited-property",
       "property": "orientation",
