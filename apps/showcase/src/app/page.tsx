@@ -1,5 +1,6 @@
 import manifest from "@wyliedog/tokens/manifest.json";
 import Link from "next/link";
+import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { getAlias, primitiveVar } from "@/lib/token-values";
@@ -29,12 +30,9 @@ export default function ShowcasePage() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left: messaging */}
             <div className="lg:col-span-7">
-              <div
-                className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) px-3 py-1"
-                style={{
-                  background:
-                    "color-mix(in oklch, var(--color-background-default) 60%, transparent)",
-                }}
+              <Badge
+                variant="outline"
+                className="gap-2 rounded-full bg-(--color-background-default)/60 px-3 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)"
               >
                 <span
                   className="h-1.5 w-1.5 rounded-full"
@@ -42,14 +40,12 @@ export default function ShowcasePage() {
                     background: "var(--color-foreground-success-muted)",
                   }}
                 />
-                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                  v{meta.versions.ui} · not published to npm
-                </span>
+                v{meta.versions.ui} · not published to npm
                 <span className="text-(--color-foreground-faint)">·</span>
-                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                <span className="text-(--color-foreground-faint)">
                   react 19 · tailwind 4
                 </span>
-              </div>
+              </Badge>
 
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98]">
                 The design system{" "}

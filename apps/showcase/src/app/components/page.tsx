@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
 import {
   Breadcrumb,
@@ -203,15 +204,16 @@ export default function ComponentsPage() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* left */}
             <div className="lg:col-span-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
-                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                  Components
-                </span>
+              <Badge
+                variant="outline"
+                className="gap-2 rounded-full bg-(--color-background-default)/60 px-3 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)"
+              >
+                Components
                 <span className="text-(--color-foreground-faint)">·</span>
-                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                <span className="text-(--color-foreground-faint)">
                   @wyliedog/ui v{meta.versions.ui}
                 </span>
-              </div>
+              </Badge>
 
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98] text-(--color-foreground-default)">
                 {meta.components.count} components. <br />

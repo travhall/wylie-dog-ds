@@ -1,6 +1,7 @@
 import manifest from "@wyliedog/tokens/manifest.json";
 import React from "react";
 import Link from "next/link";
+import { Badge } from "@wyliedog/ui/badge";
 import { Button, buttonVariants } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { describeAlias, getAlias, primitiveVar } from "@/lib/token-values";
@@ -25,21 +26,16 @@ export default function ArchitecturePage() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left */}
             <div className="lg:col-span-5">
-              <div
-                className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) px-3 py-1"
-                style={{
-                  background:
-                    "color-mix(in oklch, var(--color-background-default) 60%, transparent)",
-                }}
+              <Badge
+                variant="outline"
+                className="gap-2 rounded-full bg-(--color-background-default)/60 px-3 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)"
               >
-                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                  Architecture
-                </span>
+                Architecture
                 <span className="text-(--color-foreground-faint)">·</span>
-                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                <span className="text-(--color-foreground-faint)">
                   pnpm workspaces
                 </span>
-              </div>
+              </Badge>
 
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98]">
                 The monorepo that{" "}

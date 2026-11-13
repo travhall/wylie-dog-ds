@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
 import {
   SiteHeaderPreview,
@@ -156,15 +157,16 @@ export default function PatternsPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
-              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                Patterns
-              </span>
+            <Badge
+              variant="outline"
+              className="gap-2 rounded-full bg-(--color-background-default)/60 px-3 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)"
+            >
+              Patterns
               <span className="text-(--color-foreground-faint)">·</span>
-              <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+              <span className="text-(--color-foreground-faint)">
                 @wyliedog/ui v{meta.versions.ui}
               </span>
-            </div>
+            </Badge>
 
             <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98] text-(--color-foreground-default)">
               Complete UI solutions,{" "}
