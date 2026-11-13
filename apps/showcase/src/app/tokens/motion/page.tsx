@@ -1,4 +1,12 @@
 import manifest from "@wyliedog/tokens/manifest.json";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@wyliedog/ui/table";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import type { ManifestToken } from "@/lib/token-values";
 import { MotionPreview } from "../motion-preview";
@@ -85,47 +93,36 @@ export default function MotionPage() {
           tabIndex={0}
           role="region"
           aria-label="Semantic durations table"
-          className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) overflow-x-auto rounded-xl border border-(--color-border-default)"
+          className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) overflow-x-auto rounded-xl border border-(--color-border-default) [&>div]:overflow-visible"
         >
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-(--color-border-default) bg-(--color-background-muted)">
-                <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
-                  Name
-                </th>
-                <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
-                  Value
-                </th>
-                <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
-                  Variable
-                </th>
-                <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
+          <Table>
+            <TableHeader className="bg-(--color-background-muted)">
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Value</TableHead>
+                <TableHead>Variable</TableHead>
+                <TableHead>Description</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {semanticDuration.map((d) => (
-                <tr
-                  key={d.key}
-                  className="border-b border-(--color-border-default) last:border-0"
-                >
-                  <td className="px-4 py-2 font-medium text-(--color-foreground-default) capitalize">
+                <TableRow key={d.key}>
+                  <TableCell className="font-medium text-(--color-foreground-default) capitalize">
                     {d.name}
-                  </td>
-                  <td className="px-4 py-2 font-mono text-xs text-(--color-foreground-muted)">
+                  </TableCell>
+                  <TableCell className="font-mono text-xs text-(--color-foreground-muted)">
                     {d.value}
-                  </td>
-                  <td className="px-4 py-2 font-mono text-xs text-(--color-foreground-faint)">
+                  </TableCell>
+                  <TableCell className="font-mono text-xs text-(--color-foreground-faint)">
                     {d.variable}
-                  </td>
-                  <td className="px-4 py-2 text-xs text-(--color-foreground-faint)">
+                  </TableCell>
+                  <TableCell className="text-xs text-(--color-foreground-faint)">
                     {d.description}
-                  </td>
-                </tr>
+                  </TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       </section>
 

@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { buttonVariants } from "@wyliedog/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@wyliedog/ui/table";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { getColorModes } from "@/lib/token-values";
 
@@ -216,53 +224,50 @@ export default function PluginPage() {
             tabIndex={0}
             role="region"
             aria-label="Synced files and collections"
-            className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) mt-8 overflow-x-auto rounded-xl border border-(--color-border-default)"
+            className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) mt-8 overflow-x-auto rounded-xl border border-(--color-border-default) [&>div]:overflow-visible"
           >
-            <table className="w-full text-sm">
-              <thead className="bg-(--color-background-muted) text-left">
-                <tr>
-                  <th className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+            <Table>
+              <TableHeader className="bg-(--color-background-muted)">
+                <TableRow>
+                  <TableHead className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     File in packages/tokens/io/sync
-                  </th>
-                  <th className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                  </TableHead>
+                  <TableHead className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Collection
-                  </th>
-                  <th className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                  </TableHead>
+                  <TableHead className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Tokens
-                  </th>
-                  <th className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                  </TableHead>
+                  <TableHead className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Modes
-                  </th>
-                  <th className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                  </TableHead>
+                  <TableHead className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Holds
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {collections.map((c) => (
-                  <tr
-                    key={c.name}
-                    className="border-t border-(--color-border-default)"
-                  >
-                    <td className="px-4 py-3 font-mono text-xs text-(--color-foreground-default)">
+                  <TableRow key={c.name}>
+                    <TableCell className="font-mono text-xs text-(--color-foreground-default)">
                       {c.file}
-                    </td>
-                    <td className="px-4 py-3 font-mono text-xs text-(--color-foreground-default)">
+                    </TableCell>
+                    <TableCell className="font-mono text-xs text-(--color-foreground-default)">
                       {c.name}
-                    </td>
-                    <td className="px-4 py-3 text-(--color-foreground-muted)">
+                    </TableCell>
+                    <TableCell className="text-(--color-foreground-muted)">
                       {c.count}
-                    </td>
-                    <td className="px-4 py-3 text-(--color-foreground-muted)">
+                    </TableCell>
+                    <TableCell className="text-(--color-foreground-muted)">
                       {c.modes}
-                    </td>
-                    <td className="px-4 py-3 text-(--color-foreground-muted)">
+                    </TableCell>
+                    <TableCell className="text-(--color-foreground-muted)">
                       {c.holds}
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
+              </TableBody>
+            </Table>
           </div>
         </div>
       </section>
@@ -285,35 +290,32 @@ export default function PluginPage() {
             tabIndex={0}
             role="region"
             aria-label="Light and dark semantic values"
-            className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) mt-8 overflow-x-auto rounded-xl border border-(--color-border-default) bg-(--color-background-default)"
+            className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) mt-8 overflow-x-auto rounded-xl border border-(--color-border-default) bg-(--color-background-default) [&>div]:overflow-visible"
           >
-            <table className="w-full text-sm">
-              <thead className="text-left">
-                <tr>
-                  <th className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Token
-                  </th>
-                  <th className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                  </TableHead>
+                  <TableHead className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Light
-                  </th>
-                  <th className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                  </TableHead>
+                  <TableHead className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Dark
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {SAMPLE_TOKENS.map((token) => {
                   const { light, dark } = getColorModes(token);
                   return (
-                    <tr
-                      key={token}
-                      className="border-t border-(--color-border-default)"
-                    >
-                      <td className="px-4 py-3 font-mono text-xs text-(--color-foreground-default)">
+                    <TableRow key={token}>
+                      <TableCell className="font-mono text-xs text-(--color-foreground-default)">
                         {token}
-                      </td>
+                      </TableCell>
                       {[light, dark].map((value, i) => (
-                        <td key={i} className="px-4 py-3">
+                        <TableCell key={i}>
                           <span className="inline-flex items-center gap-2">
                             <span
                               className="h-4 w-4 rounded border border-(--color-border-default)"
@@ -323,13 +325,13 @@ export default function PluginPage() {
                               {value}
                             </span>
                           </span>
-                        </td>
+                        </TableCell>
                       ))}
-                    </tr>
+                    </TableRow>
                   );
                 })}
-              </tbody>
-            </table>
+              </TableBody>
+            </Table>
           </div>
         </div>
       </section>
