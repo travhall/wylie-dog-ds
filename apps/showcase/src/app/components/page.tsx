@@ -197,14 +197,7 @@ export default function ComponentsPage() {
     <div className="min-h-screen bg-(--color-background-default)">
       {/* ── HERO ───────────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-b border-(--color-border-default)">
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{
-            backgroundImage:
-              "radial-gradient(color-mix(in oklch, var(--color-foreground-default) 14%, transparent) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
+        <div className="absolute inset-0 grid-bg opacity-60" />
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
