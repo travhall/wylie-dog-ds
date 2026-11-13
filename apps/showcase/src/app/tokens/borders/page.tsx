@@ -1,4 +1,5 @@
 import manifest from "@wyliedog/tokens/manifest.json";
+import { Card } from "@wyliedog/ui/card";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import type { ManifestToken } from "@/lib/token-values";
 import { formatSize } from "@/lib/token-units";
@@ -38,7 +39,7 @@ export default function BordersPage() {
       description="Every radius and border-width token, in full — the complete reference behind the hub's sample."
     >
       <div className="grid gap-6 lg:grid-cols-2">
-        <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6">
+        <Card className="gap-0 rounded-xl p-6 shadow-none">
           <h2 className="mb-6 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
             Corner radius
           </h2>
@@ -63,9 +64,9 @@ export default function BordersPage() {
               </div>
             ))}
           </div>
-        </section>
+        </Card>
 
-        <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6">
+        <Card className="gap-0 rounded-xl p-6 shadow-none">
           <h2 className="mb-6 font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
             Border width
           </h2>
@@ -87,7 +88,7 @@ export default function BordersPage() {
               </div>
             ))}
           </div>
-        </section>
+        </Card>
       </div>
     </TokensSubpageShell>
   );

@@ -1,4 +1,5 @@
 import manifest from "@wyliedog/tokens/manifest.json";
+import { Card } from "@wyliedog/ui/card";
 import {
   Table,
   TableBody,
@@ -62,10 +63,7 @@ export default function MotionPage() {
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {easing.map((e) => (
-            <div
-              key={e.key}
-              className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
-            >
+            <Card key={e.key} className="gap-0 rounded-xl p-5 shadow-none">
               <p className="font-semibold text-sm text-(--color-foreground-default) capitalize">
                 {e.name}
               </p>
@@ -80,7 +78,7 @@ export default function MotionPage() {
               <p className="mt-1 font-mono text-xs text-(--color-foreground-faint)">
                 {e.variable}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </section>

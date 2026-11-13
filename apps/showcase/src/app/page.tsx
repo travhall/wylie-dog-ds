@@ -2,6 +2,7 @@ import manifest from "@wyliedog/tokens/manifest.json";
 import Link from "next/link";
 import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
+import { Card } from "@wyliedog/ui/card";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { getAlias, primitiveVar } from "@/lib/token-values";
 import { HeroPreview } from "./hero-preview";
@@ -201,10 +202,7 @@ export default function ShowcasePage() {
             {/* Right */}
             <div className="lg:col-span-8 space-y-3">
               {/* Color ramp */}
-              <div
-                className="rounded-lg border border-(--color-border-default) p-5"
-                style={{ background: "var(--color-background-default)" }}
-              >
+              <Card className="gap-0 p-5 shadow-none">
                 <div className="flex items-center justify-between mb-3">
                   <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     background · primary
@@ -270,14 +268,11 @@ export default function ShowcasePage() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </Card>
 
               <div className="grid sm:grid-cols-2 gap-3">
                 {/* Type scale */}
-                <div
-                  className="rounded-lg border border-(--color-border-default) p-5"
-                  style={{ background: "var(--color-background-default)" }}
-                >
+                <Card className="gap-0 p-5 shadow-none">
                   <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     type scale
                   </p>
@@ -321,13 +316,10 @@ export default function ShowcasePage() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </Card>
 
                 {/* Spacing */}
-                <div
-                  className="rounded-lg border border-(--color-border-default) p-5"
-                  style={{ background: "var(--color-background-default)" }}
-                >
+                <Card className="gap-0 p-5 shadow-none">
                   <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     spacing
                   </p>
@@ -355,7 +347,7 @@ export default function ShowcasePage() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </Card>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@wyliedog/ui/badge";
 import { buttonVariants } from "@wyliedog/ui/button";
+import { Card } from "@wyliedog/ui/card";
 import {
   Table,
   TableBody,
@@ -193,20 +194,23 @@ export default function PluginPage() {
 
           <ol className="mt-10 grid gap-4 md:grid-cols-2">
             {steps.map((step) => (
-              <li
+              <Card
+                asChild
                 key={step.num}
-                className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
+                className="gap-0 rounded-xl p-5 shadow-none"
               >
-                <span className="font-mono text-xs text-(--color-foreground-faint)">
-                  {step.num}
-                </span>
-                <h3 className="mt-1 font-semibold text-(--color-foreground-default)">
-                  {step.label}
-                </h3>
-                <p className="mt-2 text-sm text-(--color-foreground-muted) leading-relaxed">
-                  {step.desc}
-                </p>
-              </li>
+                <li>
+                  <span className="font-mono text-xs leading-6 text-(--color-foreground-faint)">
+                    {step.num}
+                  </span>
+                  <h3 className="mt-1 font-semibold text-(--color-foreground-default)">
+                    {step.label}
+                  </h3>
+                  <p className="mt-2 text-sm text-(--color-foreground-muted) leading-relaxed">
+                    {step.desc}
+                  </p>
+                </li>
+              </Card>
             ))}
           </ol>
         </div>
@@ -350,17 +354,14 @@ export default function PluginPage() {
 
           <dl className="mt-8 grid gap-4 md:grid-cols-2">
             {guards.map((g) => (
-              <div
-                key={g.title}
-                className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
-              >
+              <Card key={g.title} className="gap-0 rounded-xl p-5 shadow-none">
                 <dt className="font-semibold text-(--color-foreground-default)">
                   {g.title}
                 </dt>
                 <dd className="mt-2 text-sm text-(--color-foreground-muted) leading-relaxed">
                   {g.desc}
                 </dd>
-              </div>
+              </Card>
             ))}
           </dl>
 

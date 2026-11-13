@@ -1,4 +1,5 @@
 import manifest from "@wyliedog/tokens/manifest.json";
+import { Card } from "@wyliedog/ui/card";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import type { ManifestToken } from "@/lib/token-values";
 
@@ -46,10 +47,7 @@ export default function ElevationPage() {
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {shadows.map((s) => (
-          <div
-            key={s.key}
-            className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
-          >
+          <Card key={s.key} className="gap-0 rounded-xl p-5 shadow-none">
             <div
               className="h-16 w-16 rounded-lg border border-(--color-border-default) bg-(--color-background-default)"
               style={{ boxShadow: s.variable }}
@@ -68,16 +66,16 @@ export default function ElevationPage() {
             <p className="mt-1 font-mono text-xs text-(--color-foreground-faint)">
               {s.variable}
             </p>
-          </div>
+          </Card>
         ))}
       </div>
 
-      <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-muted) p-5">
+      <Card className="gap-0 rounded-xl bg-(color:--color-background-muted) p-5 shadow-none">
         <p className="text-xs text-(--color-foreground-faint) leading-relaxed">
           Dark mode redefines the same shadow tokens with higher opacity (0.3 to
           0.4 instead of 0.05 to 0.1).
         </p>
-      </div>
+      </Card>
     </TokensSubpageShell>
   );
 }

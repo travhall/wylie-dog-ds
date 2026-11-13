@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
+import { Card } from "@wyliedog/ui/card";
 import manifest from "@wyliedog/tokens/manifest.json";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { describeAlias, getAlias, primitiveVar } from "@/lib/token-values";
@@ -162,9 +163,9 @@ export default function TokensPage() {
                   swatch: "var(--color-background-primary)",
                 },
               ].map((tier, i) => (
-                <div
+                <Card
                   key={tier.tier}
-                  className={`relative rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 ${i === 0 ? "lg:rounded-r-none lg:border-r-0" : i === 1 ? "lg:rounded-none" : "lg:rounded-l-none lg:border-l-0"}`}
+                  className={`gap-0 relative rounded-xl p-5 shadow-none ${i === 0 ? "lg:rounded-r-none lg:border-r-0" : i === 1 ? "lg:rounded-none" : "lg:rounded-l-none lg:border-l-0"}`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
@@ -191,11 +192,11 @@ export default function TokensPage() {
                       {tier.tokenVal}
                     </div>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
 
-            <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-4">
+            <Card className="mt-3 flex-wrap items-center gap-3 rounded-xl p-4 flex-row shadow-none">
               <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) shrink-0">
                 Renders →
               </span>
@@ -214,7 +215,7 @@ export default function TokensPage() {
               <span className="text-xs text-(--color-foreground-faint) hidden sm:inline">
                 Toggle theme — every reference resolves through the same chain.
               </span>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -459,7 +460,7 @@ export default function TokensPage() {
 
             {/* Brand ramp + status tones */}
             <div className="lg:col-span-4 space-y-3">
-              <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
+              <Card className="gap-0 rounded-xl p-5 shadow-none">
                 <div className="flex items-center justify-between">
                   <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     brand ramp · {primary.palette}
@@ -527,9 +528,9 @@ export default function TokensPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
 
-              <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
+              <Card className="gap-0 rounded-xl p-5 shadow-none">
                 <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   status tones
                 </p>
@@ -586,7 +587,7 @@ export default function TokensPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </div>
@@ -749,9 +750,9 @@ export default function TokensPage() {
                   ],
                 },
               ].map((group) => (
-                <div
+                <Card
                   key={group.label}
-                  className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
+                  className="gap-0 rounded-xl p-5 shadow-none"
                 >
                   <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-3">
                     {group.label}
@@ -761,7 +762,7 @@ export default function TokensPage() {
                       {s.text}
                     </div>
                   ))}
-                </div>
+                </Card>
               ))}
             </aside>
           </div>
@@ -812,7 +813,7 @@ export default function TokensPage() {
             </div>
 
             {/* Spacing scale panel */}
-            <div className="lg:col-span-4 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
+            <Card className="gap-0 lg:col-span-4 rounded-xl p-5 shadow-none">
               <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-4">
                 Scale · --space-*
               </p>
@@ -879,7 +880,7 @@ export default function TokensPage() {
                   <p key={t}>{t}</p>
                 ))}
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -1057,10 +1058,7 @@ export default function TokensPage() {
                 ),
               },
             ].map((r) => (
-              <div
-                key={r.step}
-                className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 flex flex-col"
-              >
+              <Card key={r.step} className="gap-0 rounded-xl p-5 shadow-none">
                 <div className="flex items-baseline justify-between mb-4">
                   <span className="font-semibold text-(--color-foreground-default)">
                     {r.step}
@@ -1083,7 +1081,7 @@ export default function TokensPage() {
                     {r.token}
                   </p>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -1230,7 +1228,7 @@ export default function TokensPage() {
             </div>
 
             {/* Elevation ladder */}
-            <div className="lg:col-span-4 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
+            <Card className="gap-0 lg:col-span-4 rounded-xl p-5 shadow-none">
               <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-4">
                 Elevation ladder
               </p>
@@ -1285,7 +1283,7 @@ export default function TokensPage() {
                 Dark mode redefines the same shadow tokens with higher opacity
                 (0.3 to 0.4 instead of 0.05 to 0.1).
               </p>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
