@@ -155,6 +155,40 @@ describe("Badge", () => {
     });
   });
 
+  describe("Server rendering", () => {
+    // A function prop on a DOM element cannot cross the React Server Component boundary, so a
+    // plain badge must not carry an onClick. Badge is a forwardRef component; its render function
+    // returns the element it would draw, whose props are what a server component would serialize.
+    const drawn = (props: React.ComponentProps<typeof Badge>) =>
+      (
+        Badge as unknown as {
+          render: (
+            p: React.ComponentProps<typeof Badge>,
+            ref: null
+          ) => React.ReactElement<{ onClick?: unknown }>;
+        }
+      ).render(props, null);
+
+    it("attaches no click handler to a plain badge", () => {
+      expect(drawn({ children: "Beta" }).props.onClick).toBeUndefined();
+      expect(
+        drawn({ children: "Beta", variant: "outline" }).props.onClick
+      ).toBeUndefined();
+    });
+
+    it("attaches a click handler when it has an onClick to run", () => {
+      expect(
+        drawn({ children: "Beta", onClick: () => {} }).props.onClick
+      ).toBeTypeOf("function");
+    });
+
+    it("attaches a click handler while aria-disabled, so clicks can be ignored", () => {
+      expect(
+        drawn({ children: "Beta", "aria-disabled": true }).props.onClick
+      ).toBeTypeOf("function");
+    });
+  });
+
   describe("aria-disabled", () => {
     it("dims an aria-disabled interactive badge with the disabled token", () => {
       render(

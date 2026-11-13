@@ -199,6 +199,10 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
       }
       onClick?.(event);
     };
+    // Only attach a click handler when there is something for it to do. A function prop on the
+    // div would stop a plain badge (no onClick, not aria-disabled) from rendering in a React Server
+    // Component, and a static label is by far the most common use.
+    const clickHandler = onClick || disabled ? handleClick : undefined;
     return (
       <Comp
         ref={ref}
@@ -208,7 +212,7 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
         )}
         {...(isInteractive && !asChild ? { role: "button", tabIndex: 0 } : {})}
         {...props}
-        onClick={handleClick}
+        onClick={clickHandler}
         {...(isInteractive && !asChild ? { onKeyDown: handleKeyDown } : {})}
       >
         {asChild ? (
