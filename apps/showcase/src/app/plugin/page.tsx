@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Badge } from "@wyliedog/ui/badge";
 import { buttonVariants } from "@wyliedog/ui/button";
 import {
   Table,
@@ -108,15 +109,16 @@ export default function PluginPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="grid md:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="md:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
-                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-                  Token Bridge
-                </span>
+              <Badge
+                variant="outline"
+                className="gap-2 rounded-full bg-(--color-background-default)/60 px-3 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)"
+              >
+                Token Bridge
                 <span className="text-(--color-foreground-faint)">·</span>
-                <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+                <span className="text-(--color-foreground-faint)">
                   v{meta.versions.plugin} · development build
                 </span>
-              </div>
+              </Badge>
 
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold text-(--color-foreground-default) tracking-tight leading-[0.98]">
                 Figma variables and{" "}

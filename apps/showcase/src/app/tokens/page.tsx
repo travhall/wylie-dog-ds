@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
 import manifest from "@wyliedog/tokens/manifest.json";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
@@ -76,21 +77,16 @@ export default function TokensPage() {
         <div className="absolute inset-0 hero-gradient" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
-          <div
-            className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) px-3 py-1"
-            style={{
-              background:
-                "color-mix(in oklch, var(--color-background-default) 60%, transparent)",
-            }}
+          <Badge
+            variant="outline"
+            className="gap-2 rounded-full bg-(--color-background-default)/60 px-3 py-1 font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)"
           >
-            <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-muted)">
-              Tokens
-            </span>
+            Tokens
             <span className="text-(--color-foreground-faint)">·</span>
-            <span className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
+            <span className="text-(--color-foreground-faint)">
               Three-tiered System
             </span>
-          </div>
+          </Badge>
 
           <div className="mt-5 grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7">
