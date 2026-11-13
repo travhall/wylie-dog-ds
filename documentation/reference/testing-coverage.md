@@ -13,7 +13,7 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 | Statements | 99.30%  | 80%    | ✅ Pass (+19.17%) |
 | Lines      | 99.63%  | 80%    | ✅ Pass (+19.63%) |
 | Functions  | 99.10%  | 80%    | ✅ Pass (+19.10%) |
-| Branches   | 92.97%  | 70%    | ✅ Pass (+22.97%) |
+| Branches   | 93.03%  | 70%    | ✅ Pass (+23.03%) |
 
 ### Component Coverage
 
@@ -33,7 +33,7 @@ Keep it at zero: fix a failing test or delete it; do not skip it.
 
 ## Lowest Branch Coverage
 
-Branch coverage (92.97%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
+Branch coverage (93.03%) trails line coverage because the gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-11-03 run:
 
 | File               | Branches | Uncovered                                 |
 | ------------------ | -------- | ----------------------------------------- |
