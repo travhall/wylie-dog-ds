@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
+import { Card } from "@wyliedog/ui/card";
 import {
   SiteHeaderPreview,
   SiteFooterPreview,
@@ -186,7 +187,7 @@ export default function PatternsPage() {
           {/* relationship diagram */}
           <div className="mt-12 flex flex-col lg:flex-row gap-3">
             {/* INPUTS — takes 2/4 cols */}
-            <div className="md:col-span-2 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 grow">
+            <Card className="gap-0 md:col-span-2 rounded-xl p-5 grow shadow-none">
               <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 inputs
               </p>
@@ -236,7 +237,7 @@ export default function PatternsPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
 
             <div className="hidden lg:flex items-center justify-center w-16">
               <svg
@@ -298,7 +299,7 @@ export default function PatternsPage() {
             </div>
 
             {/* SHIPPED AS — Pages */}
-            <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 grow">
+            <Card className="gap-0 rounded-xl p-5 grow shadow-none">
               <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                 shipped as
               </p>
@@ -313,7 +314,7 @@ export default function PatternsPage() {
                 <div className="h-1.5 w-full rounded-full bg-(--color-background-muted)" />
                 <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-muted)" />
               </div>
-            </div>
+            </Card>
           </div>
         </div>
 
@@ -709,10 +710,7 @@ export default function PatternsPage() {
                   tokenFlow: true,
                 },
               ].map(({ title, body, tokenFlow }) => (
-                <div
-                  key={title}
-                  className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6"
-                >
+                <Card key={title} className="gap-0 rounded-xl p-6 shadow-none">
                   <div className="flex items-start gap-3">
                     <div>
                       <h3 className="font-serif text-lg font-semibold text-(--color-foreground-default)">
@@ -776,7 +774,7 @@ export default function PatternsPage() {
                       )}
                     </div>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           </div>

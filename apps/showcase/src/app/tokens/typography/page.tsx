@@ -1,4 +1,5 @@
 import manifest from "@wyliedog/tokens/manifest.json";
+import { Card } from "@wyliedog/ui/card";
 import {
   Table,
   TableBody,
@@ -63,7 +64,7 @@ export default function TypographyPage() {
       description="Every family, size, weight, and line height, in full — the complete reference behind the hub's editorial sample."
     >
       <div className="space-y-4">
-        <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6 space-y-4">
+        <Card className="gap-0 rounded-xl p-6 space-y-4 shadow-none">
           <div>
             <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
               Families and sizes
@@ -136,9 +137,9 @@ export default function TypographyPage() {
               </Table>
             </div>
           </div>
-        </section>
+        </Card>
 
-        <section className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6 space-y-8">
+        <Card className="gap-0 rounded-xl p-6 space-y-8 shadow-none">
           <div>
             <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
               Attributes
@@ -182,7 +183,7 @@ export default function TypographyPage() {
               ))}
             </div>
           </div>
-        </section>
+        </Card>
       </div>
     </TokensSubpageShell>
   );

@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { Badge } from "@wyliedog/ui/badge";
 import { Button, buttonVariants } from "@wyliedog/ui/button";
+import { Card } from "@wyliedog/ui/card";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { describeAlias, getAlias, primitiveVar } from "@/lib/token-values";
 
@@ -392,7 +393,7 @@ export default function ArchitecturePage() {
           <div className="grid lg:grid-cols-12 gap-3 lg:gap-4">
             {/* File tree */}
             <aside className="lg:col-span-4">
-              <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 shadow-sm">
+              <Card className="gap-0 rounded-xl p-5">
                 <div className="flex items-center justify-between mb-3">
                   <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                     Repo layout
@@ -521,7 +522,7 @@ export default function ArchitecturePage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Card>
             </aside>
 
             {/* 4 package cards */}
@@ -639,65 +640,71 @@ export default function ArchitecturePage() {
                   footer: "Counts and token values are read from the repo",
                 },
               ].map((card) => (
-                <article
+                <Card
+                  asChild
                   key={card.name}
-                  className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 flex flex-col hover:border-(--color-border-default)/60 hover:bg-(--color-background-muted) transition-all"
+                  className="gap-0 rounded-xl p-5 hover:border-(--color-border-default)/60 hover:bg-(--color-background-muted) transition-all shadow-none"
                 >
-                  <header className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="grid h-8 w-8 place-items-center rounded-md"
-                        style={{
-                          background:
-                            card.iconBg ??
-                            "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
-                          color:
-                            card.iconColor ?? "var(--color-background-primary)",
-                        }}
-                      >
-                        {card.icon}
-                      </span>
-                      <div>
-                        <p className="text-xs font-mono text-(--color-foreground-faint)">
-                          {card.pkg}
-                        </p>
-                        <h3 className="font-semibold text-base text-(--color-foreground-default)">
-                          {card.name}
-                        </h3>
+                  <article>
+                    <header className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="grid h-8 w-8 place-items-center rounded-md"
+                          style={{
+                            background:
+                              card.iconBg ??
+                              "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
+                            color:
+                              card.iconColor ??
+                              "var(--color-background-primary)",
+                          }}
+                        >
+                          {card.icon}
+                        </span>
+                        <div>
+                          <p className="text-xs font-mono text-(--color-foreground-faint)">
+                            {card.pkg}
+                          </p>
+                          <h3 className="font-semibold text-base text-(--color-foreground-default)">
+                            {card.name}
+                          </h3>
+                        </div>
                       </div>
-                    </div>
-                    <span className="font-mono text-xs text-(--color-foreground-faint) mt-1">
-                      {card.version}
-                    </span>
-                  </header>
+                      <span className="font-mono text-xs text-(--color-foreground-faint) mt-1">
+                        {card.version}
+                      </span>
+                    </header>
 
-                  <p className="mt-4 text-sm text-(--color-foreground-muted) leading-relaxed">
-                    {card.desc}
-                  </p>
+                    <p className="mt-4 text-sm text-(--color-foreground-muted) leading-relaxed">
+                      {card.desc}
+                    </p>
 
-                  <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-xs">
-                    {card.meta.map(([k, v]) => (
-                      <React.Fragment key={k}>
-                        <dt className="font-mono uppercase tracking-wider text-(--color-foreground-faint)">
-                          {k}
-                        </dt>
-                        <dd className="text-(--color-foreground-muted)">{v}</dd>
-                      </React.Fragment>
-                    ))}
-                  </dl>
+                    <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-xs">
+                      {card.meta.map(([k, v]) => (
+                        <React.Fragment key={k}>
+                          <dt className="font-mono uppercase tracking-wider text-(--color-foreground-faint)">
+                            {k}
+                          </dt>
+                          <dd className="text-(--color-foreground-muted)">
+                            {v}
+                          </dd>
+                        </React.Fragment>
+                      ))}
+                    </dl>
 
-                  <footer className="pt-4 border-t border-(--color-border-default) mt-5 flex items-center gap-2 text-xs font-mono text-(--color-foreground-faint)">
-                    {card.footerDot && (
-                      <span
-                        className="h-1.5 w-1.5 rounded-full"
-                        style={{
-                          background: "var(--color-foreground-success-muted)",
-                        }}
-                      />
-                    )}
-                    {card.footer}
-                  </footer>
-                </article>
+                    <footer className="pt-4 border-t border-(--color-border-default) mt-5 flex items-center gap-2 text-xs font-mono text-(--color-foreground-faint)">
+                      {card.footerDot && (
+                        <span
+                          className="h-1.5 w-1.5 rounded-full"
+                          style={{
+                            background: "var(--color-foreground-success-muted)",
+                          }}
+                        />
+                      )}
+                      {card.footer}
+                    </footer>
+                  </article>
+                </Card>
               ))}
             </div>
           </div>
@@ -945,14 +952,14 @@ export default function ArchitecturePage() {
                 footer: null,
               },
             ].map((stage) => (
-              <div
+              <Card
                 key={stage.stage}
-                className="relative rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 pt-7"
+                className="gap-0 relative rounded-xl p-5 pt-7 shadow-none"
               >
                 <div className="absolute -top-2.5 left-4 px-2 py-0.5 bg-(--color-background-default) border border-(--color-border-default) rounded-full font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)">
                   {stage.stage}
                 </div>
-                <span className="font-mono text-xs text-(--color-foreground-faint)">
+                <span className="font-mono text-xs leading-6 text-(--color-foreground-faint)">
                   {stage.path}
                 </span>
                 <h3 className="mt-1 font-semibold text-sm text-(--color-foreground-default)">
@@ -973,7 +980,7 @@ export default function ArchitecturePage() {
                     {stage.footer}
                   </div>
                 )}
-              </div>
+              </Card>
             ))}
           </div>
 
@@ -1215,7 +1222,7 @@ export default function ArchitecturePage() {
 
             {/* Build flowchart */}
             <div className="lg:col-span-7">
-              <div className="rounded-2xl border border-(--color-border-default) bg-(--color-background-default) p-6 shadow-sm">
+              <Card className="gap-0 rounded-2xl p-6">
                 <p className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-5">
                   Build dependency graph
                 </p>
@@ -1280,7 +1287,7 @@ export default function ArchitecturePage() {
                     ))}
                   </ol>
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </div>
@@ -1680,10 +1687,7 @@ export default function ArchitecturePage() {
                   desc: "Pass asChild to render any element or component as the root, preserving all Radix accessibility behavior without an extra DOM node.",
                 },
               ].map((layer) => (
-                <div
-                  key={layer.n}
-                  className="flex gap-3 rounded-lg border border-(--color-border-default) bg-(--color-background-default) p-4"
-                >
+                <Card key={layer.n} className="gap-3 p-4 flex-row shadow-none">
                   <span
                     className="shrink-0 font-mono text-sm font-semibold"
                     style={{ color: "var(--color-foreground-primary-muted)" }}
@@ -1698,7 +1702,7 @@ export default function ArchitecturePage() {
                       {layer.desc}
                     </p>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           </div>

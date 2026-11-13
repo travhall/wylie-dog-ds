@@ -1,4 +1,5 @@
 import manifest from "@wyliedog/tokens/manifest.json";
+import { Card } from "@wyliedog/ui/card";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import { SpacingDemo } from "../spacing-demo";
 import type { ManifestToken } from "@/lib/token-values";
@@ -38,7 +39,7 @@ export default function SpacingPage() {
     >
       <SpacingDemo />
 
-      <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 max-w-sm">
+      <Card className="gap-0 rounded-xl p-5 max-w-sm shadow-none">
         <h2 className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint) mb-2">
           Composed tokens
         </h2>
@@ -47,9 +48,9 @@ export default function SpacingPage() {
             <p key={t}>{t}</p>
           ))}
         </div>
-      </div>
+      </Card>
 
-      <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6 space-y-6">
+      <Card className="gap-0 rounded-xl p-6 space-y-6 shadow-none">
         {spacingPrimitives.map((s) => (
           <div key={s.name} className="flex items-center gap-6">
             <div className="w-24 shrink-0 text-right">
@@ -71,7 +72,7 @@ export default function SpacingPage() {
             </div>
           </div>
         ))}
-      </div>
+      </Card>
     </TokensSubpageShell>
   );
 }

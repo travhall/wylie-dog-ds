@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
+import { Card } from "@wyliedog/ui/card";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -290,10 +291,7 @@ export default function ComponentsPage() {
                     boxShadow: "var(--shadow-lg)",
                   }}
                 >
-                  <div
-                    className="rounded-lg border border-(--color-border-default) p-5"
-                    style={{ background: "var(--color-background-default)" }}
-                  >
+                  <Card className="gap-0 p-5 shadow-none">
                     {/* Avatar + badge */}
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
@@ -448,7 +446,7 @@ export default function ComponentsPage() {
                         </svg>
                       </Button>
                     </div>
-                  </div>
+                  </Card>
 
                   {/* component tag strip */}
                   <div className="mt-3 flex flex-wrap items-center gap-1.5">
