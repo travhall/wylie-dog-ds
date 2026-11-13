@@ -1,4 +1,12 @@
 import manifest from "@wyliedog/tokens/manifest.json";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@wyliedog/ui/table";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import type { ManifestToken } from "@/lib/token-values";
 import { formatSize, toPx } from "@/lib/token-units";
@@ -66,37 +74,34 @@ export default function TypographyPage() {
               tabIndex={0}
               role="region"
               aria-label="Families and sizes table"
-              className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) overflow-x-auto"
+              className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-focus-ring) overflow-x-auto [&>div]:overflow-visible"
             >
-              <table className="w-full border-collapse text-left">
-                <thead>
-                  <tr className="border-b border-(--color-border-default)">
-                    <th
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead
                       scope="col"
-                      className="pb-3 pr-4 text-xs font-mono uppercase tracking-wider text-(--color-foreground-faint)"
+                      className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)"
                     >
                       Size
-                    </th>
+                    </TableHead>
                     {typographyPrimitives.families.map((f) => (
-                      <th
+                      <TableHead
                         key={f.name}
                         scope="col"
-                        className="pb-3 px-4 text-xs font-mono uppercase tracking-wider text-(--color-foreground-faint)"
+                        className="font-mono text-xs uppercase tracking-wider text-(--color-foreground-faint)"
                       >
                         {f.name} · {f.value}
-                      </th>
+                      </TableHead>
                     ))}
-                  </tr>
-                </thead>
-                <tbody>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
                   {typographyPrimitives.sizes.map((s) => (
-                    <tr
-                      key={s.name}
-                      className="border-b border-(--color-border-default) last:border-0"
-                    >
-                      <th
+                    <TableRow key={s.name}>
+                      <TableHead
                         scope="row"
-                        className="py-3 pr-6 align-top text-left font-normal"
+                        className="h-auto py-3 align-top font-normal"
                       >
                         <div className="text-sm text-(--color-foreground-default)">
                           {s.name}
@@ -107,7 +112,7 @@ export default function TypographyPage() {
                         <div className="text-xs font-mono text-(--color-foreground-faint)">
                           fontSize: {s.var}
                         </div>
-                      </th>
+                      </TableHead>
                       {typographyPrimitives.families.map((f) => {
                         // Extract the font family type (sans, mono, serif)
                         const familyType = f.name.split("-").pop();
@@ -115,20 +120,20 @@ export default function TypographyPage() {
                         const fontFamilyClass = `font-${familyType}`;
 
                         return (
-                          <td key={f.name} className="py-3 px-4 align-top">
+                          <TableCell key={f.name} className="align-top">
                             <span
                               className={`${fontFamilyClass} text-(--color-foreground-default)`}
                               style={{ fontSize: s.value }}
                             >
                               Sample
                             </span>
-                          </td>
+                          </TableCell>
                         );
                       })}
-                    </tr>
+                    </TableRow>
                   ))}
-                </tbody>
-              </table>
+                </TableBody>
+              </Table>
             </div>
           </div>
         </section>
