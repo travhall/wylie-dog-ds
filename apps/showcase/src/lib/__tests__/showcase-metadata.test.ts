@@ -131,6 +131,35 @@ describe("Storybook links", () => {
       "https://wyliedogstorybook.com"
     );
   });
+
+  it("uses the id a story pins in its meta instead of one derived from the title", async () => {
+    const { getStoryDocsId } = await import("../showcase-metadata");
+    // radio-group.stories.tsx titles itself "Radio Group" but pins "radiogroup",
+    // which is the id Storybook serves.
+    expect(getStoryDocsId("radio-group")).toBe(
+      "components-inputs-controls-radiogroup--docs"
+    );
+
+    const root = path.resolve(process.cwd(), "../storybook/stories/Components");
+    let checked = 0;
+    for (const dir of fs.readdirSync(root, { withFileTypes: true })) {
+      if (!dir.isDirectory()) continue;
+      for (const file of fs.readdirSync(path.join(root, dir.name))) {
+        if (!file.endsWith(".stories.tsx")) continue;
+        const source = fs.readFileSync(
+          path.join(root, dir.name, file),
+          "utf-8"
+        );
+        const pinned = /^ {2}id:\s*"([^"]+)"/m.exec(source);
+        if (!pinned || !/autodocs/.test(source)) continue;
+        expect(getStoryDocsId(file.replace(/\.stories\.tsx$/, ""))).toBe(
+          `${pinned[1]}--docs`
+        );
+        checked++;
+      }
+    }
+    expect(checked).toBeGreaterThan(0);
+  });
 });
 
 describe("Storybook coverage of UI components", () => {

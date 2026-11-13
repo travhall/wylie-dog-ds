@@ -378,14 +378,17 @@ export function storybookId(title: string): string {
 /**
  * Where a story file lives in Storybook: its docs page when the file has
  * `autodocs`, otherwise its first story. Built from the file's `title` and
- * exported story names, so it needs no running Storybook.
+ * exported story names, so it needs no running Storybook. A story that pins
+ * its meta `id` (to keep a URL stable when the title is respaced) uses that
+ * id, as Storybook does, instead of one derived from the title.
  */
 function storyTarget(
   source: string
 ): { kind: "docs" | "story"; id: string } | null {
   const title = /title:\s*"([^"]+)"/.exec(source);
   if (!title) return null;
-  const base = storybookId(title[1]);
+  const pinned = /^ {2}id:\s*"([^"]+)"/m.exec(source);
+  const base = pinned ? pinned[1] : storybookId(title[1]);
   if (/autodocs/.test(source)) return { kind: "docs", id: `${base}--docs` };
   const first = /export const (\w+)\s*:\s*Story/.exec(source);
   if (!first) return null;
