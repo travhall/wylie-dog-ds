@@ -82,6 +82,16 @@ jobs:
       - name: Run Tests with Coverage
         run: pnpm test:coverage
 
+      # `test:coverage` only exists in packages/ui and figma-plugin, so the showcase's own
+      # suite (page renders, the Storybook link builder, the search index) did not run on
+      # pull requests: a broken Storybook link sat on main unnoticed. It needs no build,
+      # since its vitest config resolves @wyliedog/ui to source and packages/tokens/dist is
+      # committed. `!cancelled()` keeps it running when the step above fails, so one
+      # failure does not hide the other.
+      - name: Run Showcase Tests
+        if: ${{ !cancelled() }}
+        run: pnpm --filter showcase test
+
       # Runs the UI coverage on its own (about 25s) instead of reusing the
       # step above: turbo stops that step when any package fails its coverage
       # threshold, which would leave no packages/ui/coverage/coverage-summary.json to
