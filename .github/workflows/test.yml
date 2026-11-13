@@ -82,15 +82,23 @@ jobs:
       - name: Run Tests with Coverage
         run: pnpm test:coverage
 
-      # `test:coverage` only exists in packages/ui and figma-plugin, so the showcase's own
-      # suite (page renders, the Storybook link builder, the search index) did not run on
-      # pull requests: a broken Storybook link sat on main unnoticed. It needs no build,
-      # since its vitest config resolves @wyliedog/ui to source and packages/tokens/dist is
-      # committed. `!cancelled()` keeps it running when the step above fails, so one
-      # failure does not hide the other.
-      - name: Run Showcase Tests
+      # `test:coverage` is only defined in packages/ui and figma-plugin, so it does not reach
+      # the showcase suite, the Storybook suite (every story's a11y check, in light and dark,
+      # in a Chromium browser) or the script-guard tests. Plan 078 assumed the old `test`,
+      # `test:a11y` and `test:coverage` steps ran the same file set, which held for
+      # packages/ui only: consolidating them silently dropped these suites from pull
+      # requests, and a broken Storybook link sat on main unnoticed. They run here instead.
+      # The showcase needs no build (its vitest config resolves @wyliedog/ui to source and
+      # packages/tokens/dist is committed); turbo builds what `storybook#test` depends on
+      # (tokens, UI, Storybook CSS), and Chromium is installed above. `!cancelled()` keeps
+      # each step running when an earlier one fails, so one failure does not hide another.
+      - name: Run Showcase and Storybook Tests
         if: ${{ !cancelled() }}
-        run: pnpm --filter showcase test
+        run: pnpm turbo run test --filter=showcase --filter=storybook
+
+      - name: Run Script Guard Tests
+        if: ${{ !cancelled() }}
+        run: pnpm test:scripts
 
       # Runs the UI coverage on its own (about 25s) instead of reusing the
       # step above: turbo stops that step when any package fails its coverage
