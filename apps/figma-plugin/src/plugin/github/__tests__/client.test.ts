@@ -920,6 +920,54 @@ describe("GitHubClient push in the DTCG layout", () => {
     ]);
   });
 
+  it("leaves a file alone that differs only in formatting, and names only what changed", async () => {
+    repoWithResolver();
+    const first = await makeClient().syncTokens(exportData, "chore: sync");
+    const written = new Map<string, string>(
+      (first.filesUpdated ?? []).map((path, i) => [path, blobs()[i]])
+    );
+
+    // The repository holds the same files in another style (compact JSON),
+    // except the dark semantic file, which really differs.
+    vi.clearAllMocks();
+    let n = 0;
+    mockOctokit.git.getRef.mockResolvedValue({
+      data: { object: { sha: "base-sha" } },
+    });
+    mockOctokit.git.getCommit.mockResolvedValue({
+      data: { tree: { sha: "base-tree" } },
+    });
+    mockOctokit.git.createBlob.mockImplementation(async () => ({
+      data: { sha: `blob-${++n}` },
+    }));
+    mockOctokit.git.createTree.mockResolvedValue({ data: { sha: "tree-sha" } });
+    mockOctokit.git.createCommit.mockResolvedValue({
+      data: { sha: "commit-sha" },
+    });
+    mockOctokit.git.updateRef.mockResolvedValue({});
+    mockOctokit.repos.getContent.mockImplementation(
+      async ({ path }: { path: string }) => {
+        const text = written.get(path);
+        if (text === undefined) throw notFoundError;
+        const compact = JSON.stringify(JSON.parse(text));
+        const differs = path.endsWith("semantic.dark.json")
+          ? compact.replace("{color.coral}", "{color.other}")
+          : compact;
+        return { data: { content: toB64(differs), encoding: "base64" } };
+      }
+    );
+
+    const result = await makeClient().syncTokens(exportData);
+
+    expect(result.filesUpdated).toEqual(["tokens/semantic.dark.json"]);
+    expect(blobs()).toHaveLength(1);
+    expect(mockOctokit.git.createCommit).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: expect.stringMatching(/^chore: update semantic tokens\n/),
+      })
+    );
+  });
+
   it("leaves out a token that cannot be written as DTCG and says so", async () => {
     repoWithResolver();
 
@@ -1051,6 +1099,49 @@ describe("GitHubClient pull-request sync", () => {
     ]);
     expect(mockOctokit.git.deleteRef).not.toHaveBeenCalled();
     expect(mockOctokit.pulls.create).toHaveBeenCalledTimes(1);
+  });
+
+  it("opens no pull request, and removes its branch, when every file already says the same thing", async () => {
+    const exportData = [collection("colors"), collection("spacing")];
+    await makePrClient().syncTokens(exportData, "chore: update tokens");
+    const written = new Map<string, string>(
+      mockOctokit.repos.createOrUpdateFileContents.mock.calls.map(([arg]) => [
+        (arg as { path: string }).path,
+        Buffer.from((arg as { content: string }).content, "base64").toString(
+          "utf8"
+        ),
+      ])
+    );
+    expect(written.size).toBe(2);
+
+    vi.clearAllMocks();
+    mockOctokit.git.getRef.mockResolvedValue({
+      data: { object: { sha: "base-sha" } },
+    });
+    mockOctokit.git.createRef.mockResolvedValue({});
+    mockOctokit.git.deleteRef.mockResolvedValue({});
+    // The same files, in another style
+    mockOctokit.repos.getContent.mockImplementation(
+      async ({ path }: { path: string }) => {
+        const text = written.get(path);
+        if (text === undefined) throw notFoundError;
+        return {
+          data: {
+            content: toB64(JSON.stringify(JSON.parse(text))),
+            encoding: "base64",
+          },
+        };
+      }
+    );
+
+    const result = await makePrClient().syncTokens(exportData);
+
+    expect(result.success).toBe(true);
+    expect(result.filesUpdated).toEqual([]);
+    expect(result.message).toMatch(/No changes to sync/);
+    expect(mockOctokit.repos.createOrUpdateFileContents).not.toHaveBeenCalled();
+    expect(mockOctokit.pulls.create).not.toHaveBeenCalled();
+    expect(mockOctokit.git.deleteRef).toHaveBeenCalledTimes(1);
   });
 
   it("deletes the branch it just created and propagates the original error when the 2nd of 3 file updates fails", async () => {
