@@ -106,7 +106,7 @@ function expandShortHex(hex: string): string {
 /**
  * Convert a color value (hex, rgb(a), hsl(a), oklch, etc.) to Figma RGB format
  */
-function convertColorToFigmaRgb(
+export function convertColorToFigmaRgb(
   value: unknown
 ): { r: number; g: number; b: number } | null {
   if (!value) return null;
