@@ -1,5 +1,6 @@
 // Enhanced GitHub client with conflict detection and resolution capabilities
-import { GitHubClient } from "../github/client";
+import { GitHubClient, NO_TOKEN_FILES } from "../github/client";
+import { SyncFailureError } from "../../shared/sync-failure";
 import type { SyncResult, PullResult } from "../github/client";
 import type { GitHubConfig } from "../../shared/types";
 import type { ExportData, ProcessedToken } from "../variables/processor";
@@ -438,18 +439,24 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         return unknown;
       }
 
-      // Pull remote tokens
+      // Pull remote tokens. A failed read is the answer, not "no differences":
+      // it throws, so the status says why it could not tell. A folder with no
+      // token files yet is a real state (a first push): everything is new.
       const pullResult = await super.pullTokens();
-
-      if (!pullResult.success || !pullResult.tokens) {
-        return unknown;
+      let remoteTokens: ExportData[];
+      if (pullResult.success && pullResult.tokens) {
+        remoteTokens = pullResult.tokens;
+      } else if (pullResult.error && NO_TOKEN_FILES.test(pullResult.error)) {
+        remoteTokens = [];
+      } else if (pullResult.failure) {
+        throw new SyncFailureError(pullResult.failure);
+      } else {
+        throw new Error(
+          pullResult.error || "Could not read tokens from GitHub"
+        );
       }
 
-      const classified = classifyChanges(
-        baseline,
-        localTokens,
-        pullResult.tokens
-      );
+      const classified = classifyChanges(baseline, localTokens, remoteTokens);
       const upToDate = classified.hasBaseline
         ? classified.toPush + classified.toPull + classified.conflicts === 0
         : classified.differences === 0;
@@ -458,7 +465,7 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         direction: "overview",
         baseline,
         localTokens,
-        remoteTokens: pullResult.tokens,
+        remoteTokens,
         localScopes,
         localTextStyles,
         textStyleDefinitions,
@@ -468,7 +475,8 @@ export class ConflictAwareGitHubClient extends GitHubClient {
       return { ...classified, upToDate, diff };
     } catch (error) {
       console.error("Failed to get sync status:", error);
-      return unknown;
+      // Not an empty result: the caller shows why the status is unknown
+      throw error;
     }
   }
 }

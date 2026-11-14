@@ -65,6 +65,9 @@ function fromBase64(b64: string): string {
   return new TextDecoder().decode(bytes);
 }
 
+/** A pull error that means the token folder has no files yet (a first push). */
+export const NO_TOKEN_FILES = /No JSON files found/;
+
 export interface SyncResult {
   success: boolean;
   pullRequestUrl?: string;
