@@ -111,28 +111,32 @@ Rules:
 
 ## Extensions
 
-Tool-specific data goes in `$extensions` under a reverse-domain key, which other tools must preserve. The contract reserves `com.wyliedog.tokens`. Today it is needed for one case, below; scopes are inferred from names in Token Bridge, and code syntax and text styles are generated, so none of those are stored in the files.
+Tool-specific data goes in `$extensions` under a reverse-domain key, which other tools must preserve. The contract reserves `com.wyliedog.tokens`. Scopes are inferred from names in Token Bridge, and code syntax and text styles are generated, so none of those are stored in the files. The key holds three things, each only where needed:
+
+- **On a token, `category`** (`"spacing"` or `"fontSize"`): the native type that DTCG has no name for. The build derives the CSS variable prefix from it (spacing becomes the `space` prefix, fontSize the `font-size` prefix), so dropping it changes the generated CSS. Every such token carries it.
+- **On a token, `unit`** (`"em"`): see letter spacing below.
+- **On a resolver set, `mode`; on a resolver modifier, `modes`**: the original Figma mode names. A set records its single mode (`"Value"`); a modifier maps each lower-case context to its mode name (`"light": "Light"`). Figma mode names keep their case this way, with no guessing.
 
 ## Converting from the native layout
 
-| Native (`io/sync`)                                 | Contract                                                               |
-| -------------------------------------------------- | ---------------------------------------------------------------------- |
-| An array with one object per collection            | One file per collection and mode, plus the resolver file               |
-| Flat keys such as `color.fiery-coral.600`          | Nested groups                                                          |
-| `valuesByMode: { Light, Dark }`                    | One token per mode file, same path                                     |
-| `"oklch(0.61 0.169 37.68)"`                        | `{ "colorSpace": "oklch", "components": [0.61, 0.169, 37.68] }`        |
-| `$type: "spacing"` or `"fontSize"`, value `"12px"` | `$type: "dimension"`, value `{ "value": 12, "unit": "px" }`            |
-| `$type: "number"`, value `"12"`                    | `$type: "number"`, value `12`                                          |
-| `$type: "duration"`, value `"150ms"`               | `{ "value": 150, "unit": "ms" }`                                       |
-| `"cubic-bezier(0.4, 0, 0.2, 1)"`                   | `[0.4, 0, 0.2, 1]`                                                     |
-| A CSS shadow string, with layers and `inset`       | A shadow object, or an array for layers; `inset` is a boolean          |
-| The `none` shadow                                  | One fully transparent zero shadow; the build turns it back into `none` |
-| `rgb(0 0 0 / 0.05)` in a shadow                    | `{ "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0.05 }`     |
-| `{typography.font-size.6xl}` and other aliases     | The same string, unchanged                                             |
+| Native (`io/sync`)                                 | Contract                                                                                   |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| An array with one object per collection            | One file per collection and mode, plus the resolver file                                   |
+| Flat keys such as `color.fiery-coral.600`          | Nested groups                                                                              |
+| `valuesByMode: { Light, Dark }`                    | One token per mode file, same path                                                         |
+| `"oklch(0.61 0.169 37.68)"`                        | `{ "colorSpace": "oklch", "components": [0.61, 0.169, 37.68] }`                            |
+| `$type: "spacing"` or `"fontSize"`, value `"12px"` | `$type: "dimension"`, value `{ "value": 12, "unit": "px" }`, plus the `category` extension |
+| `$type: "number"`, value `"12"` or `12`            | `$type: "number"`, value `12` (converting back writes the string)                          |
+| `$type: "duration"`, value `"150ms"`               | `{ "value": 150, "unit": "ms" }`                                                           |
+| `"cubic-bezier(0.4, 0, 0.2, 1)"`                   | `[0.4, 0, 0.2, 1]`                                                                         |
+| A CSS shadow string, with layers and `inset`       | A shadow object, or an array for layers; `inset` is a boolean                              |
+| The `none` shadow                                  | One fully transparent zero shadow; the build turns it back into `none`                     |
+| `rgb(0 0 0 / 0.05)` in a shadow                    | `{ "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0.05 }`                         |
+| `{typography.font-size.6xl}` and other aliases     | The same string, unchanged                                                                 |
 
 ### One value the standard cannot hold: letter spacing in `em`
 
-Six primitives, `typography.tracking.*`, are in `em` (for example `-0.05em`). A DTCG dimension allows only `px` and `rem`, and `em` cannot be converted because it is relative to the font size. **Decided (2026-11-14):** store them as `number` tokens holding the em fraction (`-0.05`), with `"$extensions": { "com.wyliedog.tokens": { "unit": "em" } }`, so the build writes `-0.05em` and Token Bridge shows a percent text style as it does today. Converting to `rem` was rejected: `em` is relative to the element's font size and `rem` to the root, so tracking would render differently at every size and no longer map to Figma's percent letter spacing.
+Six primitives, `typography.tracking.*`, are in `em` (for example `-0.05em`). A DTCG dimension allows only `px` and `rem`, and `em` cannot be converted because it is relative to the font size. **Decided (2026-11-14):** store them as `number` tokens holding the em fraction (`-0.05`), with `"$extensions": { "com.wyliedog.tokens": { "unit": "em" } }`, so the build writes `-0.05em` and Token Bridge shows a percent text style as it does today. A token that aliases one of these (27 component tokens do) is also a `number` with the same marker, because in DTCG a reference takes its target's type. Converting to `rem` was rejected: `em` is relative to the element's font size and `rem` to the root, so tracking would render differently at every size and no longer map to Figma's percent letter spacing.
 
 ```json
 {
