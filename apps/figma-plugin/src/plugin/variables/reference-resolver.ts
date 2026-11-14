@@ -202,6 +202,16 @@ export function createImportOrder(
   const collectionDeps = new Map<string, Set<string>>();
   const collectionNames = collections.map((c) => Object.keys(c)[0]);
 
+  // Which collections hold each token name. A reference names a token, so the
+  // collections that define it are the ones the referring collection depends on.
+  const holders = new Map<string, string[]>();
+  for (const collection of collections) {
+    const name = Object.keys(collection)[0];
+    for (const tokenName of Object.keys(collection[name].variables)) {
+      holders.set(tokenName, [...(holders.get(tokenName) ?? []), name]);
+    }
+  }
+
   // Build dependency graph
   for (const collection of collections) {
     const collectionName = Object.keys(collection)[0];
@@ -213,24 +223,18 @@ export function createImportOrder(
       const references = extractReferences(token);
 
       for (const ref of Array.from(references.values())) {
-        // Determine which collection this reference belongs to
-        const refCollection = inferCollectionFromReference(
-          ref.referencePath,
-          collectionNames
-        );
-        if (refCollection && refCollection !== collectionName) {
-          deps.add(refCollection);
-        }
+        const defining = holders.get(ref.referencePath) ?? [];
+        // A token defined in the referring collection needs no other collection
+        if (defining.includes(collectionName)) continue;
+        for (const other of defining) deps.add(other);
       }
     }
 
     collectionDeps.set(collectionName, deps);
   }
 
-  // Sort collections to handle dependencies:
-  // 1. Primitive collections first (no dependencies)
-  // 2. Collections with fewer dependencies next
-  // 3. Collections with more dependencies last
+  // Sort collections so each comes after the collections it references:
+  // those with no dependencies first, then the ones that build on them
   const sorted: string[] = [];
   const visited = new Set<string>();
   const visiting = new Set<string>();
@@ -254,7 +258,7 @@ export function createImportOrder(
     sorted.push(name);
   }
 
-  // Start with collections that have no dependencies (likely primitives)
+  // Start with collections that have no dependencies
   const independentCollections = collectionNames.filter((name) => {
     const deps = collectionDeps.get(name) || new Set();
     return deps.size === 0;
@@ -274,62 +278,4 @@ export function createImportOrder(
 
   // console.log("Import order determined:", sorted);
   return sorted;
-}
-
-function inferCollectionFromReference(
-  referencePath: string,
-  collectionNames: string[]
-): string | null {
-  // Enhanced reference inference with better matching
-
-  // First try exact prefix matching
-  for (const collectionName of collectionNames) {
-    if (referencePath.startsWith(collectionName.toLowerCase() + ".")) {
-      return collectionName;
-    }
-  }
-
-  // Handle common token type mappings
-  const tokenTypeToCollection: Record<string, string[]> = {
-    "color.": ["primitive", "color", "colors"],
-    "spacing.": ["primitive", "spacing"],
-    "typography.fontsize.": ["primitive", "typography", "fonts"],
-    "typography.fontweight.": ["primitive", "typography", "fonts"],
-    "typography.fontfamily.": ["primitive", "typography", "fonts"],
-    "typography.lineheight.": ["primitive", "typography", "fonts"],
-    "typography.letterSpacing.": ["primitive", "typography", "fonts"],
-    "size.": ["primitive", "sizing"],
-    "radius.": ["primitive", "border"],
-    "shadow.": ["primitive", "effect"],
-    "border.": ["primitive", "border"],
-  };
-
-  // Try to match by token type
-  for (const [prefix, candidates] of Object.entries(tokenTypeToCollection)) {
-    if (referencePath.startsWith(prefix)) {
-      for (const candidate of candidates) {
-        const matchingCollection = collectionNames.find((name) =>
-          name.toLowerCase().includes(candidate)
-        );
-        if (matchingCollection) {
-          return matchingCollection;
-        }
-      }
-    }
-  }
-
-  // Fallback for common patterns
-  if (referencePath.startsWith("typography.")) {
-    // Typography tokens are often in the same collection
-    return (
-      collectionNames.find(
-        (name) =>
-          name.toLowerCase().includes("typography") ||
-          name.toLowerCase().includes("font")
-      ) || collectionNames[0]
-    );
-  }
-
-  // Default to first collection (often primitives)
-  return collectionNames[0];
 }

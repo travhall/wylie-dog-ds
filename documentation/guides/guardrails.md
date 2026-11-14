@@ -29,9 +29,9 @@ Two checks are not in CI and are run by hand: `check:focus-visible` (needs a bui
 
 ### Semantic color structure (`check-token-structure.mjs`)
 
-- **Enforces:** semantic color names follow `color.<part>.<token>`, with the part `background`, `foreground`, `border` or `focus`, and at most one modifier.
+- **Enforces:** semantic color names follow `color.<part>.<token>`, with the part `background`, `foreground`, `border` or `focus`, and at most one modifier. The primitive collection holds literal values only, never a reference.
 - **Tune it:** the allowed ground names are in the script. This is the rule that encodes this project's three-tier standard; if you adopt a different naming scheme, this is the first check to rewrite.
-- **A failure usually means:** a new semantic token invented a segment or a state word.
+- **A failure usually means:** a new semantic token invented a segment or a state word, or a primitive was written as an alias of another token. Token Bridge no longer rules on this: it accepts any structure, so this guard is where the project keeps its own rule.
 
 ### Component binding (`check-component-binding.mjs`)
 
