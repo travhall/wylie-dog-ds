@@ -68,9 +68,10 @@ A push writes the layout the token folder already has: standard W3C DTCG token f
 
 Token Bridge authenticates with a GitHub personal access token (PAT). There is no server component; the plugin talks to the GitHub API directly.
 
-1. Create a token at [GitHub Settings → Developer Settings → Personal Access Tokens](https://github.com/settings/tokens). The setup screen links to a pre-scoped form.
-2. Grant the classic `repo` scope, or for a fine-grained token, **Contents: Read and write**
-3. Paste the token into the plugin when connecting to GitHub
+1. Create a **fine-grained** token (the setup screen links to a pre-filled form): under "Repository access" choose "Only select repositories" and pick your token repository, and under "Repository permissions" set **Contents** to "Read and write". It can reach only that repository.
+2. Paste the token into the plugin when connecting to GitHub. The last wizard step says what it found, for example 7 token files in `tokens/`.
+
+A classic token with the `repo` scope also works, but it can reach every repository you can, so a fine-grained token is the safer choice.
 
 The token also reads a **private** repository: every file is read through the API with it (the public `raw.githubusercontent.com` host takes no token and answers 404 for a private repository).
 

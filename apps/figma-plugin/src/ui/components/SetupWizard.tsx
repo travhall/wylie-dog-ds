@@ -107,19 +107,58 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
             lineHeight: "var(--line-height-relaxed)",
           }}
         >
+          Token Bridge needs a GitHub token that can read and write the files in
+          one repository.
+        </p>
+        <ol
+          style={{
+            margin: "var(--space-2) 0 0 0",
+            paddingLeft: "var(--space-4)",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
+            lineHeight: "var(--line-height-relaxed)",
+          }}
+        >
+          <li>
+            <a
+              href="https://github.com/settings/personal-access-tokens/new?name=Token%20Bridge&description=Figma%20plugin%20for%20design%20tokens&contents=write"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--accent-primary)", textDecoration: "none" }}
+              aria-label="Create a fine-grained token (opens in new tab)"
+            >
+              Create a fine-grained token →
+            </a>
+          </li>
+          <li>
+            Under "Repository access", choose "Only select repositories" and
+            pick your token repository.
+          </li>
+          <li>
+            Under "Repository permissions", set Contents to "Read and write".
+          </li>
+          <li>Generate the token, copy it and paste it below.</li>
+        </ol>
+        <p
+          style={{
+            margin: "var(--space-2) 0 0 0",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-tertiary)",
+            lineHeight: "var(--line-height-relaxed)",
+          }}
+        >
+          Prefer a classic token?{" "}
           <a
             href="https://github.com/settings/tokens/new?scopes=repo&description=Token%20Bridge"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "var(--accent-primary)", textDecoration: "none" }}
-            aria-label="Create a token (opens in new tab)"
+            aria-label="Create a classic token (opens in new tab)"
           >
-            Create a token →
+            Create one
           </a>{" "}
-          — pre-scoped to "repo" access.
-          <br />
-          Using a fine-grained token instead? Grant "Contents: Read and write"
-          on the target repository.
+          with the "repo" scope. It can reach every repository you can, so a
+          fine-grained token is the safer choice.
         </p>
       </div>
 
@@ -687,14 +726,17 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
     if (search.status === "failed") {
       return "Could not look inside the repository. Enter the folder by hand.";
     }
-    const { path, found } = search.folder;
+    const { path, found, tokenFiles } = search.folder;
+    const files = `${tokenFiles} token file${tokenFiles === 1 ? "" : "s"}`;
     switch (found) {
       case "current":
-        return `Found token files in "${path}".`;
+        return tokenFiles > 0
+          ? `Found ${files} in "${path}".`
+          : `Found token files in "${path}".`;
       case "resolver":
-        return `Found tokens.resolver.json in "${path}" and filled it in below.`;
+        return `Found tokens.resolver.json and ${files} in "${path}", and filled it in below.`;
       case "known-folder":
-        return `Found token JSON files in "${path}" and filled it in below.`;
+        return `Found ${files} in "${path}" and filled it in below.`;
       default:
         return `No token files in this repository yet. They will be created in "${path}"; change it to use another folder.`;
     }
@@ -874,8 +916,8 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
                   lineHeight: "var(--line-height-relaxed)",
                 }}
               >
-                Creates pull requests for review before merging changes. Safer
-                for team environments.
+                Each Push opens a pull request on GitHub. Review it there, then
+                merge it. Safer for teams.
               </div>
             </div>
           </label>
@@ -912,8 +954,8 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
                   lineHeight: "var(--line-height-relaxed)",
                 }}
               >
-                Pushes and pulls changes directly to the branch. Faster but
-                bypasses review.
+                Each Push commits straight to the branch. Faster, with no review
+                step.
               </div>
             </div>
           </label>
