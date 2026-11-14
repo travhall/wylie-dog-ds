@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { readSyncCollection } from "@wyliedog/tokens/read-sync";
 import { inferScopes } from "../scopes";
 
 // vitest runs from the package root (apps/figma-plugin)
@@ -9,9 +9,9 @@ const SYNC_DIR = resolve(process.cwd(), "../../packages/tokens/io/sync");
 type SyncToken = { $type: string };
 
 function colorNames(collection: string): string[] {
-  const data = JSON.parse(
-    readFileSync(resolve(SYNC_DIR, `${collection}.json`), "utf8")
-  ) as Array<Record<string, { variables: Record<string, SyncToken> }>>;
+  const data = readSyncCollection(SYNC_DIR, collection) as unknown as Array<
+    Record<string, { variables: Record<string, SyncToken> }>
+  >;
   return Object.entries(data[0][collection].variables)
     .filter(([, token]) => token.$type === "color")
     .map(([name]) => name);
@@ -25,9 +25,9 @@ function allVariables(): Array<{
   type: string;
 }> {
   return COLLECTIONS.flatMap((collection) => {
-    const data = JSON.parse(
-      readFileSync(resolve(SYNC_DIR, `${collection}.json`), "utf8")
-    ) as Array<Record<string, { variables: Record<string, SyncToken> }>>;
+    const data = readSyncCollection(SYNC_DIR, collection) as unknown as Array<
+      Record<string, { variables: Record<string, SyncToken> }>
+    >;
     return Object.entries(data[0][collection].variables).map(
       ([name, token]) => ({ collection, name, type: token.$type })
     );

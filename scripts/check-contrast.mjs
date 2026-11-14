@@ -19,6 +19,7 @@
 
 import fs from "node:fs";
 import { contrastRatio as contrast } from "../packages/tokens/lib/color.js";
+import { readSyncCollection } from "../packages/tokens/lib/read-sync.js";
 
 const MODES = ["Light", "Dark"];
 const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
@@ -28,8 +29,9 @@ const showList = process.argv.includes("--list");
 // ---------- tokens ----------
 
 const collection = (name) =>
-  Object.assign({}, ...read(`packages/tokens/io/sync/${name}.json`))[name]
-    .variables;
+  Object.assign({}, ...readSyncCollection("packages/tokens/io/sync", name))[
+    name
+  ].variables;
 const tokens = {
   ...collection("primitive"),
   ...collection("semantic"),

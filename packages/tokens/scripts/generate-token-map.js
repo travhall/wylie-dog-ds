@@ -21,6 +21,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { readSyncCollection } from '../lib/read-sync.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -146,8 +147,8 @@ function extractVariables(data) {
 
 // Load component tokens
 function loadComponentTokens() {
-  const componentsPath = path.join(TOKENS_DIR, 'components.json');
-  const data = JSON.parse(fs.readFileSync(componentsPath, 'utf-8'));
+  // Either sync layout: the reader gives the native components collection.
+  const data = readSyncCollection(TOKENS_DIR, 'components');
   return extractVariables(data);
 }
 

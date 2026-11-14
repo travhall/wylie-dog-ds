@@ -28,8 +28,8 @@
 // reported (`orphans`), never paired by guesswork. A pair the owner has confirmed from
 // the code is listed in PAIRS and fills in only what its style is missing (Plan 217).
 
-import fs from "node:fs";
 import path from "node:path";
+import { readSyncCollections } from "../packages/tokens/lib/read-sync.js";
 
 export const SYNC_DIR = "packages/tokens/io/sync";
 export const DEFINITIONS_FILE = "packages/tokens/io/styles/text-styles.json";
@@ -37,7 +37,8 @@ export const FONT_FAMILY_TOKEN = "typography.font-family.sans";
 
 const SIZES = "sm|md|lg|xl";
 const FONT_SIZE = new RegExp(`^(.*?)[.-]font-size(?:[.-](${SIZES}))?$`);
-const PARTNER = /[.-](font-family|font-weight|line-height|letter-spacing|tracking)$/;
+const PARTNER =
+  /[.-](font-family|font-weight|line-height|letter-spacing|tracking)$/;
 
 const DESCRIPTION =
   "Figma text styles Token Bridge creates and keeps in line with the tokens. " +
@@ -48,11 +49,11 @@ const DESCRIPTION =
 /** Every token of every collection in the sync folder: name to token. */
 export function readSyncTokens(root = ".") {
   const tokens = new Map();
-  for (const file of ["primitive.json", "semantic.json", "components.json"]) {
-    const data = JSON.parse(
-      fs.readFileSync(path.join(root, SYNC_DIR, file), "utf8")
-    );
-    for (const collection of data) {
+  const collections = readSyncCollections(path.join(root, SYNC_DIR));
+  for (const name of ["primitive", "semantic", "components"]) {
+    // The collection a token came from, tagged as the file name it has always had.
+    const file = `${name}.json`;
+    for (const collection of collections[name]) {
       for (const content of Object.values(collection)) {
         for (const [name, token] of Object.entries(content.variables)) {
           tokens.set(name, { ...token, file });

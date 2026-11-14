@@ -1,8 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import Ajv from "ajv";
 import { dtcgToNative, mergeResolver, nativeToDtcg } from "./dtcg-convert.js";
+import { readSyncCollections } from "./read-sync.js";
 
 const load = (url) => JSON.parse(readFileSync(url, "utf8"));
 const ajv = new Ajv({ allErrors: true });
@@ -351,11 +352,10 @@ test("mergeResolver: a new Figma collection is added after the existing entries"
 
 // ---- the real files --------------------------------------------------------
 
-const syncDir = new URL("../io/sync/", import.meta.url);
-const nativeFiles = readdirSync(syncDir)
-  .filter((f) => f.endsWith(".json"))
-  .sort()
-  .map((f) => load(new URL(f, syncDir)));
+// The reader gives the native collections whichever layout io/sync is in.
+const nativeFiles = Object.values(
+  readSyncCollections(new URL("../io/sync", import.meta.url).pathname)
+);
 
 test("real io/sync: every converted file passes both schemas", () => {
   const { files, resolver } = nativeToDtcg(nativeFiles);

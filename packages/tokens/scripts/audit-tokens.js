@@ -22,6 +22,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { readSyncCollections } from '../lib/read-sync.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -122,23 +123,17 @@ function loadTokens() {
   };
 
   try {
-    const componentsPath = path.join(TOKENS_DIR, 'components.json');
-    const semanticPath = path.join(TOKENS_DIR, 'semantic.json');
-    const primitivePath = path.join(TOKENS_DIR, 'primitive.json');
+    // Either sync layout: the reader gives the native collections.
+    const collections = readSyncCollections(TOKENS_DIR);
 
-    if (fs.existsSync(componentsPath)) {
-      const data = JSON.parse(fs.readFileSync(componentsPath, 'utf-8'));
-      tokens.component = extractVariables(data);
+    if (collections.components) {
+      tokens.component = extractVariables(collections.components);
     }
-
-    if (fs.existsSync(semanticPath)) {
-      const data = JSON.parse(fs.readFileSync(semanticPath, 'utf-8'));
-      tokens.semantic = extractVariables(data);
+    if (collections.semantic) {
+      tokens.semantic = extractVariables(collections.semantic);
     }
-
-    if (fs.existsSync(primitivePath)) {
-      const data = JSON.parse(fs.readFileSync(primitivePath, 'utf-8'));
-      tokens.primitive = extractVariables(data);
+    if (collections.primitive) {
+      tokens.primitive = extractVariables(collections.primitive);
     }
   } catch (error) {
     log(`Error loading tokens: ${error.message}`, 'error');

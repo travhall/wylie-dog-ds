@@ -7,18 +7,17 @@
 //
 // Shared by the check that enforces this (scripts/__tests__/icon-stroke-tier.test.mjs).
 
-import fs from "node:fs";
+import { readSyncCollection } from "../packages/tokens/lib/read-sync.js";
 
 const sync = "packages/tokens/io/sync";
-const readVariables = (file, collection) =>
-  Object.assign({}, ...JSON.parse(fs.readFileSync(`${sync}/${file}`, "utf8")))[
-    collection
-  ].variables;
+const readVariables = (collection) =>
+  Object.assign({}, ...readSyncCollection(sync, collection))[collection]
+    .variables;
 
 const collections = [
-  readVariables("components.json", "components"),
-  readVariables("semantic.json", "semantic"),
-  readVariables("primitive.json", "primitive"),
+  readVariables("components"),
+  readVariables("semantic"),
+  readVariables("primitive"),
 ];
 
 // CSS variable of a component token, as the token build names it (dimension is --space-*).

@@ -25,6 +25,10 @@
       "types": "./lib/dtcg-convert.d.ts",
       "default": "./lib/dtcg-convert.js"
     },
+    "./read-sync": {
+      "types": "./lib/read-sync.d.ts",
+      "default": "./lib/read-sync.js"
+    },
     "./color-modes.json": "./dist/color-modes.json"
   },
   "main": "./dist/index.js",

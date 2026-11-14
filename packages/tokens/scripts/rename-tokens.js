@@ -26,6 +26,16 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_TOKENS = join(__dirname, "..");
 
+// This one-off tool rewrites the native sync files by name. It does not understand
+// the DTCG layout, and running it there would write native files next to the
+// contract files. Convert first, or rename in the token files by hand.
+if (existsSync(join(REPO_TOKENS, "io/sync/tokens.resolver.json"))) {
+  console.error(
+    "io/sync is in the DTCG layout (tokens.resolver.json); rename-tokens.js only edits the native layout."
+  );
+  process.exit(1);
+}
+
 const SYNC_FILES = [
   "io/sync/primitive.json",
   "io/sync/semantic.json",
@@ -55,9 +65,7 @@ function parseArgs(argv) {
       const pair = argv[++i];
       const [oldName, newName] = pair.split(":");
       if (!oldName || !newName) {
-        throw new Error(
-          `--rename expects "old:new", got "${pair}"`
-        );
+        throw new Error(`--rename expects "old:new", got "${pair}"`);
       }
       renames[oldName] = newName;
     } else if (arg === "--help" || arg === "-h") {
@@ -88,7 +96,8 @@ function rewriteValueRefs(val, renames) {
   if (Array.isArray(val)) return val.map((v) => rewriteValueRefs(v, renames));
   if (val && typeof val === "object") {
     const out = {};
-    for (const [k, v] of Object.entries(val)) out[k] = rewriteValueRefs(v, renames);
+    for (const [k, v] of Object.entries(val))
+      out[k] = rewriteValueRefs(v, renames);
     return out;
   }
   return val;
@@ -119,7 +128,10 @@ function processSyncFile(path, renames) {
   for (const collectionWrapper of arr) {
     for (const [, colData] of Object.entries(collectionWrapper)) {
       if (colData && typeof colData === "object" && colData.variables) {
-        const { variables, renamedCount } = renameKeys(colData.variables, renames);
+        const { variables, renamedCount } = renameKeys(
+          colData.variables,
+          renames
+        );
         colData.variables = variables;
         totalRenamed += renamedCount;
       }
@@ -163,7 +175,9 @@ function main() {
   for (const r of results) {
     if (r.status === "missing") console.log(`   (skip) ${r.path}`);
     else {
-      console.log(`   ${r.renamed.toString().padStart(4)} renames in ${r.path}`);
+      console.log(
+        `   ${r.renamed.toString().padStart(4)} renames in ${r.path}`
+      );
       grandTotal += r.renamed;
     }
   }

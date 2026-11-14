@@ -31,6 +31,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execSync } from "node:child_process";
+import { readSyncCollection } from "../packages/tokens/lib/read-sync.js";
 
 const read = (p) => fs.readFileSync(p, "utf8");
 const problems = [];
@@ -259,10 +260,9 @@ const proseFiles = execSync(
 const isAllowed = (file) =>
   vocabulary.allow.some((a) => file === a || file.startsWith(a));
 const syncVariables = (name) =>
-  Object.assign(
-    {},
-    ...JSON.parse(read(`packages/tokens/io/sync/${name}.json`))
-  )[name].variables;
+  Object.assign({}, ...readSyncCollection("packages/tokens/io/sync", name))[
+    name
+  ].variables;
 for (const { pattern, reason } of vocabulary.phrases) {
   const re = new RegExp(pattern, "i");
   for (const file of proseFiles) {
