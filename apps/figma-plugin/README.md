@@ -72,6 +72,8 @@ Token Bridge authenticates with a GitHub personal access token (PAT). There is n
 2. Grant the classic `repo` scope, or for a fine-grained token, **Contents: Read and write**
 3. Paste the token into the plugin when connecting to GitHub
 
+The token also reads a **private** repository: every file is read through the API with it (the public `raw.githubusercontent.com` host takes no token and answers 404 for a private repository).
+
 You can revoke the token at any time from GitHub settings. See [Security](#security) for where it is stored.
 
 ---
