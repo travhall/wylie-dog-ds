@@ -25,6 +25,17 @@ interface GitHubApiError {
 // Make fetch available globally for Octokit
 (globalThis as typeof globalThis & { fetch: typeof fetch }).fetch = fetch;
 
+/**
+ * Every GitHub API call goes through this. The plugin runs in a browser, and
+ * api.github.com answers GETs with `max-age=60`, so without `no-store` a Push
+ * (or a status check) seconds after a push can be told the branch head is the
+ * previous commit. That showed up as a false conflict and as "Branch has new
+ * commits since sync started": the retry asks again and gets the same cached
+ * answer.
+ */
+const noStoreFetch: typeof fetch = (input, init) =>
+  fetch(input, { ...init, cache: "no-store" });
+
 // btoa/atob only handle Latin-1 (U+0000–U+00FF). Token content can contain
 // arbitrary Unicode (descriptions with curly quotes, arrows, em dashes, etc.).
 // These helpers encode/decode via UTF-8 bytes so all Unicode is preserved.
@@ -89,6 +100,7 @@ export class GitHubClient {
       this.octokit = new Octokit({
         auth: config.accessToken,
         userAgent: "Token Bridge Figma Plugin v1.0.0",
+        request: { fetch: noStoreFetch },
       });
 
       // Test the connection
@@ -108,6 +120,7 @@ export class GitHubClient {
       ? new Octokit({
           auth: config.accessToken,
           userAgent: "Token Bridge Figma Plugin v1.0.0",
+          request: { fetch: noStoreFetch },
         })
       : null;
   }
@@ -187,7 +200,7 @@ export class GitHubClient {
    * No hardcoded fallback list, no MANIFEST.json. Consumers put whatever
    * files they want in their token directory and this picks them all up.
    */
-  async listFiles(): Promise<string[]> {
+  async listFiles(ref?: string): Promise<string[]> {
     if (!this.octokit || !this.config) {
       throw new Error("GitHub client not initialized");
     }
@@ -209,7 +222,7 @@ export class GitHubClient {
       owner: this.config.owner,
       repo: this.config.repo,
       path: this.basePath(),
-      ref: this.config.branch,
+      ref: ref ?? this.config.branch,
     });
 
     if (!Array.isArray(data)) {
@@ -228,9 +241,31 @@ export class GitHubClient {
     return jsonFiles;
   }
 
-  async fetchFile(filename: string): Promise<string> {
+  /**
+   * The branch head as a commit SHA, read fresh (the Octokit client never
+   * caches). File reads use it instead of the branch name:
+   * raw.githubusercontent.com caches a branch URL for five minutes, so a read
+   * right after a push returned the previous version (a Pull that "found no
+   * changes", a status that never cleared). A commit SHA in the URL is
+   * immutable, so it is always right and safe to cache, and every file of one
+   * read comes from the same commit.
+   */
+  private async resolveRef(): Promise<string> {
     if (!this.config) throw new Error("GitHub client not initialized");
-    const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${this.basePath()}/${filename}`;
+    if (!this.octokit) return this.config.branch;
+    const { data } = await this.octokit.git.getRef({
+      owner: this.config.owner,
+      repo: this.config.repo,
+      ref: `heads/${this.config.branch}`,
+    });
+    return data.object.sha;
+  }
+
+  /** Raw file content at `ref` (a commit SHA from resolveRef; the branch head if omitted). */
+  async fetchFile(filename: string, ref?: string): Promise<string> {
+    if (!this.config) throw new Error("GitHub client not initialized");
+    const at = ref ?? (await this.resolveRef());
+    const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${at}/${this.basePath()}/${filename}`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Failed to fetch ${filename}: HTTP ${response.status}`);
@@ -262,7 +297,8 @@ export class GitHubClient {
       return { status: "error", error: "GitHub client not initialized" };
     const path = this.textStyleDefinitionsPath();
     try {
-      const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${path}`;
+      const ref = await this.resolveRef();
+      const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${ref}/${path}`;
       const response = await fetch(url);
       if (response.status === 404) return { status: "absent" };
       if (!response.ok) {
@@ -312,7 +348,8 @@ export class GitHubClient {
       return { status: "error", error: "GitHub client not initialized" };
     const path = this.codeSyntaxPath();
     try {
-      const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${path}`;
+      const ref = await this.resolveRef();
+      const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${ref}/${path}`;
       const response = await fetch(url);
       if (response.status === 404) return { status: "absent" };
       if (!response.ok) {
@@ -515,7 +552,11 @@ export class GitHubClient {
         `Pulling tokens from ${this.config.owner}/${this.config.repo}:${this.config.branch}`
       );
 
-      const fileNames = await this.listFiles().catch((err) => {
+      // One fresh commit SHA for the whole pull: every file (and the listing)
+      // comes from the same commit, never from a cached older one.
+      const ref = await this.resolveRef();
+
+      const fileNames = await this.listFiles(ref).catch((err) => {
         throw new Error(`Could not list token files: ${err.message}`);
       });
 
@@ -529,7 +570,7 @@ export class GitHubClient {
       // DTCG layout: the resolver says which files make up the collections and
       // modes, so it is read instead of treating every .json as a collection.
       if (fileNames.includes(DTCG_RESOLVER_FILE)) {
-        return await this.pullDtcgTokens();
+        return await this.pullDtcgTokens(ref);
       }
 
       const tokens = [];
@@ -537,7 +578,7 @@ export class GitHubClient {
 
       for (const fileName of fileNames) {
         try {
-          const content = await this.fetchFile(fileName);
+          const content = await this.fetchFile(fileName, ref);
           let tokenData;
           try {
             tokenData = JSON.parse(content);
@@ -596,9 +637,9 @@ export class GitHubClient {
    * cannot be loaded fails the whole pull: a missing mode file would otherwise
    * drop a mode silently. Thrown errors are reported by pullTokens().
    */
-  private async pullDtcgTokens(): Promise<PullResult> {
+  private async pullDtcgTokens(ref: string): Promise<PullResult> {
     const readJson = async (name: string): Promise<unknown> => {
-      const content = await this.fetchFile(name);
+      const content = await this.fetchFile(name, ref);
       try {
         return JSON.parse(content);
       } catch (parseErr) {
