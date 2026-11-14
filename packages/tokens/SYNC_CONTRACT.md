@@ -1,5 +1,7 @@
 # Sync Contract
 
+> **Superseded in a later release.** This describes the native Wylie Dog layout the files use today. The target format is standard W3C DTCG; see [DTCG token contract](../../documentation/tokens/dtcg-contract.md). Both stay accurate until the migration lands.
+
 This document defines the **JSON data format** for token files used by the Figma plugin and build pipeline. It is a format contract, not a file-list contract.
 
 ```text

@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Wylie Dog token file (strict DTCG 2025.10 subset)",
+  "description": "A token file in the token contract: standard W3C DTCG 2025.10, restricted to the types the system uses, with an explicit $type on every token. See documentation/tokens/dtcg-contract.md.",
+  "$ref": "#/definitions/group",
+  "definitions": {
+    "group": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(\\$(schema|description|deprecated|extensions)|[^${}.][^{}.]*)$"
+      },
+      "properties": {
+        "$schema": { "type": "string" },
+        "$description": { "type": "string" },
+        "$deprecated": { "type": ["boolean", "string"] },
+        "$extensions": { "type": "object" }
+      },
+      "additionalProperties": {
+        "type": "object",
+        "if": { "required": ["$value"] },
+        "then": { "$ref": "#/definitions/token" },
+        "else": { "$ref": "#/definitions/group" }
+      }
+    },
+    "token": {
+      "type": "object",
+      "required": ["$type", "$value"],
+      "additionalProperties": false,
+      "properties": {
+        "$type": {
+          "enum": [
+            "color",
+            "dimension",
+            "duration",
+            "cubicBezier",
+            "number",
+            "fontFamily",
+            "shadow"
+          ]
+        },
+        "$value": {},
+        "$description": { "type": "string" },
+        "$deprecated": { "type": ["boolean", "string"] },
+        "$extensions": { "type": "object" }
+      },
+      "if": {
+        "required": ["$value"],
+        "properties": { "$value": { "$ref": "#/definitions/reference" } }
+      },
+      "else": {
+        "allOf": [
+          {
+            "if": { "properties": { "$type": { "const": "color" } } },
+            "then": {
+              "properties": { "$value": { "$ref": "#/definitions/color" } }
+            }
+          },
+          {
+            "if": { "properties": { "$type": { "const": "dimension" } } },
+            "then": {
+              "properties": { "$value": { "$ref": "#/definitions/dimension" } }
+            }
+          },
+          {
+            "if": { "properties": { "$type": { "const": "duration" } } },
+            "then": {
+              "properties": { "$value": { "$ref": "#/definitions/duration" } }
+            }
+          },
+          {
+            "if": { "properties": { "$type": { "const": "cubicBezier" } } },
+            "then": {
+              "properties": {
+                "$value": { "$ref": "#/definitions/cubicBezier" }
+              }
+            }
+          },
+          {
+            "if": { "properties": { "$type": { "const": "number" } } },
+            "then": { "properties": { "$value": { "type": "number" } } }
+          },
+          {
+            "if": { "properties": { "$type": { "const": "fontFamily" } } },
+            "then": {
+              "properties": { "$value": { "$ref": "#/definitions/fontFamily" } }
+            }
+          },
+          {
+            "if": { "properties": { "$type": { "const": "shadow" } } },
+            "then": {
+              "properties": { "$value": { "$ref": "#/definitions/shadow" } }
+            }
+          }
+        ]
+      }
+    },
+    "reference": {
+      "type": "string",
+      "pattern": "^\\{[^{}.]+(\\.[^{}.]+)*\\}$"
+    },
+    "color": {
+      "type": "object",
+      "required": ["colorSpace", "components"],
+      "additionalProperties": false,
+      "properties": {
+        "colorSpace": {
+          "enum": [
+            "srgb",
+            "srgb-linear",
+            "hsl",
+            "hwb",
+            "lab",
+            "lch",
+            "oklab",
+            "oklch",
+            "display-p3",
+            "a98-rgb",
+            "prophoto-rgb",
+            "rec2020",
+            "xyz-d65",
+            "xyz-d50"
+          ]
+        },
+        "components": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "oneOf": [{ "type": "number" }, { "const": "none" }]
+          }
+        },
+        "alpha": { "type": "number", "minimum": 0, "maximum": 1 },
+        "hex": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+      }
+    },
+    "dimension": {
+      "type": "object",
+      "required": ["value", "unit"],
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "enum": ["px", "rem"] }
+      }
+    },
+    "duration": {
+      "type": "object",
+      "required": ["value", "unit"],
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "enum": ["ms", "s"] }
+      }
+    },
+    "cubicBezier": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": [
+        { "type": "number", "minimum": 0, "maximum": 1 },
+        { "type": "number" },
+        { "type": "number", "minimum": 0, "maximum": 1 },
+        { "type": "number" }
+      ]
+    },
+    "fontFamily": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      ]
+    },
+    "shadowLayer": {
+      "type": "object",
+      "required": ["color", "offsetX", "offsetY", "blur", "spread"],
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "oneOf": [
+            { "$ref": "#/definitions/color" },
+            { "$ref": "#/definitions/reference" }
+          ]
+        },
+        "offsetX": { "$ref": "#/definitions/dimensionOrReference" },
+        "offsetY": { "$ref": "#/definitions/dimensionOrReference" },
+        "blur": { "$ref": "#/definitions/dimensionOrReference" },
+        "spread": { "$ref": "#/definitions/dimensionOrReference" },
+        "inset": { "type": "boolean" }
+      }
+    },
+    "dimensionOrReference": {
+      "oneOf": [
+        { "$ref": "#/definitions/dimension" },
+        { "$ref": "#/definitions/reference" }
+      ]
+    },
+    "shadow": {
+      "oneOf": [
+        { "$ref": "#/definitions/shadowLayer" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "$ref": "#/definitions/shadowLayer" },
+              { "$ref": "#/definitions/reference" }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
