@@ -166,7 +166,7 @@ All colors are defined in OKLCH, which provides perceptually uniform lightness s
 ```
 packages/tokens/
 ├── io/
-│   ├── sync/          # The token contract: DTCG source files (version controlled)
+│   ├── sync/          # The token contract: source files in the Wylie Dog layout, moving to standard DTCG (version controlled)
 │   │   ├── primitive.json
 │   │   ├── semantic.json
 │   │   └── components.json
@@ -220,7 +220,7 @@ Visual regression tests run with Playwright: `pnpm --filter storybook test:visua
 
 ## Figma
 
-The token files are plain W3C DTCG JSON, so you can sync them with Figma using any DTCG-capable tool. `apps/figma-plugin` holds Token Bridge, an experimental sync plugin that is not ready for outside use. A supported release is planned, with no date.
+The token source files use a Wylie Dog layout today: one object per Figma collection, with modes and a flat variable map. Moving the contract to standard W3C DTCG, so any DTCG-capable tool can sync it, is planned. The generated `io/processed` files are already DTCG-style. `apps/figma-plugin` holds Token Bridge, an experimental sync plugin that reads and writes the current layout and is not ready for outside use. A supported release is planned, with no date.
 
 ## Development Workflow
 

@@ -21,7 +21,7 @@ A token scoped to one component that references a semantic token. Tier 3; compon
 _Avoid_: Local token
 
 **Token contract**:
-The set of DTCG token files that both the code and Figma read and write, in whatever structure the adopter prefers. Neither side owns it; it lives in the repo at a location the user configures in Token Bridge.
+The set of token files that both the code and Figma read and write, in whatever structure the adopter prefers. The target format is standard W3C DTCG. Neither side owns it; it lives in the repo at a location the user configures in Token Bridge.
 _Avoid_: Source of truth, token source
 
 **Token Bridge**:
