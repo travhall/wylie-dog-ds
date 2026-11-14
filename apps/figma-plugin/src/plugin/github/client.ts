@@ -263,16 +263,47 @@ export class GitHubClient {
     return data.object.sha;
   }
 
-  /** Raw file content at `ref` (a commit SHA from resolveRef; the branch head if omitted). */
+  /**
+   * A file's text at `ref`, read through the API with the user's token, so a
+   * private repository reads like a public one (raw.githubusercontent.com takes no
+   * token and answers 404 for a private repository). An HTTP error comes back as
+   * its status; only a failure with no response (offline) throws.
+   */
+  private async readFileText(
+    path: string,
+    ref: string
+  ): Promise<{ status: number; text: string }> {
+    if (!this.octokit || !this.config) {
+      throw new Error("GitHub client not initialized");
+    }
+    try {
+      const { data } = await this.octokit.repos.getContent({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        path,
+        ref,
+        mediaType: { format: "raw" },
+      });
+      return { status: 200, text: String(data) };
+    } catch (error) {
+      const status = (error as { status?: number }).status;
+      if (typeof status === "number") return { status, text: "" };
+      throw error;
+    }
+  }
+
+  /** A token file's text at `ref` (a commit SHA from resolveRef; the branch head if omitted). */
   async fetchFile(filename: string, ref?: string): Promise<string> {
     if (!this.config) throw new Error("GitHub client not initialized");
     const at = ref ?? (await this.resolveRef());
-    const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${at}/${this.basePath()}/${filename}`;
-    const response = await fetch(url);
-    if (!response.ok) {
+    const response = await this.readFileText(
+      `${this.basePath()}/${filename}`,
+      at
+    );
+    if (response.status !== 200) {
       throw new Error(`Failed to fetch ${filename}: HTTP ${response.status}`);
     }
-    return response.text();
+    return response.text;
   }
 
   /**
@@ -300,18 +331,15 @@ export class GitHubClient {
     const path = this.textStyleDefinitionsPath();
     try {
       const ref = await this.resolveRef();
-      const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${ref}/${path}`;
-      const response = await fetch(url);
+      const response = await this.readFileText(path, ref);
       if (response.status === 404) return { status: "absent" };
-      if (!response.ok) {
+      if (response.status !== 200) {
         return {
           status: "error",
           error: `Could not read ${path}: HTTP ${response.status}`,
         };
       }
-      const definitions = parseTextStyleDefinitions(
-        JSON.parse(await response.text())
-      );
+      const definitions = parseTextStyleDefinitions(JSON.parse(response.text));
       if (!definitions) {
         return {
           status: "error",
@@ -356,16 +384,15 @@ export class GitHubClient {
     const path = this.codeSyntaxPath();
     try {
       const ref = await this.resolveRef();
-      const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${ref}/${path}`;
-      const response = await fetch(url);
+      const response = await this.readFileText(path, ref);
       if (response.status === 404) return { status: "absent" };
-      if (!response.ok) {
+      if (response.status !== 200) {
         return {
           status: "error",
           error: `Could not read ${path}: HTTP ${response.status}`,
         };
       }
-      const syntax = parseCodeSyntax(JSON.parse(await response.text()));
+      const syntax = parseCodeSyntax(JSON.parse(response.text));
       if (!syntax) {
         return {
           status: "error",

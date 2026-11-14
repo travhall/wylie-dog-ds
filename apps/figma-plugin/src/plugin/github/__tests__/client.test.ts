@@ -12,6 +12,7 @@ import type { GitHubConfig } from "../../../shared/types";
 // every method group `client.ts` calls (used by both the pushFiles() tests
 // and the pull-request sync tests below). Declared with vi.hoisted so
 // vi.mock's hoisting is safe.
+const mockFetch = vi.hoisted(() => vi.fn());
 const mockOctokit = vi.hoisted(() => ({
   users: {
     getAuthenticated: vi.fn(),
@@ -36,9 +37,41 @@ const mockOctokit = vi.hoisted(() => ({
   },
 }));
 
+// File reads go through repos.getContent with the raw media type (so a private
+// repository reads with the user's token). Those calls are answered by the
+// per-test fetch mock below, in the shape the tests already set up (a URL in, an
+// { ok, status, text() } out); directory listings stay on the getContent mock.
+const rawReads = vi.hoisted(() => vi.fn());
+const served = vi.hoisted(() => {
+  const instance = {
+    ...mockOctokit,
+    repos: {
+      ...mockOctokit.repos,
+      getContent: async (params: {
+        owner: string;
+        repo: string;
+        path: string;
+        ref?: string;
+        mediaType?: { format?: string };
+      }) => {
+        if (params.mediaType?.format !== "raw") {
+          return mockOctokit.repos.getContent(params);
+        }
+        const url = `https://raw.githubusercontent.com/${params.owner}/${params.repo}/${params.ref}/${params.path}`;
+        rawReads(params);
+        const response = await mockFetch(url);
+        if (!response.ok)
+          throw Object.assign(new Error("HTTP"), { status: response.status });
+        return { data: await response.text() };
+      },
+    },
+  };
+  return instance;
+});
+
 vi.mock("@octokit/rest", () => ({
   Octokit: vi.fn().mockImplementation(function Octokit() {
-    return mockOctokit;
+    return served;
   }),
 }));
 
@@ -46,7 +79,6 @@ vi.mock("@octokit/rest", () => ({
 // globalThis.fetch at module load time (for Octokit's own use), and also
 // calls it directly in fetchFile() (pullTokens()'s raw-content fetch path).
 // Mock the module so both uses go through one controllable fn.
-const mockFetch = vi.hoisted(() => vi.fn());
 vi.mock("cross-fetch", () => ({ default: mockFetch }));
 
 import { GitHubClient } from "../client";
@@ -597,6 +629,55 @@ describe("GitHubClient reads GitHub fresh", () => {
     expect(result.success).toBe(false);
     expect(result.error).toMatch(/Bad credentials/);
     expect(mockFetch).not.toHaveBeenCalled();
+  });
+});
+
+describe("GitHubClient reads files with the user's token", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    headIs("head-sha");
+    mockOctokit.repos.getContent.mockResolvedValue({ data: [] });
+  });
+
+  // raw.githubusercontent.com takes no token and answers 404 for a private
+  // repository, so a file read goes through the API instead.
+  it("reads a token file through repos.getContent as raw content at the commit", async () => {
+    mockFetch.mockImplementation(async () => ({
+      ok: true,
+      status: 200,
+      text: async () => "{}",
+    }));
+    const client = makeClient();
+
+    await expect(client.fetchFile("palette.json")).resolves.toBe("{}");
+
+    expect(rawReads).toHaveBeenCalledWith(
+      expect.objectContaining({
+        owner: "wylie-dog",
+        repo: "design-tokens",
+        path: "tokens/palette.json",
+        ref: "head-sha",
+        mediaType: { format: "raw" },
+      })
+    );
+  });
+
+  it("reports the HTTP status of a file the API will not give", async () => {
+    mockFetch.mockImplementation(async () => ({ ok: false, status: 404 }));
+    await expect(makeClient().fetchFile("missing.json")).rejects.toThrow(
+      "Failed to fetch missing.json: HTTP 404"
+    );
+  });
+
+  it("still treats a missing definitions or code syntax file as absent", async () => {
+    mockFetch.mockImplementation(async () => ({ ok: false, status: 404 }));
+    const client = makeClient();
+    await expect(client.fetchTextStyleDefinitions()).resolves.toEqual({
+      status: "absent",
+    });
+    await expect(client.fetchCodeSyntax()).resolves.toEqual({
+      status: "absent",
+    });
   });
 });
 
