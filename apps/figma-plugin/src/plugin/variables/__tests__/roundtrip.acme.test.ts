@@ -102,26 +102,19 @@ describe("Acme fixture round trip", () => {
     );
   });
 
-  // Known gap (plan 224, phase 2 step 2). A generated modifier is matched to an
-  // existing one by a name the converter derives from the first collection that
-  // uses it ("theme"), not by the files it lists, so a repository whose modifier
-  // is called "appearance" gets a second modifier holding the same files.
-  it.fails(
-    "adds no modifier or resolution step the resolver already has",
-    async () => {
-      const { written } = await roundTrip(pull(), read("tokens.resolver.json"));
-      const out = written["tokens.resolver.json"] as {
-        modifiers: Record<string, unknown>;
-        resolutionOrder: unknown[];
-      };
-      expect(Object.keys(out.modifiers).sort()).toEqual(
-        Object.keys(resolver.modifiers as object).sort()
-      );
-      expect(out.resolutionOrder).toEqual(resolver.resolutionOrder);
-    }
-  );
+  it("adds no modifier or resolution step the resolver already has", async () => {
+    const { written } = await roundTrip(pull(), read("tokens.resolver.json"));
+    const out = written["tokens.resolver.json"] as {
+      modifiers: Record<string, unknown>;
+      resolutionOrder: unknown[];
+    };
+    expect(Object.keys(out.modifiers).sort()).toEqual(
+      Object.keys(resolver.modifiers as object).sort()
+    );
+    expect(out.resolutionOrder).toEqual(resolver.resolutionOrder);
+  });
 
-  it.fails("pulls back to the collections it started from", async () => {
+  it("pulls back to the collections it started from", async () => {
     const first = await roundTrip(pull(), read("tokens.resolver.json"));
     const files: Record<string, unknown> = {};
     for (const name of fileNames) files[name] = first.written[name];
@@ -153,10 +146,6 @@ describe("structures the tier names used to decide", () => {
 
   const color = (hex: string) => ({ $type: "color", $value: hex });
 
-  // Known gap (plan 224, phase 2 step 2). The importer registers variables by
-  // token name alone, across collections, and the last one wins. Two collections
-  // that use the same token name silently alias each other's variables: a
-  // reference in the first collection lands on the second collection's variable.
   async function referenceStaysInOwnCollection(owner: string) {
     const other = owner === "brand-a" ? "brand-b" : "brand-a";
     const data = [
@@ -192,10 +181,8 @@ describe("structures the tier names used to decide", () => {
   it("keeps a reference in the last collection on its own variable", () =>
     referenceStaysInOwnCollection("brand-b"));
 
-  it.fails(
-    "keeps a reference in an earlier collection on its own variable",
-    () => referenceStaysInOwnCollection("brand-a")
-  );
+  it("keeps a reference in an earlier collection on its own variable", () =>
+    referenceStaysInOwnCollection("brand-a"));
 
   it("orders a collection after the one it references when neither is named for a tier", async () => {
     const data = [

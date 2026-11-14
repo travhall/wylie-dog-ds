@@ -30,12 +30,21 @@ export interface VariableWithReferences {
 }
 
 export class VariableRegistry {
-  private tokenToVariableMap = new Map<string, string>(); // tokenName → variableId
+  // tokenName → (collectionId → variableId). Two collections may use the same
+  // token name; a reference reaches the variable in its own collection first.
+  private tokenToVariableMap = new Map<string, Map<string, string>>();
   private variablesToResolve: VariableWithReferences[] = [];
 
-  register(tokenName: string, variableId: string): void {
-    this.tokenToVariableMap.set(tokenName, variableId);
-    // console.log(`Registry: ${tokenName} → ${variableId}`);
+  register(
+    tokenName: string,
+    variableId: string,
+    collectionId: string = ""
+  ): void {
+    const holders = this.tokenToVariableMap.get(tokenName) ?? new Map();
+    // Delete first so the latest registration is last when iterating
+    holders.delete(collectionId);
+    holders.set(collectionId, variableId);
+    this.tokenToVariableMap.set(tokenName, holders);
   }
 
   addPendingResolution(
@@ -50,10 +59,21 @@ export class VariableRegistry {
     });
   }
 
-  resolve(tokenReference: string): string | null {
+  /**
+   * The variable a reference points at. The reference names a token, not a
+   * collection, so the collection holding the referring variable is tried
+   * first; otherwise the most recently registered holder of that name.
+   */
+  resolve(
+    tokenReference: string,
+    fromCollectionId: string = ""
+  ): string | null {
     // Remove curly braces and convert to token name
     const cleanReference = tokenReference.replace(/[{}]/g, "");
-    const variableId = this.tokenToVariableMap.get(cleanReference);
+    const holders = this.tokenToVariableMap.get(cleanReference);
+    const variableId =
+      holders?.get(fromCollectionId) ??
+      Array.from(holders?.values() ?? []).pop();
 
     if (variableId) {
       // console.log(`Resolved ${tokenReference} → ${variableId}`);
@@ -79,7 +99,10 @@ export class VariableRegistry {
       // console.log(`Resolving references for: ${item.tokenName}`);
 
       for (const [modeId, reference] of Array.from(item.references.entries())) {
-        const referencedVariableId = this.resolve(reference.originalValue);
+        const referencedVariableId = this.resolve(
+          reference.originalValue,
+          item.variable.variableCollectionId
+        );
 
         if (referencedVariableId) {
           try {
