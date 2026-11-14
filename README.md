@@ -65,9 +65,11 @@ Managed with pnpm workspaces and Turborepo. Package manager: `pnpm@10.28.2`.
 
 **Prerequisites:** Node.js 22+, pnpm 10+
 
+Use the **Use this template** button on GitHub (or fork), then clone your copy:
+
 ```bash
-git clone https://github.com/travhall/wylie-dog-ds.git
-cd wylie-dog-ds
+git clone https://github.com/<you>/<your-repo>.git
+cd <your-repo>
 pnpm install
 
 # Start all packages in development mode
@@ -76,7 +78,6 @@ pnpm dev
 # Or start specific apps
 pnpm dev:storybook    # Storybook at http://localhost:6006
 pnpm dev:showcase     # Next.js showcase at http://localhost:3001
-pnpm dev:figma        # Figma plugin dev build
 ```
 
 ### Making it yours
@@ -165,7 +166,7 @@ All colors are defined in OKLCH, which provides perceptually uniform lightness s
 ```
 packages/tokens/
 ├── io/
-│   ├── sync/          # Figma-synced raw token files (version controlled)
+│   ├── sync/          # The token contract: DTCG source files (version controlled)
 │   │   ├── primitive.json
 │   │   ├── semantic.json
 │   │   └── components.json
@@ -230,7 +231,6 @@ The token files are plain W3C DTCG JSON, so you can sync them with Figma using a
 pnpm dev                        # Start all packages
 pnpm dev:storybook              # Storybook only (port 6006)
 pnpm dev:showcase               # Next.js app only (port 3001)
-pnpm dev:figma                  # Figma plugin dev build
 
 # Building
 pnpm build                      # Build all packages
