@@ -350,6 +350,78 @@ test("mergeResolver: a new Figma collection is added after the existing entries"
   );
 });
 
+// A resolver an adopter wrote by hand, with their own names for everything.
+const handWritten = () => ({
+  version: "2025.10",
+  sets: { brand: { sources: [{ $ref: "palette.json" }] } },
+  modifiers: {
+    appearance: {
+      contexts: {
+        Day: [{ $ref: "theme.day.json" }],
+        Night: [{ $ref: "theme.night.json" }],
+      },
+      default: "Day",
+    },
+  },
+  resolutionOrder: [
+    { $ref: "#/sets/brand" },
+    { $ref: "#/modifiers/appearance" },
+  ],
+});
+
+const figmaOutput = () =>
+  nativeToDtcg([
+    collection("palette", ["Default"], {
+      "color.a": { $type: "color", $value: "oklch(0.9 0 0)" },
+    }),
+    collection("theme", ["day", "night"], {
+      "color.bg": {
+        $type: "color",
+        $value: "{color.a}",
+        valuesByMode: { day: "{color.a}", night: "oklch(0.2 0 0)" },
+      },
+    }),
+  ]).resolver;
+
+test("mergeResolver: a set or modifier is matched by its files, not its name", () => {
+  const merged = mergeResolver(handWritten(), figmaOutput());
+
+  assert.deepEqual(Object.keys(merged.sets), ["brand"]);
+  assert.deepEqual(Object.keys(merged.modifiers), ["appearance"]);
+  assert.deepEqual(merged.resolutionOrder, handWritten().resolutionOrder);
+  // The repository's context names stay; no second "day" context appears
+  assert.deepEqual(Object.keys(merged.modifiers.appearance.contexts), [
+    "Day",
+    "Night",
+  ]);
+  assert.equal(
+    validateResolver(merged),
+    true,
+    JSON.stringify(validateResolver.errors)
+  );
+});
+
+test("mergeResolver: a hand-written resolver gets no extensions it does not need", () => {
+  const merged = mergeResolver(handWritten(), figmaOutput());
+
+  // Figma's mode "Default" and the modes "day" and "night" are what a reader assumes
+  assert.equal(merged.sets.brand.$extensions, undefined);
+  // The mode names Figma has ("day") differ from the context key ("Day"), so those stay
+  assert.deepEqual(merged.modifiers.appearance.$extensions, {
+    "com.wyliedog.tokens": { modes: { Day: "day", Night: "night" } },
+  });
+});
+
+test("mergeResolver: a mode renamed in Figma replaces the name the repository had", () => {
+  const existing = figmaOutput();
+  existing.modifiers.theme.$extensions = {
+    "com.wyliedog.tokens": { modes: { day: "Daylight" } },
+  };
+  const merged = mergeResolver(existing, figmaOutput());
+  // "day" is the context key again, so the redundant name is dropped
+  assert.equal(merged.modifiers.theme.$extensions, undefined);
+});
+
 // ---- the real files --------------------------------------------------------
 
 // The reader gives the native collections whichever layout io/sync is in.

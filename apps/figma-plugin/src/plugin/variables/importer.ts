@@ -331,7 +331,7 @@ async function createVariableWithReferences(
     // );
 
     // Register in registry for reference resolution
-    registry.register(tokenName, variable.id);
+    registry.register(tokenName, variable.id, collection.id);
 
     // Extract references for this token
     const references = extractReferences(token);

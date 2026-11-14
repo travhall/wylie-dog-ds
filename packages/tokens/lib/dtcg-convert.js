@@ -425,11 +425,60 @@ function mergeExtensions(existing, generated) {
 }
 
 /**
+ * Remove mode names that say what the reader would assume anyway: a set whose
+ * mode is "Default" and a context whose Figma mode name is the context key. A
+ * resolver written by hand in plain DTCG then stays free of this project's
+ * `$extensions` after a Push. Anything else (Light, Value, a renamed mode) stays.
+ */
+function pruneModeNames(resolver) {
+  const prune = (entry, redundant) => {
+    const ext = entry.$extensions?.[EXT_KEY];
+    if (!ext) return;
+    redundant(ext);
+    if (Object.keys(ext).length === 0) delete entry.$extensions[EXT_KEY];
+    if (Object.keys(entry.$extensions).length === 0) delete entry.$extensions;
+  };
+  for (const set of Object.values(resolver.sets ?? {})) {
+    prune(set, (ext) => {
+      if (ext.mode === "Default") delete ext.mode;
+    });
+  }
+  for (const modifier of Object.values(resolver.modifiers ?? {})) {
+    prune(modifier, (ext) => {
+      for (const [ctx, name] of Object.entries(ext.modes ?? {})) {
+        if (name === ctx) delete ext.modes[ctx];
+      }
+      if (ext.modes && Object.keys(ext.modes).length === 0) delete ext.modes;
+    });
+  }
+  return resolver;
+}
+
+const refsOf = (sources = []) => sources.map((s) => s.$ref);
+
+/**
+ * The name under which `existing` already holds one of `refs`, or undefined.
+ * Entries are matched by the files they list, never by name: the generated
+ * names come from collection names, the repository's from its owner.
+ */
+function findByFiles(existing, refs, filesOf) {
+  const wanted = new Set(refs);
+  return Object.keys(existing).find((name) =>
+    filesOf(existing[name]).some((ref) => wanted.has(ref))
+  );
+}
+
+const modifierFiles = (modifier) =>
+  Object.values(modifier.contexts ?? {}).flatMap(refsOf);
+
+/**
  * Merge the resolver generated from Figma into the one already in the
  * repository. Figma owns the sets and contexts it generates; everything else
  * is kept: top-level keys, the order of sources and of resolutionOrder, extra
  * sets, modifiers, contexts and sources an adopter added, and unknown
- * `$extensions`. Merging a resolver into itself changes nothing.
+ * `$extensions`. A generated set or modifier that lists a file the repository
+ * already has under another name is merged into that entry, so an adopter's
+ * own names survive. Merging a resolver into itself changes nothing.
  */
 export function mergeResolver(existing, generated) {
   if (!existing) return generated;
@@ -439,9 +488,16 @@ export function mergeResolver(existing, generated) {
   merged.modifiers ??= {};
   merged.resolutionOrder ??= [];
 
+  // generated "#/sets/x" or "#/modifiers/x" -> the name it has in `merged`
+  const renamed = new Map();
+
   for (const [name, set] of Object.entries(generated.sets ?? {})) {
-    const current = merged.sets[name];
-    merged.sets[name] = current
+    const target =
+      findByFiles(merged.sets, refsOf(set.sources), (s) => refsOf(s.sources)) ??
+      name;
+    renamed.set(`#/sets/${name}`, `#/sets/${target}`);
+    const current = merged.sets[target];
+    merged.sets[target] = current
       ? {
           ...current,
           sources: unionSources(current.sources, set.sources),
@@ -451,28 +507,51 @@ export function mergeResolver(existing, generated) {
   }
 
   for (const [name, modifier] of Object.entries(generated.modifiers ?? {})) {
-    const current = merged.modifiers[name];
+    const target =
+      findByFiles(merged.modifiers, modifierFiles(modifier), modifierFiles) ??
+      name;
+    renamed.set(`#/modifiers/${name}`, `#/modifiers/${target}`);
+    const current = merged.modifiers[target];
     if (!current) {
-      merged.modifiers[name] = modifier;
+      merged.modifiers[target] = modifier;
       continue;
     }
+    // A generated context lands in the existing context that lists its file,
+    // so a repository that calls the context "Day" keeps that name.
     const contexts = { ...current.contexts };
+    const modes = {};
     for (const [ctx, sources] of Object.entries(modifier.contexts)) {
-      contexts[ctx] = unionSources(contexts[ctx], sources);
+      const key =
+        Object.keys(contexts).find((c) =>
+          refsOf(contexts[c]).some((r) => refsOf(sources).includes(r))
+        ) ?? ctx;
+      contexts[key] = unionSources(contexts[key], sources);
+      const name = modifier.$extensions?.[EXT_KEY]?.modes?.[ctx];
+      if (name !== undefined) modes[key] = name;
     }
-    merged.modifiers[name] = {
+    const generatedExt = modifier.$extensions
+      ? {
+          ...modifier.$extensions,
+          [EXT_KEY]: { ...modifier.$extensions[EXT_KEY], modes },
+        }
+      : undefined;
+    merged.modifiers[target] = {
       ...current,
       contexts,
       default: current.default ?? modifier.default,
-      $extensions: mergeExtensions(current.$extensions, modifier.$extensions),
+      $extensions: mergeExtensions(current.$extensions, generatedExt),
     };
   }
 
   const seen = new Set(merged.resolutionOrder.map((r) => r.$ref));
   for (const ref of generated.resolutionOrder ?? []) {
-    if (!seen.has(ref.$ref)) merged.resolutionOrder.push(ref);
+    const target = renamed.get(ref.$ref) ?? ref.$ref;
+    if (!seen.has(target)) {
+      merged.resolutionOrder.push({ ...ref, $ref: target });
+      seen.add(target);
+    }
   }
-  return merged;
+  return pruneModeNames(merged);
 }
 
 // ---- DTCG to native -------------------------------------------------------
