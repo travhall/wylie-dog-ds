@@ -73,8 +73,6 @@ Token Bridge authenticates with a GitHub personal access token (PAT). There is n
 
 A classic token with the `repo` scope also works, but it can reach every repository you can, so a fine-grained token is the safer choice.
 
-You can revoke the token at any time from GitHub settings. See [Security](#security) for where it is stored.
-
 The token also reads a **private** repository: every file is read through the API with it (the public `raw.githubusercontent.com` host takes no token and answers 404 for a private repository).
 
 You can revoke the token at any time from GitHub settings. See [Security](#security) for where it is stored.
