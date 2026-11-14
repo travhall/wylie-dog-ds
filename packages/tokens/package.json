@@ -21,6 +21,10 @@
       "types": "./lib/color.d.ts",
       "default": "./lib/color.js"
     },
+    "./dtcg-convert": {
+      "types": "./lib/dtcg-convert.d.ts",
+      "default": "./lib/dtcg-convert.js"
+    },
     "./color-modes.json": "./dist/color-modes.json"
   },
   "main": "./dist/index.js",

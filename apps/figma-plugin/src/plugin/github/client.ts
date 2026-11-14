@@ -6,6 +6,8 @@ import type { GitHubConfig, SyncMode } from "../../shared/types";
 import type { ExportData } from "../variables/processor";
 import { parseTextStyleDefinitions } from "../variables/text-style-definitions";
 import { parseCodeSyntax } from "../variables/code-syntax";
+import { dtcgToNative } from "@wyliedog/tokens/dtcg-convert";
+import type { ResolverFile } from "@wyliedog/tokens/dtcg-convert";
 import type { CodeSyntaxMap } from "../variables/code-syntax";
 import type { TextStyleDefinition } from "../variables/text-style-definitions";
 
@@ -50,6 +52,13 @@ export interface PullResult {
   error?: string;
   lastModified?: string;
 }
+
+/**
+ * A token folder holding this file is in the DTCG token contract layout
+ * (documentation/tokens/dtcg-contract.md); anything else is native collection
+ * files.
+ */
+export const DTCG_RESOLVER_FILE = "tokens.resolver.json";
 
 /** The text style definitions file on the pulled branch (plan 206). */
 export type TextStyleDefinitionsResult =
@@ -517,6 +526,12 @@ export class GitHubClient {
         };
       }
 
+      // DTCG layout: the resolver says which files make up the collections and
+      // modes, so it is read instead of treating every .json as a collection.
+      if (fileNames.includes(DTCG_RESOLVER_FILE)) {
+        return await this.pullDtcgTokens();
+      }
+
       const tokens = [];
       let filesFound = 0;
 
@@ -572,6 +587,59 @@ export class GitHubClient {
           error instanceof Error ? error.message : "Unknown error occurred",
       };
     }
+  }
+
+  /**
+   * Pull from a DTCG layout: read the resolver, fetch the files it names and
+   * convert them to the native collections the rest of the plugin works with
+   * (import, diff, baseline, conflicts). Unlike the native pull, a file that
+   * cannot be loaded fails the whole pull: a missing mode file would otherwise
+   * drop a mode silently. Thrown errors are reported by pullTokens().
+   */
+  private async pullDtcgTokens(): Promise<PullResult> {
+    const readJson = async (name: string): Promise<unknown> => {
+      const content = await this.fetchFile(name);
+      try {
+        return JSON.parse(content);
+      } catch (parseErr) {
+        throw new Error(
+          `Failed to parse ${name}: ${parseErr instanceof Error ? parseErr.message : String(parseErr)}. File may be corrupted or mid-sync.`
+        );
+      }
+    };
+
+    const resolver = (await readJson(DTCG_RESOLVER_FILE)) as ResolverFile & {
+      sets?: Record<string, { sources: Array<{ $ref: string }> }>;
+      modifiers?: Record<
+        string,
+        { contexts: Record<string, Array<{ $ref: string }>> }
+      >;
+    };
+
+    const refs = new Set<string>();
+    for (const set of Object.values(resolver.sets ?? {})) {
+      for (const source of set.sources) refs.add(source.$ref);
+    }
+    for (const modifier of Object.values(resolver.modifiers ?? {})) {
+      for (const sources of Object.values(modifier.contexts)) {
+        for (const source of sources) refs.add(source.$ref);
+      }
+    }
+
+    const files: Record<string, unknown> = {};
+    for (const ref of refs) files[ref] = await readJson(ref);
+
+    const collections = dtcgToNative(resolver, files);
+    const tokens = Object.values(collections).flat() as ExportData[];
+    console.log(
+      `✅ Loaded ${tokens.length} collection(s) from ${refs.size} DTCG file(s) via ${DTCG_RESOLVER_FILE}`
+    );
+
+    return {
+      success: true,
+      tokens,
+      lastModified: new Date().toISOString(),
+    };
   }
 
   async syncTokens(
