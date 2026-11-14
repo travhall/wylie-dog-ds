@@ -50,9 +50,16 @@ const CSS_PROPERTIES = LENGTH_PROPERTIES.split("|")
   .filter((p) => !/[A-Z]/.test(p))
   .join("|");
 
+// A scan directory that does not exist counts as empty, so a fork can delete the
+// showcase (apps/showcase) without breaking this check.
 const files = (dir) =>
-  fs
-    .readdirSync(path.join(root, dir), { withFileTypes: true, recursive: true })
+  (fs.existsSync(path.join(root, dir))
+    ? fs.readdirSync(path.join(root, dir), {
+        withFileTypes: true,
+        recursive: true,
+      })
+    : []
+  )
     .filter((e) => e.isFile() && EXTENSIONS.has(path.extname(e.name)))
     .map((e) => path.relative(root, path.join(e.parentPath, e.name)))
     .filter((f) => !/(?:__tests__|\.test\.|\.spec\.)/.test(f));
