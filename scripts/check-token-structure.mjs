@@ -19,6 +19,11 @@
 //   - no group (prefix) that holds a single variable
 //   - no variable whose name is also the prefix of another variable
 //
+// And the primitive collection holds literal values only: a primitive that is a
+// reference ({color.gray.500}) breaks the three-tier chain (primitive, semantic,
+// component) that this project's tooling assumes. This is the project's rule, so it
+// lives here and not in Token Bridge, which accepts any structure.
+//
 // Reads the tracked token source, so no build is needed.
 // Usage: node scripts/check-token-structure.mjs
 
@@ -134,6 +139,22 @@ for (const group of everyGroup) {
     problems.push(
       `${group}: a component variable that is also the prefix of another variable`
     );
+}
+
+// Primitive collection: literal values only
+const primitives = Object.assign(
+  {},
+  ...readSyncCollection(SYNC_DIR, "primitive")
+).primitive.variables;
+const isReference = (value) =>
+  typeof value === "string" && /^\{[^{}]+\}$/.test(value.trim());
+for (const [name, token] of Object.entries(primitives)) {
+  const values = [token.$value, ...Object.values(token.valuesByMode ?? {})];
+  if (values.some(isReference)) {
+    problems.push(
+      `${name}: a primitive holds a reference; primitives are literal values (move it to the semantic collection)`
+    );
+  }
 }
 
 if (problems.length) {
