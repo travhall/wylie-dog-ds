@@ -53,19 +53,30 @@ The three-tier hierarchy is this project's standard, not a requirement. If your 
 
 ## 5. Keep the components you need
 
-A component is a file in `packages/ui/src`, its story, its test and its `exports` entry in `packages/ui/package.json`. To remove one, delete all four, then run `pnpm build`, `pnpm test` and `pnpm check:docs`. The last one fails until the README component count matches the story count, which is how you know you got them all.
+A component is more than its source file. It is spread across:
+
+- the file in `packages/ui/src` and its test in `packages/ui/src/__tests__`
+- its story under `apps/storybook/stories/Components`
+- its `exports` entry in `packages/ui/package.json`
+- its `<name>.*` component tokens in `packages/tokens/io/sync/components.json`
+- its entry in `.size-limit.json`
+- every other component or story that imports it. Find them with `git grep -l "ui/<name>"`; a Separator, for example, is used by ten other stories.
+
+Use `git rm` so the guardrails, which list tracked files, stop seeing it. Remove the tokens, rebuild them (`pnpm --filter @your-scope/tokens build`), then run `pnpm build`, `pnpm test` and `pnpm check:docs`. The last one fails until the README component count matches the story count, which is how you know you got them all.
 
 To add one, `pnpm generate:component <name>` scaffolds the file, test and story and updates the exports.
 
 ## 6. Remove what you do not use
 
-| If you do not want | Remove                                                                                                                                                                                                     |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The showcase site  | `apps/showcase`, then `check-showcase-palette.mjs` and `check-showcase-theme.mjs` from the `check:tokens` script in `package.json`                                                                         |
-| A Figma library    | the `check:figma-parity` step in `.github/workflows/build.yml`, `figma/` and `scripts/check-figma-parity.mjs`; the two `--check` generators in `check:tokens` if you do not keep Figma text styles in code |
-| The Netlify config | `netlify.toml`; point your own hosting at `apps/storybook/storybook-static`                                                                                                                                |
+| If you do not want | Remove                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The showcase site  | `apps/showcase`; `check-showcase-palette.mjs` and `check-showcase-theme.mjs` from the `check:tokens` script in `package.json`; `--filter=showcase` from `.github/workflows/test.yml` (turbo fails on an unknown package); the `dev:showcase` script and the `showcase#dev` entry in `turbo.json`; and any link into it that `check:docs` reports, such as the one in `documentation/STYLING_ARCHITECTURE.md`                                                 |
+| A Figma library    | `figma/`, `scripts/check-figma-parity.mjs`, `scripts/figma-parity.config.json` and `scripts/figma/`; the `check:figma-parity` and `compare:ui` scripts in `package.json`; the parity step in `.github/workflows/build.yml`; the tests that cover them, which fail otherwise: `check-figma-parity.test.mjs`, `figma-manifest.test.mjs` and the Icon glyphs test in `icon-glyphs.test.mjs`; and `.claude/skills/wylie-dog-figma`, the maintainer's Figma skill |
+| The Netlify config | `netlify.toml`; point your own hosting at `apps/storybook/storybook-static`                                                                                                                                                                                                                                                                                                                                                                                  |
 
-After each removal, run `pnpm check:tokens` and `pnpm check:docs`.
+Use `git rm -r` for every removal. The guardrails list tracked files, so a file you only deleted from disk still counts and they fail with `ENOENT`.
+
+After each removal, run `pnpm check:tokens`, `pnpm check:docs` and `pnpm test:scripts`, and fix what they report.
 
 ## 7. Make the docs yours
 
