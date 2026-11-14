@@ -1,3 +1,7 @@
+import {
+  describeRepositoryStatus,
+  parseRepositoryInput,
+} from "../utils/repository-input";
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { Icon } from "./common/Icon";
@@ -234,8 +238,10 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
   >([]);
 
   useEffect(() => {
-    // Auto-populate user repositories
-    if (data.accessToken && !owner) {
+    // Offer the user's recent repositories whenever there is a token. (Not only
+    // when Owner is empty: editing a saved setup fills Owner in, and the list
+    // used to stay hidden then.)
+    if (data.accessToken) {
       fetchUserRepos();
     }
   }, [data.accessToken]);
@@ -261,13 +267,33 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
     }
   };
 
+  // A pasted owner/repo or web address in either box becomes Owner and Repository
+  const applyPastedRepository = (text: string): boolean => {
+    const parsed = parseRepositoryInput(text);
+    if (!parsed) return false;
+    setOwner(parsed.owner);
+    setRepo(parsed.repo);
+    if (parsed.branch) setBranch(parsed.branch);
+    setValidationResult(null);
+    return true;
+  };
+
   const validateRepository = async () => {
-    if (!owner.trim() || !repo.trim()) return;
+    // The boxes may still hold a pasted address (typed, not yet split)
+    const pasted = parseRepositoryInput(repo);
+    const checkOwner = (pasted?.owner ?? owner).trim();
+    const checkRepo = (pasted?.repo ?? repo).trim();
+    if (pasted) {
+      setOwner(pasted.owner);
+      setRepo(pasted.repo);
+      if (pasted.branch) setBranch(pasted.branch);
+    }
+    if (!checkOwner || !checkRepo) return;
 
     setIsValidating(true);
     try {
       const response = await fetch(
-        `https://api.github.com/repos/${owner}/${repo}`,
+        `https://api.github.com/repos/${checkOwner}/${checkRepo}`,
         {
           headers: {
             Authorization: `Bearer ${data.accessToken}`,
@@ -279,19 +305,20 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
       if (response.ok) {
         const repoData = await response.json();
         setValidationResult({ valid: true });
-        setBranch(branch || repoData.default_branch);
+        setBranch(pasted?.branch || branch || repoData.default_branch);
         return true;
       } else {
         setValidationResult({
           valid: false,
-          error: "Repository not found or no access",
+          error: describeRepositoryStatus(response.status),
         });
         return false;
       }
     } catch (error) {
+      console.error("Repository check failed:", error);
       setValidationResult({
         valid: false,
-        error: "Failed to validate repository",
+        error: `Could not reach GitHub (${error instanceof Error ? error.message : String(error)}). Check your connection, then try again.`,
       });
       return false;
     } finally {
@@ -301,7 +328,13 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
 
   const handleNext = async () => {
     if (await validateRepository()) {
-      onNext({ owner, repo, branch });
+      // Use what was checked: a pasted address was split into owner and name
+      const pasted = parseRepositoryInput(repo);
+      onNext({
+        owner: pasted?.owner ?? owner,
+        repo: pasted?.repo ?? repo,
+        branch: pasted?.branch ?? branch,
+      });
     }
   };
 
@@ -425,7 +458,9 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
               type="text"
               value={owner}
               onChange={(e) => {
-                setOwner(e.currentTarget.value);
+                const text = e.currentTarget.value;
+                if (applyPastedRepository(text)) return;
+                setOwner(text);
                 setValidationResult(null);
               }}
               placeholder="username"
@@ -455,7 +490,9 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
               type="text"
               value={repo}
               onChange={(e) => {
-                setRepo(e.currentTarget.value);
+                const text = e.currentTarget.value;
+                if (applyPastedRepository(text)) return;
+                setRepo(text);
                 setValidationResult(null);
               }}
               placeholder="repository-name"
