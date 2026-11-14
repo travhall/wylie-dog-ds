@@ -49,7 +49,7 @@ pnpm check:contrast
 
 ## 4. Change the structure if you want to
 
-The three-tier hierarchy is this project's standard, not a requirement. If your team prefers a different shape, the token files are DTCG JSON and yours to restructure. The guardrail that encodes the standard is `check-token-structure.mjs`; rewrite or delete it first, then adjust the others in the [guardrails catalog](guardrails.md) that reference token names.
+The three-tier hierarchy is this project's standard, not a requirement. If your team prefers a different shape, the token files are JSON and yours to restructure (they use the Wylie Dog layout today, with a move to standard W3C DTCG planned). The guardrail that encodes the standard is `check-token-structure.mjs`; rewrite or delete it first, then adjust the others in the [guardrails catalog](guardrails.md) that reference token names.
 
 ## 5. Keep the components you need
 

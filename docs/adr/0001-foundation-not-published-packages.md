@@ -10,5 +10,5 @@ Wylie Dog is distributed as a public template repository that adopters fork and 
 ## Consequences
 
 - Outside PRs are welcome for bug fixes, accessibility fixes and docs; new components and token changes need an issue and maintainer agreement first.
-- Token Bridge stays in the repo but unadvertised: it is not in the README headline, the make-it-yours guide or the announcement until it has had a UX overhaul and an outside user's feedback. At launch the token contract is plain DTCG JSON that adopters sync with any DTCG-capable tool.
+- Token Bridge stays in the repo but unadvertised: it is not in the README headline, the make-it-yours guide or the announcement until it has had a UX overhaul and an outside user's feedback. At launch the sync files still use the Wylie Dog layout; moving the contract to standard DTCG, which is what makes any-tool sync possible, is the first phase of the Token Bridge track.
 - Adopters rename the `@wyliedog/*` scope; a rename script belongs in a "make it yours" guide.
