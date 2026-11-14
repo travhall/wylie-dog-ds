@@ -1,4 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { readFileSync, readdirSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { nativeToDtcg } from "@wyliedog/tokens/dtcg-convert";
 import type { ExportData } from "../../variables/processor";
 import type { GitHubConfig } from "../../../shared/types";
 
@@ -386,6 +389,105 @@ describe("GitHubClient.pullTokens", () => {
 
     expect(result.success).toBe(true);
     expect(result.tokens).toEqual([{ colors: { variables: {} } }]);
+  });
+});
+
+describe("GitHubClient.pullTokens (DTCG layout)", () => {
+  // The real native files, converted to the DTCG contract; pulling them back
+  // must give the original collections.
+  // Tests run from apps/figma-plugin, two levels below the repo root.
+  const syncDir = resolve(process.cwd(), "../../packages/tokens/io/sync");
+  const native = readdirSync(syncDir)
+    .filter((f) => f.endsWith(".json"))
+    .sort()
+    .map((f) => JSON.parse(readFileSync(join(syncDir, f), "utf8")));
+  const { files, resolver } = nativeToDtcg(native);
+  const served: Record<string, string> = {
+    "tokens.resolver.json": JSON.stringify(resolver),
+    ...Object.fromEntries(
+      Object.entries(files).map(([name, tree]) => [name, JSON.stringify(tree)])
+    ),
+  };
+
+  const serve = (overrides: Record<string, string | null> = {}) => {
+    mockFetch.mockImplementation(async (url: string) => {
+      const name = url.split("/").pop() as string;
+      const body = name in overrides ? overrides[name] : served[name];
+      return body === null || body === undefined
+        ? { ok: false, status: 404, text: async () => "" }
+        : { ok: true, status: 200, text: async () => body };
+    });
+  };
+
+  const list = (names: string[]) =>
+    mockOctokit.repos.getContent.mockResolvedValue({
+      data: names.map((name) => ({ type: "file", name })),
+    });
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("reads the resolver and returns the same collections as the native files", async () => {
+    list(Object.keys(served));
+    serve();
+
+    const result = await makeClient({ tokenFiles: "" }).pullTokens();
+
+    expect(result.success).toBe(true);
+    const byName = (a: ExportData, b: ExportData) =>
+      Object.keys(a)[0].localeCompare(Object.keys(b)[0]);
+    expect([...(result.tokens ?? [])].sort(byName)).toEqual(
+      native.flat().sort(byName)
+    );
+  });
+
+  it("ignores stray native files next to the resolver", async () => {
+    list([...Object.keys(served), "semantic.json", "components.json"]);
+    serve();
+
+    const result = await makeClient({ tokenFiles: "" }).pullTokens();
+
+    expect(result.success).toBe(true);
+    const fetched = mockFetch.mock.calls.map(([url]) =>
+      (url as string).split("/").pop()
+    );
+    expect(fetched).not.toContain("semantic.json");
+    expect(fetched).not.toContain("components.json");
+  });
+
+  it("fails the whole pull when a file the resolver names cannot be loaded", async () => {
+    list(Object.keys(served));
+    serve({ "semantic.dark.json": null });
+
+    const result = await makeClient({ tokenFiles: "" }).pullTokens();
+
+    expect(result.success).toBe(false);
+    expect(result.error).toMatch(/semantic\.dark\.json/);
+  });
+
+  it("fails with a clear message when the resolver is not valid JSON", async () => {
+    list(Object.keys(served));
+    serve({ "tokens.resolver.json": "{ not json" });
+
+    const result = await makeClient({ tokenFiles: "" }).pullTokens();
+
+    expect(result.success).toBe(false);
+    expect(result.error).toMatch(/Failed to parse tokens\.resolver\.json/);
+  });
+
+  it("still pulls a native folder as before when there is no resolver", async () => {
+    list(["primitive.json", "semantic.json"]);
+    mockFetch.mockImplementation(async () => ({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify([{ colors: { variables: {} } }]),
+    }));
+
+    const result = await makeClient({ tokenFiles: "" }).pullTokens();
+
+    expect(result.success).toBe(true);
+    expect(result.tokens).toHaveLength(2);
   });
 });
 

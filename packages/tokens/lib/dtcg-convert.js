@@ -119,7 +119,7 @@ function splitLayers(text) {
 }
 
 function shadowToDtcg(name, value) {
-  if (value.trim() === "none") return structuredClone(NONE_SHADOW);
+  if (value.trim() === "none") return JSON.parse(JSON.stringify(NONE_SHADOW));
   const layers = splitLayers(value).map((layer) => {
     const m = SHADOW_LAYER.exec(layer);
     if (!m) fail(name, `unsupported shadow layer "${layer}"`);
