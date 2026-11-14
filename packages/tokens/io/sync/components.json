@@ -4666,7 +4666,7 @@
           }
         },
         "toggle-group.item-border-width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "$description": "Border width of toggle group items (transparent until styled), so their height matches the default toggle.",
           "valuesByMode": {

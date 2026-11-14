@@ -15258,7 +15258,7 @@
           "item-border-width"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toggle-group-item-border-width)",
         "description": "Border width of toggle group items (transparent until styled), so their height matches the default toggle."
       },
