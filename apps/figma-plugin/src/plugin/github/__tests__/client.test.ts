@@ -512,7 +512,7 @@ describe("GitHubClient.pullTokens (DTCG layout)", () => {
     const result = await makeClient({ tokenFiles: "" }).pullTokens();
 
     expect(result.success).toBe(false);
-    expect(result.error).toMatch(/Failed to parse tokens\.resolver\.json/);
+    expect(result.error).toMatch(/tokens\.resolver\.json isn't valid JSON/);
   });
 
   it("still pulls a native folder as before when there is no resolver", async () => {
@@ -627,8 +627,78 @@ describe("GitHubClient reads GitHub fresh", () => {
     const result = await makeClient({ tokenFiles: "a.json" }).pullTokens();
 
     expect(result.success).toBe(false);
-    expect(result.error).toMatch(/Bad credentials/);
+    expect(result.error).toMatch(/rejected your access token/);
     expect(mockFetch).not.toHaveBeenCalled();
+  });
+});
+
+describe("GitHubClient pull failures are classified by what was being read", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    headIs("head-sha");
+  });
+
+  const status = (code: number, headers: Record<string, string> = {}) =>
+    Object.assign(new Error(`HTTP ${code}`), {
+      status: code,
+      response: { headers },
+    });
+
+  it("a 404 for the branch is a missing repository, naming it", async () => {
+    mockOctokit.git.getRef.mockRejectedValue(status(404));
+    const result = await makeClient().pullTokens();
+    expect(result.success).toBe(false);
+    expect(result.failure).toMatchObject({
+      kind: "repo-not-found",
+      action: "edit-setup",
+    });
+    expect(result.error).toContain("wylie-dog/design-tokens");
+  });
+
+  it("a 404 for the token folder is a missing folder, naming it and the branch", async () => {
+    mockOctokit.repos.getContent.mockRejectedValue(status(404));
+    const result = await makeClient({ tokenPath: "design/" }).pullTokens();
+    expect(result.failure?.kind).toBe("folder-not-found");
+    expect(result.error).toContain('"design/"');
+    expect(result.error).toContain("on main");
+  });
+
+  it("a path that is a file, not a folder, is also a missing folder", async () => {
+    mockOctokit.repos.getContent.mockResolvedValue({
+      data: { type: "file", name: "tokens" },
+    });
+    const result = await makeClient().pullTokens();
+    expect(result.failure?.kind).toBe("folder-not-found");
+  });
+
+  it("a rejected token says so and asks for a new one", async () => {
+    mockOctokit.git.getRef.mockRejectedValue(status(401));
+    const result = await makeClient().pullTokens();
+    expect(result.failure).toMatchObject({
+      kind: "token-rejected",
+      action: "new-token",
+    });
+  });
+
+  it("an exhausted rate limit gives the time to try again", async () => {
+    mockOctokit.git.getRef.mockRejectedValue(
+      status(403, {
+        "x-ratelimit-remaining": "0",
+        "x-ratelimit-reset": "1800000000",
+      })
+    );
+    const result = await makeClient().pullTokens();
+    expect(result.failure?.kind).toBe("rate-limited");
+    expect(result.failure?.retryAt).toBe(
+      new Date(1_800_000_000 * 1000).toISOString()
+    );
+  });
+
+  it("a push that fails is classified too", async () => {
+    mockOctokit.git.getRef.mockRejectedValue(status(401));
+    const result = await makeClient().syncTokens([]);
+    expect(result.success).toBe(false);
+    expect(result.failure?.kind).toBe("token-rejected");
   });
 });
 
@@ -1002,7 +1072,7 @@ describe("GitHubClient push in the DTCG layout", () => {
     const result = await makeClient().syncTokens(exportData, "chore: sync");
 
     expect(result.success).toBe(false);
-    expect(result.error).toMatch(/tokens\.resolver\.json .* not valid JSON/);
+    expect(result.error).toMatch(/tokens\.resolver\.json isn't valid JSON/);
     expect(mockOctokit.git.createBlob).not.toHaveBeenCalled();
   });
 

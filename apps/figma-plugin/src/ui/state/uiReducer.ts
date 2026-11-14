@@ -88,6 +88,13 @@ export function uiReducer(state: UIState, action: UIAction): UIState {
         activeModal: null, // Close onboarding modal
       };
 
+    case "REQUEST_EDIT_SETUP":
+      return {
+        ...state,
+        activeTab: "sync",
+        editSetupRequests: state.editSetupRequests + 1,
+      };
+
     case "RESET_UI":
       return {
         ...state,

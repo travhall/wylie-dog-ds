@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useRef, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { SetupWizard } from "../SetupWizard";
 import { ImportPreview } from "../ImportPreview";
 import { SyncStatus } from "../SyncStatus";
@@ -61,6 +61,13 @@ export function SyncTab({
   const hasSelections = selectedCollections.size > 0;
 
   const [showEditConfig, setShowEditConfig] = useState(false);
+  // An error's "Edit setup" button asks for the setup; open it once per request
+  const seenSetupRequests = useRef(uiState.editSetupRequests);
+  useEffect(() => {
+    if (uiState.editSetupRequests === seenSetupRequests.current) return;
+    seenSetupRequests.current = uiState.editSetupRequests;
+    setShowEditConfig(true);
+  }, [uiState.editSetupRequests]);
   const [confirmForget, setConfirmForget] = useState(false);
 
   // What GitHub's definitions file offers, from the last Refresh (plan 207)

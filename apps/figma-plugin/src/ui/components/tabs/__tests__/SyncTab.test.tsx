@@ -10,6 +10,7 @@ import {
 } from "@testing-library/preact";
 import { SyncTab } from "../SyncTab";
 import { UIProvider } from "../../../state";
+import { useUIContext } from "../../../state/UIContext";
 import type { UIState } from "../../../state/types";
 import type { GitHubConfig } from "../../../../shared/types";
 import type { ConflictAwareGitHubClient } from "../../../../plugin/sync/conflict-aware-github-client";
@@ -336,5 +337,52 @@ describe("SyncTab Text styles remembered and announced (plan 207)", () => {
       { type: "save-text-styles-choice", includeTextStyles: true },
       { type: "save-text-styles-choice", includeTextStyles: false },
     ]);
+  });
+});
+
+describe("SyncTab opens the setup when an error asks for it", () => {
+  function Trigger() {
+    const { dispatch } = useUIContext();
+    return (
+      <button onClick={() => dispatch({ type: "REQUEST_EDIT_SETUP" })}>
+        ask for setup
+      </button>
+    );
+  }
+
+  it("shows Edit GitHub Configuration after a REQUEST_EDIT_SETUP", () => {
+    render(
+      <UIProvider>
+        <Trigger />
+        <SyncTab
+          githubClient={
+            {
+              conventions: () => "none",
+            } as unknown as ConflictAwareGitHubClient
+          }
+          githubConfig={
+            {
+              ...repoOnly,
+              accessToken: "t",
+              syncMode: "direct",
+            } as unknown as GitHubConfig
+          }
+          githubConfigured
+          collections={[]}
+          loading={false}
+          onPushToGitHub={vi.fn()}
+          onPullFromGitHub={vi.fn()}
+          onImportFile={vi.fn()}
+          onGitHubConfigComplete={vi.fn()}
+          onDisconnect={vi.fn()}
+          onForgetToken={vi.fn()}
+        />
+      </UIProvider>
+    );
+    expect(
+      screen.queryByText("Edit GitHub Configuration")
+    ).not.toBeInTheDocument();
+    fireEvent.click(screen.getByText("ask for setup"));
+    expect(screen.getByText("Edit GitHub Configuration")).toBeInTheDocument();
   });
 });

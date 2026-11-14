@@ -1,3 +1,4 @@
+import { ErrorHandler } from "../../shared/error-handler";
 import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
 import { Icon } from "./common/Icon";
@@ -129,7 +130,7 @@ export function SyncStatus({
         checking: false,
         error:
           error instanceof Error
-            ? error.message
+            ? ErrorHandler.fromException(error).message
             : "Failed to check sync status",
       }));
     } finally {
