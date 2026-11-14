@@ -1,0 +1,57 @@
+{
+  "version": "2025.10",
+  "name": "Wylie Dog tokens",
+  "sets": {
+    "primitive": {
+      "sources": [
+        {
+          "$ref": "primitive.json"
+        }
+      ],
+      "$extensions": {
+        "com.wyliedog.tokens": {
+          "mode": "Value"
+        }
+      }
+    }
+  },
+  "modifiers": {
+    "theme": {
+      "contexts": {
+        "light": [
+          {
+            "$ref": "components.light.json"
+          },
+          {
+            "$ref": "semantic.light.json"
+          }
+        ],
+        "dark": [
+          {
+            "$ref": "components.dark.json"
+          },
+          {
+            "$ref": "semantic.dark.json"
+          }
+        ]
+      },
+      "default": "light",
+      "$extensions": {
+        "com.wyliedog.tokens": {
+          "modes": {
+            "light": "Light",
+            "dark": "Dark"
+          }
+        }
+      }
+    }
+  },
+  "resolutionOrder": [
+    {
+      "$ref": "#/modifiers/theme"
+    },
+    {
+      "$ref": "#/sets/primitive"
+    }
+  ]
+}

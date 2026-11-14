@@ -19,171 +19,6 @@
     "$value": "{color.red.600}",
     "$description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
   },
-  "color.border.primary": {
-    "$type": "color",
-    "$value": "{color.fiery-coral.600}",
-    "$description": "Accent border in the primary color (cards, highlights, rings); non-text, so it needs 3:1 on the page."
-  },
-  "color.border.success": {
-    "$type": "color",
-    "$value": "{color.green.600}",
-    "$description": "Border in the success color for alerts, toasts and highlights."
-  },
-  "color.border.warning": {
-    "$type": "color",
-    "$value": "{color.yellow.600}",
-    "$description": "Border in the warning color for alerts, toasts and highlights."
-  },
-  "color.border.danger": {
-    "$type": "color",
-    "$value": "{color.red.600}",
-    "$description": "Border in the danger color for alerts, toasts and highlights."
-  },
-  "shadow.none": {
-    "$type": "shadow",
-    "$value": "none",
-    "$description": "No shadow"
-  },
-  "shadow.sm": {
-    "$type": "shadow",
-    "$value": "0 1px 2px 0 rgb(0 0 0 / 0.3)",
-    "$description": "Subtle shadow for slight elevation"
-  },
-  "shadow.base": {
-    "$type": "shadow",
-    "$value": "0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4)",
-    "$description": "Default shadow for cards and raised elements"
-  },
-  "shadow.md": {
-    "$type": "shadow",
-    "$value": "0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4)",
-    "$description": "Medium shadow for dropdowns and popovers"
-  },
-  "shadow.lg": {
-    "$type": "shadow",
-    "$value": "0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4)",
-    "$description": "Large shadow for modals and overlays"
-  },
-  "shadow.xl": {
-    "$type": "shadow",
-    "$value": "0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4)",
-    "$description": "Extra large shadow for maximum elevation"
-  },
-  "shadow.inner": {
-    "$type": "shadow",
-    "$value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.2)",
-    "$description": "Inner shadow for recessed elements"
-  },
-  "transition.duration.instant": {
-    "$type": "duration",
-    "$value": "{duration.0}",
-    "$description": "Instant transition (no animation)"
-  },
-  "transition.duration.fast": {
-    "$type": "duration",
-    "$value": "{duration.150}",
-    "$description": "Fast transition for micro-interactions"
-  },
-  "transition.duration.normal": {
-    "$type": "duration",
-    "$value": "{duration.250}",
-    "$description": "Normal transition duration"
-  },
-  "transition.duration.slow": {
-    "$type": "duration",
-    "$value": "{duration.400}",
-    "$description": "Slow transition for emphasized changes"
-  },
-  "transition.duration.loop": {
-    "$type": "duration",
-    "$value": "{duration.1000}",
-    "$description": "One turn of a looping indicator such as a spinner"
-  },
-  "transition.duration.loop-slow": {
-    "$type": "duration",
-    "$value": "{duration.2000}",
-    "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse"
-  },
-  "icon.size.sm": {
-    "$type": "dimension",
-    "$value": "{space.200}",
-    "$description": "Small icon size (16px)"
-  },
-  "icon.size.md": {
-    "$type": "dimension",
-    "$value": "{space.300}",
-    "$description": "Medium icon size (24px)"
-  },
-  "icon.size.lg": {
-    "$type": "dimension",
-    "$value": "{space.400}",
-    "$description": "Large icon size (32px)"
-  },
-  "transition.easing.default": {
-    "$type": "cubicBezier",
-    "$value": "{easing.in-out}",
-    "$description": "Default easing for most transitions"
-  },
-  "transition.easing.in": {
-    "$type": "cubicBezier",
-    "$value": "{easing.in}",
-    "$description": "Ease-in (accelerating) curve, for elements leaving"
-  },
-  "transition.easing.out": {
-    "$type": "cubicBezier",
-    "$value": "{easing.out}",
-    "$description": "Ease-out (decelerating) curve, for elements entering"
-  },
-  "transition.easing.in-out": {
-    "$type": "cubicBezier",
-    "$value": "{easing.in-out}",
-    "$description": "Ease-in-out for symmetric transitions"
-  },
-  "transition.easing.linear": {
-    "$type": "cubicBezier",
-    "$value": "{easing.linear}",
-    "$description": "Constant speed, for loops that should not accelerate"
-  },
-  "transition.distance.default": {
-    "$type": "dimension",
-    "$value": "{space.100}",
-    "$description": "How far a surface travels while it enters or leaves"
-  },
-  "transition.scale.enter": {
-    "$type": "number",
-    "$value": "{scale.95}",
-    "$description": "Scale a surface starts from while it enters, and ends at while it leaves"
-  },
-  "typography.font-size.display.lg": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.6xl}",
-    "$description": "Display Large — hero H1 at largest breakpoint (60px)"
-  },
-  "typography.font-size.display.md": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.5xl}",
-    "$description": "Display Medium — hero H1 at medium breakpoint (48px)"
-  },
-  "typography.font-size.display.sm": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.4xl}",
-    "$description": "Display Small — hero H1 base or section H2 large (36px)"
-  },
-  "typography.font-size.heading.lg": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.3xl}",
-    "$description": "Heading Large — section H2 base breakpoint (30px)"
-  },
-  "typography.font-size.heading.md": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.2xl}",
-    "$description": "Heading Medium — subheadings and prominent labels (24px)"
-  },
-  "typography.font-size.heading.sm": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.xl}",
-    "$description": "Heading Small — card titles and feature item headings (20px)"
-  },
   "color.background.raised": {
     "$type": "color",
     "$value": "{color.black-bear.900}",
@@ -319,6 +154,46 @@
     "$value": "{color.polar-night.400}",
     "$description": "Fill of selected and on-state controls (checked checkbox, radio and switch, slider range, progress, selected tab and page). Pairs with foreground.accent; non-text, so it needs 3:1 on the page."
   },
+  "color.border.primary": {
+    "$type": "color",
+    "$value": "{color.fiery-coral.600}",
+    "$description": "Accent border in the primary color (cards, highlights, rings); non-text, so it needs 3:1 on the page."
+  },
+  "color.border.success": {
+    "$type": "color",
+    "$value": "{color.green.600}",
+    "$description": "Border in the success color for alerts, toasts and highlights."
+  },
+  "color.border.warning": {
+    "$type": "color",
+    "$value": "{color.yellow.600}",
+    "$description": "Border in the warning color for alerts, toasts and highlights."
+  },
+  "color.border.danger": {
+    "$type": "color",
+    "$value": "{color.red.600}",
+    "$description": "Border in the danger color for alerts, toasts and highlights."
+  },
+  "color.border.info": {
+    "$type": "color",
+    "$value": "{color.polar-night.300}",
+    "$description": "Border in the info color for alerts and highlights; non-text, so it needs 3:1 on the page."
+  },
+  "color.border.default": {
+    "$type": "color",
+    "$value": "{color.petrified-wood.800}",
+    "$description": "Default border for cards, inputs and containers."
+  },
+  "color.border.muted": {
+    "$type": "color",
+    "$value": "{color.petrified-wood.900}",
+    "$description": "Quieter border for subtle dividers."
+  },
+  "color.border.emphasis": {
+    "$type": "color",
+    "$value": "{color.petrified-wood.600}",
+    "$description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches)."
+  },
   "color.foreground.default": {
     "$type": "color",
     "$value": "{color.sandcastle.50}",
@@ -404,26 +279,6 @@
     "$value": "{color.gray.50}",
     "$description": "Mark or text over the accent fill (check, dot, selected number). Readable on background.accent."
   },
-  "color.border.info": {
-    "$type": "color",
-    "$value": "{color.polar-night.300}",
-    "$description": "Border in the info color for alerts and highlights; non-text, so it needs 3:1 on the page."
-  },
-  "color.border.default": {
-    "$type": "color",
-    "$value": "{color.petrified-wood.800}",
-    "$description": "Default border for cards, inputs and containers."
-  },
-  "color.border.muted": {
-    "$type": "color",
-    "$value": "{color.petrified-wood.900}",
-    "$description": "Quieter border for subtle dividers."
-  },
-  "color.border.emphasis": {
-    "$type": "color",
-    "$value": "{color.petrified-wood.600}",
-    "$description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches)."
-  },
   "color.focus.ring": {
     "$type": "color",
     "$value": "{color.gray.100}",
@@ -433,6 +288,161 @@
     "$type": "color",
     "$value": "{color.gray.950}",
     "$description": "Keyboard focus halo: the page-tone band drawn between the control and the outline and outside the outline, so the indicator is separated from any fill or surface it sits on."
+  },
+  "shadow.none": {
+    "$type": "shadow",
+    "$value": "none",
+    "$description": "No shadow"
+  },
+  "shadow.sm": {
+    "$type": "shadow",
+    "$value": "0 1px 2px 0 rgb(0 0 0 / 0.3)",
+    "$description": "Subtle shadow for slight elevation"
+  },
+  "shadow.base": {
+    "$type": "shadow",
+    "$value": "0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4)",
+    "$description": "Default shadow for cards and raised elements"
+  },
+  "shadow.md": {
+    "$type": "shadow",
+    "$value": "0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4)",
+    "$description": "Medium shadow for dropdowns and popovers"
+  },
+  "shadow.lg": {
+    "$type": "shadow",
+    "$value": "0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4)",
+    "$description": "Large shadow for modals and overlays"
+  },
+  "shadow.xl": {
+    "$type": "shadow",
+    "$value": "0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4)",
+    "$description": "Extra large shadow for maximum elevation"
+  },
+  "shadow.inner": {
+    "$type": "shadow",
+    "$value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.2)",
+    "$description": "Inner shadow for recessed elements"
+  },
+  "transition.duration.instant": {
+    "$type": "duration",
+    "$value": "{duration.0}",
+    "$description": "Instant transition (no animation)"
+  },
+  "transition.duration.fast": {
+    "$type": "duration",
+    "$value": "{duration.150}",
+    "$description": "Fast transition for micro-interactions"
+  },
+  "transition.duration.normal": {
+    "$type": "duration",
+    "$value": "{duration.250}",
+    "$description": "Normal transition duration"
+  },
+  "transition.duration.slow": {
+    "$type": "duration",
+    "$value": "{duration.400}",
+    "$description": "Slow transition for emphasized changes"
+  },
+  "transition.duration.loop": {
+    "$type": "duration",
+    "$value": "{duration.1000}",
+    "$description": "One turn of a looping indicator such as a spinner"
+  },
+  "transition.duration.loop-slow": {
+    "$type": "duration",
+    "$value": "{duration.2000}",
+    "$description": "One cycle of a slow ambient loop such as a loading skeleton's pulse"
+  },
+  "transition.easing.default": {
+    "$type": "cubicBezier",
+    "$value": "{easing.in-out}",
+    "$description": "Default easing for most transitions"
+  },
+  "transition.easing.in": {
+    "$type": "cubicBezier",
+    "$value": "{easing.in}",
+    "$description": "Ease-in (accelerating) curve, for elements leaving"
+  },
+  "transition.easing.out": {
+    "$type": "cubicBezier",
+    "$value": "{easing.out}",
+    "$description": "Ease-out (decelerating) curve, for elements entering"
+  },
+  "transition.easing.in-out": {
+    "$type": "cubicBezier",
+    "$value": "{easing.in-out}",
+    "$description": "Ease-in-out for symmetric transitions"
+  },
+  "transition.easing.linear": {
+    "$type": "cubicBezier",
+    "$value": "{easing.linear}",
+    "$description": "Constant speed, for loops that should not accelerate"
+  },
+  "transition.distance.default": {
+    "$type": "dimension",
+    "$value": "{space.100}",
+    "$description": "How far a surface travels while it enters or leaves"
+  },
+  "transition.scale.enter": {
+    "$type": "number",
+    "$value": "{scale.95}",
+    "$description": "Scale a surface starts from while it enters, and ends at while it leaves"
+  },
+  "transition.scale.hover": {
+    "$type": "number",
+    "$value": "{scale.105}",
+    "$description": "Scale a card or tile grows to on hover"
+  },
+  "transition.scale.hover-strong": {
+    "$type": "number",
+    "$value": "{scale.110}",
+    "$description": "Scale an icon grows to on hover, a stronger emphasis than a card or tile"
+  },
+  "icon.size.sm": {
+    "$type": "dimension",
+    "$value": "{space.200}",
+    "$description": "Small icon size (16px)"
+  },
+  "icon.size.md": {
+    "$type": "dimension",
+    "$value": "{space.300}",
+    "$description": "Medium icon size (24px)"
+  },
+  "icon.size.lg": {
+    "$type": "dimension",
+    "$value": "{space.400}",
+    "$description": "Large icon size (32px)"
+  },
+  "typography.font-size.display.lg": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.6xl}",
+    "$description": "Display Large — hero H1 at largest breakpoint (60px)"
+  },
+  "typography.font-size.display.md": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.5xl}",
+    "$description": "Display Medium — hero H1 at medium breakpoint (48px)"
+  },
+  "typography.font-size.display.sm": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.4xl}",
+    "$description": "Display Small — hero H1 base or section H2 large (36px)"
+  },
+  "typography.font-size.heading.lg": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.3xl}",
+    "$description": "Heading Large — section H2 base breakpoint (30px)"
+  },
+  "typography.font-size.heading.md": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.2xl}",
+    "$description": "Heading Medium — subheadings and prominent labels (24px)"
+  },
+  "typography.font-size.heading.sm": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.xl}",
+    "$description": "Heading Small — card titles and feature item headings (20px)"
   },
   "focus.width": {
     "$type": "dimension",
@@ -498,15 +508,5 @@
     "$type": "number",
     "$value": "{z-index.80}",
     "$description": "Toast notifications — above all UI"
-  },
-  "transition.scale.hover": {
-    "$type": "number",
-    "$value": "{scale.105}",
-    "$description": "Scale a card or tile grows to on hover"
-  },
-  "transition.scale.hover-strong": {
-    "$type": "number",
-    "$value": "{scale.110}",
-    "$description": "Scale an icon grows to on hover, a stronger emphasis than a card or tile"
   }
 }

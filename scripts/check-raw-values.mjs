@@ -46,7 +46,7 @@ if (problems.length) {
   console.error(`Raw values: ${problems.length} problem(s)\n`);
   for (const p of problems) console.error(`  ${p}`);
   console.error(
-    "\nBind the value to a component token in packages/tokens/io/sync/components.json and reference it as (--token), or add an entry with a reason to scripts/check-raw-values.config.json."
+    "\nBind the value to a component token in the components collection of packages/tokens/io/sync and reference it as (--token), or add an entry with a reason to scripts/check-raw-values.config.json."
   );
   process.exit(1);
 }

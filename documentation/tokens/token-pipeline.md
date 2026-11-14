@@ -27,45 +27,25 @@ dist/               CSS, JS, manifest, types                          (committed
 
 ## Stage 1: Sync (`io/sync/`)
 
-**Two layouts.** `process-io` reads whichever layout the sync directory holds. A directory with a `tokens.resolver.json` is in the [DTCG token contract](dtcg-contract.md) layout: the processor reads the resolver and its files, converts them to the native collection shape (`lib/dtcg-convert.js`), and carries on through the same normalization, so `io/processed/` has the same tokens and values either way. Any other directory is read as native collection files, as described below. A DTCG directory is never written back to; the native write-back that rewrites `primitive.json`, `semantic.json` and `components.json` runs only for the native layout. The files in `io/sync/` are still native. Token Bridge handles both layouts: Pull uses the resolver when one is present, and Push writes in the layout the folder already has (DTCG token files plus a merged resolver when there is a resolver, native collection files otherwise). A Push never switches a folder's layout, and it leaves out, and reports, any token that cannot be written as DTCG. `io/sync/` is excluded from Prettier so the files stay byte-exact. `node scripts/process-token-io.js --sync <dir> --processed <dir>` processes any directory without touching `io/`.
+`io/sync/` is the [DTCG token contract](dtcg-contract.md): the files Token Bridge pushes to and pulls from, and the files you edit to change a token.
 
-The files the Token Bridge plugin reads and writes through GitHub (`packages/tokens/io/sync/`):
-
-| File              | Collection   | Modes           |
-| ----------------- | ------------ | --------------- |
-| `primitive.json`  | `primitive`  | `Value`         |
-| `semantic.json`   | `semantic`   | `Light`, `Dark` |
-| `components.json` | `components` | `Light`, `Dark` |
-
-Each file is an array with one object per collection, holding its `modes` and a flat `variables` map keyed by dot-separated token name:
-
-```json
-[
-  {
-    "semantic": {
-      "modes": [
-        { "modeId": "mode:semantic:light", "name": "Light" },
-        { "modeId": "mode:semantic:dark", "name": "Dark" }
-      ],
-      "variables": {
-        "color.background.default": {
-          "$type": "color",
-          "$value": "{color.gray.50}",
-          "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.950}"
-          },
-          "$description": "Main page background color"
-        }
-      }
-    }
-  }
-]
+```text
+io/sync/
+├── tokens.resolver.json     which files apply in which mode
+├── primitive.json           primitive tokens (one mode)
+├── semantic.light.json      semantic tokens, theme = light
+├── semantic.dark.json       semantic tokens, theme = dark
+├── components.light.json    component tokens, light
+└── components.dark.json     component tokens, dark
 ```
 
-Mode ids follow `mode:<collection>:<lowercased-mode-name>`; the exact contract is in [packages/tokens/SYNC_CONTRACT.md](../../packages/tokens/SYNC_CONTRACT.md).
+The token files are standard W3C DTCG 2025.10 (nested groups, `$type` and `$value`). Light and Dark are the contexts of one `theme` modifier in the resolver; the three-tier hierarchy is this project's standard, not a requirement of the format.
 
-The sync files are also an output: `process-io` regenerates all three from the processed data (`generateExports`), so a build can rewrite them. Run `git diff packages/tokens/io/sync` after a build before committing.
+`process-io` reads the resolver and the files it names, converts them to the native collection shape (`lib/dtcg-convert.js`), and carries on through the same normalization, so `io/processed/` and `dist/` are produced exactly as before. A DTCG folder is never written back to, so a build does not touch `io/sync/`. `node scripts/process-token-io.js --sync <dir> --processed <dir>` processes any folder without touching `io/`; a folder with no `tokens.resolver.json` is read as native collection files.
+
+Token Bridge handles both layouts: Pull uses the resolver when there is one, and Push writes the layout the folder already has, merges into the resolver (what you added by hand survives), never switches a folder's layout, and leaves out, and reports, any token it cannot write as DTCG. `io/sync/` is excluded from Prettier so the files stay byte-exact.
+
+Scripts, guardrails and tests read the folder through `packages/tokens/lib/read-sync.js`, which returns the native collection shape from either layout, so they do not depend on how the files are laid out. The earlier native layout is described in [SYNC_CONTRACT.md](../../packages/tokens/SYNC_CONTRACT.md).
 
 ## Stage 2: Processing (`io/processed/`)
 

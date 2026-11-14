@@ -1756,39 +1756,6 @@
         "variable": "var(--space-0)",
         "description": ""
       },
-      "space-010": {
-        "name": "space010",
-        "path": [
-          "space",
-          "010"
-        ],
-        "value": "0.0625rem",
-        "type": "spacing",
-        "variable": "var(--space-010)",
-        "description": ""
-      },
-      "space-025": {
-        "name": "space025",
-        "path": [
-          "space",
-          "025"
-        ],
-        "value": "0.125rem",
-        "type": "spacing",
-        "variable": "var(--space-025)",
-        "description": ""
-      },
-      "space-050": {
-        "name": "space050",
-        "path": [
-          "space",
-          "050"
-        ],
-        "value": "0.25rem",
-        "type": "spacing",
-        "variable": "var(--space-050)",
-        "description": ""
-      },
       "space-100": {
         "name": "space100",
         "path": [
@@ -2062,6 +2029,39 @@
         "value": "56rem",
         "type": "spacing",
         "variable": "var(--space-2000)",
+        "description": ""
+      },
+      "space-010": {
+        "name": "space010",
+        "path": [
+          "space",
+          "010"
+        ],
+        "value": "0.0625rem",
+        "type": "spacing",
+        "variable": "var(--space-010)",
+        "description": ""
+      },
+      "space-025": {
+        "name": "space025",
+        "path": [
+          "space",
+          "025"
+        ],
+        "value": "0.125rem",
+        "type": "spacing",
+        "variable": "var(--space-025)",
+        "description": ""
+      },
+      "space-050": {
+        "name": "space050",
+        "path": [
+          "space",
+          "050"
+        ],
+        "value": "0.25rem",
+        "type": "spacing",
+        "variable": "var(--space-050)",
         "description": ""
       }
     },
@@ -2591,6 +2591,17 @@
         "variable": "var(--duration-200)",
         "description": ""
       },
+      "duration-250": {
+        "name": "duration250",
+        "path": [
+          "duration",
+          "250"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--duration-250)",
+        "description": ""
+      },
       "duration-300": {
         "name": "duration300",
         "path": [
@@ -2600,6 +2611,17 @@
         "value": "300ms",
         "type": "duration",
         "variable": "var(--duration-300)",
+        "description": ""
+      },
+      "duration-400": {
+        "name": "duration400",
+        "path": [
+          "duration",
+          "400"
+        ],
+        "value": "400ms",
+        "type": "duration",
+        "variable": "var(--duration-400)",
         "description": ""
       },
       "duration-500": {
@@ -2633,28 +2655,6 @@
         "value": "1000ms",
         "type": "duration",
         "variable": "var(--duration-1000)",
-        "description": ""
-      },
-      "duration-250": {
-        "name": "duration250",
-        "path": [
-          "duration",
-          "250"
-        ],
-        "value": "250ms",
-        "type": "duration",
-        "variable": "var(--duration-250)",
-        "description": ""
-      },
-      "duration-400": {
-        "name": "duration400",
-        "path": [
-          "duration",
-          "400"
-        ],
-        "value": "400ms",
-        "type": "duration",
-        "variable": "var(--duration-400)",
         "description": ""
       },
       "duration-2000": {
@@ -3675,6 +3675,30 @@
         "variable": "var(--color-badge-default-border)",
         "description": "Border color of the default badge."
       },
+      "badge-default-background-hover": {
+        "name": "badgeDefaultBackgroundHover",
+        "path": [
+          "badge",
+          "default",
+          "background-hover"
+        ],
+        "value": "oklch(0.425 0.113 37.98)",
+        "type": "color",
+        "variable": "var(--color-badge-default-background-hover)",
+        "description": "Fill of an interactive default badge while hovered. Applies only when the badge is interactive."
+      },
+      "badge-default-background-active": {
+        "name": "badgeDefaultBackgroundActive",
+        "path": [
+          "badge",
+          "default",
+          "background-active"
+        ],
+        "value": "oklch(0.354 0.091 38.03)",
+        "type": "color",
+        "variable": "var(--color-badge-default-background-active)",
+        "description": "Fill of an interactive default badge while pressed. Applies only when the badge is interactive."
+      },
       "badge-secondary-background": {
         "name": "badgeSecondaryBackground",
         "path": [
@@ -3711,6 +3735,30 @@
         "variable": "var(--color-badge-secondary-border)",
         "description": "Border color of the secondary badge."
       },
+      "badge-secondary-background-hover": {
+        "name": "badgeSecondaryBackgroundHover",
+        "path": [
+          "badge",
+          "secondary",
+          "background-hover"
+        ],
+        "value": "oklch(0.843 0.027 71)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-background-hover)",
+        "description": "Fill of the secondary badge while hovered."
+      },
+      "badge-secondary-background-active": {
+        "name": "badgeSecondaryBackgroundActive",
+        "path": [
+          "badge",
+          "secondary",
+          "background-active"
+        ],
+        "value": "oklch(0.843 0.027 71)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-background-active)",
+        "description": "Fill of an interactive secondary badge while pressed. The neutral ground has no tone past `intense`, so hover and pressed share it. Applies only when the badge is interactive."
+      },
       "badge-success-background": {
         "name": "badgeSuccessBackground",
         "path": [
@@ -3722,18 +3770,6 @@
         "type": "color",
         "variable": "var(--color-badge-success-background)",
         "description": "Fill of the success badge. Pairs with `badge.success.text`."
-      },
-      "badge-info-background": {
-        "name": "badgeInfoBackground",
-        "path": [
-          "badge",
-          "info",
-          "background"
-        ],
-        "value": "oklch(0.496 0.049 219.11)",
-        "type": "color",
-        "variable": "var(--color-badge-info-background)",
-        "description": "Fill of the info badge. Pairs with `badge.info.text`."
       },
       "badge-success-text": {
         "name": "badgeSuccessText",
@@ -3747,18 +3783,6 @@
         "variable": "var(--color-badge-success-text)",
         "description": "Label color on the success badge. Pairs with `badge.success.background`."
       },
-      "badge-info-text": {
-        "name": "badgeInfoText",
-        "path": [
-          "badge",
-          "info",
-          "text"
-        ],
-        "value": "oklch(0.991 0.003 264.36)",
-        "type": "color",
-        "variable": "var(--color-badge-info-text)",
-        "description": "Label color on the info badge. Pairs with `badge.info.background`."
-      },
       "badge-success-border": {
         "name": "badgeSuccessBorder",
         "path": [
@@ -3771,6 +3795,54 @@
         "variable": "var(--color-badge-success-border)",
         "description": "Border color of the success badge."
       },
+      "badge-success-background-hover": {
+        "name": "badgeSuccessBackgroundHover",
+        "path": [
+          "badge",
+          "success",
+          "background-hover"
+        ],
+        "value": "oklch(0.488 0.134 150.16)",
+        "type": "color",
+        "variable": "var(--color-badge-success-background-hover)",
+        "description": "Fill of the success badge while hovered."
+      },
+      "badge-success-background-active": {
+        "name": "badgeSuccessBackgroundActive",
+        "path": [
+          "badge",
+          "success",
+          "background-active"
+        ],
+        "value": "oklch(0.424 0.108 151.43)",
+        "type": "color",
+        "variable": "var(--color-badge-success-background-active)",
+        "description": "Fill of an interactive success badge while pressed. Applies only when the badge is interactive."
+      },
+      "badge-info-background": {
+        "name": "badgeInfoBackground",
+        "path": [
+          "badge",
+          "info",
+          "background"
+        ],
+        "value": "oklch(0.496 0.049 219.11)",
+        "type": "color",
+        "variable": "var(--color-badge-info-background)",
+        "description": "Fill of the info badge. Pairs with `badge.info.text`."
+      },
+      "badge-info-text": {
+        "name": "badgeInfoText",
+        "path": [
+          "badge",
+          "info",
+          "text"
+        ],
+        "value": "oklch(0.991 0.003 264.36)",
+        "type": "color",
+        "variable": "var(--color-badge-info-text)",
+        "description": "Label color on the info badge. Pairs with `badge.info.background`."
+      },
       "badge-info-border": {
         "name": "badgeInfoBorder",
         "path": [
@@ -3782,6 +3854,30 @@
         "type": "color",
         "variable": "var(--color-badge-info-border)",
         "description": "Border color of the info badge."
+      },
+      "badge-info-background-hover": {
+        "name": "badgeInfoBackgroundHover",
+        "path": [
+          "badge",
+          "info",
+          "background-hover"
+        ],
+        "value": "oklch(0.361 0.058 221.84)",
+        "type": "color",
+        "variable": "var(--color-badge-info-background-hover)",
+        "description": "Fill of the info badge while hovered."
+      },
+      "badge-info-background-active": {
+        "name": "badgeInfoBackgroundActive",
+        "path": [
+          "badge",
+          "info",
+          "background-active"
+        ],
+        "value": "oklch(0.34 0.054 222.09)",
+        "type": "color",
+        "variable": "var(--color-badge-info-background-active)",
+        "description": "Fill of an interactive info badge while pressed. Applies only when the badge is interactive."
       },
       "badge-warning-background": {
         "name": "badgeWarningBackground",
@@ -3819,6 +3915,30 @@
         "variable": "var(--color-badge-warning-border)",
         "description": "Border color of the warning badge."
       },
+      "badge-warning-background-hover": {
+        "name": "badgeWarningBackgroundHover",
+        "path": [
+          "badge",
+          "warning",
+          "background-hover"
+        ],
+        "value": "oklch(0.714 0.143 81)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-background-hover)",
+        "description": "Fill of the warning badge while hovered."
+      },
+      "badge-warning-background-active": {
+        "name": "badgeWarningBackgroundActive",
+        "path": [
+          "badge",
+          "warning",
+          "background-active"
+        ],
+        "value": "oklch(0.623 0.125 78)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-background-active)",
+        "description": "Fill of an interactive warning badge while pressed. Applies only when the badge is interactive."
+      },
       "badge-destructive-background": {
         "name": "badgeDestructiveBackground",
         "path": [
@@ -3855,6 +3975,30 @@
         "variable": "var(--color-badge-destructive-border)",
         "description": "Border color of the destructive badge."
       },
+      "badge-destructive-background-hover": {
+        "name": "badgeDestructiveBackgroundHover",
+        "path": [
+          "badge",
+          "destructive",
+          "background-hover"
+        ],
+        "value": "oklch(0.488 0.19 27.46)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-background-hover)",
+        "description": "Fill of the destructive badge while hovered."
+      },
+      "badge-destructive-background-active": {
+        "name": "badgeDestructiveBackgroundActive",
+        "path": [
+          "badge",
+          "destructive",
+          "background-active"
+        ],
+        "value": "oklch(0.424 0.161 26.85)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-background-active)",
+        "description": "Fill of an interactive destructive badge while pressed. Applies only when the badge is interactive."
+      },
       "badge-outline-background": {
         "name": "badgeOutlineBackground",
         "path": [
@@ -3890,6 +4034,30 @@
         "type": "color",
         "variable": "var(--color-badge-outline-border)",
         "description": "Border color of the outline badge."
+      },
+      "badge-outline-background-hover": {
+        "name": "badgeOutlineBackgroundHover",
+        "path": [
+          "badge",
+          "outline",
+          "background-hover"
+        ],
+        "value": "oklch(0.927 0.012 75.07)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-background-hover)",
+        "description": "Fill of the outline badge while hovered."
+      },
+      "badge-outline-background-active": {
+        "name": "badgeOutlineBackgroundActive",
+        "path": [
+          "badge",
+          "outline",
+          "background-active"
+        ],
+        "value": "oklch(0.893 0.018 72.82)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-background-active)",
+        "description": "Fill of an interactive outline badge while pressed. Applies only when the badge is interactive."
       },
       "badge-padding-x-sm": {
         "name": "badgePaddingXSm",
@@ -4054,174 +4222,6 @@
         "variable": "var(--badge-font-size-lg)",
         "description": "Font size of the large badge."
       },
-      "badge-default-background-hover": {
-        "name": "badgeDefaultBackgroundHover",
-        "path": [
-          "badge",
-          "default",
-          "background-hover"
-        ],
-        "value": "oklch(0.425 0.113 37.98)",
-        "type": "color",
-        "variable": "var(--color-badge-default-background-hover)",
-        "description": "Fill of an interactive default badge while hovered. Applies only when the badge is interactive."
-      },
-      "badge-default-background-active": {
-        "name": "badgeDefaultBackgroundActive",
-        "path": [
-          "badge",
-          "default",
-          "background-active"
-        ],
-        "value": "oklch(0.354 0.091 38.03)",
-        "type": "color",
-        "variable": "var(--color-badge-default-background-active)",
-        "description": "Fill of an interactive default badge while pressed. Applies only when the badge is interactive."
-      },
-      "badge-secondary-background-hover": {
-        "name": "badgeSecondaryBackgroundHover",
-        "path": [
-          "badge",
-          "secondary",
-          "background-hover"
-        ],
-        "value": "oklch(0.843 0.027 71)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-background-hover)",
-        "description": "Fill of the secondary badge while hovered."
-      },
-      "badge-secondary-background-active": {
-        "name": "badgeSecondaryBackgroundActive",
-        "path": [
-          "badge",
-          "secondary",
-          "background-active"
-        ],
-        "value": "oklch(0.843 0.027 71)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-background-active)",
-        "description": "Fill of an interactive secondary badge while pressed. The neutral ground has no tone past `intense`, so hover and pressed share it. Applies only when the badge is interactive."
-      },
-      "badge-success-background-hover": {
-        "name": "badgeSuccessBackgroundHover",
-        "path": [
-          "badge",
-          "success",
-          "background-hover"
-        ],
-        "value": "oklch(0.488 0.134 150.16)",
-        "type": "color",
-        "variable": "var(--color-badge-success-background-hover)",
-        "description": "Fill of the success badge while hovered."
-      },
-      "badge-info-background-hover": {
-        "name": "badgeInfoBackgroundHover",
-        "path": [
-          "badge",
-          "info",
-          "background-hover"
-        ],
-        "value": "oklch(0.361 0.058 221.84)",
-        "type": "color",
-        "variable": "var(--color-badge-info-background-hover)",
-        "description": "Fill of the info badge while hovered."
-      },
-      "badge-success-background-active": {
-        "name": "badgeSuccessBackgroundActive",
-        "path": [
-          "badge",
-          "success",
-          "background-active"
-        ],
-        "value": "oklch(0.424 0.108 151.43)",
-        "type": "color",
-        "variable": "var(--color-badge-success-background-active)",
-        "description": "Fill of an interactive success badge while pressed. Applies only when the badge is interactive."
-      },
-      "badge-info-background-active": {
-        "name": "badgeInfoBackgroundActive",
-        "path": [
-          "badge",
-          "info",
-          "background-active"
-        ],
-        "value": "oklch(0.34 0.054 222.09)",
-        "type": "color",
-        "variable": "var(--color-badge-info-background-active)",
-        "description": "Fill of an interactive info badge while pressed. Applies only when the badge is interactive."
-      },
-      "badge-warning-background-hover": {
-        "name": "badgeWarningBackgroundHover",
-        "path": [
-          "badge",
-          "warning",
-          "background-hover"
-        ],
-        "value": "oklch(0.714 0.143 81)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-background-hover)",
-        "description": "Fill of the warning badge while hovered."
-      },
-      "badge-warning-background-active": {
-        "name": "badgeWarningBackgroundActive",
-        "path": [
-          "badge",
-          "warning",
-          "background-active"
-        ],
-        "value": "oklch(0.623 0.125 78)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-background-active)",
-        "description": "Fill of an interactive warning badge while pressed. Applies only when the badge is interactive."
-      },
-      "badge-destructive-background-hover": {
-        "name": "badgeDestructiveBackgroundHover",
-        "path": [
-          "badge",
-          "destructive",
-          "background-hover"
-        ],
-        "value": "oklch(0.488 0.19 27.46)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-background-hover)",
-        "description": "Fill of the destructive badge while hovered."
-      },
-      "badge-destructive-background-active": {
-        "name": "badgeDestructiveBackgroundActive",
-        "path": [
-          "badge",
-          "destructive",
-          "background-active"
-        ],
-        "value": "oklch(0.424 0.161 26.85)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-background-active)",
-        "description": "Fill of an interactive destructive badge while pressed. Applies only when the badge is interactive."
-      },
-      "badge-outline-background-hover": {
-        "name": "badgeOutlineBackgroundHover",
-        "path": [
-          "badge",
-          "outline",
-          "background-hover"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-background-hover)",
-        "description": "Fill of the outline badge while hovered."
-      },
-      "badge-outline-background-active": {
-        "name": "badgeOutlineBackgroundActive",
-        "path": [
-          "badge",
-          "outline",
-          "background-active"
-        ],
-        "value": "oklch(0.893 0.018 72.82)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-background-active)",
-        "description": "Fill of an interactive outline badge while pressed. Applies only when the badge is interactive."
-      },
       "badge-opacity-disabled": {
         "name": "badgeOpacityDisabled",
         "path": [
@@ -4268,17 +4268,6 @@
         "variable": "var(--badge-icon-size-md)",
         "description": "Size of an icon in the medium badge (12px, under the 14px label's line height). The icon draws the sm stroke."
       },
-      "badge-dismiss-size": {
-        "name": "badgeDismissSize",
-        "path": [
-          "badge",
-          "dismiss-size"
-        ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--badge-dismiss-size)",
-        "description": "Width and height of the round dismiss button in a dismissible badge (16px, in every badge size). The X inside takes the badge's icon size."
-      },
       "badge-icon-size-lg": {
         "name": "badgeIconSizeLg",
         "path": [
@@ -4290,6 +4279,17 @@
         "type": "spacing",
         "variable": "var(--badge-icon-size-lg)",
         "description": "Size of an icon in the large badge (16px, the sm icon size, beside the 16px label)."
+      },
+      "badge-dismiss-size": {
+        "name": "badgeDismissSize",
+        "path": [
+          "badge",
+          "dismiss-size"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--badge-dismiss-size)",
+        "description": "Width and height of the round dismiss button in a dismissible badge (16px, in every badge size). The X inside takes the badge's icon size."
       }
     },
     "button": {
@@ -4425,54 +4425,6 @@
         "variable": "var(--color-button-outline-background)",
         "description": "Fill of the outline button. Pairs with `button.outline.text`."
       },
-      "button-ghost-background": {
-        "name": "buttonGhostBackground",
-        "path": [
-          "button",
-          "ghost",
-          "background"
-        ],
-        "value": "oklch(0.991 0.003 264.36)",
-        "type": "color",
-        "variable": "var(--color-button-ghost-background)",
-        "description": "Fill of the ghost button. Pairs with `button.ghost.text`."
-      },
-      "button-ghost-background-hover": {
-        "name": "buttonGhostBackgroundHover",
-        "path": [
-          "button",
-          "ghost",
-          "background-hover"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-button-ghost-background-hover)",
-        "description": "Fill of the ghost button while hovered."
-      },
-      "button-ghost-background-active": {
-        "name": "buttonGhostBackgroundActive",
-        "path": [
-          "button",
-          "ghost",
-          "background-active"
-        ],
-        "value": "oklch(0.843 0.027 71)",
-        "type": "color",
-        "variable": "var(--color-button-ghost-background-active)",
-        "description": "Fill of the ghost button while pressed."
-      },
-      "button-ghost-text": {
-        "name": "buttonGhostText",
-        "path": [
-          "button",
-          "ghost",
-          "text"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-button-ghost-text)",
-        "description": "Text color of the ghost button. Pairs with `button.ghost.background`."
-      },
       "button-outline-background-hover": {
         "name": "buttonOutlineBackgroundHover",
         "path": [
@@ -4520,6 +4472,54 @@
         "type": "color",
         "variable": "var(--color-button-outline-border)",
         "description": "Border color of the outline button."
+      },
+      "button-ghost-background": {
+        "name": "buttonGhostBackground",
+        "path": [
+          "button",
+          "ghost",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.36)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-background)",
+        "description": "Fill of the ghost button. Pairs with `button.ghost.text`."
+      },
+      "button-ghost-background-hover": {
+        "name": "buttonGhostBackgroundHover",
+        "path": [
+          "button",
+          "ghost",
+          "background-hover"
+        ],
+        "value": "oklch(0.927 0.012 75.07)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-background-hover)",
+        "description": "Fill of the ghost button while hovered."
+      },
+      "button-ghost-background-active": {
+        "name": "buttonGhostBackgroundActive",
+        "path": [
+          "button",
+          "ghost",
+          "background-active"
+        ],
+        "value": "oklch(0.843 0.027 71)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-background-active)",
+        "description": "Fill of the ghost button while pressed."
+      },
+      "button-ghost-text": {
+        "name": "buttonGhostText",
+        "path": [
+          "button",
+          "ghost",
+          "text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-text)",
+        "description": "Text color of the ghost button. Pairs with `button.ghost.background`."
       },
       "button-destructive-background": {
         "name": "buttonDestructiveBackground",
@@ -4851,28 +4851,6 @@
         "variable": "var(--button-spinner-border-width)",
         "description": "Stroke width of the button loading spinner."
       },
-      "button-icon-gap": {
-        "name": "buttonIconGap",
-        "path": [
-          "button",
-          "icon-gap"
-        ],
-        "value": "0.5rem",
-        "type": "dimension",
-        "variable": "var(--button-icon-gap)",
-        "description": "Gap between the icon, or the loading spinner, and the label of the button."
-      },
-      "button-link-underline-offset": {
-        "name": "buttonLinkUnderlineOffset",
-        "path": [
-          "button",
-          "link-underline-offset"
-        ],
-        "value": "0.25rem",
-        "type": "dimension",
-        "variable": "var(--button-link-underline-offset)",
-        "description": "Distance of the link-style button's underline from its text."
-      },
       "button-spinner-duration": {
         "name": "buttonSpinnerDuration",
         "path": [
@@ -4896,6 +4874,28 @@
         "type": "cubicBezier",
         "variable": "var(--button-spinner-easing)",
         "description": "Easing curve of the loading spinner's turn."
+      },
+      "button-icon-gap": {
+        "name": "buttonIconGap",
+        "path": [
+          "button",
+          "icon-gap"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--button-icon-gap)",
+        "description": "Gap between the icon, or the loading spinner, and the label of the button."
+      },
+      "button-link-underline-offset": {
+        "name": "buttonLinkUnderlineOffset",
+        "path": [
+          "button",
+          "link-underline-offset"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--button-link-underline-offset)",
+        "description": "Distance of the link-style button's underline from its text."
       }
     },
     "card": {
@@ -5261,17 +5261,6 @@
         "variable": "var(--input-font-size-sm)",
         "description": "Font size of the small input."
       },
-      "input-radius": {
-        "name": "inputRadius",
-        "path": [
-          "input",
-          "radius"
-        ],
-        "value": "0.25rem",
-        "type": "dimension",
-        "variable": "var(--input-radius)",
-        "description": "Corner radius of the input."
-      },
       "input-font-size-md": {
         "name": "inputFontSizeMd",
         "path": [
@@ -5295,6 +5284,17 @@
         "type": "number",
         "variable": "var(--input-font-size-lg)",
         "description": "Font size of the large input."
+      },
+      "input-radius": {
+        "name": "inputRadius",
+        "path": [
+          "input",
+          "radius"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--input-radius)",
+        "description": "Corner radius of the input."
       },
       "input-default-background": {
         "name": "inputDefaultBackground",
@@ -5671,17 +5671,6 @@
         "variable": "var(--alert-title-font-size)",
         "description": "Font size of the alert title."
       },
-      "alert-description-font-size": {
-        "name": "alertDescriptionFontSize",
-        "path": [
-          "alert",
-          "description-font-size"
-        ],
-        "value": "0.875rem",
-        "type": "number",
-        "variable": "var(--alert-description-font-size)",
-        "description": "Font size of the alert description."
-      },
       "alert-title-font-weight": {
         "name": "alertTitleFontWeight",
         "path": [
@@ -5717,6 +5706,17 @@
         "type": "dimension",
         "variable": "var(--alert-title-letter-spacing)",
         "description": "Letter spacing of the alert title."
+      },
+      "alert-description-font-size": {
+        "name": "alertDescriptionFontSize",
+        "path": [
+          "alert",
+          "description-font-size"
+        ],
+        "value": "0.875rem",
+        "type": "number",
+        "variable": "var(--alert-description-font-size)",
+        "description": "Font size of the alert description."
       },
       "alert-description-line-height": {
         "name": "alertDescriptionLineHeight",
@@ -5946,6 +5946,18 @@
         "variable": "var(--menubar-trigger-padding-y)",
         "description": "Vertical padding of the menubar trigger."
       },
+      "menubar-trigger-font-weight": {
+        "name": "menubarTriggerFontWeight",
+        "path": [
+          "menubar",
+          "trigger",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--menubar-trigger-font-weight)",
+        "description": "Font weight of the menubar trigger."
+      },
       "menubar-item-padding-x": {
         "name": "menubarItemPaddingX",
         "path": [
@@ -5993,6 +6005,18 @@
         "type": "spacing",
         "variable": "var(--menubar-item-icon-size)",
         "description": "Size of the menubar item icon."
+      },
+      "menubar-item-indicator-left": {
+        "name": "menubarItemIndicatorLeft",
+        "path": [
+          "menubar",
+          "item",
+          "indicator-left"
+        ],
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--menubar-item-indicator-left)",
+        "description": "Left offset of the menubar item check indicator."
       },
       "menubar-list-gap": {
         "name": "menubarListGap",
@@ -6082,18 +6106,6 @@
         "variable": "var(--menubar-item-font-size)",
         "description": "Font size of the menubar item."
       },
-      "menubar-trigger-font-weight": {
-        "name": "menubarTriggerFontWeight",
-        "path": [
-          "menubar",
-          "trigger",
-          "font-weight"
-        ],
-        "value": 500,
-        "type": "number",
-        "variable": "var(--menubar-trigger-font-weight)",
-        "description": "Font weight of the menubar trigger."
-      },
       "menubar-content-min-width": {
         "name": "menubarContentMinWidth",
         "path": [
@@ -6181,18 +6193,6 @@
         "type": "number",
         "variable": "var(--menubar-label-font-weight)",
         "description": "Font weight of the menubar label."
-      },
-      "menubar-item-indicator-left": {
-        "name": "menubarItemIndicatorLeft",
-        "path": [
-          "menubar",
-          "item",
-          "indicator-left"
-        ],
-        "value": "0.5rem",
-        "type": "spacing",
-        "variable": "var(--menubar-item-indicator-left)",
-        "description": "Left offset of the menubar item check indicator."
       },
       "menubar-shortcut-letter-spacing": {
         "name": "menubarShortcutLetterSpacing",
@@ -6701,6 +6701,19 @@
         "variable": "var(--command-input-icon-size)",
         "description": "Size of the search icon in the command menu input."
       },
+      "command-input-icon-opacity": {
+        "name": "commandInputIconOpacity",
+        "path": [
+          "command",
+          "input",
+          "icon",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--command-input-icon-opacity)",
+        "description": "Opacity of the search icon in the command menu input."
+      },
       "command-group-padding": {
         "name": "commandGroupPadding",
         "path": [
@@ -6712,6 +6725,18 @@
         "type": "spacing",
         "variable": "var(--command-group-padding)",
         "description": "Padding inside the command menu group."
+      },
+      "command-group-heading-font-weight": {
+        "name": "commandGroupHeadingFontWeight",
+        "path": [
+          "command",
+          "group",
+          "heading-font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--command-group-heading-font-weight)",
+        "description": "Font weight of the command menu group heading."
       },
       "command-item-padding-x": {
         "name": "commandItemPaddingX",
@@ -6834,19 +6859,6 @@
         "variable": "var(--command-item-padding-y)",
         "description": "Vertical padding of the command menu item."
       },
-      "command-input-icon-opacity": {
-        "name": "commandInputIconOpacity",
-        "path": [
-          "command",
-          "input",
-          "icon",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--command-input-icon-opacity)",
-        "description": "Opacity of the search icon in the command menu input."
-      },
       "command-list-max-height": {
         "name": "commandListMaxHeight",
         "path": [
@@ -6857,18 +6869,6 @@
         "type": "spacing",
         "variable": "var(--command-list-max-height)",
         "description": "Maximum height of the command menu list."
-      },
-      "command-group-heading-font-weight": {
-        "name": "commandGroupHeadingFontWeight",
-        "path": [
-          "command",
-          "group",
-          "heading-font-weight"
-        ],
-        "value": 500,
-        "type": "number",
-        "variable": "var(--command-group-heading-font-weight)",
-        "description": "Font weight of the command menu group heading."
       },
       "command-shortcut-letter-spacing": {
         "name": "commandShortcutLetterSpacing",
@@ -6984,54 +6984,6 @@
         "variable": "var(--color-tabs-list-text)",
         "description": "Text color of the tabs list. Pairs with `tabs.list.background`."
       },
-      "tabs-trigger-background-active": {
-        "name": "tabsTriggerBackgroundActive",
-        "path": [
-          "tabs",
-          "trigger",
-          "background-active"
-        ],
-        "value": "oklch(0.991 0.003 264.36)",
-        "type": "color",
-        "variable": "var(--color-tabs-trigger-background-active)",
-        "description": "Fill of the selected tab trigger. Pairs with `tabs.trigger.text-active`."
-      },
-      "tabs-trigger-text-active": {
-        "name": "tabsTriggerTextActive",
-        "path": [
-          "tabs",
-          "trigger",
-          "text-active"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-tabs-trigger-text-active)",
-        "description": "Text color of the selected tab trigger. Pairs with `tabs.trigger.background-active`."
-      },
-      "tabs-trigger-background-hover": {
-        "name": "tabsTriggerBackgroundHover",
-        "path": [
-          "tabs",
-          "trigger",
-          "background-hover"
-        ],
-        "value": "oklch(0.893 0.018 72.82)",
-        "type": "color",
-        "variable": "var(--color-tabs-trigger-background-hover)",
-        "description": "Fill of the tabs trigger while hovered. Pairs with `tabs.trigger.text-hover`."
-      },
-      "tabs-trigger-text-hover": {
-        "name": "tabsTriggerTextHover",
-        "path": [
-          "tabs",
-          "trigger",
-          "text-hover"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-tabs-trigger-text-hover)",
-        "description": "Text color of the tabs trigger while hovered. Pairs with `tabs.trigger.background-hover`."
-      },
       "tabs-list-border-color": {
         "name": "tabsListBorderColor",
         "path": [
@@ -7044,6 +6996,19 @@
         "type": "color",
         "variable": "var(--color-tabs-list-border-color)",
         "description": "Border color of the tabs list."
+      },
+      "tabs-list-border-width": {
+        "name": "tabsListBorderWidth",
+        "path": [
+          "tabs",
+          "list",
+          "border",
+          "width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--tabs-list-border-width)",
+        "description": "Border width of the tabs list."
       },
       "tabs-list-height-sm": {
         "name": "tabsListHeightSm",
@@ -7135,18 +7100,53 @@
         "variable": "var(--tabs-list-gap)",
         "description": "Gap between the items inside the tabs list."
       },
-      "tabs-list-border-width": {
-        "name": "tabsListBorderWidth",
+      "tabs-trigger-background-active": {
+        "name": "tabsTriggerBackgroundActive",
         "path": [
           "tabs",
-          "list",
-          "border",
-          "width"
+          "trigger",
+          "background-active"
         ],
-        "value": "1px",
-        "type": "dimension",
-        "variable": "var(--tabs-list-border-width)",
-        "description": "Border width of the tabs list."
+        "value": "oklch(0.991 0.003 264.36)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-background-active)",
+        "description": "Fill of the selected tab trigger. Pairs with `tabs.trigger.text-active`."
+      },
+      "tabs-trigger-text-active": {
+        "name": "tabsTriggerTextActive",
+        "path": [
+          "tabs",
+          "trigger",
+          "text-active"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-text-active)",
+        "description": "Text color of the selected tab trigger. Pairs with `tabs.trigger.background-active`."
+      },
+      "tabs-trigger-background-hover": {
+        "name": "tabsTriggerBackgroundHover",
+        "path": [
+          "tabs",
+          "trigger",
+          "background-hover"
+        ],
+        "value": "oklch(0.893 0.018 72.82)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-background-hover)",
+        "description": "Fill of the tabs trigger while hovered. Pairs with `tabs.trigger.text-hover`."
+      },
+      "tabs-trigger-text-hover": {
+        "name": "tabsTriggerTextHover",
+        "path": [
+          "tabs",
+          "trigger",
+          "text-hover"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-text-hover)",
+        "description": "Text color of the tabs trigger while hovered. Pairs with `tabs.trigger.background-hover`."
       },
       "tabs-trigger-padding-x-sm": {
         "name": "tabsTriggerPaddingXSm",
@@ -7277,30 +7277,6 @@
         "variable": "var(--tabs-trigger-indicator-width)",
         "description": "Thickness of the underline that marks the selected tab."
       },
-      "tabs-content-padding": {
-        "name": "tabsContentPadding",
-        "path": [
-          "tabs",
-          "content",
-          "padding"
-        ],
-        "value": "1.5rem",
-        "type": "spacing",
-        "variable": "var(--tabs-content-padding)",
-        "description": "Padding inside the tabs content."
-      },
-      "tabs-content-margin-top": {
-        "name": "tabsContentMarginTop",
-        "path": [
-          "tabs",
-          "content",
-          "margin-top"
-        ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--tabs-content-margin-top)",
-        "description": "Top margin of the tabs content."
-      },
       "tabs-trigger-font-weight": {
         "name": "tabsTriggerFontWeight",
         "path": [
@@ -7372,6 +7348,30 @@
         "type": "number",
         "variable": "var(--tabs-trigger-line-height)",
         "description": "Line height of the tabs trigger text."
+      },
+      "tabs-content-padding": {
+        "name": "tabsContentPadding",
+        "path": [
+          "tabs",
+          "content",
+          "padding"
+        ],
+        "value": "1.5rem",
+        "type": "spacing",
+        "variable": "var(--tabs-content-padding)",
+        "description": "Padding inside the tabs content."
+      },
+      "tabs-content-margin-top": {
+        "name": "tabsContentMarginTop",
+        "path": [
+          "tabs",
+          "content",
+          "margin-top"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--tabs-content-margin-top)",
+        "description": "Top margin of the tabs content."
       }
     },
     "collapsible": {
@@ -7534,6 +7534,18 @@
         "variable": "var(--calendar-day-size)",
         "description": "Size of the calendar day."
       },
+      "calendar-day-font-weight": {
+        "name": "calendarDayFontWeight",
+        "path": [
+          "calendar",
+          "day",
+          "font-weight"
+        ],
+        "value": 400,
+        "type": "number",
+        "variable": "var(--calendar-day-font-weight)",
+        "description": "Font weight of the calendar day."
+      },
       "calendar-container-gap": {
         "name": "calendarContainerGap",
         "path": [
@@ -7635,18 +7647,6 @@
         "type": "number",
         "variable": "var(--calendar-nav-button-font-weight)",
         "description": "Font weight of the calendar nav button."
-      },
-      "calendar-day-font-weight": {
-        "name": "calendarDayFontWeight",
-        "path": [
-          "calendar",
-          "day",
-          "font-weight"
-        ],
-        "value": 400,
-        "type": "number",
-        "variable": "var(--calendar-day-font-weight)",
-        "description": "Font weight of the calendar day."
       },
       "calendar-container-padding": {
         "name": "calendarContainerPadding",
@@ -7885,30 +7885,6 @@
         "variable": "var(--accordion-trigger-font-size)",
         "description": "Font size of the accordion trigger."
       },
-      "accordion-content-padding": {
-        "name": "accordionContentPadding",
-        "path": [
-          "accordion",
-          "content",
-          "padding"
-        ],
-        "value": "0.75rem",
-        "type": "spacing",
-        "variable": "var(--accordion-content-padding)",
-        "description": "Padding inside the accordion content."
-      },
-      "accordion-content-font-size": {
-        "name": "accordionContentFontSize",
-        "path": [
-          "accordion",
-          "content",
-          "font-size"
-        ],
-        "value": "0.875rem",
-        "type": "number",
-        "variable": "var(--accordion-content-font-size)",
-        "description": "Font size of the accordion content."
-      },
       "accordion-trigger-font-weight": {
         "name": "accordionTriggerFontWeight",
         "path": [
@@ -7932,29 +7908,6 @@
         "type": "number",
         "variable": "var(--accordion-trigger-line-height)",
         "description": "Line height of the accordion trigger."
-      },
-      "accordion-content-line-height": {
-        "name": "accordionContentLineHeight",
-        "path": [
-          "accordion",
-          "content",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--accordion-content-line-height)",
-        "description": "Line height of the accordion content."
-      },
-      "accordion-item-border-width": {
-        "name": "accordionItemBorderWidth",
-        "path": [
-          "accordion",
-          "item-border-width"
-        ],
-        "value": "1px",
-        "type": "dimension",
-        "variable": "var(--accordion-item-border-width)",
-        "description": "Border width of the accordion item."
       },
       "accordion-trigger-icon-size": {
         "name": "accordionTriggerIconSize",
@@ -7980,6 +7933,42 @@
         "variable": "var(--accordion-trigger-icon-duration)",
         "description": "Transition duration of the accordion chevron rotation."
       },
+      "accordion-content-padding": {
+        "name": "accordionContentPadding",
+        "path": [
+          "accordion",
+          "content",
+          "padding"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--accordion-content-padding)",
+        "description": "Padding inside the accordion content."
+      },
+      "accordion-content-font-size": {
+        "name": "accordionContentFontSize",
+        "path": [
+          "accordion",
+          "content",
+          "font-size"
+        ],
+        "value": "0.875rem",
+        "type": "number",
+        "variable": "var(--accordion-content-font-size)",
+        "description": "Font size of the accordion content."
+      },
+      "accordion-content-line-height": {
+        "name": "accordionContentLineHeight",
+        "path": [
+          "accordion",
+          "content",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--accordion-content-line-height)",
+        "description": "Line height of the accordion content."
+      },
       "accordion-content-duration": {
         "name": "accordionContentDuration",
         "path": [
@@ -8003,6 +7992,17 @@
         "type": "cubicBezier",
         "variable": "var(--accordion-content-easing)",
         "description": "Easing curve of the accordion content opening and closing."
+      },
+      "accordion-item-border-width": {
+        "name": "accordionItemBorderWidth",
+        "path": [
+          "accordion",
+          "item-border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--accordion-item-border-width)",
+        "description": "Border width of the accordion item."
       }
     },
     "avatar": {
@@ -8743,6 +8743,54 @@
         "variable": "var(--dialog-content-gap)",
         "description": "Gap between the header, body and footer of the dialog. One value, so a dialog with no body is spaced like one with a body."
       },
+      "dialog-content-z-index": {
+        "name": "dialogContentZIndex",
+        "path": [
+          "dialog",
+          "content",
+          "z-index"
+        ],
+        "value": 50,
+        "type": "number",
+        "variable": "var(--dialog-content-z-index)",
+        "description": "Stacking order of the dialog content."
+      },
+      "dialog-content-duration": {
+        "name": "dialogContentDuration",
+        "path": [
+          "dialog",
+          "content",
+          "duration"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--dialog-content-duration)",
+        "description": "Transition duration of the dialog content."
+      },
+      "dialog-content-easing": {
+        "name": "dialogContentEasing",
+        "path": [
+          "dialog",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--dialog-content-easing)",
+        "description": "Easing curve of the dialog and its backdrop entering and leaving."
+      },
+      "dialog-content-scale": {
+        "name": "dialogContentScale",
+        "path": [
+          "dialog",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--dialog-content-scale)",
+        "description": "Scale the dialog grows from while entering and shrinks to while leaving."
+      },
       "dialog-header-gap": {
         "name": "dialogHeaderGap",
         "path": [
@@ -8811,6 +8859,30 @@
         "variable": "var(--dialog-close-button-opacity-hover)",
         "description": "Opacity of the dialog close button while hovered."
       },
+      "dialog-close-button-icon-size": {
+        "name": "dialogCloseButtonIconSize",
+        "path": [
+          "dialog",
+          "close-button",
+          "icon-size"
+        ],
+        "value": "1.5rem",
+        "type": "spacing",
+        "variable": "var(--dialog-close-button-icon-size)",
+        "description": "Size of the close icon in a dialog."
+      },
+      "dialog-close-button-text": {
+        "name": "dialogCloseButtonText",
+        "path": [
+          "dialog",
+          "close-button",
+          "text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-dialog-close-button-text)",
+        "description": "Colour of the dialog's close button (its X) at rest."
+      },
       "dialog-title-font-size": {
         "name": "dialogTitleFontSize",
         "path": [
@@ -8855,30 +8927,6 @@
         "variable": "var(--dialog-title-letter-spacing)",
         "description": "Letter spacing of the dialog title."
       },
-      "dialog-close-button-icon-size": {
-        "name": "dialogCloseButtonIconSize",
-        "path": [
-          "dialog",
-          "close-button",
-          "icon-size"
-        ],
-        "value": "1.5rem",
-        "type": "spacing",
-        "variable": "var(--dialog-close-button-icon-size)",
-        "description": "Size of the close icon in a dialog."
-      },
-      "dialog-close-button-text": {
-        "name": "dialogCloseButtonText",
-        "path": [
-          "dialog",
-          "close-button",
-          "text"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-dialog-close-button-text)",
-        "description": "Colour of the dialog's close button (its X) at rest."
-      },
       "dialog-shadow": {
         "name": "dialogShadow",
         "path": [
@@ -8889,18 +8937,6 @@
         "type": "shadow",
         "variable": "var(--dialog-shadow)",
         "description": "Elevation shadow of the dialog."
-      },
-      "dialog-content-z-index": {
-        "name": "dialogContentZIndex",
-        "path": [
-          "dialog",
-          "content",
-          "z-index"
-        ],
-        "value": 50,
-        "type": "number",
-        "variable": "var(--dialog-content-z-index)",
-        "description": "Stacking order of the dialog content."
       },
       "dialog-overlay-z-index": {
         "name": "dialogOverlayZIndex",
@@ -8935,18 +8971,6 @@
         "variable": "var(--dialog-title-line-height)",
         "description": "Line height of the dialog title."
       },
-      "dialog-content-duration": {
-        "name": "dialogContentDuration",
-        "path": [
-          "dialog",
-          "content",
-          "duration"
-        ],
-        "value": "250ms",
-        "type": "duration",
-        "variable": "var(--dialog-content-duration)",
-        "description": "Transition duration of the dialog content."
-      },
       "dialog-border-width": {
         "name": "dialogBorderWidth",
         "path": [
@@ -8968,30 +8992,6 @@
         "type": "number",
         "variable": "var(--dialog-description-line-height)",
         "description": "Line height of the dialog description text."
-      },
-      "dialog-content-easing": {
-        "name": "dialogContentEasing",
-        "path": [
-          "dialog",
-          "content",
-          "easing"
-        ],
-        "value": "cubic-bezier(0, 0, 0.2, 1)",
-        "type": "cubicBezier",
-        "variable": "var(--dialog-content-easing)",
-        "description": "Easing curve of the dialog and its backdrop entering and leaving."
-      },
-      "dialog-content-scale": {
-        "name": "dialogContentScale",
-        "path": [
-          "dialog",
-          "content",
-          "scale"
-        ],
-        "value": 0.95,
-        "type": "number",
-        "variable": "var(--dialog-content-scale)",
-        "description": "Scale the dialog grows from while entering and shrinks to while leaving."
       }
     },
     "form": {
@@ -9168,6 +9168,54 @@
         "variable": "var(--hover-card-content-width-lg)",
         "description": "Width of the large hover card content."
       },
+      "hover-card-content-duration": {
+        "name": "hoverCardContentDuration",
+        "path": [
+          "hover-card",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--hover-card-content-duration)",
+        "description": "Enter and exit time of the hover card."
+      },
+      "hover-card-content-easing": {
+        "name": "hoverCardContentEasing",
+        "path": [
+          "hover-card",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--hover-card-content-easing)",
+        "description": "Easing curve of the hover card entering and leaving."
+      },
+      "hover-card-content-distance": {
+        "name": "hoverCardContentDistance",
+        "path": [
+          "hover-card",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--hover-card-content-distance)",
+        "description": "How far the hover card slides toward its trigger while entering and leaving."
+      },
+      "hover-card-content-scale": {
+        "name": "hoverCardContentScale",
+        "path": [
+          "hover-card",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--hover-card-content-scale)",
+        "description": "Scale the hover card grows from while entering and shrinks to while leaving."
+      },
       "hover-card-content-radius": {
         "name": "hoverCardContentRadius",
         "path": [
@@ -9233,54 +9281,6 @@
         "type": "dimension",
         "variable": "var(--hover-card-side-offset)",
         "description": "Gap between the hover card trigger and its content."
-      },
-      "hover-card-content-duration": {
-        "name": "hoverCardContentDuration",
-        "path": [
-          "hover-card",
-          "content",
-          "duration"
-        ],
-        "value": "150ms",
-        "type": "duration",
-        "variable": "var(--hover-card-content-duration)",
-        "description": "Enter and exit time of the hover card."
-      },
-      "hover-card-content-easing": {
-        "name": "hoverCardContentEasing",
-        "path": [
-          "hover-card",
-          "content",
-          "easing"
-        ],
-        "value": "cubic-bezier(0, 0, 0.2, 1)",
-        "type": "cubicBezier",
-        "variable": "var(--hover-card-content-easing)",
-        "description": "Easing curve of the hover card entering and leaving."
-      },
-      "hover-card-content-distance": {
-        "name": "hoverCardContentDistance",
-        "path": [
-          "hover-card",
-          "content",
-          "distance"
-        ],
-        "value": "0.5rem",
-        "type": "dimension",
-        "variable": "var(--hover-card-content-distance)",
-        "description": "How far the hover card slides toward its trigger while entering and leaving."
-      },
-      "hover-card-content-scale": {
-        "name": "hoverCardContentScale",
-        "path": [
-          "hover-card",
-          "content",
-          "scale"
-        ],
-        "value": 0.95,
-        "type": "number",
-        "variable": "var(--hover-card-content-scale)",
-        "description": "Scale the hover card grows from while entering and shrinks to while leaving."
       }
     },
     "pagination": {
@@ -9388,6 +9388,30 @@
         "variable": "var(--pagination-item-gap)",
         "description": "Gap between the items inside the pagination item."
       },
+      "pagination-item-font-weight": {
+        "name": "paginationItemFontWeight",
+        "path": [
+          "pagination",
+          "item",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--pagination-item-font-weight)",
+        "description": "Font weight of the pagination item."
+      },
+      "pagination-item-line-height": {
+        "name": "paginationItemLineHeight",
+        "path": [
+          "pagination",
+          "item",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--pagination-item-line-height)",
+        "description": "Line height of the pagination item text."
+      },
       "pagination-list-gap": {
         "name": "paginationListGap",
         "path": [
@@ -9432,18 +9456,6 @@
         "variable": "var(--color-pagination-background-hover)",
         "description": "Fill of the pagination while hovered. Pairs with `pagination.text-hover`."
       },
-      "pagination-item-font-weight": {
-        "name": "paginationItemFontWeight",
-        "path": [
-          "pagination",
-          "item",
-          "font-weight"
-        ],
-        "value": 500,
-        "type": "number",
-        "variable": "var(--pagination-item-font-weight)",
-        "description": "Font weight of the pagination item."
-      },
       "pagination-icon-size": {
         "name": "paginationIconSize",
         "path": [
@@ -9476,18 +9488,6 @@
         "type": "number",
         "variable": "var(--pagination-opacity-disabled)",
         "description": "Opacity of a disabled pagination control."
-      },
-      "pagination-item-line-height": {
-        "name": "paginationItemLineHeight",
-        "path": [
-          "pagination",
-          "item",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--pagination-item-line-height)",
-        "description": "Line height of the pagination item text."
       }
     },
     "popover": {
@@ -9563,6 +9563,54 @@
         "variable": "var(--popover-content-width-lg)",
         "description": "Width of the large popover content."
       },
+      "popover-content-duration": {
+        "name": "popoverContentDuration",
+        "path": [
+          "popover",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--popover-content-duration)",
+        "description": "Enter and exit time of the popover."
+      },
+      "popover-content-easing": {
+        "name": "popoverContentEasing",
+        "path": [
+          "popover",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--popover-content-easing)",
+        "description": "Easing curve of the popover entering and leaving."
+      },
+      "popover-content-distance": {
+        "name": "popoverContentDistance",
+        "path": [
+          "popover",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--popover-content-distance)",
+        "description": "How far the popover slides toward its trigger while entering and leaving."
+      },
+      "popover-content-scale": {
+        "name": "popoverContentScale",
+        "path": [
+          "popover",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--popover-content-scale)",
+        "description": "Scale the popover grows from while entering and shrinks to while leaving."
+      },
       "popover-content-radius": {
         "name": "popoverContentRadius",
         "path": [
@@ -9628,54 +9676,6 @@
         "type": "dimension",
         "variable": "var(--popover-side-offset)",
         "description": "Gap between the popover trigger and its content."
-      },
-      "popover-content-duration": {
-        "name": "popoverContentDuration",
-        "path": [
-          "popover",
-          "content",
-          "duration"
-        ],
-        "value": "150ms",
-        "type": "duration",
-        "variable": "var(--popover-content-duration)",
-        "description": "Enter and exit time of the popover."
-      },
-      "popover-content-easing": {
-        "name": "popoverContentEasing",
-        "path": [
-          "popover",
-          "content",
-          "easing"
-        ],
-        "value": "cubic-bezier(0, 0, 0.2, 1)",
-        "type": "cubicBezier",
-        "variable": "var(--popover-content-easing)",
-        "description": "Easing curve of the popover entering and leaving."
-      },
-      "popover-content-distance": {
-        "name": "popoverContentDistance",
-        "path": [
-          "popover",
-          "content",
-          "distance"
-        ],
-        "value": "0.5rem",
-        "type": "dimension",
-        "variable": "var(--popover-content-distance)",
-        "description": "How far the popover slides toward its trigger while entering and leaving."
-      },
-      "popover-content-scale": {
-        "name": "popoverContentScale",
-        "path": [
-          "popover",
-          "content",
-          "scale"
-        ],
-        "value": 0.95,
-        "type": "number",
-        "variable": "var(--popover-content-scale)",
-        "description": "Scale the popover grows from while entering and shrinks to while leaving."
       }
     },
     "progress": {
@@ -10540,18 +10540,6 @@
         "variable": "var(--table-cell-padding-y)",
         "description": "Vertical padding of the table cell."
       },
-      "table-header-font-size": {
-        "name": "tableHeaderFontSize",
-        "path": [
-          "table",
-          "header",
-          "font-size"
-        ],
-        "value": "0.875rem",
-        "type": "number",
-        "variable": "var(--table-header-font-size)",
-        "description": "Font size of the table header."
-      },
       "table-cell-font-size": {
         "name": "tableCellFontSize",
         "path": [
@@ -10563,6 +10551,30 @@
         "type": "number",
         "variable": "var(--table-cell-font-size)",
         "description": "Font size of the table cell."
+      },
+      "table-cell-line-height": {
+        "name": "tableCellLineHeight",
+        "path": [
+          "table",
+          "cell",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--table-cell-line-height)",
+        "description": "Line height of the table cell text."
+      },
+      "table-header-font-size": {
+        "name": "tableHeaderFontSize",
+        "path": [
+          "table",
+          "header",
+          "font-size"
+        ],
+        "value": "0.875rem",
+        "type": "number",
+        "variable": "var(--table-header-font-size)",
+        "description": "Font size of the table header."
       },
       "table-header-height": {
         "name": "tableHeaderHeight",
@@ -10576,17 +10588,6 @@
         "variable": "var(--table-header-height)",
         "description": "Height of the table header."
       },
-      "table-header-padding-right": {
-        "name": "tableHeaderPaddingRight",
-        "path": [
-          "table",
-          "header-padding-right"
-        ],
-        "value": "0rem",
-        "type": "spacing",
-        "variable": "var(--table-header-padding-right)",
-        "description": "Right padding of the table header."
-      },
       "table-header-font-weight": {
         "name": "tableHeaderFontWeight",
         "path": [
@@ -10598,6 +10599,29 @@
         "type": "number",
         "variable": "var(--table-header-font-weight)",
         "description": "Font weight of the table header."
+      },
+      "table-header-line-height": {
+        "name": "tableHeaderLineHeight",
+        "path": [
+          "table",
+          "header",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--table-header-line-height)",
+        "description": "Line height of the table header text."
+      },
+      "table-header-padding-right": {
+        "name": "tableHeaderPaddingRight",
+        "path": [
+          "table",
+          "header-padding-right"
+        ],
+        "value": "0rem",
+        "type": "spacing",
+        "variable": "var(--table-header-padding-right)",
+        "description": "Right padding of the table header."
       },
       "table-caption-font-size": {
         "name": "tableCaptionFontSize",
@@ -10653,30 +10677,6 @@
         "type": "number",
         "variable": "var(--table-caption-line-height)",
         "description": "Line height of the table caption text."
-      },
-      "table-cell-line-height": {
-        "name": "tableCellLineHeight",
-        "path": [
-          "table",
-          "cell",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--table-cell-line-height)",
-        "description": "Line height of the table cell text."
-      },
-      "table-header-line-height": {
-        "name": "tableHeaderLineHeight",
-        "path": [
-          "table",
-          "header",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--table-header-line-height)",
-        "description": "Line height of the table header text."
       }
     },
     "toast": {
@@ -10792,6 +10792,18 @@
         "variable": "var(--toast-title-font-weight)",
         "description": "Font weight of the toast title."
       },
+      "toast-title-line-height": {
+        "name": "toastTitleLineHeight",
+        "path": [
+          "toast",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--toast-title-line-height)",
+        "description": "Line height of the toast title text."
+      },
       "toast-description-font-size": {
         "name": "toastDescriptionFontSize",
         "path": [
@@ -10815,6 +10827,30 @@
         "type": "number",
         "variable": "var(--toast-description-font-weight)",
         "description": "Font weight of the toast description."
+      },
+      "toast-description-opacity": {
+        "name": "toastDescriptionOpacity",
+        "path": [
+          "toast",
+          "description",
+          "opacity"
+        ],
+        "value": 1,
+        "type": "number",
+        "variable": "var(--toast-description-opacity)",
+        "description": "Opacity of the toast description."
+      },
+      "toast-description-line-height": {
+        "name": "toastDescriptionLineHeight",
+        "path": [
+          "toast",
+          "description",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--toast-description-line-height)",
+        "description": "Line height of the toast description text."
       },
       "toast-action-height": {
         "name": "toastActionHeight",
@@ -10852,6 +10888,30 @@
         "variable": "var(--toast-action-font-size)",
         "description": "Font size of the toast action."
       },
+      "toast-action-radius": {
+        "name": "toastActionRadius",
+        "path": [
+          "toast",
+          "action",
+          "radius"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--toast-action-radius)",
+        "description": "Corner radius of the toast action."
+      },
+      "toast-action-line-height": {
+        "name": "toastActionLineHeight",
+        "path": [
+          "toast",
+          "action",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--toast-action-line-height)",
+        "description": "Line height of the toast action text."
+      },
       "toast-destructive-border": {
         "name": "toastDestructiveBorder",
         "path": [
@@ -10875,54 +10935,6 @@
         "type": "color",
         "variable": "var(--color-toast-destructive-background)",
         "description": "Fill of the destructive toast. Pairs with `toast.destructive.text`."
-      },
-      "toast-success-border": {
-        "name": "toastSuccessBorder",
-        "path": [
-          "toast",
-          "success",
-          "border"
-        ],
-        "value": "oklch(0.543 0.152 149.35)",
-        "type": "color",
-        "variable": "var(--color-toast-success-border)",
-        "description": "Border color of the success toast."
-      },
-      "toast-success-background": {
-        "name": "toastSuccessBackground",
-        "path": [
-          "toast",
-          "success",
-          "background"
-        ],
-        "value": "oklch(0.543 0.152 149.35)",
-        "type": "color",
-        "variable": "var(--color-toast-success-background)",
-        "description": "Fill of the success toast. Pairs with `toast.success.text`."
-      },
-      "toast-warning-border": {
-        "name": "toastWarningBorder",
-        "path": [
-          "toast",
-          "warning",
-          "border"
-        ],
-        "value": "oklch(0.809 0.152 86)",
-        "type": "color",
-        "variable": "var(--color-toast-warning-border)",
-        "description": "Border color of the warning toast."
-      },
-      "toast-warning-background": {
-        "name": "toastWarningBackground",
-        "path": [
-          "toast",
-          "warning",
-          "background"
-        ],
-        "value": "oklch(0.809 0.152 86)",
-        "type": "color",
-        "variable": "var(--color-toast-warning-background)",
-        "description": "Fill of the warning toast. Pairs with `toast.warning.text`."
       },
       "toast-destructive-text": {
         "name": "toastDestructiveText",
@@ -10972,6 +10984,30 @@
         "variable": "var(--color-toast-destructive-close-icon)",
         "description": "Color of the close icon on the destructive toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.destructive.background`."
       },
+      "toast-success-border": {
+        "name": "toastSuccessBorder",
+        "path": [
+          "toast",
+          "success",
+          "border"
+        ],
+        "value": "oklch(0.543 0.152 149.35)",
+        "type": "color",
+        "variable": "var(--color-toast-success-border)",
+        "description": "Border color of the success toast."
+      },
+      "toast-success-background": {
+        "name": "toastSuccessBackground",
+        "path": [
+          "toast",
+          "success",
+          "background"
+        ],
+        "value": "oklch(0.543 0.152 149.35)",
+        "type": "color",
+        "variable": "var(--color-toast-success-background)",
+        "description": "Fill of the success toast. Pairs with `toast.success.text`."
+      },
       "toast-success-text": {
         "name": "toastSuccessText",
         "path": [
@@ -11019,6 +11055,78 @@
         "type": "color",
         "variable": "var(--color-toast-success-close-icon)",
         "description": "Color of the close icon on the success toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.success.background`."
+      },
+      "toast-warning-border": {
+        "name": "toastWarningBorder",
+        "path": [
+          "toast",
+          "warning",
+          "border"
+        ],
+        "value": "oklch(0.809 0.152 86)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-border)",
+        "description": "Border color of the warning toast."
+      },
+      "toast-warning-background": {
+        "name": "toastWarningBackground",
+        "path": [
+          "toast",
+          "warning",
+          "background"
+        ],
+        "value": "oklch(0.809 0.152 86)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-background)",
+        "description": "Fill of the warning toast. Pairs with `toast.warning.text`."
+      },
+      "toast-warning-text": {
+        "name": "toastWarningText",
+        "path": [
+          "toast",
+          "warning",
+          "text"
+        ],
+        "value": "oklch(0.149 0.012 259.75)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-text)",
+        "description": "Text color on the warning toast. Pairs with `toast.warning.background`."
+      },
+      "toast-warning-control-background-hover": {
+        "name": "toastWarningControlBackgroundHover",
+        "path": [
+          "toast",
+          "warning",
+          "control-background-hover"
+        ],
+        "value": "oklch(0.714 0.143 81)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-control-background-hover)",
+        "description": "Fill of the action button and the close button on the warning toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.warning.text`."
+      },
+      "toast-warning-control-background-active": {
+        "name": "toastWarningControlBackgroundActive",
+        "path": [
+          "toast",
+          "warning",
+          "control-background-active"
+        ],
+        "value": "oklch(0.623 0.125 78)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-control-background-active)",
+        "description": "Fill of the action button and the close button on the warning toast while pressed: the role's pressed tone. Pairs with `toast.warning.text`."
+      },
+      "toast-warning-close-icon": {
+        "name": "toastWarningCloseIcon",
+        "path": [
+          "toast",
+          "warning",
+          "close-icon"
+        ],
+        "value": "oklch(0.149 0.012 259.75)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-close-icon)",
+        "description": "Color of the close icon on the warning toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.warning.background`."
       },
       "toast-info-border": {
         "name": "toastInfoBorder",
@@ -11092,54 +11200,6 @@
         "variable": "var(--color-toast-info-close-icon)",
         "description": "Color of the close icon on the info toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.info.background`."
       },
-      "toast-warning-text": {
-        "name": "toastWarningText",
-        "path": [
-          "toast",
-          "warning",
-          "text"
-        ],
-        "value": "oklch(0.149 0.012 259.75)",
-        "type": "color",
-        "variable": "var(--color-toast-warning-text)",
-        "description": "Text color on the warning toast. Pairs with `toast.warning.background`."
-      },
-      "toast-warning-control-background-hover": {
-        "name": "toastWarningControlBackgroundHover",
-        "path": [
-          "toast",
-          "warning",
-          "control-background-hover"
-        ],
-        "value": "oklch(0.714 0.143 81)",
-        "type": "color",
-        "variable": "var(--color-toast-warning-control-background-hover)",
-        "description": "Fill of the action button and the close button on the warning toast while hovered: the role's hover tone, so the label stays readable on the solid fill. Pairs with `toast.warning.text`."
-      },
-      "toast-warning-control-background-active": {
-        "name": "toastWarningControlBackgroundActive",
-        "path": [
-          "toast",
-          "warning",
-          "control-background-active"
-        ],
-        "value": "oklch(0.623 0.125 78)",
-        "type": "color",
-        "variable": "var(--color-toast-warning-control-background-active)",
-        "description": "Fill of the action button and the close button on the warning toast while pressed: the role's pressed tone. Pairs with `toast.warning.text`."
-      },
-      "toast-warning-close-icon": {
-        "name": "toastWarningCloseIcon",
-        "path": [
-          "toast",
-          "warning",
-          "close-icon"
-        ],
-        "value": "oklch(0.149 0.012 259.75)",
-        "type": "color",
-        "variable": "var(--color-toast-warning-close-icon)",
-        "description": "Color of the close icon on the warning toast. The same tone as the toast text, so the icon holds contrast on the solid fill. Pairs with `toast.warning.background`."
-      },
       "toast-close-button-padding": {
         "name": "toastCloseButtonPadding",
         "path": [
@@ -11161,18 +11221,6 @@
         "type": "dimension",
         "variable": "var(--toast-close-button-radius)",
         "description": "Corner radius of the toast close button."
-      },
-      "toast-action-radius": {
-        "name": "toastActionRadius",
-        "path": [
-          "toast",
-          "action",
-          "radius"
-        ],
-        "value": "0.25rem",
-        "type": "dimension",
-        "variable": "var(--toast-action-radius)",
-        "description": "Corner radius of the toast action."
       },
       "toast-viewport-padding": {
         "name": "toastViewportPadding",
@@ -11197,6 +11245,18 @@
         "type": "spacing",
         "variable": "var(--toast-viewport-gap)",
         "description": "Gap between the items inside the toast viewport."
+      },
+      "toast-viewport-z-index": {
+        "name": "toastViewportZIndex",
+        "path": [
+          "toast",
+          "viewport",
+          "z-index"
+        ],
+        "value": 80,
+        "type": "number",
+        "variable": "var(--toast-viewport-z-index)",
+        "description": "Stacking order of the toast viewport."
       },
       "toast-close-button-opacity": {
         "name": "toastCloseButtonOpacity",
@@ -11234,17 +11294,17 @@
         "variable": "var(--toast-close-button-position)",
         "description": "Offset from the corner of the toast close button."
       },
-      "toast-description-opacity": {
-        "name": "toastDescriptionOpacity",
+      "toast-close-button-icon-size": {
+        "name": "toastCloseButtonIconSize",
         "path": [
           "toast",
-          "description",
-          "opacity"
+          "close-button",
+          "icon-size"
         ],
-        "value": 1,
-        "type": "number",
-        "variable": "var(--toast-description-opacity)",
-        "description": "Opacity of the toast description."
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--toast-close-button-icon-size)",
+        "description": "Size of the close icon in a toast. Small (16px): it sits in the 24px close button with its padding, so a larger icon overflowed and was squeezed off-center."
       },
       "toast-close-size": {
         "name": "toastCloseSize",
@@ -11312,18 +11372,6 @@
         "variable": "var(--toast-action-opacity-disabled)",
         "description": "Opacity of a disabled toast action."
       },
-      "toast-close-button-icon-size": {
-        "name": "toastCloseButtonIconSize",
-        "path": [
-          "toast",
-          "close-button",
-          "icon-size"
-        ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--toast-close-button-icon-size)",
-        "description": "Size of the close icon in a toast. Small (16px): it sits in the 24px close button with its padding, so a larger icon overflowed and was squeezed off-center."
-      },
       "toast-shadow": {
         "name": "toastShadow",
         "path": [
@@ -11334,18 +11382,6 @@
         "type": "shadow",
         "variable": "var(--toast-shadow)",
         "description": "Elevation shadow of the toast."
-      },
-      "toast-viewport-z-index": {
-        "name": "toastViewportZIndex",
-        "path": [
-          "toast",
-          "viewport",
-          "z-index"
-        ],
-        "value": 80,
-        "type": "number",
-        "variable": "var(--toast-viewport-z-index)",
-        "description": "Stacking order of the toast viewport."
       },
       "toast-border-width": {
         "name": "toastBorderWidth",
@@ -11368,42 +11404,6 @@
         "type": "dimension",
         "variable": "var(--toast-max-width)",
         "description": "Maximum width of the toast viewport from the medium breakpoint up."
-      },
-      "toast-action-line-height": {
-        "name": "toastActionLineHeight",
-        "path": [
-          "toast",
-          "action",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--toast-action-line-height)",
-        "description": "Line height of the toast action text."
-      },
-      "toast-description-line-height": {
-        "name": "toastDescriptionLineHeight",
-        "path": [
-          "toast",
-          "description",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--toast-description-line-height)",
-        "description": "Line height of the toast description text."
-      },
-      "toast-title-line-height": {
-        "name": "toastTitleLineHeight",
-        "path": [
-          "toast",
-          "title",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--toast-title-line-height)",
-        "description": "Line height of the toast title text."
       },
       "toast-duration": {
         "name": "toastDuration",
@@ -11497,17 +11497,18 @@
         "variable": "var(--toggle-size-default-padding-y)",
         "description": "Vertical padding of the default (medium)-size toggle, the same as the medium button."
       },
-      "toggle-font-size-md": {
-        "name": "toggleFontSizeMd",
+      "toggle-size-default-padding-x": {
+        "name": "toggleSizeDefaultPaddingX",
         "path": [
           "toggle",
-          "font-size",
-          "md"
+          "size",
+          "default",
+          "padding-x"
         ],
-        "value": "1rem",
-        "type": "number",
-        "variable": "var(--toggle-font-size-md)",
-        "description": "Font size of the default (medium)-size toggle, the same as the medium button."
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--toggle-size-default-padding-x)",
+        "description": "Horizontal padding of the default-size toggle."
       },
       "toggle-size-sm-padding-y": {
         "name": "toggleSizeSmPaddingY",
@@ -11522,17 +11523,18 @@
         "variable": "var(--toggle-size-sm-padding-y)",
         "description": "Vertical padding of the small-size toggle, the same as the small button."
       },
-      "toggle-font-size-sm": {
-        "name": "toggleFontSizeSm",
+      "toggle-size-sm-padding-x": {
+        "name": "toggleSizeSmPaddingX",
         "path": [
           "toggle",
-          "font-size",
-          "sm"
+          "size",
+          "sm",
+          "padding-x"
         ],
-        "value": "0.875rem",
-        "type": "number",
-        "variable": "var(--toggle-font-size-sm)",
-        "description": "Font size of the small-size toggle, the same as the small button."
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--toggle-size-sm-padding-x)",
+        "description": "Horizontal padding of the small toggle size."
       },
       "toggle-size-lg-padding-y": {
         "name": "toggleSizeLgPaddingY",
@@ -11547,44 +11549,6 @@
         "variable": "var(--toggle-size-lg-padding-y)",
         "description": "Vertical padding of the large-size toggle, the same as the large button."
       },
-      "toggle-font-size-lg": {
-        "name": "toggleFontSizeLg",
-        "path": [
-          "toggle",
-          "font-size",
-          "lg"
-        ],
-        "value": "1.125rem",
-        "type": "number",
-        "variable": "var(--toggle-font-size-lg)",
-        "description": "Font size of the large-size toggle, the same as the large button."
-      },
-      "toggle-size-default-padding-x": {
-        "name": "toggleSizeDefaultPaddingX",
-        "path": [
-          "toggle",
-          "size",
-          "default",
-          "padding-x"
-        ],
-        "value": "0.75rem",
-        "type": "spacing",
-        "variable": "var(--toggle-size-default-padding-x)",
-        "description": "Horizontal padding of the default-size toggle."
-      },
-      "toggle-size-sm-padding-x": {
-        "name": "toggleSizeSmPaddingX",
-        "path": [
-          "toggle",
-          "size",
-          "sm",
-          "padding-x"
-        ],
-        "value": "0.5rem",
-        "type": "spacing",
-        "variable": "var(--toggle-size-sm-padding-x)",
-        "description": "Horizontal padding of the small toggle size."
-      },
       "toggle-size-lg-padding-x": {
         "name": "toggleSizeLgPaddingX",
         "path": [
@@ -11597,6 +11561,42 @@
         "type": "spacing",
         "variable": "var(--toggle-size-lg-padding-x)",
         "description": "Horizontal padding of the large toggle size."
+      },
+      "toggle-font-size-md": {
+        "name": "toggleFontSizeMd",
+        "path": [
+          "toggle",
+          "font-size",
+          "md"
+        ],
+        "value": "1rem",
+        "type": "number",
+        "variable": "var(--toggle-font-size-md)",
+        "description": "Font size of the default (medium)-size toggle, the same as the medium button."
+      },
+      "toggle-font-size-sm": {
+        "name": "toggleFontSizeSm",
+        "path": [
+          "toggle",
+          "font-size",
+          "sm"
+        ],
+        "value": "0.875rem",
+        "type": "number",
+        "variable": "var(--toggle-font-size-sm)",
+        "description": "Font size of the small-size toggle, the same as the small button."
+      },
+      "toggle-font-size-lg": {
+        "name": "toggleFontSizeLg",
+        "path": [
+          "toggle",
+          "font-size",
+          "lg"
+        ],
+        "value": "1.125rem",
+        "type": "number",
+        "variable": "var(--toggle-font-size-lg)",
+        "description": "Font size of the large-size toggle, the same as the large button."
       },
       "toggle-radius": {
         "name": "toggleRadius",
@@ -11999,6 +11999,57 @@
         "variable": "var(--select-trigger-font-size-lg)",
         "description": "Font size of the large select trigger, the same as the large input."
       },
+      "select-trigger-icon-size-sm": {
+        "name": "selectTriggerIconSizeSm",
+        "path": [
+          "select",
+          "trigger",
+          "icon-size",
+          "sm"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--select-trigger-icon-size-sm)",
+        "description": "Size of the chevron in the small select trigger (12px, not on the icon scale, like the other 12px indicators). Each trigger chevron stays under its line height so it never sets the trigger height."
+      },
+      "select-trigger-icon-size-md": {
+        "name": "selectTriggerIconSizeMd",
+        "path": [
+          "select",
+          "trigger",
+          "icon-size",
+          "md"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--select-trigger-icon-size-md)",
+        "description": "Size of the chevron in the medium select trigger, the same as the accordion chevron."
+      },
+      "select-trigger-icon-size-lg": {
+        "name": "selectTriggerIconSizeLg",
+        "path": [
+          "select",
+          "trigger",
+          "icon-size",
+          "lg"
+        ],
+        "value": "1.5rem",
+        "type": "spacing",
+        "variable": "var(--select-trigger-icon-size-lg)",
+        "description": "Size of the chevron in the large select trigger."
+      },
+      "select-trigger-line-height": {
+        "name": "selectTriggerLineHeight",
+        "path": [
+          "select",
+          "trigger",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--select-trigger-line-height)",
+        "description": "Line height of the select trigger text."
+      },
       "select-content-radius": {
         "name": "selectContentRadius",
         "path": [
@@ -12047,88 +12098,6 @@
         "variable": "var(--select-content-min-width)",
         "description": "Minimum width of the select content."
       },
-      "select-item-padding-y": {
-        "name": "selectItemPaddingY",
-        "path": [
-          "select",
-          "item",
-          "padding-y"
-        ],
-        "value": "0.5rem",
-        "type": "spacing",
-        "variable": "var(--select-item-padding-y)",
-        "description": "Vertical padding of the select item."
-      },
-      "select-item-padding-left": {
-        "name": "selectItemPaddingLeft",
-        "path": [
-          "select",
-          "item",
-          "padding-left"
-        ],
-        "value": "2rem",
-        "type": "spacing",
-        "variable": "var(--select-item-padding-left)",
-        "description": "Left padding of the select item."
-      },
-      "select-item-padding-right": {
-        "name": "selectItemPaddingRight",
-        "path": [
-          "select",
-          "item",
-          "padding-right"
-        ],
-        "value": "0.5rem",
-        "type": "spacing",
-        "variable": "var(--select-item-padding-right)",
-        "description": "Right padding of the select item."
-      },
-      "select-item-radius": {
-        "name": "selectItemRadius",
-        "path": [
-          "select",
-          "item",
-          "radius"
-        ],
-        "value": "0.125rem",
-        "type": "dimension",
-        "variable": "var(--select-item-radius)",
-        "description": "Corner radius of the select item."
-      },
-      "select-separator-height": {
-        "name": "selectSeparatorHeight",
-        "path": [
-          "select",
-          "separator",
-          "height"
-        ],
-        "value": "1px",
-        "type": "spacing",
-        "variable": "var(--select-separator-height)",
-        "description": "Height of the select separator."
-      },
-      "select-separator-margin-x": {
-        "name": "selectSeparatorMarginX",
-        "path": [
-          "select",
-          "separator-margin-x"
-        ],
-        "value": "0.25rem",
-        "type": "spacing",
-        "variable": "var(--select-separator-margin-x)",
-        "description": "Horizontal margin of the select separator."
-      },
-      "select-separator-margin-y": {
-        "name": "selectSeparatorMarginY",
-        "path": [
-          "select",
-          "separator-margin-y"
-        ],
-        "value": "0.25rem",
-        "type": "spacing",
-        "variable": "var(--select-separator-margin-y)",
-        "description": "Vertical margin of the select separator."
-      },
       "select-content-z-index": {
         "name": "selectContentZIndex",
         "path": [
@@ -12140,18 +12109,6 @@
         "type": "number",
         "variable": "var(--select-content-z-index)",
         "description": "Stacking order of the select content."
-      },
-      "select-item-indicator-left": {
-        "name": "selectItemIndicatorLeft",
-        "path": [
-          "select",
-          "item",
-          "indicator-left"
-        ],
-        "value": "0.5rem",
-        "type": "spacing",
-        "variable": "var(--select-item-indicator-left)",
-        "description": "Left offset of the select item check indicator."
       },
       "select-content-background": {
         "name": "selectContentBackground",
@@ -12177,116 +12134,6 @@
         "variable": "var(--color-select-content-text)",
         "description": "Text color of the select content. Pairs with `select.content.background`."
       },
-      "select-separator-background": {
-        "name": "selectSeparatorBackground",
-        "path": [
-          "select",
-          "separator",
-          "background"
-        ],
-        "value": "oklch(0.74 0.019 69.96)",
-        "type": "color",
-        "variable": "var(--color-select-separator-background)",
-        "description": "Fill of the select separator."
-      },
-      "select-opacity-disabled": {
-        "name": "selectOpacityDisabled",
-        "path": [
-          "select",
-          "opacity-disabled"
-        ],
-        "value": 0.6,
-        "type": "number",
-        "variable": "var(--select-opacity-disabled)",
-        "description": "Opacity of a disabled select trigger or item."
-      },
-      "select-item-background-highlighted": {
-        "name": "selectItemBackgroundHighlighted",
-        "path": [
-          "select",
-          "item",
-          "background-highlighted"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-select-item-background-highlighted)",
-        "description": "Fill of the select item while highlighted. Pairs with `select.item.text-highlighted`."
-      },
-      "select-item-text-highlighted": {
-        "name": "selectItemTextHighlighted",
-        "path": [
-          "select",
-          "item",
-          "text-highlighted"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-select-item-text-highlighted)",
-        "description": "Text color of the select item while highlighted. Pairs with `select.item.background-highlighted`."
-      },
-      "select-trigger-icon-size-sm": {
-        "name": "selectTriggerIconSizeSm",
-        "path": [
-          "select",
-          "trigger",
-          "icon-size",
-          "sm"
-        ],
-        "value": "0.75rem",
-        "type": "spacing",
-        "variable": "var(--select-trigger-icon-size-sm)",
-        "description": "Size of the chevron in the small select trigger (12px, not on the icon scale, like the other 12px indicators). Each trigger chevron stays under its line height so it never sets the trigger height."
-      },
-      "select-trigger-icon-size-md": {
-        "name": "selectTriggerIconSizeMd",
-        "path": [
-          "select",
-          "trigger",
-          "icon-size",
-          "md"
-        ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--select-trigger-icon-size-md)",
-        "description": "Size of the chevron in the medium select trigger, the same as the accordion chevron."
-      },
-      "select-trigger-icon-size-lg": {
-        "name": "selectTriggerIconSizeLg",
-        "path": [
-          "select",
-          "trigger",
-          "icon-size",
-          "lg"
-        ],
-        "value": "1.5rem",
-        "type": "spacing",
-        "variable": "var(--select-trigger-icon-size-lg)",
-        "description": "Size of the chevron in the large select trigger."
-      },
-      "select-item-icon-size": {
-        "name": "selectItemIconSize",
-        "path": [
-          "select",
-          "item",
-          "icon-size"
-        ],
-        "value": "1.5rem",
-        "type": "spacing",
-        "variable": "var(--select-item-icon-size)",
-        "description": "Size of the check icon in a selected select item."
-      },
-      "select-item-indicator-size": {
-        "name": "selectItemIndicatorSize",
-        "path": [
-          "select",
-          "item",
-          "indicator-size"
-        ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--select-item-indicator-size)",
-        "description": "Size of the box that holds the check icon in a select item."
-      },
       "select-content-shadow": {
         "name": "selectContentShadow",
         "path": [
@@ -12298,29 +12145,6 @@
         "type": "shadow",
         "variable": "var(--select-content-shadow)",
         "description": "Elevation shadow of the select dropdown."
-      },
-      "select-border-width": {
-        "name": "selectBorderWidth",
-        "path": [
-          "select",
-          "border-width"
-        ],
-        "value": "1px",
-        "type": "dimension",
-        "variable": "var(--select-border-width)",
-        "description": "Border width of the select."
-      },
-      "select-trigger-line-height": {
-        "name": "selectTriggerLineHeight",
-        "path": [
-          "select",
-          "trigger",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--select-trigger-line-height)",
-        "description": "Line height of the select trigger text."
       },
       "select-content-side-offset": {
         "name": "selectContentSideOffset",
@@ -12381,6 +12205,182 @@
         "type": "number",
         "variable": "var(--select-content-scale)",
         "description": "Scale the select list grows from while entering and shrinks to while leaving."
+      },
+      "select-item-padding-y": {
+        "name": "selectItemPaddingY",
+        "path": [
+          "select",
+          "item",
+          "padding-y"
+        ],
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--select-item-padding-y)",
+        "description": "Vertical padding of the select item."
+      },
+      "select-item-padding-left": {
+        "name": "selectItemPaddingLeft",
+        "path": [
+          "select",
+          "item",
+          "padding-left"
+        ],
+        "value": "2rem",
+        "type": "spacing",
+        "variable": "var(--select-item-padding-left)",
+        "description": "Left padding of the select item."
+      },
+      "select-item-padding-right": {
+        "name": "selectItemPaddingRight",
+        "path": [
+          "select",
+          "item",
+          "padding-right"
+        ],
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--select-item-padding-right)",
+        "description": "Right padding of the select item."
+      },
+      "select-item-radius": {
+        "name": "selectItemRadius",
+        "path": [
+          "select",
+          "item",
+          "radius"
+        ],
+        "value": "0.125rem",
+        "type": "dimension",
+        "variable": "var(--select-item-radius)",
+        "description": "Corner radius of the select item."
+      },
+      "select-item-indicator-left": {
+        "name": "selectItemIndicatorLeft",
+        "path": [
+          "select",
+          "item",
+          "indicator-left"
+        ],
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--select-item-indicator-left)",
+        "description": "Left offset of the select item check indicator."
+      },
+      "select-item-background-highlighted": {
+        "name": "selectItemBackgroundHighlighted",
+        "path": [
+          "select",
+          "item",
+          "background-highlighted"
+        ],
+        "value": "oklch(0.927 0.012 75.07)",
+        "type": "color",
+        "variable": "var(--color-select-item-background-highlighted)",
+        "description": "Fill of the select item while highlighted. Pairs with `select.item.text-highlighted`."
+      },
+      "select-item-text-highlighted": {
+        "name": "selectItemTextHighlighted",
+        "path": [
+          "select",
+          "item",
+          "text-highlighted"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-select-item-text-highlighted)",
+        "description": "Text color of the select item while highlighted. Pairs with `select.item.background-highlighted`."
+      },
+      "select-item-icon-size": {
+        "name": "selectItemIconSize",
+        "path": [
+          "select",
+          "item",
+          "icon-size"
+        ],
+        "value": "1.5rem",
+        "type": "spacing",
+        "variable": "var(--select-item-icon-size)",
+        "description": "Size of the check icon in a selected select item."
+      },
+      "select-item-indicator-size": {
+        "name": "selectItemIndicatorSize",
+        "path": [
+          "select",
+          "item",
+          "indicator-size"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--select-item-indicator-size)",
+        "description": "Size of the box that holds the check icon in a select item."
+      },
+      "select-separator-height": {
+        "name": "selectSeparatorHeight",
+        "path": [
+          "select",
+          "separator",
+          "height"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--select-separator-height)",
+        "description": "Height of the select separator."
+      },
+      "select-separator-background": {
+        "name": "selectSeparatorBackground",
+        "path": [
+          "select",
+          "separator",
+          "background"
+        ],
+        "value": "oklch(0.74 0.019 69.96)",
+        "type": "color",
+        "variable": "var(--color-select-separator-background)",
+        "description": "Fill of the select separator."
+      },
+      "select-separator-margin-x": {
+        "name": "selectSeparatorMarginX",
+        "path": [
+          "select",
+          "separator-margin-x"
+        ],
+        "value": "0.25rem",
+        "type": "spacing",
+        "variable": "var(--select-separator-margin-x)",
+        "description": "Horizontal margin of the select separator."
+      },
+      "select-separator-margin-y": {
+        "name": "selectSeparatorMarginY",
+        "path": [
+          "select",
+          "separator-margin-y"
+        ],
+        "value": "0.25rem",
+        "type": "spacing",
+        "variable": "var(--select-separator-margin-y)",
+        "description": "Vertical margin of the select separator."
+      },
+      "select-opacity-disabled": {
+        "name": "selectOpacityDisabled",
+        "path": [
+          "select",
+          "opacity-disabled"
+        ],
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--select-opacity-disabled)",
+        "description": "Opacity of a disabled select trigger or item."
+      },
+      "select-border-width": {
+        "name": "selectBorderWidth",
+        "path": [
+          "select",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--select-border-width)",
+        "description": "Border width of the select."
       }
     },
     "checkbox": {
@@ -12444,6 +12444,18 @@
         "variable": "var(--checkbox-border-radius)",
         "description": "Corner radius of the checkbox."
       },
+      "checkbox-border-color": {
+        "name": "checkboxBorderColor",
+        "path": [
+          "checkbox",
+          "border",
+          "color"
+        ],
+        "value": "oklch(0.602 0.03 68.92)",
+        "type": "color",
+        "variable": "var(--color-checkbox-border-color)",
+        "description": "Border of an unchecked checkbox in its normal state."
+      },
       "checkbox-icon-size-sm": {
         "name": "checkboxIconSizeSm",
         "path": [
@@ -12482,18 +12494,6 @@
         "type": "spacing",
         "variable": "var(--checkbox-icon-size-lg)",
         "description": "Size of the large checkbox icon."
-      },
-      "checkbox-border-color": {
-        "name": "checkboxBorderColor",
-        "path": [
-          "checkbox",
-          "border",
-          "color"
-        ],
-        "value": "oklch(0.602 0.03 68.92)",
-        "type": "color",
-        "variable": "var(--color-checkbox-border-color)",
-        "description": "Border of an unchecked checkbox in its normal state."
       },
       "checkbox-focus-ring-width": {
         "name": "checkboxFocusRingWidth",
@@ -12702,6 +12702,54 @@
         "variable": "var(--switch-track-radius)",
         "description": "Corner radius of the switch track."
       },
+      "switch-track-border-width": {
+        "name": "switchTrackBorderWidth",
+        "path": [
+          "switch",
+          "track",
+          "border-width"
+        ],
+        "value": "0px",
+        "type": "dimension",
+        "variable": "var(--switch-track-border-width)",
+        "description": "Border width of the switch track. Zero: the thumb is as tall as the track and slides the full width, so a border would push it past the edge."
+      },
+      "switch-track-background-checked": {
+        "name": "switchTrackBackgroundChecked",
+        "path": [
+          "switch",
+          "track",
+          "background-checked"
+        ],
+        "value": "oklch(0.496 0.049 219.11)",
+        "type": "color",
+        "variable": "var(--color-switch-track-background-checked)",
+        "description": "Track fill when the switch is on."
+      },
+      "switch-track-background-unchecked": {
+        "name": "switchTrackBackgroundUnchecked",
+        "path": [
+          "switch",
+          "track",
+          "background-unchecked"
+        ],
+        "value": "oklch(0.602 0.03 68.92)",
+        "type": "color",
+        "variable": "var(--color-switch-track-background-unchecked)",
+        "description": "Track fill when the switch is off, in the emphasis border tone."
+      },
+      "switch-track-opacity-disabled": {
+        "name": "switchTrackOpacityDisabled",
+        "path": [
+          "switch",
+          "track",
+          "opacity-disabled"
+        ],
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--switch-track-opacity-disabled)",
+        "description": "Opacity of a disabled switch."
+      },
       "switch-thumb-size-sm": {
         "name": "switchThumbSizeSm",
         "path": [
@@ -12804,17 +12852,17 @@
         "variable": "var(--color-switch-thumb-background)",
         "description": "Fill of the sliding thumb."
       },
-      "switch-track-border-width": {
-        "name": "switchTrackBorderWidth",
+      "switch-thumb-shadow": {
+        "name": "switchThumbShadow",
         "path": [
           "switch",
-          "track",
-          "border-width"
+          "thumb",
+          "shadow"
         ],
-        "value": "0px",
-        "type": "dimension",
-        "variable": "var(--switch-track-border-width)",
-        "description": "Border width of the switch track. Zero: the thumb is as tall as the track and slides the full width, so a border would push it past the edge."
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--switch-thumb-shadow)",
+        "description": "Elevation shadow of the switch thumb."
       },
       "switch-focus-ring-width": {
         "name": "switchFocusRingWidth",
@@ -12839,54 +12887,6 @@
         "type": "spacing",
         "variable": "var(--switch-focus-ring-offset)",
         "description": "Gap between the switch and its focus ring."
-      },
-      "switch-track-background-checked": {
-        "name": "switchTrackBackgroundChecked",
-        "path": [
-          "switch",
-          "track",
-          "background-checked"
-        ],
-        "value": "oklch(0.496 0.049 219.11)",
-        "type": "color",
-        "variable": "var(--color-switch-track-background-checked)",
-        "description": "Track fill when the switch is on."
-      },
-      "switch-track-background-unchecked": {
-        "name": "switchTrackBackgroundUnchecked",
-        "path": [
-          "switch",
-          "track",
-          "background-unchecked"
-        ],
-        "value": "oklch(0.602 0.03 68.92)",
-        "type": "color",
-        "variable": "var(--color-switch-track-background-unchecked)",
-        "description": "Track fill when the switch is off, in the emphasis border tone."
-      },
-      "switch-track-opacity-disabled": {
-        "name": "switchTrackOpacityDisabled",
-        "path": [
-          "switch",
-          "track",
-          "opacity-disabled"
-        ],
-        "value": 0.6,
-        "type": "number",
-        "variable": "var(--switch-track-opacity-disabled)",
-        "description": "Opacity of a disabled switch."
-      },
-      "switch-thumb-shadow": {
-        "name": "switchThumbShadow",
-        "path": [
-          "switch",
-          "thumb",
-          "shadow"
-        ],
-        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-        "type": "shadow",
-        "variable": "var(--switch-thumb-shadow)",
-        "description": "Elevation shadow of the switch thumb."
       }
     },
     "textarea": {
@@ -13209,6 +13209,90 @@
         "variable": "var(--sheet-content-padding)",
         "description": "Padding inside the sheet content."
       },
+      "sheet-content-background": {
+        "name": "sheetContentBackground",
+        "path": [
+          "sheet",
+          "content",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.36)",
+        "type": "color",
+        "variable": "var(--color-sheet-content-background)",
+        "description": "Fill of the sheet panel. Also the color of the gap between the close button and its focus ring."
+      },
+      "sheet-content-border": {
+        "name": "sheetContentBorder",
+        "path": [
+          "sheet",
+          "content",
+          "border"
+        ],
+        "value": "oklch(0.74 0.019 69.96)",
+        "type": "color",
+        "variable": "var(--color-sheet-content-border)",
+        "description": "Border color of the sheet's edge."
+      },
+      "sheet-content-shadow": {
+        "name": "sheetContentShadow",
+        "path": [
+          "sheet",
+          "content",
+          "shadow"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--sheet-content-shadow)",
+        "description": "Elevation shadow of the sheet."
+      },
+      "sheet-content-z-index": {
+        "name": "sheetContentZIndex",
+        "path": [
+          "sheet",
+          "content",
+          "z-index"
+        ],
+        "value": 50,
+        "type": "number",
+        "variable": "var(--sheet-content-z-index)",
+        "description": "Stacking order of the sheet content."
+      },
+      "sheet-content-duration-open": {
+        "name": "sheetContentDurationOpen",
+        "path": [
+          "sheet",
+          "content",
+          "duration-open"
+        ],
+        "value": "400ms",
+        "type": "duration",
+        "variable": "var(--sheet-content-duration-open)",
+        "description": "Transition duration when the sheet opens."
+      },
+      "sheet-content-duration-closed": {
+        "name": "sheetContentDurationClosed",
+        "path": [
+          "sheet",
+          "content",
+          "duration-closed"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--sheet-content-duration-closed)",
+        "description": "Transition duration when the sheet closes."
+      },
+      "sheet-content-easing": {
+        "name": "sheetContentEasing",
+        "path": [
+          "sheet",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--sheet-content-easing)",
+        "description": "Easing curve of the sheet sliding in and out, and of its backdrop."
+      },
       "sheet-header-gap": {
         "name": "sheetHeaderGap",
         "path": [
@@ -13257,6 +13341,30 @@
         "variable": "var(--sheet-title-font-weight)",
         "description": "Font weight of the sheet title."
       },
+      "sheet-title-text": {
+        "name": "sheetTitleText",
+        "path": [
+          "sheet",
+          "title",
+          "text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-sheet-title-text)",
+        "description": "Text color of the sheet title."
+      },
+      "sheet-title-line-height": {
+        "name": "sheetTitleLineHeight",
+        "path": [
+          "sheet",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--sheet-title-line-height)",
+        "description": "Line height of the sheet title text."
+      },
       "sheet-description-font-size": {
         "name": "sheetDescriptionFontSize",
         "path": [
@@ -13268,6 +13376,30 @@
         "type": "number",
         "variable": "var(--sheet-description-font-size)",
         "description": "Font size of the sheet description."
+      },
+      "sheet-description-text": {
+        "name": "sheetDescriptionText",
+        "path": [
+          "sheet",
+          "description",
+          "text"
+        ],
+        "value": "oklch(0.33 0.024 47.79)",
+        "type": "color",
+        "variable": "var(--color-sheet-description-text)",
+        "description": "Text color of the sheet description."
+      },
+      "sheet-description-line-height": {
+        "name": "sheetDescriptionLineHeight",
+        "path": [
+          "sheet",
+          "description",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--sheet-description-line-height)",
+        "description": "Line height of the sheet description text."
       },
       "sheet-footer-padding-top": {
         "name": "sheetFooterPaddingTop",
@@ -13327,30 +13459,6 @@
         "variable": "var(--sheet-close-button-opacity-hover)",
         "description": "Opacity of the sheet close button while hovered."
       },
-      "sheet-content-background": {
-        "name": "sheetContentBackground",
-        "path": [
-          "sheet",
-          "content",
-          "background"
-        ],
-        "value": "oklch(0.991 0.003 264.36)",
-        "type": "color",
-        "variable": "var(--color-sheet-content-background)",
-        "description": "Fill of the sheet panel. Also the color of the gap between the close button and its focus ring."
-      },
-      "sheet-content-border": {
-        "name": "sheetContentBorder",
-        "path": [
-          "sheet",
-          "content",
-          "border"
-        ],
-        "value": "oklch(0.74 0.019 69.96)",
-        "type": "color",
-        "variable": "var(--color-sheet-content-border)",
-        "description": "Border color of the sheet's edge."
-      },
       "sheet-close-button-opacity": {
         "name": "sheetCloseButtonOpacity",
         "path": [
@@ -13362,41 +13470,6 @@
         "type": "number",
         "variable": "var(--sheet-close-button-opacity)",
         "description": "Opacity of the sheet close button."
-      },
-      "sheet-title-text": {
-        "name": "sheetTitleText",
-        "path": [
-          "sheet",
-          "title",
-          "text"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-sheet-title-text)",
-        "description": "Text color of the sheet title."
-      },
-      "sheet-description-text": {
-        "name": "sheetDescriptionText",
-        "path": [
-          "sheet",
-          "description",
-          "text"
-        ],
-        "value": "oklch(0.33 0.024 47.79)",
-        "type": "color",
-        "variable": "var(--color-sheet-description-text)",
-        "description": "Text color of the sheet description."
-      },
-      "sheet-overlay-background": {
-        "name": "sheetOverlayBackground",
-        "path": [
-          "sheet",
-          "overlay-background"
-        ],
-        "value": "oklch(0.138 0.008 60.23)",
-        "type": "color",
-        "variable": "var(--color-sheet-overlay-background)",
-        "description": "Fill of the sheet overlay."
       },
       "sheet-close-button-icon-size": {
         "name": "sheetCloseButtonIconSize",
@@ -13422,29 +13495,16 @@
         "variable": "var(--color-sheet-close-button-text)",
         "description": "Colour of the sheet's close button (its X) at rest."
       },
-      "sheet-content-shadow": {
-        "name": "sheetContentShadow",
+      "sheet-overlay-background": {
+        "name": "sheetOverlayBackground",
         "path": [
           "sheet",
-          "content",
-          "shadow"
+          "overlay-background"
         ],
-        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-        "type": "shadow",
-        "variable": "var(--sheet-content-shadow)",
-        "description": "Elevation shadow of the sheet."
-      },
-      "sheet-content-z-index": {
-        "name": "sheetContentZIndex",
-        "path": [
-          "sheet",
-          "content",
-          "z-index"
-        ],
-        "value": 50,
-        "type": "number",
-        "variable": "var(--sheet-content-z-index)",
-        "description": "Stacking order of the sheet content."
+        "value": "oklch(0.138 0.008 60.23)",
+        "type": "color",
+        "variable": "var(--color-sheet-overlay-background)",
+        "description": "Fill of the sheet overlay."
       },
       "sheet-overlay-z-index": {
         "name": "sheetOverlayZIndex",
@@ -13468,30 +13528,6 @@
         "variable": "var(--sheet-overlay-opacity)",
         "description": "Opacity of the sheet overlay (scrim)."
       },
-      "sheet-content-duration-open": {
-        "name": "sheetContentDurationOpen",
-        "path": [
-          "sheet",
-          "content",
-          "duration-open"
-        ],
-        "value": "400ms",
-        "type": "duration",
-        "variable": "var(--sheet-content-duration-open)",
-        "description": "Transition duration when the sheet opens."
-      },
-      "sheet-content-duration-closed": {
-        "name": "sheetContentDurationClosed",
-        "path": [
-          "sheet",
-          "content",
-          "duration-closed"
-        ],
-        "value": "250ms",
-        "type": "duration",
-        "variable": "var(--sheet-content-duration-closed)",
-        "description": "Transition duration when the sheet closes."
-      },
       "sheet-border-width": {
         "name": "sheetBorderWidth",
         "path": [
@@ -13502,42 +13538,6 @@
         "type": "dimension",
         "variable": "var(--sheet-border-width)",
         "description": "Border width of the sheet."
-      },
-      "sheet-description-line-height": {
-        "name": "sheetDescriptionLineHeight",
-        "path": [
-          "sheet",
-          "description",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--sheet-description-line-height)",
-        "description": "Line height of the sheet description text."
-      },
-      "sheet-title-line-height": {
-        "name": "sheetTitleLineHeight",
-        "path": [
-          "sheet",
-          "title",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--sheet-title-line-height)",
-        "description": "Line height of the sheet title text."
-      },
-      "sheet-content-easing": {
-        "name": "sheetContentEasing",
-        "path": [
-          "sheet",
-          "content",
-          "easing"
-        ],
-        "value": "cubic-bezier(0, 0, 0.2, 1)",
-        "type": "cubicBezier",
-        "variable": "var(--sheet-content-easing)",
-        "description": "Easing curve of the sheet sliding in and out, and of its backdrop."
       }
     },
     "separator": {
@@ -13624,6 +13624,54 @@
         "variable": "var(--context-menu-content-padding)",
         "description": "Padding inside the context menu content."
       },
+      "context-menu-content-duration": {
+        "name": "contextMenuContentDuration",
+        "path": [
+          "context-menu",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--context-menu-content-duration)",
+        "description": "Enter and exit time of the context menu and its submenus."
+      },
+      "context-menu-content-easing": {
+        "name": "contextMenuContentEasing",
+        "path": [
+          "context-menu",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--context-menu-content-easing)",
+        "description": "Easing curve of the context menu and its submenus entering and leaving."
+      },
+      "context-menu-content-distance": {
+        "name": "contextMenuContentDistance",
+        "path": [
+          "context-menu",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--context-menu-content-distance)",
+        "description": "How far the context menu and its submenus slides toward its trigger while entering and leaving."
+      },
+      "context-menu-content-scale": {
+        "name": "contextMenuContentScale",
+        "path": [
+          "context-menu",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--context-menu-content-scale)",
+        "description": "Scale the context menu and its submenus grows from while entering and shrinks to while leaving."
+      },
       "context-menu-item-padding-y": {
         "name": "contextMenuItemPaddingY",
         "path": [
@@ -13672,6 +13720,43 @@
         "type": "spacing",
         "variable": "var(--context-menu-item-indicator-size)",
         "description": "Size of the context menu item indicator."
+      },
+      "context-menu-item-indicator-left": {
+        "name": "contextMenuItemIndicatorLeft",
+        "path": [
+          "context-menu",
+          "item",
+          "indicator",
+          "left"
+        ],
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-indicator-left)",
+        "description": "Left offset of the context menu item check indicator."
+      },
+      "context-menu-item-icon-size": {
+        "name": "contextMenuItemIconSize",
+        "path": [
+          "context-menu",
+          "item",
+          "icon-size"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-icon-size)",
+        "description": "Size of the context menu item icon."
+      },
+      "context-menu-item-sub-trigger-icon-size": {
+        "name": "contextMenuItemSubTriggerIconSize",
+        "path": [
+          "context-menu",
+          "item",
+          "sub-trigger-icon-size"
+        ],
+        "value": "1.5rem",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-sub-trigger-icon-size)",
+        "description": "Size of the chevron on a context menu sub-menu trigger."
       },
       "context-menu-checkbox-padding": {
         "name": "contextMenuCheckboxPadding",
@@ -13750,31 +13835,6 @@
         "variable": "var(--context-menu-shortcut-font-size)",
         "description": "Font size of the context menu shortcut."
       },
-      "context-menu-item-indicator-left": {
-        "name": "contextMenuItemIndicatorLeft",
-        "path": [
-          "context-menu",
-          "item",
-          "indicator",
-          "left"
-        ],
-        "value": "0.5rem",
-        "type": "spacing",
-        "variable": "var(--context-menu-item-indicator-left)",
-        "description": "Left offset of the context menu item check indicator."
-      },
-      "context-menu-item-icon-size": {
-        "name": "contextMenuItemIconSize",
-        "path": [
-          "context-menu",
-          "item",
-          "icon-size"
-        ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--context-menu-item-icon-size)",
-        "description": "Size of the context menu item icon."
-      },
       "context-menu-label-font-weight": {
         "name": "contextMenuLabelFontWeight",
         "path": [
@@ -13807,18 +13867,6 @@
         "type": "spacing",
         "variable": "var(--context-menu-sub-content-min-width)",
         "description": "Minimum width of the context menu sub content."
-      },
-      "context-menu-item-sub-trigger-icon-size": {
-        "name": "contextMenuItemSubTriggerIconSize",
-        "path": [
-          "context-menu",
-          "item",
-          "sub-trigger-icon-size"
-        ],
-        "value": "1.5rem",
-        "type": "spacing",
-        "variable": "var(--context-menu-item-sub-trigger-icon-size)",
-        "description": "Size of the chevron on a context menu sub-menu trigger."
       },
       "context-menu-content-shadow": {
         "name": "contextMenuContentShadow",
@@ -13885,54 +13933,6 @@
         "type": "number",
         "variable": "var(--context-menu-shortcut-line-height)",
         "description": "Line height of the context menu shortcut text."
-      },
-      "context-menu-content-duration": {
-        "name": "contextMenuContentDuration",
-        "path": [
-          "context-menu",
-          "content",
-          "duration"
-        ],
-        "value": "150ms",
-        "type": "duration",
-        "variable": "var(--context-menu-content-duration)",
-        "description": "Enter and exit time of the context menu and its submenus."
-      },
-      "context-menu-content-easing": {
-        "name": "contextMenuContentEasing",
-        "path": [
-          "context-menu",
-          "content",
-          "easing"
-        ],
-        "value": "cubic-bezier(0, 0, 0.2, 1)",
-        "type": "cubicBezier",
-        "variable": "var(--context-menu-content-easing)",
-        "description": "Easing curve of the context menu and its submenus entering and leaving."
-      },
-      "context-menu-content-distance": {
-        "name": "contextMenuContentDistance",
-        "path": [
-          "context-menu",
-          "content",
-          "distance"
-        ],
-        "value": "0.5rem",
-        "type": "dimension",
-        "variable": "var(--context-menu-content-distance)",
-        "description": "How far the context menu and its submenus slides toward its trigger while entering and leaving."
-      },
-      "context-menu-content-scale": {
-        "name": "contextMenuContentScale",
-        "path": [
-          "context-menu",
-          "content",
-          "scale"
-        ],
-        "value": 0.95,
-        "type": "number",
-        "variable": "var(--context-menu-content-scale)",
-        "description": "Scale the context menu and its submenus grows from while entering and shrinks to while leaving."
       }
     },
     "dropdown-menu": {
@@ -13959,6 +13959,90 @@
         "type": "spacing",
         "variable": "var(--dropdown-menu-content-padding)",
         "description": "Padding inside the dropdown menu content."
+      },
+      "dropdown-menu-content-background": {
+        "name": "dropdownMenuContentBackground",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.36)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-content-background)",
+        "description": "Fill of the dropdown menu content. Pairs with `dropdown-menu.content.text`."
+      },
+      "dropdown-menu-content-text": {
+        "name": "dropdownMenuContentText",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "text"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-content-text)",
+        "description": "Text color of the dropdown menu content. Pairs with `dropdown-menu.content.background`."
+      },
+      "dropdown-menu-content-border": {
+        "name": "dropdownMenuContentBorder",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "border"
+        ],
+        "value": "oklch(0.74 0.019 69.96)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-content-border)",
+        "description": "Border color of the dropdown menu content."
+      },
+      "dropdown-menu-content-duration": {
+        "name": "dropdownMenuContentDuration",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "duration"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--dropdown-menu-content-duration)",
+        "description": "Enter and exit time of the dropdown menu and its submenus."
+      },
+      "dropdown-menu-content-easing": {
+        "name": "dropdownMenuContentEasing",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "easing"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--dropdown-menu-content-easing)",
+        "description": "Easing curve of the dropdown menu and its submenus entering and leaving."
+      },
+      "dropdown-menu-content-distance": {
+        "name": "dropdownMenuContentDistance",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "distance"
+        ],
+        "value": "0.5rem",
+        "type": "dimension",
+        "variable": "var(--dropdown-menu-content-distance)",
+        "description": "How far the dropdown menu and its submenus slides toward its trigger while entering and leaving."
+      },
+      "dropdown-menu-content-scale": {
+        "name": "dropdownMenuContentScale",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "scale"
+        ],
+        "value": 0.95,
+        "type": "number",
+        "variable": "var(--dropdown-menu-content-scale)",
+        "description": "Scale the dropdown menu and its submenus grows from while entering and shrinks to while leaving."
       },
       "dropdown-menu-item-padding-y": {
         "name": "dropdownMenuItemPaddingY",
@@ -14008,6 +14092,104 @@
         "variable": "var(--dropdown-menu-item-font-size)",
         "description": "Font size of the dropdown menu item."
       },
+      "dropdown-menu-item-indicator-size": {
+        "name": "dropdownMenuItemIndicatorSize",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "indicator",
+          "size"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-indicator-size)",
+        "description": "Size of the dropdown menu item indicator."
+      },
+      "dropdown-menu-item-indicator-left": {
+        "name": "dropdownMenuItemIndicatorLeft",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "indicator",
+          "left"
+        ],
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-indicator-left)",
+        "description": "Left offset of the dropdown menu item check indicator."
+      },
+      "dropdown-menu-item-background-hover": {
+        "name": "dropdownMenuItemBackgroundHover",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "background-hover"
+        ],
+        "value": "oklch(0.927 0.012 75.07)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-item-background-hover)",
+        "description": "Fill of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.text-hover`."
+      },
+      "dropdown-menu-item-text-hover": {
+        "name": "dropdownMenuItemTextHover",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "text-hover"
+        ],
+        "value": "oklch(0.202 0.011 47.84)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-item-text-hover)",
+        "description": "Text color of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.background-hover`."
+      },
+      "dropdown-menu-item-icon-size": {
+        "name": "dropdownMenuItemIconSize",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "icon-size"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-icon-size)",
+        "description": "Size of the dropdown menu item icon."
+      },
+      "dropdown-menu-item-radio-indicator-radius": {
+        "name": "dropdownMenuItemRadioIndicatorRadius",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "radio-indicator-radius"
+        ],
+        "value": "9999px",
+        "type": "dimension",
+        "variable": "var(--dropdown-menu-item-radio-indicator-radius)",
+        "description": "Corner radius of the dropdown menu item radio indicator."
+      },
+      "dropdown-menu-item-radio-indicator-size": {
+        "name": "dropdownMenuItemRadioIndicatorSize",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "radio-indicator-size"
+        ],
+        "value": "0.75rem",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-radio-indicator-size)",
+        "description": "Size of the dot in a selected dropdown menu radio item."
+      },
+      "dropdown-menu-item-line-height": {
+        "name": "dropdownMenuItemLineHeight",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--dropdown-menu-item-line-height)",
+        "description": "Line height of the dropdown menu item text."
+      },
       "dropdown-menu-shortcut-font-size": {
         "name": "dropdownMenuShortcutFontSize",
         "path": [
@@ -14019,6 +14201,42 @@
         "type": "number",
         "variable": "var(--dropdown-menu-shortcut-font-size)",
         "description": "Font size of the dropdown menu shortcut."
+      },
+      "dropdown-menu-shortcut-opacity": {
+        "name": "dropdownMenuShortcutOpacity",
+        "path": [
+          "dropdown-menu",
+          "shortcut",
+          "opacity"
+        ],
+        "value": 0.7,
+        "type": "number",
+        "variable": "var(--dropdown-menu-shortcut-opacity)",
+        "description": "Opacity of the dropdown menu shortcut."
+      },
+      "dropdown-menu-shortcut-letter-spacing": {
+        "name": "dropdownMenuShortcutLetterSpacing",
+        "path": [
+          "dropdown-menu",
+          "shortcut",
+          "letter-spacing"
+        ],
+        "value": "0.1em",
+        "type": "dimension",
+        "variable": "var(--dropdown-menu-shortcut-letter-spacing)",
+        "description": "Letter spacing of the dropdown menu shortcut."
+      },
+      "dropdown-menu-shortcut-line-height": {
+        "name": "dropdownMenuShortcutLineHeight",
+        "path": [
+          "dropdown-menu",
+          "shortcut",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--dropdown-menu-shortcut-line-height)",
+        "description": "Line height of the dropdown menu shortcut text."
       },
       "dropdown-menu-separator-height": {
         "name": "dropdownMenuSeparatorHeight",
@@ -14056,18 +14274,17 @@
         "variable": "var(--dropdown-menu-separator-margin-x)",
         "description": "Horizontal margin of the dropdown menu separator."
       },
-      "dropdown-menu-item-indicator-size": {
-        "name": "dropdownMenuItemIndicatorSize",
+      "dropdown-menu-separator-background": {
+        "name": "dropdownMenuSeparatorBackground",
         "path": [
           "dropdown-menu",
-          "item",
-          "indicator",
-          "size"
+          "separator",
+          "background"
         ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--dropdown-menu-item-indicator-size)",
-        "description": "Size of the dropdown menu item indicator."
+        "value": "oklch(0.74 0.019 69.96)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-separator-background)",
+        "description": "Fill of the dropdown menu separator."
       },
       "dropdown-menu-content-radius": {
         "name": "dropdownMenuContentRadius",
@@ -14091,127 +14308,6 @@
         "variable": "var(--dropdown-menu-item-radius)",
         "description": "Corner radius of the dropdown menu item."
       },
-      "dropdown-menu-content-background": {
-        "name": "dropdownMenuContentBackground",
-        "path": [
-          "dropdown-menu",
-          "content",
-          "background"
-        ],
-        "value": "oklch(0.991 0.003 264.36)",
-        "type": "color",
-        "variable": "var(--color-dropdown-menu-content-background)",
-        "description": "Fill of the dropdown menu content. Pairs with `dropdown-menu.content.text`."
-      },
-      "dropdown-menu-content-text": {
-        "name": "dropdownMenuContentText",
-        "path": [
-          "dropdown-menu",
-          "content",
-          "text"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-dropdown-menu-content-text)",
-        "description": "Text color of the dropdown menu content. Pairs with `dropdown-menu.content.background`."
-      },
-      "dropdown-menu-content-border": {
-        "name": "dropdownMenuContentBorder",
-        "path": [
-          "dropdown-menu",
-          "content",
-          "border"
-        ],
-        "value": "oklch(0.74 0.019 69.96)",
-        "type": "color",
-        "variable": "var(--color-dropdown-menu-content-border)",
-        "description": "Border color of the dropdown menu content."
-      },
-      "dropdown-menu-item-background-hover": {
-        "name": "dropdownMenuItemBackgroundHover",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "background-hover"
-        ],
-        "value": "oklch(0.927 0.012 75.07)",
-        "type": "color",
-        "variable": "var(--color-dropdown-menu-item-background-hover)",
-        "description": "Fill of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.text-hover`."
-      },
-      "dropdown-menu-item-text-hover": {
-        "name": "dropdownMenuItemTextHover",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "text-hover"
-        ],
-        "value": "oklch(0.202 0.011 47.84)",
-        "type": "color",
-        "variable": "var(--color-dropdown-menu-item-text-hover)",
-        "description": "Text color of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.background-hover`."
-      },
-      "dropdown-menu-separator-background": {
-        "name": "dropdownMenuSeparatorBackground",
-        "path": [
-          "dropdown-menu",
-          "separator",
-          "background"
-        ],
-        "value": "oklch(0.74 0.019 69.96)",
-        "type": "color",
-        "variable": "var(--color-dropdown-menu-separator-background)",
-        "description": "Fill of the dropdown menu separator."
-      },
-      "dropdown-menu-shortcut-opacity": {
-        "name": "dropdownMenuShortcutOpacity",
-        "path": [
-          "dropdown-menu",
-          "shortcut",
-          "opacity"
-        ],
-        "value": 0.7,
-        "type": "number",
-        "variable": "var(--dropdown-menu-shortcut-opacity)",
-        "description": "Opacity of the dropdown menu shortcut."
-      },
-      "dropdown-menu-shortcut-letter-spacing": {
-        "name": "dropdownMenuShortcutLetterSpacing",
-        "path": [
-          "dropdown-menu",
-          "shortcut",
-          "letter-spacing"
-        ],
-        "value": "0.1em",
-        "type": "dimension",
-        "variable": "var(--dropdown-menu-shortcut-letter-spacing)",
-        "description": "Letter spacing of the dropdown menu shortcut."
-      },
-      "dropdown-menu-item-indicator-left": {
-        "name": "dropdownMenuItemIndicatorLeft",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "indicator",
-          "left"
-        ],
-        "value": "0.5rem",
-        "type": "spacing",
-        "variable": "var(--dropdown-menu-item-indicator-left)",
-        "description": "Left offset of the dropdown menu item check indicator."
-      },
-      "dropdown-menu-item-icon-size": {
-        "name": "dropdownMenuItemIconSize",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "icon-size"
-        ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--dropdown-menu-item-icon-size)",
-        "description": "Size of the dropdown menu item icon."
-      },
       "dropdown-menu-label-font-weight": {
         "name": "dropdownMenuLabelFontWeight",
         "path": [
@@ -14223,18 +14319,6 @@
         "variable": "var(--dropdown-menu-label-font-weight)",
         "description": "Font weight of the dropdown menu label."
       },
-      "dropdown-menu-item-radio-indicator-radius": {
-        "name": "dropdownMenuItemRadioIndicatorRadius",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "radio-indicator-radius"
-        ],
-        "value": "9999px",
-        "type": "dimension",
-        "variable": "var(--dropdown-menu-item-radio-indicator-radius)",
-        "description": "Corner radius of the dropdown menu item radio indicator."
-      },
       "dropdown-menu-item-opacity-disabled": {
         "name": "dropdownMenuItemOpacityDisabled",
         "path": [
@@ -14245,18 +14329,6 @@
         "type": "number",
         "variable": "var(--dropdown-menu-item-opacity-disabled)",
         "description": "Opacity of a disabled dropdown menu item."
-      },
-      "dropdown-menu-item-radio-indicator-size": {
-        "name": "dropdownMenuItemRadioIndicatorSize",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "radio-indicator-size"
-        ],
-        "value": "0.75rem",
-        "type": "spacing",
-        "variable": "var(--dropdown-menu-item-radio-indicator-size)",
-        "description": "Size of the dot in a selected dropdown menu radio item."
       },
       "dropdown-menu-content-shadow": {
         "name": "dropdownMenuContentShadow",
@@ -14301,78 +14373,6 @@
         "type": "dimension",
         "variable": "var(--dropdown-menu-side-offset)",
         "description": "Gap between the dropdown menu trigger and its content."
-      },
-      "dropdown-menu-item-line-height": {
-        "name": "dropdownMenuItemLineHeight",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--dropdown-menu-item-line-height)",
-        "description": "Line height of the dropdown menu item text."
-      },
-      "dropdown-menu-shortcut-line-height": {
-        "name": "dropdownMenuShortcutLineHeight",
-        "path": [
-          "dropdown-menu",
-          "shortcut",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--dropdown-menu-shortcut-line-height)",
-        "description": "Line height of the dropdown menu shortcut text."
-      },
-      "dropdown-menu-content-duration": {
-        "name": "dropdownMenuContentDuration",
-        "path": [
-          "dropdown-menu",
-          "content",
-          "duration"
-        ],
-        "value": "150ms",
-        "type": "duration",
-        "variable": "var(--dropdown-menu-content-duration)",
-        "description": "Enter and exit time of the dropdown menu and its submenus."
-      },
-      "dropdown-menu-content-easing": {
-        "name": "dropdownMenuContentEasing",
-        "path": [
-          "dropdown-menu",
-          "content",
-          "easing"
-        ],
-        "value": "cubic-bezier(0, 0, 0.2, 1)",
-        "type": "cubicBezier",
-        "variable": "var(--dropdown-menu-content-easing)",
-        "description": "Easing curve of the dropdown menu and its submenus entering and leaving."
-      },
-      "dropdown-menu-content-distance": {
-        "name": "dropdownMenuContentDistance",
-        "path": [
-          "dropdown-menu",
-          "content",
-          "distance"
-        ],
-        "value": "0.5rem",
-        "type": "dimension",
-        "variable": "var(--dropdown-menu-content-distance)",
-        "description": "How far the dropdown menu and its submenus slides toward its trigger while entering and leaving."
-      },
-      "dropdown-menu-content-scale": {
-        "name": "dropdownMenuContentScale",
-        "path": [
-          "dropdown-menu",
-          "content",
-          "scale"
-        ],
-        "value": 0.95,
-        "type": "number",
-        "variable": "var(--dropdown-menu-content-scale)",
-        "description": "Scale the dropdown menu and its submenus grows from while entering and shrinks to while leaving."
       }
     },
     "card-grid": {
@@ -14556,6 +14556,18 @@
         "variable": "var(--color-feature-grid-title-text)",
         "description": "Text color of the feature grid title."
       },
+      "feature-grid-title-line-height": {
+        "name": "featureGridTitleLineHeight",
+        "path": [
+          "feature-grid",
+          "title",
+          "line-height"
+        ],
+        "value": 125,
+        "type": "number",
+        "variable": "var(--feature-grid-title-line-height)",
+        "description": "Line height of the feature title."
+      },
       "feature-grid-item-border-color": {
         "name": "featureGridItemBorderColor",
         "path": [
@@ -14601,18 +14613,6 @@
         "type": "shadow",
         "variable": "var(--feature-grid-icon-shadow)",
         "description": "Elevation shadow of the feature icon container."
-      },
-      "feature-grid-title-line-height": {
-        "name": "featureGridTitleLineHeight",
-        "path": [
-          "feature-grid",
-          "title",
-          "line-height"
-        ],
-        "value": 125,
-        "type": "number",
-        "variable": "var(--feature-grid-title-line-height)",
-        "description": "Line height of the feature title."
       },
       "feature-grid-description-line-height": {
         "name": "featureGridDescriptionLineHeight",
@@ -14994,17 +14994,6 @@
         "variable": "var(--navigation-menu-trigger-font-weight)",
         "description": "Font weight of the navigation menu trigger."
       },
-      "navigation-menu-indicator-height": {
-        "name": "navigationMenuIndicatorHeight",
-        "path": [
-          "navigation-menu",
-          "indicator-height"
-        ],
-        "value": "0px",
-        "type": "dimension",
-        "variable": "var(--navigation-menu-indicator-height)",
-        "description": "Height of the navigation menu indicator."
-      },
       "navigation-menu-trigger-icon-size": {
         "name": "navigationMenuTriggerIconSize",
         "path": [
@@ -15016,6 +15005,29 @@
         "type": "spacing",
         "variable": "var(--navigation-menu-trigger-icon-size)",
         "description": "Size of the chevron in a navigation menu trigger."
+      },
+      "navigation-menu-trigger-icon-offset-top": {
+        "name": "navigationMenuTriggerIconOffsetTop",
+        "path": [
+          "navigation-menu",
+          "trigger",
+          "icon-offset-top"
+        ],
+        "value": "0.0625rem",
+        "type": "dimension",
+        "variable": "var(--navigation-menu-trigger-icon-offset-top)",
+        "description": "Downward nudge of the trigger chevron so it sits on the text baseline."
+      },
+      "navigation-menu-indicator-height": {
+        "name": "navigationMenuIndicatorHeight",
+        "path": [
+          "navigation-menu",
+          "indicator-height"
+        ],
+        "value": "0px",
+        "type": "dimension",
+        "variable": "var(--navigation-menu-indicator-height)",
+        "description": "Height of the navigation menu indicator."
       },
       "navigation-menu-arrow-size": {
         "name": "navigationMenuArrowSize",
@@ -15104,18 +15116,6 @@
         "type": "dimension",
         "variable": "var(--navigation-menu-border-width)",
         "description": "Border width of the navigation menu."
-      },
-      "navigation-menu-trigger-icon-offset-top": {
-        "name": "navigationMenuTriggerIconOffsetTop",
-        "path": [
-          "navigation-menu",
-          "trigger",
-          "icon-offset-top"
-        ],
-        "value": "0.0625rem",
-        "type": "dimension",
-        "variable": "var(--navigation-menu-trigger-icon-offset-top)",
-        "description": "Downward nudge of the trigger chevron so it sits on the text baseline."
       },
       "navigation-menu-link-padding-x": {
         "name": "navigationMenuLinkPaddingX",
@@ -15344,17 +15344,6 @@
         "variable": "var(--color-site-header-nav-link-text-hover)",
         "description": "Text color of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
       },
-      "site-header-nav-link-opacity-disabled": {
-        "name": "siteHeaderNavLinkOpacityDisabled",
-        "path": [
-          "site-header",
-          "nav-link-opacity-disabled"
-        ],
-        "value": 0.6,
-        "type": "number",
-        "variable": "var(--site-header-nav-link-opacity-disabled)",
-        "description": "Opacity of a disabled site header navigation link."
-      },
       "site-header-nav-link-background-highlighted": {
         "name": "siteHeaderNavLinkBackgroundHighlighted",
         "path": [
@@ -15378,6 +15367,101 @@
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-highlighted)",
         "description": "Text color of the site header nav link while highlighted. Pairs with `site-header.nav-link.background-highlighted`."
+      },
+      "site-header-nav-link-height": {
+        "name": "siteHeaderNavLinkHeight",
+        "path": [
+          "site-header",
+          "nav-link",
+          "height"
+        ],
+        "value": "2.25rem",
+        "type": "spacing",
+        "variable": "var(--site-header-nav-link-height)",
+        "description": "Height of a navigation link."
+      },
+      "site-header-nav-link-padding-x": {
+        "name": "siteHeaderNavLinkPaddingX",
+        "path": [
+          "site-header",
+          "nav-link",
+          "padding-x"
+        ],
+        "value": "1rem",
+        "type": "spacing",
+        "variable": "var(--site-header-nav-link-padding-x)",
+        "description": "Horizontal padding of a navigation link."
+      },
+      "site-header-nav-link-padding-y": {
+        "name": "siteHeaderNavLinkPaddingY",
+        "path": [
+          "site-header",
+          "nav-link",
+          "padding-y"
+        ],
+        "value": "0.5rem",
+        "type": "spacing",
+        "variable": "var(--site-header-nav-link-padding-y)",
+        "description": "Vertical padding of a navigation link."
+      },
+      "site-header-nav-link-radius": {
+        "name": "siteHeaderNavLinkRadius",
+        "path": [
+          "site-header",
+          "nav-link",
+          "radius"
+        ],
+        "value": "0.25rem",
+        "type": "dimension",
+        "variable": "var(--site-header-nav-link-radius)",
+        "description": "Corner radius of a navigation link."
+      },
+      "site-header-nav-link-font-size": {
+        "name": "siteHeaderNavLinkFontSize",
+        "path": [
+          "site-header",
+          "nav-link",
+          "font-size"
+        ],
+        "value": "0.875rem",
+        "type": "number",
+        "variable": "var(--site-header-nav-link-font-size)",
+        "description": "Font size of a navigation link."
+      },
+      "site-header-nav-link-font-weight": {
+        "name": "siteHeaderNavLinkFontWeight",
+        "path": [
+          "site-header",
+          "nav-link",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--site-header-nav-link-font-weight)",
+        "description": "Font weight of a navigation link."
+      },
+      "site-header-nav-link-line-height": {
+        "name": "siteHeaderNavLinkLineHeight",
+        "path": [
+          "site-header",
+          "nav-link",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-header-nav-link-line-height)",
+        "description": "Line height of the site header nav link text."
+      },
+      "site-header-nav-link-opacity-disabled": {
+        "name": "siteHeaderNavLinkOpacityDisabled",
+        "path": [
+          "site-header",
+          "nav-link-opacity-disabled"
+        ],
+        "value": 0.6,
+        "type": "number",
+        "variable": "var(--site-header-nav-link-opacity-disabled)",
+        "description": "Opacity of a disabled site header navigation link."
       },
       "site-header-container-padding-x-sm": {
         "name": "siteHeaderContainerPaddingXSm",
@@ -15473,6 +15557,18 @@
         "variable": "var(--site-header-logo-font-weight)",
         "description": "Font weight of the fallback logo."
       },
+      "site-header-logo-line-height": {
+        "name": "siteHeaderLogoLineHeight",
+        "path": [
+          "site-header",
+          "logo",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-header-logo-line-height)",
+        "description": "Line height of the site header logo text."
+      },
       "site-header-actions-gap": {
         "name": "siteHeaderActionsGap",
         "path": [
@@ -15483,78 +15579,6 @@
         "type": "spacing",
         "variable": "var(--site-header-actions-gap)",
         "description": "Gap between the header actions."
-      },
-      "site-header-nav-link-height": {
-        "name": "siteHeaderNavLinkHeight",
-        "path": [
-          "site-header",
-          "nav-link",
-          "height"
-        ],
-        "value": "2.25rem",
-        "type": "spacing",
-        "variable": "var(--site-header-nav-link-height)",
-        "description": "Height of a navigation link."
-      },
-      "site-header-nav-link-padding-x": {
-        "name": "siteHeaderNavLinkPaddingX",
-        "path": [
-          "site-header",
-          "nav-link",
-          "padding-x"
-        ],
-        "value": "1rem",
-        "type": "spacing",
-        "variable": "var(--site-header-nav-link-padding-x)",
-        "description": "Horizontal padding of a navigation link."
-      },
-      "site-header-nav-link-padding-y": {
-        "name": "siteHeaderNavLinkPaddingY",
-        "path": [
-          "site-header",
-          "nav-link",
-          "padding-y"
-        ],
-        "value": "0.5rem",
-        "type": "spacing",
-        "variable": "var(--site-header-nav-link-padding-y)",
-        "description": "Vertical padding of a navigation link."
-      },
-      "site-header-nav-link-radius": {
-        "name": "siteHeaderNavLinkRadius",
-        "path": [
-          "site-header",
-          "nav-link",
-          "radius"
-        ],
-        "value": "0.25rem",
-        "type": "dimension",
-        "variable": "var(--site-header-nav-link-radius)",
-        "description": "Corner radius of a navigation link."
-      },
-      "site-header-nav-link-font-size": {
-        "name": "siteHeaderNavLinkFontSize",
-        "path": [
-          "site-header",
-          "nav-link",
-          "font-size"
-        ],
-        "value": "0.875rem",
-        "type": "number",
-        "variable": "var(--site-header-nav-link-font-size)",
-        "description": "Font size of a navigation link."
-      },
-      "site-header-nav-link-font-weight": {
-        "name": "siteHeaderNavLinkFontWeight",
-        "path": [
-          "site-header",
-          "nav-link",
-          "font-weight"
-        ],
-        "value": 500,
-        "type": "number",
-        "variable": "var(--site-header-nav-link-font-weight)",
-        "description": "Font weight of a navigation link."
       },
       "site-header-transition-duration": {
         "name": "siteHeaderTransitionDuration",
@@ -15588,30 +15612,6 @@
         "type": "dimension",
         "variable": "var(--site-header-border-width)",
         "description": "Border width of the site header."
-      },
-      "site-header-logo-line-height": {
-        "name": "siteHeaderLogoLineHeight",
-        "path": [
-          "site-header",
-          "logo",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--site-header-logo-line-height)",
-        "description": "Line height of the site header logo text."
-      },
-      "site-header-nav-link-line-height": {
-        "name": "siteHeaderNavLinkLineHeight",
-        "path": [
-          "site-header",
-          "nav-link",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--site-header-nav-link-line-height)",
-        "description": "Line height of the site header nav link text."
       }
     },
     "site-footer": {
@@ -15682,6 +15682,30 @@
         "type": "color",
         "variable": "var(--color-site-footer-link-text-hover)",
         "description": "Text color of the site footer link while hovered."
+      },
+      "site-footer-link-font-size": {
+        "name": "siteFooterLinkFontSize",
+        "path": [
+          "site-footer",
+          "link",
+          "font-size"
+        ],
+        "value": "0.875rem",
+        "type": "number",
+        "variable": "var(--site-footer-link-font-size)",
+        "description": "Font size of a footer link."
+      },
+      "site-footer-link-line-height": {
+        "name": "siteFooterLinkLineHeight",
+        "path": [
+          "site-footer",
+          "link",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-footer-link-line-height)",
+        "description": "Line height of the site footer link text."
       },
       "site-footer-container-padding-x-sm": {
         "name": "siteFooterContainerPaddingXSm",
@@ -15791,6 +15815,18 @@
         "variable": "var(--site-footer-logo-font-weight)",
         "description": "Font weight of the fallback logo."
       },
+      "site-footer-logo-line-height": {
+        "name": "siteFooterLogoLineHeight",
+        "path": [
+          "site-footer",
+          "logo",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-footer-logo-line-height)",
+        "description": "Line height of the site footer logo text."
+      },
       "site-footer-font-size": {
         "name": "siteFooterFontSize",
         "path": [
@@ -15841,6 +15877,19 @@
         "variable": "var(--site-footer-column-title-margin-bottom)",
         "description": "Space below a footer column title."
       },
+      "site-footer-column-title-line-height": {
+        "name": "siteFooterColumnTitleLineHeight",
+        "path": [
+          "site-footer",
+          "column",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--site-footer-column-title-line-height)",
+        "description": "Line height of the site footer column title text."
+      },
       "site-footer-column-links-gap": {
         "name": "siteFooterColumnLinksGap",
         "path": [
@@ -15851,18 +15900,6 @@
         "type": "spacing",
         "variable": "var(--site-footer-column-links-gap)",
         "description": "Gap between the links in a footer column."
-      },
-      "site-footer-link-font-size": {
-        "name": "siteFooterLinkFontSize",
-        "path": [
-          "site-footer",
-          "link",
-          "font-size"
-        ],
-        "value": "0.875rem",
-        "type": "number",
-        "variable": "var(--site-footer-link-font-size)",
-        "description": "Font size of a footer link."
       },
       "site-footer-separator-margin-bottom": {
         "name": "siteFooterSeparatorMarginBottom",
@@ -15918,43 +15955,6 @@
         "type": "number",
         "variable": "var(--site-footer-line-height)",
         "description": "Line height of the site footer text."
-      },
-      "site-footer-column-title-line-height": {
-        "name": "siteFooterColumnTitleLineHeight",
-        "path": [
-          "site-footer",
-          "column",
-          "title",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--site-footer-column-title-line-height)",
-        "description": "Line height of the site footer column title text."
-      },
-      "site-footer-link-line-height": {
-        "name": "siteFooterLinkLineHeight",
-        "path": [
-          "site-footer",
-          "link",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--site-footer-link-line-height)",
-        "description": "Line height of the site footer link text."
-      },
-      "site-footer-logo-line-height": {
-        "name": "siteFooterLogoLineHeight",
-        "path": [
-          "site-footer",
-          "logo",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--site-footer-logo-line-height)",
-        "description": "Line height of the site footer logo text."
       }
     },
     "section-hero": {
@@ -16181,6 +16181,18 @@
         "variable": "var(--section-hero-title-tracking)",
         "description": "Letter spacing of the hero title."
       },
+      "section-hero-title-line-height": {
+        "name": "sectionHeroTitleLineHeight",
+        "path": [
+          "section-hero",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-hero-title-line-height)",
+        "description": "Line height of the section hero title text."
+      },
       "section-hero-description-font-size-sm": {
         "name": "sectionHeroDescriptionFontSizeSm",
         "path": [
@@ -16217,6 +16229,18 @@
         "variable": "var(--section-hero-description-max-width)",
         "description": "Maximum width of the hero description."
       },
+      "section-hero-description-line-height": {
+        "name": "sectionHeroDescriptionLineHeight",
+        "path": [
+          "section-hero",
+          "description",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-hero-description-line-height)",
+        "description": "Line height of the section hero description text."
+      },
       "section-hero-actions-gap": {
         "name": "sectionHeroActionsGap",
         "path": [
@@ -16251,30 +16275,6 @@
         "type": "spacing",
         "variable": "var(--section-hero-image-margin-top)",
         "description": "Space above the image in the centered hero."
-      },
-      "section-hero-description-line-height": {
-        "name": "sectionHeroDescriptionLineHeight",
-        "path": [
-          "section-hero",
-          "description",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--section-hero-description-line-height)",
-        "description": "Line height of the section hero description text."
-      },
-      "section-hero-title-line-height": {
-        "name": "sectionHeroTitleLineHeight",
-        "path": [
-          "section-hero",
-          "title",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--section-hero-title-line-height)",
-        "description": "Line height of the section hero title text."
       }
     },
     "section-features": {
@@ -16498,6 +16498,18 @@
         "variable": "var(--section-features-title-tracking)",
         "description": "Letter spacing of the section title."
       },
+      "section-features-title-line-height": {
+        "name": "sectionFeaturesTitleLineHeight",
+        "path": [
+          "section-features",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-features-title-line-height)",
+        "description": "Line height of the section features title text."
+      },
       "section-features-description-font-size": {
         "name": "sectionFeaturesDescriptionFontSize",
         "path": [
@@ -16557,6 +16569,19 @@
         "variable": "var(--section-features-item-title-font-weight)",
         "description": "Font weight of a feature title."
       },
+      "section-features-item-title-line-height": {
+        "name": "sectionFeaturesItemTitleLineHeight",
+        "path": [
+          "section-features",
+          "item",
+          "title",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--section-features-item-title-line-height)",
+        "description": "Line height of the section features item title text."
+      },
       "section-features-card-row-margin-bottom": {
         "name": "sectionFeaturesCardRowMarginBottom",
         "path": [
@@ -16615,31 +16640,6 @@
         "type": "number",
         "variable": "var(--section-features-description-line-height)",
         "description": "Line height of the section features description text."
-      },
-      "section-features-item-title-line-height": {
-        "name": "sectionFeaturesItemTitleLineHeight",
-        "path": [
-          "section-features",
-          "item",
-          "title",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--section-features-item-title-line-height)",
-        "description": "Line height of the section features item title text."
-      },
-      "section-features-title-line-height": {
-        "name": "sectionFeaturesTitleLineHeight",
-        "path": [
-          "section-features",
-          "title",
-          "line-height"
-        ],
-        "value": 150,
-        "type": "number",
-        "variable": "var(--section-features-title-line-height)",
-        "description": "Line height of the section features title text."
       }
     },
     "page-layout": {

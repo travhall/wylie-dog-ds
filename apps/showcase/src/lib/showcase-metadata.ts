@@ -7,7 +7,7 @@
  * USAGE: Import only in Server Components or server-side utilities.
  * Do NOT import in Client Components (files with "use client").
  *
- * Token counts → read from packages/tokens/io/sync/*.json (Figma Variables sync)
+ * Token counts → read from packages/tokens/io/sync (Figma Variables sync, either layout)
  * Component count → walk packages/ui/src/*.tsx (exclude pattern-level files)
  * Pattern counts → walk apps/storybook/stories/patterns/**\/*.stories.tsx
  */
