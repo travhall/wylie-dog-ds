@@ -1,5 +1,6 @@
 // Token processing utilities for Figma Variables to W3C DTCG format conversion
 
+import { converter } from "culori";
 import {
   formatCubicBezier,
   isSpringEasing,
@@ -243,98 +244,32 @@ function linearToSrgb(value: number): number {
   return 1.055 * Math.pow(value, 1 / 2.4) - 0.055;
 }
 
-/**
- * Remove sRGB gamma correction (sRGB to linear)
- * Input: sRGB value (0-1)
- * Output: linear RGB value (0-1)
- */
-function srgbToLinear(value: number): number {
-  if (value <= 0.04045) {
-    return value / 12.92;
-  }
-  return Math.pow((value + 0.055) / 1.055, 2.4);
-}
+const toOklch = converter("oklch");
 
 /**
- * Convert linear sRGB to XYZ (D65 illuminant)
+ * Convert Figma RGB color (0-1 range) to OKLCH format.
+ *
+ * Uses culori, the same library the importer uses for OKLCH to RGB, so a colour
+ * survives a Pull then Push unchanged. The previous hand-written maths (the
+ * 0.4124564 sRGB matrix and the original OKLab constants) was not the inverse
+ * of culori's, so every round trip moved 120+ palette colours by up to ~2 degrees
+ * of hue, and the shift grew with each trip.
+ *
+ * Precision matches the token files: L and C with 3 decimals, H with 2.
+ * A near-zero chroma (grayscale) has no meaningful hue, so H is set to 0.
  */
-function linearSrgbToXyz(
-  r: number,
-  g: number,
-  b: number
-): [number, number, number] {
-  // sRGB to XYZ matrix (D65)
-  const x = 0.4124564 * r + 0.3575761 * g + 0.1804375 * b;
-  const y = 0.2126729 * r + 0.7151522 * g + 0.072175 * b;
-  const z = 0.0193339 * r + 0.119192 * g + 0.9503041 * b;
-  return [x, y, z];
-}
-
-/**
- * Convert XYZ to OKLab
- */
-function xyzToOklab(x: number, y: number, z: number): [number, number, number] {
-  // XYZ to LMS matrix
-  const l = 0.8189330101 * x + 0.3618667424 * y - 0.1288597137 * z;
-  const m = 0.0329845436 * x + 0.9293118715 * y + 0.0361456387 * z;
-  const s = 0.0482003018 * x + 0.2643662691 * y + 0.6338517028 * z;
-
-  // Cube root
-  const l_ = Math.cbrt(l);
-  const m_ = Math.cbrt(m);
-  const s_ = Math.cbrt(s);
-
-  // LMS to OKLab
-  const L = 0.2104542553 * l_ + 0.793617785 * m_ - 0.0040720468 * s_;
-  const a = 1.9779984951 * l_ - 2.428592205 * m_ + 0.4505937099 * s_;
-  const b = 0.0259040371 * l_ + 0.7827717662 * m_ - 0.808675766 * s_;
-
-  return [L, a, b];
-}
-
-/**
- * Convert OKLab to OKLCH (cylindrical coordinates)
- */
-function oklabToOklch(
-  L: number,
-  a: number,
-  b: number
-): [number, number, number] {
-  const C = Math.sqrt(a * a + b * b);
-  let H = (Math.atan2(b, a) * 180) / Math.PI;
-  if (H < 0) H += 360;
-  return [L, C, H];
-}
-
-/**
- * Convert Figma RGB color (0-1 range) to OKLCH format
- * Matches the precision used in token files: L/C with 3 decimals, H with 2 decimals
- */
-function rgbToOklch(color: { r: number; g: number; b: number }): string {
-  // Figma uses linear RGB, convert to sRGB first then to linear for XYZ
-  // Actually, Figma variables are already in sRGB gamma space (0-1 range)
-  // Convert sRGB to linear RGB
-  const linearR = srgbToLinear(color.r);
-  const linearG = srgbToLinear(color.g);
-  const linearB = srgbToLinear(color.b);
-
-  // Convert linear RGB to XYZ
-  const [x, y, z] = linearSrgbToXyz(linearR, linearG, linearB);
-
-  // Convert XYZ to OKLab
-  const [L, a, b] = xyzToOklab(x, y, z);
-
-  // Convert OKLab to OKLCH
-  const [l, c, h] = oklabToOklch(L, a, b);
-
-  // Format with precision matching token files
-  // L: 3 decimal places (e.g., 0.500)
-  // C: 3 decimal places (e.g., 0.103)
-  // H: 2 decimal places (e.g., 83.64)
-  // Special case: if chroma is near zero (grayscale), set hue to 0
-  const lRounded = parseFloat(l.toFixed(3));
-  const cRounded = parseFloat(c.toFixed(3));
-  const hRounded = c < 0.001 ? 0 : parseFloat(h.toFixed(2));
+export function rgbToOklch(color: { r: number; g: number; b: number }): string {
+  // The plugin's local culori typings are loose; the oklch channels are l, c, h.
+  const oklch = toOklch({
+    mode: "rgb",
+    r: color.r,
+    g: color.g,
+    b: color.b,
+  }) as unknown as { l?: number; c?: number; h?: number } | null;
+  const chroma = oklch?.c ?? 0;
+  const lRounded = parseFloat((oklch?.l ?? 0).toFixed(3));
+  const cRounded = parseFloat(chroma.toFixed(3));
+  const hRounded = chroma < 0.001 ? 0 : parseFloat((oklch?.h ?? 0).toFixed(2));
 
   return `oklch(${lRounded} ${cRounded} ${hRounded})`;
 }
