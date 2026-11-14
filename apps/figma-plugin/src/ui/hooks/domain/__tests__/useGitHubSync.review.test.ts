@@ -104,7 +104,10 @@ function setup(
   const { actions, calls } = recordingActions();
   const hook = renderHook(() =>
     useGitHubSync(
-      client as unknown as ConflictAwareGitHubClient,
+      {
+        conventions: () => "wylie-dog",
+        ...client,
+      } as unknown as ConflictAwareGitHubClient,
       actions,
       undefined,
       undefined,

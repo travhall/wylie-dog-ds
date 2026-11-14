@@ -210,6 +210,7 @@ describe("SyncTab Text styles remembered and announced (plan 207)", () => {
       .spyOn(window.parent, "postMessage")
       .mockImplementation(() => {});
     const client = {
+      conventions: () => "wylie-dog",
       getSyncStatus: vi.fn(async () => ({
         upToDate: true,
         hasBaseline: false,

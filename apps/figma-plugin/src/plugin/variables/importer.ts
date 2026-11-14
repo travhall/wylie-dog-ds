@@ -20,7 +20,8 @@ import {
   type ValidationReport,
   validateTokenValue,
 } from "./validation";
-import { inferScopes } from "./scopes";
+import { inferScopes, inferScopesFromType } from "./scopes";
+import type { Conventions } from "../conventions";
 import { setValueIfChanged } from "./variable-values";
 import { durationToSeconds, parseCubicBezier } from "./motion-values";
 import { applyPublishing } from "./publishing";
@@ -43,6 +44,14 @@ export interface ImportOptions {
   mergeStrategy: MergeStrategy;
   createMissingModes: boolean;
   preserveExistingVariables: boolean;
+  /**
+   * Which project conventions to apply (plugin/conventions.ts). "wylie-dog"
+   * infers scopes from names, re-applies them on every import, and hides the
+   * primitive and components collections from publishing. "none" (the default)
+   * gives a new variable the scopes its type implies, leaves an existing
+   * variable's scopes alone and hides no collection.
+   */
+  conventions?: Conventions;
 }
 
 export interface GlobalImportResult {
@@ -279,13 +288,17 @@ async function createVariableWithReferences(
   tokenName: string,
   token: ProcessedToken,
   registry: VariableRegistry,
-  existingByName: Map<string, Variable>
+  existingByName: Map<string, Variable>,
+  conventions: Conventions
 ): Promise<Variable | null> {
   try {
     const figmaType = W3C_TO_FIGMA_TYPE_MAP[token.$type] || "STRING";
 
-    // Color and dimension scopes are inferred from the token name
-    const scopes = inferScopes(token.$type, tokenName);
+    // Under Wylie Dog's conventions scopes are inferred from the token name
+    const scopes =
+      conventions === "wylie-dog"
+        ? inferScopes(token.$type, tokenName)
+        : inferScopesFromType(token.$type);
 
     const figmaName = tokenName.replace(/\./g, "/");
 
@@ -303,7 +316,9 @@ async function createVariableWithReferences(
       variable = undefined;
     }
 
+    let isNew = false;
     if (!variable) {
+      isNew = true;
       variable = figma.variables.createVariable(
         figmaName,
         collection,
@@ -312,10 +327,15 @@ async function createVariableWithReferences(
       existingByName.set(figmaName, variable);
     }
 
-    // Always sync scopes — this corrects variables that were created before
-    // a scope fix landed and ensures re-imports stay accurate.
+    // Wylie Dog's conventions always sync scopes: this corrects variables that
+    // were created before a scope fix landed and keeps re-imports accurate. With
+    // no conventions only a new variable gets scopes; a designer's own are kept.
     // TIMING and EASING variables have no scopes ("Cannot set scopes on this variable type")
-    if (figmaType !== "TIMING" && figmaType !== "EASING") {
+    if (
+      figmaType !== "TIMING" &&
+      figmaType !== "EASING" &&
+      (conventions === "wylie-dog" || isNew)
+    ) {
       variable.scopes = scopes as VariableScope[];
     }
 
@@ -552,6 +572,8 @@ export async function importMultipleCollections(
     validationReport: undefined,
   };
 
+  const conventions: Conventions = options.conventions ?? "none";
+
   // Collections whose hiddenFromPublishing flag this import changed (Plan 217)
   let publishingChanged = 0;
 
@@ -608,7 +630,8 @@ export async function importMultipleCollections(
           collectionName,
           collectionInfo.data.modes || [{ modeId: "default", name: "Default" }]
         );
-        if (applyPublishing(collection)) publishingChanged++;
+        if (conventions === "wylie-dog" && applyPublishing(collection))
+          publishingChanged++;
 
         // Read this collection's existing variables ONCE into a name→Variable
         // map. createVariableWithReferences reuses it for O(1) lookups (instead
@@ -638,7 +661,8 @@ export async function importMultipleCollections(
             tokenName,
             token,
             globalRegistry,
-            existingByName
+            existingByName,
+            conventions
           );
           if (variable) {
             collectionCreated++;

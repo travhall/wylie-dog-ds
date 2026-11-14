@@ -1,5 +1,7 @@
 // GitHub integration for token synchronization
 
+import { conventionsFor } from "../conventions";
+import type { Conventions } from "../conventions";
 import fetch from "cross-fetch";
 import { Octokit } from "@octokit/rest";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
@@ -323,6 +325,11 @@ export class GitHubClient {
         error: `Could not read ${path}: ${error instanceof Error ? error.message : String(error)}`,
       };
     }
+  }
+
+  /** The project conventions this repository follows (plugin/conventions.ts). */
+  conventions(): Conventions {
+    return conventionsFor(this.config);
   }
 
   /**
