@@ -7,7 +7,12 @@ import type { ExportData } from "../variables/processor";
 import { parseTextStyleDefinitions } from "../variables/text-style-definitions";
 import { parseCodeSyntax } from "../variables/code-syntax";
 import { dtcgToNative } from "@wyliedog/tokens/dtcg-convert";
-import type { ResolverFile } from "@wyliedog/tokens/dtcg-convert";
+import type { ResolverFile, SkippedToken } from "@wyliedog/tokens/dtcg-convert";
+import {
+  DTCG_RESOLVER_FILE,
+  describeSkipped,
+  prepareSyncFiles,
+} from "./sync-files";
 import type { CodeSyntaxMap } from "../variables/code-syntax";
 import type { TextStyleDefinition } from "../variables/text-style-definitions";
 
@@ -44,6 +49,8 @@ export interface SyncResult {
   filesUpdated?: string[];
   message?: string;
   commitSha?: string;
+  /** Tokens left out of a DTCG push because they cannot be written as DTCG. */
+  skippedTokens?: SkippedToken[];
 }
 
 export interface PullResult {
@@ -52,13 +59,6 @@ export interface PullResult {
   error?: string;
   lastModified?: string;
 }
-
-/**
- * A token folder holding this file is in the DTCG token contract layout
- * (documentation/tokens/dtcg-contract.md); anything else is native collection
- * files.
- */
-export const DTCG_RESOLVER_FILE = "tokens.resolver.json";
 
 /** The text style definitions file on the pulled branch (plan 206). */
 export type TextStyleDefinitionsResult =
@@ -728,26 +728,29 @@ export class GitHubClient {
       });
       const baseTreeSha = currentCommit.tree.sha;
 
+      // Decide the layout from the repository at the pinned commit and build
+      // the files to write: native collection files, or DTCG token files plus
+      // the merged resolver when the folder already has one.
+      const prepared = await prepareSyncFiles(exportData, (filename) =>
+        this.readFileAtRef(filename, currentCommitSha)
+      );
+      console.log(
+        `📐 GITHUB SYNC: ${prepared.layout} layout, ${prepared.files.length} file(s)`
+      );
+      const skippedNote = describeSkipped(prepared.skipped);
+
       // Create blobs for all files, but only if content changed
       const tree = [];
-      for (const collectionData of exportData) {
-        const collectionName = Object.keys(collectionData)[0];
-        const tokens = collectionData[collectionName];
-
+      for (const {
+        filename: fileName,
+        content: newContent,
+      } of prepared.files) {
         // Create file path (e.g., tokens/primitive.json)
-        const fileName = `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`;
         const filePath = this.config.tokenPath.endsWith("/")
           ? `${this.config.tokenPath}${fileName}`
           : `${this.config.tokenPath}/${fileName}`;
 
-        const newContent =
-          JSON.stringify([{ [collectionName]: tokens }], null, 2) + "\n";
-
-        // DEBUG: Log token count in new content
-        const tokenCount = Object.keys(tokens.variables || {}).length;
-        console.log(
-          `📄 GITHUB SYNC: Preparing ${fileName} with ${tokenCount} tokens`
-        );
+        console.log(`📄 GITHUB SYNC: Preparing ${fileName}`);
 
         // Fetch existing file to compare content. Pin to the exact commit
         // SHA captured at the start of the sync (currentCommitSha), NOT the
@@ -809,7 +812,15 @@ export class GitHubClient {
         return {
           success: true,
           filesUpdated: [],
-          message: "No changes to sync - all tokens are up to date",
+          message: [
+            "No changes to sync - all tokens are up to date",
+            skippedNote,
+          ]
+            .filter(Boolean)
+            .join(" "),
+          ...(prepared.skipped.length > 0 && {
+            skippedTokens: prepared.skipped,
+          }),
         };
       }
 
@@ -924,8 +935,14 @@ export class GitHubClient {
       return {
         success: true,
         filesUpdated,
-        message: `Successfully synced ${filesUpdated.length} file(s) to ${this.config.branch}`,
+        message: [
+          `Successfully synced ${filesUpdated.length} file(s) to ${this.config.branch}`,
+          skippedNote,
+        ]
+          .filter(Boolean)
+          .join(" "),
         commitSha: commitShaForRef,
+        ...(prepared.skipped.length > 0 && { skippedTokens: prepared.skipped }),
       };
     } catch (error: unknown) {
       console.error("Error in direct sync:", error);
@@ -948,21 +965,25 @@ export class GitHubClient {
     await this.createBranch(branchName);
 
     const filesUpdated: string[] = [];
+    let skipped: SkippedToken[] = [];
 
     // Update each token file on the new branch
     try {
-      for (const collectionData of exportData) {
-        const collectionName = Object.keys(collectionData)[0];
-        const tokens = collectionData[collectionName];
+      // The new branch starts from the base branch, so its content decides the
+      // layout and the resolver to merge into.
+      const prepared = await prepareSyncFiles(exportData, (filename) =>
+        this.readFileAtRef(filename, branchName)
+      );
+      skipped = prepared.skipped;
 
+      for (const {
+        filename: fileName,
+        content: fileContent,
+      } of prepared.files) {
         // Create file path (e.g., tokens/primitive.json)
-        const fileName = `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`;
         const filePath = this.config.tokenPath.endsWith("/")
           ? `${this.config.tokenPath}${fileName}`
           : `${this.config.tokenPath}/${fileName}`;
-
-        const fileContent =
-          JSON.stringify([{ [collectionName]: tokens }], null, 2) + "\n";
 
         await this.updateFile(filePath, fileContent, branchName);
         filesUpdated.push(filePath);
@@ -1004,7 +1025,41 @@ export class GitHubClient {
       success: true,
       pullRequestUrl: pullRequest.html_url,
       filesUpdated,
+      ...(skipped.length > 0 && {
+        skippedTokens: skipped,
+        message: describeSkipped(skipped),
+      }),
     };
+  }
+
+  /**
+   * A file's content at a commit or branch, or null if it does not exist.
+   * Only a 404 means "does not exist": any other error is thrown, because
+   * guessing "native layout" after a network failure would write the wrong
+   * layout into a DTCG repository.
+   */
+  private async readFileAtRef(
+    filename: string,
+    ref: string
+  ): Promise<string | null> {
+    if (!this.octokit || !this.config) {
+      throw new Error("GitHub client not initialized");
+    }
+    try {
+      const { data } = await this.octokit.repos.getContent({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        path: `${this.basePath()}/${filename}`,
+        ref,
+      });
+      if (Array.isArray(data) || !("content" in data) || !data.content) {
+        return "";
+      }
+      return fromBase64(data.content.replace(/\n/g, ""));
+    } catch (error: unknown) {
+      if ((error as GitHubApiError).status === 404) return null;
+      throw error;
+    }
   }
 
   private async updateFileDirectly(

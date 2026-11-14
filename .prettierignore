@@ -13,6 +13,11 @@ build
 packages/ui/src/tokens/*.ts
 packages/ui/src/tokens/*.js
 
+# Token files written by Token Bridge and the converter (byte-exact JSON
+# serialization; a formatter would reflow arrays and cause a rewrite on the
+# next Push)
+packages/tokens/io/sync
+
 # Lockfiles
 pnpm-lock.yaml
 package-lock.json

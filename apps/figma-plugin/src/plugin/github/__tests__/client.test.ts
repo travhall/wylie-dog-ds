@@ -523,13 +523,21 @@ describe("GitHubClient direct sync (via syncTokens)", () => {
     );
   }
 
+  /** getContent answers every path with `data`, except the resolver: a native layout has none. */
+  function answerWith(data: unknown) {
+    mockOctokit.repos.getContent.mockImplementation(
+      async ({ path }: { path: string }) => {
+        if (path.endsWith("tokens.resolver.json")) throw notFoundError;
+        return { data };
+      }
+    );
+  }
+
   it("skips the commit entirely when the serialized content is byte-identical to what's already on GitHub", async () => {
     const exportData = makeExportData();
-    mockOctokit.repos.getContent.mockResolvedValue({
-      data: {
-        content: toB64(expectedFileContent(exportData)),
-        encoding: "base64",
-      },
+    answerWith({
+      content: toB64(expectedFileContent(exportData)),
+      encoding: "base64",
     });
 
     const client = makeClient();
@@ -544,9 +552,7 @@ describe("GitHubClient direct sync (via syncTokens)", () => {
 
   it("retries once via rebase when updateRef 422s with a non-fast-forward error, then succeeds", async () => {
     const exportData = makeExportData();
-    mockOctokit.repos.getContent.mockResolvedValue({
-      data: { content: toB64("old content on disk"), encoding: "base64" },
-    });
+    answerWith({ content: toB64("old content on disk"), encoding: "base64" });
     mockOctokit.git.createBlob.mockResolvedValue({ data: { sha: "blob-sha" } });
     mockOctokit.git.createTree
       .mockResolvedValueOnce({ data: { sha: "tree-sha" } })
@@ -605,6 +611,226 @@ function makePrClient(): GitHubClient {
   client.configure(baseConfig);
   return client;
 }
+
+describe("GitHubClient push in the DTCG layout", () => {
+  const collection = (name: string, modes: string[], variables: object) => ({
+    [name]: {
+      modes: modes.map((m) => ({
+        modeId: `mode:${name}:${m.toLowerCase()}`,
+        name: m,
+      })),
+      variables,
+    },
+  });
+
+  const exportData = [
+    collection("primitive", ["Value"], {
+      "color.coral": { $type: "color", $value: "oklch(0.6 0.1 30)" },
+      "color.bad": { $type: "color", $value: "#ff0000" },
+    }),
+    collection("semantic", ["Light", "Dark"], {
+      "color.bg": {
+        $type: "color",
+        $value: "{color.coral}",
+        valuesByMode: { Light: "{color.coral}", Dark: "{color.coral}" },
+      },
+    }),
+  ] as unknown as ExportData[];
+
+  const adopterResolver = {
+    version: "2025.10",
+    name: "Our tokens",
+    description: "Edited by hand",
+    sets: {
+      primitive: { sources: [{ $ref: "primitive.json" }] },
+      overrides: { sources: [{ $ref: "overrides.json" }] },
+    },
+    modifiers: {},
+    resolutionOrder: [
+      { $ref: "#/sets/overrides" },
+      { $ref: "#/sets/primitive" },
+    ],
+  };
+
+  /** The repo has a resolver; every other path does not exist yet. */
+  function repoWithResolver(
+    resolver: string = JSON.stringify(adopterResolver)
+  ) {
+    mockOctokit.repos.getContent.mockImplementation(
+      async ({ path }: { path: string }) => {
+        if (path.endsWith("tokens.resolver.json")) {
+          return { data: { content: toB64(resolver), encoding: "base64" } };
+        }
+        throw notFoundError;
+      }
+    );
+  }
+
+  /** Decoded content of every blob created, in call order. */
+  const blobs = () =>
+    mockOctokit.git.createBlob.mock.calls.map(([arg]) =>
+      Buffer.from((arg as { content: string }).content, "base64").toString(
+        "utf8"
+      )
+    );
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockOctokit.git.getRef.mockResolvedValue({
+      data: { object: { sha: "base-sha" } },
+    });
+    mockOctokit.git.getCommit.mockResolvedValue({
+      data: { tree: { sha: "base-tree" } },
+    });
+    let n = 0;
+    mockOctokit.git.createBlob.mockImplementation(async () => ({
+      data: { sha: `blob-${++n}` },
+    }));
+    mockOctokit.git.createTree.mockResolvedValue({ data: { sha: "tree-sha" } });
+    mockOctokit.git.createCommit.mockResolvedValue({
+      data: { sha: "commit-sha" },
+    });
+    mockOctokit.git.updateRef.mockResolvedValue({});
+  });
+
+  it("writes DTCG token files plus the resolver, and no native files, when the repo has a resolver", async () => {
+    repoWithResolver();
+
+    const result = await makeClient().syncTokens(exportData, "chore: sync");
+
+    expect(result.success).toBe(true);
+    expect([...(result.filesUpdated ?? [])].sort()).toEqual([
+      "tokens/primitive.json",
+      "tokens/semantic.dark.json",
+      "tokens/semantic.light.json",
+      "tokens/tokens.resolver.json",
+    ]);
+    expect(result.filesUpdated).not.toContain("tokens/semantic.json");
+  });
+
+  it("merges into the existing resolver and keeps what its owner added", async () => {
+    repoWithResolver();
+
+    await makeClient().syncTokens(exportData, "chore: sync");
+
+    const resolver = JSON.parse(
+      blobs().find((b) => b.includes('"resolutionOrder"')) as string
+    );
+    expect(resolver.name).toBe("Our tokens");
+    expect(resolver.description).toBe("Edited by hand");
+    expect(resolver.sets.overrides).toBeDefined();
+    // The owner's order is kept; the new theme modifier comes last.
+    expect(resolver.resolutionOrder).toEqual([
+      { $ref: "#/sets/overrides" },
+      { $ref: "#/sets/primitive" },
+      { $ref: "#/modifiers/theme" },
+    ]);
+    expect(resolver.modifiers.theme.contexts.dark).toEqual([
+      { $ref: "semantic.dark.json" },
+    ]);
+  });
+
+  it("leaves out a token that cannot be written as DTCG and says so", async () => {
+    repoWithResolver();
+
+    const result = await makeClient().syncTokens(exportData, "chore: sync");
+
+    expect(result.skippedTokens).toEqual([
+      expect.objectContaining({ collection: "primitive", token: "color.bad" }),
+    ]);
+    expect(result.message).toMatch(/1 token\(s\) were left out/);
+    expect(result.message).toMatch(/color\.bad/);
+    const primitive = JSON.parse(
+      blobs().find((b) => b.includes("coral")) as string
+    );
+    expect(primitive.color.coral).toBeDefined();
+    expect(primitive.color.bad).toBeUndefined();
+  });
+
+  it("does not guess the native layout when the resolver lookup fails for another reason", async () => {
+    mockOctokit.repos.getContent.mockRejectedValue(
+      Object.assign(new Error("Server Error"), { status: 500 })
+    );
+
+    const result = await makeClient().syncTokens(exportData, "chore: sync");
+
+    expect(result.success).toBe(false);
+    expect(mockOctokit.git.createBlob).not.toHaveBeenCalled();
+  });
+
+  it("refuses to push when the resolver in the repo is not valid JSON", async () => {
+    repoWithResolver("{ not json");
+
+    const result = await makeClient().syncTokens(exportData, "chore: sync");
+
+    expect(result.success).toBe(false);
+    expect(result.error).toMatch(/tokens\.resolver\.json .* not valid JSON/);
+    expect(mockOctokit.git.createBlob).not.toHaveBeenCalled();
+  });
+
+  it("changes nothing when the real tokens are pushed into a repo already in DTCG", async () => {
+    // The real io/sync converted to DTCG is "the repo"; Figma still holds the
+    // same tokens. Anything but a no-op would mean a Push rewrites the files.
+    const syncDir = resolve(process.cwd(), "../../packages/tokens/io/sync");
+    const native = readdirSync(syncDir)
+      .filter((f) => f.endsWith(".json"))
+      .sort()
+      .map((f) => JSON.parse(readFileSync(join(syncDir, f), "utf8")));
+    const { files, resolver } = nativeToDtcg(native);
+    const repo: Record<string, string> = {
+      "tokens.resolver.json": JSON.stringify(resolver, null, 2) + "\n",
+      ...Object.fromEntries(
+        Object.entries(files).map(([name, tree]) => [
+          name,
+          JSON.stringify(tree, null, 2) + "\n",
+        ])
+      ),
+    };
+    mockOctokit.repos.getContent.mockImplementation(
+      async ({ path }: { path: string }) => {
+        const content = repo[path.replace(/^tokens\//, "")];
+        if (content === undefined) throw notFoundError;
+        return { data: { content: toB64(content), encoding: "base64" } };
+      }
+    );
+
+    const result = await makeClient().syncTokens(
+      native.flat() as ExportData[],
+      "chore: sync"
+    );
+
+    expect(result.success).toBe(true);
+    expect(result.filesUpdated).toEqual([]);
+    expect(result.message).toMatch(/No changes to sync/);
+    expect(mockOctokit.git.createBlob).not.toHaveBeenCalled();
+  });
+
+  it("writes the same files in a pull request", async () => {
+    mockOctokit.git.createRef.mockResolvedValue({});
+    mockOctokit.repos.createOrUpdateFileContents.mockResolvedValue({});
+    mockOctokit.pulls.create.mockResolvedValue({
+      data: { html_url: "https://github.com/wylie-dog/design-tokens/pull/1" },
+    });
+    repoWithResolver();
+
+    const result = await makeClient({ syncMode: "pull-request" }).syncTokens(
+      exportData,
+      "chore: sync"
+    );
+
+    expect(result.success).toBe(true);
+    const written = mockOctokit.repos.createOrUpdateFileContents.mock.calls.map(
+      ([arg]) => (arg as { path: string }).path
+    );
+    expect([...written].sort()).toEqual([
+      "tokens/primitive.json",
+      "tokens/semantic.dark.json",
+      "tokens/semantic.light.json",
+      "tokens/tokens.resolver.json",
+    ]);
+    expect(result.skippedTokens).toHaveLength(1);
+  });
+});
 
 describe("GitHubClient pull-request sync", () => {
   beforeEach(() => {

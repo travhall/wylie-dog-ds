@@ -282,7 +282,7 @@ const slug = (modeName) => modeName.toLowerCase();
 
 // ---- native to DTCG -------------------------------------------------------
 
-export function nativeToDtcg(nativeFiles) {
+export function nativeToDtcg(nativeFiles, options = {}) {
   const collections = nativeFiles.map((file) => {
     const [name] = Object.keys(file[0]);
     return { name, ...file[0][name] };
@@ -300,16 +300,18 @@ export function nativeToDtcg(nativeFiles) {
   const sets = {};
   const modifierOf = new Map(); // mode-name signature -> modifier
   const order = [];
+  const skipped = [];
 
   for (const c of collections) {
     const modeNames = c.modes.map((m) => m.name);
     const multi = modeNames.length > 1;
 
-    for (const mode of modeNames) {
-      const tree = {};
-      for (const [tokenName, token] of Object.entries(c.variables)) {
-        const value = multi ? token.valuesByMode[mode] : token.$value;
-        if (value === undefined) fail(tokenName, `no value for mode ${mode}`);
+    // Convert every token in every mode first, so a token that cannot be
+    // represented can be skipped (options.skip) before any tree is built.
+    const converted = [];
+    const probe = {};
+    for (const [tokenName, token] of Object.entries(c.variables)) {
+      try {
         const em = isEm(token, flat);
         const category =
           token.$type === "spacing" || token.$type === "fontSize"
@@ -319,14 +321,36 @@ export function nativeToDtcg(nativeFiles) {
           ...(category && { category }),
           ...(em && { unit: "em" }),
         };
-        const out = {
-          $type: em ? "number" : dtcgTypeOf(token.$type),
-          $value: valueToDtcg(tokenName, token.$type, value, em),
-        };
-        if (token.$description !== undefined)
-          out.$description = token.$description;
-        if (Object.keys(ext).length) out.$extensions = { [EXT_KEY]: ext };
-        setPath(tree, tokenName, out);
+        const perMode = {};
+        for (const mode of modeNames) {
+          const value = multi ? token.valuesByMode?.[mode] : token.$value;
+          if (value === undefined) fail(tokenName, `no value for mode ${mode}`);
+          const out = {
+            $type: em ? "number" : dtcgTypeOf(token.$type),
+            $value: valueToDtcg(tokenName, token.$type, value, em),
+          };
+          if (token.$description !== undefined)
+            out.$description = token.$description;
+          if (Object.keys(ext).length) out.$extensions = { [EXT_KEY]: ext };
+          perMode[mode] = out;
+        }
+        // A token that is also a group (a.b and a.b.c) cannot be nested.
+        setPath(probe, tokenName, { $value: 0 });
+        converted.push([tokenName, perMode]);
+      } catch (error) {
+        if (!options.skip) throw error;
+        skipped.push({
+          collection: c.name,
+          token: tokenName,
+          reason: error instanceof Error ? error.message : String(error),
+        });
+      }
+    }
+
+    for (const mode of modeNames) {
+      const tree = {};
+      for (const [tokenName, perMode] of converted) {
+        setPath(tree, tokenName, perMode[mode]);
       }
       const file = multi ? `${c.name}.${slug(mode)}.json` : `${c.name}.json`;
       files[file] = tree;
@@ -376,7 +400,79 @@ export function nativeToDtcg(nativeFiles) {
     ),
     resolutionOrder: order,
   };
-  return { files, resolver };
+  return { files, resolver, skipped };
+}
+
+// ---- merging a generated resolver into an existing one ---------------------
+
+const unionSources = (existing = [], generated = []) => {
+  const seen = new Set(existing.map((s) => s.$ref));
+  return [...existing, ...generated.filter((s) => !seen.has(s.$ref))];
+};
+
+/** Merge `$extensions`, keeping unknown vendors and the existing mode names. */
+function mergeExtensions(existing, generated) {
+  if (!existing && !generated) return undefined;
+  const merged = { ...existing, ...generated };
+  const a = existing?.[EXT_KEY];
+  const b = generated?.[EXT_KEY];
+  if (a || b) {
+    merged[EXT_KEY] = { ...a, ...b };
+    if (a?.modes || b?.modes)
+      merged[EXT_KEY].modes = { ...a?.modes, ...b?.modes };
+  }
+  return merged;
+}
+
+/**
+ * Merge the resolver generated from Figma into the one already in the
+ * repository. Figma owns the sets and contexts it generates; everything else
+ * is kept: top-level keys, the order of sources and of resolutionOrder, extra
+ * sets, modifiers, contexts and sources an adopter added, and unknown
+ * `$extensions`. Merging a resolver into itself changes nothing.
+ */
+export function mergeResolver(existing, generated) {
+  if (!existing) return generated;
+  const merged = JSON.parse(JSON.stringify(existing));
+  merged.version ??= generated.version;
+  merged.sets ??= {};
+  merged.modifiers ??= {};
+  merged.resolutionOrder ??= [];
+
+  for (const [name, set] of Object.entries(generated.sets ?? {})) {
+    const current = merged.sets[name];
+    merged.sets[name] = current
+      ? {
+          ...current,
+          sources: unionSources(current.sources, set.sources),
+          $extensions: mergeExtensions(current.$extensions, set.$extensions),
+        }
+      : set;
+  }
+
+  for (const [name, modifier] of Object.entries(generated.modifiers ?? {})) {
+    const current = merged.modifiers[name];
+    if (!current) {
+      merged.modifiers[name] = modifier;
+      continue;
+    }
+    const contexts = { ...current.contexts };
+    for (const [ctx, sources] of Object.entries(modifier.contexts)) {
+      contexts[ctx] = unionSources(contexts[ctx], sources);
+    }
+    merged.modifiers[name] = {
+      ...current,
+      contexts,
+      default: current.default ?? modifier.default,
+      $extensions: mergeExtensions(current.$extensions, modifier.$extensions),
+    };
+  }
+
+  const seen = new Set(merged.resolutionOrder.map((r) => r.$ref));
+  for (const ref of generated.resolutionOrder ?? []) {
+    if (!seen.has(ref.$ref)) merged.resolutionOrder.push(ref);
+  }
+  return merged;
 }
 
 // ---- DTCG to native -------------------------------------------------------
