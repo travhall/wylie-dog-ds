@@ -108,6 +108,39 @@ describe("SetupWizard", () => {
   });
 
   describe("step 1: access token", () => {
+    it("leads with a fine-grained token for one repository, in four steps", () => {
+      stubFetch({});
+      setup();
+      const link = screen.getByRole("link", {
+        name: /Create a fine-grained token/,
+      });
+      expect(link).toHaveAttribute(
+        "href",
+        expect.stringContaining("/settings/personal-access-tokens/new")
+      );
+      expect(link).toHaveAttribute(
+        "href",
+        expect.stringContaining("contents=write")
+      );
+      expect(screen.getByText(/Only select repositories/)).toBeInTheDocument();
+      expect(
+        screen.getByText(/set Contents to "Read and write"/)
+      ).toBeInTheDocument();
+    });
+
+    it("offers a classic token as the alternative, and says why it is less safe", () => {
+      stubFetch({});
+      setup();
+      const link = screen.getByRole("link", { name: /Create a classic token/ });
+      expect(link).toHaveAttribute(
+        "href",
+        expect.stringContaining("/settings/tokens/new?scopes=repo")
+      );
+      expect(
+        screen.getByText(/can reach every repository you can/)
+      ).toBeInTheDocument();
+    });
+
     it("keeps Next disabled until a non-blank token is entered", () => {
       stubFetch({});
       setup();
@@ -429,6 +462,18 @@ describe("SetupWizard", () => {
       ).not.toBeChecked();
     });
 
+    it("describes each sync mode by what it does to the branch", async () => {
+      stubAll();
+      setup();
+      await toConfigurationStep();
+      expect(
+        screen.getByText(/Each Push opens a pull request on GitHub/)
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(/Each Push commits straight to the branch/)
+      ).toBeInTheDocument();
+    });
+
     it("completes with everything collected across the steps", async () => {
       stubAll();
       const { onComplete } = setup();
@@ -509,7 +554,7 @@ describe("SetupWizard", () => {
         )
       );
       expect(screen.getByRole("status")).toHaveTextContent(
-        'Found tokens.resolver.json in "design/"'
+        'Found tokens.resolver.json and 1 token file in "design/", and filled it in below.'
       );
       expect(
         screen.getByRole("checkbox", { name: /Wylie Dog conventions/ })
@@ -591,7 +636,7 @@ describe("SetupWizard", () => {
       await screen.findByText("Configuration");
       await waitFor(() =>
         expect(screen.getByRole("status")).toHaveTextContent(
-          'Found token files in "mine/"'
+          'Found 1 token file in "mine/".'
         )
       );
       expect(screen.getByLabelText("Token Storage Path")).toHaveValue("mine/");

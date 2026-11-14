@@ -10,7 +10,11 @@ describe("chooseTokenFolder", () => {
         "style/dictionary/tokens.resolver.json",
         "style/dictionary/palette.json",
       ])
-    ).toEqual({ path: "style/dictionary/", found: "resolver" });
+    ).toEqual({
+      path: "style/dictionary/",
+      found: "resolver",
+      tokenFiles: 1,
+    });
   });
 
   it("takes Wylie Dog's folder when it has a resolver, else the shallowest", () => {
@@ -29,17 +33,21 @@ describe("chooseTokenFolder", () => {
   it("falls back to a conventional folder with JSON files directly in it", () => {
     expect(
       chooseTokenFolder(["src/tokens/colors.json", "src/tokens/space.json"])
-    ).toEqual({ path: "src/tokens/", found: "known-folder" });
+    ).toEqual({ path: "src/tokens/", found: "known-folder", tokenFiles: 2 });
     // the native Wylie Dog layout has no resolver
     expect(
       chooseTokenFolder(["packages/tokens/io/sync/primitive.json"])
-    ).toEqual({ path: "packages/tokens/io/sync/", found: "known-folder" });
+    ).toEqual({
+      path: "packages/tokens/io/sync/",
+      found: "known-folder",
+      tokenFiles: 1,
+    });
   });
 
   it("ignores a conventional folder that only has JSON deeper down or other files", () => {
     expect(
       chooseTokenFolder(["tokens/nested/colors.json", "tokens/README.md"])
-    ).toEqual({ path: "tokens/", found: "none" });
+    ).toEqual({ path: "tokens/", found: "none", tokenFiles: 0 });
   });
 
   it("keeps the current path when the repository has files under it", () => {
@@ -48,18 +56,36 @@ describe("chooseTokenFolder", () => {
         ["mine/colors.json", "tokens/tokens.resolver.json"],
         "mine/"
       )
-    ).toEqual({ path: "mine/", found: "current" });
+    ).toEqual({ path: "mine/", found: "current", tokenFiles: 1 });
     expect(
       chooseTokenFolder(["tokens/tokens.resolver.json"], "/gone/")
-    ).toEqual({ path: "tokens/", found: "resolver" });
+    ).toEqual({ path: "tokens/", found: "resolver", tokenFiles: 0 });
   });
 
   it("offers tokens/ for a repository with no token files", () => {
     expect(chooseTokenFolder(["README.md", "src/index.ts"])).toEqual({
       path: "tokens/",
       found: "none",
+      tokenFiles: 0,
     });
-    expect(chooseTokenFolder([])).toEqual({ path: "tokens/", found: "none" });
+    expect(chooseTokenFolder([])).toEqual({
+      path: "tokens/",
+      found: "none",
+      tokenFiles: 0,
+    });
+  });
+
+  it("counts the token files in the chosen folder, not the resolver or deeper ones", () => {
+    expect(
+      chooseTokenFolder([
+        "tokens/tokens.resolver.json",
+        "tokens/palette.json",
+        "tokens/scale.json",
+        "tokens/theme.day.json",
+        "tokens/old/palette.json",
+        "tokens/README.md",
+      ]).tokenFiles
+    ).toBe(3);
   });
 
   it("does not use a resolver at the repository root", () => {
@@ -82,6 +108,7 @@ describe("findTokenFolder", () => {
     await expect(findTokenFolder(repo, undefined, fetchFn)).resolves.toEqual({
       path: "tokens/",
       found: "resolver",
+      tokenFiles: 0,
     });
     expect(fetchFn).toHaveBeenCalledTimes(1);
     expect(fetchFn).toHaveBeenCalledWith(

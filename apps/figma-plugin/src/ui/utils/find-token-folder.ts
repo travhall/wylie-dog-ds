@@ -25,9 +25,25 @@ export interface TokenFolder {
    * in a conventional folder) or `none` (nothing found: the default).
    */
   found: "current" | "resolver" | "known-folder" | "none";
+  /**
+   * JSON token files directly in the folder (the resolver file not counted):
+   * what "found" can name, so the wizard can say what it found. 0 when none.
+   */
+  tokenFiles: number;
 }
 
 const withSlash = (folder: string) => `${folder}/`;
+
+/** JSON files directly in `folder`, not counting the resolver. */
+function countTokenFiles(files: string[], folder: string): number {
+  return files.filter(
+    (p) =>
+      p.startsWith(`${folder}/`) &&
+      p.endsWith(".json") &&
+      !p.slice(folder.length + 1).includes("/") &&
+      !p.endsWith("/tokens.resolver.json")
+  ).length;
+}
 const trim = (path: string) => path.replace(/^\/+|\/+$/g, "");
 const dirOf = (path: string) => path.slice(0, path.lastIndexOf("/"));
 
@@ -44,7 +60,11 @@ export function chooseTokenFolder(
   const keep = current ? trim(current) : "";
 
   if (keep && files.some((p) => p.startsWith(`${keep}/`))) {
-    return { path: withSlash(keep), found: "current" };
+    return {
+      path: withSlash(keep),
+      found: "current",
+      tokenFiles: countTokenFiles(files, keep),
+    };
   }
 
   // A resolver file marks the token folder; the folder it is in must not be the
@@ -57,7 +77,11 @@ export function chooseTokenFolder(
     const dir = resolverDirs.includes(WYLIE_DOG_FOLDER)
       ? WYLIE_DOG_FOLDER
       : resolverDirs[0];
-    return { path: withSlash(dir), found: "resolver" };
+    return {
+      path: withSlash(dir),
+      found: "resolver",
+      tokenFiles: countTokenFiles(files, dir),
+    };
   }
 
   for (const folder of KNOWN_FOLDERS) {
@@ -67,10 +91,16 @@ export function chooseTokenFolder(
         p.endsWith(".json") &&
         !p.slice(folder.length + 1).includes("/")
     );
-    if (direct) return { path: withSlash(folder), found: "known-folder" };
+    if (direct) {
+      return {
+        path: withSlash(folder),
+        found: "known-folder",
+        tokenFiles: countTokenFiles(files, folder),
+      };
+    }
   }
 
-  return { path: withSlash(DEFAULT_FOLDER), found: "none" };
+  return { path: withSlash(DEFAULT_FOLDER), found: "none", tokenFiles: 0 };
 }
 
 type FetchLike = (
