@@ -257,8 +257,11 @@ describe("SetupWizard", () => {
       );
     });
 
-    it("does not look up suggestions when an owner is already set", async () => {
-      const fetchMock = stubFetch({ user: okUser });
+    it("still suggests repositories when an owner is already set (editing a saved setup)", async () => {
+      const fetchMock = stubFetch({
+        user: okUser,
+        repos: { ok: true, json: repos },
+      });
       setup({
         accessToken: TOKEN,
         owner: "acme",
@@ -266,7 +269,8 @@ describe("SetupWizard", () => {
       } as GitHubConfig);
       fireEvent.click(next());
       await screen.findByText("Repository Selection");
-      expect(askedForRepos(fetchMock)).toBe(false);
+      expect(await screen.findAllByRole("option")).toHaveLength(2);
+      expect(askedForRepos(fetchMock)).toBe(true);
       expect(screen.getByLabelText("Owner")).toHaveValue("acme");
     });
 
@@ -295,9 +299,9 @@ describe("SetupWizard", () => {
       type("Owner", "acme");
       type("Repository", "nope");
       fireEvent.click(next());
-      expect(await screen.findByRole("alert")).toHaveTextContent(
-        "Repository not found or no access"
-      );
+      const alert = await screen.findByRole("alert");
+      expect(alert).toHaveTextContent("Repository not found");
+      expect(alert).toHaveTextContent("private repository");
       expect(screen.getByLabelText("Branch")).toHaveAttribute(
         "aria-invalid",
         "true"
@@ -334,8 +338,60 @@ describe("SetupWizard", () => {
       type("Repository", "tokens");
       fireEvent.click(next());
       expect(await screen.findByRole("alert")).toHaveTextContent(
-        "Failed to validate repository"
+        "Could not reach GitHub (offline)"
       );
+    });
+
+    it("says what GitHub said when it rejects the token", async () => {
+      stubFetch({
+        user: okUser,
+        repos: noRepos,
+        repo: { ok: false, status: 401 },
+      });
+      setup();
+      await toRepositoryStep();
+      type("Owner", "acme");
+      type("Repository", "tokens");
+      fireEvent.click(next());
+      expect(await screen.findByRole("alert")).toHaveTextContent(
+        "rejected the access token"
+      );
+    });
+
+    it("splits a pasted owner/repo into the two boxes", async () => {
+      stubFetch({ user: okUser, repos: noRepos });
+      setup();
+      await toRepositoryStep();
+      type("Repository", "acme/design-tokens");
+      expect(screen.getByLabelText("Owner")).toHaveValue("acme");
+      expect(screen.getByLabelText("Repository")).toHaveValue("design-tokens");
+    });
+
+    it("splits a pasted web address and takes its branch", async () => {
+      stubFetch({ user: okUser, repos: noRepos });
+      setup();
+      await toRepositoryStep();
+      type("Repository", "https://github.com/acme/design-tokens/tree/next");
+      expect(screen.getByLabelText("Owner")).toHaveValue("acme");
+      expect(screen.getByLabelText("Repository")).toHaveValue("design-tokens");
+      expect(screen.getByLabelText("Branch")).toHaveValue("next");
+    });
+
+    it("checks acme/tokens, not acme/acme/tokens, when the owner is already in the Repository box", async () => {
+      const fetchMock = stubFetch({
+        user: okUser,
+        repos: noRepos,
+        repo: okRepo,
+      });
+      setup();
+      await toRepositoryStep();
+      type("Owner", "someone-else");
+      type("Repository", "acme/tokens");
+      fireEvent.click(next());
+      await screen.findByText("Configuration");
+      const asked = fetchMock.mock.calls.map(([url]) => String(url));
+      expect(asked).toContain("https://api.github.com/repos/acme/tokens");
+      expect(asked.some((url) => url.includes("acme/acme"))).toBe(false);
     });
 
     it("lets you go back and keeps the token", async () => {
