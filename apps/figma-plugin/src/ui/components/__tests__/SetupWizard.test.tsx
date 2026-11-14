@@ -30,13 +30,16 @@ function stubFetch(routes: {
   user?: Reply | Error;
   repos?: Reply | Error;
   repo?: Reply | Error;
+  tree?: Reply | Error;
 }) {
   const fn = vi.fn(async (url: string) => {
-    const route = url.endsWith("/user")
-      ? routes.user
-      : url.includes("/user/repos")
-        ? routes.repos
-        : routes.repo;
+    const route = url.includes("/git/trees/")
+      ? (routes.tree ?? { ok: false, status: 404 })
+      : url.endsWith("/user")
+        ? routes.user
+        : url.includes("/user/repos")
+          ? routes.repos
+          : routes.repo;
     if (route instanceof Error) throw route;
     return reply(route ?? { ok: true });
   });
@@ -416,7 +419,7 @@ describe("SetupWizard", () => {
         screen.getByText(/Step 3 of 3: Configuration/)
       ).toBeInTheDocument();
       expect(screen.getByLabelText("Token Storage Path")).toHaveValue(
-        "packages/tokens/io/sync/"
+        "tokens/"
       );
       expect(
         screen.getByRole("radio", { name: /Pull Request Mode/ })
@@ -440,6 +443,7 @@ describe("SetupWizard", () => {
         branch: "main",
         tokenPath: "tokens/",
         syncMode: "direct",
+        isWylieDogProject: false,
       });
     });
 
@@ -483,6 +487,165 @@ describe("SetupWizard", () => {
         "design/"
       );
       expect(screen.getByRole("radio", { name: /Direct Sync/ })).toBeChecked();
+    });
+
+    const tree = (...paths: string[]): Reply => ({
+      ok: true,
+      json: { tree: paths.map((path) => ({ path, type: "blob" })) },
+    });
+
+    it("fills in the folder that holds the repository's resolver, and says so", async () => {
+      stubFetch({
+        user: okUser,
+        repos: noRepos,
+        repo: okRepo,
+        tree: tree("design/tokens.resolver.json", "design/palette.json"),
+      });
+      const { onComplete } = setup();
+      await toConfigurationStep();
+      await waitFor(() =>
+        expect(screen.getByLabelText("Token Storage Path")).toHaveValue(
+          "design/"
+        )
+      );
+      expect(screen.getByRole("status")).toHaveTextContent(
+        'Found tokens.resolver.json in "design/"'
+      );
+      expect(
+        screen.getByRole("checkbox", { name: /Wylie Dog conventions/ })
+      ).not.toBeChecked();
+      fireEvent.click(screen.getByRole("button", { name: /Complete Setup/ }));
+      expect(onComplete).toHaveBeenCalledWith(
+        expect.objectContaining({
+          tokenPath: "design/",
+          isWylieDogProject: false,
+        })
+      );
+    });
+
+    it("turns Wylie Dog conventions on for Wylie Dog's own folder", async () => {
+      stubFetch({
+        user: okUser,
+        repos: noRepos,
+        repo: okRepo,
+        tree: tree("packages/tokens/io/sync/tokens.resolver.json"),
+      });
+      const { onComplete } = setup();
+      await toConfigurationStep();
+      await waitFor(() =>
+        expect(screen.getByLabelText("Token Storage Path")).toHaveValue(
+          "packages/tokens/io/sync/"
+        )
+      );
+      expect(
+        screen.getByRole("checkbox", { name: /Wylie Dog conventions/ })
+      ).toBeChecked();
+      fireEvent.click(screen.getByRole("button", { name: /Complete Setup/ }));
+      expect(onComplete).toHaveBeenCalledWith(
+        expect.objectContaining({ isWylieDogProject: true })
+      );
+    });
+
+    it("replaces a saved path the new repository does not have", async () => {
+      stubFetch({
+        user: okUser,
+        repos: noRepos,
+        repo: okRepo,
+        tree: tree("tokens/tokens.resolver.json"),
+      });
+      setup({
+        accessToken: TOKEN,
+        owner: "acme",
+        repo: "tokens",
+        branch: "main",
+        tokenPath: "packages/tokens/io/sync/",
+      } as GitHubConfig);
+      fireEvent.click(next());
+      await screen.findByText("Repository Selection");
+      fireEvent.click(next());
+      await screen.findByText("Configuration");
+      await waitFor(() =>
+        expect(screen.getByLabelText("Token Storage Path")).toHaveValue(
+          "tokens/"
+        )
+      );
+    });
+
+    it("keeps a saved path the repository does have", async () => {
+      stubFetch({
+        user: okUser,
+        repos: noRepos,
+        repo: okRepo,
+        tree: tree("mine/a.json", "tokens/tokens.resolver.json"),
+      });
+      setup({
+        accessToken: TOKEN,
+        owner: "acme",
+        repo: "tokens",
+        branch: "main",
+        tokenPath: "mine/",
+      } as GitHubConfig);
+      fireEvent.click(next());
+      await screen.findByText("Repository Selection");
+      fireEvent.click(next());
+      await screen.findByText("Configuration");
+      await waitFor(() =>
+        expect(screen.getByRole("status")).toHaveTextContent(
+          'Found token files in "mine/"'
+        )
+      );
+      expect(screen.getByLabelText("Token Storage Path")).toHaveValue("mine/");
+    });
+
+    it("does not overwrite a path typed while the search runs", async () => {
+      stubFetch({
+        user: okUser,
+        repos: noRepos,
+        repo: okRepo,
+        tree: tree("tokens/tokens.resolver.json"),
+      });
+      setup();
+      await toConfigurationStep();
+      type("Token Storage Path", "mine/");
+      await waitFor(() =>
+        expect(screen.getByRole("status")).toHaveTextContent("Found")
+      );
+      expect(screen.getByLabelText("Token Storage Path")).toHaveValue("mine/");
+    });
+
+    it("says when the repository has no token files yet, and when it cannot be read", async () => {
+      stubFetch({
+        user: okUser,
+        repos: noRepos,
+        repo: okRepo,
+        tree: tree("README.md"),
+      });
+      const first = setup();
+      await toConfigurationStep();
+      await waitFor(() =>
+        expect(screen.getByRole("status")).toHaveTextContent(
+          "No token files in this repository yet"
+        )
+      );
+      expect(first.onComplete).not.toHaveBeenCalled();
+    });
+
+    it("lets you choose the conventions by hand", async () => {
+      stubAll();
+      const { onComplete } = setup();
+      await toConfigurationStep();
+      await waitFor(() =>
+        expect(screen.getByRole("status")).toHaveTextContent(
+          "Could not look inside"
+        )
+      );
+      fireEvent.click(
+        screen.getByRole("checkbox", { name: /Wylie Dog conventions/ })
+      );
+      fireEvent.click(screen.getByRole("button", { name: /Complete Setup/ }));
+      expect(onComplete).toHaveBeenCalledWith(
+        expect.objectContaining({ isWylieDogProject: true })
+      );
     });
 
     it("lets you go back to the repository step", async () => {

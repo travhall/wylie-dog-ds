@@ -139,10 +139,14 @@ Spring easings (which have no cubic-bezier form), composed colors and anything t
 
 The token contract fixes only the file format. Two behaviours below, [hidden from publishing](#hidden-from-publishing) and name-based [variable scopes](#variable-scopes), are this project's own conventions, and Token Bridge applies them only to a repository that follows them (`src/plugin/conventions.ts`):
 
-- **Wylie Dog conventions** apply when the saved config sets `isWylieDogProject: true`, or, with no such flag, when the token folder is `packages/tokens/io/sync`. A fork of this repository keeps that folder, so it keeps them.
+- **Wylie Dog conventions** apply when the saved config sets `isWylieDogProject: true`, or, with no such flag, when the token folder is `packages/tokens/io/sync`. A fork of this repository keeps that folder, so it keeps them. Step 3 of the setup wizard has the checkbox "Use Wylie Dog conventions", ticked by default only for that folder.
 - **Any other repository** gets none: a new variable gets the scope its type implies (colors and numbers stay in every picker), a scope a designer set is never overwritten by a Pull, no collection is hidden from publishing, and the Sync tab does not report scope differences.
 
 Text styles and code syntax were already optional: text styles need the box ticked and a definitions file, and code syntax needs a `code-syntax/web.json` next to the token folder. Without those files nothing happens.
+
+### Finding the token folder
+
+Step 3 of the setup wizard looks inside the repository (one request for its file tree) and fills in "Token Storage Path": the folder holding a `tokens.resolver.json` (Wylie Dog's folder first, else the shallowest), else the first of `packages/tokens/io/sync`, `tokens`, `design-tokens`, `src/tokens`, `packages/tokens`, `design/tokens` that has JSON files directly in it, else `tokens/`. A path already saved is kept when the repository has files under it, so editing a setup for a different repository no longer carries the old folder along. What you type is never overwritten, and the wizard says what it found. The logic is in `src/ui/utils/find-token-folder.ts`.
 
 ### Hidden from publishing
 

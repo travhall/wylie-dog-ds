@@ -1,9 +1,11 @@
+import { conventionsFor } from "../../plugin/conventions";
+import { findTokenFolder, type TokenFolder } from "../utils/find-token-folder";
 import {
   describeRepositoryStatus,
   parseRepositoryInput,
 } from "../utils/repository-input";
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import { Icon } from "./common/Icon";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
 
@@ -625,16 +627,78 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
 
 // Step 3: Configuration
 function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
-  const [tokenPath, setTokenPath] = useState(
-    data.tokenPath || "packages/tokens/io/sync/"
-  );
+  const [tokenPath, setTokenPath] = useState(data.tokenPath || "tokens/");
   const [syncMode, setSyncMode] = useState<SyncMode>(
     data.syncMode || "pull-request"
   );
+  // Wylie Dog's conventions: an explicit earlier choice, else what the folder implies
+  const [wylieConventions, setWylieConventions] = useState(
+    data.isWylieDogProject ??
+      conventionsFor({ tokenPath: data.tokenPath || "" }) === "wylie-dog"
+  );
+  const [search, setSearch] = useState<
+    | { status: "looking" }
+    | { status: "failed" }
+    | { status: "done"; folder: TokenFolder }
+  >({ status: "looking" });
+  // What the person typed or ticked is never overwritten by a late answer
+  const pathTouched = useRef(false);
+  const conventionsTouched = useRef(false);
+
+  useEffect(() => {
+    if (!data.owner || !data.repo || !data.branch || !data.accessToken) {
+      setSearch({ status: "failed" });
+      return;
+    }
+    let cancelled = false;
+    findTokenFolder(
+      {
+        owner: data.owner,
+        repo: data.repo,
+        branch: data.branch,
+        token: data.accessToken,
+      },
+      data.tokenPath
+    ).then((folder) => {
+      if (cancelled) return;
+      if (!folder) {
+        setSearch({ status: "failed" });
+        return;
+      }
+      setSearch({ status: "done", folder });
+      if (!pathTouched.current) setTokenPath(folder.path);
+      if (!conventionsTouched.current && data.isWylieDogProject === undefined) {
+        setWylieConventions(
+          conventionsFor({ tokenPath: folder.path }) === "wylie-dog"
+        );
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const handleNext = () => {
-    onNext({ tokenPath, syncMode });
+    onNext({ tokenPath, syncMode, isWylieDogProject: wylieConventions });
   };
+
+  const searchMessage = (() => {
+    if (search.status === "looking") return "Looking for token files…";
+    if (search.status === "failed") {
+      return "Could not look inside the repository. Enter the folder by hand.";
+    }
+    const { path, found } = search.folder;
+    switch (found) {
+      case "current":
+        return `Found token files in "${path}".`;
+      case "resolver":
+        return `Found tokens.resolver.json in "${path}" and filled it in below.`;
+      case "known-folder":
+        return `Found token JSON files in "${path}" and filled it in below.`;
+      default:
+        return `No token files in this repository yet. They will be created in "${path}"; change it to use another folder.`;
+    }
+  })();
 
   return (
     <div>
@@ -676,9 +740,12 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
           id="token-path-input"
           type="text"
           value={tokenPath}
-          onChange={(e) => setTokenPath(e.currentTarget.value)}
+          onChange={(e) => {
+            pathTouched.current = true;
+            setTokenPath(e.currentTarget.value);
+          }}
           placeholder="tokens/"
-          aria-describedby="path-hint"
+          aria-describedby="path-hint path-search"
           style={{
             width: "100%",
             padding: "var(--space-2) var(--space-3)",
@@ -698,6 +765,59 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
           Directory path where token files will be stored (e.g., "tokens/",
           "design-system/tokens/")
         </div>
+        <div
+          id="path-search"
+          role="status"
+          style={{
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            marginTop: "2px",
+          }}
+        >
+          {searchMessage}
+        </div>
+      </div>
+
+      <div style={{ marginBottom: "var(--space-4)" }}>
+        <label
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            cursor: "pointer",
+            gap: "var(--space-2)",
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={wylieConventions}
+            onChange={(e) => {
+              conventionsTouched.current = true;
+              setWylieConventions(e.currentTarget.checked);
+            }}
+            style={{ marginTop: "2px" }}
+          />
+          <div>
+            <div
+              style={{
+                fontSize: "var(--font-size-sm)",
+                fontWeight: "var(--font-weight-bold)",
+              }}
+            >
+              Use Wylie Dog conventions
+            </div>
+            <div
+              style={{
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-secondary)",
+                lineHeight: "var(--line-height-relaxed)",
+              }}
+            >
+              Sets Figma variable scopes from token names, and hides the
+              primitive and components collections from publishing. Leave it off
+              for any other project.
+            </div>
+          </div>
+        </label>
       </div>
 
       <div style={{ marginBottom: "var(--space-4)" }}>
