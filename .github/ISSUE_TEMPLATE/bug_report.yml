@@ -1,0 +1,29 @@
+name: Bug report
+description: Something in a component, token, guardrail or doc is wrong
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: A Storybook story, a command to run, or steps. Include the component name if there is one.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Browser and version, or Node and pnpm versions for tooling problems.
+  - type: checkboxes
+    id: a11y
+    attributes:
+      label: Is this an accessibility problem?
+      options:
+        - label: Yes, it affects keyboard, screen reader, contrast or motion use

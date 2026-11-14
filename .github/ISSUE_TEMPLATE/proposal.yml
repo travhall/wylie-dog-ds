@@ -1,0 +1,35 @@
+name: Proposal
+description: A new component, a token change or a guardrail change. Discuss it here before opening a pull request.
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        New components and token changes need maintainer agreement before a pull request. See CONTRIBUTING.md in the repository root.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you proposing
+      options:
+        - New component, pattern or composition
+        - Token change (names, tiers or values)
+        - Guardrail change (rule or threshold)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem it solves
+      description: Who needs this and what they cannot do today.
+    validations:
+      required: true
+  - type: textarea
+    id: shape
+    attributes:
+      label: What you have in mind
+      description: A sketch of the API, tokens or rule. Say which existing components or tokens it relates to.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

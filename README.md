@@ -1,6 +1,6 @@
 # Wylie Dog Design System
 
-A monorepo design system with 45 components, OKLCH-based design tokens, and full Storybook documentation.
+A design-to-code front end workflow you fork and make your own: 45 components, OKLCH-based design tokens, Storybook documentation, and the automated guardrails that keep code and tokens honest.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue?style=flat-square)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.3-blue?style=flat-square)](https://tailwindcss.com/)
@@ -10,15 +10,23 @@ A monorepo design system with 45 components, OKLCH-based design tokens, and full
 
 ## Overview
 
-Wylie Dog is a component library and design token system built with React 19, Tailwind CSS 4, and Radix UI primitives. The token system uses the OKLCH color space with P3 wide-gamut support, structured in a three-tier primitive → semantic → component hierarchy and distributed in W3C DTCG format.
+Wylie Dog is a **Foundation**: a repository you fork and own, not a package you install. Change the tokens, the components and the structure to your own preference; the guardrails tell you when a change breaks a rule. It is built with React 19, Tailwind CSS 4 and Radix UI primitives. Tokens use the OKLCH color space with P3 wide-gamut support and are stored as W3C DTCG files. The standard here is a three-tier primitive → semantic → component hierarchy, but the token files are yours to structure. Terms are defined in the [glossary](GLOSSARY.md).
+
+It is built for solo designer-developers and very small teams, and it doubles as a portfolio project with one maintainer.
 
 The repo includes:
 
 - **`@wyliedog/ui`** — 45 React components with TypeScript, tree-shakeable individual exports
 - **`@wyliedog/tokens`** — OKLCH design tokens built with Style Dictionary, output as CSS variables and TypeScript
 - **Storybook** — interactive documentation for all components and foundations, deployed to Netlify
-- **Showcase** — Next.js app demonstrating real-world usage patterns
-- **Figma Plugin** — bidirectional design token synchronization between Figma and the codebase (beta)
+- **Showcase** — a reference Next.js site showing what you can build with the components; safe to delete
+- **Guardrails** — automated checks for token structure, token binding, contrast, focus, accessibility, docs drift and bundle size
+
+## Guardrails
+
+The point of a design-to-code workflow is that code cannot quietly drift from the design. Guardrails are automated checks that fail the build when it does: a component that uses a raw value instead of a token, a color pair that stops being readable, a doc that quotes a token that no longer exists. They run in CI and on commit, and you tune or extend them for your system.
+
+See the [guardrails catalog](documentation/guides/guardrails.md) for each check, how to run it and how to tune it.
 
 ## Monorepo Structure
 
@@ -32,7 +40,7 @@ wylie-dog-ds/
 └── apps/
     ├── storybook/        # Component documentation (Storybook 10.6)
     ├── showcase/         # Next.js demo application
-    └── figma-plugin/     # Figma token sync plugin (beta)
+    └── figma-plugin/     # Token Bridge, experimental
 ```
 
 Managed with pnpm workspaces and Turborepo. Package manager: `pnpm@10.28.2`.
@@ -71,9 +79,13 @@ pnpm dev:showcase     # Next.js showcase at http://localhost:3001
 pnpm dev:figma        # Figma plugin dev build
 ```
 
-### Using in a Project
+### Making it yours
 
-`@wyliedog/ui` and `@wyliedog/tokens` are not published to npm. To use them, work inside this monorepo as workspace packages (see `apps/showcase` and `apps/storybook`), for example:
+Fork the repo or use it as a template, then follow [Make it yours](documentation/guides/make-it-yours.md): rename the package scope, swap the brand tokens, and remove what you do not need.
+
+### Using the components
+
+`@wyliedog/ui` and `@wyliedog/tokens` are not published to npm ([why](docs/adr/0001-foundation-not-published-packages.md)). You use them as workspace packages inside your fork (see `apps/showcase` and `apps/storybook`), for example:
 
 ```json
 { "dependencies": { "@wyliedog/ui": "workspace:*" } }
@@ -205,28 +217,9 @@ Addons: `@storybook/addon-a11y`, `@storybook/addon-docs`, `@storybook/addon-vite
 
 Visual regression tests run with Playwright: `pnpm --filter storybook test:visual`.
 
-## Figma Plugin
+## Figma
 
-Located at `apps/figma-plugin` (version 0.2.0, beta). Enables design token sync between Figma and the codebase.
-
-**Features:**
-
-- Multi-format import: Style Dictionary, Tokens Studio, W3C DTCG
-- Smart conflict detection and resolution
-- GitHub integration — push tokens directly or open a PR
-- OKLCH color space support
-
-**Development setup:**
-
-```bash
-pnpm dev:figma
-
-# Load in Figma:
-# Plugins → Development → Import plugin from manifest
-# Select: apps/figma-plugin/manifest.json
-```
-
-See `apps/figma-plugin/README.md` for full documentation.
+The token files are plain W3C DTCG JSON, so you can sync them with Figma using any DTCG-capable tool. `apps/figma-plugin` holds Token Bridge, an experimental sync plugin that is not ready for outside use. A supported release is planned, with no date.
 
 ## Development Workflow
 
@@ -288,6 +281,10 @@ className = "bg-(--color-background-primary) text-(--color-foreground-inverse)";
 // Incorrect — hardcoded scale
 className = "bg-blue-500 text-white";
 ```
+
+## Contributing
+
+Pull requests are welcome for bug fixes, accessibility fixes and documentation. New components and token changes need an issue first. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
