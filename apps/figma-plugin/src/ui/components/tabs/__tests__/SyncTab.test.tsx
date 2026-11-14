@@ -10,6 +10,7 @@ import {
 } from "@testing-library/preact";
 import { SyncTab } from "../SyncTab";
 import { UIProvider } from "../../../state";
+import { EMPTY_TEXT_STYLE_DIFF } from "../../../../plugin/variables/text-style-links";
 import { useUIContext } from "../../../state/UIContext";
 import type { UIState } from "../../../state/types";
 import type { GitHubConfig } from "../../../../shared/types";
@@ -437,5 +438,146 @@ describe("SyncTab starts the status over for a different repository", () => {
     view.rerender(tab({ repo: "second" }));
     expect(askedForLastSync()).toBe(2);
     postMessage.mockRestore();
+  });
+});
+
+describe("SyncTab ticks what changed in Figma and says why Push is off", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  const collections = [
+    { id: "c1", name: "palette", variableIds: ["a", "b"] },
+    { id: "c2", name: "theme", variableIds: ["c"] },
+  ];
+
+  async function refreshed(rows: Array<{ collection: string; side: string }>) {
+    vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
+    const client = {
+      conventions: () => "none",
+      getSyncStatus: vi.fn(async () => ({
+        upToDate: rows.length === 0,
+        hasBaseline: true,
+        differences: rows.length,
+        diff: {
+          direction: "overview",
+          rows,
+          settings: [],
+          textStyles: EMPTY_TEXT_STYLE_DIFF,
+        },
+      })),
+      fetchTextStyleDefinitions: vi.fn(async () => ({ status: "absent" })),
+    } as unknown as ConflictAwareGitHubClient;
+    render(
+      <UIProvider>
+        <SyncTab
+          githubClient={client}
+          githubConfig={
+            {
+              ...repoOnly,
+              accessToken: "t",
+              syncMode: "direct",
+            } as unknown as GitHubConfig
+          }
+          githubConfigured
+          collections={collections as never}
+          loading={false}
+          onPushToGitHub={vi.fn()}
+          onPullFromGitHub={vi.fn()}
+          onImportFile={vi.fn()}
+          onGitHubConfigComplete={vi.fn()}
+          onDisconnect={vi.fn()}
+          onForgetToken={vi.fn()}
+        />
+      </UIProvider>
+    );
+    // Nothing is ticked before the first check, and Push says why
+    expect(
+      screen.getByText("Tick the collections to push.")
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText("Refresh sync status"));
+    act(() => {
+      window.dispatchEvent(
+        new MessageEvent("message", {
+          data: {
+            pluginMessage: { type: "local-tokens-exported", localTokens: [] },
+          },
+        })
+      );
+    });
+    await waitFor(() => expect(client.getSyncStatus).toHaveBeenCalled());
+  }
+
+  it("ticks the collections that changed in Figma and tags them", async () => {
+    await refreshed([
+      { collection: "theme", side: "local" },
+      { collection: "palette", side: "remote" },
+    ]);
+    await screen.findByRole("button", { name: "Push 1" });
+    expect(screen.getAllByText("changed in Figma")).toHaveLength(1);
+    expect(screen.queryByText("Tick the collections to push.")).toBeNull();
+  });
+
+  it("says nothing changed, and leaves Push off, when Figma matches GitHub", async () => {
+    await refreshed([]);
+    await screen.findByText(/Nothing changed in Figma since the last sync/);
+    expect(screen.getByRole("button", { name: "Push" })).toBeDisabled();
+  });
+
+  it("does not replace a selection the person already made", async () => {
+    vi.spyOn(window.parent, "postMessage").mockImplementation(() => {});
+    const client = {
+      conventions: () => "none",
+      getSyncStatus: vi.fn(async () => ({
+        upToDate: false,
+        hasBaseline: true,
+        differences: 1,
+        diff: {
+          direction: "overview",
+          rows: [{ collection: "theme", side: "local" }],
+          settings: [],
+          textStyles: EMPTY_TEXT_STYLE_DIFF,
+        },
+      })),
+      fetchTextStyleDefinitions: vi.fn(async () => ({ status: "absent" })),
+    } as unknown as ConflictAwareGitHubClient;
+    render(
+      <UIProvider>
+        <SyncTab
+          githubClient={client}
+          githubConfig={
+            {
+              ...repoOnly,
+              accessToken: "t",
+              syncMode: "direct",
+            } as unknown as GitHubConfig
+          }
+          githubConfigured
+          collections={collections as never}
+          loading={false}
+          onPushToGitHub={vi.fn()}
+          onPullFromGitHub={vi.fn()}
+          onImportFile={vi.fn()}
+          onGitHubConfigComplete={vi.fn()}
+          onDisconnect={vi.fn()}
+          onForgetToken={vi.fn()}
+        />
+      </UIProvider>
+    );
+    fireEvent.click(screen.getByText("palette"));
+    fireEvent.click(screen.getByLabelText("Refresh sync status"));
+    act(() => {
+      window.dispatchEvent(
+        new MessageEvent("message", {
+          data: {
+            pluginMessage: { type: "local-tokens-exported", localTokens: [] },
+          },
+        })
+      );
+    });
+    await waitFor(() => expect(client.getSyncStatus).toHaveBeenCalled());
+    // palette stays the only ticked collection; theme is only tagged
+    await screen.findByText("changed in Figma");
+    expect(screen.getByRole("button", { name: "Push 1" })).toBeEnabled();
   });
 });

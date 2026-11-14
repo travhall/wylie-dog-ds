@@ -37,6 +37,12 @@ interface SyncStatusProps {
   ) => void;
   /** The failure's own fix, when it has one: a new token, or the setup. */
   onFailureAction?: (action: FailureAction) => void;
+  /**
+   * After each check: the collections that changed in Figma since the last
+   * sync (all that differ, when there is no baseline), or null when the check
+   * failed. The Sync tab ticks them for a Push.
+   */
+  onChecked?: (changedInFigma: string[] | null) => void;
 }
 
 interface SyncStatusData {
@@ -78,6 +84,7 @@ export function SyncStatus({
   includeTextStyles = false,
   onTextStylesAvailability,
   onFailureAction,
+  onChecked,
 }: SyncStatusProps) {
   const [status, setStatus] = useState<SyncStatusData>({
     upToDate: true,
@@ -118,6 +125,13 @@ export function SyncStatus({
       // (plugin-thread storage), not from getSyncStatus (which runs UI-side and
       // can't read figma.clientStorage).
       onTextStylesAvailability?.(syncStatus.textStylesAvailability);
+      onChecked?.([
+        ...new Set(
+          (syncStatus.diff?.rows ?? [])
+            .filter((row) => row.side !== "remote")
+            .map((row) => row.collection)
+        ),
+      ]);
       setStatus((prev) => ({
         upToDate: syncStatus.upToDate,
         hasBaseline: syncStatus.hasBaseline,
@@ -138,6 +152,7 @@ export function SyncStatus({
       console.error("Failed to check sync status:", error);
       const failure =
         error instanceof Error ? ErrorHandler.fromException(error) : null;
+      onChecked?.(null);
       // Whatever an earlier check found is no longer known to be true: drop it,
       // so the card never shows old differences next to the reason it cannot read
       setStatus((prev) => ({

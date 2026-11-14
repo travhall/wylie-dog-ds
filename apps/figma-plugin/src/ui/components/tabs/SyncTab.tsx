@@ -1,7 +1,9 @@
 import { h } from "preact";
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 import { SetupWizard } from "../SetupWizard";
 import { ImportPreview } from "../ImportPreview";
+import { CollectionSelector } from "./sync/CollectionSelector";
+import { SyncActionCards } from "./sync/SyncActionCards";
 import { SyncStatus } from "../SyncStatus";
 import { Icon } from "../common/Icon";
 import { useUIContext } from "../../state";
@@ -58,9 +60,38 @@ export function SyncTab({
 }: SyncTabProps) {
   const { state: uiState, dispatch } = useUIContext();
   const selectedCollections = uiState.selectedCollections;
-  const hasSelections = selectedCollections.size > 0;
 
   const [showEditConfig, setShowEditConfig] = useState(false);
+
+  // Collections the last status check found changed in Figma (null: unknown)
+  const [changedInFigma, setChangedInFigma] =
+    useState<ReadonlySet<string> | null>(null);
+  const collectionsRef = useRef(collections);
+  collectionsRef.current = collections;
+  const handleChecked = useCallback(
+    (changed: string[] | null) => {
+      if (changed === null) {
+        setChangedInFigma(null);
+        return;
+      }
+      setChangedInFigma(new Set(changed));
+      dispatch({
+        type: "PRESELECT_COLLECTIONS",
+        ids: collectionsRef.current
+          .filter((c) => changed.includes(c.name))
+          .map((c) => c.id),
+      });
+    },
+    [dispatch]
+  );
+
+  // Why Push is off, in a sentence (null while something is ticked)
+  const pushHint =
+    selectedCollections.size > 0
+      ? null
+      : changedInFigma !== null && changedInFigma.size === 0
+        ? "Nothing changed in Figma since the last sync. Tick a collection to push it anyway."
+        : "Tick the collections to push.";
   // An error's "Edit setup" button asks for the setup; open it once per request
   const seenSetupRequests = useRef(uiState.editSetupRequests);
   useEffect(() => {
@@ -417,134 +448,31 @@ export function SyncTab({
           githubClient={githubClient}
           githubConfigured={githubConfigured}
           onFailureAction={() => dispatch({ type: "REQUEST_EDIT_SETUP" })}
+          onChecked={handleChecked}
           autoCheck={!loading}
           includeTextStyles={uiState.includeTextStyles}
           onTextStylesAvailability={handleTextStylesAvailability}
         />
       </div>
 
-      {/* Collection selector */}
-      {collections.length > 0 && (
-        <div style={{ padding: "12px 12px 8px" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: 8,
-            }}
-          >
-            <span
-              style={{
-                fontWeight: "var(--font-weight-semibold)",
-                fontSize: "var(--font-size-sm)",
-                color: "var(--text-primary)",
-              }}
-            >
-              Collections
-            </span>
-            <span style={{ fontSize: "var(--font-size-xs)" }}>
-              <button
-                onClick={() =>
-                  dispatch({
-                    type: "SELECT_ALL_COLLECTIONS",
-                    ids: collections.map((c) => c.id),
-                  })
-                }
-                style={{
-                  color: "var(--accent-primary)",
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                  fontSize: "var(--font-size-xs)",
-                }}
-              >
-                Select all
-              </button>
-              <span
-                style={{
-                  margin: "0 6px",
-                  color: "var(--border-strong)",
-                }}
-              >
-                ·
-              </span>
-              <button
-                onClick={() => dispatch({ type: "DESELECT_ALL_COLLECTIONS" })}
-                style={{
-                  color: "var(--accent-primary)",
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                  fontSize: "var(--font-size-xs)",
-                }}
-              >
-                Clear
-              </button>
-            </span>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            {collections.map((collection) => {
-              const isSelected = selectedCollections.has(collection.id);
-              return (
-                <div
-                  key={collection.id}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    padding: "6px 4px",
-                    borderRadius: 3,
-                    cursor: "pointer",
-                  }}
-                  onClick={() =>
-                    dispatch({ type: "TOGGLE_COLLECTION", id: collection.id })
-                  }
-                >
-                  {/* Custom checkbox */}
-                  <span
-                    style={{
-                      width: 14,
-                      height: 14,
-                      borderRadius: 3,
-                      flexShrink: 0,
-                      border: `1.5px solid ${isSelected ? "var(--accent-primary)" : "var(--border-strong)"}`,
-                      background: isSelected
-                        ? "var(--accent-primary)"
-                        : "transparent",
-                      display: "grid",
-                      placeItems: "center",
-                    }}
-                  >
-                    {isSelected && <Icon name="check" size={10} color="#fff" />}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-family-mono)",
-                      fontSize: "var(--font-size-sm)",
-                      flex: 1,
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    {collection.name}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-family-mono)",
-                      fontSize: "var(--font-size-xs)",
-                      color: "var(--text-tertiary)",
-                    }}
-                  >
-                    {collection.variableIds.length}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      {/* Collections to push */}
+      <CollectionSelector
+        collections={collections.map((c) => ({
+          id: c.id,
+          name: c.name,
+          variableCount: c.variableIds.length,
+        }))}
+        selected={selectedCollections}
+        changedNames={changedInFigma ?? undefined}
+        onToggle={(id) => dispatch({ type: "TOGGLE_COLLECTION", id })}
+        onSelectAll={() =>
+          dispatch({
+            type: "SELECT_ALL_COLLECTIONS",
+            ids: collections.map((c) => c.id),
+          })
+        }
+        onClear={() => dispatch({ type: "DESELECT_ALL_COLLECTIONS" })}
+      />
 
       {/* Styles: what else a Pull creates and keeps in line (plan 206) */}
       <div style={{ padding: "4px 12px 8px" }}>
@@ -618,128 +546,14 @@ export function SyncTab({
         </label>
       </div>
 
-      {/* Push / Pull action cards — side by side */}
-      <div
-        style={{
-          padding: "8px 12px 4px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 8,
-        }}
-      >
-        {/* Push card */}
-        <div
-          style={{
-            border: "1px solid var(--border-default)",
-            borderRadius: "var(--radius-lg)",
-            background: "var(--surface-primary)",
-            padding: 12,
-            display: "flex",
-            flexDirection: "column",
-            gap: 8,
-          }}
-        >
-          <Icon name="upload" size={20} color="var(--accent-primary)" />
-          <div>
-            <div
-              style={{
-                fontWeight: "var(--font-weight-semibold)",
-                fontSize: "var(--font-size-base)",
-                color: "var(--text-primary)",
-              }}
-            >
-              Push
-            </div>
-            <div
-              style={{
-                fontFamily: "var(--font-family-mono)",
-                fontSize: "var(--font-size-xs)",
-                color: "var(--text-secondary)",
-              }}
-            >
-              Figma → GitHub
-            </div>
-          </div>
-          <button
-            onClick={onPushToGitHub}
-            disabled={loading || !hasSelections}
-            style={{
-              height: 28,
-              borderRadius: "var(--radius-sm)",
-              border: `1px solid ${loading || !hasSelections ? "var(--border-default)" : "var(--accent-primary)"}`,
-              background:
-                loading || !hasSelections
-                  ? "var(--surface-secondary)"
-                  : "var(--accent-primary)",
-              color:
-                loading || !hasSelections ? "var(--text-tertiary)" : "#fff",
-              fontFamily: "var(--font-family-base)",
-              fontSize: "var(--font-size-sm)",
-              fontWeight: "var(--font-weight-semibold)",
-              cursor: loading || !hasSelections ? "not-allowed" : "pointer",
-              opacity: loading || !hasSelections ? 0.5 : 1,
-              transition: "var(--transition-fast)",
-            }}
-          >
-            {hasSelections ? `Push ${selectedCollections.size}` : "Push"}
-          </button>
-        </div>
-
-        {/* Pull card */}
-        <div
-          style={{
-            border: "1px solid var(--border-default)",
-            borderRadius: "var(--radius-lg)",
-            background: "var(--surface-primary)",
-            padding: 12,
-            display: "flex",
-            flexDirection: "column",
-            gap: 8,
-          }}
-        >
-          <Icon name="download" size={20} color="var(--accent-primary)" />
-          <div>
-            <div
-              style={{
-                fontWeight: "var(--font-weight-semibold)",
-                fontSize: "var(--font-size-base)",
-                color: "var(--text-primary)",
-              }}
-            >
-              Pull
-            </div>
-            <div
-              style={{
-                fontFamily: "var(--font-family-mono)",
-                fontSize: "var(--font-size-xs)",
-                color: "var(--text-secondary)",
-              }}
-            >
-              GitHub → Figma
-            </div>
-          </div>
-
-          <button
-            onClick={onPullFromGitHub}
-            disabled={loading}
-            style={{
-              height: 28,
-              borderRadius: "var(--radius-sm)",
-              border: "1px solid var(--border-default)",
-              background: "var(--surface-primary)",
-              color: "var(--text-primary)",
-              fontFamily: "var(--font-family-base)",
-              fontSize: "var(--font-size-sm)",
-              fontWeight: "var(--font-weight-semibold)",
-              cursor: loading ? "not-allowed" : "pointer",
-              opacity: loading ? 0.5 : 1,
-              transition: "var(--transition-fast)",
-            }}
-          >
-            Pull
-          </button>
-        </div>
-      </div>
+      {/* Push and Pull */}
+      <SyncActionCards
+        loading={loading}
+        selectedCount={selectedCollections.size}
+        pushHint={pushHint}
+        onPush={onPushToGitHub}
+        onPull={onPullFromGitHub}
+      />
 
       {/* Import from file footer */}
       <div style={{ flex: 1 }} />

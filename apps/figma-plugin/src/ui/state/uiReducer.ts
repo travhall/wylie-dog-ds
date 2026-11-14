@@ -102,6 +102,7 @@ export function uiReducer(state: UIState, action: UIAction): UIState {
         activeModal: null,
         selectedCollectionId: null,
         selectedCollections: new Set<string>(),
+        selectionTouched: false,
         showAdvancedGitHub: false,
         showAdvancedExport: false,
         showHelp: false,
@@ -115,14 +116,26 @@ export function uiReducer(state: UIState, action: UIAction): UIState {
       } else {
         next.add(action.id);
       }
-      return { ...state, selectedCollections: next };
+      return { ...state, selectedCollections: next, selectionTouched: true };
     }
 
     case "SELECT_ALL_COLLECTIONS":
-      return { ...state, selectedCollections: new Set(action.ids) };
+      return {
+        ...state,
+        selectedCollections: new Set(action.ids),
+        selectionTouched: true,
+      };
 
     case "DESELECT_ALL_COLLECTIONS":
-      return { ...state, selectedCollections: new Set<string>() };
+      return {
+        ...state,
+        selectedCollections: new Set<string>(),
+        selectionTouched: true,
+      };
+
+    case "PRESELECT_COLLECTIONS":
+      if (state.selectionTouched) return state;
+      return { ...state, selectedCollections: new Set(action.ids) };
 
     case "SET_INCLUDE_TEXT_STYLES":
       return {

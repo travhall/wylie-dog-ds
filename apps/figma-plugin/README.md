@@ -148,6 +148,12 @@ Text styles and code syntax were already optional: text styles need the box tick
 
 Step 3 of the setup wizard looks inside the repository (one request for its file tree) and fills in "Token Storage Path": the folder holding a `tokens.resolver.json` (Wylie Dog's folder first, else the shallowest), else the first of `packages/tokens/io/sync`, `tokens`, `design-tokens`, `src/tokens`, `packages/tokens`, `design/tokens` that has JSON files directly in it, else `tokens/`. A path already saved is kept when the repository has files under it, so editing a setup for a different repository no longer carries the old folder along. What you type is never overwritten, and the wizard says what it found. The logic is in `src/ui/utils/find-token-folder.ts`.
 
+### Push, Pull and the collections list
+
+- **Push** sends the ticked collections from Figma to GitHub. **Pull** brings everything in the repository into Figma. Both show what will change before anything is written ("Review changes" shows the same list at any time).
+- The Sync tab ticks the collections that changed in Figma since the last sync after the first status check (all that differ, when there has been no sync yet) and tags them "changed in Figma". Your own ticking is never replaced. With nothing ticked Push says why: "Tick the collections to push", or "Nothing changed in Figma since the last sync. Tick a collection to push it anyway."
+- The collections list and the Push and Pull cards are their own components in `src/ui/components/tabs/sync/`.
+
 ### When something goes wrong
 
 A failed Pull, Push or status check says what happened and offers the one fix, not a generic list of tips. The client keeps the HTTP status and what it was reading (`src/shared/sync-failure.ts`), so:
