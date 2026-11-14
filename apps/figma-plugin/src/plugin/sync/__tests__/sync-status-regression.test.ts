@@ -3,6 +3,10 @@ import { ConflictAwareGitHubClient } from "../conflict-aware-github-client";
 import { GitHubClient } from "../../github/client";
 import { buildBaseline, hashTokens } from "../sync-baseline";
 import type { ExportData, ProcessedToken } from "../../variables/processor";
+import {
+  classifyFailure,
+  SyncFailureError,
+} from "../../../shared/sync-failure";
 
 const token = (
   $type: string,
@@ -132,5 +136,56 @@ describe("getSyncStatus: z-index rename scenario", () => {
     expect(status.diff.direction).toBe("overview");
     expect(status.diff.rows).toHaveLength(2);
     expect(status.diff.rows.some((r) => r.kind === "renamed")).toBe(true);
+  });
+});
+
+describe("getSyncStatus when GitHub cannot be read", () => {
+  const local: ExportData[] = [
+    { primitive: { variables: { "color.a": token("color", "#ffffff") } } },
+  ];
+  const quiet = () => vi.spyOn(console, "error").mockImplementation(() => {});
+
+  it("throws the classified failure instead of reporting an empty, unknown status", async () => {
+    quiet();
+    const failure = classifyFailure(
+      Object.assign(new Error("HTTP 404"), { status: 404 }),
+      { stage: "folder", repo: "acme/tokens", folder: "nope/" }
+    );
+    vi.spyOn(GitHubClient.prototype, "pullTokens").mockResolvedValue({
+      success: false,
+      error: failure.message,
+      failure,
+    });
+
+    const error = await new ConflictAwareGitHubClient()
+      .getSyncStatus(local)
+      .catch((e) => e);
+
+    expect(error).toBeInstanceOf(SyncFailureError);
+    expect((error as SyncFailureError).failure.kind).toBe("folder-not-found");
+  });
+
+  it("throws a plain error when the pull failed without a classification", async () => {
+    quiet();
+    vi.spyOn(GitHubClient.prototype, "pullTokens").mockResolvedValue({
+      success: false,
+      error: "GitHub client not initialized",
+    });
+    await expect(
+      new ConflictAwareGitHubClient().getSyncStatus(local)
+    ).rejects.toThrow("GitHub client not initialized");
+  });
+
+  it("treats a token folder with no files yet as an empty GitHub: everything is new", async () => {
+    vi.spyOn(GitHubClient.prototype, "pullTokens").mockResolvedValue({
+      success: false,
+      error:
+        "No JSON files found at tokens in acme/tokens@main. Configure Token Files or add .json files to that path.",
+    });
+
+    const status = await new ConflictAwareGitHubClient().getSyncStatus(local);
+
+    expect(status.upToDate).toBe(false);
+    expect(status.differences).toBeGreaterThan(0);
   });
 });

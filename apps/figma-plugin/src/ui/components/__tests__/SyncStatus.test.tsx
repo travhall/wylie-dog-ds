@@ -1,3 +1,7 @@
+import {
+  classifyFailure,
+  SyncFailureError,
+} from "../../../shared/sync-failure";
 import type { ExportData } from "../../../plugin/variables/processor";
 import { h } from "preact";
 import {
@@ -450,10 +454,63 @@ describe("SyncStatus", () => {
       fireEvent.click(screen.getByLabelText("Refresh sync status"));
       pluginMessage({ type: "local-tokens-exported", localTokens: [] });
       await waitFor(() =>
-        expect(screen.getByText("Error checking status")).toBeInTheDocument()
+        expect(
+          screen.getByText("Couldn't check sync status")
+        ).toBeInTheDocument()
       );
       expect(screen.getByText("rate limited")).toBeInTheDocument();
       expect(screen.queryByText(/Last sync/)).not.toBeInTheDocument();
+    });
+
+    it("names a classified failure and offers its fix", async () => {
+      const failure = classifyFailure(
+        Object.assign(new Error("HTTP 404"), { status: 404 }),
+        {
+          stage: "folder",
+          repo: "acme/tokens",
+          folder: "nope/",
+          branch: "main",
+        }
+      );
+      const { client } = makeClient(async () => {
+        throw new SyncFailureError(failure);
+      });
+      const onFailureAction = vi.fn();
+      render(
+        <SyncStatus
+          githubClient={client}
+          githubConfigured
+          onFailureAction={onFailureAction}
+        />
+      );
+      fireEvent.click(screen.getByLabelText("Refresh sync status"));
+      pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+      await waitFor(() =>
+        expect(
+          screen.getByText(/"nope\/" is not in acme\/tokens on main/)
+        ).toBeInTheDocument()
+      );
+      fireEvent.click(screen.getByRole("button", { name: "Edit setup" }));
+      expect(onFailureAction).toHaveBeenCalledWith("edit-setup");
+    });
+
+    it("drops the old differences when a later check cannot read the repository", async () => {
+      let fail = false;
+      const { client } = makeClient(async () => {
+        if (fail) throw new Error("Failed to fetch");
+        return { upToDate: false, hasBaseline: false, differences: 3 };
+      });
+      render(<SyncStatus githubClient={client} githubConfigured />);
+      fireEvent.click(screen.getByLabelText("Refresh sync status"));
+      pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+      await screen.findByText("Differences found");
+
+      fail = true;
+      fireEvent.click(screen.getByLabelText("Refresh sync status"));
+      pluginMessage({ type: "local-tokens-exported", localTokens: [] });
+      await screen.findByText("Couldn't check sync status");
+      expect(screen.queryByText("Differences found")).not.toBeInTheDocument();
+      expect(screen.getByText(/Can't reach GitHub/)).toBeInTheDocument();
     });
 
     it("uses a generic message when the failure is not an Error", async () => {

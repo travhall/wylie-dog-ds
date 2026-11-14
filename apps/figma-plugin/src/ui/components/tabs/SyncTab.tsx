@@ -411,8 +411,12 @@ export function SyncTab({
       {/* Sync status — in-sync / drift / last-synced at a glance */}
       <div style={{ padding: "12px 12px 0" }}>
         <SyncStatus
+          // A different repository, branch or folder is a different sync: start
+          // the card over (no old differences, last sync read again, checked again)
+          key={`${githubConfig?.owner}/${githubConfig?.repo}@${githubConfig?.branch}:${githubConfig?.tokenPath}`}
           githubClient={githubClient}
           githubConfigured={githubConfigured}
+          onFailureAction={() => dispatch({ type: "REQUEST_EDIT_SETUP" })}
           autoCheck={!loading}
           includeTextStyles={uiState.includeTextStyles}
           onTextStylesAvailability={handleTextStylesAvailability}

@@ -1,3 +1,4 @@
+import type { FailureAction } from "../../shared/sync-failure";
 import { ErrorHandler } from "../../shared/error-handler";
 import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
@@ -34,6 +35,8 @@ interface SyncStatusProps {
   onTextStylesAvailability?: (
     availability: TextStylesAvailability | null
   ) => void;
+  /** The failure's own fix, when it has one: a new token, or the setup. */
+  onFailureAction?: (action: FailureAction) => void;
 }
 
 interface SyncStatusData {
@@ -59,6 +62,8 @@ interface SyncStatusData {
   /** When the last successful check finished (ms since the epoch). */
   checkedAt?: number;
   error?: string;
+  /** What the person can do about `error`, when there is one. */
+  errorAction?: FailureAction;
 }
 
 /** Clock time, so the label cannot go stale the way "just now" would. */
@@ -72,6 +77,7 @@ export function SyncStatus({
   autoCheck = false,
   includeTextStyles = false,
   onTextStylesAvailability,
+  onFailureAction,
 }: SyncStatusProps) {
   const [status, setStatus] = useState<SyncStatusData>({
     upToDate: true,
@@ -94,7 +100,12 @@ export function SyncStatus({
     if (!githubConfigured || checkingRef.current) return;
     checkingRef.current = true;
 
-    setStatus((prev) => ({ ...prev, checking: true, error: undefined }));
+    setStatus((prev) => ({
+      ...prev,
+      checking: true,
+      error: undefined,
+      errorAction: undefined,
+    }));
 
     try {
       // Figma export + baseline come from the plugin thread, then the client
@@ -125,13 +136,23 @@ export function SyncStatus({
       }));
     } catch (error) {
       console.error("Failed to check sync status:", error);
+      const failure =
+        error instanceof Error ? ErrorHandler.fromException(error) : null;
+      // Whatever an earlier check found is no longer known to be true: drop it,
+      // so the card never shows old differences next to the reason it cannot read
       setStatus((prev) => ({
-        ...prev,
+        upToDate: false,
+        hasBaseline: false,
+        toPush: 0,
+        toPull: 0,
+        conflicts: 0,
+        renamed: 0,
+        differences: 0,
+        lastSync: prev.lastSync,
         checking: false,
-        error:
-          error instanceof Error
-            ? ErrorHandler.fromException(error).message
-            : "Failed to check sync status",
+        checked: false,
+        error: failure?.message ?? "Failed to check sync status",
+        errorAction: failure?.action,
       }));
     } finally {
       checkingRef.current = false;
@@ -251,7 +272,7 @@ export function SyncStatus({
   };
 
   const getStatusText = () => {
-    if (status.error) return "Error checking status";
+    if (status.error) return "Couldn't check sync status";
     if (status.checking) return "Checking sync status…";
     if (unchecked) return "Not checked yet";
     if (!status.upToDate) {
@@ -338,7 +359,29 @@ export function SyncStatus({
 
       {status.error ? (
         <div style={{ color: "var(--error)", fontSize: "var(--font-size-xs)" }}>
-          {status.error}
+          <div>{status.error}</div>
+          {status.errorAction &&
+            onFailureAction &&
+            (status.errorAction === "edit-setup" ||
+              status.errorAction === "new-token") && (
+              <button
+                onClick={() => onFailureAction(status.errorAction!)}
+                style={{
+                  marginTop: "6px",
+                  padding: "2px 8px",
+                  background: "var(--surface-tertiary)",
+                  border: "1px solid var(--border-default)",
+                  borderRadius: "var(--radius-sm)",
+                  cursor: "pointer",
+                  fontSize: "var(--font-size-xs)",
+                  color: "var(--text-primary)",
+                }}
+              >
+                {status.errorAction === "new-token"
+                  ? "Enter a new token"
+                  : "Edit setup"}
+              </button>
+            )}
         </div>
       ) : (
         <div style={{ color: "var(--text-secondary)" }}>

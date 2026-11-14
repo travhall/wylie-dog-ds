@@ -5,6 +5,7 @@
  * Handles config testing, push, pull, and conflict resolution
  */
 
+import { NO_TOKEN_FILES } from "../../../plugin/github/client";
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 import type { GitHubConfig } from "../../../shared/types";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
@@ -74,7 +75,7 @@ export interface GitHubSyncOptions {
 }
 
 /** Message for a repo path that has no token files yet (first ever push). */
-const NO_FILES_YET = /No JSON files found/;
+const NO_FILES_YET = NO_TOKEN_FILES;
 
 /**
  * Hash what GitHub holds right now. Taken after a successful push so the

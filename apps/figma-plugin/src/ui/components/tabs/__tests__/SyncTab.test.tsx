@@ -386,3 +386,56 @@ describe("SyncTab opens the setup when an error asks for it", () => {
     expect(screen.getByText("Edit GitHub Configuration")).toBeInTheDocument();
   });
 });
+
+describe("SyncTab starts the status over for a different repository", () => {
+  it("reads the last sync time again when the repository changes", () => {
+    const postMessage = vi
+      .spyOn(window.parent, "postMessage")
+      .mockImplementation(() => {});
+    const tab = (config: Partial<GitHubConfig>) => (
+      <UIProvider>
+        <SyncTab
+          githubClient={
+            {
+              conventions: () => "none",
+            } as unknown as ConflictAwareGitHubClient
+          }
+          githubConfig={
+            {
+              ...repoOnly,
+              accessToken: "t",
+              syncMode: "direct",
+              ...config,
+            } as unknown as GitHubConfig
+          }
+          githubConfigured
+          collections={[]}
+          loading
+          onPushToGitHub={vi.fn()}
+          onPullFromGitHub={vi.fn()}
+          onImportFile={vi.fn()}
+          onGitHubConfigComplete={vi.fn()}
+          onDisconnect={vi.fn()}
+          onForgetToken={vi.fn()}
+        />
+      </UIProvider>
+    );
+    const askedForLastSync = () =>
+      postMessage.mock.calls.filter(
+        ([data]) =>
+          (data as { pluginMessage?: { type?: string } })?.pluginMessage
+            ?.type === "get-last-sync"
+      ).length;
+
+    const view = render(tab({ repo: "first" }));
+    expect(askedForLastSync()).toBe(1);
+
+    // Same repository, nothing to redo
+    view.rerender(tab({ repo: "first" }));
+    expect(askedForLastSync()).toBe(1);
+
+    view.rerender(tab({ repo: "second" }));
+    expect(askedForLastSync()).toBe(2);
+    postMessage.mockRestore();
+  });
+});
