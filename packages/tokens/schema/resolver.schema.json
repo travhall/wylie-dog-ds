@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Wylie Dog token resolver file (DTCG Resolver 2025.10 subset)",
+  "description": "A resolver file in the token contract: the DTCG 2025.10 Resolver shape, restricted to file references (no inline tokens). See documentation/tokens/dtcg-contract.md.",
+  "type": "object",
+  "required": ["version", "resolutionOrder"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "version": { "const": "2025.10" },
+    "sets": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/set" }
+    },
+    "modifiers": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/modifier" }
+    },
+    "resolutionOrder": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["$ref"],
+        "additionalProperties": false,
+        "properties": {
+          "$ref": { "type": "string", "pattern": "^#/(sets|modifiers)/[^/]+$" }
+        }
+      }
+    },
+    "$extensions": { "type": "object" }
+  },
+  "definitions": {
+    "fileSources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["$ref"],
+        "additionalProperties": false,
+        "properties": {
+          "$ref": {
+            "type": "string",
+            "minLength": 1,
+            "not": { "pattern": "^#/(modifiers|resolutionOrder)/" }
+          }
+        }
+      }
+    },
+    "set": {
+      "type": "object",
+      "required": ["sources"],
+      "additionalProperties": false,
+      "properties": {
+        "sources": { "$ref": "#/definitions/fileSources" },
+        "$extensions": { "type": "object" }
+      }
+    },
+    "modifier": {
+      "type": "object",
+      "required": ["contexts"],
+      "additionalProperties": false,
+      "properties": {
+        "contexts": {
+          "type": "object",
+          "minProperties": 2,
+          "additionalProperties": { "$ref": "#/definitions/fileSources" }
+        },
+        "default": { "type": "string" },
+        "$extensions": { "type": "object" }
+      }
+    }
+  }
+}
