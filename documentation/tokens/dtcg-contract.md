@@ -119,20 +119,20 @@ Tool-specific data goes in `$extensions` under a reverse-domain key, which other
 
 ## Converting from the native layout
 
-| Native (`io/sync`)                                 | Contract                                                                                   |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| An array with one object per collection            | One file per collection and mode, plus the resolver file                                   |
-| Flat keys such as `color.fiery-coral.600`          | Nested groups                                                                              |
-| `valuesByMode: { Light, Dark }`                    | One token per mode file, same path                                                         |
-| `"oklch(0.61 0.169 37.68)"`                        | `{ "colorSpace": "oklch", "components": [0.61, 0.169, 37.68] }`                            |
-| `$type: "spacing"` or `"fontSize"`, value `"12px"` | `$type: "dimension"`, value `{ "value": 12, "unit": "px" }`, plus the `category` extension |
-| `$type: "number"`, value `"12"` or `12`            | `$type: "number"`, value `12` (converting back writes the string)                          |
-| `$type: "duration"`, value `"150ms"`               | `{ "value": 150, "unit": "ms" }`                                                           |
-| `"cubic-bezier(0.4, 0, 0.2, 1)"`                   | `[0.4, 0, 0.2, 1]`                                                                         |
-| A CSS shadow string, with layers and `inset`       | A shadow object, or an array for layers; `inset` is a boolean                              |
-| The `none` shadow                                  | One fully transparent zero shadow; the build turns it back into `none`                     |
-| `rgb(0 0 0 / 0.05)` in a shadow                    | `{ "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0.05 }`                         |
-| `{typography.font-size.6xl}` and other aliases     | The same string, unchanged                                                                 |
+| Native (`io/sync`)                                 | Contract                                                                                       |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| An array with one object per collection            | One file per collection and mode, plus the resolver file                                       |
+| Flat keys such as `color.fiery-coral.600`          | Nested groups                                                                                  |
+| `valuesByMode: { Light, Dark }`                    | One token per mode file, same path                                                             |
+| `"oklch(0.61 0.169 37.68)"`                        | `{ "colorSpace": "oklch", "components": [0.61, 0.169, 37.68] }`                                |
+| `$type: "spacing"` or `"fontSize"`, value `"12px"` | `$type: "dimension"`, value `{ "value": 12, "unit": "px" }`, plus the `category` extension     |
+| `$type: "number"`, value `12`                      | `$type: "number"`, value `12` (a JSON number both ways; the build treats a string differently) |
+| `$type: "duration"`, value `"150ms"`               | `{ "value": 150, "unit": "ms" }`                                                               |
+| `"cubic-bezier(0.4, 0, 0.2, 1)"`                   | `[0.4, 0, 0.2, 1]`                                                                             |
+| A CSS shadow string, with layers and `inset`       | A shadow object, or an array for layers; `inset` is a boolean                                  |
+| The `none` shadow                                  | One fully transparent zero shadow; the build turns it back into `none`                         |
+| `rgb(0 0 0 / 0.05)` in a shadow                    | `{ "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0.05 }`                             |
+| `{typography.font-size.6xl}` and other aliases     | The same string, unchanged                                                                     |
 
 ### One value the standard cannot hold: letter spacing in `em`
 

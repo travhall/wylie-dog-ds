@@ -227,25 +227,8 @@ test("real io/sync: every converted file passes both schemas", () => {
   );
 });
 
-// The one allowed difference: the native files write some number tokens as 12
-// and others as "12"; converting back always writes the string. Compare with
-// every literal number-token value as a string.
-const canonical = (original) =>
-  structuredClone(original).map((file) => {
-    for (const collection of Object.values(file[0])) {
-      for (const token of Object.values(collection.variables)) {
-        if (token.$type !== "number") continue;
-        if (typeof token.$value === "number") {
-          token.$value = String(token.$value);
-        }
-        for (const [mode, v] of Object.entries(token.valuesByMode ?? {})) {
-          if (typeof v === "number") token.valuesByMode[mode] = String(v);
-        }
-      }
-    }
-    return file;
-  });
-
+// Exact equality: the build reads a number literal (14) differently from a
+// string ("14"), so a number token must come back as a JSON number.
 test("real io/sync: converting and converting back loses nothing", () => {
   const { files, resolver } = nativeToDtcg(nativeFiles);
   const back = dtcgToNative(resolver, files);
@@ -254,7 +237,7 @@ test("real io/sync: converting and converting back loses nothing", () => {
     "primitive",
     "semantic",
   ]);
-  for (const original of canonical(nativeFiles)) {
+  for (const original of nativeFiles) {
     const [name] = Object.keys(original[0]);
     assert.deepStrictEqual(
       back[name],
