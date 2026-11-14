@@ -129,7 +129,7 @@ for (const [varName, occurrences] of [...byVar.entries()].sort()) {
   }
 }
 console.error(
-  `\nEither (a) add the token to packages/tokens/io/sync/*.json and rebuild,`
+  `\nEither (a) add the token to the token files in packages/tokens/io/sync and rebuild,`
 );
 console.error(`or (b) fix the typo in packages/ui/src/*.`);
 process.exit(1);

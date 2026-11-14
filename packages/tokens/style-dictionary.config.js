@@ -141,7 +141,9 @@ function generateCSSVariable(token, name) {
   // The wd/size/rem transform turns the primitive into a rem string before it
   // gets here, so a bare number means a font size escaped the transform.
   if (effectiveType === "fontSize" && typeof value === "number") {
-    throw new Error(`Font size ${name} reached the CSS output as a bare number`);
+    throw new Error(
+      `Font size ${name} reached the CSS output as a bare number`
+    );
   }
 
   // Handle font family contract pattern
@@ -151,7 +153,8 @@ function generateCSSVariable(token, name) {
     const alias = /^\{typography\.font-family\.(sans|serif|mono)\}$/.exec(
       typeof token.original?.$value === "string" ? token.original.$value : ""
     );
-    if (alias) return { varName, value: `var(--typography-font-family-${alias[1]})` };
+    if (alias)
+      return { varName, value: `var(--typography-font-family-${alias[1]})` };
     for (const [fontType, contractValue] of Object.entries(
       FONT_FAMILY_CONTRACTS
     )) {
@@ -281,7 +284,16 @@ StyleDictionary.registerFormat({
       duration: {},
     };
 
-    dictionary.allTokens.forEach((token) => {
+    // The component name is dropped from the key, so the same part of two components
+    // (`dialog.close-button-offset`, `sheet.close-button-offset`) lands on one key and
+    // the last one written wins. Sorting by token path makes that winner depend on the
+    // tokens, not on the order the sync files list them in (which changes with the
+    // layout: native files keep Figma's order, the DTCG layout nests by group).
+    const orderedTokens = [...dictionary.allTokens].sort((a, b) =>
+      a.path.join(".").localeCompare(b.path.join("."))
+    );
+
+    orderedTokens.forEach((token) => {
       // Clean path: remove duplicate segments like "Color.Color"
       const cleanPath = token.path.filter((segment, index, arr) => {
         if (segment === "Color" && arr[index - 1] === "Color") return false;

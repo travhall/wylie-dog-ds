@@ -10,7 +10,7 @@
  * - Auto-updates tsup config
  * - Auto-updates package.json exports
  *
- * It also adds the component's tokens to packages/tokens/io/sync/components.json
+ * It also adds the component's tokens to the components collection in packages/tokens/io/sync
  * (so the scaffold passes `pnpm check:tokens` with no hand edits), declares its contrast pair,
  * rebuilds the tokens, and runs the token and contrast checks at the end.
  *
@@ -309,7 +309,7 @@ const ${pascalName.charAt(0).toLowerCase() + pascalName.slice(1)}Variants = cva(
     ${composition ? `"flex flex-col px-(${tokenCssVar({ name: `${name}.padding-x`, type: "spacing" })}) py-(${tokenCssVar({ name: `${name}.padding-y`, type: "spacing" })}) gap-(${tokenCssVar({ name: `${name}.gap`, type: "spacing" })})",\n    ` : ""}focusRingClasses
   ),
   {
-    // These tokens were added to packages/tokens/io/sync/components.json when the
+    // These tokens were added to the components collection in packages/tokens/io/sync when the
     // component was generated. Rename or extend them there, in step with the classes.
     variants: {
       variant: {

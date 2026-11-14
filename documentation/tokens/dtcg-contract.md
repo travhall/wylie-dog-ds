@@ -1,6 +1,6 @@
 # DTCG token contract
 
-**Status:** specification for the target format. Today's `packages/tokens/io/sync/*.json` files still use the native Wylie Dog layout described in [SYNC_CONTRACT.md](../../packages/tokens/SYNC_CONTRACT.md). The converter, the build and Token Bridge move to this format in the later steps of the Token Bridge release plan. Nothing reads these files yet; the schemas and their tests exist so the format is fixed before the code changes.
+**Status:** in use. `packages/tokens/io/sync` has been in this format since the DTCG migration; the build, the guardrails, Token Bridge (Pull and Push) and the generators all read and write it. The earlier native Wylie Dog layout is described in [SYNC_CONTRACT.md](../../packages/tokens/SYNC_CONTRACT.md) for history, and `scripts/convert-sync-to-dtcg.mjs` converts a native folder. The schemas below and their tests keep the format fixed.
 
 The **token contract** (see the [glossary](../../GLOSSARY.md)) is the set of files that code and Figma both read and write. This page defines its format: standard [W3C DTCG 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) token files, plus a [Resolver](https://www.designtokens.org/tr/drafts/resolver/) file that says which files apply in which mode. It is a strict subset of the standard, so any DTCG-capable tool can read it.
 

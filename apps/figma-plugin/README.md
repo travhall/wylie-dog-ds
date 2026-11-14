@@ -51,16 +51,16 @@ pnpm dev
 
 Import auto-detects the format of a file. Detection is a heuristic score per format; the adapter with the highest score is used, and a transformation summary is shown before anything is imported.
 
-| Format                      | Import | Export | Notes                                          |
-| --------------------------- | ------ | ------ | ---------------------------------------------- |
-| **W3C DTCG**                | ✅     | -      | Standard nested format with `$type` / `$value` |
-| **Wylie Dog native**        | ✅     | ✅     | The format of `packages/tokens/io/sync/*.json` |
-| **Tokens Studio**           | ✅     | -      | Flat and grouped exports                       |
-| **Style Dictionary Flat**   | ✅     | -      | Flat dot-notation keys                         |
-| **Style Dictionary Nested** | ✅     | -      | Hierarchical structure                         |
-| **Generic JSON**            | ✅     | -      | Fallback when nothing else matches             |
+| Format                      | Import | Export | Notes                                                                            |
+| --------------------------- | ------ | ------ | -------------------------------------------------------------------------------- |
+| **W3C DTCG**                | ✅     | ✅     | Standard nested format with `$type` / `$value`; the sync folder's format         |
+| **Wylie Dog native**        | ✅     | ✅     | The earlier layout: one collection per file with `modes` and a flat variable map |
+| **Tokens Studio**           | ✅     | -      | Flat and grouped exports                                                         |
+| **Style Dictionary Flat**   | ✅     | -      | Flat dot-notation keys                                                           |
+| **Style Dictionary Nested** | ✅     | -      | Hierarchical structure                                                           |
+| **Generic JSON**            | ✅     | -      | Fallback when nothing else matches                                               |
 
-Export always writes the Wylie Dog native format: one `<collection>.json` file per selected collection (a download holds the collection object; a push to GitHub wraps it in an array, as in `packages/tokens/io/sync/*.json`). The adapters live in `src/plugin/variables/adapters/`; see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+A push writes the layout the token folder already has: standard W3C DTCG token files plus a merged `tokens.resolver.json` when the folder has a resolver (`packages/tokens/io/sync` does), otherwise one native `<collection>.json` per collection. A push never switches a folder's layout, and it leaves out, and reports, any token that cannot be written as DTCG. A download holds the native collection object. The adapters live in `src/plugin/variables/adapters/`; see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ---
 

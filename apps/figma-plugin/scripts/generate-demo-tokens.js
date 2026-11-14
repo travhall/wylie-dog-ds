@@ -9,18 +9,15 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { readSyncCollection } from "@wyliedog/tokens/read-sync";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Read the source primitive tokens
-const primitiveTokensPath = path.join(
-  __dirname,
-  "../../../packages/tokens/io/sync/primitive.json"
-);
-
-const primitiveTokens = JSON.parse(
-  fs.readFileSync(primitiveTokensPath, "utf-8")
+// Read the source primitive tokens through the shared reader (either sync layout)
+const primitiveTokens = readSyncCollection(
+  path.join(__dirname, "../../../packages/tokens/io/sync"),
+  "primitive"
 );
 
 // Extract a subset of tokens for demo purposes

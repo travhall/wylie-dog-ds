@@ -31,7 +31,7 @@ The script rewrites tracked text files only and does not touch the script itself
 
 ## 3. Swap the brand tokens
 
-Tokens live in `packages/tokens/io/sync/` as `primitive.json`, `semantic.json` and `components.json`. In this project's three-tier standard:
+Tokens live in `packages/tokens/io/sync/` as `primitive.json`, `semantic.light.json`, `semantic.dark.json`, `components.light.json`, `components.dark.json` and a `tokens.resolver.json` that says which apply in which mode. In this project's three-tier standard:
 
 1. **Primitive tokens** hold the raw values. Replace the color scales (`fiery-coral`, `polar-night` and the rest) with your own, and adjust the type, spacing and radius scales.
 2. **Semantic tokens** give those values roles, such as `color.background.primary`. Repoint a role at your scale rather than renaming it, and the components follow.
@@ -49,7 +49,7 @@ pnpm check:contrast
 
 ## 4. Change the structure if you want to
 
-The three-tier hierarchy is this project's standard, not a requirement. If your team prefers a different shape, the token files are JSON and yours to restructure (they use the Wylie Dog layout today, with a move to standard W3C DTCG planned). The guardrail that encodes the standard is `check-token-structure.mjs`; rewrite or delete it first, then adjust the others in the [guardrails catalog](guardrails.md) that reference token names.
+The three-tier hierarchy is this project's standard, not a requirement. If your team prefers a different shape, the token files are JSON and yours to restructure (they are standard W3C DTCG, with a resolver file for modes). The guardrail that encodes the standard is `check-token-structure.mjs`; rewrite or delete it first, then adjust the others in the [guardrails catalog](guardrails.md) that reference token names.
 
 ## 5. Keep the components you need
 
@@ -58,7 +58,7 @@ A component is more than its source file. It is spread across:
 - the file in `packages/ui/src` and its test in `packages/ui/src/__tests__`
 - its story under `apps/storybook/stories/Components`
 - its `exports` entry in `packages/ui/package.json`
-- its `<name>.*` component tokens in `packages/tokens/io/sync/components.json`
+- its `<name>.*` component tokens in `packages/tokens/io/sync/components.light.json` and `components.dark.json`
 - its entry in `.size-limit.json`
 - every other component or story that imports it. Find them with `git grep -l "ui/<name>"`; a Separator, for example, is used by ten other stories.
 

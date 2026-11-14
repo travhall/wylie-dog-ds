@@ -205,7 +205,7 @@ if (problems.length) {
   );
   for (const p of problems) console.error(`  ${p}`);
   console.error(
-    "\nA component binds only to component tokens. Add a token to packages/tokens/io/sync/components.json that aliases the semantic tone (or the scale, for a non-color value), then reference it."
+    "\nA component binds only to component tokens. Add a token to the components collection in packages/tokens/io/sync that aliases the semantic tone (or the scale, for a non-color value), then reference it."
   );
   process.exit(1);
 }
