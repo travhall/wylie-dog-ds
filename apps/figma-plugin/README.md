@@ -133,7 +133,7 @@ In both modes a file is written only when its content changed. Files are compare
 
 ### Skipped Variables
 
-Spring easings (which have no cubic-bezier form), composed colors and anything that aliases them cannot be exported yet. Durations are native `TIMING` variables (seconds in Figma, `150ms` in the repo) and cubic-bezier easings are native `EASING` variables, in both directions. After an export or push, a notice lists what was skipped, grouped by collection with the reason. Details are in [docs/API.md](docs/API.md).
+Spring easings (which have no cubic-bezier form), composed colors and anything that aliases them cannot be exported yet. Durations are native `TIMING` variables (seconds in Figma, `150ms` in the repo) and cubic-bezier easings are native `EASING` variables, in both directions. After an export or push, a notice lists what was left out, grouped by collection with the reason. It covers two cases: Figma variables Token Bridge cannot export, and, in a repository in the DTCG layout, tokens that cannot be written in that format (the push leaves them out and they stay in Figma). Each entry shows the token name and why. Details are in [docs/API.md](docs/API.md).
 
 ### Wylie Dog conventions
 

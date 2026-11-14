@@ -143,6 +143,8 @@ export interface PluginMessageActions {
   setDownloadQueue: (queue: DownloadableFile[]) => void;
   setShowValidation: (show: boolean) => void;
   setSkippedVariables: (skipped: UnsupportedVariable[]) => void;
+  /** Add to the skipped list (tokens a push left out), without repeating one. */
+  addSkippedVariables: (skipped: UnsupportedVariable[]) => void;
   // Callback registration methods
   registerGitHubConfigTestHandler: (
     handler: (config: GitHubConfig) => Promise<Result<boolean>>
@@ -793,6 +795,12 @@ export function usePluginMessages(
     setDownloadQueue,
     setShowValidation,
     setSkippedVariables,
+    addSkippedVariables: useCallback((added: UnsupportedVariable[]) => {
+      setSkippedVariables((current) => [
+        ...current,
+        ...added.filter((a) => !current.some((c) => c.id === a.id)),
+      ]);
+    }, []),
     registerGitHubConfigTestHandler,
     registerGitHubSyncHandler,
     registerGitHubPullHandler,

@@ -3,6 +3,7 @@ import {
   collectionsOfFiles,
   commitMessageFor,
   sameContent,
+  skippedTokenItems,
 } from "../sync-files";
 import type { ExportData } from "../../variables/processor";
 
@@ -72,5 +73,24 @@ describe("commitMessageFor", () => {
       "2 collections (a, b) tokens"
     );
     expect(commitMessageFor([], now)).toContain("token resolver");
+  });
+});
+
+describe("skippedTokenItems", () => {
+  it("turns skipped tokens into entries for the skipped list", () => {
+    expect(
+      skippedTokenItems([
+        { collection: "primitive", token: "color.bad", reason: "no type" },
+      ])
+    ).toEqual([
+      {
+        id: "repo-format:primitive:color.bad",
+        name: "color.bad",
+        collection: "primitive",
+        resolvedType: "",
+        reason: "no type",
+        origin: "repo-format",
+      },
+    ]);
   });
 });
