@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import Ajv from "ajv";
-import { dtcgToNative, nativeToDtcg } from "./dtcg-convert.js";
+import { dtcgToNative, mergeResolver, nativeToDtcg } from "./dtcg-convert.js";
 
 const load = (url) => JSON.parse(readFileSync(url, "utf8"));
 const ajv = new Ajv({ allErrors: true });
@@ -201,6 +201,152 @@ test("modes: a collection with different modes gets its own modifier", () => {
     "compact",
     "roomy",
   ]);
+});
+
+// ---- skipping tokens that cannot be represented ----------------------------
+
+test("skip: a token that cannot convert is reported and the rest still convert", () => {
+  const native = [
+    collection("primitive", ["Value"], {
+      "color.ok": { $type: "color", $value: "oklch(0.5 0.1 20)" },
+      "color.bad": { $type: "color", $value: "#ff0000" },
+      "space.ok": { $type: "spacing", $value: "8px" },
+    }),
+  ];
+  assert.throws(() => nativeToDtcg(native), /color\.bad/);
+
+  const { files, skipped } = nativeToDtcg(native, { skip: true });
+  assert.equal(skipped.length, 1);
+  assert.equal(skipped[0].token, "color.bad");
+  assert.equal(skipped[0].collection, "primitive");
+  assert.match(skipped[0].reason, /unsupported color/);
+  assert.ok(files["primitive.json"].color.ok);
+  assert.equal(files["primitive.json"].color.bad, undefined);
+  assert.ok(files["primitive.json"].space.ok);
+});
+
+test("skip: a token with a value missing in one mode is skipped in every mode", () => {
+  const { files, skipped } = nativeToDtcg(
+    [
+      collection("semantic", ["Light", "Dark"], {
+        "color.a": {
+          $type: "color",
+          $value: "oklch(0.9 0 0)",
+          valuesByMode: { Light: "oklch(0.9 0 0)", Dark: "oklch(0.2 0 0)" },
+        },
+        "color.b": {
+          $type: "color",
+          $value: "oklch(0.9 0 0)",
+          valuesByMode: { Light: "oklch(0.9 0 0)" },
+        },
+      }),
+    ],
+    { skip: true }
+  );
+  assert.deepEqual(
+    skipped.map((s) => s.token),
+    ["color.b"]
+  );
+  assert.equal(files["semantic.light.json"].color.b, undefined);
+  assert.equal(files["semantic.dark.json"].color.b, undefined);
+});
+
+test("skip: a token that would also be a group is skipped, not thrown", () => {
+  const { skipped } = nativeToDtcg(
+    [
+      collection("primitive", ["Value"], {
+        "button.primary": { $type: "color", $value: "oklch(0.5 0.1 20)" },
+        "button.primary.hover": { $type: "color", $value: "oklch(0.4 0.1 20)" },
+      }),
+    ],
+    { skip: true }
+  );
+  assert.equal(skipped.length, 1);
+  assert.match(skipped[0].reason, /a token is also a group/);
+});
+
+// ---- merging the resolver --------------------------------------------------
+
+const generatedResolver = () =>
+  nativeToDtcg([
+    collection("primitive", ["Value"], {
+      "color.a": { $type: "color", $value: "oklch(0.9 0 0)" },
+    }),
+    collection("semantic", ["Light", "Dark"], {
+      "color.bg": {
+        $type: "color",
+        $value: "oklch(0.9 0 0)",
+        valuesByMode: { Light: "oklch(0.9 0 0)", Dark: "oklch(0.2 0 0)" },
+      },
+    }),
+  ]).resolver;
+
+test("mergeResolver: with no existing resolver the generated one is used", () => {
+  const generated = generatedResolver();
+  assert.deepStrictEqual(mergeResolver(undefined, generated), generated);
+});
+
+test("mergeResolver: merging a resolver into itself changes nothing", () => {
+  const generated = generatedResolver();
+  assert.deepStrictEqual(mergeResolver(generated, generated), generated);
+});
+
+test("mergeResolver: keeps what an adopter added", () => {
+  const existing = generatedResolver();
+  existing.description = "Our tokens";
+  existing.$extensions = { "com.acme.tool": { keep: true } };
+  existing.sets.overrides = { sources: [{ $ref: "overrides.json" }] };
+  existing.modifiers.theme.contexts.dark.push({ $ref: "brand.dark.json" });
+  existing.modifiers.density = {
+    contexts: {
+      compact: [{ $ref: "d.c.json" }],
+      roomy: [{ $ref: "d.r.json" }],
+    },
+  };
+  existing.modifiers.theme.$extensions["com.acme.tool"] = { note: "x" };
+  existing.resolutionOrder.push({ $ref: "#/sets/overrides" });
+
+  const merged = mergeResolver(existing, generatedResolver());
+
+  assert.equal(merged.description, "Our tokens");
+  assert.deepEqual(merged.$extensions, { "com.acme.tool": { keep: true } });
+  assert.ok(merged.sets.overrides);
+  assert.ok(merged.modifiers.density);
+  assert.deepEqual(merged.modifiers.theme.contexts.dark, [
+    { $ref: "semantic.dark.json" },
+    { $ref: "brand.dark.json" },
+  ]);
+  assert.deepEqual(merged.modifiers.theme.$extensions["com.acme.tool"], {
+    note: "x",
+  });
+  assert.deepEqual(
+    merged.modifiers.theme.$extensions["com.wyliedog.tokens"].modes,
+    { light: "Light", dark: "Dark" }
+  );
+  // The existing order is kept, nothing is duplicated.
+  assert.deepEqual(merged.resolutionOrder, existing.resolutionOrder);
+});
+
+test("mergeResolver: a new Figma collection is added after the existing entries", () => {
+  const existing = generatedResolver();
+  const generated = nativeToDtcg([
+    collection("primitive", ["Value"], {
+      "color.a": { $type: "color", $value: "oklch(0.9 0 0)" },
+    }),
+    collection("brand", ["Value"], {
+      "color.b": { $type: "color", $value: "oklch(0.5 0 0)" },
+    }),
+  ]).resolver;
+
+  const merged = mergeResolver(existing, generated);
+
+  assert.deepEqual(Object.keys(merged.sets), ["primitive", "brand"]);
+  assert.deepEqual(merged.resolutionOrder.at(-1), { $ref: "#/sets/brand" });
+  assert.equal(
+    validateResolver(merged),
+    true,
+    JSON.stringify(validateResolver.errors)
+  );
 });
 
 // ---- the real files --------------------------------------------------------
