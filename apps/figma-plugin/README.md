@@ -148,6 +148,22 @@ Text styles and code syntax were already optional: text styles need the box tick
 
 Step 3 of the setup wizard looks inside the repository (one request for its file tree) and fills in "Token Storage Path": the folder holding a `tokens.resolver.json` (Wylie Dog's folder first, else the shallowest), else the first of `packages/tokens/io/sync`, `tokens`, `design-tokens`, `src/tokens`, `packages/tokens`, `design/tokens` that has JSON files directly in it, else `tokens/`. A path already saved is kept when the repository has files under it, so editing a setup for a different repository no longer carries the old folder along. What you type is never overwritten, and the wizard says what it found. The logic is in `src/ui/utils/find-token-folder.ts`.
 
+### When something goes wrong
+
+A failed Pull, Push or status check says what happened and offers the one fix, not a generic list of tips. The client keeps the HTTP status and what it was reading (`src/shared/sync-failure.ts`), so:
+
+| Failure                                    | What you see                                                                         | The button                |
+| ------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------- |
+| Token rejected (401)                       | "GitHub rejected your access token. It may have expired or been revoked."            | Enter a new token         |
+| Token lacks access (403)                   | What a private repository needs of the token (classic `repo` scope, or fine-grained) | Enter a new token         |
+| Rate limit (403 or 429)                    | "Try again at 14:05", from GitHub's reset time                                       | Try Again                 |
+| Repository, token folder or file not found | Names the repository, the folder and branch, or the file                             | Edit setup                |
+| Branch moved during a sync (409 or 422)    | "Nothing was lost. Try again."                                                       | Try Again                 |
+| A token file is not valid JSON             | Names the file                                                                       | none (fix it in the repo) |
+| No answer from GitHub (offline)            | "Can't reach GitHub. Check your connection."                                         | Try Again                 |
+
+Edit setup and Enter a new token both open the GitHub setup on the Sync tab. "Show Details" has the original error text, and "Read Docs" opens the section of this README that helps.
+
 ### Hidden from publishing
 
 With Wylie Dog conventions, on every import the plugin sets `hiddenFromPublishing` from the collection name (`src/plugin/variables/publishing.ts`): `primitive` and `components` are hidden, `semantic` is published, so a file that uses the library sees only the semantic variables. The Pull success message says how many collections changed (a second Pull changes none). It is applied after the collection is found or created, so a collection someone hid or published by hand goes back to this rule on the next Pull. Not verified inside Figma: Pull once, then check Publish library lists only `semantic`.

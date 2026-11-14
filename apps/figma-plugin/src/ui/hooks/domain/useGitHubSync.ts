@@ -28,6 +28,7 @@ import {
 } from "../../../plugin/sync/sync-diff";
 import type { SyncDiff } from "../../../plugin/sync/sync-diff";
 import type { SyncChangeSummary } from "../../../plugin/sync/change-summary";
+import { ErrorHandler } from "../../../shared/error-handler";
 import { setPendingRemoteHashes } from "../../utils/pending-sync-hashes";
 import {
   readTextStyleDefinitions,
@@ -213,7 +214,9 @@ export function useGitHubSync(
             onSyncSuccess();
           }
         } else {
-          actions.setError(syncResult.error || "GitHub sync failed");
+          actions.setError(
+            ErrorHandler.fromResult(syncResult, "GitHub sync failed")
+          );
         }
       } catch (error: unknown) {
         console.error("GitHub sync error:", error);
@@ -235,7 +238,7 @@ export function useGitHubSync(
         // Clear loading state and show error in UI
         actions.setLoading(false);
         actions.setLoadingMessage("");
-        actions.setError(message);
+        actions.setError(ErrorHandler.fromException(error));
       }
     },
     [githubClient, actions, onSyncSuccess]
@@ -276,7 +279,9 @@ export function useGitHubSync(
         } else {
           actions.setLoading(false);
           actions.setLoadingMessage("");
-          actions.setError(remote.error || "Could not read tokens from GitHub");
+          actions.setError(
+            ErrorHandler.fromResult(remote, "Could not read tokens from GitHub")
+          );
           return;
         }
 
@@ -335,7 +340,7 @@ export function useGitHubSync(
           error instanceof Error ? error.message : "GitHub sync failed";
         actions.setLoading(false);
         actions.setLoadingMessage("");
-        actions.setError(message);
+        actions.setError(ErrorHandler.fromException(error));
       }
     },
     // Confirm re-enters this handler, which reads the latest closure itself.
@@ -414,7 +419,9 @@ export function useGitHubSync(
       if (!pullResult.success || !pullResult.tokens) {
         actions.setLoading(false);
         actions.setLoadingMessage("");
-        actions.setError(pullResult.error || "GitHub pull failed");
+        actions.setError(
+          ErrorHandler.fromResult(pullResult, "GitHub pull failed")
+        );
         return;
       }
       const remoteTokens = pullResult.tokens;
@@ -559,9 +566,7 @@ export function useGitHubSync(
       // Handle error directly
       actions.setLoading(false);
       actions.setLoadingMessage("");
-      actions.setError(
-        error instanceof Error ? error.message : "GitHub pull failed"
-      );
+      actions.setError(ErrorHandler.fromException(error));
     }
   }, [githubClient, actions, performPull, closeReview]);
 
@@ -636,7 +641,10 @@ export function useGitHubSync(
             }
           } else {
             actions.setError(
-              syncResult.error || "Push failed after conflict resolution"
+              ErrorHandler.fromResult(
+                syncResult,
+                "Push failed after conflict resolution"
+              )
             );
           }
         } else {

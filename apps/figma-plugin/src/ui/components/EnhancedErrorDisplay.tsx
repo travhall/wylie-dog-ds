@@ -1,3 +1,4 @@
+import type { FailureAction, FailureKind } from "../../shared/sync-failure";
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import { Icon, type IconName } from "./common/Icon";
@@ -7,10 +8,38 @@ import {
   ErrorType,
 } from "../../shared/error-handler";
 
+// The plugin's README is the user documentation for now (the docs/ folder holds
+// maintainer notes). Anchors are its section headings.
+const README_URL =
+  "https://github.com/travhall/wylie-dog-ds/blob/main/apps/figma-plugin/README.md";
+const readme = (anchor: string) => `${README_URL}#${anchor}`;
+
+/** The README section that helps with a classified failure, if there is one. */
+export function docsLinkFor(kind: FailureKind): string | null {
+  switch (kind) {
+    case "token-rejected":
+    case "no-access":
+      return readme("authentication");
+    case "repo-not-found":
+    case "folder-not-found":
+    case "file-not-found":
+    case "not-found":
+      return readme("finding-the-token-folder");
+    case "bad-file":
+      return readme("supported-token-formats");
+    case "branch-moved":
+      return readme("reviewing-a-push-or-pull");
+    default:
+      return null;
+  }
+}
+
 interface EnhancedErrorDisplayProps {
   error: PluginError | string;
   onDismiss: () => void;
   onRetry?: () => void;
+  /** The classified error's own fix: a new token, or the setup. */
+  onAction?: (action: FailureAction) => void;
 }
 
 const ERROR_ICON_MAP: Record<string, IconName> = {
@@ -27,6 +56,7 @@ export function EnhancedErrorDisplay({
   error,
   onDismiss,
   onRetry,
+  onAction,
 }: EnhancedErrorDisplayProps) {
   const [showDetails, setShowDetails] = useState(false);
 
@@ -58,24 +88,37 @@ export function EnhancedErrorDisplay({
   };
 
   const getDocsLink = (error: PluginError): string | null => {
-    const baseUrl =
-      "https://github.com/wylie-dog-ds/apps/figma-plugin/blob/main/docs";
     switch (error.type) {
       case ErrorType.TOKEN_FORMAT_ERROR:
-        return `${baseUrl}/FORMATS.md`;
+        return readme("supported-token-formats");
       case ErrorType.AUTHENTICATION_ERROR:
+        return readme("authentication");
       case ErrorType.REPOSITORY_ERROR:
-      case ErrorType.NETWORK_ERROR:
-        return `${baseUrl}/SETUP.md`;
+        return readme("finding-the-token-folder");
       case ErrorType.CONFLICT_ERROR:
-        return `${baseUrl}/SYNC.md#conflicts`;
+        return readme("reviewing-a-push-or-pull");
       default:
         return null;
     }
   };
 
-  const friendlyMessage = getFriendlyMessage(pluginError);
-  const docsLink = getDocsLink(pluginError);
+  // A classified error already says what happened and what to do
+  const friendlyMessage = pluginError.kind
+    ? pluginError.message
+    : getFriendlyMessage(pluginError);
+  const docsLink = pluginError.kind
+    ? docsLinkFor(pluginError.kind)
+    : getDocsLink(pluginError);
+  const technicalText =
+    typeof pluginError.details === "string"
+      ? pluginError.details
+      : pluginError.message;
+  const actionLabel =
+    pluginError.action === "new-token"
+      ? "Enter a new token"
+      : pluginError.action === "edit-setup"
+        ? "Edit setup"
+        : null;
 
   return (
     <div
@@ -128,9 +171,11 @@ export function EnhancedErrorDisplay({
                 gap: "var(--space-2)",
               }}
             >
-              <span>
-                {pluginError.recoverable ? "Fixable" : "Needs attention"}
-              </span>
+              {!pluginError.kind && (
+                <span>
+                  {pluginError.recoverable ? "Fixable" : "Needs attention"}
+                </span>
+              )}
               <button
                 onClick={() => setShowDetails(!showDetails)}
                 style={{
@@ -197,7 +242,7 @@ export function EnhancedErrorDisplay({
               lineHeight: "var(--line-height-relaxed)",
             }}
           >
-            {pluginError.message}
+            {technicalText}
           </div>
         </div>
       )}
@@ -276,7 +321,25 @@ export function EnhancedErrorDisplay({
             <Icon name="file" size={13} color="var(--text-primary)" /> Read Docs
           </button>
         )}
-        {pluginError.recoverable && onRetry && (
+        {actionLabel && onAction && pluginError.action && (
+          <button
+            onClick={() => onAction(pluginError.action as FailureAction)}
+            style={{
+              padding: "var(--space-2) var(--space-4)",
+              backgroundColor: ErrorHandler.getErrorColor(pluginError.type),
+              color: "var(--text-inverse)",
+              border: "none",
+              borderRadius: "var(--radius-md)",
+              cursor: "pointer",
+              fontSize: "var(--font-size-xs)",
+              fontWeight: "var(--font-weight-semibold)",
+              transition: "var(--transition-base)",
+            }}
+          >
+            {actionLabel}
+          </button>
+        )}
+        {pluginError.recoverable && onRetry && !(actionLabel && onAction) && (
           <button
             onClick={onRetry}
             style={{

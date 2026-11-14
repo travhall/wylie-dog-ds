@@ -1,5 +1,12 @@
 // GitHub integration for token synchronization
 
+import {
+  classifyFailure,
+  SyncFailureError,
+  type FailureContext,
+  type FailureStage,
+  type SyncFailure,
+} from "../../shared/sync-failure";
 import { conventionsFor } from "../conventions";
 import type { Conventions } from "../conventions";
 import fetch from "cross-fetch";
@@ -62,6 +69,8 @@ export interface SyncResult {
   success: boolean;
   pullRequestUrl?: string;
   error?: string;
+  /** What went wrong, classified; `error` holds its message. */
+  failure?: SyncFailure;
   filesUpdated?: string[];
   message?: string;
   commitSha?: string;
@@ -73,6 +82,8 @@ export interface PullResult {
   success: boolean;
   tokens?: ExportData[];
   error?: string;
+  /** What went wrong, classified; `error` holds its message. */
+  failure?: SyncFailure;
   lastModified?: string;
 }
 
@@ -246,6 +257,36 @@ export class GitHubClient {
     return jsonFiles;
   }
 
+  /** What a failure message should name: the repository, branch and token folder. */
+  private failureContext(stage?: FailureStage): FailureContext {
+    return {
+      ...(stage && { stage }),
+      ...(this.config && {
+        repo: `${this.config.owner}/${this.config.repo}`,
+        branch: this.config.branch,
+        folder: this.config.tokenPath,
+      }),
+    };
+  }
+
+  /**
+   * Run a read and classify its failure by what it was reading, because a 404
+   * means a different thing for the repository, the folder and a file.
+   */
+  private async reading<T>(
+    stage: FailureStage,
+    read: () => Promise<T>
+  ): Promise<T> {
+    try {
+      return await read();
+    } catch (error) {
+      if (error instanceof SyncFailureError) throw error;
+      throw new SyncFailureError(
+        classifyFailure(error, this.failureContext(stage))
+      );
+    }
+  }
+
   /**
    * The branch head as a commit SHA, read fresh (the Octokit client never
    * caches). File reads use it instead of the branch name:
@@ -304,7 +345,15 @@ export class GitHubClient {
       at
     );
     if (response.status !== 200) {
-      throw new Error(`Failed to fetch ${filename}: HTTP ${response.status}`);
+      throw new SyncFailureError(
+        classifyFailure(
+          Object.assign(
+            new Error(`Failed to fetch ${filename}: HTTP ${response.status}`),
+            { status: response.status }
+          ),
+          this.failureContext("file")
+        )
+      );
     }
     return response.text;
   }
@@ -591,11 +640,9 @@ export class GitHubClient {
 
       // One fresh commit SHA for the whole pull: every file (and the listing)
       // comes from the same commit, never from a cached older one.
-      const ref = await this.resolveRef();
+      const ref = await this.reading("repo", () => this.resolveRef());
 
-      const fileNames = await this.listFiles(ref).catch((err) => {
-        throw new Error(`Could not list token files: ${err.message}`);
-      });
+      const fileNames = await this.reading("folder", () => this.listFiles(ref));
 
       if (fileNames.length === 0) {
         return {
@@ -659,11 +706,11 @@ export class GitHubClient {
       };
     } catch (error: unknown) {
       console.error("Error pulling tokens:", error);
-      return {
-        success: false,
-        error:
-          error instanceof Error ? error.message : "Unknown error occurred",
-      };
+      const failure =
+        error instanceof SyncFailureError
+          ? error.failure
+          : classifyFailure(error, this.failureContext());
+      return { success: false, error: failure.message, failure };
     }
   }
 
@@ -741,11 +788,11 @@ export class GitHubClient {
       }
     } catch (error: unknown) {
       console.error("Error syncing tokens:", error);
-      return {
-        success: false,
-        error:
-          error instanceof Error ? error.message : "Unknown error occurred",
-      };
+      const failure =
+        error instanceof SyncFailureError
+          ? error.failure
+          : classifyFailure(error, this.failureContext());
+      return { success: false, error: failure.message, failure };
     }
   }
 

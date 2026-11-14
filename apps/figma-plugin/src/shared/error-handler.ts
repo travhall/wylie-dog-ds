@@ -1,10 +1,24 @@
 // Enhanced error handling for the Figma plugin
+import {
+  classifyFailure,
+  SyncFailureError,
+  type FailureAction,
+  type FailureKind,
+  type SyncFailure,
+} from "./sync-failure";
+
 export interface PluginError {
   type: ErrorType;
   message: string;
   details?: unknown;
   suggestions?: string[];
   recoverable: boolean;
+  /** Set when the error was classified (see sync-failure.ts). */
+  kind?: FailureKind;
+  /** The one thing that fixes it, when there is one. */
+  action?: FailureAction;
+  /** Rate limited: when GitHub allows requests again (ISO time). */
+  retryAt?: string;
 }
 
 export enum ErrorType {
@@ -34,60 +48,63 @@ export class ErrorHandler {
     };
   }
 
+  /** A classified failure as a PluginError. Its message already says what to do. */
+  static fromFailure(failure: SyncFailure): PluginError {
+    const type = ((): ErrorType => {
+      switch (failure.kind) {
+        case "token-rejected":
+        case "no-access":
+          return ErrorType.AUTHENTICATION_ERROR;
+        case "rate-limited":
+        case "offline":
+          return ErrorType.NETWORK_ERROR;
+        case "repo-not-found":
+        case "folder-not-found":
+        case "file-not-found":
+        case "not-found":
+          return ErrorType.REPOSITORY_ERROR;
+        case "bad-file":
+          return ErrorType.TOKEN_FORMAT_ERROR;
+        case "branch-moved":
+          return ErrorType.CONFLICT_ERROR;
+        default:
+          return ErrorType.UNKNOWN_ERROR;
+      }
+    })();
+    return {
+      type,
+      message: failure.message,
+      details: failure.detail,
+      suggestions: [],
+      recoverable: true,
+      kind: failure.kind,
+      ...(failure.action && { action: failure.action }),
+      ...(failure.retryAt && { retryAt: failure.retryAt }),
+    };
+  }
+
+  /**
+   * What to show for a failed result: its classification when the client made
+   * one, else its text, else the fallback.
+   */
+  static fromResult(
+    result: { error?: string; failure?: SyncFailure },
+    fallback: string
+  ): PluginError | string {
+    return result.failure
+      ? this.fromFailure(result.failure)
+      : result.error || fallback;
+  }
+
   static fromException(error: unknown): PluginError {
+    if (error instanceof SyncFailureError)
+      return this.fromFailure(error.failure);
+
     const message = error instanceof Error ? error.message : String(error);
 
-    if (error instanceof TypeError && message.includes("fetch")) {
-      return this.createError(
-        ErrorType.NETWORK_ERROR,
-        "Network connection failed",
-        error,
-        [
-          "Check your internet connection",
-          "Verify repository URL",
-          "Try again in a few moments",
-        ]
-      );
-    }
-
-    if (message.includes("401") || message.includes("Unauthorized")) {
-      return this.createError(
-        ErrorType.AUTHENTICATION_ERROR,
-        "GitHub authentication failed",
-        error,
-        [
-          "Check your access token",
-          "Verify repository permissions",
-          "Re-configure GitHub settings",
-        ]
-      );
-    }
-
-    if (message.includes("404") || message.includes("Not Found")) {
-      return this.createError(
-        ErrorType.REPOSITORY_ERROR,
-        "Repository or file not found",
-        error,
-        [
-          "Verify repository name and owner",
-          "Check token file path",
-          "Ensure repository exists",
-        ]
-      );
-    }
-
-    if (message.includes("JSON") || message.includes("parse")) {
-      return this.createError(
-        ErrorType.TOKEN_FORMAT_ERROR,
-        "Invalid token file format",
-        error,
-        [
-          "Check JSON syntax",
-          "Verify token file structure",
-          "Try a different export format",
-        ]
-      );
-    }
+    // The HTTP status, not a number inside the text, decides what it was
+    const failure = classifyFailure(error);
+    if (failure.kind !== "other") return this.fromFailure(failure);
 
     if (message.includes("conflict")) {
       return this.createError(

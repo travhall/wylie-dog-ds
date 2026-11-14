@@ -479,6 +479,13 @@ function AppInner() {
           <EnhancedErrorDisplay
             error={pluginState.error}
             onDismiss={() => pluginActions.setError(null)}
+            onAction={(action) => {
+              pluginActions.setError(null);
+              // A new token and a changed repository are both set in the setup
+              if (action === "new-token" || action === "edit-setup") {
+                dispatch({ type: "REQUEST_EDIT_SETUP" });
+              }
+            }}
             onRetry={() => {
               pluginActions.setError(null);
               if (

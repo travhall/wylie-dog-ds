@@ -62,6 +62,10 @@ export interface UIState {
 
   // Onboarding
   hasSeenOnboarding: boolean;
+
+  // Counts requests to open the GitHub setup (an error's "Edit setup" button);
+  // the Sync tab opens it when the count changes.
+  editSetupRequests: number;
 }
 
 /**
@@ -80,6 +84,7 @@ export type UIAction =
   | { type: "HIDE_HELP" }
   | { type: "COMPLETE_ONBOARDING" }
   | { type: "RESET_UI" }
+  | { type: "REQUEST_EDIT_SETUP" }
   | { type: "TOGGLE_COLLECTION"; id: string }
   | { type: "SELECT_ALL_COLLECTIONS"; ids: string[] }
   | { type: "DESELECT_ALL_COLLECTIONS" }
@@ -120,4 +125,6 @@ export const initialUIState: UIState = {
 
   // Onboarding
   hasSeenOnboarding: false,
+
+  editSetupRequests: 0,
 };
