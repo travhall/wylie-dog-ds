@@ -271,7 +271,17 @@ export function canHaveScopes(type: string): boolean {
 }
 
 /**
- * Figma scopes for a token of the given W3C type and name.
+ * The scopes a token's type alone implies: what a project without this
+ * project's naming conventions gets (see plugin/conventions.ts). Nothing is
+ * hidden for a reason of naming, and colors and numbers stay available everywhere.
+ */
+export function inferScopesFromType(type: string): string[] {
+  return [...(W3C_TO_FIGMA_SCOPES_MAP[type] || ["ALL_SCOPES"])];
+}
+
+/**
+ * Figma scopes for a token of the given W3C type and name, by Wylie Dog's
+ * naming conventions.
  */
 export function inferScopes(type: string, tokenName: string): string[] {
   if (type === "color") return inferScopesForColor(tokenName);

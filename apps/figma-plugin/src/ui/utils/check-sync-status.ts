@@ -125,7 +125,8 @@ export async function checkSyncStatus(
   const status = await client.getSyncStatus(
     localTokens,
     baseline,
-    localScopes,
+    // Scopes follow Wylie Dog's naming conventions; another project's are its own
+    client.conventions() === "wylie-dog" ? localScopes : undefined,
     localTextStyles,
     definitions
   );

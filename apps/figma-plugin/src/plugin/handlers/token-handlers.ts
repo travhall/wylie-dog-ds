@@ -39,6 +39,7 @@ import {
 } from "./utils";
 import type { PluginMessage } from "../../shared/types";
 import { fileConfigStorage } from "../storage/file-storage";
+import { conventionsFor } from "../conventions";
 import { syncStateStorage } from "../storage/sync-state-storage";
 
 export type AdapterResultWithFilename = AdapterProcessResult & {
@@ -302,6 +303,7 @@ export async function handleImportTokens(msg: PluginMessage): Promise<void> {
       mergeStrategy: mergeStrategy,
       createMissingModes: true,
       preserveExistingVariables: false,
+      conventions: conventionsFor(await fileConfigStorage.getGitHubConfig()),
     });
 
     // Check if import was successful despite reference issues

@@ -131,13 +131,22 @@ The repository configuration includes a sync mode:
 
 Spring easings (which have no cubic-bezier form), composed colors and anything that aliases them cannot be exported yet. Durations are native `TIMING` variables (seconds in Figma, `150ms` in the repo) and cubic-bezier easings are native `EASING` variables, in both directions. After an export or push, a notice lists what was skipped, grouped by collection with the reason. Details are in [docs/API.md](docs/API.md).
 
+### Wylie Dog conventions
+
+The token contract fixes only the file format. Two behaviours below, [hidden from publishing](#hidden-from-publishing) and name-based [variable scopes](#variable-scopes), are this project's own conventions, and Token Bridge applies them only to a repository that follows them (`src/plugin/conventions.ts`):
+
+- **Wylie Dog conventions** apply when the saved config sets `isWylieDogProject: true`, or, with no such flag, when the token folder is `packages/tokens/io/sync`. A fork of this repository keeps that folder, so it keeps them.
+- **Any other repository** gets none: a new variable gets the scope its type implies (colors and numbers stay in every picker), a scope a designer set is never overwritten by a Pull, no collection is hidden from publishing, and the Sync tab does not report scope differences.
+
+Text styles and code syntax were already optional: text styles need the box ticked and a definitions file, and code syntax needs a `code-syntax/web.json` next to the token folder. Without those files nothing happens.
+
 ### Hidden from publishing
 
-On every import the plugin sets `hiddenFromPublishing` from the collection name (`src/plugin/variables/publishing.ts`): `primitive` and `components` are hidden, `semantic` is published, so a file that uses the library sees only the semantic variables. The Pull success message says how many collections changed (a second Pull changes none). It is applied after the collection is found or created, so a collection someone hid or published by hand goes back to this rule on the next Pull. Not verified inside Figma: Pull once, then check Publish library lists only `semantic`.
+With Wylie Dog conventions, on every import the plugin sets `hiddenFromPublishing` from the collection name (`src/plugin/variables/publishing.ts`): `primitive` and `components` are hidden, `semantic` is published, so a file that uses the library sees only the semantic variables. The Pull success message says how many collections changed (a second Pull changes none). It is applied after the collection is found or created, so a collection someone hid or published by hand goes back to this rule on the next Pull. Not verified inside Figma: Pull once, then check Publish library lists only `semantic`.
 
 ### Variable Scopes
 
-Scopes decide which pickers (fill, text fill, stroke, font size, opacity...) list a variable. A variable left on `ALL_SCOPES` appears in every picker of its type, so every variable gets a scope. They are inferred from the token name by `src/plugin/variables/scopes.ts` and re-applied on every import, so importing or pulling updates scopes on variables that already exist.
+Scopes decide which pickers (fill, text fill, stroke, font size, opacity...) list a variable. A variable left on `ALL_SCOPES` appears in every picker of its type, so every variable gets a scope. Under [Wylie Dog conventions](#wylie-dog-conventions) they are inferred from the token name by `src/plugin/variables/scopes.ts` and re-applied on every import, so importing or pulling updates scopes on variables that already exist. Without them a new variable gets the scope its type implies and an existing variable keeps the scopes it has.
 
 | Token                                                                                                                                                                                               | Scopes                         |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |

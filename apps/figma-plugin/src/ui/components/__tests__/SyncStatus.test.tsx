@@ -35,7 +35,10 @@ function makeClient(impl: () => Promise<SyncResult>) {
   const getSyncStatus = vi.fn(impl);
   return {
     getSyncStatus,
-    client: { getSyncStatus } as unknown as ConflictAwareGitHubClient,
+    client: {
+      getSyncStatus,
+      conventions: () => "wylie-dog",
+    } as unknown as ConflictAwareGitHubClient,
   };
 }
 
@@ -487,7 +490,10 @@ describe("SyncStatus review", () => {
       differences: 1,
       diff,
     }));
-    const client = { getSyncStatus } as unknown as ConflictAwareGitHubClient;
+    const client = {
+      getSyncStatus,
+      conventions: () => "wylie-dog",
+    } as unknown as ConflictAwareGitHubClient;
     render(<SyncStatus githubClient={client} githubConfigured />);
 
     // Not offered before there is something to review.
@@ -540,7 +546,10 @@ describe("SyncStatus scopes (plan 202)", () => {
       differences: 0,
       diff,
     }));
-    const client = { getSyncStatus } as unknown as ConflictAwareGitHubClient;
+    const client = {
+      getSyncStatus,
+      conventions: () => "wylie-dog",
+    } as unknown as ConflictAwareGitHubClient;
     render(<SyncStatus githubClient={client} githubConfigured />);
     fireEvent.click(screen.getByLabelText("Refresh sync status"));
     pluginMessage({
@@ -628,7 +637,10 @@ describe("SyncStatus text styles (plan 205)", () => {
       differences: 0,
       diff,
     }));
-    const client = { getSyncStatus } as unknown as ConflictAwareGitHubClient;
+    const client = {
+      getSyncStatus,
+      conventions: () => "wylie-dog",
+    } as unknown as ConflictAwareGitHubClient;
     render(<SyncStatus githubClient={client} githubConfigured />);
     fireEvent.click(screen.getByLabelText("Refresh sync status"));
     pluginMessage({
@@ -721,6 +733,7 @@ describe("SyncStatus text styles from definitions (plan 206)", () => {
     );
     const client = {
       getSyncStatus,
+      conventions: () => "wylie-dog",
       fetchTextStyleDefinitions,
     } as unknown as ConflictAwareGitHubClient;
     render(
@@ -845,6 +858,7 @@ describe("SyncStatus text styles from definitions (plan 206)", () => {
       }));
       const client = {
         getSyncStatus,
+        conventions: () => "wylie-dog",
         fetchTextStyleDefinitions: fetchDefs,
       } as unknown as ConflictAwareGitHubClient;
       const view = render(
@@ -882,6 +896,7 @@ describe("SyncStatus text styles from definitions (plan 206)", () => {
       const getSyncStatus = vi.fn();
       const client = {
         getSyncStatus,
+        conventions: () => "wylie-dog",
         fetchTextStyleDefinitions: vi.fn(),
       } as unknown as ConflictAwareGitHubClient;
       const view = render(

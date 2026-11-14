@@ -479,7 +479,12 @@ export function useGitHubSync(
         baseline: local.baseline,
         localTokens: local.localTokens,
         remoteTokens,
-        localScopes: local.localScopes,
+        // Scopes are only compared under Wylie Dog's conventions; another
+        // project's scopes are its own (plugin/conventions.ts)
+        localScopes:
+          githubClient.conventions() === "wylie-dog"
+            ? local.localScopes
+            : undefined,
         localTextStyles: local.localTextStyles,
         textStyleDefinitions,
       });

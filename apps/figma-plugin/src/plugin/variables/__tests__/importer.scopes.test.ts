@@ -2,6 +2,13 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { importMultipleCollections } from "../importer";
 import type { ExportData } from "../processor";
 
+const wylieDog = {
+  mergeStrategy: "merge" as const,
+  createMissingModes: true,
+  preserveExistingVariables: false,
+  conventions: "wylie-dog" as const,
+};
+
 // The importer must hand an empty scope list straight to variable.scopes:
 // [] hides a variable from every picker and must not become ALL_SCOPES.
 
@@ -83,6 +90,7 @@ describe("importer applies scopes", () => {
       mergeStrategy: "replace",
       createMissingModes: true,
       preserveExistingVariables: false,
+      conventions: "wylie-dog" as const,
     });
     expect(result.collectionsPublishingChanged).toBe(1);
     expect(result.message).toContain("hidden from publishing");
@@ -119,7 +127,7 @@ describe("importer applies scopes", () => {
       },
     ] as unknown as ExportData[];
 
-    const result = await importMultipleCollections(data);
+    const result = await importMultipleCollections(data, wylieDog);
     expect(result.errors).toEqual([]);
 
     const scopes = Object.fromEntries(variables.map((v) => [v.name, v.scopes]));
@@ -144,9 +152,9 @@ describe("importer applies scopes", () => {
       },
     ] as unknown as ExportData[];
 
-    await importMultipleCollections(data);
+    await importMultipleCollections(data, wylieDog);
     variables[0].scopes = ["ALL_SCOPES"]; // as left by an earlier import
-    await importMultipleCollections(data);
+    await importMultipleCollections(data, wylieDog);
 
     expect(variables).toHaveLength(1);
     expect(variables[0].scopes).toEqual([]);
@@ -168,6 +176,7 @@ describe("importer applies scopes", () => {
       mergeStrategy: "replace" as const,
       createMissingModes: true,
       preserveExistingVariables: false,
+      conventions: "wylie-dog" as const,
     };
     await importMultipleCollections(data, options);
     const written = variables.reduce(
@@ -212,6 +221,7 @@ describe("importer applies scopes", () => {
       mergeStrategy: "replace",
       createMissingModes: true,
       preserveExistingVariables: false,
+      conventions: "wylie-dog" as const,
     });
     expect(removed.remove).toHaveBeenCalled();
     expect(helper.remove).not.toHaveBeenCalled();
