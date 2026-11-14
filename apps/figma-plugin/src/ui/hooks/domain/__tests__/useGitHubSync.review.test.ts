@@ -358,6 +358,43 @@ describe("Push review", () => {
     expect(posted("github-sync-complete")).toHaveLength(1);
   });
 
+  it("adds the tokens a push left out to the skipped list", async () => {
+    const client = pushClient({
+      syncTokens: vi.fn().mockResolvedValue({
+        success: true,
+        skippedTokens: [
+          { collection: "primitive", token: "color.bad", reason: "no type" },
+        ],
+      }),
+    });
+    const { current, calls } = setup(client);
+    await act(() => current().handleGitHubSync(edited, baseline));
+    await confirmReview(current);
+
+    expect(calls("addSkippedVariables")).toEqual([
+      [
+        [
+          {
+            id: "repo-format:primitive:color.bad",
+            name: "color.bad",
+            collection: "primitive",
+            resolvedType: "",
+            reason: "no type",
+            origin: "repo-format",
+          },
+        ],
+      ],
+    ]);
+  });
+
+  it("adds nothing to the skipped list when the push left nothing out", async () => {
+    const client = pushClient();
+    const { current, calls } = setup(client);
+    await act(() => current().handleGitHubSync(edited, baseline));
+    await confirmReview(current);
+    expect(calls("addSkippedVariables")).toHaveLength(0);
+  });
+
   it("remembers what GitHub holds after a direct push, for the baseline", async () => {
     const pullTokens = vi
       .fn()

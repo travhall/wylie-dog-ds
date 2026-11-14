@@ -13,7 +13,7 @@ import type {
   ResolverFile,
   SkippedToken,
 } from "@wyliedog/tokens/dtcg-convert";
-import type { ExportData } from "../variables/processor";
+import type { ExportData, UnsupportedVariable } from "../variables/processor";
 
 /** A token folder holding this file is in the DTCG token contract layout. */
 export const DTCG_RESOLVER_FILE = "tokens.resolver.json";
@@ -193,4 +193,18 @@ export function commitMessageFor(
         ? `${collections[0]} tokens`
         : `${collections.length} collections (${collections.join(", ")}) tokens`;
   return `chore: update ${what}\n\nSynced at ${timestamp}`;
+}
+
+/** Tokens left out of a DTCG push, as entries for the skipped-variables list. */
+export function skippedTokenItems(
+  skipped: SkippedToken[]
+): UnsupportedVariable[] {
+  return skipped.map((s) => ({
+    id: `repo-format:${s.collection}:${s.token}`,
+    name: s.token,
+    collection: s.collection,
+    resolvedType: "",
+    reason: s.reason,
+    origin: "repo-format",
+  }));
 }

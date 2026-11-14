@@ -98,8 +98,15 @@ export interface UnsupportedVariable {
   id: string;
   name: string;
   collection: string;
+  /** The Figma variable type; empty for a token left out of a DTCG push. */
   resolvedType: string;
   reason: string;
+  /**
+   * Where it was left out: `figma` (a variable type Token Bridge cannot export,
+   * the default) or `repo-format` (a token that cannot be written in the
+   * repository's DTCG format, found while pushing).
+   */
+  origin?: "figma" | "repo-format";
 }
 
 const SUPPORTED_RESOLVED_TYPES = new Set([

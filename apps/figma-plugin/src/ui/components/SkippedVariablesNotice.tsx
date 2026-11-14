@@ -27,6 +27,8 @@ export function SkippedVariablesNotice({
   const [expanded, setExpanded] = useState(false);
   const count = skipped.length;
   const listId = "skipped-variables-list";
+  const fromFigma = skipped.some((v) => (v.origin ?? "figma") === "figma");
+  const fromRepoFormat = skipped.some((v) => v.origin === "repo-format");
 
   const linkButtonStyle = {
     background: "none",
@@ -62,12 +64,21 @@ export function SkippedVariablesNotice({
         <Icon name="warning" size={14} color="var(--warning)" />
         <div style={{ flex: 1 }}>
           <strong>
-            {count} variable{count === 1 ? " was" : "s were"} skipped
+            {count} {fromFigma && !fromRepoFormat ? "variable" : "token"}
+            {count === 1 ? " was" : "s were"} left out
           </strong>
-          <div style={{ color: "var(--text-secondary)" }}>
-            Token Bridge can't export these variable types yet; they were left
-            out of the files and the pull request.
-          </div>
+          {fromFigma && (
+            <div style={{ color: "var(--text-secondary)" }}>
+              Token Bridge can't export these variable types yet; they were left
+              out of the files and the pull request.
+            </div>
+          )}
+          {fromRepoFormat && (
+            <div style={{ color: "var(--text-secondary)" }}>
+              These tokens can't be written in the repository's DTCG format, so
+              the push left them out. They are still in Figma.
+            </div>
+          )}
         </div>
         <button
           type="button"
@@ -105,7 +116,9 @@ export function SkippedVariablesNotice({
               <ul style={{ margin: 0, paddingLeft: "var(--space-4)" }}>
                 {variables.map((variable) => (
                   <li key={variable.id}>
-                    <code>{variable.name}</code> ({variable.resolvedType}):{" "}
+                    <code>{variable.name}</code>
+                    {variable.resolvedType ? ` (${variable.resolvedType})` : ""}
+                    :{" "}
                     <span style={{ color: "var(--text-secondary)" }}>
                       {variable.reason}
                     </span>

@@ -59,4 +59,22 @@ describe("usePluginMessages skippedVariables", () => {
     );
     expect(result.current[0].skippedVariables).toEqual([]);
   });
+
+  it("adds tokens a push left out, once each, beside what Figma skipped", () => {
+    const { result } = renderHook(() => usePluginMessages(client));
+    post({ type: "github-sync-tokens", exportData: [], skipped });
+    const added = [
+      {
+        id: "repo-format:primitive:color.bad",
+        name: "color.bad",
+        collection: "primitive",
+        resolvedType: "",
+        reason: "no type",
+        origin: "repo-format" as const,
+      },
+    ];
+    act(() => result.current[1].addSkippedVariables(added));
+    act(() => result.current[1].addSkippedVariables(added));
+    expect(result.current[0].skippedVariables).toEqual([...skipped, ...added]);
+  });
 });

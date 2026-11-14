@@ -5,6 +5,7 @@
  * Handles config testing, push, pull, and conflict resolution
  */
 
+import { skippedTokenItems } from "../../../plugin/github/sync-files";
 import { NO_TOKEN_FILES } from "../../../plugin/github/client";
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 import type { GitHubConfig } from "../../../shared/types";
@@ -202,6 +203,11 @@ export function useGitHubSync(
         actions.setLoadingMessage("");
 
         if (syncResult.success) {
+          if (syncResult.skippedTokens?.length) {
+            actions.addSkippedVariables(
+              skippedTokenItems(syncResult.skippedTokens)
+            );
+          }
           const message =
             syncResult.message ||
             (syncResult.pullRequestUrl
@@ -627,6 +633,11 @@ export function useGitHubSync(
           actions.setLoadingMessage("");
 
           if (syncResult.success) {
+            if (syncResult.skippedTokens?.length) {
+              actions.addSkippedVariables(
+                skippedTokenItems(syncResult.skippedTokens)
+              );
+            }
             // No baseline is recorded here: where the user took GitHub's side,
             // Figma still differs from what was just pushed, so claiming the
             // two agree would hide that change.
