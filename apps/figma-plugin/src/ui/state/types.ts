@@ -43,6 +43,9 @@ export interface UIState {
   selectedCollectionId: string | null;
   selectedExportFormat: string;
   selectedCollections: Set<string>;
+  // The person has ticked or cleared collections themselves, so an automatic
+  // preselection must not replace their choice.
+  selectionTouched: boolean;
   // Sync tab Styles section (plan 206): Pull also creates and updates the text
   // styles in the definitions file. Pull only; Push never offers it.
   includeTextStyles: boolean;
@@ -88,6 +91,9 @@ export type UIAction =
   | { type: "TOGGLE_COLLECTION"; id: string }
   | { type: "SELECT_ALL_COLLECTIONS"; ids: string[] }
   | { type: "DESELECT_ALL_COLLECTIONS" }
+  // The collections a status check found changed in Figma; ignored once the
+  // person has chosen for themselves.
+  | { type: "PRESELECT_COLLECTIONS"; ids: string[] }
   | { type: "SET_INCLUDE_TEXT_STYLES"; value: boolean }
   // The file's stored choice arrived (null: it never chose).
   | { type: "LOAD_TEXT_STYLES_CHOICE"; value: boolean | null }
@@ -111,6 +117,7 @@ export const initialUIState: UIState = {
   selectedCollectionId: null,
   selectedExportFormat: "w3c-dtcg",
   selectedCollections: new Set<string>(),
+  selectionTouched: false,
   includeTextStyles: false,
   textStylesChosen: false,
   textStylesDefaultChecked: false,
