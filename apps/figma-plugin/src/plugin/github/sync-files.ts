@@ -116,3 +116,81 @@ export function describeSkipped(skipped: SkippedToken[]): string {
   const more = skipped.length > 5 ? `, and ${skipped.length - 5} more` : "";
   return `${skipped.length} token(s) were left out because they cannot be written as DTCG: ${names}${more}.`;
 }
+
+/**
+ * Whether two files say the same thing. Equal text is equal; otherwise two JSON
+ * files are equal when they parse to the same value, whatever their
+ * formatting or key order. A repository whose files are formatted differently
+ * from the plugin's (compact objects, another indent) must not get every file
+ * rewritten for formatting alone.
+ */
+export function sameContent(a: string, b: string): boolean {
+  if (a === b) return true;
+  try {
+    return jsonEqual(JSON.parse(a), JSON.parse(b));
+  } catch {
+    return false;
+  }
+}
+
+function jsonEqual(a: unknown, b: unknown): boolean {
+  if (a === b) return true;
+  if (typeof a !== "object" || typeof b !== "object" || !a || !b) return false;
+  if (Array.isArray(a) || Array.isArray(b)) {
+    return (
+      Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((item, i) => jsonEqual(item, b[i]))
+    );
+  }
+  const keysA = Object.keys(a);
+  const keysB = Object.keys(b);
+  return (
+    keysA.length === keysB.length &&
+    keysA.every(
+      (key) =>
+        Object.prototype.hasOwnProperty.call(b, key) &&
+        jsonEqual(
+          (a as Record<string, unknown>)[key],
+          (b as Record<string, unknown>)[key]
+        )
+    )
+  );
+}
+
+/**
+ * The collections a set of changed files belongs to. A file is
+ * `<collection>.json` or `<collection>.<mode>.json` (DTCG), or the native
+ * layout's lower-cased `<collection>.json`; the resolver belongs to none.
+ */
+export function collectionsOfFiles(
+  exportData: ExportData[],
+  filenames: string[]
+): string[] {
+  const names = exportData.map((data) => Object.keys(data)[0]);
+  return names.filter((name) =>
+    filenames.some(
+      (file) =>
+        file === `${name}.json` ||
+        file.startsWith(`${name}.`) ||
+        file === nativeFileName(name)
+    )
+  );
+}
+
+/** The commit message for a Push that changed `collections` (empty: the resolver alone). */
+export function commitMessageFor(
+  collections: string[],
+  now: Date = new Date()
+): string {
+  const timestamp =
+    now.toISOString().replace("T", " ").substring(0, 19) + " UTC";
+  const what =
+    collections.length === 0
+      ? "token resolver"
+      : collections.length === 1
+        ? `${collections[0]} tokens`
+        : `${collections.length} collections (${collections.join(", ")}) tokens`;
+  return `chore: update ${what}\n\nSynced at ${timestamp}`;
+}

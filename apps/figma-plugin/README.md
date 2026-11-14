@@ -129,6 +129,8 @@ The repository configuration includes a sync mode:
 - `direct` - commit the token files straight to the configured branch
 - `pull-request` - push to a new branch and open a pull request
 
+In both modes a file is written only when its content changed. Files are compared as parsed JSON, so a repository that formats its token files its own way (compact objects, another indent, another key order) keeps that formatting for every file the Push did not change. The default commit message names only the collections that changed, and a Push that changes nothing makes no commit (and, in pull-request mode, no branch or pull request). A file that did change is rewritten in the plugin's format (2-space indent).
+
 ### Skipped Variables
 
 Spring easings (which have no cubic-bezier form), composed colors and anything that aliases them cannot be exported yet. Durations are native `TIMING` variables (seconds in Figma, `150ms` in the repo) and cubic-bezier easings are native `EASING` variables, in both directions. After an export or push, a notice lists what was skipped, grouped by collection with the reason. Details are in [docs/API.md](docs/API.md).

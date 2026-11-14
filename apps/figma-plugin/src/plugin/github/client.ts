@@ -13,7 +13,10 @@ import type { ResolverFile, SkippedToken } from "@wyliedog/tokens/dtcg-convert";
 import {
   DTCG_RESOLVER_FILE,
   describeSkipped,
+  collectionsOfFiles,
+  commitMessageFor,
   prepareSyncFiles,
+  sameContent,
 } from "./sync-files";
 import type { CodeSyntaxMap } from "../variables/code-syntax";
 import type { TextStyleDefinition } from "../variables/text-style-definitions";
@@ -462,7 +465,7 @@ export class GitHubClient {
         // File doesn't exist yet, will be created
       }
 
-      if (content !== existingContent) {
+      if (!sameContent(content, existingContent)) {
         const { data: blob } = await this.octokit.git.createBlob({
           owner: this.config.owner,
           repo: this.config.repo,
@@ -719,6 +722,7 @@ export class GitHubClient {
 
   async syncTokens(
     exportData: ExportData[],
+    /** Omit for a generated message that names only the collections that changed. */
     commitMessage?: string
   ): Promise<SyncResult> {
     if (!this.octokit || !this.config) {
@@ -726,20 +730,6 @@ export class GitHubClient {
     }
 
     try {
-      // Generate descriptive commit message if not provided
-      if (!commitMessage) {
-        const collectionNames = exportData.map((data) => Object.keys(data)[0]);
-        // Format: YYYY-MM-DD HH:MM:SS UTC
-        const now = new Date();
-        const timestamp =
-          now.toISOString().replace("T", " ").substring(0, 19) + " UTC";
-        const collectionsText =
-          collectionNames.length === 1
-            ? collectionNames[0]
-            : `${collectionNames.length} collections (${collectionNames.join(", ")})`;
-        commitMessage = `chore: update ${collectionsText} tokens\n\nSynced at ${timestamp}`;
-      }
-
       console.log(
         `Syncing ${exportData.length} token files to repository in ${this.config.syncMode} mode`
       );
@@ -761,7 +751,7 @@ export class GitHubClient {
 
   private async directSync(
     exportData: ExportData[],
-    commitMessage: string
+    requestedMessage?: string
   ): Promise<SyncResult> {
     if (!this.octokit || !this.config) {
       throw new Error("GitHub client not initialized");
@@ -855,11 +845,10 @@ export class GitHubClient {
         }
 
         // Only create blob if content actually changed.
-        // Note: this is byte-exact comparison. Both sides are produced by
-        // JSON.stringify(..., null, 2) with the same shape, so whitespace
-        // is stable. If the on-disk file gets reformatted by a different
-        // serializer we'd over-commit (no-op churn) but never under-commit.
-        if (newContent !== existingContent) {
+        // The comparison is on the parsed JSON, so a file the repository
+        // formats differently (compact objects, another indent, another key
+        // order) is left alone unless its content changed.
+        if (!sameContent(newContent, existingContent)) {
           const { data: blob } = await this.octokit.git.createBlob({
             owner: this.config.owner,
             repo: this.config.repo,
@@ -898,6 +887,16 @@ export class GitHubClient {
           }),
         };
       }
+
+      // Without a message from the caller, name only what changed
+      const commitMessage =
+        requestedMessage ??
+        commitMessageFor(
+          collectionsOfFiles(
+            exportData,
+            filesUpdated.map((path) => path.split("/").pop() ?? path)
+          )
+        );
 
       // Create new tree
       const { data: newTree } = await this.octokit.git.createTree({
@@ -1027,7 +1026,7 @@ export class GitHubClient {
 
   private async pullRequestSync(
     exportData: ExportData[],
-    commitMessage: string
+    requestedMessage?: string
   ): Promise<SyncResult> {
     if (!this.octokit || !this.config) {
       throw new Error("GitHub client not initialized");
@@ -1060,6 +1059,13 @@ export class GitHubClient {
           ? `${this.config.tokenPath}${fileName}`
           : `${this.config.tokenPath}/${fileName}`;
 
+        // Leave a file alone when it already says the same thing
+        const existing = await this.readFileAtRef(fileName, branchName);
+        if (existing !== null && sameContent(fileContent, existing)) {
+          console.log(`No changes in ${filePath}, skipping`);
+          continue;
+        }
+
         await this.updateFile(filePath, fileContent, branchName);
         filesUpdated.push(filePath);
 
@@ -1088,7 +1094,42 @@ export class GitHubClient {
       throw error;
     }
 
+    // Nothing differs: no pull request, and the branch made for it goes
+    if (filesUpdated.length === 0) {
+      try {
+        await this.octokit.git.deleteRef({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          ref: `heads/${branchName}`,
+        });
+      } catch (cleanupError) {
+        console.error(
+          `Failed to clean up unused branch ${branchName}:`,
+          cleanupError
+        );
+      }
+      return {
+        success: true,
+        filesUpdated: [],
+        message: [
+          "No changes to sync - all tokens are up to date",
+          describeSkipped(skipped),
+        ]
+          .filter(Boolean)
+          .join(" "),
+        ...(skipped.length > 0 && { skippedTokens: skipped }),
+      };
+    }
+
     // Create pull request
+    const commitMessage =
+      requestedMessage ??
+      commitMessageFor(
+        collectionsOfFiles(
+          exportData,
+          filesUpdated.map((path) => path.split("/").pop() ?? path)
+        )
+      );
     const pullRequest = await this.createPullRequest(
       branchName,
       commitMessage,
