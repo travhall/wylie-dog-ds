@@ -15,6 +15,7 @@
 import { cache } from "react";
 import fs from "fs";
 import path from "path";
+import { readSyncCollection } from "@wyliedog/tokens/read-sync";
 
 // ---------------------------------------------------------------------------
 // Paths
@@ -53,11 +54,14 @@ interface SyncCollection {
 
 function loadSync(filename: string): SyncCollection {
   try {
-    const raw = fs.readFileSync(path.join(TOKENS_SYNC_DIR, filename), "utf-8");
-    const parsed = JSON.parse(raw) as Array<Record<string, SyncCollection>>;
-    // Each file is an array with one object whose only key is the collection name
-    const collection = Object.values(parsed[0])[0];
-    return collection;
+    // The shared reader handles either sync layout; the collection is named
+    // after the file ("primitive.json" is "primitive").
+    const parsed = readSyncCollection(
+      TOKENS_SYNC_DIR,
+      filename.replace(/\.json$/, "")
+    );
+    // Each collection is an array with one object whose only key is its name
+    return Object.values(parsed[0])[0];
   } catch (cause) {
     const message = cause instanceof Error ? cause.message : String(cause);
     throw new Error(`Failed to load token sync file "${filename}": ${message}`);

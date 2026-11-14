@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { Octokit } from "@octokit/rest";
-import { readFileSync, readdirSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { resolve } from "node:path";
+import { readSyncCollections } from "@wyliedog/tokens/read-sync";
 import { nativeToDtcg } from "@wyliedog/tokens/dtcg-convert";
 import type { ExportData } from "../../variables/processor";
 import type { GitHubConfig } from "../../../shared/types";
@@ -404,10 +404,8 @@ describe("GitHubClient.pullTokens (DTCG layout)", () => {
   // must give the original collections.
   // Tests run from apps/figma-plugin, two levels below the repo root.
   const syncDir = resolve(process.cwd(), "../../packages/tokens/io/sync");
-  const native = readdirSync(syncDir)
-    .filter((f) => f.endsWith(".json"))
-    .sort()
-    .map((f) => JSON.parse(readFileSync(join(syncDir, f), "utf8")));
+  // The reader gives the native collections whichever layout io/sync is in.
+  const native = Object.values(readSyncCollections(syncDir));
   const { files, resolver } = nativeToDtcg(native);
   const served: Record<string, string> = {
     "tokens.resolver.json": JSON.stringify(resolver),
@@ -447,7 +445,7 @@ describe("GitHubClient.pullTokens (DTCG layout)", () => {
     const byName = (a: ExportData, b: ExportData) =>
       Object.keys(a)[0].localeCompare(Object.keys(b)[0]);
     expect([...(result.tokens ?? [])].sort(byName)).toEqual(
-      native.flat().sort(byName)
+      (native.flat() as unknown as ExportData[]).sort(byName)
     );
   });
 
@@ -883,10 +881,7 @@ describe("GitHubClient push in the DTCG layout", () => {
     // The real io/sync converted to DTCG is "the repo"; Figma still holds the
     // same tokens. Anything but a no-op would mean a Push rewrites the files.
     const syncDir = resolve(process.cwd(), "../../packages/tokens/io/sync");
-    const native = readdirSync(syncDir)
-      .filter((f) => f.endsWith(".json"))
-      .sort()
-      .map((f) => JSON.parse(readFileSync(join(syncDir, f), "utf8")));
+    const native = Object.values(readSyncCollections(syncDir));
     const { files, resolver } = nativeToDtcg(native);
     const repo: Record<string, string> = {
       "tokens.resolver.json": JSON.stringify(resolver, null, 2) + "\n",

@@ -19,14 +19,15 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readSyncCollection } from "../packages/tokens/lib/read-sync.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const srcDir = path.join(root, "packages/ui/src");
-const tokenFile = path.join(root, "packages/tokens/io/sync/components.json");
+const syncDir = path.join(root, "packages/tokens/io/sync");
 
 const variables = Object.assign(
   {},
-  ...JSON.parse(fs.readFileSync(tokenFile, "utf8"))
+  ...readSyncCollection(syncDir, "components")
 ).components.variables;
 
 const problems = [];
@@ -42,7 +43,9 @@ for (const [name, token] of Object.entries(variables)) {
   if (/opacity-disabled$/.test(name)) {
     opacityTokens.push(name);
     if (token.$type !== "number" || !/^\{opacity\.\d+\}$/.test(token.$value)) {
-      problems.push(`${name}: must be a number aliasing a primitive {opacity.*}`);
+      problems.push(
+        `${name}: must be a number aliasing a primitive {opacity.*}`
+      );
     }
   }
 }

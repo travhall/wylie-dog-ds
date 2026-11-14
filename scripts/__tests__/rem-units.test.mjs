@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readSyncCollection } from "../../packages/tokens/lib/read-sync.js";
 
 const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -12,7 +13,10 @@ const root = path.resolve(
 );
 const read = (p) => readFileSync(path.join(root, p), "utf8");
 
-const source = JSON.parse(read("packages/tokens/io/sync/primitive.json"));
+const source = readSyncCollection(
+  path.join(root, "packages/tokens/io/sync"),
+  "primitive"
+);
 const css = read("packages/tokens/dist/tokens.css");
 
 // First declaration of a custom property in the light block.

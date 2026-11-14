@@ -34,8 +34,12 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { execSync } from "child_process";
+import {
+  readSyncCollections,
+  writeSyncCollections,
+} from "../packages/tokens/lib/read-sync.js";
 
-const COMPONENTS_JSON = "packages/tokens/io/sync/components.json";
+const SYNC_DIR = "packages/tokens/io/sync";
 const CONTRAST_PAIRS_JSON = "scripts/contrast-pairs.json";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -98,7 +102,7 @@ function printUsage() {
   node scripts/generate-component.js <name> --category=<key> [--dry-run]
   node scripts/generate-component.js <name> --composition --category="<Patterns Folder>" [--dry-run]
 
-Adds the component's tokens to ${COMPONENTS_JSON}, writes the component, test and
+Adds the component's tokens to the components collection in ${SYNC_DIR}, writes the component, test and
 story, wires the exports, then rebuilds the tokens and runs pnpm check:tokens.
 
   --dry-run   print the files and token entries, write nothing
@@ -115,7 +119,10 @@ const PRIMITIVE_CATEGORIES = {
   "inputs-controls": { dir: "Inputs-Controls", title: "Inputs & Controls" },
   "layout-structure": { dir: "Layout-Structure", title: "Layout & Structure" },
   navigation: { dir: "Navigation", title: "Navigation" },
-  "overlays-popovers": { dir: "Overlays-Popovers", title: "Overlays & Popovers" },
+  "overlays-popovers": {
+    dir: "Overlays-Popovers",
+    title: "Overlays & Popovers",
+  },
 };
 
 function getCategoryFlag() {
@@ -195,7 +202,11 @@ function tokenSpec(name, composition = false) {
       description,
     });
     tokens.push(
-      spacing("padding-x", "{space.200}", `Horizontal padding of the ${title}.`),
+      spacing(
+        "padding-x",
+        "{space.200}",
+        `Horizontal padding of the ${title}.`
+      ),
       spacing("padding-y", "{space.200}", `Vertical padding of the ${title}.`),
       spacing("gap", "{space.200}", `Gap between the parts of the ${title}.`)
     );
@@ -209,10 +220,16 @@ function tokenCssVar(token) {
   return token.type === "color" ? `--color-${key}` : `--space-${key}`;
 }
 
+// The sync folder may be in either layout; read and write go through the shared
+// reader, which keeps the layout it finds.
 async function readComponentTokens() {
-  const file = path.join(rootDir, COMPONENTS_JSON);
-  const json = JSON.parse(await fs.readFile(file, "utf-8"));
-  return { file, json, variables: json[0].components.variables };
+  const dir = path.join(rootDir, SYNC_DIR);
+  const collections = readSyncCollections(dir);
+  return {
+    dir,
+    collections,
+    variables: collections.components[0].components.variables,
+  };
 }
 
 // Refuse to touch a component that already has tokens.
@@ -223,15 +240,15 @@ async function checkTokensFree(name) {
   );
   if (existing.length) {
     error(
-      `Tokens for '${name}' already exist in ${COMPONENTS_JSON} (${existing.length}, e.g. ${existing[0]}). Remove them or pick another name.`
+      `Tokens for '${name}' already exist in the components collection of ${SYNC_DIR} (${existing.length}, e.g. ${existing[0]}). Remove them or pick another name.`
     );
   }
 }
 
-// Insert the tokens, keeping the file's formatting (2-space JSON, trailing newline)
+// Insert the tokens, keeping the files' formatting (2-space JSON, trailing newline)
 // so the diff shows only the added entries.
 async function addTokens(name, composition) {
-  const { file, json, variables } = await readComponentTokens();
+  const { dir, collections, variables } = await readComponentTokens();
   for (const token of tokenSpec(name, composition)) {
     variables[token.name] = {
       $type: token.type,
@@ -240,8 +257,10 @@ async function addTokens(name, composition) {
       $description: token.description,
     };
   }
-  await fs.writeFile(file, JSON.stringify(json, null, 2) + "\n", "utf-8");
-  success(`Added ${tokenSpec(name, composition).length} tokens to ${COMPONENTS_JSON}`);
+  writeSyncCollections(dir, collections);
+  success(
+    `Added ${tokenSpec(name, composition).length} tokens to the components collection in ${SYNC_DIR}`
+  );
 }
 
 // Declare the text/background pair, so `pnpm check:contrast` covers the new tokens.
@@ -252,7 +271,8 @@ async function addContrastPair(name) {
   const text = await fs.readFile(file, "utf-8");
   const start = text.indexOf('"pairs": [');
   const end = start === -1 ? -1 : text.indexOf("\n  ]", start);
-  if (end === -1) error(`Could not find the "pairs" array in ${CONTRAST_PAIRS_JSON}`);
+  if (end === -1)
+    error(`Could not find the "pairs" array in ${CONTRAST_PAIRS_JSON}`);
   const entry = `,
     {
       "foreground": "${name}.default.text",
@@ -261,7 +281,11 @@ async function addContrastPair(name) {
       ],
       "kind": "text"
     }`;
-  await fs.writeFile(file, text.slice(0, end) + entry + text.slice(end), "utf-8");
+  await fs.writeFile(
+    file,
+    text.slice(0, end) + entry + text.slice(end),
+    "utf-8"
+  );
   JSON.parse(await fs.readFile(file, "utf-8")); // still valid JSON
   success(`Declared the text pair in ${CONTRAST_PAIRS_JSON}`);
 }
@@ -600,8 +624,18 @@ async function checkExistence(name, composition = false, category) {
     `${name}.tsx`
   );
   const storyPath = composition
-    ? path.join(rootDir, "apps/storybook/stories/Patterns", category, `${name}.stories.tsx`)
-    : path.join(rootDir, "apps/storybook/stories/Components", category.dir, `${name}.stories.tsx`);
+    ? path.join(
+        rootDir,
+        "apps/storybook/stories/Patterns",
+        category,
+        `${name}.stories.tsx`
+      )
+    : path.join(
+        rootDir,
+        "apps/storybook/stories/Components",
+        category.dir,
+        `${name}.stories.tsx`
+      );
 
   try {
     await fs.access(componentPath);
@@ -658,8 +692,18 @@ async function createTestFile(name, composition = false) {
 // Create story file
 async function createStoryFile(name, composition = false, category) {
   const storyPath = composition
-    ? path.join(rootDir, "apps/storybook/stories/Patterns", category, `${name}.stories.tsx`)
-    : path.join(rootDir, "apps/storybook/stories/Components", category.dir, `${name}.stories.tsx`);
+    ? path.join(
+        rootDir,
+        "apps/storybook/stories/Patterns",
+        category,
+        `${name}.stories.tsx`
+      )
+    : path.join(
+        rootDir,
+        "apps/storybook/stories/Components",
+        category.dir,
+        `${name}.stories.tsx`
+      );
   const content = generateStoryTemplate(name, composition, category);
 
   await fs.writeFile(storyPath, content, "utf-8");
@@ -737,11 +781,18 @@ async function updatePackageJson(name, composition = false) {
 // Update index.ts barrel exports
 async function updateIndexFile(name, composition = false) {
   if (composition) {
-    const indexPath = path.join(rootDir, "packages/ui/src/compositions/index.ts");
+    const indexPath = path.join(
+      rootDir,
+      "packages/ui/src/compositions/index.ts"
+    );
     const pascalName = toPascalCase(name);
     const content = await fs.readFile(indexPath, "utf-8");
     const addition = `\nexport { ${pascalName} } from "./${name}";\nexport type { ${pascalName}Props } from "./${name}";\n`;
-    await fs.writeFile(indexPath, content.trimEnd() + "\n" + addition.trimStart(), "utf-8");
+    await fs.writeFile(
+      indexPath,
+      content.trimEnd() + "\n" + addition.trimStart(),
+      "utf-8"
+    );
     success(`Updated packages/ui/src/compositions/index.ts exports`);
   } else {
     const indexPath = path.join(rootDir, "packages/ui/src/index.ts");
@@ -809,7 +860,10 @@ function plannedOutput(name, composition, category) {
     : `packages/ui/src/${name}.tsx`;
   return {
     files: [
-      { path: componentPath, content: generateComponentTemplate(name, composition) },
+      {
+        path: componentPath,
+        content: generateComponentTemplate(name, composition),
+      },
       {
         path: `packages/ui/src/__tests__/${name}.test.tsx`,
         content: generateTestTemplate(name, composition),
@@ -836,7 +890,7 @@ function plannedOutput(name, composition, category) {
       composition
         ? "packages/ui/src/compositions/index.ts"
         : "packages/ui/src/index.ts",
-      COMPONENTS_JSON,
+      SYNC_DIR,
       CONTRAST_PAIRS_JSON,
     ],
   };
@@ -852,9 +906,13 @@ function printDryRun(plan) {
   for (const file of plan.files) console.log(`  ${file.path}`);
   console.log("\nFiles it would edit:");
   for (const file of plan.edits) console.log(`  ${file}`);
-  console.log(`\nTokens it would add to ${COMPONENTS_JSON}:`);
+  console.log(
+    `\nTokens it would add to the components collection in ${SYNC_DIR}:`
+  );
   for (const [name, token] of Object.entries(plan.tokens)) {
-    console.log(`  ${name}  (${token.type})  ${token.value}  ->  ${token.cssVar}`);
+    console.log(
+      `  ${name}  (${token.type})  ${token.value}  ->  ${token.cssVar}`
+    );
   }
   console.log(`\n--- ${plan.files[0].path} ---\n${plan.files[0].content}`);
 }
@@ -867,7 +925,9 @@ function runCheck(label, command) {
     success(label);
   } catch (err) {
     console.error(`${err.stdout ?? ""}${err.stderr ?? ""}`);
-    error(`${label} failed. Fix the output above; the generated files are left in place.`);
+    error(
+      `${label} failed. Fix the output above; the generated files are left in place.`
+    );
   }
 }
 
@@ -941,7 +1001,9 @@ async function main() {
     : `apps/storybook/stories/Components/${category.dir}/${componentName}.stories.tsx`;
 
   console.log(`  1. Customize the component in ${componentPath}`);
-  console.log(`  2. Add variants and props as needed (new tokens go in ${COMPONENTS_JSON})`);
+  console.log(
+    `  2. Add variants and props as needed (new tokens go in the components collection of ${SYNC_DIR})`
+  );
   if (composition) {
     console.log(`  3. Import and compose primitives from parent directory`);
     console.log(`  4. Enhance stories in ${storyPath}`);

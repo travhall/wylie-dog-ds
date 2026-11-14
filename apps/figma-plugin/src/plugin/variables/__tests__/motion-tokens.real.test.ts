@@ -1,5 +1,5 @@
-import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { readSyncCollection } from "@wyliedog/tokens/read-sync";
 import { describe, expect, it } from "vitest";
 import {
   durationToSeconds,
@@ -17,9 +17,9 @@ const SYNC_DIR = resolve(process.cwd(), "../../packages/tokens/io/sync");
 type Token = { $type: string; $value: unknown };
 const tokens: Record<string, Token> = {};
 for (const collection of ["primitive", "semantic", "components"]) {
-  const file = JSON.parse(
-    readFileSync(resolve(SYNC_DIR, `${collection}.json`), "utf8")
-  ) as Array<Record<string, { variables: Record<string, Token> }>>;
+  const file = readSyncCollection(SYNC_DIR, collection) as unknown as Array<
+    Record<string, { variables: Record<string, Token> }>
+  >;
   for (const [name, token] of Object.entries(file[0][collection].variables)) {
     tokens[name] = token;
   }

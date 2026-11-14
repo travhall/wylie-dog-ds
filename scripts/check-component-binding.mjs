@@ -26,8 +26,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { stripVariants } from "./class-variants.mjs";
+import { readSyncCollection } from "../packages/tokens/lib/read-sync.js";
 
-const tokenFile = "packages/tokens/io/sync/components.json";
+const SYNC_DIR = "packages/tokens/io/sync";
 const srcDir = "packages/ui/src";
 
 // Documented exceptions. Each needs a reason; keep this list short.
@@ -68,7 +69,7 @@ const COMPOSITION_LITERAL_ALLOWLIST = [];
 
 const variables = Object.assign(
   {},
-  ...JSON.parse(fs.readFileSync(tokenFile, "utf8"))
+  ...readSyncCollection(SYNC_DIR, "components")
 ).components.variables;
 const componentColors = new Set(
   Object.entries(variables)

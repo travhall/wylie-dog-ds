@@ -15,18 +15,26 @@ import { join } from "node:path";
 import { promisify } from "node:util";
 import { TokenIOProcessor } from "../scripts/process-token-io.js";
 import { nativeToDtcg } from "./dtcg-convert.js";
+import { readSyncCollections } from "./read-sync.js";
 
 const run = promisify(execFile);
 const packageRoot = new URL("..", import.meta.url).pathname;
-const nativeDir = join(packageRoot, "io/sync");
+const realSyncDir = join(packageRoot, "io/sync");
 
-/** Convert the real native files into a DTCG sync directory under `dir`. */
-async function writeDtcgDir(dir) {
-  const names = (await readdir(nativeDir)).filter((f) => f.endsWith(".json"));
-  const native = [];
-  for (const name of names.sort()) {
-    native.push(JSON.parse(await readFile(join(nativeDir, name), "utf8")));
+// The real tokens as native collections, whichever layout io/sync is in.
+const realCollections = () => readSyncCollections(realSyncDir);
+
+/** The real tokens as native collection files under `dir`. */
+async function writeNativeDir(dir) {
+  await mkdir(dir, { recursive: true });
+  for (const [name, data] of Object.entries(realCollections())) {
+    await writeFile(join(dir, `${name}.json`), JSON.stringify(data, null, 2));
   }
+}
+
+/** The real tokens converted into a DTCG sync directory under `dir`. */
+async function writeDtcgDir(dir) {
+  const native = Object.values(realCollections());
   const { files, resolver } = nativeToDtcg(native);
   await mkdir(dir, { recursive: true });
   for (const [name, tree] of Object.entries(files)) {
@@ -52,8 +60,12 @@ test("DTCG input gives the same tokens and values as the native files", async ()
   const root = await mkdtemp(join(tmpdir(), "dtcg-process-"));
   try {
     await writeDtcgDir(join(root, "sync"));
+    await writeNativeDir(join(root, "native"));
 
-    const native = new TokenIOProcessor(nativeDir, join(root, "processed-a"));
+    const native = new TokenIOProcessor(
+      join(root, "native"),
+      join(root, "processed-a")
+    );
     const dtcg = new TokenIOProcessor(
       join(root, "sync"),
       join(root, "processed-b")

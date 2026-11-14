@@ -20,6 +20,7 @@ import { cache } from "react";
 import fs from "fs";
 import path from "path";
 import { findCssVar } from "@wyliedog/tokens/color";
+import { readSyncCollection } from "@wyliedog/tokens/read-sync";
 
 export { findCssVar };
 
@@ -64,18 +65,18 @@ export function getColorModes(name: string): ColorModes {
   return { light, dark };
 }
 
-/** Tracked source the Token Bridge plugin syncs; holds the `{color.palette.step}` aliases. */
-const SEMANTIC_SOURCE = path.resolve(
-  process.cwd(),
-  "../../packages/tokens/io/sync/semantic.json"
-);
+/**
+ * Tracked source the Token Bridge plugin syncs; holds the `{color.palette.step}`
+ * aliases. Read through the shared reader, so either sync layout works.
+ */
+const SYNC_DIR = path.resolve(process.cwd(), "../../packages/tokens/io/sync");
 
 interface SyncVariable {
   valuesByMode: Record<string, string>;
 }
 
 const readSemanticSource = cache((): Record<string, SyncVariable> => {
-  const file = JSON.parse(fs.readFileSync(SEMANTIC_SOURCE, "utf-8")) as Array<
+  const file = readSyncCollection(SYNC_DIR, "semantic") as unknown as Array<
     Record<string, { variables: Record<string, SyncVariable> }>
   >;
   return file[0].semantic.variables;
@@ -108,7 +109,7 @@ export function getAlias(
   const ref = variable ? parsePrimitiveRef(variable.valuesByMode[mode]) : null;
   if (!ref) {
     throw new Error(
-      `Token ${name} is not a plain color alias in ${mode} (packages/tokens/io/sync/semantic.json)`
+      `Token ${name} is not a plain color alias in ${mode} (semantic collection, packages/tokens/io/sync)`
     );
   }
   return ref;

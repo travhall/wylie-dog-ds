@@ -22,13 +22,11 @@
 // Reads the tracked token source, so no build is needed.
 // Usage: node scripts/check-token-structure.mjs
 
-import fs from "node:fs";
+import { readSyncCollection } from "../packages/tokens/lib/read-sync.js";
 
-const file = "packages/tokens/io/sync/semantic.json";
-const variables = Object.assign(
-  {},
-  ...JSON.parse(fs.readFileSync(file, "utf8"))
-).semantic.variables;
+const SYNC_DIR = "packages/tokens/io/sync";
+const variables = Object.assign({}, ...readSyncCollection(SYNC_DIR, "semantic"))
+  .semantic.variables;
 const names = Object.keys(variables).filter(
   (name) => variables[name].$type === "color"
 );
@@ -110,12 +108,8 @@ for (const name of names) {
 // Components collection (Plan 193): the same Figma-shape rules, plus no state word
 // as a path level. See documentation/tokens/component-token-grammar.md.
 const componentNames = Object.keys(
-  Object.assign(
-    {},
-    ...JSON.parse(
-      fs.readFileSync("packages/tokens/io/sync/components.json", "utf8")
-    )
-  ).components.variables
+  Object.assign({}, ...readSyncCollection(SYNC_DIR, "components")).components
+    .variables
 );
 const componentState =
   /^(hover|active|disabled|focus|checked|unchecked|pressed|selected|open)$/;
