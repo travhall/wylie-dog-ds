@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { Octokit } from "@octokit/rest";
 import { readFileSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { nativeToDtcg } from "@wyliedog/tokens/dtcg-convert";
@@ -52,6 +53,11 @@ import { GitHubClient } from "../client";
 
 function toB64(content: string): string {
   return Buffer.from(content, "utf-8").toString("base64");
+}
+
+/** The branch head the GitHub API reports. File reads are made at this commit. */
+function headIs(sha: string) {
+  mockOctokit.git.getRef.mockResolvedValue({ data: { object: { sha } } });
 }
 
 function makeClient(overrides: Partial<GitHubConfig> = {}) {
@@ -334,6 +340,7 @@ describe("GitHubClient.listFiles", () => {
 describe("GitHubClient.pullTokens", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    headIs("head-sha");
   });
 
   it("succeeds and returns parsed tokens from every configured file", async () => {
@@ -419,10 +426,12 @@ describe("GitHubClient.pullTokens (DTCG layout)", () => {
     });
   };
 
-  const list = (names: string[]) =>
+  const list = (names: string[]) => {
+    headIs("head-sha");
     mockOctokit.repos.getContent.mockResolvedValue({
       data: names.map((name) => ({ type: "file", name })),
     });
+  };
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -488,6 +497,108 @@ describe("GitHubClient.pullTokens (DTCG layout)", () => {
 
     expect(result.success).toBe(true);
     expect(result.tokens).toHaveLength(2);
+  });
+});
+
+// GitHub caches: api.github.com for 60 seconds and raw.githubusercontent.com
+// for five minutes (by branch URL). Read right after a push, the plugin saw the
+// previous commit: a Pull that found no changes, a status that never cleared, a
+// false conflict, and "Branch has new commits since sync started" (the retry
+// asked for the head again and got the same cached answer).
+describe("GitHubClient reads GitHub fresh", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockOctokit.repos.getContent.mockResolvedValue({ data: [] });
+  });
+
+  const requestedUrls = () =>
+    mockFetch.mock.calls.map(([url]) => url as string);
+
+  it("sends every API call with cache: no-store", async () => {
+    makeClient();
+    const calls = vi.mocked(Octokit).mock.calls;
+    const { request } = calls[calls.length - 1][0] as unknown as {
+      request: { fetch: (url: string, init?: object) => Promise<unknown> };
+    };
+    mockFetch.mockResolvedValue({ ok: true, status: 200 });
+
+    await request.fetch("https://api.github.com/repos/o/r/git/ref/heads/main", {
+      method: "GET",
+    });
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      "https://api.github.com/repos/o/r/git/ref/heads/main",
+      expect.objectContaining({ method: "GET", cache: "no-store" })
+    );
+  });
+
+  it("reads token files at the commit the branch points to, not at the branch name", async () => {
+    headIs("abc123");
+    mockOctokit.repos.getContent.mockResolvedValue({
+      data: [{ type: "file", name: "primitive.json" }],
+    });
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify([{ colors: { variables: {} } }]),
+    });
+
+    await makeClient({ tokenFiles: "" }).pullTokens();
+
+    expect(requestedUrls()).toEqual([
+      "https://raw.githubusercontent.com/wylie-dog/design-tokens/abc123/tokens/primitive.json",
+    ]);
+    // The directory listing is also taken at that commit.
+    expect(mockOctokit.repos.getContent).toHaveBeenCalledWith(
+      expect.objectContaining({ ref: "abc123" })
+    );
+  });
+
+  it("picks up a new commit on the next read instead of reusing the old one", async () => {
+    mockOctokit.repos.getContent.mockResolvedValue({
+      data: [{ type: "file", name: "primitive.json" }],
+    });
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify([{ colors: { variables: {} } }]),
+    });
+    const client = makeClient({ tokenFiles: "" });
+
+    headIs("before-push");
+    await client.pullTokens();
+    headIs("after-push");
+    await client.pullTokens();
+
+    expect(requestedUrls()).toEqual([
+      "https://raw.githubusercontent.com/wylie-dog/design-tokens/before-push/tokens/primitive.json",
+      "https://raw.githubusercontent.com/wylie-dog/design-tokens/after-push/tokens/primitive.json",
+    ]);
+  });
+
+  it("reads every file of one pull from the same commit", async () => {
+    headIs("one-commit");
+    mockFetch.mockImplementation(async () => ({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify([{ colors: { variables: {} } }]),
+    }));
+
+    await makeClient({ tokenFiles: "a.json, b.json, c.json" }).pullTokens();
+
+    expect(mockOctokit.git.getRef).toHaveBeenCalledTimes(1);
+    expect(requestedUrls()).toHaveLength(3);
+    for (const url of requestedUrls()) expect(url).toContain("/one-commit/");
+  });
+
+  it("fails the pull when the branch head cannot be read, instead of falling back to a cached branch URL", async () => {
+    mockOctokit.git.getRef.mockRejectedValue(new Error("Bad credentials"));
+
+    const result = await makeClient({ tokenFiles: "a.json" }).pullTokens();
+
+    expect(result.success).toBe(false);
+    expect(result.error).toMatch(/Bad credentials/);
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 });
 
@@ -963,10 +1074,13 @@ describe("GitHubClient.fetchTextStyleDefinitions (plan 206)", () => {
       text: async () => JSON.stringify(file),
     });
 
+    headIs("head-sha");
+
     const result = await client.fetchTextStyleDefinitions();
 
+    // Read at the commit the branch points to, not at the cached branch URL.
     expect(mockFetch).toHaveBeenCalledWith(
-      "https://raw.githubusercontent.com/wylie-dog/design-tokens/main/packages/tokens/io/styles/text-styles.json"
+      "https://raw.githubusercontent.com/wylie-dog/design-tokens/head-sha/packages/tokens/io/styles/text-styles.json"
     );
     expect(result).toEqual({
       status: "found",
@@ -1062,9 +1176,10 @@ describe("GitHubClient.fetchCodeSyntax (plan 216)", () => {
       status: 200,
       text: async () => JSON.stringify(file),
     });
+    headIs("head-sha");
     const result = await client.fetchCodeSyntax();
     expect(mockFetch).toHaveBeenCalledWith(
-      "https://raw.githubusercontent.com/wylie-dog/design-tokens/main/packages/tokens/io/code-syntax/web.json"
+      "https://raw.githubusercontent.com/wylie-dog/design-tokens/head-sha/packages/tokens/io/code-syntax/web.json"
     );
     expect(result).toEqual({ status: "found", syntax: file.syntax });
   });
