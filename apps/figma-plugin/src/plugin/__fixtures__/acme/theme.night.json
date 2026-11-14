@@ -1,0 +1,11 @@
+{
+  "color": {
+    "surface": {
+      "$type": "color",
+      "$value": "{color.ink.900}",
+      "$description": "Page background."
+    },
+    "text": { "$type": "color", "$value": "{color.paper.0}" },
+    "action": { "$type": "color", "$value": "{color.signal.700}" }
+  }
+}

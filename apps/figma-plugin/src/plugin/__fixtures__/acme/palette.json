@@ -1,0 +1,34 @@
+{
+  "color": {
+    "ink": {
+      "100": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.94, 0.01, 260] }
+      },
+      "500": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.55, 0.05, 260] }
+      },
+      "900": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.25, 0.04, 260] }
+      }
+    },
+    "paper": {
+      "0": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.99, 0.004, 90] }
+      }
+    },
+    "signal": {
+      "500": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.7, 0.17, 55] }
+      },
+      "700": {
+        "$type": "color",
+        "$value": { "colorSpace": "oklch", "components": [0.55, 0.148, 48.72] }
+      }
+    }
+  }
+}

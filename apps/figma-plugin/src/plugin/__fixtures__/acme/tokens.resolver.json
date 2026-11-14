@@ -1,0 +1,30 @@
+{
+  "version": "2025.10",
+  "name": "Acme tokens",
+  "sets": {
+    "palette": { "sources": [{ "$ref": "palette.json" }] },
+    "scale": { "sources": [{ "$ref": "scale.json" }] }
+  },
+  "modifiers": {
+    "appearance": {
+      "contexts": {
+        "day": [{ "$ref": "theme.day.json" }],
+        "night": [{ "$ref": "theme.night.json" }]
+      },
+      "default": "day"
+    },
+    "density": {
+      "contexts": {
+        "compact": [{ "$ref": "density.compact.json" }],
+        "regular": [{ "$ref": "density.regular.json" }]
+      },
+      "default": "regular"
+    }
+  },
+  "resolutionOrder": [
+    { "$ref": "#/sets/palette" },
+    { "$ref": "#/sets/scale" },
+    { "$ref": "#/modifiers/appearance" },
+    { "$ref": "#/modifiers/density" }
+  ]
+}

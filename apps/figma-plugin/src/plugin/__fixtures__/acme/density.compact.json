@@ -1,0 +1,4 @@
+{
+  "inset": { "$type": "dimension", "$value": "{space.1}" },
+  "gap": { "$type": "dimension", "$value": "{space.2}" }
+}
