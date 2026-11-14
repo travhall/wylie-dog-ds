@@ -72,8 +72,8 @@ function bezierToDtcg(name, value) {
   return parts;
 }
 
-// The native files write number tokens both as 12 and as "12"; both convert to
-// the number 12, and converting back writes the string form (the common one).
+// Native number literals are JSON numbers (a string would be read by the build
+// as a string, not transformed); a numeric string is accepted and converted.
 function numberToDtcg(name, value) {
   const n = typeof value === "number" ? value : Number(value);
   if ((typeof value === "string" && value.trim() === "") || Number.isNaN(n)) {
@@ -244,7 +244,7 @@ function valueFromDtcg(name, nativeType, dtcgType, value, unit) {
     case "cubicBezier":
       return `cubic-bezier(${value.join(", ")})`;
     case "number":
-      return unit ? `${value}${unit}` : String(value);
+      return unit ? `${value}${unit}` : value;
     case "fontFamily":
       return value;
     case "shadow":

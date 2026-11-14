@@ -27,6 +27,8 @@ dist/               CSS, JS, manifest, types                          (committed
 
 ## Stage 1: Sync (`io/sync/`)
 
+**Two layouts.** `process-io` reads whichever layout the sync directory holds. A directory with a `tokens.resolver.json` is in the [DTCG token contract](dtcg-contract.md) layout: the processor reads the resolver and its files, converts them to the native collection shape (`lib/dtcg-convert.js`), and carries on through the same normalization, so `io/processed/` has the same tokens and values either way. Any other directory is read as native collection files, as described below. A DTCG directory is never written back to; the native write-back that rewrites `primitive.json`, `semantic.json` and `components.json` runs only for the native layout. The files in `io/sync/` are still native, and Token Bridge still reads and writes that layout. `node scripts/process-token-io.js --sync <dir> --processed <dir>` processes any directory without touching `io/`.
+
 The files the Token Bridge plugin reads and writes through GitHub (`packages/tokens/io/sync/`):
 
 | File              | Collection   | Modes           |

@@ -1,6 +1,9 @@
 import { readFile, writeFile, mkdir, readdir } from "fs/promises";
 import { join } from "path";
 import { convertHexToOklch } from "./color-utils.js";
+import { dtcgToNative } from "../lib/dtcg-convert.js";
+
+const RESOLVER_FILE = "tokens.resolver.json";
 
 /**
  * Robust I/O processor that handles multiple token formats
@@ -22,6 +25,63 @@ class TokenIOProcessor {
     await mkdir(this.syncDir, { recursive: true });
     const entries = await readdir(this.syncDir);
     return entries.filter((f) => f.endsWith(".json"));
+  }
+
+  /**
+   * Is the sync directory in the DTCG contract layout? It is when it holds a
+   * tokens.resolver.json (documentation/tokens/dtcg-contract.md). Otherwise
+   * every .json file is read as a native collection file.
+   */
+  async isDtcgSync() {
+    try {
+      await readFile(join(this.syncDir, RESOLVER_FILE), "utf8");
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Read a DTCG sync directory through its resolver and convert it back to the
+   * native collection shape, so the existing normalization (and therefore
+   * io/processed and dist) is the same code path as before.
+   */
+  async readDtcgInputs() {
+    const resolver = JSON.parse(
+      await readFile(join(this.syncDir, RESOLVER_FILE), "utf8")
+    );
+    const refs = new Set();
+    for (const set of Object.values(resolver.sets ?? {})) {
+      for (const src of set.sources) refs.add(src.$ref);
+    }
+    for (const modifier of Object.values(resolver.modifiers ?? {})) {
+      for (const sources of Object.values(modifier.contexts)) {
+        for (const src of sources) refs.add(src.$ref);
+      }
+    }
+    const files = {};
+    for (const ref of refs) {
+      files[ref] = JSON.parse(await readFile(join(this.syncDir, ref), "utf8"));
+    }
+    return Object.entries(dtcgToNative(resolver, files)).map(
+      ([collection, data]) => ({
+        filename: `${collection} (DTCG)`,
+        load: async () => data,
+      })
+    );
+  }
+
+  /** Every .json in the sync directory, read as a native collection file. */
+  async readNativeInputs() {
+    const files = await this.discoverFiles();
+    console.log(
+      `📂 Discovered ${files.length} token file(s): ${files.join(", ")}`
+    );
+    return files.map((filename) => ({
+      filename,
+      load: async () =>
+        JSON.parse(await readFile(join(this.syncDir, filename), "utf8")),
+    }));
   }
 
   fileFor(collection) {
@@ -304,18 +364,22 @@ class TokenIOProcessor {
     // Ensure directories exist
     await mkdir(this.processedDir, { recursive: true });
 
-    const files = await this.discoverFiles();
-    console.log(`📂 Discovered ${files.length} token file(s): ${files.join(", ")}`);
+    this.dtcg = await this.isDtcgSync();
+    if (this.dtcg) {
+      console.log(`📐 DTCG contract detected (${RESOLVER_FILE})`);
+    }
+    const inputs = this.dtcg
+      ? await this.readDtcgInputs()
+      : await this.readNativeInputs();
     const processedData = {
       primitive: {},
       semantic: { light: {}, dark: {} },
       components: { light: {}, dark: {} },
     };
 
-    for (const filename of files) {
+    for (const { filename, load } of inputs) {
       try {
-        const filePath = join(this.syncDir, filename);
-        const rawData = JSON.parse(await readFile(filePath, "utf8"));
+        const rawData = await load();
         const normalized = await this.normalizeFormat(rawData, filename);
 
         // Merge normalized data
@@ -432,7 +496,9 @@ class TokenIOProcessor {
         name,
       }));
 
-      const wrapped = [{ [entry.collection]: { modes, variables: entry.variables } }];
+      const wrapped = [
+        { [entry.collection]: { modes, variables: entry.variables } },
+      ];
       await writeFile(
         join(this.syncDir, entry.filename),
         JSON.stringify(wrapped, null, 2) + "\n"
@@ -483,13 +549,27 @@ class TokenIOProcessor {
 
 // Main execution
 async function main() {
-  const processor = new TokenIOProcessor();
+  const args = process.argv.slice(2);
+  const option = (name, fallback) => {
+    const i = args.indexOf(name);
+    return i === -1 ? fallback : args[i + 1];
+  };
+  const processor = new TokenIOProcessor(
+    option("--sync", "io/sync"),
+    option("--processed", "io/processed")
+  );
 
   try {
     const processedData = await processor.processInputFiles();
-    await processor.generateExports(processedData);
+    // The write-back rewrites native files; it must never run on a DTCG
+    // directory, where it would overwrite the contract files.
+    if (!processor.dtcg) {
+      await processor.generateExports(processedData);
+    }
     console.log(
-      "🎉 Complete! Check io/processed/ for processed files and io/sync/ for Figma-compatible files."
+      processor.dtcg
+        ? "🎉 Complete! Check io/processed/ for processed files."
+        : "🎉 Complete! Check io/processed/ for processed files and io/sync/ for Figma-compatible files."
     );
   } catch (error) {
     console.error("❌ Processing failed:", error);
