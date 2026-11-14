@@ -66,7 +66,7 @@ Two checks are not in CI and are run by hand: `check:focus-visible` (needs a bui
 
 ### Tailwind type hints (`check-tailwind-hints.mjs`)
 
-- **Enforces:** arbitrary variables that Tailwind cannot classify carry a hint, such as `border-b-(length:--space-x)`. Without it Tailwind reads the value as a color and the utility silently does nothing.
+- **Enforces:** arbitrary variables that Tailwind cannot classify carry a hint, such as `border-b-(length:--space-050)`. Without it Tailwind reads the value as a color and the utility silently does nothing.
 
 ### Story token bindings (`check-story-token-bindings.mjs`)
 
