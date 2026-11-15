@@ -2032,6 +2032,20 @@
       "scope": "text",
       "variant": ":: viewport$",
       "reason": "The first text in the story's open viewport is a featured-link heading (28px line height); Figma's is a plain 14px link."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": "Orientation=Vertical, State=Default :: list-row",
+      "reason": "A vertical row fills the list, and the list is as wide as its widest row (Products with the chevron). Figma's rows use space-between, so the hugging list leaves out the 4px item spacing (61 text + 16 chevron + 32 padding = 109); in code the chevron's 4px spacing counts, plus about 1.6px of browser text width (114.64). The horizontal rows hug and match."
+    },
+    {
+      "set": "Navigation Menu",
+      "property": "w",
+      "scope": "box",
+      "variant": "Orientation=Vertical, State=Open :: list-row",
+      "reason": "Same as the Default state: the vertical rows fill a list that Figma hugs without the 4px item spacing (109) and the code counts it (114.64)."
     }
   ]
 }
