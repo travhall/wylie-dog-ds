@@ -210,3 +210,49 @@ export {
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
 };
+
+export type ContextMenuProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenu
+>;
+export type ContextMenuTriggerProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuTrigger
+>;
+export type ContextMenuContentProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuContent
+>;
+export type ContextMenuItemProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuItem
+>;
+export type ContextMenuCheckboxItemProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuCheckboxItem
+>;
+export type ContextMenuRadioItemProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuRadioItem
+>;
+export type ContextMenuLabelProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuLabel
+>;
+export type ContextMenuSeparatorProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuSeparator
+>;
+export type ContextMenuShortcutProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuShortcut
+>;
+export type ContextMenuGroupProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuGroup
+>;
+export type ContextMenuPortalProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuPortal
+>;
+export type ContextMenuSubProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuSub
+>;
+export type ContextMenuSubContentProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuSubContent
+>;
+export type ContextMenuSubTriggerProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuSubTrigger
+>;
+export type ContextMenuRadioGroupProps = React.ComponentPropsWithoutRef<
+  typeof ContextMenuRadioGroup
+>;

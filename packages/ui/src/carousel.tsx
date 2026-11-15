@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Icon } from "./icon";
@@ -19,7 +21,7 @@ type CarouselContextValue = {
 
 const CarouselContext = React.createContext<CarouselContextValue | null>(null);
 
-type CarouselProps = React.HTMLAttributes<HTMLDivElement>;
+export type CarouselProps = React.HTMLAttributes<HTMLDivElement>;
 
 const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
   ({ className, ...props }, ref) => {
@@ -84,7 +86,7 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
 );
 Carousel.displayName = "Carousel";
 
-type CarouselContentProps = React.HTMLAttributes<HTMLDivElement>;
+export type CarouselContentProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentProps>(
   ({ className, children, onScroll, onKeyDown, ...props }, ref) => {
@@ -136,7 +138,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentProps>(
 );
 CarouselContent.displayName = "CarouselContent";
 
-type CarouselItemProps = React.HTMLAttributes<HTMLDivElement>;
+export type CarouselItemProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
   ({ className, ...props }, ref) => (
@@ -158,7 +160,8 @@ CarouselItem.displayName = "CarouselItem";
 const navButtonClasses =
   "absolute inline-flex items-center justify-center h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border-(length:--space-carousel-border-width) border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) top-1/2 -translate-y-1/2 not-disabled:hover:bg-(--color-carousel-nav-hover) text-(--color-carousel-nav-text) not-disabled:hover:text-(--color-carousel-nav-text-hover) disabled:cursor-not-allowed disabled:opacity-(--carousel-nav-opacity-disabled)";
 
-type CarouselPreviousProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+export type CarouselPreviousProps =
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
@@ -194,7 +197,7 @@ const CarouselPrevious = React.forwardRef<
 });
 CarouselPrevious.displayName = "CarouselPrevious";
 
-type CarouselNextProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+export type CarouselNextProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
   ({ className, disabled, onClick, ...props }, ref) => {

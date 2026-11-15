@@ -253,3 +253,48 @@ export {
   MenubarSub,
   MenubarShortcut,
 };
+
+export type MenubarProps = React.ComponentPropsWithoutRef<typeof Menubar>;
+export type MenubarMenuProps = React.ComponentPropsWithoutRef<
+  typeof MenubarMenu
+>;
+export type MenubarTriggerProps = React.ComponentPropsWithoutRef<
+  typeof MenubarTrigger
+>;
+export type MenubarContentProps = React.ComponentPropsWithoutRef<
+  typeof MenubarContent
+>;
+export type MenubarItemProps = React.ComponentPropsWithoutRef<
+  typeof MenubarItem
+>;
+export type MenubarSeparatorProps = React.ComponentPropsWithoutRef<
+  typeof MenubarSeparator
+>;
+export type MenubarLabelProps = React.ComponentPropsWithoutRef<
+  typeof MenubarLabel
+>;
+export type MenubarCheckboxItemProps = React.ComponentPropsWithoutRef<
+  typeof MenubarCheckboxItem
+>;
+export type MenubarRadioGroupProps = React.ComponentPropsWithoutRef<
+  typeof MenubarRadioGroup
+>;
+export type MenubarRadioItemProps = React.ComponentPropsWithoutRef<
+  typeof MenubarRadioItem
+>;
+export type MenubarPortalProps = React.ComponentPropsWithoutRef<
+  typeof MenubarPortal
+>;
+export type MenubarSubContentProps = React.ComponentPropsWithoutRef<
+  typeof MenubarSubContent
+>;
+export type MenubarSubTriggerProps = React.ComponentPropsWithoutRef<
+  typeof MenubarSubTrigger
+>;
+export type MenubarGroupProps = React.ComponentPropsWithoutRef<
+  typeof MenubarGroup
+>;
+export type MenubarSubProps = React.ComponentPropsWithoutRef<typeof MenubarSub>;
+export type MenubarShortcutProps = React.ComponentPropsWithoutRef<
+  typeof MenubarShortcut
+>;

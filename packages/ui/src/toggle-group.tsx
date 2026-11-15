@@ -44,3 +44,10 @@ const ToggleGroupItem = React.forwardRef<
 ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName;
 
 export { ToggleGroup, ToggleGroupItem };
+
+export type ToggleGroupProps = React.ComponentPropsWithoutRef<
+  typeof ToggleGroup
+>;
+export type ToggleGroupItemProps = React.ComponentPropsWithoutRef<
+  typeof ToggleGroupItem
+>;

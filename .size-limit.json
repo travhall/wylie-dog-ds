@@ -11,6 +11,12 @@
     "ignore": ["react"]
   },
   {
+    "name": "UI - Icon",
+    "path": "packages/ui/dist/icon.js",
+    "limit": "11 KB",
+    "ignore": ["react"]
+  },
+  {
     "name": "UI - Badge",
     "path": "packages/ui/dist/badge.js",
     "limit": "13 KB",
@@ -188,7 +194,7 @@
     "name": "UI - Command",
     "path": "packages/ui/dist/command.js",
     "limit": "15 KB",
-    "ignore": ["react", "cmdk"]
+    "ignore": ["react"]
   },
   {
     "name": "UI - Form",

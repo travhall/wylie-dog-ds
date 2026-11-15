@@ -10,7 +10,7 @@ import { cn, focusRingInsetClasses } from "./lib/utils";
 // matching id manually — mirrors the FormField id-context pattern.
 const CommandListboxContext = createContext<string | null>(null);
 
-interface CommandProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CommandProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Accessible label for the command palette */
   label?: string;
   /** ID for the command listbox (for aria-controls). Auto-generated if omitted. */
@@ -38,7 +38,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>(
 );
 Command.displayName = "Command";
 
-interface CommandInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface CommandInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /** Label for the search input */
   "aria-label"?: string;
   /** ID for the command listbox (for aria-controls). Defaults to the id from the nearest <Command>. */
@@ -90,7 +90,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
 );
 CommandInput.displayName = "CommandInput";
 
-interface CommandListProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CommandListProps extends React.HTMLAttributes<HTMLDivElement> {
   /** ID for the command listbox. Defaults to the id from the nearest <Command>. */
   id?: string;
   /** ARIA role for the inner listbox wrapper — defaults to "listbox". */
@@ -134,7 +134,7 @@ const CommandList = React.forwardRef<HTMLDivElement, CommandListProps>(
 );
 CommandList.displayName = "CommandList";
 
-type CommandEmptyProps = React.HTMLAttributes<HTMLDivElement>;
+export type CommandEmptyProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
   ({ className, ...props }, ref) => (
@@ -152,7 +152,7 @@ const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
 );
 CommandEmpty.displayName = "CommandEmpty";
 
-interface CommandGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CommandGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Accessible label for the command group */
   heading?: string;
 }
@@ -184,7 +184,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
 );
 CommandGroup.displayName = "CommandGroup";
 
-type CommandSeparatorProps = React.HTMLAttributes<HTMLDivElement>;
+export type CommandSeparatorProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CommandSeparator = React.forwardRef<
   HTMLDivElement,
@@ -203,7 +203,7 @@ const CommandSeparator = React.forwardRef<
 ));
 CommandSeparator.displayName = "CommandSeparator";
 
-interface CommandItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CommandItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Whether this command item is disabled */
   disabled?: boolean;
   /** Value for the command item (for selection) */
@@ -230,7 +230,7 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
 );
 CommandItem.displayName = "CommandItem";
 
-type CommandShortcutProps = React.HTMLAttributes<HTMLSpanElement>;
+export type CommandShortcutProps = React.HTMLAttributes<HTMLSpanElement>;
 
 const CommandShortcut = React.forwardRef<HTMLSpanElement, CommandShortcutProps>(
   ({ className, ...props }, ref) => {

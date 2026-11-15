@@ -5,7 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Icon } from "./icon";
 import { cn } from "./lib/utils";
 
-interface CalendarProps extends Omit<
+export interface CalendarProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "onSelect"
 > {

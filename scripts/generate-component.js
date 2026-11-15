@@ -803,6 +803,36 @@ async function updateIndexFile(name, composition = false) {
   }
 }
 
+// Add the component's bundle-size budget to .size-limit.json. Compositions are
+// not listed one by one: the single "UI - Compositions" entry measures
+// compositions/index.js, which covers them all. The limit is a starting point
+// (about the median of the existing budgets); tighten it after
+// `pnpm build && pnpm size` shows the real size.
+async function updateSizeLimit(name) {
+  const sizePath = path.join(rootDir, ".size-limit.json");
+  const entries = JSON.parse(await fs.readFile(sizePath, "utf-8"));
+  const entryPath = `packages/ui/dist/${name}.js`;
+
+  if (entries.some((entry) => entry.path === entryPath)) {
+    info(`.size-limit.json already has an entry for ${name}`);
+    return;
+  }
+
+  entries.push({
+    name: `UI - ${toPascalCase(name)}`,
+    path: entryPath,
+    limit: "12 KB",
+    ignore: ["react"],
+  });
+
+  await fs.writeFile(
+    sizePath,
+    JSON.stringify(entries, null, 2) + "\n",
+    "utf-8"
+  );
+  success("Added a size budget to .size-limit.json");
+}
+
 // Format generated files
 async function formatFiles(name, composition = false, category) {
   info("Running Prettier...");
@@ -817,7 +847,7 @@ async function formatFiles(name, composition = false, category) {
 
   try {
     execSync(
-      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "${storyPath}" "packages/ui/tsup.config.ts" "packages/ui/package.json" "${indexPath}"`,
+      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "${storyPath}" "packages/ui/tsup.config.ts" "packages/ui/package.json" "${indexPath}"${composition ? "" : ' ".size-limit.json"'}`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Formatted all generated files");
@@ -890,6 +920,7 @@ function plannedOutput(name, composition, category) {
       composition
         ? "packages/ui/src/compositions/index.ts"
         : "packages/ui/src/index.ts",
+      ...(composition ? [] : [".size-limit.json"]),
       SYNC_DIR,
       CONTRAST_PAIRS_JSON,
     ],
@@ -976,6 +1007,7 @@ async function main() {
     await updateTsupConfig(componentName, composition);
     await updatePackageJson(componentName, composition);
     await updateIndexFile(componentName, composition);
+    if (!composition) await updateSizeLimit(componentName);
 
     // Format and lint
     await formatFiles(componentName, composition, category);
@@ -1011,6 +1043,9 @@ async function main() {
     console.log(`  3. Enhance stories in ${storyPath}`);
     console.log(
       `  4. Add more test cases in packages/ui/src/__tests__/${componentName}.test.tsx`
+    );
+    console.log(
+      `  5. Tighten the size budget in .size-limit.json after pnpm build && pnpm size`
     );
   }
   console.log();
