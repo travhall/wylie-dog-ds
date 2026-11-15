@@ -13,7 +13,10 @@ import {
 } from "react-resizable-panels";
 import { cn } from "./lib/utils";
 
-interface ResizablePanelGroupProps extends Omit<PanelGroupProps, "direction"> {
+export interface ResizablePanelGroupProps extends Omit<
+  PanelGroupProps,
+  "direction"
+> {
   direction?: PanelGroupProps["direction"];
 }
 
@@ -33,7 +36,7 @@ const ResizablePanelGroup = React.forwardRef<
 ));
 ResizablePanelGroup.displayName = "ResizablePanelGroup";
 
-type ResizablePanelProps = PanelProps;
+export type ResizablePanelProps = PanelProps;
 
 const ResizablePanel = React.forwardRef<
   ImperativePanelHandle,
@@ -43,7 +46,7 @@ const ResizablePanel = React.forwardRef<
 ));
 ResizablePanel.displayName = "ResizablePanel";
 
-interface ResizableHandleProps extends PanelResizeHandleProps {
+export interface ResizableHandleProps extends PanelResizeHandleProps {
   withHandle?: boolean;
 }
 

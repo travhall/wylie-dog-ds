@@ -80,6 +80,17 @@ test("a composition also gets spacing tokens, a primitive does not", () => {
   }
 });
 
+test("a primitive gets a size budget, a composition does not (one aggregate entry covers them)", () => {
+  const primitive = plan("zz-sample-card", "--category=content-display").edits;
+  const composition = plan(
+    "zz-sample-band",
+    "--composition",
+    "--category=Layout Patterns"
+  ).edits;
+  assert.ok(primitive.includes(".size-limit.json"));
+  assert.ok(!composition.includes(".size-limit.json"));
+});
+
 test("the scaffold has no Tailwind scale literal", () => {
   const { files } = plan("zz-sample-band", "--composition", "--category=Layout Patterns");
   assert.doesNotMatch(

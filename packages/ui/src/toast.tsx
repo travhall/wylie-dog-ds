@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { XIcon } from "lucide-react";
 import { Icon } from "./icon";
@@ -37,7 +39,7 @@ export const toastVariants = cva(
   }
 );
 
-interface ToastProps
+export interface ToastProps
   extends
     React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof toastVariants> {}
@@ -73,7 +75,7 @@ const solidCloseColor = [
   "group-data-[variant=info]:text-(--color-toast-info-close-icon) group-data-[variant=info]:not-disabled:hover:text-(--color-toast-info-close-icon)",
 ].join(" ");
 
-type ToastActionProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+export type ToastActionProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
   ({ className, ...props }, ref) => (
@@ -96,7 +98,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
 );
 ToastAction.displayName = "ToastAction";
 
-interface ToastCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ToastCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   srText?: string;
 }
 
@@ -128,7 +130,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
 );
 ToastClose.displayName = "ToastClose";
 
-type ToastTitleProps = React.HTMLAttributes<HTMLDivElement>;
+export type ToastTitleProps = React.HTMLAttributes<HTMLDivElement>;
 
 const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
   ({ className, ...props }, ref) => (
@@ -146,7 +148,7 @@ const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
 );
 ToastTitle.displayName = "ToastTitle";
 
-type ToastDescriptionProps = React.HTMLAttributes<HTMLDivElement>;
+export type ToastDescriptionProps = React.HTMLAttributes<HTMLDivElement>;
 
 const ToastDescription = React.forwardRef<
   HTMLDivElement,
@@ -239,3 +241,5 @@ export function Toaster() {
 }
 
 export { Toast, ToastAction, ToastClose, ToastTitle, ToastDescription };
+
+export type ToasterProps = React.ComponentPropsWithoutRef<typeof Toaster>;

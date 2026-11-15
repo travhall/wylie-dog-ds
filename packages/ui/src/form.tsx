@@ -22,7 +22,7 @@ export const useFormField = () => {
 };
 
 // Form Root
-type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
+export type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
 
 const Form = React.forwardRef<HTMLFormElement, FormProps>(
   ({ className, ...props }, ref) => (
@@ -36,7 +36,7 @@ const Form = React.forwardRef<HTMLFormElement, FormProps>(
 Form.displayName = "Form";
 
 // Enhanced FormField with accessibility context
-interface FormFieldProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface FormFieldProps extends React.HTMLAttributes<HTMLDivElement> {
   error?: boolean;
   required?: boolean;
 }
@@ -69,7 +69,7 @@ const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(
 FormField.displayName = "FormField";
 
 // Maintained for backwards compatibility
-type FormItemProps = React.HTMLAttributes<HTMLDivElement>;
+export type FormItemProps = React.HTMLAttributes<HTMLDivElement>;
 
 const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
   ({ className, ...props }, ref) => (
@@ -84,7 +84,7 @@ FormItem.displayName = "FormItem";
 
 // FormLabel is a Label wired to the nearest FormField: it points at the field's control and takes
 // the field's error and required state. The look (and its tokens) is the Label's.
-type FormLabelProps = Omit<LabelProps, "error" | "required">;
+export type FormLabelProps = Omit<LabelProps, "error" | "required">;
 
 const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
   ({ children, ...props }, ref) => {
@@ -106,7 +106,7 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
 FormLabel.displayName = "FormLabel";
 
 // Maintained for backwards compatibility
-type FormControlProps = React.HTMLAttributes<HTMLDivElement>;
+export type FormControlProps = React.HTMLAttributes<HTMLDivElement>;
 
 const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
   ({ className, ...props }, ref) => (
@@ -116,7 +116,7 @@ const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
 FormControl.displayName = "FormControl";
 
 // Enhanced FormDescription with automatic ID assignment
-type FormDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
+export type FormDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
 
 const FormDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -139,7 +139,7 @@ const FormDescription = React.forwardRef<
 FormDescription.displayName = "FormDescription";
 
 // Enhanced FormMessage with accessibility attributes
-type FormMessageProps = React.HTMLAttributes<HTMLParagraphElement>;
+export type FormMessageProps = React.HTMLAttributes<HTMLParagraphElement>;
 
 const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
   ({ className, ...props }, ref) => {

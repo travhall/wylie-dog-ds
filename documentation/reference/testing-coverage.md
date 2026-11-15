@@ -1,7 +1,7 @@
 # Testing and Coverage Status
 
 **Last Updated:** November 9, 2026
-**Overall Coverage:** 99.63% lines / 99.30% statements (exceeds 80% threshold)
+**Overall Coverage:** 99.64% lines / 99.30% statements (exceeds 80% threshold)
 **Tests Passing:** 1,783 | **Tests Skipped:** 0
 
 Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot. `pnpm check:docs:coverage` runs it and fails if the four percentages in the table below no longer match; plain `pnpm check:docs` does the same comparison whenever a fresh coverage run is on disk. Passing and skipped test counts are not checked.
@@ -11,13 +11,13 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 | Metric     | Current | Target | Status            |
 | ---------- | ------- | ------ | ----------------- |
 | Statements | 99.30%  | 80%    | ✅ Pass (+19.17%) |
-| Lines      | 99.63%  | 80%    | ✅ Pass (+19.63%) |
+| Lines      | 99.64%  | 80%    | ✅ Pass (+19.64%) |
 | Functions  | 99.10%  | 80%    | ✅ Pass (+19.10%) |
 | Branches   | 93.03%  | 70%    | ✅ Pass (+23.03%) |
 
 ### Component Coverage
 
-- **Component tests:** 99.63% lines overall (every component is tested; no test is skipped)
+- **Component tests:** 99.64% lines overall (every component is tested; no test is skipped)
 - **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
 - **Test files:** 61 passing test files
 

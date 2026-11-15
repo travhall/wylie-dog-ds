@@ -43,6 +43,7 @@ For a primitive named `my-component` (compositions use `src/compositions/` and `
 | `packages/tokens/io/sync/components.light.json` and `.dark.json`       | The component's tokens, with descriptions (see below)                                             |
 | `packages/ui/tsup.config.ts`                                           | New entry in `entryPoints`                                                                        |
 | `packages/ui/package.json`                                             | New `exports["./my-component"]`                                                                   |
+| `.size-limit.json` (primitives only)                                   | A `UI - My Component` budget entry at a 12 KB starting limit (see "Size budget" below)            |
 | `packages/ui/src/index.ts` (compositions: `src/compositions/index.ts`) | New export line                                                                                   |
 
 Then it runs Prettier and ESLint on the generated files, rebuilds the tokens (`pnpm --filter @wyliedog/tokens build`) and runs `pnpm check:tokens`. It stops and prints the output if either fails.
@@ -73,7 +74,7 @@ The scaffold is a starting point, not a finished component. It marks the gaps wi
 - **Variants and sizes.** Replace the single `default` variant. Look at `packages/ui/src/badge.tsx` and `button.tsx` for the house style: `cva` variants, token-backed classes, `compoundVariants` for interactive states, `Slot` for `asChild`. Sizes are per component (for example `sm`/`md`/`lg`); there is no shared pixel-height scale.
 - **Sub-components** are separate named exports (`Card`, `CardHeader`, `CardTitle`, ...), not dot notation.
 - **Story.** Fill in the description text, real variants and states, and a meaningful `play` function.
-- **Size budget.** Add an entry for the new file to `.size-limit.json` (one entry per component, with `"ignore": ["react"]`).
+- **Size budget.** The generator adds a `.size-limit.json` entry for a primitive (one entry per component, with `"ignore": ["react"]`) at a 12 KB starting limit. After `pnpm build`, run `pnpm size` and tighten the limit to the real size plus some headroom. A composition needs no entry of its own: the single `UI - Compositions` entry measures `compositions/index.js`, which covers them all.
 - **README count.** The component count in `README.md` is checked against the story files by `pnpm check:docs`; update it when you add a component.
 
 ## 3. Develop with it running

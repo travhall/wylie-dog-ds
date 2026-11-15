@@ -138,3 +138,18 @@ export {
   TableCell,
   TableCaption,
 };
+
+export type TableProps = React.ComponentPropsWithoutRef<typeof Table>;
+export type TableHeaderProps = React.ComponentPropsWithoutRef<
+  typeof TableHeader
+>;
+export type TableBodyProps = React.ComponentPropsWithoutRef<typeof TableBody>;
+export type TableFooterProps = React.ComponentPropsWithoutRef<
+  typeof TableFooter
+>;
+export type TableHeadProps = React.ComponentPropsWithoutRef<typeof TableHead>;
+export type TableRowProps = React.ComponentPropsWithoutRef<typeof TableRow>;
+export type TableCellProps = React.ComponentPropsWithoutRef<typeof TableCell>;
+export type TableCaptionProps = React.ComponentPropsWithoutRef<
+  typeof TableCaption
+>;
