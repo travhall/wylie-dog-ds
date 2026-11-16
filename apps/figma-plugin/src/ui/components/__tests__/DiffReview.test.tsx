@@ -1,6 +1,12 @@
 import { h } from "preact";
 import { describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen, within } from "@testing-library/preact";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/preact";
 import { DiffReview } from "../DiffReview";
 import { buildSyncDiff } from "../../../plugin/sync/sync-diff";
 import type { SyncDirection } from "../../../plugin/sync/sync-diff";
@@ -84,6 +90,71 @@ describe("DiffReview: styles on offer while Text styles is off (plan 207)", () =
     expect(
       screen.getByRole("dialog", { name: "Nothing to push" })
     ).toBeInTheDocument();
+  });
+});
+
+describe("DiffReview: backup before a replace-Pull (plan 224, 3.6)", () => {
+  const local = [col("primitive", { a: tok(9) })];
+  const pulling = () => diffOf("pull", local, synced);
+  const checkbox = () =>
+    screen.getByRole("checkbox", { name: /Download a backup/ });
+
+  it("offers a ticked backup on a Pull and saves it before the Pull runs", async () => {
+    const order: string[] = [];
+    const onBackup = vi.fn(async () => {
+      order.push("backup");
+    });
+    const { onConfirm } = setup(pulling(), { onBackup });
+    onConfirm.mockImplementation(() => order.push("pull"));
+    expect(checkbox()).toBeChecked();
+    fireEvent.click(screen.getByText("Pull from GitHub"));
+    await waitFor(() => expect(onConfirm).toHaveBeenCalledTimes(1));
+    expect(order).toEqual(["backup", "pull"]);
+  });
+
+  it("skips the backup when the box is unticked, without waiting", () => {
+    const onBackup = vi.fn();
+    const { onConfirm } = setup(pulling(), { onBackup });
+    fireEvent.click(checkbox());
+    fireEvent.click(screen.getByText("Pull from GitHub"));
+    expect(onBackup).not.toHaveBeenCalled();
+    expect(onConfirm).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not pull when the backup fails, and says how to go on", async () => {
+    const onBackup = vi.fn().mockRejectedValue(new Error("disk full"));
+    const { onConfirm } = setup(pulling(), { onBackup });
+    fireEvent.click(screen.getByText("Pull from GitHub"));
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent(/could not be saved \(disk full\)/);
+    expect(alert).toHaveTextContent(/Untick the box/);
+    expect(onConfirm).not.toHaveBeenCalled();
+    fireEvent.click(checkbox());
+    fireEvent.click(screen.getByText("Pull from GitHub"));
+    expect(onConfirm).toHaveBeenCalledTimes(1);
+  });
+
+  it("also saves it before opening the per-token list", async () => {
+    const onBackup = vi.fn();
+    const { onAdvanced } = setup(pulling(), { onBackup });
+    fireEvent.click(screen.getByText("Choose per token…"));
+    await waitFor(() => expect(onAdvanced).toHaveBeenCalledTimes(1));
+    expect(onBackup).toHaveBeenCalledTimes(1);
+  });
+
+  it("is not offered on a Push, without a handler, or with nothing to pull", () => {
+    const { unmount } = render(
+      <DiffReview
+        diff={diffOf("push", local, synced)}
+        onBackup={vi.fn()}
+        onConfirm={vi.fn()}
+        onClose={vi.fn()}
+      />
+    );
+    expect(screen.queryByText(/Download a backup/)).toBeNull();
+    unmount();
+    setup(pulling());
+    expect(screen.queryByText(/Download a backup/)).toBeNull();
   });
 });
 
