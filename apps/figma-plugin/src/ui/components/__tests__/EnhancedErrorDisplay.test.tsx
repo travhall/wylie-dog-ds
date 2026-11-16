@@ -88,7 +88,7 @@ describe("EnhancedErrorDisplay with a classified error", () => {
     expect(screen.getByText("HTTP 404")).toBeInTheDocument();
   });
 
-  it("links Read Docs to a real README section", () => {
+  it("links Read Docs to a real section of the user docs", () => {
     const open = vi.spyOn(window, "open").mockImplementation(() => null);
     render(
       <EnhancedErrorDisplay
@@ -98,7 +98,7 @@ describe("EnhancedErrorDisplay with a classified error", () => {
     );
     fireEvent.click(screen.getByText(/Read Docs/));
     expect(open).toHaveBeenCalledWith(
-      "https://github.com/travhall/wylie-dog-ds/blob/main/apps/figma-plugin/README.md#authentication",
+      "https://github.com/travhall/wylie-dog-ds/blob/main/apps/figma-plugin/docs/SETUP.md#create-a-github-token",
       "_blank"
     );
     open.mockRestore();

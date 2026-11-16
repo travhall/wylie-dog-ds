@@ -98,7 +98,7 @@ export function HelpMenu({ onReset }: HelpMenuProps) {
             role="menuitem"
             onClick={() =>
               openLink(
-                "https://github.com/wylie-dog-ds/apps/figma-plugin/blob/main/docs/README.md"
+                "https://github.com/travhall/wylie-dog-ds/blob/main/apps/figma-plugin/docs/SETUP.md"
               )
             }
             className="menu-item"
