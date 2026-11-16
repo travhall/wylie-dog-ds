@@ -27,6 +27,12 @@ Two checks are not in CI and are run by hand: `check:focus-visible` (needs a bui
 - **Tune it:** `scripts/check-token-refs.config.json`.
 - **A failure usually means:** a token was renamed or deleted and a reference was left behind. Rebuild tokens (`pnpm --filter @wyliedog/tokens build`) before assuming the check is wrong.
 
+### Token file contract (`check-dtcg-contract.mjs`)
+
+- **Enforces:** the token source in `packages/tokens/io/sync` is valid under the [DTCG contract](../tokens/dtcg-contract.md): the resolver passes `resolver.schema.json`, every file it lists exists and passes `token-file.schema.json`, and no other `.json` file sits in the folder (the build never reads an unlisted file). A folder with no `tokens.resolver.json` is the native layout and is skipped.
+- **Tune it:** the schemas are in `packages/tokens/schema`. `--dir <folder>` checks another folder.
+- **A failure usually means:** a hand edit broke a value's shape (a colour that is not an object, a dimension without a unit), a file was added or renamed without updating the resolver, or a file was left behind after a rename. The message names the file and the path inside it.
+
 ### Semantic color structure (`check-token-structure.mjs`)
 
 - **Enforces:** semantic color names follow `color.<part>.<token>`, with the part `background`, `foreground`, `border` or `focus`, and at most one modifier. The primitive collection holds literal values only, never a reference.
