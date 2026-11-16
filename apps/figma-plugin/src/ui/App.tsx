@@ -750,6 +750,7 @@ function AppInner() {
           onPushFirst={review.onPushFirst}
           onMarkSynced={review.onMarkSynced}
           textStylesAvailable={review.textStylesAvailable}
+          onBackup={review.onBackup}
           onClose={review.onClose}
         />
       )}

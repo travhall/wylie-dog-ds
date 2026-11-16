@@ -18,6 +18,7 @@ import type {
 import type { PluginMessageActions } from "../usePluginMessages";
 import { Result } from "../../../shared/result";
 import { PUSH_STEPS, PULL_STEPS } from "../../components/ProgressFeedback";
+import { downloadBackup, hasBackupContent } from "../../utils/backup";
 import { hashTokens } from "../../../plugin/sync/sync-baseline";
 import type {
   SyncBaseline,
@@ -60,6 +61,8 @@ export interface SyncReview {
    * how many styles it lists, so the review can say they are left out (plan 207).
    */
   textStylesAvailable?: number;
+  /** Pull: save Figma's current variables before they are replaced (3.6). */
+  onBackup?: () => Promise<unknown> | unknown;
   onClose: () => void;
 }
 
@@ -509,6 +512,10 @@ export function useGitHubSync(
       setReview({
         diff,
         textStylesAvailable: textStylesAvailable || undefined,
+        // Offered when Figma holds variables; the replace-Pull has no undo.
+        onBackup: hasBackupContent(local.localTokens)
+          ? () => downloadBackup(local.localTokens)
+          : undefined,
         // Scopes are derived, so Pull can have work to do (the import
         // re-applies them) even when no token differs (plan 202). Linked
         // text styles are too: a token can match while a style lags (plan 205).

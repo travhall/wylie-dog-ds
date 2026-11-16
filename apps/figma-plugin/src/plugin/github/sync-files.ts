@@ -38,7 +38,7 @@ export function nativeFileName(collection: string): string {
   return `${collection.toLowerCase().replace(/\s+/g, "-")}.json`;
 }
 
-function prepareNativeFiles(exportData: ExportData[]): SyncFile[] {
+export function prepareNativeFiles(exportData: ExportData[]): SyncFile[] {
   return exportData.map((collectionData) => {
     const collectionName = Object.keys(collectionData)[0];
     return {

@@ -38,6 +38,12 @@ export interface DiffReviewProps {
    * (plan 207): the review says they are left out and names the option.
    */
   textStylesAvailable?: number;
+  /**
+   * Pull: save what Figma holds now before it is replaced (plan 224, 3.6).
+   * Present means the review offers it, ticked by default. A rejection stops
+   * the Pull and is shown; unticking the box skips the backup.
+   */
+  onBackup?: () => Promise<unknown> | unknown;
   onClose: () => void;
 }
 
@@ -665,11 +671,14 @@ export function DiffReview({
   onPushFirst,
   onMarkSynced,
   textStylesAvailable = 0,
+  onBackup,
   onClose,
 }: DiffReviewProps) {
   const [filter, setFilter] = useState("");
   const [limit, setLimit] = useState(PAGE_SIZE);
   const [acknowledged, setAcknowledged] = useState(false);
+  const [backup, setBackup] = useState(true);
+  const [backupError, setBackupError] = useState<string | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -724,6 +733,29 @@ export function DiffReview({
     diff.textStyles.problems.length === 0;
   const canConfirm = !!onConfirm && !nothing;
   const confirmDisabled = needsAck && !acknowledged;
+
+  const offersBackup = diff.direction === "pull" && !!onBackup;
+
+  /**
+   * Run `next` now, or after the backup is saved when one is wanted. A failed
+   * backup stops the Pull and says why; unticking the box skips it.
+   */
+  const afterBackup = (next: () => void) => {
+    if (!offersBackup || !backup) {
+      next();
+      return;
+    }
+    void (async () => {
+      try {
+        await onBackup?.();
+      } catch (error) {
+        setBackupError(error instanceof Error ? error.message : String(error));
+        return;
+      }
+      setBackupError(null);
+      next();
+    })();
+  };
 
   const confirmLabel =
     diff.direction === "pull"
@@ -954,6 +986,53 @@ export function DiffReview({
               deleted from Figma
             </label>
           )}
+          {offersBackup && canConfirm && (
+            <div style={{ marginTop: "var(--space-3)" }}>
+              <label
+                style={{
+                  display: "flex",
+                  gap: "var(--space-2)",
+                  alignItems: "flex-start",
+                  fontSize: "var(--font-size-sm)",
+                  color: "var(--text-primary)",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={backup}
+                  onChange={(e) =>
+                    setBackup((e.target as HTMLInputElement).checked)
+                  }
+                />
+                <span>
+                  Download a backup of Figma's variables first
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "var(--font-size-xs)",
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    Pull replaces them and Figma has no undo. Unzip the backup
+                    and bring the files back with Import.
+                  </span>
+                </span>
+              </label>
+              {backupError && (
+                <div
+                  role="alert"
+                  style={{
+                    marginTop: "var(--space-2)",
+                    fontSize: "var(--font-size-xs)",
+                    color: "var(--error)",
+                  }}
+                >
+                  The backup could not be saved ({backupError}). Untick the box
+                  to pull without one.
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         <div
@@ -967,7 +1046,10 @@ export function DiffReview({
           }}
         >
           {onAdvanced && diff.rows.length > 0 && (
-            <button onClick={onAdvanced} style={secondaryButton}>
+            <button
+              onClick={() => afterBackup(onAdvanced)}
+              style={secondaryButton}
+            >
               Choose per token…
             </button>
           )}
@@ -987,7 +1069,7 @@ export function DiffReview({
           {canConfirm && (
             <button
               onClick={() => {
-                if (!confirmDisabled) onConfirm?.();
+                if (!confirmDisabled) afterBackup(() => onConfirm?.());
               }}
               disabled={confirmDisabled}
               style={{
