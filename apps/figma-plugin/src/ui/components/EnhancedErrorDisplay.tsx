@@ -8,27 +8,28 @@ import {
   ErrorType,
 } from "../../shared/error-handler";
 
-// The plugin's README is the user documentation for now (the docs/ folder holds
-// maintainer notes). Anchors are its section headings.
-const README_URL =
-  "https://github.com/travhall/wylie-dog-ds/blob/main/apps/figma-plugin/README.md";
-const readme = (anchor: string) => `${README_URL}#${anchor}`;
+// The user docs (SETUP, SYNC, FORMATS) live beside the maintainer notes in the
+// plugin's docs/ folder. Anchors are their section headings.
+const DOCS_URL =
+  "https://github.com/travhall/wylie-dog-ds/blob/main/apps/figma-plugin/docs";
+const doc = (file: string, anchor?: string) =>
+  `${DOCS_URL}/${file}${anchor ? `#${anchor}` : ""}`;
 
-/** The README section that helps with a classified failure, if there is one. */
+/** The docs section that helps with a classified failure, if there is one. */
 export function docsLinkFor(kind: FailureKind): string | null {
   switch (kind) {
     case "token-rejected":
     case "no-access":
-      return readme("authentication");
+      return doc("SETUP.md", "create-a-github-token");
     case "repo-not-found":
     case "folder-not-found":
     case "file-not-found":
     case "not-found":
-      return readme("finding-the-token-folder");
+      return doc("SETUP.md", "find-the-token-folder");
     case "bad-file":
-      return readme("supported-token-formats");
+      return doc("FORMATS.md", "supported-formats");
     case "branch-moved":
-      return readme("reviewing-a-push-or-pull");
+      return doc("SYNC.md", "when-something-goes-wrong");
     default:
       return null;
   }
@@ -90,13 +91,13 @@ export function EnhancedErrorDisplay({
   const getDocsLink = (error: PluginError): string | null => {
     switch (error.type) {
       case ErrorType.TOKEN_FORMAT_ERROR:
-        return readme("supported-token-formats");
+        return doc("FORMATS.md", "supported-formats");
       case ErrorType.AUTHENTICATION_ERROR:
-        return readme("authentication");
+        return doc("SETUP.md", "create-a-github-token");
       case ErrorType.REPOSITORY_ERROR:
-        return readme("finding-the-token-folder");
+        return doc("SETUP.md", "find-the-token-folder");
       case ErrorType.CONFLICT_ERROR:
-        return readme("reviewing-a-push-or-pull");
+        return doc("SYNC.md", "review-before-anything-is-written");
       default:
         return null;
     }

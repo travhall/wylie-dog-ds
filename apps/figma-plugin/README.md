@@ -169,7 +169,7 @@ A failed Pull, Push or status check says what happened and offers the one fix, n
 | A token file is not valid JSON             | Names the file                                                                       | none (fix it in the repo) |
 | No answer from GitHub (offline)            | "Can't reach GitHub. Check your connection."                                         | Try Again                 |
 
-Edit setup and Enter a new token both open the GitHub setup on the Sync tab. "Show Details" has the original error text, and "Read Docs" opens the section of this README that helps.
+Edit setup and Enter a new token both open the GitHub setup on the Sync tab. "Show Details" has the original error text, and "Read Docs" opens the section of the [user docs](docs/SETUP.md) that helps.
 
 ### Hidden from publishing
 
@@ -296,6 +296,14 @@ The UI defines its colors as CSS variables in `src/ui/index.html` and switches t
 ---
 
 ## Documentation
+
+For people using the plugin:
+
+- **[Setup](docs/SETUP.md)** - Install, create a GitHub token, connect a repository
+- **[Sync](docs/SYNC.md)** - Push, Pull, the review, the backup before a Pull, sync status, errors
+- **[Formats](docs/FORMATS.md)** - Supported token formats and what a Push writes
+
+For people working on it:
 
 - **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code style, PR guidelines
 - **[Architecture](docs/ARCHITECTURE.md)** - Technical deep-dive into plugin architecture
