@@ -22,10 +22,10 @@ Do not recruit the three people who built or reviewed it. Mix one person who is 
 
 ## Setup (once per run)
 
-1. **Plugin.** Build it (`pnpm --filter figma-plugin build`) and give each participant a way to run it: import `apps/figma-plugin/manifest.json` as a development plugin in the Figma desktop app (Plugins, Development, Import plugin from manifest), on their machine or yours. A private publish is easier but belongs to Phase 4.
+1. **Plugin.** Build it (`pnpm --filter figma-plugin build`), then give each participant a copy to run. The route is a development plugin, not a Community publish (decided 2026-11-15; publishing belongs to Phase 4). Zip `manifest.json` together with the `dist/` folder, keeping that layout (the manifest's `main` and `ui` paths are relative to it), and send the zip. They unzip it, then in the Figma desktop app choose Plugins, Development, Import plugin from manifest, and pick `manifest.json`. Do this yourself on their machine in a pre-session call, or on yours, so installing is not what gets timed.
 2. **Repository.** A private scratch repository holding a small token set (the "Acme" set in `apps/figma-plugin/src/plugin/__fixtures__/acme/` works: two sets, two modifiers). Invite each participant as a collaborator with write access. Give each a branch of their own (`tester-1`, `tester-2`, `tester-3`), all cut from the same commit, so sessions never touch each other and nothing needs resetting.
 3. **Figma file.** One new, empty design file per participant (Pull creates the variables). Do not duplicate a file that already holds Token Bridge settings.
-4. **Their own token.** They create a GitHub token themselves in task 1; that is part of the test. Tell them to delete it afterwards.
+4. **Their own token.** They create a GitHub token themselves in task 1; that is part of the test. The setup leads with a fine-grained token limited to one repository with Contents read and write, so they should select only the scratch repository. Tell them to delete the token afterwards.
 5. **Recording.** Screen and voice, with their agreement, kept only until the notes are written. No names in the notes: use P1, P2, P3.
 
 ## Script
@@ -41,6 +41,8 @@ Read the opening aloud. Then give each task as one sentence, on paper or in chat
 | 3   | "Change the colour of one variable, then send that change to GitHub."                                                                                                          | A pull request (or commit) exists with only that change      |
 | 4   | "Someone changed a token in the repository. Bring that change into Figma." _(Between 3 and 4 you change one token on their branch, off screen.)_                               | The changed value shows in Figma                             |
 | 5   | "Something is broken with the connection; find out what and fix it." _(Before the session, set the branch's token folder to a name that does not exist, or revoke the token.)_ | They reach the setup, correct it, and the status works again |
+
+Expect in task 4: the Pull review offers a ticked "Download a backup of Figma's variables first", so a zip lands in their Downloads folder. That is the intended behaviour, not an error and not something to explain. In task 2 it does not appear, because the file holds no variables yet. Note whether they read it, untick it, or ignore it.
 
 Hints: say nothing for 90 seconds of silence, then "What are you trying to do?" If still stuck after another 60 seconds, point to the area of the screen (hint 1), then name the button (hint 2). Record which hint, at what time. A hint makes the task "with help".
 
@@ -64,6 +66,8 @@ After task 5, ask:
 ## After the sessions
 
 Sort every note into one of: **blocked** (could not continue), **wrong turn** (recovered alone), **hesitation**, **wording** (a word they did not understand), **idea**. A problem two or three of three people hit is a fix; one person's is a watch. Rank fixes by how many people it stopped and how long it took them to recover. Write the result into the plan (`plans/224-token-bridge-release.md`, Phase 3) and fix the top ones before the second run.
+
+**Naming rule (owner, 2026-11-15):** Push, Pull and Review changes keep their names, defined in the UI. Rename one only if two of the three participants misunderstood it (their answer to "what does Push do?" is wrong, or they could not find it by the word). One person's confusion is a note, not a rename.
 
 ## What this does not test
 
