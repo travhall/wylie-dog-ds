@@ -8,11 +8,10 @@
   "networkAccess": {
     "allowedDomains": [
       "https://api.github.com",
-      "https://raw.githubusercontent.com",
       "https://fonts.googleapis.com",
       "https://fonts.gstatic.com"
     ],
-    "reasoning": "GitHub API and raw content for token synchronization (PAT-based auth), Google Fonts for typography (Manrope variable font)"
+    "reasoning": "GitHub API to read and write token files (PAT-based auth, every file read goes through the API), Google Fonts for the plugin's typography (Manrope and JetBrains Mono)"
   },
   "permissions": ["currentuser"],
   "editorType": ["figma"],
